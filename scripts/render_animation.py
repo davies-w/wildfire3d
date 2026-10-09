@@ -294,4 +294,11 @@ if __name__ == "__main__":
     ims = [Image.open(p).convert("RGB") for p in paths]
     os.makedirs(os.path.dirname(GIF), exist_ok=True)
     ims[0].save(GIF, save_all=True, append_images=ims[1:], duration=600, loop=0)
+    # The stills quoted in the README are rebuilt here too.  They were once
+    # copied by hand, so they kept showing the old colours long after the gif
+    # had been re-rendered.
+    for t in CONFIG.get("stills", []):
+        src = os.path.join(out, "c_%03d.png" % t)
+        if os.path.exists(src):
+            shutil.copy(src, os.path.join(os.path.dirname(GIF), "i_%03d.png" % t))
     print("%s\n  %d frames, %d bytes" % (GIF, len(ims), os.path.getsize(GIF)))
