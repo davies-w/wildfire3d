@@ -17,6 +17,11 @@
 # Smokeview write .ini files as scratch inside case directories, but the render
 # configs name one as `ini_template` and a clone needs it to reproduce a gif.
 !experiments/*/view.ini
+
+# Solver output is versioned with DVC, never git (rule 4).  DVC does not need
+# the files ignored -- it tracks them itself -- but git does, or every .bf and
+# .s3d would be committed by the next `git add -A`.
+experiments/*/data/
 *.ssf
 *.csv
 *.gcf

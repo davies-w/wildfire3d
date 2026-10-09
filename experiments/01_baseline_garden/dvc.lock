@@ -2,55 +2,56 @@ schema: '2.0'
 stages:
   solve:
     cmd: python3 scripts/run_fds.py 
-      experiments/01_baseline_garden/garden_house.fds --threads 4 && python3 
-      scripts/strip_terrain.py FDS/cases/garden_house garden_house
+      experiments/01_baseline_garden/01_baseline_garden.fds:experiments/01_baseline_garden/data
+      --threads 4 && python3 scripts/strip_terrain.py 
+      experiments/01_baseline_garden/data 01_baseline_garden
     deps:
-    - path: experiments/01_baseline_garden/garden_house.fds
+    - path: experiments/01_baseline_garden/01_baseline_garden.fds
       hash: md5
-      md5: 23654063d62bb21cb824fa64f398351c
-      size: 10319
+      md5: 8ceb5ace549b40ffb6d605b7f15fc372
+      size: 10325
     - path: scripts/run_fds.py
       hash: md5
-      md5: 319a2472ff98cef3c9026eadb67e8dec
-      size: 4256
+      md5: e62feb9eebf487819e50ac13bb8b55c3
+      size: 4178
     - path: scripts/strip_terrain.py
       hash: md5
       md5: e3700807948e9d294794a418e36baac3
       size: 1860
     outs:
-    - path: FDS/cases/garden_house/garden_house.smv
+    - path: experiments/01_baseline_garden/data/01_baseline_garden.smv
       hash: md5
-      md5: eadbdd5dc239de9d0deb11301beb329e
-      size: 12235
-    - path: FDS/cases/garden_house/garden_house_1.prt5
+      md5: 9e3702c57a1b07b1961cdec30b3881ff
+      size: 12390
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1.prt5
       hash: md5
-      md5: 5eabf9a7ae47cb95883f44abb41152fc
-      size: 1361936
-    - path: FDS/cases/garden_house/garden_house_1_1.bf
+      md5: e60091ceca30fef65379e627726770f3
+      size: 1363116
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.bf
       hash: md5
-      md5: 2536cc64b873ffa345ece7485ef00240
+      md5: 571baf14a3be2f20d975794987cc73fc
       size: 542866
-    - path: FDS/cases/garden_house/garden_house_1_1.s3d
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.s3d
       hash: md5
-      md5: 8001f6b4c98b25146c6990171efb66f4
-      size: 4482430
-    - path: FDS/cases/garden_house/garden_house_1_1.sf
+      md5: cd25090d860f3d6f314b37ebfd0104b8
+      size: 4488254
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.sf
       hash: md5
-      md5: 94afba484a2a3eb19d3bc00c1c9d6bd2
+      md5: ae0a2e0f3a438c8808fa8ba72f1505bc
       size: 411530
-    - path: FDS/cases/garden_house/garden_house_1_2.bf
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.bf
       hash: md5
-      md5: 34d50c9da5119e94603ac0809ea4951e
+      md5: 2b35a704f4d5ac5ce6dfd4902eea23e9
       size: 542866
-    - path: FDS/cases/garden_house/garden_house_1_2.s3d
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.s3d
       hash: md5
-      md5: 184312f8536b11b2c2ce3699bd8b8131
-      size: 1185847
-    - path: FDS/cases/garden_house/garden_house_1_2.sf
+      md5: 53c8ec4dce4d7b6e7bff31d9ed2d5d09
+      size: 1183513
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.sf
       hash: md5
-      md5: 54c5042f448c27029eec7908c5870b86
+      md5: b83f289d6f5348b49ada46fb21f43fab
       size: 131418
-    - path: FDS/cases/garden_house/garden_house_1_3.s3d
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_3.s3d
       hash: md5
-      md5: 3ad7a31383a053ad65348c5c996bc2a2
-      size: 3012920
+      md5: db61a417d589b3f750a55e8084063c3b
+      size: 3019801

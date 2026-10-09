@@ -1,29 +1,34 @@
 # Experiment 01: baseline garden fire with a house.
 #
-# `dvc repro` runs this file; `dvc.lock` is committed.  Outputs are tracked
-# where FDS writes them.  The .s3d volumes are uncached: DVC knows this stage
-# produces them and will re-solve when they are missing, but never copies or
-# pushes them.
+# `dvc repro` solves the case from scratch and strips the terrain block, which
+# FDS regenerates on every solve.  Config lives here; every solver output goes
+# to data/.  The deck is passed to FDS as a path with data/ as the working
+# directory, so nothing is copied.
+#
+# The .s3d volumes are uncached: DVC knows this stage produces them and will
+# re-solve when they are missing, but never copies or pushes them.
 stages:
   solve:
     wdir: ../..
     cmd: >-
-      python3 scripts/run_fds.py experiments/01_baseline_garden/garden_house.fds --threads 4
-      && python3 scripts/strip_terrain.py FDS/cases/garden_house garden_house
+      python3 scripts/run_fds.py
+      experiments/01_baseline_garden/01_baseline_garden.fds:experiments/01_baseline_garden/data
+      --threads 4
+      && python3 scripts/strip_terrain.py experiments/01_baseline_garden/data 01_baseline_garden
     deps:
-      - experiments/01_baseline_garden/garden_house.fds
+      - experiments/01_baseline_garden/01_baseline_garden.fds
       - scripts/run_fds.py
       - scripts/strip_terrain.py
     outs:
-      - FDS/cases/garden_house/garden_house_1.prt5
-      - FDS/cases/garden_house/garden_house_1_1.bf
-      - FDS/cases/garden_house/garden_house_1_2.bf
-      - FDS/cases/garden_house/garden_house_1_1.sf
-      - FDS/cases/garden_house/garden_house_1_2.sf
-      - FDS/cases/garden_house/garden_house.smv
-      - FDS/cases/garden_house/garden_house_1_1.s3d:
+      - experiments/01_baseline_garden/data/01_baseline_garden.smv
+      - experiments/01_baseline_garden/data/01_baseline_garden_1.prt5
+      - experiments/01_baseline_garden/data/01_baseline_garden_1_1.bf
+      - experiments/01_baseline_garden/data/01_baseline_garden_1_2.bf
+      - experiments/01_baseline_garden/data/01_baseline_garden_1_1.sf
+      - experiments/01_baseline_garden/data/01_baseline_garden_1_2.sf
+      - experiments/01_baseline_garden/data/01_baseline_garden_1_1.s3d:
           cache: false
-      - FDS/cases/garden_house/garden_house_1_2.s3d:
+      - experiments/01_baseline_garden/data/01_baseline_garden_1_2.s3d:
           cache: false
-      - FDS/cases/garden_house/garden_house_1_3.s3d:
+      - experiments/01_baseline_garden/data/01_baseline_garden_1_3.s3d:
           cache: false

@@ -14,7 +14,7 @@ _d = os.path.dirname(os.path.abspath(__file__))
 while not os.path.isfile(os.path.join(_d, "paths.py")):
     _d = os.path.dirname(_d)
 sys.path.insert(0, _d)
-from paths import FDS_ROOT, BIN, NATIVE_BUILD  # noqa: E402
+from paths import FDS_ROOT, BIN, NATIVE_BUILD, BUILD_TAG, NATIVE_FDS  # noqa: E402
 
 import os, subprocess, time
 
@@ -44,6 +44,35 @@ subprocess.run(["bash", "-c", "source ../Scripts/build_thirdparty_libs.sh"],
                cwd=BUILD, env=env, stdout=log, stderr=subprocess.STDOUT,
                stdin=subprocess.DEVNULL, timeout=max(60, left()))
 print("stage 1 done at %.1f min" % ((time.time() - t0) / 60.0), flush=True)
+
+# Build scripts unsets these on exit, and Build/makefile only compiles the HYPRE
+# and SUNDIALS code ifdef on them (makefile:112,119).  Stage 2 runs in a
+# different process with this environment, so they must be set here or FDS is
+# built without either library.  That is exactly what happened: no HYPRE, so no
+# -DWITH_HYPRE, and every case where FDS picks the UGLMAT pressure solver died
+# at startup with 'HYPRE selected for UGLMAT solver without compiling and
+# linking HYPRE library'.
+HYPRE_HOME = os.path.join(FIREMODELS, "libs/hypre/v3.0.0")
+SUNDIALS_HOME = os.path.join(FIREMODELS, "libs/sundials/v7.5.0")
+for label, home in (("HYPRE_HOME", HYPRE_HOME), ("SUNDIALS_HOME", SUNDIALS_HOME)):
+    print("%-14s = %s  exists=%s" % (label, home, os.path.isdir(home)))
+env["HYPRE_HOME"] = HYPRE_HOME
+env["SUNDIALS_HOME"] = SUNDIALS_HOME
+
+# Objects compiled without those defines must go, or make keeps them and the
+# flags never take effect.
+removed = 0
+for f in os.listdir(BUILD):
+    if f.endswith(".o") or f.endswith(".mod"):
+        os.remove(os.path.join(BUILD, f))
+        removed += 1
+print("removed %d stale objects" % removed, flush=True)
+
+# Stage 2 runs make only while the binary is missing, so an existing binary has
+# to go or a rebuild with new flags would never happen.
+if os.path.exists(BIN):
+    os.remove(BIN)
+    print("removed previous binary %s" % BIN, flush=True)
 
 print("stage 2: fds", flush=True)
 attempt = 0
