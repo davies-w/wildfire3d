@@ -39,8 +39,10 @@ venv/
 .DS_Store
 
 # The engine and the working area -- not committed. See FDS/README.md.
+# The exceptions are our own code that has to sit beside the engine.
 FDS/*
 !FDS/README.md
+!FDS/bin/
 
 # Local DVC mirror -- the data itself lives in the HF bucket
 hf_dvc_mirror/

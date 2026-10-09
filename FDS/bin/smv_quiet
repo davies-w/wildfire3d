@@ -1,0 +1,35 @@
+#!/bin/bash
+# Drop-in replacement for the smokeview binary that cannot steal focus.
+#
+# Smokeview's GLUT window creation calls SetFrontProcess, which activates the
+# app and forces a Space switch -- pulling the user out of a full-screen game.
+# Launch-time flags (open -g, LSUIElement) cannot stop it because the call is
+# made from inside the process, so it is neutralised with a dyld interposer
+# instead.  The real smokeview is still the thing that runs.
+#
+# Paths resolve from this script's own location, so the tree can be moved and
+# the wrapper still works.  Override with WILDFIRE3D_FDS if the engine lives
+# somewhere else.
+set -euo pipefail
+
+SELF="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+FDS_DIR="${WILDFIRE3D_FDS:-$(dirname "$SELF")}"
+
+SHIM="$FDS_DIR/nofront.dylib"
+REAL="$FDS_DIR/install/smvbin/smokeview"
+
+for f in "$SHIM" "$REAL"; do
+  if [ ! -e "$f" ]; then
+    echo "smv_quiet: missing $f" >&2
+    echo "smv_quiet: engine root is $FDS_DIR (set WILDFIRE3D_FDS to override)" >&2
+    exit 127
+  fi
+done
+
+if [ -n "${DYLD_INSERT_LIBRARIES:-}" ]; then
+  export DYLD_INSERT_LIBRARIES="$DYLD_INSERT_LIBRARIES:$SHIM"
+else
+  export DYLD_INSERT_LIBRARIES="$SHIM"
+fi
+
+exec "$REAL" "$@"
