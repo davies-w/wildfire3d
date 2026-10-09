@@ -1,0 +1,35 @@
+"""Stage B1: house, fence and the ground vents (append to wick2.fds)."""
+import os
+
+L = []
+A = L.append
+A("")
+A("! --- house: 12 x 8 m, walls to 3.5 m, solid box roof ---------------------")
+A("&OBST XB=24.0,36.0, 16.0,24.0, 0.0,3.5, SURF_ID='WOOD WALL', BNDF_OBST=.TRUE. /")
+A("&OBST XB=23.6,36.4, 15.6,24.4, 3.5,5.6, SURF_ID='ROOF', BNDF_OBST=.TRUE. /")
+A("&VENT XB=24.0,24.0, 17.5,19.0, 1.0,2.2, SURF_ID='GLASS' /")
+A("&VENT XB=24.0,24.0, 21.0,22.5, 1.0,2.2, SURF_ID='GLASS' /")
+A("")
+A("! --- wooden fence, ONE CELL (0.5 m) thick, 1.8 m tall ---------------------")
+A("! FDS snaps every OBST to the grid, so 0.5 m is the thinnest achievable")
+A("! without &GEOM.  The true 20 mm board lives in the SURF THICKNESS, which is")
+A("! what the 1-D thermal solve uses.")
+A("&OBST XB=15.0,15.5, 12.0,28.0, 0.0,1.8, SURF_ID='FENCE', BNDF_OBST=.TRUE. /")
+A("&OBST XB=15.5,36.0, 11.5,12.0, 0.0,1.8, SURF_ID='FENCE', BNDF_OBST=.TRUE. /")
+A("&OBST XB=15.5,36.0, 28.0,28.5, 0.0,1.8, SURF_ID='FENCE', BNDF_OBST=.TRUE. /")
+A("! the spur: continuous fuel path from the west fence to the house wall")
+A("&OBST XB=15.5,24.0, 19.5,20.0, 0.0,1.8, SURF_ID='FENCE', BNDF_OBST=.TRUE. /")
+A("")
+A("! --- ground: mown lawn, wild grass elsewhere -----------------------------")
+A("&VENT XB=16.0,36.0, 12.0,28.0, 0.0,0.0, SURF_ID='LAWN' /")
+A("&VENT XB=2.0,4.0, 18.0,22.0, 0.0,0.0, SURF_ID='SPOT IGN' /")
+A("")
+A("&VENT MB='XMIN', SURF_ID='OPEN' /")
+A("&VENT MB='XMAX', SURF_ID='OPEN' /")
+A("&VENT MB='YMIN', SURF_ID='OPEN' /")
+A("&VENT MB='YMAX', SURF_ID='OPEN' /")
+A("&VENT MB='ZMAX', SURF_ID='OPEN' /")
+
+p = os.path.expanduser("~/FDS/cases/wick2/wick2.fds")
+open(p, "a").write("\n".join(L) + "\n")
+print("appended", len(L), "lines")

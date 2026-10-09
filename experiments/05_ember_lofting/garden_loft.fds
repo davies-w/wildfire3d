@@ -1,0 +1,337 @@
+! ============================================================================
+! Single-family home in a garden, with a grass fire approaching from the west.
+!
+! Physics notes (all from the FDS User Guide and the bundled WUI examples):
+!
+!   LEVEL_SET_MODE=4  - wind and fire fully coupled.  The fire front is
+!                       tracked as a level set (Rothermel-Albini spread) rather
+!                       than resolved cell-by-cell, and each surface cell burns
+!                       for a finite duration once the front arrives.
+!
+!   VEG_LSET_*        - a custom vegetation fuel type: no-wind spread rate,
+!                       surface-to-volume ratio, packing ratio, height, load.
+!
+!   EMBER_YIELD       - the burning grass generates Lagrangian firebrands.
+!                       EMBER_TRACKING_RATIO=100 means one particle stands in
+!                       for 100 real embers.
+!
+!   IGNITION_TEMPERATURE - the house surfaces ignite when their *surface*
+!                       temperature reaches the given value.  This is the
+!                       approach the FDS developers recommend over reaction
+!                       parameters at this resolution, and it is mutually
+!                       exclusive with REFERENCE_TEMPERATURE.
+!
+! The experiment: does the fire reach the house, and does the mown defensible
+! space around it change the outcome?
+! ============================================================================
+
+&HEAD CHID='garden_loft',
+      TITLE='Single family home + boundary hedge + tree' /
+
+! --- 40 m x 40 m garden, 12 m tall, 1 m cells --------------------------------
+&MESH ID='garden', IJK=40,40,12, XB=0,40, 0,40, 0,12 /
+
+&TIME T_END=120. /
+
+&MISC LEVEL_SET_MODE=4, CFL_MAX=0.8 /
+
+&WIND SPEED=6.0, DIRECTION=270.0 /     ! 6 m/s from the west, blowing east
+
+! --- combustion ---------------------------------------------------------------
+! Use a wood/grass-like fuel, NOT propane.  The level-set burn rate is
+!     HRR/m2 = (1 - char_fraction) * load / burn_duration * HEAT_OF_COMBUSTION
+! so the reaction's heat of combustion scales the whole fire.  Propane is
+! 46.5 MJ/kg against 17.3 MJ/kg for wood -- a 2.7x over-prediction.
+&SPEC ID='WOOD FUEL VAPOR'
+      O = 2.5
+      C = 3.4
+      H = 6.2 /
+
+&REAC FUEL='WOOD FUEL VAPOR'
+      FYI='Ritchie et al., 5th IAFSS'
+      SOOT_YIELD = 0.02
+      HEAT_OF_COMBUSTION = 17260. /
+
+! ============================================================================
+! FUEL MODELS
+! ============================================================================
+
+! Wild, tall, dry grass everywhere by default.  This is the fire carrier.
+! Burn intensity comes from the fuel model, not from HRRPUA:
+!     m''_f = (1 - char_fraction) * load / burn_duration
+! With load 0.2 kg/m2 and a 25 s burn that is ~0.0064 kg/m2/s, i.e. about
+! 110 kW/m2 -- a realistic grass fire.  (An earlier version used 0.6 kg/m2
+! and the 6.6 s default burn, which produced 1.9 GW and blew the mesh up.)
+&SURF ID         = 'GRASS'
+      DEFAULT    = .TRUE.
+      RGB        = 138,129,62
+      VEG_LSET_ROS_00     = 0.08        ! no-wind, no-slope spread rate [m/s]
+      VEG_LSET_SIGMA      = 11400.      ! surface-to-volume ratio [1/m]
+      VEG_LSET_BETA       = 0.0012      ! packing ratio
+      VEG_LSET_HT         = 0.5         ! vegetation height [m]
+      VEG_LSET_SURF_LOAD  = 0.2         ! dry fuel load [kg/m2]
+      VEG_LSET_CHAR_FRACTION = 0.2
+      VEG_LSET_FIREBASE_TIME = 18.0     ! burn duration at a point [s]
+      HRRPUA               = 30.        ! heat release when burning [kW/m2]
+      EMBER_YIELD          = 0.01       ! kg embers per kg fuel burnt
+      EMBER_GENERATION_HEIGHT = 1.0, 8.0   ! born 0-2 m up, in the flame
+      EMBER_TRACKING_RATIO = 500.0      ! 1 particle stands for 500 embers
+      PART_ID              = 'brands' /
+
+! Mown, irrigated lawn forming the defensible space around the house.
+! Same fuel type but a much slower spread rate, a shorter bed and a lighter,
+! wetter load -- the practical effect is that the front stalls here.
+&SURF ID         = 'LAWN'
+      RGB        = 96,160,64
+      VEG_LSET_ROS_00     = 0.02
+      VEG_LSET_SIGMA      = 14000.
+      VEG_LSET_BETA       = 0.0008
+      VEG_LSET_HT         = 0.08
+      VEG_LSET_SURF_LOAD  = 0.06
+      VEG_LSET_CHAR_FRACTION = 0.2
+      VEG_LSET_FIREBASE_TIME = 30.0
+      HRRPUA               = 12. /
+
+! ============================================================================
+! HOUSE - reinforced by simple, ignition-prone materials
+! ============================================================================
+
+&MATL ID            = 'WOOD'
+      CONDUCTIVITY  = 0.12
+      SPECIFIC_HEAT = 1.7
+      DENSITY       = 500.0 /
+
+&SURF ID            = 'WOOD WALL'
+      RGB           = 222,184,135      ! tan.  NB: FDS 'BROWN' = X11 brown
+                                       ! = RGB(165,42,42), which reads as fire-red
+      MATL_ID       = 'WOOD'
+      THICKNESS     = 0.02
+      HRRPUA        = 200.0
+      IGNITION_TEMPERATURE = 350.0      ! degrees C
+      RAMP_Q        = 'wood_burn' /
+
+&RAMP ID='wood_burn', T=  0.0, F=0.0 /
+&RAMP ID='wood_burn', T= 30.0, F=1.0 /
+&RAMP ID='wood_burn', T=300.0, F=0.8 /
+&RAMP ID='wood_burn', T=600.0, F=0.3 /
+
+! Roof covering - deliberately more resistant (a Class-A style assembly).
+&SURF ID            = 'ROOF'
+      COLOR         = 'DARK GRAY'
+      MATL_ID       = 'WOOD'
+      THICKNESS     = 0.02
+      HRRPUA        = 100.0
+      IGNITION_TEMPERATURE = 550.0
+      RAMP_Q        = 'roof_burn' /
+
+&RAMP ID='roof_burn', T=  0.0, F=0.0 /
+&RAMP ID='roof_burn', T= 60.0, F=1.0 /
+&RAMP ID='roof_burn', T=600.0, F=0.2 /
+
+! Glazing - fails early, which is why windows are the classic weak point.
+&SURF ID            = 'GLASS'
+      COLOR         = 'LIGHT BLUE'
+      MATL_ID       = 'WOOD'
+      THICKNESS     = 0.006
+      HRRPUA        = 50.0
+      IGNITION_TEMPERATURE = 180.0
+      RAMP_Q        = 'roof_burn' /
+
+! ============================================================================
+! VEGETATION AS DISTINCT SOLID OBJECTS
+! ============================================================================
+! A pragmatic middle ground.  The physics-resolved vegetation models in FDS
+! (Particle and Boundary Fuel) need ~0.05 m cells to propagate fire -- tested
+! at 1.0/0.5/0.25 m and none of them spread.  A 40 m garden at 0.05 m is
+! ~7.7M cells, so those routes are out at property scale.
+!
+! So these hedges and trees are solid fuel objects: real distinct geometry with
+! real bulk density, thermal inertia, ignition temperature and heat release.
+! What is lost is porosity and surface-area-to-volume ratio, so the spread rate
+! *through* the plant is not physical.  What is kept -- and it is the dominant
+! term for the question we care about -- is the radiant heat delivered to the
+! walls when they burn.
+
+&MATL ID            = 'VEGETATION'
+      DENSITY       = 15.0        ! bulk density of a leafy shrub [kg/m3]
+      CONDUCTIVITY  = 0.08
+      SPECIFIC_HEAT = 1.8
+      EMISSIVITY    = 0.95 /
+
+&MATL ID            = 'BARK'
+      DENSITY       = 400.0
+      CONDUCTIVITY  = 0.12
+      SPECIFIC_HEAT = 1.7
+      EMISSIVITY    = 0.92 /
+
+! Shared burn ramp: vegetation lights fast and burns out much sooner than
+! structural timber.  T is time since that surface ignited.
+&RAMP ID='veg_burn', T=  0.0, F=0.0 /
+&RAMP ID='veg_burn', T=  8.0, F=1.0 /
+&RAMP ID='veg_burn', T= 45.0, F=0.8 /
+&RAMP ID='veg_burn', T=150.0, F=0.0 /
+
+! Hedge: 3 kg/m2 of fuel in the surface layer, ignites at 250 C.
+&SURF ID            = 'HEDGE'
+      RGB           = 52,98,38
+      MATL_ID       = 'VEGETATION'
+      THICKNESS     = 0.2
+      HRRPUA        = 300.0
+      IGNITION_TEMPERATURE = 250.0
+      RAMP_Q        = 'veg_burn' /
+
+&SURF ID            = 'TRUNK'
+      RGB           = 105,78,52
+      MATL_ID       = 'BARK'
+      THICKNESS     = 0.05
+      HRRPUA        = 150.0
+      IGNITION_TEMPERATURE = 350.0
+      RAMP_Q        = 'veg_burn' /
+
+! Canopy burns hottest -- fine fuel with a huge surface area.
+&SURF ID            = 'CANOPY'
+      RGB           = 40,90,35
+      MATL_ID       = 'VEGETATION'
+      THICKNESS     = 0.15
+      HRRPUA        = 400.0
+      IGNITION_TEMPERATURE = 250.0
+      RAMP_Q        = 'veg_burn' /
+
+! --- house body: 12 m x 8 m, walls 3.5 m to the eave
+&OBST XB=21.0,33.0, 16.0,24.0, 0.0,3.5, SURF_ID='WOOD WALL' /
+
+! --- gable roof as a genuine triangulated solid.
+!     &OBST can only make axis-aligned boxes, which is why an earlier version
+!     used three stacked slabs and looked like a step pyramid.  &GEOM takes
+!     arbitrary vertices, so this is a real 25-degree gable with 0.4 m eaves.
+!
+!     It is defined as a CLOSED solid (the bottom face is included).  That
+!     matters: a roof left open underneath would enclose the attic as a sealed
+!     pressure zone, which the User Guide warns can trigger instabilities.
+!     A closed surface is recognised as solid and simply filled.
+!
+!     Face vertex order is counter-clockwise seen from outside, so the
+!     right-hand normal points outward.  b=1 selects the first SURF_ID entry.
+!
+!        V5 -------- V6          ridge, z=5.6
+!       /            \
+!     V1 --- V2      \         eaves, z=3.5
+!     |      |        \
+!     V4 --- V3
+!
+&OBST XB=20.6,33.4, 15.6,24.4, 3.5,5.6, SURF_ID='ROOF' /          ! east gable end (normal +x)
+
+! --- two windows on the west wall, facing the oncoming fire
+&VENT XB=21.0,21.0, 17.5,19.0, 1.0,2.2, SURF_ID='GLASS' /
+&VENT XB=21.0,21.0, 21.0,22.5, 1.0,2.2, SURF_ID='GLASS' /
+
+! ============================================================================
+! THE VEGETATION ITSELF
+! ============================================================================
+
+! Boundary hedge along the west edge of the mown lawn, i.e. exactly where the
+! grass fire arrives.  This is the classic ladder fuel: 1.8 m of shrub right
+! at the edge of the defensible space, spanning the full 16 m of lawn frontage.
+&OBST XB=15.0,16.0, 12.0,28.0, 0.0,1.8, SURF_ID='HEDGE' /
+
+! ============================================================================
+! A SMALL ORCHARD: five trees, two sizes
+! ============================================================================
+! Each tree = a 1 m trunk column (resolves at 1 m cells) + a closed pyramidal
+! canopy.  Tall trees reach 8 m, medium ones 5.5 m -- limited by the 12 m
+! domain height.
+!
+! CAVEAT: the canopy is a closed solid, so it blocks the wind completely.
+! A real canopy is porous and only drags the flow.  Five of these will
+! measurably deflect the wind field.
+
+! --- TREE A: tall, west of the ignition line
+&OBST XB= 5.5, 6.5, 13.5,14.5, 0.0,3.5, SURF_ID='TRUNK' /
+&OBST XB=4.0,8.0, 12.0,16.0, 3.5,8.0, SURF_ID='CANOPY' /
+
+! --- TREE B: tall, north of the fire path
+&OBST XB= 8.5, 9.5, 27.5,28.5, 0.0,3.5, SURF_ID='TRUNK' /
+&OBST XB=7.0,11.0, 26.0,30.0, 3.5,8.0, SURF_ID='CANOPY' /
+
+! --- TREE C: medium, south edge
+&OBST XB=11.5,12.5,  7.5, 8.5, 0.0,2.5, SURF_ID='TRUNK' /
+&OBST XB=10.5,13.5, 6.5,9.5, 2.5,5.5, SURF_ID='CANOPY' /
+
+! --- TREE D: medium, north edge
+&OBST XB=11.5,12.5, 32.5,33.5, 0.0,2.5, SURF_ID='TRUNK' /
+&OBST XB=10.5,13.5, 31.5,34.5, 2.5,5.5, SURF_ID='CANOPY' /
+
+! --- TREE E: tall, immediately west of the hedge (worst case for the house)
+&OBST XB=12.0,13.0, 19.0,20.0, 0.0,3.5, SURF_ID='TRUNK' /
+&OBST XB=10.7,14.3, 18.2,21.8, 3.5,8.0, SURF_ID='CANOPY' /
+
+! ============================================================================
+! GROUND SURFACE PATCHES
+! ============================================================================
+
+! Firebrands generated by the burning grass (see the PART block below).
+&PART ID       = 'brands'
+      DRAG_LAW = 'DISK'
+      SURF_ID  = 'firebrand'
+      COLOR    = 'ORANGE'
+      INITIAL_TEMPERATURE = 800.
+      AGE      = 60.0
+      QUANTITIES = 'PARTICLE TEMPERATURE' /
+
+&SURF ID            = 'firebrand'
+      MATL_ID       = 'CHAR'
+      THICKNESS     = 0.0005
+      LENGTH        = 0.005
+      WIDTH         = 0.005
+      HEAT_TRANSFER_COEFFICIENT = 20.0
+      GEOMETRY      = 'CARTESIAN' /
+
+&MATL ID            = 'CHAR'
+      DENSITY       = 110.0
+      CONDUCTIVITY  = 0.1
+      EMISSIVITY    = 1.0
+      SPECIFIC_HEAT = 10000.0 /
+
+! Defensible space: mown lawn overrides the default grass near the house.
+&VENT XB=16.0,40.0, 12.0,28.0, 0.0,0.0, SURF_ID='LAWN' /
+
+! Ignition: a small patch of grass alight at t=0, at the western edge.
+&SURF ID = 'SPOT IGN', VEG_LSET_IGNITE_TIME = 0.0, COLOR = 'RED' /
+&VENT XB=1.0,4.0, 18.0,22.0, 0.0,0.0, SURF_ID='SPOT IGN' /
+
+! ============================================================================
+! BOUNDARIES - open domain
+! ============================================================================
+&VENT MB='XMIN', SURF_ID='OPEN' /
+&VENT MB='XMAX', SURF_ID='OPEN' /
+&VENT MB='YMIN', SURF_ID='OPEN' /
+&VENT MB='YMAX', SURF_ID='OPEN' /
+&VENT MB='ZMAX', SURF_ID='OPEN' /
+
+! ============================================================================
+! OUTPUT
+! ============================================================================
+
+! Fire perimeter, drawn over the fuel bed
+&SLCF AGL_SLICE=1.0, QUANTITY='LEVEL SET VALUE' /
+
+! Vertical cross-section straight through the house, along the wind
+&SLCF PBY=20.0, QUANTITY='TEMPERATURE' /
+&SLCF PBY=20.0, QUANTITY='VELOCITY', VECTOR=.TRUE. /
+
+! Ground-level gas temperature
+&SLCF AGL_SLICE=1.0, QUANTITY='TEMPERATURE' /
+
+! Surface temperatures on the building - this is how you see ignition coming
+&BNDF QUANTITY='WALL TEMPERATURE' /
+&BNDF QUANTITY='BURNING RATE' /
+
+! Time histories
+&DEVC ID='HRR', QUANTITY='HRR', XB=0,40, 0,40, 0,12 /
+&DEVC ID='garden fuel burnt', QUANTITY='BURNING RATE',
+      SPATIAL_STATISTIC='SURFACE INTEGRAL', TEMPORAL_STATISTIC='TIME INTEGRAL',
+      XB=0,40, 0,40, 0,12, IOR=3 /
+
+&DUMP DT_SLCF=2.0, DT_BNDF=2.0, DT_HRR=1.0, DT_DEVC=1.0, DT_PART=2.0 /
+
+&TAIL /

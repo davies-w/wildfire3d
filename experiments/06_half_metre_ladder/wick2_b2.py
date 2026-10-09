@@ -1,0 +1,41 @@
+"""Stage B2: trees and outputs (append to wick2.fds)."""
+import os
+
+L = []
+A = L.append
+A("")
+A("! --- LADDER TREE: canopy in CONTACT with the fence spur -------------------")
+A("! The canopy spans x 20.5-23.5, which sits directly over the spur fence")
+A("! (y 19.5-20), so the fence flame is in contact with the canopy rather than")
+A("! standing a metre away.  Its east face stops one cell (0.5 m) short of the")
+A("! house wall at x=24.")
+A("&OBST XB=22.0,23.0, 21.0,22.0, 0.0,1.8, SURF_ID='TRUNK', BNDF_OBST=.TRUE. /")
+A("&OBST XB=20.5,23.5, 18.5,24.5, 1.8,6.5, SURF_ID='CANOPY', BNDF_OBST=.TRUE. /")
+A("")
+A("! --- four trees out in the wild grass -------------------------------------")
+A("&OBST XB=5.0,6.0, 20.0,21.0, 0.0,2.0, SURF_ID='TRUNK' /")
+A("&OBST XB=3.5,7.5, 18.0,23.0, 2.0,6.5, SURF_ID='CANOPY' /")
+A("&OBST XB=10.0,11.0, 32.0,33.0, 0.0,2.0, SURF_ID='TRUNK' /")
+A("&OBST XB=8.5,12.5, 30.0,35.0, 2.0,6.5, SURF_ID='CANOPY' /")
+A("&OBST XB=8.0,9.0, 8.0,9.0, 0.0,1.5, SURF_ID='TRUNK' /")
+A("&OBST XB=6.5,10.5, 6.0,11.0, 1.5,5.0, SURF_ID='CANOPY' /")
+A("&OBST XB=12.0,13.0, 25.0,26.0, 0.0,1.5, SURF_ID='TRUNK' /")
+A("&OBST XB=10.5,14.5, 23.0,28.0, 1.5,5.0, SURF_ID='CANOPY' /")
+A("")
+A("&SLCF AGL_SLICE=1.0, QUANTITY='LEVEL SET VALUE' /")
+A("&SLCF PBY=20.0, QUANTITY='TEMPERATURE' /")
+A("&BNDF QUANTITY='WALL TEMPERATURE' /")
+A("&BNDF QUANTITY='BURNING RATE' /")
+A("&DEVC ID='HRR', QUANTITY='HRR', XB=0,40, 0,40, 0,12 /")
+A("&DUMP DT_SLCF=2., DT_BNDF=2., DT_HRR=1., DT_PART=2. /")
+A("&TAIL /")
+
+p = os.path.expanduser("~/FDS/cases/wick2/wick2.fds")
+open(p, "a").write("\n".join(L) + "\n")
+
+s = open(p).read()
+print("total lines:", len(s.split("\n")))
+print("trunks:", s.count("SURF_ID='TRUNK'"), " canopies:", s.count("SURF_ID='CANOPY'"))
+print("fence pieces:", s.count("SURF_ID='FENCE'"))
+print("bare OBST lines:", len([l for l in s.split("\n")
+                               if l.startswith("&OBST") and "SURF_ID" not in l]))

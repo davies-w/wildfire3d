@@ -1,0 +1,42 @@
+# Solver output -- versioned with DVC, not git. See docs/storage.md.
+*.s3d
+*.sf
+*.bf
+*.prt5
+*.restart
+*.bnd
+*.gbnd
+*.sz
+*.be
+*.out
+*.log
+*.smv
+*.smv.bak
+*.ini
+*.ssf
+*.csv
+*.gcf
+*.ge
+*.ge2
+*.ter
+*.end
+*.stop
+*.err
+
+# Never store restart files: 88 MB each, worthless once a solve completes.
+*.restart
+
+# Rendered frame dumps (keep the gif, not the frames)
+anim*/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Local DVC mirror -- the data itself lives in the HF bucket
+hf_dvc_mirror/

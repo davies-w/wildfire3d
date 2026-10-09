@@ -1,0 +1,103 @@
+&HEAD CHID='wick3', TITLE='Refined wick: 0.5 m cells, thin fence' /
+&MESH ID='g', IJK=64,48,24, XB=0,32, 0,24, 0,12 /
+&TIME T_END=200. /
+&MISC BNDF_DEFAULT=.FALSE., LEVEL_SET_MODE=4, CFL_MAX=0.8 /
+&WIND SPEED=6.0, DIRECTION=270.0 /
+&SPEC ID='WOOD FUEL VAPOR', C=3.4, H=6.2, O=2.5 /
+&SPEC ID='WATER VAPOR' /
+&REAC FUEL='WOOD FUEL VAPOR', SOOT_YIELD=0.02, HEAT_OF_COMBUSTION=17260. /
+
+&SURF ID='GRASS', DEFAULT=.TRUE., RGB=138,129,62,
+      VEG_LSET_ROS_00=0.08, VEG_LSET_SIGMA=11400., VEG_LSET_BETA=0.0012,
+      VEG_LSET_HT=0.5, VEG_LSET_SURF_LOAD=0.2, VEG_LSET_CHAR_FRACTION=0.2,
+      VEG_LSET_FIREBASE_TIME=18.0, HRRPUA=30., EMBER_YIELD=0.01,
+      EMBER_TRACKING_RATIO=500., PART_ID='brands' /
+
+&SURF ID='LAWN', RGB=96,160,64, VEG_LSET_ROS_00=0.02, VEG_LSET_SIGMA=14000.,
+      VEG_LSET_BETA=0.0008, VEG_LSET_HT=0.08, VEG_LSET_SURF_LOAD=0.06,
+      VEG_LSET_FIREBASE_TIME=30.0, HRRPUA=12. /
+
+&MATL ID='WOOD', CONDUCTIVITY=0.12, SPECIFIC_HEAT=1.7, DENSITY=500. /
+&SURF ID='WOOD WALL', RGB=222,184,135, MATL_ID='WOOD', THICKNESS=0.02,
+      HRRPUA=200., IGNITION_TEMPERATURE=350., RAMP_Q='wood_burn' /
+&SURF ID='ROOF', RGB=169,169,169, MATL_ID='WOOD', THICKNESS=0.02,
+      HRRPUA=100., IGNITION_TEMPERATURE=550., RAMP_Q='roof_burn' /
+&SURF ID='GLASS', RGB=173,216,230, MATL_ID='WOOD', THICKNESS=0.006,
+      HRRPUA=50., IGNITION_TEMPERATURE=180., RAMP_Q='roof_burn' /
+&RAMP ID='wood_burn', T=0., F=0. / &RAMP ID='wood_burn', T=30., F=1. /
+&RAMP ID='wood_burn', T=300., F=0.8 / &RAMP ID='wood_burn', T=600., F=0.3 /
+&RAMP ID='roof_burn', T=0., F=0. / &RAMP ID='roof_burn', T=60., F=1. /
+&RAMP ID='roof_burn', T=600., F=0.2 /
+
+&SURF ID='FENCE', RGB=150,110,70, MATL_ID='WOOD', THICKNESS=0.02,
+      HRRPUA=220., IGNITION_TEMPERATURE=300., RAMP_Q='fence_burn' /
+&RAMP ID='fence_burn', T=0., F=0. / &RAMP ID='fence_burn', T=10., F=1. /
+&RAMP ID='fence_burn', T=120., F=0.7 / &RAMP ID='fence_burn', T=300., F=0. /
+
+&MATL ID='VEG', DENSITY=15., CONDUCTIVITY=0.08, SPECIFIC_HEAT=1.8 /
+&SURF ID='TRUNK', RGB=105,78,52, MATL_ID='WOOD', THICKNESS=0.05,
+      HRRPUA=150., IGNITION_TEMPERATURE=350., RAMP_Q='veg_burn' /
+&SURF ID='CANOPY', RGB=40,90,35, MATL_ID='VEG', THICKNESS=0.15,
+      HRRPUA=400., IGNITION_TEMPERATURE=250., RAMP_Q='veg_burn' /
+&RAMP ID='veg_burn', T=0., F=0. / &RAMP ID='veg_burn', T=8., F=1. /
+&RAMP ID='veg_burn', T=45., F=0.8 / &RAMP ID='veg_burn', T=150., F=0. /
+
+&MATL ID='CHAR', DENSITY=110., CONDUCTIVITY=0.1, EMISSIVITY=1.,
+      SPECIFIC_HEAT=10000. /
+&SURF ID='firebrand', MATL_ID='CHAR', THICKNESS=0.0005, LENGTH=0.005,
+      WIDTH=0.005, HEAT_TRANSFER_COEFFICIENT=20., GEOMETRY='CARTESIAN' /
+&PART ID='brands', DRAG_LAW='DISK', SURF_ID='firebrand', COLOR='ORANGE',
+      INITIAL_TEMPERATURE=800., AGE=60., QUANTITIES='PARTICLE TEMPERATURE' /
+&SURF ID='SPOT IGN', VEG_LSET_IGNITE_TIME=0.0, COLOR='RED' /
+
+! --- house: 12 x 8 m, walls to 3.5 m, solid box roof ---------------------
+&OBST XB=18.0,30.0, 8.0,16.0, 0.0,3.5, SURF_ID='WOOD WALL', BNDF_OBST=.TRUE. /
+&OBST XB=17.6,30.4, 7.6,16.4, 3.5,5.6, SURF_ID='ROOF', BNDF_OBST=.TRUE. /
+&VENT XB=18.0,18.0, 9.5,11.0, 1.0,2.2, SURF_ID='GLASS' /
+&VENT XB=18.0,18.0, 13.0,14.5, 1.0,2.2, SURF_ID='GLASS' /
+
+! --- wooden fence, ONE CELL (0.5 m) thick, 1.8 m tall ---------------------
+! FDS snaps every OBST to the grid, so 0.5 m is the thinnest achievable
+! without &GEOM.  The true 20 mm board lives in the SURF THICKNESS, which is
+! what the 1-D thermal solve uses.
+&OBST XB=10.5,11.0, 4.0,20.0, 0.0,1.8, SURF_ID='FENCE', BNDF_OBST=.TRUE. /
+&OBST XB=11.0,31.0, 3.5,4.0, 0.0,1.8, SURF_ID='FENCE', BNDF_OBST=.TRUE. /
+&OBST XB=11.0,31.0, 20.0,20.5, 0.0,1.8, SURF_ID='FENCE', BNDF_OBST=.TRUE. /
+! the spur: continuous fuel path from the west fence to the house wall
+&OBST XB=11.0,18.0, 11.5,12.0, 0.0,1.8, SURF_ID='FENCE', BNDF_OBST=.TRUE. /
+
+! --- ground: mown lawn, wild grass elsewhere -----------------------------
+&VENT XB=11.0,31.0, 4.0,20.0, 0.0,0.0, SURF_ID='LAWN' /
+&VENT XB=0.5,2.5, 10.0,14.0, 0.0,0.0, SURF_ID='SPOT IGN' /
+
+&VENT MB='XMIN', SURF_ID='OPEN' /
+&VENT MB='XMAX', SURF_ID='OPEN' /
+&VENT MB='YMIN', SURF_ID='OPEN' /
+&VENT MB='YMAX', SURF_ID='OPEN' /
+&VENT MB='ZMAX', SURF_ID='OPEN' /
+
+! --- LADDER TREE: canopy in CONTACT with the fence spur -------------------
+! The canopy spans x 20.5-23.5, which sits directly over the spur fence
+! (y 19.5-20), so the fence flame is in contact with the canopy rather than
+! standing a metre away.  Its east face stops one cell (0.5 m) short of the
+! house wall at x=24.
+&OBST XB=16.0,17.0, 12.5,13.5, 0.0,1.8, SURF_ID='TRUNK', BNDF_OBST=.TRUE. /
+&OBST XB=14.5,17.5, 10.0,16.0, 1.8,6.5, SURF_ID='CANOPY', BNDF_OBST=.TRUE. /
+
+! --- four trees out in the wild grass -------------------------------------
+&OBST XB=4.0,5.0, 11.0,12.0, 0.0,2.0, SURF_ID='TRUNK' /
+&OBST XB=2.5,6.5, 9.0,14.0, 2.0,6.5, SURF_ID='CANOPY' /
+&OBST XB=7.0,8.0, 18.0,19.0, 0.0,2.0, SURF_ID='TRUNK' /
+&OBST XB=5.5,9.5, 16.0,21.0, 2.0,6.5, SURF_ID='CANOPY' /
+&OBST XB=4.0,5.0, 20.0,21.0, 0.0,1.5, SURF_ID='TRUNK' /
+&OBST XB=2.5,6.5, 18.0,23.0, 1.5,5.0, SURF_ID='CANOPY' /
+&OBST XB=8.0,9.0, 4.0,5.0, 0.0,1.5, SURF_ID='TRUNK' /
+&OBST XB=6.5,10.5, 2.0,7.0, 1.5,5.0, SURF_ID='CANOPY' /
+
+&SLCF AGL_SLICE=1.0, QUANTITY='LEVEL SET VALUE' /
+&SLCF PBY=20.0, QUANTITY='TEMPERATURE' /
+&BNDF QUANTITY='WALL TEMPERATURE' /
+&BNDF QUANTITY='BURNING RATE' /
+&DEVC ID='HRR', QUANTITY='HRR', XB=0,40, 0,40, 0,12 /
+&DUMP DT_SLCF=4., DT_BNDF=4., DT_HRR=1., DT_PART=4., DT_RESTART=30. /
+&TAIL /
