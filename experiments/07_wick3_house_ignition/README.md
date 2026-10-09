@@ -3,15 +3,11 @@
 **Question.** Does the building itself catch? Not "is it hot", but does the wall
 cross its ignition temperature and stay there.
 
-**Setup.** `wick3c.fds`. 32 × 24 × 12 m, **0.5 m cells** (73,728 cells), 350 s —
-the longest case here, and the one everything else builds towards. Native arm64
-build at `OMP_NUM_THREADS=4`, single clean solve, no restart.
+**Setup.** `wick3c.fds`. 32 × 24 × 12 m, **0.5 m cells** (73,728 cells), 350 s.
+Native arm64 build at `OMP_NUM_THREADS=4`, single clean solve, no restart.
 
-Wall temperature is read from the `WALL TEMPERATURE` boundary file over the
-house's west face (the x = 18 plane, y 8–16, z 0–3.5 — 136 cells) using
-`fds2ascii`.
-
-**Result.**
+**Result.** Wall temperature, read from the `WALL TEMPERATURE` boundary file
+over the house's west face (x = 18 plane, y 8–16, z 0–3.5 — 136 cells).
 
 | t (s) | mean | max | cells above 350 °C |
 |---|---|---|---|
@@ -23,30 +19,81 @@ house's west face (the x = 18 plane, y 8–16, z 0–3.5 — 136 cells) using
 | 300 | 975.6 | 1410.4 | 136 / 136 |
 | 348 | 1055.7 | 1450.6 | 136 / 136 |
 
-**Yes.** Ignition onset falls **between t = 200 and t = 248 s**; by t = 300 s the
-whole wall is above the 350 °C wood ignition threshold, and it stays there. The
-rise is not gradual — it is slow, then nearly vertical, which is what a
-thermal-feedback ignition looks like.
+**Yes.** Ignition onset falls between t = 200 and t = 248 s; by t = 300 s the
+whole wall is above the 350 °C wood threshold. The rise is not gradual — slow,
+then nearly vertical, which is what thermal-feedback ignition looks like.
 
 **Cost.** 350 s of simulated time in **71.0 min**, 16,151 steps, **0.264 s/step**.
-The animation is 2 Smokeview launches for 12 frames.
 
-**Files.**
+## The animation
+
+`ignition_data.gif`, 12 frames, t = 40–348 s. Colour is a function of the
+**measured** temperature, not of anything Smokeview chooses:
+
+- below a surface's ignition temperature → its original colour
+- at or above → orange, deepening to red
+
+Per-surface temperature comes from the `.bf` via `fds2ascii` (`ign_state.py`);
+the colour is written into the `.smv` SURFACE table and the frame rendered with
+no boundary file loaded, so Smokeview supplies only geometry, flame, embers and
+smoke. Every colour is printed when rendering.
+
+Surfaces that change colour: **CANOPY** and **TRUNK** (the wick tree, ignition
+250 °C), **WOOD WALL** (350 °C), **ROOF** (550 °C), **FENCE** (300 °C).
+
+| t | ignited |
+|---|---|
+| 40–92 | — |
+| 140–200 | canopy (and fence) |
+| 220–348 | all five |
+
+## What was wrong before, and why
+
+An earlier version let Smokeview map the burning-rate boundary file onto its
+own palette, then applied a red-versus-blue pixel test to the result. Measured:
+
+- pass B rendered the scene **`[0,0,255]` pure blue** almost everywhere
+- the **house wall never changed colour in any frame**, including t = 350 where
+  its face is 1451 °C and fully above threshold
+
+The headline result was absent from its own animation. The colour was a pixel
+heuristic on Smokeview's palette, not a temperature. Fixed by the above.
+
+The **salmon quad was never a bug**: it is the `WOOD WALL` face at 0.8 shading
+(`0.80 × (222,184,135) = (178,147,108)`, exact). An earlier claim that it was a
+pass-to-pass rendering difference was wrong.
+
+## Gotchas established here
+
+- **`ZOOM` must come *after* `SETVIEWPOINT`**, in a second `LOADINIFILE`.
+  Before it, the viewpoint overwrites it. Without it the render truncates the
+  foreground (777 px of geometry off the bottom edge, 38 px off the right).
+- **Surface colours must go in the case's own `.smv`.** A side-car `.smv` loaded
+  with `LOADSMV` is ignored for colour — patched correctly in the file and still
+  rendered in the base colour.
+- **`LOADSMV` does not work for multi-frame rendering.** Changing colours means
+  re-reading the `.smv`; after the first `LOADSMV` the data volumes stop
+  reloading and 10 of 12 frames came out blank. Hence one launch per frame.
+- **`SMOKEPROP` is a mass extinction coefficient in m²/kg**, of order 10³–10⁴.
+  Values near 1 are effectively transparent. At t = 300, 2500/1200/600 gave no
+  usable frame, 300 leaves 13737 warm pixels and a visible grey plume, 0 leaves
+  11977 and almost no smoke.
+- **Smokeview shades surfaces**, so a rendered pixel is the table colour scaled
+  — usually ×0.8, but up to ×1.05 on lit faces.
+- **Smokeview segfaults (exit -11) on the occasional frame**; the renderer
+  retries missing frames rather than lose a frame of animation silently.
+
+## Files
+
 - `build_clean.py` — writes the deck
 - `run_clean_arm.py` — solves, native arm64, 4 threads
-- `analyse_clean.py` — extracts the wall-temperature history above
-- `strip_terrain.py` — **mandatory** post-solve; FDS regenerates the `.smv`
-  every solve (see `docs/working-practices.md`)
-- `render_wick3c.py` — two-pass render (flame + embers, then burning rate)
-- `ign_render.py` + `ign_blend.py` + `make_gif.py` — the ignition-state
-  animation: normal colours until a surface passes its own ignition
-  temperature, then orange/red
-
-**Results.** `ignition_clean.gif` (12 frames, t = 40–350 s), `i_280.png`.
-
-Note on the animation: two earlier attempts produced a salmon block on the
-right and a salmon quad outside the render box. The first was the colour bar,
-which exists only in the burning-rate pass. **The second was not** — measuring
-the pixels showed the two passes rendering the scene slightly differently just
-because a boundary file was loaded. Both are fixed; the second by never painting
-background pixels.
+- `analyse_clean.py` — the wall-temperature history above
+- `strip_terrain.py` — **mandatory** post-solve (see `docs/working-practices.md`)
+- `ign_state.py` — per-surface temperature from the `.bf`; verifies all 38
+  patches map to exactly one surface
+- `ign_colour_render.py` — colours the geometry and renders the animation
+- `validate_animation.py` — completeness, distinctness and colour truth
+- `measure_framing.py`, `try_zoom.py`, `try_smokeprop.py` — the framing and
+  smoke sweeps behind the values used
+- `dump_patches.py`, `diag_salmon.py`, `diag_surfaces.py`, `census.py` — the
+  measurements that established the above
