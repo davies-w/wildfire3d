@@ -31,7 +31,6 @@ CASE = os.path.join(FDS_ROOT, "cases/wick3")
 SMV = os.path.join(FDS_ROOT, "bin/smv_quiet")
 SMV_FILE = os.path.join(CASE, "wick3c.smv")
 SMV_KEEP = os.path.join(CASE, "wick3c.smv.orig")
-ZOOM_INI = os.path.join(CASE, "zoom_only.ini")
 OUT = "igncol"
 GIF = os.path.join(FDS_ROOT, "cases/wick3/ignition_data.gif")
 
@@ -56,7 +55,32 @@ HOTTEST = 1400.0
 # 0 leaves 11977 and almost no smoke.  300 keeps both.
 SMOKEPROP = 300.0
 
-ZOOM_LINE = "ZOOM\n1 0.5\n"
+ZOOM_INI = os.path.join(CASE, "wick3c_view.ini")
+# Viewpoint zoom.  1.0 is Smokeview's default and clips the foreground; 0.5
+# frames the whole scene while keeping iso_b's orientation.
+VIEW_ZOOM = 0.5
+
+
+def make_view_ini():
+    """Copy the case .ini with iso_b's zoom reduced.
+
+    ZOOM must not be applied as a separate keyword after SETVIEWPOINT: a second
+    LOADINIFILE resets the camera and silently replaces the 3/4 iso view with a
+    flat side view.  The zoom is a field of the viewpoint itself -- eye_x, eye_y,
+    eye_z, zoom, zoomindex on the line after eyeview,rotation_index,view_id -- so
+    it is edited there, preserving azimuth -45 and elevation 25.
+    """
+    lines = open(os.path.join(CASE, "wick3c.ini"), errors="replace").read().split("\n")
+    for i, line in enumerate(lines):
+        if line.strip() != "VIEWPOINT5":
+            continue
+        if i + 12 >= len(lines) or lines[i + 12].strip() != "iso_b":
+            continue
+        eye = lines[i + 2].split()
+        eye[3] = "%.6f" % VIEW_ZOOM          # zoom
+        eye[4] = "%d" % (1 if VIEW_ZOOM == 0.5 else 2)   # zoom index
+        lines[i + 2] = " " + " ".join(eye)
+    open(ZOOM_INI, "w").write("\n".join(lines))
 WHITE = 235
 INFO_BAR = 34
 TITLE_BAR = 20
@@ -109,11 +133,13 @@ def render_one(t, temps):
     fr_300.smv correctly and still seeing the base green rendered.
     """
     variant_smv(frame_colours(temps), SMV_FILE)
-    body = "RENDERDIR\n %s\nUNLOADALL\nLOADINIFILE\n wick3c.ini\n" % OUT
+    shutil.copy(SMV_FILE, os.path.join(CASE, "fr_%03d.smv" % t))
+    body = "RENDERDIR\n %s\nUNLOADALL\nLOADINIFILE\n %s\n" % (
+        OUT, os.path.basename(ZOOM_INI))
     for f in VOLUMES:
         body += "LOADFILE\n %s\n" % f
-    body += "SETVIEWPOINT\n iso_b\nLOADINIFILE\n %s\nSMOKEPROP\n %g\n"
-    body = body % (os.path.basename(ZOOM_INI), SMOKEPROP)
+    body += "SETVIEWPOINT\n iso_b\n"
+    body += "SMOKEPROP\n %g\n" % SMOKEPROP
     body += "SETTIMEVAL\n %d.0\nRENDERONCE\n c_%03d\n" % (t, t)
     open(os.path.join(CASE, "wick3c.ssf"), "w").write(body)
     return subprocess.run([SMV, "-runscript", "wick3c"], cwd=CASE,
@@ -158,7 +184,7 @@ if __name__ == "__main__":
     state = json.load(open(os.path.join(CASE, "ign_state.json")))
     if not os.path.exists(SMV_KEEP):
         shutil.copy(SMV_FILE, SMV_KEEP)
-    open(ZOOM_INI, "w").write(ZOOM_LINE)
+    make_view_ini()
 
     out = os.path.join(CASE, OUT)
     shutil.rmtree(out, ignore_errors=True)
