@@ -1,29 +1,66 @@
-# Experiment 02: the same garden with no lawn, a control.
+# Experiment 02: control -- the same garden with no lawn.
 #
-# `dvc repro` runs this file; `dvc.lock` is committed.  Outputs are tracked
-# where FDS writes them.  The .s3d volumes are uncached: DVC knows this stage
-# produces them and will re-solve when they are missing, but never copies or
-# pushes them.
+# `dvc repro` runs this file; `dvc.lock` is committed. Config lives here, every
+# solver output goes to data/, and the deck is passed to FDS as a path with
+# data/ as the working directory, so nothing is copied.
+#
+# The .s3d volumes are uncached: DVC knows this stage produces them and will
+# re-solve when they are missing, but never copies or pushes them.
 stages:
   solve:
     wdir: ../..
     cmd: >-
-      python3 scripts/run_fds.py experiments/02_no_lawn_control/garden_nolawn.fds --threads 4
-      && python3 scripts/strip_terrain.py FDS/cases/garden_nolawn garden_nolawn
+      .venv/bin/python scripts/run_fds.py
+      experiments/02_no_lawn_control/02_no_lawn_control.fds:experiments/02_no_lawn_control/data
+      --threads 4
+      && .venv/bin/python scripts/strip_terrain.py experiments/02_no_lawn_control/data 02_no_lawn_control
     deps:
-      - experiments/02_no_lawn_control/garden_nolawn.fds
+      - experiments/02_no_lawn_control/02_no_lawn_control.fds
       - scripts/run_fds.py
       - scripts/strip_terrain.py
     outs:
-      - FDS/cases/garden_nolawn/garden_nolawn_1.prt5
-      - FDS/cases/garden_nolawn/garden_nolawn_1_1.bf
-      - FDS/cases/garden_nolawn/garden_nolawn_1_2.bf
-      - FDS/cases/garden_nolawn/garden_nolawn_1_1.sf
-      - FDS/cases/garden_nolawn/garden_nolawn_1_2.sf
-      - FDS/cases/garden_nolawn/garden_nolawn.smv
-      - FDS/cases/garden_nolawn/garden_nolawn_1_1.s3d:
+      - experiments/02_no_lawn_control/data/02_no_lawn_control.smv
+      - experiments/02_no_lawn_control/data/02_no_lawn_control_1.prt5
+      - experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.bf
+      - experiments/02_no_lawn_control/data/02_no_lawn_control_1_2.bf
+      - experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.sf
+      - experiments/02_no_lawn_control/data/02_no_lawn_control_1_2.sf
+      - experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.s3d:
           cache: false
-      - FDS/cases/garden_nolawn/garden_nolawn_1_2.s3d:
+      - experiments/02_no_lawn_control/data/02_no_lawn_control_1_2.s3d:
           cache: false
-      - FDS/cases/garden_nolawn/garden_nolawn_1_3.s3d:
+      - experiments/02_no_lawn_control/data/02_no_lawn_control_1_3.s3d:
+          cache: false
+
+  boundary:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/surface_temp.py
+      experiments/02_no_lawn_control/render.json
+    deps:
+      - experiments/02_no_lawn_control/render.json
+      - experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.bf
+      - experiments/02_no_lawn_control/data/02_no_lawn_control_1_2.bf
+      - scripts/surface_temp.py
+      - scripts/case_config.py
+    outs:
+      - experiments/02_no_lawn_control/data/ign_state.json
+
+  render:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/render_animation.py
+      experiments/02_no_lawn_control/render.json
+    deps:
+      - experiments/02_no_lawn_control/render.json
+      - experiments/02_no_lawn_control/view.ini
+      - experiments/02_no_lawn_control/data/ign_state.json
+      - experiments/02_no_lawn_control/data/02_no_lawn_control.smv
+      - experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.s3d
+      - experiments/02_no_lawn_control/data/02_no_lawn_control_1_3.s3d
+      - experiments/02_no_lawn_control/data/02_no_lawn_control_1.prt5
+      - scripts/render_animation.py
+      - scripts/case_config.py
+    outs:
+      - experiments/02_no_lawn_control/results:
           cache: false

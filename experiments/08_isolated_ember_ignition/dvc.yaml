@@ -7,8 +7,8 @@ stages:
   solve:
     wdir: ../..
     cmd: >-
-      python3 scripts/run_fds.py experiments/08_isolated_ember_ignition/ember_test.fds --threads 4
-      && python3 scripts/strip_terrain.py FDS/cases/ember_test ember_test
+      .venv/bin/python scripts/run_fds.py experiments/08_isolated_ember_ignition/ember_test.fds --threads 4
+      && .venv/bin/python scripts/strip_terrain.py FDS/cases/ember_test ember_test
     deps:
       - experiments/08_isolated_ember_ignition/ember_test.fds
       - scripts/run_fds.py

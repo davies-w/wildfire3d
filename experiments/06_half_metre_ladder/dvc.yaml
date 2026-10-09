@@ -7,8 +7,8 @@ stages:
   solve:
     wdir: ../..
     cmd: >-
-      python3 scripts/run_fds.py experiments/06_half_metre_ladder/wick2.fds --threads 4
-      && python3 scripts/strip_terrain.py FDS/cases/wick2 wick2
+      .venv/bin/python scripts/run_fds.py experiments/06_half_metre_ladder/wick2.fds --threads 4
+      && .venv/bin/python scripts/strip_terrain.py FDS/cases/wick2 wick2
     deps:
       - experiments/06_half_metre_ladder/wick2.fds
       - scripts/run_fds.py

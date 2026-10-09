@@ -312,4 +312,12 @@ if __name__ == "__main__":
         src = os.path.join(out, "c_%03d.png" % t)
         if os.path.exists(src):
             shutil.copy(src, os.path.join(os.path.dirname(GIF), "i_%03d.png" % t))
+    # Put the post-solve .smv back.  Surface colours have to go into the case's
+    # own .smv -- Smokeview ignores a side-car -- so rendering leaves the last
+    # frame's colours there, which makes the solve stage's declared output look
+    # modified and sends the next `dvc repro` back to the solver for nothing.
+    if os.path.exists(SMV_KEEP):
+        shutil.copy(SMV_KEEP, SMV_FILE)
+        print("restored %s from %s" % (os.path.basename(SMV_FILE),
+                                       os.path.basename(SMV_KEEP)))
     print("%s\n  %d frames, %d bytes" % (GIF, len(ims), os.path.getsize(GIF)))

@@ -14,12 +14,12 @@ stages:
   solve:
     wdir: ../..
     cmd: >-
-      python3 scripts/run_fds.py
+      .venv/bin/python scripts/run_fds.py
       experiments/13_ladder_tree_pair/with_tree.fds
       experiments/13_ladder_tree_pair/without_tree.fds
       --jobs 2 --threads 4
-      && python3 scripts/strip_terrain.py FDS/cases/with_tree with_tree
-      && python3 scripts/strip_terrain.py FDS/cases/without_tree without_tree
+      && .venv/bin/python scripts/strip_terrain.py FDS/cases/with_tree with_tree
+      && .venv/bin/python scripts/strip_terrain.py FDS/cases/without_tree without_tree
     deps:
       - experiments/13_ladder_tree_pair/with_tree.fds
       - experiments/13_ladder_tree_pair/without_tree.fds
@@ -53,7 +53,7 @@ stages:
       - without_tree
     do:
       wdir: ../..
-      cmd: python3 scripts/surface_temp.py experiments/13_ladder_tree_pair/${item}.json
+      cmd: .venv/bin/python scripts/surface_temp.py experiments/13_ladder_tree_pair/${item}.json
       deps:
         - experiments/13_ladder_tree_pair/${item}.json
         - FDS/cases/${item}/${item}_1_1.bf
@@ -68,7 +68,7 @@ stages:
       - without_tree
     do:
       wdir: ../..
-      cmd: python3 scripts/render_animation.py experiments/13_ladder_tree_pair/${item}.json
+      cmd: .venv/bin/python scripts/render_animation.py experiments/13_ladder_tree_pair/${item}.json
       deps:
         - experiments/13_ladder_tree_pair/${item}.json
         - experiments/13_ladder_tree_pair/view.ini
@@ -89,7 +89,7 @@ stages:
   stitch:
     wdir: ../..
     cmd: >-
-      python3 scripts/stitch_gifs.py
+      .venv/bin/python scripts/stitch_gifs.py
       experiments/13_ladder_tree_pair/results/side_by_side.gif
       experiments/13_ladder_tree_pair/results/with_tree/ignition_data.gif
       experiments/13_ladder_tree_pair/results/without_tree/ignition_data.gif
@@ -108,7 +108,7 @@ stages:
       - without_tree
     do:
       wdir: ../..
-      cmd: python3 scripts/validate_animation.py experiments/13_ladder_tree_pair/${item}.json
+      cmd: .venv/bin/python scripts/validate_animation.py experiments/13_ladder_tree_pair/${item}.json
       deps:
         - experiments/13_ladder_tree_pair/${item}.json
         - experiments/13_ladder_tree_pair/results/${item}

@@ -8,8 +8,8 @@ stages:
   solve_veg:
     wdir: ../..
     cmd: >-
-      python3 scripts/run_fds.py experiments/03_vegetation/garden_veg.fds --threads 4
-      && python3 scripts/strip_terrain.py FDS/cases/garden_veg garden_veg
+      .venv/bin/python scripts/run_fds.py experiments/03_vegetation/garden_veg.fds --threads 4
+      && .venv/bin/python scripts/strip_terrain.py FDS/cases/garden_veg garden_veg
     deps:
       - experiments/03_vegetation/garden_veg.fds
       - scripts/run_fds.py
@@ -29,8 +29,8 @@ stages:
   solve_veg_obst:
     wdir: ../..
     cmd: >-
-      python3 scripts/run_fds.py experiments/03_vegetation/garden_veg_obst.fds --threads 4
-      && python3 scripts/strip_terrain.py FDS/cases/garden_veg_obst garden_veg_obst
+      .venv/bin/python scripts/run_fds.py experiments/03_vegetation/garden_veg_obst.fds --threads 4
+      && .venv/bin/python scripts/strip_terrain.py FDS/cases/garden_veg_obst garden_veg_obst
     deps:
       - experiments/03_vegetation/garden_veg_obst.fds
       - scripts/run_fds.py

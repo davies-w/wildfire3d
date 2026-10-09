@@ -1,56 +1,132 @@
 schema: '2.0'
 stages:
   solve:
-    cmd: python3 scripts/run_fds.py 
-      experiments/02_no_lawn_control/garden_nolawn.fds --threads 4 && python3 
-      scripts/strip_terrain.py FDS/cases/garden_nolawn garden_nolawn
+    cmd: .venv/bin/python scripts/run_fds.py 
+      experiments/02_no_lawn_control/02_no_lawn_control.fds:experiments/02_no_lawn_control/data
+      --threads 4 && .venv/bin/python scripts/strip_terrain.py 
+      experiments/02_no_lawn_control/data 02_no_lawn_control
     deps:
-    - path: experiments/02_no_lawn_control/garden_nolawn.fds
+    - path: experiments/02_no_lawn_control/02_no_lawn_control.fds
       hash: md5
-      md5: c9d3ee605964fac0630772f19f2b6a17
-      size: 8738
+      md5: 7c1a88ea696d14efee082cf1731c9de5
+      size: 8743
     - path: scripts/run_fds.py
       hash: md5
-      md5: 319a2472ff98cef3c9026eadb67e8dec
-      size: 4256
+      md5: cad1540ade22f0240c57b5b93d635237
+      size: 4487
     - path: scripts/strip_terrain.py
       hash: md5
       md5: e3700807948e9d294794a418e36baac3
       size: 1860
     outs:
-    - path: FDS/cases/garden_nolawn/garden_nolawn.smv
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control.smv
       hash: md5
-      md5: 7cbdbca4f6f1e174fa028477f8fc28a8
-      size: 11833
-    - path: FDS/cases/garden_nolawn/garden_nolawn_1.prt5
+      md5: c165bec7c01ac68b0272e9e5ed7054e5
+      size: 11945
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1.prt5
       hash: md5
-      md5: b97b0f977beaa7cfd66217e775d90ab1
-      size: 1652896
-    - path: FDS/cases/garden_nolawn/garden_nolawn_1_1.bf
+      md5: b18c7d81062fd1713e0be5ed31193b3d
+      size: 1651796
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.bf
       hash: md5
-      md5: 05048c2b22547e405d9ebabe412ab5a6
+      md5: 3a82669281d40f826c65e284aea103e8
       size: 643746
-    - path: FDS/cases/garden_nolawn/garden_nolawn_1_1.s3d
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.s3d
       hash: md5
-      md5: 7a7e0bf9f739a375b04aaf720e478a7e
-      size: 5534053
-    - path: FDS/cases/garden_nolawn/garden_nolawn_1_1.sf
+      md5: 76153c4708ae126b54b3f0146aeff934
+      size: 5529216
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.sf
       hash: md5
-      md5: edcb43f93c340ad7152dd1cab925e664
+      md5: 06b784781e91f90635c2f4b81cec156f
       size: 411530
-    - path: FDS/cases/garden_nolawn/garden_nolawn_1_2.bf
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_2.bf
       hash: md5
-      md5: 2ce29e975c9b956c2e7fa7c841903437
+      md5: f97eed24c6b67315dd6c1aea344644fb
       size: 643746
-    - path: FDS/cases/garden_nolawn/garden_nolawn_1_2.s3d
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_2.s3d
       hash: md5
-      md5: c9dbf9043e3d0836ec68ec8d8e636032
-      size: 1399762
-    - path: FDS/cases/garden_nolawn/garden_nolawn_1_2.sf
+      md5: b3c9fc1d1686e856e39db44db34780bd
+      size: 1401517
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_2.sf
       hash: md5
-      md5: 91088c03a365bfacbc93f16478893093
+      md5: a4ffbc92b793bf308779559b8b7ff868
       size: 131418
-    - path: FDS/cases/garden_nolawn/garden_nolawn_1_3.s3d
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_3.s3d
       hash: md5
-      md5: 18005c40caf1db3e289a899a1005e0c2
-      size: 3796727
+      md5: 9579197953d54cefb98eaf188e7a5e24
+      size: 3791147
+  boundary:
+    cmd: .venv/bin/python scripts/surface_temp.py 
+      experiments/02_no_lawn_control/render.json
+    deps:
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.bf
+      hash: md5
+      md5: 3a82669281d40f826c65e284aea103e8
+      size: 643746
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_2.bf
+      hash: md5
+      md5: f97eed24c6b67315dd6c1aea344644fb
+      size: 643746
+    - path: experiments/02_no_lawn_control/render.json
+      hash: md5
+      md5: 2197db58bc5e187581d78693af25083b
+      size: 656
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/surface_temp.py
+      hash: md5
+      md5: e0bc8a620a3fa5bcf75e7ea1b3592556
+      size: 5966
+    outs:
+    - path: experiments/02_no_lawn_control/data/ign_state.json
+      hash: md5
+      md5: 42a442410b4c27b87d8807a4f2ff1139
+      size: 952
+  render:
+    cmd: .venv/bin/python scripts/render_animation.py 
+      experiments/02_no_lawn_control/render.json
+    deps:
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control.smv
+      hash: md5
+      md5: c165bec7c01ac68b0272e9e5ed7054e5
+      size: 11945
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1.prt5
+      hash: md5
+      md5: b18c7d81062fd1713e0be5ed31193b3d
+      size: 1651796
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.s3d
+      hash: md5
+      md5: 76153c4708ae126b54b3f0146aeff934
+      size: 5529216
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_3.s3d
+      hash: md5
+      md5: 9579197953d54cefb98eaf188e7a5e24
+      size: 3791147
+    - path: experiments/02_no_lawn_control/data/ign_state.json
+      hash: md5
+      md5: 42a442410b4c27b87d8807a4f2ff1139
+      size: 952
+    - path: experiments/02_no_lawn_control/render.json
+      hash: md5
+      md5: 2197db58bc5e187581d78693af25083b
+      size: 656
+    - path: experiments/02_no_lawn_control/view.ini
+      hash: md5
+      md5: 3bffa1eced64e7d84aa2bb44d1108816
+      size: 1108
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/render_animation.py
+      hash: md5
+      md5: c1361f3f1b9953f352cc538cb0251df9
+      size: 13497
+    outs:
+    - path: experiments/02_no_lawn_control/results
+      hash: md5
+      md5: 455b2a1bbce76d72f8da37aaeddc5ada.dir
+      size: 376097
+      nfiles: 3

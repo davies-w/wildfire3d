@@ -45,4 +45,7 @@ rc = subprocess.run([os.path.join(FDS_ROOT, "bin/smv_quiet"), "-runscript",
                      cfg["chid"]], cwd=cfg["case_dir"],
                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                     stdin=subprocess.DEVNULL, timeout=2400).returncode
+# Leave the case's .smv as the solver left it.  Rendering has to write colours
+# into it, and leaving them behind makes the solve stage's output look modified.
+shutil.copy(cfg["smv_keep"], cfg["smv"])
 print("exit %s -> %s" % (rc, out))

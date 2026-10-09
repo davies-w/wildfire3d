@@ -7,8 +7,8 @@ stages:
   solve:
     wdir: ../..
     cmd: >-
-      python3 scripts/run_fds.py experiments/04_fence_and_trees_large/garden_tall.fds --threads 4
-      && python3 scripts/strip_terrain.py FDS/cases/garden_tall garden_tall
+      .venv/bin/python scripts/run_fds.py experiments/04_fence_and_trees_large/garden_tall.fds --threads 4
+      && .venv/bin/python scripts/strip_terrain.py FDS/cases/garden_tall garden_tall
     deps:
       - experiments/04_fence_and_trees_large/garden_tall.fds
       - scripts/run_fds.py

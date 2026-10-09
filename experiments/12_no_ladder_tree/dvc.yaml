@@ -11,10 +11,10 @@ stages:
   solve:
     wdir: ../..
     cmd: >-
-      python3 scripts/run_fds.py
+      .venv/bin/python scripts/run_fds.py
       experiments/12_no_ladder_tree/wick4.fds
       --case wick4 --threads 4
-      && python3 scripts/strip_terrain.py FDS/cases/wick4 wick4
+      && .venv/bin/python scripts/strip_terrain.py FDS/cases/wick4 wick4
     deps:
       - experiments/12_no_ladder_tree/wick4.fds
       - scripts/run_fds.py
@@ -33,7 +33,7 @@ stages:
 
   boundary:
     wdir: ../..
-    cmd: python3 scripts/surface_temp.py experiments/12_no_ladder_tree/render.json
+    cmd: .venv/bin/python scripts/surface_temp.py experiments/12_no_ladder_tree/render.json
     deps:
       - experiments/12_no_ladder_tree/render.json
       - FDS/cases/wick4/wick4_1_1.bf
@@ -44,7 +44,7 @@ stages:
 
   render:
     wdir: ../..
-    cmd: python3 scripts/render_animation.py experiments/12_no_ladder_tree/render.json
+    cmd: .venv/bin/python scripts/render_animation.py experiments/12_no_ladder_tree/render.json
     deps:
       - experiments/12_no_ladder_tree/render.json
       - FDS/cases/wick4/ign_state.json
@@ -60,7 +60,7 @@ stages:
 
   validate:
     wdir: ../..
-    cmd: python3 scripts/validate_animation.py experiments/12_no_ladder_tree/render.json
+    cmd: .venv/bin/python scripts/validate_animation.py experiments/12_no_ladder_tree/render.json
     deps:
       - experiments/12_no_ladder_tree/render.json
       - experiments/12_no_ladder_tree/results

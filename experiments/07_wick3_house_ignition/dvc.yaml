@@ -11,10 +11,10 @@ stages:
   solve:
     wdir: ../..
     cmd: >-
-      python3 scripts/run_fds.py
+      .venv/bin/python scripts/run_fds.py
       experiments/07_wick3_house_ignition/wick3c.fds
       --case wick3 --threads 4
-      && python3 scripts/strip_terrain.py FDS/cases/wick3 wick3c
+      && .venv/bin/python scripts/strip_terrain.py FDS/cases/wick3 wick3c
     deps:
       - experiments/07_wick3_house_ignition/wick3c.fds
       - scripts/run_fds.py
@@ -33,7 +33,7 @@ stages:
 
   boundary:
     wdir: ../..
-    cmd: python3 scripts/surface_temp.py experiments/07_wick3_house_ignition/render.json
+    cmd: .venv/bin/python scripts/surface_temp.py experiments/07_wick3_house_ignition/render.json
     deps:
       - experiments/07_wick3_house_ignition/render.json
       - FDS/cases/wick3/wick3c_1_1.bf
@@ -44,7 +44,7 @@ stages:
 
   render:
     wdir: ../..
-    cmd: python3 scripts/render_animation.py experiments/07_wick3_house_ignition/render.json
+    cmd: .venv/bin/python scripts/render_animation.py experiments/07_wick3_house_ignition/render.json
     deps:
       - experiments/07_wick3_house_ignition/render.json
       - FDS/cases/wick3/ign_state.json
@@ -60,7 +60,7 @@ stages:
 
   validate:
     wdir: ../..
-    cmd: python3 scripts/validate_animation.py experiments/07_wick3_house_ignition/render.json
+    cmd: .venv/bin/python scripts/validate_animation.py experiments/07_wick3_house_ignition/render.json
     deps:
       - experiments/07_wick3_house_ignition/render.json
       - experiments/07_wick3_house_ignition/results
