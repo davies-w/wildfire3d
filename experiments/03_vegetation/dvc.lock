@@ -100,3 +100,309 @@ stages:
       hash: md5
       md5: 42d9e75588b2d57cf546ce267c2e0e67
       size: 10004329
+  solve:
+    cmd: .venv/bin/python scripts/run_fds.py 
+      experiments/03_vegetation/garden_veg.fds:experiments/03_vegetation/data/garden_veg
+      experiments/03_vegetation/garden_veg_obst.fds:experiments/03_vegetation/data/garden_veg_obst
+      --jobs 2 --threads 4 && .venv/bin/python scripts/strip_terrain.py 
+      experiments/03_vegetation/data/garden_veg garden_veg && .venv/bin/python 
+      scripts/strip_terrain.py experiments/03_vegetation/data/garden_veg_obst 
+      garden_veg_obst
+    deps:
+    - path: experiments/03_vegetation/garden_veg.fds
+      hash: md5
+      md5: 964442f946a19c24de6a3576d75c5f89
+      size: 15260
+    - path: experiments/03_vegetation/garden_veg_obst.fds
+      hash: md5
+      md5: 5bdca7c69f1ad1bd1d798e172cc69f99
+      size: 13858
+    - path: scripts/run_fds.py
+      hash: md5
+      md5: cad1540ade22f0240c57b5b93d635237
+      size: 4487
+    - path: scripts/strip_terrain.py
+      hash: md5
+      md5: e3700807948e9d294794a418e36baac3
+      size: 1860
+    outs:
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg.smv
+      hash: md5
+      md5: ece86c6a464a2c1ef753aa6eab5749e9
+      size: 14832
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1.prt5
+      hash: md5
+      md5: 898c9677412a4c7daee2b284b690db5e
+      size: 1233616
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_1.bf
+      hash: md5
+      md5: 1df2e993031dac4660f9374e4b56f061
+      size: 644714
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_1.s3d
+      hash: md5
+      md5: 3d33e21df9e041dcf81d58657523d67f
+      size: 9293263
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_1.sf
+      hash: md5
+      md5: e40bf93436cdd59cf1ace1693e8349f3
+      size: 411530
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_2.bf
+      hash: md5
+      md5: adb40105c48f91da613e3a8827bfcc7c
+      size: 644714
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_2.s3d
+      hash: md5
+      md5: 113426459600602ef0d8b9bce9fd93f0
+      size: 2712916
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_2.sf
+      hash: md5
+      md5: 3efab6c7dfd1775f649e73136d606d28
+      size: 131418
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_3.s3d
+      hash: md5
+      md5: 819c247a8b43afafdee51ab4eb287483
+      size: 6837876
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_3.sf
+      hash: md5
+      md5: b13f1f84f48875708742a6e856d181d5
+      size: 131418
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_4.sf
+      hash: md5
+      md5: 5b76a189a73794cd5bf1ffdad0e92dbc
+      size: 131418
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_5.sf
+      hash: md5
+      md5: 5aa13fdda90390f7fec53b58f5af58f1
+      size: 131418
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_6.sf
+      hash: md5
+      md5: fb68121f5756f7e41d74470e310096b4
+      size: 131418
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_7.sf
+      hash: md5
+      md5: 6d83b8098c6418e5c639b16ffbd27a2f
+      size: 411530
+    - path: experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst.smv
+      hash: md5
+      md5: a0cf4b8733d76cb037406fbdbd47d1e2
+      size: 14917
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1.prt5
+      hash: md5
+      md5: 063b7f4769d7d6539846dbfb4cb2dc84
+      size: 1201396
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_1.bf
+      hash: md5
+      md5: ef8680d848e0d30ac688ee1d900ec725
+      size: 839238
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_1.s3d
+      hash: md5
+      md5: 5d310765bd16434d0713fe112ddffeaa
+      size: 13089031
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_1.sf
+      hash: md5
+      md5: d0700d03c87a5f61d10ec9252252bae8
+      size: 411530
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_2.bf
+      hash: md5
+      md5: 12290692617ba74fc72c567c29be9cae
+      size: 839238
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_2.s3d
+      hash: md5
+      md5: c3adb78ce8acf165e84567768379256e
+      size: 3990262
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_2.sf
+      hash: md5
+      md5: a84a8ea124d77c59db60bbcebe56de78
+      size: 131418
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_3.s3d
+      hash: md5
+      md5: dd44d8d001919ef48856884f0e4f5173
+      size: 9982514
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_3.sf
+      hash: md5
+      md5: 0f1c428eddcb57f26b62c4fc69d835ba
+      size: 131418
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_4.sf
+      hash: md5
+      md5: 5fc2d397a8bf8bbe3b935f0aa180c192
+      size: 131418
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_5.sf
+      hash: md5
+      md5: affa117eefa7e0b748d7e5d4ec7f021d
+      size: 131418
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_6.sf
+      hash: md5
+      md5: 95715927aad57b7104cb6ce89f1e0c70
+      size: 131418
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_7.sf
+      hash: md5
+      md5: e1dfaad4fdb1d0b4008aa901ff84c629
+      size: 411530
+  boundary_veg:
+    cmd: .venv/bin/python scripts/surface_temp.py 
+      experiments/03_vegetation/garden_veg.json
+    deps:
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_1.bf
+      hash: md5
+      md5: 1df2e993031dac4660f9374e4b56f061
+      size: 644714
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_2.bf
+      hash: md5
+      md5: adb40105c48f91da613e3a8827bfcc7c
+      size: 644714
+    - path: experiments/03_vegetation/garden_veg.json
+      hash: md5
+      md5: 8195ec11fc7b778f9385cc6648400603
+      size: 451
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/surface_temp.py
+      hash: md5
+      md5: e0bc8a620a3fa5bcf75e7ea1b3592556
+      size: 5966
+    outs:
+    - path: experiments/03_vegetation/data/garden_veg/ign_state.json
+      hash: md5
+      md5: d17137fee0d69daf58551e0e28e1e57b
+      size: 628
+  render_veg:
+    cmd: .venv/bin/python scripts/render_animation.py 
+      experiments/03_vegetation/garden_veg.json
+    deps:
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg.smv
+      hash: md5
+      md5: ece86c6a464a2c1ef753aa6eab5749e9
+      size: 14832
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1.prt5
+      hash: md5
+      md5: 898c9677412a4c7daee2b284b690db5e
+      size: 1233616
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_1.s3d
+      hash: md5
+      md5: 3d33e21df9e041dcf81d58657523d67f
+      size: 9293263
+    - path: experiments/03_vegetation/data/garden_veg/garden_veg_1_3.s3d
+      hash: md5
+      md5: 819c247a8b43afafdee51ab4eb287483
+      size: 6837876
+    - path: experiments/03_vegetation/data/garden_veg/ign_state.json
+      hash: md5
+      md5: d17137fee0d69daf58551e0e28e1e57b
+      size: 628
+    - path: experiments/03_vegetation/garden_veg.json
+      hash: md5
+      md5: 8195ec11fc7b778f9385cc6648400603
+      size: 451
+    - path: experiments/03_vegetation/view.ini
+      hash: md5
+      md5: 3bffa1eced64e7d84aa2bb44d1108816
+      size: 1108
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/render_animation.py
+      hash: md5
+      md5: c1361f3f1b9953f352cc538cb0251df9
+      size: 13497
+    outs:
+    - path: experiments/03_vegetation/results/veg
+      hash: md5
+      md5: 8163453d65ea2d0abf3e77d5e0ecb3e5.dir
+      size: 388255
+      nfiles: 3
+  boundary_obst:
+    cmd: .venv/bin/python scripts/surface_temp.py 
+      experiments/03_vegetation/garden_veg_obst.json
+    deps:
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_1.bf
+      hash: md5
+      md5: ef8680d848e0d30ac688ee1d900ec725
+      size: 839238
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_2.bf
+      hash: md5
+      md5: 12290692617ba74fc72c567c29be9cae
+      size: 839238
+    - path: experiments/03_vegetation/garden_veg_obst.json
+      hash: md5
+      md5: 45907579ea31d6f0b137a8d358b378bc
+      size: 595
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/surface_temp.py
+      hash: md5
+      md5: e0bc8a620a3fa5bcf75e7ea1b3592556
+      size: 5966
+    outs:
+    - path: experiments/03_vegetation/data/garden_veg_obst/ign_state.json
+      hash: md5
+      md5: a19f8f105c1322f21a3392128170394f
+      size: 954
+  render_obst:
+    cmd: .venv/bin/python scripts/render_animation.py 
+      experiments/03_vegetation/garden_veg_obst.json
+    deps:
+    - path: experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst.smv
+      hash: md5
+      md5: a0cf4b8733d76cb037406fbdbd47d1e2
+      size: 14917
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1.prt5
+      hash: md5
+      md5: 063b7f4769d7d6539846dbfb4cb2dc84
+      size: 1201396
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_1.s3d
+      hash: md5
+      md5: 5d310765bd16434d0713fe112ddffeaa
+      size: 13089031
+    - path: 
+        experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_3.s3d
+      hash: md5
+      md5: dd44d8d001919ef48856884f0e4f5173
+      size: 9982514
+    - path: experiments/03_vegetation/data/garden_veg_obst/ign_state.json
+      hash: md5
+      md5: a19f8f105c1322f21a3392128170394f
+      size: 954
+    - path: experiments/03_vegetation/garden_veg_obst.json
+      hash: md5
+      md5: 45907579ea31d6f0b137a8d358b378bc
+      size: 595
+    - path: experiments/03_vegetation/view.ini
+      hash: md5
+      md5: 3bffa1eced64e7d84aa2bb44d1108816
+      size: 1108
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/render_animation.py
+      hash: md5
+      md5: c1361f3f1b9953f352cc538cb0251df9
+      size: 13497
+    outs:
+    - path: experiments/03_vegetation/results/obst
+      hash: md5
+      md5: 5e6f68f4dd3295b45f1767261b968e71.dir
+      size: 416107
+      nfiles: 3

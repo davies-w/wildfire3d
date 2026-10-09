@@ -1,48 +1,125 @@
 # Experiment 03: vegetation as distinct burning objects.
 #
-# Two decks, one stage each, so each stage owns exactly its own case's output.
-# `dvc repro` runs this file; `dvc.lock` is committed.  Outputs are tracked
-# where FDS writes them; the .s3d volumes are uncached, so DVC knows this stage
-# produces them without ever copying or pushing them.
+# Two decks, solved together in one stage so they cost one run's wall clock.
+# Each case gets its own data subdirectory, because the renderer and the
+# boundary reader both write fixed filenames -- ign_state.json, per-frame .smv
+# variants, frame dumps -- and two cases in one directory would collide.
+#
+# `dvc repro` runs this file; `dvc.lock` is committed. `.s3d` volumes are
+# uncached: DVC knows this stage produces them, but never copies or pushes them.
 stages:
-  solve_veg:
+  solve:
     wdir: ../..
     cmd: >-
-      .venv/bin/python scripts/run_fds.py experiments/03_vegetation/garden_veg.fds --threads 4
-      && .venv/bin/python scripts/strip_terrain.py FDS/cases/garden_veg garden_veg
+      .venv/bin/python scripts/run_fds.py
+      experiments/03_vegetation/garden_veg.fds:experiments/03_vegetation/data/garden_veg
+      experiments/03_vegetation/garden_veg_obst.fds:experiments/03_vegetation/data/garden_veg_obst
+      --jobs 2 --threads 4
+      && .venv/bin/python scripts/strip_terrain.py experiments/03_vegetation/data/garden_veg garden_veg
+      && .venv/bin/python scripts/strip_terrain.py experiments/03_vegetation/data/garden_veg_obst garden_veg_obst
     deps:
       - experiments/03_vegetation/garden_veg.fds
-      - scripts/run_fds.py
-      - scripts/strip_terrain.py
-    outs:
-      - FDS/cases/garden_veg/garden_veg_1.prt5
-      - FDS/cases/garden_veg/garden_veg_1_1.bf
-      - FDS/cases/garden_veg/garden_veg_1_2.bf
-      - FDS/cases/garden_veg/garden_veg_1_1.sf
-      - FDS/cases/garden_veg/garden_veg_1_2.sf
-      - FDS/cases/garden_veg/garden_veg.smv
-      - FDS/cases/garden_veg/garden_veg_1_1.s3d:
-          cache: false
-      - FDS/cases/garden_veg/garden_veg_1_3.s3d:
-          cache: false
-
-  solve_veg_obst:
-    wdir: ../..
-    cmd: >-
-      .venv/bin/python scripts/run_fds.py experiments/03_vegetation/garden_veg_obst.fds --threads 4
-      && .venv/bin/python scripts/strip_terrain.py FDS/cases/garden_veg_obst garden_veg_obst
-    deps:
       - experiments/03_vegetation/garden_veg_obst.fds
       - scripts/run_fds.py
       - scripts/strip_terrain.py
     outs:
-      - FDS/cases/garden_veg_obst/garden_veg_obst_1.prt5
-      - FDS/cases/garden_veg_obst/garden_veg_obst_1_1.bf
-      - FDS/cases/garden_veg_obst/garden_veg_obst_1_2.bf
-      - FDS/cases/garden_veg_obst/garden_veg_obst_1_1.sf
-      - FDS/cases/garden_veg_obst/garden_veg_obst_1_2.sf
-      - FDS/cases/garden_veg_obst/garden_veg_obst.smv
-      - FDS/cases/garden_veg_obst/garden_veg_obst_1_1.s3d:
+      - experiments/03_vegetation/data/garden_veg/garden_veg.smv
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1.prt5
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_1.bf
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_2.bf
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_1.sf
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_2.sf
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_3.sf
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_4.sf
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_5.sf
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_6.sf
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_7.sf
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_1.s3d:
           cache: false
-      - FDS/cases/garden_veg_obst/garden_veg_obst_1_3.s3d:
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_2.s3d:
+          cache: false
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_3.s3d:
+          cache: false
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst.smv
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1.prt5
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_1.bf
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_2.bf
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_1.sf
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_2.sf
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_3.sf
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_4.sf
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_5.sf
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_6.sf
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_7.sf
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_1.s3d:
+          cache: false
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_2.s3d:
+          cache: false
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_3.s3d:
+          cache: false
+
+  boundary_veg:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/surface_temp.py
+      experiments/03_vegetation/garden_veg.json
+    deps:
+      - experiments/03_vegetation/garden_veg.json
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_1.bf
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_2.bf
+      - scripts/surface_temp.py
+      - scripts/case_config.py
+    outs:
+      - experiments/03_vegetation/data/garden_veg/ign_state.json
+
+  render_veg:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/render_animation.py
+      experiments/03_vegetation/garden_veg.json
+    deps:
+      - experiments/03_vegetation/garden_veg.json
+      - experiments/03_vegetation/view.ini
+      - experiments/03_vegetation/data/garden_veg/ign_state.json
+      - experiments/03_vegetation/data/garden_veg/garden_veg.smv
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_1.s3d
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1_3.s3d
+      - experiments/03_vegetation/data/garden_veg/garden_veg_1.prt5
+      - scripts/render_animation.py
+      - scripts/case_config.py
+    outs:
+      - experiments/03_vegetation/results/veg:
+          cache: false
+
+  boundary_obst:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/surface_temp.py
+      experiments/03_vegetation/garden_veg_obst.json
+    deps:
+      - experiments/03_vegetation/garden_veg_obst.json
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_1.bf
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_2.bf
+      - scripts/surface_temp.py
+      - scripts/case_config.py
+    outs:
+      - experiments/03_vegetation/data/garden_veg_obst/ign_state.json
+
+  render_obst:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/render_animation.py
+      experiments/03_vegetation/garden_veg_obst.json
+    deps:
+      - experiments/03_vegetation/garden_veg_obst.json
+      - experiments/03_vegetation/view.ini
+      - experiments/03_vegetation/data/garden_veg_obst/ign_state.json
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst.smv
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_1.s3d
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_3.s3d
+      - experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1.prt5
+      - scripts/render_animation.py
+      - scripts/case_config.py
+    outs:
+      - experiments/03_vegetation/results/obst:
           cache: false
