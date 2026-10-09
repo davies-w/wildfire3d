@@ -1,9 +1,9 @@
 schema: '2.0'
 stages:
   solve:
-    cmd: python3 scripts/run_fds.py 
+    cmd: .venv/bin/python scripts/run_fds.py 
       experiments/01_baseline_garden/01_baseline_garden.fds:experiments/01_baseline_garden/data
-      --threads 4 && python3 scripts/strip_terrain.py 
+      --threads 4 && .venv/bin/python scripts/strip_terrain.py 
       experiments/01_baseline_garden/data 01_baseline_garden
     deps:
     - path: experiments/01_baseline_garden/01_baseline_garden.fds
@@ -12,8 +12,8 @@ stages:
       size: 10325
     - path: scripts/run_fds.py
       hash: md5
-      md5: e62feb9eebf487819e50ac13bb8b55c3
-      size: 4178
+      md5: cad1540ade22f0240c57b5b93d635237
+      size: 4487
     - path: scripts/strip_terrain.py
       hash: md5
       md5: e3700807948e9d294794a418e36baac3
@@ -25,35 +25,35 @@ stages:
       size: 12390
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1.prt5
       hash: md5
-      md5: 46923a548721f6a47cf5b8bfd84eedc1
+      md5: 9402d82854a1fb180fc76a0feef53d73
       size: 1363116
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.bf
       hash: md5
-      md5: 3eae6392acffd497e5dd26baea2ee610
+      md5: 11087d22fff5dd1373886ce1cc24261b
       size: 542866
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.s3d
       hash: md5
-      md5: 7449ce335a50b6bd2c40ce6867b6f93a
-      size: 4488253
+      md5: 4f0c902831993ba139400f243e782e6b
+      size: 4488254
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.sf
       hash: md5
-      md5: 0e2c3fd9d5e4cdbb36fa5c9cef0c50d6
+      md5: b0603f7216c875930b18ed345f1a2e67
       size: 411530
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.bf
       hash: md5
-      md5: 6523790990f7eff4bf2220d909e06586
+      md5: 3f4ba8f3247928ddb0cf449257c3cc5c
       size: 542866
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.s3d
       hash: md5
-      md5: 51eb7b74898e89353eb5ef47c0b8f488
+      md5: eac3a1411b052f550032dd85abe20792
       size: 1183513
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.sf
       hash: md5
-      md5: a9196459b956fc38521c33b8477bb933
+      md5: a96fb05f5bd2d4586e51242a7d319678
       size: 131418
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_3.s3d
       hash: md5
-      md5: 67580b66946ba062bb0a35088210c8ea
+      md5: 57c9645aca33eaa59288d6352580509b
       size: 3019801
   boundary:
     cmd: .venv/bin/python scripts/surface_temp.py 
@@ -61,11 +61,11 @@ stages:
     deps:
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.bf
       hash: md5
-      md5: 3eae6392acffd497e5dd26baea2ee610
+      md5: 11087d22fff5dd1373886ce1cc24261b
       size: 542866
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.bf
       hash: md5
-      md5: 6523790990f7eff4bf2220d909e06586
+      md5: 3f4ba8f3247928ddb0cf449257c3cc5c
       size: 542866
     - path: experiments/01_baseline_garden/render.json
       hash: md5
@@ -90,19 +90,19 @@ stages:
     deps:
     - path: experiments/01_baseline_garden/data/01_baseline_garden.smv
       hash: md5
-      md5: 3fa51127354921c651fe83ea7b360d14
-      size: 12391
+      md5: 9e3702c57a1b07b1961cdec30b3881ff
+      size: 12390
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1.prt5
       hash: md5
-      md5: 46923a548721f6a47cf5b8bfd84eedc1
+      md5: 9402d82854a1fb180fc76a0feef53d73
       size: 1363116
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.s3d
       hash: md5
-      md5: 7449ce335a50b6bd2c40ce6867b6f93a
-      size: 4488253
+      md5: 4f0c902831993ba139400f243e782e6b
+      size: 4488254
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_3.s3d
       hash: md5
-      md5: 67580b66946ba062bb0a35088210c8ea
+      md5: 57c9645aca33eaa59288d6352580509b
       size: 3019801
     - path: experiments/01_baseline_garden/data/ign_state.json
       hash: md5
@@ -122,8 +122,8 @@ stages:
       size: 3274
     - path: scripts/render_animation.py
       hash: md5
-      md5: 46b9873b8bbdaea8c842db6a986a10f6
-      size: 12972
+      md5: c1361f3f1b9953f352cc538cb0251df9
+      size: 13497
     outs:
     - path: experiments/01_baseline_garden/results
       hash: md5
