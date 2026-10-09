@@ -177,6 +177,40 @@ def white_box(paths, pad=6):
             min(w, hi_x + pad), min(h, hi_y + pad))
 
 
+def remove_outline(path, thresh=20, grow=2):
+    """Erase Smokeview's mesh boundary box from a rendered frame.
+
+    There is no script command for it: the `o` key cycles 1 current mesh /
+    2 whole case / 3 none, but KEYBOARD in a batch run has no effect (three
+    presses changed nothing).  So the lines are inpainted out instead.
+
+    Safe because the lines are near-pure black (1.48% of the frame) and
+    nothing else in these scenes is that dark -- the darkest geometry is the
+    roof's shadowed side at mid grey.  Pixels below `thresh` are taken as the
+    line, grown to catch the antialiased fringe, and replaced with the median
+    of the untouched pixels around them.
+    """
+    import numpy as np
+    from PIL import Image
+
+    im = Image.open(path).convert("RGB")
+    a = np.asarray(im, int)
+    m = a.max(axis=2) < thresh
+    if not m.any():
+        return 0
+    for _ in range(grow):
+        m = (m | np.roll(m, 1, 0) | np.roll(m, -1, 0)
+             | np.roll(m, 1, 1) | np.roll(m, -1, 1))
+    out = a.copy()
+    for y, x in zip(*np.nonzero(m)):
+        y0, y1 = max(0, y - 3), min(a.shape[0], y + 4)
+        x0, x1 = max(0, x - 3), min(a.shape[1], x + 4)
+        good = a[y0:y1, x0:x1][~m[y0:y1, x0:x1]]
+        out[y, x] = np.median(good, axis=0) if len(good) else 255
+    Image.fromarray(out.astype(np.uint8)).save(path)
+    return int(m.sum())
+
+
 def add_timebar(path, t, t_end):
     """Draw a progress bar along the bottom, so the animation shows its time.
 
@@ -245,6 +279,12 @@ if __name__ == "__main__":
     print("rendered %d of %d frames" % (len(paths), len(TIMES)))
 
     from PIL import Image
+    # the mesh boundary box cannot be switched off from the script, so it is
+    # painted out before the frame is cropped
+    if not CONFIG.get("show_outline", False):
+        for p in paths:
+            remove_outline(p)
+
     box = white_box(paths)
     t_end = max(TIMES)
     for p, t in zip(paths, [t for t in TIMES
