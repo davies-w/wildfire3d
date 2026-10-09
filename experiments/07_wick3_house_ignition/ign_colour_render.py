@@ -37,7 +37,7 @@ OUT = "igncol"
 GIF = os.path.join(CASE, "ignition_data.gif")
 
 # Data volumes: soot (smoke), flame temperature (flame), firebrands (embers).
-VOLUMES = ["wick3c_1_1.s3d", "wick3c_1_3.s3d", "wick3c_1.prt5"]
+VOLUMES = [CHID + "_1_1.s3d", CHID + "_1_3.s3d", CHID + "_1.prt5"]
 
 BASE = {
     "CANOPY": (40, 90, 35),
