@@ -24,14 +24,40 @@ difference is explicit and cannot drift.
 ignition temperature by t = 300 s and gains only ~80 °C in the next 50 s. The
 extra 50 s costs about 10 minutes and shows nothing new.
 
-**Expectation, stated before the result.** With the tree gone, the fence spur
-still runs unbroken from the west fence to the house wall, so the wall should
-still ignite — but later, and the flame reaching it should be weaker. If the
-wall ignites at roughly the *same* time, then the tree contributed little and
-the fence was doing the work; if it does not ignite at all by 300 s, the tree
-was the dominant path.
+**Result — not what I predicted.** The house does **not** catch. Wall
+temperature over the same west face (x = 18, y 8–16, z 0–3.5, 136 cells):
 
-**Status.** Solving. Started 22:35, expected ~1 hour. `run_wick4.py`.
+| t (s) | exp 12 mean | exp 12 max | exp 12 cells>350 | exp 07 max | exp 07 cells>350 |
+|---|---|---|---|---|---|
+| 48 | 25.6 | 28.2 | 0 / 136 | 29.2 | 0 / 136 |
+| 100 | 45.3 | 55.1 | 0 / 136 | 51.1 | 0 / 136 |
+| 148 | 62.8 | 82.3 | 0 / 136 | 82.9 | 0 / 136 |
+| 200 | 76.5 | 106.8 | 0 / 136 | **317.6** | 0 / 136 |
+| 248 | 85.7 | 124.2 | 0 / 136 | **1022.2** | **113 / 136** |
+| 300 | 93.7 | **136.2** | **0 / 136** | **1410.4** | **136 / 136** |
+
+**The ladder tree was the dominant path.** Remove it and the wall peaks at
+136 °C at t = 300 s — never within 280 °C of igniting. With it, the wall passes
+350 °C between t = 200 and 248 s and is fully involved by t = 300.
+
+The fence spur alone, running unbroken from the west fence to the wall, is not
+enough to light the house inside 5 minutes. It is the tree standing in contact
+with that spur that does it.
+
+Two caveats, stated plainly:
+
+- The exp 12 wall is still warming when the run ends (124 → 136 °C over the last
+  50 s). It might ignite given longer. "Not within 5 minutes" is the claim, not
+  "never".
+- This is one configuration with one wind direction. It isolates the tree under
+  *these* conditions, not in general.
+
+My stated expectation was that the wall would still ignite but later. That was
+wrong — it does not ignite at all.
+
+**Cost.** 300 s in **51 min**, faster than the 70 min estimated.
+
+**Status.** Complete. Started 22:35, finished ~23:27.
 
 **Note on embers.** Unlike the recorded experiment 07 run, this case has
 `EMBER_GENERATION_HEIGHT = 1.0, 8.0` on the grass surface, so its embers
