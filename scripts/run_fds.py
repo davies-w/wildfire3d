@@ -48,6 +48,10 @@ def launch(deck, data, threads):
     name = chid_of(deck)
     env = dict(os.environ)
     env["OMP_NUM_THREADS"] = str(threads)
+    # No MPI settings here on purpose.  FDS is an MPI build, so MPI_Init opens a
+    # TCP listener on every interface even for a single local process, and
+    # nothing I could find moves it to loopback -- see check_mpi_loopback.py,
+    # which measures it.  Recorded rather than left as dead configuration.
     log = open(os.path.join(data, name + ".log"), "w")
     p = subprocess.Popen([NATIVE_FDS, deck], cwd=data, stdout=log,
                          stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL,

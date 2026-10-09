@@ -19,4 +19,20 @@ cells in 06 and 07.
 
 **Files.** `run_case.py` solves; `patch_smv_colors.py` and `identify_skirt.py`
 are renderer fixes (see `docs/working-practices.md`, terrain skirt).
-Results: `gh_026.png`, `gh_115.png` (t = 26 s, 115 s), `fire_3d.gif`.
+
+The pipeline is `dvc.yaml`: `solve`, `boundary`, `render`. `dvc repro` runs all
+three, from the deck to the gif. `render.json` holds the case settings and
+`view.ini` the saved viewpoint.
+
+Results, all produced by `scripts/render_animation.py`: `ignition_data.gif`
+(18 frames, 4–120 s) with `i_040.png` and `i_120.png`.
+
+**Only the walls are coloured, and that is deliberate.** A patch dump shows 13
+boundary patches: four wall faces, one patch on the wall top, and eight on the
+ground. Nothing appears above z = 4 m, so the gable roof — built as `&GEOM` —
+emits no boundary data and cannot be measured; colouring it would be invention.
+It is also why the wall patches read 0–4 m rather than the 3.5 m in the deck:
+FDS snaps `&OBST` to the 1 m grid.
+
+The house does not ignite in this case: the wall peaks at 120 °C at t = 20 s,
+then cools to 46 °C by 120 s, against an ignition temperature of 350 °C.

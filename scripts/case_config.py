@@ -33,6 +33,12 @@ def load(path):
     with open(path) as fh:
         cfg = json.load(fh)
 
+    exp_dir = os.path.dirname(os.path.abspath(path))
+    # A config may name its own case_dir -- "data" for an experiment whose
+    # solver output lives beside it -- in which case it is relative to the
+    # experiment, not to whatever directory the script was run from.
+    if cfg.get("case_dir") and not os.path.isabs(cfg["case_dir"]):
+        cfg["case_dir"] = os.path.join(exp_dir, cfg["case_dir"])
     case_dir = os.path.join(FDS_ROOT, "cases", cfg["case"])
     cfg["case_dir"] = cfg.get("case_dir") or case_dir
     case_dir = cfg["case_dir"]
@@ -48,7 +54,7 @@ def load(path):
     cfg["out"] = os.path.join(case_dir, cfg["out_dir"])
     cfg["volumes"] = [chid + "_1_1.s3d", chid + "_1_3.s3d", chid + "_1.prt5"]
     cfg["config_path"] = os.path.abspath(path)
-    cfg["exp_dir"] = os.path.dirname(cfg["config_path"])
+    cfg["exp_dir"] = exp_dir
     # The gif belongs beside the experiment, not in the case directory: the
     # case directory lives under the gitignored engine tree, so a gif written
     # there is never committed and the tracked copy silently goes stale.

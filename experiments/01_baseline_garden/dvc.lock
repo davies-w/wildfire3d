@@ -25,33 +25,108 @@ stages:
       size: 12390
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1.prt5
       hash: md5
-      md5: e60091ceca30fef65379e627726770f3
+      md5: 46923a548721f6a47cf5b8bfd84eedc1
       size: 1363116
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.bf
       hash: md5
-      md5: 571baf14a3be2f20d975794987cc73fc
+      md5: 3eae6392acffd497e5dd26baea2ee610
       size: 542866
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.s3d
       hash: md5
-      md5: cd25090d860f3d6f314b37ebfd0104b8
-      size: 4488254
+      md5: 7449ce335a50b6bd2c40ce6867b6f93a
+      size: 4488253
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.sf
       hash: md5
-      md5: ae0a2e0f3a438c8808fa8ba72f1505bc
+      md5: 0e2c3fd9d5e4cdbb36fa5c9cef0c50d6
       size: 411530
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.bf
       hash: md5
-      md5: 2b35a704f4d5ac5ce6dfd4902eea23e9
+      md5: 6523790990f7eff4bf2220d909e06586
       size: 542866
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.s3d
       hash: md5
-      md5: 53c8ec4dce4d7b6e7bff31d9ed2d5d09
+      md5: 51eb7b74898e89353eb5ef47c0b8f488
       size: 1183513
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.sf
       hash: md5
-      md5: b83f289d6f5348b49ada46fb21f43fab
+      md5: a9196459b956fc38521c33b8477bb933
       size: 131418
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_3.s3d
       hash: md5
-      md5: db61a417d589b3f750a55e8084063c3b
+      md5: 67580b66946ba062bb0a35088210c8ea
       size: 3019801
+  boundary:
+    cmd: .venv/bin/python scripts/surface_temp.py 
+      experiments/01_baseline_garden/render.json
+    deps:
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.bf
+      hash: md5
+      md5: 3eae6392acffd497e5dd26baea2ee610
+      size: 542866
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.bf
+      hash: md5
+      md5: 6523790990f7eff4bf2220d909e06586
+      size: 542866
+    - path: experiments/01_baseline_garden/render.json
+      hash: md5
+      md5: 5cbf43d07ee59779d5680d9eb80b8ffa
+      size: 465
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/surface_temp.py
+      hash: md5
+      md5: e0bc8a620a3fa5bcf75e7ea1b3592556
+      size: 5966
+    outs:
+    - path: experiments/01_baseline_garden/data/ign_state.json
+      hash: md5
+      md5: 4cb7a24b8632010ae0e5ae9dee88d642
+      size: 631
+  render:
+    cmd: .venv/bin/python scripts/render_animation.py 
+      experiments/01_baseline_garden/render.json
+    deps:
+    - path: experiments/01_baseline_garden/data/01_baseline_garden.smv
+      hash: md5
+      md5: 3fa51127354921c651fe83ea7b360d14
+      size: 12391
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1.prt5
+      hash: md5
+      md5: 46923a548721f6a47cf5b8bfd84eedc1
+      size: 1363116
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.s3d
+      hash: md5
+      md5: 7449ce335a50b6bd2c40ce6867b6f93a
+      size: 4488253
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_3.s3d
+      hash: md5
+      md5: 67580b66946ba062bb0a35088210c8ea
+      size: 3019801
+    - path: experiments/01_baseline_garden/data/ign_state.json
+      hash: md5
+      md5: 4cb7a24b8632010ae0e5ae9dee88d642
+      size: 631
+    - path: experiments/01_baseline_garden/render.json
+      hash: md5
+      md5: 5cbf43d07ee59779d5680d9eb80b8ffa
+      size: 465
+    - path: experiments/01_baseline_garden/view.ini
+      hash: md5
+      md5: 3bffa1eced64e7d84aa2bb44d1108816
+      size: 1108
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/render_animation.py
+      hash: md5
+      md5: 46b9873b8bbdaea8c842db6a986a10f6
+      size: 12972
+    outs:
+    - path: experiments/01_baseline_garden/results
+      hash: md5
+      md5: 8ca54322d9f56db90890a318642693c4.dir
+      size: 325860
+      nfiles: 3

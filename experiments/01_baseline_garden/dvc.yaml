@@ -32,3 +32,36 @@ stages:
           cache: false
       - experiments/01_baseline_garden/data/01_baseline_garden_1_3.s3d:
           cache: false
+
+  boundary:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/surface_temp.py
+      experiments/01_baseline_garden/render.json
+    deps:
+      - experiments/01_baseline_garden/render.json
+      - experiments/01_baseline_garden/data/01_baseline_garden_1_1.bf
+      - experiments/01_baseline_garden/data/01_baseline_garden_1_2.bf
+      - scripts/surface_temp.py
+      - scripts/case_config.py
+    outs:
+      - experiments/01_baseline_garden/data/ign_state.json
+
+  render:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/render_animation.py
+      experiments/01_baseline_garden/render.json
+    deps:
+      - experiments/01_baseline_garden/render.json
+      - experiments/01_baseline_garden/view.ini
+      - experiments/01_baseline_garden/data/ign_state.json
+      - experiments/01_baseline_garden/data/01_baseline_garden.smv
+      - experiments/01_baseline_garden/data/01_baseline_garden_1_1.s3d
+      - experiments/01_baseline_garden/data/01_baseline_garden_1_3.s3d
+      - experiments/01_baseline_garden/data/01_baseline_garden_1.prt5
+      - scripts/render_animation.py
+      - scripts/case_config.py
+    outs:
+      - experiments/01_baseline_garden/results:
+          cache: false
