@@ -55,7 +55,9 @@ HOTTEST = 1400.0
 # t=300, where every surface is ignited: 2500/1200/600 produced no usable frame,
 # 300 leaves 13737 warm (ignited) pixels and still shows the plume as grey haze,
 # 0 leaves 11977 and almost no smoke.  300 keeps both.
-SMOKEPROP = 300.0
+# per case: experiment 07 wanted 300 for this effect, wick4 needs 1800 because
+# it burns less so its plume is fainter.  Pass as the 4th argument.
+SMOKEPROP = float(sys.argv[4]) if len(sys.argv) > 4 else 300.0
 
 ZOOM_INI = os.path.join(CASE, CHID + "_view.ini")
 # Viewpoint zoom.  1.0 is Smokeview's default and clips the foreground; 0.5
@@ -178,6 +180,30 @@ def white_box(paths, pad=6):
             min(w, hi_x + pad), min(h, hi_y + pad))
 
 
+def add_timebar(path, t, t_end):
+    """Draw a progress bar along the bottom, so the animation shows its time.
+
+    The bar fills from left to right as t approaches t_end, with the times
+    written beside it.  Kept in the image rather than inferred from the frame
+    order, so a single exported frame still says when it is.
+    """
+    from PIL import Image, ImageDraw
+
+    im = Image.open(path).convert("RGB")
+    w, h = im.size
+    canvas = Image.new("RGB", (w, h + 24), (255, 255, 255))
+    canvas.paste(im, (0, 0))
+    d = ImageDraw.Draw(canvas)
+    y0, y1 = h + 4, h + 13
+    d.rectangle([8, y0, w - 9, y1], outline=(110, 110, 110))
+    frac = 0.0 if not t_end else max(0.0, min(1.0, t / float(t_end)))
+    x = 8 + int((w - 18) * frac)
+    if x > 8:
+        d.rectangle([8, y0, x, y1], fill=(230, 90, 20))
+    d.text((9, h + 12), "t = %d s  of  %d s" % (t, t_end), fill=(20, 20, 20))
+    canvas.save(path)
+
+
 def show(v):
     return "--" if v is None else "%.0f" % v
 
@@ -223,8 +249,11 @@ if __name__ == "__main__":
 
     from PIL import Image
     box = white_box(paths)
-    for p in paths:
+    t_end = max(TIMES)
+    for p, t in zip(paths, [t for t in TIMES
+                            if os.path.exists(os.path.join(out, "c_%03d.png" % t))]):
         Image.open(p).convert("RGB").crop(box).save(p)
+        add_timebar(p, t, t_end)
     ims = [Image.open(p).convert("RGB") for p in paths]
     ims[0].save(GIF, save_all=True, append_images=ims[1:], duration=600, loop=0)
     print("%s\n  %d frames, %d bytes" % (GIF, len(ims), os.path.getsize(GIF)))
