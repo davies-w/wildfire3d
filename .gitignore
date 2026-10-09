@@ -22,6 +22,10 @@
 # the files ignored -- it tracks them itself -- but git does, or every .bf and
 # .s3d would be committed by the next `git add -A`.
 experiments/*/data/
+
+# Experiment 09's EC2 pricing dump: 317 MB of JSON from the Vantage dataset,
+# read by ec2_price.py.  Too large for git; DVC-track it if it needs sharing.
+experiments/*/ec2.json
 *.ssf
 *.csv
 *.gcf

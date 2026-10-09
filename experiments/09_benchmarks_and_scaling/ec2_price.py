@@ -4,12 +4,17 @@ Prints, per instance, the on-demand hourly price, vCPU count, and price per
 vCPU-hour, so families can be compared on a per-core basis rather than a
 per-instance basis.  Also computes an 8-core-equivalent cost for a 4-hour job.
 """
-import json
+import json, os
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+# The Vantage dump, kept beside the script rather than in /tmp.  It is 317 MB
+# of JSON, so it is DVC-tracked and gitignored, not committed.
+DUMP = os.path.join(HERE, "ec2.json")
 
 WANT = ("c7i.", "c7a.", "c7g.", "c8g.", "c6a.", "c6i.", "m7i.", "m7a.")
 JOB_HOURS = 4.0
 
-d = json.load(open("/tmp/ec2.json"))
+d = json.load(open(DUMP))
 rows = []
 if isinstance(d, dict):
     d = list(d.values())
