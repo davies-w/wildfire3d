@@ -1,0 +1,40 @@
+"""Run the wick3 restart on the OpenMP build and wait.
+
+Backs up the restart file and the CSV output first: the new run will overwrite
+the restart checkpoint as it goes, and I want the option of restarting from
+t=200 again.
+"""
+import os
+import shutil
+import subprocess
+import time
+
+CASE = os.path.expanduser("~/FDS/cases/wick3")
+BAK = os.path.join(CASE, "pre_restart")
+FDS = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/bin/fds_openmp")
+
+os.makedirs(BAK, exist_ok=True)
+for f in os.listdir(CASE):
+    if f.endswith(".csv") or f.endswith(".restart"):
+        shutil.copy(os.path.join(CASE, f), os.path.join(BAK, f))
+print("backed up:", sorted(os.listdir(BAK)))
+
+env = dict(os.environ)
+env["OMP_NUM_THREADS"] = "8"
+log = open(os.path.join(CASE, "restart.log"), "w")
+p = subprocess.Popen([FDS, "wick3_restart.fds"], cwd=CASE, stdout=log,
+                     stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL,
+                     env=env)
+print("launched PID", p.pid)
+t0 = time.time()
+while p.poll() is None:
+    time.sleep(30)
+    if time.time() - t0 > 5400:
+        p.kill()
+        print("TIMEOUT")
+        break
+log.close()
+el = int(time.time() - t0)
+print(f"exit {p.returncode} after {el} s ({el/60:.1f} min)")
+for l in open(os.path.join(CASE, "restart.log")).read().strip().split("\n")[-4:]:
+    print("  ", l)
