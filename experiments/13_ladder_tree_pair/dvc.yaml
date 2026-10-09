@@ -1,0 +1,116 @@
+# Experiment 13: ladder tree present vs absent.
+#
+# `dvc repro` runs this file top to bottom; `dvc lock` state lives in dvc.lock,
+# which is committed.  Outputs are tracked where FDS writes them, under
+# FDS/cases/<case>/, so a stage's outs are the real artefacts and nothing is
+# copied about for the sake of versioning.
+#
+# The .s3d volumes carry `cache: false`: they are outputs, so DVC knows what
+# produces them and will re-solve when they are missing, but they are never
+# copied into the cache or pushed.  They are most of the output by size and
+# renders are not evidence.
+
+stages:
+  solve:
+    wdir: ../..
+    cmd: >-
+      python3 scripts/run_fds.py
+      experiments/13_ladder_tree_pair/with_tree.fds
+      experiments/13_ladder_tree_pair/without_tree.fds
+      --jobs 2 --threads 4
+      && python3 scripts/strip_terrain.py FDS/cases/with_tree with_tree
+      && python3 scripts/strip_terrain.py FDS/cases/without_tree without_tree
+    deps:
+      - experiments/13_ladder_tree_pair/with_tree.fds
+      - experiments/13_ladder_tree_pair/without_tree.fds
+      - scripts/run_fds.py
+      - scripts/strip_terrain.py
+    outs:
+      - FDS/cases/with_tree/with_tree.smv
+      - FDS/cases/with_tree/with_tree_1.prt5
+      - FDS/cases/with_tree/with_tree_1_1.bf
+      - FDS/cases/with_tree/with_tree_1_2.bf
+      - FDS/cases/with_tree/with_tree_1_1.sf
+      - FDS/cases/with_tree/with_tree_1_2.sf
+      - FDS/cases/without_tree/without_tree.smv
+      - FDS/cases/without_tree/without_tree_1.prt5
+      - FDS/cases/without_tree/without_tree_1_1.bf
+      - FDS/cases/without_tree/without_tree_1_2.bf
+      - FDS/cases/without_tree/without_tree_1_1.sf
+      - FDS/cases/without_tree/without_tree_1_2.sf
+      - FDS/cases/with_tree/with_tree_1_1.s3d:
+          cache: false
+      - FDS/cases/with_tree/with_tree_1_3.s3d:
+          cache: false
+      - FDS/cases/without_tree/without_tree_1_1.s3d:
+          cache: false
+      - FDS/cases/without_tree/without_tree_1_3.s3d:
+          cache: false
+
+  boundary:
+    foreach:
+      - with_tree
+      - without_tree
+    do:
+      wdir: ../..
+      cmd: python3 scripts/surface_temp.py experiments/13_ladder_tree_pair/${item}.json
+      deps:
+        - experiments/13_ladder_tree_pair/${item}.json
+        - FDS/cases/${item}/${item}_1_1.bf
+        - FDS/cases/${item}/${item}_1_2.bf
+        - scripts/surface_temp.py
+      outs:
+        - FDS/cases/${item}/ign_state.json
+
+  render:
+    foreach:
+      - with_tree
+      - without_tree
+    do:
+      wdir: ../..
+      cmd: python3 scripts/render_animation.py experiments/13_ladder_tree_pair/${item}.json
+      deps:
+        - experiments/13_ladder_tree_pair/${item}.json
+        - experiments/13_ladder_tree_pair/view.ini
+        - FDS/cases/${item}/ign_state.json
+        - FDS/cases/${item}/${item}.smv
+        - FDS/cases/${item}/${item}_1_1.s3d
+        - FDS/cases/${item}/${item}_1_3.s3d
+        - FDS/cases/${item}/${item}_1.prt5
+        - scripts/render_animation.py
+        - scripts/case_config.py
+      outs:
+        # The gif and the stills stay in git so they render on GitHub, so they
+        # are uncached: DVC records that this stage produces them, and what
+        # they were made from, without taking ownership of the bytes.
+        - experiments/13_ladder_tree_pair/results/${item}:
+            cache: false
+
+  stitch:
+    wdir: ../..
+    cmd: >-
+      python3 scripts/stitch_gifs.py
+      experiments/13_ladder_tree_pair/results/side_by_side.gif
+      experiments/13_ladder_tree_pair/results/with_tree/ignition_data.gif
+      experiments/13_ladder_tree_pair/results/without_tree/ignition_data.gif
+    deps:
+      - experiments/13_ladder_tree_pair/results/with_tree/ignition_data.gif
+      - experiments/13_ladder_tree_pair/results/without_tree/ignition_data.gif
+      - scripts/stitch_gifs.py
+      - scripts/gif_frame.py
+    outs:
+      - experiments/13_ladder_tree_pair/results/side_by_side.gif:
+          cache: false
+
+  validate:
+    foreach:
+      - with_tree
+      - without_tree
+    do:
+      wdir: ../..
+      cmd: python3 scripts/validate_animation.py experiments/13_ladder_tree_pair/${item}.json
+      deps:
+        - experiments/13_ladder_tree_pair/${item}.json
+        - experiments/13_ladder_tree_pair/results/${item}
+        - FDS/cases/${item}/ign_state.json
+        - scripts/validate_animation.py

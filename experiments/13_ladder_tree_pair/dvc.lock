@@ -1,0 +1,302 @@
+schema: '2.0'
+stages:
+  solve:
+    cmd: python3 scripts/run_fds.py 
+      experiments/13_ladder_tree_pair/with_tree.fds 
+      experiments/13_ladder_tree_pair/without_tree.fds --jobs 2 --threads 4 && 
+      python3 scripts/strip_terrain.py FDS/cases/with_tree with_tree && python3 
+      scripts/strip_terrain.py FDS/cases/without_tree without_tree
+    deps:
+    - path: experiments/13_ladder_tree_pair/with_tree.fds
+      hash: md5
+      md5: 9eff6df629dd2d7a743858e36cb174b7
+      size: 6221
+    - path: experiments/13_ladder_tree_pair/without_tree.fds
+      hash: md5
+      md5: b1632c002fc6f8827a8e83a893385be4
+      size: 6327
+    - path: scripts/run_fds.py
+      hash: md5
+      md5: fe32f69000728250263201ed8cce4272
+      size: 3848
+    - path: scripts/strip_terrain.py
+      hash: md5
+      md5: e3700807948e9d294794a418e36baac3
+      size: 1860
+    outs:
+    - path: FDS/cases/with_tree/with_tree.smv
+      hash: md5
+      md5: 34b65312371f0ba7d0d292af2a0966c6
+      size: 15524
+    - path: FDS/cases/with_tree/with_tree_1.prt5
+      hash: md5
+      md5: da53593be5b0248f2704b8ec634a8a2c
+      size: 209516
+    - path: FDS/cases/with_tree/with_tree_1_1.bf
+      hash: md5
+      md5: 45d8aca28bc9e7e7633f6e86042cf623
+      size: 2719194
+    - path: FDS/cases/with_tree/with_tree_1_1.s3d
+      hash: md5
+      md5: f5dfc7093006004c37dc91d9d04f2d2c
+      size: 51809417
+    - path: FDS/cases/with_tree/with_tree_1_1.sf
+      hash: md5
+      md5: bea11334102c98e0ecc32107eba57c7f
+      size: 1926906
+    - path: FDS/cases/with_tree/with_tree_1_2.bf
+      hash: md5
+      md5: 0b93db66f155b9955dbaf9ad7f0e4334
+      size: 2719194
+    - path: FDS/cases/with_tree/with_tree_1_2.sf
+      hash: md5
+      md5: 8a56351d2128694bd3874f535102398e
+      size: 984666
+    - path: FDS/cases/with_tree/with_tree_1_3.s3d
+      hash: md5
+      md5: d877f3f8043b52ffd1d8de7d73edae27
+      size: 44315670
+    - path: FDS/cases/without_tree/without_tree.smv
+      hash: md5
+      md5: 6f7f54b0efa3b60b613f43db555b23ba
+      size: 15116
+    - path: FDS/cases/without_tree/without_tree_1.prt5
+      hash: md5
+      md5: 0c1e2866d928675ffb4791bce36224cf
+      size: 194796
+    - path: FDS/cases/without_tree/without_tree_1_1.bf
+      hash: md5
+      md5: 97ce90c00d74ad62624099fda2baf927
+      size: 2318906
+    - path: FDS/cases/without_tree/without_tree_1_1.s3d
+      hash: md5
+      md5: 804b7ce82cbb48c871cd29605e3c28cc
+      size: 49077817
+    - path: FDS/cases/without_tree/without_tree_1_1.sf
+      hash: md5
+      md5: 469b7cc257ac44dea3ddf94627b2c66b
+      size: 1926906
+    - path: FDS/cases/without_tree/without_tree_1_2.bf
+      hash: md5
+      md5: a83d02bee65fe74541f3bc5685b32f39
+      size: 2318906
+    - path: FDS/cases/without_tree/without_tree_1_2.sf
+      hash: md5
+      md5: c8bba8285ed0349b8a774d9a3ada1419
+      size: 984666
+    - path: FDS/cases/without_tree/without_tree_1_3.s3d
+      hash: md5
+      md5: 37c68221fcf4d79e1a52a8e8920fec0a
+      size: 39163553
+  boundary@with_tree:
+    cmd: python3 scripts/surface_temp.py 
+      experiments/13_ladder_tree_pair/with_tree.json
+    deps:
+    - path: FDS/cases/with_tree/with_tree_1_1.bf
+      hash: md5
+      md5: 45d8aca28bc9e7e7633f6e86042cf623
+      size: 2719194
+    - path: FDS/cases/with_tree/with_tree_1_2.bf
+      hash: md5
+      md5: 0b93db66f155b9955dbaf9ad7f0e4334
+      size: 2719194
+    - path: experiments/13_ladder_tree_pair/with_tree.json
+      hash: md5
+      md5: 0f91ef1bd11079211c75a4bd5804b518
+      size: 751
+    - path: scripts/surface_temp.py
+      hash: md5
+      md5: e0bc8a620a3fa5bcf75e7ea1b3592556
+      size: 5966
+    outs:
+    - path: FDS/cases/with_tree/ign_state.json
+      hash: md5
+      md5: 94543dbe2766b3e8bb38b68b1d7c80fe
+      size: 2039
+  boundary@without_tree:
+    cmd: python3 scripts/surface_temp.py 
+      experiments/13_ladder_tree_pair/without_tree.json
+    deps:
+    - path: FDS/cases/without_tree/without_tree_1_1.bf
+      hash: md5
+      md5: 97ce90c00d74ad62624099fda2baf927
+      size: 2318906
+    - path: FDS/cases/without_tree/without_tree_1_2.bf
+      hash: md5
+      md5: a83d02bee65fe74541f3bc5685b32f39
+      size: 2318906
+    - path: experiments/13_ladder_tree_pair/without_tree.json
+      hash: md5
+      md5: c5cf095a30ea0a3bc5901e7e872d6c36
+      size: 760
+    - path: scripts/surface_temp.py
+      hash: md5
+      md5: e0bc8a620a3fa5bcf75e7ea1b3592556
+      size: 5966
+    outs:
+    - path: FDS/cases/without_tree/ign_state.json
+      hash: md5
+      md5: 62238f94ad00bba633734dca8eb54e71
+      size: 2033
+  render@with_tree:
+    cmd: python3 scripts/render_animation.py 
+      experiments/13_ladder_tree_pair/with_tree.json
+    deps:
+    - path: FDS/cases/with_tree/ign_state.json
+      hash: md5
+      md5: 94543dbe2766b3e8bb38b68b1d7c80fe
+      size: 2039
+    - path: FDS/cases/with_tree/with_tree.smv
+      hash: md5
+      md5: 34b65312371f0ba7d0d292af2a0966c6
+      size: 15524
+    - path: FDS/cases/with_tree/with_tree_1.prt5
+      hash: md5
+      md5: da53593be5b0248f2704b8ec634a8a2c
+      size: 209516
+    - path: FDS/cases/with_tree/with_tree_1_1.s3d
+      hash: md5
+      md5: f5dfc7093006004c37dc91d9d04f2d2c
+      size: 51809417
+    - path: FDS/cases/with_tree/with_tree_1_3.s3d
+      hash: md5
+      md5: d877f3f8043b52ffd1d8de7d73edae27
+      size: 44315670
+    - path: experiments/13_ladder_tree_pair/view.ini
+      hash: md5
+      md5: 002879eb79f821d615c903d5f3ef7644
+      size: 1108
+    - path: experiments/13_ladder_tree_pair/with_tree.json
+      hash: md5
+      md5: 0f91ef1bd11079211c75a4bd5804b518
+      size: 751
+    - path: scripts/case_config.py
+      hash: md5
+      md5: 4bb9ecccd61b98e71c51233bdf4a97c1
+      size: 2898
+    - path: scripts/render_animation.py
+      hash: md5
+      md5: 46b9873b8bbdaea8c842db6a986a10f6
+      size: 12972
+    outs:
+    - path: experiments/13_ladder_tree_pair/results/with_tree
+      hash: md5
+      md5: 30a57b01ee28347ee266f868e9da5a0d.dir
+      size: 1741354
+      nfiles: 4
+  render@without_tree:
+    cmd: python3 scripts/render_animation.py 
+      experiments/13_ladder_tree_pair/without_tree.json
+    deps:
+    - path: FDS/cases/without_tree/ign_state.json
+      hash: md5
+      md5: 62238f94ad00bba633734dca8eb54e71
+      size: 2033
+    - path: FDS/cases/without_tree/without_tree.smv
+      hash: md5
+      md5: 6f7f54b0efa3b60b613f43db555b23ba
+      size: 15116
+    - path: FDS/cases/without_tree/without_tree_1.prt5
+      hash: md5
+      md5: 0c1e2866d928675ffb4791bce36224cf
+      size: 194796
+    - path: FDS/cases/without_tree/without_tree_1_1.s3d
+      hash: md5
+      md5: 804b7ce82cbb48c871cd29605e3c28cc
+      size: 49077817
+    - path: FDS/cases/without_tree/without_tree_1_3.s3d
+      hash: md5
+      md5: 37c68221fcf4d79e1a52a8e8920fec0a
+      size: 39163553
+    - path: experiments/13_ladder_tree_pair/view.ini
+      hash: md5
+      md5: 002879eb79f821d615c903d5f3ef7644
+      size: 1108
+    - path: experiments/13_ladder_tree_pair/without_tree.json
+      hash: md5
+      md5: c5cf095a30ea0a3bc5901e7e872d6c36
+      size: 760
+    - path: scripts/case_config.py
+      hash: md5
+      md5: 4bb9ecccd61b98e71c51233bdf4a97c1
+      size: 2898
+    - path: scripts/render_animation.py
+      hash: md5
+      md5: 46b9873b8bbdaea8c842db6a986a10f6
+      size: 12972
+    outs:
+    - path: experiments/13_ladder_tree_pair/results/without_tree
+      hash: md5
+      md5: 4fe9f4d8430a65110c2ee189bbfdc85d.dir
+      size: 1742484
+      nfiles: 4
+  stitch:
+    cmd: python3 scripts/stitch_gifs.py 
+      experiments/13_ladder_tree_pair/results/side_by_side.gif 
+      experiments/13_ladder_tree_pair/results/with_tree/ignition_data.gif 
+      experiments/13_ladder_tree_pair/results/without_tree/ignition_data.gif
+    deps:
+    - path: experiments/13_ladder_tree_pair/results/with_tree/ignition_data.gif
+      hash: md5
+      md5: fa50897f5cf026cfaab2fbf798884c15
+      size: 1496955
+    - path: 
+        experiments/13_ladder_tree_pair/results/without_tree/ignition_data.gif
+      hash: md5
+      md5: 8137482d51b695697c14e1166a82e3b2
+      size: 1505563
+    - path: scripts/gif_frame.py
+      hash: md5
+      md5: 601e0ef262e07a71a5163bdac6de7367
+      size: 1231
+    - path: scripts/stitch_gifs.py
+      hash: md5
+      md5: c7a9922b87059bd7389ed735c25a6f6c
+      size: 1595
+    outs:
+    - path: experiments/13_ladder_tree_pair/results/side_by_side.gif
+      hash: md5
+      md5: 9e6725167d9bd3e298a30573f244a46a
+      size: 2836947
+  validate@with_tree:
+    cmd: python3 scripts/validate_animation.py 
+      experiments/13_ladder_tree_pair/with_tree.json
+    deps:
+    - path: FDS/cases/with_tree/ign_state.json
+      hash: md5
+      md5: 94543dbe2766b3e8bb38b68b1d7c80fe
+      size: 2039
+    - path: experiments/13_ladder_tree_pair/results/with_tree
+      hash: md5
+      md5: 30a57b01ee28347ee266f868e9da5a0d.dir
+      size: 1741354
+      nfiles: 4
+    - path: experiments/13_ladder_tree_pair/with_tree.json
+      hash: md5
+      md5: 0f91ef1bd11079211c75a4bd5804b518
+      size: 751
+    - path: scripts/validate_animation.py
+      hash: md5
+      md5: a2d2a48cd37720415725347a8ef6fc05
+      size: 3929
+  validate@without_tree:
+    cmd: python3 scripts/validate_animation.py 
+      experiments/13_ladder_tree_pair/without_tree.json
+    deps:
+    - path: FDS/cases/without_tree/ign_state.json
+      hash: md5
+      md5: 62238f94ad00bba633734dca8eb54e71
+      size: 2033
+    - path: experiments/13_ladder_tree_pair/results/without_tree
+      hash: md5
+      md5: 4fe9f4d8430a65110c2ee189bbfdc85d.dir
+      size: 1742484
+      nfiles: 4
+    - path: experiments/13_ladder_tree_pair/without_tree.json
+      hash: md5
+      md5: c5cf095a30ea0a3bc5901e7e872d6c36
+      size: 760
+    - path: scripts/validate_animation.py
+      hash: md5
+      md5: a2d2a48cd37720415725347a8ef6fc05
+      size: 3929

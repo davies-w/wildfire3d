@@ -44,11 +44,27 @@ result without reading anything else.
 Each README states the aim, the numbers, and the conclusion — including
 negative results, which here have been the most informative.
 
-**4. Raw output is versioned with DVC, never git.**
+**4. Every experiment is a DVC pipeline, and raw output is never git.**
 
-Push and pull instructions are in `docs/storage.md`. Policy: keep the evidence
-(`.bf`, `.prt5`, `.sf`); **never** store `.restart` (88 MB each, worthless once
-a solve completes); keep `.s3d` only if you will re-render.
+Each experiment carries a `dvc.yaml`. Its stages are that experiment's run
+order and nothing else — solve, strip terrain, read the boundary data, render,
+validate, and stitch where there is a pair — so `dvc repro` reproduces the whole
+experiment and no step is manual. `dvc.lock` **is committed**: it records the
+hash of every dependency and output, which is what makes a result checkable.
+
+- **Do not use `dvc add`.** A `.dvc` file snapshots a directory and cannot
+  re-run anything. It records *that* evidence exists, not *what produced it*.
+- **Adopting existing output uses `dvc commit`**, which records what is already
+  on disk without running the stage. That is how an older experiment joins the
+  pipeline without re-solving.
+- **Outs are tracked where FDS writes them**, in `FDS/cases/<case>/`. That tree
+  is gitignored, which does not affect DVC.
+- Push and pull are in `docs/storage.md`. Keep the evidence (`.bf`, `.prt5`,
+  `.sf`); **never** store `.restart` (88 MB each, worthless once a solve
+  completes); keep `.s3d` only if you will re-render.
+
+Content-addressed storage means adopting existing output needs no re-upload:
+identical bytes keep the same hash and the blobs already in the bucket stand.
 
 **5. Environment and performance.**
 
