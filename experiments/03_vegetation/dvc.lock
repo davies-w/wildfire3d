@@ -1,6 +1,6 @@
 schema: '2.0'
 stages:
-  solve@garden_veg:
+  solve_veg:
     cmd: python3 scripts/run_fds.py experiments/03_vegetation/garden_veg.fds 
       --threads 4 && python3 scripts/strip_terrain.py FDS/cases/garden_veg 
       garden_veg
@@ -42,10 +42,6 @@ stages:
       hash: md5
       md5: 228a653d1a41a65c8cd8f1126c02f8be
       size: 644714
-    - path: FDS/cases/garden_veg/garden_veg_1_2.s3d
-      hash: md5
-      md5: 10014579f3f4114e36fa3adf7c1b0f3f
-      size: 2734031
     - path: FDS/cases/garden_veg/garden_veg_1_2.sf
       hash: md5
       md5: 26171ee349b2f61ab7e5063e952d2600
@@ -54,7 +50,7 @@ stages:
       hash: md5
       md5: f66db5a07e5ac4ee2ea571d1d1baab20
       size: 6910947
-  solve@garden_veg_obst:
+  solve_veg_obst:
     cmd: python3 scripts/run_fds.py 
       experiments/03_vegetation/garden_veg_obst.fds --threads 4 && python3 
       scripts/strip_terrain.py FDS/cases/garden_veg_obst garden_veg_obst
@@ -96,10 +92,6 @@ stages:
       hash: md5
       md5: f3b33c323ad4a3e48441f9d7dc918b98
       size: 839238
-    - path: FDS/cases/garden_veg_obst/garden_veg_obst_1_2.s3d
-      hash: md5
-      md5: 462fd9cab53fd32a045bb5ea785d1799
-      size: 4005768
     - path: FDS/cases/garden_veg_obst/garden_veg_obst_1_2.sf
       hash: md5
       md5: e075da4060991fbb7b81ef2fde844cf0

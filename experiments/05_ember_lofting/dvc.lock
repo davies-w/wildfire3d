@@ -1,6 +1,6 @@
 schema: '2.0'
 stages:
-  solve@garden_loft:
+  solve:
     cmd: python3 scripts/run_fds.py experiments/05_ember_lofting/garden_loft.fds
       --threads 4 && python3 scripts/strip_terrain.py FDS/cases/garden_loft 
       garden_loft

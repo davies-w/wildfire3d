@@ -1,6 +1,6 @@
 schema: '2.0'
 stages:
-  solve@wick2:
+  solve:
     cmd: python3 scripts/run_fds.py experiments/06_half_metre_ladder/wick2.fds 
       --threads 4 && python3 scripts/strip_terrain.py FDS/cases/wick2 wick2
     deps:

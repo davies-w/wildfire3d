@@ -1,6 +1,6 @@
 schema: '2.0'
 stages:
-  solve@ember_test:
+  solve:
     cmd: python3 scripts/run_fds.py 
       experiments/08_isolated_ember_ignition/ember_test.fds --threads 4 && 
       python3 scripts/strip_terrain.py FDS/cases/ember_test ember_test

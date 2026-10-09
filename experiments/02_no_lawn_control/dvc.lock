@@ -1,6 +1,6 @@
 schema: '2.0'
 stages:
-  solve@garden_nolawn:
+  solve:
     cmd: python3 scripts/run_fds.py 
       experiments/02_no_lawn_control/garden_nolawn.fds --threads 4 && python3 
       scripts/strip_terrain.py FDS/cases/garden_nolawn garden_nolawn
