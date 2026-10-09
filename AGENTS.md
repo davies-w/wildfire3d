@@ -52,13 +52,25 @@ validate, and stitch where there is a pair — so `dvc repro` reproduces the who
 experiment and no step is manual. `dvc.lock` **is committed**: it records the
 hash of every dependency and output, which is what makes a result checkable.
 
-- **Do not use `dvc add`.** A `.dvc` file snapshots a directory and cannot
-  re-run anything. It records *that* evidence exists, not *what produced it*.
+- **`dvc add` is for inputs, never for outputs.** A `.dvc` file snapshots a
+  file and cannot re-run anything, so it must not stand in for a stage. An
+  external input that nothing here produces is exactly what it is for:
+  experiment 09's `ec2.json` is a 317 MB pricing dump with no stage that could
+  ever make it.
+- **Check before `git add` on anything binary or large.** Source, config,
+  results text and rendered gifs belong in git; bulk data does not. GitHub
+  rejects any single file over 100 MB outright, so such a commit is unpushable
+  and undoing it needs a history rewrite. When asked to add one, say so and
+  name the alternative before doing it.
 - **Adopting existing output uses `dvc commit`**, which records what is already
   on disk without running the stage. That is how an older experiment joins the
   pipeline without re-solving.
-- **Outs are tracked where FDS writes them**, in `FDS/cases/<case>/`. That tree
-  is gitignored, which does not affect DVC.
+- **Outs live in the experiment, under `data/`.** The experiment directory
+  holds config — deck, `dvc.yaml`, `README`, one-off `scripts/` — and `data/`
+  holds every solver output; `dvc.yaml` names them, and this is what makes a
+  single directory reproducible on its own. Nothing is written into the engine
+  tree: `FDS/` holds the engine and FDS's own working files, and nothing that
+  is authored or versioned goes there.
 - Push and pull are in `docs/storage.md`. Keep the evidence (`.bf`, `.prt5`,
   `.sf`); **never** store `.restart` (88 MB each, worthless once a solve
   completes); keep `.s3d` only if you will re-render.
