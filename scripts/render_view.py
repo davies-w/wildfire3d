@@ -17,10 +17,20 @@ from paths import FDS_ROOT  # noqa: E402
 import case_config  # noqa: E402
 
 if len(sys.argv) < 5:
-    sys.exit("usage: render_view.py <render.json> <time> <viewpoint> <out.png>")
+    sys.exit("usage: render_view.py <render.json> <time> <viewpoint> <out.png>"
+             " [smokeprop]")
 cfg = case_config.load(sys.argv[1])
 t, view, out = sys.argv[2], sys.argv[3], os.path.abspath(sys.argv[4])
 sub = os.path.dirname(out)
+# optional override, so the same case can be compared at several coefficients
+if len(sys.argv) > 5:
+    cfg["smokeprop"] = float(sys.argv[5])
+
+# The live .smv is overwritten by every animation pass and left holding the
+# last frame's colours, so a plain render would show those regardless of time.
+# Restore the pristine copy first.
+import shutil
+shutil.copy(cfg["smv_keep"], cfg["smv"])
 
 body = "RENDERDIR\n %s\nUNLOADALL\nLOADINIFILE\n %s\n" % (
     sub, os.path.basename(cfg["view_ini"]))
