@@ -23,11 +23,29 @@ symlink, because older notes refer to the distribution's own directory name.
 ## Setting it up
 
 ```
-python3 scripts/setup_engine.py            # source checkout
-python3 scripts/setup_engine.py --dist     # + the NIST binaries
-python3 scripts/setup_engine.py --build    # + a native arm64 build
-python3 scripts/setup_env.py               # the Python venv (numpy, dvc, ...)
+python3 scripts/setup_engine.py --deps --build   # everything, from scratch
+python3 scripts/setup_env.py                     # the Python venv (numpy, dvc, ...)
 ```
+
+`--deps --build` is the whole chain and is safe to re-run: it checks the Xcode
+Command Line Tools, installs Homebrew if there is none, installs the
+prerequisites declared in the repository `Brewfile` (`brew bundle`), clones the
+FDS source at its release tag, clones HYPRE and SUNDIALS at the tags
+`src/fds/Build/makefile` asks for, builds those two, builds the engine with
+`HYPRE_HOME` and `SUNDIALS_HOME` exported, and verifies the result is arm64 and
+contains HYPRE. It is idempotent: a second run skips everything in about three
+seconds.
+
+Every step fails loudly. That matters here: the engine without HYPRE builds
+cleanly, reports success, and then cannot run any case where FDS selects the
+UGLMAT pressure solver — which is experiments 01, 03 and part of 08. Build it
+this way, not by hand.
+
+`--root DIR` builds into `DIR` instead of `FDS/`, which is how the
+from-scratch path is tested without touching a working checkout.
+
+The standard `--dist` fetches the NIST binary distribution, which is where
+Smokeview comes from and is needed for rendering.
 
 The last one matters: the analysis venv lives at the **repo root** (`.venv`),
 not in here. Anything inside `FDS/` is gitignored, so a venv in here could not
