@@ -63,6 +63,32 @@ The **salmon quad was never a bug**: it is the `WOOD WALL` face at 0.8 shading
 (`0.80 × (222,184,135) = (178,147,108)`, exact). An earlier claim that it was a
 pass-to-pass rendering difference was wrong.
 
+## Embers never lofted (found late)
+
+`wick3c.fds` was missing `EMBER_GENERATION_HEIGHT` on the ember-generating
+surface. It is the lofting control, it is a **`&SURF`** property rather than
+`&MISC`, and it defaults to **-1**, which means "spawn on the surface". So
+every ember was born at ground level and stayed there.
+
+Measured from the `.prt5` particle file (`read_embers.py`):
+
+| run | max ember height | embers above 2 m |
+|---|---|---|
+| `wick3c` (no keyword) | 0.25 m | 0 of 45 output steps |
+| exp 05 `garden_loft` (keyword set) | 12.00 m | 261 at t = 40 s |
+
+The fix was already known -- exp 05 established it and exp 03 and 04 carry it --
+but it was lost when the wick cases were rewritten in a terser `&SURF` form that
+kept `EMBER_YIELD` and `PART_ID` and so looked complete.
+
+The deck now has it. **The recorded 350 s run predates the line**, so the
+animation shows ground-level embers and its ember behaviour should be ignored.
+A re-run was judged not worth ~71 min, because the question the fix answers is
+already answered from exp 05's existing output.
+
+Note that lofting is transient even when it works: in exp 05 every ember is
+back on the ground by t = 112 s, so it happens only around the peak of the fire.
+
 ## Gotchas established here
 
 - **`ZOOM` must come *after* `SETVIEWPOINT`**, in a second `LOADINIFILE`.

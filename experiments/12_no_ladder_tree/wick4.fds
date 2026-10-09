@@ -1,6 +1,6 @@
-&HEAD CHID='wick3c', TITLE='Refined wick: 0.5 m cells, thin fence' /
+&HEAD CHID='wick4', TITLE='Wick3c without the ladder tree: 0.5 m cells, thin fence' /
 &MESH ID='g', IJK=64,48,24, XB=0,32, 0,24, 0,12 /
-&TIME T_END=350. /
+&TIME T_END=300. /
 &MISC BNDF_DEFAULT=.FALSE., LEVEL_SET_MODE=4, CFL_MAX=0.8 /
 &WIND SPEED=6.0, DIRECTION=270.0 /
 &SPEC ID='WOOD FUEL VAPOR', C=3.4, H=6.2, O=2.5 /
@@ -77,18 +77,14 @@
 &VENT MB='YMAX', SURF_ID='OPEN' /
 &VENT MB='ZMAX', SURF_ID='OPEN' /
 
-! --- LADDER TREE: canopy in CONTACT with the fence spur -------------------
+! --- LADDER TREE REMOVED: this is the control case ------------
 ! NOTE: EMBER_GENERATION_HEIGHT above was MISSING when the recorded 350 s run
 ! was made, so that run's embers spawned at ground level and never lofted
 ! (max height 0.25 m).  It is the release's lofting control, it defaults to
 ! -1 = "spawn on the surface", and it is a &SURF property, so it is easy to
 ! leave out.  See the README; the recorded results predate this line.
-! The canopy spans x 20.5-23.5, which sits directly over the spur fence
 ! (y 19.5-20), so the fence flame is in contact with the canopy rather than
 ! standing a metre away.  Its east face stops one cell (0.5 m) short of the
-! house wall at x=24.
-&OBST XB=16.0,17.0, 12.5,13.5, 0.0,1.8, SURF_ID='TRUNK', BNDF_OBST=.TRUE. /
-&OBST XB=14.5,17.5, 10.0,16.0, 1.8,6.5, SURF_ID='CANOPY', BNDF_OBST=.TRUE. /
 
 ! --- four trees out in the wild grass -------------------------------------
 &OBST XB=4.0,5.0, 11.0,12.0, 0.0,2.0, SURF_ID='TRUNK' /
