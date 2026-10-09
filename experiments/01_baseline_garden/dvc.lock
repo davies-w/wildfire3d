@@ -1,0 +1,56 @@
+schema: '2.0'
+stages:
+  solve@garden_house:
+    cmd: python3 scripts/run_fds.py 
+      experiments/01_baseline_garden/garden_house.fds --threads 4 && python3 
+      scripts/strip_terrain.py FDS/cases/garden_house garden_house
+    deps:
+    - path: experiments/01_baseline_garden/garden_house.fds
+      hash: md5
+      md5: 23654063d62bb21cb824fa64f398351c
+      size: 10319
+    - path: scripts/run_fds.py
+      hash: md5
+      md5: fe32f69000728250263201ed8cce4272
+      size: 3848
+    - path: scripts/strip_terrain.py
+      hash: md5
+      md5: e3700807948e9d294794a418e36baac3
+      size: 1860
+    outs:
+    - path: FDS/cases/garden_house/garden_house.smv
+      hash: md5
+      md5: eadbdd5dc239de9d0deb11301beb329e
+      size: 12235
+    - path: FDS/cases/garden_house/garden_house_1.prt5
+      hash: md5
+      md5: 5eabf9a7ae47cb95883f44abb41152fc
+      size: 1361936
+    - path: FDS/cases/garden_house/garden_house_1_1.bf
+      hash: md5
+      md5: 2536cc64b873ffa345ece7485ef00240
+      size: 542866
+    - path: FDS/cases/garden_house/garden_house_1_1.s3d
+      hash: md5
+      md5: 8001f6b4c98b25146c6990171efb66f4
+      size: 4482430
+    - path: FDS/cases/garden_house/garden_house_1_1.sf
+      hash: md5
+      md5: 94afba484a2a3eb19d3bc00c1c9d6bd2
+      size: 411530
+    - path: FDS/cases/garden_house/garden_house_1_2.bf
+      hash: md5
+      md5: 34d50c9da5119e94603ac0809ea4951e
+      size: 542866
+    - path: FDS/cases/garden_house/garden_house_1_2.s3d
+      hash: md5
+      md5: 184312f8536b11b2c2ce3699bd8b8131
+      size: 1185847
+    - path: FDS/cases/garden_house/garden_house_1_2.sf
+      hash: md5
+      md5: 54c5042f448c27029eec7908c5870b86
+      size: 131418
+    - path: FDS/cases/garden_house/garden_house_1_3.s3d
+      hash: md5
+      md5: 3ad7a31383a053ad65348c5c996bc2a2
+      size: 3012920

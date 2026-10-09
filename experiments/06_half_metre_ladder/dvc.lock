@@ -1,0 +1,55 @@
+schema: '2.0'
+stages:
+  solve@wick2:
+    cmd: python3 scripts/run_fds.py experiments/06_half_metre_ladder/wick2.fds 
+      --threads 4 && python3 scripts/strip_terrain.py FDS/cases/wick2 wick2
+    deps:
+    - path: experiments/06_half_metre_ladder/wick2.fds
+      hash: md5
+      md5: 2b01f1fe1e696a3853f2eaed889f023b
+      size: 5467
+    - path: scripts/run_fds.py
+      hash: md5
+      md5: fe32f69000728250263201ed8cce4272
+      size: 3848
+    - path: scripts/strip_terrain.py
+      hash: md5
+      md5: e3700807948e9d294794a418e36baac3
+      size: 1860
+    outs:
+    - path: FDS/cases/wick2/wick2.smv
+      hash: md5
+      md5: abf947545ca602d7e8edb323171cd5e3
+      size: 16444
+    - path: FDS/cases/wick2/wick2_1.prt5
+      hash: md5
+      md5: d550f606defde78e756178c3e68b3c44
+      size: 2712756
+    - path: FDS/cases/wick2/wick2_1_1.bf
+      hash: md5
+      md5: 3be36c702872282808b7340ea1d683d1
+      size: 1114194
+    - path: FDS/cases/wick2/wick2_1_1.s3d
+      hash: md5
+      md5: 19eed3576b232833ad41bb4660c47dec
+      size: 72243501
+    - path: FDS/cases/wick2/wick2_1_1.sf
+      hash: md5
+      md5: b3d66634483c20c2f173a715c2881c0d
+      size: 1602250
+    - path: FDS/cases/wick2/wick2_1_2.bf
+      hash: md5
+      md5: 3f9b9e9dacbe229d699229fbb81f20f7
+      size: 1114194
+    - path: FDS/cases/wick2/wick2_1_2.s3d
+      hash: md5
+      md5: f6f9d8cff7ae29b3f3139a0ba2bef57c
+      size: 10907825
+    - path: FDS/cases/wick2/wick2_1_2.sf
+      hash: md5
+      md5: 266c57944694b7fa7c6b4568cfccea71
+      size: 495466
+    - path: FDS/cases/wick2/wick2_1_3.s3d
+      hash: md5
+      md5: 8f76a9474e435d7c6ec279262236db6a
+      size: 53829779

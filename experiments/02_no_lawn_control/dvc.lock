@@ -1,0 +1,56 @@
+schema: '2.0'
+stages:
+  solve@garden_nolawn:
+    cmd: python3 scripts/run_fds.py 
+      experiments/02_no_lawn_control/garden_nolawn.fds --threads 4 && python3 
+      scripts/strip_terrain.py FDS/cases/garden_nolawn garden_nolawn
+    deps:
+    - path: experiments/02_no_lawn_control/garden_nolawn.fds
+      hash: md5
+      md5: c9d3ee605964fac0630772f19f2b6a17
+      size: 8738
+    - path: scripts/run_fds.py
+      hash: md5
+      md5: fe32f69000728250263201ed8cce4272
+      size: 3848
+    - path: scripts/strip_terrain.py
+      hash: md5
+      md5: e3700807948e9d294794a418e36baac3
+      size: 1860
+    outs:
+    - path: FDS/cases/garden_nolawn/garden_nolawn.smv
+      hash: md5
+      md5: 7cbdbca4f6f1e174fa028477f8fc28a8
+      size: 11833
+    - path: FDS/cases/garden_nolawn/garden_nolawn_1.prt5
+      hash: md5
+      md5: b97b0f977beaa7cfd66217e775d90ab1
+      size: 1652896
+    - path: FDS/cases/garden_nolawn/garden_nolawn_1_1.bf
+      hash: md5
+      md5: 05048c2b22547e405d9ebabe412ab5a6
+      size: 643746
+    - path: FDS/cases/garden_nolawn/garden_nolawn_1_1.s3d
+      hash: md5
+      md5: 7a7e0bf9f739a375b04aaf720e478a7e
+      size: 5534053
+    - path: FDS/cases/garden_nolawn/garden_nolawn_1_1.sf
+      hash: md5
+      md5: edcb43f93c340ad7152dd1cab925e664
+      size: 411530
+    - path: FDS/cases/garden_nolawn/garden_nolawn_1_2.bf
+      hash: md5
+      md5: 2ce29e975c9b956c2e7fa7c841903437
+      size: 643746
+    - path: FDS/cases/garden_nolawn/garden_nolawn_1_2.s3d
+      hash: md5
+      md5: c9dbf9043e3d0836ec68ec8d8e636032
+      size: 1399762
+    - path: FDS/cases/garden_nolawn/garden_nolawn_1_2.sf
+      hash: md5
+      md5: 91088c03a365bfacbc93f16478893093
+      size: 131418
+    - path: FDS/cases/garden_nolawn/garden_nolawn_1_3.s3d
+      hash: md5
+      md5: 18005c40caf1db3e289a899a1005e0c2
+      size: 3796727

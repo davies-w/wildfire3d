@@ -1,0 +1,56 @@
+schema: '2.0'
+stages:
+  solve@garden_tall:
+    cmd: python3 scripts/run_fds.py 
+      experiments/04_fence_and_trees_large/garden_tall.fds --threads 4 && 
+      python3 scripts/strip_terrain.py FDS/cases/garden_tall garden_tall
+    deps:
+    - path: experiments/04_fence_and_trees_large/garden_tall.fds
+      hash: md5
+      md5: d3c4a89ab643a09c0448ced43c78b57b
+      size: 13854
+    - path: scripts/run_fds.py
+      hash: md5
+      md5: fe32f69000728250263201ed8cce4272
+      size: 3848
+    - path: scripts/strip_terrain.py
+      hash: md5
+      md5: e3700807948e9d294794a418e36baac3
+      size: 1860
+    outs:
+    - path: FDS/cases/garden_tall/garden_tall.smv
+      hash: md5
+      md5: 2e34f31da64b6f5230dec5c433a167ab
+      size: 15033
+    - path: FDS/cases/garden_tall/garden_tall_1.prt5
+      hash: md5
+      md5: a4c06b9950683e24d05435ffa91bb9ca
+      size: 612856
+    - path: FDS/cases/garden_tall/garden_tall_1_1.bf
+      hash: md5
+      md5: 012292f02f810baa9b3cb3e391a170dc
+      size: 839238
+    - path: FDS/cases/garden_tall/garden_tall_1_1.s3d
+      hash: md5
+      md5: c2d7a35e63134826004e47bc13a69093
+      size: 17438254
+    - path: FDS/cases/garden_tall/garden_tall_1_1.sf
+      hash: md5
+      md5: 94d1c5c16637084221a8564d41ac33a5
+      size: 411530
+    - path: FDS/cases/garden_tall/garden_tall_1_2.bf
+      hash: md5
+      md5: f3440c76ce52db7f3150671bcf5098e4
+      size: 839238
+    - path: FDS/cases/garden_tall/garden_tall_1_2.s3d
+      hash: md5
+      md5: 49e4e0f84e1511559bfcf7fc601bd0a7
+      size: 4181808
+    - path: FDS/cases/garden_tall/garden_tall_1_2.sf
+      hash: md5
+      md5: 3c8793b53650ba96d743975f85a2d07f
+      size: 251466
+    - path: FDS/cases/garden_tall/garden_tall_1_3.s3d
+      hash: md5
+      md5: 4225ab4cb34b67e922920de09b5e008e
+      size: 12991504

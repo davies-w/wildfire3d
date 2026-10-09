@@ -1,0 +1,56 @@
+schema: '2.0'
+stages:
+  solve@ember_test:
+    cmd: python3 scripts/run_fds.py 
+      experiments/08_isolated_ember_ignition/ember_test.fds --threads 4 && 
+      python3 scripts/strip_terrain.py FDS/cases/ember_test ember_test
+    deps:
+    - path: experiments/08_isolated_ember_ignition/ember_test.fds
+      hash: md5
+      md5: a6489099dc04c87fc3794c824004ed64
+      size: 15365
+    - path: scripts/run_fds.py
+      hash: md5
+      md5: fe32f69000728250263201ed8cce4272
+      size: 3848
+    - path: scripts/strip_terrain.py
+      hash: md5
+      md5: e3700807948e9d294794a418e36baac3
+      size: 1860
+    outs:
+    - path: FDS/cases/ember_test/ember_test.smv
+      hash: md5
+      md5: 89e43fadf3fd442dd1ff0659269ea5e5
+      size: 14812
+    - path: FDS/cases/ember_test/ember_test_1.prt5
+      hash: md5
+      md5: 18eb99126c5fc0695c27aef82fed5ae2
+      size: 11752
+    - path: FDS/cases/ember_test/ember_test_1_1.bf
+      hash: md5
+      md5: 44d62dccdb03a785c8af926b9019833d
+      size: 138986
+    - path: FDS/cases/ember_test/ember_test_1_1.s3d
+      hash: md5
+      md5: 45e945ab2de7d3df66eb99b5c450ac88
+      size: 3653470
+    - path: FDS/cases/ember_test/ember_test_1_1.sf
+      hash: md5
+      md5: a58bbbe858d6f1198618e1d7c8fdb5e4
+      size: 87818
+    - path: FDS/cases/ember_test/ember_test_1_2.bf
+      hash: md5
+      md5: 25b14562a9471d5ed43902cdbe50d27f
+      size: 138986
+    - path: FDS/cases/ember_test/ember_test_1_2.s3d
+      hash: md5
+      md5: eaf2f9b99c50aceab8db8b0f89707ab2
+      size: 1187931
+    - path: FDS/cases/ember_test/ember_test_1_2.sf
+      hash: md5
+      md5: 27fcbd097d39d44ab59c8942936a5afb
+      size: 28122
+    - path: FDS/cases/ember_test/ember_test_1_3.s3d
+      hash: md5
+      md5: 261e92b77959304b8cfe5aa256c2e7ca
+      size: 2742739

@@ -1,0 +1,56 @@
+schema: '2.0'
+stages:
+  solve@garden_loft:
+    cmd: python3 scripts/run_fds.py experiments/05_ember_lofting/garden_loft.fds
+      --threads 4 && python3 scripts/strip_terrain.py FDS/cases/garden_loft 
+      garden_loft
+    deps:
+    - path: experiments/05_ember_lofting/garden_loft.fds
+      hash: md5
+      md5: 0e0d8fc7fc7198909d1e84e875707862
+      size: 13854
+    - path: scripts/run_fds.py
+      hash: md5
+      md5: fe32f69000728250263201ed8cce4272
+      size: 3848
+    - path: scripts/strip_terrain.py
+      hash: md5
+      md5: e3700807948e9d294794a418e36baac3
+      size: 1860
+    outs:
+    - path: FDS/cases/garden_loft/garden_loft.smv
+      hash: md5
+      md5: 7b870e36c7b71a6768fd5ceed07ef0f0
+      size: 14793
+    - path: FDS/cases/garden_loft/garden_loft_1.prt5
+      hash: md5
+      md5: 1923cd159c0a07565c1f2b8fc2ea6f6a
+      size: 619476
+    - path: FDS/cases/garden_loft/garden_loft_1_1.bf
+      hash: md5
+      md5: 37c138eba3572756b2f789a06ce2f0ec
+      size: 839238
+    - path: FDS/cases/garden_loft/garden_loft_1_1.s3d
+      hash: md5
+      md5: 35f766eee5a6e7a901bcdd2be8c755a6
+      size: 13111127
+    - path: FDS/cases/garden_loft/garden_loft_1_1.sf
+      hash: md5
+      md5: b591621c756e6661dc01068c1c0d38dd
+      size: 411530
+    - path: FDS/cases/garden_loft/garden_loft_1_2.bf
+      hash: md5
+      md5: 9c0f412d8d78c73e455b43ac30637162
+      size: 839238
+    - path: FDS/cases/garden_loft/garden_loft_1_2.s3d
+      hash: md5
+      md5: 84d43fe6589dc2553a75c59595a8ad83
+      size: 4007278
+    - path: FDS/cases/garden_loft/garden_loft_1_2.sf
+      hash: md5
+      md5: 1c855df6696574c13b8055737ff6cf19
+      size: 131418
+    - path: FDS/cases/garden_loft/garden_loft_1_3.s3d
+      hash: md5
+      md5: b1730b9426de9484e52582a2a62764e9
+      size: 9971341
