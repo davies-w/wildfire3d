@@ -1,0 +1,68 @@
+# Experiment 12: the same fire with no ladder tree.
+#
+# `dvc repro` runs this file; `dvc.lock` is committed.  Derived from experiment
+# 07's file, so the two pipelines have the same shape; here the case directory
+# and the CHID are both wick4.
+#
+# The .s3d volumes carry `cache: false`: outputs DVC knows about, tracks and can
+# re-solve when missing, but never copies or pushes.  The gif and stills stay in
+# git so they render on GitHub, and are uncached for the same reason.
+stages:
+  solve:
+    wdir: ../..
+    cmd: >-
+      python3 scripts/run_fds.py
+      experiments/12_no_ladder_tree/wick4.fds
+      --case wick4 --threads 4
+      && python3 scripts/strip_terrain.py FDS/cases/wick4 wick4
+    deps:
+      - experiments/12_no_ladder_tree/wick4.fds
+      - scripts/run_fds.py
+      - scripts/strip_terrain.py
+    outs:
+      - FDS/cases/wick4/wick4.smv
+      - FDS/cases/wick4/wick4_1.prt5
+      - FDS/cases/wick4/wick4_1_1.bf
+      - FDS/cases/wick4/wick4_1_2.bf
+      - FDS/cases/wick4/wick4_1_1.sf
+      - FDS/cases/wick4/wick4_1_2.sf
+      - FDS/cases/wick4/wick4_1_1.s3d:
+          cache: false
+      - FDS/cases/wick4/wick4_1_3.s3d:
+          cache: false
+
+  boundary:
+    wdir: ../..
+    cmd: python3 scripts/surface_temp.py experiments/12_no_ladder_tree/render.json
+    deps:
+      - experiments/12_no_ladder_tree/render.json
+      - FDS/cases/wick4/wick4_1_1.bf
+      - FDS/cases/wick4/wick4_1_2.bf
+      - scripts/surface_temp.py
+    outs:
+      - FDS/cases/wick4/ign_state.json
+
+  render:
+    wdir: ../..
+    cmd: python3 scripts/render_animation.py experiments/12_no_ladder_tree/render.json
+    deps:
+      - experiments/12_no_ladder_tree/render.json
+      - FDS/cases/wick4/ign_state.json
+      - FDS/cases/wick4/wick4.smv
+      - FDS/cases/wick4/wick4_1_1.s3d
+      - FDS/cases/wick4/wick4_1_3.s3d
+      - FDS/cases/wick4/wick4_1.prt5
+      - scripts/render_animation.py
+      - scripts/case_config.py
+    outs:
+      - experiments/12_no_ladder_tree/results:
+          cache: false
+
+  validate:
+    wdir: ../..
+    cmd: python3 scripts/validate_animation.py experiments/12_no_ladder_tree/render.json
+    deps:
+      - experiments/12_no_ladder_tree/render.json
+      - experiments/12_no_ladder_tree/results
+      - FDS/cases/wick4/ign_state.json
+      - scripts/validate_animation.py

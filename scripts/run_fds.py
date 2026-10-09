@@ -37,10 +37,15 @@ def chid_of(deck):
     sys.exit("no &HEAD CHID found in %s" % deck)
 
 
-def launch(deck, threads):
-    """Copy the deck into its case directory and start FDS there."""
+def launch(deck, threads, case_name=None):
+    """Copy the deck into its case directory and start FDS there.
+
+    The case directory defaults to the deck's CHID, but not every run uses that
+    -- experiment 07 solved `wick3c.fds` into `FDS/cases/wick3`, and its outputs
+    are named from the CHID, so the directory has to be nameable.
+    """
     name = chid_of(deck)
-    case = os.path.join(FDS_ROOT, "cases", name)
+    case = os.path.join(FDS_ROOT, "cases", case_name or name)
     os.makedirs(case, exist_ok=True)
     shutil.copy(os.path.abspath(deck), case)
     env = dict(os.environ)
@@ -58,6 +63,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("decks", nargs="+")
     ap.add_argument("--threads", type=int, default=4)
+    ap.add_argument("--case", dest="case", default=None,
+                    help="case directory for a single deck (default: its CHID)")
     ap.add_argument("--jobs", type=int, default=1)
     ap.add_argument("--timeout", type=float, default=8000.0, help="minutes")
     a = ap.parse_args()
@@ -66,7 +73,7 @@ def main():
     todo = list(a.decks)
     while todo or running:
         while todo and len(running) < a.jobs:
-            running.append(launch(todo.pop(0), a.threads))
+            running.append(launch(todo.pop(0), a.threads, a.case))
         time.sleep(30)
         for job in list(running):
             mins = (time.time() - job["t0"]) / 60.0

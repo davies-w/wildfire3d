@@ -1,0 +1,140 @@
+schema: '2.0'
+stages:
+  solve:
+    cmd: python3 scripts/run_fds.py experiments/12_no_ladder_tree/wick4.fds 
+      --case wick4 --threads 4 && python3 scripts/strip_terrain.py 
+      FDS/cases/wick4 wick4
+    deps:
+    - path: experiments/12_no_ladder_tree/wick4.fds
+      hash: md5
+      md5: 7fafb9deb6473b4a6eec6c4bf4078a4c
+      size: 5640
+    - path: scripts/run_fds.py
+      hash: md5
+      md5: 319a2472ff98cef3c9026eadb67e8dec
+      size: 4256
+    - path: scripts/strip_terrain.py
+      hash: md5
+      md5: e3700807948e9d294794a418e36baac3
+      size: 1860
+    outs:
+    - path: FDS/cases/wick4/wick4.smv
+      hash: md5
+      md5: ec056387f74acdc9be78d11f5c2ebb6a
+      size: 15055
+    - path: FDS/cases/wick4/wick4_1.prt5
+      hash: md5
+      md5: 67b7e288398badce84be2ff43d9df693
+      size: 190896
+    - path: FDS/cases/wick4/wick4_1_1.bf
+      hash: md5
+      md5: 209f4a3c27e3908c0b98cef2ddd1df46
+      size: 1167806
+    - path: FDS/cases/wick4/wick4_1_1.s3d
+      hash: md5
+      md5: 235137637d7bfbdfd6f235dabf217f80
+      size: 45487687
+    - path: FDS/cases/wick4/wick4_1_1.sf
+      hash: md5
+      md5: 35e093e624732e77f7dfe9b237e7b0a0
+      size: 969906
+    - path: FDS/cases/wick4/wick4_1_2.bf
+      hash: md5
+      md5: be3ade6b5eaae6237d4c46d470f1d463
+      size: 1167806
+    - path: FDS/cases/wick4/wick4_1_2.sf
+      hash: md5
+      md5: 67bd90c6d0a3031572c3811b9223094c
+      size: 495666
+    - path: FDS/cases/wick4/wick4_1_3.s3d
+      hash: md5
+      md5: d370a1e4301ae56a1da163aa22ef150c
+      size: 33833460
+  boundary:
+    cmd: python3 scripts/surface_temp.py 
+      experiments/12_no_ladder_tree/render.json
+    deps:
+    - path: FDS/cases/wick4/wick4_1_1.bf
+      hash: md5
+      md5: 209f4a3c27e3908c0b98cef2ddd1df46
+      size: 1167806
+    - path: FDS/cases/wick4/wick4_1_2.bf
+      hash: md5
+      md5: be3ade6b5eaae6237d4c46d470f1d463
+      size: 1167806
+    - path: experiments/12_no_ladder_tree/render.json
+      hash: md5
+      md5: 7bdd40fa68a0af55364bad5ff784d205
+      size: 518
+    - path: scripts/surface_temp.py
+      hash: md5
+      md5: e0bc8a620a3fa5bcf75e7ea1b3592556
+      size: 5966
+    outs:
+    - path: FDS/cases/wick4/ign_state.json
+      hash: md5
+      md5: c186065ea85b0166e4c36d803c1b5922
+      size: 2465
+  render:
+    cmd: python3 scripts/render_animation.py 
+      experiments/12_no_ladder_tree/render.json
+    deps:
+    - path: FDS/cases/wick4/ign_state.json
+      hash: md5
+      md5: c186065ea85b0166e4c36d803c1b5922
+      size: 2465
+    - path: FDS/cases/wick4/wick4.smv
+      hash: md5
+      md5: ec056387f74acdc9be78d11f5c2ebb6a
+      size: 15055
+    - path: FDS/cases/wick4/wick4_1.prt5
+      hash: md5
+      md5: 67b7e288398badce84be2ff43d9df693
+      size: 190896
+    - path: FDS/cases/wick4/wick4_1_1.s3d
+      hash: md5
+      md5: 235137637d7bfbdfd6f235dabf217f80
+      size: 45487687
+    - path: FDS/cases/wick4/wick4_1_3.s3d
+      hash: md5
+      md5: d370a1e4301ae56a1da163aa22ef150c
+      size: 33833460
+    - path: experiments/12_no_ladder_tree/render.json
+      hash: md5
+      md5: 7bdd40fa68a0af55364bad5ff784d205
+      size: 518
+    - path: scripts/case_config.py
+      hash: md5
+      md5: 4bb9ecccd61b98e71c51233bdf4a97c1
+      size: 2898
+    - path: scripts/render_animation.py
+      hash: md5
+      md5: 46b9873b8bbdaea8c842db6a986a10f6
+      size: 12972
+    outs:
+    - path: experiments/12_no_ladder_tree/results
+      hash: md5
+      md5: b330fdebd58b3fedc98955accb31c4ed.dir
+      size: 519746
+      nfiles: 4
+  validate:
+    cmd: python3 scripts/validate_animation.py 
+      experiments/12_no_ladder_tree/render.json
+    deps:
+    - path: FDS/cases/wick4/ign_state.json
+      hash: md5
+      md5: c186065ea85b0166e4c36d803c1b5922
+      size: 2465
+    - path: experiments/12_no_ladder_tree/render.json
+      hash: md5
+      md5: 7bdd40fa68a0af55364bad5ff784d205
+      size: 518
+    - path: experiments/12_no_ladder_tree/results
+      hash: md5
+      md5: b330fdebd58b3fedc98955accb31c4ed.dir
+      size: 519746
+      nfiles: 4
+    - path: scripts/validate_animation.py
+      hash: md5
+      md5: a2d2a48cd37720415725347a8ef6fc05
+      size: 3929
