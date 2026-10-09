@@ -58,8 +58,10 @@ SMOKEPROP = float(sys.argv[2]) if len(sys.argv) > 2 else CONFIG["smokeprop"]
 
 ZOOM_INI = CONFIG["view_ini"]
 # Viewpoint zoom.  1.0 is Smokeview's default and clips the foreground; 0.5
-# frames the whole scene while keeping iso_b's orientation.
-VIEW_ZOOM = 0.5
+# frames the whole scene while keeping iso_b's orientation.  A tighter value
+# makes the scene fill more of the fixed 640x480 window, so the cropped frames
+# are larger; RENDERSIZE cannot be used for this, batch rendering ignores it.
+VIEW_ZOOM = float(CONFIG.get("view_zoom", 0.5))
 
 
 def make_view_ini():
@@ -243,6 +245,9 @@ if __name__ == "__main__":
     state = json.load(open(os.path.join(CASE, "ign_state.json")))
     if not os.path.exists(SMV_KEEP):
         shutil.copy(SMV_FILE, SMV_KEEP)
+    tpl = CONFIG.get("ini_template")
+    if tpl and not os.path.exists(os.path.join(CASE, CHID + ".ini")):
+        shutil.copy(tpl, os.path.join(CASE, CHID + ".ini"))
     make_view_ini()
 
     out = os.path.join(CASE, OUT)
@@ -285,7 +290,13 @@ if __name__ == "__main__":
         for p in paths:
             remove_outline(p)
 
-    box = white_box(paths)
+    # A pinned box makes two cases frame-identically, which is what lets their
+    # animations be stitched side by side.  Auto-trimming cannot do that: the
+    # box follows each frame's content, and a bigger plume trims differently.
+    box = tuple(CONFIG["crop_box"]) if CONFIG.get("crop_box") else white_box(paths)
+    print("crop box x%4d-%4d y%4d-%4d%s"
+          % (box[0], box[2], box[1], box[3],
+             " (pinned)" if CONFIG.get("crop_box") else " (auto)"))
     t_end = max(TIMES)
     for p, t in zip(paths, [t for t in TIMES
                             if os.path.exists(os.path.join(out, "c_%03d.png" % t))]):

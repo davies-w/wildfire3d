@@ -13,6 +13,10 @@
 *.smv
 *.smv.bak
 *.ini
+# ... except a viewpoint kept deliberately beside an experiment.  FDS and
+# Smokeview write .ini files as scratch inside case directories, but the render
+# configs name one as `ini_template` and a clone needs it to reproduce a gif.
+!experiments/*/view.ini
 *.ssf
 *.csv
 *.gcf

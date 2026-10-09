@@ -46,6 +46,9 @@ for a window that starts off-grid.
 | `render_animation.py <config> [smokeprop]` | colours the geometry from that data and renders the gif |
 | `validate_animation.py <config>` | completeness, distinctness, and whether each frame's `.smv` carries the colour its temperature implies |
 | `particles.py <config or file.prt5>` | reads ember positions from the `.prt5` |
+| `run_fds.py <deck.fds>... [--jobs N] [--threads N]` | solves decks with the native build, in parallel, each in its own case directory |
+| `stitch_gifs.py <out.gif> <in1.gif> <in2.gif>...` | pastes gifs side by side, frame for frame |
+| `gif_frame.py <in.gif> <index> <out.png>` | extracts one frame, to check what a gif really holds |
 | `dump_patches.py <config>` | lists every boundary patch, to build the boxes |
 | `strip_terrain.py <casedir> <chid>` | **mandatory post-solve**; FDS rewrites the `.smv` every solve |
 | `measure_framing.py <casedir>` | how much geometry touches the frame edge |
@@ -94,6 +97,32 @@ setting, not the fire, and a difference there will be read as physics.
 - **The live `.smv` is left holding the last frame's colours** after any
   animation pass. `render_view.py` restores the pristine `*.smv.orig` first.
 
+## Two cases side by side
+
+One config per case, both with the **same** `crop_box`, then a plain stitch:
+
+```bash
+python3 scripts/render_animation.py experiments/<n>/a.json
+python3 scripts/render_animation.py experiments/<n>/b.json
+python3 scripts/stitch_gifs.py experiments/<n>/results/side_by_side.gif \
+    experiments/<n>/results/a/ignition_data.gif \
+    experiments/<n>/results/b/ignition_data.gif
+```
+
+Extra config keys, all optional:
+
+| key | effect |
+|---|---|
+| `crop_box` | pin the crop rectangle `[x0, y0, x1, y1]` instead of auto-trimming |
+| `view_zoom` | viewpoint zoom; 0.5 frames the whole scene, larger fills more of the window |
+| `ini_template` | a `.ini` to install into the case when it has none |
+| `stills` | times to also save as `i_<t>.png` beside the gif |
+| `gif_name` | gif path under `results/`; a `sub/dir/name.gif` keeps cases apart |
+
+Measure the pinned box in two passes: render once with auto-trimming and read
+the printed box, take the union over the cases, then pin it in all of them.
+Frame size is `x1-x0` by `y1-y0` plus 24 px for the time bar.
+
 ## Things that will bite
 
 - **Surface colours must go in the case's own `.smv`.** A side-car `.smv` loaded
@@ -103,6 +132,16 @@ setting, not the fire, and a difference there will be read as physics.
   12 frames came out blank. Hence one Smokeview launch per frame.
 - **`ZOOM` must come after `SETVIEWPOINT`**, in a second `LOADINIFILE`; before
   it, the viewpoint overwrites it.
+- **`RENDERSIZE` does nothing in a batch run.** Set the viewpoint zoom instead
+  (`view_zoom`); a tighter zoom makes the scene fill more of the fixed 640x480
+  window, so the cropped frames come out larger.
+- **PIL's `ImageSequence.Iterator` reuses one buffer.** Collecting it into a list
+  leaves N references to the last frame decoded, so every frame reads as the
+  final one and a stitch collapses to a single frame. Seek and `.copy()` per
+  frame -- `gif_frame.read_frames` does this.
+- **The gif and the stills must be written by the renderer.** Output paths used
+  to live in the gitignored engine tree, and the stills were copied by hand, so
+  the tracked copies went stale while the render itself was correct.
 - **`SMOKEPROP` is in m²/kg, order 10³.** Values near 1 are transparent.
   Smokeview's own default is **8700** (`SMOKF3D` in the `.smv`); that draws the
   soot as a near-opaque mass and hides the geometry, so these cases use 300.

@@ -54,4 +54,10 @@ def load(path):
     # there is never committed and the tracked copy silently goes stale.
     cfg["gif"] = os.path.join(cfg["exp_dir"], "results",
                               cfg.get("gif_name", "ignition_data.gif"))
+    # A viewpoint template, shipped beside the experiment, is installed into the
+    # case directory when that has no .ini yet.  FDS does not write one -- it is
+    # normally created by clicking around in Smokeview -- so a fresh case has no
+    # saved `iso_b` viewpoint and the renderer cannot frame anything.
+    if cfg.get("ini_template"):
+        cfg["ini_template"] = os.path.join(cfg["exp_dir"], cfg["ini_template"])
     return cfg
