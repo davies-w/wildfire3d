@@ -14,12 +14,12 @@ _d = os.path.dirname(os.path.abspath(__file__))
 while not os.path.isfile(os.path.join(_d, "paths.py")):
     _d = os.path.dirname(_d)
 sys.path.insert(0, _d)
-from paths import FDS_ROOT  # noqa: E402
+from paths import FDS_ROOT, NATIVE_FDS  # noqa: E402
 
 import os, shutil, subprocess, time
 
 CASE = os.path.join(FDS_ROOT, "cases/wick3")
-ARM = os.path.join(FDS_ROOT, "src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx")
+ARM = NATIVE_FDS
 X86 = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/bin/fds_openmp")
 
 src = open(os.path.join(CASE, "wick3.fds")).read()

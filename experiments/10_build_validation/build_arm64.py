@@ -14,14 +14,14 @@ _d = os.path.dirname(os.path.abspath(__file__))
 while not os.path.isfile(os.path.join(_d, "paths.py")):
     _d = os.path.dirname(_d)
 sys.path.insert(0, _d)
-from paths import FDS_ROOT  # noqa: E402
+from paths import FDS_ROOT, BIN, NATIVE_BUILD  # noqa: E402
 
 import os, subprocess, time
 
 FIREMODELS = os.path.join(FDS_ROOT, "src")
-BUILD = os.path.join(FIREMODELS, "fds", "Build", "ompi_gnu_osx")
-TARGET = "ompi_gnu_osx"
-BIN = os.path.join(BUILD, "fds_" + TARGET)
+BUILD = NATIVE_BUILD
+TARGET = BUILD_TAG
+BIN = NATIVE_FDS
 LOG = os.path.join(FDS_ROOT, "arm64_build.log")
 
 env = dict(os.environ)

@@ -11,12 +11,12 @@ _d = os.path.dirname(os.path.abspath(__file__))
 while not os.path.isfile(os.path.join(_d, "paths.py")):
     _d = os.path.dirname(_d)
 sys.path.insert(0, _d)
-from paths import FDS_ROOT  # noqa: E402
+from paths import FDS_ROOT, BIN, NATIVE_FDS  # noqa: E402
 
 import os, re, subprocess, time
 
 CASE = os.path.join(FDS_ROOT, "cases/wick3")
-BIN = os.path.join(FDS_ROOT, "src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx")
+BIN = NATIVE_FDS
 
 # clear any partial output from the aborted x86 attempt
 for f in os.listdir(CASE):
