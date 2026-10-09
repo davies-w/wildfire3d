@@ -18,6 +18,7 @@ show and where the tool's limits are.
 | [`docs/performance.md`](docs/performance.md) | Native arm64 build, thread scaling, why cloud and GPU were rejected. |
 | [`docs/storage.md`](docs/storage.md) | Where the raw output lives, and why most of it shouldn't be kept. |
 | [`docs/focus-fix.md`](docs/focus-fix.md) | Stopping Smokeview stealing focus from a full-screen game on macOS. |
+| [`docs/rendering.md`](docs/rendering.md) | The shared animation pipeline: the per-case config, the tools, and what bites. |
 
 ## Layout
 

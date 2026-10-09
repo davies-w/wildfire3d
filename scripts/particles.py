@@ -21,10 +21,14 @@ while not os.path.isfile(os.path.join(_d, "paths.py")):
 sys.path.insert(0, _d)
 from paths import FDS_ROOT  # noqa: E402
 
-CASE = os.path.join(FDS_ROOT, "cases/wick3")
-# Default to experiment 07's run; pass any .prt5 path to compare, e.g.
-#   read_embers.py ../../FDS/cases/garden_loft/garden_loft_1.prt5
-PRT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(CASE, "wick3c_1.prt5")
+if len(sys.argv) < 2:
+    sys.exit("usage: particles.py <file.prt5> | <render.json>")
+if sys.argv[1].endswith(".json"):
+    import case_config
+    _cfg = case_config.load(sys.argv[1])
+    PRT = os.path.join(_cfg["case_dir"], _cfg["chid"] + "_1.prt5")
+else:
+    PRT = sys.argv[1]
 
 
 def records(buf, off):

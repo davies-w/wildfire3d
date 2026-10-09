@@ -25,41 +25,38 @@ while not os.path.isfile(os.path.join(_d, "paths.py")):
     _d = os.path.dirname(_d)
 sys.path.insert(0, _d)
 from paths import FDS_ROOT  # noqa: E402
-from ign_state import SURFACES, TIMES  # noqa: E402
+import case_config  # noqa: E402
 
-CASE_NAME = sys.argv[1] if len(sys.argv) > 1 else "wick3"
-CHID = sys.argv[2] if len(sys.argv) > 2 else "wick3c"
-CASE = os.path.join(FDS_ROOT, "cases", CASE_NAME)
+if len(sys.argv) < 2:
+    sys.exit("usage: render_animation.py <render.json> [smokeprop]")
+CONFIG = case_config.load(sys.argv[1])
+CASE = CONFIG["case_dir"]
+CHID = CONFIG["chid"]
+TIMES = CONFIG["times"]
+OUT = CONFIG["out_dir"]
 SMV = os.path.join(FDS_ROOT, "bin/smv_quiet")
-SMV_FILE = os.path.join(CASE, CHID + ".smv")
-SMV_KEEP = os.path.join(CASE, CHID + ".smv.orig")
-OUT = "igncol"
-GIF = os.path.join(CASE, "ignition_data.gif")
+SMV_FILE = CONFIG["smv"]
+SMV_KEEP = CONFIG["smv_keep"]
+GIF = CONFIG["gif"]
+VOLUMES = CONFIG["volumes"]
 
-# Data volumes: soot (smoke), flame temperature (flame), firebrands (embers).
-VOLUMES = [CHID + "_1_1.s3d", CHID + "_1_3.s3d", CHID + "_1.prt5"]
+# surface name -> original RGB, from the config
+BASE = {name: tuple(s["rgb"]) for name, s in CONFIG["surfaces"].items()}
+# surface name -> (boxes, ignition temperature)
+SURFACES = {name: (s["boxes"], float(s["ignition"]))
+            for name, s in CONFIG["surfaces"].items()}
 
-BASE = {
-    "CANOPY": (40, 90, 35),
-    "TRUNK": (105, 78, 52),
-    "WOOD WALL": (222, 184, 135),
-    "ROOF": (169, 169, 169),
-    "FENCE": (150, 110, 70),
-}
 IGNITED = (235, 70, 20)
 SEVERE = (170, 15, 5)
 HOTTEST = 1400.0
 
 # Smoke mass extinction coefficient, m2/kg.  Smokeview's default draws the soot
-# volume as a near-opaque mass that hides the geometry completely.  Measured at
-# t=300, where every surface is ignited: 2500/1200/600 produced no usable frame,
-# 300 leaves 13737 warm (ignited) pixels and still shows the plume as grey haze,
-# 0 leaves 11977 and almost no smoke.  300 keeps both.
-# per case: experiment 07 wanted 300 for this effect, wick4 needs 1800 because
-# it burns less so its plume is fainter.  Pass as the 4th argument.
-SMOKEPROP = float(sys.argv[4]) if len(sys.argv) > 4 else 300.0
+# volume as a near-opaque mass that hides the geometry.  The right value is
+# case-specific: a smaller fire has a fainter plume, so it needs a larger
+# coefficient to read.  Set in the config, overridable here for a sweep.
+SMOKEPROP = float(sys.argv[2]) if len(sys.argv) > 2 else CONFIG["smokeprop"]
 
-ZOOM_INI = os.path.join(CASE, CHID + "_view.ini")
+ZOOM_INI = CONFIG["view_ini"]
 # Viewpoint zoom.  1.0 is Smokeview's default and clips the foreground; 0.5
 # frames the whole scene while keeping iso_b's orientation.
 VIEW_ZOOM = 0.5

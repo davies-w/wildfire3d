@@ -1,7 +1,7 @@
 """Dump every patch bbox in the wick3c boundary data, to fix the box mapping.
 
-ign_state.py found nothing for ROOF or FENCE. Rather than guess at coordinates,
-list what patches actually exist and where.
+ign_state.py (now surface_temp.py) found nothing for ROOF or FENCE. Rather than
+guess at coordinates, list what patches actually exist and where.
 """
 import os, sys
 
@@ -10,7 +10,7 @@ while not os.path.isfile(os.path.join(_d, "paths.py")):
     _d = os.path.dirname(_d)
 sys.path.insert(0, _d)
 
-from ign_state import CASE, PATCH, bbox, dump  # noqa: E402
+from surface_temp import CASE, CHID, PATCH, bbox, dump  # noqa: E402
 
 seen = {}
 for orient in (1, -1, 2, -2, 3, -3):

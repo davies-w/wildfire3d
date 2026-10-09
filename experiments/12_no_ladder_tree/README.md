@@ -66,3 +66,21 @@ actually loft. Experiment 07's deck was missing it; see that README.
 **Files.**
 - `build_wick4.py` — derives `wick4.fds` from `wick3c.fds`
 - `run_wick4.py` — native arm64, 4 threads
+- `wait_and_analyse.py` — waits for the solve, then the wall-temperature table
+- `render.json` — this case's config for the shared render pipeline
+- `results/` — `ignition_data.gif` (23 frames, time bar), `i_040.png`, `i_300.png`,
+  `wall_temperature.txt`
+
+Rendering uses the shared tools; see `docs/rendering.md`:
+
+```bash
+python3 scripts/strip_terrain.py      FDS/cases/wick4 wick4
+python3 scripts/surface_temp.py       experiments/12_no_ladder_tree/render.json
+python3 scripts/render_animation.py   experiments/12_no_ladder_tree/render.json
+python3 scripts/validate_animation.py experiments/12_no_ladder_tree/render.json
+```
+
+Only `WOOD WALL`, `ROOF` and `FENCE` are in this case's config. The ladder
+tree's `CANOPY`/`TRUNK` boxes are omitted because that tree is gone; the four
+remaining wild trees have no boundary output at all, so they cannot be coloured
+by temperature and are drawn in their geometry colours.

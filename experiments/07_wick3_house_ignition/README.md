@@ -111,15 +111,23 @@ back on the ground by t = 112 s, so it happens only around the peak of the fire.
 
 ## Files
 
-- `build_clean.py` — writes the deck
+- `wick3c.fds` + `build_clean.py` — the deck
 - `run_clean_arm.py` — solves, native arm64, 4 threads
 - `analyse_clean.py` — the wall-temperature history above
-- `strip_terrain.py` — **mandatory** post-solve (see `docs/working-practices.md`)
-- `ign_state.py` — per-surface temperature from the `.bf`; verifies all 38
-  patches map to exactly one surface
-- `ign_colour_render.py` — colours the geometry and renders the animation
-- `validate_animation.py` — completeness, distinctness and colour truth
-- `measure_framing.py`, `try_zoom.py`, `try_smokeprop.py` — the framing and
-  smoke sweeps behind the values used
-- `dump_patches.py`, `diag_salmon.py`, `diag_surfaces.py`, `census.py` — the
-  measurements that established the above
+- `render.json` — this case's config for the shared render pipeline
+- `results/` — `ignition_data.gif`, `i_140.png`, `i_300.png`
+
+Rendering is shared tooling, not per-experiment scripts:
+
+```bash
+python3 scripts/strip_terrain.py    FDS/cases/wick3 wick3c
+python3 scripts/surface_temp.py     experiments/07_wick3_house_ignition/render.json
+python3 scripts/render_animation.py experiments/07_wick3_house_ignition/render.json
+python3 scripts/validate_animation.py experiments/07_wick3_house_ignition/render.json
+```
+
+See `docs/rendering.md` for the config format, the gotchas, and every other
+case-specific knob. The scripts that established the findings here
+(`diag_salmon.py`, `diag_surfaces.py`, `diag_wall_ignition.py`, `dump_patches.py`,
+`probe_bf.py`) stay in this directory as the record of how the numbers were
+found.

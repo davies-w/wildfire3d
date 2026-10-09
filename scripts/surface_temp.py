@@ -21,26 +21,20 @@ while not os.path.isfile(os.path.join(_d, "paths.py")):
 sys.path.insert(0, _d)
 from paths import DIST, FDS_ROOT  # noqa: E402
 
-# case name and CHID, so the same tool serves any wick case:
-#   python3 ign_state.py wick4 wick4
-CASE_NAME = sys.argv[1] if len(sys.argv) > 1 else "wick3"
-CHID = sys.argv[2] if len(sys.argv) > 2 else "wick3c"
-CASE = os.path.join(FDS_ROOT, "cases", CASE_NAME)
+# The case is described by a config beside its deck; no case knowledge here.
+#   python3 surface_temp.py experiments/12_no_ladder_tree/render.json
+import case_config
+
+if len(sys.argv) < 2:
+    sys.exit("usage: surface_temp.py <render.json>")
+CONFIG = case_config.load(sys.argv[1])
+CASE = CONFIG["case_dir"]
+CHID = CONFIG["chid"]
 F2A = os.path.join(DIST, "bin/fds2ascii")
 
-# name -> (list of boxes, ignition temperature in C)
-SURFACES = {
-    "CANOPY": ([(14.49, 10.0, 2.0, 17.51, 16.0, 6.5)], 250.0),
-    "TRUNK": ([(15.99, 12.49, 0.0, 17.01, 13.51, 2.01)], 250.0),
-    "WOOD WALL": ([(17.99, 8.0, 0.0, 30.01, 16.0, 3.51)], 350.0),
-    "ROOF": ([(17.49, 7.49, 3.49, 30.51, 16.51, 5.51)], 550.0),
-    "FENCE": ([
-        (10.99, 11.49, 0.0, 18.01, 12.01, 2.01),   # spur to the house
-        (10.49, 3.49, 0.0, 11.01, 20.51, 2.01),    # run along x = 11
-        (10.99, 3.49, 0.0, 31.01, 4.01, 2.01),     # run along y = 4
-        (10.99, 19.99, 0.0, 31.01, 20.51, 2.01),   # run along y = 20
-    ], 300.0),
-}
+# name -> (list of boxes, ignition temperature in C), from the config
+SURFACES = {name: ([tuple(b) for b in s["boxes"]], float(s["ignition"]))
+            for name, s in CONFIG["surfaces"].items()}
 
 PATCH = re.compile(r"Patch\s+(\d+)\s+(.*?),\s*(.*?),\s*(.*?)\s*$")
 NUM = re.compile(r"(-?\d+\.\d+)\s*<\s*[xyz]\s*<\s*(-?\d+\.\d+)")
@@ -145,11 +139,7 @@ def peak_all(t0):
     return best
 
 
-TIMES = [40, 92, 140, 180, 200, 220, 240, 260, 280, 300, 320, 348]
-# a case may want different sample times:
-#   python3 ign_state.py wick4 wick4 20,40,60,80,100,120,150,180,220,260,300
-if len(sys.argv) > 3:
-    TIMES = [int(x) for x in sys.argv[3].split(",")]
+TIMES = CONFIG["times"]
 
 if __name__ == "__main__":
     import json
