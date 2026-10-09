@@ -21,7 +21,11 @@ while not os.path.isfile(os.path.join(_d, "paths.py")):
 sys.path.insert(0, _d)
 from paths import DIST, FDS_ROOT  # noqa: E402
 
-CASE = os.path.join(FDS_ROOT, "cases/wick3")
+# case name and CHID, so the same tool serves any wick case:
+#   python3 ign_state.py wick4 wick4
+CASE_NAME = sys.argv[1] if len(sys.argv) > 1 else "wick3"
+CHID = sys.argv[2] if len(sys.argv) > 2 else "wick3c"
+CASE = os.path.join(FDS_ROOT, "cases", CASE_NAME)
 F2A = os.path.join(DIST, "bin/fds2ascii")
 
 # name -> (list of boxes, ignition temperature in C)
@@ -75,7 +79,8 @@ def surfaces_for(box):
 def dump(orient, t0):
     """Run fds2ascii for one orientation and one time window."""
     out = "ig_%d_%d.txt" % (t0, orient)
-    stdin = "wick3c\n3\n1\nn\n%d %d\n%d\n1\n1\n%s\n" % (t0, t0 + 2, orient, out)
+    stdin = "%s\n3\n1\nn\n%d %d\n%d\n1\n1\n%s\n" % (CHID, t0, t0 + 2,
+                                                    orient, out)
     subprocess.run([F2A], cwd=CASE, input=stdin, text=True,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                    timeout=1800)
@@ -141,6 +146,10 @@ def peak_all(t0):
 
 
 TIMES = [40, 92, 140, 180, 200, 220, 240, 260, 280, 300, 320, 348]
+# a case may want different sample times:
+#   python3 ign_state.py wick4 wick4 20,40,60,80,100,120,150,180,220,260,300
+if len(sys.argv) > 3:
+    TIMES = [int(x) for x in sys.argv[3].split(",")]
 
 if __name__ == "__main__":
     import json

@@ -27,12 +27,14 @@ sys.path.insert(0, _d)
 from paths import FDS_ROOT  # noqa: E402
 from ign_state import SURFACES, TIMES  # noqa: E402
 
-CASE = os.path.join(FDS_ROOT, "cases/wick3")
+CASE_NAME = sys.argv[1] if len(sys.argv) > 1 else "wick3"
+CHID = sys.argv[2] if len(sys.argv) > 2 else "wick3c"
+CASE = os.path.join(FDS_ROOT, "cases", CASE_NAME)
 SMV = os.path.join(FDS_ROOT, "bin/smv_quiet")
-SMV_FILE = os.path.join(CASE, "wick3c.smv")
-SMV_KEEP = os.path.join(CASE, "wick3c.smv.orig")
+SMV_FILE = os.path.join(CASE, CHID + ".smv")
+SMV_KEEP = os.path.join(CASE, CHID + ".smv.orig")
 OUT = "igncol"
-GIF = os.path.join(FDS_ROOT, "cases/wick3/ignition_data.gif")
+GIF = os.path.join(CASE, "ignition_data.gif")
 
 # Data volumes: soot (smoke), flame temperature (flame), firebrands (embers).
 VOLUMES = ["wick3c_1_1.s3d", "wick3c_1_3.s3d", "wick3c_1.prt5"]
@@ -55,7 +57,7 @@ HOTTEST = 1400.0
 # 0 leaves 11977 and almost no smoke.  300 keeps both.
 SMOKEPROP = 300.0
 
-ZOOM_INI = os.path.join(CASE, "wick3c_view.ini")
+ZOOM_INI = os.path.join(CASE, CHID + "_view.ini")
 # Viewpoint zoom.  1.0 is Smokeview's default and clips the foreground; 0.5
 # frames the whole scene while keeping iso_b's orientation.
 VIEW_ZOOM = 0.5
@@ -70,7 +72,7 @@ def make_view_ini():
     eye_z, zoom, zoomindex on the line after eyeview,rotation_index,view_id -- so
     it is edited there, preserving azimuth -45 and elevation 25.
     """
-    lines = open(os.path.join(CASE, "wick3c.ini"), errors="replace").read().split("\n")
+    lines = open(os.path.join(CASE, CHID + ".ini"), errors="replace").read().split("\n")
     for i, line in enumerate(lines):
         if line.strip() != "VIEWPOINT5":
             continue
@@ -141,8 +143,8 @@ def render_one(t, temps):
     body += "SETVIEWPOINT\n iso_b\n"
     body += "SMOKEPROP\n %g\n" % SMOKEPROP
     body += "SETTIMEVAL\n %d.0\nRENDERONCE\n c_%03d\n" % (t, t)
-    open(os.path.join(CASE, "wick3c.ssf"), "w").write(body)
-    return subprocess.run([SMV, "-runscript", "wick3c"], cwd=CASE,
+    open(os.path.join(CASE, CHID + ".ssf"), "w").write(body)
+    return subprocess.run([SMV, "-runscript", CHID], cwd=CASE,
                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                           stdin=subprocess.DEVNULL, timeout=2400).returncode
 
