@@ -45,8 +45,13 @@ def load(path):
     cfg["ini"] = os.path.join(case_dir, chid + ".ini")
     cfg["view_ini"] = os.path.join(case_dir, chid + "_view.ini")
     cfg["ssf"] = os.path.join(case_dir, chid + ".ssf")
-    cfg["gif"] = os.path.join(case_dir, cfg.get("gif_name", "ignition_data.gif"))
     cfg["out"] = os.path.join(case_dir, cfg["out_dir"])
     cfg["volumes"] = [chid + "_1_1.s3d", chid + "_1_3.s3d", chid + "_1.prt5"]
     cfg["config_path"] = os.path.abspath(path)
+    cfg["exp_dir"] = os.path.dirname(cfg["config_path"])
+    # The gif belongs beside the experiment, not in the case directory: the
+    # case directory lives under the gitignored engine tree, so a gif written
+    # there is never committed and the tracked copy silently goes stale.
+    cfg["gif"] = os.path.join(cfg["exp_dir"], "results",
+                              cfg.get("gif_name", "ignition_data.gif"))
     return cfg

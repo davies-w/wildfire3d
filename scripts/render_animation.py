@@ -292,5 +292,6 @@ if __name__ == "__main__":
         Image.open(p).convert("RGB").crop(box).save(p)
         add_timebar(p, t, t_end)
     ims = [Image.open(p).convert("RGB") for p in paths]
+    os.makedirs(os.path.dirname(GIF), exist_ok=True)
     ims[0].save(GIF, save_all=True, append_images=ims[1:], duration=600, loop=0)
     print("%s\n  %d frames, %d bytes" % (GIF, len(ims), os.path.getsize(GIF)))
