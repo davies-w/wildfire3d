@@ -6,9 +6,17 @@ it, and the key rendered results.
 
 Files are copied, not moved -- ~/FDS stays intact until the result is checked.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, shutil
 
-FDS = os.path.expanduser("~/FDS")
+FDS = FDS_ROOT
 REPO = os.path.expanduser("~/pi/wildfire3d")
 
 # name -> deck paths, case dirs, scripts, result paths (all relative to ~/FDS)

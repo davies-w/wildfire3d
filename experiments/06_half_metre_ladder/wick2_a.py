@@ -3,6 +3,14 @@
 40 x 40 x 12 m at 0.5 m cells = 153,600 cells.  Halving the cell size refines
 the fence flame and makes the fence one cell (0.5 m) thick instead of one metre.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 
 L = []
@@ -59,5 +67,5 @@ A("&PART ID='brands', DRAG_LAW='DISK', SURF_ID='firebrand', COLOR='ORANGE',")
 A("      INITIAL_TEMPERATURE=800., AGE=60., QUANTITIES='PARTICLE TEMPERATURE' /")
 A("&SURF ID='SPOT IGN', VEG_LSET_IGNITE_TIME=0.0, COLOR='RED' /")
 
-open(os.path.expanduser("~/FDS/cases/wick2/wick2.fds"), "w").write("\n".join(L) + "\n")
+open(os.path.join(FDS_ROOT, "cases/wick2/wick2.fds"), "w").write("\n".join(L) + "\n")
 print("stage A lines:", len(L))

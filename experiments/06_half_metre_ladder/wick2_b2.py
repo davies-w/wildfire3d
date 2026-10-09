@@ -1,4 +1,12 @@
 """Stage B2: trees and outputs (append to wick2.fds)."""
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 
 L = []
@@ -30,7 +38,7 @@ A("&DEVC ID='HRR', QUANTITY='HRR', XB=0,40, 0,40, 0,12 /")
 A("&DUMP DT_SLCF=2., DT_BNDF=2., DT_HRR=1., DT_PART=2. /")
 A("&TAIL /")
 
-p = os.path.expanduser("~/FDS/cases/wick2/wick2.fds")
+p = os.path.join(FDS_ROOT, "cases/wick2/wick2.fds")
 open(p, "a").write("\n".join(L) + "\n")
 
 s = open(p).read()

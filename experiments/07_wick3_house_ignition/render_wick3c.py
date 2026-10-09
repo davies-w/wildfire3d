@@ -8,11 +8,19 @@ repeated SETTIMEVAL / RENDERONCE pairs, so one process renders every frame.
 Pass 1 renders flame volume + firebrands; pass 2 renders soot.  They are then
 blended so smoke does not wash out the fire, and assembled into a gif.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT, VENV, VENV_PY  # noqa: E402
+
 import os, shutil, subprocess
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
-SMV = os.path.expanduser("~/FDS/bin/smv_quiet")
-VENV = os.path.expanduser("~/FDS/.venv/bin/python")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
+SMV = os.path.join(FDS_ROOT, "bin/smv_quiet")
+VENV = VENV_PY
 TIMES = [40, 90, 140, 180, 200, 220, 240, 260, 280, 300, 320, 350]
 
 # smokeview auto-loads <casename>.ini, so give the new chid the known viewpoint
@@ -63,7 +71,7 @@ for t in TIMES:
         os.path.join(comp, "c_%03d.png" % t))
     n += 1
 print("  composited", n, "frames")
-subprocess.run([VENV, os.path.expanduser("~/FDS/make_gif.py"), comp,
+subprocess.run([VENV, os.path.join(FDS_ROOT, "make_gif.py"), comp,
                 os.path.join(CASE, "wick3c_clean.gif"), "1.0"], check=False)
 g = os.path.join(CASE, "wick3c_clean.gif")
 print("gif:", os.path.getsize(g) if os.path.exists(g) else "FAILED")

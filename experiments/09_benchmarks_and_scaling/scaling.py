@@ -4,10 +4,18 @@ Runs the same T_END=10 case at several thread counts and reports wall time and
 parallel speedup relative to 1 thread.  This decides cloud instance shape:
 if the mesh will not use many cores, only clock speed matters.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, re, shutil, subprocess, time
 
-CASE = os.path.expanduser("~/FDS/cases/wick2_bench")
-FDS = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/bin/fds_openmp")
+CASE = os.path.join(FDS_ROOT, "cases/wick2_bench")
+FDS = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/bin/fds_openmp")
 THREADS = [1, 2, 4, 8]
 
 base = None

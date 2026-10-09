@@ -8,10 +8,18 @@ Nothing else may change: the manual states that across a stop/restart you can
 only alter parameters that do not change the size of runtime arrays.  T_END is
 fine; geometry is not.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import re
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
 src = os.path.join(CASE, "wick3.fds")
 s = open(src).read()
 

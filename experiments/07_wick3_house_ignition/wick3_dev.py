@@ -10,10 +10,18 @@ face the fire approaches, reaches its 350 C ignition temperature.
 The canopy and roof are still colour-coded by the boundary file, so their
 behaviour is visible even without devices.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import re
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
 s = open(os.path.join(CASE, "wick3.fds")).read()
 
 s = s.replace("T_END=200.", "T_END=600.")

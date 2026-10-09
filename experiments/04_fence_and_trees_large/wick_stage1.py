@@ -4,10 +4,18 @@ and a wooden fence material/surface added.
 Domain 60 x 60 x 24 m at 1 m cells (86,400 cells).  Lawn 34 x 24 m so there is
 real garden around the house rather than 4-5 m of clearance.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import re
 
-CASE = os.path.expanduser("~/FDS/cases/garden_tall")
+CASE = os.path.join(FDS_ROOT, "cases/garden_tall")
 s = open(os.path.join(CASE, "garden_tall.fds")).read()
 
 s = re.sub(r"&MESH[^/]*/",

@@ -11,9 +11,17 @@ olive 'skirt' at the base of every obstruction.
               ground cell can fall back to the domain default surface.
               If the skirt disappears, it is default-surface fallback.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 
-src = os.path.expanduser("~/FDS/cases/garden_loft/garden_loft.fds")
+src = os.path.join(FDS_ROOT, "cases/garden_loft/garden_loft.fds")
 base = open(src).read()
 
 # --- variant 1: make the GRASS surface unmistakable, in the solver input
@@ -21,7 +29,7 @@ a = (base
      .replace("CHID='garden_loft'", "CHID='t_magenta'")
      .replace("T_END=120.", "T_END=5.")
      .replace("RGB        = 138,129,62", "RGB        = 255,0,255"))
-open(os.path.expanduser("~/FDS/cases/garden_loft/t_magenta.fds"), "w").write(a)
+open(os.path.join(FDS_ROOT, "cases/garden_loft/t_magenta.fds"), "w").write(a)
 
 # --- variant 2: extend the LAWN patch over the entire ground plane
 lawn_line = "&VENT XB=16.0,40.0, 12.0,28.0, 0.0,0.0, SURF_ID='LAWN' /"
@@ -30,7 +38,7 @@ b = (base
      .replace("CHID='garden_loft'", "CHID='t_lawnall'")
      .replace("T_END=120.", "T_END=5.")
      .replace(lawn_line, lawn_all))
-open(os.path.expanduser("~/FDS/cases/garden_loft/t_lawnall.fds"), "w").write(b)
+open(os.path.join(FDS_ROOT, "cases/garden_loft/t_lawnall.fds"), "w").write(b)
 
 print("wrote t_magenta.fds and t_lawnall.fds")
 print("  magenta variant: GRASS RGB 138,129,62 -> 255,0,255 ?",

@@ -10,6 +10,14 @@ Dropping those two lines should stop Smokeview drawing the terrain -- without
 deleting the file (which broke the render earlier).  If the skirt disappears,
 it is confirmed as the terrain, and the real surface colours take over.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import shutil
 import subprocess
@@ -17,10 +25,9 @@ import subprocess
 from PIL import Image
 from collections import Counter
 
-CASE = os.path.expanduser("~/FDS/cases/garden_loft")
+CASE = os.path.join(FDS_ROOT, "cases/garden_loft")
 SMV = os.path.join(CASE, "garden_loft.smv")
-SMV_BIN = os.path.expanduser(
-    "~/FDS/FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
+SMV_BIN = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
 
 lines = open(SMV).read().split("\n")
 out, i, removed = [], 0, 0

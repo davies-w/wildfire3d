@@ -8,12 +8,20 @@ If the strip worked, the skirt area should match the GRASS surface colour
 
 Also reports whether the .smv still has a TERRAIN block.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 from collections import Counter
 
 from PIL import Image
 
-CASE = os.path.expanduser("~/FDS/cases/garden_tall")
+CASE = os.path.join(FDS_ROOT, "cases/garden_tall")
 
 # --- is the TERRAIN block still in the .smv?
 smv = os.path.join(CASE, "garden_tall.smv")

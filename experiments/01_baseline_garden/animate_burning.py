@@ -9,12 +9,20 @@ marks surfaces that are safe.
 The soot volume is loaded only to define the time array, then SMOKEPROP makes
 it effectively invisible so the building surfaces are not obscured.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT, VENV, VENV_PY  # noqa: E402
+
 import os
 import subprocess
 
-CASE = os.path.expanduser("~/FDS/cases/garden_tall")
-SMV = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
-VENV = os.path.expanduser("~/FDS/.venv/bin/python")
+CASE = os.path.join(FDS_ROOT, "cases/garden_tall")
+SMV = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
+VENV = VENV_PY
 SSF = os.path.join(CASE, "garden_tall.ssf")
 
 TPL = """RENDERDIR
@@ -48,7 +56,7 @@ for t in times:
 
 n = len([f for f in os.listdir(out) if f.endswith(".png")])
 print(f"frames: {n}/{len(times)}")
-subprocess.run([VENV, os.path.expanduser("~/FDS/make_gif.py"), out,
+subprocess.run([VENV, os.path.join(FDS_ROOT, "make_gif.py"), out,
                 os.path.join(CASE, "burning_status.gif"), "1.0"], check=False)
 g = os.path.join(CASE, "burning_status.gif")
 print(f"gif: {os.path.getsize(g)} bytes" if os.path.exists(g) else "gif FAILED")

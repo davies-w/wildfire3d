@@ -13,10 +13,18 @@ the .bf file holds the building envelope alone.  Rendering it then colour-codes
 the house and leaves everything else -- ground, trees, hedge, embers -- drawn
 normally.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import re
 
-CASE = os.path.expanduser("~/FDS/cases/garden_tall")
+CASE = os.path.join(FDS_ROOT, "cases/garden_tall")
 SRC = os.path.join(CASE, "garden_tall.fds")
 DST = os.path.join(CASE, "house_risk.fds")
 

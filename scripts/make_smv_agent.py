@@ -9,10 +9,18 @@ Together these should stop a render from switching Spaces and pulling the user
 out of a full-screen game.  This script builds the bundle; whether it works is
 tested separately.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, shutil, stat
 
-REAL = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
-APP = os.path.expanduser("~/FDS/apps/SmokeviewAgent.app")
+REAL = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
+APP = os.path.join(FDS_ROOT, "apps/SmokeviewAgent.app")
 
 shutil.rmtree(APP, ignore_errors=True)
 os.makedirs(os.path.join(APP, "Contents", "MacOS"))

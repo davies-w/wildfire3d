@@ -6,11 +6,19 @@ one, and boundary files do not provide it).  SMOKEPROP sets the smoke mass
 extinction coefficient, so a tiny value should render the soot effectively
 invisible while keeping the time axis.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import subprocess
 
-CASE = os.path.expanduser("~/FDS/cases/garden_tall")
-SMV = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
+CASE = os.path.join(FDS_ROOT, "cases/garden_tall")
+SMV = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
 SSF = os.path.join(CASE, "garden_tall.ssf")
 
 script = """RENDERDIR

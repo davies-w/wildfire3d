@@ -1,8 +1,16 @@
 """Was there any fire in the wick run?  Read the HRR record."""
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import csv
 import os
 
-p = os.path.expanduser("~/FDS/cases/garden_tall/wick_hrr.csv")
+p = os.path.join(FDS_ROOT, "cases/garden_tall/wick_hrr.csv")
 rows = list(csv.reader(open(p)))
 names = rows[1]
 i = names.index("HRR")

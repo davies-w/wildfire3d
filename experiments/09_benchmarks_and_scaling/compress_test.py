@@ -6,6 +6,14 @@ decides whether "store raw output" is cheap or not.
 
 Samples at most 120 MB of the largest file of each suffix to keep it quick.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, zlib
 
 def biggest(root, ext):
@@ -19,7 +27,7 @@ def biggest(root, ext):
                     best = (s, p)
     return best
 
-ROOT = os.path.expanduser("~/FDS/cases")
+ROOT = os.path.join(FDS_ROOT, "cases")
 CAP = 120_000_000
 for ext in (".s3d", ".sf", ".prt5", ".restart", ".bf"):
     s, p = biggest(ROOT, ext)

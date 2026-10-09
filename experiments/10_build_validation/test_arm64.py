@@ -1,9 +1,17 @@
 """Sanity-check the native arm64 FDS binary on a copy of the benchmark case."""
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, re, shutil, subprocess, time
 
-SRC = os.path.expanduser("~/FDS/cases/wick2_bench")
-DST = os.path.expanduser("~/FDS/cases/arm_bench")
-BIN = os.path.expanduser("~/FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx")
+SRC = os.path.join(FDS_ROOT, "cases/wick2_bench")
+DST = os.path.join(FDS_ROOT, "cases/arm_bench")
+BIN = os.path.join(FDS_ROOT, "src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx")
 
 shutil.rmtree(DST, ignore_errors=True)
 os.makedirs(DST)

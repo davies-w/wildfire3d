@@ -10,13 +10,21 @@ be detected as "warm and changed" and painted onto the image -- the salmon
 block outside the render box reported earlier.  It is detected as columns where
 A is background-white but B is strongly coloured, and excluded.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT, VENV, VENV_PY  # noqa: E402
+
 import os, subprocess
 
 import numpy as np
 from PIL import Image
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
-VENV = os.path.expanduser("~/FDS/.venv/bin/python")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
+VENV = VENV_PY
 TIMES = [40, 90, 140, 180, 200, 220, 240, 260, 280, 300, 320, 350]
 HOT = np.array([235.0, 70.0, 20.0])
 
@@ -49,7 +57,7 @@ for t in TIMES:
     if t == 280:
         print("  colourbar columns excluded:", int(cbar.sum()))
 print("blended", n, "frames")
-subprocess.run([VENV, os.path.expanduser("~/FDS/make_gif.py"), out,
+subprocess.run([VENV, os.path.join(FDS_ROOT, "make_gif.py"), out,
                 os.path.join(CASE, "ignition_clean.gif"), "1.0"], check=False)
 g = os.path.join(CASE, "ignition_clean.gif")
 print("gif:", os.path.getsize(g) if os.path.exists(g) else "FAILED")

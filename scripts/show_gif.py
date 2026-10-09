@@ -9,8 +9,16 @@ Usage:  python3 show_gif.py [path/to/some.gif]
 """
 import os, sys
 
-LATEST = os.path.expanduser("~/FDS/latest.gif")
-CASE_GIF = os.path.expanduser("~/FDS/cases/wick3/ignition_clean.gif")
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
+import os, sys
+
+LATEST = os.path.join(FDS_ROOT, "latest.gif")
+CASE_GIF = os.path.join(FDS_ROOT, "cases/wick3/ignition_clean.gif")
 
 src = sys.argv[1] if len(sys.argv) > 1 else CASE_GIF
 if not os.path.exists(src):

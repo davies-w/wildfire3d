@@ -8,13 +8,21 @@ One frame per Smokeview invocation: multi-frame runs of the large volume files
 crash intermittently.  The flame volume doubles as the time axis that
 SETTIMEVAL needs.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT, VENV, VENV_PY  # noqa: E402
+
 import os
 import shutil
 import subprocess
 
-CASE = os.path.expanduser("~/FDS/cases/garden_tall")
-SMV = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
-VENV = os.path.expanduser("~/FDS/.venv/bin/python")
+CASE = os.path.join(FDS_ROOT, "cases/garden_tall")
+SMV = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
+VENV = VENV_PY
 TIMES = [15, 30, 45, 60, 75, 90, 105, 120, 135, 150]
 
 
@@ -39,10 +47,10 @@ def render(subdir, files, prefix):
 render("fireembers", ["wick_1_3.s3d", "wick_1.prt5", "wick_1_1.bf"], "ft")
 render("smoke", ["wick_1_1.s3d"], "s")
 
-subprocess.run([VENV, os.path.expanduser("~/FDS/composite_smoke.py"),
+subprocess.run([VENV, os.path.join(FDS_ROOT, "composite_smoke.py"),
                 os.path.join(CASE, "fireembers"), os.path.join(CASE, "smoke"),
                 os.path.join(CASE, "composited"), "0.80"], check=False)
-subprocess.run([VENV, os.path.expanduser("~/FDS/make_gif.py"),
+subprocess.run([VENV, os.path.join(FDS_ROOT, "make_gif.py"),
                 os.path.join(CASE, "composited"),
                 os.path.join(CASE, "wick.gif"), "1.0"], check=False)
 g = os.path.join(CASE, "wick.gif")

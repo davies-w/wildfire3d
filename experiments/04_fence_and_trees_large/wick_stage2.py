@@ -5,10 +5,18 @@ Fence run: west, south, north and east sides of the lawn, plus a spur from the
 west fence to the house's west wall.  The spur is the continuous fuel path --
 flame should travel along it and arrive at the building.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import re
 
-CASE = os.path.expanduser("~/FDS/cases/garden_tall")
+CASE = os.path.join(FDS_ROOT, "cases/garden_tall")
 s = open(os.path.join(CASE, "wick.fds")).read()
 
 FENCE = [

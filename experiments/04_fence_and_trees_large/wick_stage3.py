@@ -3,10 +3,18 @@
 BNDF_DEFAULT=F on MISC turns boundary output off everywhere; BNDF_OBST=T on an
 OBST turns it back on for the house walls and roof only.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import re
 
-CASE = os.path.expanduser("~/FDS/cases/garden_tall")
+CASE = os.path.join(FDS_ROOT, "cases/garden_tall")
 p = os.path.join(CASE, "wick.fds")
 s = open(p).read()
 

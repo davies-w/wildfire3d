@@ -3,11 +3,19 @@
 64 x 48 x 24 = 73,728 cells, down from 153,600 -- resolution unchanged, just
 less empty wildland.  House, lawn, fence and ignition shifted to suit.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import re
 
-CASE = os.path.expanduser("~/FDS/cases/wick2")
-DST = os.path.expanduser("~/FDS/cases/wick3")
+CASE = os.path.join(FDS_ROOT, "cases/wick2")
+DST = os.path.join(FDS_ROOT, "cases/wick3")
 os.makedirs(DST, exist_ok=True)
 
 s = open(os.path.join(CASE, "wick2.fds")).read()

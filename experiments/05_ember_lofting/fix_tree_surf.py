@@ -8,10 +8,18 @@ at all, defaulting to the domain's default surface.
 Fix: any bare &OBST line whose z-range looks like a trunk gets TRUNK, and one
 whose z-range looks like a canopy gets CANOPY.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import re
 
-p = os.path.expanduser("~/FDS/cases/garden_tall/wick.fds")
+p = os.path.join(FDS_ROOT, "cases/garden_tall/wick.fds")
 s = open(p).read()
 
 trunk_z = (" 0.0,3.5 /", " 0.0,2.5 /", " 0.0,4.0 /")

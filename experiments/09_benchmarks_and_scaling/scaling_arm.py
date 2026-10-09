@@ -5,17 +5,25 @@ copy of the case, so no run can resume from a previous one.  Rosetta is
 measured at 1 thread as the reference point; the native build is swept across
 thread counts to see whether parallel scaling recovers without translation.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, re, shutil, subprocess, time
 
-SRC = os.path.expanduser("~/FDS/cases/wick2_bench")
-BIN = os.path.expanduser("~/FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx")
-ROSETTA = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/bin/fds_openmp")
+SRC = os.path.join(FDS_ROOT, "cases/wick2_bench")
+BIN = os.path.join(FDS_ROOT, "src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx")
+ROSETTA = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/bin/fds_openmp")
 RUNS = [("rosetta-x86", ROSETTA, 1), ("arm64", BIN, 1), ("arm64", BIN, 2),
         ("arm64", BIN, 4), ("arm64", BIN, 8)]
 
 base = {}
 for tag, binary, nt in RUNS:
-    d = os.path.expanduser("~/FDS/cases/scl_%s_%d" % (tag, nt))
+    d = os.path.join(FDS_ROOT, "cases/scl_%s_%d" % (tag, nt))
     shutil.rmtree(d, ignore_errors=True)
     os.makedirs(d)
     for f in os.listdir(SRC):

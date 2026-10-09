@@ -6,10 +6,18 @@ temperature and how many cells exceed 350 C (wood ignition).
 
 Output comes from fds2ascii, so no devices were needed in the input file.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, subprocess
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
-F2A = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/bin/fds2ascii")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
+F2A = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/bin/fds2ascii")
 WINDOWS = [48, 100, 148, 200, 248, 300, 348]
 IGN = 350.0
 

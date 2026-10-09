@@ -3,12 +3,20 @@
 Reports the A and B pixel values in the lower-left region where the wash fires
 outside the render box, so the cause can be identified rather than guessed.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 
 import numpy as np
 from PIL import Image
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
 A = np.asarray(Image.open(os.path.join(CASE, "norm", "n_280.png")).convert("RGB"), dtype=float)
 B = np.asarray(Image.open(os.path.join(CASE, "burn", "b_280.png")).convert("RGB"), dtype=float)
 

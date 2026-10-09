@@ -5,12 +5,20 @@ then rebuild the blended animation from the post-fix frames.
 composite_smoke.py globs 'ft_*.png' in the base dir and looks for 's_<tag>'
 in the smoke dir, so the base frames must be ft_NNN.png.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT, VENV, VENV_PY  # noqa: E402
+
 import glob
 import os
 import subprocess
 
-CASE = os.path.expanduser("~/FDS/cases/garden_loft")
-VENV = os.path.expanduser("~/FDS/.venv/bin/python")
+CASE = os.path.join(FDS_ROOT, "cases/garden_loft")
+VENV = VENV_PY
 
 # 1. rename f_NNN.png -> ft_NNN.png in the flame+ember pass
 renamed = 0
@@ -28,12 +36,12 @@ if os.path.isdir(stale):
         os.remove(p)
 print("cleared stale composited frames")
 
-subprocess.run([VENV, os.path.expanduser("~/FDS/composite_smoke.py"),
+subprocess.run([VENV, os.path.join(FDS_ROOT, "composite_smoke.py"),
                 os.path.join(CASE, "fireembers"),
                 os.path.join(CASE, "smoke"),
                 stale, "0.70"], check=False)
 
-subprocess.run([VENV, os.path.expanduser("~/FDS/make_gif.py"),
+subprocess.run([VENV, os.path.join(FDS_ROOT, "make_gif.py"),
                 stale, os.path.join(CASE, "fire_embers_smoke.gif"), "1.0"],
                check=False)
 

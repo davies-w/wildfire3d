@@ -4,12 +4,20 @@
 Smokeview intermittently fails a single render, so retry each missing frame up
 to three times before giving up.  Multi-frame runs are avoided entirely.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT, VENV, VENV_PY  # noqa: E402
+
 import os
 import subprocess
 
-CASE = os.path.expanduser("~/FDS/cases/garden_tall")
-SMV = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
-VENV = os.path.expanduser("~/FDS/.venv/bin/python")
+CASE = os.path.join(FDS_ROOT, "cases/garden_tall")
+SMV = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
+VENV = VENV_PY
 
 TIMES = [8, 16, 24, 32, 40, 50, 62, 76, 92, 110]
 PASSES = [("fireembers", ["garden_tall_1_3.s3d", "garden_tall_1.prt5"], "ft"),
@@ -46,12 +54,12 @@ for subdir, files, prefix in PASSES:
         os.path.join(CASE, subdir, f"{prefix}_{t:03d}.png"))])
     print(f"{subdir}: {have}/{len(TIMES)}")
 
-subprocess.run([VENV, os.path.expanduser("~/FDS/composite_smoke.py"),
+subprocess.run([VENV, os.path.join(FDS_ROOT, "composite_smoke.py"),
                 os.path.join(CASE, "fireembers"), os.path.join(CASE, "smoke"),
                 os.path.join(CASE, "composited"), "0.70"], check=False)
 for src, gif in (("composited", "tall_fire_smoke.gif"),
                  ("fireembers", "tall_fire_embers.gif")):
-    subprocess.run([VENV, os.path.expanduser("~/FDS/make_gif.py"),
+    subprocess.run([VENV, os.path.join(FDS_ROOT, "make_gif.py"),
                     os.path.join(CASE, src), os.path.join(CASE, gif), "1.0"],
                    check=False)
     p = os.path.join(CASE, gif)

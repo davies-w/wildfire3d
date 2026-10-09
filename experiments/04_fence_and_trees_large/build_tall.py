@@ -8,12 +8,20 @@ level-set grass, mown lawn, hot lofted embers.
 Also writes a matching viewpoint .ini -- the scene bounding box on the last
 line has to grow with the domain or Smokeview will frame it wrongly.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import re
 
-CASE = os.path.expanduser("~/FDS/cases/garden_loft")
+CASE = os.path.join(FDS_ROOT, "cases/garden_loft")
 SRC = os.path.join(CASE, "garden_loft.fds")
-DST = os.path.expanduser("~/FDS/cases/garden_tall")
+DST = os.path.join(FDS_ROOT, "cases/garden_tall")
 
 os.makedirs(DST, exist_ok=True)
 s = open(SRC).read()

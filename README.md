@@ -24,6 +24,9 @@ show and where the tool's limits are.
 ```
 docs/                 the findings
 experiments/          one directory per experiment: input, scripts, results
+scripts/              shared tooling: engine setup, storage, rendering helpers
+paths.py              single source of truth for where the engine lives
+FDS/                  the engine and its data — gitignored, see FDS/README.md
 ```
 
 Each directory under `experiments/` is self-contained — the `.fds` input that
@@ -46,6 +49,23 @@ experiment directory and reproduce that result without reading anything else.
 | 09 | `benchmarks_and_scaling` | Thread scaling, Rosetta vs native arm64. |
 | 10 | `build_validation` | Does the hand-built arm64 FDS agree with the stock binary? |
 
+## Setting up
+
+```bash
+python3 scripts/setup_engine.py --dist --build   # FDS itself
+python3 scripts/setup_env.py                     # venv: numpy, pillow, dvc
+python3 scripts/check_no_hardcoded_paths.py      # lint
+```
+
+The engine is **not committed** — it is a large third-party tree plus build
+output, so it is checked out into `FDS/` (gitignored) by a recorded recipe
+rather than vendored. That directory holds the checkout, the solver output and
+the case data together. See [`FDS/README.md`](FDS/README.md).
+
+Scripts never hardcode that location. Everything resolves through `paths.py`,
+which defaults `FDS_ROOT` to `FDS/` and honours `WILDFIRE3D_FDS` to point at a
+checkout somewhere else.
+
 ## Getting the data
 
 Raw solver output is versioned with **DVC** and stored in a public Hugging Face
@@ -64,14 +84,13 @@ Input decks are plain FDS. The pipeline is `fds`, then a mandatory post-solve
 terrain strip, then Smokeview.
 
 ```bash
-# 1. solve
-OMP_NUM_THREADS=4 fds mycase.fds
+# 1. solve (4 threads -- 8 is slower on this hardware, see docs/performance.md)
+OMP_NUM_THREADS=4 FDS/install/bin/fds mycase.fds
 
 # 2. strip the TERRAIN block from the regenerated .smv (see working-practices.md)
-python scripts/strip_terrain.py mycase
+python3 scripts/strip_terrain.py mycase
 
-# 3. render
-python scripts/render.py mycase
+# 3. render -- renderers are per-experiment; see experiments/*/README.md
 ```
 
 **Use 4 threads, not 8.** On this hardware 8 is slower than 1. See

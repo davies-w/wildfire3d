@@ -9,16 +9,24 @@ Only the *evidence* is tracked, not the raw volume: .bf (wall temperature,
 burning rate), .prt5 (firebrands) and .sf (slices).  ~5 MB for the headline
 case against ~140 MB if the .s3d volume came too. See docs/storage.md.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT, SRC, VENV_BIN  # noqa: E402
+
 import os, shutil, subprocess
 
-V = os.path.expanduser("~/FDS/.venv/bin")
+V = VENV_BIN
 DVC = os.path.join(V, "dvc")
 HF = os.path.join(V, "hf")
 TOKEN = open(os.path.expanduser("~/.cache/huggingface/token")).read().strip()
 
 REPO = os.path.expanduser("~/pi/wildfire3d")
-SRC = os.path.expanduser("~/FDS/cases/wick3")
-MIRROR = os.path.expanduser("~/FDS/hf_dvc_mirror")
+SRC = os.path.join(FDS_ROOT, "cases/wick3")
+MIRROR = os.path.join(FDS_ROOT, "hf_dvc_mirror")
 PREFIX = "wildfire3d"
 BASE = "https://huggingface.co/buckets/wdavies/dvc_storage/resolve"
 env = dict(os.environ, HF_TOKEN=TOKEN)

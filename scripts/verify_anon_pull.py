@@ -5,9 +5,17 @@ then pulls through the HTTP remote with the HF token REMOVED from the
 environment, and compares checksums.  A silently empty pull would otherwise look
 like success.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT, VENV_BIN  # noqa: E402
+
 import hashlib, os, shutil, subprocess
 
-V = os.path.expanduser("~/FDS/.venv/bin")
+V = VENV_BIN
 DVC = os.path.join(V, "dvc")
 REPO = os.path.expanduser("~/pi/wildfire3d")
 RAW = os.path.join(REPO, "experiments/07_wick3_house_ignition/raw")

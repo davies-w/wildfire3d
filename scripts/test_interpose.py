@@ -5,11 +5,19 @@ the system log whether any SetFrontProcess call was made by smokeview during the
 run.  Frames must also still be produced, or a silent failure would look like
 success.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, shutil, subprocess, time
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
-SMV = os.path.expanduser("~/FDS/bin/smv_quiet")
-SHIM = os.path.expanduser("~/FDS/nofront.dylib")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
+SMV = os.path.join(FDS_ROOT, "bin/smv_quiet")
+SHIM = os.path.join(FDS_ROOT, "nofront.dylib")
 
 out = os.path.join(CASE, "agent_test2")
 shutil.rmtree(out, ignore_errors=True)

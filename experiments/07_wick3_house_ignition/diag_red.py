@@ -8,12 +8,20 @@ Looking at the ramp in the render, the top of the scale is a strong red/orange.
 This finds those pixels and reports their bounding box, and separately reports
 what fraction of the image is on the ramp at all.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 
 import numpy as np
 from PIL import Image
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
 T = 350
 A = np.asarray(Image.open(os.path.join(CASE, "norm", "n_%03d.png" % T)).convert("RGB"), dtype=float)
 B = np.asarray(Image.open(os.path.join(CASE, "burn", "b_%03d.png" % T)).convert("RGB"), dtype=float)

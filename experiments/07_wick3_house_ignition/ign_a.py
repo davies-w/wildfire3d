@@ -1,7 +1,15 @@
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, shutil, subprocess
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
-SMV = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
+SMV = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
 TIMES = [80, 140, 180, 210, 240, 270, 300, 330, 360, 390]
 
 def render(sub, files, pre, hide=False):

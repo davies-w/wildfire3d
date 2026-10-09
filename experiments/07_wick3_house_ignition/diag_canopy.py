@@ -5,12 +5,20 @@ those pixels, and reports what pass B has at the same place and what the blend
 computed.  If B is not warm there, the burning-rate pass never drew the canopy
 -- so the fault is in the render, not the blend.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 
 import numpy as np
 from PIL import Image
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
 T = 350
 A = np.asarray(Image.open(os.path.join(CASE, "norm", "n_%03d.png" % T)).convert("RGB"), dtype=float)
 B = np.asarray(Image.open(os.path.join(CASE, "burn", "b_%03d.png" % T)).convert("RGB"), dtype=float)

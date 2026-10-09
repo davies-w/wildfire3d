@@ -7,9 +7,17 @@ HTTPS with no credentials -- which satisfies even the strictest reading of
 Uploads a distinctive test file with the token, then tries to fetch it with
 curl and NO Authorization header, and reports the status code.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import VENV_BIN  # noqa: E402
+
 import os, subprocess
 
-HF = os.path.expanduser("~/FDS/.venv/bin/hf")
+HF = os.path.join(VENV_BIN, "hf")
 TOKEN = open(os.path.expanduser("~/.cache/huggingface/token")).read().strip()
 BUCKET = "wdavies/dvc_storage"
 KEY = "anon_test/probe.txt"

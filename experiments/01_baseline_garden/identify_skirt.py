@@ -6,6 +6,14 @@ one frame, then reports which table entry the skirt's pixels match.
 
 Everything long lives here so the shell command stays one word.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import shutil
 import subprocess
@@ -14,11 +22,10 @@ import sys
 from PIL import Image
 from collections import Counter
 
-CASE = os.path.expanduser("~/FDS/cases/garden_loft")
+CASE = os.path.join(FDS_ROOT, "cases/garden_loft")
 SMV = os.path.join(CASE, "garden_loft.smv")
 ORIG = SMV + ".orig"
-SMV_BIN = os.path.expanduser(
-    "~/FDS/FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
+SMV_BIN = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
 
 # every surface -> a unique colour
 TABLE = {

@@ -7,6 +7,14 @@ large difference from the very first recorded step.
 
 Prints time, both HRR values, and the running relative difference.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import csv, os
 
 
@@ -16,8 +24,8 @@ def load(p):
     return [[float(x) for x in r] for r in rows[2:] if r and r[0].strip()]
 
 
-dx = load(os.path.expanduser("~/FDS/cases/valid_x86/wtest_hrr.csv"))
-da = load(os.path.expanduser("~/FDS/cases/valid_arm/wtest_hrr.csv"))
+dx = load(os.path.join(FDS_ROOT, "cases/valid_x86/wtest_hrr.csv"))
+da = load(os.path.join(FDS_ROOT, "cases/valid_arm/wtest_hrr.csv"))
 
 print("%8s %12s %12s %12s %10s" % ("time", "x86 HRR", "arm HRR", "abs diff", "rel diff"))
 n = min(len(dx), len(da))

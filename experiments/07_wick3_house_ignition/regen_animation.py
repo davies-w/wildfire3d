@@ -8,6 +8,14 @@ blend:  0.70*pass1 + 0.30*pass2    -> composited/   ("light smoke")
 Also renders one geometry-only frame first and reports whether the olive
 skirt is gone (it should match the GRASS surface colour instead).
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT, VENV, VENV_PY  # noqa: E402
+
 import os
 import shutil
 import subprocess
@@ -15,10 +23,10 @@ from collections import Counter
 
 from PIL import Image
 
-CASE = os.path.expanduser("~/FDS/cases/garden_loft")
-SMV = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
-PY = os.path.expanduser("~/FDS/.venv/bin/python")
-VENV = os.path.expanduser("~/FDS/.venv/bin/python")
+CASE = os.path.join(FDS_ROOT, "cases/garden_loft")
+SMV = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
+PY = VENV_PY
+VENV = VENV_PY
 
 TIMES = [8, 16, 24, 32, 40, 50, 62, 76, 92, 110]
 
@@ -81,12 +89,12 @@ render(p2, "smoke")
 
 # ---- 3. blend + gifs ------------------------------------------------------
 print("\nblending and building gifs:")
-subprocess.run([VENV, os.path.expanduser("~/FDS/composite_smoke.py"),
+subprocess.run([VENV, os.path.join(FDS_ROOT, "composite_smoke.py"),
                 os.path.join(CASE, "fireembers"), os.path.join(CASE, "smoke"),
                 os.path.join(CASE, "composited"), "0.70"], check=False)
 for srcdir, gif in (("composited", "fire_embers_smoke.gif"),
                     ("fireembers", "fire_embers_3d.gif")):
-    subprocess.run([VENV, os.path.expanduser("~/FDS/make_gif.py"),
+    subprocess.run([VENV, os.path.join(FDS_ROOT, "make_gif.py"),
                     os.path.join(CASE, srcdir), os.path.join(CASE, gif), "1.0"],
                    check=False)
     p = os.path.join(CASE, gif)

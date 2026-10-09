@@ -1,12 +1,20 @@
 #!/usr/bin/env python3
 """Capture Smokeview's output for the soot pass, with the script correctly
 named after the casename."""
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import shutil
 import subprocess
 
-CASE = os.path.expanduser("~/FDS/cases/garden_tall")
-SMV = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
+CASE = os.path.join(FDS_ROOT, "cases/garden_tall")
+SMV = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/smvbin/smokeview")
 
 with open(os.path.join(CASE, "garden_tall.ssf"), "w") as fh:
     fh.write("RENDERDIR\n diagout\nUNLOADALL\nLOADINIFILE\n garden_tall.ini\n"

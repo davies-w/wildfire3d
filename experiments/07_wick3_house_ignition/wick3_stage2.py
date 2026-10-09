@@ -1,8 +1,16 @@
 """Stage 2 for wick3: fence, ladder tree and trees repositioned to the
 smaller 32 x 24 m domain."""
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 
-P = os.path.expanduser("~/FDS/cases/wick3/wick3.fds")
+P = os.path.join(FDS_ROOT, "cases/wick3/wick3.fds")
 s = open(P).read()
 
 MAP = [

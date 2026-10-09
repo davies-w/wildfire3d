@@ -4,10 +4,18 @@ Launches via `open -g -W -a <bundle> --args ...`.  -g means "do not bring to
 foreground"; the bundle's LSUIElement=true makes it an agent app.  Success is
 measured by whether the PNGs appear.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, shutil, subprocess, time
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
-APP = os.path.expanduser("~/FDS/apps/SmokeviewAgent.app/Contents/MacOS/smokeview-launch")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
+APP = os.path.join(FDS_ROOT, "apps/SmokeviewAgent.app/Contents/MacOS/smokeview-launch")
 TIMES = [100, 250, 350]
 
 out = os.path.join(CASE, "agent_test")

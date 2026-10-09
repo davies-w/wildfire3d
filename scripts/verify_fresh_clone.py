@@ -4,9 +4,17 @@ Clones davies-w/wildfire3d from GitHub into a clean directory, strips every
 credential from the environment, and runs `dvc pull`.  This is the end-to-end
 claim in the README -- if it fails here, the README is wrong.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT, VENV_BIN  # noqa: E402
+
 import os, shutil, subprocess
 
-V = os.path.expanduser("~/FDS/.venv/bin")
+V = VENV_BIN
 DVC = os.path.join(V, "dvc")
 DEST = "/tmp/wildfire3d_clone"
 

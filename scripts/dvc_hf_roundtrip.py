@@ -14,15 +14,23 @@ read-only, which is exactly what a public archive wants; writes go out through
 Step 6 is the one that matters -- a silent empty pull would otherwise look like
 success, which is how these things usually fool you.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT, VENV_BIN  # noqa: E402
+
 import hashlib, os, shutil, subprocess, sys
 
-V = os.path.expanduser("~/FDS/.venv/bin")
+V = VENV_BIN
 HF = os.path.join(V, "hf")
 DVC = os.path.join(V, "dvc")
 TOKEN = open(os.path.expanduser("~/.cache/huggingface/token")).read().strip()
 
-WORK = os.path.expanduser("~/FDS/hf_dvc_test")
-MIRROR = os.path.expanduser("~/FDS/hf_dvc_mirror")
+WORK = os.path.join(FDS_ROOT, "hf_dvc_test")
+MIRROR = os.path.join(FDS_ROOT, "hf_dvc_mirror")
 PREFIX = "dvc_test"
 BASE = "https://huggingface.co/buckets/wdavies/dvc_storage/resolve"
 env = dict(os.environ, HF_TOKEN=TOKEN)

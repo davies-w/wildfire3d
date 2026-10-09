@@ -4,9 +4,17 @@ Decides the storage question with measurements rather than intuition: which
 suffixes dominate, whether the data is large because of many cases or one big
 run, and what fraction a gzip saves.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, collections
 
-ROOT = os.path.expanduser("~/FDS")
+ROOT = FDS_ROOT
 by_ext = collections.Counter()
 n_ext = collections.Counter()
 cases = collections.Counter()

@@ -9,10 +9,18 @@ finds per orientation.  This dumps the listing first so the canopy's patch can
 be identified by its bounding box, then extracts values for the patches of
 interest: the canopy (x 14.5-17.5) and, for reference, the house west wall.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, re, subprocess
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
-F2A = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/bin/fds2ascii")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
+F2A = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/bin/fds2ascii")
 T0, T1 = 300, 302
 
 

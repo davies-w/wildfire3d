@@ -8,13 +8,21 @@ Two stages:
 
 Everything is logged with a hard time limit.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, subprocess, time
 
-FIREMODELS = os.path.expanduser("~/FDS/src")
+FIREMODELS = os.path.join(FDS_ROOT, "src")
 BUILD = os.path.join(FIREMODELS, "fds", "Build", "ompi_gnu_osx")
 TARGET = "ompi_gnu_osx"
 BIN = os.path.join(BUILD, "fds_" + TARGET)
-LOG = os.path.expanduser("~/FDS/arm64_build.log")
+LOG = os.path.join(FDS_ROOT, "arm64_build.log")
 
 env = dict(os.environ)
 env["FIREMODELS"] = FIREMODELS

@@ -8,17 +8,25 @@ Method: run a short T_END=30 copy of the wick3 case with each binary, SINGLE
 THREADED so that thread scheduling cannot confound the comparison, then diff
 the heat release rate records step by step.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, shutil, subprocess, time
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
-ARM = os.path.expanduser("~/FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx")
-X86 = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/bin/fds_openmp")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
+ARM = os.path.join(FDS_ROOT, "src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx")
+X86 = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/bin/fds_openmp")
 
 src = open(os.path.join(CASE, "wick3.fds")).read()
 src = src.replace("CHID='wick3'", "CHID='wtest'").replace("T_END=200.", "T_END=30.")
 
 for tag, binary in [("valid_x86", X86), ("valid_arm", ARM)]:
-    d = os.path.expanduser("~/FDS/cases/" + tag)
+    d = os.path.join(FDS_ROOT, "cases/" + tag)
     shutil.rmtree(d, ignore_errors=True)
     os.makedirs(d)
     open(os.path.join(d, "wtest.fds"), "w").write(src)

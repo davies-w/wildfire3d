@@ -1,4 +1,12 @@
 """Stage B1: house, fence and the ground vents (append to wick2.fds)."""
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 
 L = []
@@ -30,6 +38,6 @@ A("&VENT MB='YMIN', SURF_ID='OPEN' /")
 A("&VENT MB='YMAX', SURF_ID='OPEN' /")
 A("&VENT MB='ZMAX', SURF_ID='OPEN' /")
 
-p = os.path.expanduser("~/FDS/cases/wick2/wick2.fds")
+p = os.path.join(FDS_ROOT, "cases/wick2/wick2.fds")
 open(p, "a").write("\n".join(L) + "\n")
 print("appended", len(L), "lines")

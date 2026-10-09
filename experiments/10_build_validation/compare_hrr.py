@@ -4,6 +4,14 @@ Both runs used identical input, single threaded, T_END=30 s.  The arm64 build
 linked without HYPRE and SUNDIALS, so this checks whether those libraries
 actually affect our cases.  Agreement to round-off means the build is sound.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import csv, os
 
 def load(p):
@@ -13,8 +21,8 @@ def load(p):
     data = [[float(x) for x in r] for r in rows[2:] if r and r[0].strip()]
     return hdr, data
 
-hx, dx = load(os.path.expanduser("~/FDS/cases/valid_x86/wtest_hrr.csv"))
-ha, da = load(os.path.expanduser("~/FDS/cases/valid_arm/wtest_hrr.csv"))
+hx, dx = load(os.path.join(FDS_ROOT, "cases/valid_x86/wtest_hrr.csv"))
+ha, da = load(os.path.join(FDS_ROOT, "cases/valid_arm/wtest_hrr.csv"))
 
 print("x86 rows %d  arm rows %d" % (len(dx), len(da)))
 print("columns:", [h for h in hx if h])

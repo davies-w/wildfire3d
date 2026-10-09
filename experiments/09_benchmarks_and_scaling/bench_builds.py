@@ -3,14 +3,22 @@
 No case changes -- same mesh, same geometry.  Only the executable and
 OMP_NUM_THREADS differ.  T_END cut to 10 s so the benchmark is quick.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 import re
 import subprocess
 import time
 
-CASE = os.path.expanduser("~/FDS/cases/wick2")
-BENCH = os.path.expanduser("~/FDS/cases/wick2_bench")
-BIN = os.path.expanduser("~/FDS/FDS-6.11.1_SMV-6.11.2_osx/bin")
+CASE = os.path.join(FDS_ROOT, "cases/wick2")
+BENCH = os.path.join(FDS_ROOT, "cases/wick2_bench")
+BIN = os.path.join(FDS_ROOT, "FDS-6.11.1_SMV-6.11.2_osx/bin")
 
 os.makedirs(BENCH, exist_ok=True)
 s = open(os.path.join(CASE, "wick2.fds")).read()

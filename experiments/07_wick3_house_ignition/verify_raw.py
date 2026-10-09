@@ -5,12 +5,20 @@ The composite multiplies the base by 0.70 wherever smoke sits, which darkens
 everything and can fake a "GRASS x0.7" match.  The raw frame is the honest
 measurement.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os
 from collections import Counter
 
 from PIL import Image
 
-CASE = os.path.expanduser("~/FDS/cases/garden_tall")
+CASE = os.path.join(FDS_ROOT, "cases/garden_tall")
 TABLE = {"GRASS": (138, 129, 62), "LAWN": (96, 160, 64), "TRUNK": (105, 78, 52),
          "CANOPY": (40, 90, 35), "HEDGE": (52, 98, 38), "ROOF": (169, 169, 169)}
 

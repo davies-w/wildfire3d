@@ -5,10 +5,18 @@ slightly worse.  CHID stays 'wick3c', RESTART is not used, so every output file
 has one unambiguous time axis -- the problem that made the earlier restart data
 untrustworthy.
 """
+import os, sys
+
+_d = os.path.dirname(os.path.abspath(__file__))
+while not os.path.isfile(os.path.join(_d, "paths.py")):
+    _d = os.path.dirname(_d)
+sys.path.insert(0, _d)
+from paths import FDS_ROOT  # noqa: E402
+
 import os, re, subprocess, time
 
-CASE = os.path.expanduser("~/FDS/cases/wick3")
-BIN = os.path.expanduser("~/FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx")
+CASE = os.path.join(FDS_ROOT, "cases/wick3")
+BIN = os.path.join(FDS_ROOT, "src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx")
 
 # clear any partial output from the aborted x86 attempt
 for f in os.listdir(CASE):
