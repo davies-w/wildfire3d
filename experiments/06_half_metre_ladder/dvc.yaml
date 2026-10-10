@@ -1,28 +1,66 @@
-# Experiment 06: half-metre cells, a tree ignites and takes over.
+# Experiment 06: does a ladder tree ignite a house at half-metre cells?
 #
-# `dvc repro` runs this file; `dvc.lock` is committed.  Outputs are tracked
-# where FDS writes them; the .s3d volumes are uncached, so DVC knows this stage
-# produces them without ever copying or pushing them.
+# One deck, 80 x 80 x 24 cells over a 40 x 40 x 12 m plot, so 0.5 m cells. This
+# is the expensive experiment: roughly 52 minutes of solver time.
+#
+# `dvc repro` runs this file; `dvc.lock` is committed. Outputs go to data/.
+# `.s3d` volumes are uncached: DVC knows this stage produces them, but never
+# copies or pushes them.
 stages:
   solve:
     wdir: ../..
     cmd: >-
-      .venv/bin/python scripts/run_fds.py experiments/06_half_metre_ladder/wick2.fds --threads 4
-      && .venv/bin/python scripts/strip_terrain.py FDS/cases/wick2 wick2
+      .venv/bin/python scripts/run_fds.py
+      experiments/06_half_metre_ladder/wick2.fds:experiments/06_half_metre_ladder/data
+      --threads 4
+      && .venv/bin/python scripts/strip_terrain.py experiments/06_half_metre_ladder/data wick2
     deps:
       - experiments/06_half_metre_ladder/wick2.fds
       - scripts/run_fds.py
       - scripts/strip_terrain.py
     outs:
-      - FDS/cases/wick2/wick2_1.prt5
-      - FDS/cases/wick2/wick2_1_1.bf
-      - FDS/cases/wick2/wick2_1_2.bf
-      - FDS/cases/wick2/wick2_1_1.sf
-      - FDS/cases/wick2/wick2_1_2.sf
-      - FDS/cases/wick2/wick2.smv
-      - FDS/cases/wick2/wick2_1_1.s3d:
+      - experiments/06_half_metre_ladder/data/wick2.smv
+      - experiments/06_half_metre_ladder/data/wick2_1.prt5
+      - experiments/06_half_metre_ladder/data/wick2_1_1.bf
+      - experiments/06_half_metre_ladder/data/wick2_1_2.bf
+      - experiments/06_half_metre_ladder/data/wick2_1_1.sf
+      - experiments/06_half_metre_ladder/data/wick2_1_2.sf
+      - experiments/06_half_metre_ladder/data/wick2_1_1.s3d:
           cache: false
-      - FDS/cases/wick2/wick2_1_2.s3d:
+      - experiments/06_half_metre_ladder/data/wick2_1_2.s3d:
           cache: false
-      - FDS/cases/wick2/wick2_1_3.s3d:
+      - experiments/06_half_metre_ladder/data/wick2_1_3.s3d:
+          cache: false
+
+  boundary:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/surface_temp.py
+      experiments/06_half_metre_ladder/render.json
+    deps:
+      - experiments/06_half_metre_ladder/render.json
+      - experiments/06_half_metre_ladder/data/wick2_1_1.bf
+      - experiments/06_half_metre_ladder/data/wick2_1_2.bf
+      - scripts/surface_temp.py
+      - scripts/case_config.py
+    outs:
+      - experiments/06_half_metre_ladder/data/ign_state.json
+
+  render:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/render_animation.py
+      experiments/06_half_metre_ladder/render.json
+    deps:
+      - experiments/06_half_metre_ladder/render.json
+      - experiments/06_half_metre_ladder/view.ini
+      - experiments/06_half_metre_ladder/data/ign_state.json
+      - experiments/06_half_metre_ladder/data/wick2.smv
+      - experiments/06_half_metre_ladder/data/wick2_1_1.s3d
+      - experiments/06_half_metre_ladder/data/wick2_1_3.s3d
+      - experiments/06_half_metre_ladder/data/wick2_1.prt5
+      - scripts/render_animation.py
+      - scripts/case_config.py
+    outs:
+      - experiments/06_half_metre_ladder/results:
           cache: false

@@ -1,8 +1,10 @@
 schema: '2.0'
 stages:
   solve:
-    cmd: python3 scripts/run_fds.py experiments/06_half_metre_ladder/wick2.fds 
-      --threads 4 && python3 scripts/strip_terrain.py FDS/cases/wick2 wick2
+    cmd: .venv/bin/python scripts/run_fds.py 
+      experiments/06_half_metre_ladder/wick2.fds:experiments/06_half_metre_ladder/data
+      --threads 4 && .venv/bin/python scripts/strip_terrain.py 
+      experiments/06_half_metre_ladder/data wick2
     deps:
     - path: experiments/06_half_metre_ladder/wick2.fds
       hash: md5
@@ -10,46 +12,121 @@ stages:
       size: 5467
     - path: scripts/run_fds.py
       hash: md5
-      md5: 319a2472ff98cef3c9026eadb67e8dec
-      size: 4256
+      md5: cad1540ade22f0240c57b5b93d635237
+      size: 4487
     - path: scripts/strip_terrain.py
       hash: md5
       md5: e3700807948e9d294794a418e36baac3
       size: 1860
     outs:
-    - path: FDS/cases/wick2/wick2.smv
+    - path: experiments/06_half_metre_ladder/data/wick2.smv
       hash: md5
-      md5: abf947545ca602d7e8edb323171cd5e3
-      size: 16444
-    - path: FDS/cases/wick2/wick2_1.prt5
+      md5: 3dcb3a401369f3015404a9b4c55246b5
+      size: 16503
+    - path: experiments/06_half_metre_ladder/data/wick2_1.prt5
       hash: md5
-      md5: d550f606defde78e756178c3e68b3c44
-      size: 2712756
-    - path: FDS/cases/wick2/wick2_1_1.bf
+      md5: b2741ae8072904d80cc823ebfd68e928
+      size: 2711176
+    - path: experiments/06_half_metre_ladder/data/wick2_1_1.bf
       hash: md5
-      md5: 3be36c702872282808b7340ea1d683d1
+      md5: 5a1bb39e2c43c3c87645499560868bb7
       size: 1114194
-    - path: FDS/cases/wick2/wick2_1_1.s3d
+    - path: experiments/06_half_metre_ladder/data/wick2_1_1.s3d
       hash: md5
-      md5: 19eed3576b232833ad41bb4660c47dec
-      size: 72243501
-    - path: FDS/cases/wick2/wick2_1_1.sf
+      md5: 0c7f4782323f48d25269b90c7f7abd43
+      size: 73671898
+    - path: experiments/06_half_metre_ladder/data/wick2_1_1.sf
       hash: md5
-      md5: b3d66634483c20c2f173a715c2881c0d
+      md5: a66e20aaa7ad3b9e66d9fbd81d71995a
       size: 1602250
-    - path: FDS/cases/wick2/wick2_1_2.bf
+    - path: experiments/06_half_metre_ladder/data/wick2_1_2.bf
       hash: md5
-      md5: 3f9b9e9dacbe229d699229fbb81f20f7
+      md5: 8a93802accecc9d9e7636f7a82cbf2cf
       size: 1114194
-    - path: FDS/cases/wick2/wick2_1_2.s3d
+    - path: experiments/06_half_metre_ladder/data/wick2_1_2.s3d
       hash: md5
-      md5: f6f9d8cff7ae29b3f3139a0ba2bef57c
-      size: 10907825
-    - path: FDS/cases/wick2/wick2_1_2.sf
+      md5: 19a1077d285ed3618a4fce636cd52041
+      size: 11028001
+    - path: experiments/06_half_metre_ladder/data/wick2_1_2.sf
       hash: md5
-      md5: 266c57944694b7fa7c6b4568cfccea71
+      md5: 7041bef5065195673188f3f296bf2b54
       size: 495466
-    - path: FDS/cases/wick2/wick2_1_3.s3d
+    - path: experiments/06_half_metre_ladder/data/wick2_1_3.s3d
       hash: md5
-      md5: 8f76a9474e435d7c6ec279262236db6a
-      size: 53829779
+      md5: 08e5753ff6c7eb00e3cb248d480df2b2
+      size: 54635355
+  boundary:
+    cmd: .venv/bin/python scripts/surface_temp.py 
+      experiments/06_half_metre_ladder/render.json
+    deps:
+    - path: experiments/06_half_metre_ladder/data/wick2_1_1.bf
+      hash: md5
+      md5: 5a1bb39e2c43c3c87645499560868bb7
+      size: 1114194
+    - path: experiments/06_half_metre_ladder/data/wick2_1_2.bf
+      hash: md5
+      md5: 8a93802accecc9d9e7636f7a82cbf2cf
+      size: 1114194
+    - path: experiments/06_half_metre_ladder/render.json
+      hash: md5
+      md5: f77e6c2be562cee1e242db8087b5478b
+      size: 554
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/surface_temp.py
+      hash: md5
+      md5: e0bc8a620a3fa5bcf75e7ea1b3592556
+      size: 5966
+    outs:
+    - path: experiments/06_half_metre_ladder/data/ign_state.json
+      hash: md5
+      md5: cc63d633331ae63750f3bfcc2861ae64
+      size: 953
+  render:
+    cmd: .venv/bin/python scripts/render_animation.py 
+      experiments/06_half_metre_ladder/render.json
+    deps:
+    - path: experiments/06_half_metre_ladder/data/ign_state.json
+      hash: md5
+      md5: cc63d633331ae63750f3bfcc2861ae64
+      size: 953
+    - path: experiments/06_half_metre_ladder/data/wick2.smv
+      hash: md5
+      md5: 3dcb3a401369f3015404a9b4c55246b5
+      size: 16503
+    - path: experiments/06_half_metre_ladder/data/wick2_1.prt5
+      hash: md5
+      md5: b2741ae8072904d80cc823ebfd68e928
+      size: 2711176
+    - path: experiments/06_half_metre_ladder/data/wick2_1_1.s3d
+      hash: md5
+      md5: 0c7f4782323f48d25269b90c7f7abd43
+      size: 73671898
+    - path: experiments/06_half_metre_ladder/data/wick2_1_3.s3d
+      hash: md5
+      md5: 08e5753ff6c7eb00e3cb248d480df2b2
+      size: 54635355
+    - path: experiments/06_half_metre_ladder/render.json
+      hash: md5
+      md5: f77e6c2be562cee1e242db8087b5478b
+      size: 554
+    - path: experiments/06_half_metre_ladder/view.ini
+      hash: md5
+      md5: 3bffa1eced64e7d84aa2bb44d1108816
+      size: 1108
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/render_animation.py
+      hash: md5
+      md5: c1361f3f1b9953f352cc538cb0251df9
+      size: 13497
+    outs:
+    - path: experiments/06_half_metre_ladder/results
+      hash: md5
+      md5: 56272818e6d44c938a62c6add17db659.dir
+      size: 473700
+      nfiles: 3
