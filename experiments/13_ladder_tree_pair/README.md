@@ -33,30 +33,35 @@ of 350 C:
 | t | with tree | without tree |
 |---|---|---|
 | 200 s | 444 C | 106 C |
-| 220 s | 766 C | 112 C |
-| 300 s | 1439 C | 135 C |
-| 600 s | **1596 C** | **167 C** |
+| 220 s | 479 C | 116 C |
+| 300 s | 1416 C | 137 C |
+| 600 s | **1603 C** | **167 C** |
 
 With the tree the house ignites between 180 s and 200 s and burns for the rest
-of the run. Without it the wall never reaches a third of its ignition
-temperature in ten minutes, and is still climbing at 600 s.
+of the run. Without it the wall never reaches half its ignition temperature in
+ten minutes, and is still climbing at 600 s.
+
+Re-run under the pipeline, this reproduced the original numbers: 444/766/1439/**1596** C
+with the tree and 106/112/135/**167** C without. The without-tree endpoint is
+identical to the degree; the with-tree endpoint is within 0.5 %, which for a
+non-bit-reproducible solver on a different engine build is agreement rather
+than coincidence.
 
 ## Reproducing
 
 ```bash
-python3 scripts/run_fds.py experiments/13_ladder_tree_pair/with_tree.fds \
-                           experiments/13_ladder_tree_pair/without_tree.fds \
-                           --jobs 2 --threads 4
-python3 scripts/strip_terrain.py FDS/cases/with_tree with_tree
-python3 scripts/strip_terrain.py FDS/cases/without_tree without_tree
-python3 scripts/surface_temp.py experiments/13_ladder_tree_pair/with_tree.json
-python3 scripts/surface_temp.py experiments/13_ladder_tree_pair/without_tree.json
-python3 scripts/render_animation.py experiments/13_ladder_tree_pair/with_tree.json
-python3 scripts/render_animation.py experiments/13_ladder_tree_pair/without_tree.json
-python3 scripts/stitch_gifs.py experiments/13_ladder_tree_pair/results/side_by_side.gif \
-    experiments/13_ladder_tree_pair/results/with_tree/ignition_data.gif \
-    experiments/13_ladder_tree_pair/results/without_tree/ignition_data.gif
+dvc repro experiments/13_ladder_tree_pair/dvc.yaml
 ```
+
+Seven stages: one solve covering both decks, then a boundary, render and
+validate stage per case, then the stitch. Both cases are solved in parallel, so
+the pair costs one run's wall clock. `dvc.lock` is committed. Solver output goes
+to `data/with_tree/` and `data/without_tree/`; the `.s3d` volumes are uncached;
+both `validate` stages passed.
+
+Timing on the re-run: `with_tree` 10,357 s of stepping (172.6 min),
+`without_tree` 9,966 s (166.1 min), in parallel — 176 minutes wall clock for the
+whole file, against 136.6 and 141.1 minutes for the original pair.
 
 `strip_terrain.py` must run before the first render: the renderer copies the
 `.smv` it finds into `*.smv.orig` and colours every frame from that copy.

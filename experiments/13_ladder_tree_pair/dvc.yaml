@@ -1,9 +1,9 @@
 # Experiment 13: ladder tree present vs absent.
 #
-# `dvc repro` runs this file top to bottom; `dvc lock` state lives in dvc.lock,
-# which is committed.  Outputs are tracked where FDS writes them, under
-# FDS/cases/<case>/, so a stage's outs are the real artefacts and nothing is
-# copied about for the sake of versioning.
+# `dvc repro` runs this file top to bottom; lock state lives in dvc.lock, which
+# is committed.  Each case writes its solver output to its own subdirectory of
+# the experiment's data/, because the boundary reader and the renderer both use
+# fixed filenames that would collide if the two cases shared a directory.
 #
 # The .s3d volumes carry `cache: false`: they are outputs, so DVC knows what
 # produces them and will re-solve when they are missing, but they are never
@@ -15,36 +15,36 @@ stages:
     wdir: ../..
     cmd: >-
       .venv/bin/python scripts/run_fds.py
-      experiments/13_ladder_tree_pair/with_tree.fds
-      experiments/13_ladder_tree_pair/without_tree.fds
+      experiments/13_ladder_tree_pair/with_tree.fds:experiments/13_ladder_tree_pair/data/with_tree
+      experiments/13_ladder_tree_pair/without_tree.fds:experiments/13_ladder_tree_pair/data/without_tree
       --jobs 2 --threads 4
-      && .venv/bin/python scripts/strip_terrain.py FDS/cases/with_tree with_tree
-      && .venv/bin/python scripts/strip_terrain.py FDS/cases/without_tree without_tree
+      && .venv/bin/python scripts/strip_terrain.py experiments/13_ladder_tree_pair/data/with_tree with_tree
+      && .venv/bin/python scripts/strip_terrain.py experiments/13_ladder_tree_pair/data/without_tree without_tree
     deps:
       - experiments/13_ladder_tree_pair/with_tree.fds
       - experiments/13_ladder_tree_pair/without_tree.fds
       - scripts/run_fds.py
       - scripts/strip_terrain.py
     outs:
-      - FDS/cases/with_tree/with_tree.smv
-      - FDS/cases/with_tree/with_tree_1.prt5
-      - FDS/cases/with_tree/with_tree_1_1.bf
-      - FDS/cases/with_tree/with_tree_1_2.bf
-      - FDS/cases/with_tree/with_tree_1_1.sf
-      - FDS/cases/with_tree/with_tree_1_2.sf
-      - FDS/cases/without_tree/without_tree.smv
-      - FDS/cases/without_tree/without_tree_1.prt5
-      - FDS/cases/without_tree/without_tree_1_1.bf
-      - FDS/cases/without_tree/without_tree_1_2.bf
-      - FDS/cases/without_tree/without_tree_1_1.sf
-      - FDS/cases/without_tree/without_tree_1_2.sf
-      - FDS/cases/with_tree/with_tree_1_1.s3d:
+      - experiments/13_ladder_tree_pair/data/with_tree/with_tree.smv
+      - experiments/13_ladder_tree_pair/data/with_tree/with_tree_1.prt5
+      - experiments/13_ladder_tree_pair/data/with_tree/with_tree_1_1.bf
+      - experiments/13_ladder_tree_pair/data/with_tree/with_tree_1_2.bf
+      - experiments/13_ladder_tree_pair/data/with_tree/with_tree_1_1.sf
+      - experiments/13_ladder_tree_pair/data/with_tree/with_tree_1_2.sf
+      - experiments/13_ladder_tree_pair/data/without_tree/without_tree.smv
+      - experiments/13_ladder_tree_pair/data/without_tree/without_tree_1.prt5
+      - experiments/13_ladder_tree_pair/data/without_tree/without_tree_1_1.bf
+      - experiments/13_ladder_tree_pair/data/without_tree/without_tree_1_2.bf
+      - experiments/13_ladder_tree_pair/data/without_tree/without_tree_1_1.sf
+      - experiments/13_ladder_tree_pair/data/without_tree/without_tree_1_2.sf
+      - experiments/13_ladder_tree_pair/data/with_tree/with_tree_1_1.s3d:
           cache: false
-      - FDS/cases/with_tree/with_tree_1_3.s3d:
+      - experiments/13_ladder_tree_pair/data/with_tree/with_tree_1_3.s3d:
           cache: false
-      - FDS/cases/without_tree/without_tree_1_1.s3d:
+      - experiments/13_ladder_tree_pair/data/without_tree/without_tree_1_1.s3d:
           cache: false
-      - FDS/cases/without_tree/without_tree_1_3.s3d:
+      - experiments/13_ladder_tree_pair/data/without_tree/without_tree_1_3.s3d:
           cache: false
 
   boundary:
@@ -53,14 +53,17 @@ stages:
       - without_tree
     do:
       wdir: ../..
-      cmd: .venv/bin/python scripts/surface_temp.py experiments/13_ladder_tree_pair/${item}.json
+      cmd: >-
+        .venv/bin/python scripts/surface_temp.py
+        experiments/13_ladder_tree_pair/${item}.json
       deps:
         - experiments/13_ladder_tree_pair/${item}.json
-        - FDS/cases/${item}/${item}_1_1.bf
-        - FDS/cases/${item}/${item}_1_2.bf
+        - experiments/13_ladder_tree_pair/data/${item}/${item}_1_1.bf
+        - experiments/13_ladder_tree_pair/data/${item}/${item}_1_2.bf
         - scripts/surface_temp.py
+        - scripts/case_config.py
       outs:
-        - FDS/cases/${item}/ign_state.json
+        - experiments/13_ladder_tree_pair/data/${item}/ign_state.json
 
   render:
     foreach:
@@ -68,15 +71,17 @@ stages:
       - without_tree
     do:
       wdir: ../..
-      cmd: .venv/bin/python scripts/render_animation.py experiments/13_ladder_tree_pair/${item}.json
+      cmd: >-
+        .venv/bin/python scripts/render_animation.py
+        experiments/13_ladder_tree_pair/${item}.json
       deps:
         - experiments/13_ladder_tree_pair/${item}.json
         - experiments/13_ladder_tree_pair/view.ini
-        - FDS/cases/${item}/ign_state.json
-        - FDS/cases/${item}/${item}.smv
-        - FDS/cases/${item}/${item}_1_1.s3d
-        - FDS/cases/${item}/${item}_1_3.s3d
-        - FDS/cases/${item}/${item}_1.prt5
+        - experiments/13_ladder_tree_pair/data/${item}/ign_state.json
+        - experiments/13_ladder_tree_pair/data/${item}/${item}.smv
+        - experiments/13_ladder_tree_pair/data/${item}/${item}_1_1.s3d
+        - experiments/13_ladder_tree_pair/data/${item}/${item}_1_3.s3d
+        - experiments/13_ladder_tree_pair/data/${item}/${item}_1.prt5
         - scripts/render_animation.py
         - scripts/case_config.py
       outs:
@@ -108,9 +113,11 @@ stages:
       - without_tree
     do:
       wdir: ../..
-      cmd: .venv/bin/python scripts/validate_animation.py experiments/13_ladder_tree_pair/${item}.json
+      cmd: >-
+        .venv/bin/python scripts/validate_animation.py
+        experiments/13_ladder_tree_pair/${item}.json
       deps:
         - experiments/13_ladder_tree_pair/${item}.json
         - experiments/13_ladder_tree_pair/results/${item}
-        - FDS/cases/${item}/ign_state.json
+        - experiments/13_ladder_tree_pair/data/${item}/ign_state.json
         - scripts/validate_animation.py
