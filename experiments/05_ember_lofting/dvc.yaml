@@ -1,28 +1,68 @@
 # Experiment 05: do firebrands actually leave the boundary layer?
 #
-# `dvc repro` runs this file; `dvc.lock` is committed.  Outputs are tracked
-# where FDS writes them; the .s3d volumes are uncached, so DVC knows this stage
-# produces them without ever copying or pushing them.
+# One deck. `dvc repro` runs this file; `dvc.lock` is committed. Outputs go to
+# data/. `.s3d` volumes are uncached: DVC knows this stage produces them, but
+# never copies or pushes them.
 stages:
   solve:
     wdir: ../..
     cmd: >-
-      .venv/bin/python scripts/run_fds.py experiments/05_ember_lofting/garden_loft.fds --threads 4
-      && .venv/bin/python scripts/strip_terrain.py FDS/cases/garden_loft garden_loft
+      .venv/bin/python scripts/run_fds.py
+      experiments/05_ember_lofting/garden_loft.fds:experiments/05_ember_lofting/data
+      --threads 4
+      && .venv/bin/python scripts/strip_terrain.py experiments/05_ember_lofting/data garden_loft
     deps:
       - experiments/05_ember_lofting/garden_loft.fds
       - scripts/run_fds.py
       - scripts/strip_terrain.py
     outs:
-      - FDS/cases/garden_loft/garden_loft_1.prt5
-      - FDS/cases/garden_loft/garden_loft_1_1.bf
-      - FDS/cases/garden_loft/garden_loft_1_2.bf
-      - FDS/cases/garden_loft/garden_loft_1_1.sf
-      - FDS/cases/garden_loft/garden_loft_1_2.sf
-      - FDS/cases/garden_loft/garden_loft.smv
-      - FDS/cases/garden_loft/garden_loft_1_1.s3d:
+      - experiments/05_ember_lofting/data/garden_loft.smv
+      - experiments/05_ember_lofting/data/garden_loft_1.prt5
+      - experiments/05_ember_lofting/data/garden_loft_1_1.bf
+      - experiments/05_ember_lofting/data/garden_loft_1_2.bf
+      - experiments/05_ember_lofting/data/garden_loft_1_1.sf
+      - experiments/05_ember_lofting/data/garden_loft_1_2.sf
+      - experiments/05_ember_lofting/data/garden_loft_1_3.sf
+      - experiments/05_ember_lofting/data/garden_loft_1_4.sf
+      - experiments/05_ember_lofting/data/garden_loft_1_5.sf
+      - experiments/05_ember_lofting/data/garden_loft_1_6.sf
+      - experiments/05_ember_lofting/data/garden_loft_1_7.sf
+      - experiments/05_ember_lofting/data/garden_loft_1_1.s3d:
           cache: false
-      - FDS/cases/garden_loft/garden_loft_1_2.s3d:
+      - experiments/05_ember_lofting/data/garden_loft_1_2.s3d:
           cache: false
-      - FDS/cases/garden_loft/garden_loft_1_3.s3d:
+      - experiments/05_ember_lofting/data/garden_loft_1_3.s3d:
+          cache: false
+
+  boundary:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/surface_temp.py
+      experiments/05_ember_lofting/render.json
+    deps:
+      - experiments/05_ember_lofting/render.json
+      - experiments/05_ember_lofting/data/garden_loft_1_1.bf
+      - experiments/05_ember_lofting/data/garden_loft_1_2.bf
+      - scripts/surface_temp.py
+      - scripts/case_config.py
+    outs:
+      - experiments/05_ember_lofting/data/ign_state.json
+
+  render:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/render_animation.py
+      experiments/05_ember_lofting/render.json
+    deps:
+      - experiments/05_ember_lofting/render.json
+      - experiments/05_ember_lofting/view.ini
+      - experiments/05_ember_lofting/data/ign_state.json
+      - experiments/05_ember_lofting/data/garden_loft.smv
+      - experiments/05_ember_lofting/data/garden_loft_1_1.s3d
+      - experiments/05_ember_lofting/data/garden_loft_1_3.s3d
+      - experiments/05_ember_lofting/data/garden_loft_1.prt5
+      - scripts/render_animation.py
+      - scripts/case_config.py
+    outs:
+      - experiments/05_ember_lofting/results:
           cache: false

@@ -23,5 +23,21 @@ ember is born hot.
 carry temperature. Worth recording because the failure mode looks like a
 physics result — "embers don't transport" — and is not.
 
-**Files.** `add_ladder_tree.py`. Results: `fe_050.png` (fire + embers),
-`key_house.png`.
+**Files.** `scripts/add_ladder_tree.py`, `scripts/fix_tree_surf.py`. The `t_*.fds`
+variant decks named above no longer exist — the outputs survive
+(`t_lawnall`, `t_lifted`, `t_magenta`, `t_renamed`) but the decks were removed,
+so those four runs are not reproducible from this repository. The conclusions
+they produced are recorded above.
+
+## Pipeline
+
+`dvc repro experiments/05_ember_lofting/dvc.yaml` runs three stages: solve,
+boundary, render. `dvc.lock` is committed. Solver output goes to `data/`, case
+settings are in `render.json`, and the saved viewpoint is `view.ini`.
+
+Solve cost 211 s. The gif is `results/ignition_data.gif`, 18 frames, the house
+coloured from measured temperature.
+
+**Measured result.** The wall crosses its 350 °C ignition temperature between
+t=90 and 100 s and reaches 383 °C at t=120 s, so the house ignites near the end
+of the run. The roof peaks at 333 °C, well short of 550 °C.

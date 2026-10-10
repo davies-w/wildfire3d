@@ -1,9 +1,10 @@
 schema: '2.0'
 stages:
   solve:
-    cmd: python3 scripts/run_fds.py experiments/05_ember_lofting/garden_loft.fds
-      --threads 4 && python3 scripts/strip_terrain.py FDS/cases/garden_loft 
-      garden_loft
+    cmd: .venv/bin/python scripts/run_fds.py 
+      experiments/05_ember_lofting/garden_loft.fds:experiments/05_ember_lofting/data
+      --threads 4 && .venv/bin/python scripts/strip_terrain.py 
+      experiments/05_ember_lofting/data garden_loft
     deps:
     - path: experiments/05_ember_lofting/garden_loft.fds
       hash: md5
@@ -11,46 +12,141 @@ stages:
       size: 13854
     - path: scripts/run_fds.py
       hash: md5
-      md5: 319a2472ff98cef3c9026eadb67e8dec
-      size: 4256
+      md5: cad1540ade22f0240c57b5b93d635237
+      size: 4487
     - path: scripts/strip_terrain.py
       hash: md5
       md5: e3700807948e9d294794a418e36baac3
       size: 1860
     outs:
-    - path: FDS/cases/garden_loft/garden_loft.smv
+    - path: experiments/05_ember_lofting/data/garden_loft.smv
       hash: md5
-      md5: 7b870e36c7b71a6768fd5ceed07ef0f0
-      size: 14793
-    - path: FDS/cases/garden_loft/garden_loft_1.prt5
+      md5: 7d33f9eb291db7845550e0a377406f4b
+      size: 14848
+    - path: experiments/05_ember_lofting/data/garden_loft_1.prt5
       hash: md5
-      md5: 1923cd159c0a07565c1f2b8fc2ea6f6a
-      size: 619476
-    - path: FDS/cases/garden_loft/garden_loft_1_1.bf
+      md5: 25f68bb8efba0d2ac7bbeb76e70818b8
+      size: 625476
+    - path: experiments/05_ember_lofting/data/garden_loft_1_1.bf
       hash: md5
-      md5: 37c138eba3572756b2f789a06ce2f0ec
+      md5: 2a0a31c9501664d68e983821383bdfa7
       size: 839238
-    - path: FDS/cases/garden_loft/garden_loft_1_1.s3d
+    - path: experiments/05_ember_lofting/data/garden_loft_1_1.s3d
       hash: md5
-      md5: 35f766eee5a6e7a901bcdd2be8c755a6
-      size: 13111127
-    - path: FDS/cases/garden_loft/garden_loft_1_1.sf
+      md5: c9483786b2e9df7334376c7d2700887a
+      size: 13086694
+    - path: experiments/05_ember_lofting/data/garden_loft_1_1.sf
       hash: md5
-      md5: b591621c756e6661dc01068c1c0d38dd
+      md5: cbd5e3945aedf1252ff057ae7f534c3a
       size: 411530
-    - path: FDS/cases/garden_loft/garden_loft_1_2.bf
+    - path: experiments/05_ember_lofting/data/garden_loft_1_2.bf
       hash: md5
-      md5: 9c0f412d8d78c73e455b43ac30637162
+      md5: 80c4ac03e8e162e077c3d1d19fbf7d3d
       size: 839238
-    - path: FDS/cases/garden_loft/garden_loft_1_2.s3d
+    - path: experiments/05_ember_lofting/data/garden_loft_1_2.s3d
       hash: md5
-      md5: 84d43fe6589dc2553a75c59595a8ad83
-      size: 4007278
-    - path: FDS/cases/garden_loft/garden_loft_1_2.sf
+      md5: c76bb5ba27202354bffb9e1180eaf326
+      size: 3989975
+    - path: experiments/05_ember_lofting/data/garden_loft_1_2.sf
       hash: md5
-      md5: 1c855df6696574c13b8055737ff6cf19
+      md5: e5f614f52bd4b4b1870a29af61b57555
       size: 131418
-    - path: FDS/cases/garden_loft/garden_loft_1_3.s3d
+    - path: experiments/05_ember_lofting/data/garden_loft_1_3.s3d
       hash: md5
-      md5: b1730b9426de9484e52582a2a62764e9
-      size: 9971341
+      md5: aa5094bd00598adad48391228135c71a
+      size: 9950935
+    - path: experiments/05_ember_lofting/data/garden_loft_1_3.sf
+      hash: md5
+      md5: 20775ecf1e788ff479907862cc27fd18
+      size: 131418
+    - path: experiments/05_ember_lofting/data/garden_loft_1_4.sf
+      hash: md5
+      md5: b3df33e8179fdb3ee5df737e88a93b7e
+      size: 131418
+    - path: experiments/05_ember_lofting/data/garden_loft_1_5.sf
+      hash: md5
+      md5: a7838f922480adeac0559554ec6fd77b
+      size: 131418
+    - path: experiments/05_ember_lofting/data/garden_loft_1_6.sf
+      hash: md5
+      md5: 12f5f88be5c0225f3b74e5dc10fb751f
+      size: 131418
+    - path: experiments/05_ember_lofting/data/garden_loft_1_7.sf
+      hash: md5
+      md5: f4084a2e91ae3539097a8be3c16519df
+      size: 411530
+  boundary:
+    cmd: .venv/bin/python scripts/surface_temp.py 
+      experiments/05_ember_lofting/render.json
+    deps:
+    - path: experiments/05_ember_lofting/data/garden_loft_1_1.bf
+      hash: md5
+      md5: 2a0a31c9501664d68e983821383bdfa7
+      size: 839238
+    - path: experiments/05_ember_lofting/data/garden_loft_1_2.bf
+      hash: md5
+      md5: 80c4ac03e8e162e077c3d1d19fbf7d3d
+      size: 839238
+    - path: experiments/05_ember_lofting/render.json
+      hash: md5
+      md5: 031963405ee626b38d0f3009e1d34822
+      size: 566
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/surface_temp.py
+      hash: md5
+      md5: e0bc8a620a3fa5bcf75e7ea1b3592556
+      size: 5966
+    outs:
+    - path: experiments/05_ember_lofting/data/ign_state.json
+      hash: md5
+      md5: dca795d14e6be2f37715866b6629683c
+      size: 955
+  render:
+    cmd: .venv/bin/python scripts/render_animation.py 
+      experiments/05_ember_lofting/render.json
+    deps:
+    - path: experiments/05_ember_lofting/data/garden_loft.smv
+      hash: md5
+      md5: 7d33f9eb291db7845550e0a377406f4b
+      size: 14848
+    - path: experiments/05_ember_lofting/data/garden_loft_1.prt5
+      hash: md5
+      md5: 25f68bb8efba0d2ac7bbeb76e70818b8
+      size: 625476
+    - path: experiments/05_ember_lofting/data/garden_loft_1_1.s3d
+      hash: md5
+      md5: c9483786b2e9df7334376c7d2700887a
+      size: 13086694
+    - path: experiments/05_ember_lofting/data/garden_loft_1_3.s3d
+      hash: md5
+      md5: aa5094bd00598adad48391228135c71a
+      size: 9950935
+    - path: experiments/05_ember_lofting/data/ign_state.json
+      hash: md5
+      md5: dca795d14e6be2f37715866b6629683c
+      size: 955
+    - path: experiments/05_ember_lofting/render.json
+      hash: md5
+      md5: 031963405ee626b38d0f3009e1d34822
+      size: 566
+    - path: experiments/05_ember_lofting/view.ini
+      hash: md5
+      md5: 3bffa1eced64e7d84aa2bb44d1108816
+      size: 1108
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/render_animation.py
+      hash: md5
+      md5: c1361f3f1b9953f352cc538cb0251df9
+      size: 13497
+    outs:
+    - path: experiments/05_ember_lofting/results
+      hash: md5
+      md5: a361d35ee7cce959968f4a177711482f.dir
+      size: 418158
+      nfiles: 3
