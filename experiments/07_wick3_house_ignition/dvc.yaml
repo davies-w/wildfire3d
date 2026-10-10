@@ -1,57 +1,62 @@
 # Experiment 07: the house ignites.
 #
-# `dvc repro` runs this file; `dvc.lock` is committed.  The case directory is
-# FDS/cases/wick3 while the CHID is wick3c, so the runner is told the directory
-# explicitly; the outputs themselves are named from the CHID.
-#
-# The .s3d volumes carry `cache: false`: outputs DVC knows about, tracks and can
-# re-solve when missing, but never copies or pushes.  The gif and stills stay in
+# 0.5 m cells over 32 x 24 x 12 m, 350 s. Solver output goes to data/. The
+# `.s3d` volumes carry `cache: false`: outputs DVC knows about, tracks and can
+# re-solve when missing, but never copies or pushes. The gif and stills stay in
 # git so they render on GitHub, and are uncached for the same reason.
 stages:
   solve:
     wdir: ../..
     cmd: >-
       .venv/bin/python scripts/run_fds.py
-      experiments/07_wick3_house_ignition/wick3c.fds
-      --case wick3 --threads 4
-      && .venv/bin/python scripts/strip_terrain.py FDS/cases/wick3 wick3c
+      experiments/07_wick3_house_ignition/wick3c.fds:experiments/07_wick3_house_ignition/data
+      --threads 4
+      && .venv/bin/python scripts/strip_terrain.py experiments/07_wick3_house_ignition/data wick3c
     deps:
       - experiments/07_wick3_house_ignition/wick3c.fds
       - scripts/run_fds.py
       - scripts/strip_terrain.py
     outs:
-      - FDS/cases/wick3/wick3c.smv
-      - FDS/cases/wick3/wick3c_1.prt5
-      - FDS/cases/wick3/wick3c_1_1.bf
-      - FDS/cases/wick3/wick3c_1_2.bf
-      - FDS/cases/wick3/wick3c_1_1.sf
-      - FDS/cases/wick3/wick3c_1_2.sf
-      - FDS/cases/wick3/wick3c_1_1.s3d:
+      - experiments/07_wick3_house_ignition/data/wick3c.smv
+      - experiments/07_wick3_house_ignition/data/wick3c_1.prt5
+      - experiments/07_wick3_house_ignition/data/wick3c_1_1.bf
+      - experiments/07_wick3_house_ignition/data/wick3c_1_2.bf
+      - experiments/07_wick3_house_ignition/data/wick3c_1_1.sf
+      - experiments/07_wick3_house_ignition/data/wick3c_1_2.sf
+      - experiments/07_wick3_house_ignition/data/wick3c_1_1.s3d:
           cache: false
-      - FDS/cases/wick3/wick3c_1_3.s3d:
+      - experiments/07_wick3_house_ignition/data/wick3c_1_2.s3d:
+          cache: false
+      - experiments/07_wick3_house_ignition/data/wick3c_1_3.s3d:
           cache: false
 
   boundary:
     wdir: ../..
-    cmd: .venv/bin/python scripts/surface_temp.py experiments/07_wick3_house_ignition/render.json
+    cmd: >-
+      .venv/bin/python scripts/surface_temp.py
+      experiments/07_wick3_house_ignition/render.json
     deps:
       - experiments/07_wick3_house_ignition/render.json
-      - FDS/cases/wick3/wick3c_1_1.bf
-      - FDS/cases/wick3/wick3c_1_2.bf
+      - experiments/07_wick3_house_ignition/data/wick3c_1_1.bf
+      - experiments/07_wick3_house_ignition/data/wick3c_1_2.bf
       - scripts/surface_temp.py
+      - scripts/case_config.py
     outs:
-      - FDS/cases/wick3/ign_state.json
+      - experiments/07_wick3_house_ignition/data/ign_state.json
 
   render:
     wdir: ../..
-    cmd: .venv/bin/python scripts/render_animation.py experiments/07_wick3_house_ignition/render.json
+    cmd: >-
+      .venv/bin/python scripts/render_animation.py
+      experiments/07_wick3_house_ignition/render.json
     deps:
       - experiments/07_wick3_house_ignition/render.json
-      - FDS/cases/wick3/ign_state.json
-      - FDS/cases/wick3/wick3c.smv
-      - FDS/cases/wick3/wick3c_1_1.s3d
-      - FDS/cases/wick3/wick3c_1_3.s3d
-      - FDS/cases/wick3/wick3c_1.prt5
+      - experiments/07_wick3_house_ignition/view.ini
+      - experiments/07_wick3_house_ignition/data/ign_state.json
+      - experiments/07_wick3_house_ignition/data/wick3c.smv
+      - experiments/07_wick3_house_ignition/data/wick3c_1_1.s3d
+      - experiments/07_wick3_house_ignition/data/wick3c_1_3.s3d
+      - experiments/07_wick3_house_ignition/data/wick3c_1.prt5
       - scripts/render_animation.py
       - scripts/case_config.py
     outs:
@@ -60,9 +65,11 @@ stages:
 
   validate:
     wdir: ../..
-    cmd: .venv/bin/python scripts/validate_animation.py experiments/07_wick3_house_ignition/render.json
+    cmd: >-
+      .venv/bin/python scripts/validate_animation.py
+      experiments/07_wick3_house_ignition/render.json
     deps:
       - experiments/07_wick3_house_ignition/render.json
       - experiments/07_wick3_house_ignition/results
-      - FDS/cases/wick3/ign_state.json
+      - experiments/07_wick3_house_ignition/data/ign_state.json
       - scripts/validate_animation.py

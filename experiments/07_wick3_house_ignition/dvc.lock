@@ -1,9 +1,10 @@
 schema: '2.0'
 stages:
   solve:
-    cmd: python3 scripts/run_fds.py 
-      experiments/07_wick3_house_ignition/wick3c.fds --case wick3 --threads 4 &&
-      python3 scripts/strip_terrain.py FDS/cases/wick3 wick3c
+    cmd: .venv/bin/python scripts/run_fds.py 
+      experiments/07_wick3_house_ignition/wick3c.fds:experiments/07_wick3_house_ignition/data
+      --threads 4 && .venv/bin/python scripts/strip_terrain.py 
+      experiments/07_wick3_house_ignition/data wick3c
     deps:
     - path: experiments/07_wick3_house_ignition/wick3c.fds
       hash: md5
@@ -11,129 +12,141 @@ stages:
       size: 5882
     - path: scripts/run_fds.py
       hash: md5
-      md5: 319a2472ff98cef3c9026eadb67e8dec
-      size: 4256
+      md5: cad1540ade22f0240c57b5b93d635237
+      size: 4487
     - path: scripts/strip_terrain.py
       hash: md5
       md5: e3700807948e9d294794a418e36baac3
       size: 1860
     outs:
-    - path: FDS/cases/wick3/wick3c.smv
+    - path: experiments/07_wick3_house_ignition/data/wick3c.smv
       hash: md5
-      md5: df7f9b0a2ebfef959a9b350004a5613e
-      size: 15496
-    - path: FDS/cases/wick3/wick3c_1.prt5
+      md5: 8f447fd804ef0c3781d09f339985b58b
+      size: 15559
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1.prt5
       hash: md5
-      md5: 36ff60dba8f9f6261fd24606e446eb0a
-      size: 367240
-    - path: FDS/cases/wick3/wick3c_1_1.bf
+      md5: b6ac8327166379887f29bd55bd4a693a
+      size: 206800
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1_1.bf
       hash: md5
-      md5: 2093928462bca07ad8fcf5bdd38f986c
+      md5: e416892a80aec54736f673e4b91d2798
       size: 1603442
-    - path: FDS/cases/wick3/wick3c_1_1.s3d
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1_1.s3d
       hash: md5
-      md5: e5134970bbf91c8df573d224d82c089f
-      size: 48756858
-    - path: FDS/cases/wick3/wick3c_1_1.sf
+      md5: a5e93fbc0cc222020b8162ac0af75631
+      size: 48735274
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1_1.sf
       hash: md5
-      md5: 99396ecd2b1ccbcf85ccc550d778c3c8
+      md5: c15c18db30be060f82272900e0ae4ddc
       size: 1135786
-    - path: FDS/cases/wick3/wick3c_1_2.bf
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1_2.bf
       hash: md5
-      md5: 6a46e21bf6a1f0d60b4e42a6b826247a
+      md5: 24b8176602d607801428a3ccbdde3a17
       size: 1603442
-    - path: FDS/cases/wick3/wick3c_1_2.sf
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1_2.s3d
       hash: md5
-      md5: 8bdc788e5d294b09dc6781cb53121d99
+      md5: 514e7e2e6cdf8a7e981f86a8f9656ec6
+      size: 10989929
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1_2.sf
+      hash: md5
+      md5: 1712f09b7eefc740f0e7d7fcdd10d312
       size: 580426
-    - path: FDS/cases/wick3/wick3c_1_3.s3d
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1_3.s3d
       hash: md5
-      md5: b9832a22d48c7069872d181673a7ddb4
-      size: 38842832
+      md5: 670733614a7ca03964847e59a0c900cf
+      size: 38869634
   boundary:
-    cmd: python3 scripts/surface_temp.py 
+    cmd: .venv/bin/python scripts/surface_temp.py 
       experiments/07_wick3_house_ignition/render.json
     deps:
-    - path: FDS/cases/wick3/wick3c_1_1.bf
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1_1.bf
       hash: md5
-      md5: 2093928462bca07ad8fcf5bdd38f986c
+      md5: e416892a80aec54736f673e4b91d2798
       size: 1603442
-    - path: FDS/cases/wick3/wick3c_1_2.bf
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1_2.bf
       hash: md5
-      md5: 6a46e21bf6a1f0d60b4e42a6b826247a
+      md5: 24b8176602d607801428a3ccbdde3a17
       size: 1603442
     - path: experiments/07_wick3_house_ignition/render.json
       hash: md5
-      md5: 7b256aef6fde13d1bca2a12a79c6fc9b
-      size: 530
+      md5: 52c2848f2910f7d86385a09ce6eabf2d
+      size: 582
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
     - path: scripts/surface_temp.py
       hash: md5
       md5: e0bc8a620a3fa5bcf75e7ea1b3592556
       size: 5966
     outs:
-    - path: FDS/cases/wick3/ign_state.json
+    - path: experiments/07_wick3_house_ignition/data/ign_state.json
       hash: md5
-      md5: 171c5e5df6b40483ac1d3fc0edeaadd2
-      size: 1336
+      md5: 2d5fe52c8c0159682f4b97d5dcd7af08
+      size: 1335
   render:
-    cmd: python3 scripts/render_animation.py 
+    cmd: .venv/bin/python scripts/render_animation.py 
       experiments/07_wick3_house_ignition/render.json
     deps:
-    - path: FDS/cases/wick3/ign_state.json
+    - path: experiments/07_wick3_house_ignition/data/ign_state.json
       hash: md5
-      md5: 171c5e5df6b40483ac1d3fc0edeaadd2
-      size: 1336
-    - path: FDS/cases/wick3/wick3c.smv
+      md5: 2d5fe52c8c0159682f4b97d5dcd7af08
+      size: 1335
+    - path: experiments/07_wick3_house_ignition/data/wick3c.smv
       hash: md5
-      md5: df7f9b0a2ebfef959a9b350004a5613e
-      size: 15496
-    - path: FDS/cases/wick3/wick3c_1.prt5
+      md5: 8f447fd804ef0c3781d09f339985b58b
+      size: 15559
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1.prt5
       hash: md5
-      md5: 36ff60dba8f9f6261fd24606e446eb0a
-      size: 367240
-    - path: FDS/cases/wick3/wick3c_1_1.s3d
+      md5: b6ac8327166379887f29bd55bd4a693a
+      size: 206800
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1_1.s3d
       hash: md5
-      md5: e5134970bbf91c8df573d224d82c089f
-      size: 48756858
-    - path: FDS/cases/wick3/wick3c_1_3.s3d
+      md5: a5e93fbc0cc222020b8162ac0af75631
+      size: 48735274
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1_3.s3d
       hash: md5
-      md5: b9832a22d48c7069872d181673a7ddb4
-      size: 38842832
+      md5: 670733614a7ca03964847e59a0c900cf
+      size: 38869634
     - path: experiments/07_wick3_house_ignition/render.json
       hash: md5
-      md5: 7b256aef6fde13d1bca2a12a79c6fc9b
-      size: 530
+      md5: 52c2848f2910f7d86385a09ce6eabf2d
+      size: 582
+    - path: experiments/07_wick3_house_ignition/view.ini
+      hash: md5
+      md5: 002879eb79f821d615c903d5f3ef7644
+      size: 1108
     - path: scripts/case_config.py
       hash: md5
-      md5: 4bb9ecccd61b98e71c51233bdf4a97c1
-      size: 2898
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
     - path: scripts/render_animation.py
       hash: md5
-      md5: 46b9873b8bbdaea8c842db6a986a10f6
-      size: 12972
+      md5: c1361f3f1b9953f352cc538cb0251df9
+      size: 13497
     outs:
     - path: experiments/07_wick3_house_ignition/results
       hash: md5
-      md5: 39b1ecaf5db7a2c5216bf2dac1ddffa7.dir
-      size: 829631
-      nfiles: 7
+      md5: 95a46c77c9e731276d455edad165629a.dir
+      size: 562140
+      nfiles: 3
   validate:
-    cmd: python3 scripts/validate_animation.py 
+    cmd: .venv/bin/python scripts/validate_animation.py 
       experiments/07_wick3_house_ignition/render.json
     deps:
-    - path: FDS/cases/wick3/ign_state.json
+    - path: experiments/07_wick3_house_ignition/data/ign_state.json
       hash: md5
-      md5: 171c5e5df6b40483ac1d3fc0edeaadd2
-      size: 1336
+      md5: 2d5fe52c8c0159682f4b97d5dcd7af08
+      size: 1335
     - path: experiments/07_wick3_house_ignition/render.json
       hash: md5
-      md5: 7b256aef6fde13d1bca2a12a79c6fc9b
-      size: 530
+      md5: 52c2848f2910f7d86385a09ce6eabf2d
+      size: 582
     - path: experiments/07_wick3_house_ignition/results
       hash: md5
-      md5: 39b1ecaf5db7a2c5216bf2dac1ddffa7.dir
-      size: 829631
-      nfiles: 7
+      md5: 95a46c77c9e731276d455edad165629a.dir
+      size: 562140
+      nfiles: 3
     - path: scripts/validate_animation.py
       hash: md5
       md5: a2d2a48cd37720415725347a8ef6fc05
