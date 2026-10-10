@@ -55,9 +55,18 @@ Two caveats, stated plainly:
 My stated expectation was that the wall would still ignite but later. That was
 wrong — it does not ignite at all.
 
-**Cost.** 300 s in **51 min**, faster than the 70 min estimated.
+**Cost.** 300 s in **51 min** on the original run, **48.0 min** on the re-run
+under the pipeline (2,879 s of stepping), which agrees with the 70 min estimate
+being pessimistic.
 
-**Status.** Complete. Started 22:35, finished ~23:27.
+## Pipeline
+
+`dvc repro experiments/12_no_ladder_tree/dvc.yaml` runs four stages: solve,
+boundary, render, validate. `dvc.lock` is committed. Solver output goes to
+`data/`, this case's settings are in `render.json`, the saved viewpoint is
+`view.ini`. The `.s3d` volumes are uncached. The re-run passed `VALIDATION:
+PASS` and reproduced the finding to within a degree: the wall reaches 137 °C at
+t=300 s against 136.2 °C originally, and never approaches 350.
 
 **Note on embers.** Unlike the recorded experiment 07 run, this case has
 `EMBER_GENERATION_HEIGHT = 1.0, 8.0` on the grass surface, so its embers
@@ -68,19 +77,17 @@ actually loft. Experiment 07's deck was missing it; see that README.
 - `run_wick4.py` — native arm64, 4 threads
 - `wait_and_analyse.py` — waits for the solve, then the wall-temperature table
 - `render.json` — this case's config for the shared render pipeline
-- `results/` — `ignition_data.gif` (23 frames, time bar), `i_040.png`, `i_300.png`,
-  `wall_temperature.txt`
+- `view.ini` — the saved viewpoint
+- `results/` — `ignition_data.gif` (time bar), `i_040.png`, `i_300.png`
 
-Rendering uses the shared tools; see `docs/rendering.md`:
+The `wall_temperature.txt` this README used to list was in `results/`, which is
+a pipeline output: DVC replaced the directory's contents when the render ran.
+The numbers are in the table above and in `data/ign_state.json`.
 
-```bash
-python3 scripts/strip_terrain.py      FDS/cases/wick4 wick4
-python3 scripts/surface_temp.py       experiments/12_no_ladder_tree/render.json
-python3 scripts/render_animation.py   experiments/12_no_ladder_tree/render.json
-python3 scripts/validate_animation.py experiments/12_no_ladder_tree/render.json
-```
+Rendering is shared tooling; see `docs/rendering.md` for the config format.
 
-Only `WOOD WALL`, `ROOF` and `FENCE` are in this case's config. The ladder
-tree's `CANOPY`/`TRUNK` boxes are omitted because that tree is gone; the four
-remaining wild trees have no boundary output at all, so they cannot be coloured
-by temperature and are drawn in their geometry colours.
+Only `WOOD WALL` and `ROOF` are in this case's config — colour is written per
+SURFACE *name*, and painting `CANOPY` would repaint the four wild trees along
+with anything else sharing that name. The wild trees have no boundary output at
+all, so they cannot be coloured by temperature and are drawn in their geometry
+colours.

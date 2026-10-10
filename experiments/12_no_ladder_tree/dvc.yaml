@@ -12,46 +12,54 @@ stages:
     wdir: ../..
     cmd: >-
       .venv/bin/python scripts/run_fds.py
-      experiments/12_no_ladder_tree/wick4.fds
-      --case wick4 --threads 4
-      && .venv/bin/python scripts/strip_terrain.py FDS/cases/wick4 wick4
+      experiments/12_no_ladder_tree/wick4.fds:experiments/12_no_ladder_tree/data
+      --threads 4
+      && .venv/bin/python scripts/strip_terrain.py experiments/12_no_ladder_tree/data wick4
     deps:
       - experiments/12_no_ladder_tree/wick4.fds
       - scripts/run_fds.py
       - scripts/strip_terrain.py
     outs:
-      - FDS/cases/wick4/wick4.smv
-      - FDS/cases/wick4/wick4_1.prt5
-      - FDS/cases/wick4/wick4_1_1.bf
-      - FDS/cases/wick4/wick4_1_2.bf
-      - FDS/cases/wick4/wick4_1_1.sf
-      - FDS/cases/wick4/wick4_1_2.sf
-      - FDS/cases/wick4/wick4_1_1.s3d:
+      - experiments/12_no_ladder_tree/data/wick4.smv
+      - experiments/12_no_ladder_tree/data/wick4_1.prt5
+      - experiments/12_no_ladder_tree/data/wick4_1_1.bf
+      - experiments/12_no_ladder_tree/data/wick4_1_2.bf
+      - experiments/12_no_ladder_tree/data/wick4_1_1.sf
+      - experiments/12_no_ladder_tree/data/wick4_1_2.sf
+      - experiments/12_no_ladder_tree/data/wick4_1_1.s3d:
           cache: false
-      - FDS/cases/wick4/wick4_1_3.s3d:
+      - experiments/12_no_ladder_tree/data/wick4_1_2.s3d:
+          cache: false
+      - experiments/12_no_ladder_tree/data/wick4_1_3.s3d:
           cache: false
 
   boundary:
     wdir: ../..
-    cmd: .venv/bin/python scripts/surface_temp.py experiments/12_no_ladder_tree/render.json
+    cmd: >-
+      .venv/bin/python scripts/surface_temp.py
+      experiments/12_no_ladder_tree/render.json
     deps:
       - experiments/12_no_ladder_tree/render.json
-      - FDS/cases/wick4/wick4_1_1.bf
-      - FDS/cases/wick4/wick4_1_2.bf
+      - experiments/12_no_ladder_tree/data/wick4_1_1.bf
+      - experiments/12_no_ladder_tree/data/wick4_1_2.bf
       - scripts/surface_temp.py
+      - scripts/case_config.py
     outs:
-      - FDS/cases/wick4/ign_state.json
+      - experiments/12_no_ladder_tree/data/ign_state.json
 
   render:
     wdir: ../..
-    cmd: .venv/bin/python scripts/render_animation.py experiments/12_no_ladder_tree/render.json
+    cmd: >-
+      .venv/bin/python scripts/render_animation.py
+      experiments/12_no_ladder_tree/render.json
     deps:
       - experiments/12_no_ladder_tree/render.json
-      - FDS/cases/wick4/ign_state.json
-      - FDS/cases/wick4/wick4.smv
-      - FDS/cases/wick4/wick4_1_1.s3d
-      - FDS/cases/wick4/wick4_1_3.s3d
-      - FDS/cases/wick4/wick4_1.prt5
+      - experiments/12_no_ladder_tree/view.ini
+      - experiments/12_no_ladder_tree/data/ign_state.json
+      - experiments/12_no_ladder_tree/data/wick4.smv
+      - experiments/12_no_ladder_tree/data/wick4_1_1.s3d
+      - experiments/12_no_ladder_tree/data/wick4_1_3.s3d
+      - experiments/12_no_ladder_tree/data/wick4_1.prt5
       - scripts/render_animation.py
       - scripts/case_config.py
     outs:
@@ -60,9 +68,11 @@ stages:
 
   validate:
     wdir: ../..
-    cmd: .venv/bin/python scripts/validate_animation.py experiments/12_no_ladder_tree/render.json
+    cmd: >-
+      .venv/bin/python scripts/validate_animation.py
+      experiments/12_no_ladder_tree/render.json
     deps:
       - experiments/12_no_ladder_tree/render.json
       - experiments/12_no_ladder_tree/results
-      - FDS/cases/wick4/ign_state.json
+      - experiments/12_no_ladder_tree/data/ign_state.json
       - scripts/validate_animation.py
