@@ -36,7 +36,9 @@ boundary, render. `dvc.lock` is committed. Solver output goes to `data/`, case
 settings are in `render.json`, and the saved viewpoint is `view.ini`.
 
 Solve cost 211 s. The gif is `results/ignition_data.gif`, 18 frames, the house
-coloured from measured temperature.
+coloured from measured temperature. The older stills `fe_050.png` and
+`key_house.png` were superseded by this gif and removed, because `results/` is
+a pipeline output and DVC replaces its contents each time the render runs.
 
 **Measured result.** The wall crosses its 350 °C ignition temperature between
 t=90 and 100 s and reaches 383 °C at t=120 s, so the house ignites near the end
