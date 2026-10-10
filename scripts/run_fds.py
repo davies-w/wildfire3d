@@ -102,5 +102,19 @@ def main():
         for line in lines[-3:]:
             print("  " + line)
 
+    # A solver that dies is a failed stage.  Without this, FDS segfaulting
+    # halfway through looked exactly like success to DVC and the pipeline
+    # recorded a lock file for a truncated run -- which is how experiment 08's
+    # ember_test deck was mistaken for a working case.
+    failed = [j for j in done if j["proc"].returncode != 0]
+    if failed:
+        print("")
+        for job in failed:
+            print("FAILED: %s exited %s after %.1f min -- see %s"
+                  % (job["name"], job["proc"].returncode,
+                     (time.time() - job["t0"]) / 60.0,
+                     os.path.join(job["data"], job["name"] + ".log")))
+        sys.exit(1)
+
 if __name__ == "__main__":
     main()

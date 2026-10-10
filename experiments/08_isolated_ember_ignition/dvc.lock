@@ -1,9 +1,75 @@
 schema: '2.0'
 stages:
   solve:
-    cmd: python3 scripts/run_fds.py 
-      experiments/08_isolated_ember_ignition/ember_test.fds --threads 4 && 
-      python3 scripts/strip_terrain.py FDS/cases/ember_test ember_test
+    cmd: .venv/bin/python scripts/run_fds.py 
+      experiments/08_isolated_ember_ignition/ember_test_obst.fds:experiments/08_isolated_ember_ignition/data/ember_test_obst
+      --threads 4 && .venv/bin/python scripts/strip_terrain.py 
+      experiments/08_isolated_ember_ignition/data/ember_test_obst 
+      ember_test_obst
+    deps:
+    - path: experiments/08_isolated_ember_ignition/ember_test_obst.fds
+      hash: md5
+      md5: dc24209985080de56f78e79bc58fd5fb
+      size: 13699
+    - path: scripts/run_fds.py
+      hash: md5
+      md5: a26c078de4ca677279325fdfc166634a
+      size: 5161
+    - path: scripts/strip_terrain.py
+      hash: md5
+      md5: e3700807948e9d294794a418e36baac3
+      size: 1860
+    outs:
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst.smv
+      hash: md5
+      md5: 8d48543fc7dd6c3f455f16da1106fde8
+      size: 14654
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1.prt5
+      hash: md5
+      md5: 889b117fde7eb6d5fc455dfdcc828424
+      size: 94816
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_1.bf
+      hash: md5
+      md5: 07723e6c4ee664ad6678911f16a0e641
+      size: 291078
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_1.s3d
+      hash: md5
+      md5: 815f155dedc7b7fd9223ae006f4a78ad
+      size: 8273944
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_1.sf
+      hash: md5
+      md5: e3edb3949e11a30c3d0734b9b2c35838
+      size: 141770
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_2.bf
+      hash: md5
+      md5: 849eeb4d0ca9ea0a1d524c8ec4318df8
+      size: 291078
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_2.s3d
+      hash: md5
+      md5: 39884e7220990d1a907c736a321add31
+      size: 2558742
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_2.sf
+      hash: md5
+      md5: 210600ae2118fa7e7662dadffcb60ce1
+      size: 45338
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_3.s3d
+      hash: md5
+      md5: 3ec71cfedc0a21ea23b1a09ce844da37
+      size: 6567447
+  solve_ember:
+    cmd: .venv/bin/python scripts/run_fds.py 
+      experiments/08_isolated_ember_ignition/ember_test.fds:experiments/08_isolated_ember_ignition/data/ember_test
+      --threads 4 && .venv/bin/python scripts/strip_terrain.py 
+      experiments/08_isolated_ember_ignition/data/ember_test ember_test
     deps:
     - path: experiments/08_isolated_ember_ignition/ember_test.fds
       hash: md5
@@ -11,46 +77,207 @@ stages:
       size: 15365
     - path: scripts/run_fds.py
       hash: md5
-      md5: 319a2472ff98cef3c9026eadb67e8dec
-      size: 4256
+      md5: cad1540ade22f0240c57b5b93d635237
+      size: 4487
     - path: scripts/strip_terrain.py
       hash: md5
       md5: e3700807948e9d294794a418e36baac3
       size: 1860
     outs:
-    - path: FDS/cases/ember_test/ember_test.smv
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test/ember_test.smv
       hash: md5
-      md5: 89e43fadf3fd442dd1ff0659269ea5e5
-      size: 14812
-    - path: FDS/cases/ember_test/ember_test_1.prt5
+      md5: 10015569a83d308e0f105a4315997f80
+      size: 14845
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test/ember_test_1.prt5
       hash: md5
-      md5: 18eb99126c5fc0695c27aef82fed5ae2
+      md5: 9e33f8db7cd48270de5d03e6389ab20b
       size: 11752
-    - path: FDS/cases/ember_test/ember_test_1_1.bf
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test/ember_test_1_1.bf
       hash: md5
-      md5: 44d62dccdb03a785c8af926b9019833d
+      md5: 5077741b55b5f5dbc5e2ef37fc944c71
       size: 138986
-    - path: FDS/cases/ember_test/ember_test_1_1.s3d
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test/ember_test_1_1.s3d
       hash: md5
-      md5: 45e945ab2de7d3df66eb99b5c450ac88
-      size: 3653470
-    - path: FDS/cases/ember_test/ember_test_1_1.sf
+      md5: 02a65cf2f92a1f7e641518f9529ce414
+      size: 3812460
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test/ember_test_1_1.sf
       hash: md5
-      md5: a58bbbe858d6f1198618e1d7c8fdb5e4
+      md5: 72a6c92959d330d4741e9466b18da8db
       size: 87818
-    - path: FDS/cases/ember_test/ember_test_1_2.bf
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test/ember_test_1_2.bf
       hash: md5
-      md5: 25b14562a9471d5ed43902cdbe50d27f
+      md5: 50bb7937202bfb33054d42d9863784ff
       size: 138986
-    - path: FDS/cases/ember_test/ember_test_1_2.s3d
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test/ember_test_1_2.s3d
       hash: md5
-      md5: eaf2f9b99c50aceab8db8b0f89707ab2
-      size: 1187931
-    - path: FDS/cases/ember_test/ember_test_1_2.sf
+      md5: 53769fe209e0796938fbe1d8190770df
+      size: 1248345
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test/ember_test_1_2.sf
       hash: md5
-      md5: 27fcbd097d39d44ab59c8942936a5afb
+      md5: 2ac84bbbcbc1a82672dce3a99d7f1f40
       size: 28122
-    - path: FDS/cases/ember_test/ember_test_1_3.s3d
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test/ember_test_1_3.s3d
       hash: md5
-      md5: 261e92b77959304b8cfe5aa256c2e7ca
-      size: 2742739
+      md5: 2fc76f33043fdeab7a6b98dd362efdce
+      size: 2884502
+  solve_variants:
+    cmd: .venv/bin/python scripts/run_fds.py 
+      experiments/08_isolated_ember_ignition/LS4_ember_ignition.fds:experiments/08_isolated_ember_ignition/data/LS4_ember_ignition
+      experiments/08_isolated_ember_ignition/bfm_res_test.fds:experiments/08_isolated_ember_ignition/data/bfm_res_test
+      --jobs 2 --threads 4
+    deps:
+    - path: experiments/08_isolated_ember_ignition/LS4_ember_ignition.fds
+      hash: md5
+      md5: 8c28a6d0484170cb6d592c06588f8464
+      size: 2353
+    - path: experiments/08_isolated_ember_ignition/bfm_res_test.fds
+      hash: md5
+      md5: c0e053b50203bbc0525b09e07c41f38d
+      size: 2010
+    - path: scripts/run_fds.py
+      hash: md5
+      md5: a26c078de4ca677279325fdfc166634a
+      size: 5161
+    outs:
+    - path: 
+        experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition.smv
+      hash: md5
+      md5: 6eb04cca64a3537af0af5c447c67d62d
+      size: 11063
+    - path: 
+        experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition_1.prt5
+      hash: md5
+      md5: d3cc5e3444ec26f63ecc1ff732f87b61
+      size: 67092
+    - path: 
+        experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition_1_1.s3d
+      hash: md5
+      md5: d9d3a465af28094350cd315777d458ee
+      size: 39622
+    - path: 
+        experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition_1_1.sf
+      hash: md5
+      md5: 2608e75239a50aeebfdafb2f3e15e4ad
+      size: 369578
+    - path: 
+        experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition_2.prt5
+      hash: md5
+      md5: 761391618d420d80878b76ef2afce64d
+      size: 61992
+    - path: 
+        experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition_2_1.s3d
+      hash: md5
+      md5: 74ecaa096ff6050171b4d66be235b107
+      size: 803765
+    - path: 
+        experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition_2_1.sf
+      hash: md5
+      md5: b3edacc66c16ebd666f3fda45842b0bf
+      size: 369578
+    - path: 
+        experiments/08_isolated_ember_ignition/data/bfm_res_test/bfm_res_test.smv
+      hash: md5
+      md5: 3dd67be75d0e356b901c59fc588983ec
+      size: 7577
+    - path: 
+        experiments/08_isolated_ember_ignition/data/bfm_res_test/bfm_res_test_1_1.s3d
+      hash: md5
+      md5: e8b4bd5eabfb7eec1404923d619a3a57
+      size: 150876
+    - path: 
+        experiments/08_isolated_ember_ignition/data/bfm_res_test/bfm_res_test_1_1.sf
+      hash: md5
+      md5: 961cd6e08d6eb58d4003c86fd3f0f236
+      size: 18994
+  boundary:
+    cmd: .venv/bin/python scripts/surface_temp.py 
+      experiments/08_isolated_ember_ignition/render.json
+    deps:
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_1.bf
+      hash: md5
+      md5: 07723e6c4ee664ad6678911f16a0e641
+      size: 291078
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_2.bf
+      hash: md5
+      md5: 849eeb4d0ca9ea0a1d524c8ec4318df8
+      size: 291078
+    - path: experiments/08_isolated_ember_ignition/render.json
+      hash: md5
+      md5: 4d165b6dc2a12b6a5f8e3f304fcd6b02
+      size: 571
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/surface_temp.py
+      hash: md5
+      md5: e0bc8a620a3fa5bcf75e7ea1b3592556
+      size: 5966
+    outs:
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ign_state.json
+      hash: md5
+      md5: 47a2d11ca2ea3430f1056fd1fec4c362
+      size: 788
+  render:
+    cmd: .venv/bin/python scripts/render_animation.py 
+      experiments/08_isolated_ember_ignition/render.json
+    deps:
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst.smv
+      hash: md5
+      md5: 8d48543fc7dd6c3f455f16da1106fde8
+      size: 14654
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1.prt5
+      hash: md5
+      md5: 889b117fde7eb6d5fc455dfdcc828424
+      size: 94816
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_1.s3d
+      hash: md5
+      md5: 815f155dedc7b7fd9223ae006f4a78ad
+      size: 8273944
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_3.s3d
+      hash: md5
+      md5: 3ec71cfedc0a21ea23b1a09ce844da37
+      size: 6567447
+    - path: 
+        experiments/08_isolated_ember_ignition/data/ember_test_obst/ign_state.json
+      hash: md5
+      md5: 47a2d11ca2ea3430f1056fd1fec4c362
+      size: 788
+    - path: experiments/08_isolated_ember_ignition/render.json
+      hash: md5
+      md5: 4d165b6dc2a12b6a5f8e3f304fcd6b02
+      size: 571
+    - path: experiments/08_isolated_ember_ignition/view.ini
+      hash: md5
+      md5: 3bffa1eced64e7d84aa2bb44d1108816
+      size: 1108
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/render_animation.py
+      hash: md5
+      md5: c1361f3f1b9953f352cc538cb0251df9
+      size: 13497
+    outs:
+    - path: experiments/08_isolated_ember_ignition/results
+      hash: md5
+      md5: 98ef201f7d0fa9fbce03a53565f9be98.dir
+      size: 254674
+      nfiles: 3

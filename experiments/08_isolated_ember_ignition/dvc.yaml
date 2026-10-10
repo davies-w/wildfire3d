@@ -1,28 +1,94 @@
 # Experiment 08: one ember on a fuel bed, away from any fire.
 #
-# `dvc repro` runs this file; `dvc.lock` is committed.  Outputs are tracked
-# where FDS writes them; the .s3d volumes are uncached, so DVC knows this stage
-# produces them without ever copying or pushing them.
+# Three decks. `ember_test` is the garden case and is the only one rendered: it
+# has a house to colour and a saved viewpoint. `LS4_ember_ignition` and
+# `bfm_res_test` are minimal diagnostic cases -- they request no boundary output
+# at all, so nothing in them can be coloured from measurement, and they are
+# solved only so the experiment's numbers can be reproduced from its decks.
+#
+# `dvc repro` runs this file; `dvc.lock` is committed. `.s3d` volumes are
+# uncached: DVC knows these stages produce them, but never copies or pushes them.
 stages:
   solve:
     wdir: ../..
     cmd: >-
-      .venv/bin/python scripts/run_fds.py experiments/08_isolated_ember_ignition/ember_test.fds --threads 4
-      && .venv/bin/python scripts/strip_terrain.py FDS/cases/ember_test ember_test
+      .venv/bin/python scripts/run_fds.py
+      experiments/08_isolated_ember_ignition/ember_test_obst.fds:experiments/08_isolated_ember_ignition/data/ember_test_obst
+      --threads 4
+      && .venv/bin/python scripts/strip_terrain.py experiments/08_isolated_ember_ignition/data/ember_test_obst ember_test_obst
     deps:
-      - experiments/08_isolated_ember_ignition/ember_test.fds
+      - experiments/08_isolated_ember_ignition/ember_test_obst.fds
       - scripts/run_fds.py
       - scripts/strip_terrain.py
     outs:
-      - FDS/cases/ember_test/ember_test_1.prt5
-      - FDS/cases/ember_test/ember_test_1_1.bf
-      - FDS/cases/ember_test/ember_test_1_2.bf
-      - FDS/cases/ember_test/ember_test_1_1.sf
-      - FDS/cases/ember_test/ember_test_1_2.sf
-      - FDS/cases/ember_test/ember_test.smv
-      - FDS/cases/ember_test/ember_test_1_1.s3d:
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst.smv
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1.prt5
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_1.bf
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_2.bf
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_1.sf
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_2.sf
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_1.s3d:
           cache: false
-      - FDS/cases/ember_test/ember_test_1_2.s3d:
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_2.s3d:
           cache: false
-      - FDS/cases/ember_test/ember_test_1_3.s3d:
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_3.s3d:
+          cache: false
+
+  solve_variants:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/run_fds.py
+      experiments/08_isolated_ember_ignition/LS4_ember_ignition.fds:experiments/08_isolated_ember_ignition/data/LS4_ember_ignition
+      experiments/08_isolated_ember_ignition/bfm_res_test.fds:experiments/08_isolated_ember_ignition/data/bfm_res_test
+      --jobs 2 --threads 4
+    deps:
+      - experiments/08_isolated_ember_ignition/LS4_ember_ignition.fds
+      - experiments/08_isolated_ember_ignition/bfm_res_test.fds
+      - scripts/run_fds.py
+    outs:
+      - experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition.smv
+      - experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition_1.prt5
+      - experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition_2.prt5
+      - experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition_1_1.sf
+      - experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition_2_1.sf
+      - experiments/08_isolated_ember_ignition/data/bfm_res_test/bfm_res_test.smv
+      - experiments/08_isolated_ember_ignition/data/bfm_res_test/bfm_res_test_1_1.sf
+      - experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition_1_1.s3d:
+          cache: false
+      - experiments/08_isolated_ember_ignition/data/LS4_ember_ignition/LS4_ember_ignition_2_1.s3d:
+          cache: false
+      - experiments/08_isolated_ember_ignition/data/bfm_res_test/bfm_res_test_1_1.s3d:
+          cache: false
+
+  boundary:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/surface_temp.py
+      experiments/08_isolated_ember_ignition/render.json
+    deps:
+      - experiments/08_isolated_ember_ignition/render.json
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_1.bf
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_2.bf
+      - scripts/surface_temp.py
+      - scripts/case_config.py
+    outs:
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ign_state.json
+
+  render:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/render_animation.py
+      experiments/08_isolated_ember_ignition/render.json
+    deps:
+      - experiments/08_isolated_ember_ignition/render.json
+      - experiments/08_isolated_ember_ignition/view.ini
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ign_state.json
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst.smv
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_1.s3d
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1_3.s3d
+      - experiments/08_isolated_ember_ignition/data/ember_test_obst/ember_test_obst_1.prt5
+      - scripts/render_animation.py
+      - scripts/case_config.py
+    outs:
+      - experiments/08_isolated_ember_ignition/results:
           cache: false
