@@ -1,28 +1,126 @@
 # Experiment 04: fence line and six trees in a larger domain.
 #
-# `dvc repro` runs this file; `dvc.lock` is committed.  Outputs are tracked
-# where FDS writes them; the .s3d volumes are uncached, so DVC knows this stage
-# produces them without ever copying or pushing them.
+# Two cases. `garden_tall` is 40 x 40 x 24 m, 120 s -- the same plot as 01-03
+# with the domain raised to stop the plume saturating. `wick` is 60 x 60 x 24 m,
+# 160 s, and adds the fence line. Both solved in one stage so they cost one
+# run's wall clock.
+#
+# `dvc repro` runs this file; `dvc.lock` is committed. Outputs go to data/, one
+# subdirectory per case. `.s3d` volumes are uncached: DVC knows this stage
+# produces them, but never copies or pushes them.
 stages:
   solve:
     wdir: ../..
     cmd: >-
-      .venv/bin/python scripts/run_fds.py experiments/04_fence_and_trees_large/garden_tall.fds --threads 4
-      && .venv/bin/python scripts/strip_terrain.py FDS/cases/garden_tall garden_tall
+      .venv/bin/python scripts/run_fds.py
+      experiments/04_fence_and_trees_large/garden_tall.fds:experiments/04_fence_and_trees_large/data/garden_tall
+      experiments/04_fence_and_trees_large/wick.fds:experiments/04_fence_and_trees_large/data/wick
+      --jobs 2 --threads 4
+      && .venv/bin/python scripts/strip_terrain.py experiments/04_fence_and_trees_large/data/garden_tall garden_tall
+      && .venv/bin/python scripts/strip_terrain.py experiments/04_fence_and_trees_large/data/wick wick
     deps:
       - experiments/04_fence_and_trees_large/garden_tall.fds
+      - experiments/04_fence_and_trees_large/wick.fds
       - scripts/run_fds.py
       - scripts/strip_terrain.py
     outs:
-      - FDS/cases/garden_tall/garden_tall_1.prt5
-      - FDS/cases/garden_tall/garden_tall_1_1.bf
-      - FDS/cases/garden_tall/garden_tall_1_2.bf
-      - FDS/cases/garden_tall/garden_tall_1_1.sf
-      - FDS/cases/garden_tall/garden_tall_1_2.sf
-      - FDS/cases/garden_tall/garden_tall.smv
-      - FDS/cases/garden_tall/garden_tall_1_1.s3d:
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall.smv
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1.prt5
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_1.bf
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_2.bf
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_1.sf
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_2.sf
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_3.sf
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_4.sf
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_5.sf
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_6.sf
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_7.sf
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_1.s3d:
           cache: false
-      - FDS/cases/garden_tall/garden_tall_1_2.s3d:
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_2.s3d:
           cache: false
-      - FDS/cases/garden_tall/garden_tall_1_3.s3d:
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_3.s3d:
+          cache: false
+      - experiments/04_fence_and_trees_large/data/wick/wick.smv
+      - experiments/04_fence_and_trees_large/data/wick/wick_1.prt5
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_1.bf
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_2.bf
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_1.sf
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_2.sf
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_3.sf
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_4.sf
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_5.sf
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_6.sf
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_7.sf
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_1.s3d:
+          cache: false
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_2.s3d:
+          cache: false
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_3.s3d:
+          cache: false
+
+  boundary_tall:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/surface_temp.py
+      experiments/04_fence_and_trees_large/garden_tall.json
+    deps:
+      - experiments/04_fence_and_trees_large/garden_tall.json
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_1.bf
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_2.bf
+      - scripts/surface_temp.py
+      - scripts/case_config.py
+    outs:
+      - experiments/04_fence_and_trees_large/data/garden_tall/ign_state.json
+
+  render_tall:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/render_animation.py
+      experiments/04_fence_and_trees_large/garden_tall.json
+    deps:
+      - experiments/04_fence_and_trees_large/garden_tall.json
+      - experiments/04_fence_and_trees_large/view_tall.ini
+      - experiments/04_fence_and_trees_large/data/garden_tall/ign_state.json
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall.smv
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_1.s3d
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_3.s3d
+      - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1.prt5
+      - scripts/render_animation.py
+      - scripts/case_config.py
+    outs:
+      - experiments/04_fence_and_trees_large/results/tall:
+          cache: false
+
+  boundary_wick:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/surface_temp.py
+      experiments/04_fence_and_trees_large/wick.json
+    deps:
+      - experiments/04_fence_and_trees_large/wick.json
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_1.bf
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_2.bf
+      - scripts/surface_temp.py
+      - scripts/case_config.py
+    outs:
+      - experiments/04_fence_and_trees_large/data/wick/ign_state.json
+
+  render_wick:
+    wdir: ../..
+    cmd: >-
+      .venv/bin/python scripts/render_animation.py
+      experiments/04_fence_and_trees_large/wick.json
+    deps:
+      - experiments/04_fence_and_trees_large/wick.json
+      - experiments/04_fence_and_trees_large/view_wick.ini
+      - experiments/04_fence_and_trees_large/data/wick/ign_state.json
+      - experiments/04_fence_and_trees_large/data/wick/wick.smv
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_1.s3d
+      - experiments/04_fence_and_trees_large/data/wick/wick_1_3.s3d
+      - experiments/04_fence_and_trees_large/data/wick/wick_1.prt5
+      - scripts/render_animation.py
+      - scripts/case_config.py
+    outs:
+      - experiments/04_fence_and_trees_large/results/wick:
           cache: false

@@ -1,56 +1,310 @@
 schema: '2.0'
 stages:
   solve:
-    cmd: python3 scripts/run_fds.py 
-      experiments/04_fence_and_trees_large/garden_tall.fds --threads 4 && 
-      python3 scripts/strip_terrain.py FDS/cases/garden_tall garden_tall
+    cmd: .venv/bin/python scripts/run_fds.py 
+      experiments/04_fence_and_trees_large/garden_tall.fds:experiments/04_fence_and_trees_large/data/garden_tall
+      experiments/04_fence_and_trees_large/wick.fds:experiments/04_fence_and_trees_large/data/wick
+      --jobs 2 --threads 4 && .venv/bin/python scripts/strip_terrain.py 
+      experiments/04_fence_and_trees_large/data/garden_tall garden_tall && 
+      .venv/bin/python scripts/strip_terrain.py 
+      experiments/04_fence_and_trees_large/data/wick wick
     deps:
     - path: experiments/04_fence_and_trees_large/garden_tall.fds
       hash: md5
       md5: d3c4a89ab643a09c0448ced43c78b57b
       size: 13854
+    - path: experiments/04_fence_and_trees_large/wick.fds
+      hash: md5
+      md5: 89de86078bbf456121e95fd81f8acbab
+      size: 15128
     - path: scripts/run_fds.py
       hash: md5
-      md5: 319a2472ff98cef3c9026eadb67e8dec
-      size: 4256
+      md5: cad1540ade22f0240c57b5b93d635237
+      size: 4487
     - path: scripts/strip_terrain.py
       hash: md5
       md5: e3700807948e9d294794a418e36baac3
       size: 1860
     outs:
-    - path: FDS/cases/garden_tall/garden_tall.smv
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall.smv
       hash: md5
-      md5: 2e34f31da64b6f5230dec5c433a167ab
-      size: 15033
-    - path: FDS/cases/garden_tall/garden_tall_1.prt5
+      md5: f8e84afc4c45dba256e981d4d2260e41
+      size: 15096
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1.prt5
       hash: md5
-      md5: a4c06b9950683e24d05435ffa91bb9ca
-      size: 612856
-    - path: FDS/cases/garden_tall/garden_tall_1_1.bf
+      md5: 03fc25f2da18b9175a549f5826d51fa9
+      size: 604656
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_1.bf
       hash: md5
-      md5: 012292f02f810baa9b3cb3e391a170dc
+      md5: c28d73e7e07aa7d7a47ada951162c498
       size: 839238
-    - path: FDS/cases/garden_tall/garden_tall_1_1.s3d
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_1.s3d
       hash: md5
-      md5: c2d7a35e63134826004e47bc13a69093
-      size: 17438254
-    - path: FDS/cases/garden_tall/garden_tall_1_1.sf
+      md5: 62948491e32e086b97b08823b096f191
+      size: 17458987
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_1.sf
       hash: md5
-      md5: 94d1c5c16637084221a8564d41ac33a5
+      md5: a424050cb2f277d42d27fb448e3a0f37
       size: 411530
-    - path: FDS/cases/garden_tall/garden_tall_1_2.bf
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_2.bf
       hash: md5
-      md5: f3440c76ce52db7f3150671bcf5098e4
+      md5: 349b528ee128ceab55789655eec47fa2
       size: 839238
-    - path: FDS/cases/garden_tall/garden_tall_1_2.s3d
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_2.s3d
       hash: md5
-      md5: 49e4e0f84e1511559bfcf7fc601bd0a7
-      size: 4181808
-    - path: FDS/cases/garden_tall/garden_tall_1_2.sf
+      md5: 5247951b7c5904c4c48934e739444eb7
+      size: 4194493
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_2.sf
       hash: md5
-      md5: 3c8793b53650ba96d743975f85a2d07f
+      md5: e571a758b267cd5266bb171481477a3d
       size: 251466
-    - path: FDS/cases/garden_tall/garden_tall_1_3.s3d
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_3.s3d
       hash: md5
-      md5: 4225ab4cb34b67e922920de09b5e008e
-      size: 12991504
+      md5: 3823779fb3a2ece21afc7fa44d02b152
+      size: 13058151
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_3.sf
+      hash: md5
+      md5: 12d8d93e55c7a9a77d7a395e89bfd81f
+      size: 251466
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_4.sf
+      hash: md5
+      md5: a3dcf5cf0329ee5041a7fbcfab607f88
+      size: 251466
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_5.sf
+      hash: md5
+      md5: 711a280f01c95fa659a3216f14adf286
+      size: 251466
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_6.sf
+      hash: md5
+      md5: bcb3af82e6c8be87557c6a3fd50c9087
+      size: 251466
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_7.sf
+      hash: md5
+      md5: 6648fbcdc8e5c18a11144a083ff5bebc
+      size: 411530
+    - path: experiments/04_fence_and_trees_large/data/wick/wick.smv
+      hash: md5
+      md5: 4a63bdb71d70ef03880a07aebe41baa6
+      size: 17364
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1.prt5
+      hash: md5
+      md5: 1b6c218cd9a52be450db63aa005ba1a6
+      size: 1710836
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_1.bf
+      hash: md5
+      md5: 439a3d8c56ee0d13c1da56137ea25db7
+      size: 606382
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_1.s3d
+      hash: md5
+      md5: c579ddc929bdd32b01b7a66ba3ffec5e
+      size: 30581848
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_1.sf
+      hash: md5
+      md5: 693f2930d0fc73484f6cd972badf2fbd
+      size: 1207370
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_2.bf
+      hash: md5
+      md5: 5044dcbdd5dc5bac8de7b07fea1b92f2
+      size: 606382
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_2.s3d
+      hash: md5
+      md5: 18db1872cc5fe29b295d49b0c5012f24
+      size: 5008832
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_2.sf
+      hash: md5
+      md5: 47cd8546b4e42e9dc99d0cf49e505e1c
+      size: 495866
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_3.s3d
+      hash: md5
+      md5: f05e5ecdc08e13453f535366a8b73f3f
+      size: 20417798
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_3.sf
+      hash: md5
+      md5: 8b9d2fcd7ea619cec9e2db7786c0f91c
+      size: 495866
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_4.sf
+      hash: md5
+      md5: 944de49a49bd0c16249abf95b35e36e7
+      size: 495866
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_5.sf
+      hash: md5
+      md5: bb59159f643cc703a9a5de765d4c1506
+      size: 495866
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_6.sf
+      hash: md5
+      md5: 333c08d299ff3adf2dfcfc1f5263cdf4
+      size: 495866
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_7.sf
+      hash: md5
+      md5: 84b69a18b17bd21df095ef051955262f
+      size: 1207370
+  boundary_tall:
+    cmd: .venv/bin/python scripts/surface_temp.py 
+      experiments/04_fence_and_trees_large/garden_tall.json
+    deps:
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_1.bf
+      hash: md5
+      md5: c28d73e7e07aa7d7a47ada951162c498
+      size: 839238
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_2.bf
+      hash: md5
+      md5: 349b528ee128ceab55789655eec47fa2
+      size: 839238
+    - path: experiments/04_fence_and_trees_large/garden_tall.json
+      hash: md5
+      md5: 49efc18a9803ef7274fcf1bc350e9d00
+      size: 588
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/surface_temp.py
+      hash: md5
+      md5: e0bc8a620a3fa5bcf75e7ea1b3592556
+      size: 5966
+    outs:
+    - path: experiments/04_fence_and_trees_large/data/garden_tall/ign_state.json
+      hash: md5
+      md5: f7de9346dc82a52c55b9c509c2964df0
+      size: 953
+  render_tall:
+    cmd: .venv/bin/python scripts/render_animation.py 
+      experiments/04_fence_and_trees_large/garden_tall.json
+    deps:
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall.smv
+      hash: md5
+      md5: f8e84afc4c45dba256e981d4d2260e41
+      size: 15096
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1.prt5
+      hash: md5
+      md5: 03fc25f2da18b9175a549f5826d51fa9
+      size: 604656
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_1.s3d
+      hash: md5
+      md5: 62948491e32e086b97b08823b096f191
+      size: 17458987
+    - path: 
+        experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_3.s3d
+      hash: md5
+      md5: 3823779fb3a2ece21afc7fa44d02b152
+      size: 13058151
+    - path: experiments/04_fence_and_trees_large/data/garden_tall/ign_state.json
+      hash: md5
+      md5: f7de9346dc82a52c55b9c509c2964df0
+      size: 953
+    - path: experiments/04_fence_and_trees_large/garden_tall.json
+      hash: md5
+      md5: 49efc18a9803ef7274fcf1bc350e9d00
+      size: 588
+    - path: experiments/04_fence_and_trees_large/view_tall.ini
+      hash: md5
+      md5: f6809e654813c9996204fcf052f6ee19
+      size: 1108
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/render_animation.py
+      hash: md5
+      md5: c1361f3f1b9953f352cc538cb0251df9
+      size: 13497
+    outs:
+    - path: experiments/04_fence_and_trees_large/results/tall
+      hash: md5
+      md5: d6dce9cad9c100756134dc19036add6a.dir
+      size: 470068
+      nfiles: 3
+  boundary_wick:
+    cmd: .venv/bin/python scripts/surface_temp.py 
+      experiments/04_fence_and_trees_large/wick.json
+    deps:
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_1.bf
+      hash: md5
+      md5: 439a3d8c56ee0d13c1da56137ea25db7
+      size: 606382
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_2.bf
+      hash: md5
+      md5: 5044dcbdd5dc5bac8de7b07fea1b92f2
+      size: 606382
+    - path: experiments/04_fence_and_trees_large/wick.json
+      hash: md5
+      md5: 88be06667289a2267fcf21db66533d6b
+      size: 577
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/surface_temp.py
+      hash: md5
+      md5: e0bc8a620a3fa5bcf75e7ea1b3592556
+      size: 5966
+    outs:
+    - path: experiments/04_fence_and_trees_large/data/wick/ign_state.json
+      hash: md5
+      md5: a71402b06d1332a054127e355ca20cda
+      size: 1064
+  render_wick:
+    cmd: .venv/bin/python scripts/render_animation.py 
+      experiments/04_fence_and_trees_large/wick.json
+    deps:
+    - path: experiments/04_fence_and_trees_large/data/wick/ign_state.json
+      hash: md5
+      md5: a71402b06d1332a054127e355ca20cda
+      size: 1064
+    - path: experiments/04_fence_and_trees_large/data/wick/wick.smv
+      hash: md5
+      md5: 4a63bdb71d70ef03880a07aebe41baa6
+      size: 17364
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1.prt5
+      hash: md5
+      md5: 1b6c218cd9a52be450db63aa005ba1a6
+      size: 1710836
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_1.s3d
+      hash: md5
+      md5: c579ddc929bdd32b01b7a66ba3ffec5e
+      size: 30581848
+    - path: experiments/04_fence_and_trees_large/data/wick/wick_1_3.s3d
+      hash: md5
+      md5: f05e5ecdc08e13453f535366a8b73f3f
+      size: 20417798
+    - path: experiments/04_fence_and_trees_large/view_wick.ini
+      hash: md5
+      md5: 2b533f711296fdfb667bea3079ed7c60
+      size: 1108
+    - path: experiments/04_fence_and_trees_large/wick.json
+      hash: md5
+      md5: 88be06667289a2267fcf21db66533d6b
+      size: 577
+    - path: scripts/case_config.py
+      hash: md5
+      md5: fbbc7074cf0d4e35b717db3b2618d234
+      size: 3274
+    - path: scripts/render_animation.py
+      hash: md5
+      md5: c1361f3f1b9953f352cc538cb0251df9
+      size: 13497
+    outs:
+    - path: experiments/04_fence_and_trees_large/results/wick
+      hash: md5
+      md5: 7387f6eade9c07e491f77b5873963743.dir
+      size: 476688
+      nfiles: 3
