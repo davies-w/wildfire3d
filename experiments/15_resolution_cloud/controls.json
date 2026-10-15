@@ -11,11 +11,12 @@
   "max_retries": 0,
   "max_output_bytes": 26214400,
   "cloud_build_timeout_seconds": 1200,
-  "max_trial_spend_usd": 0.50,
-  "admission_ceiling_usd": 0.40,
+  "max_trial_spend_usd": 0.5,
+  "admission_ceiling_usd": 0.4,
   "build_reservation_usd": 0.12,
-  "three_job_reservation_usd": 0.075,
-  "storage_network_control_reservation_usd": 0.10,
-  "assumed_worker_hourly_allowance_usd": 0.10,
-  "notes": "Estimated bound, not provider hard dollar cap. Worker allowance exceeds published C3 Spot compute price and includes a disk/IP allowance. Reprice before subsequent trials. No on-demand fallback. Budget covers initial image build and three sequential tests."
+  "storage_network_control_reservation_usd": 0.1,
+  "assumed_worker_hourly_allowance_usd": 0.1,
+  "notes": "Estimated bound, not provider hard dollar cap. Worker allowance exceeds published C3 Spot compute price and includes a disk/IP allowance. Reprice before subsequent trials. No on-demand fallback. Budget covers initial image build and three sequential tests. One diagnosed launcher recovery admitted; original failure and cleanup retained. Total reserved bound now USD0.32.",
+  "max_trial_job_attempts": 4,
+  "four_job_reservation_usd": 0.1
 }

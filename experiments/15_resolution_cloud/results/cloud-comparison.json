@@ -1,0 +1,113 @@
+{
+  "comparisons": [
+    {
+      "case": "fire_medium",
+      "cloud_wall_s": 10.848762341,
+      "local_wall_s": 10.698697832995094,
+      "local_over_cloud": 0.9861675919069793,
+      "cloud_steps": 314,
+      "local_steps": 314,
+      "metrics": {
+        "surface_max_C": {
+          "max_abs_difference": 5.9471567077612235,
+          "rmse": 1.5601469768167233
+        },
+        "heat_max_kW_m2": {
+          "max_abs_difference": 11.545807386840565,
+          "rmse": 2.0583890884878118
+        },
+        "wake_u": {
+          "max_abs_difference": 0.2848121649765625,
+          "rmse": 0.07521801787584985
+        },
+        "plume_C": {
+          "max_abs_difference": 115.60775293372382,
+          "rmse": 20.55508723380899
+        }
+      }
+    },
+    {
+      "case": "flow_medium",
+      "cloud_wall_s": 7.682687734000002,
+      "local_wall_s": 7.155637165997177,
+      "local_over_cloud": 0.9313976324105503,
+      "cloud_steps": 240,
+      "local_steps": 240,
+      "metrics": {
+        "surface_max_C": {
+          "max_abs_difference": 0.0,
+          "rmse": 0.0
+        },
+        "heat_max_kW_m2": {
+          "max_abs_difference": 2.5000000001506933e-17,
+          "rmse": 2.777777777945215e-18
+        },
+        "wake_u": {
+          "max_abs_difference": 0.0,
+          "rmse": 0.0
+        },
+        "plume_C": {
+          "max_abs_difference": 0.0,
+          "rmse": 0.0
+        }
+      }
+    },
+    {
+      "case": "heat_conduction_a",
+      "cloud_wall_s": 2.1688118240000023,
+      "local_wall_s": 4.9105962089961395,
+      "local_over_cloud": 2.2641873096852567,
+      "cloud_steps": 4000,
+      "local_steps": 4000,
+      "metrics": {
+        "Back": {
+          "max_abs_difference": 0.0,
+          "rmse": 0.0
+        },
+        "8 cm": {
+          "max_abs_difference": 0.0,
+          "rmse": 0.0
+        },
+        "6 cm": {
+          "max_abs_difference": 0.0,
+          "rmse": 0.0
+        },
+        "4 cm": {
+          "max_abs_difference": 0.0,
+          "rmse": 0.0
+        },
+        "2 cm": {
+          "max_abs_difference": 0.0,
+          "rmse": 0.0
+        },
+        "Front": {
+          "max_abs_difference": 0.0,
+          "rmse": 0.0
+        }
+      }
+    },
+    {
+      "case": "pine_needles",
+      "cloud_wall_s": 16.255570321999997,
+      "local_wall_s": 18.53392791596707,
+      "local_over_cloud": 1.1401585763425097,
+      "cloud_steps": 1000,
+      "local_steps": 1000,
+      "metrics": {
+        "fuel gas mass": {
+          "max_abs_difference": 0.0,
+          "rmse": 0.0
+        },
+        "water vapor mass": {
+          "max_abs_difference": 0.0,
+          "rmse": 0.0
+        },
+        "solid mass": {
+          "max_abs_difference": 0.0,
+          "rmse": 0.0
+        }
+      }
+    }
+  ],
+  "caveat": "Different hardware, compiler, OS, and local contention. Transient LES differences are not physical validation."
+}

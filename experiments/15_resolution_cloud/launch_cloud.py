@@ -17,7 +17,7 @@ def gc(*args):
     return json.loads(p.stdout or '{}')
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['science','timeout','watchdog']);args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['science','science-recovery','timeout','watchdog']);args=ap.parse_args()
     cfg=json.loads((ROOT/'controls.json').read_text())
     deployment=json.loads((ROOT/'results/cloud-deployment.json').read_text())
     if not deployment.get('verified'):raise RuntimeError('Cloud controls not verified/deployed')
@@ -28,10 +28,10 @@ def main():
         fcntl.flock(lock,fcntl.LOCK_EX)
         ledger=json.loads(ledger_path.read_text())
         if args.mode in [r['mode'] for r in ledger['jobs']]:raise RuntimeError('Trial already reserved; no automatic retry')
-        if len(ledger['jobs'])>=3:raise RuntimeError('Three-job trial allowance exhausted')
+        if len(ledger['jobs'])>=4:raise RuntimeError('Four-job trial allowance exhausted')
         reservation=.025
         if ledger['reserved_usd']+reservation>cfg['admission_ceiling_usd']:raise RuntimeError('Cost allowance exhausted')
-        for mode in ['science','timeout','watchdog']:
+        for mode in ['science','science-recovery','timeout','watchdog']:
             executions=gc('workflows','executions','list','fds-'+mode,'--location=us-central1','--filter=state=ACTIVE')
             if executions:raise RuntimeError('Another experiment execution is active')
         jobs=gc('batch','jobs','list','--location=us-central1')

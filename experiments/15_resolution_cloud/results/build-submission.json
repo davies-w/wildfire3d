@@ -1,0 +1,50 @@
+{
+  "artifacts": {
+    "images": [
+      "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/study15:trial"
+    ]
+  },
+  "createTime": "2026-10-15T22:01:20.452745392Z",
+  "id": "c48dd765-19f8-415e-8f22-84085a9959e2",
+  "images": [
+    "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/study15:trial"
+  ],
+  "logUrl": "https://console.cloud.google.com/cloud-build/builds;region=us-central1/c48dd765-19f8-415e-8f22-84085a9959e2?project=587909259768",
+  "name": "projects/587909259768/locations/us-central1/builds/c48dd765-19f8-415e-8f22-84085a9959e2",
+  "options": {
+    "diskSizeGb": "30",
+    "logging": "CLOUD_LOGGING_ONLY",
+    "pool": {},
+    "workerRelease": "legacy"
+  },
+  "projectId": "tmrw-wildfire-20261015",
+  "queueTtl": "600s",
+  "serviceAccount": "projects/tmrw-wildfire-20261015/serviceAccounts/fds-builder@tmrw-wildfire-20261015.iam.gserviceaccount.com",
+  "source": {
+    "storageSource": {
+      "bucket": "tmrw-wildfire-20261015-trial",
+      "generation": "1792101680219501",
+      "object": "build-source/1792101677.10601-c8db10761312491fb1f1fafe2cd09d27.tgz"
+    }
+  },
+  "sourceProvenance": {
+    "resolvedStorageSource": {
+      "bucket": "tmrw-wildfire-20261015-trial",
+      "generation": "1792101680219501",
+      "object": "build-source/1792101677.10601-c8db10761312491fb1f1fafe2cd09d27.tgz"
+    }
+  },
+  "status": "QUEUED",
+  "steps": [
+    {
+      "args": [
+        "build",
+        "-t",
+        "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/study15:trial",
+        "."
+      ],
+      "name": "gcr.io/cloud-builders/docker"
+    }
+  ],
+  "timeout": "1200s"
+}

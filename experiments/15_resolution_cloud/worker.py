@@ -20,6 +20,7 @@ code=1
 try:
     code=subprocess.call([sys.executable,'study.py','run','--label=cloud','--cases=flow_medium,fire_medium,heat_conduction_a,pine_needles'])
 finally:
+    Path('/study/data/cloud').mkdir(parents=True,exist_ok=True)
     out=Path('/tmp/evidence.tar.gz')
     with tarfile.open(out,'w:gz') as t:t.add('/study/data/cloud',arcname='cloud')
     if out.stat().st_size>25*1024**2:raise RuntimeError('Output exceeds 25 MiB limit')

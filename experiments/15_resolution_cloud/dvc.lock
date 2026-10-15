@@ -10,8 +10,8 @@ stages:
       nfiles: 2
     - path: study.py
       hash: md5
-      md5: b27ebf4b2e5afd349da021b830490adf
-      size: 6234
+      md5: a9353c7aa2088d6c3f0b557570ff9733
+      size: 6237
     outs:
     - path: decks
       hash: md5
@@ -47,8 +47,8 @@ stages:
       size: 1996
     - path: study.py
       hash: md5
-      md5: b27ebf4b2e5afd349da021b830490adf
-      size: 6234
+      md5: a9353c7aa2088d6c3f0b557570ff9733
+      size: 6237
     outs:
     - path: data/local
       hash: md5
@@ -69,8 +69,8 @@ stages:
       nfiles: 262
     - path: study.py
       hash: md5
-      md5: b27ebf4b2e5afd349da021b830490adf
-      size: 6234
+      md5: a9353c7aa2088d6c3f0b557570ff9733
+      size: 6237
     outs:
     - path: results/findings.md
       hash: md5
@@ -107,8 +107,8 @@ stages:
     deps:
     - path: make_workflow.py
       hash: md5
-      md5: e087363e4f4a72549fc6bddaf0856122
-      size: 5167
+      md5: e9f134a9bd995e5b62f82027edcf56b9
+      size: 5691
     - path: test_controls.py
       hash: md5
       md5: 882857e0c02434ffaf2967b3598d2945
@@ -129,3 +129,75 @@ stages:
       hash: md5
       md5: e0ac5ba4db333efda8b87c1c612e4a7b
       size: 116773
+  runner_regression:
+    cmd: ../../.venv/bin/python test_runner.py
+    deps:
+    - path: study.py
+      hash: md5
+      md5: a9353c7aa2088d6c3f0b557570ff9733
+      size: 6237
+    - path: test_runner.py
+      hash: md5
+      md5: 098d21f31f625d57e417c63f98ecadf2
+      size: 726
+  cloud_extract:
+    cmd: ../../.venv/bin/python extract_cloud.py
+    deps:
+    - path: data/cloud-evidence.tar.gz
+      hash: md5
+      md5: 6613bd84e40a5a10de5dd4f02af5b0fd
+      size: 6588179
+    - path: extract_cloud.py
+      hash: md5
+      md5: 1238e7b26199429a4c83e6f0a022cf8d
+      size: 239
+    outs:
+    - path: data/cloud
+      hash: md5
+      md5: 2408e8eed1e01891672eafbdb0324099.dir
+      size: 29323651
+      nfiles: 48
+  cloud_compare:
+    cmd: ../../.venv/bin/python compare_cloud.py
+    deps:
+    - path: compare_cloud.py
+      hash: md5
+      md5: b011fd3066720c88b422d130bb47d52f
+      size: 1650
+    - path: data/cloud
+      hash: md5
+      md5: 2408e8eed1e01891672eafbdb0324099.dir
+      size: 29323651
+      nfiles: 48
+    - path: data/local
+      hash: md5
+      md5: 929edce21b612fcd34b966eb4a4733bd.dir
+      size: 32239048
+      nfiles: 262
+    outs:
+    - path: results/cloud-comparison.json
+      hash: md5
+      md5: 710eca556b33c65593fc733360fb10d0
+      size: 2883
+  cloud_boundary:
+    cmd: ../../.venv/bin/python cloud_boundary.py
+    deps:
+    - path: cloud_boundary.py
+      hash: md5
+      md5: fec461ea4f197938cb28554d1b5b19b2
+      size: 1135
+    - path: data/cloud
+      hash: md5
+      md5: 2408e8eed1e01891672eafbdb0324099.dir
+      size: 29323651
+      nfiles: 48
+    outs:
+    - path: data/cloud_boundary
+      hash: md5
+      md5: e7cee9a0bd3895d82f112fee57936907.dir
+      size: 7012
+      nfiles: 2
+    - path: results/cloud-boundary.json
+      hash: md5
+      md5: 3861ad51059e55f8661701e11405eeb2
+      size: 199

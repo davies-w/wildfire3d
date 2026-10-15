@@ -99,7 +99,7 @@ def run_one(case,repeat,label,binary,timeout=600):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('action',choices=['generate','run']);ap.add_argument('--label',default='local');ap.add_argument('--cases',default='all');ap.add_argument('--repeat',type=int,default=1);args=ap.parse_args()
     if args.action=='generate':generate();return
-    binary=Path(os.environ.get('FDS_BINARY',str(ROOT.parents[1]/'FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx')))
+    binary=Path(os.environ.get('FDS_BINARY') or str(ROOT.parents[1]/'FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx'))
     cases=json.loads((ROOT/'manifest.json').read_text())
     if args.cases!='all':cases=[c for c in cases if c['case'] in args.cases.split(',')]
     if not cases:raise ValueError('No cases selected')

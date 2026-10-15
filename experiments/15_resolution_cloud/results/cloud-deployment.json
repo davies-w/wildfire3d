@@ -1,13 +1,7 @@
 {
-  "verified": false,
-  "status": "IAM approval received for intended roles; automatic review requires additional explicit project-wide VM deletion and worker actAs scope approval. No IAM grants/build/workers launched.",
-  "resources_created": [
-    "fds-worker service account",
-    "fds-builder service account",
-    "fds-watchdog service account",
-    "fds repository",
-    "trial bucket",
-    "fds-trial network/subnet"
-  ],
-  "active_workers": 0
+  "verified": true,
+  "status": "Runtime science, task-timeout, and independent-deadline probes passed; all VMs, disks and Batch jobs removed.",
+  "image": "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/study15@sha256:4cc533e7da1a88aa10d8d8f01fdb03c2b2fa982c0fba3940c8da6e8ab1b59c3f",
+  "build_id": "c48dd765-19f8-415e-8f22-84085a9959e2",
+  "runtime_controls_verified": true
 }

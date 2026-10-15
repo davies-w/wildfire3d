@@ -1,5 +1,34 @@
 {
-  "reserved_usd": 0.22,
-  "jobs": [],
-  "notes": "Reserved allowance, not incurred cost: 0.12 build plus 0.10 storage/network/control. No build or worker launched yet."
+  "reserved_usd": 0.32,
+  "jobs": [
+    {
+      "mode": "science",
+      "reserved_usd": 0.025,
+      "submitted_unix": 1792103600.979715,
+      "state": "completed_and_cleaned",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-science/executions/e4bca33d-e292-46b3-b082-35e66f18c5ee"
+    },
+    {
+      "mode": "science-recovery",
+      "reserved_usd": 0.025,
+      "submitted_unix": 1792103863.646484,
+      "state": "completed_and_cleaned",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-science-recovery/executions/9860b4eb-78d1-4eda-bd50-d3d2947530a8"
+    },
+    {
+      "mode": "timeout",
+      "reserved_usd": 0.025,
+      "submitted_unix": 1792104042.6477592,
+      "state": "completed_and_cleaned",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-timeout/executions/3b6ce63b-b92f-4863-849b-131d7e689cfe"
+    },
+    {
+      "mode": "watchdog",
+      "reserved_usd": 0.025,
+      "submitted_unix": 1792104236.0815392,
+      "state": "completed_and_cleaned",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-watchdog/executions/2541bc38-2619-4519-acb8-44ac43dd437b"
+    }
+  ],
+  "notes": "One build only. Original science failed before FDS; cleanup verified. One explicitly diagnosed launcher correction admitted as science-recovery; task retries remain zero. Four total jobs reserve at most USD0.32 including original build/overhead allowances."
 }

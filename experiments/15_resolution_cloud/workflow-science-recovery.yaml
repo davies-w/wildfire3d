@@ -1,0 +1,184 @@
+main:
+  steps:
+  - initialize:
+      assign:
+      - deadline: ${sys.now() + 900}
+      - job:
+          taskGroups:
+          - taskCount: '1'
+            parallelism: '1'
+            taskCountPerNode: '1'
+            taskSpec:
+              computeResource:
+                cpuMilli: 4000
+                memoryMib: 12000
+              maxRunDuration: 600s
+              maxRetryCount: 0
+              runnables:
+              - container:
+                  imageUri: us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/study15@sha256:4cc533e7da1a88aa10d8d8f01fdb03c2b2fa982c0fba3940c8da6e8ab1b59c3f
+                  entrypoint: python3
+                  commands:
+                  - -c
+                  - 'import base64,pathlib,runpy; payload={''study.py'': ''IiIiRnVsbC1ob3Jpem9uIG1lY2hhbmlzbSBwcm9maWxpbmc7IG5vdCBhIHJlYWwtcHJvcGVydHkgaWduaXRpb24gbW9kZWwuIiIiCmltcG9ydCBhcmdwYXJzZSwgY3N2LCBoYXNobGliLCBqc29uLCBvcywgcGxhdGZvcm0sIHJlLCBzaWduYWwsIHN1YnByb2Nlc3MsIHRpbWUKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCgpST09UPVBhdGgoX19maWxlX18pLnJlc29sdmUoKS5wYXJlbnQKCmRlZiBzYXZlKHBhdGgsb2JqKToKICAgIHBhdGgucGFyZW50Lm1rZGlyKHBhcmVudHM9VHJ1ZSxleGlzdF9vaz1UcnVlKQogICAgcGF0aC53cml0ZV90ZXh0KGpzb24uZHVtcHMob2JqLGluZGVudD0yKSsnXG4nKQoKZGVmIHNoYShwYXRoKTogcmV0dXJuIGhhc2hsaWIuc2hhMjU2KHBhdGgucmVhZF9ieXRlcygpKS5oZXhkaWdlc3QoKQoKZGVmIGdlbmVyYXRlKCk6CiAgICBpbXBvcnQgc2h1dGlsCiAgICAoUk9PVC8nZGVja3MnKS5ta2RpcihleGlzdF9vaz1UcnVlKQogICAgZm9yIHAgaW4gKFJPT1QvJ2lucHV0cycpLmdsb2IoJyouZmRzJyk6c2h1dGlsLmNvcHlmaWxlKHAsUk9PVC8nZGVja3MnL3AubmFtZSkKICAgIGNhc2VzPVtdCiAgICBmb3IgbW9kZSBpbiBbJ2Zsb3cnLCdmaXJlJ106CiAgICAgICAgZm9yIHZhcmlhbnQgaW4gWydjb2Fyc2UnLCdtZWRpdW0nLCdmaW5lJywnc3BsaXRfZmluZScsJ2xvY2FsX2ZpbmUnLCdyYWRpYXRpb24nXToKICAgICAgICAgICAgbmFtZT1mJ3ttb2RlfV97dmFyaWFudH0nCiAgICAgICAgICAgIGR4PXsnY29hcnNlJzouNSwnbWVkaXVtJzouMjUsJ3JhZGlhdGlvbic6LjI1fS5nZXQodmFyaWFudCwuMTI1KQogICAgICAgICAgICBibG9ja3M9WygwLDgsZHgpXSBpZiB2YXJpYW50IG5vdCBpbiBbJ3NwbGl0X2ZpbmUnLCdsb2NhbF9maW5lJ10gZWxzZSBbKDAsMiwuMjUgaWYgdmFyaWFudD09J2xvY2FsX2ZpbmUnIGVsc2UgZHgpLCgyLDYsZHgpLCg2LDgsLjI1IGlmIHZhcmlhbnQ9PSdsb2NhbF9maW5lJyBlbHNlIGR4KV0KICAgICAgICAgICAgbWVzaGVzPSdcbicuam9pbihmIiZNRVNIIElKSz17cm91bmQoKGItYSkvZCl9LHtyb3VuZCg0L2QpfSx7cm91bmQoNC9kKX0sIFhCPXthfSx7Yn0sMCw0LDAsNCAvIiBmb3IgYSxiLGQgaW4gYmxvY2tzKQogICAgICAgICAgICBjZWxscz1zdW0ocm91bmQoKGItYSkvZCkqcm91bmQoNC9kKSoqMiBmb3IgYSxiLGQgaW4gYmxvY2tzKQogICAgICAgICAgICByYWRpYXRpb249IiZSQURJIE5VTUJFUl9SQURJQVRJT05fQU5HTEVTPTUwLCBUSU1FX1NURVBfSU5DUkVNRU5UPTYgLyIgaWYgdmFyaWFudD09J3JhZGlhdGlvbicgZWxzZSAnJwogICAgICAgICAgICB0ZXh0PWYiIiImSEVBRCBDSElEPSd7bmFtZX0nLCBUSVRMRT0nV2luZCBvYnN0YWNsZSBhbmQgc3VyZmFjZSBoZWF0aW5nIHJlc29sdXRpb24gc3R1ZHknIC8Ke21lc2hlc30KJlRJTUUgVF9FTkQ9OC4gLwomTUlTQyBSTkRfU0VFRD0xMjM0IC8KJldJTkQgU1BFRUQ9My4sIERJUkVDVElPTj0yNzAuIC8KJlJFQUMgRlVFTD0nUFJPUEFORScsIFNPT1RfWUlFTEQ9MC4wMSAvCiZNQVRMIElEPSd3b29kIHRoZXJtYWwgc3Vycm9nYXRlJywgREVOU0lUWT01MDAuLCBDT05EVUNUSVZJVFk9MC4xMiwgU1BFQ0lGSUNfSEVBVD0xLjcgLwomU1VSRiBJRD0nVEFSR0VUJywgTUFUTF9JRD0nd29vZCB0aGVybWFsIHN1cnJvZ2F0ZScsIFRISUNLTkVTUz0wLjAyIC8KJlNVUkYgSUQ9J0JVUk5FUicsIEhSUlBVQT17MTYwMCBpZiBtb2RlPT0nZmlyZScgZWxzZSAwfSwgVEFVX1E9MC4gLwomT0JTVCBYQj00LDQuNSwxLDMsMCwyLjUsIFNVUkZfSUQ9J1RBUkdFVCcgLwomT0JTVCBYQj0yLjUsMy41LDEuNSwyLjUsMCwwLjUsIFNVUkZfSURTPSdCVVJORVInLCdJTkVSVCcsJ0lORVJUJyAvCiZWRU5UIE1CPSdYTUlOJywgU1VSRl9JRD0nT1BFTicgLwomVkVOVCBNQj0nWE1BWCcsIFNVUkZfSUQ9J09QRU4nIC8KJlZFTlQgTUI9J1lNSU4nLCBTVVJGX0lEPSdPUEVOJyAvCiZWRU5UIE1CPSdZTUFYJywgU1VSRl9JRD0nT1BFTicgLwomVkVOVCBNQj0nWk1BWCcsIFNVUkZfSUQ9J09QRU4nIC8Ke3JhZGlhdGlvbn0KJkRFVkMgSUQ9J3N1cmZhY2VfbWF4X0MnLCBRVUFOVElUWT0nV0FMTCBURU1QRVJBVFVSRScsIFNVUkZfSUQ9J1RBUkdFVCcsIFhCPTAsOCwwLDQsMCw0LCBTUEFUSUFMX1NUQVRJU1RJQz0nTUFYJywgVEVNUE9SQUxfU1RBVElTVElDPSdJTlNUQU5UIFZBTFVFJyAvCiZERVZDIElEPSdoZWF0X21heF9rV19tMicsIFFVQU5USVRZPSdHQVVHRSBIRUFUIEZMVVgnLCBTVVJGX0lEPSdUQVJHRVQnLCBYQj0wLDgsMCw0LDAsNCwgU1BBVElBTF9TVEFUSVNUSUM9J01BWCcsIFRFTVBPUkFMX1NUQVRJU1RJQz0nSU5TVEFOVCBWQUxVRScgLwomREVWQyBJRD0nd2FrZV91JywgWFlaPTUuNSwyLDEsIFFVQU5USVRZPSdVLVZFTE9DSVRZJyAvCiZERVZDIElEPSdwbHVtZV9DJywgWFlaPTMuNSwyLDIsIFFVQU5USVRZPSdURU1QRVJBVFVSRScgLwomQk5ERiBRVUFOVElUWT0nV0FMTCBURU1QRVJBVFVSRScgLwomQk5ERiBRVUFOVElUWT0nR0FVR0UgSEVBVCBGTFVYJyAvCiZEVU1QIERUX0RFVkM9MC4xLCBEVF9CTkRGPTEuLCBEVF9IUlI9MC4xLCBEVF9SRVNUQVJUPTEwMDAwMC4sIFNNT0tFM0Q9LkZBTFNFLiAvCiZUQUlMIC8KIiIiCiAgICAgICAgICAgIHA9Uk9PVC8nZGVja3MnL2Yne25hbWV9LmZkcyc7cC5wYXJlbnQubWtkaXIoZXhpc3Rfb2s9VHJ1ZSk7cC53cml0ZV90ZXh0KHRleHQpCiAgICAgICAgICAgIGNhc2VzLmFwcGVuZChkaWN0KGNhc2U9bmFtZSxtb2RlPW1vZGUsdmFyaWFudD12YXJpYW50LGNlbGxzPWNlbGxzLG1lc2hlcz1sZW4oYmxvY2tzKSxob3Jpem9uX3M9OCkpCiAgICBmb3IgbmFtZSBpbiBbJ2hlYXRfY29uZHVjdGlvbl9hJywncGluZV9uZWVkbGVzJ106CiAgICAgICAgY2FzZXMuYXBwZW5kKGRpY3QoY2FzZT1uYW1lLG1vZGU9J3Vwc3RyZWFtX3ZlcmlmaWNhdGlvbicsdmFyaWFudD0nb3JpZ2luYWwnLGNlbGxzPTI3IGlmIG5hbWU9PSdoZWF0X2NvbmR1Y3Rpb25fYScgZWxzZSAxMDAwLG1lc2hlcz0xLGhvcml6b25fcz0yMDAwIGlmIG5hbWU9PSdoZWF0X2NvbmR1Y3Rpb25fYScgZWxzZSAxMCkpCiAgICBzYXZlKFJPT1QvJ21hbmlmZXN0Lmpzb24nLGNhc2VzKQoKZGVmIHJlYWRfY3N2KHBhdGgpOgogICAgd2l0aCBwYXRoLm9wZW4oKSBhcyBmOgogICAgICAgIHI9Y3N2LnJlYWRlcihmKTtuZXh0KHIpO25hbWVzPVtzLnN0cmlwKCkuc3RyaXAoJyInKSBmb3IgcyBpbiBuZXh0KHIpXQogICAgICAgIHJldHVybiBbZGljdCh6aXAobmFtZXMsbWFwKGZsb2F0LHJvdykpKSBmb3Igcm93IGluIHIgaWYgcm93XQoKZGVmIGFuYWx5emUoZm9sZGVyLG5hbWUsaG9yaXpvbik6CiAgICBvdXQ9KGZvbGRlci9mJ3tuYW1lfS5vdXQnKS5yZWFkX3RleHQoZXJyb3JzPSdyZXBsYWNlJykgaWYgKGZvbGRlci9mJ3tuYW1lfS5vdXQnKS5leGlzdHMoKSBlbHNlICcnCiAgICBzdGVwcz1yZS5maW5kYWxsKHInVGltZSBTdGVwXHMrKFxkKyknLG91dCkKICAgIGR0cz1yZS5maW5kYWxsKHInU3RlcCBTaXplOlxzKyhbXGQuRWUrLV0rKScsb3V0KQogICAgY3B1PWZvbGRlci9mJ3tuYW1lfV9jcHUuY3N2JwogICAgcHJvZmlsZT17fQogICAgaWYgY3B1LmV4aXN0cygpOgogICAgICAgIHdpdGggY3B1Lm9wZW4oKSBhcyBmOgogICAgICAgICAgICByb3dzPWxpc3QoY3N2LkRpY3RSZWFkZXIoZikpCiAgICAgICAgcHJvZmlsZT17ay5zdHJpcCgpOnN1bShmbG9hdChyW2tdKSBmb3IgciBpbiByb3dzKSBmb3IgayBpbiByb3dzWzBdIGlmIGshPSdSYW5rJ30KICAgIGRldj1mb2xkZXIvZid7bmFtZX1fZGV2Yy5jc3YnCiAgICByb3dzPXJlYWRfY3N2KGRldikgaWYgZGV2LmV4aXN0cygpIGVsc2UgW10KICAgIGNvbXBsZXRlPWJvb2wocm93cykgYW5kIHJvd3NbLTFdWydUaW1lJ10+PWhvcml6b24tMWUtNSBhbmQgJ2NvbXBsZXRlZCBzdWNjZXNzZnVsbHknIGluIG91dC5sb3dlcigpCiAgICByZXR1cm4gZGljdChmdWxsX2hvcml6b249Y29tcGxldGUsc3RlcHM9aW50KHN0ZXBzWy0xXSkgaWYgc3RlcHMgZWxzZSBOb25lLGxvZ2dlZF9kdF9taW5fcz1taW4obWFwKGZsb2F0LGR0cykpIGlmIGR0cyBlbHNlIE5vbmUsCiAgICAgICAgICAgICAgICBjcHVfcHJvZmlsZT1wcm9maWxlLGZpbmFsX2RldmljZXM9cm93c1stMV0gaWYgcm93cyBlbHNlIHt9LG91dHB1dF9ieXRlcz1zdW0ocC5zdGF0KCkuc3Rfc2l6ZSBmb3IgcCBpbiBmb2xkZXIuZ2xvYignKicpIGlmIHAuaXNfZmlsZSgpKSkKCmRlZiBydW5fb25lKGNhc2UscmVwZWF0LGxhYmVsLGJpbmFyeSx0aW1lb3V0PTYwMCk6CiAgICBuYW1lPWNhc2VbJ2Nhc2UnXTsgZm9sZGVyPVJPT1QvJ2RhdGEnL2xhYmVsL2Yne25hbWV9X3J7cmVwZWF0fScKICAgIGZvbGRlci5ta2RpcihwYXJlbnRzPVRydWUsZXhpc3Rfb2s9VHJ1ZSkKICAgIGRlY2s9Uk9PVC8nZGVja3MnL2Yne25hbWV9LmZkcycKICAgIHJlc3VsdD1kaWN0KGNhc2UscmVwZWF0PXJlcGVhdCxwbGF0Zm9ybT1wbGF0Zm9ybS5wbGF0Zm9ybSgpLG1hY2hpbmU9cGxhdGZvcm0ubWFjaGluZSgpLGJpbmFyeV9zaGEyNTY9c2hhKGJpbmFyeSksZGVja19zaGEyNTY9c2hhKGRlY2spLHRocmVhZHM9NCkKICAgIHJlc3VsdFsnbG9hZF9iZWZvcmUnXT1saXN0KG9zLmdldGxvYWRhdmcoKSkKICAgIHN0YXJ0PXRpbWUubW9ub3RvbmljKCkKICAgIHdpdGggKGZvbGRlci8ncnVuLmxvZycpLm9wZW4oJ3cnKSBhcyBsb2c6CiAgICAgICAgcD1zdWJwcm9jZXNzLlBvcGVuKFtzdHIoYmluYXJ5KSxzdHIoZGVjayldLGN3ZD1mb2xkZXIsc3Rkb3V0PWxvZyxzdGRlcnI9c3VicHJvY2Vzcy5TVERPVVQsc3RhcnRfbmV3X3Nlc3Npb249VHJ1ZSwKICAgICAgICAgICAgZW52PWRpY3Qob3MuZW52aXJvbixPTVBfTlVNX1RIUkVBRFM9JzQnLE9NUElfQUxMT1dfUlVOX0FTX1JPT1Q9JzEnLE9NUElfQUxMT1dfUlVOX0FTX1JPT1RfQ09ORklSTT0nMScpKQogICAgICAgIHRyeTogcmM9cC53YWl0KHRpbWVvdXQ9dGltZW91dCkKICAgICAgICBleGNlcHQgc3VicHJvY2Vzcy5UaW1lb3V0RXhwaXJlZDoKICAgICAgICAgICAgb3Mua2lsbHBnKHAucGlkLHNpZ25hbC5TSUdLSUxMKTtwLndhaXQoKTtyYz0xMjQKICAgIHJlc3VsdC51cGRhdGUod2FsbF9zZWNvbmRzPXRpbWUubW9ub3RvbmljKCktc3RhcnQscmV0dXJuY29kZT1yYyxsb2FkX2FmdGVyPWxpc3Qob3MuZ2V0bG9hZGF2ZygpKSkKICAgIHJlc3VsdC51cGRhdGUoYW5hbHl6ZShmb2xkZXIsbmFtZSxjYXNlWydob3Jpem9uX3MnXSkpCiAgICBzYXZlKGZvbGRlci8ncmVzdWx0Lmpzb24nLHJlc3VsdCkKICAgIHByaW50KGpzb24uZHVtcHMoe2s6cmVzdWx0W2tdIGZvciBrIGluIFsnY2FzZScsJ3JlcGVhdCcsJ3dhbGxfc2Vjb25kcycsJ3JldHVybmNvZGUnLCdmdWxsX2hvcml6b24nXX0pLGZsdXNoPVRydWUpCiAgICBpZiByYyBvciBub3QgcmVzdWx0WydmdWxsX2hvcml6b24nXTpyYWlzZSBSdW50aW1lRXJyb3IoZidGYWlsZWQge25hbWV9OyBzZWUge2ZvbGRlcn0nKQogICAgcmV0dXJuIHJlc3VsdAoKZGVmIG1haW4oKToKICAgIGFwPWFyZ3BhcnNlLkFyZ3VtZW50UGFyc2VyKCk7YXAuYWRkX2FyZ3VtZW50KCdhY3Rpb24nLGNob2ljZXM9WydnZW5lcmF0ZScsJ3J1biddKTthcC5hZGRfYXJndW1lbnQoJy0tbGFiZWwnLGRlZmF1bHQ9J2xvY2FsJyk7YXAuYWRkX2FyZ3VtZW50KCctLWNhc2VzJyxkZWZhdWx0PSdhbGwnKTthcC5hZGRfYXJndW1lbnQoJy0tcmVwZWF0Jyx0eXBlPWludCxkZWZhdWx0PTEpO2FyZ3M9YXAucGFyc2VfYXJncygpCiAgICBpZiBhcmdzLmFjdGlvbj09J2dlbmVyYXRlJzpnZW5lcmF0ZSgpO3JldHVybgogICAgYmluYXJ5PVBhdGgob3MuZW52aXJvbi5nZXQoJ0ZEU19CSU5BUlknKSBvciBzdHIoUk9PVC5wYXJlbnRzWzFdLydGRFMvc3JjL2Zkcy9CdWlsZC9vbXBpX2dudV9vc3gvZmRzX29tcGlfZ251X29zeCcpKQogICAgY2FzZXM9anNvbi5sb2FkcygoUk9PVC8nbWFuaWZlc3QuanNvbicpLnJlYWRfdGV4dCgpKQogICAgaWYgYXJncy5jYXNlcyE9J2FsbCc6Y2FzZXM9W2MgZm9yIGMgaW4gY2FzZXMgaWYgY1snY2FzZSddIGluIGFyZ3MuY2FzZXMuc3BsaXQoJywnKV0KICAgIGlmIG5vdCBjYXNlczpyYWlzZSBWYWx1ZUVycm9yKCdObyBjYXNlcyBzZWxlY3RlZCcpCiAgICBmb3IgYyBpbiBjYXNlczpydW5fb25lKGMsYXJncy5yZXBlYXQsYXJncy5sYWJlbCxiaW5hcnkpCgppZiBfX25hbWVfXz09J19fbWFpbl9fJzptYWluKCkK'',
+                    ''worker.py'': ''IiIiT25lIGJvdW5kZWQgY2xvdWQgdGFzaywgZXZpZGVuY2UgdXBsb2FkZWQgd2l0aCBWTSBzZXJ2aWNlIGFjY291bnQgaWRlbnRpdHkuIiIiCmltcG9ydCBqc29uLCBvcywgc3VicHJvY2Vzcywgc3lzLCB0YXJmaWxlLCB0aW1lLCB1cmxsaWIucmVxdWVzdApmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKCmRlZiB1cGxvYWQocGF0aCxuYW1lKToKICAgIHJlcT11cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCdodHRwOi8vbWV0YWRhdGEuZ29vZ2xlLmludGVybmFsL2NvbXB1dGVNZXRhZGF0YS92MS9pbnN0YW5jZS9zZXJ2aWNlLWFjY291bnRzL2RlZmF1bHQvdG9rZW4nLGhlYWRlcnM9eydNZXRhZGF0YS1GbGF2b3InOidHb29nbGUnfSkKICAgIHRva2VuPWpzb24ubG9hZCh1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSx0aW1lb3V0PTEwKSlbJ2FjY2Vzc190b2tlbiddCiAgICBmcm9tIHVybGxpYi5wYXJzZSBpbXBvcnQgcXVvdGUKICAgIHVybD0naHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3VwbG9hZC9zdG9yYWdlL3YxL2IvJytvcy5lbnZpcm9uWydPVVRQVVRfQlVDS0VUJ10rJy9vP3VwbG9hZFR5cGU9bWVkaWEmaWZHZW5lcmF0aW9uTWF0Y2g9MCZuYW1lPScrcXVvdGUobmFtZSxzYWZlPScnKQogICAgcmVxPXVybGxpYi5yZXF1ZXN0LlJlcXVlc3QodXJsLGRhdGE9cGF0aC5yZWFkX2J5dGVzKCksbWV0aG9kPSdQT1NUJyxoZWFkZXJzPXsnQXV0aG9yaXphdGlvbic6J0JlYXJlciAnK3Rva2VuLCdDb250ZW50LVR5cGUnOidhcHBsaWNhdGlvbi9nemlwJ30pCiAgICB3aXRoIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLHRpbWVvdXQ9OTApIGFzIHI6IHByaW50KCd1cGxvYWRlZCcsbmFtZSxyLnN0YXR1cyxmbHVzaD1UcnVlKQoKbW9kZT1vcy5lbnZpcm9uLmdldCgnVFJJQUxfTU9ERScsJ3NjaWVuY2UnKQppZiBtb2RlIGluIFsndGltZW91dCcsJ3dhdGNoZG9nJ106CiAgICBwcmludCgnQ09OVFJPTF9QUk9CRV9TVEFSVEVEICcrbW9kZSxmbHVzaD1UcnVlKQogICAgdGltZS5zbGVlcCgxODAwKQogICAgcmFpc2UgU3lzdGVtRXhpdCgnRVJST1I6IGNvbnRyb2wgcHJvYmUgd2FzIG5vdCBzdG9wcGVkJykKaWYgbW9kZSE9J3NjaWVuY2UnOnJhaXNlIFN5c3RlbUV4aXQoJ1Vua25vd24gbW9kZScpCmNvZGU9MQp0cnk6CiAgICBjb2RlPXN1YnByb2Nlc3MuY2FsbChbc3lzLmV4ZWN1dGFibGUsJ3N0dWR5LnB5JywncnVuJywnLS1sYWJlbD1jbG91ZCcsJy0tY2FzZXM9Zmxvd19tZWRpdW0sZmlyZV9tZWRpdW0saGVhdF9jb25kdWN0aW9uX2EscGluZV9uZWVkbGVzJ10pCmZpbmFsbHk6CiAgICBQYXRoKCcvc3R1ZHkvZGF0YS9jbG91ZCcpLm1rZGlyKHBhcmVudHM9VHJ1ZSxleGlzdF9vaz1UcnVlKQogICAgb3V0PVBhdGgoJy90bXAvZXZpZGVuY2UudGFyLmd6JykKICAgIHdpdGggdGFyZmlsZS5vcGVuKG91dCwndzpneicpIGFzIHQ6dC5hZGQoJy9zdHVkeS9kYXRhL2Nsb3VkJyxhcmNuYW1lPSdjbG91ZCcpCiAgICBpZiBvdXQuc3RhdCgpLnN0X3NpemU+MjUqMTAyNCoqMjpyYWlzZSBSdW50aW1lRXJyb3IoJ091dHB1dCBleGNlZWRzIDI1IE1pQiBsaW1pdCcpCiAgICB1cGxvYWQob3V0LG9zLmVudmlyb25bJ09VVFBVVF9QUkVGSVgnXSsnL2V2aWRlbmNlLnRhci5neicpCnN5cy5leGl0KGNvZGUpCg==''};
+                    [pathlib.Path(''/study'',n).write_bytes(base64.b64decode(v)) for
+                    n,v in payload.items()]; runpy.run_path(''/study/worker.py'',run_name=''__main__'')'
+                  options: --cpus=4 --memory=12g --pids-limit=256
+                environment:
+                  variables:
+                    TRIAL_MODE: science
+                    OUTPUT_BUCKET: tmrw-wildfire-20261015-trial
+                    OUTPUT_PREFIX: science-recovery
+          allocationPolicy:
+            instances:
+            - policy:
+                machineType: c3-standard-4
+                provisioningModel: SPOT
+                bootDisk:
+                  sizeGb: '30'
+                  type: pd-balanced
+            location:
+              allowedLocations:
+              - zones/us-central1-a
+            serviceAccount:
+              email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+            labels:
+              trial_id: study15
+            network:
+              networkInterfaces:
+              - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                subnetwork: projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial
+          labels:
+            trial_id: study15
+          logsPolicy:
+            destination: CLOUD_LOGGING
+      - status:
+          body:
+            status:
+              state: UNKNOWN
+  - create:
+      call: http.post
+      args:
+        url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs
+        query:
+          jobId: fds-controlled-trial
+        auth:
+          type: OAuth2
+        body: ${job}
+      result: created
+  - monitor:
+      try:
+        steps:
+        - get_status:
+            call: http.get
+            args:
+              url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-controlled-trial
+              auth:
+                type: OAuth2
+            result: status
+        - check:
+            switch:
+            - condition: ${status.body.status.state == "SUCCEEDED" or status.body.status.state
+                == "FAILED"}
+              next: record
+            - condition: ${sys.now() >= deadline}
+              next: record
+        - wait:
+            call: sys.sleep
+            args:
+              seconds: 15
+            next: get_status
+      except:
+        as: monitor_error
+        steps:
+        - monitor_failure:
+            call: sys.log
+            args:
+              text: Monitoring failed; proceeding to cleanup
+              severity: ERROR
+  - record:
+      try:
+        call: http.post
+        args:
+          url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+          query:
+            uploadType: media
+            name: science-recovery/job-status.json
+          auth:
+            type: OAuth2
+          headers:
+            Content-Type: application/json
+          body: ${status.body}
+      except:
+        as: record_error
+        steps:
+        - record_failure:
+            call: sys.log
+            args:
+              text: Could not persist final status; proceeding with cleanup
+              severity: ERROR
+  - delete_job:
+      try:
+        call: http.delete
+        args:
+          url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-controlled-trial
+          auth:
+            type: OAuth2
+        result: deletion
+      except:
+        as: delete_error
+        steps:
+        - delete_failure:
+            call: sys.log
+            args:
+              text: Batch deletion failed; checking workers directly
+              severity: ERROR
+  - cleanup_wait:
+      call: sys.sleep
+      args:
+        seconds: 30
+  - list_workers:
+      call: http.get
+      args:
+        url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances
+        query:
+          filter: labels.trial_id = study15
+        auth:
+          type: OAuth2
+      result: workers
+  - delete_stragglers:
+      for:
+        value: vm
+        in: ${default(map.get(workers.body, "items"), [])}
+        steps:
+        - delete_vm:
+            call: http.delete
+            args:
+              url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances/"
+                + vm.name}
+              auth:
+                type: OAuth2
+  - verify_wait:
+      call: sys.sleep
+      args:
+        seconds: 30
+  - verify:
+      call: http.get
+      args:
+        url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances
+        query:
+          filter: labels.trial_id = study15
+        auth:
+          type: OAuth2
+      result: remaining
+  - assert_empty:
+      switch:
+      - condition: ${len(default(map.get(remaining.body, "items"), [])) > 0}
+        raise: 'Cleanup incomplete: labeled workers remain'
+  - done:
+      return:
+        mode: science-recovery
+        final_state: ${status.body.status.state}
+        workers_remaining: 0
+        job_uid: ${created.body.uid}

@@ -55,3 +55,33 @@ stages:
     outs:
       - results/profiling.png:
           cache: false
+  runner_regression:
+    cmd: ../../.venv/bin/python test_runner.py
+    deps:
+      - study.py
+      - test_runner.py
+  cloud_extract:
+    cmd: ../../.venv/bin/python extract_cloud.py
+    deps:
+      - extract_cloud.py
+      - data/cloud-evidence.tar.gz
+    outs:
+      - data/cloud
+  cloud_compare:
+    cmd: ../../.venv/bin/python compare_cloud.py
+    deps:
+      - compare_cloud.py
+      - data/cloud
+      - data/local
+    outs:
+      - results/cloud-comparison.json:
+          cache: false
+  cloud_boundary:
+    cmd: ../../.venv/bin/python cloud_boundary.py
+    deps:
+      - cloud_boundary.py
+      - data/cloud
+    outs:
+      - data/cloud_boundary
+      - results/cloud-boundary.json:
+          cache: false

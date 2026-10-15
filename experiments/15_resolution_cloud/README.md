@@ -33,9 +33,9 @@ Other applications were consuming CPU during these runs. Repeated medium-case el
 
 Dedicated project: `tmrw-wildfire-20261015`, billed to the user-approved Project TMRW Mercury Billing account. The existing USD10 cumulative budget provides alerts only. The initial cloud trial has a separate USD0.50 total allowance, including build and overhead; it is not a provider-enforced dollar cap.
 
-Prepared controls: one Spot c3-standard-4 worker at a time, no on-demand fallback, no retries, bounded task duration, a separate server-side workflow deadline and cleanup, fixed job ID, immutable image digest, 25 MiB output cap, 30 GB boot disk, and one-day bucket/image expiration. The launcher reserves costs before submission and admits at most three trial jobs. It refuses active prior workflows/jobs/workers and stops admitting work above USD0.40. Owner API calls can bypass this local launcher.
+Prepared controls: one Spot c3-standard-4 worker at a time, no on-demand fallback, no retries, bounded task duration, a separate server-side workflow deadline and cleanup, fixed job ID, immutable image digest, 25 MiB output cap, 30 GB boot disk, and one-day bucket expiration and seven-day image expiration. The launcher reserves costs before submission and admits at most four trial job attempts, including one diagnosed launcher recovery. It refuses active prior workflows/jobs/workers and stops admitting work above USD0.40. Owner API calls can bypass this local launcher.
 
-Planned conservative reservations: USD0.12 for a maximum 20-minute image build, USD0.075 for three workers at 15 minutes each using a USD0.10/hour allowance, and USD0.10 for storage/network/control overhead: USD0.295 total. These are estimates, not settled billing charges. No repeated paid builds or job retries are authorized automatically.
+Planned conservative reservations: USD0.12 for a maximum 20-minute image build, USD0.10 for four workers at 15 minutes each using a USD0.10/hour allowance, and USD0.10 for storage/network/control overhead: USD0.32 total. These are estimates, not settled billing charges. No repeated paid builds or job retries are authorized automatically.
 
 The three intended probes are a successful science job, a deliberate task timeout, and a deliberate independent-workflow deadline cleanup. All require evidence of final state and zero remaining workers. The cloud compiler/OS/architecture differ from the laptop even at the same FDS revision, so scientific outputs must be compared alongside timing.
 
@@ -45,10 +45,32 @@ Current deployment state is recorded in `results/cloud-deployment.json`. Workflo
 
 From this directory, `../../.venv/bin/dvc repro` runs the local pipeline. Use `dvc pull` to retrieve cached data where available. `dvc commit -f` adopts the existing runs without solving them again. Python dependencies are numpy, scipy, matplotlib, and PyYAML, plus the native FDS executable and distributed fds2ascii identified by the scripts.
 
-Cloud actions are deliberately excluded from automatic DVC reproduction so it cannot create paid resources. After approved IAM, one bounded image build, and deployment validation, regenerate workflows with `make_workflow.py --image IMAGE@sha256:DIGEST`, record the verified deployment, and invoke `launch_cloud.py science`, then `timeout`, then `watchdog`, checking results and cleanup between each. Do not mark a deployment verified merely because a file was generated.
+Cloud actions are deliberately excluded from automatic DVC reproduction so it cannot create paid resources. After approved IAM, one bounded image build, and deployment validation, regenerate workflows with `make_workflow.py --image IMAGE@sha256:DIGEST`, record the verified deployment, and invoke the admitted science run, then `timeout`, then `watchdog`, checking results and cleanup between each. Do not mark a deployment verified merely because a file was generated.
 
 ## Next scientific step
 
 Extend the promising configurations to longer transients and repeat realizations, then test reactive wall/material models across multiple heating regimes. Measure ignition classification and time-to-ignition sensitivity directly. Only after those checks should any speedup be used to generate property-risk training labels. This experiment does not address the previously reported GEOM/ember crash.
 
 The two upstream input decks are preserved byte-for-byte, including their original whitespace. Git whitespace checks consequently report inherited whitespace in those files and their generated deck copies.
+
+## Cloud execution on 2026-10-15
+
+One Cloud Build completed successfully in 469.6 seconds. At the reserved USD0.006/minute rate, that is approximately USD0.047 before credits, not an invoice. The pinned image digest is recorded in `results/build-status.json`. No replacement build was needed.
+
+The first science attempt failed before invoking FDS: Python eagerly evaluated the local fallback path at `/study` despite an explicit FDS_BINARY environment variable. The controller deleted its job and verified zero workers. `test_runner.py` reproduces the exact shallow-path failure and passes after the lazy fallback correction. The small runner is now delivered in the Batch container command separately from the unchanged compiled image. A separately admitted recovery attempt succeeded; API task retries remain zero. Both attempts and their workflow results are retained.
+
+The recovery completed four full-horizon cases. Elapsed solver seconds (cloud / local first run): flow 7.68 / 7.16, wall heating 10.85 / 10.70, conduction 2.17 / 4.91, pine needles 16.26 / 18.53. VM provisioning and cleanup add overhead beyond solver time. These small cases do not establish a general cloud speedup.
+
+Conduction temperatures, pine mass quantities, and flow velocity agreed at recorded device precision. In the turbulent heated case, maximum wall-temperature-device difference was 5.95 °C and RMSE 1.56 °C; plume temperature and heat flux differed more. This is cross-platform reproducibility evidence, not physical validation or a real-property accuracy guarantee. Independent raw cloud boundary extraction found west-wall temperatures of 64.111–472.9 °C averaged over 7–8 s for the medium grid (`results/cloud-boundary.json`). Do not compare these directly with the fine-grid local boundary range as a platform-only effect.
+
+`results/cloud-comparison.json` contains every recorded device comparison. Runtime timeout and watchdog probe results are recorded separately when complete. The successful science controller returned SUCCEEDED and zero workers remaining.
+
+## Final control results
+
+All intended runtime checks passed. The science recovery job completed and cleaned up; the deliberate timeout probe started and failed with Batch timeout code 50005; the independent deadline probe started and was still RUNNING when the workflow deleted its job. All four workflow executions, including the initial packaging failure, completed cleanup with zero remaining workers. Final project-wide lists show zero VMs, zero disks, and zero Batch jobs (`results/final-*.json`).
+
+A 30-second task limit appeared as roughly 40 seconds between Batch RUNNING and FAILED states, and the three-minute independent deadline required additional cleanup time: its complete workflow lasted 248.6 seconds. These controls limit execution but are not instantaneous or provider-enforced dollar caps. The admission guard refused a new probe while the preceding cleanup was still active. The four-attempt allowance is now exhausted, preventing further launches through this trial launcher.
+
+One image build and four job attempts used a total conservative reservation of USD0.32. Final invoiced costs remain unconfirmed. The build alone is approximately USD0.047 at the budgeted rate. The compiled image expires after seven days; trial bucket objects expire after one day. Downloaded evidence is preserved locally in DVC, and no automatic recurring runs or rebuilds were configured.
+
+The cloud evidence archive is an external input (`cloud-evidence.dvc`). Local `dvc repro` can extract, compare, and verify this evidence without provisioning cloud resources. Fetch cached inputs with DVC as required; no remote data push was performed in this session.

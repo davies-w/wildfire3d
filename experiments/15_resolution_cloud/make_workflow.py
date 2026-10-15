@@ -1,5 +1,5 @@
 """Generate fixed single-worker workflow; controller runs independently of laptop."""
-import argparse,json
+import argparse,json,base64
 from pathlib import Path
 import yaml
 
@@ -7,10 +7,13 @@ P='tmrw-wildfire-20261015';REGION='us-central1';ZONE='us-central1-a';BUCKET=P+'-
 ROOT=Path(__file__).resolve().parent
 
 def job(image,mode):
+    # Ship small runner fixes independently of the compiled immutable FDS image.
+    payload={name:base64.b64encode((ROOT/name).read_bytes()).decode() for name in ['study.py','worker.py']}
+    bootstrap="import base64,pathlib,runpy; payload="+repr(payload)+"; [pathlib.Path('/study',n).write_bytes(base64.b64decode(v)) for n,v in payload.items()]; runpy.run_path('/study/worker.py',run_name='__main__')"
     return {'taskGroups':[{'taskCount':'1','parallelism':'1','taskCountPerNode':'1','taskSpec':{
         'computeResource':{'cpuMilli':4000,'memoryMib':12000},'maxRunDuration':'30s' if mode=='timeout' else '600s',
-        'maxRetryCount':0,'runnables':[{'container':{'imageUri':image,'options':'--cpus=4 --memory=12g --pids-limit=256'},
-            'environment':{'variables':{'TRIAL_MODE':mode,'OUTPUT_BUCKET':BUCKET,'OUTPUT_PREFIX':mode}}}]
+        'maxRetryCount':0,'runnables':[{'container':{'imageUri':image,'entrypoint':'python3','commands':['-c',bootstrap],'options':'--cpus=4 --memory=12g --pids-limit=256'},
+            'environment':{'variables':{'TRIAL_MODE':'science' if mode=='science-recovery' else mode,'OUTPUT_BUCKET':BUCKET,'OUTPUT_PREFIX':mode}}}]
     }}],'allocationPolicy':{'instances':[{'policy':{'machineType':'c3-standard-4','provisioningModel':'SPOT','bootDisk':{'sizeGb':'30','type':'pd-balanced'}}}],
         'location':{'allowedLocations':['zones/'+ZONE]},'serviceAccount':{'email':f'fds-worker@{P}.iam.gserviceaccount.com'},
         'labels':{'trial_id':'study15'},'network':{'networkInterfaces':[{'network':f'projects/{P}/global/networks/fds-trial','subnetwork':f'projects/{P}/regions/{REGION}/subnetworks/fds-trial'}]}},
@@ -19,7 +22,7 @@ def job(image,mode):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--image',required=True);a=ap.parse_args()
     if '@sha256:' not in a.image:raise ValueError('Immutable image digest required')
-    for mode in ['science','timeout','watchdog']:
+    for mode in ['science','science-recovery','timeout','watchdog']:
         cfg=job(a.image,mode)
         (ROOT/f'job-{mode}.json').write_text(json.dumps(cfg,indent=2)+'\n')
         # Fixed shared job ID prevents concurrent workflows from creating multiple workers.
