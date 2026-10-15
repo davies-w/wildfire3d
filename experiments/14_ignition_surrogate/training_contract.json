@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "target": "any designated main-structure component reaches its specified ignition condition by horizon",
+  "scope": "conditional vulnerability given an exposure scenario; not annual risk",
+  "coordinate_convention": {"x": "east", "y": "north", "z": "up", "length_unit": "m", "time_unit": "s"},
+  "wind": {"direction": "meteorological direction FROM, degrees clockwise from north", "speed_unit": "m/s", "required": true},
+  "moisture": {"unit": "kg water per kg dry fuel", "separate_live_and_dead": true, "required": true},
+  "material_assignment": {
+    "required_per_component": ["material_or_assembly_id", "source", "observed_or_assumed", "uncertainty", "ignition_model"],
+    "note": "Clay tile and stucco surfaces must not automatically inherit wood combustion. Model combustible substrates where relevant."
+  },
+  "vegetation_assignment": {
+    "required": ["geometry_representation", "fuel_load", "live_dead_fraction", "moisture", "combustion_model", "parameter_source"],
+    "species_name_alone_sufficient": false,
+    "unknown_species_allowed_with_explicit_fuel_distribution": true
+  },
+  "exposure": {
+    "required": ["horizon_s", "ignition_origins", "initial_conditions", "boundary_conditions"],
+    "external_ember_exposure": "explicitly included or excluded; absence is not a zero-risk observation"
+  },
+  "label": {
+    "positive": "successful run and valid main-structure ignition event",
+    "negative": "successful full-horizon run and no main-structure ignition event",
+    "unlabeled": ["crash", "timeout", "incomplete negative", "invalid output", "unqualified material setup"],
+    "record": ["property_id", "scenario_id", "first_component", "event_time_s", "event_model", "horizon_s", "solver_binary_sha256", "deck_sha256", "seed", "fidelity", "label_reader_version"]
+  },
+  "risk_aggregation": {
+    "probability_weights": "not assigned by this pilot",
+    "require_joint_distribution": true,
+    "keep_correlations": ["wind speed and direction", "weather and moisture", "ignition/exposure and location"],
+    "nonuniform_training_sampling": "record inclusion probabilities or sampling policy; do not interpret sample frequency as physical probability"
+  },
+  "evaluation": {
+    "split_unit": "whole property; geographic-region holdout preferred",
+    "metrics": ["missed ignition rate", "false ignition rate", "ignition-time error", "calibration", "cost per accepted label"],
+    "paired_fidelity_runs": true,
+    "replicated_seeds": true,
+    "acceptance_tolerance": "not yet finalized; 5 percentage points discussed provisionally, not demonstrated"
+  }
+}

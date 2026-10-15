@@ -1,0 +1,96 @@
+stages:
+  acquire:
+    cmd: ../../.venv/bin/python scripts/pilot.py acquire
+    deps:
+      - scripts/pilot.py
+      - requirements.txt
+    outs:
+      - data/sonoma
+  reconstruct:
+    cmd: ../../.venv/bin/python scripts/pilot.py reconstruct
+    deps:
+      - scripts/pilot.py
+      - data/sonoma
+    outs:
+      - data/scenes
+      - results/properties.json:
+          cache: false
+  geometry_qa:
+    cmd: ../../.venv/bin/python scripts/geometry_qa.py
+    deps:
+      - scripts/geometry_qa.py
+      - data/scenes
+      - results/properties.json
+    outs:
+      - results/geometry_qa.png:
+          cache: false
+  verify_geometry:
+    cmd: ../../.venv/bin/python scripts/verify_geometry.py
+    deps:
+      - scripts/verify_geometry.py
+      - data/sonoma
+      - data/scenes
+      - results/properties.json
+    outs:
+      - results/geometry_checks.json:
+          cache: false
+  benchmark:
+    cmd: ../../.venv/bin/python scripts/benchmark.py && ../../.venv/bin/python scripts/transport.py && ../../.venv/bin/python scripts/repeat_reference.py
+    deps:
+      - scripts/benchmark.py
+      - scripts/transport.py
+      - scripts/repeat_reference.py
+      - ../../paths.py
+      - ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+    outs:
+      - data/benchmark
+      - decks:
+          cache: false
+      - results/benchmark.json:
+          cache: false
+      - results/transport.json:
+          cache: false
+      - results/reference_repeat.json:
+          cache: false
+  summarize:
+    cmd: ../../.venv/bin/python scripts/summarize.py
+    deps:
+      - scripts/summarize.py
+      - scripts/benchmark.py
+      - results/benchmark.json
+      - results/transport.json
+      - results/reference_repeat.json
+      - results/properties.json
+      - ../13_ladder_tree_pair/data/with_tree/with_tree_cpu.csv
+      - ../13_ladder_tree_pair/data/without_tree/without_tree_cpu.csv
+    outs:
+      - results/comparison.json:
+          cache: false
+      - results/findings.md:
+          cache: false
+      - results/existing_profiles.json:
+          cache: false
+      - scenario_manifest.json:
+          cache: false
+  boundary_check:
+    cmd: ../../.venv/bin/python scripts/check_boundary.py
+    deps:
+      - scripts/check_boundary.py
+      - data/benchmark
+    outs:
+      - data/boundary_check
+      - results/boundary_check.json:
+          cache: false
+  test_labels:
+    cmd: ../../.venv/bin/python scripts/test_labels.py
+    deps:
+      - scripts/test_labels.py
+      - scripts/benchmark.py
+  plot_results:
+    cmd: ../../.venv/bin/python scripts/plot_results.py
+    deps:
+      - scripts/plot_results.py
+      - results/comparison.json
+    outs:
+      - results/speed_error.png:
+          cache: false

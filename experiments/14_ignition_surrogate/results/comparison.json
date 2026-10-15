@@ -1,0 +1,75 @@
+{
+  "coupon": [
+    {
+      "variant": "coarse",
+      "pairs": 6,
+      "missed_ignitions": 0,
+      "false_ignitions": 0,
+      "total_wall_speedup": 2.639047123619795,
+      "max_ignition_time_error_s": 1.2129999999999992,
+      "speedup_vs_early_stopping": 1.294188399804077,
+      "timing_pairs": 3
+    },
+    {
+      "variant": "early",
+      "pairs": 6,
+      "missed_ignitions": 0,
+      "false_ignitions": 0,
+      "total_wall_speedup": 2.0391522007300575,
+      "max_ignition_time_error_s": 0.0,
+      "speedup_vs_early_stopping": 1.0,
+      "timing_pairs": 3
+    },
+    {
+      "variant": "lean",
+      "pairs": 6,
+      "missed_ignitions": 0,
+      "false_ignitions": 0,
+      "total_wall_speedup": 1.9932553623117808,
+      "max_ignition_time_error_s": 0.0,
+      "speedup_vs_early_stopping": 0.9774921958243996,
+      "timing_pairs": 3
+    }
+  ],
+  "caveat": "Single wall-time measurements, no statistical speedup confidence intervals; synthetic screening, not real-world validation. Identical reference runtime changed substantially; wall-time ratios are confounded by uncontrolled machine load.",
+  "transport": [
+    {
+      "variant": "coarse",
+      "pairs": 8,
+      "missed_ignitions": 0,
+      "false_ignitions": 0,
+      "total_wall_speedup": 5.522493188096587,
+      "max_ignition_time_error_s": 13.0729,
+      "speedup_vs_early_stopping": 3.316599046947772,
+      "timing_pairs": 4
+    },
+    {
+      "variant": "early",
+      "pairs": 8,
+      "missed_ignitions": 0,
+      "false_ignitions": 0,
+      "total_wall_speedup": 1.6651072710097032,
+      "max_ignition_time_error_s": 0.22140000000000093,
+      "speedup_vs_early_stopping": 1.0,
+      "timing_pairs": 4
+    },
+    {
+      "variant": "radiation",
+      "pairs": 8,
+      "missed_ignitions": 0,
+      "false_ignitions": 0,
+      "total_wall_speedup": 1.9394252497602211,
+      "max_ignition_time_error_s": 2.4594000000000005,
+      "speedup_vs_early_stopping": 1.1647449287661655,
+      "timing_pairs": 4
+    }
+  ],
+  "reference_repeat": {
+    "classification_agrees": true,
+    "ignition_time_difference_s": 0.0,
+    "original_wall_seconds": 33.85439429106191,
+    "repeat_wall_seconds": 87.2265743749449,
+    "wall_time_ratio": 2.5765214886143775,
+    "note": "One repeat; no estimate of tail uncertainty or statistical equivalence"
+  }
+}

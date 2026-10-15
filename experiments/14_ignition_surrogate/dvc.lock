@@ -1,0 +1,237 @@
+schema: '2.0'
+stages:
+  acquire:
+    cmd: ../../.venv/bin/python scripts/pilot.py acquire
+    deps:
+    - path: requirements.txt
+      hash: md5
+      md5: 541faa2d09e22fa02ef95070e20207c5
+      size: 120
+    - path: scripts/pilot.py
+      hash: md5
+      md5: 2b6c8a50e6cfa51804a8726c2b3e8ed8
+      size: 11940
+    outs:
+    - path: data/sonoma
+      hash: md5
+      md5: 7996e969ea5fe10e8a2ec3000c8585ba.dir
+      size: 8908381
+      nfiles: 96
+  reconstruct:
+    cmd: ../../.venv/bin/python scripts/pilot.py reconstruct
+    deps:
+    - path: data/sonoma
+      hash: md5
+      md5: 7996e969ea5fe10e8a2ec3000c8585ba.dir
+      size: 8908381
+      nfiles: 96
+    - path: scripts/pilot.py
+      hash: md5
+      md5: 2b6c8a50e6cfa51804a8726c2b3e8ed8
+      size: 11940
+    outs:
+    - path: data/scenes
+      hash: md5
+      md5: bbaa3d5f98ddfb43e1bb768f16b72030.dir
+      size: 10863135
+      nfiles: 36
+    - path: results/properties.json
+      hash: md5
+      md5: 4eb811b7988629df4ae8d120678368b5
+      size: 6807
+  geometry_qa:
+    cmd: ../../.venv/bin/python scripts/geometry_qa.py
+    deps:
+    - path: data/scenes
+      hash: md5
+      md5: bbaa3d5f98ddfb43e1bb768f16b72030.dir
+      size: 10863135
+      nfiles: 36
+    - path: results/properties.json
+      hash: md5
+      md5: 4eb811b7988629df4ae8d120678368b5
+      size: 6807
+    - path: scripts/geometry_qa.py
+      hash: md5
+      md5: 518db7719fbf86c62270d657753f1b12
+      size: 1128
+    outs:
+    - path: results/geometry_qa.png
+      hash: md5
+      md5: e63b4d40fbd7e729b2d54c98fff278f3
+      size: 1775413
+  verify_geometry:
+    cmd: ../../.venv/bin/python scripts/verify_geometry.py
+    deps:
+    - path: data/scenes
+      hash: md5
+      md5: bbaa3d5f98ddfb43e1bb768f16b72030.dir
+      size: 10863135
+      nfiles: 36
+    - path: data/sonoma
+      hash: md5
+      md5: 7996e969ea5fe10e8a2ec3000c8585ba.dir
+      size: 8908381
+      nfiles: 96
+    - path: results/properties.json
+      hash: md5
+      md5: 4eb811b7988629df4ae8d120678368b5
+      size: 6807
+    - path: scripts/verify_geometry.py
+      hash: md5
+      md5: 561aebaf85f8c02c1c23a2599b008060
+      size: 1214
+    outs:
+    - path: results/geometry_checks.json
+      hash: md5
+      md5: 92da77302f98fa39ad2b977a2be0d6ac
+      size: 1609
+  benchmark:
+    cmd: ../../.venv/bin/python scripts/benchmark.py && ../../.venv/bin/python
+      scripts/transport.py && ../../.venv/bin/python scripts/repeat_reference.py
+    deps:
+    - path: ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+      hash: md5
+      md5: 18680afd3f78841d42906b41e3414f62
+      size: 10202320
+      isexec: true
+    - path: ../../paths.py
+      hash: md5
+      md5: 68442f05406b0761f7282d364976a102
+      size: 1635
+    - path: scripts/benchmark.py
+      hash: md5
+      md5: ea5fc9feadefaa3bf90ba1bb18d3817b
+      size: 6533
+    - path: scripts/repeat_reference.py
+      hash: md5
+      md5: 5f74fcffbe26e9ff04d44ef626bfa141
+      size: 448
+    - path: scripts/transport.py
+      hash: md5
+      md5: 36afe768cf4c3fd7112fcca4a85b746a
+      size: 2558
+    outs:
+    - path: data/benchmark
+      hash: md5
+      md5: 150b33d676b85e90654c2213a3936bd4.dir
+      size: 19841504
+      nfiles: 891
+    - path: decks
+      hash: md5
+      md5: bbc9ac3c1ad2fe9fee18e07990c06352.dir
+      size: 69094
+      nfiles: 57
+    - path: results/benchmark.json
+      hash: md5
+      md5: 62ab34cee6648a333e322c630d154b30
+      size: 16568
+    - path: results/reference_repeat.json
+      hash: md5
+      md5: d9d98a75ea3083e1ae9ad0587f7b58fd
+      size: 622
+    - path: results/transport.json
+      hash: md5
+      md5: 39df4597239860a4e47580b20a557b06
+      size: 24251
+  summarize:
+    cmd: ../../.venv/bin/python scripts/summarize.py
+    deps:
+    - path: ../13_ladder_tree_pair/data/with_tree/with_tree_cpu.csv
+      hash: md5
+      md5: 8a6c9ffc966e99c44e741303878c162e
+      size: 295
+    - path: ../13_ladder_tree_pair/data/without_tree/without_tree_cpu.csv
+      hash: md5
+      md5: 60f0f476031d335872e4faa08f881c99
+      size: 295
+    - path: results/benchmark.json
+      hash: md5
+      md5: 62ab34cee6648a333e322c630d154b30
+      size: 16568
+    - path: results/properties.json
+      hash: md5
+      md5: 4eb811b7988629df4ae8d120678368b5
+      size: 6807
+    - path: results/reference_repeat.json
+      hash: md5
+      md5: d9d98a75ea3083e1ae9ad0587f7b58fd
+      size: 622
+    - path: results/transport.json
+      hash: md5
+      md5: 39df4597239860a4e47580b20a557b06
+      size: 24251
+    - path: scripts/benchmark.py
+      hash: md5
+      md5: ea5fc9feadefaa3bf90ba1bb18d3817b
+      size: 6533
+    - path: scripts/summarize.py
+      hash: md5
+      md5: eea7986894d50793af19eb103ef263dd
+      size: 7596
+    outs:
+    - path: results/comparison.json
+      hash: md5
+      md5: a1e14f820f70348e71ce033fca9dd4fb
+      size: 2324
+    - path: results/existing_profiles.json
+      hash: md5
+      md5: 1da706dcd39ef80c6fe014d9eb560897
+      size: 992
+    - path: results/findings.md
+      hash: md5
+      md5: 94d6e74d5e6192781dad56644f5f6021
+      size: 2553
+    - path: scenario_manifest.json
+      hash: md5
+      md5: 164725093a7dc2f1c7e5dfb446b1e601
+      size: 100378
+  boundary_check:
+    cmd: ../../.venv/bin/python scripts/check_boundary.py
+    deps:
+    - path: data/benchmark
+      hash: md5
+      md5: 150b33d676b85e90654c2213a3936bd4.dir
+      size: 19841504
+      nfiles: 891
+    - path: scripts/check_boundary.py
+      hash: md5
+      md5: fa7415b2446fe8b5386cf78cd99ff7e2
+      size: 1128
+    outs:
+    - path: data/boundary_check
+      hash: md5
+      md5: 8fa899bcc047f771c5a100640c62e8ae.dir
+      size: 1923
+      nfiles: 1
+    - path: results/boundary_check.json
+      hash: md5
+      md5: c820056d7d72d27bec8458154590190f
+      size: 230
+  test_labels:
+    cmd: ../../.venv/bin/python scripts/test_labels.py
+    deps:
+    - path: scripts/benchmark.py
+      hash: md5
+      md5: ea5fc9feadefaa3bf90ba1bb18d3817b
+      size: 6533
+    - path: scripts/test_labels.py
+      hash: md5
+      md5: 982da66f73a5a7031e0d271491bdd85b
+      size: 1369
+  plot_results:
+    cmd: ../../.venv/bin/python scripts/plot_results.py
+    deps:
+    - path: results/comparison.json
+      hash: md5
+      md5: a1e14f820f70348e71ce033fca9dd4fb
+      size: 2324
+    - path: scripts/plot_results.py
+      hash: md5
+      md5: cf3a535b22340cbd2b24cce3f7363f0f
+      size: 1310
+    outs:
+    - path: results/speed_error.png
+      hash: md5
+      md5: 83ec69ad679a9fa1cf2515e7c39066f7
+      size: 99695
