@@ -1,0 +1,131 @@
+schema: '2.0'
+stages:
+  generate:
+    cmd: ../../.venv/bin/python study.py generate
+    deps:
+    - path: inputs
+      hash: md5
+      md5: 649d4937a8f9d1d0c788b5f3c13654b4.dir
+      size: 17881
+      nfiles: 2
+    - path: study.py
+      hash: md5
+      md5: b27ebf4b2e5afd349da021b830490adf
+      size: 6234
+    outs:
+    - path: decks
+      hash: md5
+      md5: 70030623f8c2343409a053b5854b015e.dir
+      size: 33847
+      nfiles: 14
+    - path: manifest.json
+      hash: md5
+      md5: 15907112ce0401536588abf5512f9f4f
+      size: 1996
+  local:
+    cmd: ../../.venv/bin/python study.py run
+      --cases=flow_coarse,fire_coarse,heat_conduction_a,pine_needles &&
+      ../../.venv/bin/python study.py run
+      --cases=flow_medium,fire_medium,fire_local_fine,flow_fine,fire_split_fine,flow_radiation,fire_fine,flow_local_fine,fire_radiation,flow_split_fine
+      && ../../.venv/bin/python study.py run --cases=fire_medium,flow_medium
+      --repeat=2 && ../../.venv/bin/python study.py run
+      --cases=flow_medium,fire_medium --repeat=3
+    deps:
+    - path: ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+      hash: md5
+      md5: 18680afd3f78841d42906b41e3414f62
+      size: 10202320
+      isexec: true
+    - path: decks
+      hash: md5
+      md5: 70030623f8c2343409a053b5854b015e.dir
+      size: 33847
+      nfiles: 14
+    - path: manifest.json
+      hash: md5
+      md5: 15907112ce0401536588abf5512f9f4f
+      size: 1996
+    - path: study.py
+      hash: md5
+      md5: b27ebf4b2e5afd349da021b830490adf
+      size: 6234
+    outs:
+    - path: data/local
+      hash: md5
+      md5: 929edce21b612fcd34b966eb4a4733bd.dir
+      size: 32239048
+      nfiles: 262
+  analyze:
+    cmd: ../../.venv/bin/python analyze.py
+    deps:
+    - path: analyze.py
+      hash: md5
+      md5: d4da05b511212056b835e89eb21f3aa3
+      size: 5014
+    - path: data/local
+      hash: md5
+      md5: 929edce21b612fcd34b966eb4a4733bd.dir
+      size: 32239048
+      nfiles: 262
+    - path: study.py
+      hash: md5
+      md5: b27ebf4b2e5afd349da021b830490adf
+      size: 6234
+    outs:
+    - path: results/findings.md
+      hash: md5
+      md5: 3d427e3702d626b1aec263fc54c4af45
+      size: 2403
+    - path: results/local_analysis.json
+      hash: md5
+      md5: d864178f5a90c100c27205f91a844bfd
+      size: 55072
+  boundary:
+    cmd: ../../.venv/bin/python boundary_check.py
+    deps:
+    - path: boundary_check.py
+      hash: md5
+      md5: 4d652942fe0453d49411674c0bc7e27d
+      size: 1270
+    - path: data/local
+      hash: md5
+      md5: 929edce21b612fcd34b966eb4a4733bd.dir
+      size: 32239048
+      nfiles: 262
+    outs:
+    - path: data/boundary
+      hash: md5
+      md5: 6b93312f644065e283db61e23347de7c.dir
+      size: 21980
+      nfiles: 2
+    - path: results/boundary_check.json
+      hash: md5
+      md5: 4aaa869ee13ee9f0926aac2328311880
+      size: 271
+  guards:
+    cmd: ../../.venv/bin/python test_controls.py
+    deps:
+    - path: make_workflow.py
+      hash: md5
+      md5: e087363e4f4a72549fc6bddaf0856122
+      size: 5167
+    - path: test_controls.py
+      hash: md5
+      md5: 882857e0c02434ffaf2967b3598d2945
+      size: 1981
+  plot:
+    cmd: ../../.venv/bin/python plot.py
+    deps:
+    - path: plot.py
+      hash: md5
+      md5: f14936a005fa6e5a589fee39232e2b81
+      size: 1852
+    - path: results/local_analysis.json
+      hash: md5
+      md5: d864178f5a90c100c27205f91a844bfd
+      size: 55072
+    outs:
+    - path: results/profiling.png
+      hash: md5
+      md5: e0ac5ba4db333efda8b87c1c612e4a7b
+      size: 116773

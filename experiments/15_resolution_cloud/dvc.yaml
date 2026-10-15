@@ -1,0 +1,57 @@
+stages:
+  generate:
+    cmd: ../../.venv/bin/python study.py generate
+    deps:
+      - study.py
+      - inputs
+    outs:
+      - manifest.json:
+          cache: false
+      - decks:
+          cache: false
+  local:
+    cmd: >-
+      ../../.venv/bin/python study.py run --cases=flow_coarse,fire_coarse,heat_conduction_a,pine_needles &&
+      ../../.venv/bin/python study.py run --cases=flow_medium,fire_medium,fire_local_fine,flow_fine,fire_split_fine,flow_radiation,fire_fine,flow_local_fine,fire_radiation,flow_split_fine &&
+      ../../.venv/bin/python study.py run --cases=fire_medium,flow_medium --repeat=2 &&
+      ../../.venv/bin/python study.py run --cases=flow_medium,fire_medium --repeat=3
+    deps:
+      - study.py
+      - manifest.json
+      - decks
+      - ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+    outs:
+      - data/local
+  analyze:
+    cmd: ../../.venv/bin/python analyze.py
+    deps:
+      - analyze.py
+      - study.py
+      - data/local
+    outs:
+      - results/local_analysis.json:
+          cache: false
+      - results/findings.md:
+          cache: false
+  boundary:
+    cmd: ../../.venv/bin/python boundary_check.py
+    deps:
+      - boundary_check.py
+      - data/local
+    outs:
+      - data/boundary
+      - results/boundary_check.json:
+          cache: false
+  guards:
+    cmd: ../../.venv/bin/python test_controls.py
+    deps:
+      - test_controls.py
+      - make_workflow.py
+  plot:
+    cmd: ../../.venv/bin/python plot.py
+    deps:
+      - plot.py
+      - results/local_analysis.json
+    outs:
+      - results/profiling.png:
+          cache: false

@@ -1,0 +1,1920 @@
+{
+  "runs": [
+    {
+      "case": "fire_coarse",
+      "mode": "fire",
+      "variant": "coarse",
+      "cells": 1024,
+      "meshes": 1,
+      "horizon_s": 8,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "20aa90e34f89f340588db6adacb9ec225a0cc351e16ca3b6477b6be0fbc7e837",
+      "threads": 4,
+      "load_before": [
+        2.9228515625,
+        2.19091796875,
+        2.08154296875
+      ],
+      "wall_seconds": 3.090515125077218,
+      "returncode": 0,
+      "load_after": [
+        2.9228515625,
+        2.19091796875,
+        2.08154296875
+      ],
+      "full_horizon": true,
+      "steps": 112,
+      "logged_dt_min_s": 0.00982,
+      "cpu_profile": {
+        "MAIN": 0.002907,
+        "DIVG": 0.4238,
+        "MASS": 0.2293,
+        "VELO": 0.175,
+        "PRES": 0.05081,
+        "WALL": 0.06406,
+        "DUMP": 0.02091,
+        "PART": 6.4e-05,
+        "RADI": 0.5841,
+        "FIRE": 0.1406,
+        "COMM": 0.000167,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 1.692
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 572.62363,
+        "heat_max_kW_m2": 83.856304,
+        "wake_u": -0.31293698,
+        "plume_C": 71.097852
+      },
+      "output_bytes": 87968,
+      "folder": "data/local/fire_coarse_r1"
+    },
+    {
+      "case": "fire_fine",
+      "mode": "fire",
+      "variant": "fine",
+      "cells": 65536,
+      "meshes": 1,
+      "horizon_s": 8,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "da2418d41f62f2277ff40ea28faac732808278c63eebad3c4dfd75bec7777e66",
+      "threads": 4,
+      "load_before": [
+        4.5439453125,
+        3.46728515625,
+        2.67578125
+      ],
+      "wall_seconds": 107.85490066593047,
+      "returncode": 0,
+      "load_after": [
+        5.5673828125,
+        3.9951171875,
+        2.9638671875
+      ],
+      "full_horizon": true,
+      "steps": 786,
+      "logged_dt_min_s": 0.00887,
+      "cpu_profile": {
+        "MAIN": 0.04767,
+        "DIVG": 20.61,
+        "MASS": 9.878,
+        "VELO": 11.8,
+        "PRES": 5.735,
+        "WALL": 5.163,
+        "DUMP": 2.42,
+        "PART": 0.000489,
+        "RADI": 21.4,
+        "FIRE": 28.55,
+        "COMM": 0.003826,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 105.6
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 571.53326,
+        "heat_max_kW_m2": 104.03021,
+        "wake_u": -1.4183856,
+        "plume_C": 22.305373
+      },
+      "output_bytes": 321438,
+      "folder": "data/local/fire_fine_r1"
+    },
+    {
+      "case": "fire_local_fine",
+      "mode": "fire",
+      "variant": "local_fine",
+      "cells": 36864,
+      "meshes": 3,
+      "horizon_s": 8,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "28380616bad53a38c57463178af634e0d79a2c6975d9923c1e9885dd2d7388c4",
+      "threads": 4,
+      "load_before": [
+        6.658203125,
+        4.92236328125,
+        3.48291015625
+      ],
+      "wall_seconds": 90.82017754204571,
+      "returncode": 0,
+      "load_after": [
+        6.1220703125,
+        5.376953125,
+        3.8134765625
+      ],
+      "full_horizon": true,
+      "steps": 764,
+      "logged_dt_min_s": 0.0086,
+      "cpu_profile": {
+        "MAIN": 0.0556,
+        "DIVG": 17.2,
+        "MASS": 8.685,
+        "VELO": 10.31,
+        "PRES": 4.852,
+        "WALL": 4.2,
+        "DUMP": 1.497,
+        "PART": 0.001578,
+        "RADI": 21.68,
+        "FIRE": 19.06,
+        "COMM": 0.8838,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 88.44
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 558.54876,
+        "heat_max_kW_m2": 91.348823,
+        "wake_u": -2.1273891,
+        "plume_C": 25.180801
+      },
+      "output_bytes": 284631,
+      "folder": "data/local/fire_local_fine_r1"
+    },
+    {
+      "case": "fire_medium",
+      "mode": "fire",
+      "variant": "medium",
+      "cells": 8192,
+      "meshes": 1,
+      "horizon_s": 8,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "f66ffacacecc2f9674a81d989b37abda6a20846b9460538461d0704cae1a8f32",
+      "threads": 4,
+      "load_before": [
+        4.73828125,
+        3.466796875,
+        2.66650390625
+      ],
+      "wall_seconds": 10.698697832995094,
+      "returncode": 0,
+      "load_after": [
+        4.5439453125,
+        3.46728515625,
+        2.67578125
+      ],
+      "full_horizon": true,
+      "steps": 314,
+      "logged_dt_min_s": 0.0186,
+      "cpu_profile": {
+        "MAIN": 0.006337,
+        "DIVG": 1.728,
+        "MASS": 0.9106,
+        "VELO": 0.8529,
+        "PRES": 0.3297,
+        "WALL": 0.3342,
+        "DUMP": 0.1119,
+        "PART": 0.00018,
+        "RADI": 2.969,
+        "FIRE": 1.902,
+        "COMM": 0.00048,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 9.145
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 500.87873,
+        "heat_max_kW_m2": 87.267825,
+        "wake_u": -1.4549456,
+        "plume_C": 460.80611
+      },
+      "output_bytes": 138006,
+      "folder": "data/local/fire_medium_r1"
+    },
+    {
+      "case": "fire_medium",
+      "mode": "fire",
+      "variant": "medium",
+      "cells": 8192,
+      "meshes": 1,
+      "horizon_s": 8,
+      "repeat": 2,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "f66ffacacecc2f9674a81d989b37abda6a20846b9460538461d0704cae1a8f32",
+      "threads": 4,
+      "load_before": [
+        5.7861328125,
+        5.34130859375,
+        3.828125
+      ],
+      "wall_seconds": 10.085284916916862,
+      "returncode": 0,
+      "load_after": [
+        5.35107421875,
+        5.263671875,
+        3.818359375
+      ],
+      "full_horizon": true,
+      "steps": 314,
+      "logged_dt_min_s": 0.0205,
+      "cpu_profile": {
+        "MAIN": 0.005703,
+        "DIVG": 1.535,
+        "MASS": 0.8222,
+        "VELO": 0.801,
+        "PRES": 0.3029,
+        "WALL": 0.3023,
+        "DUMP": 0.1198,
+        "PART": 0.000198,
+        "RADI": 2.63,
+        "FIRE": 2.054,
+        "COMM": 0.000365,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 8.574
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 500.47934,
+        "heat_max_kW_m2": 83.156667,
+        "wake_u": -1.5811012,
+        "plume_C": 513.44476
+      },
+      "output_bytes": 138003,
+      "folder": "data/local/fire_medium_r2"
+    },
+    {
+      "case": "fire_medium",
+      "mode": "fire",
+      "variant": "medium",
+      "cells": 8192,
+      "meshes": 1,
+      "horizon_s": 8,
+      "repeat": 3,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "f66ffacacecc2f9674a81d989b37abda6a20846b9460538461d0704cae1a8f32",
+      "threads": 4,
+      "load_before": [
+        5.32275390625,
+        5.25927734375,
+        3.8251953125
+      ],
+      "wall_seconds": 10.106038124999031,
+      "returncode": 0,
+      "load_after": [
+        5.439453125,
+        5.28369140625,
+        3.8505859375
+      ],
+      "full_horizon": true,
+      "steps": 314,
+      "logged_dt_min_s": 0.0205,
+      "cpu_profile": {
+        "MAIN": 0.005969,
+        "DIVG": 1.535,
+        "MASS": 0.8201,
+        "VELO": 0.8052,
+        "PRES": 0.3049,
+        "WALL": 0.2973,
+        "DUMP": 0.1227,
+        "PART": 0.000194,
+        "RADI": 2.636,
+        "FIRE": 2.025,
+        "COMM": 0.000411,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 8.553
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 500.47934,
+        "heat_max_kW_m2": 83.156667,
+        "wake_u": -1.5811012,
+        "plume_C": 513.44476
+      },
+      "output_bytes": 138003,
+      "folder": "data/local/fire_medium_r3"
+    },
+    {
+      "case": "fire_radiation",
+      "mode": "fire",
+      "variant": "radiation",
+      "cells": 8192,
+      "meshes": 1,
+      "horizon_s": 8,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "d767b826f6e0e7073e5f4e63800a77b8090080292a1dcbffb4ec3629aadee5be",
+      "threads": 4,
+      "load_before": [
+        6.1220703125,
+        5.376953125,
+        3.8134765625
+      ],
+      "wall_seconds": 8.934922332991846,
+      "returncode": 0,
+      "load_after": [
+        6.02880859375,
+        5.380859375,
+        3.8330078125
+      ],
+      "full_horizon": true,
+      "steps": 316,
+      "logged_dt_min_s": 0.00148,
+      "cpu_profile": {
+        "MAIN": 0.007969,
+        "DIVG": 1.684,
+        "MASS": 0.8889,
+        "VELO": 0.8692,
+        "PRES": 0.3286,
+        "WALL": 0.3411,
+        "DUMP": 0.1303,
+        "PART": 0.000197,
+        "RADI": 1.163,
+        "FIRE": 2.07,
+        "COMM": 0.000446,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 7.484
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 541.47408,
+        "heat_max_kW_m2": 92.325792,
+        "wake_u": -0.979278,
+        "plume_C": 296.09268
+      },
+      "output_bytes": 137981,
+      "folder": "data/local/fire_radiation_r1"
+    },
+    {
+      "case": "fire_split_fine",
+      "mode": "fire",
+      "variant": "split_fine",
+      "cells": 65536,
+      "meshes": 3,
+      "horizon_s": 8,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "5a64ceb3c530852f9077f9e9f03b9b73a60621f0f8380d6b7b038ae78617c953",
+      "threads": 4,
+      "load_before": [
+        5.5673828125,
+        3.9951171875,
+        2.9638671875
+      ],
+      "wall_seconds": 141.13186212501023,
+      "returncode": 0,
+      "load_after": [
+        6.658203125,
+        4.92236328125,
+        3.48291015625
+      ],
+      "full_horizon": true,
+      "steps": 784,
+      "logged_dt_min_s": 0.00473,
+      "cpu_profile": {
+        "MAIN": 0.07066,
+        "DIVG": 25.89,
+        "MASS": 12.44,
+        "VELO": 16.02,
+        "PRES": 10.25,
+        "WALL": 6.831,
+        "DUMP": 2.64,
+        "PART": 0.001458,
+        "RADI": 35.08,
+        "FIRE": 27.45,
+        "COMM": 1.506,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 138.2
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 518.94752,
+        "heat_max_kW_m2": 66.158377,
+        "wake_u": -0.070657162,
+        "plume_C": 34.941733
+      },
+      "output_bytes": 345761,
+      "folder": "data/local/fire_split_fine_r1"
+    },
+    {
+      "case": "flow_coarse",
+      "mode": "flow",
+      "variant": "coarse",
+      "cells": 1024,
+      "meshes": 1,
+      "horizon_s": 8,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "a046178570cae209b37e4655cb75744e872deefef6d0a75c19fe5bff74b36edb",
+      "threads": 4,
+      "load_before": [
+        2.7421875,
+        2.1435546875,
+        2.064453125
+      ],
+      "wall_seconds": 2.72959337499924,
+      "returncode": 0,
+      "load_after": [
+        2.9228515625,
+        2.19091796875,
+        2.08154296875
+      ],
+      "full_horizon": true,
+      "steps": 109,
+      "logged_dt_min_s": 0.0575,
+      "cpu_profile": {
+        "MAIN": 0.001988,
+        "DIVG": 0.3888,
+        "MASS": 0.2016,
+        "VELO": 0.1576,
+        "PRES": 0.04365,
+        "WALL": 0.04604,
+        "DUMP": 0.02164,
+        "PART": 6.7e-05,
+        "RADI": 0.5502,
+        "FIRE": 0.002753,
+        "COMM": 0.000135,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 1.415
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 20.000698,
+        "heat_max_kW_m2": 8.8506378e-05,
+        "wake_u": -0.014245686,
+        "plume_C": 20.000185
+      },
+      "output_bytes": 88617,
+      "folder": "data/local/flow_coarse_r1"
+    },
+    {
+      "case": "flow_fine",
+      "mode": "flow",
+      "variant": "fine",
+      "cells": 65536,
+      "meshes": 1,
+      "horizon_s": 8,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "a694df6ceb424b938d91b22619d074dc39341f68e22cee8af5a68d00af867c3e",
+      "threads": 4,
+      "load_before": [
+        3.3935546875,
+        2.57421875,
+        2.23876953125
+      ],
+      "wall_seconds": 51.450569124892354,
+      "returncode": 0,
+      "load_after": [
+        3.67529296875,
+        2.76416015625,
+        2.326171875
+      ],
+      "full_horizon": true,
+      "steps": 520,
+      "logged_dt_min_s": 0.00852,
+      "cpu_profile": {
+        "MAIN": 0.02596,
+        "DIVG": 13.89,
+        "MASS": 6.915,
+        "VELO": 7.445,
+        "PRES": 2.28,
+        "WALL": 3.304,
+        "DUMP": 1.511,
+        "PART": 0.000376,
+        "RADI": 13.29,
+        "FIRE": 0.4954,
+        "COMM": 0.002035,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 49.16
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 20.000482,
+        "heat_max_kW_m2": 5.1971309e-05,
+        "wake_u": -1.6940887,
+        "plume_C": 19.996232
+      },
+      "output_bytes": 319842,
+      "folder": "data/local/flow_fine_r1"
+    },
+    {
+      "case": "flow_local_fine",
+      "mode": "flow",
+      "variant": "local_fine",
+      "cells": 36864,
+      "meshes": 3,
+      "horizon_s": 8,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "a5879e60841a70a4d105076acff1105bc3a3c6f6eb4bc3b94a4d3be5530c5f48",
+      "threads": 4,
+      "load_before": [
+        4.34130859375,
+        3.20263671875,
+        2.5302734375
+      ],
+      "wall_seconds": 50.43613229203038,
+      "returncode": 0,
+      "load_after": [
+        4.7158203125,
+        3.44091796875,
+        2.65283203125
+      ],
+      "full_horizon": true,
+      "steps": 530,
+      "logged_dt_min_s": 0.009,
+      "cpu_profile": {
+        "MAIN": 0.03991,
+        "DIVG": 12.21,
+        "MASS": 6.078,
+        "VELO": 7.016,
+        "PRES": 2.887,
+        "WALL": 2.919,
+        "DUMP": 1.065,
+        "PART": 0.001099,
+        "RADI": 14.94,
+        "FIRE": 0.338,
+        "COMM": 0.5636,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 48.06
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 20.000497,
+        "heat_max_kW_m2": 5.7962947e-05,
+        "wake_u": -1.8730145,
+        "plume_C": 19.996244
+      },
+      "output_bytes": 282238,
+      "folder": "data/local/flow_local_fine_r1"
+    },
+    {
+      "case": "flow_medium",
+      "mode": "flow",
+      "variant": "medium",
+      "cells": 8192,
+      "meshes": 1,
+      "horizon_s": 8,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "c5a0d17499d44695b7f37112ace1658bfa4e27fb6096687fb2eb087c91abc4fa",
+      "threads": 4,
+      "load_before": [
+        3.552734375,
+        2.5771484375,
+        2.23583984375
+      ],
+      "wall_seconds": 7.155637165997177,
+      "returncode": 0,
+      "load_after": [
+        3.3935546875,
+        2.57421875,
+        2.23876953125
+      ],
+      "full_horizon": true,
+      "steps": 240,
+      "logged_dt_min_s": 0.0144,
+      "cpu_profile": {
+        "MAIN": 0.005154,
+        "DIVG": 1.377,
+        "MASS": 0.7068,
+        "VELO": 0.6609,
+        "PRES": 0.1794,
+        "WALL": 0.2395,
+        "DUMP": 0.09315,
+        "PART": 0.000141,
+        "RADI": 2.363,
+        "FIRE": 0.02995,
+        "COMM": 0.000328,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 5.656
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 20.000417,
+        "heat_max_kW_m2": 4.5515526e-05,
+        "wake_u": -0.88800567,
+        "plume_C": 19.994647
+      },
+      "output_bytes": 137190,
+      "folder": "data/local/flow_medium_r1"
+    },
+    {
+      "case": "flow_medium",
+      "mode": "flow",
+      "variant": "medium",
+      "cells": 8192,
+      "meshes": 1,
+      "horizon_s": 8,
+      "repeat": 2,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "c5a0d17499d44695b7f37112ace1658bfa4e27fb6096687fb2eb087c91abc4fa",
+      "threads": 4,
+      "load_before": [
+        6.02880859375,
+        5.380859375,
+        3.8330078125
+      ],
+      "wall_seconds": 6.499852832988836,
+      "returncode": 0,
+      "load_after": [
+        5.7861328125,
+        5.34130859375,
+        3.828125
+      ],
+      "full_horizon": true,
+      "steps": 240,
+      "logged_dt_min_s": 0.0144,
+      "cpu_profile": {
+        "MAIN": 0.005016,
+        "DIVG": 1.164,
+        "MASS": 0.631,
+        "VELO": 0.6017,
+        "PRES": 0.153,
+        "WALL": 0.2254,
+        "DUMP": 0.09394,
+        "PART": 0.00015,
+        "RADI": 2.088,
+        "FIRE": 0.0301,
+        "COMM": 0.000228,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 4.993
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 20.000417,
+        "heat_max_kW_m2": 4.5515526e-05,
+        "wake_u": -0.88800567,
+        "plume_C": 19.994647
+      },
+      "output_bytes": 137190,
+      "folder": "data/local/flow_medium_r2"
+    },
+    {
+      "case": "flow_medium",
+      "mode": "flow",
+      "variant": "medium",
+      "cells": 8192,
+      "meshes": 1,
+      "horizon_s": 8,
+      "repeat": 3,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "c5a0d17499d44695b7f37112ace1658bfa4e27fb6096687fb2eb087c91abc4fa",
+      "threads": 4,
+      "load_before": [
+        5.35107421875,
+        5.263671875,
+        3.818359375
+      ],
+      "wall_seconds": 6.448329124948941,
+      "returncode": 0,
+      "load_after": [
+        5.32275390625,
+        5.25927734375,
+        3.8251953125
+      ],
+      "full_horizon": true,
+      "steps": 240,
+      "logged_dt_min_s": 0.0144,
+      "cpu_profile": {
+        "MAIN": 0.003909,
+        "DIVG": 1.153,
+        "MASS": 0.6239,
+        "VELO": 0.5983,
+        "PRES": 0.1524,
+        "WALL": 0.2243,
+        "DUMP": 0.09269,
+        "PART": 0.000142,
+        "RADI": 2.066,
+        "FIRE": 0.02987,
+        "COMM": 0.00023,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 4.944
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 20.000417,
+        "heat_max_kW_m2": 4.5515526e-05,
+        "wake_u": -0.88800567,
+        "plume_C": 19.994647
+      },
+      "output_bytes": 137190,
+      "folder": "data/local/flow_medium_r3"
+    },
+    {
+      "case": "flow_radiation",
+      "mode": "flow",
+      "variant": "radiation",
+      "cells": 8192,
+      "meshes": 1,
+      "horizon_s": 8,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "33f0469be973d8a90ed0e68ce69e21626806c551b064d5951c8804459db7e8f1",
+      "threads": 4,
+      "load_before": [
+        4.7158203125,
+        3.44091796875,
+        2.65283203125
+      ],
+      "wall_seconds": 5.374359957990237,
+      "returncode": 0,
+      "load_after": [
+        4.73828125,
+        3.466796875,
+        2.66650390625
+      ],
+      "full_horizon": true,
+      "steps": 240,
+      "logged_dt_min_s": 0.0144,
+      "cpu_profile": {
+        "MAIN": 0.004068,
+        "DIVG": 1.272,
+        "MASS": 0.6841,
+        "VELO": 0.6204,
+        "PRES": 0.1679,
+        "WALL": 0.2241,
+        "DUMP": 0.08504,
+        "PART": 0.00012,
+        "RADI": 0.9406,
+        "FIRE": 0.02863,
+        "COMM": 0.000288,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 4.027
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 20.000417,
+        "heat_max_kW_m2": 4.5491297e-05,
+        "wake_u": -0.88800573,
+        "plume_C": 19.994647
+      },
+      "output_bytes": 137169,
+      "folder": "data/local/flow_radiation_r1"
+    },
+    {
+      "case": "flow_split_fine",
+      "mode": "flow",
+      "variant": "split_fine",
+      "cells": 65536,
+      "meshes": 3,
+      "horizon_s": 8,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "6578bc9df33d84c1a4043f84d86519e6c7ac83b97566bc01527b697b615dd7cd",
+      "threads": 4,
+      "load_before": [
+        3.67529296875,
+        2.76416015625,
+        2.326171875
+      ],
+      "wall_seconds": 73.47293408296537,
+      "returncode": 0,
+      "load_after": [
+        4.34130859375,
+        3.20263671875,
+        2.5302734375
+      ],
+      "full_horizon": true,
+      "steps": 532,
+      "logged_dt_min_s": 0.00676,
+      "cpu_profile": {
+        "MAIN": 0.04119,
+        "DIVG": 16.44,
+        "MASS": 7.852,
+        "VELO": 10.11,
+        "PRES": 6.631,
+        "WALL": 4.222,
+        "DUMP": 1.663,
+        "PART": 0.000999,
+        "RADI": 21.91,
+        "FIRE": 0.5877,
+        "COMM": 0.9616,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 70.41
+      },
+      "final_devices": {
+        "Time": 8.0,
+        "surface_max_C": 20.000549,
+        "heat_max_kW_m2": 7.393397e-05,
+        "wake_u": -1.1844878,
+        "plume_C": 19.996121
+      },
+      "output_bytes": 343388,
+      "folder": "data/local/flow_split_fine_r1"
+    },
+    {
+      "case": "heat_conduction_a",
+      "mode": "upstream_verification",
+      "variant": "original",
+      "cells": 27,
+      "meshes": 1,
+      "horizon_s": 2000,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "6d77f1f8cdf962a1cee42de1e9dedb4c44b8861cc70eee351ab8acc64b7eaed4",
+      "threads": 4,
+      "load_before": [
+        2.9228515625,
+        2.19091796875,
+        2.08154296875
+      ],
+      "wall_seconds": 4.9105962089961395,
+      "returncode": 0,
+      "load_after": [
+        3.4091796875,
+        2.3037109375,
+        2.1220703125
+      ],
+      "full_horizon": true,
+      "steps": 4000,
+      "logged_dt_min_s": 0.5,
+      "cpu_profile": {
+        "MAIN": 0.01565,
+        "DIVG": 0.0001,
+        "MASS": 0.0,
+        "VELO": 0.0,
+        "PRES": 0.0,
+        "WALL": 0.46,
+        "DUMP": 0.1352,
+        "PART": 0.002233,
+        "RADI": 4.039,
+        "FIRE": 0.0,
+        "COMM": 0.001501,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 4.653
+      },
+      "final_devices": {
+        "Time": 2000.0,
+        "Back": 42.047186,
+        "8 cm": 45.696603,
+        "6 cm": 56.114094,
+        "4 cm": 72.656072,
+        "2 cm": 94.013193,
+        "Front": 118.75378
+      },
+      "output_bytes": 536852,
+      "folder": "data/local/heat_conduction_a_r1"
+    },
+    {
+      "case": "pine_needles",
+      "mode": "upstream_verification",
+      "variant": "original",
+      "cells": 1000,
+      "meshes": 1,
+      "horizon_s": 10,
+      "repeat": 1,
+      "platform": "macOS-14.6.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "binary_sha256": "dfc56ec2e03b35d9391f221088660aaa8095f921119be9456cabc138093ca870",
+      "deck_sha256": "462f406840bc3448d0d5b9cc46200adc4fd36d436c83093f437f66fb35d2c93e",
+      "threads": 4,
+      "load_before": [
+        3.4091796875,
+        2.3037109375,
+        2.1220703125
+      ],
+      "wall_seconds": 18.53392791596707,
+      "returncode": 0,
+      "load_after": [
+        4.70703125,
+        2.65869140625,
+        2.25244140625
+      ],
+      "full_horizon": true,
+      "steps": 1000,
+      "logged_dt_min_s": 0.01,
+      "cpu_profile": {
+        "MAIN": 0.026,
+        "DIVG": 3.165,
+        "MASS": 1.652,
+        "VELO": 1.464,
+        "PRES": 0.3294,
+        "WALL": 5.893,
+        "DUMP": 0.6708,
+        "PART": 0.3263,
+        "RADI": 4.11,
+        "FIRE": 0.0,
+        "COMM": 0.001031,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0,
+        "Total T_USED (s)": 17.64
+      },
+      "final_devices": {
+        "Time": 10.0,
+        "fuel gas mass": 0.64049311,
+        "water vapor mass": 0.2000464,
+        "solid mass": 0.16
+      },
+      "output_bytes": 28506348,
+      "folder": "data/local/pine_needles_r1"
+    }
+  ],
+  "comparisons": [
+    {
+      "case": "flow_coarse",
+      "repeat": 1,
+      "cells": 1024,
+      "steps": 109,
+      "wall_seconds": 2.72959337499924,
+      "speed_ratio_vs_fine": 18.849169841975705,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 0.0001976771685241728,
+          "last_4s_mean": 20.0005124525561,
+          "reference_last_4s_mean": 20.00045691598356,
+          "max_abs_difference": 0.0003723141091960258
+        },
+        "heat_max_kW_m2": {
+          "rmse": 5.7784240414212045e-05,
+          "last_4s_mean": 8.409633689321492e-05,
+          "reference_last_4s_mean": 7.153851047329607e-05,
+          "max_abs_difference": 0.00011527506436585936
+        },
+        "wake_u": {
+          "rmse": 0.9852691211782346,
+          "last_4s_mean": -0.12110306353795627,
+          "reference_last_4s_mean": -1.0802749097959836,
+          "max_abs_difference": 2.380084152804857
+        },
+        "plume_C": {
+          "rmse": 0.003549593439115705,
+          "last_4s_mean": 20.000506692736877,
+          "reference_last_4s_mean": 19.996030894972698,
+          "max_abs_difference": 0.005245309337830406
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.14049469964664313,
+        "DIVG": 27.477031802120138,
+        "MASS": 14.247349823321555,
+        "VELO": 11.137809187279151,
+        "PRES": 3.0848056537102475,
+        "WALL": 3.253710247349823,
+        "DUMP": 1.5293286219081272,
+        "PART": 0.004734982332155477,
+        "RADI": 38.88339222614841,
+        "FIRE": 0.19455830388692577,
+        "COMM": 0.009540636042402826,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.01298165137614679
+    },
+    {
+      "case": "flow_fine",
+      "repeat": 1,
+      "cells": 65536,
+      "steps": 520,
+      "wall_seconds": 51.450569124892354,
+      "speed_ratio_vs_fine": 1.0,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 0.0,
+          "last_4s_mean": 20.00045691598356,
+          "reference_last_4s_mean": 20.00045691598356,
+          "max_abs_difference": 0.0
+        },
+        "heat_max_kW_m2": {
+          "rmse": 0.0,
+          "last_4s_mean": 7.153851047329607e-05,
+          "reference_last_4s_mean": 7.153851047329607e-05,
+          "max_abs_difference": 0.0
+        },
+        "wake_u": {
+          "rmse": 0.0,
+          "last_4s_mean": -1.0802749097959836,
+          "reference_last_4s_mean": -1.0802749097959836,
+          "max_abs_difference": 0.0
+        },
+        "plume_C": {
+          "rmse": 0.0,
+          "last_4s_mean": 19.996030894972698,
+          "reference_last_4s_mean": 19.996030894972698,
+          "max_abs_difference": 0.0
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.05280716029292108,
+        "DIVG": 28.254678600488205,
+        "MASS": 14.066314076484948,
+        "VELO": 15.144426362896665,
+        "PRES": 4.637917005695687,
+        "WALL": 6.720911310008137,
+        "DUMP": 3.0736371033360457,
+        "PART": 0.0007648494711147274,
+        "RADI": 27.034174125305128,
+        "FIRE": 1.0077298616761596,
+        "COMM": 0.004139544344995931,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.09453846153846153
+    },
+    {
+      "case": "flow_local_fine",
+      "repeat": 1,
+      "cells": 36864,
+      "steps": 530,
+      "wall_seconds": 50.43613229203038,
+      "speed_ratio_vs_fine": 1.0201132955038716,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 4.178660320683311e-05,
+          "last_4s_mean": 20.000500892787578,
+          "reference_last_4s_mean": 20.00045691598356,
+          "max_abs_difference": 9.964644284110591e-05
+        },
+        "heat_max_kW_m2": {
+          "rmse": 1.5521328520394203e-05,
+          "last_4s_mean": 7.692244392861725e-05,
+          "reference_last_4s_mean": 7.153851047329607e-05,
+          "max_abs_difference": 5.101639457214014e-05
+        },
+        "wake_u": {
+          "rmse": 0.7406268408687726,
+          "last_4s_mean": -1.2773493058461105,
+          "reference_last_4s_mean": -1.0802749097959836,
+          "max_abs_difference": 2.5469312186585866
+        },
+        "plume_C": {
+          "rmse": 0.00036784582564138436,
+          "last_4s_mean": 19.996146125780324,
+          "reference_last_4s_mean": 19.996030894972698,
+          "max_abs_difference": 0.0011493823951020943
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.08304203079483978,
+        "DIVG": 25.405742821473158,
+        "MASS": 12.646691635455682,
+        "VELO": 14.598418643362463,
+        "PRES": 6.007074490220557,
+        "WALL": 6.073657927590511,
+        "DUMP": 2.215980024968789,
+        "PART": 0.002286724927174365,
+        "RADI": 31.086142322097377,
+        "FIRE": 0.7032875572201416,
+        "COMM": 1.1727007906783187,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.09067924528301888
+    },
+    {
+      "case": "flow_medium",
+      "repeat": 1,
+      "cells": 8192,
+      "steps": 240,
+      "wall_seconds": 7.155637165997177,
+      "speed_ratio_vs_fine": 7.190214921653652,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 9.071776706647148e-05,
+          "last_4s_mean": 20.000417054540737,
+          "reference_last_4s_mean": 20.00045691598356,
+          "max_abs_difference": 0.00017610950195745545
+        },
+        "heat_max_kW_m2": {
+          "rmse": 2.9641476667362523e-05,
+          "last_4s_mean": 6.366079425360461e-05,
+          "reference_last_4s_mean": 7.153851047329607e-05,
+          "max_abs_difference": 8.422619880131225e-05
+        },
+        "wake_u": {
+          "rmse": 0.8982170230206031,
+          "last_4s_mean": -0.19902174420702778,
+          "reference_last_4s_mean": -1.0802749097959836,
+          "max_abs_difference": 2.1961719184040325
+        },
+        "plume_C": {
+          "rmse": 0.0020438744261392326,
+          "last_4s_mean": 19.993737156435174,
+          "reference_last_4s_mean": 19.996030894972698,
+          "max_abs_difference": 0.004746628971027178
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.09112446958981613,
+        "DIVG": 24.345827439886847,
+        "MASS": 12.496463932107496,
+        "VELO": 11.684936350777937,
+        "PRES": 3.171852899575672,
+        "WALL": 4.234441301272985,
+        "DUMP": 1.6469236209335218,
+        "PART": 0.0024929278642149932,
+        "RADI": 41.77864214992928,
+        "FIRE": 0.5295261669024046,
+        "COMM": 0.0057991513437058,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.023566666666666666
+    },
+    {
+      "case": "flow_medium",
+      "repeat": 2,
+      "cells": 8192,
+      "steps": 240,
+      "wall_seconds": 6.499852832988836,
+      "speed_ratio_vs_fine": 7.915651391946019,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 9.071776706647148e-05,
+          "last_4s_mean": 20.000417054540737,
+          "reference_last_4s_mean": 20.00045691598356,
+          "max_abs_difference": 0.00017610950195745545
+        },
+        "heat_max_kW_m2": {
+          "rmse": 2.9641476667362523e-05,
+          "last_4s_mean": 6.366079425360461e-05,
+          "reference_last_4s_mean": 7.153851047329607e-05,
+          "max_abs_difference": 8.422619880131225e-05
+        },
+        "wake_u": {
+          "rmse": 0.8982170230206031,
+          "last_4s_mean": -0.19902174420702778,
+          "reference_last_4s_mean": -1.0802749097959836,
+          "max_abs_difference": 2.1961719184040325
+        },
+        "plume_C": {
+          "rmse": 0.0020438744261392326,
+          "last_4s_mean": 19.993737156435174,
+          "reference_last_4s_mean": 19.996030894972698,
+          "max_abs_difference": 0.004746628971027178
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.100460644902864,
+        "DIVG": 23.312637692769876,
+        "MASS": 12.637692769877829,
+        "VELO": 12.05087121970759,
+        "PRES": 3.0642900060084113,
+        "WALL": 4.514320048067294,
+        "DUMP": 1.8814340076106548,
+        "PART": 0.0030042058882435406,
+        "RADI": 41.818545964350086,
+        "FIRE": 0.6028439815742038,
+        "COMM": 0.004566392950130182,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.02080416666666667
+    },
+    {
+      "case": "flow_medium",
+      "repeat": 3,
+      "cells": 8192,
+      "steps": 240,
+      "wall_seconds": 6.448329124948941,
+      "speed_ratio_vs_fine": 7.978899359498768,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 9.071776706647148e-05,
+          "last_4s_mean": 20.000417054540737,
+          "reference_last_4s_mean": 20.00045691598356,
+          "max_abs_difference": 0.00017610950195745545
+        },
+        "heat_max_kW_m2": {
+          "rmse": 2.9641476667362523e-05,
+          "last_4s_mean": 6.366079425360461e-05,
+          "reference_last_4s_mean": 7.153851047329607e-05,
+          "max_abs_difference": 8.422619880131225e-05
+        },
+        "wake_u": {
+          "rmse": 0.8982170230206031,
+          "last_4s_mean": -0.19902174420702778,
+          "reference_last_4s_mean": -1.0802749097959836,
+          "max_abs_difference": 2.1961719184040325
+        },
+        "plume_C": {
+          "rmse": 0.0020438744261392326,
+          "last_4s_mean": 19.993737156435174,
+          "reference_last_4s_mean": 19.996030894972698,
+          "max_abs_difference": 0.004746628971027178
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.07906553398058253,
+        "DIVG": 23.321197411003237,
+        "MASS": 12.619336569579287,
+        "VELO": 12.101537216828481,
+        "PRES": 3.0825242718446604,
+        "WALL": 4.5368122977346275,
+        "DUMP": 1.8747977346278317,
+        "PART": 0.002872168284789644,
+        "RADI": 41.788025889967635,
+        "FIRE": 0.6041666666666667,
+        "COMM": 0.00465210355987055,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.0206
+    },
+    {
+      "case": "flow_radiation",
+      "repeat": 1,
+      "cells": 8192,
+      "steps": 240,
+      "wall_seconds": 5.374359957990237,
+      "speed_ratio_vs_fine": 9.573338877013459,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 9.079740075995283e-05,
+          "last_4s_mean": 20.00041670910221,
+          "reference_last_4s_mean": 20.00045691598356,
+          "max_abs_difference": 0.00017610950195745545
+        },
+        "heat_max_kW_m2": {
+          "rmse": 2.96428820412229e-05,
+          "last_4s_mean": 6.365618335102669e-05,
+          "reference_last_4s_mean": 7.153851047329607e-05,
+          "max_abs_difference": 8.428564491312244e-05
+        },
+        "wake_u": {
+          "rmse": 0.8982169976418103,
+          "last_4s_mean": -0.19902178385339506,
+          "reference_last_4s_mean": -1.0802749097959836,
+          "max_abs_difference": 2.196171856755644
+        },
+        "plume_C": {
+          "rmse": 0.002043875573635399,
+          "last_4s_mean": 19.993737156389134,
+          "reference_last_4s_mean": 19.996030894972698,
+          "max_abs_difference": 0.00474662898876943
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.10101812763844051,
+        "DIVG": 31.586789173081698,
+        "MASS": 16.987832133101566,
+        "VELO": 15.40600943630494,
+        "PRES": 4.169356841321083,
+        "WALL": 5.564936677427365,
+        "DUMP": 2.1117457164142044,
+        "PART": 0.002979885771045443,
+        "RADI": 23.3573379687112,
+        "FIRE": 0.710951080208592,
+        "COMM": 0.007151725850509064,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.016779166666666668
+    },
+    {
+      "case": "flow_split_fine",
+      "repeat": 1,
+      "cells": 65536,
+      "steps": 532,
+      "wall_seconds": 73.47293408296537,
+      "speed_ratio_vs_fine": 0.7002656116440724,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 2.6334642949510905e-05,
+          "last_4s_mean": 20.00045892694245,
+          "reference_last_4s_mean": 20.00045691598356,
+          "max_abs_difference": 7.663601513385743e-05
+        },
+        "heat_max_kW_m2": {
+          "rmse": 1.2783611931068456e-05,
+          "last_4s_mean": 6.876159428560605e-05,
+          "reference_last_4s_mean": 7.153851047329607e-05,
+          "max_abs_difference": 4.887003281310125e-05
+        },
+        "wake_u": {
+          "rmse": 0.56529635955408,
+          "last_4s_mean": -1.2218172827353122,
+          "reference_last_4s_mean": -1.0802749097959836,
+          "max_abs_difference": 1.8356815355956067
+        },
+        "plume_C": {
+          "rmse": 8.033673354536102e-05,
+          "last_4s_mean": 19.996081144871948,
+          "reference_last_4s_mean": 19.996030894972698,
+          "max_abs_difference": 0.00034679970853090936
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.05850021303792075,
+        "DIVG": 23.34895611418833,
+        "MASS": 11.151825024854425,
+        "VELO": 14.358755858542821,
+        "PRES": 9.417696349950292,
+        "WALL": 5.996307342707003,
+        "DUMP": 2.3618804147138195,
+        "PART": 0.0014188325521942908,
+        "RADI": 31.117738957534442,
+        "FIRE": 0.8346825734980827,
+        "COMM": 1.365715097287317,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.13234962406015036
+    },
+    {
+      "case": "fire_coarse",
+      "repeat": 1,
+      "cells": 1024,
+      "steps": 112,
+      "wall_seconds": 3.090515125077218,
+      "speed_ratio_vs_fine": 34.89868073796781,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 45.00883367844352,
+          "last_4s_mean": 486.4056414420634,
+          "reference_last_4s_mean": 505.2204950765758,
+          "max_abs_difference": 97.9531356586352
+        },
+        "heat_max_kW_m2": {
+          "rmse": 21.3295683689098,
+          "last_4s_mean": 79.7535067199257,
+          "reference_last_4s_mean": 96.10390290754123,
+          "max_abs_difference": 59.96033058572591
+        },
+        "wake_u": {
+          "rmse": 1.2807503139844494,
+          "last_4s_mean": -0.3517673006071931,
+          "reference_last_4s_mean": -1.5541092559493954,
+          "max_abs_difference": 3.3407451501845165
+        },
+        "plume_C": {
+          "rmse": 93.56171321698898,
+          "last_4s_mean": 115.14330278273668,
+          "reference_last_4s_mean": 46.05439876331761,
+          "max_abs_difference": 265.5087853542026
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.17180851063829786,
+        "DIVG": 25.04728132387707,
+        "MASS": 13.552009456264775,
+        "VELO": 10.342789598108748,
+        "PRES": 3.002955082742317,
+        "WALL": 3.7860520094562653,
+        "DUMP": 1.2358156028368796,
+        "PART": 0.0037825059101654845,
+        "RADI": 34.52127659574468,
+        "FIRE": 8.3096926713948,
+        "COMM": 0.009869976359338062,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.015107142857142857
+    },
+    {
+      "case": "fire_fine",
+      "repeat": 1,
+      "cells": 65536,
+      "steps": 786,
+      "wall_seconds": 107.85490066593047,
+      "speed_ratio_vs_fine": 1.0,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 0.0,
+          "last_4s_mean": 505.2204950765758,
+          "reference_last_4s_mean": 505.2204950765758,
+          "max_abs_difference": 0.0
+        },
+        "heat_max_kW_m2": {
+          "rmse": 0.0,
+          "last_4s_mean": 96.10390290754123,
+          "reference_last_4s_mean": 96.10390290754123,
+          "max_abs_difference": 0.0
+        },
+        "wake_u": {
+          "rmse": 0.0,
+          "last_4s_mean": -1.5541092559493954,
+          "reference_last_4s_mean": -1.5541092559493954,
+          "max_abs_difference": 0.0
+        },
+        "plume_C": {
+          "rmse": 0.0,
+          "last_4s_mean": 46.05439876331761,
+          "reference_last_4s_mean": 46.05439876331761,
+          "max_abs_difference": 0.0
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.04514204545454545,
+        "DIVG": 19.517045454545457,
+        "MASS": 9.354166666666666,
+        "VELO": 11.174242424242426,
+        "PRES": 5.430871212121213,
+        "WALL": 4.889204545454547,
+        "DUMP": 2.291666666666667,
+        "PART": 0.00046306818181818184,
+        "RADI": 20.265151515151516,
+        "FIRE": 27.03598484848485,
+        "COMM": 0.0036231060606060606,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.13435114503816792
+    },
+    {
+      "case": "fire_local_fine",
+      "repeat": 1,
+      "cells": 36864,
+      "steps": 764,
+      "wall_seconds": 90.82017754204571,
+      "speed_ratio_vs_fine": 1.1875654021486408,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 51.623270358997026,
+          "last_4s_mean": 551.8053006502485,
+          "reference_last_4s_mean": 505.2204950765758,
+          "max_abs_difference": 95.82929043771634
+        },
+        "heat_max_kW_m2": {
+          "rmse": 14.887915008971092,
+          "last_4s_mean": 97.19396795918935,
+          "reference_last_4s_mean": 96.10390290754123,
+          "max_abs_difference": 32.05617958930597
+        },
+        "wake_u": {
+          "rmse": 0.6191713796748993,
+          "last_4s_mean": -1.1369742964729375,
+          "reference_last_4s_mean": -1.5541092559493954,
+          "max_abs_difference": 1.7464656704656845
+        },
+        "plume_C": {
+          "rmse": 69.42183699421221,
+          "last_4s_mean": 62.32956443908963,
+          "reference_last_4s_mean": 46.05439876331761,
+          "max_abs_difference": 397.37585059206543
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.06286748077792853,
+        "DIVG": 19.448213478064226,
+        "MASS": 9.8202170963365,
+        "VELO": 11.657620985979195,
+        "PRES": 5.486205336951606,
+        "WALL": 4.74898236092266,
+        "DUMP": 1.6926729986431481,
+        "PART": 0.0017842605156037992,
+        "RADI": 24.513794663048394,
+        "FIRE": 21.5513342379014,
+        "COMM": 0.9993215739484398,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.11575916230366493
+    },
+    {
+      "case": "fire_medium",
+      "repeat": 1,
+      "cells": 8192,
+      "steps": 314,
+      "wall_seconds": 10.698697832995094,
+      "speed_ratio_vs_fine": 10.081124109637233,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 93.35715221960872,
+          "last_4s_mean": 507.35742422451364,
+          "reference_last_4s_mean": 505.2204950765758,
+          "max_abs_difference": 192.15573012584406
+        },
+        "heat_max_kW_m2": {
+          "rmse": 34.24719002424942,
+          "last_4s_mean": 73.1504042698808,
+          "reference_last_4s_mean": 96.10390290754123,
+          "max_abs_difference": 67.52246816057394
+        },
+        "wake_u": {
+          "rmse": 0.9072440760202365,
+          "last_4s_mean": -0.8491897630749529,
+          "reference_last_4s_mean": -1.5541092559493954,
+          "max_abs_difference": 3.12459557236668
+        },
+        "plume_C": {
+          "rmse": 208.0879118292723,
+          "last_4s_mean": 281.7575456895503,
+          "reference_last_4s_mean": 46.05439876331761,
+          "max_abs_difference": 544.792772263065
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.0692946965554948,
+        "DIVG": 18.89557135046474,
+        "MASS": 9.957353745215965,
+        "VELO": 9.326407873154729,
+        "PRES": 3.6052487698195734,
+        "WALL": 3.6544559868780757,
+        "DUMP": 1.2236194641880809,
+        "PART": 0.0019682886823400767,
+        "RADI": 32.46582832148715,
+        "FIRE": 20.79825041006014,
+        "COMM": 0.005248769819573538,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.02912420382165605
+    },
+    {
+      "case": "fire_medium",
+      "repeat": 2,
+      "cells": 8192,
+      "steps": 314,
+      "wall_seconds": 10.085284916916862,
+      "speed_ratio_vs_fine": 10.694283954736543,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 93.15664611807219,
+          "last_4s_mean": 506.57332808575757,
+          "reference_last_4s_mean": 505.2204950765758,
+          "max_abs_difference": 192.15720519814755
+        },
+        "heat_max_kW_m2": {
+          "rmse": 34.54917307696257,
+          "last_4s_mean": 71.91496076357464,
+          "reference_last_4s_mean": 96.10390290754123,
+          "max_abs_difference": 67.52289495528282
+        },
+        "wake_u": {
+          "rmse": 0.895582698144382,
+          "last_4s_mean": -0.9035077661340449,
+          "reference_last_4s_mean": -1.5541092559493954,
+          "max_abs_difference": 3.1224271840140485
+        },
+        "plume_C": {
+          "rmse": 206.33731055145725,
+          "last_4s_mean": 279.45959067486143,
+          "reference_last_4s_mean": 46.05439876331761,
+          "max_abs_difference": 548.8216679121248
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.0665150454863541,
+        "DIVG": 17.902962444599954,
+        "MASS": 9.589456496384418,
+        "VELO": 9.342197340797762,
+        "PRES": 3.532773501282948,
+        "WALL": 3.5257756006531373,
+        "DUMP": 1.397247492418941,
+        "PART": 0.0023093072078376486,
+        "RADI": 30.674131094005133,
+        "FIRE": 23.956146489386516,
+        "COMM": 0.004257056216468392,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.02730573248407643
+    },
+    {
+      "case": "fire_medium",
+      "repeat": 3,
+      "cells": 8192,
+      "steps": 314,
+      "wall_seconds": 10.106038124999031,
+      "speed_ratio_vs_fine": 10.672322757137907,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 93.15664611807219,
+          "last_4s_mean": 506.57332808575757,
+          "reference_last_4s_mean": 505.2204950765758,
+          "max_abs_difference": 192.15720519814755
+        },
+        "heat_max_kW_m2": {
+          "rmse": 34.54917307696257,
+          "last_4s_mean": 71.91496076357464,
+          "reference_last_4s_mean": 96.10390290754123,
+          "max_abs_difference": 67.52289495528282
+        },
+        "wake_u": {
+          "rmse": 0.895582698144382,
+          "last_4s_mean": -0.9035077661340449,
+          "reference_last_4s_mean": -1.5541092559493954,
+          "max_abs_difference": 3.1224271840140485
+        },
+        "plume_C": {
+          "rmse": 206.33731055145725,
+          "last_4s_mean": 279.45959067486143,
+          "reference_last_4s_mean": 46.05439876331761,
+          "max_abs_difference": 548.8216679121248
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.0697883783467789,
+        "DIVG": 17.946919209634046,
+        "MASS": 9.58844849760318,
+        "VELO": 9.414240617327252,
+        "PRES": 3.5648310534315444,
+        "WALL": 3.4759733426867765,
+        "DUMP": 1.434584356366187,
+        "PART": 0.0022682099848006544,
+        "RADI": 30.81959546358003,
+        "FIRE": 23.675903191862503,
+        "COMM": 0.004805331462644686,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.027238853503184716
+    },
+    {
+      "case": "fire_radiation",
+      "repeat": 1,
+      "cells": 8192,
+      "steps": 316,
+      "wall_seconds": 8.934922332991846,
+      "speed_ratio_vs_fine": 12.071162640964491,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 77.17806611124384,
+          "last_4s_mean": 509.3186047475873,
+          "reference_last_4s_mean": 505.2204950765758,
+          "max_abs_difference": 175.71240040036554
+        },
+        "heat_max_kW_m2": {
+          "rmse": 28.252341299402524,
+          "last_4s_mean": 77.23297742187869,
+          "reference_last_4s_mean": 96.10390290754123,
+          "max_abs_difference": 63.666598591668645
+        },
+        "wake_u": {
+          "rmse": 0.9371491803197675,
+          "last_4s_mean": -0.7684898837313155,
+          "reference_last_4s_mean": -1.5541092559493954,
+          "max_abs_difference": 3.0784556741553812
+        },
+        "plume_C": {
+          "rmse": 187.28308049732036,
+          "last_4s_mean": 259.75562046741925,
+          "reference_last_4s_mean": 46.05439876331761,
+          "max_abs_difference": 465.80699392029
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.10648049171566008,
+        "DIVG": 22.5013361838589,
+        "MASS": 11.877338321753074,
+        "VELO": 11.614110101549974,
+        "PRES": 4.390700160342063,
+        "WALL": 4.557723142704436,
+        "DUMP": 1.7410475681453768,
+        "PART": 0.0026322822020309992,
+        "RADI": 15.53981827899519,
+        "FIRE": 27.659005879208976,
+        "COMM": 0.005959380010689471,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.023683544303797467
+    },
+    {
+      "case": "fire_split_fine",
+      "repeat": 1,
+      "cells": 65536,
+      "steps": 784,
+      "wall_seconds": 141.13186212501023,
+      "speed_ratio_vs_fine": 0.7642136867038284,
+      "metrics": {
+        "surface_max_C": {
+          "rmse": 25.691320038113798,
+          "last_4s_mean": 518.6467918713382,
+          "reference_last_4s_mean": 505.2204950765758,
+          "max_abs_difference": 65.30265573953062
+        },
+        "heat_max_kW_m2": {
+          "rmse": 12.216201268254386,
+          "last_4s_mean": 95.41718016184583,
+          "reference_last_4s_mean": 96.10390290754123,
+          "max_abs_difference": 37.871832999999995
+        },
+        "wake_u": {
+          "rmse": 0.9806748115986421,
+          "last_4s_mean": -0.6090370382176599,
+          "reference_last_4s_mean": -1.5541092559493954,
+          "max_abs_difference": 3.0666592909964776
+        },
+        "plume_C": {
+          "rmse": 57.69685879081835,
+          "last_4s_mean": 44.209109566581546,
+          "reference_last_4s_mean": 46.05439876331761,
+          "max_abs_difference": 290.6682781710551
+        }
+      },
+      "profile_percent": {
+        "MAIN": 0.0511287988422576,
+        "DIVG": 18.73371924746744,
+        "MASS": 9.001447178002895,
+        "VELO": 11.591895803183792,
+        "PRES": 7.416787264833575,
+        "WALL": 4.942836468885673,
+        "DUMP": 1.91027496382055,
+        "PART": 0.0010549927641099856,
+        "RADI": 25.383502170767006,
+        "FIRE": 19.86251808972504,
+        "COMM": 1.0897250361794502,
+        "BLNK": 0.0,
+        "HVAC": 0.0,
+        "GEOM": 0.0,
+        "VEGE": 0.0,
+        "CHEM": 0.0
+      },
+      "seconds_per_step": 0.1762755102040816
+    }
+  ],
+  "verification": {
+    "slab_conduction": {
+      "time_window_s": [
+        100,
+        2000
+      ],
+      "max_abs_error_C": 0.8206537257112245,
+      "description": "Analytical insulated slab convection solution, Bi=100, alpha=1e-6 m2/s; temperatures from DEVC"
+    },
+    "pine_mass_conservation": {
+      "initial_mass_kg": 1,
+      "max_abs_error_kg": 0.0005395200000000155,
+      "final": {
+        "Time": 10.0,
+        "fuel gas mass": 0.64049311,
+        "water vapor mass": 0.2000464,
+        "solid mass": 0.16
+      },
+      "description": "Closed hot box, solid plus evolved fuel and water mass; pyrolysis, not gas-phase flame validation"
+    }
+  },
+  "repeats": {
+    "flow": {
+      "wall_seconds": [
+        7.155637165997177,
+        6.499852832988836,
+        6.448329124948941
+      ],
+      "max_over_min": 1.1096885762718938
+    },
+    "fire": {
+      "wall_seconds": [
+        10.698697832995094,
+        10.085284916916862,
+        10.106038124999031
+      ],
+      "max_over_min": 1.060822566851761
+    }
+  }
+}

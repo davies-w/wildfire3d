@@ -1,0 +1,177 @@
+main:
+  steps:
+  - initialize:
+      assign:
+      - deadline: ${sys.now() + 900}
+      - job:
+          taskGroups:
+          - taskCount: '1'
+            parallelism: '1'
+            taskCountPerNode: '1'
+            taskSpec:
+              computeResource:
+                cpuMilli: 4000
+                memoryMib: 12000
+              maxRunDuration: 30s
+              maxRetryCount: 0
+              runnables:
+              - container:
+                  imageUri: us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/study15@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                  options: --cpus=4 --memory=12g --pids-limit=256
+                environment:
+                  variables:
+                    TRIAL_MODE: timeout
+                    OUTPUT_BUCKET: tmrw-wildfire-20261015-trial
+                    OUTPUT_PREFIX: timeout
+          allocationPolicy:
+            instances:
+            - policy:
+                machineType: c3-standard-4
+                provisioningModel: SPOT
+                bootDisk:
+                  sizeGb: '30'
+                  type: pd-balanced
+            location:
+              allowedLocations:
+              - zones/us-central1-a
+            serviceAccount:
+              email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+            labels:
+              trial_id: study15
+            network:
+              networkInterfaces:
+              - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                subnetwork: projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial
+          labels:
+            trial_id: study15
+          logsPolicy:
+            destination: CLOUD_LOGGING
+      - status:
+          body:
+            status:
+              state: UNKNOWN
+  - create:
+      call: http.post
+      args:
+        url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs
+        query:
+          jobId: fds-controlled-trial
+        auth:
+          type: OAuth2
+        body: ${job}
+      result: created
+  - monitor:
+      try:
+        steps:
+        - get_status:
+            call: http.get
+            args:
+              url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-controlled-trial
+              auth:
+                type: OAuth2
+            result: status
+        - check:
+            switch:
+            - condition: ${status.body.status.state == "SUCCEEDED" or status.body.status.state
+                == "FAILED"}
+              next: record
+            - condition: ${sys.now() >= deadline}
+              next: record
+        - wait:
+            call: sys.sleep
+            args:
+              seconds: 15
+            next: get_status
+      except:
+        as: monitor_error
+        steps:
+        - monitor_failure:
+            call: sys.log
+            args:
+              text: Monitoring failed; proceeding to cleanup
+              severity: ERROR
+  - record:
+      try:
+        call: http.post
+        args:
+          url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+          query:
+            uploadType: media
+            name: timeout/job-status.json
+          auth:
+            type: OAuth2
+          headers:
+            Content-Type: application/json
+          body: ${status.body}
+      except:
+        as: record_error
+        steps:
+        - record_failure:
+            call: sys.log
+            args:
+              text: Could not persist final status; proceeding with cleanup
+              severity: ERROR
+  - delete_job:
+      try:
+        call: http.delete
+        args:
+          url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-controlled-trial
+          auth:
+            type: OAuth2
+        result: deletion
+      except:
+        as: delete_error
+        steps:
+        - delete_failure:
+            call: sys.log
+            args:
+              text: Batch deletion failed; checking workers directly
+              severity: ERROR
+  - cleanup_wait:
+      call: sys.sleep
+      args:
+        seconds: 30
+  - list_workers:
+      call: http.get
+      args:
+        url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances
+        query:
+          filter: labels.trial_id = study15
+        auth:
+          type: OAuth2
+      result: workers
+  - delete_stragglers:
+      for:
+        value: vm
+        in: ${default(map.get(workers.body, "items"), [])}
+        steps:
+        - delete_vm:
+            call: http.delete
+            args:
+              url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances/"
+                + vm.name}
+              auth:
+                type: OAuth2
+  - verify_wait:
+      call: sys.sleep
+      args:
+        seconds: 30
+  - verify:
+      call: http.get
+      args:
+        url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances
+        query:
+          filter: labels.trial_id = study15
+        auth:
+          type: OAuth2
+      result: remaining
+  - assert_empty:
+      switch:
+      - condition: ${len(default(map.get(remaining.body, "items"), [])) > 0}
+        raise: 'Cleanup incomplete: labeled workers remain'
+  - done:
+      return:
+        mode: timeout
+        final_state: ${status.body.status.state}
+        workers_remaining: 0
+        job_uid: ${created.body.uid}
