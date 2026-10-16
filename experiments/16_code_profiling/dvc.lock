@@ -1,0 +1,303 @@
+schema: '2.0'
+stages:
+  generate:
+    cmd: ../../.venv/bin/python generate.py
+    deps:
+    - path: generate.py
+      hash: md5
+      md5: abe5a02038dc2136bd33acb2029ba068
+      size: 2827
+    - path: inputs
+      hash: md5
+      md5: 0095544a1fec367ea4ddc125caa079bb.dir
+      size: 7518
+      nfiles: 2
+    outs:
+    - path: decks
+      hash: md5
+      md5: 620da5db850854c50d10b75aa36d7a2d.dir
+      size: 49639
+      nfiles: 10
+    - path: manifest.json
+      hash: md5
+      md5: 51cc9dfd68f2bd2af89fc2a63b55d806
+      size: 2294
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - path: ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+      hash: md5
+      md5: 18680afd3f78841d42906b41e3414f62
+      size: 10202320
+      isexec: true
+    - path: decks
+      hash: md5
+      md5: 620da5db850854c50d10b75aa36d7a2d.dir
+      size: 49639
+      nfiles: 10
+    - path: preflight.py
+      hash: md5
+      md5: b35d81f19f796dbd32f478ca50a4aa2a
+      size: 994
+    outs:
+    - path: data/preflight
+      hash: md5
+      md5: 3d2dec821ad0a94c28ae903026595ed4.dir
+      size: 269179
+      nfiles: 76
+    - path: results/local-preflight.json
+      hash: md5
+      md5: 0fb73ae20d3a0efd62256b39a5ae1a6f
+      size: 314
+  runner_tests:
+    cmd: ../../.venv/bin/python test_runner.py
+    deps:
+    - path: test_runner.py
+      hash: md5
+      md5: 57c4bccebd08f97a62477cf02345ec3b
+      size: 1355
+    - path: worker.py
+      hash: md5
+      md5: 19bd066cb46f6cca9192d6e117334b7a
+      size: 5839
+  restore_cloud:
+    cmd: ../../.venv/bin/python evidence.py extract
+    deps:
+    - path: data/cloud-evidence.tar.gz
+      hash: md5
+      md5: a5a39626e04174f2d3dce2842f11abf5
+      size: 12091826
+    - path: evidence.py
+      hash: md5
+      md5: 546037db8aa1cf51a7ee09a519192fa6
+      size: 1864
+    outs:
+    - path: data/binary
+      hash: md5
+      md5: 6da6346188dc983c0d4b73597c3637f3.dir
+      size: 17122504
+      nfiles: 1
+    - path: data/cloud
+      hash: md5
+      md5: 2adbd3abd894c48445151597087c806a.dir
+      size: 51073771
+      nfiles: 225
+  analyze:
+    cmd: ../../.venv/bin/python analyze.py
+    deps:
+    - path: analyze.py
+      hash: md5
+      md5: eac5ad92e93004bf8234c0672901acfd
+      size: 4934
+    - path: data/cloud
+      hash: md5
+      md5: 2adbd3abd894c48445151597087c806a.dir
+      size: 51073771
+      nfiles: 225
+    outs:
+    - path: results/analysis.json
+      hash: md5
+      md5: 09ad349d56d666c2e98542376911ad66
+      size: 82246
+    - path: results/findings.md
+      hash: md5
+      md5: 7fa6e759435c097422051c673a7e61a9
+      size: 1503
+  symbolize:
+    cmd:
+    - ../../.venv/bin/python test_symbolize.py
+    - ../../.venv/bin/python symbolize.py
+    deps:
+    - path: data/binary
+      hash: md5
+      md5: 6da6346188dc983c0d4b73597c3637f3.dir
+      size: 17122504
+      nfiles: 1
+    - path: data/cloud
+      hash: md5
+      md5: 2adbd3abd894c48445151597087c806a.dir
+      size: 51073771
+      nfiles: 225
+    - path: symbolize.py
+      hash: md5
+      md5: d7c962f2d90cd59f8c47d366f0e03f13
+      size: 4721
+    - path: test_symbolize.py
+      hash: md5
+      md5: 3c95b22470c68eaa1b889f52ff0f1507
+      size: 623
+    outs:
+    - path: results/profiles
+      hash: md5
+      md5: fc38895d5b69f48af9a63a15382e0c12.dir
+      size: 114225
+      nfiles: 4
+  boundary:
+    cmd: ../../.venv/bin/python boundary.py
+    deps:
+    - path: ../../FDS/install/bin/fds2ascii
+      hash: md5
+      md5: d337095553b56be9f2ef696416a099a7
+      size: 1118368
+      isexec: true
+    - path: boundary.py
+      hash: md5
+      md5: 536b89775317d8d1f04198ab3937ec47
+      size: 1499
+    - path: data/cloud
+      hash: md5
+      md5: 2adbd3abd894c48445151597087c806a.dir
+      size: 51073771
+      nfiles: 225
+    outs:
+    - path: data/boundary
+      hash: md5
+      md5: 727820766e571166e9a6f6ef46e946dd.dir
+      size: 225856
+      nfiles: 16
+    - path: results/boundary.json
+      hash: md5
+      md5: 8a58186c8226c8c4c019d766bde9720e
+      size: 1035
+  plot:
+    cmd: ../../.venv/bin/python plot.py
+    deps:
+    - path: data/binary
+      hash: md5
+      md5: 6da6346188dc983c0d4b73597c3637f3.dir
+      size: 17122504
+      nfiles: 1
+    - path: data/cloud
+      hash: md5
+      md5: 2adbd3abd894c48445151597087c806a.dir
+      size: 51073771
+      nfiles: 225
+    - path: plot.py
+      hash: md5
+      md5: 5a403a911488fe63addcf26aa7fe49cc
+      size: 2788
+    - path: results/analysis.json
+      hash: md5
+      md5: 09ad349d56d666c2e98542376911ad66
+      size: 82246
+    - path: results/profiles
+      hash: md5
+      md5: fc38895d5b69f48af9a63a15382e0c12.dir
+      size: 114225
+      nfiles: 4
+    - path: symbolize.py
+      hash: md5
+      md5: d7c962f2d90cd59f8c47d366f0e03f13
+      size: 4721
+    outs:
+    - path: results/profiling.png
+      hash: md5
+      md5: e5b62c35517f9b5a657fa07bd373db98
+      size: 212715
+  ignition_boundary:
+    cmd: ../../.venv/bin/python ignition_boundary.py
+    deps:
+    - path: ../../FDS/install/bin/fds2ascii
+      hash: md5
+      md5: d337095553b56be9f2ef696416a099a7
+      size: 1118368
+      isexec: true
+    - path: data/cloud
+      hash: md5
+      md5: 2adbd3abd894c48445151597087c806a.dir
+      size: 51073771
+      nfiles: 225
+    - path: ignition_boundary.py
+      hash: md5
+      md5: 8b8417a5452d80177b09014425630082
+      size: 1489
+    outs:
+    - path: data/ignition-boundary
+      hash: md5
+      md5: c8b5d5c10f3a91d84f316dbd9c384e40.dir
+      size: 102986
+      nfiles: 8
+    - path: results/ignition-boundary.json
+      hash: md5
+      md5: cb2a56506509275a0a527068fe599e88
+      size: 901
+  geometry:
+    cmd: ../../.venv/bin/python geometry.py
+    deps:
+    - path: data/cloud
+      hash: md5
+      md5: 2adbd3abd894c48445151597087c806a.dir
+      size: 51073771
+      nfiles: 225
+    - path: geometry.py
+      hash: md5
+      md5: 3337901566d23c0cea106910f4f0be84
+      size: 1243
+    outs:
+    - path: results/geometry.json
+      hash: md5
+      md5: 085d86c6641bf28b481f136363859dce
+      size: 14755
+  cost:
+    cmd: ../../.venv/bin/python cost.py
+    deps:
+    - path: cost.py
+      hash: md5
+      md5: 2601e376117c28b0f7b6a811481900b9
+      size: 1754
+    - path: results/build-status.json
+      hash: md5
+      md5: 4d912f1ed5b6786e0e20493ce733d8d8
+      size: 3717
+    - path: results/workflow-status.json
+      hash: md5
+      md5: 1fa6db56c9cc2b0361fa44c6ea5f0839
+      size: 657
+    outs:
+    - path: results/cost.json
+      hash: md5
+      md5: 95244448e8c498c595a2655c5f80fbfa
+      size: 861
+  longitudinal:
+    cmd: ../../.venv/bin/python longitudinal.py
+    deps:
+    - path: longitudinal.py
+      hash: md5
+      md5: 9019e98c8f3a3c6c339aeb2df60f3c4b
+      size: 1600
+    - path: results/analysis.json
+      hash: md5
+      md5: 09ad349d56d666c2e98542376911ad66
+      size: 82246
+    outs:
+    - path: results/longitudinal.json
+      hash: md5
+      md5: ae20ade8d84a3d8832fbdeb1df6b1abf
+      size: 2275
+  long_boundary:
+    cmd: ../../.venv/bin/python long_boundary.py
+    deps:
+    - path: ../../FDS/install/bin/fds2ascii
+      hash: md5
+      md5: d337095553b56be9f2ef696416a099a7
+      size: 1118368
+      isexec: true
+    - path: data/cloud
+      hash: md5
+      md5: 2adbd3abd894c48445151597087c806a.dir
+      size: 51073771
+      nfiles: 225
+    - path: long_boundary.py
+      hash: md5
+      md5: f8016826f31cc0d3e73b0b578f858d85
+      size: 1677
+    outs:
+    - path: data/long-boundary
+      hash: md5
+      md5: 290b65ad67ef158ca04e96e0d95c3448.dir
+      size: 320116
+      nfiles: 16
+    - path: results/long-boundary.json
+      hash: md5
+      md5: a2f88f2d92358bd496112fa65fbc38b7
+      size: 1556

@@ -1,0 +1,123 @@
+stages:
+  generate:
+    cmd: ../../.venv/bin/python generate.py
+    deps:
+      - generate.py
+      - inputs
+    outs:
+      - decks:
+          cache: false
+      - manifest.json:
+          cache: false
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+      - preflight.py
+      - decks
+      - ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+    outs:
+      - data/preflight
+      - results/local-preflight.json:
+          cache: false
+  runner_tests:
+    cmd: ../../.venv/bin/python test_runner.py
+    deps:
+      - test_runner.py
+      - worker.py
+  restore_cloud:
+    cmd: ../../.venv/bin/python evidence.py extract
+    deps:
+      - evidence.py
+      - data/cloud-evidence.tar.gz
+    outs:
+      - data/cloud
+      - data/binary
+  analyze:
+    cmd: ../../.venv/bin/python analyze.py
+    deps:
+      - analyze.py
+      - data/cloud
+    outs:
+      - results/analysis.json:
+          cache: false
+      - results/findings.md:
+          cache: false
+  symbolize:
+    cmd:
+      - ../../.venv/bin/python test_symbolize.py
+      - ../../.venv/bin/python symbolize.py
+    deps:
+      - test_symbolize.py
+      - symbolize.py
+      - data/cloud
+      - data/binary
+    outs:
+      - results/profiles:
+          cache: false
+  boundary:
+    cmd: ../../.venv/bin/python boundary.py
+    deps:
+      - boundary.py
+      - data/cloud
+      - ../../FDS/install/bin/fds2ascii
+    outs:
+      - data/boundary
+      - results/boundary.json:
+          cache: false
+  plot:
+    cmd: ../../.venv/bin/python plot.py
+    deps:
+      - plot.py
+      - results/analysis.json
+      - results/profiles
+      - symbolize.py
+      - data/cloud
+      - data/binary
+    outs:
+      - results/profiling.png:
+          cache: false
+  ignition_boundary:
+    cmd: ../../.venv/bin/python ignition_boundary.py
+    deps:
+      - ignition_boundary.py
+      - data/cloud
+      - ../../FDS/install/bin/fds2ascii
+    outs:
+      - data/ignition-boundary
+      - results/ignition-boundary.json:
+          cache: false
+  geometry:
+    cmd: ../../.venv/bin/python geometry.py
+    deps:
+      - geometry.py
+      - data/cloud
+    outs:
+      - results/geometry.json:
+          cache: false
+  cost:
+    cmd: ../../.venv/bin/python cost.py
+    deps:
+      - cost.py
+      - results/build-status.json
+      - results/workflow-status.json
+    outs:
+      - results/cost.json:
+          cache: false
+  longitudinal:
+    cmd: ../../.venv/bin/python longitudinal.py
+    deps:
+      - longitudinal.py
+      - results/analysis.json
+    outs:
+      - results/longitudinal.json:
+          cache: false
+  long_boundary:
+    cmd: ../../.venv/bin/python long_boundary.py
+    deps:
+      - long_boundary.py
+      - data/cloud
+      - ../../FDS/install/bin/fds2ascii
+    outs:
+      - data/long-boundary
+      - results/long-boundary.json:
+          cache: false

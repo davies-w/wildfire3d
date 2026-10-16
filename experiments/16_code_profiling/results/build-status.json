@@ -1,0 +1,112 @@
+{
+  "artifacts": {
+    "images": [
+      "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/profile16:trial"
+    ]
+  },
+  "createTime": "2026-10-15T23:48:00.553115504Z",
+  "finishTime": "2026-10-15T23:56:44.250333Z",
+  "id": "ccc2d795-c798-45eb-a2b5-3dc3af181e21",
+  "images": [
+    "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/profile16:trial"
+  ],
+  "logUrl": "https://console.cloud.google.com/cloud-build/builds;region=us-central1/ccc2d795-c798-45eb-a2b5-3dc3af181e21?project=587909259768",
+  "name": "projects/587909259768/locations/us-central1/builds/ccc2d795-c798-45eb-a2b5-3dc3af181e21",
+  "options": {
+    "diskSizeGb": "30",
+    "logging": "CLOUD_LOGGING_ONLY",
+    "pool": {},
+    "workerRelease": "legacy"
+  },
+  "projectId": "tmrw-wildfire-20261015",
+  "queueTtl": "600s",
+  "results": {
+    "buildStepImages": [
+      "sha256:40c2fb4fcd0ad51376eef166c2e7b2b40a3508d5776e2bf33db3783ab39d0f2e"
+    ],
+    "buildStepOutputs": [
+      ""
+    ],
+    "images": [
+      {
+        "artifactRegistryPackage": "projects/tmrw-wildfire-20261015/locations/us-central1/repositories/fds/packages/profile16/versions/sha256:16b97adefa6a0d3e27681909592eb5116888052bc8b2cb517a29ca9e2dae46dc",
+        "digest": "sha256:16b97adefa6a0d3e27681909592eb5116888052bc8b2cb517a29ca9e2dae46dc",
+        "name": "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/profile16:trial",
+        "pushTiming": {
+          "endTime": "2026-10-15T23:56:44.066856845Z",
+          "startTime": "2026-10-15T23:56:25.632163833Z"
+        }
+      }
+    ]
+  },
+  "serviceAccount": "projects/tmrw-wildfire-20261015/serviceAccounts/fds-builder@tmrw-wildfire-20261015.iam.gserviceaccount.com",
+  "source": {
+    "storageSource": {
+      "bucket": "tmrw-wildfire-20261015-trial",
+      "generation": "1792108080281015",
+      "object": "profile16-build/1792108077.176053-4979a7ba9554425b90de13c5a2882f26.tgz"
+    }
+  },
+  "sourceProvenance": {
+    "fileHashes": {
+      "gs://tmrw-wildfire-20261015-trial/profile16-build/1792108077.176053-4979a7ba9554425b90de13c5a2882f26.tgz#1792108080281015": {
+        "fileHash": [
+          {
+            "type": "MD5",
+            "value": "zqKl29peWxw0Nu6AlzRYuw=="
+          },
+          {
+            "type": "SHA256",
+            "value": "6Ls_nG9R46KZNXnFI_rp85osbpFZgKt8m1VTlDoPbfc="
+          }
+        ]
+      }
+    },
+    "resolvedStorageSource": {
+      "bucket": "tmrw-wildfire-20261015-trial",
+      "generation": "1792108080281015",
+      "object": "profile16-build/1792108077.176053-4979a7ba9554425b90de13c5a2882f26.tgz"
+    }
+  },
+  "startTime": "2026-10-15T23:48:01.058802369Z",
+  "status": "SUCCESS",
+  "steps": [
+    {
+      "args": [
+        "build",
+        "-t",
+        "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/profile16:trial",
+        "."
+      ],
+      "name": "gcr.io/cloud-builders/docker",
+      "pullTiming": {
+        "endTime": "2026-10-15T23:48:03.911138118Z",
+        "startTime": "2026-10-15T23:48:03.899073258Z"
+      },
+      "status": "SUCCESS",
+      "timing": {
+        "endTime": "2026-10-15T23:56:25.608275944Z",
+        "startTime": "2026-10-15T23:48:03.899073258Z"
+      }
+    }
+  ],
+  "timeout": "1200s",
+  "timing": {
+    "BUILD": {
+      "endTime": "2026-10-15T23:56:25.632024473Z",
+      "startTime": "2026-10-15T23:48:03.396754584Z"
+    },
+    "FETCHSOURCE": {
+      "endTime": "2026-10-15T23:48:03.396559555Z",
+      "startTime": "2026-10-15T23:48:01.245280353Z"
+    },
+    "PUSH": {
+      "endTime": "2026-10-15T23:56:44.067061465Z",
+      "startTime": "2026-10-15T23:56:25.632153253Z"
+    },
+    "STORAGE_SOURCE": {
+      "endTime": "2026-10-15T23:48:03.396559555Z",
+      "startTime": "2026-10-15T23:48:01.245280353Z"
+    }
+  }
+}

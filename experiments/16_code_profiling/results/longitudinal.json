@@ -1,0 +1,84 @@
+{
+  "last_device_time_s": 296.50856,
+  "last_step_time_s": 296.77233,
+  "requested_s": 600,
+  "full_horizon": false,
+  "os_total_cpu_s": 12468.294316,
+  "ignition_label": true,
+  "first_ignition_event_s": 213.868,
+  "estimated_cpu_to_first_ignition_s": 8604.322541154823,
+  "cpu_budget_300s_reaches_physical_s": 7.993214363656608,
+  "windows": [
+    {
+      "start_s": 0,
+      "end_s": 30,
+      "cpu_s": 1226.4217424898839,
+      "cpu_s_per_simulated_s": 40.8807247496628,
+      "full_30s_window": true
+    },
+    {
+      "start_s": 30,
+      "end_s": 60,
+      "cpu_s": 1217.6327746894026,
+      "cpu_s_per_simulated_s": 40.58775915631342,
+      "full_30s_window": true
+    },
+    {
+      "start_s": 60,
+      "end_s": 90,
+      "cpu_s": 1197.7239676423378,
+      "cpu_s_per_simulated_s": 39.92413225474459,
+      "full_30s_window": true
+    },
+    {
+      "start_s": 90,
+      "end_s": 120,
+      "cpu_s": 1170.0956411274128,
+      "cpu_s_per_simulated_s": 39.00318803758043,
+      "full_30s_window": true
+    },
+    {
+      "start_s": 120,
+      "end_s": 150,
+      "cpu_s": 1201.0293545278573,
+      "cpu_s_per_simulated_s": 40.034311817595245,
+      "full_30s_window": true
+    },
+    {
+      "start_s": 150,
+      "end_s": 180,
+      "cpu_s": 1167.1772620203,
+      "cpu_s_per_simulated_s": 38.905908734010005,
+      "full_30s_window": true
+    },
+    {
+      "start_s": 180,
+      "end_s": 210,
+      "cpu_s": 1255.1875288847468,
+      "cpu_s_per_simulated_s": 41.83958429615823,
+      "full_30s_window": true
+    },
+    {
+      "start_s": 210,
+      "end_s": 240,
+      "cpu_s": 1285.3410694349714,
+      "cpu_s_per_simulated_s": 42.844702314499045,
+      "full_30s_window": true
+    },
+    {
+      "start_s": 240,
+      "end_s": 270,
+      "cpu_s": 1392.7752731374403,
+      "cpu_s_per_simulated_s": 46.425842437914675,
+      "full_30s_window": true
+    },
+    {
+      "start_s": 270,
+      "end_s": 296.77233,
+      "cpu_s": 1354.615386045647,
+      "cpu_s_per_simulated_s": 50.59759034965005,
+      "full_30s_window": false
+    }
+  ],
+  "caveat": "CPU-to-event uses interpolation of recorded process CPU. A partial run without ignition has no negative label. Per-window CPU includes solver initialization in the first window; OS totals also include shutdown."
+}

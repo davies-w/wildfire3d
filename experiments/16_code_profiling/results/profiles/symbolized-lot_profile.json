@@ -1,0 +1,1053 @@
+{
+  "case": "lot_profile",
+  "total_samples": 122204,
+  "sample_period_us": 10101,
+  "sampled_cpu_s": 1234.382604,
+  "os_cpu_s": 1234.218312,
+  "modules": [
+    {
+      "name": "FDS",
+      "samples": 63864,
+      "percent_all_cpu_samples": 52.260155150404245
+    },
+    {
+      "name": "libgomp.so.1.0.0",
+      "samples": 52638,
+      "percent_all_cpu_samples": 43.07387646885536
+    },
+    {
+      "name": "libc.so.6",
+      "samples": 4515,
+      "percent_all_cpu_samples": 3.694641746587673
+    },
+    {
+      "name": "libm.so.6",
+      "samples": 966,
+      "percent_all_cpu_samples": 0.7904814899675952
+    },
+    {
+      "name": "libgfortran.so.5.0.0",
+      "samples": 215,
+      "percent_all_cpu_samples": 0.17593532126607966
+    },
+    {
+      "name": "[vdso]",
+      "samples": 4,
+      "percent_all_cpu_samples": 0.003273215279368924
+    },
+    {
+      "name": "libmpi.so.40.40.7",
+      "samples": 2,
+      "percent_all_cpu_samples": 0.001636607639684462
+    }
+  ],
+  "openmp_context": [
+    {
+      "name": "OpenMP runtime with no FDS caller in captured stack",
+      "samples": 33385,
+      "percent_all_cpu_samples": 27.319073025432882
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_1_new._omp_fn.1 @ divg.f90:1050",
+      "samples": 5063,
+      "percent_all_cpu_samples": 4.143072239861215
+    },
+    {
+      "name": "__mass_MOD_mass_finite_differences_new._omp_fn.1 @ mass.f90:171",
+      "samples": 4213,
+      "percent_all_cpu_samples": 3.447513992995319
+    },
+    {
+      "name": "__math_functions_MOD_get_scalar_face_value @ func.f90:1301",
+      "samples": 2868,
+      "percent_all_cpu_samples": 2.3468953553075185
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_1_new._omp_fn.3 @ divg.f90:1152",
+      "samples": 1164,
+      "percent_all_cpu_samples": 0.9525056462963569
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.1 @ mass.f90:520",
+      "samples": 1071,
+      "percent_all_cpu_samples": 0.8764033910510294
+    },
+    {
+      "name": "__mass_MOD_mass_finite_differences_new._omp_fn.3 @ mass.f90:310",
+      "samples": 994,
+      "percent_all_cpu_samples": 0.8133939969231776
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.3 @ mass.f90:702",
+      "samples": 771,
+      "percent_all_cpu_samples": 0.6309122450983601
+    },
+    {
+      "name": "__wall_routines_MOD_wall_bc._omp_fn.0 @ wall.f90:118",
+      "samples": 571,
+      "percent_all_cpu_samples": 0.46725148112991394
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.4 @ divg.f90:299",
+      "samples": 424,
+      "percent_all_cpu_samples": 0.34696081961310593
+    },
+    {
+      "name": "__wall_routines_MOD_wall_bc._omp_fn.0 @ wall.f90:183",
+      "samples": 389,
+      "percent_all_cpu_samples": 0.3183201859186279
+    },
+    {
+      "name": "radiation_fvm.5._omp_fn.4 @ radi.f90:4529",
+      "samples": 251,
+      "percent_all_cpu_samples": 0.2053942587804
+    },
+    {
+      "name": "radiation_fvm.5._omp_fn.0 @ radi.f90:4978",
+      "samples": 164,
+      "percent_all_cpu_samples": 0.1342018264541259
+    },
+    {
+      "name": "radiation_fvm.5 @ radi.f90:4435",
+      "samples": 156,
+      "percent_all_cpu_samples": 0.12765539589538805
+    },
+    {
+      "name": "radiation_fvm.5._omp_fn.5 @ radi.f90:4591",
+      "samples": 140,
+      "percent_all_cpu_samples": 0.11456253477791234
+    },
+    {
+      "name": "__pres_MOD_pressure_solver_compute_rhs._omp_fn.0 @ pres.f90:89",
+      "samples": 120,
+      "percent_all_cpu_samples": 0.09819645838106772
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1 @ divg.f90:645",
+      "samples": 108,
+      "percent_all_cpu_samples": 0.08837681254296095
+    },
+    {
+      "name": "__velo_MOD_compute_viscosity._omp_fn.0 @ velo.f90:83",
+      "samples": 104,
+      "percent_all_cpu_samples": 0.08510359726359203
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1 @ divg.f90:191",
+      "samples": 59,
+      "percent_all_cpu_samples": 0.04827992537069163
+    },
+    {
+      "name": "radiation_fvm.5._omp_fn.4 @ radi.f90:4435",
+      "samples": 57,
+      "percent_all_cpu_samples": 0.04664331773100717
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.3 @ mass.f90:689",
+      "samples": 48,
+      "percent_all_cpu_samples": 0.039278583352427086
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.1 @ mass.f90:507",
+      "samples": 40,
+      "percent_all_cpu_samples": 0.03273215279368924
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_2 @ divg.f90:1268",
+      "samples": 35,
+      "percent_all_cpu_samples": 0.028640633694478085
+    },
+    {
+      "name": "radiation_fvm.5._omp_fn.1 @ radi.f90:4019",
+      "samples": 33,
+      "percent_all_cpu_samples": 0.027004026054793625
+    },
+    {
+      "name": "__velo_MOD_check_stability._omp_fn.0 @ velo.f90:3066",
+      "samples": 32,
+      "percent_all_cpu_samples": 0.026185722234951393
+    },
+    {
+      "name": "__math_functions_MOD_get_scalar_face_value._omp_fn.0 @ func.f90:1327",
+      "samples": 30,
+      "percent_all_cpu_samples": 0.02454911459526693
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.1 @ mass.f90:558",
+      "samples": 28,
+      "percent_all_cpu_samples": 0.02291250695558247
+    },
+    {
+      "name": "__pres_MOD_pressure_solver_check_residuals @ pres.f90:751",
+      "samples": 22,
+      "percent_all_cpu_samples": 0.018002684036529083
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.1 @ mass.f90:572",
+      "samples": 20,
+      "percent_all_cpu_samples": 0.01636607639684462
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.3 @ mass.f90:754",
+      "samples": 17,
+      "percent_all_cpu_samples": 0.013911164937317927
+    },
+    {
+      "name": "__divg_MOD_enthalpy_advection_new._omp_fn.0 @ divg.f90:816",
+      "samples": 15,
+      "percent_all_cpu_samples": 0.012274557297633465
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.4 @ divg.f90:392",
+      "samples": 15,
+      "percent_all_cpu_samples": 0.012274557297633465
+    },
+    {
+      "name": "__velo_MOD_baroclinic_correction._omp_fn.0 @ velo.f90:3261",
+      "samples": 14,
+      "percent_all_cpu_samples": 0.011456253477791235
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.4 @ divg.f90:410",
+      "samples": 13,
+      "percent_all_cpu_samples": 0.010637949657949003
+    },
+    {
+      "name": "__pres_MOD_pressure_solver_check_residuals._omp_fn.1 @ pres.f90:756",
+      "samples": 13,
+      "percent_all_cpu_samples": 0.010637949657949003
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.3 @ mass.f90:740",
+      "samples": 12,
+      "percent_all_cpu_samples": 0.009819645838106772
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.2 @ divg.f90:200",
+      "samples": 11,
+      "percent_all_cpu_samples": 0.009001342018264542
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_1_new @ divg.f90:1094",
+      "samples": 9,
+      "percent_all_cpu_samples": 0.007364734378580079
+    },
+    {
+      "name": "__wall_routines_MOD_calculate_zz_f.isra.0 @ wall.f90:1390",
+      "samples": 8,
+      "percent_all_cpu_samples": 0.006546430558737848
+    },
+    {
+      "name": "__wall_routines_MOD_wall_bc._omp_fn.0 @ wall.f90:262",
+      "samples": 8,
+      "percent_all_cpu_samples": 0.006546430558737848
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.4 @ divg.f90:381",
+      "samples": 7,
+      "percent_all_cpu_samples": 0.0057281267388956175
+    },
+    {
+      "name": "radiation_fvm.5._omp_fn.5 @ radi.f90:4579",
+      "samples": 7,
+      "percent_all_cpu_samples": 0.0057281267388956175
+    },
+    {
+      "name": "radiation_fvm.5._omp_fn.3 @ radi.f90:4283",
+      "samples": 7,
+      "percent_all_cpu_samples": 0.0057281267388956175
+    },
+    {
+      "name": "__velo_MOD_compute_viscosity @ velo.f90:78",
+      "samples": 6,
+      "percent_all_cpu_samples": 0.004909822919053386
+    },
+    {
+      "name": "__mass_MOD_mass_finite_differences_new @ mass.f90:69",
+      "samples": 6,
+      "percent_all_cpu_samples": 0.004909822919053386
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1 @ divg.f90:621",
+      "samples": 6,
+      "percent_all_cpu_samples": 0.004909822919053386
+    },
+    {
+      "name": "__mass_MOD_mass_finite_differences_new @ mass.f90:200",
+      "samples": 6,
+      "percent_all_cpu_samples": 0.004909822919053386
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1 @ divg.f90:92",
+      "samples": 5,
+      "percent_all_cpu_samples": 0.004091519099211155
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.3 @ mass.f90:711",
+      "samples": 5,
+      "percent_all_cpu_samples": 0.004091519099211155
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.1 @ mass.f90:529",
+      "samples": 5,
+      "percent_all_cpu_samples": 0.004091519099211155
+    }
+  ],
+  "fds_flat": [
+    {
+      "name": "__math_functions_MOD_get_scalar_face_value._omp_fn.0",
+      "samples": 5081,
+      "percent_all_cpu_samples": 4.157801708618376
+    },
+    {
+      "name": "radiation_fvm.5._omp_fn.4",
+      "samples": 5007,
+      "percent_all_cpu_samples": 4.097247225950051
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_2._omp_fn.0",
+      "samples": 4321,
+      "percent_all_cpu_samples": 3.5358908055382803
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.4",
+      "samples": 4082,
+      "percent_all_cpu_samples": 3.340316192595987
+    },
+    {
+      "name": "__physical_functions_MOD_get_sensible_enthalpy_z",
+      "samples": 3233,
+      "percent_all_cpu_samples": 2.645576249549933
+    },
+    {
+      "name": "__velo_MOD_velocity_flux._omp_fn.1",
+      "samples": 3089,
+      "percent_all_cpu_samples": 2.527740499492652
+    },
+    {
+      "name": "__pres_MOD_pressure_solver_check_residuals._omp_fn.1",
+      "samples": 2567,
+      "percent_all_cpu_samples": 2.100585905535007
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.11",
+      "samples": 2189,
+      "percent_all_cpu_samples": 1.7912670616346438
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_1_new._omp_fn.4",
+      "samples": 1617,
+      "percent_all_cpu_samples": 1.3231972766848876
+    },
+    {
+      "name": "__mass_MOD_mass_finite_differences_new._omp_fn.4",
+      "samples": 1411,
+      "percent_all_cpu_samples": 1.154626689797388
+    },
+    {
+      "name": "radiation_fvm.5._omp_fn.0",
+      "samples": 1207,
+      "percent_all_cpu_samples": 0.9876927105495729
+    },
+    {
+      "name": "__wall_routines_MOD_surface_heat_transfer",
+      "samples": 1203,
+      "percent_all_cpu_samples": 0.9844194952702039
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.0",
+      "samples": 1194,
+      "percent_all_cpu_samples": 0.9770547608916238
+    },
+    {
+      "name": "__velo_MOD_velocity_bc",
+      "samples": 1131,
+      "percent_all_cpu_samples": 0.9255016202415632
+    },
+    {
+      "name": "__mass_MOD_mass_finite_differences_new._omp_fn.1",
+      "samples": 1097,
+      "percent_all_cpu_samples": 0.8976792903669274
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.2",
+      "samples": 1058,
+      "percent_all_cpu_samples": 0.8657654413930804
+    },
+    {
+      "name": "__wall_routines_MOD_wall_bc._omp_fn.0",
+      "samples": 1012,
+      "percent_all_cpu_samples": 0.8281234656803378
+    },
+    {
+      "name": "__physical_functions_MOD_get_molecular_weight",
+      "samples": 1009,
+      "percent_all_cpu_samples": 0.8256685542208111
+    },
+    {
+      "name": "__velo_MOD_compute_viscosity",
+      "samples": 796,
+      "percent_all_cpu_samples": 0.6513698405944159
+    },
+    {
+      "name": "__physical_functions_MOD_get_sensible_enthalpy",
+      "samples": 793,
+      "percent_all_cpu_samples": 0.6489149291348892
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.2",
+      "samples": 716,
+      "percent_all_cpu_samples": 0.5859055350070375
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.1",
+      "samples": 697,
+      "percent_all_cpu_samples": 0.570357762430035
+    },
+    {
+      "name": "__turbulence_MOD_test_filter._omp_fn.0",
+      "samples": 670,
+      "percent_all_cpu_samples": 0.5482635592942948
+    },
+    {
+      "name": "radiation_fvm.5",
+      "samples": 652,
+      "percent_all_cpu_samples": 0.5335340905371346
+    },
+    {
+      "name": "__divg_MOD_enthalpy_advection_new._omp_fn.1",
+      "samples": 615,
+      "percent_all_cpu_samples": 0.5032568492029721
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_2",
+      "samples": 611,
+      "percent_all_cpu_samples": 0.4999836339236032
+    },
+    {
+      "name": "check_mass_density.1",
+      "samples": 583,
+      "percent_all_cpu_samples": 0.4770711269680207
+    },
+    {
+      "name": "__velo_MOD_baroclinic_correction._omp_fn.0",
+      "samples": 574,
+      "percent_all_cpu_samples": 0.4697063925894406
+    },
+    {
+      "name": "__divg_MOD_enthalpy_advection_new",
+      "samples": 549,
+      "percent_all_cpu_samples": 0.44924879709338483
+    },
+    {
+      "name": "__wall_routines_MOD_solid_heat_transfer",
+      "samples": 513,
+      "percent_all_cpu_samples": 0.4197898595790645
+    },
+    {
+      "name": "radiation_fvm.5._omp_fn.5",
+      "samples": 461,
+      "percent_all_cpu_samples": 0.3772380609472685
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1",
+      "samples": 439,
+      "percent_all_cpu_samples": 0.3592353769107394
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_1_new._omp_fn.1",
+      "samples": 434,
+      "percent_all_cpu_samples": 0.35514385781152824
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.1",
+      "samples": 433,
+      "percent_all_cpu_samples": 0.354325553991686
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.5",
+      "samples": 423,
+      "percent_all_cpu_samples": 0.3461425157932637
+    },
+    {
+      "name": "__mass_MOD_density",
+      "samples": 421,
+      "percent_all_cpu_samples": 0.3445059081535793
+    },
+    {
+      "name": "__dump_MOD_update_global_outputs",
+      "samples": 408,
+      "percent_all_cpu_samples": 0.3338679584956303
+    },
+    {
+      "name": "__physical_functions_MOD_get_viscosity",
+      "samples": 386,
+      "percent_all_cpu_samples": 0.3158652744591012
+    },
+    {
+      "name": "__pres_MOD_pressure_solver_compute_rhs._omp_fn.0",
+      "samples": 377,
+      "percent_all_cpu_samples": 0.3085005400805211
+    },
+    {
+      "name": "__physical_functions_MOD_get_specific_gas_constant",
+      "samples": 368,
+      "percent_all_cpu_samples": 0.30113580570194104
+    },
+    {
+      "name": "__velo_MOD_velocity_flux._omp_fn.0",
+      "samples": 368,
+      "percent_all_cpu_samples": 0.30113580570194104
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.3",
+      "samples": 365,
+      "percent_all_cpu_samples": 0.29868089424241434
+    },
+    {
+      "name": "radiation_fvm.5._omp_fn.3",
+      "samples": 356,
+      "percent_all_cpu_samples": 0.29131615986383425
+    },
+    {
+      "name": "__divg_MOD_divergence_part_2",
+      "samples": 349,
+      "percent_all_cpu_samples": 0.28558803312493863
+    },
+    {
+      "name": "__fire_MOD_combustion_load_balanced",
+      "samples": 329,
+      "percent_all_cpu_samples": 0.269221956728094
+    },
+    {
+      "name": "__velo_MOD_compute_viscosity._omp_fn.0",
+      "samples": 325,
+      "percent_all_cpu_samples": 0.2659487414487251
+    },
+    {
+      "name": "__physical_functions_MOD_get_mass_fraction_all",
+      "samples": 311,
+      "percent_all_cpu_samples": 0.2544924879709338
+    },
+    {
+      "name": "__velo_MOD_check_stability._omp_fn.0",
+      "samples": 309,
+      "percent_all_cpu_samples": 0.2528558803312494
+    },
+    {
+      "name": "__divg_MOD_enthalpy_advection_new._omp_fn.0",
+      "samples": 305,
+      "percent_all_cpu_samples": 0.24958266505188045
+    },
+    {
+      "name": "__wall_routines_MOD_calculate_zz_f.isra.0",
+      "samples": 299,
+      "percent_all_cpu_samples": 0.24467284213282708
+    }
+  ],
+  "fds_cumulative": [
+    {
+      "name": "MAIN__",
+      "samples": 38858,
+      "percent_all_cpu_samples": 31.797649831429414
+    },
+    {
+      "name": "_start",
+      "samples": 38858,
+      "percent_all_cpu_samples": 31.797649831429414
+    },
+    {
+      "name": "main",
+      "samples": 38858,
+      "percent_all_cpu_samples": 31.797649831429414
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1",
+      "samples": 13829,
+      "percent_all_cpu_samples": 11.316323524598213
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.4",
+      "samples": 7196,
+      "percent_all_cpu_samples": 5.8885142875846945
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_1_new._omp_fn.1",
+      "samples": 7098,
+      "percent_all_cpu_samples": 5.808320513240155
+    },
+    {
+      "name": "__mass_MOD_mass_finite_differences_new._omp_fn.1",
+      "samples": 6918,
+      "percent_all_cpu_samples": 5.661025825668554
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_1_new",
+      "samples": 6727,
+      "percent_all_cpu_samples": 5.5047297960786885
+    },
+    {
+      "name": "__wall_routines_MOD_wall_bc._omp_fn.0",
+      "samples": 6644,
+      "percent_all_cpu_samples": 5.436810579031783
+    },
+    {
+      "name": "__math_functions_MOD_get_scalar_face_value",
+      "samples": 6527,
+      "percent_all_cpu_samples": 5.341069032110242
+    },
+    {
+      "name": "__mass_MOD_mass_finite_differences_new",
+      "samples": 5847,
+      "percent_all_cpu_samples": 4.784622434617525
+    },
+    {
+      "name": "radiation_fvm.5._omp_fn.4",
+      "samples": 5318,
+      "percent_all_cpu_samples": 4.351739713920985
+    },
+    {
+      "name": "__math_functions_MOD_get_scalar_face_value._omp_fn.0",
+      "samples": 5121,
+      "percent_all_cpu_samples": 4.190533861412065
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_2._omp_fn.0",
+      "samples": 4321,
+      "percent_all_cpu_samples": 3.5358908055382803
+    },
+    {
+      "name": "__rad_MOD_compute_radiation",
+      "samples": 3300,
+      "percent_all_cpu_samples": 2.700402605479362
+    },
+    {
+      "name": "radiation_fvm.5",
+      "samples": 3300,
+      "percent_all_cpu_samples": 2.700402605479362
+    },
+    {
+      "name": "__physical_functions_MOD_get_sensible_enthalpy_z",
+      "samples": 3233,
+      "percent_all_cpu_samples": 2.645576249549933
+    },
+    {
+      "name": "__velo_MOD_velocity_flux._omp_fn.1",
+      "samples": 3089,
+      "percent_all_cpu_samples": 2.527740499492652
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.11",
+      "samples": 2740,
+      "percent_all_cpu_samples": 2.242152466367713
+    },
+    {
+      "name": "__wall_routines_MOD_wall_bc",
+      "samples": 2657,
+      "percent_all_cpu_samples": 2.1742332493208076
+    },
+    {
+      "name": "__pres_MOD_pressure_solver_check_residuals._omp_fn.1",
+      "samples": 2580,
+      "percent_all_cpu_samples": 2.111223855192956
+    },
+    {
+      "name": "__fire_MOD_combustion_load_balanced",
+      "samples": 2500,
+      "percent_all_cpu_samples": 2.0457595496055774
+    },
+    {
+      "name": "radiation_fvm.5._omp_fn.0",
+      "samples": 2173,
+      "percent_all_cpu_samples": 1.7781742005171681
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.1",
+      "samples": 2090,
+      "percent_all_cpu_samples": 1.710254983470263
+    },
+    {
+      "name": "__velo_MOD_compute_viscosity",
+      "samples": 1875,
+      "percent_all_cpu_samples": 1.5343196622041833
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_1_new._omp_fn.3",
+      "samples": 1800,
+      "percent_all_cpu_samples": 1.4729468757160158
+    },
+    {
+      "name": "__fire_MOD_combustion_model",
+      "samples": 1787,
+      "percent_all_cpu_samples": 1.4623089260580668
+    },
+    {
+      "name": "__wall_routines_MOD_surface_heat_transfer",
+      "samples": 1746,
+      "percent_all_cpu_samples": 1.4287584694445354
+    },
+    {
+      "name": "__mass_MOD_density",
+      "samples": 1686,
+      "percent_all_cpu_samples": 1.3796602402540015
+    },
+    {
+      "name": "__mass_MOD_mass_finite_differences_new._omp_fn.3",
+      "samples": 1684,
+      "percent_all_cpu_samples": 1.3780236326143172
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_1_new._omp_fn.4",
+      "samples": 1617,
+      "percent_all_cpu_samples": 1.3231972766848876
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.3",
+      "samples": 1605,
+      "percent_all_cpu_samples": 1.3133776308467808
+    },
+    {
+      "name": "__dump_MOD_update_global_outputs",
+      "samples": 1580,
+      "percent_all_cpu_samples": 1.292920035350725
+    },
+    {
+      "name": "__velo_MOD_velocity_bc",
+      "samples": 1518,
+      "percent_all_cpu_samples": 1.2421851985205068
+    },
+    {
+      "name": "__velo_MOD_velocity_flux",
+      "samples": 1518,
+      "percent_all_cpu_samples": 1.2421851985205068
+    },
+    {
+      "name": "__mass_MOD_mass_finite_differences_new._omp_fn.4",
+      "samples": 1412,
+      "percent_all_cpu_samples": 1.1554449936172302
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_2",
+      "samples": 1209,
+      "percent_all_cpu_samples": 0.9893293181892573
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.0",
+      "samples": 1194,
+      "percent_all_cpu_samples": 0.9770547608916238
+    },
+    {
+      "name": "pressure_iteration_scheme.29",
+      "samples": 1175,
+      "percent_all_cpu_samples": 0.9615069883146214
+    },
+    {
+      "name": "__divg_MOD_enthalpy_advection_new",
+      "samples": 1162,
+      "percent_all_cpu_samples": 0.9508690386566725
+    },
+    {
+      "name": "__mass_MOD_density._omp_fn.2",
+      "samples": 1060,
+      "percent_all_cpu_samples": 0.8674020490327649
+    },
+    {
+      "name": "__physical_functions_MOD_get_molecular_weight",
+      "samples": 1009,
+      "percent_all_cpu_samples": 0.8256685542208111
+    },
+    {
+      "name": "__dump_MOD_update_devices_1",
+      "samples": 986,
+      "percent_all_cpu_samples": 0.8068475663644398
+    },
+    {
+      "name": "__divg_MOD_enthalpy_advection_new._omp_fn.0",
+      "samples": 938,
+      "percent_all_cpu_samples": 0.7675689830120127
+    },
+    {
+      "name": "__wall_routines_MOD_solid_heat_transfer",
+      "samples": 806,
+      "percent_all_cpu_samples": 0.6595528787928382
+    },
+    {
+      "name": "__physical_functions_MOD_get_sensible_enthalpy",
+      "samples": 793,
+      "percent_all_cpu_samples": 0.6489149291348892
+    },
+    {
+      "name": "__velo_MOD_compute_viscosity._omp_fn.0",
+      "samples": 792,
+      "percent_all_cpu_samples": 0.648096625315047
+    },
+    {
+      "name": "__divg_MOD_species_advection_part_1_new._omp_fn.2",
+      "samples": 748,
+      "percent_all_cpu_samples": 0.6120912572419888
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.5",
+      "samples": 736,
+      "percent_all_cpu_samples": 0.6022716114038821
+    },
+    {
+      "name": "__divg_MOD_divergence_part_1._omp_fn.2",
+      "samples": 732,
+      "percent_all_cpu_samples": 0.5989983961245131
+    }
+  ],
+  "fds_lines": [
+    {
+      "name": "func.f90:1787",
+      "samples": 2421,
+      "percent_all_cpu_samples": 1.9811135478380413
+    },
+    {
+      "name": "divg.f90:652",
+      "samples": 1551,
+      "percent_all_cpu_samples": 1.2691892245753003
+    },
+    {
+      "name": "radi.f90:4529",
+      "samples": 1507,
+      "percent_all_cpu_samples": 1.2331838565022422
+    },
+    {
+      "name": "pres.f90:779",
+      "samples": 1491,
+      "percent_all_cpu_samples": 1.2200909953847665
+    },
+    {
+      "name": "func.f90:1336",
+      "samples": 1443,
+      "percent_all_cpu_samples": 1.1808124120323393
+    },
+    {
+      "name": "func.f90:1661",
+      "samples": 967,
+      "percent_all_cpu_samples": 0.7912997937874374
+    },
+    {
+      "name": "pres.f90:770",
+      "samples": 921,
+      "percent_all_cpu_samples": 0.7536578180746948
+    },
+    {
+      "name": "divg.f90:1273",
+      "samples": 839,
+      "percent_all_cpu_samples": 0.6865569048476319
+    },
+    {
+      "name": "func.f90:1752",
+      "samples": 685,
+      "percent_all_cpu_samples": 0.5605381165919282
+    },
+    {
+      "name": "divg.f90:1286",
+      "samples": 678,
+      "percent_all_cpu_samples": 0.5548099898530326
+    },
+    {
+      "name": "radi.f90:4451",
+      "samples": 666,
+      "percent_all_cpu_samples": 0.5449903440149259
+    },
+    {
+      "name": "divg.f90:1280",
+      "samples": 661,
+      "percent_all_cpu_samples": 0.5408988249157147
+    },
+    {
+      "name": "func.f90:1341",
+      "samples": 649,
+      "percent_all_cpu_samples": 0.5310791790776079
+    },
+    {
+      "name": "turb.f90:988",
+      "samples": 645,
+      "percent_all_cpu_samples": 0.527805963798239
+    },
+    {
+      "name": "func.f90:1340",
+      "samples": 542,
+      "percent_all_cpu_samples": 0.4435206703544892
+    },
+    {
+      "name": "divg.f90:649",
+      "samples": 522,
+      "percent_all_cpu_samples": 0.4271545939576446
+    },
+    {
+      "name": "func.f90:1335",
+      "samples": 478,
+      "percent_all_cpu_samples": 0.39114922588458645
+    },
+    {
+      "name": "divg.f90:413",
+      "samples": 466,
+      "percent_all_cpu_samples": 0.38132958004647965
+    },
+    {
+      "name": "func.f90:1786",
+      "samples": 466,
+      "percent_all_cpu_samples": 0.38132958004647965
+    },
+    {
+      "name": "divg.f90:1284",
+      "samples": 464,
+      "percent_all_cpu_samples": 0.37969297240679517
+    },
+    {
+      "name": "mass.f90:446",
+      "samples": 460,
+      "percent_all_cpu_samples": 0.37641975712742626
+    },
+    {
+      "name": "divg.f90:396",
+      "samples": 456,
+      "percent_all_cpu_samples": 0.37314654184805734
+    },
+    {
+      "name": "func.f90:1331",
+      "samples": 423,
+      "percent_all_cpu_samples": 0.3461425157932637
+    },
+    {
+      "name": "divg.f90:1198",
+      "samples": 417,
+      "percent_all_cpu_samples": 0.3412326928742103
+    },
+    {
+      "name": "divg.f90:309",
+      "samples": 416,
+      "percent_all_cpu_samples": 0.3404143890543681
+    },
+    {
+      "name": "radi.f90:4448",
+      "samples": 407,
+      "percent_all_cpu_samples": 0.333049654675788
+    },
+    {
+      "name": "mass.f90:450",
+      "samples": 406,
+      "percent_all_cpu_samples": 0.3322313508559458
+    },
+    {
+      "name": "divg.f90:1204",
+      "samples": 403,
+      "percent_all_cpu_samples": 0.3297764393964191
+    },
+    {
+      "name": "divg.f90:1282",
+      "samples": 402,
+      "percent_all_cpu_samples": 0.3289581355765769
+    },
+    {
+      "name": "mass.f90:623",
+      "samples": 399,
+      "percent_all_cpu_samples": 0.3265032241170502
+    },
+    {
+      "name": "divg.f90:1285",
+      "samples": 398,
+      "percent_all_cpu_samples": 0.32568492029720797
+    },
+    {
+      "name": "radi.f90:4449",
+      "samples": 393,
+      "percent_all_cpu_samples": 0.3215934011979968
+    },
+    {
+      "name": "wall.f90:717",
+      "samples": 390,
+      "percent_all_cpu_samples": 0.3191384897384701
+    },
+    {
+      "name": "divg.f90:1263",
+      "samples": 389,
+      "percent_all_cpu_samples": 0.3183201859186279
+    },
+    {
+      "name": "mass.f90:341",
+      "samples": 388,
+      "percent_all_cpu_samples": 0.31750188209878566
+    },
+    {
+      "name": "divg.f90:327",
+      "samples": 383,
+      "percent_all_cpu_samples": 0.3134103629995745
+    },
+    {
+      "name": "func.f90:1333",
+      "samples": 375,
+      "percent_all_cpu_samples": 0.30686393244083665
+    },
+    {
+      "name": "divg.f90:1210",
+      "samples": 371,
+      "percent_all_cpu_samples": 0.3035907171614677
+    },
+    {
+      "name": "func.f90:1338",
+      "samples": 365,
+      "percent_all_cpu_samples": 0.29868089424241434
+    },
+    {
+      "name": "func.f90:1330",
+      "samples": 363,
+      "percent_all_cpu_samples": 0.29704428660272986
+    },
+    {
+      "name": "mass.f90:885",
+      "samples": 359,
+      "percent_all_cpu_samples": 0.29377107132336094
+    },
+    {
+      "name": "func.f90:1885",
+      "samples": 356,
+      "percent_all_cpu_samples": 0.29131615986383425
+    },
+    {
+      "name": "radi.f90:4526",
+      "samples": 354,
+      "percent_all_cpu_samples": 0.28967955222414976
+    },
+    {
+      "name": "divg.f90:1281",
+      "samples": 354,
+      "percent_all_cpu_samples": 0.28967955222414976
+    },
+    {
+      "name": "mass.f90:335",
+      "samples": 342,
+      "percent_all_cpu_samples": 0.279859906386043
+    },
+    {
+      "name": "divg.f90:1283",
+      "samples": 340,
+      "percent_all_cpu_samples": 0.27822329874635854
+    },
+    {
+      "name": "mass.f90:627",
+      "samples": 323,
+      "percent_all_cpu_samples": 0.2643121338090406
+    },
+    {
+      "name": "radi.f90:4525",
+      "samples": 310,
+      "percent_all_cpu_samples": 0.2536741841510916
+    },
+    {
+      "name": "divg.f90:307",
+      "samples": 303,
+      "percent_all_cpu_samples": 0.247946057412196
+    },
+    {
+      "name": "func.f90:1675",
+      "samples": 297,
+      "percent_all_cpu_samples": 0.24303623449314263
+    }
+  ],
+  "caveat": "Library attribution only for stripped shared objects. Flat samples are exclusive; cumulative rows overlap. Optimized source-line attribution includes inlining."
+}

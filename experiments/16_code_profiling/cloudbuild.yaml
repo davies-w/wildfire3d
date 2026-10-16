@@ -1,0 +1,10 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/profile16:trial', '.']
+images: ['us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/profile16:trial']
+timeout: 1200s
+queueTtl: 600s
+serviceAccount: projects/tmrw-wildfire-20261015/serviceAccounts/fds-builder@tmrw-wildfire-20261015.iam.gserviceaccount.com
+options:
+  logging: CLOUD_LOGGING_ONLY
+  diskSizeGb: '30'
