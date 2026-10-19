@@ -1,0 +1,876 @@
+[
+  {
+    "training_configurations": 8,
+    "device": "mps",
+    "parameters": 165882,
+    "selected_step": 3000,
+    "optimization_steps_completed": 3200,
+    "maximum_optimization_steps": 3200,
+    "history": [
+      {
+        "step": 0,
+        "train_loss": 0.07516882568597794,
+        "validation_loss": 0.48178004375880673
+      },
+      {
+        "step": 200,
+        "train_loss": 0.10191213339567184,
+        "validation_loss": 0.15711831705023846
+      },
+      {
+        "step": 400,
+        "train_loss": 0.009986016899347305,
+        "validation_loss": 0.19593138122443288
+      },
+      {
+        "step": 600,
+        "train_loss": 0.00800570659339428,
+        "validation_loss": 0.10275606906396292
+      },
+      {
+        "step": 800,
+        "train_loss": 0.008489791303873062,
+        "validation_loss": 0.10338507876509712
+      },
+      {
+        "step": 1000,
+        "train_loss": 0.005927728489041328,
+        "validation_loss": 0.12601062478608496
+      },
+      {
+        "step": 1200,
+        "train_loss": 0.011241605505347252,
+        "validation_loss": 0.09366150923527866
+      },
+      {
+        "step": 1400,
+        "train_loss": 0.002890012226998806,
+        "validation_loss": 0.13906962840008505
+      },
+      {
+        "step": 1600,
+        "train_loss": 0.41560155153274536,
+        "validation_loss": 0.0860932737622144
+      },
+      {
+        "step": 1800,
+        "train_loss": 0.1859949380159378,
+        "validation_loss": 0.1069945285091221
+      },
+      {
+        "step": 2000,
+        "train_loss": 0.002630040282383561,
+        "validation_loss": 0.12025299825472757
+      },
+      {
+        "step": 2200,
+        "train_loss": 0.003510761074721813,
+        "validation_loss": 0.07969177969997483
+      },
+      {
+        "step": 2400,
+        "train_loss": 0.003529563080519438,
+        "validation_loss": 0.07240386792441963
+      },
+      {
+        "step": 2600,
+        "train_loss": 0.0029583238065242767,
+        "validation_loss": 0.08892885046190627
+      },
+      {
+        "step": 2800,
+        "train_loss": 0.009799543768167496,
+        "validation_loss": 0.08323355527162286
+      },
+      {
+        "step": 3000,
+        "train_loss": 0.07347185164690018,
+        "validation_loss": 0.07001373693735029
+      },
+      {
+        "step": 3200,
+        "train_loss": 0.11530324071645737,
+        "validation_loss": 0.09322383854028192
+      }
+    ],
+    "total_fit_and_diagnostic_seconds": 212.6458683339879,
+    "seconds_per_test": 1.1070326945045963,
+    "reconstruction": [
+      {
+        "case": "s27_train_0",
+        "split": "train",
+        "temperature_MAE_C": 4.884458065032959,
+        "hot_union_temperature_MAE_C": 65.49288177490234,
+        "HRRPUV_MAE_kW_m3": 0.5691644549369812,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_1",
+        "split": "train",
+        "temperature_MAE_C": 2.947263717651367,
+        "hot_union_temperature_MAE_C": 39.01641082763672,
+        "HRRPUV_MAE_kW_m3": 0.30458950996398926,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_2",
+        "split": "train",
+        "temperature_MAE_C": 3.216715097427368,
+        "hot_union_temperature_MAE_C": 47.53002166748047,
+        "HRRPUV_MAE_kW_m3": 0.2890962064266205,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_3",
+        "split": "train",
+        "temperature_MAE_C": 4.544089317321777,
+        "hot_union_temperature_MAE_C": 60.02858352661133,
+        "HRRPUV_MAE_kW_m3": 0.6566035151481628,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_4",
+        "split": "train",
+        "temperature_MAE_C": 4.093412399291992,
+        "hot_union_temperature_MAE_C": 60.2587776184082,
+        "HRRPUV_MAE_kW_m3": 0.5838560461997986,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_5",
+        "split": "train",
+        "temperature_MAE_C": 4.147525310516357,
+        "hot_union_temperature_MAE_C": 54.9455680847168,
+        "HRRPUV_MAE_kW_m3": 0.5417890548706055,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_6",
+        "split": "train",
+        "temperature_MAE_C": 3.083111524581909,
+        "hot_union_temperature_MAE_C": 47.574493408203125,
+        "HRRPUV_MAE_kW_m3": 0.3013938367366791,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_7",
+        "split": "train",
+        "temperature_MAE_C": 4.515352725982666,
+        "hot_union_temperature_MAE_C": 64.6556167602539,
+        "HRRPUV_MAE_kW_m3": 0.588977575302124,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_0",
+        "split": "validation",
+        "temperature_MAE_C": 4.171212673187256,
+        "hot_union_temperature_MAE_C": 59.76508712768555,
+        "HRRPUV_MAE_kW_m3": 0.5576279163360596,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_1",
+        "split": "validation",
+        "temperature_MAE_C": 3.2531166076660156,
+        "hot_union_temperature_MAE_C": 49.49656677246094,
+        "HRRPUV_MAE_kW_m3": 0.33960211277008057,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_2",
+        "split": "validation",
+        "temperature_MAE_C": 3.703062057495117,
+        "hot_union_temperature_MAE_C": 51.44577407836914,
+        "HRRPUV_MAE_kW_m3": 0.3723839223384857,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_3",
+        "split": "validation",
+        "temperature_MAE_C": 3.970364809036255,
+        "hot_union_temperature_MAE_C": 58.46105194091797,
+        "HRRPUV_MAE_kW_m3": 0.5221539735794067,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_4",
+        "split": "validation",
+        "temperature_MAE_C": 3.9663517475128174,
+        "hot_union_temperature_MAE_C": 52.61591720581055,
+        "HRRPUV_MAE_kW_m3": 0.5654968619346619,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_5",
+        "split": "validation",
+        "temperature_MAE_C": 3.0928561687469482,
+        "hot_union_temperature_MAE_C": 43.974220275878906,
+        "HRRPUV_MAE_kW_m3": 0.28203386068344116,
+        "sampling": "every sixth volume frame; full spatial grid"
+      }
+    ]
+  },
+  {
+    "training_configurations": 16,
+    "device": "mps",
+    "parameters": 165882,
+    "selected_step": 6400,
+    "optimization_steps_completed": 6400,
+    "maximum_optimization_steps": 6400,
+    "history": [
+      {
+        "step": 0,
+        "train_loss": 0.07315385341644287,
+        "validation_loss": 0.4817796617391564
+      },
+      {
+        "step": 400,
+        "train_loss": 0.00412399135529995,
+        "validation_loss": 0.20835359887652366
+      },
+      {
+        "step": 800,
+        "train_loss": 0.006931854411959648,
+        "validation_loss": 0.10145098096247585
+      },
+      {
+        "step": 1200,
+        "train_loss": 0.005695135798305273,
+        "validation_loss": 0.09275299821525723
+      },
+      {
+        "step": 1600,
+        "train_loss": 0.06266454607248306,
+        "validation_loss": 0.08359862373964418
+      },
+      {
+        "step": 2000,
+        "train_loss": 0.006421071011573076,
+        "validation_loss": 0.07388539881988739
+      },
+      {
+        "step": 2400,
+        "train_loss": 0.005919754505157471,
+        "validation_loss": 0.09023696488224059
+      },
+      {
+        "step": 2800,
+        "train_loss": 0.001499301171861589,
+        "validation_loss": 0.06488999122493191
+      },
+      {
+        "step": 3200,
+        "train_loss": 0.08502086997032166,
+        "validation_loss": 0.06989281809711385
+      },
+      {
+        "step": 3600,
+        "train_loss": 0.0034767352044582367,
+        "validation_loss": 0.06152976779655243
+      },
+      {
+        "step": 4000,
+        "train_loss": 0.031000517308712006,
+        "validation_loss": 0.05986364786041945
+      },
+      {
+        "step": 4400,
+        "train_loss": 0.004900669679045677,
+        "validation_loss": 0.05844422684805024
+      },
+      {
+        "step": 4800,
+        "train_loss": 0.0012742278631776571,
+        "validation_loss": 0.05301258381639075
+      },
+      {
+        "step": 5200,
+        "train_loss": 0.0008445395505987108,
+        "validation_loss": 0.052624163253875894
+      },
+      {
+        "step": 5600,
+        "train_loss": 0.29533252120018005,
+        "validation_loss": 0.062447201540981906
+      },
+      {
+        "step": 6000,
+        "train_loss": 0.0012630317360162735,
+        "validation_loss": 0.05543359379017992
+      },
+      {
+        "step": 6400,
+        "train_loss": 0.019879881292581558,
+        "validation_loss": 0.05208692518672684
+      }
+    ],
+    "total_fit_and_diagnostic_seconds": 407.56135662505403,
+    "seconds_per_test": 1.0913855763307463,
+    "reconstruction": [
+      {
+        "case": "s27_train_0",
+        "split": "train",
+        "temperature_MAE_C": 3.317023515701294,
+        "hot_union_temperature_MAE_C": 53.04789733886719,
+        "HRRPUV_MAE_kW_m3": 0.3916085660457611,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_1",
+        "split": "train",
+        "temperature_MAE_C": 2.482491970062256,
+        "hot_union_temperature_MAE_C": 41.69594192504883,
+        "HRRPUV_MAE_kW_m3": 0.2827256917953491,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_2",
+        "split": "train",
+        "temperature_MAE_C": 2.8143694400787354,
+        "hot_union_temperature_MAE_C": 46.304176330566406,
+        "HRRPUV_MAE_kW_m3": 0.26847437024116516,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_3",
+        "split": "train",
+        "temperature_MAE_C": 3.22723650932312,
+        "hot_union_temperature_MAE_C": 56.708038330078125,
+        "HRRPUV_MAE_kW_m3": 0.5137712955474854,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_4",
+        "split": "train",
+        "temperature_MAE_C": 3.066370964050293,
+        "hot_union_temperature_MAE_C": 49.03133773803711,
+        "HRRPUV_MAE_kW_m3": 0.47276976704597473,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_5",
+        "split": "train",
+        "temperature_MAE_C": 3.0874435901641846,
+        "hot_union_temperature_MAE_C": 50.6790771484375,
+        "HRRPUV_MAE_kW_m3": 0.4331243932247162,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_6",
+        "split": "train",
+        "temperature_MAE_C": 2.9986894130706787,
+        "hot_union_temperature_MAE_C": 48.86151885986328,
+        "HRRPUV_MAE_kW_m3": 0.29053255915641785,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_7",
+        "split": "train",
+        "temperature_MAE_C": 3.503363847732544,
+        "hot_union_temperature_MAE_C": 58.42573165893555,
+        "HRRPUV_MAE_kW_m3": 0.45134982466697693,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_8",
+        "split": "train",
+        "temperature_MAE_C": 3.3593671321868896,
+        "hot_union_temperature_MAE_C": 53.710018157958984,
+        "HRRPUV_MAE_kW_m3": 0.5116645693778992,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_9",
+        "split": "train",
+        "temperature_MAE_C": 2.780313491821289,
+        "hot_union_temperature_MAE_C": 46.792388916015625,
+        "HRRPUV_MAE_kW_m3": 0.2788718044757843,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_10",
+        "split": "train",
+        "temperature_MAE_C": 3.1513757705688477,
+        "hot_union_temperature_MAE_C": 52.85163116455078,
+        "HRRPUV_MAE_kW_m3": 0.4880199134349823,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_11",
+        "split": "train",
+        "temperature_MAE_C": 2.7720470428466797,
+        "hot_union_temperature_MAE_C": 44.82640075683594,
+        "HRRPUV_MAE_kW_m3": 0.35004547238349915,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_12",
+        "split": "train",
+        "temperature_MAE_C": 3.0585110187530518,
+        "hot_union_temperature_MAE_C": 50.8327522277832,
+        "HRRPUV_MAE_kW_m3": 0.4443793296813965,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_13",
+        "split": "train",
+        "temperature_MAE_C": 2.6278159618377686,
+        "hot_union_temperature_MAE_C": 44.153812408447266,
+        "HRRPUV_MAE_kW_m3": 0.3272770941257477,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_14",
+        "split": "train",
+        "temperature_MAE_C": 2.624440908432007,
+        "hot_union_temperature_MAE_C": 46.6822395324707,
+        "HRRPUV_MAE_kW_m3": 0.2450454980134964,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_15",
+        "split": "train",
+        "temperature_MAE_C": 3.1874465942382812,
+        "hot_union_temperature_MAE_C": 51.21298599243164,
+        "HRRPUV_MAE_kW_m3": 0.38892626762390137,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_0",
+        "split": "validation",
+        "temperature_MAE_C": 3.2529008388519287,
+        "hot_union_temperature_MAE_C": 52.65407943725586,
+        "HRRPUV_MAE_kW_m3": 0.43317320942878723,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_1",
+        "split": "validation",
+        "temperature_MAE_C": 2.878915786743164,
+        "hot_union_temperature_MAE_C": 46.003639221191406,
+        "HRRPUV_MAE_kW_m3": 0.3192714750766754,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_2",
+        "split": "validation",
+        "temperature_MAE_C": 3.121520757675171,
+        "hot_union_temperature_MAE_C": 51.97014236450195,
+        "HRRPUV_MAE_kW_m3": 0.3006255030632019,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_3",
+        "split": "validation",
+        "temperature_MAE_C": 3.049128293991089,
+        "hot_union_temperature_MAE_C": 49.400333404541016,
+        "HRRPUV_MAE_kW_m3": 0.4440644085407257,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_4",
+        "split": "validation",
+        "temperature_MAE_C": 2.9085986614227295,
+        "hot_union_temperature_MAE_C": 47.333797454833984,
+        "HRRPUV_MAE_kW_m3": 0.45437267422676086,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_5",
+        "split": "validation",
+        "temperature_MAE_C": 2.7778332233428955,
+        "hot_union_temperature_MAE_C": 47.7691650390625,
+        "HRRPUV_MAE_kW_m3": 0.2647383511066437,
+        "sampling": "every sixth volume frame; full spatial grid"
+      }
+    ]
+  },
+  {
+    "training_configurations": 32,
+    "device": "mps",
+    "parameters": 165882,
+    "selected_step": 7200,
+    "optimization_steps_completed": 10400,
+    "maximum_optimization_steps": 12800,
+    "history": [
+      {
+        "step": 0,
+        "train_loss": 0.07901229709386826,
+        "validation_loss": 0.4817714613995382
+      },
+      {
+        "step": 800,
+        "train_loss": 0.00791953131556511,
+        "validation_loss": 0.09959547984735331
+      },
+      {
+        "step": 1600,
+        "train_loss": 0.13536471128463745,
+        "validation_loss": 0.0843785349335078
+      },
+      {
+        "step": 2400,
+        "train_loss": 0.0036347289569675922,
+        "validation_loss": 0.06885630653206525
+      },
+      {
+        "step": 3200,
+        "train_loss": 0.09605290740728378,
+        "validation_loss": 0.06262602855401513
+      },
+      {
+        "step": 4000,
+        "train_loss": 0.01808469183743,
+        "validation_loss": 0.08224592699358861
+      },
+      {
+        "step": 4800,
+        "train_loss": 0.0003457378479652107,
+        "validation_loss": 0.060061511032732336
+      },
+      {
+        "step": 5600,
+        "train_loss": 0.18711720407009125,
+        "validation_loss": 0.053970311380301915
+      },
+      {
+        "step": 6400,
+        "train_loss": 0.009081480093300343,
+        "validation_loss": 0.060709694710870586
+      },
+      {
+        "step": 7200,
+        "train_loss": 0.012364208698272705,
+        "validation_loss": 0.04722177191676261
+      },
+      {
+        "step": 8000,
+        "train_loss": 0.01438488531857729,
+        "validation_loss": 0.04759196092380166
+      },
+      {
+        "step": 8800,
+        "train_loss": 0.002811324317008257,
+        "validation_loss": 0.05513711482802007
+      },
+      {
+        "step": 9600,
+        "train_loss": 0.0012699062936007977,
+        "validation_loss": 0.05043588808551985
+      },
+      {
+        "step": 10400,
+        "train_loss": 0.024249916896224022,
+        "validation_loss": 0.06317982108226888
+      }
+    ],
+    "total_fit_and_diagnostic_seconds": 678.6120980831329,
+    "seconds_per_test": 1.0931083333368103,
+    "reconstruction": [
+      {
+        "case": "s27_train_0",
+        "split": "train",
+        "temperature_MAE_C": 4.44514799118042,
+        "hot_union_temperature_MAE_C": 48.9110221862793,
+        "HRRPUV_MAE_kW_m3": 0.4911379814147949,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_1",
+        "split": "train",
+        "temperature_MAE_C": 2.7287938594818115,
+        "hot_union_temperature_MAE_C": 39.10491180419922,
+        "HRRPUV_MAE_kW_m3": 0.2939049303531647,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_2",
+        "split": "train",
+        "temperature_MAE_C": 3.134472608566284,
+        "hot_union_temperature_MAE_C": 44.641624450683594,
+        "HRRPUV_MAE_kW_m3": 0.29177603125572205,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_3",
+        "split": "train",
+        "temperature_MAE_C": 4.064951419830322,
+        "hot_union_temperature_MAE_C": 53.606712341308594,
+        "HRRPUV_MAE_kW_m3": 0.588811457157135,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_4",
+        "split": "train",
+        "temperature_MAE_C": 3.932060956954956,
+        "hot_union_temperature_MAE_C": 51.34703826904297,
+        "HRRPUV_MAE_kW_m3": 0.5413184762001038,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_5",
+        "split": "train",
+        "temperature_MAE_C": 3.6730473041534424,
+        "hot_union_temperature_MAE_C": 50.9460563659668,
+        "HRRPUV_MAE_kW_m3": 0.5012598037719727,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_6",
+        "split": "train",
+        "temperature_MAE_C": 3.0940897464752197,
+        "hot_union_temperature_MAE_C": 42.91952896118164,
+        "HRRPUV_MAE_kW_m3": 0.3157537877559662,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_7",
+        "split": "train",
+        "temperature_MAE_C": 4.262533187866211,
+        "hot_union_temperature_MAE_C": 51.57101058959961,
+        "HRRPUV_MAE_kW_m3": 0.541477382183075,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_8",
+        "split": "train",
+        "temperature_MAE_C": 4.392180919647217,
+        "hot_union_temperature_MAE_C": 52.68009567260742,
+        "HRRPUV_MAE_kW_m3": 0.6125196814537048,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_9",
+        "split": "train",
+        "temperature_MAE_C": 3.053868055343628,
+        "hot_union_temperature_MAE_C": 42.76737976074219,
+        "HRRPUV_MAE_kW_m3": 0.2995099127292633,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_10",
+        "split": "train",
+        "temperature_MAE_C": 3.8003549575805664,
+        "hot_union_temperature_MAE_C": 52.278709411621094,
+        "HRRPUV_MAE_kW_m3": 0.5551202297210693,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_11",
+        "split": "train",
+        "temperature_MAE_C": 3.7176599502563477,
+        "hot_union_temperature_MAE_C": 50.11625671386719,
+        "HRRPUV_MAE_kW_m3": 0.4200552999973297,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_12",
+        "split": "train",
+        "temperature_MAE_C": 3.7628042697906494,
+        "hot_union_temperature_MAE_C": 49.8356819152832,
+        "HRRPUV_MAE_kW_m3": 0.5128524303436279,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_13",
+        "split": "train",
+        "temperature_MAE_C": 3.227358818054199,
+        "hot_union_temperature_MAE_C": 44.69906234741211,
+        "HRRPUV_MAE_kW_m3": 0.36529770493507385,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_14",
+        "split": "train",
+        "temperature_MAE_C": 2.8195056915283203,
+        "hot_union_temperature_MAE_C": 42.2482795715332,
+        "HRRPUV_MAE_kW_m3": 0.24232445657253265,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_15",
+        "split": "train",
+        "temperature_MAE_C": 4.291435241699219,
+        "hot_union_temperature_MAE_C": 49.419673919677734,
+        "HRRPUV_MAE_kW_m3": 0.49685004353523254,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_16",
+        "split": "train",
+        "temperature_MAE_C": 4.0656914710998535,
+        "hot_union_temperature_MAE_C": 53.60035705566406,
+        "HRRPUV_MAE_kW_m3": 0.5884780287742615,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_17",
+        "split": "train",
+        "temperature_MAE_C": 3.1626269817352295,
+        "hot_union_temperature_MAE_C": 48.496116638183594,
+        "HRRPUV_MAE_kW_m3": 0.36894485354423523,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_18",
+        "split": "train",
+        "temperature_MAE_C": 3.340970993041992,
+        "hot_union_temperature_MAE_C": 45.41612243652344,
+        "HRRPUV_MAE_kW_m3": 0.3444488048553467,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_19",
+        "split": "train",
+        "temperature_MAE_C": 3.791674852371216,
+        "hot_union_temperature_MAE_C": 50.602718353271484,
+        "HRRPUV_MAE_kW_m3": 0.5253073573112488,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_20",
+        "split": "train",
+        "temperature_MAE_C": 4.147519588470459,
+        "hot_union_temperature_MAE_C": 51.013275146484375,
+        "HRRPUV_MAE_kW_m3": 0.5307990312576294,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_21",
+        "split": "train",
+        "temperature_MAE_C": 3.4573965072631836,
+        "hot_union_temperature_MAE_C": 51.23558807373047,
+        "HRRPUV_MAE_kW_m3": 0.30713972449302673,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_22",
+        "split": "train",
+        "temperature_MAE_C": 3.0548532009124756,
+        "hot_union_temperature_MAE_C": 44.11362838745117,
+        "HRRPUV_MAE_kW_m3": 0.2925069332122803,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_23",
+        "split": "train",
+        "temperature_MAE_C": 4.388260841369629,
+        "hot_union_temperature_MAE_C": 53.593971252441406,
+        "HRRPUV_MAE_kW_m3": 0.5470625162124634,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_24",
+        "split": "train",
+        "temperature_MAE_C": 4.505296230316162,
+        "hot_union_temperature_MAE_C": 49.314186096191406,
+        "HRRPUV_MAE_kW_m3": 0.5098435282707214,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_25",
+        "split": "train",
+        "temperature_MAE_C": 2.9060468673706055,
+        "hot_union_temperature_MAE_C": 43.963077545166016,
+        "HRRPUV_MAE_kW_m3": 0.23956726491451263,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_26",
+        "split": "train",
+        "temperature_MAE_C": 3.2239761352539062,
+        "hot_union_temperature_MAE_C": 44.604026794433594,
+        "HRRPUV_MAE_kW_m3": 0.276133269071579,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_27",
+        "split": "train",
+        "temperature_MAE_C": 4.092657566070557,
+        "hot_union_temperature_MAE_C": 49.0350341796875,
+        "HRRPUV_MAE_kW_m3": 0.5033969283103943,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_28",
+        "split": "train",
+        "temperature_MAE_C": 3.6813230514526367,
+        "hot_union_temperature_MAE_C": 49.836273193359375,
+        "HRRPUV_MAE_kW_m3": 0.3926224410533905,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_29",
+        "split": "train",
+        "temperature_MAE_C": 3.2760493755340576,
+        "hot_union_temperature_MAE_C": 43.70857620239258,
+        "HRRPUV_MAE_kW_m3": 0.3331267535686493,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_30",
+        "split": "train",
+        "temperature_MAE_C": 3.0044803619384766,
+        "hot_union_temperature_MAE_C": 47.33540344238281,
+        "HRRPUV_MAE_kW_m3": 0.3107169568538666,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_train_31",
+        "split": "train",
+        "temperature_MAE_C": 4.081411361694336,
+        "hot_union_temperature_MAE_C": 53.532691955566406,
+        "HRRPUV_MAE_kW_m3": 0.5765106678009033,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_0",
+        "split": "validation",
+        "temperature_MAE_C": 4.096513271331787,
+        "hot_union_temperature_MAE_C": 49.519161224365234,
+        "HRRPUV_MAE_kW_m3": 0.5306302905082703,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_1",
+        "split": "validation",
+        "temperature_MAE_C": 3.1834142208099365,
+        "hot_union_temperature_MAE_C": 43.99565887451172,
+        "HRRPUV_MAE_kW_m3": 0.35681942105293274,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_2",
+        "split": "validation",
+        "temperature_MAE_C": 3.1498844623565674,
+        "hot_union_temperature_MAE_C": 48.70547103881836,
+        "HRRPUV_MAE_kW_m3": 0.3188687264919281,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_3",
+        "split": "validation",
+        "temperature_MAE_C": 3.938094139099121,
+        "hot_union_temperature_MAE_C": 51.13960266113281,
+        "HRRPUV_MAE_kW_m3": 0.5362942814826965,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_4",
+        "split": "validation",
+        "temperature_MAE_C": 3.654271125793457,
+        "hot_union_temperature_MAE_C": 46.61656188964844,
+        "HRRPUV_MAE_kW_m3": 0.5120243430137634,
+        "sampling": "every sixth volume frame; full spatial grid"
+      },
+      {
+        "case": "s27_validation_5",
+        "split": "validation",
+        "temperature_MAE_C": 2.9968268871307373,
+        "hot_union_temperature_MAE_C": 43.43826675415039,
+        "HRRPUV_MAE_kW_m3": 0.2687520980834961,
+        "sampling": "every sixth volume frame; full spatial grid"
+      }
+    ]
+  }
+]

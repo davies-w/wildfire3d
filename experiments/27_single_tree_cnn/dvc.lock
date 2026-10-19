@@ -1,0 +1,375 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python build.py
+    deps:
+    - path: base-input.fds
+      hash: md5
+      md5: 720be8f61c8a439a7ecb7c364ba91126
+      size: 26700
+    - path: build.py
+      hash: md5
+      md5: 8f4b75ab626bfd999fb5490a3cdc2755
+      size: 2815
+    - path: legacy_build.py
+      hash: md5
+      md5: 21c0d49066a3ffb7b1e2bf724db1ad0a
+      size: 6686
+    - path: reference-particles.json
+      hash: md5
+      md5: 1c413cd103379cf2338ac01a4e04a970
+      size: 314124
+    outs:
+    - path: cases.json
+      hash: md5
+      md5: 86123f2310f2404e0a5f44d8d9d6f4a2
+      size: 29026
+    - path: data/tree-templates.json
+      hash: md5
+      md5: 2a200a1fe569aeb963008b90563a7d40
+      size: 545534
+    - path: decks
+      hash: md5
+      md5: 8d4e134786db73f410e5a657f78b918d.dir
+      size: 22407154
+      nfiles: 50
+    - path: results/input-freeze.json
+      hash: md5
+      md5: 88a489635154a7574be084849b39da21
+      size: 4747
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - path: build.py
+      hash: md5
+      md5: 8f4b75ab626bfd999fb5490a3cdc2755
+      size: 2815
+    - path: cases.json
+      hash: md5
+      md5: 86123f2310f2404e0a5f44d8d9d6f4a2
+      size: 29026
+    - path: data/tree-templates.json
+      hash: md5
+      md5: 2a200a1fe569aeb963008b90563a7d40
+      size: 545534
+    - path: decks
+      hash: md5
+      md5: 8d4e134786db73f410e5a657f78b918d.dir
+      size: 22407154
+      nfiles: 50
+    - path: preflight.py
+      hash: md5
+      md5: dab77cf961f0a6086345b6224b60719c
+      size: 3141
+    outs:
+    - path: data/preflight
+      hash: md5
+      md5: d40f6860c56174a97ef5efad94a4f70f.dir
+      size: 491733118
+      nfiles: 180
+    - path: results/preflight.json
+      hash: md5
+      md5: 9250bbf7d74ed13b231b5cf694522039
+      size: 934
+  native_checks:
+    cmd: ../../.venv/bin/python verify_cadence.py && ../../.venv/bin/python 
+      verify_gpu.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 86123f2310f2404e0a5f44d8d9d6f4a2
+      size: 29026
+    - path: cnn.py
+      hash: md5
+      md5: 089a7510f25209a7e15fecf3485bd75b
+      size: 6317
+    - path: decks
+      hash: md5
+      md5: 8d4e134786db73f410e5a657f78b918d.dir
+      size: 22407154
+      nfiles: 50
+    - path: fields.py
+      hash: md5
+      md5: abb4eead4d287b07b1f54dc21b533e0a
+      size: 2818
+    - path: verify_cadence.py
+      hash: md5
+      md5: ee2aabf3fedf7dfb3b8f7731af487b58
+      size: 1024
+    - path: verify_gpu.py
+      hash: md5
+      md5: c069981c372ca04c13dba01d3cb6a572
+      size: 1527
+    outs:
+    - path: data/cadence-preflight
+      hash: md5
+      md5: 1fb63a9e1cfc820d958dd966991dfe4d.dir
+      size: 6244062
+      nfiles: 33
+    - path: data/gpu-portability.pt
+      hash: md5
+      md5: 996fbe3dbc58f6e84f3f996873c12448
+      size: 668303
+    - path: results/cadence-preflight.json
+      hash: md5
+      md5: e9ecc583dfed06e958d2eba644fc07cf
+      size: 1151
+    - path: results/gpu-preflight.json
+      hash: md5
+      md5: 9ab0620bcbb4394519952ef2265245a2
+      size: 375
+  campaign:
+    cmd: ../../.venv/bin/python finish_campaign.py
+    deps:
+    - path: animate.py
+      hash: md5
+      md5: 51991749d21e285b0ecdaa4e17baccca
+      size: 2455
+    - path: animate_3d.py
+      hash: md5
+      md5: da2b8a0fac640fbc8175d7624505b76b
+      size: 2867
+    - path: audit_pilot_corners.py
+      hash: md5
+      md5: 5048f6f04077515ac12a494939fdb153
+      size: 1304
+    - path: benchmark_inference.py
+      hash: md5
+      md5: d405a14f9b399a723728c32c372183bd
+      size: 1692
+    - path: cases.json
+      hash: md5
+      md5: 86123f2310f2404e0a5f44d8d9d6f4a2
+      size: 29026
+    - path: cloud.py
+      hash: md5
+      md5: e8165f966f1328669a4c2d445a07f02e
+      size: 8025
+    - path: cnn.py
+      hash: md5
+      md5: 089a7510f25209a7e15fecf3485bd75b
+      size: 6317
+    - path: cost_report.py
+      hash: md5
+      md5: fcd20a1163aa288a27c5f583574d3480
+      size: 1275
+    - path: deployment-readme.txt
+      hash: md5
+      md5: 84d2e4930517eb3a96bad41357fae2d2
+      size: 1263
+    - path: evaluate.py
+      hash: md5
+      md5: ab92f1afb05d162c2f573a9335b5b963
+      size: 2807
+    - path: fields.py
+      hash: md5
+      md5: abb4eead4d287b07b1f54dc21b533e0a
+      size: 2818
+    - path: finish_campaign.py
+      hash: md5
+      md5: 76b18e208f379f17e2d3afbcb2a40451
+      size: 2651
+    - path: learning_curve.py
+      hash: md5
+      md5: e073e1ca83c6e667d0b3c2a8342e96cb
+      size: 1229
+    - path: plot_test_histories.py
+      hash: md5
+      md5: 3a99d7721ec306ddbfd4037e94f3595f
+      size: 2074
+    - path: predict.py
+      hash: md5
+      md5: c949d5a0733ce22ad932aad1c775a641
+      size: 950
+    - path: results/cadence-preflight.json
+      hash: md5
+      md5: e9ecc583dfed06e958d2eba644fc07cf
+      size: 1151
+    - path: results/gpu-preflight.json
+      hash: md5
+      md5: 9ab0620bcbb4394519952ef2265245a2
+      size: 375
+    - path: results/input-freeze.json
+      hash: md5
+      md5: 88a489635154a7574be084849b39da21
+      size: 4747
+    - path: results/pilot-decision.json
+      hash: md5
+      md5: 7ada35920769991097878619ea487ee5
+      size: 3240
+    - path: runner-template.py
+      hash: md5
+      md5: 48eae967f652ea4093e413de4aa34f7f
+      size: 4893
+    - path: runtime_report.py
+      hash: md5
+      md5: 57093c725c5c58588e2ab821531c7fc2
+      size: 861
+    - path: summarize_results.py
+      hash: md5
+      md5: 17164a02a613986346bf201fac448216
+      size: 1528
+    - path: verify_standalone.py
+      hash: md5
+      md5: 109a1a535af02d4ae80ee3f75e58aab2
+      size: 1638
+    - path: worker.py
+      hash: md5
+      md5: 2019d26cea7871db311da538d513bc78
+      size: 2392
+    - path: workflow-template.json
+      hash: md5
+      md5: 51a900ac42e59cbbe4a11a20bdf3ff1c
+      size: 9152
+    outs:
+    - path: data/cloud
+      hash: md5
+      md5: 2a035d3d7d8b3a0b48887c7f016ad2b6.dir
+      size: 8764145917
+      nfiles: 1850
+    - path: data/downloads
+      hash: md5
+      md5: cc1125ddf48d134b4ed0da5441acc188.dir
+      size: 4574367112
+      nfiles: 50
+    - path: data/fields
+      hash: md5
+      md5: a13ab6b01d98628c0772af8557ab6f95.dir
+      size: 4966393757
+      nfiles: 150
+    - path: data/models
+      hash: md5
+      md5: 67de13ff44b343e35e7e0b00dace8dd9.dir
+      size: 2002677
+      nfiles: 3
+    - path: data/predictions
+      hash: md5
+      md5: 6771f8fe14185073862d531dfdc97df3.dir
+      size: 3864531456
+      nfiles: 36
+    - path: data/standalone
+      hash: md5
+      md5: 857c0b387dffa881beb59883cb2fc5d0.dir
+      size: 7502002
+      nfiles: 6
+    - path: results/compact-summary.json
+      hash: md5
+      md5: c403a0c5bc0990bafa6c9337958a340e
+      size: 27629
+    - path: results/cost-proxy.json
+      hash: md5
+      md5: 27bfea21ad74c94dd39dfbaf950730a6
+      size: 4344
+    - path: results/inference-benchmark.json
+      hash: md5
+      md5: 44fa9086410b6cb7522dfe0945b5bc7d
+      size: 1483
+    - path: results/pilot-corner-audit.json
+      hash: md5
+      md5: 93b18e71a0c2cdd20ba899753c50bb24
+      size: 5291
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 29f45bdbbe59b7301fbcd350d8b18152
+      size: 5449
+    - path: results/runtime-report.json
+      hash: md5
+      md5: 3bc0f7f68f099f485b8ad8216364c2aa
+      size: 13424
+    - path: results/standalone-check.json
+      hash: md5
+      md5: 92c7bd99b61fb2c8647225b712328fcb
+      size: 434
+    - path: results/test-summary.json
+      hash: md5
+      md5: f6c2439906f02a0a265e14eaef1026a3
+      size: 85992
+    - path: results/training.json
+      hash: md5
+      md5: 4cb45cf33bf1aa53e09d9c3f8a391e82
+      size: 29302
+    - path: results/visuals
+      hash: md5
+      md5: a5db144af68150ab57319d765b6a94a7.dir
+      size: 11733634
+      nfiles: 8
+  checks:
+    cmd: ../../.venv/bin/python verify_ascii.py && ../../.venv/bin/python 
+      verify_test_ascii.py && ../../.venv/bin/python diagnose_background.py && 
+      ../../.venv/bin/python verify_visuals.py
+    deps:
+    - path: cnn.py
+      hash: md5
+      md5: 089a7510f25209a7e15fecf3485bd75b
+      size: 6317
+    - path: data/cloud
+      hash: md5
+      md5: 2a035d3d7d8b3a0b48887c7f016ad2b6.dir
+      size: 8764145917
+      nfiles: 1850
+    - path: data/models
+      hash: md5
+      md5: 67de13ff44b343e35e7e0b00dace8dd9.dir
+      size: 2002677
+      nfiles: 3
+    - path: diagnose_background.py
+      hash: md5
+      md5: 08b7476eb22d60239a0bf4c09981766c
+      size: 1482
+    - path: fields.py
+      hash: md5
+      md5: abb4eead4d287b07b1f54dc21b533e0a
+      size: 2818
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 29f45bdbbe59b7301fbcd350d8b18152
+      size: 5449
+    - path: results/visuals
+      hash: md5
+      md5: a5db144af68150ab57319d765b6a94a7.dir
+      size: 11733634
+      nfiles: 8
+    - path: verify_ascii.py
+      hash: md5
+      md5: 990c6e79f5013e2b25186051255f7759
+      size: 1176
+    - path: verify_test_ascii.py
+      hash: md5
+      md5: e338f1c90ada7f97b2729da8ac7023d8
+      size: 1518
+    - path: verify_visuals.py
+      hash: md5
+      md5: 4560e2ba0cddffceae995a3d3675d84d
+      size: 1013
+    outs:
+    - path: data/ascii-check
+      hash: md5
+      md5: afd6b4eb5b0af65dc51bbe48766863b8.dir
+      size: 11104920
+      nfiles: 8
+    - path: data/test-ascii-check
+      hash: md5
+      md5: e4585166d60a4850c771547b7d8045e0.dir
+      size: 11104932
+      nfiles: 8
+    - path: data/visual-check
+      hash: md5
+      md5: 57af86a8680f430baf7dc285b9d1e3bc.dir
+      size: 1091806
+      nfiles: 5
+    - path: results/ascii-verification.json
+      hash: md5
+      md5: 6da7f2cc669f94bffd4cfbafb98a18da
+      size: 971
+    - path: results/background-diagnosis.json
+      hash: md5
+      md5: 2a7b23cb789219a3e78791ebc5510c84
+      size: 6310
+    - path: results/test-ascii-verification.json
+      hash: md5
+      md5: 79c94d4068604ca3834f5d3ba25245bd
+      size: 1316
+    - path: results/visual-verification.json
+      hash: md5
+      md5: 05ea8fec0a6fe9ded1b156fa07755872
+      size: 556

@@ -1,0 +1,128 @@
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python build.py
+    frozen: true
+    deps:
+      - build.py
+      - legacy_build.py
+      - base-input.fds
+      - reference-particles.json
+    outs:
+      - data/tree-templates.json
+      - decks
+      - cases.json:
+          cache: false
+      - results/input-freeze.json:
+          cache: false
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    frozen: true
+    deps:
+      - preflight.py
+      - build.py
+      - data/tree-templates.json
+      - cases.json
+      - decks
+    outs:
+      - data/preflight
+      - results/preflight.json:
+          cache: false
+  native_checks:
+    cmd: ../../.venv/bin/python verify_cadence.py && ../../.venv/bin/python verify_gpu.py
+    frozen: true
+    deps:
+      - verify_cadence.py
+      - verify_gpu.py
+      - cnn.py
+      - fields.py
+      - cases.json
+      - decks
+    outs:
+      - data/cadence-preflight
+      - data/gpu-portability.pt
+      - results/cadence-preflight.json:
+          cache: false
+      - results/gpu-preflight.json:
+          cache: false
+  campaign:
+    cmd: ../../.venv/bin/python finish_campaign.py
+    frozen: true
+    deps:
+      - cloud.py
+      - results/cadence-preflight.json
+      - results/gpu-preflight.json
+      - results/pilot-decision.json
+      - worker.py
+      - runner-template.py
+      - workflow-template.json
+      - finish_campaign.py
+      - fields.py
+      - cnn.py
+      - evaluate.py
+      - animate.py
+      - animate_3d.py
+      - learning_curve.py
+      - predict.py
+      - audit_pilot_corners.py
+      - verify_standalone.py
+      - deployment-readme.txt
+      - benchmark_inference.py
+      - plot_test_histories.py
+      - runtime_report.py
+      - summarize_results.py
+      - cost_report.py
+      - cases.json
+      - results/input-freeze.json
+    outs:
+      - data/cloud
+      - data/downloads
+      - data/fields
+      - data/models
+      - data/predictions
+      - data/standalone
+      - results/prediction-freeze.json:
+          cache: false
+      - results/training.json:
+          cache: false
+      - results/test-summary.json:
+          cache: false
+      - results/standalone-check.json:
+          cache: false
+      - results/inference-benchmark.json:
+          cache: false
+      - results/runtime-report.json:
+          cache: false
+      - results/compact-summary.json:
+          cache: false
+      - results/cost-proxy.json:
+          cache: false
+      - results/pilot-corner-audit.json:
+          cache: false
+      - results/visuals:
+          cache: false
+  checks:
+    cmd: ../../.venv/bin/python verify_ascii.py && ../../.venv/bin/python verify_test_ascii.py && ../../.venv/bin/python diagnose_background.py && ../../.venv/bin/python verify_visuals.py
+    frozen: true
+    deps:
+      - verify_ascii.py
+      - verify_test_ascii.py
+      - diagnose_background.py
+      - verify_visuals.py
+      - cnn.py
+      - fields.py
+      - data/cloud
+      - data/models
+      - results/prediction-freeze.json
+      - results/visuals
+    outs:
+      - data/ascii-check
+      - data/test-ascii-check
+      - data/visual-check
+      - results/ascii-verification.json:
+          cache: false
+      - results/test-ascii-verification.json:
+          cache: false
+      - results/background-diagnosis.json:
+          cache: false
+      - results/visual-verification.json:
+          cache: false

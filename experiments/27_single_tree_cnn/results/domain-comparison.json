@@ -1,0 +1,50 @@
+{
+  "cases": [
+    {
+      "small": "s27_pilot_0",
+      "large": "s27_domain_0",
+      "post_source_fuel_kg": [
+        15.414739148973572,
+        15.71853290063679
+      ],
+      "fuel_relative_difference": 0.019327106008151074,
+      "comparisons": {
+        "total_HRR_dose": {
+          "small_total": 567443.2112431845,
+          "large_total": 566339.283999037,
+          "relative_L1": 0.0019492330398704883
+        },
+        "ground_positive_heat_dose": {
+          "small_total": 6188.697873670503,
+          "large_total": 6055.6344764871055,
+          "relative_L1": 0.02282239606289483
+        }
+      },
+      "screen_passed": true
+    },
+    {
+      "small": "s27_pilot_3",
+      "large": "s27_domain_1",
+      "post_source_fuel_kg": [
+        6.311208335847891,
+        6.086385100790157
+      ],
+      "fuel_relative_difference": 0.036938713429182694,
+      "comparisons": {
+        "total_HRR_dose": {
+          "small_total": 227956.22790882987,
+          "large_total": 234663.96607196057,
+          "relative_L1": 0.02858444044653091
+        },
+        "ground_positive_heat_dose": {
+          "small_total": 3782.4046921998697,
+          "large_total": 3908.970107095537,
+          "relative_L1": 0.03237819973755409
+        }
+      },
+      "screen_passed": true
+    }
+  ],
+  "all_passed": true,
+  "threshold": "Exploratory30% on total HRR dose, ground positive-dose L1 and fuel; absolute0.1kg allowance for near-zero fuel. Not convergence or physical validation."
+}

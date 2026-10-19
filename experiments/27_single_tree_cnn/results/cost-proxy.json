@@ -1,0 +1,140 @@
+{
+  "authorized_usd": 5.0,
+  "reserved_usd": 4.12,
+  "compute_proxy_usd": 0.5385724078761207,
+  "groups": [
+    {
+      "group": "s27-pilot-0",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 828.4510049819946,
+      "compute_proxy_usd": 0.018410022332933214
+    },
+    {
+      "group": "s27-pilot-1",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 972.705372095108,
+      "compute_proxy_usd": 0.021615674935446846
+    },
+    {
+      "group": "s27-domain-0",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 2100.3679859638214,
+      "compute_proxy_usd": 0.04667484413252937
+    },
+    {
+      "group": "s27-train-0",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 1397.097463130951,
+      "compute_proxy_usd": 0.03104661029179891
+    },
+    {
+      "group": "s27-train-1",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 1377.2960200309753,
+      "compute_proxy_usd": 0.03060657822291056
+    },
+    {
+      "group": "s27-train-2",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 1280.8131260871887,
+      "compute_proxy_usd": 0.02846251391304864
+    },
+    {
+      "group": "s27-train-10",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 1003.3775618076324,
+      "compute_proxy_usd": 0.02229727915128072
+    },
+    {
+      "group": "s27-train-3",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 1393.923231124878,
+      "compute_proxy_usd": 0.030976071802775066
+    },
+    {
+      "group": "s27-train-4",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 1367.3163850307465,
+      "compute_proxy_usd": 0.03038480855623881
+    },
+    {
+      "group": "s27-train-5",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 1305.8105449676514,
+      "compute_proxy_usd": 0.02901801211039225
+    },
+    {
+      "group": "s27-train-6",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 1305.3896079063416,
+      "compute_proxy_usd": 0.029008657953474258
+    },
+    {
+      "group": "s27-train-7",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 1249.556650876999,
+      "compute_proxy_usd": 0.02776792557504442
+    },
+    {
+      "group": "s27-train-8",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 1310.2951140403748,
+      "compute_proxy_usd": 0.029117669200897218
+    },
+    {
+      "group": "s27-validation-0",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 1343.2362492084503,
+      "compute_proxy_usd": 0.02984969442685445
+    },
+    {
+      "group": "s27-train-9",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 1309.5299429893494,
+      "compute_proxy_usd": 0.02910066539976332
+    },
+    {
+      "group": "s27-validation-1",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 1308.6471500396729,
+      "compute_proxy_usd": 0.029081047778659396
+    },
+    {
+      "group": "s27-test-0",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 577.7731249332428,
+      "compute_proxy_usd": 0.012839402776294284
+    },
+    {
+      "group": "s27-test-1",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 516.6965899467468,
+      "compute_proxy_usd": 0.011482146443261041
+    },
+    {
+      "group": "s27-test-2",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 548.2209601402283,
+      "compute_proxy_usd": 0.012182688003116185
+    },
+    {
+      "group": "s27-test-3",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 608.3817710876465,
+      "compute_proxy_usd": 0.01351959491305881
+    },
+    {
+      "group": "s27-test-4",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 613.5452320575714,
+      "compute_proxy_usd": 0.013634338490168254
+    },
+    {
+      "group": "s27-test-5",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 517.3272659778595,
+      "compute_proxy_usd": 0.011496161466174656
+    }
+  ],
+  "note": "Assumes one VM per controller at ledger conservative0.08USD/hour for its entire observed controller lifetime, including provisioning/cleanup. Excludes storage, egress, logs/workflows. Not billed spend and not a current price quote. Reservations include ancillary/cleanup allowance; never recycled."
+}
