@@ -1,0 +1,13 @@
+{
+  "selection_data": "Six existing validation configurations; original test outputs excluded",
+  "capacity_data": "First four training configurations only",
+  "fresh_test_gate": {
+    "late_mean_HRR_ratio_to_original_maximum": 0.1,
+    "validation_hot_temperature_MAE_ratio_maximum": 1.10,
+    "radiation_relative_L1_ratio_maximum": 1.0,
+    "peak_temperature_absolute_error_ratio_maximum": 1.0
+  },
+  "late_definition": "120,150,180 seconds",
+  "validation_frames_seconds": [10,20,30,50,90,120,150,180],
+  "note": "These are repair-screening criteria, not physical validation. If the loss-only candidate fails, diagnose and test a strength/shape factorization using development data before any fresh cloud spend. Report every candidate."
+}

@@ -1,0 +1,44 @@
+{
+  "authorized_usd": 5.0,
+  "reserved_usd": 4.72,
+  "compute_proxy_usd": 0.07273767519527012,
+  "groups": [
+    {
+      "group": "s28-test-0",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 583.3227229118347,
+      "compute_proxy_usd": 0.01296272717581855
+    },
+    {
+      "group": "s28-test-1",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 518.216747045517,
+      "compute_proxy_usd": 0.011515927712122601
+    },
+    {
+      "group": "s28-test-2",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 518.2227129936218,
+      "compute_proxy_usd": 0.011516060288747153
+    },
+    {
+      "group": "s28-test-3",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 550.0495669841766,
+      "compute_proxy_usd": 0.012223323710759482
+    },
+    {
+      "group": "s28-test-4",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 583.1644489765167,
+      "compute_proxy_usd": 0.012959209977255928
+    },
+    {
+      "group": "s28-test-5",
+      "workflow_state": "SUCCEEDED",
+      "controller_lifetime_s": 520.2191848754883,
+      "compute_proxy_usd": 0.011560426330566406
+    }
+  ],
+  "note": "Assumes one VM per controller at ledger conservative0.08USD/hour for its entire observed controller lifetime, including provisioning/cleanup. Excludes storage, egress, logs/workflows. Not billed spend and not a current price quote. Reservations include ancillary/cleanup allowance; never recycled."
+}

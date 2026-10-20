@@ -1,0 +1,13 @@
+{
+ "conditions": "Six Sobol conditions, seed2804, wind1–5m/s, ignition azimuth0–360degrees, fixed original tree and moisture",
+ "expected_compute_usd": [0.08,0.25],
+ "additional_full_conservative_reservation_usd": 0.60,
+ "central_budget": "../27_single_tree_cnn/budget.json",
+ "previous_reserved_usd": 4.12,
+ "total_if_all_six_launch_usd": 4.72,
+ "cap_usd": 5.0,
+ "runtime": "Previously about6–8minutes solver elapsed per case; up to6workers, plus provisioning and download. Each workflow40minutes maximum including cleanup, solver25minutes maximum.",
+ "recovery": "Checkpoints every30simulated seconds, retained in final bundles, same-Linux resume preflight before solve; no automatic retry or continuation",
+ "test_rule": "No fresh FDS before model and all comparison forecasts frozen. Never revise test conditions in response to predicted or observed outcomes.",
+ "cost_caveat": "Expected figure is compute estimate, not invoice total. Reservation includes ancillary and cleanup allowance. No reservations recycled."
+}

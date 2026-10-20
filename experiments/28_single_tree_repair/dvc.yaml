@@ -1,0 +1,155 @@
+stages:
+  reuse:
+    cmd: ../../.venv/bin/python setup.py
+    frozen: true
+    deps:
+    - setup.py
+    - ../27_single_tree_cnn/results/prediction-freeze.json
+    - ../27_single_tree_cnn/data/models/cnn_32.pt
+    outs:
+    - data/fields
+    - data/models/original.pt
+    metrics:
+    - results/reused-data.json:
+        cache: false
+  capacity:
+    cmd: ../../.venv/bin/python repair.py --capacity --steps 1600
+    deps:
+    - repair.py
+    - original_cnn.py
+    - cases.json
+    - data/fields
+    - data/models/original.pt
+    outs:
+    - data/models/capacity.pt
+    metrics:
+    - results/capacity.json:
+        cache: false
+  physical:
+    cmd: ../../.venv/bin/python repair.py --steps 4000
+    deps:
+    - repair.py
+    - original_cnn.py
+    - cases.json
+    - data/fields
+    - data/models/original.pt
+    outs:
+    - data/models/physical.pt
+    metrics:
+    - results/physical.json:
+        cache: false
+  prepare_tests:
+    cmd: ../../.venv/bin/python prepare_tests.py && ../../.venv/bin/python adapt_cloud.py
+      && ../../.venv/bin/python cloud.py prepare
+    frozen: true
+    deps:
+    - prepare_tests.py
+    - adapt_cloud.py
+    - ../27_single_tree_cnn/data/tree-templates.json
+    outs:
+    - data/tree-templates.json
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - preflight.py
+    - cases.json
+    - decks
+    - data/tree-templates.json
+    outs:
+    - data/preflight
+    metrics:
+    - results/native-preflight.json:
+        cache: false
+  predict:
+    cmd: ../../.venv/bin/python screen.py && ../../.venv/bin/python freeze.py
+    deps:
+    - freeze.py
+    - screen.py
+    - cases.json
+    - data/models/physical.pt
+    - data/models/original.pt
+    - data/fields
+    outs:
+    - data/predictions
+    metrics:
+    - results/prediction-freeze.json:
+        cache: false
+  collect:
+    cmd: ../../.venv/bin/python finish_tests.py
+    frozen: true
+    deps:
+    - finish_tests.py
+    - cloud.py
+    - fields.py
+    - results/prediction-freeze.json
+    outs:
+    - data/cloud
+    - data/downloads
+    - data/test-fields
+  evaluate:
+    cmd: ../../.venv/bin/python evaluate_repair.py
+    deps:
+    - evaluate_repair.py
+    - data/test-fields
+    - data/predictions
+    - results/prediction-freeze.json
+    metrics:
+    - results/test-summary.json:
+        cache: false
+  validation_full:
+    cmd: ../../.venv/bin/python validate_full.py
+    deps:
+    - validate_full.py
+    - data/models/physical.pt
+    - data/models/original.pt
+    - data/fields
+    - cases.json
+    metrics:
+    - results/full-validation.json:
+        cache: false
+  benchmark:
+    cmd: ../../.venv/bin/python benchmark_inference.py
+    deps:
+    - benchmark_inference.py
+    - data/models/physical.pt
+    - results/prediction-freeze.json
+    metrics:
+    - results/inference-benchmark.json:
+        cache: false
+  report:
+    cmd: ../../.venv/bin/python summarize.py && ../../.venv/bin/python diagnose_cold.py
+      && ../../.venv/bin/python verify_fresh_fields.py && ../../.venv/bin/python cost_report.py
+      && ../../.venv/bin/python audit.py
+    deps:
+    - summarize.py
+    - diagnose_cold.py
+    - verify_fresh_fields.py
+    - cost_report.py
+    - audit.py
+    - results/test-summary.json
+    - data/test-fields
+    - data/models/physical.pt
+    - data/models/original.pt
+    - data/predictions
+    metrics:
+    - results/aggregate.json:
+        cache: false
+    - results/cold-diagnosis.json:
+        cache: false
+    - results/audit.json:
+        cache: false
+    - results/cost-proxy.json:
+        cache: false
+  visualize:
+    cmd: ../../.venv/bin/python animate_repair.py && ../../.venv/bin/python plot_histories.py
+      && ../../.venv/bin/python plot_cold.py
+    deps:
+    - animate_repair.py
+    - plot_histories.py
+    - plot_cold.py
+    - data/test-fields
+    - data/predictions
+    - results/test-summary.json
+    outs:
+    - results/visuals:
+        cache: false

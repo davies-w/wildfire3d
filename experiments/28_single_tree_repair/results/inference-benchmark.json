@@ -1,0 +1,58 @@
+{
+  "frames": 91,
+  "physical_horizon_s": 180,
+  "shape": [
+    91,
+    6,
+    48,
+    32,
+    32
+  ],
+  "rows": [
+    {
+      "device": "cpu",
+      "first_run": {
+        "elapsed_s": 2.060870375018567,
+        "process_CPU_s": 3.886751
+      },
+      "warm_runs": [
+        {
+          "elapsed_s": 1.956785417161882,
+          "process_CPU_s": 3.772238000000001
+        },
+        {
+          "elapsed_s": 1.8272430419456214,
+          "process_CPU_s": 3.6639729999999995
+        },
+        {
+          "elapsed_s": 1.9620878749992698,
+          "process_CPU_s": 3.783572999999998
+        }
+      ],
+      "warm_median_elapsed_s": 1.956785417161882
+    },
+    {
+      "device": "mps",
+      "first_run": {
+        "elapsed_s": 1.1925380830653012,
+        "process_CPU_s": 0.19042400000000148
+      },
+      "warm_runs": [
+        {
+          "elapsed_s": 1.0909865831490606,
+          "process_CPU_s": 0.11213500000000032
+        },
+        {
+          "elapsed_s": 1.0884112080093473,
+          "process_CPU_s": 0.11273800000000156
+        },
+        {
+          "elapsed_s": 1.0975906669627875,
+          "process_CPU_s": 0.1137969999999986
+        }
+      ],
+      "warm_median_elapsed_s": 1.0909865831490606
+    }
+  ],
+  "scope": "Standalone field generation, weights loaded once. Includes device transfer and decoding; excludes imports/model loading, disk writing and rendering. Local Apple hardware vs separate cloud FDS hardware; not a hardware-controlled speedup."
+}

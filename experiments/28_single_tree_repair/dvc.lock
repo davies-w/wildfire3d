@@ -1,0 +1,396 @@
+schema: '2.0'
+stages:
+  reuse:
+    cmd: ../../.venv/bin/python setup.py
+    deps:
+    - path: ../27_single_tree_cnn/data/models/cnn_32.pt
+      hash: md5
+      md5: c02f5ee0461e3c8bbbb4c741fa5a4204
+      size: 667565
+    - path: ../27_single_tree_cnn/results/prediction-freeze.json
+      hash: md5
+      md5: 29f45bdbbe59b7301fbcd350d8b18152
+      size: 5449
+    - path: setup.py
+      hash: md5
+      md5: f4ffcccf64ef3a96b622d03546192675
+      size: 1175
+    outs:
+    - path: data/fields
+      hash: md5
+      md5: 43197ef7a21361c668a5b66f804fd241.dir
+      size: 4079282392
+      nfiles: 114
+    - path: data/models/original.pt
+      hash: md5
+      md5: c02f5ee0461e3c8bbbb4c741fa5a4204
+      size: 667565
+    - path: results/reused-data.json
+      hash: md5
+      md5: a6a08562c0bd2ff7d67632dd04bd9ad2
+      size: 19158
+  capacity:
+    cmd: ../../.venv/bin/python repair.py --capacity --steps 1600
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: ed6078edfa2b5cc76298dc3f23bf1536
+      size: 25782
+    - path: data/fields
+      hash: md5
+      md5: 43197ef7a21361c668a5b66f804fd241.dir
+      size: 4079282392
+      nfiles: 114
+    - path: data/models/original.pt
+      hash: md5
+      md5: c02f5ee0461e3c8bbbb4c741fa5a4204
+      size: 667565
+    - path: original_cnn.py
+      hash: md5
+      md5: 089a7510f25209a7e15fecf3485bd75b
+      size: 6317
+    - path: repair.py
+      hash: md5
+      md5: f42c3d197f153a928b2e9ded7352cd62
+      size: 3701
+    outs:
+    - path: data/models/capacity.pt
+      hash: md5
+      md5: d614e1bef77df2b4b39a0cd0a7761179
+      size: 668177
+    - path: results/capacity.json
+      hash: md5
+      md5: 1cbd2d73fef51d5151837c930ace9dc4
+      size: 24555
+  prepare_tests:
+    cmd: ../../.venv/bin/python prepare_tests.py && ../../.venv/bin/python 
+      adapt_cloud.py && ../../.venv/bin/python cloud.py prepare
+    deps:
+    - path: ../27_single_tree_cnn/data/tree-templates.json
+      hash: md5
+      md5: 2a200a1fe569aeb963008b90563a7d40
+      size: 545534
+    - path: adapt_cloud.py
+      hash: md5
+      md5: b7c83aeda4360d07fb587051e53a6f94
+      size: 1044
+    - path: prepare_tests.py
+      hash: md5
+      md5: 1092a3bdf6f87cf9ae4eea0a530ff0e8
+      size: 1487
+    outs:
+    - path: data/tree-templates.json
+      hash: md5
+      md5: 2a200a1fe569aeb963008b90563a7d40
+      size: 545534
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: ed6078edfa2b5cc76298dc3f23bf1536
+      size: 25782
+    - path: data/tree-templates.json
+      hash: md5
+      md5: 2a200a1fe569aeb963008b90563a7d40
+      size: 545534
+    - path: decks
+      hash: md5
+      md5: 26dbc894494ffcd1514b49916affb97b.dir
+      size: 2688852
+      nfiles: 6
+    - path: preflight.py
+      hash: md5
+      md5: db418098fe946bdd42d7b6ab1e628e33
+      size: 3290
+    outs:
+    - path: data/preflight
+      hash: md5
+      md5: f197630c679aabff0a7dc6ab6ab80295.dir
+      size: 335920463
+      nfiles: 180
+    - path: results/native-preflight.json
+      hash: md5
+      md5: 24907628919f7a211a5cd475cd0a0cbe
+      size: 795
+  physical:
+    cmd: ../../.venv/bin/python repair.py --steps 4000
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: ed6078edfa2b5cc76298dc3f23bf1536
+      size: 25782
+    - path: data/fields
+      hash: md5
+      md5: 43197ef7a21361c668a5b66f804fd241.dir
+      size: 4079282392
+      nfiles: 114
+    - path: data/models/original.pt
+      hash: md5
+      md5: c02f5ee0461e3c8bbbb4c741fa5a4204
+      size: 667565
+    - path: original_cnn.py
+      hash: md5
+      md5: 089a7510f25209a7e15fecf3485bd75b
+      size: 6317
+    - path: repair.py
+      hash: md5
+      md5: f42c3d197f153a928b2e9ded7352cd62
+      size: 3701
+    outs:
+    - path: data/models/physical.pt
+      hash: md5
+      md5: bdc21e483730d7087633c0a138d501e5
+      size: 668177
+    - path: results/physical.json
+      hash: md5
+      md5: 4f1441d8b75bfacab426faf2b4208ae9
+      size: 37792
+  predict:
+    cmd: ../../.venv/bin/python screen.py && ../../.venv/bin/python freeze.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: ed6078edfa2b5cc76298dc3f23bf1536
+      size: 25782
+    - path: data/fields
+      hash: md5
+      md5: 43197ef7a21361c668a5b66f804fd241.dir
+      size: 4079282392
+      nfiles: 114
+    - path: data/models/original.pt
+      hash: md5
+      md5: c02f5ee0461e3c8bbbb4c741fa5a4204
+      size: 667565
+    - path: data/models/physical.pt
+      hash: md5
+      md5: bdc21e483730d7087633c0a138d501e5
+      size: 668177
+    - path: freeze.py
+      hash: md5
+      md5: e3c081e797b459f04c8081cdb26a2c15
+      size: 2053
+    - path: screen.py
+      hash: md5
+      md5: cffb7b7e1c76242bea4e518e5252d94b
+      size: 1150
+    outs:
+    - path: data/predictions
+      hash: md5
+      md5: f85c8788580b48418dcfcc6ad8a21f5e.dir
+      size: 1932265728
+      nfiles: 18
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 66a854a9923c0ba74710214b69b6d371
+      size: 2961
+  validation_full:
+    cmd: ../../.venv/bin/python validate_full.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: ed6078edfa2b5cc76298dc3f23bf1536
+      size: 25782
+    - path: data/fields
+      hash: md5
+      md5: 43197ef7a21361c668a5b66f804fd241.dir
+      size: 4079282392
+      nfiles: 114
+    - path: data/models/original.pt
+      hash: md5
+      md5: c02f5ee0461e3c8bbbb4c741fa5a4204
+      size: 667565
+    - path: data/models/physical.pt
+      hash: md5
+      md5: bdc21e483730d7087633c0a138d501e5
+      size: 668177
+    - path: validate_full.py
+      hash: md5
+      md5: bf3574fa0f16d569fe4c6dc625ae92b2
+      size: 1726
+    outs:
+    - path: results/full-validation.json
+      hash: md5
+      md5: a954b9bd3f275ab94b4992e8fb142628
+      size: 4086
+  benchmark:
+    cmd: ../../.venv/bin/python benchmark_inference.py
+    deps:
+    - path: benchmark_inference.py
+      hash: md5
+      md5: 030ec1f3377f17c994f875e1c96d0098
+      size: 1703
+    - path: data/models/physical.pt
+      hash: md5
+      md5: bdc21e483730d7087633c0a138d501e5
+      size: 668177
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 66a854a9923c0ba74710214b69b6d371
+      size: 2961
+    outs:
+    - path: results/inference-benchmark.json
+      hash: md5
+      md5: f985c971f9ac76fce9d53b3e1357901e
+      size: 1478
+  collect:
+    cmd: ../../.venv/bin/python finish_tests.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8c3eb8fa8e5494b4d0d7b05b71ca1da1
+      size: 7871
+    - path: fields.py
+      hash: md5
+      md5: dc1a702859024c0318bcaa344e92271d
+      size: 2823
+    - path: finish_tests.py
+      hash: md5
+      md5: 260f221c461d79887996d7b6870a0775
+      size: 1209
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 66a854a9923c0ba74710214b69b6d371
+      size: 2961
+    outs:
+    - path: data/cloud
+      hash: md5
+      md5: 6b09a23d1628fcededd7b5493f61eeae.dir
+      size: 1085054497
+      nfiles: 222
+    - path: data/downloads
+      hash: md5
+      md5: e19ba50a4de2d3c22bbdc6fa31ccb96e.dir
+      size: 575962849
+      nfiles: 6
+    - path: data/test-fields
+      hash: md5
+      md5: 1b43d0b761789a976dc8c814b7c95084.dir
+      size: 644097209
+      nfiles: 18
+  evaluate:
+    cmd: ../../.venv/bin/python evaluate_repair.py
+    deps:
+    - path: data/predictions
+      hash: md5
+      md5: f85c8788580b48418dcfcc6ad8a21f5e.dir
+      size: 1932265728
+      nfiles: 18
+    - path: data/test-fields
+      hash: md5
+      md5: 1b43d0b761789a976dc8c814b7c95084.dir
+      size: 644097209
+      nfiles: 18
+    - path: evaluate_repair.py
+      hash: md5
+      md5: 4d33337196874f0a7a136a2950451c65
+      size: 1803
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 66a854a9923c0ba74710214b69b6d371
+      size: 2961
+    outs:
+    - path: results/test-summary.json
+      hash: md5
+      md5: 187332366b538b70c8b4f74f6dbf586b
+      size: 29450
+  report:
+    cmd: ../../.venv/bin/python summarize.py && ../../.venv/bin/python 
+      diagnose_cold.py && ../../.venv/bin/python verify_fresh_fields.py && 
+      ../../.venv/bin/python cost_report.py && ../../.venv/bin/python audit.py
+    deps:
+    - path: audit.py
+      hash: md5
+      md5: f3a215b126b3f4a4a5e43a49c61cc910
+      size: 1585
+    - path: cost_report.py
+      hash: md5
+      md5: 732a19b7dfb58fbedd22cd088502e568
+      size: 1301
+    - path: data/models/original.pt
+      hash: md5
+      md5: c02f5ee0461e3c8bbbb4c741fa5a4204
+      size: 667565
+    - path: data/models/physical.pt
+      hash: md5
+      md5: bdc21e483730d7087633c0a138d501e5
+      size: 668177
+    - path: data/predictions
+      hash: md5
+      md5: f85c8788580b48418dcfcc6ad8a21f5e.dir
+      size: 1932265728
+      nfiles: 18
+    - path: data/test-fields
+      hash: md5
+      md5: 1b43d0b761789a976dc8c814b7c95084.dir
+      size: 644097209
+      nfiles: 18
+    - path: diagnose_cold.py
+      hash: md5
+      md5: 7d4012369c14ffff7a22ca83ace28277
+      size: 1761
+    - path: results/test-summary.json
+      hash: md5
+      md5: 187332366b538b70c8b4f74f6dbf586b
+      size: 29450
+    - path: summarize.py
+      hash: md5
+      md5: 21d25cb06088eb59440fbf8ad2d57d6f
+      size: 960
+    - path: verify_fresh_fields.py
+      hash: md5
+      md5: 31b93bd446c0e333f0b829657e3ab337
+      size: 1132
+    outs:
+    - path: results/aggregate.json
+      hash: md5
+      md5: 102ecb89daa777a79d336e19ac90d75a
+      size: 3624
+    - path: results/audit.json
+      hash: md5
+      md5: 6fd96a66d5e339c021e5a9b27b7ac4dc
+      size: 334
+    - path: results/cold-diagnosis.json
+      hash: md5
+      md5: 8ddcc731c023fb9f87ccac8fc5d34d55
+      size: 9298
+    - path: results/cost-proxy.json
+      hash: md5
+      md5: 0c93077fba26eb4cf81d34ecbcf4382e
+      size: 1484
+  visualize:
+    cmd: ../../.venv/bin/python animate_repair.py && ../../.venv/bin/python 
+      plot_histories.py && ../../.venv/bin/python plot_cold.py
+    deps:
+    - path: animate_repair.py
+      hash: md5
+      md5: 9f5c49001e3040d6f1212d9ebe99a09c
+      size: 2327
+    - path: data/predictions
+      hash: md5
+      md5: f85c8788580b48418dcfcc6ad8a21f5e.dir
+      size: 1932265728
+      nfiles: 18
+    - path: data/test-fields
+      hash: md5
+      md5: 1b43d0b761789a976dc8c814b7c95084.dir
+      size: 644097209
+      nfiles: 18
+    - path: plot_cold.py
+      hash: md5
+      md5: 3a5c556d5622b03db06e41aea80755ef
+      size: 1133
+    - path: plot_histories.py
+      hash: md5
+      md5: bf63bb00d2e8df0d2b57ddfda0552edb
+      size: 1222
+    - path: results/test-summary.json
+      hash: md5
+      md5: 187332366b538b70c8b4f74f6dbf586b
+      size: 29450
+    outs:
+    - path: results/visuals
+      hash: md5
+      md5: dcd4b9ec90d76199acf3657a25b11883.dir
+      size: 3755024
+      nfiles: 6
