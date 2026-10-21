@@ -102,3 +102,33 @@ All424 new development trajectories reached180s and passed recorded resume/deck/
 ## Models frozen; fresh testing started
 
 Both planned training schedules completed; selected snapshot update32000 and hybrid trajectory1600 using development validation only. Collected model weights and prediction freeze passed hash verification, and training GPU VM/disk/job cleanup is verified. Fresh FDS tests launched only after that freeze; no fresh truth was used for selection. Median inference on the training GPU for a full180s history was0.0724s snapshot and0.2194s hybrid, excluding FDS generation/preprocessing; these are development timing measurements, not yet fresh-test accuracy. Model artifacts adopted in DVC.
+
+## Final fresh-test findings
+
+All48 fresh trajectories across40 previously untouched configurations completed180s. Frozen model/prediction hashes and test submission chronology were checked before evaluation. All cloud worker/job/disk cleanup is verified and the campaign-specific temporary input-read grant is removed. Total reservations are$24.60 against$25, including failed attempts and$4ancillary; invoice spend is not available. Raw FDS archives and checkpoints remain in GCS; retained storage can continue to incur charges after this campaign.
+
+The expanded models are fast but are not faithful FDS replacements. After artificial-source removal (22–180s), configuration-balanced median percentage errors are:
+
+| Metric | Snapshot | Hybrid |
+|---|---:|---:|
+| Temperature rise, whole volume |352.1%|353.9%|
+| Temperature rise in FDS-hot cells (>50C) |65.5%|62.0%|
+| Total heat-release history |74.3%|78.9%|
+| Integrated radiation-intensity dose proxy |60.5%|60.1%|
+| Peak temperature rise |18.6%|16.0%|
+| Velocity vector |15.4%|15.5%|
+| Combustion-region intersection/union (>10kW/m3) |31.7%|32.0%|
+
+Percentages normalize absolute discrepancies to corresponding FDS quantities, not prediction accuracy. Average seed-replica metrics within configurations before aggregating configurations. Near-zero reference heating makes some relative errors very large: whole-volume mean temperature errors are1293.0%/1293.1%, and mean heat-history errors990.9%/750.2%. These failures must not be hidden by medians or visually similar projected plumes. Radiation here is an integrated gas radiation-intensity proxy, not measured heat absorbed by ground or walls. Combustion-region overlap is not rendered flame geometry.
+
+Training fit is also poor: new-training median post-source heat-history errors53.6%/55.5%, FDS-hot temperature errors59.8%/57.0%, and whole-volume temperature errors299.0%/315.4%. New-validation heat errors62.3%/68.1%. Legacy-validation heat errors37.3%/47.2% are reported separately because that narrower distribution is easier and cannot stand in for expanded coverage. The prior weak-burning training case v31_09 has mean post-source heat release0.954kW in FDS versus7.564kW snapshot and2.258kW hybrid; improved correction still leaves a substantial false-fire error.
+
+Three-seed subsets have post-source integrated heat range/mean spreads13.0%,4.8%,5.3%,5.1%. Against seed-mean fields, heat-history errors remain36.2/44.3%,71.1/70.8%,332.5/157.4%,677.2/247.3% (snapshot/hybrid). These four small ensembles do not quantify all stochastic uncertainty, but random-seed variation alone does not account for the largest model errors.
+
+Full180s prediction median on the L4 GPU is0.0724s snapshot and0.2194s hybrid; fresh FDS median is365.5s wall time on4CPUcores (range150.9–466.6s). Hardware differs and CNN timings exclude input preprocessing. No FDS solve is called at inference. These speed measurements do not compensate for accuracy failures.
+
+The result supports changing representation/loss/training before purchasing another larger dataset. On existing development data, first test whether models can fit complete histories including weak burning and spatial heat distribution; isolate integrated fire-strength versus spatial allocation errors. Any revised model selected after this report needs a new untouched test set; this fresh set is now examined. No additional training or paid simulation is authorized by this conclusion.
+
+Visualizations use four cases selected by height before outcomes, with shared scales: maximum-through-y gas-temperature and heat-release-density projections, not Smokeview flame rendering. Cyan outlines show the assigned cone envelope; scales clip peaks. Every case is one generic3m-wide cone, crown height4/6/8/10m above2m, fixed1600weighted particles, .5m gas grid in24x16x16m,180s, artificial1500C source0–20s. No trunks/buildings/embers; nonflammable heatable ground is simulated but its solid temperature is not a learned output. Hybrid material state is2m. Neither real-world fidelity nor multi-tree composition is validated.
+
+The frozen state-reset control has median post-source heat-history error87.8% versus78.9% hybrid, and FDS-hot temperature error64.9% versus62.0%. This supports some benefit from carried state under this test, without establishing physical understanding or an adequate surrogate. The four preselected animation cases all happen to use0.06moisture; they demonstrate height variation but do not visualize the full moisture distribution.

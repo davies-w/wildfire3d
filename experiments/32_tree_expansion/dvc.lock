@@ -694,3 +694,165 @@ stages:
       hash: md5
       md5: c535878598b9b56a10b1dba99f93e717
       size: 155
+  cloud_test:
+    cmd: ../../.venv/bin/python dispatch_tests.py
+    deps:
+    - path: dispatch_tests.py
+      hash: md5
+      md5: e2ca30e38a8f952be203ef309c9cf1d7
+      size: 1144
+    - path: groups.json
+      hash: md5
+      md5: aea62e9f1f6573349e01221121b69e7b
+      size: 14993
+    - path: results/learning-collected.json
+      hash: md5
+      md5: c535878598b9b56a10b1dba99f93e717
+      size: 155
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 6b76eb27c012453510c28dcd91d4a4e3
+      size: 33622
+    outs:
+    - path: results/test-simulations-complete.json
+      hash: md5
+      md5: 7a0c29ae86e883a93640285ddc4d7162
+      size: 57
+  prepare_evaluation:
+    cmd: ../../.venv/bin/python prepare_evaluation.py
+    deps:
+    - path: evaluate_cloud.py
+      hash: md5
+      md5: fc01819b9d99a4d046f6d3730b254a3a
+      size: 6282
+    - path: prepare_evaluation.py
+      hash: md5
+      md5: fbde637868e2f3cb6551546f22bf2ef0
+      size: 3363
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 6b76eb27c012453510c28dcd91d4a4e3
+      size: 33622
+    - path: results/test-simulations-complete.json
+      hash: md5
+      md5: 7a0c29ae86e883a93640285ddc4d7162
+      size: 57
+    outs:
+    - path: data/evaluation-overlay.tar
+      hash: md5
+      md5: b38179627ac5316e76d27a319d57b344
+      size: 3573760
+  cloud_evaluation:
+    cmd: ../../.venv/bin/python launch_evaluation.py
+    deps:
+    - path: data/evaluation-overlay.tar
+      hash: md5
+      md5: b38179627ac5316e76d27a319d57b344
+      size: 3573760
+    - path: evaluation-workflow.yaml
+      hash: md5
+      md5: c0c6cb1b596a381d1ab21326c8020558
+      size: 8540
+    - path: launch_evaluation.py
+      hash: md5
+      md5: 9f9065d26e3de484112a09fc080efb2c
+      size: 1781
+    outs:
+    - path: results/evaluation-execution.json
+      hash: md5
+      md5: 1bb59458da6139dea768fda89808e83e
+      size: 337
+  collect_evaluation:
+    cmd: ../../.venv/bin/python collect_evaluation.py
+    deps:
+    - path: collect_evaluation.py
+      hash: md5
+      md5: 94ecd663ecfbd958b2b43122eefc11a9
+      size: 2319
+    - path: results/evaluation-execution.json
+      hash: md5
+      md5: 1bb59458da6139dea768fda89808e83e
+      size: 337
+    outs:
+    - path: data/evaluation
+      hash: md5
+      md5: 4df1e8ba0c373d256ec8ad9c39fdf312.dir
+      size: 8287529
+      nfiles: 6
+    - path: results/fresh-test-evaluation.json
+      hash: md5
+      md5: 9109eb9b95824f8a32c526e0f505263e
+      size: 2290388
+  summarize_results:
+    cmd: ../../.venv/bin/python summarize_results.py
+    deps:
+    - path: budget.json
+      hash: md5
+      md5: fee3dfdfb8cd24065035648da1092f0a
+      size: 30576
+    - path: development.json
+      hash: md5
+      md5: 6ea022fdfa88cb9ba237df85d40f5667
+      size: 384870
+    - path: fresh-tests.json
+      hash: md5
+      md5: 2e9b02a04ebe50fd61d26d596b4ea2c0
+      size: 39730
+    - path: results/evaluation-collected.json
+      hash: md5
+      md5: a7970e4ec390fcdcbdb6e134baa259a2
+      size: 97
+    - path: results/fresh-test-evaluation.json
+      hash: md5
+      md5: 9109eb9b95824f8a32c526e0f505263e
+      size: 2290388
+    - path: results/learning.json
+      hash: md5
+      md5: c2334b4a74b5ffbc3f650e528fc73ba1
+      size: 14988344
+    - path: summarize_results.py
+      hash: md5
+      md5: dec3a64045d19978ce16f4eca4c567a1
+      size: 3739
+    outs:
+    - path: results/final-summary.json
+      hash: md5
+      md5: bc9943cc175890a046cb59493181485a
+      size: 152947
+  visualize:
+    cmd: ../../.venv/bin/python visualize_results.py
+    deps:
+    - path: data/evaluation
+      hash: md5
+      md5: 4df1e8ba0c373d256ec8ad9c39fdf312.dir
+      size: 8287529
+      nfiles: 6
+    - path: results/fresh-test-evaluation.json
+      hash: md5
+      md5: 9109eb9b95824f8a32c526e0f505263e
+      size: 2290388
+    - path: visualize_results.py
+      hash: md5
+      md5: 2cda0adce203de6657c2bc6afb267199
+      size: 2787
+    outs:
+    - path: results/fresh-histories.png
+      hash: md5
+      md5: 7c7ca1dd1b5b36c6c584879e79018d0d
+      size: 377088
+    - path: results/x32_392_s0-comparison.gif
+      hash: md5
+      md5: c0b0da7bce16e5b9a5f394e464a9704c
+      size: 988327
+    - path: results/x32_402_s0-comparison.gif
+      hash: md5
+      md5: 85e4e4029e2fd8390c989189e290f69b
+      size: 1073872
+    - path: results/x32_412_s0-comparison.gif
+      hash: md5
+      md5: b9591f615e44f28afafa4270c6e9ff44
+      size: 1166670
+    - path: results/x32_422_s0-comparison.gif
+      hash: md5
+      md5: 20a5aaaed2cb23fc6faf666b79c9af80
+      size: 1305607

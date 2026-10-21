@@ -229,6 +229,14 @@ stages:
     outs:
     - results/fresh-histories.png:
         cache: false
+    - results/x32_392_s0-comparison.gif:
+        cache: false
+    - results/x32_402_s0-comparison.gif:
+        cache: false
+    - results/x32_412_s0-comparison.gif:
+        cache: false
+    - results/x32_422_s0-comparison.gif:
+        cache: false
   audit_splits:
     cmd: ../../.venv/bin/python audit_splits.py
     deps:

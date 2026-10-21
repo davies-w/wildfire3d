@@ -2,7 +2,7 @@
   "authorized_usd": 25,
   "authorization": "User: Sounds good, then train the models! following $25 proposal",
   "authorized_unix": 1792550182.6031091,
-  "reserved_usd": 24.1,
+  "reserved_usd": 24.6,
   "reservations": {
     "ancillary": {
       "allowance_usd": 4,
@@ -944,7 +944,7 @@
       ],
       "duration_s": 16200,
       "allowance_usd": 0.4,
-      "state": "submitted",
+      "state": "terminal_cleanup_verified",
       "reserved_unix": 1792619219.394619,
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-x32-test-36/executions/235a3a0a-da8b-442e-8bfb-3013dfe0a191"
     },
@@ -967,7 +967,7 @@
       ],
       "duration_s": 16200,
       "allowance_usd": 0.4,
-      "state": "submitted",
+      "state": "terminal_cleanup_verified",
       "reserved_unix": 1792619303.265585,
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-x32-test-37/executions/3d0b80cf-abfc-4dec-a38f-548c751e6e86"
     },
@@ -990,7 +990,7 @@
       ],
       "duration_s": 16200,
       "allowance_usd": 0.4,
-      "state": "submitted",
+      "state": "terminal_cleanup_verified",
       "reserved_unix": 1792619386.730056,
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-x32-test-38/executions/3c4c5af8-ebfe-4d94-a6b1-cf295f26cbde"
     },
@@ -1013,9 +1013,19 @@
       ],
       "duration_s": 16200,
       "allowance_usd": 0.4,
-      "state": "submitted",
+      "state": "terminal_cleanup_verified",
       "reserved_unix": 1792619470.215899,
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-x32-test-39/executions/a22b5b97-a3a6-42a2-ad09-c3ec09b3cd0e"
+    },
+    "gpu-evaluation-01": {
+      "state": "terminal_cleanup_verified",
+      "allowance_usd": 0.5,
+      "reserved_unix": 1792624894.492919,
+      "vm_age_limit_s": 1800,
+      "absolute_limit_s": 3000,
+      "retries": 0,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu32-evaluation01/executions/d48e820e-26bb-4f14-90b5-0b7da63e23cb",
+      "completed_unix": 1792625796.8976939
     }
   },
   "automatic_retries": false,
