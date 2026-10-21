@@ -228,3 +228,12 @@ stages:
     outs:
     - results/fresh-histories.png:
         cache: false
+  audit_splits:
+    cmd: ../../.venv/bin/python audit_splits.py
+    deps:
+    - audit_splits.py
+    - development.json
+    - fresh-tests.json
+    metrics:
+    - results/full-split-audit.json:
+        cache: false

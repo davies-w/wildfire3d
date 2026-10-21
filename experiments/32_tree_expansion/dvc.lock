@@ -516,3 +516,23 @@ stages:
       hash: md5
       md5: bd44d9c577e0f8929db98c64403d635f
       size: 1080750080
+  audit_splits:
+    cmd: ../../.venv/bin/python audit_splits.py
+    deps:
+    - path: audit_splits.py
+      hash: md5
+      md5: bf0f6a6ffda16c2a8f031ce8607611e3
+      size: 1241
+    - path: development.json
+      hash: md5
+      md5: 6ea022fdfa88cb9ba237df85d40f5667
+      size: 384870
+    - path: fresh-tests.json
+      hash: md5
+      md5: 2e9b02a04ebe50fd61d26d596b4ea2c0
+      size: 39730
+    outs:
+    - path: results/full-split-audit.json
+      hash: md5
+      md5: 855a8b977e8ac15a9b7fd987eeaa8ec6
+      size: 465
