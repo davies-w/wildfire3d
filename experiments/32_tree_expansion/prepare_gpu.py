@@ -4,7 +4,7 @@ import json,tarfile,hashlib,io,yaml,base64
 R=Path(__file__).parent;S=R.parent/'31_tree_variations'
 def main():
  assert json.loads((R/'results/learning-interface-check.json').read_text())['passed']
- names=['learning_worker.py','geometry_model.py','sequence.py','original_cnn.py','previous_loss.py','snapshot_evaluation.py','fresh-tests.json','groups.json','preprocess_cloud.py','fields.py','material_reader.py','fortran_records.py','data/geometries.npz','data/models/sequence_stage1.pt','data/models/previous.pt']
+ names=['evaluation-plan.json','learning_worker.py','geometry_model.py','sequence.py','original_cnn.py','previous_loss.py','snapshot_evaluation.py','fresh-tests.json','groups.json','preprocess_cloud.py','fields.py','material_reader.py','fortran_records.py','data/geometries.npz','data/models/sequence_stage1.pt','data/models/previous.pt']
  files={n:R/n for n in names};files['cases.json']=R/'development.json';cs=json.loads((R/'development.json').read_text())
  for c in cs:
   if c['case'].startswith('x32_'):continue

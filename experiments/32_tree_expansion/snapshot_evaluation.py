@@ -9,6 +9,9 @@ def metrics(a,b,t):
  for window,sel in [('all',t>=0),('post_source',t>=22),('late',t>=120)]:
   x=a[sel];y=b[sel];hot=(x[:,0]>50)|(y[:,0]>50);q=x[:,1].sum((1,2,3))*.125;qb=y[:,1].sum((1,2,3))*.125;gx=np.maximum(x[:,5]-ambient,0).sum(0);gy=np.maximum(y[:,5]-ambient,0).sum(0);fx=x[:,1]>10;fy=y[:,1]>10;union=fx|fy
   out[window]=dict(hot_MAE_C=float(abs(x[:,0]-y[:,0])[hot].mean()) if hot.any() else 0,temperature_MAE_C=float(abs(x[:,0]-y[:,0]).mean()),HRR_curve_relative_L1=float(abs(q-qb).sum()/max(q.sum(),1e-8)),radiation_dose_relative_L1=float(abs(gx-gy).sum()/max(gx.sum(),1e-8)),peak_error_C=float(abs(x[:,0].max()-y[:,0].max())),truth_peak_C=float(x[:,0].max()),predicted_peak_C=float(y[:,0].max()),truth_mean_HRR_kW=float(q.mean()),predicted_mean_HRR_kW=float(qb.mean()),velocity_MAE_m_s=float(np.sqrt(((x[:,2:5]-y[:,2:5])**2).sum(1)).mean()),flame_IoU=float((fx&fy).sum()/union.sum()) if union.any() else None,minimum_C=float(y[:,0].min()),truth_minimum_C=float(x[:,0].min()),subzero_fraction=float((y[:,0]<0).mean()))
+  rise=np.abs(x[:,0]-20);terr=np.abs(x[:,0]-y[:,0]);truthhot=x[:,0]>50
+  def percent(num,den):return float(100*num/den) if den>1e-8 else None
+  out[window].update(temperature_rise_relative_L1_percent=percent(terr.sum(),rise.sum()),truth_hot_temperature_relative_L1_percent=percent(terr[truthhot].sum(),rise[truthhot].sum()),union_hot_temperature_relative_L1_percent=percent(terr[hot].sum(),rise[hot].sum()),HRR_curve_relative_L1_percent=percent(abs(q-qb).sum(),q.sum()),radiation_dose_relative_L1_percent=percent(abs(gx-gy).sum(),gx.sum()),peak_temperature_rise_error_percent=percent(abs(x[:,0].max()-y[:,0].max()),abs(x[:,0].max()-20)),velocity_vector_relative_L1_percent=percent(np.sqrt(((x[:,2:5]-y[:,2:5])**2).sum(1)).sum(),np.sqrt((x[:,2:5]**2).sum(1)).sum()))
  return out
 
 def main():

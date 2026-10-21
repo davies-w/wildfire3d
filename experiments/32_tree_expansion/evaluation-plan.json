@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "physical_configurations": 40,
+  "test_trajectories": 48,
+  "models": ["snapshot", "hybrid", "state_reset_ablation"],
+  "selection": "Development validation only, physical-configuration balanced; report legacy validation separately",
+  "predictions": "Frozen before any test FDS submission; identical physical inputs across seed replicas; seed is not a model input",
+  "windows_s": {"all": [0,180], "post_source": [22,180], "late": [120,180]},
+  "metrics": ["temperature rise relative L1", "truth-hot temperature relative L1 above 50C", "union-hot temperature relative L1", "integrated heat release history relative L1", "radiation dose relative L1", "peak temperature rise error", "air velocity vector relative L1", "flame IoU at HRRPUV above 10kW/m3"],
+  "percent_denominator": "Corresponding FDS magnitude, ambient20C for temperature rise; null if denominator vanishes. Retain absolute errors and reference magnitudes for audit.",
+  "aggregation": "Average seeds within each physical configuration, then average configurations; report medians and all individual rows. Separately assess predictions against three-seed ensemble means for four repeated configurations, plus FDS run-to-run heat/peak spread.",
+  "alignment": "Linearly interpolate reference FDS fields onto frozen nominal2s prediction times; no changing predictions or extrapolation",
+  "animations": "Select first test configuration at each height in4/6/8/10m, before reading results. FDS/snapshot/hybrid, shared scales and view; retain weak-burning examples in numerical report.",
+  "interpretation": "Single generic cone family, fixed domain and mesh; not field validation or multi-tree composition"
+}

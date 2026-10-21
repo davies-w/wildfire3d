@@ -125,6 +125,7 @@ stages:
     - data/geometries.npz
     - development.json
     - fresh-tests.json
+    - snapshot_evaluation.py
     metrics:
     - results/learning-interface-check.json:
         cache: false
@@ -143,6 +144,9 @@ stages:
     - fresh-tests.json
     - groups.json
     - data/geometries.npz
+    - evaluation-plan.json
+    - snapshot_evaluation.py
+    - original_cnn.py
     outs:
     - data/learning-overlay.tar
   cloud_development:
@@ -157,3 +161,70 @@ stages:
     - data/decks
     outs:
     - data/summaries
+  cloud_learning:
+    cmd: ../../.venv/bin/python launch_learning.py
+    deps:
+    - launch_learning.py
+    - gpu-workflow.yaml
+    - data/learning-overlay.tar
+    - results/development-complete.json
+    metrics:
+    - results/gpu-execution.json:
+        cache: false
+  collect_learning:
+    cmd: ../../.venv/bin/python collect_learning.py
+    deps:
+    - collect_learning.py
+    - results/gpu-execution.json
+    outs:
+    - data/gpu/cloud
+    metrics:
+    - results/learning-collected.json:
+        cache: false
+  cloud_test:
+    cmd: ../../.venv/bin/python dispatch_tests.py
+    deps:
+    - dispatch_tests.py
+    - results/learning-collected.json
+    - results/prediction-freeze.json
+    - groups.json
+    metrics:
+    - results/test-simulations-complete.json:
+        cache: false
+  prepare_evaluation:
+    cmd: ../../.venv/bin/python prepare_evaluation.py
+    deps:
+    - prepare_evaluation.py
+    - evaluate_cloud.py
+    - results/test-simulations-complete.json
+    - results/prediction-freeze.json
+    outs:
+    - data/evaluation-overlay.tar
+  cloud_evaluation:
+    cmd: ../../.venv/bin/python launch_evaluation.py
+    deps:
+    - launch_evaluation.py
+    - evaluation-workflow.yaml
+    - data/evaluation-overlay.tar
+    metrics:
+    - results/evaluation-execution.json:
+        cache: false
+  collect_evaluation:
+    cmd: ../../.venv/bin/python collect_evaluation.py
+    deps:
+    - collect_evaluation.py
+    - results/evaluation-execution.json
+    outs:
+    - data/evaluation
+    metrics:
+    - results/fresh-test-evaluation.json:
+        cache: false
+  visualize:
+    cmd: ../../.venv/bin/python visualize_results.py
+    deps:
+    - visualize_results.py
+    - data/evaluation
+    - results/fresh-test-evaluation.json
+    outs:
+    - results/fresh-histories.png:
+        cache: false

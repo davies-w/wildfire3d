@@ -11,6 +11,11 @@ def main():
   for g in read('groups.json'):
    if g['phase']!='test':assert read(f"jobs/{g['id']}/completion.json")['all_full_horizon']
   assert read('results/learning-interface-check.json')['passed']
+  for n,h in read('results/learning-input-freeze.json').items():
+   p=R/('development.json' if n=='cases.json' else n);digest=hashlib.sha256()
+   with p.open('rb') as f:
+    for chunk in iter(lambda:f.read(8*1024**2),b''):digest.update(chunk)
+   assert digest.hexdigest()==h, 'Training package stale: '+n
   assert not gc('compute','instances','list') and not gc('batch','jobs','list','--location=us-central1')
   ledger=read('budget.json');key='gpu-learning-01';assert key not in ledger['reservations'];assert ledger['reserved_usd']+2.5<=ledger['authorized_usd']
   # Make the prepared package immutable; preserve uncertainty rather than replacing uploads.
