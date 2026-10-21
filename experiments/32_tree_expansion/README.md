@@ -83,3 +83,6 @@ Final reporting helper summarize_results.py is prepared for after evaluation col
 ## Diagnosed Spot interruption and bounded replacement
 
 Development batch08 was preempted (Batch exit50001) after174.8s, before its first case upload. No raw archive/checkpoint survived that VM loss; the78 already collected cases remain intact. Original resources are cleaned and its$0.40 reservation retained. Explicitly diagnosed replacement08-r1 uses identical scientific decks and a new$0.40 reservation under the approved$25 cap. Planned total including this replacement is$23.80; no automatic retry policy is enabled. The other five active batches are unchanged. Error records are preserved under results/incidents. The GPU package is regenerated to reference the replacement prefix.
+
+
+Batches23 and24 also experienced confirmed Spot preemption (exit50001), before any case upload. Their VM/job/disk cleanup is verified;222 collected cases are intact. Separate identical-deck replacements23-r1/24-r1 reserve$0.40 each, retaining both failed reservations. Planned total is now$24.60 including GPU and ancillary allowances, leaving$0.40 margin. No partial checkpoints survived these abrupt losses. Preserved status and controller errors are under results/incidents.
