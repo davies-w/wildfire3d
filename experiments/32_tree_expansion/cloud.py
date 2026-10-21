@@ -27,7 +27,10 @@ def prepare():
  for phase,rows in [('development',[c for c in dev if c not in selected]),('test',[c for c in cases if c['split']=='test'])]:
   chunks.extend((phase,rows[i:i+12]) for i in range(0,len(rows),12))
  for index,(phase,cs) in enumerate(chunks):
-   name=f'x32-{phase}-{index:02d}'+('-r1' if phase=='coverage' else '');g=dict(id=name,phase=phase,cases=[c['case'] for c in cs],duration_s=16200,allowance_usd=.40)
+   name=f'x32-{phase}-{index:02d}'+('-r1' if phase=='coverage' else '')
+   replacements=read('replacements.json') if (ROOT/'replacements.json').exists() else {}
+   name=replacements.get(name,name)
+   g=dict(id=name,phase=phase,cases=[c['case'] for c in cs],duration_s=16200,allowance_usd=.40)
    if name in reserved:
     assert read(f'jobs/{name}/group.json')==g;groups.append(g);continue
    runner=(ROOT/'runner-template.py').read_text().replace('overnight21/overnight21_stronger/',f'expansion32/{name}/').replace('400*1024**2','500*1024**2').replace('timeout=90','timeout=300')

@@ -78,3 +78,8 @@ validate_cloud_data.py exercises the exact cloud preprocessing implementation on
 Post-source (t>=21s) integrated fuel-release mass was13.5428kg vs14.3071kg for the same configuration with two seeds,5.49% difference relative to their mean. Corresponding peak gas temperatures1474.5C and1430.3C. Other coverage cases include weak burning (x32_343_s0:0.0317kg,159.5C) and stronger outcomes. These are initial coverage observations, not an ensemble estimate or physical validation; see results/cloud-data-check.json for direct raw-field/device-derived values. Seeds leave the frozen tree unchanged.
 
 Final reporting helper summarize_results.py is prepared for after evaluation collection. It balances physical configurations, separates new/legacy training and validation, retains the prior v31_09 weak-burning failure and worst training heat-release errors, and keeps mean plus median relative errors without hiding near-zero-reference failures. Run after campaign-ready-for-report; no training/test outcomes were read to prepare it.
+
+
+## Diagnosed Spot interruption and bounded replacement
+
+Development batch08 was preempted (Batch exit50001) after174.8s, before its first case upload. No raw archive/checkpoint survived that VM loss; the78 already collected cases remain intact. Original resources are cleaned and its$0.40 reservation retained. Explicitly diagnosed replacement08-r1 uses identical scientific decks and a new$0.40 reservation under the approved$25 cap. Planned total including this replacement is$23.80; no automatic retry policy is enabled. The other five active batches are unchanged. Error records are preserved under results/incidents. The GPU package is regenerated to reference the replacement prefix.
