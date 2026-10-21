@@ -611,3 +611,41 @@ stages:
       hash: md5
       md5: 28f2f4a734c97ac8474d203517615003
       size: 5898
+  cloud_development:
+    cmd: ../../.venv/bin/python dispatch_development.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 5bfc391f1658f118bb077de66d5bcb85
+      size: 8789
+    - path: coverage_review.py
+      hash: md5
+      md5: 28630c3d044f97d7a91de49b0e757e24
+      size: 2066
+    - path: data/decks
+      hash: md5
+      md5: cf654e913f30d3822ffc3d58d95ba8c3.dir
+      size: 211488622
+      nfiles: 472
+    - path: dispatch_development.py
+      hash: md5
+      md5: d59afcb71c683e724f8519bfa14c5816
+      size: 1803
+    - path: groups.json
+      hash: md5
+      md5: aea62e9f1f6573349e01221121b69e7b
+      size: 14993
+    - path: runner-template.py
+      hash: md5
+      md5: 4a9eb454a46366b53eb704de3ae9ceaf
+      size: 5379
+    - path: worker.py
+      hash: md5
+      md5: e825df2354241c5d3c76c5a11e43b3ab
+      size: 3055
+    outs:
+    - path: data/summaries
+      hash: md5
+      md5: 311e24a349e280b25649628b567a5f59.dir
+      size: 4088343
+      nfiles: 424

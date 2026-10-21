@@ -92,3 +92,8 @@ A local summary-download timeout stopped the controllers while cloud jobs comple
 
 
 Batch33 deployment exceeded the128KiB workflow-source limit before reservation/submission. Removed unrelated case hashes from each unsubmitted batch payload, retaining every included deck hash and identical scientific inputs. Added a local source-size gate; decoded every remaining payload and checked all exact deck hashes. Reserved/submitted payloads were untouched. No added paid attempt or reservation. Controllers resumed.
+
+
+## Development simulation generation complete
+
+All424 new development trajectories reached180s and passed recorded resume/deck/raw-object checks;36 successful groups have verified cleanup. Their summaries and raw-object provenance are adopted in DVC. Together with48 reused development trajectories, the learning stage uses472 training/validation trajectories. The active coordinator is uploading the frozen training overlay before GPU submission. The48 fresh test solves remain unlaunched and no test truth was accessed.
