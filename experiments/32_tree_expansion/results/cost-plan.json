@@ -1,0 +1,39 @@
+{
+  "status": "estimate_only_not_authorized_or_launched",
+  "new_runs": 472,
+  "cpu_groups": 40,
+  "max_concurrent_cpu_VMs": 6,
+  "vcpus_per_VM": 4,
+  "cases_per_group_max": 12,
+  "per_case_solver_timeout_s": 1200,
+  "group_VM_lifetime_cap_s": 16200,
+  "group_absolute_deadline_s": 18000,
+  "CPU_full_reservation_usd": 16.0,
+  "GPU_full_reservation_usd": 3,
+  "storage_and_ancillary_allowance_usd": 4,
+  "unallocated_margin_usd": 2,
+  "proposed_campaign_cap_usd": 25,
+  "expected_total_usd_range": [
+    5,
+    9
+  ],
+  "expected_elapsed_hours_range": [
+    10,
+    14
+  ],
+  "prior_completed_cases": 12,
+  "prior_mean_solver_wall_s": 347.1627115031667,
+  "prior_min_max_solver_wall_s": [
+    274.49220471399997,
+    412.13208661
+  ],
+  "cpu_estimate_at_conservative_rate_usd": 4.270684440655437,
+  "rate_assumptions": {
+    "CPU_4vCPU_VM_usd_hour": 0.08,
+    "GPU_whole_VM_usd_hour": 0.8
+  },
+  "timing_method": "Observed solver time +60s/case for preprocessing/upload, six parallel workers, batch startup/queue overhead and GPU fitting. Different heights/moisture may change runtime; ETA is not a guarantee.",
+  "storage": "Keep full raw evidence and training fields in the same cloud region; fetch only selected visualizations locally. Expected tens of GB, roughly40-60GB compressed raw plus50GB decoded fields. Retention beyond this campaign is ongoing storage cost.",
+  "safety": "Reserve complete group/GPU allowance centrally before submission; no automatic retries or reservation recycling. Cloud deadlines and cleanup. Preserve periodic FDS restart and GPU optimizer checkpoints. Verify same-Linux resume before each long solve. Stop dispatch if cap or deadline would be exceeded.",
+  "pricing": "Budget assumptions derived from prior experiment planning, not a live invoice or quoted SKU price."
+}

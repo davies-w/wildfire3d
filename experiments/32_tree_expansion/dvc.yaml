@@ -1,0 +1,159 @@
+stages:
+  setup:
+    cmd: ../../.venv/bin/python setup.py
+    deps:
+    - setup.py
+    - legacy_single.py
+    - legacy_build.py
+    - base-input.fds
+    - data/original-template.json
+    - ../31_tree_variations/development.json
+    outs:
+    - data/decks
+    - data/tree-templates.json
+  validate:
+    cmd: ../../.venv/bin/python validate.py
+    deps:
+    - validate.py
+    - cases.json
+    - results/input-freeze.json
+    - data/decks
+    metrics:
+    - results/validation.json:
+        cache: false
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - preflight.py
+    - particle_reader.py
+    - cases.json
+    - data/decks
+    - data/tree-templates.json
+    - ../27_single_tree_cnn/data/cloud/s27_train_0/s27_train_0_1.prt5
+    outs:
+    - data/preflight
+    metrics:
+    - results/preflight.json:
+        cache: false
+  prepare_learning_inputs:
+    cmd: ../../.venv/bin/python prepare_inputs.py
+    deps:
+    - prepare_inputs.py
+    - cases.json
+    - reuse.json
+    - data/tree-templates.json
+    - ../31_tree_variations/data/geometries.npz
+    outs:
+    - data/geometries.npz
+    - data/models/previous.pt
+    - data/models/sequence_stage1.pt
+    - data/s27_train_0-material.npz
+    - data/s27_train_1-material.npz
+    - data/s27_train_2-material.npz
+    - data/s27_train_3-material.npz
+    - data/s27_train_4-material.npz
+    - data/s27_train_5-material.npz
+    - data/s27_train_6-material.npz
+    - data/s27_train_7-material.npz
+    - data/s27_train_8-material.npz
+    - data/s27_train_9-material.npz
+    - data/s27_train_10-material.npz
+    - data/s27_train_11-material.npz
+    - data/s27_train_12-material.npz
+    - data/s27_train_13-material.npz
+    - data/s27_train_14-material.npz
+    - data/s27_train_15-material.npz
+    - data/s27_train_16-material.npz
+    - data/s27_train_17-material.npz
+    - data/s27_train_18-material.npz
+    - data/s27_train_19-material.npz
+    - data/s27_train_20-material.npz
+    - data/s27_train_21-material.npz
+    - data/s27_train_22-material.npz
+    - data/s27_train_23-material.npz
+    - data/s27_train_24-material.npz
+    - data/s27_train_25-material.npz
+    - data/s27_train_26-material.npz
+    - data/s27_train_27-material.npz
+    - data/s27_train_28-material.npz
+    - data/s27_train_29-material.npz
+    - data/s27_train_30-material.npz
+    - data/s27_train_31-material.npz
+    - data/s27_validation_0-material.npz
+    - data/s27_validation_1-material.npz
+    - data/s27_validation_2-material.npz
+    - data/s27_validation_3-material.npz
+    - data/s27_validation_4-material.npz
+    - data/s27_validation_5-material.npz
+    - data/v31_00-material.npz
+    - data/v31_01-material.npz
+    - data/v31_02-material.npz
+    - data/v31_03-material.npz
+    - data/v31_05-material.npz
+    - data/v31_06-material.npz
+    - data/v31_07-material.npz
+    - data/v31_08-material.npz
+    - data/v31_09-material.npz
+    - data/v31_10-material.npz
+    - data/fields/v31_00.npy
+    - data/fields/v31_00-time.npy
+    - data/fields/v31_01.npy
+    - data/fields/v31_01-time.npy
+    - data/fields/v31_02.npy
+    - data/fields/v31_02-time.npy
+    - data/fields/v31_03.npy
+    - data/fields/v31_03-time.npy
+    - data/fields/v31_05.npy
+    - data/fields/v31_05-time.npy
+    - data/fields/v31_06.npy
+    - data/fields/v31_06-time.npy
+    - data/fields/v31_07.npy
+    - data/fields/v31_07-time.npy
+    - data/fields/v31_08.npy
+    - data/fields/v31_08-time.npy
+    - data/fields/v31_09.npy
+    - data/fields/v31_09-time.npy
+    - data/fields/v31_10.npy
+    - data/fields/v31_10-time.npy
+  learning_interface:
+    cmd: ../../.venv/bin/python validate_learning.py
+    deps:
+    - validate_learning.py
+    - geometry_model.py
+    - sequence.py
+    - fortran_records.py
+    - data/geometries.npz
+    - development.json
+    - fresh-tests.json
+    metrics:
+    - results/learning-interface-check.json:
+        cache: false
+  package_gpu:
+    cmd: ../../.venv/bin/python prepare_gpu.py
+    deps:
+    - prepare_gpu.py
+    - learning_worker.py
+    - preprocess_cloud.py
+    - fields.py
+    - material_reader.py
+    - fortran_records.py
+    - geometry_model.py
+    - sequence.py
+    - development.json
+    - fresh-tests.json
+    - groups.json
+    - data/geometries.npz
+    outs:
+    - data/learning-overlay.tar
+  cloud_development:
+    cmd: ../../.venv/bin/python dispatch_development.py
+    deps:
+    - dispatch_development.py
+    - coverage_review.py
+    - cloud.py
+    - worker.py
+    - runner-template.py
+    - groups.json
+    - data/decks
+    outs:
+    - data/summaries
