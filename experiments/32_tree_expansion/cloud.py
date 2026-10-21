@@ -36,13 +36,15 @@ def prepare():
    runner=(ROOT/'runner-template.py').read_text().replace('overnight21/overnight21_stronger/',f'expansion32/{name}/').replace('400*1024**2','500*1024**2').replace('timeout=90','timeout=300')
    payload={'runner.py':runner,'worker.py':(ROOT/'worker.py').read_text(),'cases.json':json.dumps(cs),'group.json':json.dumps(g)}
    for c in cs:payload['decks/'+c['case']+'.fds']=(ROOT/'data/decks'/(c['case']+'.fds')).read_text()
-   payload['input-freeze.json']=json.dumps(read('results/input-freeze.json'))
+   freeze=read('results/input-freeze.json')
+   freeze['cases']={c['case']:freeze['cases'][c['case']] for c in cs}
+   payload['input-freeze.json']=json.dumps(freeze)
    encoded=base64.b64encode(lzma.compress(json.dumps(payload).encode(),preset=9)).decode()
    bootstrap="import json,lzma,base64,pathlib,sys,runpy; root=pathlib.Path('/study'); payload=json.loads(lzma.decompress(base64.b64decode("+repr(encoded)+"))); [(root/n).parent.mkdir(parents=True,exist_ok=True) for n in payload]; [(root/n).write_text(v) for n,v in payload.items()]; sys.path.insert(0,'/study'); runpy.run_path('/study/worker.py',run_name='__main__')"
    w=read('workflow-template.json');ass=w['main']['steps'][0]['initialize']['assign'];ass[0]['deadline']='${sys.now() + '+'17820'+'}';job=ass[1]['job'];task=job['taskGroups'][0]['taskSpec'];task['maxRunDuration']=str(g['duration_s']-240)+'s';task['runnables'][0]['container']['commands']=['-c',bootstrap]
    job['labels']['trial_id']=name;job['allocationPolicy']['labels']['trial_id']=name
    raw=json.dumps(w).replace('fds-controlled-trial','fds-'+name).replace('domain17/job-status.json',f'expansion32/{name}/job-status.json').replace('labels.trial_id = study17','labels.trial_id = '+name)
-   folder=ROOT/'jobs'/name;folder.mkdir(parents=True,exist_ok=True);(folder/'workflow.yaml').write_text(yaml.safe_dump(json.loads(raw),sort_keys=False));save(f'jobs/{name}/group.json',g);groups.append(g)
+   folder=ROOT/'jobs'/name;folder.mkdir(parents=True,exist_ok=True);(folder/'workflow.yaml').write_text(yaml.safe_dump(json.loads(raw),sort_keys=False));assert (folder/'workflow.yaml').stat().st_size<=128*1024, 'Workflow exceeds cloud source limit';save(f'jobs/{name}/group.json',g);groups.append(g)
  save('groups.json',groups);assert sum(g['allowance_usd'] for g in groups)<=16+1e-8
  print('Prepared',len(groups),'groups; total timeout allowance',round(sum(g['allowance_usd'] for g in groups),2))
 

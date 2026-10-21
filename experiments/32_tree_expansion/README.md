@@ -89,3 +89,6 @@ Batches23 and24 also experienced confirmed Spot preemption (exit50001), before a
 
 
 A local summary-download timeout stopped the controllers while cloud jobs completed independently. All six outstanding batches19–24 (including23-r1/24-r1) were subsequently collected:294 full180s trajectories, raw-object/deck/checkpoint checks passed, empty cloud resource inventories verified per group. No paid rerun or added reservation was needed for this collection recovery. Error evidence remains in results/incidents/download-timeout-*.json. Controllers resumed for remaining development cases.
+
+
+Batch33 deployment exceeded the128KiB workflow-source limit before reservation/submission. Removed unrelated case hashes from each unsubmitted batch payload, retaining every included deck hash and identical scientific inputs. Added a local source-size gate; decoded every remaining payload and checked all exact deck hashes. Reserved/submitted payloads were untouched. No added paid attempt or reservation. Controllers resumed.
