@@ -1,0 +1,113 @@
+stages:
+  material:
+    cmd: ../../.venv/bin/python prepare.py
+    deps:
+    - prepare.py
+    - cases.json
+    outs:
+    - data/geometry.npy
+    - data/s27_train_0-material.npz
+    - data/s27_train_1-material.npz
+    - data/s27_train_2-material.npz
+    - data/s27_train_3-material.npz
+    - data/s27_train_4-material.npz
+    - data/s27_train_5-material.npz
+    - data/s27_train_6-material.npz
+    - data/s27_train_7-material.npz
+    - data/s27_train_8-material.npz
+    - data/s27_train_9-material.npz
+    - data/s27_train_10-material.npz
+    - data/s27_train_11-material.npz
+    - data/s27_train_12-material.npz
+    - data/s27_train_13-material.npz
+    - data/s27_train_14-material.npz
+    - data/s27_train_15-material.npz
+    - data/s27_train_16-material.npz
+    - data/s27_train_17-material.npz
+    - data/s27_train_18-material.npz
+    - data/s27_train_19-material.npz
+    - data/s27_train_20-material.npz
+    - data/s27_train_21-material.npz
+    - data/s27_train_22-material.npz
+    - data/s27_train_23-material.npz
+    - data/s27_train_24-material.npz
+    - data/s27_train_25-material.npz
+    - data/s27_train_26-material.npz
+    - data/s27_train_27-material.npz
+    - data/s27_train_28-material.npz
+    - data/s27_train_29-material.npz
+    - data/s27_train_30-material.npz
+    - data/s27_train_31-material.npz
+    - data/s27_validation_0-material.npz
+    - data/s27_validation_1-material.npz
+    - data/s27_validation_2-material.npz
+    - data/s27_validation_3-material.npz
+    - data/s27_validation_4-material.npz
+    - data/s27_validation_5-material.npz
+    metrics:
+    - results/material-audit.json:
+        cache: false
+  package:
+    cmd: ../../.venv/bin/python package.py
+    deps:
+    - package.py
+    - sequence.py
+    - worker.py
+    - original_cnn.py
+    - previous_loss.py
+    - snapshot_evaluation.py
+    - cases.json
+    - data/geometry.npy
+    - data/s27_train_0-material.npz
+    - data/s27_train_1-material.npz
+    - data/s27_train_2-material.npz
+    - data/s27_train_3-material.npz
+    - data/s27_train_4-material.npz
+    - data/s27_train_5-material.npz
+    - data/s27_train_6-material.npz
+    - data/s27_train_7-material.npz
+    - data/s27_train_8-material.npz
+    - data/s27_train_9-material.npz
+    - data/s27_train_10-material.npz
+    - data/s27_train_11-material.npz
+    - data/s27_train_12-material.npz
+    - data/s27_train_13-material.npz
+    - data/s27_train_14-material.npz
+    - data/s27_train_15-material.npz
+    - data/s27_train_16-material.npz
+    - data/s27_train_17-material.npz
+    - data/s27_train_18-material.npz
+    - data/s27_train_19-material.npz
+    - data/s27_train_20-material.npz
+    - data/s27_train_21-material.npz
+    - data/s27_train_22-material.npz
+    - data/s27_train_23-material.npz
+    - data/s27_train_24-material.npz
+    - data/s27_train_25-material.npz
+    - data/s27_train_26-material.npz
+    - data/s27_train_27-material.npz
+    - data/s27_train_28-material.npz
+    - data/s27_train_29-material.npz
+    - data/s27_train_30-material.npz
+    - data/s27_train_31-material.npz
+    - data/s27_validation_0-material.npz
+    - data/s27_validation_1-material.npz
+    - data/s27_validation_2-material.npz
+    - data/s27_validation_3-material.npz
+    - data/s27_validation_4-material.npz
+    - data/s27_validation_5-material.npz
+    outs:
+    - data/overlay.tar
+    metrics:
+    - results/input-freeze.json:
+        cache: false
+  collect:
+    cmd: ../../.venv/bin/python collect.py --once
+    deps:
+    - collect.py
+    - results/execution.json
+    outs:
+    - data/cloud
+    metrics:
+    - results/cleanup.json:
+        cache: false

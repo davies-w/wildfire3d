@@ -1,0 +1,98 @@
+{
+  "authorized_usd": 2.5,
+  "reserved_usd": 2.2,
+  "reservations": {
+    "v31-train-0": {
+      "id": "v31-train-0",
+      "phase": "train",
+      "cases": [
+        "v31_00",
+        "v31_02"
+      ],
+      "duration_s": 3000,
+      "allowance_usd": 0.2,
+      "state": "terminal_cleanup_verified",
+      "reserved_unix": 1792545542.012714,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-v31-train-0/executions/186e0d80-f187-4b94-b455-4e32074c5b49"
+    },
+    "v31-train-1": {
+      "id": "v31-train-1",
+      "phase": "train",
+      "cases": [
+        "v31_03",
+        "v31_05"
+      ],
+      "duration_s": 3000,
+      "allowance_usd": 0.2,
+      "state": "terminal_cleanup_verified",
+      "reserved_unix": 1792545549.274494,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-v31-train-1/executions/2af89f70-e053-4a27-ac52-9738ace02544"
+    },
+    "v31-train-2": {
+      "id": "v31-train-2",
+      "phase": "train",
+      "cases": [
+        "v31_06",
+        "v31_07"
+      ],
+      "duration_s": 3000,
+      "allowance_usd": 0.2,
+      "state": "terminal_cleanup_verified",
+      "reserved_unix": 1792545556.436486,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-v31-train-2/executions/d2e1dccc-ecca-4ca2-9852-7845d7f76c32"
+    },
+    "v31-train-3": {
+      "id": "v31-train-3",
+      "phase": "train",
+      "cases": [
+        "v31_09",
+        "v31_10"
+      ],
+      "duration_s": 3000,
+      "allowance_usd": 0.2,
+      "state": "terminal_cleanup_verified",
+      "reserved_unix": 1792545564.0321321,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-v31-train-3/executions/e6552039-3b31-437d-ad7f-d90ed9864854"
+    },
+    "v31-validation-0": {
+      "id": "v31-validation-0",
+      "phase": "validation",
+      "cases": [
+        "v31_01",
+        "v31_08"
+      ],
+      "duration_s": 3000,
+      "allowance_usd": 0.2,
+      "state": "terminal_cleanup_verified",
+      "reserved_unix": 1792545571.312253,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-v31-validation-0/executions/e6ac3406-3f99-4be1-890d-a793244946ca"
+    },
+    "gpu-learning-01": {
+      "state": "terminal_cleanup_verified",
+      "allowance_usd": 1,
+      "reserved_unix": 1792546684.541502,
+      "queue_limit_s": 1200,
+      "vm_age_limit_s": 2100,
+      "absolute_limit_s": 3300,
+      "retries": 0,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu31-learning01/executions/5b8c6021-8d6c-4a59-971d-bf2edd9f3543",
+      "completed_unix": 1792547433.090742
+    },
+    "v31-test-0": {
+      "id": "v31-test-0",
+      "phase": "test",
+      "cases": [
+        "v31_04",
+        "v31_11"
+      ],
+      "duration_s": 3000,
+      "allowance_usd": 0.2,
+      "state": "terminal_cleanup_verified",
+      "reserved_unix": 1792547461.379104,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-v31-test-0/executions/a14af5c9-2011-4fd8-a5f5-12bd2d1dcfab"
+    }
+  },
+  "rate_assumption_usd_per_vm_hour": 0.08,
+  "automatic_retries": false,
+  "recycle_reservations": false
+}

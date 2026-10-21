@@ -1,0 +1,121 @@
+{
+  "development_and_test_metrics": {
+    "train_original_snapshot": {
+      "configurations": 32,
+      "hot_MAE_C": 45.02547776699066,
+      "HRR_curve_relative_L1": 0.4200371662154794,
+      "radiation_dose_relative_L1": 0.32439384050667286,
+      "peak_error_C": 114.08063125610352,
+      "velocity_MAE_m_s": 0.46123229432851076,
+      "flame_IoU": 0.5337167178060667
+    },
+    "train_original_hybrid": {
+      "configurations": 32,
+      "hot_MAE_C": 44.758739709854126,
+      "HRR_curve_relative_L1": 0.41626358684152365,
+      "radiation_dose_relative_L1": 0.32178256195038557,
+      "peak_error_C": 116.86968421936035,
+      "velocity_MAE_m_s": 0.46263273525983095,
+      "flame_IoU": 0.5312157711820167
+    },
+    "train_new_snapshot": {
+      "configurations": 8,
+      "hot_MAE_C": 53.16931772232056,
+      "HRR_curve_relative_L1": 31.4902261570096,
+      "radiation_dose_relative_L1": 9.473873171955347,
+      "peak_error_C": 251.92001342773438,
+      "velocity_MAE_m_s": 0.45235634222626686,
+      "flame_IoU": 0.43163495535717206
+    },
+    "train_new_hybrid": {
+      "configurations": 8,
+      "hot_MAE_C": 52.3419075012207,
+      "HRR_curve_relative_L1": 32.131708201020956,
+      "radiation_dose_relative_L1": 9.51649872213602,
+      "peak_error_C": 235.43280029296875,
+      "velocity_MAE_m_s": 0.45361003652215004,
+      "flame_IoU": 0.4309125217892382
+    },
+    "validation_original_snapshot": {
+      "configurations": 6,
+      "hot_MAE_C": 45.455727895100914,
+      "HRR_curve_relative_L1": 0.4620823760827382,
+      "radiation_dose_relative_L1": 0.343984417617321,
+      "peak_error_C": 141.4996134440104,
+      "velocity_MAE_m_s": 0.48592813313007355,
+      "flame_IoU": 0.5322216814717503
+    },
+    "validation_original_hybrid": {
+      "configurations": 6,
+      "hot_MAE_C": 45.35534985860189,
+      "HRR_curve_relative_L1": 0.4577152629693349,
+      "radiation_dose_relative_L1": 0.3421467989683151,
+      "peak_error_C": 149.0999959309896,
+      "velocity_MAE_m_s": 0.4872383077939351,
+      "flame_IoU": 0.5308968110340718
+    },
+    "validation_new_snapshot": {
+      "configurations": 2,
+      "hot_MAE_C": 51.60674858093262,
+      "HRR_curve_relative_L1": 0.6358790248632431,
+      "radiation_dose_relative_L1": 1.066953867673874,
+      "peak_error_C": 46.4593505859375,
+      "velocity_MAE_m_s": 0.4399718791246414,
+      "flame_IoU": 0.4205572804537726
+    },
+    "validation_new_hybrid": {
+      "configurations": 2,
+      "hot_MAE_C": 51.2709846496582,
+      "HRR_curve_relative_L1": 0.6358388513326645,
+      "radiation_dose_relative_L1": 1.071554183959961,
+      "peak_error_C": 33.51788330078125,
+      "velocity_MAE_m_s": 0.44110172986984253,
+      "flame_IoU": 0.41858714496315036
+    },
+    "validation_new_state_reset_ablation": {
+      "configurations": 2,
+      "hot_MAE_C": 51.17398452758789,
+      "HRR_curve_relative_L1": 0.8487492799758911,
+      "radiation_dose_relative_L1": 1.0739198178052902,
+      "peak_error_C": 93.1971435546875,
+      "velocity_MAE_m_s": 0.4418194890022278,
+      "flame_IoU": 0.4075874532233746
+    },
+    "fresh_test_snapshot": {
+      "configurations": 2,
+      "hot_MAE_C": 54.66799736022949,
+      "HRR_curve_relative_L1": 0.6936399042606354,
+      "radiation_dose_relative_L1": 0.42308710515499115,
+      "peak_error_C": 328.16412353515625,
+      "velocity_MAE_m_s": 0.44567203521728516,
+      "flame_IoU": 0.3766379140580155
+    },
+    "fresh_test_hybrid": {
+      "configurations": 2,
+      "hot_MAE_C": 53.73417282104492,
+      "HRR_curve_relative_L1": 0.6888258457183838,
+      "radiation_dose_relative_L1": 0.4276873469352722,
+      "peak_error_C": 292.03436279296875,
+      "velocity_MAE_m_s": 0.44702111184597015,
+      "flame_IoU": 0.37175294779496226
+    },
+    "fresh_test_state_reset_ablation": {
+      "configurations": 2,
+      "hot_MAE_C": 53.253366470336914,
+      "HRR_curve_relative_L1": 0.8019528090953827,
+      "radiation_dose_relative_L1": 0.4279603809118271,
+      "peak_error_C": 239.443115234375,
+      "velocity_MAE_m_s": 0.44767777621746063,
+      "flame_IoU": 0.3796467618260245
+    }
+  },
+  "snapshot_selected_step": 3200,
+  "hybrid_selected_step": 160,
+  "inference_median_s": {
+    "snapshot": 0.07170655349997901,
+    "hybrid": 0.21563782850003577,
+    "state_reset_ablation": 0.22577043450002066
+  },
+  "budget_reservations_usd": 2.2,
+  "caution": "Exploratory two-case fresh test, same generic cone family; no real-world validation. Hybrid uses snapshot prior at every time. No embers."
+}

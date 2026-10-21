@@ -1,0 +1,59 @@
+{
+  "rows": [
+    {
+      "case": "v31_09",
+      "split": "train",
+      "new_geometry": true,
+      "model": "hybrid",
+      "all": {
+        "hot_MAE_C": 64.70606231689453,
+        "temperature_MAE_C": 2.9231979846954346,
+        "HRR_curve_relative_L1": 8.018163681030273,
+        "radiation_dose_relative_L1": 4.724381446838379,
+        "peak_error_C": 316.65069580078125,
+        "truth_peak_C": 675.5728759765625,
+        "predicted_peak_C": 992.2235717773438,
+        "truth_mean_HRR_kW": 56.777069091796875,
+        "predicted_mean_HRR_kW": 506.657958984375,
+        "velocity_MAE_m_s": 0.5539655089378357,
+        "flame_IoU": 0.06623616236162362,
+        "minimum_C": 6.0,
+        "truth_minimum_C": 19.851667404174805,
+        "subzero_fraction": 0.0
+      },
+      "post_source": {
+        "hot_MAE_C": 62.96910095214844,
+        "temperature_MAE_C": 2.572662591934204,
+        "HRR_curve_relative_L1": 252.0670623779297,
+        "radiation_dose_relative_L1": 72.18294525146484,
+        "peak_error_C": 834.0830078125,
+        "truth_peak_C": 150.35691833496094,
+        "predicted_peak_C": 984.43994140625,
+        "truth_mean_HRR_kW": 0.9542990922927856,
+        "predicted_mean_HRR_kW": 241.49533081054688,
+        "velocity_MAE_m_s": 0.5691903233528137,
+        "flame_IoU": 0.0014787430683918669,
+        "minimum_C": 6.0,
+        "truth_minimum_C": 19.851667404174805,
+        "subzero_fraction": 0.0
+      },
+      "late": {
+        "hot_MAE_C": 0,
+        "temperature_MAE_C": 1.2578614950180054,
+        "HRR_curve_relative_L1": 0.9934580326080322,
+        "radiation_dose_relative_L1": 12.311081886291504,
+        "peak_error_C": 8.538164138793945,
+        "truth_peak_C": 20.23038673400879,
+        "predicted_peak_C": 28.768550872802734,
+        "truth_mean_HRR_kW": 0.008581200614571571,
+        "predicted_mean_HRR_kW": 0.0015533801633864641,
+        "velocity_MAE_m_s": 0.5169740319252014,
+        "flame_IoU": null,
+        "minimum_C": 8.275476455688477,
+        "truth_minimum_C": 19.851667404174805,
+        "subzero_fraction": 0.0
+      }
+    }
+  ],
+  "interpretation": "Weak-burning training configuration v31_09 is substantially overpredicted. Relative errors are inflated by small truth, but absolute false heat (~241kW predicted vs~1kW truth) is also substantial. More data is not established as the primary remedy; first demonstrate fitting this known behavior."
+}

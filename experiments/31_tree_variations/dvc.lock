@@ -1,0 +1,1151 @@
+schema: '2.0'
+stages:
+  collect_development:
+    cmd: ../../.venv/bin/python finish_development.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 60c32494b957a5098caa96a4a1cd7c8e
+      size: 7733
+    - path: finish_development.py
+      hash: md5
+      md5: e549f6fd808ecd7566a28beaf5e629da
+      size: 715
+    - path: groups.json
+      hash: md5
+      md5: e8ed4f3cfe32743af87fdc2d703dc5ed
+      size: 959
+    - path: results/input-freeze.json
+      hash: md5
+      md5: 2d9c63c8b065c25a500a1db5a9c7dcb5
+      size: 1295
+    outs:
+    - path: data/cloud/v31_00
+      hash: md5
+      md5: ba5137b4bbd4b9115c41c3ef43aa270a.dir
+      size: 180836063
+      nfiles: 37
+    - path: data/cloud/v31_01
+      hash: md5
+      md5: d4184585fd47307bfb0297bf0cf6e7f4.dir
+      size: 180841013
+      nfiles: 37
+    - path: data/cloud/v31_02
+      hash: md5
+      md5: 354a7a5745f9df2e824a36e744e70d53.dir
+      size: 180838585
+      nfiles: 37
+    - path: data/cloud/v31_03
+      hash: md5
+      md5: 3831a0da0592cdc23eb58a27157402d6.dir
+      size: 180842648
+      nfiles: 37
+    - path: data/cloud/v31_05
+      hash: md5
+      md5: e0faae9ffb803a818227b5bebc07b9ac.dir
+      size: 180841808
+      nfiles: 37
+    - path: data/cloud/v31_06
+      hash: md5
+      md5: 26544c5cc3a5e176cc42a75433c7dc5c.dir
+      size: 180840588
+      nfiles: 37
+    - path: data/cloud/v31_07
+      hash: md5
+      md5: 473b5ff3bd3cb8cee8e4b0578a55700f.dir
+      size: 180844703
+      nfiles: 37
+    - path: data/cloud/v31_08
+      hash: md5
+      md5: 974a811a2dc2bd732f0681391aaad07a.dir
+      size: 180838567
+      nfiles: 37
+    - path: data/cloud/v31_09
+      hash: md5
+      md5: b94e9680740528a7caec06db2757d6b6.dir
+      size: 180839409
+      nfiles: 37
+    - path: data/cloud/v31_10
+      hash: md5
+      md5: 66d04026a62528b792a6b72a0cfb9a16.dir
+      size: 180842733
+      nfiles: 37
+  learning_data:
+    cmd: ../../.venv/bin/python prepare_learning.py
+    deps:
+    - path: ../27_single_tree_cnn/data/cloud/s27_train_0/s27_train_0_1.prt5
+      hash: md5
+      md5: 6d6a16cd584f8ac0455359daba3634fd
+      size: 6195488
+    - path: ../29_single_tree_heads/cases.json
+      hash: md5
+      md5: 482809e3a88c8b1fdb095edd7a14e651
+      size: 22294
+    - path: ../30_tree_sequence/data/cloud/sequence.pt
+      hash: md5
+      md5: 01d7b1573b88fbb0325a8d198e6eeb1f
+      size: 2718682
+    - path: ../30_tree_sequence/data/geometry.npy
+      hash: md5
+      md5: 8ccd0ca9524255880ef72d7eff063456
+      size: 786560
+    - path: ../30_tree_sequence/data/s27_train_0-material.npz
+      hash: md5
+      md5: aafef02c90e94ab93a33f9c8a9197a3d
+      size: 38556
+    - path: ../30_tree_sequence/data/s27_train_1-material.npz
+      hash: md5
+      md5: 10d0e57ac0bf4d0d5963cf5772d5c84f
+      size: 50155
+    - path: ../30_tree_sequence/data/s27_train_10-material.npz
+      hash: md5
+      md5: 7b8dc2002d70c648ab681fa24c3c5ad5
+      size: 42587
+    - path: ../30_tree_sequence/data/s27_train_11-material.npz
+      hash: md5
+      md5: 7d4d6327fd265b6b7cb22df0314d18e3
+      size: 42897
+    - path: ../30_tree_sequence/data/s27_train_12-material.npz
+      hash: md5
+      md5: 95bf61206709aae39acb011e824dd753
+      size: 41687
+    - path: ../30_tree_sequence/data/s27_train_13-material.npz
+      hash: md5
+      md5: 84fd225ca4aeaab00aec9cf14628c65e
+      size: 50013
+    - path: ../30_tree_sequence/data/s27_train_14-material.npz
+      hash: md5
+      md5: 93b9d2cc02f70ec8248074a3d4b7b19b
+      size: 50401
+    - path: ../30_tree_sequence/data/s27_train_15-material.npz
+      hash: md5
+      md5: cf77ffb595ba02fe9e66740357d4024c
+      size: 38178
+    - path: ../30_tree_sequence/data/s27_train_16-material.npz
+      hash: md5
+      md5: f2cabf51687f4e7c5b98a83379dec3ca
+      size: 41325
+    - path: ../30_tree_sequence/data/s27_train_17-material.npz
+      hash: md5
+      md5: 1cb48a86d314405515b1150acbb23ce8
+      size: 49570
+    - path: ../30_tree_sequence/data/s27_train_18-material.npz
+      hash: md5
+      md5: 59aed6dabef92edeeb3a8264fe6814b1
+      size: 48761
+    - path: ../30_tree_sequence/data/s27_train_19-material.npz
+      hash: md5
+      md5: 5e38cb7ad7bd32ab6e8d570c95953779
+      size: 42273
+    - path: ../30_tree_sequence/data/s27_train_2-material.npz
+      hash: md5
+      md5: c5275add6bebadf567d4f6bb69881010
+      size: 49852
+    - path: ../30_tree_sequence/data/s27_train_20-material.npz
+      hash: md5
+      md5: ba32f635cee2db5caa04b3abac0a9582
+      size: 39059
+    - path: ../30_tree_sequence/data/s27_train_21-material.npz
+      hash: md5
+      md5: 635941c867a53fca52563ee37a1fe229
+      size: 50075
+    - path: ../30_tree_sequence/data/s27_train_22-material.npz
+      hash: md5
+      md5: a5c716d9b01861b6cd28d8886cd9dbe0
+      size: 49817
+    - path: ../30_tree_sequence/data/s27_train_23-material.npz
+      hash: md5
+      md5: d55a06606b3043d540426d873ef84930
+      size: 39433
+    - path: ../30_tree_sequence/data/s27_train_24-material.npz
+      hash: md5
+      md5: 12baa599a02a6f4042d992b800192742
+      size: 39693
+    - path: ../30_tree_sequence/data/s27_train_25-material.npz
+      hash: md5
+      md5: 0e2ded60377f6d29789552f0b5723557
+      size: 50174
+    - path: ../30_tree_sequence/data/s27_train_26-material.npz
+      hash: md5
+      md5: 1662162ebee4ef0fdc63740459d2b95b
+      size: 49968
+    - path: ../30_tree_sequence/data/s27_train_27-material.npz
+      hash: md5
+      md5: 4a799e6a23574fedb97edeadad03748f
+      size: 38760
+    - path: ../30_tree_sequence/data/s27_train_28-material.npz
+      hash: md5
+      md5: 573d18a222b094f4aa5fd76453167236
+      size: 42563
+    - path: ../30_tree_sequence/data/s27_train_29-material.npz
+      hash: md5
+      md5: d44ba630989b5fe3b307c4609c118442
+      size: 49642
+    - path: ../30_tree_sequence/data/s27_train_3-material.npz
+      hash: md5
+      md5: de427539d4893705b39405985128a387
+      size: 41292
+    - path: ../30_tree_sequence/data/s27_train_30-material.npz
+      hash: md5
+      md5: 39a14a72a3149ea7bb142a1f494b3382
+      size: 49617
+    - path: ../30_tree_sequence/data/s27_train_31-material.npz
+      hash: md5
+      md5: 3a1a72151d130c205cb4951dbf2a3c56
+      size: 40162
+    - path: ../30_tree_sequence/data/s27_train_4-material.npz
+      hash: md5
+      md5: f604e3603f37de4d2538fecfe5c361bc
+      size: 41251
+    - path: ../30_tree_sequence/data/s27_train_5-material.npz
+      hash: md5
+      md5: 3ac45d48224bb7039e8e87f98c51f647
+      size: 43575
+    - path: ../30_tree_sequence/data/s27_train_6-material.npz
+      hash: md5
+      md5: ff12f0e45c8b1076d51b5005a58cb67c
+      size: 49704
+    - path: ../30_tree_sequence/data/s27_train_7-material.npz
+      hash: md5
+      md5: dd9f683cd2237cbec342012decac193e
+      size: 39325
+    - path: ../30_tree_sequence/data/s27_train_8-material.npz
+      hash: md5
+      md5: ee9ee036f6a7f53c996535cd70da0337
+      size: 40114
+    - path: ../30_tree_sequence/data/s27_train_9-material.npz
+      hash: md5
+      md5: 634a9759edaa5095d1ff5098a325c930
+      size: 49893
+    - path: ../30_tree_sequence/data/s27_validation_0-material.npz
+      hash: md5
+      md5: 72e4f893ff026d1d17beeb9b8b73f7c9
+      size: 40609
+    - path: ../30_tree_sequence/data/s27_validation_1-material.npz
+      hash: md5
+      md5: 02327d8641dd4982c103cfb9ee99f6c1
+      size: 49983
+    - path: ../30_tree_sequence/data/s27_validation_2-material.npz
+      hash: md5
+      md5: 8c2691700b17d11f253d00b2283553f8
+      size: 49751
+    - path: ../30_tree_sequence/data/s27_validation_3-material.npz
+      hash: md5
+      md5: cb6a5eea18b084d9d820b77927caa33e
+      size: 41847
+    - path: ../30_tree_sequence/data/s27_validation_4-material.npz
+      hash: md5
+      md5: 65c1c4df785b74c5786c128495c12f71
+      size: 42574
+    - path: ../30_tree_sequence/data/s27_validation_5-material.npz
+      hash: md5
+      md5: cf0ba4699ca4abf5fb9537157f65840d
+      size: 50509
+    - path: cases.json
+      hash: md5
+      md5: 29f8daf4a89e8c6a633af9ad775e856e
+      size: 7358
+    - path: data/cloud/v31_00
+      hash: md5
+      md5: ba5137b4bbd4b9115c41c3ef43aa270a.dir
+      size: 180836063
+      nfiles: 37
+    - path: data/cloud/v31_01
+      hash: md5
+      md5: d4184585fd47307bfb0297bf0cf6e7f4.dir
+      size: 180841013
+      nfiles: 37
+    - path: data/cloud/v31_02
+      hash: md5
+      md5: 354a7a5745f9df2e824a36e744e70d53.dir
+      size: 180838585
+      nfiles: 37
+    - path: data/cloud/v31_03
+      hash: md5
+      md5: 3831a0da0592cdc23eb58a27157402d6.dir
+      size: 180842648
+      nfiles: 37
+    - path: data/cloud/v31_05
+      hash: md5
+      md5: e0faae9ffb803a818227b5bebc07b9ac.dir
+      size: 180841808
+      nfiles: 37
+    - path: data/cloud/v31_06
+      hash: md5
+      md5: 26544c5cc3a5e176cc42a75433c7dc5c.dir
+      size: 180840588
+      nfiles: 37
+    - path: data/cloud/v31_07
+      hash: md5
+      md5: 473b5ff3bd3cb8cee8e4b0578a55700f.dir
+      size: 180844703
+      nfiles: 37
+    - path: data/cloud/v31_08
+      hash: md5
+      md5: 974a811a2dc2bd732f0681391aaad07a.dir
+      size: 180838567
+      nfiles: 37
+    - path: data/cloud/v31_09
+      hash: md5
+      md5: b94e9680740528a7caec06db2757d6b6.dir
+      size: 180839409
+      nfiles: 37
+    - path: data/cloud/v31_10
+      hash: md5
+      md5: 66d04026a62528b792a6b72a0cfb9a16.dir
+      size: 180842733
+      nfiles: 37
+    - path: data/expected-particles.json
+      hash: md5
+      md5: a10edf430de07bb892e318da906fca38
+      size: 2240652
+    - path: fields.py
+      hash: md5
+      md5: abb4eead4d287b07b1f54dc21b533e0a
+      size: 2818
+    - path: material_reader.py
+      hash: md5
+      md5: 1030b3e4091117ed677a3e07c2e6395e
+      size: 2702
+    - path: prepare_learning.py
+      hash: md5
+      md5: b9c861e8921cd10a25b459653abcf00b
+      size: 3249
+    outs:
+    - path: data/fields/v31_00-time.npy
+      hash: md5
+      md5: 1c21d53b45ad0a948febbc3de69b1e73
+      size: 856
+    - path: data/fields/v31_00.npy
+      hash: md5
+      md5: 40193ea9dffa616f917f98d2c246efb4
+      size: 107348096
+    - path: data/fields/v31_01-time.npy
+      hash: md5
+      md5: 9642e57583ec0dc91d16219c7614a8da
+      size: 856
+    - path: data/fields/v31_01.npy
+      hash: md5
+      md5: f5a81cd520076ade4dd33cc5a3755c35
+      size: 107348096
+    - path: data/fields/v31_02-time.npy
+      hash: md5
+      md5: 45d471b0f4d5a4c9348b23daac1cad05
+      size: 856
+    - path: data/fields/v31_02.npy
+      hash: md5
+      md5: 5f1a281e6488ecf00d26b326f1fc2582
+      size: 107348096
+    - path: data/fields/v31_03-time.npy
+      hash: md5
+      md5: f16d8d892334413e15e5fa2641a6be54
+      size: 856
+    - path: data/fields/v31_03.npy
+      hash: md5
+      md5: be1fa37e905abbb5beca205866517671
+      size: 107348096
+    - path: data/fields/v31_05-time.npy
+      hash: md5
+      md5: 2512d7b63f3a43633157a0bea6d32016
+      size: 856
+    - path: data/fields/v31_05.npy
+      hash: md5
+      md5: 637c49355265421b7fa9337ef6fb5500
+      size: 107348096
+    - path: data/fields/v31_06-time.npy
+      hash: md5
+      md5: dd9ddf774332dda024241e8b0b84b0dd
+      size: 856
+    - path: data/fields/v31_06.npy
+      hash: md5
+      md5: 4da8459d2d71d91b448036f84e9297be
+      size: 107348096
+    - path: data/fields/v31_07-time.npy
+      hash: md5
+      md5: 5404331ac046113a824acd0f884e276f
+      size: 856
+    - path: data/fields/v31_07.npy
+      hash: md5
+      md5: b4d0f0b8242d383a5878637c9e05d8cb
+      size: 107348096
+    - path: data/fields/v31_08-time.npy
+      hash: md5
+      md5: c7189d279f0cb25afbb6604691b6cd72
+      size: 856
+    - path: data/fields/v31_08.npy
+      hash: md5
+      md5: e84b869bffac25fea5e2846781a3bb4e
+      size: 107348096
+    - path: data/fields/v31_09-time.npy
+      hash: md5
+      md5: a88c5a6d15c32e14c1866610263eb353
+      size: 856
+    - path: data/fields/v31_09.npy
+      hash: md5
+      md5: 589479fcc53887efe8a613ee1fb671c0
+      size: 107348096
+    - path: data/fields/v31_10-time.npy
+      hash: md5
+      md5: 01ee6da5036517bba17759dc23ce12f4
+      size: 856
+    - path: data/fields/v31_10.npy
+      hash: md5
+      md5: e9311a439cbaee724d3667d35d0e4302
+      size: 107348096
+    - path: data/geometries.npz
+      hash: md5
+      md5: f749c2c3756f01d94f39b21f3d0c130b
+      size: 107080
+    - path: data/models/sequence_stage1.pt
+      hash: md5
+      md5: 01d7b1573b88fbb0325a8d198e6eeb1f
+      size: 2718682
+    - path: data/s27_train_0-material.npz
+      hash: md5
+      md5: aafef02c90e94ab93a33f9c8a9197a3d
+      size: 38556
+    - path: data/s27_train_1-material.npz
+      hash: md5
+      md5: 10d0e57ac0bf4d0d5963cf5772d5c84f
+      size: 50155
+    - path: data/s27_train_10-material.npz
+      hash: md5
+      md5: 7b8dc2002d70c648ab681fa24c3c5ad5
+      size: 42587
+    - path: data/s27_train_11-material.npz
+      hash: md5
+      md5: 7d4d6327fd265b6b7cb22df0314d18e3
+      size: 42897
+    - path: data/s27_train_12-material.npz
+      hash: md5
+      md5: 95bf61206709aae39acb011e824dd753
+      size: 41687
+    - path: data/s27_train_13-material.npz
+      hash: md5
+      md5: 84fd225ca4aeaab00aec9cf14628c65e
+      size: 50013
+    - path: data/s27_train_14-material.npz
+      hash: md5
+      md5: 93b9d2cc02f70ec8248074a3d4b7b19b
+      size: 50401
+    - path: data/s27_train_15-material.npz
+      hash: md5
+      md5: cf77ffb595ba02fe9e66740357d4024c
+      size: 38178
+    - path: data/s27_train_16-material.npz
+      hash: md5
+      md5: f2cabf51687f4e7c5b98a83379dec3ca
+      size: 41325
+    - path: data/s27_train_17-material.npz
+      hash: md5
+      md5: 1cb48a86d314405515b1150acbb23ce8
+      size: 49570
+    - path: data/s27_train_18-material.npz
+      hash: md5
+      md5: 59aed6dabef92edeeb3a8264fe6814b1
+      size: 48761
+    - path: data/s27_train_19-material.npz
+      hash: md5
+      md5: 5e38cb7ad7bd32ab6e8d570c95953779
+      size: 42273
+    - path: data/s27_train_2-material.npz
+      hash: md5
+      md5: c5275add6bebadf567d4f6bb69881010
+      size: 49852
+    - path: data/s27_train_20-material.npz
+      hash: md5
+      md5: ba32f635cee2db5caa04b3abac0a9582
+      size: 39059
+    - path: data/s27_train_21-material.npz
+      hash: md5
+      md5: 635941c867a53fca52563ee37a1fe229
+      size: 50075
+    - path: data/s27_train_22-material.npz
+      hash: md5
+      md5: a5c716d9b01861b6cd28d8886cd9dbe0
+      size: 49817
+    - path: data/s27_train_23-material.npz
+      hash: md5
+      md5: d55a06606b3043d540426d873ef84930
+      size: 39433
+    - path: data/s27_train_24-material.npz
+      hash: md5
+      md5: 12baa599a02a6f4042d992b800192742
+      size: 39693
+    - path: data/s27_train_25-material.npz
+      hash: md5
+      md5: 0e2ded60377f6d29789552f0b5723557
+      size: 50174
+    - path: data/s27_train_26-material.npz
+      hash: md5
+      md5: 1662162ebee4ef0fdc63740459d2b95b
+      size: 49968
+    - path: data/s27_train_27-material.npz
+      hash: md5
+      md5: 4a799e6a23574fedb97edeadad03748f
+      size: 38760
+    - path: data/s27_train_28-material.npz
+      hash: md5
+      md5: 573d18a222b094f4aa5fd76453167236
+      size: 42563
+    - path: data/s27_train_29-material.npz
+      hash: md5
+      md5: d44ba630989b5fe3b307c4609c118442
+      size: 49642
+    - path: data/s27_train_3-material.npz
+      hash: md5
+      md5: de427539d4893705b39405985128a387
+      size: 41292
+    - path: data/s27_train_30-material.npz
+      hash: md5
+      md5: 39a14a72a3149ea7bb142a1f494b3382
+      size: 49617
+    - path: data/s27_train_31-material.npz
+      hash: md5
+      md5: 3a1a72151d130c205cb4951dbf2a3c56
+      size: 40162
+    - path: data/s27_train_4-material.npz
+      hash: md5
+      md5: f604e3603f37de4d2538fecfe5c361bc
+      size: 41251
+    - path: data/s27_train_5-material.npz
+      hash: md5
+      md5: 3ac45d48224bb7039e8e87f98c51f647
+      size: 43575
+    - path: data/s27_train_6-material.npz
+      hash: md5
+      md5: ff12f0e45c8b1076d51b5005a58cb67c
+      size: 49704
+    - path: data/s27_train_7-material.npz
+      hash: md5
+      md5: dd9f683cd2237cbec342012decac193e
+      size: 39325
+    - path: data/s27_train_8-material.npz
+      hash: md5
+      md5: ee9ee036f6a7f53c996535cd70da0337
+      size: 40114
+    - path: data/s27_train_9-material.npz
+      hash: md5
+      md5: 634a9759edaa5095d1ff5098a325c930
+      size: 49893
+    - path: data/s27_validation_0-material.npz
+      hash: md5
+      md5: 72e4f893ff026d1d17beeb9b8b73f7c9
+      size: 40609
+    - path: data/s27_validation_1-material.npz
+      hash: md5
+      md5: 02327d8641dd4982c103cfb9ee99f6c1
+      size: 49983
+    - path: data/s27_validation_2-material.npz
+      hash: md5
+      md5: 8c2691700b17d11f253d00b2283553f8
+      size: 49751
+    - path: data/s27_validation_3-material.npz
+      hash: md5
+      md5: cb6a5eea18b084d9d820b77927caa33e
+      size: 41847
+    - path: data/s27_validation_4-material.npz
+      hash: md5
+      md5: 65c1c4df785b74c5786c128495c12f71
+      size: 42574
+    - path: data/s27_validation_5-material.npz
+      hash: md5
+      md5: cf0ba4699ca4abf5fb9537157f65840d
+      size: 50509
+    - path: data/v31_00-material.npz
+      hash: md5
+      md5: fec8844b9d426c919860fd2307bf4292
+      size: 33318
+    - path: data/v31_01-material.npz
+      hash: md5
+      md5: 70b8ded6cd6bd0066300a7ef2a1bbfe7
+      size: 40424
+    - path: data/v31_02-material.npz
+      hash: md5
+      md5: 63e1292c712f629644b49a5836ce71ab
+      size: 32548
+    - path: data/v31_03-material.npz
+      hash: md5
+      md5: 51bdc4435e562bc967b679191de0edca
+      size: 39452
+    - path: data/v31_05-material.npz
+      hash: md5
+      md5: 7771a8a31a1825e4fd181ef046e17525
+      size: 49610
+    - path: data/v31_06-material.npz
+      hash: md5
+      md5: a7f868e43480d8d18389b9ee2f3632b2
+      size: 38726
+    - path: data/v31_07-material.npz
+      hash: md5
+      md5: 2b32d22ece2c3cfdeccf8c3622828e07
+      size: 48418
+    - path: data/v31_08-material.npz
+      hash: md5
+      md5: 3a6e8bf8841f2941493ff6b37ca9d854
+      size: 46212
+    - path: data/v31_09-material.npz
+      hash: md5
+      md5: f4c710ef74c088b1f6831a3c9969f7ce
+      size: 55730
+    - path: data/v31_10-material.npz
+      hash: md5
+      md5: 652a626a8f9e3b9b5b8a889c844fd585
+      size: 45084
+    - path: results/learning-data-audit.json
+      hash: md5
+      md5: 59477e22ffe0aaf0df66bb097a9a85d0
+      size: 2327
+  package:
+    cmd: ../../.venv/bin/python package_learning.py
+    deps:
+    - path: data/fields/v31_00-time.npy
+      hash: md5
+      md5: 1c21d53b45ad0a948febbc3de69b1e73
+      size: 856
+    - path: data/fields/v31_00.npy
+      hash: md5
+      md5: 40193ea9dffa616f917f98d2c246efb4
+      size: 107348096
+    - path: data/fields/v31_01-time.npy
+      hash: md5
+      md5: 9642e57583ec0dc91d16219c7614a8da
+      size: 856
+    - path: data/fields/v31_01.npy
+      hash: md5
+      md5: f5a81cd520076ade4dd33cc5a3755c35
+      size: 107348096
+    - path: data/fields/v31_02-time.npy
+      hash: md5
+      md5: 45d471b0f4d5a4c9348b23daac1cad05
+      size: 856
+    - path: data/fields/v31_02.npy
+      hash: md5
+      md5: 5f1a281e6488ecf00d26b326f1fc2582
+      size: 107348096
+    - path: data/fields/v31_03-time.npy
+      hash: md5
+      md5: f16d8d892334413e15e5fa2641a6be54
+      size: 856
+    - path: data/fields/v31_03.npy
+      hash: md5
+      md5: be1fa37e905abbb5beca205866517671
+      size: 107348096
+    - path: data/fields/v31_05-time.npy
+      hash: md5
+      md5: 2512d7b63f3a43633157a0bea6d32016
+      size: 856
+    - path: data/fields/v31_05.npy
+      hash: md5
+      md5: 637c49355265421b7fa9337ef6fb5500
+      size: 107348096
+    - path: data/fields/v31_06-time.npy
+      hash: md5
+      md5: dd9ddf774332dda024241e8b0b84b0dd
+      size: 856
+    - path: data/fields/v31_06.npy
+      hash: md5
+      md5: 4da8459d2d71d91b448036f84e9297be
+      size: 107348096
+    - path: data/fields/v31_07-time.npy
+      hash: md5
+      md5: 5404331ac046113a824acd0f884e276f
+      size: 856
+    - path: data/fields/v31_07.npy
+      hash: md5
+      md5: b4d0f0b8242d383a5878637c9e05d8cb
+      size: 107348096
+    - path: data/fields/v31_08-time.npy
+      hash: md5
+      md5: c7189d279f0cb25afbb6604691b6cd72
+      size: 856
+    - path: data/fields/v31_08.npy
+      hash: md5
+      md5: e84b869bffac25fea5e2846781a3bb4e
+      size: 107348096
+    - path: data/fields/v31_09-time.npy
+      hash: md5
+      md5: a88c5a6d15c32e14c1866610263eb353
+      size: 856
+    - path: data/fields/v31_09.npy
+      hash: md5
+      md5: 589479fcc53887efe8a613ee1fb671c0
+      size: 107348096
+    - path: data/fields/v31_10-time.npy
+      hash: md5
+      md5: 01ee6da5036517bba17759dc23ce12f4
+      size: 856
+    - path: data/fields/v31_10.npy
+      hash: md5
+      md5: e9311a439cbaee724d3667d35d0e4302
+      size: 107348096
+    - path: data/geometries.npz
+      hash: md5
+      md5: f749c2c3756f01d94f39b21f3d0c130b
+      size: 107080
+    - path: data/models/sequence_stage1.pt
+      hash: md5
+      md5: 01d7b1573b88fbb0325a8d198e6eeb1f
+      size: 2718682
+    - path: data/s27_train_0-material.npz
+      hash: md5
+      md5: aafef02c90e94ab93a33f9c8a9197a3d
+      size: 38556
+    - path: data/s27_train_1-material.npz
+      hash: md5
+      md5: 10d0e57ac0bf4d0d5963cf5772d5c84f
+      size: 50155
+    - path: data/s27_train_10-material.npz
+      hash: md5
+      md5: 7b8dc2002d70c648ab681fa24c3c5ad5
+      size: 42587
+    - path: data/s27_train_11-material.npz
+      hash: md5
+      md5: 7d4d6327fd265b6b7cb22df0314d18e3
+      size: 42897
+    - path: data/s27_train_12-material.npz
+      hash: md5
+      md5: 95bf61206709aae39acb011e824dd753
+      size: 41687
+    - path: data/s27_train_13-material.npz
+      hash: md5
+      md5: 84fd225ca4aeaab00aec9cf14628c65e
+      size: 50013
+    - path: data/s27_train_14-material.npz
+      hash: md5
+      md5: 93b9d2cc02f70ec8248074a3d4b7b19b
+      size: 50401
+    - path: data/s27_train_15-material.npz
+      hash: md5
+      md5: cf77ffb595ba02fe9e66740357d4024c
+      size: 38178
+    - path: data/s27_train_16-material.npz
+      hash: md5
+      md5: f2cabf51687f4e7c5b98a83379dec3ca
+      size: 41325
+    - path: data/s27_train_17-material.npz
+      hash: md5
+      md5: 1cb48a86d314405515b1150acbb23ce8
+      size: 49570
+    - path: data/s27_train_18-material.npz
+      hash: md5
+      md5: 59aed6dabef92edeeb3a8264fe6814b1
+      size: 48761
+    - path: data/s27_train_19-material.npz
+      hash: md5
+      md5: 5e38cb7ad7bd32ab6e8d570c95953779
+      size: 42273
+    - path: data/s27_train_2-material.npz
+      hash: md5
+      md5: c5275add6bebadf567d4f6bb69881010
+      size: 49852
+    - path: data/s27_train_20-material.npz
+      hash: md5
+      md5: ba32f635cee2db5caa04b3abac0a9582
+      size: 39059
+    - path: data/s27_train_21-material.npz
+      hash: md5
+      md5: 635941c867a53fca52563ee37a1fe229
+      size: 50075
+    - path: data/s27_train_22-material.npz
+      hash: md5
+      md5: a5c716d9b01861b6cd28d8886cd9dbe0
+      size: 49817
+    - path: data/s27_train_23-material.npz
+      hash: md5
+      md5: d55a06606b3043d540426d873ef84930
+      size: 39433
+    - path: data/s27_train_24-material.npz
+      hash: md5
+      md5: 12baa599a02a6f4042d992b800192742
+      size: 39693
+    - path: data/s27_train_25-material.npz
+      hash: md5
+      md5: 0e2ded60377f6d29789552f0b5723557
+      size: 50174
+    - path: data/s27_train_26-material.npz
+      hash: md5
+      md5: 1662162ebee4ef0fdc63740459d2b95b
+      size: 49968
+    - path: data/s27_train_27-material.npz
+      hash: md5
+      md5: 4a799e6a23574fedb97edeadad03748f
+      size: 38760
+    - path: data/s27_train_28-material.npz
+      hash: md5
+      md5: 573d18a222b094f4aa5fd76453167236
+      size: 42563
+    - path: data/s27_train_29-material.npz
+      hash: md5
+      md5: d44ba630989b5fe3b307c4609c118442
+      size: 49642
+    - path: data/s27_train_3-material.npz
+      hash: md5
+      md5: de427539d4893705b39405985128a387
+      size: 41292
+    - path: data/s27_train_30-material.npz
+      hash: md5
+      md5: 39a14a72a3149ea7bb142a1f494b3382
+      size: 49617
+    - path: data/s27_train_31-material.npz
+      hash: md5
+      md5: 3a1a72151d130c205cb4951dbf2a3c56
+      size: 40162
+    - path: data/s27_train_4-material.npz
+      hash: md5
+      md5: f604e3603f37de4d2538fecfe5c361bc
+      size: 41251
+    - path: data/s27_train_5-material.npz
+      hash: md5
+      md5: 3ac45d48224bb7039e8e87f98c51f647
+      size: 43575
+    - path: data/s27_train_6-material.npz
+      hash: md5
+      md5: ff12f0e45c8b1076d51b5005a58cb67c
+      size: 49704
+    - path: data/s27_train_7-material.npz
+      hash: md5
+      md5: dd9f683cd2237cbec342012decac193e
+      size: 39325
+    - path: data/s27_train_8-material.npz
+      hash: md5
+      md5: ee9ee036f6a7f53c996535cd70da0337
+      size: 40114
+    - path: data/s27_train_9-material.npz
+      hash: md5
+      md5: 634a9759edaa5095d1ff5098a325c930
+      size: 49893
+    - path: data/s27_validation_0-material.npz
+      hash: md5
+      md5: 72e4f893ff026d1d17beeb9b8b73f7c9
+      size: 40609
+    - path: data/s27_validation_1-material.npz
+      hash: md5
+      md5: 02327d8641dd4982c103cfb9ee99f6c1
+      size: 49983
+    - path: data/s27_validation_2-material.npz
+      hash: md5
+      md5: 8c2691700b17d11f253d00b2283553f8
+      size: 49751
+    - path: data/s27_validation_3-material.npz
+      hash: md5
+      md5: cb6a5eea18b084d9d820b77927caa33e
+      size: 41847
+    - path: data/s27_validation_4-material.npz
+      hash: md5
+      md5: 65c1c4df785b74c5786c128495c12f71
+      size: 42574
+    - path: data/s27_validation_5-material.npz
+      hash: md5
+      md5: cf0ba4699ca4abf5fb9537157f65840d
+      size: 50509
+    - path: data/v31_00-material.npz
+      hash: md5
+      md5: fec8844b9d426c919860fd2307bf4292
+      size: 33318
+    - path: data/v31_01-material.npz
+      hash: md5
+      md5: 70b8ded6cd6bd0066300a7ef2a1bbfe7
+      size: 40424
+    - path: data/v31_02-material.npz
+      hash: md5
+      md5: 63e1292c712f629644b49a5836ce71ab
+      size: 32548
+    - path: data/v31_03-material.npz
+      hash: md5
+      md5: 51bdc4435e562bc967b679191de0edca
+      size: 39452
+    - path: data/v31_05-material.npz
+      hash: md5
+      md5: 7771a8a31a1825e4fd181ef046e17525
+      size: 49610
+    - path: data/v31_06-material.npz
+      hash: md5
+      md5: a7f868e43480d8d18389b9ee2f3632b2
+      size: 38726
+    - path: data/v31_07-material.npz
+      hash: md5
+      md5: 2b32d22ece2c3cfdeccf8c3622828e07
+      size: 48418
+    - path: data/v31_08-material.npz
+      hash: md5
+      md5: 3a6e8bf8841f2941493ff6b37ca9d854
+      size: 46212
+    - path: data/v31_09-material.npz
+      hash: md5
+      md5: f4c710ef74c088b1f6831a3c9969f7ce
+      size: 55730
+    - path: data/v31_10-material.npz
+      hash: md5
+      md5: 652a626a8f9e3b9b5b8a889c844fd585
+      size: 45084
+    - path: development.json
+      hash: md5
+      md5: b9b90883d2c5f818e2b3b9b76e414fff
+      size: 29713
+    - path: fresh-tests.json
+      hash: md5
+      md5: e7ff851b842a26d8d06ca954bda907ad
+      size: 1277
+    - path: geometry_model.py
+      hash: md5
+      md5: 83137403e88af30ebff55eb5d1cb61aa
+      size: 1241
+    - path: learning_worker.py
+      hash: md5
+      md5: 6e819d2cee2ff78bb45b38e867b81cf2
+      size: 12614
+    - path: original_cnn.py
+      hash: md5
+      md5: 089a7510f25209a7e15fecf3485bd75b
+      size: 6317
+    - path: package_learning.py
+      hash: md5
+      md5: ac63919ecbc3dfac778cb898456e3c09
+      size: 1104
+    - path: previous_loss.py
+      hash: md5
+      md5: f42c3d197f153a928b2e9ded7352cd62
+      size: 3701
+    - path: sequence.py
+      hash: md5
+      md5: b2bea24f79c6ad77f2b2ee4625a844e1
+      size: 3719
+    - path: snapshot_evaluation.py
+      hash: md5
+      md5: 2cb6343d25e3d1cc7f1406cba756f344
+      size: 4601
+    outs:
+    - path: data/learning-overlay.tar
+      hash: md5
+      md5: 72cf637994b64eed66da92e1751ca0ce
+      size: 1078671360
+    - path: results/learning-input-freeze.json
+      hash: md5
+      md5: d07e04c51ad9d62d29938b1d5768f7b8
+      size: 7832
+  frozen_geometry:
+    cmd: ../../.venv/bin/python build.py
+    deps:
+    - path: build.py
+      hash: md5
+      md5: a6a0110e88d8169fc898c279d653b894
+      size: 2108
+    - path: data/original-template.json
+      hash: md5
+      md5: 2a200a1fe569aeb963008b90563a7d40
+      size: 545534
+    - path: legacy_build.py
+      hash: md5
+      md5: 21c0d49066a3ffb7b1e2bf724db1ad0a
+      size: 6686
+    - path: legacy_single.py
+      hash: md5
+      md5: 8f4b75ab626bfd999fb5490a3cdc2755
+      size: 2815
+    outs:
+    - path: data/expected-particles.json
+      hash: md5
+      md5: a10edf430de07bb892e318da906fca38
+      size: 2240652
+    - path: data/tree-templates.json
+      hash: md5
+      md5: 8cf9429b670639a9144c114bc29687d9
+      size: 3552124
+  collect_learning:
+    cmd: ../../.venv/bin/python collect_learning.py
+    deps:
+    - path: collect_learning.py
+      hash: md5
+      md5: 1c39327bf46f3bdebf7fbe214be58d22
+      size: 1392
+    - path: results/gpu-execution.json
+      hash: md5
+      md5: e2f7a6108048806c359213677a72bac8
+      size: 335
+    outs:
+    - path: data/gpu/cloud
+      hash: md5
+      md5: 85b0447899ebe1bb63b7b25c609463db.dir
+      size: 864760171
+      nfiles: 24
+  adopt_learning:
+    cmd: ../../.venv/bin/python ingest_learning.py
+    deps:
+    - path: data/gpu/cloud
+      hash: md5
+      md5: 85b0447899ebe1bb63b7b25c609463db.dir
+      size: 864760171
+      nfiles: 24
+    - path: ingest_learning.py
+      hash: md5
+      md5: 44cd5f1c031b011b570a06ba859cdc77
+      size: 1316
+    - path: results/learning-input-freeze.json
+      hash: md5
+      md5: d07e04c51ad9d62d29938b1d5768f7b8
+      size: 7832
+    outs:
+    - path: data/models/geometry_snapshot.pt
+      hash: md5
+      md5: a80a9aef162ca21c3f8a89c42cd33c63
+      size: 668594
+    - path: data/models/hybrid.pt
+      hash: md5
+      md5: 07422c8caaf2ecc8a4b921ca750a0705
+      size: 2718682
+    - path: data/predictions
+      hash: md5
+      md5: b8cd0a1529bd7bffbb9aa9b89d99b7b8.dir
+      size: 776407158
+      nfiles: 10
+    - path: results/learning.json
+      hash: md5
+      md5: ad3f23b41fbdde3ceffdbbacdc221599
+      size: 1408190
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 7a263ba78977f6dd0184691115fac45d
+      size: 2103
+  collect_tests:
+    cmd: ../../.venv/bin/python finish_tests.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 60c32494b957a5098caa96a4a1cd7c8e
+      size: 7733
+    - path: finish_tests.py
+      hash: md5
+      md5: 55a4dbe510b4e48c5bff7ec6bc85750b
+      size: 514
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 7a263ba78977f6dd0184691115fac45d
+      size: 2103
+    outs:
+    - path: data/cloud/v31_04
+      hash: md5
+      md5: 928dc76ea4a1775d011cf537d1355108.dir
+      size: 180837716
+      nfiles: 37
+    - path: data/cloud/v31_11
+      hash: md5
+      md5: 215a9d778dc03c85da031fa3d140e8ea.dir
+      size: 180843529
+      nfiles: 37
+  evaluate_tests:
+    cmd: ../../.venv/bin/python evaluate_tests.py
+    deps:
+    - path: alignment.py
+      hash: md5
+      md5: 841c66423270083e88bd334e9e31df0c
+      size: 848
+    - path: data/cloud/v31_04
+      hash: md5
+      md5: 928dc76ea4a1775d011cf537d1355108.dir
+      size: 180837716
+      nfiles: 37
+    - path: data/cloud/v31_11
+      hash: md5
+      md5: 215a9d778dc03c85da031fa3d140e8ea.dir
+      size: 180843529
+      nfiles: 37
+    - path: data/predictions
+      hash: md5
+      md5: b8cd0a1529bd7bffbb9aa9b89d99b7b8.dir
+      size: 776407158
+      nfiles: 10
+    - path: evaluate_tests.py
+      hash: md5
+      md5: f7d2e6de682a41aea02cfaf6324a9a23
+      size: 2365
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 7a263ba78977f6dd0184691115fac45d
+      size: 2103
+    outs:
+    - path: data/fields/v31_04-time.npy
+      hash: md5
+      md5: 509a699fe1b0769bad2515627c910634
+      size: 856
+    - path: data/fields/v31_04.npy
+      hash: md5
+      md5: db622287065d0a22704935cdff7cd97b
+      size: 107348096
+    - path: data/fields/v31_11-time.npy
+      hash: md5
+      md5: 31f961ca56955d108ad3b30458125d80
+      size: 856
+    - path: data/fields/v31_11.npy
+      hash: md5
+      md5: 0813ccfde6ecf6108b49b1e4e1df0e01
+      size: 107348096
+    - path: results/fresh-test-evaluation.json
+      hash: md5
+      md5: 9120f7fcaec66d677b6f8cdd9cd3ff90
+      size: 80663
+  summarize:
+    cmd: ../../.venv/bin/python summarize.py
+    deps:
+    - path: budget.json
+      hash: md5
+      md5: b904999e46c96cb6dd5735ce95410c42
+      size: 3154
+    - path: results/fresh-test-evaluation.json
+      hash: md5
+      md5: 9120f7fcaec66d677b6f8cdd9cd3ff90
+      size: 80663
+    - path: results/learning.json
+      hash: md5
+      md5: ad3f23b41fbdde3ceffdbbacdc221599
+      size: 1408190
+    - path: summarize.py
+      hash: md5
+      md5: 552785e10d10b5a560af03397587b2af
+      size: 1589
+    outs:
+    - path: results/summary.json
+      hash: md5
+      md5: d7d4b1e91ee3ffd91661658d761afefe
+      size: 4506
+  visualize:
+    cmd: ../../.venv/bin/python visualize_results.py
+    deps:
+    - path: alignment.py
+      hash: md5
+      md5: 841c66423270083e88bd334e9e31df0c
+      size: 848
+    - path: data/fields/v31_04.npy
+      hash: md5
+      md5: db622287065d0a22704935cdff7cd97b
+      size: 107348096
+    - path: data/fields/v31_11.npy
+      hash: md5
+      md5: 0813ccfde6ecf6108b49b1e4e1df0e01
+      size: 107348096
+    - path: data/predictions
+      hash: md5
+      md5: b8cd0a1529bd7bffbb9aa9b89d99b7b8.dir
+      size: 776407158
+      nfiles: 10
+    - path: results/fresh-test-evaluation.json
+      hash: md5
+      md5: 9120f7fcaec66d677b6f8cdd9cd3ff90
+      size: 80663
+    - path: visualize_results.py
+      hash: md5
+      md5: 827a134954a5a6b2125956a3c1518635
+      size: 3303
+    outs:
+    - path: results/fresh-histories.png
+      hash: md5
+      md5: db0047fad3657a5db864ce80269e6319
+      size: 235466
+    - path: results/v31_04-comparison.gif
+      hash: md5
+      md5: 5ebe43a58a674cf60a52b374f092abd0
+      size: 1513559
+    - path: results/v31_11-comparison.gif
+      hash: md5
+      md5: 1d1740f22a9d5a0fafeda6d5ab1bd880
+      size: 1457873

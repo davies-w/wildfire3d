@@ -1,0 +1,324 @@
+stages:
+  frozen_geometry:
+    cmd: ../../.venv/bin/python build.py
+    deps:
+    - build.py
+    - legacy_build.py
+    - legacy_single.py
+    - data/original-template.json
+    outs:
+    - data/tree-templates.json
+    - data/expected-particles.json
+  collect_development:
+    cmd: ../../.venv/bin/python finish_development.py
+    deps:
+    - finish_development.py
+    - cloud.py
+    - groups.json
+    - results/input-freeze.json
+    outs:
+    - data/cloud/v31_00
+    - data/cloud/v31_01
+    - data/cloud/v31_02
+    - data/cloud/v31_03
+    - data/cloud/v31_05
+    - data/cloud/v31_06
+    - data/cloud/v31_07
+    - data/cloud/v31_08
+    - data/cloud/v31_09
+    - data/cloud/v31_10
+  learning_data:
+    cmd: ../../.venv/bin/python prepare_learning.py
+    deps:
+    - prepare_learning.py
+    - fields.py
+    - material_reader.py
+    - cases.json
+    - data/expected-particles.json
+    - data/cloud/v31_00
+    - data/cloud/v31_01
+    - data/cloud/v31_02
+    - data/cloud/v31_03
+    - data/cloud/v31_05
+    - data/cloud/v31_06
+    - data/cloud/v31_07
+    - data/cloud/v31_08
+    - data/cloud/v31_09
+    - data/cloud/v31_10
+    - ../30_tree_sequence/data/geometry.npy
+    - ../30_tree_sequence/data/cloud/sequence.pt
+    - ../29_single_tree_heads/cases.json
+    - ../27_single_tree_cnn/data/cloud/s27_train_0/s27_train_0_1.prt5
+    - ../30_tree_sequence/data/s27_train_0-material.npz
+    - ../30_tree_sequence/data/s27_train_1-material.npz
+    - ../30_tree_sequence/data/s27_train_2-material.npz
+    - ../30_tree_sequence/data/s27_train_3-material.npz
+    - ../30_tree_sequence/data/s27_train_4-material.npz
+    - ../30_tree_sequence/data/s27_train_5-material.npz
+    - ../30_tree_sequence/data/s27_train_6-material.npz
+    - ../30_tree_sequence/data/s27_train_7-material.npz
+    - ../30_tree_sequence/data/s27_train_8-material.npz
+    - ../30_tree_sequence/data/s27_train_9-material.npz
+    - ../30_tree_sequence/data/s27_train_10-material.npz
+    - ../30_tree_sequence/data/s27_train_11-material.npz
+    - ../30_tree_sequence/data/s27_train_12-material.npz
+    - ../30_tree_sequence/data/s27_train_13-material.npz
+    - ../30_tree_sequence/data/s27_train_14-material.npz
+    - ../30_tree_sequence/data/s27_train_15-material.npz
+    - ../30_tree_sequence/data/s27_train_16-material.npz
+    - ../30_tree_sequence/data/s27_train_17-material.npz
+    - ../30_tree_sequence/data/s27_train_18-material.npz
+    - ../30_tree_sequence/data/s27_train_19-material.npz
+    - ../30_tree_sequence/data/s27_train_20-material.npz
+    - ../30_tree_sequence/data/s27_train_21-material.npz
+    - ../30_tree_sequence/data/s27_train_22-material.npz
+    - ../30_tree_sequence/data/s27_train_23-material.npz
+    - ../30_tree_sequence/data/s27_train_24-material.npz
+    - ../30_tree_sequence/data/s27_train_25-material.npz
+    - ../30_tree_sequence/data/s27_train_26-material.npz
+    - ../30_tree_sequence/data/s27_train_27-material.npz
+    - ../30_tree_sequence/data/s27_train_28-material.npz
+    - ../30_tree_sequence/data/s27_train_29-material.npz
+    - ../30_tree_sequence/data/s27_train_30-material.npz
+    - ../30_tree_sequence/data/s27_train_31-material.npz
+    - ../30_tree_sequence/data/s27_validation_0-material.npz
+    - ../30_tree_sequence/data/s27_validation_1-material.npz
+    - ../30_tree_sequence/data/s27_validation_2-material.npz
+    - ../30_tree_sequence/data/s27_validation_3-material.npz
+    - ../30_tree_sequence/data/s27_validation_4-material.npz
+    - ../30_tree_sequence/data/s27_validation_5-material.npz
+    outs:
+    - data/geometries.npz
+    - data/models/sequence_stage1.pt
+    - data/v31_00-material.npz
+    - data/v31_01-material.npz
+    - data/v31_02-material.npz
+    - data/v31_03-material.npz
+    - data/v31_05-material.npz
+    - data/v31_06-material.npz
+    - data/v31_07-material.npz
+    - data/v31_08-material.npz
+    - data/v31_09-material.npz
+    - data/v31_10-material.npz
+    - data/s27_train_0-material.npz
+    - data/s27_train_1-material.npz
+    - data/s27_train_2-material.npz
+    - data/s27_train_3-material.npz
+    - data/s27_train_4-material.npz
+    - data/s27_train_5-material.npz
+    - data/s27_train_6-material.npz
+    - data/s27_train_7-material.npz
+    - data/s27_train_8-material.npz
+    - data/s27_train_9-material.npz
+    - data/s27_train_10-material.npz
+    - data/s27_train_11-material.npz
+    - data/s27_train_12-material.npz
+    - data/s27_train_13-material.npz
+    - data/s27_train_14-material.npz
+    - data/s27_train_15-material.npz
+    - data/s27_train_16-material.npz
+    - data/s27_train_17-material.npz
+    - data/s27_train_18-material.npz
+    - data/s27_train_19-material.npz
+    - data/s27_train_20-material.npz
+    - data/s27_train_21-material.npz
+    - data/s27_train_22-material.npz
+    - data/s27_train_23-material.npz
+    - data/s27_train_24-material.npz
+    - data/s27_train_25-material.npz
+    - data/s27_train_26-material.npz
+    - data/s27_train_27-material.npz
+    - data/s27_train_28-material.npz
+    - data/s27_train_29-material.npz
+    - data/s27_train_30-material.npz
+    - data/s27_train_31-material.npz
+    - data/s27_validation_0-material.npz
+    - data/s27_validation_1-material.npz
+    - data/s27_validation_2-material.npz
+    - data/s27_validation_3-material.npz
+    - data/s27_validation_4-material.npz
+    - data/s27_validation_5-material.npz
+    - data/fields/v31_00.npy
+    - data/fields/v31_00-time.npy
+    - data/fields/v31_01.npy
+    - data/fields/v31_01-time.npy
+    - data/fields/v31_02.npy
+    - data/fields/v31_02-time.npy
+    - data/fields/v31_03.npy
+    - data/fields/v31_03-time.npy
+    - data/fields/v31_05.npy
+    - data/fields/v31_05-time.npy
+    - data/fields/v31_06.npy
+    - data/fields/v31_06-time.npy
+    - data/fields/v31_07.npy
+    - data/fields/v31_07-time.npy
+    - data/fields/v31_08.npy
+    - data/fields/v31_08-time.npy
+    - data/fields/v31_09.npy
+    - data/fields/v31_09-time.npy
+    - data/fields/v31_10.npy
+    - data/fields/v31_10-time.npy
+    metrics:
+    - results/learning-data-audit.json:
+        cache: false
+  package:
+    cmd: ../../.venv/bin/python package_learning.py
+    deps:
+    - package_learning.py
+    - learning_worker.py
+    - geometry_model.py
+    - sequence.py
+    - development.json
+    - fresh-tests.json
+    - data/geometries.npz
+    - original_cnn.py
+    - previous_loss.py
+    - snapshot_evaluation.py
+    - data/models/sequence_stage1.pt
+    - data/v31_00-material.npz
+    - data/v31_01-material.npz
+    - data/v31_02-material.npz
+    - data/v31_03-material.npz
+    - data/v31_05-material.npz
+    - data/v31_06-material.npz
+    - data/v31_07-material.npz
+    - data/v31_08-material.npz
+    - data/v31_09-material.npz
+    - data/v31_10-material.npz
+    - data/s27_train_0-material.npz
+    - data/s27_train_1-material.npz
+    - data/s27_train_2-material.npz
+    - data/s27_train_3-material.npz
+    - data/s27_train_4-material.npz
+    - data/s27_train_5-material.npz
+    - data/s27_train_6-material.npz
+    - data/s27_train_7-material.npz
+    - data/s27_train_8-material.npz
+    - data/s27_train_9-material.npz
+    - data/s27_train_10-material.npz
+    - data/s27_train_11-material.npz
+    - data/s27_train_12-material.npz
+    - data/s27_train_13-material.npz
+    - data/s27_train_14-material.npz
+    - data/s27_train_15-material.npz
+    - data/s27_train_16-material.npz
+    - data/s27_train_17-material.npz
+    - data/s27_train_18-material.npz
+    - data/s27_train_19-material.npz
+    - data/s27_train_20-material.npz
+    - data/s27_train_21-material.npz
+    - data/s27_train_22-material.npz
+    - data/s27_train_23-material.npz
+    - data/s27_train_24-material.npz
+    - data/s27_train_25-material.npz
+    - data/s27_train_26-material.npz
+    - data/s27_train_27-material.npz
+    - data/s27_train_28-material.npz
+    - data/s27_train_29-material.npz
+    - data/s27_train_30-material.npz
+    - data/s27_train_31-material.npz
+    - data/s27_validation_0-material.npz
+    - data/s27_validation_1-material.npz
+    - data/s27_validation_2-material.npz
+    - data/s27_validation_3-material.npz
+    - data/s27_validation_4-material.npz
+    - data/s27_validation_5-material.npz
+    - data/fields/v31_00.npy
+    - data/fields/v31_00-time.npy
+    - data/fields/v31_01.npy
+    - data/fields/v31_01-time.npy
+    - data/fields/v31_02.npy
+    - data/fields/v31_02-time.npy
+    - data/fields/v31_03.npy
+    - data/fields/v31_03-time.npy
+    - data/fields/v31_05.npy
+    - data/fields/v31_05-time.npy
+    - data/fields/v31_06.npy
+    - data/fields/v31_06-time.npy
+    - data/fields/v31_07.npy
+    - data/fields/v31_07-time.npy
+    - data/fields/v31_08.npy
+    - data/fields/v31_08-time.npy
+    - data/fields/v31_09.npy
+    - data/fields/v31_09-time.npy
+    - data/fields/v31_10.npy
+    - data/fields/v31_10-time.npy
+    outs:
+    - data/learning-overlay.tar
+    metrics:
+    - results/learning-input-freeze.json:
+        cache: false
+  collect_learning:
+    cmd: ../../.venv/bin/python collect_learning.py
+    deps:
+    - collect_learning.py
+    - results/gpu-execution.json
+    outs:
+    - data/gpu/cloud
+  adopt_learning:
+    cmd: ../../.venv/bin/python ingest_learning.py
+    deps:
+    - ingest_learning.py
+    - data/gpu/cloud
+    - results/learning-input-freeze.json
+    outs:
+    - data/models/geometry_snapshot.pt
+    - data/models/hybrid.pt
+    - data/predictions
+    metrics:
+    - results/learning.json:
+        cache: false
+    - results/prediction-freeze.json:
+        cache: false
+  collect_tests:
+    cmd: ../../.venv/bin/python finish_tests.py
+    deps:
+    - finish_tests.py
+    - cloud.py
+    - results/prediction-freeze.json
+    outs:
+    - data/cloud/v31_04
+    - data/cloud/v31_11
+  evaluate_tests:
+    cmd: ../../.venv/bin/python evaluate_tests.py
+    deps:
+    - evaluate_tests.py
+    - results/prediction-freeze.json
+    - data/predictions
+    - data/cloud/v31_04
+    - data/cloud/v31_11
+    - alignment.py
+    outs:
+    - data/fields/v31_04.npy
+    - data/fields/v31_04-time.npy
+    - data/fields/v31_11.npy
+    - data/fields/v31_11-time.npy
+    metrics:
+    - results/fresh-test-evaluation.json:
+        cache: false
+  summarize:
+    cmd: ../../.venv/bin/python summarize.py
+    deps:
+    - summarize.py
+    - results/learning.json
+    - results/fresh-test-evaluation.json
+    - budget.json
+    metrics:
+    - results/summary.json:
+        cache: false
+  visualize:
+    cmd: ../../.venv/bin/python visualize_results.py
+    deps:
+    - visualize_results.py
+    - results/fresh-test-evaluation.json
+    - data/predictions
+    - data/fields/v31_04.npy
+    - data/fields/v31_11.npy
+    - alignment.py
+    outs:
+    - results/fresh-histories.png:
+        cache: false
+    - results/v31_04-comparison.gif:
+        cache: false
+    - results/v31_11-comparison.gif:
+        cache: false

@@ -1,0 +1,35 @@
+{
+  "argument": "null",
+  "createTime": "2026-10-21T01:05:53.882637355Z",
+  "duration": "615.181382723s",
+  "endTime": "2026-10-21T01:16:09.064020078Z",
+  "error": {
+    "context": "HTTP server responded with error code 404\nin step \"delete_vm\", routine \"main\", line: 178",
+    "payload": "{\"body\":{\"error\":{\"code\":404,\"errors\":[{\"domain\":\"global\",\"message\":\"The resource 'projects/tmrw-wildfire-20261015/zones/us-central1-a/instances/fds-gpu30-sequence-b7e5da24-20b5-418b0-group0-0-t24z' was not found\",\"reason\":\"notFound\"}],\"message\":\"The resource 'projects/tmrw-wildfire-20261015/zones/us-central1-a/instances/fds-gpu30-sequence-b7e5da24-20b5-418b0-group0-0-t24z' was not found\"}},\"code\":404,\"headers\":{\"Alt-Svc\":\"h3=\\\":443\\\"; ma=2592000,h3-29=\\\":443\\\"; ma=2592000\",\"Content-Length\":\"461\",\"Content-Type\":\"application/json; charset=UTF-8\",\"Date\":\"Wed, 21 Oct 2026 01:16:09 GMT\",\"Server\":\"ESF\",\"Vary\":\"Origin, X-Origin, Referer\",\"X-Content-Type-Options\":\"nosniff\",\"X-Frame-Options\":\"SAMEORIGIN\",\"X-Xss-Protection\":\"0\"},\"message\":\"HTTP server responded with error code 404\",\"tags\":[\"HttpError\"]}",
+    "stackTrace": {
+      "elements": [
+        {
+          "position": {
+            "column": "13",
+            "length": "4",
+            "line": "178"
+          },
+          "routine": "main",
+          "step": "delete_vm"
+        }
+      ]
+    }
+  },
+  "name": "projects/587909259768/locations/us-central1/workflows/fds-gpu30-sequence01/executions/03fcf5d9-58f3-44b7-b06c-a3dd9ed71ef7",
+  "startTime": "2026-10-21T01:05:53.882637355Z",
+  "state": "FAILED",
+  "status": {
+    "currentSteps": [
+      {
+        "routine": "main",
+        "step": "delete_vm"
+      }
+    ]
+  },
+  "workflowRevisionId": "000001-c8b"
+}
