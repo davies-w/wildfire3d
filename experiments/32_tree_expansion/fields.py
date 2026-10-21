@@ -4,6 +4,7 @@ from pathlib import Path
 import numpy as np
 from fortran_records import FortranFile,FortranEOFError
 ROOT=Path(__file__).parent
+trapezoid=getattr(np,'trapezoid',None) or getattr(np,'trapz')
 NAMES=['TEMPERATURE','HRRPUV','U-VELOCITY','V-VELOCITY','W-VELOCITY','INTEGRATED INTENSITY']
 def read_slice(path):
  f=FortranFile(path);name=f.read_record('u1').tobytes().decode().strip();short=f.read_record('u1');unit=f.read_record('u1').tobytes().decode().strip();bounds=f.read_ints();shape=tuple(bounds[1::2]-bounds[::2]+1);times=[];values=[]
@@ -34,7 +35,7 @@ def extract(c):
  np.save(out/(c['case']+'.npy'),values);np.save(out/(c['case']+'-time.npy'),times)
  with (folder/(c['case']+'_devc.csv')).open() as f:rows=list(csv.reader(f))
  keys=[v.strip().strip('"') for v in rows[1]];dv=np.array(rows[2:],float);post=dv[:,0]>=21;rate=sum(dv[:,j] for j,k in enumerate(keys) if k.startswith('v0 fuel'))
- report=dict(case=c['case'],shape=list(values.shape),units={n:sources[n][0] for n in NAMES},post_source_fuel_kg=float(np.trapz(rate[post],dv[post,0])),post_source_peak_HRRPUV=float(values[times>=21,1].max()),post_source_peak_temperature_C=float(values[times>=21,0].max()),field_extent=[0,24,0,16,0,16],dx=.5,radiation='Integrated intensity; not directional surface irradiance',time_end=float(times[-1]))
+ report=dict(case=c['case'],shape=list(values.shape),units={n:sources[n][0] for n in NAMES},post_source_fuel_kg=float(trapezoid(rate[post],dv[post,0])),post_source_peak_HRRPUV=float(values[times>=21,1].max()),post_source_peak_temperature_C=float(values[times>=21,0].max()),field_extent=[0,24,0,16,0,16],dx=.5,radiation='Integrated intensity; not directional surface irradiance',time_end=float(times[-1]))
  (out/(c['case']+'.json')).write_text(json.dumps(report,indent=2));return report
 if __name__=='__main__':
  import argparse

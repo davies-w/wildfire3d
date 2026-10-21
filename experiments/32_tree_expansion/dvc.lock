@@ -465,8 +465,8 @@ stages:
       size: 1690
     - path: fields.py
       hash: md5
-      md5: 07fc01f1f35350b64b61953515fba341
-      size: 2821
+      md5: 8f5a27bcdc1dfcb4e602e54b23dea08f
+      size: 2884
     - path: fortran_records.py
       hash: md5
       md5: 47c5b62759ee16bfc7cfe36934e16ac2
@@ -497,12 +497,16 @@ stages:
       size: 6317
     - path: prepare_gpu.py
       hash: md5
-      md5: 50a5090d7458d8fd3fe8d99f81fb05ae
-      size: 2825
+      md5: 253273ff63462bac191f8a499bd5d911
+      size: 2857
     - path: preprocess_cloud.py
       hash: md5
       md5: 5aebcfc6909dacce4f5792857eb3655c
       size: 3357
+    - path: results/cloud-data-check.json
+      hash: md5
+      md5: 28f2f4a734c97ac8474d203517615003
+      size: 5898
     - path: sequence.py
       hash: md5
       md5: ed135f56f50398861e6562dde0f68c78
@@ -514,8 +518,8 @@ stages:
     outs:
     - path: data/learning-overlay.tar
       hash: md5
-      md5: bd44d9c577e0f8929db98c64403d635f
-      size: 1080750080
+      md5: dda4b133fb412850fdf93fc0c71e7d76
+      size: 1080760320
   audit_splits:
     cmd: ../../.venv/bin/python audit_splits.py
     deps:
@@ -536,3 +540,74 @@ stages:
       hash: md5
       md5: 855a8b977e8ac15a9b7fd987eeaa8ec6
       size: 465
+  coverage_review:
+    cmd: ../../.venv/bin/python coverage_review.py
+    deps:
+    - path: coverage_review.py
+      hash: md5
+      md5: 28630c3d044f97d7a91de49b0e757e24
+      size: 2066
+    - path: data/geometries.npz
+      hash: md5
+      md5: 29e0c4fef08edf5fc26352c01bc57794
+      size: 1087495
+    - path: jobs/x32-coverage-00-r1/completion.json
+      hash: md5
+      md5: 0147647022a3786e0f72542a09ffdc29
+      size: 106
+    - path: results/input-freeze.json
+      hash: md5
+      md5: a1223380e83eb03a02464879aa9eee92
+      size: 40886
+    outs:
+    - path: data/coverage
+      hash: md5
+      md5: b8c5566b2a6d4917157d452f8657c186.dir
+      size: 1085068153
+      nfiles: 222
+    - path: data/downloads
+      hash: md5
+      md5: cb70f3b5b286a2325278dd9872f1a65a.dir
+      size: 568164388
+      nfiles: 6
+    - path: results/coverage-review.json
+      hash: md5
+      md5: 00b10a88a359ffcae04171eae8f04f2c
+      size: 1719
+  cloud_data_check:
+    cmd: ../../.venv/bin/python validate_cloud_data.py
+    deps:
+    - path: data/downloads
+      hash: md5
+      md5: cb70f3b5b286a2325278dd9872f1a65a.dir
+      size: 568164388
+      nfiles: 6
+    - path: data/geometries.npz
+      hash: md5
+      md5: 29e0c4fef08edf5fc26352c01bc57794
+      size: 1087495
+    - path: fields.py
+      hash: md5
+      md5: 8f5a27bcdc1dfcb4e602e54b23dea08f
+      size: 2884
+    - path: fortran_records.py
+      hash: md5
+      md5: 47c5b62759ee16bfc7cfe36934e16ac2
+      size: 711
+    - path: material_reader.py
+      hash: md5
+      md5: abfdcb198f6ca238a558e65d2f3aebca
+      size: 2709
+    - path: preprocess_cloud.py
+      hash: md5
+      md5: 5aebcfc6909dacce4f5792857eb3655c
+      size: 3357
+    - path: validate_cloud_data.py
+      hash: md5
+      md5: c42e87ac5d0094d0677274f6e9449655
+      size: 1517
+    outs:
+    - path: results/cloud-data-check.json
+      hash: md5
+      md5: 28f2f4a734c97ac8474d203517615003
+      size: 5898

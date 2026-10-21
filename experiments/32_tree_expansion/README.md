@@ -67,3 +67,12 @@ The six predicted fields remain gas temperature, volumetric heat-release rate, t
 Training package regenerated after adding frozen evaluation plan and percentage metrics; GPU launch now checks every current source/input against learning-input-freeze before submission. Cloud evaluation receives only frozen models/predictions and new test outputs, never fits. Training predictions remain GCS objects verified by MD5 before test launch and SHA256 in evaluation. Small projections/reports return locally; raw archives stay immutable in GCS. Scoped24h input-read grant is removed by final collector. Final narrative report and DVC adoption of newly generated outputs remain required after coordinator completion.
 
 Full split audit now checks physical parameters across both48reused and472new trajectories, not just IDs:480unique physical configurations,400/40/40train/validation/test, zero cross-split overlap. See results/full-split-audit.json.
+
+
+## Coverage accepted and development started
+
+All six corrected coverage solves completed180s and passed frozen initial density/moisture and checkpoint checks. The cloud inventory confirmed exactly six RUNNING development jobs/VMs, with coverage resources cleaned up. Reservations are$7.20 including$4ancillary and the retained failed$0.40 attempt, not invoice spend. Coverage runtime range161–412s per4-core solve.
+
+validate_cloud_data.py exercises the exact cloud preprocessing implementation on retained coverage archives without training or paid work. It caught a NumPy compatibility issue: newer local NumPy removed trapz, whereas the cloud image may predate trapezoid. fields.py now chooses the available equivalent. After correction all six complete field/material histories decoded successfully, including exact180s endpoints and frozen moisture-adjusted geometry. GPU launch requires this check; training package regenerated before submission.
+
+Post-source (t>=21s) integrated fuel-release mass was13.5428kg vs14.3071kg for the same configuration with two seeds,5.49% difference relative to their mean. Corresponding peak gas temperatures1474.5C and1430.3C. Other coverage cases include weak burning (x32_343_s0:0.0317kg,159.5C) and stronger outcomes. These are initial coverage observations, not an ensemble estimate or physical validation; see results/cloud-data-check.json for direct raw-field/device-derived values. Seeds leave the frozen tree unchanged.

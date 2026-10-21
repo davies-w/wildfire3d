@@ -11,6 +11,7 @@ def main():
   for g in read('groups.json'):
    if g['phase']!='test':assert read(f"jobs/{g['id']}/completion.json")['all_full_horizon']
   assert read('results/learning-interface-check.json')['passed']
+  assert read('results/cloud-data-check.json')['passed']
   for n,h in read('results/learning-input-freeze.json').items():
    p=R/('development.json' if n=='cases.json' else n);digest=hashlib.sha256()
    with p.open('rb') as f:

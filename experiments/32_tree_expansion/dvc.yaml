@@ -147,6 +147,7 @@ stages:
     - evaluation-plan.json
     - snapshot_evaluation.py
     - original_cnn.py
+    - results/cloud-data-check.json
     outs:
     - data/learning-overlay.tar
   cloud_development:
@@ -236,4 +237,30 @@ stages:
     - fresh-tests.json
     metrics:
     - results/full-split-audit.json:
+        cache: false
+  coverage_review:
+    cmd: ../../.venv/bin/python coverage_review.py
+    deps:
+    - coverage_review.py
+    - data/geometries.npz
+    - jobs/x32-coverage-00-r1/completion.json
+    - results/input-freeze.json
+    outs:
+    - data/downloads
+    - data/coverage
+    metrics:
+    - results/coverage-review.json:
+        cache: false
+  cloud_data_check:
+    cmd: ../../.venv/bin/python validate_cloud_data.py
+    deps:
+    - validate_cloud_data.py
+    - preprocess_cloud.py
+    - fields.py
+    - fortran_records.py
+    - material_reader.py
+    - data/downloads
+    - data/geometries.npz
+    metrics:
+    - results/cloud-data-check.json:
         cache: false
