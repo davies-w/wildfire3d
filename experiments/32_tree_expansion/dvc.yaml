@@ -264,3 +264,16 @@ stages:
     metrics:
     - results/cloud-data-check.json:
         cache: false
+  summarize_results:
+    cmd: ../../.venv/bin/python summarize_results.py
+    deps:
+    - summarize_results.py
+    - results/learning.json
+    - results/fresh-test-evaluation.json
+    - results/evaluation-collected.json
+    - development.json
+    - fresh-tests.json
+    - budget.json
+    metrics:
+    - results/final-summary.json:
+        cache: false
