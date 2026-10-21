@@ -97,3 +97,8 @@ Batch33 deployment exceeded the128KiB workflow-source limit before reservation/s
 ## Development simulation generation complete
 
 All424 new development trajectories reached180s and passed recorded resume/deck/raw-object checks;36 successful groups have verified cleanup. Their summaries and raw-object provenance are adopted in DVC. Together with48 reused development trajectories, the learning stage uses472 training/validation trajectories. The active coordinator is uploading the frozen training overlay before GPU submission. The48 fresh test solves remain unlaunched and no test truth was accessed.
+
+
+## Models frozen; fresh testing started
+
+Both planned training schedules completed; selected snapshot update32000 and hybrid trajectory1600 using development validation only. Collected model weights and prediction freeze passed hash verification, and training GPU VM/disk/job cleanup is verified. Fresh FDS tests launched only after that freeze; no fresh truth was used for selection. Median inference on the training GPU for a full180s history was0.0724s snapshot and0.2194s hybrid, excluding FDS generation/preprocessing; these are development timing measurements, not yet fresh-test accuracy. Model artifacts adopted in DVC.

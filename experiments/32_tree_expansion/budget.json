@@ -2,7 +2,7 @@
   "authorized_usd": 25,
   "authorization": "User: Sounds good, then train the models! following $25 proposal",
   "authorized_unix": 1792550182.6031091,
-  "reserved_usd": 20.0,
+  "reserved_usd": 24.1,
   "reservations": {
     "ancillary": {
       "allowance_usd": 4,
@@ -914,6 +914,108 @@
       "state": "terminal_cleanup_verified",
       "reserved_unix": 1792605817.478349,
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-x32-development-35/executions/4d344e53-3efa-4b0e-b365-ddf0b3aaf7bc"
+    },
+    "gpu-learning-01": {
+      "state": "terminal_cleanup_verified",
+      "allowance_usd": 2.5,
+      "reserved_unix": 1792611423.126652,
+      "vm_age_limit_s": 9000,
+      "absolute_limit_s": 10800,
+      "retries": 0,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu32-learning01/executions/03f86e5c-2a03-418f-82d5-8a8d792327db",
+      "completed_unix": 1792619075.4370508
+    },
+    "x32-test-36": {
+      "id": "x32-test-36",
+      "phase": "test",
+      "cases": [
+        "x32_392_s0",
+        "x32_393_s0",
+        "x32_394_s0",
+        "x32_395_s0",
+        "x32_396_s0",
+        "x32_396_s1",
+        "x32_396_s2",
+        "x32_397_s0",
+        "x32_398_s0",
+        "x32_399_s0",
+        "x32_400_s0",
+        "x32_400_s1"
+      ],
+      "duration_s": 16200,
+      "allowance_usd": 0.4,
+      "state": "submitted",
+      "reserved_unix": 1792619219.394619,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x32-test-36/executions/235a3a0a-da8b-442e-8bfb-3013dfe0a191"
+    },
+    "x32-test-37": {
+      "id": "x32-test-37",
+      "phase": "test",
+      "cases": [
+        "x32_400_s2",
+        "x32_401_s0",
+        "x32_402_s0",
+        "x32_403_s0",
+        "x32_404_s0",
+        "x32_405_s0",
+        "x32_406_s0",
+        "x32_407_s0",
+        "x32_408_s0",
+        "x32_409_s0",
+        "x32_410_s0",
+        "x32_410_s1"
+      ],
+      "duration_s": 16200,
+      "allowance_usd": 0.4,
+      "state": "submitted",
+      "reserved_unix": 1792619303.265585,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x32-test-37/executions/3d0b80cf-abfc-4dec-a38f-548c751e6e86"
+    },
+    "x32-test-38": {
+      "id": "x32-test-38",
+      "phase": "test",
+      "cases": [
+        "x32_410_s2",
+        "x32_411_s0",
+        "x32_412_s0",
+        "x32_413_s0",
+        "x32_414_s0",
+        "x32_415_s0",
+        "x32_416_s0",
+        "x32_417_s0",
+        "x32_418_s0",
+        "x32_419_s0",
+        "x32_420_s0",
+        "x32_421_s0"
+      ],
+      "duration_s": 16200,
+      "allowance_usd": 0.4,
+      "state": "submitted",
+      "reserved_unix": 1792619386.730056,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x32-test-38/executions/3c4c5af8-ebfe-4d94-a6b1-cf295f26cbde"
+    },
+    "x32-test-39": {
+      "id": "x32-test-39",
+      "phase": "test",
+      "cases": [
+        "x32_422_s0",
+        "x32_423_s0",
+        "x32_424_s0",
+        "x32_425_s0",
+        "x32_426_s0",
+        "x32_427_s0",
+        "x32_428_s0",
+        "x32_429_s0",
+        "x32_430_s0",
+        "x32_431_s0",
+        "x32_431_s1",
+        "x32_431_s2"
+      ],
+      "duration_s": 16200,
+      "allowance_usd": 0.4,
+      "state": "submitted",
+      "reserved_unix": 1792619470.215899,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x32-test-39/executions/a22b5b97-a3a6-42a2-ad09-c3ec09b3cd0e"
     }
   },
   "automatic_retries": false,

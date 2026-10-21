@@ -1,0 +1,5 @@
+{
+  "title": "exp32-inputs-read",
+  "description": "Temporary read for approved expanded training data",
+  "expression": "request.time < timestamp('2026-10-22T19:36:57Z') && (resource.name.startsWith('projects/_/buckets/tmrw-wildfire-20261015-trial/objects/expansion32/') || resource.name == 'projects/_/buckets/tmrw-wildfire-20261015-trial/objects/gpu29/train01/inputs.tar')"
+}

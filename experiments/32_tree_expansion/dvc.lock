@@ -649,3 +649,48 @@ stages:
       md5: 311e24a349e280b25649628b567a5f59.dir
       size: 4088343
       nfiles: 424
+  cloud_learning:
+    cmd: ../../.venv/bin/python launch_learning.py
+    deps:
+    - path: data/learning-overlay.tar
+      hash: md5
+      md5: e103b84403bf555126c23bc18fd4b2ba
+      size: 1080760320
+    - path: gpu-workflow.yaml
+      hash: md5
+      md5: 0ad9e39f9c2e98445d0ee17ddc6e2f13
+      size: 8827
+    - path: launch_learning.py
+      hash: md5
+      md5: 4d04b9fd30687f971d5298dc3f89da7f
+      size: 3385
+    - path: results/development-complete.json
+      hash: md5
+      md5: f27384c8ef4bf664785bc9c38a844e56
+      size: 77
+    outs:
+    - path: results/gpu-execution.json
+      hash: md5
+      md5: f6974afcc2fa27a472eab6d6c8536059
+      size: 335
+  collect_learning:
+    cmd: ../../.venv/bin/python collect_learning.py
+    deps:
+    - path: collect_learning.py
+      hash: md5
+      md5: 8a86f7f5f7f19e225e4172d394615f73
+      size: 2140
+    - path: results/gpu-execution.json
+      hash: md5
+      md5: f6974afcc2fa27a472eab6d6c8536059
+      size: 335
+    outs:
+    - path: data/gpu/cloud
+      hash: md5
+      md5: e17bb8f45408a83e60208f7c0fc8f0fe.dir
+      size: 29449825
+      nfiles: 5
+    - path: results/learning-collected.json
+      hash: md5
+      md5: c535878598b9b56a10b1dba99f93e717
+      size: 155
