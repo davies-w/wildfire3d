@@ -74,3 +74,12 @@ stages:
     - coverage-plan.json:
         cache: false
     - data/geometries.npz
+  coverage_analysis:
+    cmd: ../../../.venv/bin/python analyze_coverage.py
+    deps:
+    - analyze_coverage.py
+    - coverage-plan.json
+    - data/collected
+    metrics:
+    - results/coverage-summary.json:
+        cache: false
