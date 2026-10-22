@@ -1,0 +1,616 @@
+schema: '2.0'
+stages:
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - path: ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+      hash: md5
+      md5: 18680afd3f78841d42906b41e3414f62
+      size: 10202320
+      isexec: true
+    - path: base_scene.py
+      hash: md5
+      md5: f0007662652648fc1aa4896912da357d
+      size: 5249
+    - path: design.json
+      hash: md5
+      md5: 4972c8a39fd4cc0779498047ece484c4
+      size: 333
+    - path: inputs
+      hash: md5
+      md5: 2d0ec28cfbc3e7eb000570f3f38c1bfd.dir
+      size: 7976
+      nfiles: 2
+    - path: preflight.py
+      hash: md5
+      md5: cde1bca330b128bd7ff621b133efd868
+      size: 1261
+    - path: scene.py
+      hash: md5
+      md5: ee06d65284547d9cb59217fa0ffab003
+      size: 2024
+    outs:
+    - path: data/preflight
+      hash: md5
+      md5: a09176c24ab7059e9ae675326e089d07.dir
+      size: 335051
+      nfiles: 348
+    - path: results/preflight.json
+      hash: md5
+      md5: 58f021e746cd99d0aaf620b02caebe2e
+      size: 176
+  model_smoke:
+    cmd: ../../.venv/bin/python models.py
+    deps:
+    - path: design.json
+      hash: md5
+      md5: 4972c8a39fd4cc0779498047ece484c4
+      size: 333
+    - path: models.py
+      hash: md5
+      md5: c3d6bd9a3a8994a21074bee3b4256ede
+      size: 5880
+    outs:
+    - path: results/model-smoke.json
+      hash: md5
+      md5: 624ba2d319881c354b6aca1978f3e219
+      size: 192
+  restore_reuse:
+    cmd: ../../.venv/bin/python restore.py
+    deps:
+    - path: data/reuse18.tar.gz
+      hash: md5
+      md5: 4bd7e5bda799bfbbd890db606f6608a8
+      size: 10397536
+    - path: data/reuse19.tar.gz
+      hash: md5
+      md5: a786dd42354b57768e3da5049af68b90
+      size: 2403282
+    - path: restore.py
+      hash: md5
+      md5: ce38cc0ecb98e95bdf6737a98b63b126
+      size: 327
+    outs:
+    - path: data/reuse18
+      hash: md5
+      md5: 9e47bd105d63f5a7f241216503b9f138.dir
+      size: 26036788
+      nfiles: 1346
+    - path: data/reuse19
+      hash: md5
+      md5: 5dc488b56f4174745c0f8155afba1030.dir
+      size: 5995644
+      nfiles: 312
+  pipeline_check:
+    cmd: ../../.venv/bin/python pipeline_check.py
+    deps:
+    - path: design.json
+      hash: md5
+      md5: 4972c8a39fd4cc0779498047ece484c4
+      size: 333
+    - path: evaluate.py
+      hash: md5
+      md5: 72eb65a4b48fffad3c958f5a3de42701
+      size: 3402
+    - path: models.py
+      hash: md5
+      md5: c3d6bd9a3a8994a21074bee3b4256ede
+      size: 5880
+    - path: pipeline_check.py
+      hash: md5
+      md5: 3b9717634b472d1a3b308a6c73342042
+      size: 2096
+    - path: predict.py
+      hash: md5
+      md5: 0735e20a199be4ea10452b241fcbc919
+      size: 2368
+    - path: train.py
+      hash: md5
+      md5: 3e1cf4a00294a05d8cdffcf64db625ab
+      size: 4100
+    - path: training.json
+      hash: md5
+      md5: dcd39c91c24d4bdf979e7c3d272681a2
+      size: 703
+    outs:
+    - path: results/pipeline-check.json
+      hash: md5
+      md5: a091d1567497426c23a89edebca45a23
+      size: 249
+  development:
+    cmd: ../../.venv/bin/python extract.py development
+    deps:
+    - path: ../../FDS/install/bin/fds2ascii
+      hash: md5
+      md5: d337095553b56be9f2ef696416a099a7
+      size: 1118368
+      isexec: true
+    - path: batches/development20/data/cloud
+      hash: md5
+      md5: 7c9f770c3e327a2c83af3ae688ebdac8.dir
+      size: 89480427
+      nfiles: 2481
+    - path: batches/diagnostic01/data/cloud
+      hash: md5
+      md5: d2caf2201e89683c593d4ffaf93e097e.dir
+      size: 22303269
+      nfiles: 621
+    - path: batches/exposure01/data/cloud
+      hash: md5
+      md5: 9083988b0d50026fb4b58f8d5a35996b.dir
+      size: 26750515
+      nfiles: 745
+    - path: data/reuse18
+      hash: md5
+      md5: 9e47bd105d63f5a7f241216503b9f138.dir
+      size: 26036788
+      nfiles: 1346
+    - path: data/reuse19
+      hash: md5
+      md5: 5dc488b56f4174745c0f8155afba1030.dir
+      size: 5995644
+      nfiles: 312
+    - path: development-manifest.json
+      hash: md5
+      md5: 498c3bc3e2dc01222ea00d2385c51c30
+      size: 12618
+    - path: extract.py
+      hash: md5
+      md5: a8ba3d8727356ed626d72db29ea82c33
+      size: 3698
+    - path: models.py
+      hash: md5
+      md5: c3d6bd9a3a8994a21074bee3b4256ede
+      size: 5880
+    outs:
+    - path: data/boundary/development
+      hash: md5
+      md5: 6871e3821b51f514a0d892162eb13040.dir
+      size: 4537026
+      nfiles: 1656
+    - path: data/development.json
+      hash: md5
+      md5: c5b285f9e6b7d971c97fc53b7499462d
+      size: 186103
+  assemble_development:
+    cmd: ../../.venv/bin/python assemble_development.py
+    deps:
+    - path: assemble_development.py
+      hash: md5
+      md5: 22e8ef404db476612db0de635bf2fa77
+      size: 1459
+    - path: batches/development20/batch.json
+      hash: md5
+      md5: d5c019d0bd4d647fa68affc2654d54ac
+      size: 3143
+    - path: batches/development20/data/cloud
+      hash: md5
+      md5: 7c9f770c3e327a2c83af3ae688ebdac8.dir
+      size: 89480427
+      nfiles: 2481
+    - path: batches/diagnostic01/batch.json
+      hash: md5
+      md5: a8c21c5b598733224b7896bea44f2523
+      size: 764
+    - path: batches/diagnostic01/data/cloud
+      hash: md5
+      md5: d2caf2201e89683c593d4ffaf93e097e.dir
+      size: 22303269
+      nfiles: 621
+    - path: batches/exposure01/batch.json
+      hash: md5
+      md5: 96a723cd884d13696d4b3c54967d93f0
+      size: 1082
+    - path: batches/exposure01/data/cloud
+      hash: md5
+      md5: 9083988b0d50026fb4b58f8d5a35996b.dir
+      size: 26750515
+      nfiles: 745
+    - path: reuse-manifest.json
+      hash: md5
+      md5: ea5dac7ac86b38b5a209828418ed2741
+      size: 7192
+    outs:
+    - path: development-manifest.json
+      hash: md5
+      md5: 498c3bc3e2dc01222ea00d2385c51c30
+      size: 12618
+  train:
+    cmd: ../../.venv/bin/python train.py
+    deps:
+    - path: data/development.json
+      hash: md5
+      md5: c5b285f9e6b7d971c97fc53b7499462d
+      size: 186103
+    - path: design.json
+      hash: md5
+      md5: 4972c8a39fd4cc0779498047ece484c4
+      size: 333
+    - path: models.py
+      hash: md5
+      md5: c3d6bd9a3a8994a21074bee3b4256ede
+      size: 5880
+    - path: train.py
+      hash: md5
+      md5: 3e1cf4a00294a05d8cdffcf64db625ab
+      size: 4100
+    - path: training.json
+      hash: md5
+      md5: dcd39c91c24d4bdf979e7c3d272681a2
+      size: 703
+    outs:
+    - path: data/models
+      hash: md5
+      md5: 36f288653ae235b372eaff3e37039665.dir
+      size: 151885
+      nfiles: 20
+    - path: results/frozen-weights.json
+      hash: md5
+      md5: 7e7a1f6de93999b5e07d1a260dc82fce
+      size: 565679
+  predict:
+    cmd: ../../.venv/bin/python predict.py
+    deps:
+    - path: confirmation-inputs.json
+      hash: md5
+      md5: c47ffb74541ec9ae922b47f4bbb4534c
+      size: 5619
+    - path: data/models
+      hash: md5
+      md5: 36f288653ae235b372eaff3e37039665.dir
+      size: 151885
+      nfiles: 20
+    - path: design.json
+      hash: md5
+      md5: 4972c8a39fd4cc0779498047ece484c4
+      size: 333
+    - path: models.py
+      hash: md5
+      md5: c3d6bd9a3a8994a21074bee3b4256ede
+      size: 5880
+    - path: predict.py
+      hash: md5
+      md5: 0735e20a199be4ea10452b241fcbc919
+      size: 2368
+    - path: results/frozen-weights.json
+      hash: md5
+      md5: 7e7a1f6de93999b5e07d1a260dc82fce
+      size: 565679
+    outs:
+    - path: results/frozen-predictions.json
+      hash: md5
+      md5: 256d95bf36f094c1f54f918354a52400
+      size: 908255
+  test:
+    cmd: ../../.venv/bin/python extract.py test
+    deps:
+    - path: ../../FDS/install/bin/fds2ascii
+      hash: md5
+      md5: d337095553b56be9f2ef696416a099a7
+      size: 1118368
+      isexec: true
+    - path: batches/confirmation20/data/cloud
+      hash: md5
+      md5: 52881ab4576339a6ee8ba0db56d2dc85.dir
+      size: 107855141
+      nfiles: 2977
+    - path: confirmation-inputs.json
+      hash: md5
+      md5: c47ffb74541ec9ae922b47f4bbb4534c
+      size: 5619
+    - path: extract.py
+      hash: md5
+      md5: a8ba3d8727356ed626d72db29ea82c33
+      size: 3698
+    - path: models.py
+      hash: md5
+      md5: c3d6bd9a3a8994a21074bee3b4256ede
+      size: 5880
+    - path: results/frozen-predictions.json
+      hash: md5
+      md5: 256d95bf36f094c1f54f918354a52400
+      size: 908255
+    outs:
+    - path: data/boundary/test
+      hash: md5
+      md5: 48048878657e383989bb6fd02502bcf9.dir
+      size: 1598064
+      nfiles: 576
+    - path: data/test.json
+      hash: md5
+      md5: 225fec9806b064c93950112b3b28cadb
+      size: 64881
+  evaluate:
+    cmd: ../../.venv/bin/python evaluate.py
+    deps:
+    - path: confirmation-inputs.json
+      hash: md5
+      md5: c47ffb74541ec9ae922b47f4bbb4534c
+      size: 5619
+    - path: data/development.json
+      hash: md5
+      md5: c5b285f9e6b7d971c97fc53b7499462d
+      size: 186103
+    - path: data/test.json
+      hash: md5
+      md5: 225fec9806b064c93950112b3b28cadb
+      size: 64881
+    - path: evaluate.py
+      hash: md5
+      md5: 72eb65a4b48fffad3c958f5a3de42701
+      size: 3402
+    - path: models.py
+      hash: md5
+      md5: c3d6bd9a3a8994a21074bee3b4256ede
+      size: 5880
+    - path: results/frozen-predictions.json
+      hash: md5
+      md5: 256d95bf36f094c1f54f918354a52400
+      size: 908255
+    - path: results/frozen-weights.json
+      hash: md5
+      md5: 7e7a1f6de93999b5e07d1a260dc82fce
+      size: 565679
+    outs:
+    - path: results/evaluation.json
+      hash: md5
+      md5: dfca16a02e5ef21e8a26b583d9380451
+      size: 24433
+  cost_summary:
+    cmd: ../../.venv/bin/python summarize_cost.py
+    deps:
+    - path: batches/confirmation20/batch.json
+      hash: md5
+      md5: d6a523580c2d3349d309af8ba81844e8
+      size: 6484
+    - path: batches/confirmation20/results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: batches/confirmation20/results/status.json
+      hash: md5
+      md5: 6469680e48b0dcca8d6b8d698f29018f
+      size: 685
+    - path: batches/development20/batch.json
+      hash: md5
+      md5: d5c019d0bd4d647fa68affc2654d54ac
+      size: 3143
+    - path: batches/development20/results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: batches/development20/results/status.json
+      hash: md5
+      md5: 8c535e53caf7a83045a9f8ee1b9a9711
+      size: 683
+    - path: batches/diagnostic01/batch.json
+      hash: md5
+      md5: a8c21c5b598733224b7896bea44f2523
+      size: 764
+    - path: batches/diagnostic01/results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: batches/diagnostic01/results/status.json
+      hash: md5
+      md5: bdb9705f8bb49b406b5d246c35450e88
+      size: 681
+    - path: batches/exposure01/batch.json
+      hash: md5
+      md5: 96a723cd884d13696d4b3c54967d93f0
+      size: 1082
+    - path: batches/exposure01/results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: batches/exposure01/results/status.json
+      hash: md5
+      md5: 5d2d5e872ea1e2491da9d15d858509ab
+      size: 677
+    - path: budget.json
+      hash: md5
+      md5: 0c47e16032583ab9964f931abb56d440
+      size: 1396
+    - path: summarize_cost.py
+      hash: md5
+      md5: b01a53ef8a9221305e58ed5014121fbe
+      size: 1469
+    outs:
+    - path: results/cost-summary.json
+      hash: md5
+      md5: c1be6317f5aebad41d71477c33dae756
+      size: 1496
+  findings:
+    cmd: ../../.venv/bin/python write_findings.py
+    deps:
+    - path: results/cost-summary.json
+      hash: md5
+      md5: c1be6317f5aebad41d71477c33dae756
+      size: 1496
+    - path: results/evaluation.json
+      hash: md5
+      md5: dfca16a02e5ef21e8a26b583d9380451
+      size: 24433
+    - path: write_findings.py
+      hash: md5
+      md5: 462b34e28a8b929a7a6451eac28b3fc4
+      size: 3964
+    outs:
+    - path: results/findings.md
+      hash: md5
+      md5: 83715a3e9e974b3d0dea815e00801a82
+      size: 3415
+  visualize:
+    cmd:
+    - ../../.venv/bin/python visualize_event.py
+    - ../../.venv/bin/python visualize_graph.py
+    deps:
+    - path: ../../FDS/bin/smv_quiet
+      hash: md5
+      md5: f7d8f4e2ea8fea8027f63828db57cb56
+      size: 1197
+      isexec: true
+    - path: ../../FDS/cases/wick3/wick3.ini
+      hash: md5
+      md5: 002879eb79f821d615c903d5f3ef7644
+      size: 1108
+    - path: ../../FDS/install/smvbin/smokeview
+      hash: md5
+      md5: c4f9c59aa3c800dfe7590177872f9870
+      size: 4502600
+      isexec: true
+    - path: batches/confirmation20/data/cloud/confirm20_ACG_3200_s4321
+      hash: md5
+      md5: 7e19780e67108f8728a22c015eb5d753.dir
+      size: 4480762
+      nfiles: 123
+    - path: confirmation-inputs.json
+      hash: md5
+      md5: c47ffb74541ec9ae922b47f4bbb4534c
+      size: 5619
+    - path: data/models
+      hash: md5
+      md5: 36f288653ae235b372eaff3e37039665.dir
+      size: 151885
+      nfiles: 20
+    - path: data/test.json
+      hash: md5
+      md5: 225fec9806b064c93950112b3b28cadb
+      size: 64881
+    - path: design.json
+      hash: md5
+      md5: 4972c8a39fd4cc0779498047ece484c4
+      size: 333
+    - path: models.py
+      hash: md5
+      md5: c3d6bd9a3a8994a21074bee3b4256ede
+      size: 5880
+    - path: results/frozen-predictions.json
+      hash: md5
+      md5: 256d95bf36f094c1f54f918354a52400
+      size: 908255
+    - path: results/frozen-weights.json
+      hash: md5
+      md5: 7e7a1f6de93999b5e07d1a260dc82fce
+      size: 565679
+    - path: visualize_event.py
+      hash: md5
+      md5: 82244bc2b365a98c9ac51cd53d8d13d6
+      size: 2707
+    - path: visualize_graph.py
+      hash: md5
+      md5: aec84d2739f9aa620ea7fc7a1e3be3b8
+      size: 5461
+    outs:
+    - path: data/visualization
+      hash: md5
+      md5: 45c9ff5de3a0a5ea2bbdd82548e4ba51.dir
+      size: 5836773
+      nfiles: 170
+    - path: results/visualizations
+      hash: md5
+      md5: c9f9f88c76585fdbd4a6b026118084d3.dir
+      size: 1517019
+      nfiles: 4
+  full_visual_solve:
+    cmd: ../../.venv/bin/python rerun_visual.py
+    deps:
+    - path: ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+      hash: md5
+      md5: 18680afd3f78841d42906b41e3414f62
+      size: 10202320
+      isexec: true
+    - path: base_scene.py
+      hash: md5
+      md5: f0007662652648fc1aa4896912da357d
+      size: 5249
+    - path: 
+        batches/confirmation20/data/cloud/confirm20_ACG_3200_s4321/result.json
+      hash: md5
+      md5: 1b38b72f05f887762a5bf81816b1e2b9
+      size: 2273
+    - path: confirmation-inputs.json
+      hash: md5
+      md5: c47ffb74541ec9ae922b47f4bbb4534c
+      size: 5619
+    - path: design.json
+      hash: md5
+      md5: 4972c8a39fd4cc0779498047ece484c4
+      size: 333
+    - path: inputs
+      hash: md5
+      md5: 2d0ec28cfbc3e7eb000570f3f38c1bfd.dir
+      size: 7976
+      nfiles: 2
+    - path: rerun_visual.py
+      hash: md5
+      md5: 83cc2e04084aaac60998b08d2bab6d20
+      size: 1553
+    - path: scene.py
+      hash: md5
+      md5: ee06d65284547d9cb59217fa0ffab003
+      size: 2024
+    outs:
+    - path: data/full_visual
+      hash: md5
+      md5: d7264a5e103584b18230ee60ed53a21b.dir
+      size: 9415748
+      nfiles: 167
+  full_visual_render:
+    cmd:
+    - ../../.venv/bin/python verify_full_visual.py
+    - ../../.venv/bin/python render_full_visual.py
+    deps:
+    - path: ../../FDS/bin/smv_quiet
+      hash: md5
+      md5: f7d8f4e2ea8fea8027f63828db57cb56
+      size: 1197
+      isexec: true
+    - path: ../../FDS/install/bin/fds2ascii
+      hash: md5
+      md5: d337095553b56be9f2ef696416a099a7
+      size: 1118368
+      isexec: true
+    - path: ../../FDS/install/smvbin/smokeview
+      hash: md5
+      md5: c4f9c59aa3c800dfe7590177872f9870
+      size: 4502600
+      isexec: true
+    - path: data/full_visual
+      hash: md5
+      md5: d7264a5e103584b18230ee60ed53a21b.dir
+      size: 9415748
+      nfiles: 167
+    - path: data/visualization
+      hash: md5
+      md5: 45c9ff5de3a0a5ea2bbdd82548e4ba51.dir
+      size: 5836773
+      nfiles: 170
+    - path: render_full_visual.py
+      hash: md5
+      md5: 24f29d8472ca49a340608af8a5f54247
+      size: 3546
+    - path: results/visualizations/graph_messages.png
+      hash: md5
+      md5: 2d249b2151f4d47f86c0d5d51fe274e0
+      size: 141597
+    - path: verify_full_visual.py
+      hash: md5
+      md5: 39453e54678ae7802199f0ca88325b2a
+      size: 1529
+    outs:
+    - path: data/full_visual_boundary
+      hash: md5
+      md5: e98f8070afb52aea086de3fafa6ef006.dir
+      size: 33228
+      nfiles: 12
+    - path: data/full_visual_render
+      hash: md5
+      md5: 7d9a54a469f913c7c0be031ead179235.dir
+      size: 13053768
+      nfiles: 233
+    - path: results/full_visual
+      hash: md5
+      md5: 25f2ccd57ed993716b36434bc0b6d215.dir
+      size: 9839481
+      nfiles: 5

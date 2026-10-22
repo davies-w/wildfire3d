@@ -1,0 +1,1526 @@
+stages:
+  decks:
+    cmd: ../../.venv/bin/python scene.py
+    deps:
+    - scene.py
+    - inputs
+    outs:
+    - wave1.json:
+        cache: false
+  geometry:
+    cmd: ../../.venv/bin/python geometry_report.py
+    deps:
+    - geometry_report.py
+    - scene.py
+    - ../14_ignition_surrogate/data/scenes/sebastopol_10/geometry.npz
+    - ../14_ignition_surrogate/data/scenes/sebastopol_11/geometry.npz
+    - ../14_ignition_surrogate/results/properties.json
+    outs:
+    - results/geometry-context.png
+    - results/geometry-report.json:
+        cache: false
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - preflight.py
+    - scene.py
+    - inputs
+    - ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+    outs:
+    - data/preflight
+    - results/preflight.json:
+        cache: false
+  collect:
+    cmd: ../../.venv/bin/python control.py fetch
+    deps:
+    - control.py
+    - budget.json
+    outs:
+    - data/cloud
+    - data/downloads
+    - results/cleanup.json:
+        cache: false
+  summarize:
+    cmd: ../../.venv/bin/python summarize_stage_a.py
+    deps:
+    - summarize_stage_a.py
+    - finish_stage_a.py
+    - data/cloud
+    - comparison-pairs.json
+    outs:
+    - data/boundary
+    - results/stage-a.json:
+        cache: false
+  component_images:
+    cmd: ../../.venv/bin/python render_components.py
+    deps:
+    - render_components.py
+    - decks
+    - data/cloud
+    outs:
+    - results/component_images
+  vegetation_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_vegetation.py
+    deps:
+    - diagnose_vegetation.py
+    - data/cloud
+    outs:
+    - results/vegetation-diagnosis.json:
+        cache: false
+  canopy_heating_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_canopy_heating.py
+    deps:
+    - diagnose_canopy_heating.py
+    - data/cloud
+    - ../../FDS/install/bin/fds2ascii
+    outs:
+    - data/canopy_diagnosis
+    - results/canopy-heating-diagnosis.json:
+        cache: false
+    - results/canopy-plume-diagnosis.png
+  upwind_prepare:
+    cmd: ../../.venv/bin/python upwind_test.py prepare
+    deps:
+    - upwind_test.py
+    - control.py
+    - decks/a21_single.fds
+    - data/cloud/a21_single/result.json
+    - jobs/a21_single/workflow.yaml
+    outs:
+    - data/upwind_preflight
+    - results/upwind-preflight.json:
+        cache: false
+    - decks/a21_single_upstream.fds:
+        cache: false
+  upwind_assess:
+    cmd: ../../.venv/bin/python finish_upwind.py
+    deps:
+    - finish_upwind.py
+    - upwind_test.py
+    - data/cloud/a21_single_upstream
+    outs:
+    - results/upwind-result.json:
+        cache: false
+  contact_canopy:
+    cmd: ../../.venv/bin/python contact_ignition.py contact_ring20 90
+    deps:
+    - contact_ignition.py
+    - decks/a21_single_upstream.fds
+    - ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+    outs:
+    - data/contact/contact_ring20
+  contact_control:
+    cmd: ../../.venv/bin/python -c "from contact_ignition import run; run('contact_ring20_bare',
+      bare=True)"
+    deps:
+    - contact_ignition.py
+    - decks/a21_single_upstream.fds
+    - ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+    outs:
+    - data/contact/contact_ring20_bare
+  contact_summary:
+    cmd: ../../.venv/bin/python summarize_contact.py
+    deps:
+    - summarize_contact.py
+    - contact_ignition.py
+    - data/contact/contact_ring20
+    - data/contact/contact_ring20_bare
+    - ../../FDS/install/bin/fds2ascii
+    outs:
+    - data/contact_boundary
+    - results/contact-ignition.json:
+        cache: false
+    - results/contact-ignition.png
+  contact_stage_a_prepare:
+    cmd: ../../.venv/bin/python rerun_contact.py prepare
+    deps:
+    - rerun_contact.py
+    - scene.py
+    - inputs/vegetation_model.txt
+    - inputs/tree_2_m_14_pc.fds
+    - results/contact-ignition.json
+    outs:
+    - contact-stage-a.json
+    - data/contact_stage_a_preflight
+    - results/contact-stage-a-preflight.json:
+        cache: false
+    - decks/ac21_single.fds
+    - decks/ac21_double.fds
+    - decks/ac21_corner.fds
+    - decks/ac21_bare.fds
+    - decks/ac21_single_expanded.fds
+    - decks/ac21_double_expanded.fds
+    - decks/ac21_corner_expanded.fds
+    - decks/ac21_double_fine.fds
+  contact_stage_a_cloud:
+    cmd: ../../.venv/bin/python finish_contact_stage_a.py
+    deps:
+    - finish_contact_stage_a.py
+    - finish_stage_a.py
+    - contact-stage-a.json
+    - budget-contact-stage-a.json
+    outs:
+    - results/contact-stage-a.json:
+        cache: false
+    - results/contact-stage-a-cleanup.json:
+        cache: false
+    - data/cloud/ac21_single
+    - data/cloud/ac21_double
+    - data/cloud/ac21_corner
+    - data/cloud/ac21_bare
+    - data/cloud/ac21_single_expanded
+    - data/cloud/ac21_double_expanded
+    - data/cloud/ac21_corner_expanded
+    - data/cloud/ac21_double_fine
+    - data/boundary/ac21_single
+    - data/boundary/ac21_double
+    - data/boundary/ac21_corner
+    - data/boundary/ac21_bare
+    - data/boundary/ac21_single_expanded
+    - data/boundary/ac21_double_expanded
+    - data/boundary/ac21_corner_expanded
+    - data/boundary/ac21_double_fine
+  contact_context_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_contact_context.py
+    deps:
+    - diagnose_contact_context.py
+    - data/cloud/ac21_single
+    - data/cloud/ac21_single_expanded
+    - data/cloud/ac21_double
+    - data/cloud/ac21_double_expanded
+    - data/cloud/ac21_corner
+    - data/cloud/ac21_corner_expanded
+    outs:
+    - results/contact-context-diagnosis.json:
+        cache: false
+  contact_crown_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_crown_particles.py
+    deps:
+    - diagnose_crown_particles.py
+    - data/cloud/ac21_double
+    - data/cloud/ac21_double_expanded
+    - data/cloud/ac21_double_fine
+    outs:
+    - results/crown-particle-diagnosis.json:
+        cache: false
+  prepare_stage_a_corrections:
+    cmd: ../../.venv/bin/python prepare_stage_a_corrections.py
+    deps:
+    - prepare_stage_a_corrections.py
+    - rerun_contact.py
+    - scene.py
+    - results/crown-particle-diagnosis.json
+    - results/contact-context-diagnosis.json
+    outs:
+    - results/corrective-candidates.json:
+        cache: false
+    - inputs/corrective_candidates/candidate_domain_only.fds
+    - inputs/corrective_candidates/candidate_large_crown_density.fds
+  corrective_preflight:
+    cmd: ../../.venv/bin/python preflight_corrections.py
+    deps:
+    - preflight_corrections.py
+    - inputs/corrective_candidates
+    - ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+    outs:
+    - data/corrective_preflight
+    - results/corrective-preflight.json:
+        cache: false
+  finalize_contact_stage_a:
+    cmd: ../../.venv/bin/python finalize_contact_stage_a.py
+    deps:
+    - finalize_contact_stage_a.py
+    - data/cloud/ac21_double
+    - data/cloud/ac21_double_fine
+    - results/contact-stage-a-cleanup.json
+    outs:
+    - results/contact-stage-a-final-diagnosis.json:
+        cache: false
+  prepare_sampling_isolation:
+    cmd: ../../.venv/bin/python prepare_sampling_isolation.py
+    deps:
+    - prepare_sampling_isolation.py
+    - rerun_contact.py
+    - scene.py
+    - results/crown-particle-diagnosis.json
+    outs:
+    - results/sampling-isolation-proposal.json:
+        cache: false
+    - inputs/corrective_candidates/candidate_coarse_dense_particles.fds
+  sampling_prepare:
+    cmd: ../../.venv/bin/python sampling_test.py prepare
+    deps:
+    - sampling_test.py
+    - inputs/corrective_candidates/candidate_coarse_dense_particles.fds
+    - ../20_composition_iterative/runner.py
+    - ../20_composition_iterative/workflow_template.json
+    outs:
+    - decks/sampling21_dense.fds
+    - jobs/sampling21_dense/case.json
+    - jobs/sampling21_dense/runner.py
+  sampling_preflight:
+    cmd: ../../.venv/bin/python sampling_test.py preflight
+    deps:
+    - sampling_test.py
+    - decks/sampling21_dense.fds
+    - ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+    outs:
+    - data/sampling_preflight
+    - results/sampling-preflight.json:
+        cache: false
+  sampling_cloud:
+    cmd: ../../.venv/bin/python finish_sampling.py
+    deps:
+    - finish_sampling.py
+    - budget-sampling.json
+    - decks/sampling21_dense.fds
+    - jobs/sampling21_dense/runner.py
+    - data/cloud/ac21_double
+    - data/cloud/ac21_double_fine
+    outs:
+    - data/cloud/sampling21_dense
+    - data/boundary/sampling21_dense
+    - results/sampling-result.json:
+        cache: false
+    - results/sampling-cleanup.json:
+        cache: false
+  finalize_sampling:
+    cmd: ../../.venv/bin/python finalize_sampling.py
+    deps:
+    - finalize_sampling.py
+    - data/cloud/ac21_double
+    - data/cloud/ac21_double_fine
+    - data/cloud/sampling21_dense
+    - jobs/sampling21_dense/status.json
+    outs:
+    - results/sampling-final-diagnosis.json:
+        cache: false
+  overnight_stronger_cloud:
+    cmd: ../../.venv/bin/python finish_overnight_stronger.py
+    deps:
+    - finish_overnight_stronger.py
+    - budget-overnight.json
+    - decks/overnight21_stronger.fds
+    - jobs/overnight21_stronger/runner.py
+    - data/cloud/ac21_double
+    - data/cloud/ac21_double_fine
+    outs:
+    - data/cloud/overnight21_stronger
+    - data/boundary/overnight21_stronger
+    - results/overnight-stronger-result.json:
+        cache: false
+    - results/overnight-stronger-cleanup.json:
+        cache: false
+  overnight_grid_prepare:
+    cmd: ../../.venv/bin/python prepare_overnight_grid.py
+    deps:
+    - prepare_overnight_grid.py
+    - decks/sampling21_dense.fds
+    outs:
+    - inputs/overnight_grid_candidates:
+        cache: false
+    - results/overnight-grid-candidates.json:
+        cache: false
+  overnight_grid_preflight:
+    cmd: ../../.venv/bin/python preflight_overnight_grid.py
+    deps:
+    - preflight_overnight_grid.py
+    - inputs/overnight_grid_candidates
+    - results/overnight-grid-candidates.json
+    outs:
+    - data/overnight_grid_preflight
+    - results/overnight-grid-preflight.json:
+        cache: false
+  overnight_grid_cloud_prepare:
+    cmd: ../../.venv/bin/python overnight_grid_control.py prepare
+    deps:
+    - overnight_grid_control.py
+    - results/overnight-grid-candidates.json
+    - inputs/overnight_grid_candidates
+    - jobs/overnight21_stronger/runner.py
+    - ../20_composition_iterative/workflow_template.json
+    outs:
+    - jobs/overnight21_grid_coarse/workflow.yaml:
+        cache: false
+    - jobs/overnight21_grid_coarse/worker.py:
+        cache: false
+    - jobs/overnight21_grid_coarse/runner.py:
+        cache: false
+    - jobs/overnight21_grid_coarse/case.json:
+        cache: false
+    - jobs/overnight21_grid_fine/workflow.yaml:
+        cache: false
+    - jobs/overnight21_grid_fine/worker.py:
+        cache: false
+    - jobs/overnight21_grid_fine/runner.py:
+        cache: false
+    - jobs/overnight21_grid_fine/case.json:
+        cache: false
+    - jobs/overnight21_grid_fine_bare/workflow.yaml:
+        cache: false
+    - jobs/overnight21_grid_fine_bare/worker.py:
+        cache: false
+    - jobs/overnight21_grid_fine_bare/runner.py:
+        cache: false
+    - jobs/overnight21_grid_fine_bare/case.json:
+        cache: false
+  overnight_stronger_particles:
+    cmd: ../../.venv/bin/python diagnose_overnight_stronger.py
+    deps:
+    - diagnose_overnight_stronger.py
+    - data/cloud/overnight21_stronger
+    outs:
+    - results/overnight-stronger-particles.json:
+        cache: false
+  overnight21_grid_coarse_collect:
+    cmd: ../../.venv/bin/python overnight_grid_control.py collect
+    deps:
+    - overnight_grid_control.py
+    - decks/overnight21_grid_coarse.fds
+    - jobs/overnight21_grid_coarse/runner.py
+    - jobs/overnight21_grid_coarse/worker.py
+    - jobs/overnight21_grid_coarse/execution.json
+    outs:
+    - data/cloud/overnight21_grid_coarse
+    - results/overnight21_grid_coarse-collected.json:
+        cache: false
+  overnight21_grid_fine_collect:
+    cmd: ../../.venv/bin/python overnight_grid_control.py collect
+    deps:
+    - overnight_grid_control.py
+    - decks/overnight21_grid_fine.fds
+    - jobs/overnight21_grid_fine/runner.py
+    - jobs/overnight21_grid_fine/worker.py
+    - jobs/overnight21_grid_fine/execution.json
+    outs:
+    - data/cloud/overnight21_grid_fine
+    - results/overnight21_grid_fine-collected.json:
+        cache: false
+  overnight21_grid_fine_bare_collect:
+    cmd: ../../.venv/bin/python overnight_grid_control.py collect
+    deps:
+    - overnight_grid_control.py
+    - decks/overnight21_grid_fine_bare.fds
+    - jobs/overnight21_grid_fine_bare/runner.py
+    - jobs/overnight21_grid_fine_bare/worker.py
+    - jobs/overnight21_grid_fine_bare/execution.json
+    outs:
+    - data/cloud/overnight21_grid_fine_bare
+    - results/overnight21_grid_fine_bare-collected.json:
+        cache: false
+  overnight_grid_v2_worker_preflight:
+    cmd: ../../.venv/bin/python preflight_grid_v2_worker.py
+    deps:
+    - preflight_grid_v2_worker.py
+    - overnight_grid_v2_control.py
+    - results/overnight-grid-v2-candidates.json
+    outs:
+    - data/grid_v2_worker_preflight
+    - results/overnight-grid-v2-worker-preflight.json:
+        cache: false
+  overnight21_grid_coarse_v2_collect:
+    cmd: ../../.venv/bin/python overnight_grid_v2_control.py collect
+    deps:
+    - overnight_grid_v2_control.py
+    - decks/overnight21_grid_coarse_v2.fds
+    - jobs/overnight21_grid_coarse_v2/runner.py
+    - jobs/overnight21_grid_coarse_v2/worker.py
+    - jobs/overnight21_grid_coarse_v2/execution.json
+    outs:
+    - data/cloud/overnight21_grid_coarse_v2
+    - results/overnight21_grid_coarse_v2-collected.json:
+        cache: false
+  overnight21_grid_fine_v2_collect:
+    cmd: ../../.venv/bin/python overnight_grid_v2_control.py collect
+    deps:
+    - overnight_grid_v2_control.py
+    - decks/overnight21_grid_fine_v2.fds
+    - jobs/overnight21_grid_fine_v2/runner.py
+    - jobs/overnight21_grid_fine_v2/worker.py
+    - jobs/overnight21_grid_fine_v2/execution.json
+    outs:
+    - data/cloud/overnight21_grid_fine_v2
+    - results/overnight21_grid_fine_v2-collected.json:
+        cache: false
+  overnight21_grid_fine_bare_v2_collect:
+    cmd: ../../.venv/bin/python overnight_grid_v2_control.py collect
+    deps:
+    - overnight_grid_v2_control.py
+    - decks/overnight21_grid_fine_bare_v2.fds
+    - jobs/overnight21_grid_fine_bare_v2/runner.py
+    - jobs/overnight21_grid_fine_bare_v2/worker.py
+    - jobs/overnight21_grid_fine_bare_v2/execution.json
+    outs:
+    - data/cloud/overnight21_grid_fine_bare_v2
+    - results/overnight21_grid_fine_bare_v2-collected.json:
+        cache: false
+  overnight_grid_v2_analysis:
+    cmd: ../../.venv/bin/python analyze_overnight_grid_v2.py
+    deps:
+    - analyze_overnight_grid_v2.py
+    - finish_sampling.py
+    - data/cloud/overnight21_grid_coarse_v2
+    - data/cloud/overnight21_grid_fine_v2
+    - data/cloud/overnight21_grid_fine_bare_v2
+    outs:
+    - data/boundary/overnight21_grid_coarse_v2
+    - data/boundary/overnight21_grid_fine_v2
+    - data/boundary/overnight21_grid_fine_bare_v2
+    - results/overnight-grid-results.json:
+        cache: false
+  overnight_grid_slices:
+    cmd: ../../.venv/bin/python diagnose_grid_slices.py
+    deps:
+    - diagnose_grid_slices.py
+    - data/cloud/overnight21_grid_coarse_v2
+    - data/cloud/overnight21_grid_fine_v2
+    - data/cloud/overnight21_grid_fine_bare_v2
+    outs:
+    - data/grid_slice_diagnosis
+    - results/overnight-grid-slice-diagnosis.json:
+        cache: false
+  component_preflight:
+    cmd: ../../.venv/bin/python preflight_components.py
+    deps:
+    - preflight_components.py
+    - component_campaign.py
+    - component-development.json
+    outs:
+    - data/component_preflight
+    - results/component-preflight.json:
+        cache: false
+  b21_single_1_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_single_1
+    deps:
+    - component_control.py
+    - decks/b21_single_1.fds
+    - jobs/b21_single_1/worker.py
+    - jobs/b21_single_1/runner.py
+    - jobs/b21_single_1/execution.json
+    outs:
+    - data/cloud/b21_single_1
+    - results/b21_single_1-collected.json:
+        cache: false
+  b21_transfer_0_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_transfer_0
+    deps:
+    - component_control.py
+    - decks/b21_transfer_0.fds
+    - jobs/b21_transfer_0/worker.py
+    - jobs/b21_transfer_0/runner.py
+    - jobs/b21_transfer_0/execution.json
+    outs:
+    - data/cloud/b21_transfer_0
+    - results/b21_transfer_0-collected.json:
+        cache: false
+  component_extraction_preflight:
+    cmd: ../../.venv/bin/python extract_component_states.py --preflight
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/component_preflight
+    outs:
+    - results/component-extraction-preflight.json:
+        cache: false
+  b21_single_1_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_single_1
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_single_1
+    outs:
+    - data/component_states/b21_single_1.json
+  b21_single_1_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_single_1
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_single_1
+    - data/component_states/b21_single_1.json
+    outs:
+    - data/boundary/b21_single_1
+    - results/b21_single_1-audit.json:
+        cache: false
+  b21_transfer_0_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_transfer_0
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_transfer_0
+    outs:
+    - data/component_states/b21_transfer_0.json
+  b21_transfer_0_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_transfer_0
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_transfer_0
+    - data/component_states/b21_transfer_0.json
+    outs:
+    - data/boundary/b21_transfer_0
+    - results/b21_transfer_0-audit.json:
+        cache: false
+  b21_transfer_hot_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_transfer_hot
+    deps:
+    - component_control.py
+    - jobs/b21_transfer_hot/execution.json
+    outs:
+    - data/cloud/b21_transfer_hot
+    - results/b21_transfer_hot-collected.json:
+        cache: false
+  b21_transfer_hot_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_transfer_hot
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_transfer_hot
+    outs:
+    - data/component_states/b21_transfer_hot.json
+  b21_transfer_hot_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_transfer_hot
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_transfer_hot
+    - data/component_states/b21_transfer_hot.json
+    outs:
+    - data/boundary/b21_transfer_hot
+    - results/b21_transfer_hot-audit.json:
+        cache: false
+  b21_single_2_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_single_2
+    deps:
+    - component_control.py
+    - jobs/b21_single_2/execution.json
+    outs:
+    - data/cloud/b21_single_2
+    - results/b21_single_2-collected.json:
+        cache: false
+  b21_single_2_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_single_2
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_single_2
+    outs:
+    - data/component_states/b21_single_2.json
+  b21_single_2_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_single_2
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_single_2
+    - data/component_states/b21_single_2.json
+    outs:
+    - data/boundary/b21_single_2
+    - results/b21_single_2-audit.json:
+        cache: false
+  b21_combined_0_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_combined_0
+    deps:
+    - component_control.py
+    - jobs/b21_combined_0/execution.json
+    outs:
+    - data/cloud/b21_combined_0
+    - results/b21_combined_0-collected.json:
+        cache: false
+  b21_combined_0_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_combined_0
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_combined_0
+    outs:
+    - data/component_states/b21_combined_0.json
+  b21_combined_0_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_combined_0
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_combined_0
+    - data/component_states/b21_combined_0.json
+    outs:
+    - data/boundary/b21_combined_0
+    - results/b21_combined_0-audit.json:
+        cache: false
+  component_rollout_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_component_rollout.py
+    deps:
+    - diagnose_component_rollout.py
+    - component_model.py
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_transfer_0.json
+    outs:
+    - results/component-rollout-diagnosis.json:
+        cache: false
+  b21_corner_1_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_corner_1
+    deps:
+    - component_control.py
+    - jobs/b21_corner_1/execution.json
+    outs:
+    - data/cloud/b21_corner_1
+    - results/b21_corner_1-collected.json:
+        cache: false
+  b21_corner_1_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_corner_1
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_corner_1
+    outs:
+    - data/component_states/b21_corner_1.json
+  b21_corner_1_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_corner_1
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_corner_1
+    - data/component_states/b21_corner_1.json
+    outs:
+    - data/boundary/b21_corner_1
+    - results/b21_corner_1-audit.json:
+        cache: false
+  b21_combined_1_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_combined_1
+    deps:
+    - component_control.py
+    - jobs/b21_combined_1/execution.json
+    outs:
+    - data/cloud/b21_combined_1
+    - results/b21_combined_1-collected.json:
+        cache: false
+  b21_combined_1_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_combined_1
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_combined_1
+    outs:
+    - data/component_states/b21_combined_1.json
+  b21_combined_1_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_combined_1
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_combined_1
+    - data/component_states/b21_combined_1.json
+    outs:
+    - data/boundary/b21_combined_1
+    - results/b21_combined_1-audit.json:
+        cache: false
+  b21_single_validation_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_single_validation
+    deps:
+    - component_control.py
+    - jobs/b21_single_validation/execution.json
+    outs:
+    - data/cloud/b21_single_validation
+    - results/b21_single_validation-collected.json:
+        cache: false
+  b21_single_validation_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_single_validation
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_single_validation
+    outs:
+    - data/component_states/b21_single_validation.json
+  b21_single_validation_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_single_validation
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_single_validation
+    - data/component_states/b21_single_validation.json
+    outs:
+    - data/boundary/b21_single_validation
+    - results/b21_single_validation-audit.json:
+        cache: false
+  b21_transfer_hot_source_control_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_transfer_hot_source_control
+    deps:
+    - component_control.py
+    - jobs/b21_transfer_hot_source_control/execution.json
+    outs:
+    - data/cloud/b21_transfer_hot_source_control
+    - results/b21_transfer_hot_source_control-collected.json:
+        cache: false
+  b21_transfer_hot_source_control_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_transfer_hot_source_control
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_transfer_hot_source_control
+    outs:
+    - data/component_states/b21_transfer_hot_source_control.json
+  b21_transfer_hot_source_control_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_transfer_hot_source_control
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_transfer_hot_source_control
+    - data/component_states/b21_transfer_hot_source_control.json
+    outs:
+    - data/boundary/b21_transfer_hot_source_control
+    - results/b21_transfer_hot_source_control-audit.json:
+        cache: false
+  b21_transfer_validation_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_transfer_validation
+    deps:
+    - component_control.py
+    - jobs/b21_transfer_validation/execution.json
+    outs:
+    - data/cloud/b21_transfer_validation
+    - results/b21_transfer_validation-collected.json:
+        cache: false
+  b21_transfer_validation_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_transfer_validation
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_transfer_validation
+    outs:
+    - data/component_states/b21_transfer_validation.json
+  b21_transfer_validation_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_transfer_validation
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_transfer_validation
+    - data/component_states/b21_transfer_validation.json
+    outs:
+    - data/boundary/b21_transfer_validation
+    - results/b21_transfer_validation-audit.json:
+        cache: false
+  component_dynamics_comparison:
+    cmd: ../../.venv/bin/python compare_component_dynamics.py
+    deps:
+    - compare_component_dynamics.py
+    - component_model.py
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_transfer_0.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_combined_0.json
+    outs:
+    - results/component-dynamics-comparison.json:
+        cache: false
+  component_validation_candidates:
+    cmd: ../../.venv/bin/python evaluate_component_candidates.py
+    deps:
+    - evaluate_component_candidates.py
+    - component_model.py
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_transfer_0.json
+    - data/component_states/b21_transfer_hot.json
+    - data/component_states/b21_combined_0.json
+    - data/component_states/b21_corner_1.json
+    - data/component_states/b21_single_validation.json
+    outs:
+    - data/component_candidates
+    - results/component-validation-candidates.json:
+        cache: false
+  component_validation_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_component_validation.py
+    deps:
+    - diagnose_component_validation.py
+    - component_model.py
+    - data/component_candidates
+    - data/component_states/b21_single_validation.json
+    outs:
+    - results/component-validation-diagnosis.json:
+        cache: false
+  wall_response_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_wall_response.py
+    deps:
+    - diagnose_wall_response.py
+    - component_model.py
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_transfer_0.json
+    - data/component_states/b21_transfer_hot.json
+    - data/component_states/b21_combined_0.json
+    - data/component_states/b21_corner_1.json
+    - data/component_states/b21_combined_1.json
+    - data/component_states/b21_single_validation.json
+    - data/component_states/b21_transfer_validation.json
+    outs:
+    - results/wall-response-diagnosis.json:
+        cache: false
+  component_hybrid_validation:
+    cmd: ../../.venv/bin/python evaluate_component_hybrid.py
+    deps:
+    - evaluate_component_hybrid.py
+    - component_model.py
+    - diagnose_wall_response.py
+    - component_heat_rule.py
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_transfer_0.json
+    - data/component_states/b21_transfer_hot.json
+    - data/component_states/b21_combined_0.json
+    - data/component_states/b21_corner_1.json
+    - data/component_states/b21_combined_1.json
+    - data/component_states/b21_single_validation.json
+    - data/component_states/b21_transfer_validation.json
+    outs:
+    - data/component_hybrid_candidates
+    - results/component-hybrid-validation.json:
+        cache: false
+  component_exchange_validation:
+    cmd: ../../.venv/bin/python evaluate_component_exchange.py
+    deps:
+    - evaluate_component_exchange.py
+    - component_model.py
+    - diagnose_wall_response.py
+    - component_heat_rule.py
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_transfer_0.json
+    - data/component_states/b21_transfer_hot.json
+    - data/component_states/b21_combined_0.json
+    - data/component_states/b21_corner_1.json
+    - data/component_states/b21_combined_1.json
+    - data/component_states/b21_single_validation.json
+    - data/component_states/b21_transfer_validation.json
+    outs:
+    - data/component_exchange_candidates
+    - results/component-exchange-validation.json:
+        cache: false
+  component_heat_transport_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_heat_transport.py
+    deps:
+    - diagnose_heat_transport.py
+    - component_model.py
+    - component_heat_rule.py
+    - diagnose_wall_response.py
+    - data/component_exchange_candidates
+    - data/component_states/b21_single_validation.json
+    - data/component_states/b21_transfer_validation.json
+    outs:
+    - results/component-heat-transport-diagnosis.json:
+        cache: false
+  component_hot_tail_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_component_hot_tail.py
+    deps:
+    - diagnose_component_hot_tail.py
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_transfer_hot.json
+    outs:
+    - results/component-hot-tail-diagnosis.json:
+        cache: false
+  component_release_validation:
+    cmd: ../../.venv/bin/python evaluate_component_release.py
+    deps:
+    - evaluate_component_release.py
+    - component_model.py
+    - diagnose_wall_response.py
+    - component_heat_rule.py
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_transfer_0.json
+    - data/component_states/b21_transfer_hot.json
+    - data/component_states/b21_combined_0.json
+    - data/component_states/b21_corner_1.json
+    - data/component_states/b21_combined_1.json
+    - data/component_states/b21_single_validation.json
+    - data/component_states/b21_transfer_validation.json
+    - component_release_rule.py
+    outs:
+    - data/component_release_candidates
+    - results/component-release-validation.json:
+        cache: false
+  b21_single_0_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_single_0
+    deps:
+    - component_control.py
+    - jobs/b21_single_0/execution.json
+    outs:
+    - data/cloud/b21_single_0
+    - results/b21_single_0-collected.json:
+        cache: false
+  b21_single_0_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_single_0
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_single_0
+    outs:
+    - data/component_states/b21_single_0.json
+  b21_single_0_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_single_0
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_single_0
+    - data/component_states/b21_single_0.json
+    outs:
+    - data/boundary/b21_single_0
+    - results/b21_single_0-audit.json:
+        cache: false
+  b21_transfer_1_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_transfer_1
+    deps:
+    - component_control.py
+    - jobs/b21_transfer_1/execution.json
+    outs:
+    - data/cloud/b21_transfer_1
+    - results/b21_transfer_1-collected.json:
+        cache: false
+  b21_transfer_1_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_transfer_1
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_transfer_1
+    outs:
+    - data/component_states/b21_transfer_1.json
+  b21_transfer_1_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_transfer_1
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_transfer_1
+    - data/component_states/b21_transfer_1.json
+    outs:
+    - data/boundary/b21_transfer_1
+    - results/b21_transfer_1-audit.json:
+        cache: false
+  b21_combined_2_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_combined_2
+    deps:
+    - component_control.py
+    - jobs/b21_combined_2/execution.json
+    outs:
+    - data/cloud/b21_combined_2
+    - results/b21_combined_2-collected.json:
+        cache: false
+  b21_combined_2_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_combined_2
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_combined_2
+    outs:
+    - data/component_states/b21_combined_2.json
+  b21_combined_2_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_combined_2
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_combined_2
+    - data/component_states/b21_combined_2.json
+    outs:
+    - data/boundary/b21_combined_2
+    - results/b21_combined_2-audit.json:
+        cache: false
+  b21_corner_2_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_corner_2
+    deps:
+    - component_control.py
+    - jobs/b21_corner_2/execution.json
+    outs:
+    - data/cloud/b21_corner_2
+    - results/b21_corner_2-collected.json:
+        cache: false
+  b21_corner_2_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_corner_2
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_corner_2
+    outs:
+    - data/component_states/b21_corner_2.json
+  b21_corner_2_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_corner_2
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_corner_2
+    - data/component_states/b21_corner_2.json
+    outs:
+    - data/boundary/b21_corner_2
+    - results/b21_corner_2-audit.json:
+        cache: false
+  b21_combined_validation_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_combined_validation
+    deps:
+    - component_control.py
+    - jobs/b21_combined_validation/execution.json
+    outs:
+    - data/cloud/b21_combined_validation
+    - results/b21_combined_validation-collected.json:
+        cache: false
+  b21_combined_validation_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_combined_validation
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_combined_validation
+    outs:
+    - data/component_states/b21_combined_validation.json
+  b21_combined_validation_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_combined_validation
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_combined_validation
+    - data/component_states/b21_combined_validation.json
+    outs:
+    - data/boundary/b21_combined_validation
+    - results/b21_combined_validation-audit.json:
+        cache: false
+  hot_state_candidates:
+    cmd: ../../.venv/bin/python evaluate_hot_state.py
+    deps:
+    - evaluate_hot_state.py
+    - component_hot_state_model.py
+    - component_model.py
+    - component_heat_rule.py
+    - component_release_rule.py
+    - diagnose_wall_response.py
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_transfer_0.json
+    - data/component_states/b21_transfer_hot.json
+    - data/component_states/b21_combined_0.json
+    - data/component_states/b21_corner_1.json
+    - data/component_states/b21_combined_1.json
+    - data/component_states/b21_single_validation.json
+    - data/component_states/b21_transfer_validation.json
+    outs:
+    - data/hot_state_candidates
+    - results/hot-state-validation.json:
+        cache: false
+  recursive_canopy_train:
+    cmd: ../../.venv/bin/python train_recursive_canopy.py
+    deps:
+    - train_recursive_canopy.py
+    - component_hot_state_model.py
+    - component_model.py
+    - component_heat_rule.py
+    - diagnose_wall_response.py
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_transfer_0.json
+    - data/component_states/b21_transfer_hot.json
+    - data/component_states/b21_combined_0.json
+    - data/component_states/b21_corner_1.json
+    - data/component_states/b21_combined_1.json
+    outs:
+    - data/recursive_canopy
+    - results/recursive-canopy-training.json:
+        cache: false
+  recursive_canopy_train_constrained:
+    cmd: ../../.venv/bin/python train_recursive_canopy_constrained.py
+    deps:
+    - train_recursive_canopy_constrained.py
+    - component_hot_state_model.py
+    - component_model.py
+    - component_heat_rule.py
+    - diagnose_wall_response.py
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_transfer_0.json
+    - data/component_states/b21_transfer_hot.json
+    - data/component_states/b21_combined_0.json
+    - data/component_states/b21_corner_1.json
+    - data/component_states/b21_combined_1.json
+    outs:
+    - data/recursive_canopy_constrained
+    - results/recursive-canopy-constrained-training.json:
+        cache: false
+  recursive_canopy_train_conservative:
+    cmd: ../../.venv/bin/python train_recursive_canopy_conservative.py
+    deps:
+    - train_recursive_canopy_conservative.py
+    - component_hot_state_model.py
+    - component_model.py
+    - component_heat_rule.py
+    - diagnose_wall_response.py
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_transfer_0.json
+    - data/component_states/b21_transfer_hot.json
+    - data/component_states/b21_combined_0.json
+    - data/component_states/b21_corner_1.json
+    - data/component_states/b21_combined_1.json
+    outs:
+    - data/recursive_canopy_conservative
+    - results/recursive-canopy-conservative-training.json:
+        cache: false
+  recursive300_dose_validation:
+    cmd: ../../.venv/bin/python evaluate_candidate_metrics.py
+    deps:
+    - evaluate_candidate_metrics.py
+    - evaluate_recursive_canopy_energy_budget.py
+    - component_metrics.py
+    - data/recursive_canopy_constrained
+    - data/component_states/b21_single_validation.json
+    - data/component_states/b21_transfer_validation.json
+    outs:
+    - results/recursive300-dose-validation.json:
+        cache: false
+  b21_single_midcondition_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_single_midcondition
+    deps:
+    - component_control.py
+    - jobs/b21_single_midcondition/execution.json
+    outs:
+    - data/cloud/b21_single_midcondition
+    - results/b21_single_midcondition-collected.json:
+        cache: false
+  b21_single_midcondition_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_single_midcondition
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_single_midcondition
+    outs:
+    - data/component_states/b21_single_midcondition.json
+  b21_single_midcondition_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_single_midcondition
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_single_midcondition
+    - data/component_states/b21_single_midcondition.json
+    outs:
+    - data/boundary/b21_single_midcondition
+    - results/b21_single_midcondition-audit.json:
+        cache: false
+  b21_corner_validation_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_corner_validation
+    deps:
+    - component_control.py
+    - jobs/b21_corner_validation/execution.json
+    outs:
+    - data/cloud/b21_corner_validation
+    - results/b21_corner_validation-collected.json:
+        cache: false
+  b21_corner_validation_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_corner_validation
+    deps:
+    - extract_component_states.py
+    - component-development.json
+    - data/cloud/b21_corner_validation
+    outs:
+    - data/component_states/b21_corner_validation.json
+  b21_corner_validation_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_corner_validation
+    deps:
+    - audit_component_runs.py
+    - data/cloud/b21_corner_validation
+    - data/component_states/b21_corner_validation.json
+    outs:
+    - data/boundary/b21_corner_validation
+    - results/b21_corner_validation-audit.json:
+        cache: false
+  recursive_canopy_train_expanded:
+    cmd: ../../.venv/bin/python train_recursive_canopy_expanded.py
+    deps:
+    - train_recursive_canopy_expanded.py
+    - component-training-expanded.json
+    - component_hot_state_model.py
+    - component_model.py
+    - component_heat_rule.py
+    - component_release_rule.py
+    - component_occlusion.py
+    - data/recursive_canopy_constrained
+    - data/component_states/b21_single_0.json
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_transfer_0.json
+    - data/component_states/b21_transfer_1.json
+    - data/component_states/b21_combined_0.json
+    - data/component_states/b21_combined_1.json
+    - data/component_states/b21_combined_2.json
+    - data/component_states/b21_corner_1.json
+    - data/component_states/b21_corner_2.json
+    - data/component_states/b21_transfer_hot.json
+    outs:
+    - data/recursive_canopy_expanded
+    - results/recursive-canopy-expanded-training.json:
+        cache: false
+  recursive_canopy_train_normalized:
+    cmd: ../../.venv/bin/python train_recursive_canopy_normalized.py
+    deps:
+    - train_recursive_canopy_normalized.py
+    - component-training-normalized.json
+    - component_hot_state_model.py
+    - component_model.py
+    - component_heat_rule.py
+    - component_release_rule.py
+    - component_occlusion.py
+    - data/recursive_canopy_constrained
+    - data/component_states/b21_single_0.json
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_transfer_0.json
+    - data/component_states/b21_transfer_1.json
+    - data/component_states/b21_combined_0.json
+    - data/component_states/b21_combined_1.json
+    - data/component_states/b21_combined_2.json
+    - data/component_states/b21_corner_1.json
+    - data/component_states/b21_corner_2.json
+    - data/component_states/b21_transfer_hot.json
+    outs:
+    - data/recursive_canopy_normalized
+    - results/recursive-canopy-normalized-training.json:
+        cache: false
+  c21_santa_rosa_east_03_collect:
+    cmd: ../../.venv/bin/python component_test_control.py collect c21_santa_rosa_east_03
+    deps:
+    - component_test_control.py
+    - jobs/c21_santa_rosa_east_03/execution.json
+    - results/component-test-prediction-freeze.json
+    outs:
+    - data/cloud/c21_santa_rosa_east_03
+    - results/c21_santa_rosa_east_03-collected.json:
+        cache: false
+  c21_santa_rosa_east_03_analyze:
+    cmd: ../../.venv/bin/python analyze_component_tests.py c21_santa_rosa_east_03
+    deps:
+    - analyze_component_tests.py
+    - component_metrics.py
+    - extract_component_states.py
+    - component_hot_state_model.py
+    - data/component_frozen
+    - results/component-test-prediction-freeze.json
+    - data/cloud/c21_santa_rosa_east_03
+    outs:
+    - data/component_test_states/c21_santa_rosa_east_03.json
+    - data/boundary/c21_santa_rosa_east_03
+    - results/c21_santa_rosa_east_03-test.json:
+        cache: false
+  c21_glen_ellen_06_collect:
+    cmd: ../../.venv/bin/python component_test_control.py collect c21_glen_ellen_06
+    deps:
+    - component_test_control.py
+    - jobs/c21_glen_ellen_06/execution.json
+    - results/component-test-prediction-freeze.json
+    outs:
+    - data/cloud/c21_glen_ellen_06
+    - results/c21_glen_ellen_06-collected.json:
+        cache: false
+  c21_glen_ellen_06_analyze:
+    cmd: ../../.venv/bin/python analyze_component_tests.py c21_glen_ellen_06
+    deps:
+    - analyze_component_tests.py
+    - component_metrics.py
+    - extract_component_states.py
+    - component_hot_state_model.py
+    - data/component_frozen
+    - results/component-test-prediction-freeze.json
+    - data/cloud/c21_glen_ellen_06
+    outs:
+    - data/component_test_states/c21_glen_ellen_06.json
+    - data/boundary/c21_glen_ellen_06
+    - results/c21_glen_ellen_06-test.json:
+        cache: false
+  freeze_component_test:
+    cmd: ../../.venv/bin/python freeze_component_predictions.py data/recursive_canopy_bounded300_occlusion.json
+    deps:
+    - freeze_component_predictions.py
+    - data/recursive_canopy_bounded300_occlusion.json
+    - data/additive_baseline.json
+    - results/component-model-selection.json
+    - component-test-inputs.json
+    - analyze_component_tests.py
+    - component_metrics.py
+    - component_model.py
+    - component_hot_state_model.py
+    - component_heat_rule.py
+    - component_release_rule.py
+    - diagnose_wall_response.py
+    - evaluate_recursive_canopy_energy_budget.py
+    - component_occlusion.py
+    - component_additive_baseline.py
+    - scene.py
+    outs:
+    - data/component_frozen
+    - results/component-test-prediction-freeze.json:
+        cache: false
+  additive_component_fit:
+    cmd: ../../.venv/bin/python component_additive_baseline.py
+    deps:
+    - component_additive_baseline.py
+    - component-development.json
+    - component_heat_rule.py
+    - component_hot_state_model.py
+    - component_release_rule.py
+    - data/component_states/b21_single_0.json
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_single_midcondition.json
+    outs:
+    - data/additive_baseline.json
+  selected_component_error_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_selected_component.py
+    deps:
+    - diagnose_selected_component.py
+    - data/component_frozen
+    - component_metrics.py
+    - data/component_states/b21_single_validation.json
+    - data/component_states/b21_transfer_validation.json
+    - data/component_states/b21_combined_validation.json
+    - data/component_states/b21_corner_validation.json
+    outs:
+    - results/selected-component-error-breakdown.json:
+        cache: false
+  vertical_transport_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_vertical_heat_transport.py
+    deps:
+    - diagnose_vertical_heat_transport.py
+    - data/component_frozen
+    - component_model.py
+    - component_hot_state_model.py
+    - component_heat_rule.py
+    - component_occlusion.py
+    - component-development.json
+    - data/component_states/b21_single_1.json
+    - data/component_states/b21_single_2.json
+    - data/component_states/b21_transfer_0.json
+    - data/component_states/b21_transfer_hot.json
+    - data/component_states/b21_combined_0.json
+    - data/component_states/b21_corner_1.json
+    - data/component_states/b21_combined_1.json
+    - data/component_states/b21_single_validation.json
+    - data/component_states/b21_transfer_validation.json
+    - data/component_states/b21_combined_validation.json
+    - data/component_states/b21_corner_validation.json
+    outs:
+    - results/vertical-heat-transport-diagnostic.json:
+        cache: false
+  frozen_inference_benchmark:
+    cmd: ../../.venv/bin/python benchmark_frozen_components.py
+    deps:
+    - benchmark_frozen_components.py
+    - data/component_frozen
+    outs:
+    - results/frozen-component-speed-breakdown.json:
+        cache: false
+  cloud_health_snapshot:
+    cmd: ../../.venv/bin/python check_cloud_health.py
+    deps:
+    - check_cloud_health.py
+    outs:
+    - results/cloud-health-latest.json:
+        cache: false
+  c21_glen_ellen_06_canopy_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_test_canopies.py c21_glen_ellen_06
+    deps:
+    - diagnose_test_canopies.py
+    - extract_component_states.py
+    - data/cloud/c21_glen_ellen_06
+    - data/component_test_states/c21_glen_ellen_06.json
+    outs:
+    - results/c21_glen_ellen_06-canopy-diagnosis.json:
+        cache: false
+  c21_glen_ellen_06_fuel_units:
+    cmd: ../../.venv/bin/python check_test_fuel_units.py c21_glen_ellen_06
+    deps:
+    - check_test_fuel_units.py
+    - data/cloud/c21_glen_ellen_06
+    - results/c21_glen_ellen_06-test.json
+    outs:
+    - results/c21_glen_ellen_06-fuel-units-check.json:
+        cache: false
+  component_test_summary:
+    cmd: ../../.venv/bin/python summarize_component_tests.py
+    deps:
+    - summarize_component_tests.py
+    - results/component-test-prediction-freeze.json
+    - data/component_frozen
+    - results/frozen-component-speed-breakdown.json
+    - results/c21_santa_rosa_east_03-test.json
+    - results/c21_santa_rosa_east_03-collected.json
+    - results/c21_glen_ellen_06-test.json
+    - results/c21_glen_ellen_06-collected.json
+    outs:
+    - results/component-test-summary.json:
+        cache: false
+  c21_santa_rosa_east_03_canopy_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_test_canopies.py c21_santa_rosa_east_03
+    deps:
+    - diagnose_test_canopies.py
+    - extract_component_states.py
+    - data/cloud/c21_santa_rosa_east_03
+    - data/component_test_states/c21_santa_rosa_east_03.json
+    outs:
+    - results/c21_santa_rosa_east_03-canopy-diagnosis.json:
+        cache: false
+  c21_santa_rosa_east_03_fuel_units:
+    cmd: ../../.venv/bin/python check_test_fuel_units.py c21_santa_rosa_east_03
+    deps:
+    - check_test_fuel_units.py
+    - data/cloud/c21_santa_rosa_east_03
+    - results/c21_santa_rosa_east_03-test.json
+    outs:
+    - results/c21_santa_rosa_east_03-fuel-units-check.json:
+        cache: false
+  overnight_cost_proxy:
+    cmd: ../../.venv/bin/python estimate_overnight_cost.py
+    deps:
+    - estimate_overnight_cost.py
+    - budget-overnight.json
+    - results/sampling-price.json
+    outs:
+    - results/overnight-cost-proxy.json:
+        cache: false
+  direct_source_pathway:
+    cmd: OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 ../../.venv/bin/python
+      diagnose_direct_source_features.py
+    deps:
+    - diagnose_direct_source_features.py
+    - data/component_frozen
+    - data/component_test_states/c21_santa_rosa_east_03.json
+    - data/component_test_states/c21_glen_ellen_06.json
+    outs:
+    - results/direct-source-pathway-diagnosis.json:
+        cache: false
+  unlit_heat_forcing:
+    cmd: OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 ../../.venv/bin/python
+      diagnose_unlit_heat_forcing.py
+    deps:
+    - diagnose_unlit_heat_forcing.py
+    - data/component_frozen
+    - data/component_test_states/c21_santa_rosa_east_03.json
+    - data/component_test_states/c21_glen_ellen_06.json
+    outs:
+    - results/unlit-measured-heat-diagnosis.json:
+        cache: false
+  overnight_final_evidence:
+    cmd: ../../.venv/bin/python finalize_overnight_evidence.py
+    deps:
+    - finalize_overnight_evidence.py
+    - finish_sampling.py
+    - results/component-test-prediction-freeze.json
+    - data/component_frozen
+    - data/cloud/overnight21_grid_coarse_v2
+    - data/cloud/overnight21_grid_fine_v2
+    - data/cloud/overnight21_grid_fine_bare_v2
+    outs:
+    - results/overnight-final-evidence.json:
+        cache: false
+  heat_comparison_visual:
+    cmd: ../../.venv/bin/python build_heat_comparison.py
+    deps:
+    - build_heat_comparison.py
+    - heat-comparison.template.html
+    - component_hot_state_model.py
+    - component_model.py
+    - data/component_frozen
+    - results/component-test-prediction-freeze.json
+    - data/component_test_states/c21_santa_rosa_east_03.json
+    - data/component_test_states/c21_glen_ellen_06.json
+    outs:
+    - data/heat-comparison.json
+    - data/heat-comparison.html
+  training_overheads:
+    cmd: ../../.venv/bin/python render_training_overheads.py
+    deps:
+    - render_training_overheads.py
+    - component-development.json
+    - results/component-model-selection.json
+    - data/additive_baseline.json
+    - data/component_frozen
+    - decks
+    outs:
+    - data/training_overheads
+  individual_components:
+    cmd: ../../.venv/bin/python render_individual_components.py
+    deps:
+    - render_individual_components.py
+    - component_hot_state_model.py
+    - component_model.py
+    - data/component_states/b21_transfer_hot.json
+    - data/component_states/b21_single_1.json
+    outs:
+    - data/individual_components

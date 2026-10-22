@@ -1,0 +1,89 @@
+{
+  "results": [
+    {
+      "case": "b21_single_validation",
+      "groups": {
+        "wall_(-1, 0, 0)": {
+          "patches": 48,
+          "exposed": 48,
+          "temperature_MAE_C": 26.561084444436528,
+          "median_exposed_dose_error": 0.1812283551704909,
+          "reference_dose_mean": 651.9228049394247,
+          "predicted_dose_mean": 641.7528864462373
+        }
+      }
+    },
+    {
+      "case": "b21_transfer_validation",
+      "groups": {
+        "wall_(-1, 0, 0)": {
+          "patches": 48,
+          "exposed": 0,
+          "temperature_MAE_C": 14.460524511969153,
+          "median_exposed_dose_error": null,
+          "reference_dose_mean": 51.1707843194882,
+          "predicted_dose_mean": 132.61753043490123
+        }
+      }
+    },
+    {
+      "case": "b21_combined_validation",
+      "groups": {
+        "wall_(-1, 0, 0)": {
+          "patches": 48,
+          "exposed": 48,
+          "temperature_MAE_C": 43.480276782680484,
+          "median_exposed_dose_error": 0.16901442450443874,
+          "reference_dose_mean": 1218.7350982294668,
+          "predicted_dose_mean": 1323.2759113250095
+        }
+      }
+    },
+    {
+      "case": "b21_corner_validation",
+      "groups": {
+        "wall_(-1, 0, 0)": {
+          "patches": 48,
+          "exposed": 48,
+          "temperature_MAE_C": 40.688778169576025,
+          "median_exposed_dose_error": 0.17683614384513058,
+          "reference_dose_mean": 809.5982971608728,
+          "predicted_dose_mean": 641.7528864462373
+        },
+        "roof_top": {
+          "patches": 48,
+          "exposed": 42,
+          "temperature_MAE_C": 58.813992161173125,
+          "median_exposed_dose_error": 0.9987758969797037,
+          "reference_dose_mean": 336.2425651202706,
+          "predicted_dose_mean": 0.3091871659940946
+        },
+        "roof_underside": {
+          "patches": 40,
+          "exposed": 16,
+          "temperature_MAE_C": 57.14096577730182,
+          "median_exposed_dose_error": 0.7531364263156576,
+          "reference_dose_mean": 596.4282771861538,
+          "predicted_dose_mean": 124.10889226318118
+        },
+        "wall_(0, -1, 0)": {
+          "patches": 36,
+          "exposed": 0,
+          "temperature_MAE_C": 0.7395306148029186,
+          "median_exposed_dose_error": null,
+          "reference_dose_mean": 3.5341945522623033,
+          "predicted_dose_mean": 0.19079041681223338
+        },
+        "wall_(0, 1, 0)": {
+          "patches": 36,
+          "exposed": 0,
+          "temperature_MAE_C": 0.7206655501759947,
+          "median_exposed_dose_error": null,
+          "reference_dose_mean": 3.287490721384698,
+          "predicted_dose_mean": 0.17789366208176216
+        }
+      }
+    }
+  ],
+  "interpretation": "Local diagnostic only. Static point-emitter/straight-line transport lacks resolved plume geometry, convection and canopy hot-zone locations; these are candidate explanations, not isolated causes. No parameters changed after freeze."
+}

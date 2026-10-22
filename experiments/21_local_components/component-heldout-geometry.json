@@ -1,0 +1,191 @@
+{
+  "status": "geometry_frozen_no_simulation",
+  "scenes": [
+    {
+      "case": "c21_santa_rosa_east_03",
+      "source_scene_sha256": "f662e8f9ca920d88355a7e1d17b68fa7213cedea3ec070689947d7870c72c357",
+      "footprint_local": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              15.234723355155438,
+              32.17756531946361
+            ],
+            [
+              32.626337807043456,
+              31.60587115585804
+            ],
+            [
+              32.48274720995687,
+              27.236716638319194
+            ],
+            [
+              31.9244154705666,
+              27.25499434582889
+            ],
+            [
+              31.687237424310297,
+              20.039373659528792
+            ],
+            [
+              32.72309773345478,
+              20.005332246422768
+            ],
+            [
+              32.572508902521804,
+              15.426264505833387
+            ],
+            [
+              17.16061050631106,
+              15.932867227122188
+            ],
+            [
+              17.28802259650547,
+              19.80759359896183
+            ],
+            [
+              15.743132783798501,
+              19.85835327859968
+            ],
+            [
+              15.877293529221788,
+              23.938391639851034
+            ],
+            [
+              14.964840317610651,
+              23.968386228196323
+            ],
+            [
+              15.234723355155438,
+              32.17756531946361
+            ]
+          ]
+        ]
+      },
+      "building_height_m": 5,
+      "canopies": [
+        {
+          "id": "v0",
+          "x": 6.964840317610651,
+          "y": 24,
+          "base": 3,
+          "height": 7,
+          "radius": 2,
+          "initialized": true
+        },
+        {
+          "id": "v1",
+          "x": 11.964840317610651,
+          "y": 19,
+          "base": 3,
+          "height": 7,
+          "radius": 2,
+          "initialized": false
+        },
+        {
+          "id": "v2",
+          "x": 11.464840317610651,
+          "y": 29,
+          "base": 5,
+          "height": 11,
+          "radius": 3,
+          "initialized": false
+        }
+      ],
+      "domain_m": [
+        0,
+        48,
+        0,
+        48,
+        0,
+        24
+      ],
+      "dx_m": 0.5,
+      "horizon_s": 90,
+      "wind_speed_m_s": 3,
+      "wind_direction_deg": 270,
+      "moisture": 0.14,
+      "seed": 4321,
+      "scope": "Actual recorded Sonoma building footprint translated to domain centre; assigned flat height and three synthetic canopy patches. Canopy positions are deliberately assigned, not measured from this property. Generic wood building/vegetation, no interiors/trunks/groundcover/embers."
+    },
+    {
+      "case": "c21_glen_ellen_06",
+      "source_scene_sha256": "881801c76df83fa11f40022946e093269977de2c219015f3f103ea883c4e95a5",
+      "footprint_local": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              15.798244752339087,
+              30.574447908438742
+            ],
+            [
+              25.67507571016904,
+              34.426159425638616
+            ],
+            [
+              32.10812450677622,
+              17.18673194758594
+            ],
+            [
+              22.446987148257904,
+              13.631484892219305
+            ],
+            [
+              15.798244752339087,
+              30.574447908438742
+            ]
+          ]
+        ]
+      },
+      "building_height_m": 6,
+      "canopies": [
+        {
+          "id": "v0",
+          "x": 4.798244752339087,
+          "y": 24,
+          "base": 3,
+          "height": 7,
+          "radius": 2,
+          "initialized": true
+        },
+        {
+          "id": "v1",
+          "x": 9.798244752339087,
+          "y": 19,
+          "base": 3,
+          "height": 7,
+          "radius": 2,
+          "initialized": false
+        },
+        {
+          "id": "v2",
+          "x": 9.298244752339087,
+          "y": 29,
+          "base": 5,
+          "height": 11,
+          "radius": 3,
+          "initialized": false
+        }
+      ],
+      "domain_m": [
+        0,
+        48,
+        0,
+        48,
+        0,
+        24
+      ],
+      "dx_m": 0.5,
+      "horizon_s": 90,
+      "wind_speed_m_s": 3,
+      "wind_direction_deg": 225,
+      "moisture": 0.2,
+      "seed": 4321,
+      "scope": "Actual recorded Sonoma building footprint translated to domain centre; assigned flat height and three synthetic canopy patches. Canopy positions are deliberately assigned, not measured from this property. Generic wood building/vegetation, no interiors/trunks/groundcover/embers."
+    }
+  ],
+  "rule": "Train only on small configurations. Freeze model/additive baseline and full autonomous predictions with hashes before submitting or reading any test FDS outputs. No test-driven geometry changes.",
+  "limitations": "Only2 scenes,90s. Full footprint extrusions introduce roofs/opposite walls absent or underrepresented in current local training; quantify coverage before deployment. This is a fixed-resolution composition challenge, not real-property risk validation."
+}

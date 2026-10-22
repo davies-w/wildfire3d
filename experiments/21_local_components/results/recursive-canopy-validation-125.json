@@ -1,0 +1,29 @@
+{
+  "epoch": 125,
+  "model_sha256": "6a1be10bc85d6b1522924f330c1876a00a7009f9060b3493b31b3a41a316fc81",
+  "validation": [
+    {
+      "case": "b21_single_validation",
+      "MAE_C": 70.21442461244631,
+      "peak_C": 211.5415016753818,
+      "reference_peak_C": 590.707249314055,
+      "ignition_s": null,
+      "reference_ignition_s": 26.0,
+      "wall_seconds": 0.09342445898801088,
+      "minimum_remaining_mass_fraction": -0.5,
+      "maximum_hot_fraction": 0.7662058860647695
+    },
+    {
+      "case": "b21_transfer_validation",
+      "MAE_C": 4.743388781769439,
+      "peak_C": 56.27279828969122,
+      "reference_peak_C": 63.53383353881019,
+      "ignition_s": null,
+      "reference_ignition_s": null,
+      "wall_seconds": 0.09207337512634695,
+      "minimum_remaining_mass_fraction": -0.5,
+      "maximum_hot_fraction": 0.7752168399627002
+    }
+  ],
+  "scope": "Fully autonomous local validation; no FDS states supplied during rollout. Recursive network not physically constrained for mass/hot fractions; violations explicitly reported. No Stage C outputs."
+}

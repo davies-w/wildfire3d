@@ -1,0 +1,35 @@
+{
+  "status": "UNLAUNCHED_CANDIDATES_PENDING_FINE_GRID",
+  "cases": [
+    {
+      "case": "candidate_domain_only",
+      "deck_sha256": "dfbfae9cf22acb39a8a314f2e4e365a0c87cf90f66532324ada25fe847ec2f52",
+      "compare_to": [
+        "ac21_single",
+        "ac21_single_expanded"
+      ],
+      "purpose": "Separate domain extent from added rear building geometry.",
+      "horizon_s": 180,
+      "incremental_allowance_usd": 0.25,
+      "reserved_vm_hours": 2,
+      "solver_limit_s": 6600
+    },
+    {
+      "case": "candidate_large_crown_density",
+      "deck_sha256": "d287784f47a4f7c0952603a5b42e44b3a34b354f0bb8d1f8611bc8d7bfc54b29",
+      "compare_to": [
+        "ac21_double"
+      ],
+      "purpose": "Test unchanged hot-particle linear density on the larger ring; add per-crown mass/fuel diagnostics.",
+      "horizon_s": 90,
+      "incremental_allowance_usd": 0.125,
+      "reserved_vm_hours": 0.75,
+      "solver_limit_s": 2100,
+      "limitations": "Large-ring prescribed thermal and chemical input increase50%; not a neutral instrumentation change. Does not prove natural ignition or realistic intensity. Local preflight not yet performed."
+    }
+  ],
+  "combined_planning_allowance_usd": 0.375,
+  "pricing_basis": "Existing $0.08/VM-hour planning ceiling plus ancillary allowances; reverify before paid launch.",
+  "decision": "Inspect fine-grid outcome before recommending both. Domain-only case is a three-way contrast reusing existing compact and expanded runs. Large-ring source remains a hypothesis; local validation precedes any paid sampling.",
+  "preserved": "Analytic10m/16m canopy tops with3m/5m bases, generic vegetation and wood facade,3m/s wind,.5m grid,no trunks/ground cover/embers. Igniters removed21s. Not real-property validation."
+}

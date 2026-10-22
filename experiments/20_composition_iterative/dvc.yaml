@@ -1,0 +1,204 @@
+stages:
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - preflight.py
+    - scene.py
+    - base_scene.py
+    - design.json
+    - inputs
+    - ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+    outs:
+    - data/preflight
+    - results/preflight.json:
+        cache: false
+  model_smoke:
+    cmd: ../../.venv/bin/python models.py
+    deps:
+    - models.py
+    - design.json
+    outs:
+    - results/model-smoke.json:
+        cache: false
+  restore_reuse:
+    cmd: ../../.venv/bin/python restore.py
+    deps:
+    - restore.py
+    - data/reuse18.tar.gz
+    - data/reuse19.tar.gz
+    outs:
+    - data/reuse18
+    - data/reuse19
+  pipeline_check:
+    cmd: ../../.venv/bin/python pipeline_check.py
+    deps:
+    - pipeline_check.py
+    - models.py
+    - train.py
+    - predict.py
+    - evaluate.py
+    - training.json
+    - design.json
+    outs:
+    - results/pipeline-check.json:
+        cache: false
+  development:
+    cmd: ../../.venv/bin/python extract.py development
+    deps:
+    - extract.py
+    - models.py
+    - development-manifest.json
+    - data/reuse18
+    - data/reuse19
+    - ../../FDS/install/bin/fds2ascii
+    - batches/diagnostic01/data/cloud
+    - batches/exposure01/data/cloud
+    - batches/development20/data/cloud
+    outs:
+    - data/development.json
+    - data/boundary/development
+  assemble_development:
+    cmd: ../../.venv/bin/python assemble_development.py
+    deps:
+    - assemble_development.py
+    - reuse-manifest.json
+    - batches/diagnostic01/batch.json
+    - batches/diagnostic01/data/cloud
+    - batches/exposure01/batch.json
+    - batches/exposure01/data/cloud
+    - batches/development20/batch.json
+    - batches/development20/data/cloud
+    outs:
+    - development-manifest.json:
+        cache: false
+  train:
+    cmd: ../../.venv/bin/python train.py
+    deps:
+    - train.py
+    - models.py
+    - training.json
+    - design.json
+    - data/development.json
+    outs:
+    - data/models
+    - results/frozen-weights.json:
+        cache: false
+  predict:
+    cmd: ../../.venv/bin/python predict.py
+    deps:
+    - predict.py
+    - models.py
+    - design.json
+    - data/models
+    - results/frozen-weights.json
+    - confirmation-inputs.json
+    outs:
+    - results/frozen-predictions.json:
+        cache: false
+  test:
+    cmd: ../../.venv/bin/python extract.py test
+    deps:
+    - extract.py
+    - models.py
+    - confirmation-inputs.json
+    - batches/confirmation20/data/cloud
+    - results/frozen-predictions.json
+    - ../../FDS/install/bin/fds2ascii
+    outs:
+    - data/test.json
+    - data/boundary/test
+  evaluate:
+    cmd: ../../.venv/bin/python evaluate.py
+    deps:
+    - evaluate.py
+    - models.py
+    - results/frozen-predictions.json
+    - results/frozen-weights.json
+    - confirmation-inputs.json
+    - data/test.json
+    - data/development.json
+    outs:
+    - results/evaluation.json:
+        cache: false
+  cost_summary:
+    cmd: ../../.venv/bin/python summarize_cost.py
+    deps:
+    - summarize_cost.py
+    - budget.json
+    - batches/diagnostic01/batch.json
+    - batches/diagnostic01/results/status.json
+    - batches/diagnostic01/results/cleanup.json
+    - batches/exposure01/batch.json
+    - batches/exposure01/results/status.json
+    - batches/exposure01/results/cleanup.json
+    - batches/development20/batch.json
+    - batches/development20/results/status.json
+    - batches/development20/results/cleanup.json
+    - batches/confirmation20/batch.json
+    - batches/confirmation20/results/status.json
+    - batches/confirmation20/results/cleanup.json
+    outs:
+    - results/cost-summary.json:
+        cache: false
+  findings:
+    cmd: ../../.venv/bin/python write_findings.py
+    deps:
+    - write_findings.py
+    - results/evaluation.json
+    - results/cost-summary.json
+    outs:
+    - results/findings.md:
+        cache: false
+
+  visualize:
+    cmd:
+    - ../../.venv/bin/python visualize_event.py
+    - ../../.venv/bin/python visualize_graph.py
+    deps:
+    - visualize_event.py
+    - visualize_graph.py
+    - models.py
+    - design.json
+    - confirmation-inputs.json
+    - data/models
+    - results/frozen-weights.json
+    - results/frozen-predictions.json
+    - data/test.json
+    - batches/confirmation20/data/cloud/confirm20_ACG_3200_s4321
+    - ../../FDS/cases/wick3/wick3.ini
+    - ../../FDS/bin/smv_quiet
+    - ../../FDS/install/smvbin/smokeview
+    outs:
+    - data/visualization
+    - results/visualizations
+
+  full_visual_solve:
+    cmd: ../../.venv/bin/python rerun_visual.py
+    deps:
+    - rerun_visual.py
+    - scene.py
+    - base_scene.py
+    - design.json
+    - inputs
+    - confirmation-inputs.json
+    - batches/confirmation20/data/cloud/confirm20_ACG_3200_s4321/result.json
+    - ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+    outs:
+    - data/full_visual
+  full_visual_render:
+    cmd:
+    - ../../.venv/bin/python verify_full_visual.py
+    - ../../.venv/bin/python render_full_visual.py
+    deps:
+    - verify_full_visual.py
+    - render_full_visual.py
+    - data/full_visual
+    - data/visualization
+    - results/visualizations/graph_messages.png
+    - ../../FDS/bin/smv_quiet
+    - ../../FDS/install/smvbin/smokeview
+    - ../../FDS/install/bin/fds2ascii
+    outs:
+    - results/full_visual
+    - data/full_visual_render
+    - data/full_visual_boundary

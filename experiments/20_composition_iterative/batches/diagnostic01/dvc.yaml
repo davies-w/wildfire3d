@@ -1,0 +1,19 @@
+stages:
+  restore:
+    cmd: ../../../../.venv/bin/python restore.py
+    deps:
+    - restore.py
+    - data/cloud-evidence.tar.gz
+    outs:
+    - data/cloud
+  diagnose:
+    cmd: ../../../../.venv/bin/python ../../analyze_batch.py diagnostic01
+    deps:
+    - ../../analyze_batch.py
+    - batch.json
+    - data/cloud
+    - ../../../../FDS/install/bin/fds2ascii
+    outs:
+    - data/boundary
+    - results/diagnosis.json:
+        cache: false

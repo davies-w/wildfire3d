@@ -1,0 +1,180 @@
+{
+  "training": [
+    "b21_single_1",
+    "b21_single_2",
+    "b21_transfer_0",
+    "b21_transfer_hot",
+    "b21_combined_0",
+    "b21_corner_1",
+    "b21_combined_1"
+  ],
+  "validation": [
+    "b21_single_validation",
+    "b21_transfer_validation"
+  ],
+  "candidates": [
+    {
+      "candidate": "hot_independent_1",
+      "model_sha256": "52db67751f05c82efe012a6abf1730df813421cf84cd8ed45258ab2540466dcd",
+      "coefficient_count": 108,
+      "validation": [
+        {
+          "case": "b21_single_validation",
+          "MAE_C": 77.57046714558747,
+          "peak_C": 192.23348128592332,
+          "reference_peak_C": 590.707249314055,
+          "ignition_s": null,
+          "reference_ignition_s": 26.0,
+          "clipped_values": 113,
+          "wall_seconds": 0.09095633309334517
+        },
+        {
+          "case": "b21_transfer_validation",
+          "MAE_C": 5.195472541868304,
+          "peak_C": 49.359385627958346,
+          "reference_peak_C": 63.53383353881019,
+          "ignition_s": null,
+          "reference_ignition_s": null,
+          "clipped_values": 255,
+          "wall_seconds": 0.09041491709649563
+        }
+      ]
+    },
+    {
+      "candidate": "hot_independent_10",
+      "model_sha256": "ee88648eca3f105636134ec15b36231628e728d03bdb15ae47bb745205879629",
+      "coefficient_count": 108,
+      "validation": [
+        {
+          "case": "b21_single_validation",
+          "MAE_C": 91.33062310159596,
+          "peak_C": 115.0531926830216,
+          "reference_peak_C": 590.707249314055,
+          "ignition_s": null,
+          "reference_ignition_s": 26.0,
+          "clipped_values": 102,
+          "wall_seconds": 0.09181550005450845
+        },
+        {
+          "case": "b21_transfer_validation",
+          "MAE_C": 7.557345901730393,
+          "peak_C": 36.26599408910366,
+          "reference_peak_C": 63.53383353881019,
+          "ignition_s": null,
+          "reference_ignition_s": null,
+          "clipped_values": 247,
+          "wall_seconds": 0.09143533301539719
+        }
+      ]
+    },
+    {
+      "candidate": "hot_independent_100",
+      "model_sha256": "a269b1ed8f47a20f7ea73352ad5a898298a92c99b4bef1c3925d090e8e45b422",
+      "coefficient_count": 108,
+      "validation": [
+        {
+          "case": "b21_single_validation",
+          "MAE_C": 101.73789109698775,
+          "peak_C": 60.05958281891369,
+          "reference_peak_C": 590.707249314055,
+          "ignition_s": null,
+          "reference_ignition_s": 26.0,
+          "clipped_values": 3,
+          "wall_seconds": 0.09187533403746784
+        },
+        {
+          "case": "b21_transfer_validation",
+          "MAE_C": 9.981052628428724,
+          "peak_C": 26.332470718990507,
+          "reference_peak_C": 63.53383353881019,
+          "ignition_s": null,
+          "reference_ignition_s": null,
+          "clipped_values": 50,
+          "wall_seconds": 0.09086350002326071
+        }
+      ]
+    },
+    {
+      "candidate": "hot_interaction_1",
+      "model_sha256": "f62f3ac5e4c6c1c591369bb32fa5a95b8d740cef4fda85d0c7c5ec56f2784465",
+      "coefficient_count": 108,
+      "validation": [
+        {
+          "case": "b21_single_validation",
+          "MAE_C": 110.04935501758452,
+          "peak_C": 20.695994675763657,
+          "reference_peak_C": 590.707249314055,
+          "ignition_s": null,
+          "reference_ignition_s": 26.0,
+          "clipped_values": 467,
+          "wall_seconds": 0.09127316693775356
+        },
+        {
+          "case": "b21_transfer_validation",
+          "MAE_C": 12.097006257664857,
+          "peak_C": 20.102721722263095,
+          "reference_peak_C": 63.53383353881019,
+          "ignition_s": null,
+          "reference_ignition_s": null,
+          "clipped_values": 941,
+          "wall_seconds": 0.09068324998952448
+        }
+      ]
+    },
+    {
+      "candidate": "hot_interaction_10",
+      "model_sha256": "b6cf0fa665beecf09a6486b812d6479b0fe7ba87377d075badee026061c609c4",
+      "coefficient_count": 108,
+      "validation": [
+        {
+          "case": "b21_single_validation",
+          "MAE_C": 109.1374868651623,
+          "peak_C": 24.531490663572583,
+          "reference_peak_C": 590.707249314055,
+          "ignition_s": null,
+          "reference_ignition_s": 26.0,
+          "clipped_values": 455,
+          "wall_seconds": 0.09158220794051886
+        },
+        {
+          "case": "b21_transfer_validation",
+          "MAE_C": 11.873379647568813,
+          "peak_C": 20.687981620510413,
+          "reference_peak_C": 63.53383353881019,
+          "ignition_s": null,
+          "reference_ignition_s": null,
+          "clipped_values": 848,
+          "wall_seconds": 0.09057920798659325
+        }
+      ]
+    },
+    {
+      "candidate": "hot_interaction_100",
+      "model_sha256": "148422505e630c631aa08e99fe499fc88fbcae81848e8d3dec6d29e632632c66",
+      "coefficient_count": 108,
+      "validation": [
+        {
+          "case": "b21_single_validation",
+          "MAE_C": 90.15946508793564,
+          "peak_C": 249.8800927009584,
+          "reference_peak_C": 590.707249314055,
+          "ignition_s": null,
+          "reference_ignition_s": 26.0,
+          "clipped_values": 321,
+          "wall_seconds": 0.09118487499654293
+        },
+        {
+          "case": "b21_transfer_validation",
+          "MAE_C": 8.972227063128312,
+          "peak_C": 84.37353462962449,
+          "reference_peak_C": 63.53383353881019,
+          "ignition_s": null,
+          "reference_ignition_s": null,
+          "clipped_values": 653,
+          "wall_seconds": 0.09097591717727482
+        }
+      ]
+    }
+  ],
+  "scope": "Local validation/model selection only. No Stage C outputs. Compact hybrid with learned heated-mass fractions; not a pure DNN."
+}

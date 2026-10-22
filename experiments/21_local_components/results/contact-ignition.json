@@ -1,0 +1,49 @@
+{
+  "contact_ring20": {
+    "physical_seconds": 90.0,
+    "hrr_min_40_50_kw": 2985.9331279431285,
+    "energy_40_60_MJ": 77.95157185369084,
+    "fuel_release_diagnostic_valid": false,
+    "fuel_release_diagnostic_issue": "Unfiltered wall contributions are included in each PART_ID surface integral; do not sum as vegetation fuel.",
+    "wet_particle_mass_loss_40_60_kg": 5.161651144245826,
+    "house_burning": true,
+    "peak_house_C": 492.438,
+    "initial_wet_mass_kg": 87.8781519,
+    "final_wet_mass_kg": 4.92376972,
+    "ignitor_count_after_22": 0,
+    "building_boundary": {
+      "maximum_0_90_mean_kg_m2_s": 0.0083677,
+      "samples": 528
+    },
+    "first_house_burning_sample_s": 24.505744,
+    "peak_hrr_kw": 74569.032,
+    "energy_after_22_MJ": 979.5638602802533
+  },
+  "contact_ring20_bare": {
+    "physical_seconds": 90.0,
+    "hrr_min_40_50_kw": 0.0,
+    "energy_40_60_MJ": 0.0,
+    "fuel_release_diagnostic_valid": false,
+    "fuel_release_diagnostic_issue": "Unfiltered wall contributions are included in each PART_ID surface integral; do not sum as vegetation fuel.",
+    "wet_particle_mass_loss_40_60_kg": 0.0,
+    "house_burning": false,
+    "peak_house_C": 73.184026,
+    "initial_wet_mass_kg": 0.0,
+    "final_wet_mass_kg": 0.0,
+    "ignitor_count_after_22": 0,
+    "building_boundary": {
+      "maximum_0_90_mean_kg_m2_s": 0.0,
+      "samples": 528
+    },
+    "first_house_burning_sample_s": null,
+    "peak_hrr_kw": 121.50812,
+    "energy_after_22_MJ": 0.00023891823411358924
+  },
+  "interpretation_limits": [
+    "Artificial hot-particle contact ignition, not a natural ground-fire exposure or ember model.",
+    "Generic fuel parameters and assigned mature-size loading remain unvalidated.",
+    "Total HRR includes building combustion. Per-class fuel-flux devices also include unfiltered wall contributions and are invalid as isolated vegetation fluxes; remaining particle mass includes water and char.",
+    "Local run90 s; original cloud scenarios180 s. Same initial90 s comparison only."
+  ],
+  "ignition_gate_passed": true
+}

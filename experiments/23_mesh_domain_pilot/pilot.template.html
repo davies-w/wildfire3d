@@ -1,0 +1,37 @@
+<div id="mesh-pilot">
+<h3>Air volume × cell size · proposed inputs only</h3>
+<div class="viz-controls"><label class="form-label">Nearby layout<select class="form-select" id="mp-layout"><option value="0">A · staggered pair</option><option value="1">B · closer pair</option><option value="2">C · wider angle</option></select></label><label class="form-label">View<select class="form-select" id="mp-view"><option value="top">Overhead · x/y</option><option value="side">Side · x/z projection</option></select></label></div>
+<div class="text-small">Building: 6 × 6 × 5 m · source crown: 4 m wide, 2–10 m high · receiver: 4 m wide, 2–8 m high</div>
+<div id="mp-panels"></div>
+<div class="text-small">Circles / triangles: particle-canopy envelopes · rectangle: solid wood-surfaced building · ring: artificial ignition · dashed box: fine/coarse interface · colours identify objects, not temperature</div>
+<div id="mp-detail" aria-live="polite"></div>
+<style>
+#mesh-pilot #mp-panels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:16px 0}#mesh-pilot svg{width:100%;display:block}#mesh-pilot svg text{fill:var(--foreground);font-size:12px}#mesh-pilot .mp-label{font-weight:500}#mesh-pilot .mp-meta{margin:4px 0} @media(max-width:750px){#mesh-pilot #mp-panels{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:420px){#mesh-pilot #mp-panels{grid-template-columns:1fr}}
+</style>
+<script>
+(()=>{
+const root=document.getElementById('mesh-pilot'), panels=root.querySelector('#mp-panels');
+const variants=[];for(const expanded of [false,true])for(const dx of [1,.5,.25,'mixed'])variants.push({expanded,dx});
+const receivers=[[6,12],[5,11],[7,15]];
+const fmt=n=>n.toLocaleString();
+function draw(){const side=root.querySelector('#mp-view').value==='side',k=+root.querySelector('#mp-layout').value;panels.innerHTML='';
+variants.forEach((v,i)=>{const box=document.createElement('div');panels.appendChild(box);const w=box.getBoundingClientRect().width,h=w+12, m=23,s=(w-2*m)/32;
+const x=a=>m+(a+6)*s,y=a=>m+(side?24-a:26-a)*s;
+const lo=v.expanded?-6:0, hi=v.expanded?26:20, z=v.expanded?24:15;
+const cells=v.dx==='mixed'?196608+((hi-lo)**2*z-3072)/.125:((hi-lo)**2*z)/v.dx**3;
+const rect=(a,b,c,d,style)=>`<rect x="${x(a)}" y="${y(d)}" width="${(b-a)*s}" height="${(d-c)*s}" ${style}/>`;
+let content=rect(lo,hi,side?0:lo,side?z:hi,'fill="none" stroke="var(--foreground)"');
+const step=v.dx==='mixed'?.5:v.dx;
+function grid(a,b,c,d,step){let t='';for(let q=a+step;q<b-.0001;q+=step)t+=`<path d="M${x(q)},${y(c)}V${y(d)}"/>`;for(let q=c+step;q<d-.0001;q+=step)t+=`<path d="M${x(a)},${y(q)}H${x(b)}"/>`;return `<g stroke="var(--border)" stroke-width=".45">${t}</g>`;}
+content+=grid(lo,hi,side?0:lo,side?z:hi,step);
+if(v.dx==='mixed'){content+=rect(2,18,side?0:2,side?12:18,'fill="var(--background)"');content+=grid(2,18,side?0:2,side?12:18,.25);content+=rect(2,18,side?0:2,side?12:18,'fill="none" stroke="var(--viz-series-3)" stroke-dasharray="5 3" stroke-width="2"');}
+content+=rect(11,17,side?0:8,side?5:14,'fill="var(--viz-series-2)" fill-opacity=".35" stroke="var(--viz-series-2)"');
+const trees=[[5,6,10],[...receivers[k],8]];
+trees.forEach(([a,b,top],j)=>{const color='var(--viz-series-1)';content+=side?`<polygon points="${x(a-2)},${y(2)} ${x(a)},${y(top)} ${x(a+2)},${y(2)}" fill="${color}" fill-opacity=".3" stroke="${color}"/>`:`<circle cx="${x(a)}" cy="${y(b)}" r="${2*s}" fill="${color}" fill-opacity=".3" stroke="${color}"/>`;if(j===0)content+=side?`<path d="M${x(a-2)},${y(2)}H${x(a+2)}" stroke="var(--viz-series-4)" stroke-width="3"/>`:`<circle cx="${x(a)}" cy="${y(b)}" r="${2*s}" fill="none" stroke="var(--viz-series-4)" stroke-width="3"/>`;});
+content+=`<text x="${m}" y="${h-3}">0</text><path d="M${m+15},${h-7}h${5*s}" stroke="var(--foreground)"/><text x="${m+21+5*s}" y="${h-3}">5 m</text>`;
+box.innerHTML=`<div class="mp-label">${v.expanded?'Expanded':'Compact'} · ${v.dx==='mixed'?'0.25 / 0.5 m':v.dx+' m'}</div><div class="text-small mp-meta">${hi-lo} × ${hi-lo} × ${z} m · ${fmt(cells)} cells</div><svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${v.expanded?'Expanded':'Compact'} domain, ${v.dx} metre mesh, ${side?'side projection':'overhead'}, layout ${k+1}">${content}</svg>`;
+});root.querySelector('#mp-detail').textContent='Layout '+String.fromCharCode(65+k)+' · wind toward +x at 3 m/s · moisture 0.12 kg/kg dry fuel · 180 s · source removed by 21 s';}
+root.querySelector('#mp-layout').onchange=draw;root.querySelector('#mp-view').onchange=draw;let last=0;new ResizeObserver(e=>{const w=e[0].contentRect.width;if(Math.abs(last-w)>1){last=w;draw();}}).observe(root);draw();
+})();
+</script>
+</div>

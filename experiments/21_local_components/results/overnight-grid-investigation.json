@@ -1,0 +1,56 @@
+{
+  "status": "Mechanism supported by source; exact cause of this ignition switch remains unisolated.",
+  "source_commit": "ff928dbf68a2623ced3a007be75391c6dc6c9f90",
+  "source_hashes": {
+    "wall.f90": "c08b7968b1563828144b60fe724924366d25ec7e12f1cb5bbaa22f30b29a209c",
+    "radi.f90": "e729e2352d8f327304f4396c3baf3c67f5e42fd7f059f9e74cce54b73a30ec15",
+    "part.f90": "e150e130f895c84a4ad9adbcb84ba60a453ca16008bf8cba8d05a098aef9d81c"
+  },
+  "findings": [
+    {
+      "source": "wall.f90:449-465",
+      "finding": "Thermally thick particles interpolate surrounding gas temperature trilinearly. Other particle thermal conditions use containing-cell gas temperature. Do not describe all particle heating as a single containing-cell temperature."
+    },
+    {
+      "source": "wall.f90:1513-1547; part.f90:5002",
+      "finding": "Particle fuel injection and convective energy exchange enter gas-cell source terms using particle weighting and inverse cell volume. A fixed localized source is spatially distributed differently when cell size changes."
+    },
+    {
+      "source": "radi.f90:3913-3915",
+      "finding": "Particle absorption and emission coefficients accumulate within gas cells with particle area, weight and inverse cell volume; radiation is grid-coupled too."
+    },
+    {
+      "source": "wall.f90:3463,3484",
+      "finding": "Solid reaction rates contain an Arrhenius exponential in inverse solid temperature. A temperature difference during initialization can amplify into different fuel release and flame feedback."
+    },
+    {
+      "source": "part.f90:1310-1469",
+      "finding": "Cone membership and represented volume depend on grid cells. Refinement changes particle placement and cone voxelization as well as gas resolution. Same total mass does not guarantee identical local fuel distribution."
+    }
+  ],
+  "existing_evidence": "Eightfold vegetation sampling at unchanged 0.5m grid does not ignite large crown. Early large-foliage temperature divergence already occurs during 0-20s imposed ignition. No gas slice through y18 in those runs. This supports a grid/initialization interaction but does not isolate convection versus radiation or placement.",
+  "not_established": [
+    "0.25m convergence",
+    "realistic vegetation or facade material behaviour",
+    "need for fine cells everywhere",
+    "a universal 8x source compensation law",
+    "fine facade ignition independent of imposed burner"
+  ],
+  "references": [
+    {
+      "url": "https://github.com/firemodels/fds/blob/master/Manuals/FDS_Technical_Reference_Guide/Particle_Chapter.tex",
+      "relevance": "Official particle model, one-dimensional internal conduction and cell-volume-dependent radiative coupling."
+    },
+    {
+      "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=922922",
+      "relevance": "NIST grass-fire study reports grid sensitivity depending on spread direction and sensitivity to particle placement. Different fuel/geometry/version; its accuracy and runtime cannot be transferred to these canopy/facade cases."
+    }
+  ],
+  "next_decisions": [
+    "Collect stronger coarse initialization. If both crowns burn, compare post-source fuel release and facade histories; do not call it agreement merely because both ignite.",
+    "If fine-grid path is needed, run a matched source-only fine control and diagnostic grid pair with gas/radiation output through large canopy y18. Keep physical source unchanged across that pair. Match nominal vegetation sampling and report residual placement differences.",
+    "Before a long fine solve, verify same-Linux-binary checkpoint/resume in its worker, retain final checkpoint and input deck, and allow sufficient archive size (fine checkpoint likely exceeds coarse 400MiB cap). Add remote periodic recovery or explicitly retain abrupt-Spot-loss limitation.",
+    "Any fine follow-up must fit ledger end_unix including provisioning/upload/cleanup. Prior 0.25m double cost 5.84h for69.5s; do not promise90s inside6h. Use a useful shorter horizon or bounded checkpointed continuation, explicitly labelled censored if incomplete.",
+    "Separate domain extent from rear-building geometry using already-prepared domain-only control. Keep original validity criteria; training remains gated, not blocked from local analysis/preparation."
+  ]
+}

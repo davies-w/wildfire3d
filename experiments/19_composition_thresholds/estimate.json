@@ -1,0 +1,33 @@
+{
+  "status": "NO_CLOUD_LAUNCH",
+  "max_new_runs": 37,
+  "expected_new_runs": [
+    27,
+    33
+  ],
+  "expected_wall_hours": [
+    3,
+    4.5
+  ],
+  "machine": "c3-standard-4",
+  "region": "us-central1",
+  "provisioning": "SPOT",
+  "usd_per_hour": 0.065744,
+  "estimated_total_usd": [
+    0.297,
+    0.396
+  ],
+  "ancillary_allowance_usd": 0.1,
+  "controller_deadline_seconds": 18000,
+  "deadline_compute_plus_ancillary_usd": 0.429,
+  "allowance_usd": 0.45,
+  "guaranteed_billing_cap": false,
+  "builds": 0,
+  "retries": 0,
+  "on_demand_fallback": false,
+  "training": "local CPU",
+  "price_source": "https://cloud.google.com/spot-vms/pricing?hl=en",
+  "basis": "Prior 48 runs completed in 4.27 controller hours. Larger source powers observed 320\u2013407 s per case; allow 400\u2013450 s/case plus startup for this estimate.",
+  "price_rechecked": "Official Google Spot pricing: c3-standard-4 Iowa $0.065744/hour",
+  "authorized_allowance_usd": 0.45
+}

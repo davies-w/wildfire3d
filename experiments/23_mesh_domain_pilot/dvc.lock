@@ -1,0 +1,160 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py
+    deps:
+    - path: pilot.template.html
+      hash: md5
+      md5: 72f37b8ddfa8b45efaf473895c023853
+      size: 4676
+    - path: prepare.py
+      hash: md5
+      md5: 37d450bef4989fb7de904a2eade0b9ee
+      size: 1138
+    outs:
+    - path: data/pilot.html
+      hash: md5
+      md5: 72f37b8ddfa8b45efaf473895c023853
+      size: 4676
+    - path: data/plan.json
+      hash: md5
+      md5: ea514380696ab2557946b0cfea098c6f
+      size: 2306
+  decks:
+    cmd: ../../.venv/bin/python build.py
+    deps:
+    - path: base-input.fds
+      hash: md5
+      md5: 720be8f61c8a439a7ecb7c364ba91126
+      size: 26700
+    - path: build.py
+      hash: md5
+      md5: 7deb96f9f11ab83252012573dc58ca48
+      size: 4113
+    - path: data/fixed-particles.json
+      hash: md5
+      md5: 1c413cd103379cf2338ac01a4e04a970
+      size: 314124
+    outs:
+    - path: cases.json
+      hash: md5
+      md5: 9a8ef4a9b64e88cf2dbc8b6f54ade478
+      size: 737117
+    - path: decks
+      hash: md5
+      md5: ba6834fdd736351d8d6bbd46fa56a2db.dir
+      size: 6926226
+      nfiles: 12
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 9a8ef4a9b64e88cf2dbc8b6f54ade478
+      size: 737117
+    - path: decks
+      hash: md5
+      md5: ba6834fdd736351d8d6bbd46fa56a2db.dir
+      size: 6926226
+      nfiles: 12
+    - path: preflight.py
+      hash: md5
+      md5: 66d7d5885de87791d0f0b1283bf3bbbd
+      size: 2239
+    outs:
+    - path: results/preflight.json
+      hash: md5
+      md5: b3b44d1858bd9c7f1ae63a13819a38aa
+      size: 2852
+  collect:
+    cmd: ../../.venv/bin/python cloud.py collect
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 9a8ef4a9b64e88cf2dbc8b6f54ade478
+      size: 737117
+    - path: cloud.py
+      hash: md5
+      md5: 5be8161c95d16c39d94652440259db0d
+      size: 6763
+    - path: groups.json
+      hash: md5
+      md5: db55ebbba76d50c5120938d5b8da8380
+      size: 683
+    outs:
+    - path: data/cloud
+      hash: md5
+      md5: 811079bfe07af62793eb7d91b4f62aba.dir
+      size: 1072042546
+      nfiles: 420
+  analyze:
+    cmd:
+    - ../../.venv/bin/python analyze.py
+    - ../../.venv/bin/python final_wall_maps.py
+    - ../../.venv/bin/python peak_wall_maps.py
+    - ../../.venv/bin/python layout_maps.py
+    deps:
+    - path: analyze.py
+      hash: md5
+      md5: d9b81f455b17eacc8c73786b1864c46e
+      size: 4983
+    - path: cases.json
+      hash: md5
+      md5: 9a8ef4a9b64e88cf2dbc8b6f54ade478
+      size: 737117
+    - path: data/cloud
+      hash: md5
+      md5: 811079bfe07af62793eb7d91b4f62aba.dir
+      size: 1072042546
+      nfiles: 420
+    - path: final_wall_maps.py
+      hash: md5
+      md5: fb8c4fddb5d7f4bce2995d7c415c8509
+      size: 2593
+    - path: layout_maps.py
+      hash: md5
+      md5: 384788a0342533488b0100f5e5bb97de
+      size: 2471
+    - path: peak_wall_maps.py
+      hash: md5
+      md5: edeada2cee3e728dd7842d69d7d33d69
+      size: 2958
+    outs:
+    - path: data/analysis
+      hash: md5
+      md5: d938b71fee2abc5d2d40a13104f69858.dir
+      size: 3069300
+      nfiles: 129
+    - path: results/comparison.json
+      hash: md5
+      md5: d92929af981176eb91db4f1886e0e831
+      size: 52074
+    - path: results/final-wall-maps.json
+      hash: md5
+      md5: 5a0e4a690cdc7c7914b76ad8eb3ff5a5
+      size: 1876
+    - path: results/peak-wall-maps.json
+      hash: md5
+      md5: f14029f2300c60fc03940d553fa606fa
+      size: 1968
+  fields:
+    cmd: ../../.venv/bin/python field_metrics.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 9a8ef4a9b64e88cf2dbc8b6f54ade478
+      size: 737117
+    - path: data/cloud
+      hash: md5
+      md5: 811079bfe07af62793eb7d91b4f62aba.dir
+      size: 1072042546
+      nfiles: 420
+    - path: field_metrics.py
+      hash: md5
+      md5: a42e3dbd8a2b2efa68065c41e34e91d8
+      size: 3190
+    outs:
+    - path: results/field-comparison.json
+      hash: md5
+      md5: 739b23d82ad5036b6ea185c479bd5f61
+      size: 12309

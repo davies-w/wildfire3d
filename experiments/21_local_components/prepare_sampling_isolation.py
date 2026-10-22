@@ -1,0 +1,10 @@
+"""Unlaunched follow-up: vary particle sampling at fixed coarse gas grid/source."""
+import json,hashlib
+from scene import ROOT
+from rerun_contact import make
+s,r=make(dict(case='candidate_coarse_dense_particles',kind='double',direction=270),horizon=90)
+assert s.count('N_PARTICLES_PER_CELL=1')==8
+s=s.replace('N_PARTICLES_PER_CELL=1','N_PARTICLES_PER_CELL=8')
+p=ROOT/'inputs/corrective_candidates/candidate_coarse_dense_particles.fds';p.write_text(s)
+report=dict(status='UNLAUNCHED',case=p.stem,deck_sha256=hashlib.sha256(s.encode()).hexdigest(),first_recommended_test=True,description='Same0.5m gas grid, geometry, materials, wind, seed, original1600-per-crown ignition; increase vegetation particles per cell1 to8.90s diagnostic horizon, compare first69.5s to existing coarse and fine runs.',purpose='Separate particle sampling sensitivity from gas-grid refinement without tuning ignition strength.',limitation='Matches nominal particle number per volume to0.25m/one-per-cell, not identical particle positions or identical voxelized cone volume. Not a standalone convergence proof. No trunks/ground cover/embers; generic vegetation and synthetic facade remain.',planning_allowance_usd=.25,reserved_vm_hours=2,solver_limit_s=6600,pricing_basis='Existing0.08 USD/VM-hour ceiling plus0.09 ancillary reserve; reverify before launch.',success='Each intended source crown sustains burning after21s removal, evaluated separately; compare raw facade heating/ignition through69.5s. Report full probe errors, no threshold relaxation.',next='If still discrepant, investigate gas-grid/source heat deposition rather than launching training. Domain-only candidate remains a separate0.25 allowance if needed. Defer stronger ignition candidate because fine grid ignites with the original source.',prerequisites=['Local startup and per-crown diagnostics before paid launch.','Implement and test periodic checkpoint preservation/resume before another long run.','Fresh user authorization; existing1.50 allowance remains fully reserved.'])
+(ROOT/'results/sampling-isolation-proposal.json').write_text(json.dumps(report,indent=2))

@@ -1,0 +1,192 @@
+{
+  "training_cases": [
+    "b21_single_1",
+    "b21_single_2",
+    "b21_transfer_0",
+    "b21_transfer_hot",
+    "b21_combined_0",
+    "b21_corner_1",
+    "b21_combined_1"
+  ],
+  "validation_cases": [
+    "b21_single_validation",
+    "b21_transfer_validation"
+  ],
+  "candidates": [
+    {
+      "candidate": "release_additive_sqrt_10",
+      "model_sha256": "1dba9dd7b38909c31feef87efd7fa6b3f91581585c7cb1d97d40a8bf06260e2d",
+      "fitted_coefficient_count": 808,
+      "validation": [
+        {
+          "case": "b21_single_validation",
+          "temperature_MAE_C": 110.08399388680374,
+          "predicted_peak_C": 20.49396519581651,
+          "reference_peak_C": 590.707249314055,
+          "predicted_ignition_s": null,
+          "reference_ignition_s": 26.0,
+          "clipped_values": 290,
+          "emission_ceiling_hit": false,
+          "rollout_seconds": 0.1127714579924941
+        },
+        {
+          "case": "b21_transfer_validation",
+          "temperature_MAE_C": 12.105347788086707,
+          "predicted_peak_C": 20.062855950644476,
+          "reference_peak_C": 63.53383353881019,
+          "predicted_ignition_s": null,
+          "reference_ignition_s": null,
+          "clipped_values": 558,
+          "emission_ceiling_hit": false,
+          "rollout_seconds": 0.11190391704440117
+        }
+      ]
+    },
+    {
+      "candidate": "release_additive_sqrt_100",
+      "model_sha256": "90e1aed94bde6e7819873a2ccea464cb3a61bdffd4f61420589a81b60fab52ff",
+      "fitted_coefficient_count": 808,
+      "validation": [
+        {
+          "case": "b21_single_validation",
+          "temperature_MAE_C": 110.08399388680374,
+          "predicted_peak_C": 20.49396519581651,
+          "reference_peak_C": 590.707249314055,
+          "predicted_ignition_s": null,
+          "reference_ignition_s": 26.0,
+          "clipped_values": 54,
+          "emission_ceiling_hit": false,
+          "rollout_seconds": 0.11331120901741087
+        },
+        {
+          "case": "b21_transfer_validation",
+          "temperature_MAE_C": 12.105347788086707,
+          "predicted_peak_C": 20.062855950644476,
+          "reference_peak_C": 63.53383353881019,
+          "predicted_ignition_s": null,
+          "reference_ignition_s": null,
+          "clipped_values": 138,
+          "emission_ceiling_hit": false,
+          "rollout_seconds": 0.11309570795856416
+        }
+      ]
+    },
+    {
+      "candidate": "release_additive_sqrt_1000",
+      "model_sha256": "207bdf4e5ee8435b3e61e6488057464c34a16ab52335b84ad6ffd7d5ddda756f",
+      "fitted_coefficient_count": 808,
+      "validation": [
+        {
+          "case": "b21_single_validation",
+          "temperature_MAE_C": 110.08399388680374,
+          "predicted_peak_C": 20.49396519581651,
+          "reference_peak_C": 590.707249314055,
+          "predicted_ignition_s": null,
+          "reference_ignition_s": 26.0,
+          "clipped_values": 219,
+          "emission_ceiling_hit": false,
+          "rollout_seconds": 0.11161412508226931
+        },
+        {
+          "case": "b21_transfer_validation",
+          "temperature_MAE_C": 12.105347788086707,
+          "predicted_peak_C": 20.062855950644476,
+          "reference_peak_C": 63.53383353881019,
+          "predicted_ignition_s": null,
+          "reference_ignition_s": null,
+          "clipped_values": 428,
+          "emission_ceiling_hit": false,
+          "rollout_seconds": 0.11248424998484552
+        }
+      ]
+    },
+    {
+      "candidate": "release_interaction_sqrt_10",
+      "model_sha256": "6679e5f97f60dc938c144ee856a6d48bc37a50d03c9d00c3cc106d43ad4aacf9",
+      "fitted_coefficient_count": 988,
+      "validation": [
+        {
+          "case": "b21_single_validation",
+          "temperature_MAE_C": 110.08399388680374,
+          "predicted_peak_C": 20.49396519581651,
+          "reference_peak_C": 590.707249314055,
+          "predicted_ignition_s": null,
+          "reference_ignition_s": 26.0,
+          "clipped_values": 265,
+          "emission_ceiling_hit": false,
+          "rollout_seconds": 0.11774887493811548
+        },
+        {
+          "case": "b21_transfer_validation",
+          "temperature_MAE_C": 12.105347788086707,
+          "predicted_peak_C": 20.062855950644476,
+          "reference_peak_C": 63.53383353881019,
+          "predicted_ignition_s": null,
+          "reference_ignition_s": null,
+          "clipped_values": 510,
+          "emission_ceiling_hit": false,
+          "rollout_seconds": 0.11760108382441103
+        }
+      ]
+    },
+    {
+      "candidate": "release_interaction_sqrt_100",
+      "model_sha256": "625a03aac1243303a041cf13ff3ae7de03b2cdba58da5b897817120e00ff66c6",
+      "fitted_coefficient_count": 988,
+      "validation": [
+        {
+          "case": "b21_single_validation",
+          "temperature_MAE_C": 110.08399388680374,
+          "predicted_peak_C": 20.49396519581651,
+          "reference_peak_C": 590.707249314055,
+          "predicted_ignition_s": null,
+          "reference_ignition_s": 26.0,
+          "clipped_values": 52,
+          "emission_ceiling_hit": false,
+          "rollout_seconds": 0.11696187499910593
+        },
+        {
+          "case": "b21_transfer_validation",
+          "temperature_MAE_C": 12.105347788086707,
+          "predicted_peak_C": 20.062855950644476,
+          "reference_peak_C": 63.53383353881019,
+          "predicted_ignition_s": null,
+          "reference_ignition_s": null,
+          "clipped_values": 164,
+          "emission_ceiling_hit": false,
+          "rollout_seconds": 0.1175704998895526
+        }
+      ]
+    },
+    {
+      "candidate": "release_interaction_sqrt_1000",
+      "model_sha256": "1dcb7790df98a3b9a3b8dc506bd0d479d8bd5082c18df453cc126fade0c43e61",
+      "fitted_coefficient_count": 988,
+      "validation": [
+        {
+          "case": "b21_single_validation",
+          "temperature_MAE_C": 110.08399388680374,
+          "predicted_peak_C": 20.49396519581651,
+          "reference_peak_C": 590.707249314055,
+          "predicted_ignition_s": null,
+          "reference_ignition_s": 26.0,
+          "clipped_values": 171,
+          "emission_ceiling_hit": false,
+          "rollout_seconds": 0.11787737510167062
+        },
+        {
+          "case": "b21_transfer_validation",
+          "temperature_MAE_C": 12.105347788086707,
+          "predicted_peak_C": 20.062855950644476,
+          "reference_peak_C": 63.53383353881019,
+          "predicted_ignition_s": null,
+          "reference_ignition_s": null,
+          "clipped_values": 326,
+          "emission_ceiling_hit": false,
+          "rollout_seconds": 0.11769733298569918
+        }
+      ]
+    }
+  ],
+  "scope": "Model selection on two whole held-out local configurations, not final Stage C evaluation. Candidate coefficients are stored, not frozen as final. Time rows are correlated; seven training scenes do not provide broad coverage. First ignition uses resampled surface temperature350C; raw boundary audits remain authoritative."
+}

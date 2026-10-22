@@ -1,0 +1,42 @@
+schema: '2.0'
+stages:
+  generate:
+    cmd: ../../.venv/bin/python generate_catalogue.py
+    deps:
+    - path: generate_catalogue.py
+      hash: md5
+      md5: d620b313c89a6c7d16bd92a1b65532ee
+      size: 7841
+    outs:
+    - path: data/catalogue.json
+      hash: md5
+      md5: 349886be36ae6ddace78070a5bb8aa3b
+      size: 606575
+    - path: data/input-audit.json
+      hash: md5
+      md5: 6f27b604f6af77ae30eb7ee70721535c
+      size: 1844
+    - path: data/splits.json
+      hash: md5
+      md5: f67a253c5f5daeb868bf08c0f215afcc
+      size: 3513
+  preview:
+    cmd: ../../.venv/bin/python build_preview.py
+    deps:
+    - path: build_preview.py
+      hash: md5
+      md5: 6244ee37aca61232cef04b07a477cf17
+      size: 379
+    - path: catalogue.template.html
+      hash: md5
+      md5: 0f2815e394d67a4244f0804195c45547
+      size: 9974
+    - path: data/catalogue.json
+      hash: md5
+      md5: 349886be36ae6ddace78070a5bb8aa3b
+      size: 606575
+    outs:
+    - path: data/catalogue.html
+      hash: md5
+      md5: ecb32abf0002799a5ae86681a1d10495
+      size: 356933

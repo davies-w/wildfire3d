@@ -1,0 +1,47 @@
+{
+  "status": "stage_A_wave1_submitted",
+  "question": "Local state and transport models compose without whole-scene training",
+  "test_templates": [
+    "santa_rosa_east_03",
+    "glen_ellen_06"
+  ],
+  "development_region": "sebastopol",
+  "stages": {
+    "A": {
+      "runs": 8,
+      "proposed_reservation_usd": 1.5,
+      "aggregate_vm_hour_ceiling": 12,
+      "parallel_execution": {
+        "max_concurrent_vms": 4,
+        "vcpus_per_vm": 4,
+        "one_simulation_per_vm": true,
+        "provisioning": "SPOT",
+        "aggregate_vm_hour_ceiling_includes_startup_idle_cleanup": 12,
+        "automatic_retries": 0,
+        "schedule": "Four compact cases first; then three enlarged-context cases and one refinement case selected from completed compact evidence. Release each VM promptly.",
+        "cost_condition": "No budget increase; verify price, quota, and aggregate shutdown controls before launch."
+      }
+    },
+    "B": {
+      "training_runs": 64,
+      "validation_runs": 16
+    },
+    "C": {
+      "test_runs": 16,
+      "unique_geometry_exposure_combinations": 8
+    }
+  },
+  "estimated_total_usd": [
+    8,
+    20
+  ],
+  "approved_new_spend_usd": 1.5,
+  "physical_horizon_s": 180,
+  "default_cell_m": 0.5,
+  "refinement_cell_m": 0.25,
+  "model_step_s": 0.5,
+  "includes_buildings": true,
+  "includes_embers": false,
+  "full_lot_training": false,
+  "full_lot_validation": false
+}

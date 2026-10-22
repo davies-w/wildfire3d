@@ -1,0 +1,188 @@
+{
+  "completion": {
+    "group": "t26-calibration-0",
+    "state": "SUCCEEDED",
+    "collected": 3,
+    "all_full_horizon": true
+  },
+  "cases": [
+    {
+      "case": "t26_single_A_1",
+      "split": "train",
+      "physical_end_s": 180.0,
+      "nodes_per_fuel": 16,
+      "particle_units": [
+        [
+          "C",
+          "kg",
+          "",
+          "mu-m",
+          "kW/m2",
+          "kW/m2"
+        ],
+        [
+          "C",
+          "kg",
+          "",
+          "mu-m",
+          "kW/m2",
+          "kW/m2"
+        ],
+        [
+          "C",
+          "kg",
+          "",
+          "mu-m",
+          "kW/m2",
+          "kW/m2"
+        ],
+        [
+          "C",
+          "kg",
+          "",
+          "mu-m",
+          "kW/m2",
+          "kW/m2"
+        ]
+      ],
+      "canopies": [
+        {
+          "type": "A",
+          "initial_wet_mass_kg": 55.50214039720595,
+          "final_wet_mass_kg": 9.843366381333908,
+          "peak_particle_temperature_C": 1859.7315673828125,
+          "fuel_release_after_heater_kg": 25.446078774372097,
+          "peak_post_heater_fuel_rate_kg_s": 1.6519141400000001
+        }
+      ],
+      "state_channels": [
+        "represented-count-weighted surface temperature C",
+        "remaining wet+solid mass kg",
+        "incident radiation kW/m2",
+        "convective flux kW/m2",
+        "max particle surface temperature C",
+        "computational particle count"
+      ],
+      "warning": "Mass loss is not fuel-vapor release: includes water/solid chemistry. Class fuel-release devices are the emission evidence. No FDS incoming flux permitted at autonomous inference."
+    },
+    {
+      "case": "t26_single_B_1",
+      "split": "train",
+      "physical_end_s": 180.0,
+      "nodes_per_fuel": 16,
+      "particle_units": [
+        [
+          "C",
+          "kg",
+          "",
+          "mu-m",
+          "kW/m2",
+          "kW/m2"
+        ],
+        [
+          "C",
+          "kg",
+          "",
+          "mu-m",
+          "kW/m2",
+          "kW/m2"
+        ],
+        [
+          "C",
+          "kg",
+          "",
+          "mu-m",
+          "kW/m2",
+          "kW/m2"
+        ],
+        [
+          "C",
+          "kg",
+          "",
+          "mu-m",
+          "kW/m2",
+          "kW/m2"
+        ]
+      ],
+      "canopies": [
+        {
+          "type": "B",
+          "initial_wet_mass_kg": 96.35788265429437,
+          "final_wet_mass_kg": 95.32825718447566,
+          "peak_particle_temperature_C": 372.5483703613281,
+          "fuel_release_after_heater_kg": 0.006621419928903474,
+          "peak_post_heater_fuel_rate_kg_s": 0.004370120469
+        }
+      ],
+      "state_channels": [
+        "represented-count-weighted surface temperature C",
+        "remaining wet+solid mass kg",
+        "incident radiation kW/m2",
+        "convective flux kW/m2",
+        "max particle surface temperature C",
+        "computational particle count"
+      ],
+      "warning": "Mass loss is not fuel-vapor release: includes water/solid chemistry. Class fuel-release devices are the emission evidence. No FDS incoming flux permitted at autonomous inference."
+    },
+    {
+      "case": "t26_single_C_1",
+      "split": "train",
+      "physical_end_s": 180.0,
+      "nodes_per_fuel": 16,
+      "particle_units": [
+        [
+          "C",
+          "kg",
+          "",
+          "mu-m",
+          "kW/m2",
+          "kW/m2"
+        ],
+        [
+          "C",
+          "kg",
+          "",
+          "mu-m",
+          "kW/m2",
+          "kW/m2"
+        ],
+        [
+          "C",
+          "kg",
+          "",
+          "mu-m",
+          "kW/m2",
+          "kW/m2"
+        ],
+        [
+          "C",
+          "kg",
+          "",
+          "mu-m",
+          "kW/m2",
+          "kW/m2"
+        ]
+      ],
+      "canopies": [
+        {
+          "type": "C",
+          "initial_wet_mass_kg": 166.5064331293106,
+          "final_wet_mass_kg": 24.794097987469286,
+          "peak_particle_temperature_C": 1867.2021484375,
+          "fuel_release_after_heater_kg": 93.35122672679815,
+          "peak_post_heater_fuel_rate_kg_s": 4.59741294
+        }
+      ],
+      "state_channels": [
+        "represented-count-weighted surface temperature C",
+        "remaining wet+solid mass kg",
+        "incident radiation kW/m2",
+        "convective flux kW/m2",
+        "max particle surface temperature C",
+        "computational particle count"
+      ],
+      "warning": "Mass loss is not fuel-vapor release: includes water/solid chemistry. Class fuel-release devices are the emission evidence. No FDS incoming flux permitted at autonomous inference."
+    }
+  ],
+  "decision": "Needs scientific review before remaining development submission; no automatic release."
+}

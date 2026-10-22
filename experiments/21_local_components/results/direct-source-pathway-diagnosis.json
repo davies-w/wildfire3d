@@ -1,0 +1,58 @@
+{
+  "intervention": "Only zero three explicit direct-source network features on non-initialized canopies. Keep source contribution to predicted incident heat, neighbour transport, all fitted weights and source-canopy features. Frozen predictions unchanged.",
+  "results": [
+    {
+      "case": "c21_santa_rosa_east_03",
+      "canopies": [
+        {
+          "id": "v0",
+          "initialized": true,
+          "diagnostic_fuel_kg": 73.33439430179833,
+          "FDS_fuel_kg": 52.09950083898514
+        },
+        {
+          "id": "v1",
+          "initialized": false,
+          "diagnostic_fuel_kg": 8.00737780610258,
+          "FDS_fuel_kg": 0.00015881784053983335
+        },
+        {
+          "id": "v2",
+          "initialized": false,
+          "diagnostic_fuel_kg": 4.4147899693685755,
+          "FDS_fuel_kg": 0.0009920884650243987
+        }
+      ],
+      "temperature_MAE_C": 3.037399277854881,
+      "dose_MAE_kj_m2": 12.777160750124214,
+      "predicted_ignition": false
+    },
+    {
+      "case": "c21_glen_ellen_06",
+      "canopies": [
+        {
+          "id": "v0",
+          "initialized": true,
+          "diagnostic_fuel_kg": 56.21518476887287,
+          "FDS_fuel_kg": 3.109711324751798
+        },
+        {
+          "id": "v1",
+          "initialized": false,
+          "diagnostic_fuel_kg": 1.3858699527152594,
+          "FDS_fuel_kg": 7.026417474159712e-05
+        },
+        {
+          "id": "v2",
+          "initialized": false,
+          "diagnostic_fuel_kg": 5.098170017795621,
+          "FDS_fuel_kg": 0.00043540895864340454
+        }
+      ],
+      "temperature_MAE_C": 2.4710259563215344,
+      "dose_MAE_kj_m2": 12.206867358451076,
+      "predicted_ignition": false
+    }
+  ],
+  "scope": "Post-test code-path diagnosis, not held-out validation or a selected improved model. Any revised model needs independent testing; intervention may harm real externally ignited receivers."
+}

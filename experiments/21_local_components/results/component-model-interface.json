@@ -1,0 +1,61 @@
+{
+  "status": "interface_specified_training_not_yet_run",
+  "time_step_s": 0.5,
+  "vegetation_state": [
+    "mass-weighted temperature by4 fuel classes",
+    "particle-sample95th-percentile temperature by4 classes",
+    "remaining represented mass fractions by4 classes",
+    "previous fuel-release rate"
+  ],
+  "building_state": [
+    "surface temperature",
+    "thermal-memory state derived recursively from past surface temperature",
+    "ignited/burning state"
+  ],
+  "heat_labels": [
+    "area-weighted incoming radiation (not net radiation)",
+    "area-weighted signed convection"
+  ],
+  "static_inputs": [
+    "component geometry and material type",
+    "assigned moisture",
+    "free-stream wind",
+    "relative position/orientation and building obstruction geometry",
+    "prescribed initialization time history"
+  ],
+  "learning": "Use regularized low-capacity shared transport and local-transition regressors first. Share parameters across instances; separate material-type heads allowed. Fit one-step labels, select regularization by whole-configuration autonomous rollout, then freeze. Compare a matched additive transport baseline with the same local-transition capacity. Do not call this a DNN or whole-scene ignition classifier.",
+  "anti_leakage": [
+    "No FDS values during autonomous inference; previous emissions/states must be model predictions.",
+    "Do not split timesteps across train/validation.",
+    "Never use held-out FDS outcomes for parameter selection.",
+    "Freeze model, exact scene inputs and graph/additive predictions before test simulation results are accessed."
+  ],
+  "limits": [
+    "16 development cases support only a constrained exploratory fit; correlated time samples are not independent simulations.",
+    "P95 temperature captures a hot tail imperfectly; aggregation may lose the hot-zone location needed for transfer.",
+    "Wood thermal memory must be modeled; surface temperature alone may be insufficient.",
+    "Training must include roof/other facade orientations or explicitly report those held-out receivers as out of support.",
+    "Any state clipping is numerical stabilization, not proof of conservation."
+  ],
+  "next": "Use first two completed development cases to verify0.5s particle/device alignment, incoming flux semantics, per-crown mass reconciliation, source removal and post-source histories. Expand only if these measurements are usable. Include negatives; do not force unseen positive test outcomes.",
+  "prototype_implemented": "component_model.py: shared ridge heat/transition heads and additive transport baseline;2-temperature/total-wet-mass/emission vegetation state is a reduced prototype, not the proposed per-class state. Building memory is a fixed20s filter, not an internal temperature measurement.",
+  "prototype_failure": "Two-case smoke fit runs autonomously but shows frequent clipping and excess heating on negative training case. Not selected/frozen/validated. Improve stability and coverage before Stage C.",
+  "current_status": "Development selection in progress; no Stage C outputs accessed",
+  "current_canopy_state": [
+    "mass-weighted mean temperature",
+    "maximum sampled particle temperature",
+    "remaining wet mass fraction",
+    "emitted power",
+    "represented mass fraction above300C",
+    "represented mass fraction above500C"
+  ],
+  "current_model": "Shared14-input,12-hidden,6-output network,252 coefficients, plus18 shared vegetation/building heat-exchange coefficients; known-material20-cell-through-thickness wood response;0.5s recursive steps.",
+  "current_training_approximation": "Measured building states supply boundary conditions during recursive canopy fitting. Fully autonomous predicted building states at inference. Seven-case bounded candidate currently leads;11-case expanded/size-normalized fits were worse on validation.",
+  "current_baseline": "Separately fitted single-canopy power-time curves interpolated by wind/moisture, summed heat with separate exchange fit, same wall response. Same-weight graph-message ablation also reported.",
+  "known_failures": [
+    "Canopy fuel release seriously overpredicted in negative transfer validation despite correct building label.",
+    "Combined-case temperature MAE exceeds30C target.",
+    "Total dry-fuel energy bound does not make separately learned wet-mass trajectory chemically consistent.",
+    "Fixed-grid FDS reference is not grid converged or physically validated."
+  ]
+}

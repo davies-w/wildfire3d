@@ -1,0 +1,4155 @@
+schema: '2.0'
+stages:
+  decks:
+    cmd: ../../.venv/bin/python scene.py
+    deps:
+    - path: inputs
+      hash: md5
+      md5: 2d0ec28cfbc3e7eb000570f3f38c1bfd.dir
+      size: 7976
+      nfiles: 2
+    - path: scene.py
+      hash: md5
+      md5: 505e9ed0ca561388298d745fe49e6af0
+      size: 4474
+    outs:
+    - path: wave1.json
+      hash: md5
+      md5: c1eeffd86a5bf5283ecd01838e1f25a9
+      size: 2217
+  geometry:
+    cmd: ../../.venv/bin/python geometry_report.py
+    deps:
+    - path: ../14_ignition_surrogate/data/scenes/sebastopol_10/geometry.npz
+      hash: md5
+      md5: d286b58863fb51054015da38fa475313
+      size: 123983
+    - path: ../14_ignition_surrogate/data/scenes/sebastopol_11/geometry.npz
+      hash: md5
+      md5: 8a148fa3ed40ff2e1f4d804cd05202fd
+      size: 124146
+    - path: ../14_ignition_surrogate/results/properties.json
+      hash: md5
+      md5: 4eb811b7988629df4ae8d120678368b5
+      size: 6807
+    - path: geometry_report.py
+      hash: md5
+      md5: 6713c04b44e8a18b2b4db633185dab67
+      size: 2336
+    - path: scene.py
+      hash: md5
+      md5: 505e9ed0ca561388298d745fe49e6af0
+      size: 4474
+    outs:
+    - path: results/geometry-context.png
+      hash: md5
+      md5: 0de3c6546c03b62d36e384c2343ee57d
+      size: 105411
+    - path: results/geometry-report.json
+      hash: md5
+      md5: e1f36280e72bc37eedd8be70af183f6e
+      size: 1485
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - path: ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+      hash: md5
+      md5: 18680afd3f78841d42906b41e3414f62
+      size: 10202320
+      isexec: true
+    - path: inputs
+      hash: md5
+      md5: 2d0ec28cfbc3e7eb000570f3f38c1bfd.dir
+      size: 7976
+      nfiles: 2
+    - path: preflight.py
+      hash: md5
+      md5: 56166fe7b287beffb2502ac96b33f9b9
+      size: 1335
+    - path: scene.py
+      hash: md5
+      md5: 505e9ed0ca561388298d745fe49e6af0
+      size: 4474
+    outs:
+    - path: data/preflight
+      hash: md5
+      md5: 578316b9ebc71f6d29baed1d8b5060fb.dir
+      size: 671858
+      nfiles: 80
+    - path: results/preflight.json
+      hash: md5
+      md5: 797d6ed39888d7dadcf3136bd131d03a
+      size: 644
+  collect:
+    cmd: ../../.venv/bin/python control.py fetch
+    deps:
+    - path: budget.json
+      hash: md5
+      md5: 0c5b94abb978a3fffb3002b634526d98
+      size: 3987
+    - path: control.py
+      hash: md5
+      md5: 242dbff8b3bbbb47d13717c1d068be5d
+      size: 6794
+    outs:
+    - path: data/cloud
+      hash: md5
+      md5: 689e9b06c4008872a39efd382fd18f59.dir
+      size: 58307023
+      nfiles: 226
+    - path: data/downloads
+      hash: md5
+      md5: 66511568384838a3a6643e904459647d.dir
+      size: 30421069
+      nfiles: 9
+    - path: results/cleanup.json
+      hash: md5
+      md5: 3b9d4051900979e6766bbe384d6af152
+      size: 50
+  summarize:
+    cmd: ../../.venv/bin/python summarize_stage_a.py
+    deps:
+    - path: comparison-pairs.json
+      hash: md5
+      md5: 9b3952ffb6a7ffc79f28fa160ae458cf
+      size: 152
+    - path: data/cloud
+      hash: md5
+      md5: b635155870c0e8b61d93a3068abf5c78.dir
+      size: 49247546
+      nfiles: 201
+    - path: finish_stage_a.py
+      hash: md5
+      md5: 73b5d86c6b163ae8843d5464d3d0f11d
+      size: 5716
+    - path: summarize_stage_a.py
+      hash: md5
+      md5: f9d6df6b711e2a634d036e5c4d1ff036
+      size: 1757
+    outs:
+    - path: data/boundary
+      hash: md5
+      md5: 59782ba6102f34e2707360c6fa808dfa.dir
+      size: 441172
+      nfiles: 84
+    - path: results/stage-a.json
+      hash: md5
+      md5: 60028284ae7a933960a1d5c46a82efba
+      size: 68822
+  component_images:
+    cmd: ../../.venv/bin/python render_components.py
+    deps:
+    - path: data/cloud
+      hash: md5
+      md5: b635155870c0e8b61d93a3068abf5c78.dir
+      size: 49247546
+      nfiles: 201
+    - path: decks
+      hash: md5
+      md5: 767a1db86aca52fe4c595c1613ee97c1.dir
+      size: 178662
+      nfiles: 8
+    - path: render_components.py
+      hash: md5
+      md5: c44d815620b28683fe86b8a329a0a7e8
+      size: 5748
+    outs:
+    - path: results/component_images
+      hash: md5
+      md5: c2105bbca2e7349100d17e67b791dd76.dir
+      size: 3243958
+      nfiles: 11
+  vegetation_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_vegetation.py
+    deps:
+    - path: data/cloud
+      hash: md5
+      md5: b635155870c0e8b61d93a3068abf5c78.dir
+      size: 49247546
+      nfiles: 201
+    - path: diagnose_vegetation.py
+      hash: md5
+      md5: 20a501bddb2249b94f6efbd9337ab4f8
+      size: 1593
+    outs:
+    - path: results/vegetation-diagnosis.json
+      hash: md5
+      md5: 79218b6ab1fa0405d5e62d5694e81d23
+      size: 2406
+  canopy_heating_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_canopy_heating.py
+    deps:
+    - path: ../../FDS/install/bin/fds2ascii
+      hash: md5
+      md5: d337095553b56be9f2ef696416a099a7
+      size: 1118368
+      isexec: true
+    - path: data/cloud
+      hash: md5
+      md5: b635155870c0e8b61d93a3068abf5c78.dir
+      size: 49247546
+      nfiles: 201
+    - path: diagnose_canopy_heating.py
+      hash: md5
+      md5: f5149367dcc33554630e1bd8f91a418e
+      size: 4542
+    outs:
+    - path: data/canopy_diagnosis
+      hash: md5
+      md5: f034a1f4e4ca92cec64c7d3b1fe034d9.dir
+      size: 93665
+      nfiles: 1
+    - path: results/canopy-heating-diagnosis.json
+      hash: md5
+      md5: 19567cac757ce39182bd54dbb16994cd
+      size: 4037
+    - path: results/canopy-plume-diagnosis.png
+      hash: md5
+      md5: 9dc117778950891e95c1c1911749a7d2
+      size: 99137
+  upwind_prepare:
+    cmd: ../../.venv/bin/python upwind_test.py prepare
+    deps:
+    - path: control.py
+      hash: md5
+      md5: 242dbff8b3bbbb47d13717c1d068be5d
+      size: 6794
+    - path: data/cloud/a21_single/result.json
+      hash: md5
+      md5: 428feb4e95c3f7052cbbb2280e4e2747
+      size: 7911
+    - path: decks/a21_single.fds
+      hash: md5
+      md5: fe65b8018161b5e604e54310004bdad2
+      size: 22126
+    - path: jobs/a21_single/workflow.yaml
+      hash: md5
+      md5: 1abb2a274d7cfcdd442af5ee9eb91c6e
+      size: 42457
+    - path: upwind_test.py
+      hash: md5
+      md5: a64a335ab99bc95b3542c180ebecda92
+      size: 5678
+    outs:
+    - path: data/upwind_preflight
+      hash: md5
+      md5: c758a05abc90459b3e473d333a27b407.dir
+      size: 251643
+      nfiles: 20
+    - path: decks/a21_single_upstream.fds
+      hash: md5
+      md5: ed57799642bb4d8948fd483e3fcbde49
+      size: 22799
+    - path: results/upwind-preflight.json
+      hash: md5
+      md5: f9eaf8edd8151e2f4fd5414ea189b788
+      size: 159
+  upwind_assess:
+    cmd: ../../.venv/bin/python finish_upwind.py
+    deps:
+    - path: data/cloud/a21_single_upstream
+      hash: md5
+      md5: efcc55e1f71806412cf46d45cdc93e0f.dir
+      size: 9059477
+      nfiles: 25
+    - path: finish_upwind.py
+      hash: md5
+      md5: a68d6e2954ec8eaac3e0c5c008c543b1
+      size: 2077
+    - path: upwind_test.py
+      hash: md5
+      md5: a64a335ab99bc95b3542c180ebecda92
+      size: 5678
+    outs:
+    - path: results/upwind-result.json
+      hash: md5
+      md5: 90fb9ad68c730a93325337de7ca372ea
+      size: 539
+  contact_canopy:
+    cmd: ../../.venv/bin/python contact_ignition.py contact_ring20 90
+    deps:
+    - path: ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+      hash: md5
+      md5: 18680afd3f78841d42906b41e3414f62
+      size: 10202320
+      isexec: true
+    - path: contact_ignition.py
+      hash: md5
+      md5: fe30e92adaea6e54cdad2b978a0796ef
+      size: 3990
+    - path: decks/a21_single_upstream.fds
+      hash: md5
+      md5: ed57799642bb4d8948fd483e3fcbde49
+      size: 22799
+    outs:
+    - path: data/contact/contact_ring20
+      hash: md5
+      md5: 782ecacced559ac244be8ba08c1dac8f.dir
+      size: 5337491
+      nfiles: 26
+  contact_control:
+    cmd: ../../.venv/bin/python -c "from contact_ignition import run; 
+      run('contact_ring20_bare', bare=True)"
+    deps:
+    - path: ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+      hash: md5
+      md5: 18680afd3f78841d42906b41e3414f62
+      size: 10202320
+      isexec: true
+    - path: contact_ignition.py
+      hash: md5
+      md5: fe30e92adaea6e54cdad2b978a0796ef
+      size: 3990
+    - path: decks/a21_single_upstream.fds
+      hash: md5
+      md5: ed57799642bb4d8948fd483e3fcbde49
+      size: 22799
+    outs:
+    - path: data/contact/contact_ring20_bare
+      hash: md5
+      md5: b2a7978d247033c63a95646aff59a088.dir
+      size: 2929516
+      nfiles: 26
+  contact_summary:
+    cmd: ../../.venv/bin/python summarize_contact.py
+    deps:
+    - path: ../../FDS/install/bin/fds2ascii
+      hash: md5
+      md5: d337095553b56be9f2ef696416a099a7
+      size: 1118368
+      isexec: true
+    - path: contact_ignition.py
+      hash: md5
+      md5: fe30e92adaea6e54cdad2b978a0796ef
+      size: 3990
+    - path: data/contact/contact_ring20
+      hash: md5
+      md5: 782ecacced559ac244be8ba08c1dac8f.dir
+      size: 5337491
+      nfiles: 26
+    - path: data/contact/contact_ring20_bare
+      hash: md5
+      md5: b2a7978d247033c63a95646aff59a088.dir
+      size: 2929516
+      nfiles: 26
+    - path: summarize_contact.py
+      hash: md5
+      md5: c416b70ac2d05add427a44111913576b
+      size: 3357
+    outs:
+    - path: data/contact_boundary
+      hash: md5
+      md5: 6a8b230f44ecf15d5b013784fc148068.dir
+      size: 67734
+      nfiles: 24
+    - path: results/contact-ignition.json
+      hash: md5
+      md5: ad7c260495b68698c67f139441d52216
+      size: 2057
+    - path: results/contact-ignition.png
+      hash: md5
+      md5: e3f54e8095bfd7a939ff7982c13da376
+      size: 119321
+  contact_stage_a_prepare:
+    cmd: ../../.venv/bin/python rerun_contact.py prepare
+    deps:
+    - path: inputs/tree_2_m_14_pc.fds
+      hash: md5
+      md5: f5f8bfc2dba5082ef054dcd27d9077bd
+      size: 6744
+    - path: inputs/vegetation_model.txt
+      hash: md5
+      md5: 092634421892357642e5d8b25222a457
+      size: 1232
+    - path: rerun_contact.py
+      hash: md5
+      md5: 923eed8e1319b02451d8bab2e91436bd
+      size: 8427
+    - path: results/contact-ignition.json
+      hash: md5
+      md5: ad7c260495b68698c67f139441d52216
+      size: 2057
+    - path: scene.py
+      hash: md5
+      md5: 505e9ed0ca561388298d745fe49e6af0
+      size: 4474
+    outs:
+    - path: contact-stage-a.json
+      hash: md5
+      md5: b4b2d2e266a0be57bf4934f063e910c4
+      size: 6116
+    - path: data/contact_stage_a_preflight
+      hash: md5
+      md5: 5ffaf2912e5ccd7d6f8a5dbc71911203.dir
+      size: 6230895
+      nfiles: 160
+    - path: decks/ac21_bare.fds
+      hash: md5
+      md5: b349a7a84cdd8b697bb8940f938916a0
+      size: 22892
+    - path: decks/ac21_corner.fds
+      hash: md5
+      md5: c7e1bb098d1f4f365769dd1be65aa40d
+      size: 23550
+    - path: decks/ac21_corner_expanded.fds
+      hash: md5
+      md5: b877daeee2fd06b7d636ce33655de601
+      size: 23627
+    - path: decks/ac21_double.fds
+      hash: md5
+      md5: 7f0718d6301011a52a6292332760313a
+      size: 24054
+    - path: decks/ac21_double_expanded.fds
+      hash: md5
+      md5: da94305f3de7cfeba1979553256f1be7
+      size: 24131
+    - path: decks/ac21_double_fine.fds
+      hash: md5
+      md5: 55bbb111fc0ecff0bfbce6e37f365479
+      size: 24059
+    - path: decks/ac21_single.fds
+      hash: md5
+      md5: d8602f626408e16b724120b45647c29a
+      size: 23427
+    - path: decks/ac21_single_expanded.fds
+      hash: md5
+      md5: f4ef5d8cb67960223bde4d4576f719f8
+      size: 23504
+    - path: results/contact-stage-a-preflight.json
+      hash: md5
+      md5: a9fa5c31242c65380b7a20c0baf89fc7
+      size: 745
+  contact_context_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_contact_context.py
+    deps:
+    - path: data/cloud/ac21_corner
+      hash: md5
+      md5: 41c95720b4275d007c040997fbc08073.dir
+      size: 11595777
+      nfiles: 25
+    - path: data/cloud/ac21_corner_expanded
+      hash: md5
+      md5: 18261581607815abe75dc4d4e5ae9c9a.dir
+      size: 11940981
+      nfiles: 26
+    - path: data/cloud/ac21_double
+      hash: md5
+      md5: cca18f2f695cdd3ec8d69a484fe304d4.dir
+      size: 26535861
+      nfiles: 25
+    - path: data/cloud/ac21_double_expanded
+      hash: md5
+      md5: c923036819e93b463337f2afe2970468.dir
+      size: 23759494
+      nfiles: 26
+    - path: data/cloud/ac21_single
+      hash: md5
+      md5: 9a7fc79454a4855584244a5f7861fc52.dir
+      size: 9757037
+      nfiles: 25
+    - path: data/cloud/ac21_single_expanded
+      hash: md5
+      md5: 49a7e45a2637ca1184dc8d251d3195e3.dir
+      size: 11389127
+      nfiles: 26
+    - path: diagnose_contact_context.py
+      hash: md5
+      md5: 6d8e3d079eb5de43f3bfe2e69a6ec422
+      size: 2423
+    outs:
+    - path: results/contact-context-diagnosis.json
+      hash: md5
+      md5: 16f1c86b9ee239d099c1ad9f57b9cb55
+      size: 5648
+  contact_crown_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_crown_particles.py
+    deps:
+    - path: data/cloud/ac21_double
+      hash: md5
+      md5: cca18f2f695cdd3ec8d69a484fe304d4.dir
+      size: 26535861
+      nfiles: 25
+    - path: data/cloud/ac21_double_expanded
+      hash: md5
+      md5: c923036819e93b463337f2afe2970468.dir
+      size: 23759494
+      nfiles: 26
+    - path: data/cloud/ac21_double_fine
+      hash: md5
+      md5: 036c5bfe60d55e90416f7f287f95a2b8.dir
+      size: 70436278
+      nfiles: 26
+    - path: diagnose_crown_particles.py
+      hash: md5
+      md5: 8031e9696ad30aa03918a60fc7ceddfe
+      size: 1718
+    outs:
+    - path: results/crown-particle-diagnosis.json
+      hash: md5
+      md5: 598fbe2cce3ae536120c2c51ec3f2d22
+      size: 4841
+  prepare_stage_a_corrections:
+    cmd: ../../.venv/bin/python prepare_stage_a_corrections.py
+    deps:
+    - path: prepare_stage_a_corrections.py
+      hash: md5
+      md5: 6e1cf7ea062cb64f656434340b8e93a4
+      size: 3112
+    - path: rerun_contact.py
+      hash: md5
+      md5: 923eed8e1319b02451d8bab2e91436bd
+      size: 8427
+    - path: results/contact-context-diagnosis.json
+      hash: md5
+      md5: 16f1c86b9ee239d099c1ad9f57b9cb55
+      size: 5648
+    - path: results/crown-particle-diagnosis.json
+      hash: md5
+      md5: 598fbe2cce3ae536120c2c51ec3f2d22
+      size: 4841
+    - path: scene.py
+      hash: md5
+      md5: 505e9ed0ca561388298d745fe49e6af0
+      size: 4474
+    outs:
+    - path: inputs/corrective_candidates/candidate_domain_only.fds
+      hash: md5
+      md5: 8a45be502b89984b98dd41fc5098e4b9
+      size: 23506
+    - path: inputs/corrective_candidates/candidate_large_crown_density.fds
+      hash: md5
+      md5: 36578398e040f1338c8670411f73e0f6
+      size: 26713
+    - path: results/corrective-candidates.json
+      hash: md5
+      md5: a63cf73be4f500022d7050c99437161f
+      size: 1766
+  corrective_preflight:
+    cmd: ../../.venv/bin/python preflight_corrections.py
+    deps:
+    - path: ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+      hash: md5
+      md5: 18680afd3f78841d42906b41e3414f62
+      size: 10202320
+      isexec: true
+    - path: inputs/corrective_candidates
+      hash: md5
+      md5: d4c63d76fe42c190d2c92eef0e59a429.dir
+      size: 50219
+      nfiles: 2
+    - path: preflight_corrections.py
+      hash: md5
+      md5: ae226bed133d91c6105b8722984993b4
+      size: 1781
+    outs:
+    - path: data/corrective_preflight
+      hash: md5
+      md5: dcdcd312bb3d3ec967bd49e271e0dafb.dir
+      size: 1123880
+      nfiles: 40
+    - path: results/corrective-preflight.json
+      hash: md5
+      md5: d55a9d7de74e247e3311dc6001273b90
+      size: 509
+  contact_stage_a_cloud:
+    cmd: ../../.venv/bin/python finish_contact_stage_a.py
+    deps:
+    - path: budget-contact-stage-a.json
+      hash: md5
+      md5: 216f12ab452c6d59d8eab0d1bee94f4c
+      size: 7784
+    - path: contact-stage-a.json
+      hash: md5
+      md5: b4b2d2e266a0be57bf4934f063e910c4
+      size: 6116
+    - path: finish_contact_stage_a.py
+      hash: md5
+      md5: e00b76956d596f8bbd6e3a84222f62d8
+      size: 4264
+    - path: finish_stage_a.py
+      hash: md5
+      md5: 73b5d86c6b163ae8843d5464d3d0f11d
+      size: 5716
+    outs:
+    - path: data/boundary/ac21_bare
+      hash: md5
+      md5: 5dd8ae789fa81b4e08c5b290c9a93019.dir
+      size: 33792
+      nfiles: 12
+    - path: data/boundary/ac21_corner
+      hash: md5
+      md5: 6c63c7521b3f5d7c8e4701742815fc58.dir
+      size: 86332
+      nfiles: 12
+    - path: data/boundary/ac21_corner_expanded
+      hash: md5
+      md5: 7bbc5afb3d331393383b9680f8137a8c.dir
+      size: 261
+      nfiles: 1
+    - path: data/boundary/ac21_double
+      hash: md5
+      md5: 3311e24aac430bcaa5fa849070bfff6c.dir
+      size: 33804
+      nfiles: 12
+    - path: data/boundary/ac21_double_expanded
+      hash: md5
+      md5: 912cda390b9f4f326d2150726af32029.dir
+      size: 261
+      nfiles: 1
+    - path: data/boundary/ac21_double_fine
+      hash: md5
+      md5: 427180c44ec4a8c81ea6176d51bc3b7b.dir
+      size: 105156
+      nfiles: 12
+    - path: data/boundary/ac21_single
+      hash: md5
+      md5: 549f82b9a4fd3f7880ab429705803a57.dir
+      size: 33804
+      nfiles: 12
+    - path: data/boundary/ac21_single_expanded
+      hash: md5
+      md5: b9e90ca7d48b7c9a103d7c86c9265769.dir
+      size: 260
+      nfiles: 1
+    - path: data/cloud/ac21_bare
+      hash: md5
+      md5: bf7fc66f1808432a4ede641c3c64b321.dir
+      size: 4974623
+      nfiles: 25
+    - path: data/cloud/ac21_corner
+      hash: md5
+      md5: 41c95720b4275d007c040997fbc08073.dir
+      size: 11595777
+      nfiles: 25
+    - path: data/cloud/ac21_corner_expanded
+      hash: md5
+      md5: 18261581607815abe75dc4d4e5ae9c9a.dir
+      size: 11940981
+      nfiles: 26
+    - path: data/cloud/ac21_double
+      hash: md5
+      md5: cca18f2f695cdd3ec8d69a484fe304d4.dir
+      size: 26535861
+      nfiles: 25
+    - path: data/cloud/ac21_double_expanded
+      hash: md5
+      md5: c923036819e93b463337f2afe2970468.dir
+      size: 23759494
+      nfiles: 26
+    - path: data/cloud/ac21_double_fine
+      hash: md5
+      md5: 036c5bfe60d55e90416f7f287f95a2b8.dir
+      size: 70436278
+      nfiles: 26
+    - path: data/cloud/ac21_single
+      hash: md5
+      md5: 9a7fc79454a4855584244a5f7861fc52.dir
+      size: 9757037
+      nfiles: 25
+    - path: data/cloud/ac21_single_expanded
+      hash: md5
+      md5: 49a7e45a2637ca1184dc8d251d3195e3.dir
+      size: 11389127
+      nfiles: 26
+    - path: results/contact-stage-a-cleanup.json
+      hash: md5
+      md5: 3b9d4051900979e6766bbe384d6af152
+      size: 50
+    - path: results/contact-stage-a.json
+      hash: md5
+      md5: ecef0275c483e0607662be25181aeb15
+      size: 3002
+  finalize_contact_stage_a:
+    cmd: ../../.venv/bin/python finalize_contact_stage_a.py
+    deps:
+    - path: data/cloud/ac21_double
+      hash: md5
+      md5: cca18f2f695cdd3ec8d69a484fe304d4.dir
+      size: 26535861
+      nfiles: 25
+    - path: data/cloud/ac21_double_fine
+      hash: md5
+      md5: 036c5bfe60d55e90416f7f287f95a2b8.dir
+      size: 70436278
+      nfiles: 26
+    - path: finalize_contact_stage_a.py
+      hash: md5
+      md5: a34ebfaf0af4754282d45010c32365cd
+      size: 4360
+    - path: results/contact-stage-a-cleanup.json
+      hash: md5
+      md5: 3b9d4051900979e6766bbe384d6af152
+      size: 50
+    outs:
+    - path: results/contact-stage-a-final-diagnosis.json
+      hash: md5
+      md5: fcc1ecd1b7c9bfeb9a8898abc56c1b72
+      size: 12805
+  prepare_sampling_isolation:
+    cmd: ../../.venv/bin/python prepare_sampling_isolation.py
+    deps:
+    - path: prepare_sampling_isolation.py
+      hash: md5
+      md5: 5a7bbe18569be0bbe08cac2898fc2768
+      size: 2113
+    - path: rerun_contact.py
+      hash: md5
+      md5: 923eed8e1319b02451d8bab2e91436bd
+      size: 8427
+    - path: results/crown-particle-diagnosis.json
+      hash: md5
+      md5: 598fbe2cce3ae536120c2c51ec3f2d22
+      size: 4841
+    - path: scene.py
+      hash: md5
+      md5: 505e9ed0ca561388298d745fe49e6af0
+      size: 4474
+    outs:
+    - path: inputs/corrective_candidates/candidate_coarse_dense_particles.fds
+      hash: md5
+      md5: 8f820960f209ab75cb0a7a0b194bd858
+      size: 24074
+    - path: results/sampling-isolation-proposal.json
+      hash: md5
+      md5: 87ee863d11dbb951e33e9983b3aebb49
+      size: 1720
+  sampling_prepare:
+    cmd: ../../.venv/bin/python sampling_test.py prepare
+    deps:
+    - path: ../20_composition_iterative/runner.py
+      hash: md5
+      md5: 4a8c57fee5cb28da904b41464b758914
+      size: 4527
+    - path: ../20_composition_iterative/workflow_template.json
+      hash: md5
+      md5: 43bd4eec087697850419f9d9f6942f03
+      size: 9153
+    - path: inputs/corrective_candidates/candidate_coarse_dense_particles.fds
+      hash: md5
+      md5: 8f820960f209ab75cb0a7a0b194bd858
+      size: 24074
+    - path: sampling_test.py
+      hash: md5
+      md5: 804709b260207afccbc327a0e9966b6c
+      size: 7463
+    outs:
+    - path: decks/sampling21_dense.fds
+      hash: md5
+      md5: 2556689adc1187d0145dab1b37b4701e
+      size: 26696
+    - path: jobs/sampling21_dense/case.json
+      hash: md5
+      md5: 7eb54a9b4a8248c2f95b9673201f9716
+      size: 270
+    - path: jobs/sampling21_dense/runner.py
+      hash: md5
+      md5: 41c5aabcf7f8489e4430fd116ffba54e
+      size: 4888
+  sampling_preflight:
+    cmd: ../../.venv/bin/python sampling_test.py preflight
+    deps:
+    - path: ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+      hash: md5
+      md5: 18680afd3f78841d42906b41e3414f62
+      size: 10202320
+      isexec: true
+    - path: decks/sampling21_dense.fds
+      hash: md5
+      md5: 2556689adc1187d0145dab1b37b4701e
+      size: 26696
+    - path: sampling_test.py
+      hash: md5
+      md5: 804709b260207afccbc327a0e9966b6c
+      size: 7463
+    outs:
+    - path: data/sampling_preflight
+      hash: md5
+      md5: dfe46c83761512d38faa5443c0cf25ca.dir
+      size: 159151287
+      nfiles: 22
+    - path: results/sampling-preflight.json
+      hash: md5
+      md5: e003c0c52b201e6bcaf415d584d41bbd
+      size: 486
+  sampling_cloud:
+    cmd: ../../.venv/bin/python finish_sampling.py
+    deps:
+    - path: budget-sampling.json
+      hash: md5
+      md5: cd1b5998bead68e48f17e43f1ada93ed
+      size: 842
+    - path: data/cloud/ac21_double
+      hash: md5
+      md5: cca18f2f695cdd3ec8d69a484fe304d4.dir
+      size: 26535861
+      nfiles: 25
+    - path: data/cloud/ac21_double_fine
+      hash: md5
+      md5: 036c5bfe60d55e90416f7f287f95a2b8.dir
+      size: 70436278
+      nfiles: 26
+    - path: decks/sampling21_dense.fds
+      hash: md5
+      md5: 2556689adc1187d0145dab1b37b4701e
+      size: 26696
+    - path: finish_sampling.py
+      hash: md5
+      md5: 99bebc8b3b6dfc7f5ff236fd24187c2b
+      size: 5399
+    - path: jobs/sampling21_dense/runner.py
+      hash: md5
+      md5: 41c5aabcf7f8489e4430fd116ffba54e
+      size: 4888
+    outs:
+    - path: data/boundary/sampling21_dense
+      hash: md5
+      md5: d6981e92928786a0401facc589937d9c.dir
+      size: 33816
+      nfiles: 12
+    - path: data/cloud/sampling21_dense
+      hash: md5
+      md5: 7675dded70a9baa07511f8dc6dd5cc33.dir
+      size: 240067591
+      nfiles: 28
+    - path: results/sampling-cleanup.json
+      hash: md5
+      md5: 8ba85edd99bf8ef8efffd6f7d731e580
+      size: 50
+    - path: results/sampling-result.json
+      hash: md5
+      md5: 8336f3d7c5cb3a137a5dc2dd232401a6
+      size: 25594
+  finalize_sampling:
+    cmd: ../../.venv/bin/python finalize_sampling.py
+    deps:
+    - path: data/cloud/ac21_double
+      hash: md5
+      md5: cca18f2f695cdd3ec8d69a484fe304d4.dir
+      size: 26535861
+      nfiles: 25
+    - path: data/cloud/ac21_double_fine
+      hash: md5
+      md5: 036c5bfe60d55e90416f7f287f95a2b8.dir
+      size: 70436278
+      nfiles: 26
+    - path: data/cloud/sampling21_dense
+      hash: md5
+      md5: 7675dded70a9baa07511f8dc6dd5cc33.dir
+      size: 240067591
+      nfiles: 28
+    - path: finalize_sampling.py
+      hash: md5
+      md5: 24566f241260ab8b630f13e0f4b94f8e
+      size: 3977
+    - path: jobs/sampling21_dense/status.json
+      hash: md5
+      md5: 5a6bb1d33932974ca2a1d8e9a197ff02
+      size: 662
+    outs:
+    - path: results/sampling-final-diagnosis.json
+      hash: md5
+      md5: b23d079a7efeb80e928944f8fe6c6703
+      size: 5236
+  overnight_grid_prepare:
+    cmd: ../../.venv/bin/python prepare_overnight_grid.py
+    deps:
+    - path: decks/sampling21_dense.fds
+      hash: md5
+      md5: 2556689adc1187d0145dab1b37b4701e
+      size: 26696
+    - path: prepare_overnight_grid.py
+      hash: md5
+      md5: 97fbb64f7713b795d5828e0531764f21
+      size: 3233
+    outs:
+    - path: inputs/overnight_grid_candidates
+      hash: md5
+      md5: e18f696d3e1b83bf0afb3fdc6748679b.dir
+      size: 79388
+      nfiles: 3
+    - path: results/overnight-grid-candidates.json
+      hash: md5
+      md5: 50adaac04c90815b6f4545065644fd23
+      size: 2784
+  overnight_grid_preflight:
+    cmd: ../../.venv/bin/python preflight_overnight_grid.py
+    deps:
+    - path: inputs/overnight_grid_candidates
+      hash: md5
+      md5: e18f696d3e1b83bf0afb3fdc6748679b.dir
+      size: 79388
+      nfiles: 3
+    - path: preflight_overnight_grid.py
+      hash: md5
+      md5: dded2c4019add52aeecae32f073543fd
+      size: 1213
+    - path: results/overnight-grid-candidates.json
+      hash: md5
+      md5: 50adaac04c90815b6f4545065644fd23
+      size: 2784
+    outs:
+    - path: data/overnight_grid_preflight
+      hash: md5
+      md5: 8237e04bbe5be964e95e259ea9af4f08.dir
+      size: 505814
+      nfiles: 78
+    - path: results/overnight-grid-preflight.json
+      hash: md5
+      md5: f94d845bcb9581f308c36095e7a7770c
+      size: 516
+  overnight_grid_cloud_prepare:
+    cmd: ../../.venv/bin/python overnight_grid_control.py prepare
+    deps:
+    - path: ../20_composition_iterative/workflow_template.json
+      hash: md5
+      md5: 43bd4eec087697850419f9d9f6942f03
+      size: 9153
+    - path: inputs/overnight_grid_candidates
+      hash: md5
+      md5: e18f696d3e1b83bf0afb3fdc6748679b.dir
+      size: 79388
+      nfiles: 3
+    - path: jobs/overnight21_stronger/runner.py
+      hash: md5
+      md5: 48eae967f652ea4093e413de4aa34f7f
+      size: 4893
+    - path: overnight_grid_control.py
+      hash: md5
+      md5: b04e48c4699741be38be866c084e2c68
+      size: 8018
+    - path: results/overnight-grid-candidates.json
+      hash: md5
+      md5: 50adaac04c90815b6f4545065644fd23
+      size: 2784
+    outs:
+    - path: jobs/overnight21_grid_coarse/case.json
+      hash: md5
+      md5: 621c904d9750e88ee8ea0cbb9392bde0
+      size: 187
+    - path: jobs/overnight21_grid_coarse/runner.py
+      hash: md5
+      md5: 8ae761a668f499c96d57d4c19112d19e
+      size: 4895
+    - path: jobs/overnight21_grid_coarse/worker.py
+      hash: md5
+      md5: 69dd997a4395412479dd122e56f41f1c
+      size: 1503
+    - path: jobs/overnight21_grid_coarse/workflow.yaml
+      hash: md5
+      md5: 62f0aea058f8cc2fb5d6ff00e8835c83
+      size: 50633
+    - path: jobs/overnight21_grid_fine/case.json
+      hash: md5
+      md5: ea3fe5373d01b21db35d8a49f16f6b82
+      size: 185
+    - path: jobs/overnight21_grid_fine/runner.py
+      hash: md5
+      md5: 1e22b0654271fb73c2c0095cb9ec9ed9
+      size: 4893
+    - path: jobs/overnight21_grid_fine/worker.py
+      hash: md5
+      md5: f54052dd337e95c5d6ebdf0db75d7c4e
+      size: 1504
+    - path: jobs/overnight21_grid_fine/workflow.yaml
+      hash: md5
+      md5: 858fe9102fded9c9cdbcc06793089f71
+      size: 50609
+    - path: jobs/overnight21_grid_fine_bare/case.json
+      hash: md5
+      md5: 686867f54b39fb8a1aa6c4039cf6362e
+      size: 190
+    - path: jobs/overnight21_grid_fine_bare/runner.py
+      hash: md5
+      md5: 0c21dfca1efec1a6e762c4fb995fea02
+      size: 4898
+    - path: jobs/overnight21_grid_fine_bare/worker.py
+      hash: md5
+      md5: 69dd997a4395412479dd122e56f41f1c
+      size: 1503
+    - path: jobs/overnight21_grid_fine_bare/workflow.yaml
+      hash: md5
+      md5: bd30077f2ea8a7e0fe76509a25b6576c
+      size: 49260
+  overnight_stronger_cloud:
+    cmd: ../../.venv/bin/python finish_overnight_stronger.py
+    deps:
+    - path: budget-overnight.json
+      hash: md5
+      md5: 5327d98351e25506fc023cd4ce17de34
+      size: 1202
+    - path: data/cloud/ac21_double
+      hash: md5
+      md5: cca18f2f695cdd3ec8d69a484fe304d4.dir
+      size: 26535861
+      nfiles: 25
+    - path: data/cloud/ac21_double_fine
+      hash: md5
+      md5: 036c5bfe60d55e90416f7f287f95a2b8.dir
+      size: 70436278
+      nfiles: 26
+    - path: decks/overnight21_stronger.fds
+      hash: md5
+      md5: 720be8f61c8a439a7ecb7c364ba91126
+      size: 26700
+    - path: finish_overnight_stronger.py
+      hash: md5
+      md5: e3201319fa759f8a7a687582e0d2a40d
+      size: 5520
+    - path: jobs/overnight21_stronger/runner.py
+      hash: md5
+      md5: 48eae967f652ea4093e413de4aa34f7f
+      size: 4893
+    outs:
+    - path: data/boundary/overnight21_stronger
+      hash: md5
+      md5: 40d2ae789814fcf38ae5321ac7c8909b.dir
+      size: 33840
+      nfiles: 12
+    - path: data/cloud/overnight21_stronger
+      hash: md5
+      md5: dd16b3a5a5ea9daeb1013a520fa9ce9a.dir
+      size: 111558152
+      nfiles: 28
+    - path: results/overnight-stronger-cleanup.json
+      hash: md5
+      md5: 8ba85edd99bf8ef8efffd6f7d731e580
+      size: 50
+    - path: results/overnight-stronger-result.json
+      hash: md5
+      md5: 98a992393d1b16e1e67147f412bec080
+      size: 25642
+  overnight_stronger_particles:
+    cmd: ../../.venv/bin/python diagnose_overnight_stronger.py
+    deps:
+    - path: data/cloud/overnight21_stronger
+      hash: md5
+      md5: dd16b3a5a5ea9daeb1013a520fa9ce9a.dir
+      size: 111558152
+      nfiles: 28
+    - path: diagnose_overnight_stronger.py
+      hash: md5
+      md5: fddb54532572705cb8862fcec2cdad2e
+      size: 2131
+    outs:
+    - path: results/overnight-stronger-particles.json
+      hash: md5
+      md5: aa20be3ef9d35a98a0daddca67ad7d0d
+      size: 1139
+  overnight_grid_v2_worker_preflight:
+    cmd: ../../.venv/bin/python preflight_grid_v2_worker.py
+    deps:
+    - path: overnight_grid_v2_control.py
+      hash: md5
+      md5: 3e165e84849b7a32edbc0dd650ddb3d5
+      size: 9199
+    - path: preflight_grid_v2_worker.py
+      hash: md5
+      md5: 1908c3910af50340daef97a21bfab8e9
+      size: 1290
+    - path: results/overnight-grid-v2-candidates.json
+      hash: md5
+      md5: 55aa8df36ddba53734071199d5c81f76
+      size: 2972
+    outs:
+    - path: data/grid_v2_worker_preflight
+      hash: md5
+      md5: 2e27a53364433647994c60f0421c03a9.dir
+      size: 1175996749
+      nfiles: 93
+    - path: results/overnight-grid-v2-worker-preflight.json
+      hash: md5
+      md5: 2594c17e624d68629eec944bbec6d8d5
+      size: 564
+  component_preflight:
+    cmd: ../../.venv/bin/python preflight_components.py
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: 3990c08854e2f3cce7e5f9af48f7f4ac
+      size: 150666
+    - path: component_campaign.py
+      hash: md5
+      md5: 4d0dda6a5ecddddcf600ac4e37180db8
+      size: 5271
+    - path: preflight_components.py
+      hash: md5
+      md5: 6dfd07d0945c5d4be4b6e2be04ca510b
+      size: 892
+    outs:
+    - path: data/component_preflight
+      hash: md5
+      md5: 10522b95f4fb3ea7f1563da128f7ffe2.dir
+      size: 3267735
+      nfiles: 100
+    - path: results/component-preflight.json
+      hash: md5
+      md5: 64b42a21f4272643b01258181227139b
+      size: 230
+  overnight21_grid_coarse_v2_collect:
+    cmd: ../../.venv/bin/python overnight_grid_v2_control.py collect
+    deps:
+    - path: decks/overnight21_grid_coarse_v2.fds
+      hash: md5
+      md5: 39856a6e4be86c512c3d7a5875b7d128
+      size: 26818
+    - path: jobs/overnight21_grid_coarse_v2/execution.json
+      hash: md5
+      md5: 869a9e85c448316f8e6b091f66c80361
+      size: 344
+    - path: jobs/overnight21_grid_coarse_v2/runner.py
+      hash: md5
+      md5: 965cd9d168fd91895e2b38f3c0ff1939
+      size: 4898
+    - path: jobs/overnight21_grid_coarse_v2/worker.py
+      hash: md5
+      md5: b1c0e00a638953f869d031bf6d2d2af1
+      size: 1870
+    - path: overnight_grid_v2_control.py
+      hash: md5
+      md5: 3e165e84849b7a32edbc0dd650ddb3d5
+      size: 9199
+    outs:
+    - path: data/cloud/overnight21_grid_coarse_v2
+      hash: md5
+      md5: b4b66ee283f5df6d664d33a1de8b445d.dir
+      size: 193364033
+      nfiles: 35
+    - path: results/overnight21_grid_coarse_v2-collected.json
+      hash: md5
+      md5: 768d0e3f3416d6114195572a56109a7d
+      size: 9095
+  component_extraction_preflight:
+    cmd: ../../.venv/bin/python extract_component_states.py --preflight
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: 3990c08854e2f3cce7e5f9af48f7f4ac
+      size: 150666
+    - path: data/component_preflight
+      hash: md5
+      md5: 10522b95f4fb3ea7f1563da128f7ffe2.dir
+      size: 3267735
+      nfiles: 100
+    - path: extract_component_states.py
+      hash: md5
+      md5: ce727294bd670e9f9ae78dadabb1e28e
+      size: 5987
+    outs:
+    - path: results/component-extraction-preflight.json
+      hash: md5
+      md5: a15ecfc2079c24aeeaed6d797af1947b
+      size: 538
+  b21_single_1_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_single_1
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: decks/b21_single_1.fds
+      hash: md5
+      md5: aeec5088c1002f10b869ffa416a8835f
+      size: 23777
+    - path: jobs/b21_single_1/execution.json
+      hash: md5
+      md5: 8038355fa9f2db8d6e5854a5b0fe53b5
+      size: 330
+    - path: jobs/b21_single_1/runner.py
+      hash: md5
+      md5: 17b150462920fb50fcb0d8f788cb0522
+      size: 4884
+    - path: jobs/b21_single_1/worker.py
+      hash: md5
+      md5: b17c417855fca5cc22f4b4397ca5fe35
+      size: 1856
+    outs:
+    - path: data/cloud/b21_single_1
+      hash: md5
+      md5: b733db0d23fbff98c4e08bf9e63f2da4.dir
+      size: 124792218
+      nfiles: 29
+    - path: results/b21_single_1-collected.json
+      hash: md5
+      md5: 0977565b91c3407255dc77791b9fb911
+      size: 8393
+  b21_transfer_0_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_transfer_0
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: decks/b21_transfer_0.fds
+      hash: md5
+      md5: 0fbb81fca8711f8b109277b06d067496
+      size: 25609
+    - path: jobs/b21_transfer_0/execution.json
+      hash: md5
+      md5: 6d1b4948ed636d9d8a97246f1e8cd460
+      size: 332
+    - path: jobs/b21_transfer_0/runner.py
+      hash: md5
+      md5: 99a0b1d749b72ff6d516587210b2a142
+      size: 4886
+    - path: jobs/b21_transfer_0/worker.py
+      hash: md5
+      md5: e8340d18074c95800f674d16f364696b
+      size: 1858
+    outs:
+    - path: data/cloud/b21_transfer_0
+      hash: md5
+      md5: 97e8617c25b8e7811f52b18c6ff870d7.dir
+      size: 133696151
+      nfiles: 29
+    - path: results/b21_transfer_0-collected.json
+      hash: md5
+      md5: 37249732d3552857fc4fb380d16046f0
+      size: 8708
+  b21_single_1_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_single_1
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: 69405ee5f1326172769c2f6b8d023141
+      size: 151752
+    - path: data/cloud/b21_single_1
+      hash: md5
+      md5: b733db0d23fbff98c4e08bf9e63f2da4.dir
+      size: 124792218
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: 7a1a615357679473185c5a0023a9f36c
+      size: 825365
+  b21_transfer_0_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_transfer_0
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: 69405ee5f1326172769c2f6b8d023141
+      size: 151752
+    - path: data/cloud/b21_transfer_0
+      hash: md5
+      md5: 97e8617c25b8e7811f52b18c6ff870d7.dir
+      size: 133696151
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: ae5dbbb7bf5cdb14a50f8ee84b6d6ca6
+      size: 1137898
+  b21_single_1_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_single_1
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: 5dac44df539b679d226475e9e488ed1a
+      size: 2038
+    - path: data/cloud/b21_single_1
+      hash: md5
+      md5: b733db0d23fbff98c4e08bf9e63f2da4.dir
+      size: 124792218
+      nfiles: 29
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: f37f7d2df4b5787f62230633421e9cdf
+      size: 747977
+    outs:
+    - path: data/boundary/b21_single_1
+      hash: md5
+      md5: 569d9b1e5ffefd955fda312434f1e386.dir
+      size: 33792
+      nfiles: 12
+    - path: results/b21_single_1-audit.json
+      hash: md5
+      md5: 2494e48c105c03ce0036028aa3dce29c
+      size: 662
+  b21_transfer_0_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_transfer_0
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: 5dac44df539b679d226475e9e488ed1a
+      size: 2038
+    - path: data/cloud/b21_transfer_0
+      hash: md5
+      md5: 97e8617c25b8e7811f52b18c6ff870d7.dir
+      size: 133696151
+      nfiles: 29
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: e75b22e2e2940927fc3bd307255f18c6
+      size: 994779
+    outs:
+    - path: data/boundary/b21_transfer_0
+      hash: md5
+      md5: 670a7c9703c30e2c71c242d899a18178.dir
+      size: 33804
+      nfiles: 12
+    - path: results/b21_transfer_0-audit.json
+      hash: md5
+      md5: 0e972739570c950f055f9b2e680e1f33
+      size: 823
+  component_rollout_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_component_rollout.py
+    deps:
+    - path: component_model.py
+      hash: md5
+      md5: 3e53ff6172e35532e307848d2fe59150
+      size: 8791
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: f37f7d2df4b5787f62230633421e9cdf
+      size: 747977
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: e75b22e2e2940927fc3bd307255f18c6
+      size: 994779
+    - path: diagnose_component_rollout.py
+      hash: md5
+      md5: dcee0b995543350ffe038c2ba6463e55
+      size: 1928
+    outs:
+    - path: results/component-rollout-diagnosis.json
+      hash: md5
+      md5: 63f9f54c776057e3bdc516c115459cc4
+      size: 3658
+  b21_single_2_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_single_2
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_single_2/execution.json
+      hash: md5
+      md5: 8424f73e1bfc6563e708dac7b1d4c584
+      size: 330
+    outs:
+    - path: data/cloud/b21_single_2
+      hash: md5
+      md5: 89be703c4bd8a368a4d366ad03381ad6.dir
+      size: 124792144
+      nfiles: 29
+    - path: results/b21_single_2-collected.json
+      hash: md5
+      md5: c3801be735d28bb0ddda8f0a3cb5053d
+      size: 8313
+  b21_single_2_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_single_2
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: 69405ee5f1326172769c2f6b8d023141
+      size: 151752
+    - path: data/cloud/b21_single_2
+      hash: md5
+      md5: 89be703c4bd8a368a4d366ad03381ad6.dir
+      size: 124792144
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 166f6d6ff1515f58ce3327ae5c56bc5e
+      size: 815881
+  b21_single_2_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_single_2
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: 5dac44df539b679d226475e9e488ed1a
+      size: 2038
+    - path: data/cloud/b21_single_2
+      hash: md5
+      md5: 89be703c4bd8a368a4d366ad03381ad6.dir
+      size: 124792144
+      nfiles: 29
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 870a1524f73cfeabcefa000f823f8365
+      size: 738011
+    outs:
+    - path: data/boundary/b21_single_2
+      hash: md5
+      md5: 42842d6701585a237444e04da618e562.dir
+      size: 33792
+      nfiles: 12
+    - path: results/b21_single_2-audit.json
+      hash: md5
+      md5: 44164aeb54251668833ab69881003444
+      size: 643
+  b21_combined_0_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_combined_0
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_combined_0/execution.json
+      hash: md5
+      md5: 481a7cc6b9bf8689ea0abc6468d09043
+      size: 332
+    outs:
+    - path: data/cloud/b21_combined_0
+      hash: md5
+      md5: af8c12120543fe9fbafc4c0c844a2fe5.dir
+      size: 135042857
+      nfiles: 29
+    - path: results/b21_combined_0-collected.json
+      hash: md5
+      md5: dc4169fc59c80c5fe8d7e98f46535244
+      size: 8852
+  b21_combined_0_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_combined_0
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: 69405ee5f1326172769c2f6b8d023141
+      size: 151752
+    - path: data/cloud/b21_combined_0
+      hash: md5
+      md5: af8c12120543fe9fbafc4c0c844a2fe5.dir
+      size: 135042857
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: ae3f7d95e5d4fb12ccfa9d901a5e3a43
+      size: 1169651
+  b21_combined_0_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_combined_0
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: 5dac44df539b679d226475e9e488ed1a
+      size: 2038
+    - path: data/cloud/b21_combined_0
+      hash: md5
+      md5: af8c12120543fe9fbafc4c0c844a2fe5.dir
+      size: 135042857
+      nfiles: 29
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: a78fca219a4673d42971db108ab36c28
+      size: 1015198
+    outs:
+    - path: data/boundary/b21_combined_0
+      hash: md5
+      md5: 345f1ff6a552acc79faec1dc6fae652d.dir
+      size: 33804
+      nfiles: 12
+    - path: results/b21_combined_0-audit.json
+      hash: md5
+      md5: 1e9b7d1634a984290e2ecade4c29e4cd
+      size: 831
+  b21_transfer_hot_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_transfer_hot
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_transfer_hot/execution.json
+      hash: md5
+      md5: e1bf3d026e5c23f40f0afbd4a07b6367
+      size: 334
+    outs:
+    - path: data/cloud/b21_transfer_hot
+      hash: md5
+      md5: a8794980a95ac00a9c1ac3e6b2c4801a.dir
+      size: 154801231
+      nfiles: 29
+    - path: results/b21_transfer_hot-collected.json
+      hash: md5
+      md5: 3bf074c00bd8e187135a39f955689566
+      size: 8719
+  b21_transfer_hot_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_transfer_hot
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: 69405ee5f1326172769c2f6b8d023141
+      size: 151752
+    - path: data/cloud/b21_transfer_hot
+      hash: md5
+      md5: a8794980a95ac00a9c1ac3e6b2c4801a.dir
+      size: 154801231
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 883813385e60e5e760765b1be67d223a
+      size: 1142740
+  b21_transfer_hot_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_transfer_hot
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: 5dac44df539b679d226475e9e488ed1a
+      size: 2038
+    - path: data/cloud/b21_transfer_hot
+      hash: md5
+      md5: a8794980a95ac00a9c1ac3e6b2c4801a.dir
+      size: 154801231
+      nfiles: 29
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 849d88aa0452c38b66a9b131f376fa9e
+      size: 986962
+    outs:
+    - path: data/boundary/b21_transfer_hot
+      hash: md5
+      md5: f02fdbbdb8ca0abc5429bcc600fa4f1b.dir
+      size: 33816
+      nfiles: 12
+    - path: results/b21_transfer_hot-audit.json
+      hash: md5
+      md5: e7a02b7419e5c32c86138f81480ad39d
+      size: 835
+  overnight21_grid_fine_bare_v2_collect:
+    cmd: ../../.venv/bin/python overnight_grid_v2_control.py collect
+    deps:
+    - path: decks/overnight21_grid_fine_bare_v2.fds
+      hash: md5
+      md5: 5feeb1245bbf9c98d3319fe8dd18fabe
+      size: 25763
+    - path: jobs/overnight21_grid_fine_bare_v2/execution.json
+      hash: md5
+      md5: b846480b4a203d9643a7312d9c58deac
+      size: 347
+    - path: jobs/overnight21_grid_fine_bare_v2/runner.py
+      hash: md5
+      md5: 7dd2da5a2f7e711ce9b24368adca259f
+      size: 4901
+    - path: jobs/overnight21_grid_fine_bare_v2/worker.py
+      hash: md5
+      md5: 95cb58ef81c08ff0d868cafef1bbc407
+      size: 1873
+    - path: overnight_grid_v2_control.py
+      hash: md5
+      md5: 3e165e84849b7a32edbc0dd650ddb3d5
+      size: 9199
+    outs:
+    - path: data/cloud/overnight21_grid_fine_bare_v2
+      hash: md5
+      md5: bf5819a241c1cf16f0904a293f834654.dir
+      size: 482657262
+      nfiles: 35
+    - path: results/overnight21_grid_fine_bare_v2-collected.json
+      hash: md5
+      md5: 6909a0439437b2395966dfecfd725212
+      size: 8954
+  component_dynamics_comparison:
+    cmd: ../../.venv/bin/python compare_component_dynamics.py
+    deps:
+    - path: compare_component_dynamics.py
+      hash: md5
+      md5: 5fbb19496f132805aa22f28e00d4a078
+      size: 1804
+    - path: component_model.py
+      hash: md5
+      md5: cbd0730cc898b9256335d238b2a53622
+      size: 9200
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: a78fca219a4673d42971db108ab36c28
+      size: 1015198
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: f37f7d2df4b5787f62230633421e9cdf
+      size: 747977
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 870a1524f73cfeabcefa000f823f8365
+      size: 738011
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: e75b22e2e2940927fc3bd307255f18c6
+      size: 994779
+    outs:
+    - path: results/component-dynamics-comparison.json
+      hash: md5
+      md5: ad6ad8a449f7de7534415c2acd659beb
+      size: 14588
+  b21_corner_1_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_corner_1
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_corner_1/execution.json
+      hash: md5
+      md5: 41971947639468ff3d81d310bcf7c6c1
+      size: 330
+    outs:
+    - path: data/cloud/b21_corner_1
+      hash: md5
+      md5: 0e5b21f51c14b65c28969895888b1e14.dir
+      size: 130437565
+      nfiles: 29
+    - path: results/b21_corner_1-collected.json
+      hash: md5
+      md5: 03e0de525a51d429b193a63c0fb3485c
+      size: 27023
+  b21_corner_1_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_corner_1
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: 69405ee5f1326172769c2f6b8d023141
+      size: 151752
+    - path: data/cloud/b21_corner_1
+      hash: md5
+      md5: 0e5b21f51c14b65c28969895888b1e14.dir
+      size: 130437565
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 199c1d06130fd977d93e18a837e753cd
+      size: 2433929
+  b21_corner_1_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_corner_1
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: eee1805527b4aa25e3acef1c78dfdb52
+      size: 2164
+    - path: data/cloud/b21_corner_1
+      hash: md5
+      md5: 0e5b21f51c14b65c28969895888b1e14.dir
+      size: 130437565
+      nfiles: 29
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 199c1d06130fd977d93e18a837e753cd
+      size: 2433929
+    outs:
+    - path: data/boundary/b21_corner_1
+      hash: md5
+      md5: 9c38bf73742baeb85f475dfba5e7e4dd.dir
+      size: 82473
+      nfiles: 12
+    - path: results/b21_corner_1-audit.json
+      hash: md5
+      md5: 12c28cb704afae7bf687fb010102ad1d
+      size: 709
+  b21_single_validation_collect:
+    cmd: ../../.venv/bin/python component_control.py collect 
+      b21_single_validation
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_single_validation/execution.json
+      hash: md5
+      md5: 7b8fb0e00dee72f8766fcfb5f2adff91
+      size: 339
+    outs:
+    - path: data/cloud/b21_single_validation
+      hash: md5
+      md5: 0c43728307b0c4d0e7ffed40896f643a.dir
+      size: 124793202
+      nfiles: 29
+    - path: results/b21_single_validation-collected.json
+      hash: md5
+      md5: 0154fd607e8a06c7e37840ace93891a5
+      size: 8392
+  b21_single_validation_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py 
+      b21_single_validation
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: 69405ee5f1326172769c2f6b8d023141
+      size: 151752
+    - path: data/cloud/b21_single_validation
+      hash: md5
+      md5: 0c43728307b0c4d0e7ffed40896f643a.dir
+      size: 124793202
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_single_validation.json
+      hash: md5
+      md5: 8c71efc4a0e3fd82e709a44aa19858cc
+      size: 825107
+  b21_single_validation_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_single_validation
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: 5dac44df539b679d226475e9e488ed1a
+      size: 2038
+    - path: data/cloud/b21_single_validation
+      hash: md5
+      md5: 0c43728307b0c4d0e7ffed40896f643a.dir
+      size: 124793202
+      nfiles: 29
+    - path: data/component_states/b21_single_validation.json
+      hash: md5
+      md5: 45684d07e98e67c7716b65a247394b96
+      size: 747993
+    outs:
+    - path: data/boundary/b21_single_validation
+      hash: md5
+      md5: c061bf60e70cae3b297a156e4845e733.dir
+      size: 33846
+      nfiles: 12
+    - path: results/b21_single_validation-audit.json
+      hash: md5
+      md5: 43d6027bb65a79dcaaf51497366cda56
+      size: 666
+  b21_combined_1_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_combined_1
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_combined_1/execution.json
+      hash: md5
+      md5: 0338ce9920b3908c69e31f66caf7c097
+      size: 332
+    outs:
+    - path: data/cloud/b21_combined_1
+      hash: md5
+      md5: 6b63dbdd532870506b9d27376912579e.dir
+      size: 135041162
+      nfiles: 29
+    - path: results/b21_combined_1-collected.json
+      hash: md5
+      md5: 37548495a47a384211f00cdc23f684da
+      size: 8810
+  b21_combined_1_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_combined_1
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: 69405ee5f1326172769c2f6b8d023141
+      size: 151752
+    - path: data/cloud/b21_combined_1
+      hash: md5
+      md5: 6b63dbdd532870506b9d27376912579e.dir
+      size: 135041162
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_combined_1.json
+      hash: md5
+      md5: 25f35ba54fefd42c0ccfce6d9f754b52
+      size: 1159445
+  b21_combined_1_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_combined_1
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: 5dac44df539b679d226475e9e488ed1a
+      size: 2038
+    - path: data/cloud/b21_combined_1
+      hash: md5
+      md5: 6b63dbdd532870506b9d27376912579e.dir
+      size: 135041162
+      nfiles: 29
+    - path: data/component_states/b21_combined_1.json
+      hash: md5
+      md5: 3132e3c2d6a78fe64ba1e9c394cd001f
+      size: 1005250
+    outs:
+    - path: data/boundary/b21_combined_1
+      hash: md5
+      md5: 5057173a7dd6875447231baeb954d274.dir
+      size: 33804
+      nfiles: 12
+    - path: results/b21_combined_1-audit.json
+      hash: md5
+      md5: 08dae94aa21762b6f5e1967774b9fb08
+      size: 830
+  component_validation_candidates:
+    cmd: ../../.venv/bin/python evaluate_component_candidates.py
+    deps:
+    - path: component_model.py
+      hash: md5
+      md5: b2c8ab010d5ad73c43bc8323e62a242b
+      size: 9256
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: a78fca219a4673d42971db108ab36c28
+      size: 1015198
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 86d397de709f49758b88dd51f180fed4
+      size: 2356600
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: f37f7d2df4b5787f62230633421e9cdf
+      size: 747977
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 870a1524f73cfeabcefa000f823f8365
+      size: 738011
+    - path: data/component_states/b21_single_validation.json
+      hash: md5
+      md5: 45684d07e98e67c7716b65a247394b96
+      size: 747993
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: e75b22e2e2940927fc3bd307255f18c6
+      size: 994779
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 849d88aa0452c38b66a9b131f376fa9e
+      size: 986962
+    - path: evaluate_component_candidates.py
+      hash: md5
+      md5: 1159f834a5f0dd85ed4982493bddf1a0
+      size: 2436
+    outs:
+    - path: data/component_candidates
+      hash: md5
+      md5: 9571fdf9232dae1e4f557e02b6489499.dir
+      size: 116083
+      nfiles: 6
+    - path: results/component-validation-candidates.json
+      hash: md5
+      md5: 730b581368baf87b04f056aa29d90ebe
+      size: 4331
+  component_validation_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_component_validation.py
+    deps:
+    - path: component_model.py
+      hash: md5
+      md5: b2c8ab010d5ad73c43bc8323e62a242b
+      size: 9256
+    - path: data/component_candidates
+      hash: md5
+      md5: 9571fdf9232dae1e4f557e02b6489499.dir
+      size: 116083
+      nfiles: 6
+    - path: data/component_states/b21_single_validation.json
+      hash: md5
+      md5: 45684d07e98e67c7716b65a247394b96
+      size: 747993
+    - path: diagnose_component_validation.py
+      hash: md5
+      md5: 54e45abda976faa061916a416c8d935a
+      size: 1621
+    outs:
+    - path: results/component-validation-diagnosis.json
+      hash: md5
+      md5: 995adbcdd2fafa89f92b252701059e73
+      size: 1015
+  b21_transfer_hot_source_control_collect:
+    cmd: ../../.venv/bin/python component_control.py collect 
+      b21_transfer_hot_source_control
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_transfer_hot_source_control/execution.json
+      hash: md5
+      md5: 6cda2d5cfbdd04333e8bd536ac388cf6
+      size: 349
+    outs:
+    - path: data/cloud/b21_transfer_hot_source_control
+      hash: md5
+      md5: dcaa95f0b1e8191931e0750d5d80ee45.dir
+      size: 145886869
+      nfiles: 29
+    - path: results/b21_transfer_hot_source_control-collected.json
+      hash: md5
+      md5: 609f940320e7fdd511f857807cbdfddf
+      size: 8412
+  b21_transfer_hot_source_control_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py 
+      b21_transfer_hot_source_control
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: 69405ee5f1326172769c2f6b8d023141
+      size: 151752
+    - path: data/cloud/b21_transfer_hot_source_control
+      hash: md5
+      md5: dcaa95f0b1e8191931e0750d5d80ee45.dir
+      size: 145886869
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: ce727294bd670e9f9ae78dadabb1e28e
+      size: 5987
+    outs:
+    - path: data/component_states/b21_transfer_hot_source_control.json
+      hash: md5
+      md5: 17e7e477933caa11da5a3cfe4305c21c
+      size: 753838
+  b21_transfer_hot_source_control_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py 
+      b21_transfer_hot_source_control
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: 5dac44df539b679d226475e9e488ed1a
+      size: 2038
+    - path: data/cloud/b21_transfer_hot_source_control
+      hash: md5
+      md5: dcaa95f0b1e8191931e0750d5d80ee45.dir
+      size: 145886869
+      nfiles: 29
+    - path: data/component_states/b21_transfer_hot_source_control.json
+      hash: md5
+      md5: 17e7e477933caa11da5a3cfe4305c21c
+      size: 753838
+    outs:
+    - path: data/boundary/b21_transfer_hot_source_control
+      hash: md5
+      md5: 7d01000c589ad04aef49fd2361817316.dir
+      size: 33906
+      nfiles: 12
+    - path: results/b21_transfer_hot_source_control-audit.json
+      hash: md5
+      md5: d9f17c29346e7f3c2fb8ed2ce5e855cc
+      size: 671
+  b21_transfer_validation_collect:
+    cmd: ../../.venv/bin/python component_control.py collect 
+      b21_transfer_validation
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_transfer_validation/execution.json
+      hash: md5
+      md5: cf408cd2bc95b2b4009a1a51d90d60f1
+      size: 341
+    outs:
+    - path: data/cloud/b21_transfer_validation
+      hash: md5
+      md5: 080de14d04bdfa216583e7c844b28c70.dir
+      size: 154789780
+      nfiles: 29
+    - path: results/b21_transfer_validation-collected.json
+      hash: md5
+      md5: bed34bfec0b3a12fd4eed21bd90377b3
+      size: 8718
+  b21_transfer_validation_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py 
+      b21_transfer_validation
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: 69405ee5f1326172769c2f6b8d023141
+      size: 151752
+    - path: data/cloud/b21_transfer_validation
+      hash: md5
+      md5: 080de14d04bdfa216583e7c844b28c70.dir
+      size: 154789780
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_transfer_validation.json
+      hash: md5
+      md5: 2c9c05fa74d200c4476f165d2745f92b
+      size: 1136693
+  b21_transfer_validation_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_transfer_validation
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: 5dac44df539b679d226475e9e488ed1a
+      size: 2038
+    - path: data/cloud/b21_transfer_validation
+      hash: md5
+      md5: 080de14d04bdfa216583e7c844b28c70.dir
+      size: 154789780
+      nfiles: 29
+    - path: data/component_states/b21_transfer_validation.json
+      hash: md5
+      md5: 263bb732ddbf58ae73f969e750ea2553
+      size: 993995
+    outs:
+    - path: data/boundary/b21_transfer_validation
+      hash: md5
+      md5: f85749a0fafa59a362ec2dc7e8e2824a.dir
+      size: 33858
+      nfiles: 12
+    - path: results/b21_transfer_validation-audit.json
+      hash: md5
+      md5: ec9401244297b6ac5d76ccb072ef90fe
+      size: 827
+  wall_response_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_wall_response.py
+    deps:
+    - path: component_model.py
+      hash: md5
+      md5: a3ad159706d20fbb256827bebbaf2dce
+      size: 9772
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: a78fca219a4673d42971db108ab36c28
+      size: 1015198
+    - path: data/component_states/b21_combined_1.json
+      hash: md5
+      md5: 3132e3c2d6a78fe64ba1e9c394cd001f
+      size: 1005250
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 86d397de709f49758b88dd51f180fed4
+      size: 2356600
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: f37f7d2df4b5787f62230633421e9cdf
+      size: 747977
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 870a1524f73cfeabcefa000f823f8365
+      size: 738011
+    - path: data/component_states/b21_single_validation.json
+      hash: md5
+      md5: 45684d07e98e67c7716b65a247394b96
+      size: 747993
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: e75b22e2e2940927fc3bd307255f18c6
+      size: 994779
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 849d88aa0452c38b66a9b131f376fa9e
+      size: 986962
+    - path: data/component_states/b21_transfer_validation.json
+      hash: md5
+      md5: 263bb732ddbf58ae73f969e750ea2553
+      size: 993995
+    - path: diagnose_wall_response.py
+      hash: md5
+      md5: 1a128bb7846cdb90aa6303e9e374486e
+      size: 2429
+    outs:
+    - path: results/wall-response-diagnosis.json
+      hash: md5
+      md5: f372a0e337fda152408bfd84c13e8736
+      size: 1640
+  component_hybrid_validation:
+    cmd: ../../.venv/bin/python evaluate_component_hybrid.py
+    deps:
+    - path: component_heat_rule.py
+      hash: md5
+      md5: 57d41572817b5c8cd780384e3ce6a0e0
+      size: 1565
+    - path: component_model.py
+      hash: md5
+      md5: a3ad159706d20fbb256827bebbaf2dce
+      size: 9772
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: a78fca219a4673d42971db108ab36c28
+      size: 1015198
+    - path: data/component_states/b21_combined_1.json
+      hash: md5
+      md5: 3132e3c2d6a78fe64ba1e9c394cd001f
+      size: 1005250
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 86d397de709f49758b88dd51f180fed4
+      size: 2356600
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: f37f7d2df4b5787f62230633421e9cdf
+      size: 747977
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 870a1524f73cfeabcefa000f823f8365
+      size: 738011
+    - path: data/component_states/b21_single_validation.json
+      hash: md5
+      md5: 45684d07e98e67c7716b65a247394b96
+      size: 747993
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: e75b22e2e2940927fc3bd307255f18c6
+      size: 994779
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 849d88aa0452c38b66a9b131f376fa9e
+      size: 986962
+    - path: data/component_states/b21_transfer_validation.json
+      hash: md5
+      md5: 263bb732ddbf58ae73f969e750ea2553
+      size: 993995
+    - path: diagnose_wall_response.py
+      hash: md5
+      md5: 1a128bb7846cdb90aa6303e9e374486e
+      size: 2429
+    - path: evaluate_component_hybrid.py
+      hash: md5
+      md5: e90112d8340fbd34b91dbea4f36af167
+      size: 2520
+    outs:
+    - path: data/component_hybrid_candidates
+      hash: md5
+      md5: 68c8fea27e462ea03a73315058628524.dir
+      size: 116224
+      nfiles: 6
+    - path: results/component-hybrid-validation.json
+      hash: md5
+      md5: 52a0d5e742780b1831fad201b44ab310
+      size: 6929
+  component_exchange_validation:
+    cmd: ../../.venv/bin/python evaluate_component_exchange.py
+    deps:
+    - path: component_heat_rule.py
+      hash: md5
+      md5: 57d41572817b5c8cd780384e3ce6a0e0
+      size: 1565
+    - path: component_model.py
+      hash: md5
+      md5: a3ad159706d20fbb256827bebbaf2dce
+      size: 9772
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: a78fca219a4673d42971db108ab36c28
+      size: 1015198
+    - path: data/component_states/b21_combined_1.json
+      hash: md5
+      md5: 3132e3c2d6a78fe64ba1e9c394cd001f
+      size: 1005250
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 86d397de709f49758b88dd51f180fed4
+      size: 2356600
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: f37f7d2df4b5787f62230633421e9cdf
+      size: 747977
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 870a1524f73cfeabcefa000f823f8365
+      size: 738011
+    - path: data/component_states/b21_single_validation.json
+      hash: md5
+      md5: 45684d07e98e67c7716b65a247394b96
+      size: 747993
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: e75b22e2e2940927fc3bd307255f18c6
+      size: 994779
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 849d88aa0452c38b66a9b131f376fa9e
+      size: 986962
+    - path: data/component_states/b21_transfer_validation.json
+      hash: md5
+      md5: 263bb732ddbf58ae73f969e750ea2553
+      size: 993995
+    - path: diagnose_wall_response.py
+      hash: md5
+      md5: 1a128bb7846cdb90aa6303e9e374486e
+      size: 2429
+    - path: evaluate_component_exchange.py
+      hash: md5
+      md5: 7ca873d63aa01ff0dd33e32e43f53175
+      size: 2596
+    outs:
+    - path: data/component_exchange_candidates
+      hash: md5
+      md5: 1fd2a1bedd419bdd53fd638c22c6b11c.dir
+      size: 118840
+      nfiles: 6
+    - path: results/component-exchange-validation.json
+      hash: md5
+      md5: 01a9caa3d315a85ab337da7a4a931b32
+      size: 6941
+  component_hot_tail_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_component_hot_tail.py
+    deps:
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: 7a1a615357679473185c5a0023a9f36c
+      size: 825365
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 883813385e60e5e760765b1be67d223a
+      size: 1142740
+    - path: diagnose_component_hot_tail.py
+      hash: md5
+      md5: db8adb40e6694e5dc79ad2f2872767b0
+      size: 433
+    outs:
+    - path: results/component-hot-tail-diagnosis.json
+      hash: md5
+      md5: 120c462e3985555b96fc85a4e173e97c
+      size: 25244
+  component_heat_transport_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_heat_transport.py
+    deps:
+    - path: component_heat_rule.py
+      hash: md5
+      md5: 57d41572817b5c8cd780384e3ce6a0e0
+      size: 1565
+    - path: component_model.py
+      hash: md5
+      md5: bfb6fd2139d912d0c1755fa23f755d29
+      size: 9919
+    - path: data/component_exchange_candidates
+      hash: md5
+      md5: 1fd2a1bedd419bdd53fd638c22c6b11c.dir
+      size: 118840
+      nfiles: 6
+    - path: data/component_states/b21_single_validation.json
+      hash: md5
+      md5: 45684d07e98e67c7716b65a247394b96
+      size: 747993
+    - path: data/component_states/b21_transfer_validation.json
+      hash: md5
+      md5: 263bb732ddbf58ae73f969e750ea2553
+      size: 993995
+    - path: diagnose_heat_transport.py
+      hash: md5
+      md5: 3a8d23080b4f7ad00f81a09e1f8f227e
+      size: 1606
+    - path: diagnose_wall_response.py
+      hash: md5
+      md5: 1a128bb7846cdb90aa6303e9e374486e
+      size: 2429
+    outs:
+    - path: results/component-heat-transport-diagnosis.json
+      hash: md5
+      md5: 125b32579cabb750876194e4cb1427ab
+      size: 2060
+  component_release_validation:
+    cmd: ../../.venv/bin/python evaluate_component_release.py
+    deps:
+    - path: component_heat_rule.py
+      hash: md5
+      md5: 57d41572817b5c8cd780384e3ce6a0e0
+      size: 1565
+    - path: component_model.py
+      hash: md5
+      md5: bfb6fd2139d912d0c1755fa23f755d29
+      size: 9919
+    - path: component_release_rule.py
+      hash: md5
+      md5: 45ff7c2a0123494ccc9391647af5e24d
+      size: 1219
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: a78fca219a4673d42971db108ab36c28
+      size: 1015198
+    - path: data/component_states/b21_combined_1.json
+      hash: md5
+      md5: 3132e3c2d6a78fe64ba1e9c394cd001f
+      size: 1005250
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 86d397de709f49758b88dd51f180fed4
+      size: 2356600
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: 7a1a615357679473185c5a0023a9f36c
+      size: 825365
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 870a1524f73cfeabcefa000f823f8365
+      size: 738011
+    - path: data/component_states/b21_single_validation.json
+      hash: md5
+      md5: 45684d07e98e67c7716b65a247394b96
+      size: 747993
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: e75b22e2e2940927fc3bd307255f18c6
+      size: 994779
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 883813385e60e5e760765b1be67d223a
+      size: 1142740
+    - path: data/component_states/b21_transfer_validation.json
+      hash: md5
+      md5: 263bb732ddbf58ae73f969e750ea2553
+      size: 993995
+    - path: diagnose_wall_response.py
+      hash: md5
+      md5: 1a128bb7846cdb90aa6303e9e374486e
+      size: 2429
+    - path: evaluate_component_release.py
+      hash: md5
+      md5: cf60bd5fed8ca36e4fb824b055f8a59b
+      size: 2669
+    outs:
+    - path: data/component_release_candidates
+      hash: md5
+      md5: 7662bf3fc0adaad46e08a09004214d64.dir
+      size: 119380
+      nfiles: 6
+    - path: results/component-release-validation.json
+      hash: md5
+      md5: c60a1f6054550ec4c332907f2725315c
+      size: 6947
+  hot_state_candidates:
+    cmd: ../../.venv/bin/python evaluate_hot_state.py
+    deps:
+    - path: component_heat_rule.py
+      hash: md5
+      md5: 57d41572817b5c8cd780384e3ce6a0e0
+      size: 1565
+    - path: component_hot_state_model.py
+      hash: md5
+      md5: 8e6937858040713188690b72d6cd6fad
+      size: 3982
+    - path: component_model.py
+      hash: md5
+      md5: bfb6fd2139d912d0c1755fa23f755d29
+      size: 9919
+    - path: component_release_rule.py
+      hash: md5
+      md5: 45ff7c2a0123494ccc9391647af5e24d
+      size: 1219
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: ae3f7d95e5d4fb12ccfa9d901a5e3a43
+      size: 1169651
+    - path: data/component_states/b21_combined_1.json
+      hash: md5
+      md5: 25f35ba54fefd42c0ccfce6d9f754b52
+      size: 1159445
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 199c1d06130fd977d93e18a837e753cd
+      size: 2433929
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: 7a1a615357679473185c5a0023a9f36c
+      size: 825365
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 166f6d6ff1515f58ce3327ae5c56bc5e
+      size: 815881
+    - path: data/component_states/b21_single_validation.json
+      hash: md5
+      md5: 8c71efc4a0e3fd82e709a44aa19858cc
+      size: 825107
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: ae5dbbb7bf5cdb14a50f8ee84b6d6ca6
+      size: 1137898
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 883813385e60e5e760765b1be67d223a
+      size: 1142740
+    - path: data/component_states/b21_transfer_validation.json
+      hash: md5
+      md5: 2c9c05fa74d200c4476f165d2745f92b
+      size: 1136693
+    - path: diagnose_wall_response.py
+      hash: md5
+      md5: 1a128bb7846cdb90aa6303e9e374486e
+      size: 2429
+    - path: evaluate_hot_state.py
+      hash: md5
+      md5: 755f8494f6d4a97721c2ba7245a7f117
+      size: 1930
+    outs:
+    - path: data/hot_state_candidates
+      hash: md5
+      md5: e1374d39a3598a8df7f1de3a8abfe5df.dir
+      size: 19061
+      nfiles: 6
+    - path: results/hot-state-validation.json
+      hash: md5
+      md5: bd4c3ec374c7f7fdeb5b84d19e6b1f5c
+      size: 5728
+  recursive_canopy_train:
+    cmd: ../../.venv/bin/python train_recursive_canopy.py
+    deps:
+    - path: component_heat_rule.py
+      hash: md5
+      md5: 57d41572817b5c8cd780384e3ce6a0e0
+      size: 1565
+    - path: component_hot_state_model.py
+      hash: md5
+      md5: 8e6937858040713188690b72d6cd6fad
+      size: 3982
+    - path: component_model.py
+      hash: md5
+      md5: bfb6fd2139d912d0c1755fa23f755d29
+      size: 9919
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: ae3f7d95e5d4fb12ccfa9d901a5e3a43
+      size: 1169651
+    - path: data/component_states/b21_combined_1.json
+      hash: md5
+      md5: 25f35ba54fefd42c0ccfce6d9f754b52
+      size: 1159445
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 199c1d06130fd977d93e18a837e753cd
+      size: 2433929
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: 7a1a615357679473185c5a0023a9f36c
+      size: 825365
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 166f6d6ff1515f58ce3327ae5c56bc5e
+      size: 815881
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: ae5dbbb7bf5cdb14a50f8ee84b6d6ca6
+      size: 1137898
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 883813385e60e5e760765b1be67d223a
+      size: 1142740
+    - path: diagnose_wall_response.py
+      hash: md5
+      md5: 1a128bb7846cdb90aa6303e9e374486e
+      size: 2429
+    - path: train_recursive_canopy.py
+      hash: md5
+      md5: b2fec03d33b99772fb23e6b7b0c8346f
+      size: 4086
+    outs:
+    - path: data/recursive_canopy
+      hash: md5
+      md5: c8f306e12484549d2152b9a28b99df34.dir
+      size: 76668
+      nfiles: 12
+    - path: results/recursive-canopy-training.json
+      hash: md5
+      md5: 113e7c2711a1708f493e861856ca3498
+      size: 20000
+  recursive_canopy_train_constrained:
+    cmd: ../../.venv/bin/python train_recursive_canopy_constrained.py
+    deps:
+    - path: component_heat_rule.py
+      hash: md5
+      md5: 57d41572817b5c8cd780384e3ce6a0e0
+      size: 1565
+    - path: component_hot_state_model.py
+      hash: md5
+      md5: 8e6937858040713188690b72d6cd6fad
+      size: 3982
+    - path: component_model.py
+      hash: md5
+      md5: bfb6fd2139d912d0c1755fa23f755d29
+      size: 9919
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: ae3f7d95e5d4fb12ccfa9d901a5e3a43
+      size: 1169651
+    - path: data/component_states/b21_combined_1.json
+      hash: md5
+      md5: 25f35ba54fefd42c0ccfce6d9f754b52
+      size: 1159445
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 199c1d06130fd977d93e18a837e753cd
+      size: 2433929
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: 7a1a615357679473185c5a0023a9f36c
+      size: 825365
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 166f6d6ff1515f58ce3327ae5c56bc5e
+      size: 815881
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: ae5dbbb7bf5cdb14a50f8ee84b6d6ca6
+      size: 1137898
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 883813385e60e5e760765b1be67d223a
+      size: 1142740
+    - path: diagnose_wall_response.py
+      hash: md5
+      md5: 1a128bb7846cdb90aa6303e9e374486e
+      size: 2429
+    - path: train_recursive_canopy_constrained.py
+      hash: md5
+      md5: 9a2c19d50f0de8c6bbc6ea7c46e270ee
+      size: 4480
+    outs:
+    - path: data/recursive_canopy_constrained
+      hash: md5
+      md5: ce3cdd1769a86f9e955818ad9ff8aa0f.dir
+      size: 76621
+      nfiles: 12
+    - path: results/recursive-canopy-constrained-training.json
+      hash: md5
+      md5: 3ad7909fb9e723b9af4dc2cbfd4a10ef
+      size: 20034
+  recursive_canopy_train_conservative:
+    cmd: ../../.venv/bin/python train_recursive_canopy_conservative.py
+    deps:
+    - path: component_heat_rule.py
+      hash: md5
+      md5: 57d41572817b5c8cd780384e3ce6a0e0
+      size: 1565
+    - path: component_hot_state_model.py
+      hash: md5
+      md5: 8e6937858040713188690b72d6cd6fad
+      size: 3982
+    - path: component_model.py
+      hash: md5
+      md5: bfb6fd2139d912d0c1755fa23f755d29
+      size: 9919
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: ae3f7d95e5d4fb12ccfa9d901a5e3a43
+      size: 1169651
+    - path: data/component_states/b21_combined_1.json
+      hash: md5
+      md5: 25f35ba54fefd42c0ccfce6d9f754b52
+      size: 1159445
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 199c1d06130fd977d93e18a837e753cd
+      size: 2433929
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: 7a1a615357679473185c5a0023a9f36c
+      size: 825365
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 166f6d6ff1515f58ce3327ae5c56bc5e
+      size: 815881
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: ae5dbbb7bf5cdb14a50f8ee84b6d6ca6
+      size: 1137898
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 883813385e60e5e760765b1be67d223a
+      size: 1142740
+    - path: diagnose_wall_response.py
+      hash: md5
+      md5: 1a128bb7846cdb90aa6303e9e374486e
+      size: 2429
+    - path: train_recursive_canopy_conservative.py
+      hash: md5
+      md5: e80d026352d99dfca1998185554a1ee1
+      size: 5298
+    outs:
+    - path: data/recursive_canopy_conservative
+      hash: md5
+      md5: f1452f9fa9cb69101f10d7404bf82595.dir
+      size: 58117
+      nfiles: 9
+    - path: results/recursive-canopy-conservative-training.json
+      hash: md5
+      md5: e9ed2cde5f3cc8556260caf45d3f172f
+      size: 13363
+  recursive300_dose_validation:
+    cmd: ../../.venv/bin/python evaluate_candidate_metrics.py
+    deps:
+    - path: component_metrics.py
+      hash: md5
+      md5: 74df5946c4d03bd4fd489a6e5896b6cb
+      size: 1798
+    - path: data/component_states/b21_single_validation.json
+      hash: md5
+      md5: 8c71efc4a0e3fd82e709a44aa19858cc
+      size: 825107
+    - path: data/component_states/b21_transfer_validation.json
+      hash: md5
+      md5: 2c9c05fa74d200c4476f165d2745f92b
+      size: 1136693
+    - path: data/recursive_canopy_constrained
+      hash: md5
+      md5: ce3cdd1769a86f9e955818ad9ff8aa0f.dir
+      size: 76621
+      nfiles: 12
+    - path: evaluate_candidate_metrics.py
+      hash: md5
+      md5: fefea999f3d0910b3c098898bca62e13
+      size: 1207
+    - path: evaluate_recursive_canopy_energy_budget.py
+      hash: md5
+      md5: 6d70a2d400713d5036306773f84b3f72
+      size: 3472
+    outs:
+    - path: results/recursive300-dose-validation.json
+      hash: md5
+      md5: 006eb75cf13dedce185dfeaf8c4da249
+      size: 60874
+  b21_single_0_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_single_0
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_single_0/execution.json
+      hash: md5
+      md5: c2d1f800e89bc65331c869495d596590
+      size: 330
+    outs:
+    - path: data/cloud/b21_single_0
+      hash: md5
+      md5: cc2fedcbda650a308f4ebda47b3a7f7b.dir
+      size: 124793854
+      nfiles: 29
+    - path: results/b21_single_0-collected.json
+      hash: md5
+      md5: 9c77138b2539380aed8c8bdae6389bc9
+      size: 8400
+  b21_single_0_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_single_0
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: f39104bb7fb7d09cbb81d84540ea65ab
+      size: 152841
+    - path: data/cloud/b21_single_0
+      hash: md5
+      md5: cc2fedcbda650a308f4ebda47b3a7f7b.dir
+      size: 124793854
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_single_0.json
+      hash: md5
+      md5: 24b9c0bd5372266439b58a0b56e7c3c9
+      size: 828713
+  b21_single_0_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_single_0
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: 5dac44df539b679d226475e9e488ed1a
+      size: 2038
+    - path: data/cloud/b21_single_0
+      hash: md5
+      md5: cc2fedcbda650a308f4ebda47b3a7f7b.dir
+      size: 124793854
+      nfiles: 29
+    - path: data/component_states/b21_single_0.json
+      hash: md5
+      md5: 24b9c0bd5372266439b58a0b56e7c3c9
+      size: 828713
+    outs:
+    - path: data/boundary/b21_single_0
+      hash: md5
+      md5: 77cc077c6c5f0e77cbb40eb4536f793a.dir
+      size: 33792
+      nfiles: 12
+    - path: results/b21_single_0-audit.json
+      hash: md5
+      md5: 9759bc9ad18f6cd7d04ac081fbf9341d
+      size: 658
+  b21_transfer_1_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_transfer_1
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_transfer_1/execution.json
+      hash: md5
+      md5: ad8bcbcd9a2a4b8abfbfb747f911f011
+      size: 332
+    outs:
+    - path: data/cloud/b21_transfer_1
+      hash: md5
+      md5: 89b9f18ea6914407415f4f92a60b4602.dir
+      size: 154788765
+      nfiles: 29
+    - path: results/b21_transfer_1-collected.json
+      hash: md5
+      md5: f092128fa7aa3aac64c81d5f8166e7c0
+      size: 8716
+  b21_transfer_1_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_transfer_1
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: f39104bb7fb7d09cbb81d84540ea65ab
+      size: 152841
+    - path: data/cloud/b21_transfer_1
+      hash: md5
+      md5: 89b9f18ea6914407415f4f92a60b4602.dir
+      size: 154788765
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_transfer_1.json
+      hash: md5
+      md5: e4218d2a057a5abd6685b91152f6214b
+      size: 1146934
+  b21_transfer_1_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_transfer_1
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: 5dac44df539b679d226475e9e488ed1a
+      size: 2038
+    - path: data/cloud/b21_transfer_1
+      hash: md5
+      md5: 89b9f18ea6914407415f4f92a60b4602.dir
+      size: 154788765
+      nfiles: 29
+    - path: data/component_states/b21_transfer_1.json
+      hash: md5
+      md5: e4218d2a057a5abd6685b91152f6214b
+      size: 1146934
+    outs:
+    - path: data/boundary/b21_transfer_1
+      hash: md5
+      md5: f54e5703149c768dc407b96b0f30ed2e.dir
+      size: 33804
+      nfiles: 12
+    - path: results/b21_transfer_1-audit.json
+      hash: md5
+      md5: df3c05bdad9fc44cebc499dcfd6ad2fd
+      size: 820
+  b21_combined_2_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_combined_2
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_combined_2/execution.json
+      hash: md5
+      md5: bb531692fbd462e5f1941830e22d887a
+      size: 332
+    outs:
+    - path: data/cloud/b21_combined_2
+      hash: md5
+      md5: 8f1c2f17eec628369671cff210aec854.dir
+      size: 135041044
+      nfiles: 29
+    - path: results/b21_combined_2-collected.json
+      hash: md5
+      md5: 7e952ad2f19f24cef4593f92916dd20e
+      size: 8660
+  b21_combined_2_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_combined_2
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: f39104bb7fb7d09cbb81d84540ea65ab
+      size: 152841
+    - path: data/cloud/b21_combined_2
+      hash: md5
+      md5: 8f1c2f17eec628369671cff210aec854.dir
+      size: 135041044
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_combined_2.json
+      hash: md5
+      md5: e405fcf48712a5d38c7c7ea8aa51ee14
+      size: 1138195
+  b21_combined_2_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_combined_2
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: 5dac44df539b679d226475e9e488ed1a
+      size: 2038
+    - path: data/cloud/b21_combined_2
+      hash: md5
+      md5: 8f1c2f17eec628369671cff210aec854.dir
+      size: 135041044
+      nfiles: 29
+    - path: data/component_states/b21_combined_2.json
+      hash: md5
+      md5: e405fcf48712a5d38c7c7ea8aa51ee14
+      size: 1138195
+    outs:
+    - path: data/boundary/b21_combined_2
+      hash: md5
+      md5: b866a2491296965cee2ccc19cc85e64d.dir
+      size: 33804
+      nfiles: 12
+    - path: results/b21_combined_2-audit.json
+      hash: md5
+      md5: 9aecd8927431ae63a893b0ae537c5b90
+      size: 812
+  b21_corner_2_collect:
+    cmd: ../../.venv/bin/python component_control.py collect b21_corner_2
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_corner_2/execution.json
+      hash: md5
+      md5: 04b0bd1ed1dab06ce2c8f67532cf97d6
+      size: 330
+    outs:
+    - path: data/cloud/b21_corner_2
+      hash: md5
+      md5: 674007f8f4aafea2ae27d208bd37c336.dir
+      size: 130436833
+      nfiles: 29
+    - path: results/b21_corner_2-collected.json
+      hash: md5
+      md5: 81afe8394210ee86f89af75c9f971549
+      size: 27122
+  b21_corner_2_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py b21_corner_2
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: f39104bb7fb7d09cbb81d84540ea65ab
+      size: 152841
+    - path: data/cloud/b21_corner_2
+      hash: md5
+      md5: 674007f8f4aafea2ae27d208bd37c336.dir
+      size: 130436833
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_corner_2.json
+      hash: md5
+      md5: 3f0c6875d5fd29530f0967ee40e483a4
+      size: 2459738
+  b21_corner_2_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_corner_2
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: eee1805527b4aa25e3acef1c78dfdb52
+      size: 2164
+    - path: data/cloud/b21_corner_2
+      hash: md5
+      md5: 674007f8f4aafea2ae27d208bd37c336.dir
+      size: 130436833
+      nfiles: 29
+    - path: data/component_states/b21_corner_2.json
+      hash: md5
+      md5: 3f0c6875d5fd29530f0967ee40e483a4
+      size: 2459738
+    outs:
+    - path: data/boundary/b21_corner_2
+      hash: md5
+      md5: f00961160d3fbb9c02cbe2641784fbf6.dir
+      size: 82473
+      nfiles: 12
+    - path: results/b21_corner_2-audit.json
+      hash: md5
+      md5: 3feb1db12d6af3d633f2bfdeff6d0f53
+      size: 686
+  b21_combined_validation_collect:
+    cmd: ../../.venv/bin/python component_control.py collect 
+      b21_combined_validation
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_combined_validation/execution.json
+      hash: md5
+      md5: 954ec8966ff163dd2459f0b04586cd96
+      size: 341
+    outs:
+    - path: data/cloud/b21_combined_validation
+      hash: md5
+      md5: d508d92cd6a6acb695da29af66e692a9.dir
+      size: 135042229
+      nfiles: 29
+    - path: results/b21_combined_validation-collected.json
+      hash: md5
+      md5: 2f1c1d10d52a7441be397bdc6a90de95
+      size: 8865
+  b21_combined_validation_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py 
+      b21_combined_validation
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: f39104bb7fb7d09cbb81d84540ea65ab
+      size: 152841
+    - path: data/cloud/b21_combined_validation
+      hash: md5
+      md5: d508d92cd6a6acb695da29af66e692a9.dir
+      size: 135042229
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_combined_validation.json
+      hash: md5
+      md5: fa5041508c6b1550e45001d1b61c7cda
+      size: 1168738
+  b21_combined_validation_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_combined_validation
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: 5dac44df539b679d226475e9e488ed1a
+      size: 2038
+    - path: data/cloud/b21_combined_validation
+      hash: md5
+      md5: d508d92cd6a6acb695da29af66e692a9.dir
+      size: 135042229
+      nfiles: 29
+    - path: data/component_states/b21_combined_validation.json
+      hash: md5
+      md5: fa5041508c6b1550e45001d1b61c7cda
+      size: 1168738
+    outs:
+    - path: data/boundary/b21_combined_validation
+      hash: md5
+      md5: 4f2a38659776b081fb08005fd059e35c.dir
+      size: 33858
+      nfiles: 12
+    - path: results/b21_combined_validation-audit.json
+      hash: md5
+      md5: f105e278dcd00db0e7ebd98c4cf42ed9
+      size: 835
+  recursive_canopy_train_expanded:
+    cmd: ../../.venv/bin/python train_recursive_canopy_expanded.py
+    deps:
+    - path: component-training-expanded.json
+      hash: md5
+      md5: 200f0c8b666ce096efd00c1acf6a2e9a
+      size: 214
+    - path: component_heat_rule.py
+      hash: md5
+      md5: 36b5742869a0131d5ad37cfbacb41fa6
+      size: 1599
+    - path: component_hot_state_model.py
+      hash: md5
+      md5: 8e6937858040713188690b72d6cd6fad
+      size: 3982
+    - path: component_model.py
+      hash: md5
+      md5: bfb6fd2139d912d0c1755fa23f755d29
+      size: 9919
+    - path: component_occlusion.py
+      hash: md5
+      md5: bdbb9d679019b1c89c9c95a395432c37
+      size: 1765
+    - path: component_release_rule.py
+      hash: md5
+      md5: 45ff7c2a0123494ccc9391647af5e24d
+      size: 1219
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: ae3f7d95e5d4fb12ccfa9d901a5e3a43
+      size: 1169651
+    - path: data/component_states/b21_combined_1.json
+      hash: md5
+      md5: 25f35ba54fefd42c0ccfce6d9f754b52
+      size: 1159445
+    - path: data/component_states/b21_combined_2.json
+      hash: md5
+      md5: e405fcf48712a5d38c7c7ea8aa51ee14
+      size: 1138195
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 199c1d06130fd977d93e18a837e753cd
+      size: 2433929
+    - path: data/component_states/b21_corner_2.json
+      hash: md5
+      md5: 3f0c6875d5fd29530f0967ee40e483a4
+      size: 2459738
+    - path: data/component_states/b21_single_0.json
+      hash: md5
+      md5: 24b9c0bd5372266439b58a0b56e7c3c9
+      size: 828713
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: 7a1a615357679473185c5a0023a9f36c
+      size: 825365
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 166f6d6ff1515f58ce3327ae5c56bc5e
+      size: 815881
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: ae5dbbb7bf5cdb14a50f8ee84b6d6ca6
+      size: 1137898
+    - path: data/component_states/b21_transfer_1.json
+      hash: md5
+      md5: e4218d2a057a5abd6685b91152f6214b
+      size: 1146934
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 883813385e60e5e760765b1be67d223a
+      size: 1142740
+    - path: data/recursive_canopy_constrained
+      hash: md5
+      md5: ce3cdd1769a86f9e955818ad9ff8aa0f.dir
+      size: 76621
+      nfiles: 12
+    - path: train_recursive_canopy_expanded.py
+      hash: md5
+      md5: 7b950070283add21c52fca610c2bb8ec
+      size: 5456
+    outs:
+    - path: data/recursive_canopy_expanded
+      hash: md5
+      md5: b6a4c8a720b1fa76b80a5d0ffcec3917.dir
+      size: 52037
+      nfiles: 8
+    - path: results/recursive-canopy-expanded-training.json
+      hash: md5
+      md5: bded75318f420677e559c9c3f8905759
+      size: 13386
+  recursive_canopy_train_normalized:
+    cmd: ../../.venv/bin/python train_recursive_canopy_normalized.py
+    deps:
+    - path: component-training-normalized.json
+      hash: md5
+      md5: 200f0c8b666ce096efd00c1acf6a2e9a
+      size: 214
+    - path: component_heat_rule.py
+      hash: md5
+      md5: 36b5742869a0131d5ad37cfbacb41fa6
+      size: 1599
+    - path: component_hot_state_model.py
+      hash: md5
+      md5: 8e6937858040713188690b72d6cd6fad
+      size: 3982
+    - path: component_model.py
+      hash: md5
+      md5: bfb6fd2139d912d0c1755fa23f755d29
+      size: 9919
+    - path: component_occlusion.py
+      hash: md5
+      md5: bdbb9d679019b1c89c9c95a395432c37
+      size: 1765
+    - path: component_release_rule.py
+      hash: md5
+      md5: 45ff7c2a0123494ccc9391647af5e24d
+      size: 1219
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: ae3f7d95e5d4fb12ccfa9d901a5e3a43
+      size: 1169651
+    - path: data/component_states/b21_combined_1.json
+      hash: md5
+      md5: 25f35ba54fefd42c0ccfce6d9f754b52
+      size: 1159445
+    - path: data/component_states/b21_combined_2.json
+      hash: md5
+      md5: e405fcf48712a5d38c7c7ea8aa51ee14
+      size: 1138195
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 199c1d06130fd977d93e18a837e753cd
+      size: 2433929
+    - path: data/component_states/b21_corner_2.json
+      hash: md5
+      md5: 3f0c6875d5fd29530f0967ee40e483a4
+      size: 2459738
+    - path: data/component_states/b21_single_0.json
+      hash: md5
+      md5: 24b9c0bd5372266439b58a0b56e7c3c9
+      size: 828713
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: 7a1a615357679473185c5a0023a9f36c
+      size: 825365
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 166f6d6ff1515f58ce3327ae5c56bc5e
+      size: 815881
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: ae5dbbb7bf5cdb14a50f8ee84b6d6ca6
+      size: 1137898
+    - path: data/component_states/b21_transfer_1.json
+      hash: md5
+      md5: e4218d2a057a5abd6685b91152f6214b
+      size: 1146934
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 883813385e60e5e760765b1be67d223a
+      size: 1142740
+    - path: data/recursive_canopy_constrained
+      hash: md5
+      md5: ce3cdd1769a86f9e955818ad9ff8aa0f.dir
+      size: 76621
+      nfiles: 12
+    - path: train_recursive_canopy_normalized.py
+      hash: md5
+      md5: a29c193d60de8a57219052b90c4c506b
+      size: 5929
+    outs:
+    - path: data/recursive_canopy_normalized
+      hash: md5
+      md5: 0cbacdb21a11d3e049beb58976347558.dir
+      size: 52608
+      nfiles: 8
+    - path: results/recursive-canopy-normalized-training.json
+      hash: md5
+      md5: b52a33bb41e02b6b24d831689ef07a71
+      size: 13395
+  b21_single_midcondition_collect:
+    cmd: ../../.venv/bin/python component_control.py collect 
+      b21_single_midcondition
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_single_midcondition/execution.json
+      hash: md5
+      md5: fc103384d2a64f010464dce7ead54ecf
+      size: 341
+    outs:
+    - path: data/cloud/b21_single_midcondition
+      hash: md5
+      md5: 5cfde8ed5aacb95104a7f8f015e4f5a7.dir
+      size: 124792405
+      nfiles: 29
+    - path: results/b21_single_midcondition-collected.json
+      hash: md5
+      md5: f309f122bc2d260feb35343d0868aa16
+      size: 8370
+  b21_single_midcondition_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py 
+      b21_single_midcondition
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: f39104bb7fb7d09cbb81d84540ea65ab
+      size: 152841
+    - path: data/cloud/b21_single_midcondition
+      hash: md5
+      md5: 5cfde8ed5aacb95104a7f8f015e4f5a7.dir
+      size: 124792405
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_single_midcondition.json
+      hash: md5
+      md5: 57b59a3e7c228c90ccd68d1793158bfb
+      size: 821024
+  b21_single_midcondition_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_single_midcondition
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: eee1805527b4aa25e3acef1c78dfdb52
+      size: 2164
+    - path: data/cloud/b21_single_midcondition
+      hash: md5
+      md5: 5cfde8ed5aacb95104a7f8f015e4f5a7.dir
+      size: 124792405
+      nfiles: 29
+    - path: data/component_states/b21_single_midcondition.json
+      hash: md5
+      md5: 57b59a3e7c228c90ccd68d1793158bfb
+      size: 821024
+    outs:
+    - path: data/boundary/b21_single_midcondition
+      hash: md5
+      md5: 0ed650dd30c2685e3e6dac82fd9457bb.dir
+      size: 33858
+      nfiles: 12
+    - path: results/b21_single_midcondition-audit.json
+      hash: md5
+      md5: 7495e988cb3f809da44d2eba5eb1f63f
+      size: 716
+  b21_corner_validation_collect:
+    cmd: ../../.venv/bin/python component_control.py collect 
+      b21_corner_validation
+    deps:
+    - path: component_control.py
+      hash: md5
+      md5: a8c8a7bd88c1c4d4e29c6bccd4d592fe
+      size: 9619
+    - path: jobs/b21_corner_validation/execution.json
+      hash: md5
+      md5: 05dbffe05222267eda6636e2bf00a9d9
+      size: 339
+    outs:
+    - path: data/cloud/b21_corner_validation
+      hash: md5
+      md5: 09c80c625d93bd36e00ea6903a6bfdc9.dir
+      size: 130438546
+      nfiles: 29
+    - path: results/b21_corner_validation-collected.json
+      hash: md5
+      md5: f2c4fb270e667c29ce57924b6a31b0dd
+      size: 26994
+  b21_corner_validation_extract:
+    cmd: ../../.venv/bin/python extract_component_states.py 
+      b21_corner_validation
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: f39104bb7fb7d09cbb81d84540ea65ab
+      size: 152841
+    - path: data/cloud/b21_corner_validation
+      hash: md5
+      md5: 09c80c625d93bd36e00ea6903a6bfdc9.dir
+      size: 130438546
+      nfiles: 29
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: data/component_states/b21_corner_validation.json
+      hash: md5
+      md5: f7023e3ecb3f62a0de49b20e5752dbd6
+      size: 2460676
+  b21_corner_validation_audit:
+    cmd: ../../.venv/bin/python audit_component_runs.py b21_corner_validation
+    deps:
+    - path: audit_component_runs.py
+      hash: md5
+      md5: eee1805527b4aa25e3acef1c78dfdb52
+      size: 2164
+    - path: data/cloud/b21_corner_validation
+      hash: md5
+      md5: 09c80c625d93bd36e00ea6903a6bfdc9.dir
+      size: 130438546
+      nfiles: 29
+    - path: data/component_states/b21_corner_validation.json
+      hash: md5
+      md5: f7023e3ecb3f62a0de49b20e5752dbd6
+      size: 2460676
+    outs:
+    - path: data/boundary/b21_corner_validation
+      hash: md5
+      md5: 2d3bea87736b5e0a26621876d7cfe721.dir
+      size: 82527
+      nfiles: 12
+    - path: results/b21_corner_validation-audit.json
+      hash: md5
+      md5: c2e7d673073911e778e6ed4fe8c5d02d
+      size: 713
+  additive_component_fit:
+    cmd: ../../.venv/bin/python component_additive_baseline.py
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: f39104bb7fb7d09cbb81d84540ea65ab
+      size: 152841
+    - path: component_additive_baseline.py
+      hash: md5
+      md5: 694c21c0bf8d08153b11d4f6eca78e4e
+      size: 3154
+    - path: component_heat_rule.py
+      hash: md5
+      md5: 36b5742869a0131d5ad37cfbacb41fa6
+      size: 1599
+    - path: component_hot_state_model.py
+      hash: md5
+      md5: 8e6937858040713188690b72d6cd6fad
+      size: 3982
+    - path: component_release_rule.py
+      hash: md5
+      md5: 45ff7c2a0123494ccc9391647af5e24d
+      size: 1219
+    - path: data/component_states/b21_single_0.json
+      hash: md5
+      md5: 24b9c0bd5372266439b58a0b56e7c3c9
+      size: 828713
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: 7a1a615357679473185c5a0023a9f36c
+      size: 825365
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 166f6d6ff1515f58ce3327ae5c56bc5e
+      size: 815881
+    - path: data/component_states/b21_single_midcondition.json
+      hash: md5
+      md5: 57b59a3e7c228c90ccd68d1793158bfb
+      size: 821024
+    outs:
+    - path: data/additive_baseline.json
+      hash: md5
+      md5: dae978e6bf3f64437b5784da05d97347
+      size: 20054
+  freeze_component_test:
+    cmd: ../../.venv/bin/python freeze_component_predictions.py 
+      data/recursive_canopy_bounded300_occlusion.json
+    deps:
+    - path: analyze_component_tests.py
+      hash: md5
+      md5: cdc040d2039216600ebe643e66b47376
+      size: 3707
+    - path: component-test-inputs.json
+      hash: md5
+      md5: 984799dc8af38240301098226206001e
+      size: 489525
+    - path: component_additive_baseline.py
+      hash: md5
+      md5: 694c21c0bf8d08153b11d4f6eca78e4e
+      size: 3154
+    - path: component_heat_rule.py
+      hash: md5
+      md5: 36b5742869a0131d5ad37cfbacb41fa6
+      size: 1599
+    - path: component_hot_state_model.py
+      hash: md5
+      md5: 8e6937858040713188690b72d6cd6fad
+      size: 3982
+    - path: component_metrics.py
+      hash: md5
+      md5: 74df5946c4d03bd4fd489a6e5896b6cb
+      size: 1798
+    - path: component_model.py
+      hash: md5
+      md5: bfb6fd2139d912d0c1755fa23f755d29
+      size: 9919
+    - path: component_occlusion.py
+      hash: md5
+      md5: bdbb9d679019b1c89c9c95a395432c37
+      size: 1765
+    - path: component_release_rule.py
+      hash: md5
+      md5: 45ff7c2a0123494ccc9391647af5e24d
+      size: 1219
+    - path: data/additive_baseline.json
+      hash: md5
+      md5: dae978e6bf3f64437b5784da05d97347
+      size: 20054
+    - path: data/recursive_canopy_bounded300_occlusion.json
+      hash: md5
+      md5: 13df73ba4651e16bdda5ad27545cf438
+      size: 6528
+    - path: diagnose_wall_response.py
+      hash: md5
+      md5: 1a128bb7846cdb90aa6303e9e374486e
+      size: 2429
+    - path: evaluate_recursive_canopy_energy_budget.py
+      hash: md5
+      md5: 1fcbac2821be643e0176cda5143f8552
+      size: 3962
+    - path: freeze_component_predictions.py
+      hash: md5
+      md5: 32aa1881ce9355a986505bcae4a06706
+      size: 4232
+    - path: results/component-model-selection.json
+      hash: md5
+      md5: 6315f98ca9b39c0a213aa5b4edcf4f78
+      size: 2045
+    - path: scene.py
+      hash: md5
+      md5: 505e9ed0ca561388298d745fe49e6af0
+      size: 4474
+    outs:
+    - path: data/component_frozen
+      hash: md5
+      md5: f5c45841601bc7c66c0c09962d590886.dir
+      size: 25874571
+      nfiles: 32
+    - path: results/component-test-prediction-freeze.json
+      hash: md5
+      md5: 3789cd8b2cfa60c414fd41ac4581ed3f
+      size: 5448
+  selected_component_error_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_selected_component.py
+    deps:
+    - path: component_metrics.py
+      hash: md5
+      md5: 74df5946c4d03bd4fd489a6e5896b6cb
+      size: 1798
+    - path: data/component_frozen
+      hash: md5
+      md5: f5c45841601bc7c66c0c09962d590886.dir
+      size: 25874571
+      nfiles: 32
+    - path: data/component_states/b21_combined_validation.json
+      hash: md5
+      md5: fa5041508c6b1550e45001d1b61c7cda
+      size: 1168738
+    - path: data/component_states/b21_corner_validation.json
+      hash: md5
+      md5: f7023e3ecb3f62a0de49b20e5752dbd6
+      size: 2460676
+    - path: data/component_states/b21_single_validation.json
+      hash: md5
+      md5: 8c71efc4a0e3fd82e709a44aa19858cc
+      size: 825107
+    - path: data/component_states/b21_transfer_validation.json
+      hash: md5
+      md5: 2c9c05fa74d200c4476f165d2745f92b
+      size: 1136693
+    - path: diagnose_selected_component.py
+      hash: md5
+      md5: 984c7b65f5bc9c2735483131d0991b49
+      size: 1895
+    outs:
+    - path: results/selected-component-error-breakdown.json
+      hash: md5
+      md5: e92b97fe6a7428264150721829f39b2e
+      size: 2968
+  vertical_transport_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_vertical_heat_transport.py
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: f39104bb7fb7d09cbb81d84540ea65ab
+      size: 152841
+    - path: component_heat_rule.py
+      hash: md5
+      md5: 36b5742869a0131d5ad37cfbacb41fa6
+      size: 1599
+    - path: component_hot_state_model.py
+      hash: md5
+      md5: 8e6937858040713188690b72d6cd6fad
+      size: 3982
+    - path: component_model.py
+      hash: md5
+      md5: bfb6fd2139d912d0c1755fa23f755d29
+      size: 9919
+    - path: component_occlusion.py
+      hash: md5
+      md5: bdbb9d679019b1c89c9c95a395432c37
+      size: 1765
+    - path: data/component_frozen
+      hash: md5
+      md5: f5c45841601bc7c66c0c09962d590886.dir
+      size: 25874571
+      nfiles: 32
+    - path: data/component_states/b21_combined_0.json
+      hash: md5
+      md5: ae3f7d95e5d4fb12ccfa9d901a5e3a43
+      size: 1169651
+    - path: data/component_states/b21_combined_1.json
+      hash: md5
+      md5: 25f35ba54fefd42c0ccfce6d9f754b52
+      size: 1159445
+    - path: data/component_states/b21_combined_validation.json
+      hash: md5
+      md5: fa5041508c6b1550e45001d1b61c7cda
+      size: 1168738
+    - path: data/component_states/b21_corner_1.json
+      hash: md5
+      md5: 199c1d06130fd977d93e18a837e753cd
+      size: 2433929
+    - path: data/component_states/b21_corner_validation.json
+      hash: md5
+      md5: f7023e3ecb3f62a0de49b20e5752dbd6
+      size: 2460676
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: 7a1a615357679473185c5a0023a9f36c
+      size: 825365
+    - path: data/component_states/b21_single_2.json
+      hash: md5
+      md5: 166f6d6ff1515f58ce3327ae5c56bc5e
+      size: 815881
+    - path: data/component_states/b21_single_validation.json
+      hash: md5
+      md5: 8c71efc4a0e3fd82e709a44aa19858cc
+      size: 825107
+    - path: data/component_states/b21_transfer_0.json
+      hash: md5
+      md5: ae5dbbb7bf5cdb14a50f8ee84b6d6ca6
+      size: 1137898
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 883813385e60e5e760765b1be67d223a
+      size: 1142740
+    - path: data/component_states/b21_transfer_validation.json
+      hash: md5
+      md5: 2c9c05fa74d200c4476f165d2745f92b
+      size: 1136693
+    - path: diagnose_vertical_heat_transport.py
+      hash: md5
+      md5: 23a8c1e6dbfc2cd00ca1d15b88a2dd86
+      size: 5042
+    outs:
+    - path: results/vertical-heat-transport-diagnostic.json
+      hash: md5
+      md5: b145a5794bea3990d044c2299a72025b
+      size: 2112
+  frozen_inference_benchmark:
+    cmd: ../../.venv/bin/python benchmark_frozen_components.py
+    deps:
+    - path: benchmark_frozen_components.py
+      hash: md5
+      md5: bf0945e1ac7f5bbf90b42d967f816dde
+      size: 1682
+    - path: data/component_frozen
+      hash: md5
+      md5: f5c45841601bc7c66c0c09962d590886.dir
+      size: 25874571
+      nfiles: 32
+    outs:
+    - path: results/frozen-component-speed-breakdown.json
+      hash: md5
+      md5: d583aabf0b2f1f5913c52e48fc5d873e
+      size: 793
+  cloud_health_snapshot:
+    cmd: ../../.venv/bin/python check_cloud_health.py
+    deps:
+    - path: check_cloud_health.py
+      hash: md5
+      md5: bbba03bf17aab441815eb39aff44d5c9
+      size: 1807
+    outs:
+    - path: results/cloud-health-latest.json
+      hash: md5
+      md5: 604dcd3f744e4cfdff2b9220d201d332
+      size: 5954
+  c21_glen_ellen_06_collect:
+    cmd: ../../.venv/bin/python component_test_control.py collect 
+      c21_glen_ellen_06
+    deps:
+    - path: component_test_control.py
+      hash: md5
+      md5: 3bb7b98d33012c4577c7a360a94381d4
+      size: 10179
+    - path: jobs/c21_glen_ellen_06/execution.json
+      hash: md5
+      md5: 57e85c365b41e1912b6e0358a41c649c
+      size: 335
+    - path: results/component-test-prediction-freeze.json
+      hash: md5
+      md5: 3789cd8b2cfa60c414fd41ac4581ed3f
+      size: 5448
+    outs:
+    - path: data/cloud/c21_glen_ellen_06
+      hash: md5
+      md5: e118df137ca73fb4ab321fc18d4b38bf.dir
+      size: 369396089
+      nfiles: 29
+    - path: results/c21_glen_ellen_06-collected.json
+      hash: md5
+      md5: 96547620a241221f53b81f823d7b9e58
+      size: 132955
+  c21_glen_ellen_06_analyze:
+    cmd: ../../.venv/bin/python analyze_component_tests.py c21_glen_ellen_06
+    deps:
+    - path: analyze_component_tests.py
+      hash: md5
+      md5: cdc040d2039216600ebe643e66b47376
+      size: 3707
+    - path: component_hot_state_model.py
+      hash: md5
+      md5: 8e6937858040713188690b72d6cd6fad
+      size: 3982
+    - path: component_metrics.py
+      hash: md5
+      md5: 74df5946c4d03bd4fd489a6e5896b6cb
+      size: 1798
+    - path: data/cloud/c21_glen_ellen_06
+      hash: md5
+      md5: e118df137ca73fb4ab321fc18d4b38bf.dir
+      size: 369396089
+      nfiles: 29
+    - path: data/component_frozen
+      hash: md5
+      md5: f5c45841601bc7c66c0c09962d590886.dir
+      size: 25874571
+      nfiles: 32
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    - path: results/component-test-prediction-freeze.json
+      hash: md5
+      md5: 3789cd8b2cfa60c414fd41ac4581ed3f
+      size: 5448
+    outs:
+    - path: data/boundary/c21_glen_ellen_06
+      hash: md5
+      md5: 643eb9ab0d63db5143f13caffb4c1b82.dir
+      size: 677323
+      nfiles: 12
+    - path: data/component_test_states/c21_glen_ellen_06.json
+      hash: md5
+      md5: a42d7d5b0692286ec44658ab43356eaf
+      size: 12409764
+    - path: results/c21_glen_ellen_06-test.json
+      hash: md5
+      md5: a6f7d7ef598e4c267c0c8ab94ab56ec6
+      size: 979843
+  c21_glen_ellen_06_canopy_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_test_canopies.py c21_glen_ellen_06
+    deps:
+    - path: data/cloud/c21_glen_ellen_06
+      hash: md5
+      md5: e118df137ca73fb4ab321fc18d4b38bf.dir
+      size: 369396089
+      nfiles: 29
+    - path: data/component_test_states/c21_glen_ellen_06.json
+      hash: md5
+      md5: a42d7d5b0692286ec44658ab43356eaf
+      size: 12409764
+    - path: diagnose_test_canopies.py
+      hash: md5
+      md5: ac960253e04ba8bfd19afe269f290c8f
+      size: 1689
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: results/c21_glen_ellen_06-canopy-diagnosis.json
+      hash: md5
+      md5: 683a85634762d343fbec084b6457fa98
+      size: 231569
+  c21_glen_ellen_06_fuel_units:
+    cmd: ../../.venv/bin/python check_test_fuel_units.py c21_glen_ellen_06
+    deps:
+    - path: check_test_fuel_units.py
+      hash: md5
+      md5: 824c206f6050053bf72c40b5f3b6be70
+      size: 1677
+    - path: data/cloud/c21_glen_ellen_06
+      hash: md5
+      md5: e118df137ca73fb4ab321fc18d4b38bf.dir
+      size: 369396089
+      nfiles: 29
+    - path: results/c21_glen_ellen_06-test.json
+      hash: md5
+      md5: a6f7d7ef598e4c267c0c8ab94ab56ec6
+      size: 979843
+    outs:
+    - path: results/c21_glen_ellen_06-fuel-units-check.json
+      hash: md5
+      md5: 8aa63a0d15b5606b6ae3cb914b3e7f76
+      size: 2215
+  c21_santa_rosa_east_03_collect:
+    cmd: ../../.venv/bin/python component_test_control.py collect 
+      c21_santa_rosa_east_03
+    deps:
+    - path: component_test_control.py
+      hash: md5
+      md5: 3bb7b98d33012c4577c7a360a94381d4
+      size: 10179
+    - path: jobs/c21_santa_rosa_east_03/execution.json
+      hash: md5
+      md5: 43966e21f4769dc2471226a1c69dab53
+      size: 340
+    - path: results/component-test-prediction-freeze.json
+      hash: md5
+      md5: 3789cd8b2cfa60c414fd41ac4581ed3f
+      size: 5448
+    outs:
+    - path: data/cloud/c21_santa_rosa_east_03
+      hash: md5
+      md5: a5e776f77f7af761b3ddc13caf8286f6.dir
+      size: 364558880
+      nfiles: 29
+    - path: results/c21_santa_rosa_east_03-collected.json
+      hash: md5
+      md5: e12263e336b9bdcaff6d1be578046ac9
+      size: 119185
+  c21_santa_rosa_east_03_analyze:
+    cmd: ../../.venv/bin/python analyze_component_tests.py 
+      c21_santa_rosa_east_03
+    deps:
+    - path: analyze_component_tests.py
+      hash: md5
+      md5: cdc040d2039216600ebe643e66b47376
+      size: 3707
+    - path: component_hot_state_model.py
+      hash: md5
+      md5: 8e6937858040713188690b72d6cd6fad
+      size: 3982
+    - path: component_metrics.py
+      hash: md5
+      md5: 74df5946c4d03bd4fd489a6e5896b6cb
+      size: 1798
+    - path: data/cloud/c21_santa_rosa_east_03
+      hash: md5
+      md5: a5e776f77f7af761b3ddc13caf8286f6.dir
+      size: 364558880
+      nfiles: 29
+    - path: data/component_frozen
+      hash: md5
+      md5: f5c45841601bc7c66c0c09962d590886.dir
+      size: 25874571
+      nfiles: 32
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    - path: results/component-test-prediction-freeze.json
+      hash: md5
+      md5: 3789cd8b2cfa60c414fd41ac4581ed3f
+      size: 5448
+    outs:
+    - path: data/boundary/c21_santa_rosa_east_03
+      hash: md5
+      md5: a441d14807ccae0f6ae64a4a61d1036e.dir
+      size: 386880
+      nfiles: 12
+    - path: data/component_test_states/c21_santa_rosa_east_03.json
+      hash: md5
+      md5: 44af8a1ce0115f26137d6c66b7baefe8
+      size: 10963559
+    - path: results/c21_santa_rosa_east_03-test.json
+      hash: md5
+      md5: ade8cd5fcddfa8f11870b7e489a80ab2
+      size: 882348
+  c21_santa_rosa_east_03_canopy_diagnosis:
+    cmd: ../../.venv/bin/python diagnose_test_canopies.py c21_santa_rosa_east_03
+    deps:
+    - path: data/cloud/c21_santa_rosa_east_03
+      hash: md5
+      md5: a5e776f77f7af761b3ddc13caf8286f6.dir
+      size: 364558880
+      nfiles: 29
+    - path: data/component_test_states/c21_santa_rosa_east_03.json
+      hash: md5
+      md5: 44af8a1ce0115f26137d6c66b7baefe8
+      size: 10963559
+    - path: diagnose_test_canopies.py
+      hash: md5
+      md5: ac960253e04ba8bfd19afe269f290c8f
+      size: 1689
+    - path: extract_component_states.py
+      hash: md5
+      md5: 1a75566f780a45fd79a807c92615e692
+      size: 6137
+    outs:
+    - path: results/c21_santa_rosa_east_03-canopy-diagnosis.json
+      hash: md5
+      md5: dae05b43dfbbeed2001e02b8b54077dc
+      size: 210670
+  c21_santa_rosa_east_03_fuel_units:
+    cmd: ../../.venv/bin/python check_test_fuel_units.py c21_santa_rosa_east_03
+    deps:
+    - path: check_test_fuel_units.py
+      hash: md5
+      md5: 824c206f6050053bf72c40b5f3b6be70
+      size: 1677
+    - path: data/cloud/c21_santa_rosa_east_03
+      hash: md5
+      md5: a5e776f77f7af761b3ddc13caf8286f6.dir
+      size: 364558880
+      nfiles: 29
+    - path: results/c21_santa_rosa_east_03-test.json
+      hash: md5
+      md5: ade8cd5fcddfa8f11870b7e489a80ab2
+      size: 882348
+    outs:
+    - path: results/c21_santa_rosa_east_03-fuel-units-check.json
+      hash: md5
+      md5: a348b5ef18783258349f05d7c61405b0
+      size: 2221
+  component_test_summary:
+    cmd: ../../.venv/bin/python summarize_component_tests.py
+    deps:
+    - path: data/component_frozen
+      hash: md5
+      md5: f5c45841601bc7c66c0c09962d590886.dir
+      size: 25874571
+      nfiles: 32
+    - path: results/c21_glen_ellen_06-collected.json
+      hash: md5
+      md5: 96547620a241221f53b81f823d7b9e58
+      size: 132955
+    - path: results/c21_glen_ellen_06-test.json
+      hash: md5
+      md5: a6f7d7ef598e4c267c0c8ab94ab56ec6
+      size: 979843
+    - path: results/c21_santa_rosa_east_03-collected.json
+      hash: md5
+      md5: e12263e336b9bdcaff6d1be578046ac9
+      size: 119185
+    - path: results/c21_santa_rosa_east_03-test.json
+      hash: md5
+      md5: ade8cd5fcddfa8f11870b7e489a80ab2
+      size: 882348
+    - path: results/component-test-prediction-freeze.json
+      hash: md5
+      md5: 3789cd8b2cfa60c414fd41ac4581ed3f
+      size: 5448
+    - path: results/frozen-component-speed-breakdown.json
+      hash: md5
+      md5: d583aabf0b2f1f5913c52e48fc5d873e
+      size: 793
+    - path: summarize_component_tests.py
+      hash: md5
+      md5: 7bfaf72ec2131fc506fe842c7909824d
+      size: 2890
+    outs:
+    - path: results/component-test-summary.json
+      hash: md5
+      md5: c1d855e14625f884dfe43ff25f25efeb
+      size: 8758
+  overnight_cost_proxy:
+    cmd: ../../.venv/bin/python estimate_overnight_cost.py
+    deps:
+    - path: budget-overnight.json
+      hash: md5
+      md5: a5a02500b20f201b237f1ea004d2bb6c
+      size: 694137
+    - path: estimate_overnight_cost.py
+      hash: md5
+      md5: 542dd2782da53100ae1524db7b218b71
+      size: 1634
+    - path: results/sampling-price.json
+      hash: md5
+      md5: bd104ae79981a77ac72a81df9445b6a0
+      size: 351
+    outs:
+    - path: results/overnight-cost-proxy.json
+      hash: md5
+      md5: bfd741ef7991b7ceab3a63d25d98973a
+      size: 7533
+  direct_source_pathway:
+    cmd: OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 
+      ../../.venv/bin/python diagnose_direct_source_features.py
+    deps:
+    - path: data/component_frozen
+      hash: md5
+      md5: bee1349c4e20fb7dbb9a5d3bdcdb9e6c.dir
+      size: 25879482
+      nfiles: 33
+    - path: data/component_test_states/c21_glen_ellen_06.json
+      hash: md5
+      md5: a42d7d5b0692286ec44658ab43356eaf
+      size: 12409764
+    - path: data/component_test_states/c21_santa_rosa_east_03.json
+      hash: md5
+      md5: 44af8a1ce0115f26137d6c66b7baefe8
+      size: 10963559
+    - path: diagnose_direct_source_features.py
+      hash: md5
+      md5: 4c58875589a722aa7b49b365e1cf9deb
+      size: 2135
+    outs:
+    - path: results/direct-source-pathway-diagnosis.json
+      hash: md5
+      md5: 135f7aab99ee2131331065caefb8bcfa
+      size: 1916
+  unlit_heat_forcing:
+    cmd: OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 
+      ../../.venv/bin/python diagnose_unlit_heat_forcing.py
+    deps:
+    - path: data/component_frozen
+      hash: md5
+      md5: bee1349c4e20fb7dbb9a5d3bdcdb9e6c.dir
+      size: 25879482
+      nfiles: 33
+    - path: data/component_test_states/c21_glen_ellen_06.json
+      hash: md5
+      md5: a42d7d5b0692286ec44658ab43356eaf
+      size: 12409764
+    - path: data/component_test_states/c21_santa_rosa_east_03.json
+      hash: md5
+      md5: 44af8a1ce0115f26137d6c66b7baefe8
+      size: 10963559
+    - path: diagnose_unlit_heat_forcing.py
+      hash: md5
+      md5: cc427b804ef949bbf25f43dc5cde4e64
+      size: 2812
+    outs:
+    - path: results/unlit-measured-heat-diagnosis.json
+      hash: md5
+      md5: bab15ed621ad369f23bf0cb6f549c97f
+      size: 2069
+  overnight21_grid_fine_v2_collect:
+    cmd: ../../.venv/bin/python overnight_grid_v2_control.py collect
+    deps:
+    - path: decks/overnight21_grid_fine_v2.fds
+      hash: md5
+      md5: baec975a3bdf266512c803362210228e
+      size: 26816
+    - path: jobs/overnight21_grid_fine_v2/execution.json
+      hash: md5
+      md5: 17aa249307e338b833c52cc8573749c9
+      size: 342
+    - path: jobs/overnight21_grid_fine_v2/runner.py
+      hash: md5
+      md5: 3715224fa2e85ebbc9dba0bd56ee2537
+      size: 4896
+    - path: jobs/overnight21_grid_fine_v2/worker.py
+      hash: md5
+      md5: a1a9fb8e2145bffe5a3831fe0b72724e
+      size: 1869
+    - path: overnight_grid_v2_control.py
+      hash: md5
+      md5: 3e165e84849b7a32edbc0dd650ddb3d5
+      size: 9199
+    outs:
+    - path: data/cloud/overnight21_grid_fine_v2
+      hash: md5
+      md5: 6d2348298b03f9695c244cac240eb8fb.dir
+      size: 581347641
+      nfiles: 36
+    - path: results/overnight21_grid_fine_v2-collected.json
+      hash: md5
+      md5: f8d02be4164ea0f02f4c0eb8d80b11c9
+      size: 9113
+  overnight_grid_v2_analysis:
+    cmd: ../../.venv/bin/python analyze_overnight_grid_v2.py
+    deps:
+    - path: analyze_overnight_grid_v2.py
+      hash: md5
+      md5: 20a2f2088a0137238072f39a8d62e66c
+      size: 2754
+    - path: data/cloud/overnight21_grid_coarse_v2
+      hash: md5
+      md5: b4b66ee283f5df6d664d33a1de8b445d.dir
+      size: 193364033
+      nfiles: 35
+    - path: data/cloud/overnight21_grid_fine_bare_v2
+      hash: md5
+      md5: bf5819a241c1cf16f0904a293f834654.dir
+      size: 482657262
+      nfiles: 35
+    - path: data/cloud/overnight21_grid_fine_v2
+      hash: md5
+      md5: 6d2348298b03f9695c244cac240eb8fb.dir
+      size: 581347641
+      nfiles: 36
+    - path: finish_sampling.py
+      hash: md5
+      md5: 99bebc8b3b6dfc7f5ff236fd24187c2b
+      size: 5399
+    outs:
+    - path: data/boundary/overnight21_grid_coarse_v2
+      hash: md5
+      md5: 43f118794b5e388b14d9a68993f953c9.dir
+      size: 33876
+      nfiles: 12
+    - path: data/boundary/overnight21_grid_fine_bare_v2
+      hash: md5
+      md5: 053c4fc1e5deefcc80d41d2c008b1800.dir
+      size: 105186
+      nfiles: 12
+    - path: data/boundary/overnight21_grid_fine_v2
+      hash: md5
+      md5: ec6be37ec954abd2852ec9362c0cd6b8.dir
+      size: 105156
+      nfiles: 12
+    - path: results/overnight-grid-results.json
+      hash: md5
+      md5: bb59c99328fb8d746ba7f9cb45de74c6
+      size: 14414
+  overnight_grid_slices:
+    cmd: ../../.venv/bin/python diagnose_grid_slices.py
+    deps:
+    - path: data/cloud/overnight21_grid_coarse_v2
+      hash: md5
+      md5: b4b66ee283f5df6d664d33a1de8b445d.dir
+      size: 193364033
+      nfiles: 35
+    - path: data/cloud/overnight21_grid_fine_bare_v2
+      hash: md5
+      md5: bf5819a241c1cf16f0904a293f834654.dir
+      size: 482657262
+      nfiles: 35
+    - path: data/cloud/overnight21_grid_fine_v2
+      hash: md5
+      md5: 6d2348298b03f9695c244cac240eb8fb.dir
+      size: 581347641
+      nfiles: 36
+    - path: diagnose_grid_slices.py
+      hash: md5
+      md5: bb1c2d100cd288e351f544e95e7514bd
+      size: 2442
+    outs:
+    - path: data/grid_slice_diagnosis
+      hash: md5
+      md5: c2f010e7e0b218d33a87a22a8df087f5.dir
+      size: 9245973
+      nfiles: 68
+    - path: results/overnight-grid-slice-diagnosis.json
+      hash: md5
+      md5: 717f9d150a01aaf8a1729c32c1b51497
+      size: 15059
+  overnight_final_evidence:
+    cmd: ../../.venv/bin/python finalize_overnight_evidence.py
+    deps:
+    - path: data/cloud/overnight21_grid_coarse_v2
+      hash: md5
+      md5: b4b66ee283f5df6d664d33a1de8b445d.dir
+      size: 193364033
+      nfiles: 35
+    - path: data/cloud/overnight21_grid_fine_bare_v2
+      hash: md5
+      md5: bf5819a241c1cf16f0904a293f834654.dir
+      size: 482657262
+      nfiles: 35
+    - path: data/cloud/overnight21_grid_fine_v2
+      hash: md5
+      md5: 6d2348298b03f9695c244cac240eb8fb.dir
+      size: 581347641
+      nfiles: 36
+    - path: data/component_frozen
+      hash: md5
+      md5: bee1349c4e20fb7dbb9a5d3bdcdb9e6c.dir
+      size: 25879482
+      nfiles: 33
+    - path: finalize_overnight_evidence.py
+      hash: md5
+      md5: 62ddf509b4ffb20139b88d0425412fc6
+      size: 2744
+    - path: finish_sampling.py
+      hash: md5
+      md5: 99bebc8b3b6dfc7f5ff236fd24187c2b
+      size: 5399
+    - path: results/component-test-prediction-freeze.json
+      hash: md5
+      md5: 3789cd8b2cfa60c414fd41ac4581ed3f
+      size: 5448
+    outs:
+    - path: results/overnight-final-evidence.json
+      hash: md5
+      md5: 222cd1dff44f936c8f0da76d2ded32aa
+      size: 976
+  heat_comparison_visual:
+    cmd: ../../.venv/bin/python build_heat_comparison.py
+    deps:
+    - path: build_heat_comparison.py
+      hash: md5
+      md5: 4b16b427e40929396b903507d1767419
+      size: 2407
+    - path: component_hot_state_model.py
+      hash: md5
+      md5: 8e6937858040713188690b72d6cd6fad
+      size: 3982
+    - path: component_model.py
+      hash: md5
+      md5: bfb6fd2139d912d0c1755fa23f755d29
+      size: 9919
+    - path: data/component_frozen
+      hash: md5
+      md5: bee1349c4e20fb7dbb9a5d3bdcdb9e6c.dir
+      size: 25879482
+      nfiles: 33
+    - path: data/component_test_states/c21_glen_ellen_06.json
+      hash: md5
+      md5: a42d7d5b0692286ec44658ab43356eaf
+      size: 12409764
+    - path: data/component_test_states/c21_santa_rosa_east_03.json
+      hash: md5
+      md5: 44af8a1ce0115f26137d6c66b7baefe8
+      size: 10963559
+    - path: heat-comparison.template.html
+      hash: md5
+      md5: 21dd82158f2ad3b20e2e632d7c1fbfcb
+      size: 7527
+    - path: results/component-test-prediction-freeze.json
+      hash: md5
+      md5: 3789cd8b2cfa60c414fd41ac4581ed3f
+      size: 5448
+    outs:
+    - path: data/heat-comparison.html
+      hash: md5
+      md5: 7b1cdea8686159ba3125de403de0b336
+      size: 499641
+    - path: data/heat-comparison.json
+      hash: md5
+      md5: a95ef7e722d9849f1d437a8562ee48f9
+      size: 492121
+  training_overheads:
+    cmd: ../../.venv/bin/python render_training_overheads.py
+    deps:
+    - path: component-development.json
+      hash: md5
+      md5: f39104bb7fb7d09cbb81d84540ea65ab
+      size: 152841
+    - path: data/additive_baseline.json
+      hash: md5
+      md5: dae978e6bf3f64437b5784da05d97347
+      size: 20054
+    - path: data/component_frozen
+      hash: md5
+      md5: bee1349c4e20fb7dbb9a5d3bdcdb9e6c.dir
+      size: 25879482
+      nfiles: 33
+    - path: decks
+      hash: md5
+      md5: 6bc368aa31cd461ae65de0db200f9ec4.dir
+      size: 1959398
+      nfiles: 47
+    - path: render_training_overheads.py
+      hash: md5
+      md5: 19d5a0d56a7f057ca6f6457be52b9a37
+      size: 5500
+    - path: results/component-model-selection.json
+      hash: md5
+      md5: 6315f98ca9b39c0a213aa5b4edcf4f78
+      size: 2045
+    outs:
+    - path: data/training_overheads
+      hash: md5
+      md5: 8eef7481dcdad6ad20598f21eef807a2.dir
+      size: 741122
+      nfiles: 4
+  individual_components:
+    cmd: ../../.venv/bin/python render_individual_components.py
+    deps:
+    - path: component_hot_state_model.py
+      hash: md5
+      md5: 8e6937858040713188690b72d6cd6fad
+      size: 3982
+    - path: component_model.py
+      hash: md5
+      md5: bfb6fd2139d912d0c1755fa23f755d29
+      size: 9919
+    - path: data/component_states/b21_single_1.json
+      hash: md5
+      md5: 7a1a615357679473185c5a0023a9f36c
+      size: 825365
+    - path: data/component_states/b21_transfer_hot.json
+      hash: md5
+      md5: 883813385e60e5e760765b1be67d223a
+      size: 1142740
+    - path: render_individual_components.py
+      hash: md5
+      md5: 6f3c812f10e5f47b26b47581d6088c1c
+      size: 3715
+    outs:
+    - path: data/individual_components
+      hash: md5
+      md5: ff62665a8190a6b41bbd4d2bcae15358.dir
+      size: 240537
+      nfiles: 2

@@ -1,0 +1,42 @@
+schema: '2.0'
+stages:
+  generate:
+    cmd: ../../.venv/bin/python generate.py
+    deps:
+    - path: generate.py
+      hash: md5
+      md5: b23561447a6f53340cb3e0e599a6a0e5
+      size: 5184
+    - path: source-catalogue.json
+      hash: md5
+      md5: 549e4abd41495faa73d95530baedd1ad
+      size: 75838
+    outs:
+    - path: data/audit.json
+      hash: md5
+      md5: 4965f323a742bbfcc4938f4b02a67289
+      size: 707
+    - path: data/catalogue.json
+      hash: md5
+      md5: 9dcb90021b989708dfd87557f9cef9cb
+      size: 68872
+  preview:
+    cmd: ../../.venv/bin/python preview.py
+    deps:
+    - path: catalogue.template.html
+      hash: md5
+      md5: 2b919c3b25304d6daf92a5777119022f
+      size: 6497
+    - path: data/catalogue.json
+      hash: md5
+      md5: 9dcb90021b989708dfd87557f9cef9cb
+      size: 68872
+    - path: preview.py
+      hash: md5
+      md5: 81d6cf4770f4fa557978fcf9535c03d0
+      size: 260
+    outs:
+    - path: data/catalogue.html
+      hash: md5
+      md5: 35f3040a709f7b8ba7ea04f0b459767e
+      size: 40866

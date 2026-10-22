@@ -1,0 +1,213 @@
+schema: '2.0'
+stages:
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - path: ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+      hash: md5
+      md5: 18680afd3f78841d42906b41e3414f62
+      size: 10202320
+      isexec: true
+    - path: design.json
+      hash: md5
+      md5: 01ad863b026713c5490c989bca6acf72
+      size: 17989
+    - path: generate.py
+      hash: md5
+      md5: f0007662652648fc1aa4896912da357d
+      size: 5249
+    - path: inputs
+      hash: md5
+      md5: 2d0ec28cfbc3e7eb000570f3f38c1bfd.dir
+      size: 7976
+      nfiles: 2
+    - path: preflight.py
+      hash: md5
+      md5: 202e886ae52f8be0a158812f60a99c46
+      size: 2890
+    outs:
+    - path: data/preflight
+      hash: md5
+      md5: c4963ef9f0d5f7281dcc0b316e94637a.dir
+      size: 280258
+      nfiles: 69
+    - path: results/design-check.json
+      hash: md5
+      md5: 92fdf5236cbf99918c11c6428c2c8644
+      size: 145
+    - path: results/local-preflight.json
+      hash: md5
+      md5: 68937fc2ef1351f6c94c765572f503f3
+      size: 1123
+  model_smoke:
+    cmd: ../../.venv/bin/python models.py
+    deps:
+    - path: design.json
+      hash: md5
+      md5: 01ad863b026713c5490c989bca6acf72
+      size: 17989
+    - path: models.py
+      hash: md5
+      md5: 161d37e6308c5450382acd0746be96aa
+      size: 5400
+    outs:
+    - path: results/model-smoke.json
+      hash: md5
+      md5: 63256c237b86b9ca17b2061b8a50423f
+      size: 167
+  restore_cloud:
+    cmd: ../../.venv/bin/python evidence.py extract
+    deps:
+    - path: data/cloud-evidence.tar.gz
+      hash: md5
+      md5: 4bd7e5bda799bfbbd890db606f6608a8
+      size: 10397536
+    - path: evidence.py
+      hash: md5
+      md5: 9e99050095a7f7413ed982c5ab3db7b5
+      size: 510
+    outs:
+    - path: data/cloud
+      hash: md5
+      md5: c3afc6621a51d75669abf78fc38b7215.dir
+      size: 26036788
+      nfiles: 1346
+  development:
+    cmd: ../../.venv/bin/python extract.py development
+    deps:
+    - path: ../../FDS/install/bin/fds2ascii
+      hash: md5
+      md5: d337095553b56be9f2ef696416a099a7
+      size: 1118368
+      isexec: true
+    - path: data/cloud
+      hash: md5
+      md5: c3afc6621a51d75669abf78fc38b7215.dir
+      size: 26036788
+      nfiles: 1346
+    - path: design.json
+      hash: md5
+      md5: 01ad863b026713c5490c989bca6acf72
+      size: 17989
+    - path: extract.py
+      hash: md5
+      md5: 5a76b394c41052a7da55c78663120abe
+      size: 3667
+    - path: models.py
+      hash: md5
+      md5: 161d37e6308c5450382acd0746be96aa
+      size: 5400
+    outs:
+    - path: data/boundary/development
+      hash: md5
+      md5: c76477e2a86b9fa288a2b30acfff142f.dir
+      size: 1956852
+      nfiles: 720
+    - path: data/development.json
+      hash: md5
+      md5: 4faec7a94b13fec4168f6a5d763dabb1
+      size: 79910
+  train:
+    cmd: ../../.venv/bin/python train.py
+    deps:
+    - path: data/cloud/calibration.json
+      hash: md5
+      md5: 55241907dba5df39b716f8db27d5e994
+      size: 129
+    - path: data/development.json
+      hash: md5
+      md5: 4faec7a94b13fec4168f6a5d763dabb1
+      size: 79910
+    - path: design.json
+      hash: md5
+      md5: 01ad863b026713c5490c989bca6acf72
+      size: 17989
+    - path: models.py
+      hash: md5
+      md5: 161d37e6308c5450382acd0746be96aa
+      size: 5400
+    - path: train.py
+      hash: md5
+      md5: 7d1254b2debd0149b084ab0bf2592823
+      size: 4079
+    - path: training.json
+      hash: md5
+      md5: 64405bf0ea0bbd2eada6fbc624481fc1
+      size: 419
+    outs:
+    - path: data/models
+      hash: md5
+      md5: d9bcc114c6a13a4661560c26f470525d.dir
+      size: 141125
+      nfiles: 15
+    - path: results/frozen-predictions.json
+      hash: md5
+      md5: 3e77266b42be7b0fac8efa034c727cd2
+      size: 873210
+  test:
+    cmd: ../../.venv/bin/python extract.py test
+    deps:
+    - path: ../../FDS/install/bin/fds2ascii
+      hash: md5
+      md5: d337095553b56be9f2ef696416a099a7
+      size: 1118368
+      isexec: true
+    - path: data/cloud
+      hash: md5
+      md5: c3afc6621a51d75669abf78fc38b7215.dir
+      size: 26036788
+      nfiles: 1346
+    - path: design.json
+      hash: md5
+      md5: 01ad863b026713c5490c989bca6acf72
+      size: 17989
+    - path: extract.py
+      hash: md5
+      md5: 5a76b394c41052a7da55c78663120abe
+      size: 3667
+    - path: models.py
+      hash: md5
+      md5: 161d37e6308c5450382acd0746be96aa
+      size: 5400
+    - path: results/frozen-predictions.json
+      hash: md5
+      md5: 3e77266b42be7b0fac8efa034c727cd2
+      size: 873210
+    outs:
+    - path: data/boundary/test
+      hash: md5
+      md5: 9129fc54e26a88cafe28002d51bb26f8.dir
+      size: 781560
+      nfiles: 288
+    - path: data/test.json
+      hash: md5
+      md5: 53cd9c9a1a3533dbbe9cb9c77ac2d4d5
+      size: 31949
+  evaluate:
+    cmd: ../../.venv/bin/python evaluate.py
+    deps:
+    - path: data/test.json
+      hash: md5
+      md5: 53cd9c9a1a3533dbbe9cb9c77ac2d4d5
+      size: 31949
+    - path: evaluate.py
+      hash: md5
+      md5: 770a7e52586b6589726b00c8c7bc5673
+      size: 3268
+    - path: models.py
+      hash: md5
+      md5: 161d37e6308c5450382acd0746be96aa
+      size: 5400
+    - path: results/frozen-predictions.json
+      hash: md5
+      md5: 3e77266b42be7b0fac8efa034c727cd2
+      size: 873210
+    outs:
+    - path: results/evaluation.json
+      hash: md5
+      md5: f24d29d9720d1fe86b5bc850fa10da69
+      size: 4263
+    - path: results/findings.md
+      hash: md5
+      md5: f94bc91d56bd46ae0bf36b31d7030b4a
+      size: 581

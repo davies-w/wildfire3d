@@ -1,0 +1,17 @@
+{
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "epochs": 1500,
+  "learning_rate": 0.003,
+  "weight_decay": 0.05,
+  "selection": "Mean of positive-class and negative-class validation Brier scores; every 10 epochs; held-out two-crown geometries",
+  "classification_threshold": 0.5,
+  "burning_device_tolerance": 1e-09,
+  "burning_boundary_tolerance": 1e-12,
+  "notes": "Source duration is an explicit input (10/20/30 seconds). Confirmation uses 20 seconds. Require 12 or more 20-second training cases and three positive geometries at that duration. Older 30-second evidence is reusable development context, not interchangeable exposure. Five optimization seeds; no hyperparameter search."
+}

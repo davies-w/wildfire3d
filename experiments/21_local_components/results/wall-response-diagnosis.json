@@ -1,0 +1,50 @@
+{
+  "scope": "Measured heating drives this diagnostic, so it is NOT autonomous graph inference. No parameters fitted. k=.12,rho=500,cp=1700,thickness=.02,emissivity=.9;20 finite volumes,0.1s steps,insulated-back approximation.",
+  "results": [
+    {
+      "case": "b21_single_1",
+      "split": "train",
+      "temperature_MAE_C": 2.291455279452313,
+      "predicted_peak_C": 433.53832497526383,
+      "reference_peak_C": 435.11225990750836,
+      "predicted_ignition_s": 26.0,
+      "reference_ignition_s": 26.0
+    },
+    {
+      "case": "b21_single_2",
+      "split": "train",
+      "temperature_MAE_C": 0.9898068219936296,
+      "predicted_peak_C": 145.48055671523173,
+      "reference_peak_C": 146.03897122415015,
+      "predicted_ignition_s": null,
+      "reference_ignition_s": null
+    },
+    {
+      "case": "b21_combined_0",
+      "split": "train",
+      "temperature_MAE_C": 2.678769811558251,
+      "predicted_peak_C": 834.5839476926902,
+      "reference_peak_C": 841.6933318771239,
+      "predicted_ignition_s": 25.5,
+      "reference_ignition_s": 26.0
+    },
+    {
+      "case": "b21_corner_1",
+      "split": "train",
+      "temperature_MAE_C": 0.9532203805691618,
+      "predicted_peak_C": 636.2602215913957,
+      "reference_peak_C": 639.9223828568297,
+      "predicted_ignition_s": 25.5,
+      "reference_ignition_s": 25.5
+    },
+    {
+      "case": "b21_single_validation",
+      "split": "validation",
+      "temperature_MAE_C": 2.4467303268383835,
+      "predicted_peak_C": 582.2055917973191,
+      "reference_peak_C": 590.707249314055,
+      "predicted_ignition_s": 26.0,
+      "reference_ignition_s": 26.0
+    }
+  ]
+}

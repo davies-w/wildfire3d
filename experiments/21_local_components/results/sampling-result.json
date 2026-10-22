@@ -1,0 +1,827 @@
+{
+  "complete": true,
+  "physical_seconds": 90.0,
+  "wall_seconds": 1344.4936030590002,
+  "first_house_ignition_s": 27.018879,
+  "raw_boundary_max_mean_burning_rate": 0.006972,
+  "comparison_horizon_s": 69.5,
+  "crowns": {
+    "small": {
+      "wet_mass_21_40_60_kg": [
+        80.62378553690426,
+        12.809866283347432,
+        6.259782971615559
+      ],
+      "fuel_release_22_60_kg": 48.75514077605574
+    },
+    "large": {
+      "wet_mass_21_40_60_kg": [
+        309.6609226339461,
+        309.2905251203001,
+        309.1362054674643
+      ],
+      "fuel_release_22_60_kg": 0.0018315464628680955
+    }
+  },
+  "comparisons": [
+    {
+      "candidate": "sampling21_dense",
+      "reference": "ac21_double",
+      "horizon_s": 69.5,
+      "failed_probes": 19,
+      "ignition_flips": 0,
+      "max_dose_error": 0.13307692125920842,
+      "max_temperature_mae_C": 27.814975577253012,
+      "probes": [
+        {
+          "probe": "p8.5_0.5",
+          "relative_dose_error": 0.09665039293924492,
+          "temperature_mae_C": 4.218646097539137,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p8.5_1.5",
+          "relative_dose_error": 0.10295324487251634,
+          "temperature_mae_C": 6.100229704876767,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p8.5_2.5",
+          "relative_dose_error": 0.11006434238003662,
+          "temperature_mae_C": 8.126160760163705,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p8.5_3.5",
+          "relative_dose_error": 0.1130590985893511,
+          "temperature_mae_C": 10.87262203877157,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p8.5_4.5",
+          "relative_dose_error": 0.11504735901335982,
+          "temperature_mae_C": 12.976706089160247,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p8.5_5.5",
+          "relative_dose_error": 0.12109089375699211,
+          "temperature_mae_C": 13.793534767422653,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p9.5_0.5",
+          "relative_dose_error": 0.09509693613286328,
+          "temperature_mae_C": 5.606371919386501,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p9.5_1.5",
+          "relative_dose_error": 0.10104707119511895,
+          "temperature_mae_C": 7.848014701365628,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p9.5_2.5",
+          "relative_dose_error": 0.10764240657285763,
+          "temperature_mae_C": 11.105131950443205,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p9.5_3.5",
+          "relative_dose_error": 0.10661374305435381,
+          "temperature_mae_C": 14.832429897857187,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p9.5_4.5",
+          "relative_dose_error": 0.10406018630021781,
+          "temperature_mae_C": 17.609121631291202,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p9.5_5.5",
+          "relative_dose_error": 0.0998201851506346,
+          "temperature_mae_C": 17.74654512891619,
+          "ignition_flip": false,
+          "ignition_dt_s": 3.5,
+          "failed": false
+        },
+        {
+          "probe": "p10.5_0.5",
+          "relative_dose_error": 0.09930442535226881,
+          "temperature_mae_C": 7.041062443177656,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p10.5_1.5",
+          "relative_dose_error": 0.10843714035386659,
+          "temperature_mae_C": 10.197936679575804,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p10.5_2.5",
+          "relative_dose_error": 0.11986681879628396,
+          "temperature_mae_C": 14.909595729659168,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p10.5_3.5",
+          "relative_dose_error": 0.12084073094547532,
+          "temperature_mae_C": 21.024694291713615,
+          "ignition_flip": false,
+          "ignition_dt_s": 4.5,
+          "failed": true
+        },
+        {
+          "probe": "p10.5_4.5",
+          "relative_dose_error": 0.11173578549020778,
+          "temperature_mae_C": 24.98117056363801,
+          "ignition_flip": false,
+          "ignition_dt_s": 4.0,
+          "failed": true
+        },
+        {
+          "probe": "p10.5_5.5",
+          "relative_dose_error": 0.11680881391350528,
+          "temperature_mae_C": 27.088267741684938,
+          "ignition_flip": false,
+          "ignition_dt_s": 4.0,
+          "failed": true
+        },
+        {
+          "probe": "p11.5_0.5",
+          "relative_dose_error": 0.09942885098837663,
+          "temperature_mae_C": 7.694906017114277,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p11.5_1.5",
+          "relative_dose_error": 0.11263317840872572,
+          "temperature_mae_C": 11.569561795408358,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p11.5_2.5",
+          "relative_dose_error": 0.1300265678348134,
+          "temperature_mae_C": 17.754204038209146,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p11.5_3.5",
+          "relative_dose_error": 0.13307692125920842,
+          "temperature_mae_C": 24.638197069646225,
+          "ignition_flip": false,
+          "ignition_dt_s": 4.5,
+          "failed": true
+        },
+        {
+          "probe": "p11.5_4.5",
+          "relative_dose_error": 0.1156510744930085,
+          "temperature_mae_C": 27.814975577253012,
+          "ignition_flip": false,
+          "ignition_dt_s": 4.5,
+          "failed": true
+        },
+        {
+          "probe": "p11.5_5.5",
+          "relative_dose_error": 0.10412086593469401,
+          "temperature_mae_C": 27.6407439961189,
+          "ignition_flip": false,
+          "ignition_dt_s": 4.5,
+          "failed": true
+        },
+        {
+          "probe": "p12.5_0.5",
+          "relative_dose_error": 0.08160110728696186,
+          "temperature_mae_C": 6.018789508702306,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p12.5_1.5",
+          "relative_dose_error": 0.08873480490167332,
+          "temperature_mae_C": 8.835295033074523,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p12.5_2.5",
+          "relative_dose_error": 0.09846539384823369,
+          "temperature_mae_C": 12.644235764692498,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p12.5_3.5",
+          "relative_dose_error": 0.09941808964061159,
+          "temperature_mae_C": 17.056634516921818,
+          "ignition_flip": false,
+          "ignition_dt_s": 3.5,
+          "failed": false
+        },
+        {
+          "probe": "p12.5_4.5",
+          "relative_dose_error": 0.08755375533743506,
+          "temperature_mae_C": 19.171207535125802,
+          "ignition_flip": false,
+          "ignition_dt_s": 3.5,
+          "failed": false
+        },
+        {
+          "probe": "p12.5_5.5",
+          "relative_dose_error": 0.06707470665606977,
+          "temperature_mae_C": 19.027462598207233,
+          "ignition_flip": false,
+          "ignition_dt_s": 3.0,
+          "failed": false
+        },
+        {
+          "probe": "p13.5_0.5",
+          "relative_dose_error": 0.06353888430343435,
+          "temperature_mae_C": 4.043189997394451,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p13.5_1.5",
+          "relative_dose_error": 0.0685543967050876,
+          "temperature_mae_C": 5.361001354918827,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p13.5_2.5",
+          "relative_dose_error": 0.07569324482191239,
+          "temperature_mae_C": 7.683583194529076,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p13.5_3.5",
+          "relative_dose_error": 0.07954637094724117,
+          "temperature_mae_C": 10.473277581506283,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p13.5_4.5",
+          "relative_dose_error": 0.08090281341772863,
+          "temperature_mae_C": 12.46756290393353,
+          "ignition_flip": false,
+          "ignition_dt_s": 2.0,
+          "failed": false
+        },
+        {
+          "probe": "p13.5_5.5",
+          "relative_dose_error": 0.07749449680942892,
+          "temperature_mae_C": 13.701787876320774,
+          "ignition_flip": false,
+          "ignition_dt_s": 2.0,
+          "failed": false
+        },
+        {
+          "probe": "p14.5_0.5",
+          "relative_dose_error": 0.03998630876434895,
+          "temperature_mae_C": 2.211243800482337,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p14.5_1.5",
+          "relative_dose_error": 0.04097615258683321,
+          "temperature_mae_C": 2.506730702706802,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p14.5_2.5",
+          "relative_dose_error": 0.04275225121624942,
+          "temperature_mae_C": 3.6837719257301518,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p14.5_3.5",
+          "relative_dose_error": 0.04245943189368888,
+          "temperature_mae_C": 4.501996294162876,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p14.5_4.5",
+          "relative_dose_error": 0.045639951310274776,
+          "temperature_mae_C": 5.4946711148901155,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p14.5_5.5",
+          "relative_dose_error": 0.027321855843979188,
+          "temperature_mae_C": 4.584530251667765,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p15.5_0.5",
+          "relative_dose_error": 0.014461996637372139,
+          "temperature_mae_C": 0.9540036069465846,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p15.5_1.5",
+          "relative_dose_error": 0.010524942015129327,
+          "temperature_mae_C": 1.304535645763805,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p15.5_2.5",
+          "relative_dose_error": 0.004154936881486513,
+          "temperature_mae_C": 1.7106269799733778,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p15.5_3.5",
+          "relative_dose_error": 0.007644632316400656,
+          "temperature_mae_C": 2.043523191209331,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p15.5_4.5",
+          "relative_dose_error": 0.03125154460946218,
+          "temperature_mae_C": 3.2260620097827366,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        },
+        {
+          "probe": "p15.5_5.5",
+          "relative_dose_error": 0.07787365800221877,
+          "temperature_mae_C": 6.305863516320561,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": false
+        }
+      ]
+    },
+    {
+      "candidate": "sampling21_dense",
+      "reference": "ac21_double_fine",
+      "horizon_s": 69.5,
+      "failed_probes": 48,
+      "ignition_flips": 6,
+      "max_dose_error": 0.6394989134261622,
+      "max_temperature_mae_C": 127.28689427026163,
+      "probes": [
+        {
+          "probe": "p8.5_0.5",
+          "relative_dose_error": 0.28642997364162176,
+          "temperature_mae_C": 17.232001128255284,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p8.5_1.5",
+          "relative_dose_error": 0.2802609146644373,
+          "temperature_mae_C": 22.471669829251944,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p8.5_2.5",
+          "relative_dose_error": 0.27506007028658924,
+          "temperature_mae_C": 29.86101995188871,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p8.5_3.5",
+          "relative_dose_error": 0.20946663916718886,
+          "temperature_mae_C": 32.372512556452875,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p8.5_4.5",
+          "relative_dose_error": 0.20700833399231972,
+          "temperature_mae_C": 38.285490991032695,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p8.5_5.5",
+          "relative_dose_error": 0.19775256027059018,
+          "temperature_mae_C": 40.08952589168844,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p9.5_0.5",
+          "relative_dose_error": 0.31410544224102777,
+          "temperature_mae_C": 24.44446231391125,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p9.5_1.5",
+          "relative_dose_error": 0.2883965868339905,
+          "temperature_mae_C": 30.094180668661828,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p9.5_2.5",
+          "relative_dose_error": 0.27257444212785986,
+          "temperature_mae_C": 40.499163081065845,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p9.5_3.5",
+          "relative_dose_error": 0.18784417839869114,
+          "temperature_mae_C": 47.58699517132606,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p9.5_4.5",
+          "relative_dose_error": 0.1637120750249445,
+          "temperature_mae_C": 55.64703984266887,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p9.5_5.5",
+          "relative_dose_error": 0.15699199359056604,
+          "temperature_mae_C": 60.220887386564456,
+          "ignition_flip": true,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p10.5_0.5",
+          "relative_dose_error": 0.30695558509265247,
+          "temperature_mae_C": 28.74442129940874,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p10.5_1.5",
+          "relative_dose_error": 0.2778862881883911,
+          "temperature_mae_C": 36.367173919972934,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p10.5_2.5",
+          "relative_dose_error": 0.2658478622734431,
+          "temperature_mae_C": 49.731692173244525,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p10.5_3.5",
+          "relative_dose_error": 0.16471517946855307,
+          "temperature_mae_C": 59.869825105236785,
+          "ignition_flip": true,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p10.5_4.5",
+          "relative_dose_error": 0.12026456438052538,
+          "temperature_mae_C": 77.24027349417847,
+          "ignition_flip": false,
+          "ignition_dt_s": 8.0,
+          "failed": true
+        },
+        {
+          "probe": "p10.5_5.5",
+          "relative_dose_error": 0.12238692566729444,
+          "temperature_mae_C": 77.54171381501256,
+          "ignition_flip": false,
+          "ignition_dt_s": 8.5,
+          "failed": true
+        },
+        {
+          "probe": "p11.5_0.5",
+          "relative_dose_error": 0.35480496795670324,
+          "temperature_mae_C": 36.26736095981371,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p11.5_1.5",
+          "relative_dose_error": 0.32018183951230833,
+          "temperature_mae_C": 43.97030337731148,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p11.5_2.5",
+          "relative_dose_error": 0.3049364324098256,
+          "temperature_mae_C": 57.42127729833991,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p11.5_3.5",
+          "relative_dose_error": 0.19852615310871144,
+          "temperature_mae_C": 66.6051609070536,
+          "ignition_flip": false,
+          "ignition_dt_s": 5.5,
+          "failed": true
+        },
+        {
+          "probe": "p11.5_4.5",
+          "relative_dose_error": 0.13833086992329088,
+          "temperature_mae_C": 79.27866474463394,
+          "ignition_flip": false,
+          "ignition_dt_s": 10.5,
+          "failed": true
+        },
+        {
+          "probe": "p11.5_5.5",
+          "relative_dose_error": 0.08808561078589792,
+          "temperature_mae_C": 84.75391900640784,
+          "ignition_flip": false,
+          "ignition_dt_s": 10.0,
+          "failed": true
+        },
+        {
+          "probe": "p12.5_0.5",
+          "relative_dose_error": 0.3888036626747297,
+          "temperature_mae_C": 40.02503334701121,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p12.5_1.5",
+          "relative_dose_error": 0.3520029292786005,
+          "temperature_mae_C": 48.341440853453335,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p12.5_2.5",
+          "relative_dose_error": 0.3334910420944615,
+          "temperature_mae_C": 61.92398750731462,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p12.5_3.5",
+          "relative_dose_error": 0.22907094248962234,
+          "temperature_mae_C": 63.70772979122554,
+          "ignition_flip": false,
+          "ignition_dt_s": 6.5,
+          "failed": true
+        },
+        {
+          "probe": "p12.5_4.5",
+          "relative_dose_error": 0.18270650508939812,
+          "temperature_mae_C": 73.07688446162261,
+          "ignition_flip": false,
+          "ignition_dt_s": 10.0,
+          "failed": true
+        },
+        {
+          "probe": "p12.5_5.5",
+          "relative_dose_error": 0.14087927210018578,
+          "temperature_mae_C": 76.29268559452333,
+          "ignition_flip": false,
+          "ignition_dt_s": 9.0,
+          "failed": true
+        },
+        {
+          "probe": "p13.5_0.5",
+          "relative_dose_error": 0.4629156501635819,
+          "temperature_mae_C": 45.521283528032164,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p13.5_1.5",
+          "relative_dose_error": 0.4284490803388772,
+          "temperature_mae_C": 54.67987786518644,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p13.5_2.5",
+          "relative_dose_error": 0.4061534399671574,
+          "temperature_mae_C": 68.8347762971308,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p13.5_3.5",
+          "relative_dose_error": 0.32975452085855045,
+          "temperature_mae_C": 70.56984009605354,
+          "ignition_flip": true,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p13.5_4.5",
+          "relative_dose_error": 0.29188889224321946,
+          "temperature_mae_C": 81.15330866638027,
+          "ignition_flip": false,
+          "ignition_dt_s": 9.0,
+          "failed": true
+        },
+        {
+          "probe": "p13.5_5.5",
+          "relative_dose_error": 0.2654626999493458,
+          "temperature_mae_C": 84.99319459726553,
+          "ignition_flip": false,
+          "ignition_dt_s": 8.5,
+          "failed": true
+        },
+        {
+          "probe": "p14.5_0.5",
+          "relative_dose_error": 0.5783915744675658,
+          "temperature_mae_C": 56.01918457479675,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p14.5_1.5",
+          "relative_dose_error": 0.5502522359160151,
+          "temperature_mae_C": 67.76338829960636,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p14.5_2.5",
+          "relative_dose_error": 0.5324467927645102,
+          "temperature_mae_C": 84.00051382332903,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p14.5_3.5",
+          "relative_dose_error": 0.48730940458505106,
+          "temperature_mae_C": 89.9132884232352,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p14.5_4.5",
+          "relative_dose_error": 0.45996562978697975,
+          "temperature_mae_C": 103.18895183288572,
+          "ignition_flip": true,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p14.5_5.5",
+          "relative_dose_error": 0.43867841188810214,
+          "temperature_mae_C": 112.94724414225792,
+          "ignition_flip": true,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p15.5_0.5",
+          "relative_dose_error": 0.6394989134261622,
+          "temperature_mae_C": 56.05265554970118,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p15.5_1.5",
+          "relative_dose_error": 0.6219753396427422,
+          "temperature_mae_C": 69.67213836570356,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p15.5_2.5",
+          "relative_dose_error": 0.6163405339391753,
+          "temperature_mae_C": 87.29078941307138,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p15.5_3.5",
+          "relative_dose_error": 0.6016589702474566,
+          "temperature_mae_C": 101.23601364422929,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p15.5_4.5",
+          "relative_dose_error": 0.6014635171289543,
+          "temperature_mae_C": 115.79047498738717,
+          "ignition_flip": false,
+          "ignition_dt_s": null,
+          "failed": true
+        },
+        {
+          "probe": "p15.5_5.5",
+          "relative_dose_error": 0.593891710891814,
+          "temperature_mae_C": 127.28689427026163,
+          "ignition_flip": true,
+          "ignition_dt_s": null,
+          "failed": true
+        }
+      ]
+    }
+  ],
+  "checkpoint_files_verified": 1,
+  "reserved_usd": 0.25,
+  "invoice_verified": false,
+  "no_stage_b_training": true,
+  "limitations": [
+    "Same coarse gas grid and source; eightfold vegetation particle density. Nominal density matches fine case, not identical placement/voxelized canopy.",
+    "Generic vegetation/wood, artificial ignition, no trunks/ground cover/embers.",
+    "Native resume tested locally; actual saved Linux checkpoints require matching Linux binary."
+  ]
+}

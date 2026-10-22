@@ -1,0 +1,175 @@
+{
+  "status": "PROPOSAL_ONLY_NO_NEW_SIMULATIONS",
+  "stage1": [
+    {
+      "name": "AC_burners_only",
+      "layout": "AC",
+      "power_kw": 1700,
+      "vegetation": "none",
+      "purpose": "Does the successful reference ignite without vegetation?"
+    },
+    {
+      "name": "AD_burners_only",
+      "layout": "AD",
+      "power_kw": 1700,
+      "vegetation": "none",
+      "purpose": "Does the aligned source arrangement ignite without vegetation?"
+    },
+    {
+      "name": "AD_without_upwind_crown",
+      "layout": "AD",
+      "power_kw": 1700,
+      "vegetation": "A only, both original burners retained",
+      "purpose": "Is the upstream crown necessary for the observed suppression?"
+    },
+    {
+      "name": "AD_seed_4321",
+      "layout": "AD",
+      "power_kw": 1700,
+      "seed": 4321,
+      "purpose": "Measure sensitivity of the 347.9 C near miss without selecting only positive seeds."
+    },
+    {
+      "name": "AD_seed_5678",
+      "layout": "AD",
+      "power_kw": 1700,
+      "seed": 5678,
+      "purpose": "Measure sensitivity of the 347.9 C near miss without selecting only positive seeds."
+    }
+  ],
+  "stage2": [
+    {
+      "name": "upwind_offset_10s",
+      "crown_centers_m": [
+        [
+          12,
+          12
+        ],
+        [
+          8,
+          10
+        ]
+      ],
+      "power_kw": 1700,
+      "full_power_until_s": 10,
+      "ramp_down_s": 1,
+      "purpose": "Vary position at fixed source power; compare old-duration exposure with shorter ignition exposure."
+    },
+    {
+      "name": "upwind_offset_30s",
+      "crown_centers_m": [
+        [
+          12,
+          12
+        ],
+        [
+          8,
+          10
+        ]
+      ],
+      "power_kw": 1700,
+      "full_power_until_s": 30,
+      "ramp_down_s": 1,
+      "purpose": "Vary position at fixed source power; compare old-duration exposure with shorter ignition exposure."
+    },
+    {
+      "name": "closer_diagonal_10s",
+      "crown_centers_m": [
+        [
+          12,
+          12
+        ],
+        [
+          11,
+          14
+        ]
+      ],
+      "power_kw": 1700,
+      "full_power_until_s": 10,
+      "ramp_down_s": 1,
+      "purpose": "Vary position at fixed source power; compare old-duration exposure with shorter ignition exposure."
+    },
+    {
+      "name": "closer_diagonal_30s",
+      "crown_centers_m": [
+        [
+          12,
+          12
+        ],
+        [
+          11,
+          14
+        ]
+      ],
+      "power_kw": 1700,
+      "full_power_until_s": 30,
+      "ramp_down_s": 1,
+      "purpose": "Vary position at fixed source power; compare old-duration exposure with shorter ignition exposure."
+    },
+    {
+      "name": "near_wall_pair_10s",
+      "crown_centers_m": [
+        [
+          12,
+          12
+        ],
+        [
+          12,
+          10
+        ]
+      ],
+      "power_kw": 1700,
+      "full_power_until_s": 10,
+      "ramp_down_s": 1,
+      "purpose": "Vary position at fixed source power; compare old-duration exposure with shorter ignition exposure."
+    },
+    {
+      "name": "near_wall_pair_30s",
+      "crown_centers_m": [
+        [
+          12,
+          12
+        ],
+        [
+          12,
+          10
+        ]
+      ],
+      "power_kw": 1700,
+      "full_power_until_s": 30,
+      "ramp_down_s": 1,
+      "purpose": "Vary position at fixed source power; compare old-duration exposure with shorter ignition exposure."
+    }
+  ],
+  "max_new_runs": 11,
+  "stage2_gate": "Review burner-only and crown-removal controls first. If positive labels are dominated by burners, revise the ignition protocol before collecting a training dataset; no automatic expansion.",
+  "additional_outputs": [
+    "Per-crown particle mass and mass-loss diagnostics",
+    "West-face RADIATIVE HEAT FLUX, CONVECTIVE HEAT FLUX and TOTAL HEAT FLUX boundaries",
+    "Sparse velocity and temperature slices through the wind/house axis"
+  ],
+  "preserve": [
+    "350 C structure ignition rule",
+    "structure thermal properties",
+    "0.5 m full reference mesh",
+    "particle vegetation material and moisture",
+    "3 m/s wind",
+    "90 s horizon"
+  ],
+  "estimate": {
+    "expected_cloud_total_usd": [
+      0.2,
+      0.24
+    ],
+    "allowance_usd": 0.25,
+    "max_controller_seconds": 7200,
+    "hourly_spot_usd": 0.065744,
+    "max_compute_plus_ancillary_usd": 0.2315,
+    "ancillary_allowance_usd": 0.1,
+    "builds": 0,
+    "retries": 0,
+    "price_source": "https://cloud.google.com/spot-vms/pricing?hl=en",
+    "basis": "Existing runs around 300\u2013462 wall seconds; allow 1.5\u20132 hours including extra diagnostic output.",
+    "guaranteed_billing_cap": false
+  }
+}

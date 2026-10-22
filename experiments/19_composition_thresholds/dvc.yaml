@@ -1,0 +1,139 @@
+stages:
+  acquisition_checks:
+    cmd: ../../.venv/bin/python acquisition.py
+    deps:
+    - acquisition.py
+    - design.json
+    outs:
+    - results/acquisition-check.json:
+        cache: false
+  reuse_checks:
+    cmd: ../../.venv/bin/python verify_reuse.py
+    deps:
+    - verify_reuse.py
+    - design.json
+    - data/reused-evidence.tar.gz
+    outs:
+    - results/reuse-check.json:
+        cache: false
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - preflight.py
+    - generate.py
+    - design.json
+    - inputs
+    - results/acquisition-check.json
+    - ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+    outs:
+    - data/preflight
+    - results/local-preflight.json:
+        cache: false
+    - results/design-check.json:
+        cache: false
+  model_smoke:
+    cmd: ../../.venv/bin/python models.py
+    deps:
+    - models.py
+    - design.json
+    outs:
+    - results/model-smoke.json:
+        cache: false
+  pipeline_check:
+    cmd: ../../.venv/bin/python pipeline_check.py
+    deps:
+    - pipeline_check.py
+    - train.py
+    - predict.py
+    - evaluate.py
+    - models.py
+    - training.json
+    - design.json
+    outs:
+    - results/pipeline-check.json:
+        cache: false
+  restore_reuse:
+    cmd: ../../.venv/bin/python restore_reuse.py
+    deps:
+    - restore_reuse.py
+    - data/reused-evidence.tar.gz
+    outs:
+    - data/reused
+  restore_cloud:
+    cmd: ../../.venv/bin/python evidence.py extract
+    deps:
+    - evidence.py
+    - data/cloud-evidence.tar.gz
+    outs:
+    - data/cloud
+  development:
+    cmd: ../../.venv/bin/python extract.py development
+    deps:
+    - extract.py
+    - models.py
+    - design.json
+    - data/cloud
+    - data/reused
+    - ../../FDS/install/bin/fds2ascii
+    outs:
+    - data/development.json
+    - data/boundary/development
+  train:
+    cmd: ../../.venv/bin/python train.py
+    deps:
+    - train.py
+    - models.py
+    - training.json
+    - design.json
+    - data/development.json
+    outs:
+    - data/models
+    - results/frozen-weights.json:
+        cache: false
+  predict:
+    cmd: ../../.venv/bin/python predict.py
+    deps:
+    - predict.py
+    - models.py
+    - design.json
+    - data/models
+    - results/frozen-weights.json
+    - data/cloud/confirmation-inputs.json
+    outs:
+    - results/frozen-predictions.json:
+        cache: false
+  test:
+    cmd: ../../.venv/bin/python extract.py test
+    deps:
+    - extract.py
+    - models.py
+    - design.json
+    - data/cloud
+    - results/frozen-predictions.json
+    - ../../FDS/install/bin/fds2ascii
+    outs:
+    - data/test.json
+    - data/boundary/test
+  evaluate:
+    cmd: ../../.venv/bin/python evaluate.py
+    deps:
+    - evaluate.py
+    - models.py
+    - results/frozen-predictions.json
+    - data/test.json
+    outs:
+    - results/evaluation.json:
+        cache: false
+    - results/findings.md:
+        cache: false
+  diagnose:
+    cmd: ../../.venv/bin/python diagnose.py
+    deps:
+    - diagnose.py
+    - data/cloud
+    - data/reused
+    - ../../FDS/install/bin/fds2ascii
+    outs:
+    - data/diagnosis-boundary
+    - results/diagnosis.json:
+        cache: false

@@ -1,0 +1,11 @@
+{
+  "seeds": [11, 22, 33, 44, 55],
+  "epochs": 1500,
+  "learning_rate": 0.003,
+  "weight_decay": 0.05,
+  "selection": "minimum validation Brier score, inspected every 10 epochs",
+  "classification_threshold": 0.5,
+  "burning_device_tolerance": 1e-9,
+  "burning_boundary_tolerance": 1e-12,
+  "notes": "Frozen before launch. Direct prediction, CPU only. Fixed auxiliary weights in models.py. No hyperparameter search."
+}

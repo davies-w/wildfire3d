@@ -1,0 +1,102 @@
+{
+  "scope": "Two development configurations only; autonomous replay diagnostics, not held-out validation. Equilibrium constraint is imposed physical structure, not a learned finding. No final model selected.",
+  "model_source_sha256": "d3ba25efe4190b2cb78638c3ccedcfabb8ce91161df1b70c343efd9517585927",
+  "results": [
+    {
+      "case": "b21_single_1",
+      "equilibrium_constraint": false,
+      "artificial_source_enabled": false,
+      "wall_seconds": 0.02482216595672071,
+      "clipped_values": 7760,
+      "max_building_temperature_C": 39.97898422889937,
+      "max_all_temperature_C": 1339.54209290869,
+      "max_emitted_kw": 6884.734906740859,
+      "building_temperature_MAE_C": null,
+      "cold_fixed_point_pass": false
+    },
+    {
+      "case": "b21_single_1",
+      "equilibrium_constraint": false,
+      "artificial_source_enabled": true,
+      "wall_seconds": 0.024515625089406967,
+      "clipped_values": 219,
+      "max_building_temperature_C": 490.0958929768364,
+      "max_all_temperature_C": 1704.3376686660135,
+      "max_emitted_kw": 100000.00000000004,
+      "building_temperature_MAE_C": 50.83967455018409,
+      "cold_fixed_point_pass": null
+    },
+    {
+      "case": "b21_transfer_0",
+      "equilibrium_constraint": false,
+      "artificial_source_enabled": false,
+      "wall_seconds": 0.024510124931111932,
+      "clipped_values": 9050,
+      "max_building_temperature_C": 20.0,
+      "max_all_temperature_C": 26.62200816235192,
+      "max_emitted_kw": 0.7345601683486909,
+      "building_temperature_MAE_C": null,
+      "cold_fixed_point_pass": false
+    },
+    {
+      "case": "b21_transfer_0",
+      "equilibrium_constraint": false,
+      "artificial_source_enabled": true,
+      "wall_seconds": 0.024588000029325485,
+      "clipped_values": 8768,
+      "max_building_temperature_C": 20.0,
+      "max_all_temperature_C": 1383.4610250914718,
+      "max_emitted_kw": 1453.5823542675307,
+      "building_temperature_MAE_C": 14.70690939139089,
+      "cold_fixed_point_pass": null
+    },
+    {
+      "case": "b21_single_1",
+      "equilibrium_constraint": true,
+      "artificial_source_enabled": false,
+      "wall_seconds": 0.051765416050329804,
+      "clipped_values": 0,
+      "max_building_temperature_C": 20.0,
+      "max_all_temperature_C": 20.0,
+      "max_emitted_kw": 0.0,
+      "building_temperature_MAE_C": null,
+      "cold_fixed_point_pass": true
+    },
+    {
+      "case": "b21_single_1",
+      "equilibrium_constraint": true,
+      "artificial_source_enabled": true,
+      "wall_seconds": 0.050768665969371796,
+      "clipped_values": 99,
+      "max_building_temperature_C": 526.1570390242946,
+      "max_all_temperature_C": 1488.914827786669,
+      "max_emitted_kw": 100000.00000000004,
+      "building_temperature_MAE_C": 83.8717824146961,
+      "cold_fixed_point_pass": null
+    },
+    {
+      "case": "b21_transfer_0",
+      "equilibrium_constraint": true,
+      "artificial_source_enabled": false,
+      "wall_seconds": 0.05126483296044171,
+      "clipped_values": 0,
+      "max_building_temperature_C": 20.0,
+      "max_all_temperature_C": 20.0,
+      "max_emitted_kw": 0.0,
+      "building_temperature_MAE_C": null,
+      "cold_fixed_point_pass": true
+    },
+    {
+      "case": "b21_transfer_0",
+      "equilibrium_constraint": true,
+      "artificial_source_enabled": true,
+      "wall_seconds": 0.051559291081503034,
+      "clipped_values": 2551,
+      "max_building_temperature_C": 82.13285756823691,
+      "max_all_temperature_C": 1757.8462774618793,
+      "max_emitted_kw": 100000.00000000004,
+      "building_temperature_MAE_C": 19.32283670123299,
+      "cold_fixed_point_pass": null
+    }
+  ]
+}

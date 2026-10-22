@@ -1,0 +1,7419 @@
+{
+  "cases": [
+    {
+      "case": "dev20_A_300",
+      "layout": "A",
+      "total_source_kw": 300,
+      "duration_s": 20,
+      "split": "train",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "A",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "d420e486d03250d3179b279c3f6d8f3d061e468774f95180760f67a74f2fc8ce",
+      "returncode": 0,
+      "wall_seconds": 282.625896879,
+      "cpu_user_s": 517.465464,
+      "cpu_system_s": 76.414048,
+      "max_rss_kib": 249404,
+      "voluntary_context_switches": 25431327,
+      "involuntary_context_switches": 1085,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 26.336836,
+        "house_flux_max": 0.0013388948,
+        "house_burn_max": 0.0,
+        "west_temp": 26.336836,
+        "west_flux": 0.0013388948,
+        "east_temp": 20.070572,
+        "east_flux": 0.00012387842,
+        "south_temp": 20.195974,
+        "south_flux": 0.00023958392,
+        "north_temp": 20.187799,
+        "north_flux": 0.00022747347,
+        "roof_temp": 20.165981,
+        "roof_flux": -4.717767e-05,
+        "mass foliage": 2.774878,
+        "mass small roundwood": 0.47690724,
+        "mass medium roundwood": 0.43965252,
+        "mass large roundwood": 0.6628125,
+        "crown_A_foliage": 2.774878,
+        "crown_A_small roundwood": 0.47690724,
+        "crown_A_medium roundwood": 0.43965252,
+        "crown_A_large roundwood": 0.6628125
+      },
+      "cgroup_cpu_before": "usage_usec 95772\nuser_usec 73825\nsystem_usec 21947\ncore_sched.force_idle_usec 0\nnr_periods 2\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 594059005\nuser_usec 517607956\nsystem_usec 76451048\ncore_sched.force_idle_usec 0\nnr_periods 2819\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": false,
+      "first_ignition_s": null,
+      "peak_house_C": 61.256908,
+      "total_HRR_kw": {
+        "10": 301.2754574886627,
+        "20": 302.8842645584403,
+        "30": 0.010950847594392967,
+        "40": 0.003453786404619651,
+        "60": 0.0013257801388392007,
+        "90": 0.00085569115
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 29.551,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 44.925,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 45.97,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 31.438,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 1.7808,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 2.3784,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.97716,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 0.014957,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.0,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 1.4712,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.8528,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.62415,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0029392,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.07048,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 0.24415,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.17656,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0056782,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 1.5109,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.9177,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.62068,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0086174,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": true
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.0,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_A_1700",
+      "layout": "A",
+      "total_source_kw": 1700,
+      "duration_s": 20,
+      "split": "train",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "A",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "4f715f4db26164c0bfa98971255fc22d797ec1ea8b3fecd12cf23844ae2a4d21",
+      "returncode": 0,
+      "wall_seconds": 392.703984668,
+      "cpu_user_s": 716.960517,
+      "cpu_system_s": 101.883283,
+      "max_rss_kib": 249708,
+      "voluntary_context_switches": 34683340,
+      "involuntary_context_switches": 1421,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 369.65297,
+        "house_flux_max": 19.025816,
+        "house_burn_max": 0.011697708,
+        "west_temp": 369.65297,
+        "west_flux": 19.025816,
+        "east_temp": 21.044578,
+        "east_flux": 0.041493166,
+        "south_temp": 26.273999,
+        "south_flux": 0.43551384,
+        "north_temp": 23.086513,
+        "north_flux": 0.078518477,
+        "roof_temp": 130.21889,
+        "roof_flux": 4.6629377,
+        "mass foliage": 0.66948386,
+        "mass small roundwood": 0.11381128,
+        "mass medium roundwood": 0.19439075,
+        "mass large roundwood": 0.42844885,
+        "crown_A_foliage": 0.66948386,
+        "crown_A_small roundwood": 0.11381128,
+        "crown_A_medium roundwood": 0.19439075,
+        "crown_A_large roundwood": 0.42844885
+      },
+      "cgroup_cpu_before": "usage_usec 594552971\nuser_usec 518081925\nsystem_usec 76471045\ncore_sched.force_idle_usec 0\nnr_periods 2826\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 1413511490\nuser_usec 1235143632\nsystem_usec 178367858\ncore_sched.force_idle_usec 0\nnr_periods 6745\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": true,
+      "first_ignition_s": 8.0410602,
+      "peak_house_C": 565.23728,
+      "total_HRR_kw": {
+        "10": 5311.974125507999,
+        "20": 2883.012845451081,
+        "30": 1197.9578710179435,
+        "40": 1128.7610970416586,
+        "60": 1091.5845271982193,
+        "90": 1157.6694
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 127.56,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 494.84,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 366.9,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 329.29,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 25.55,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 61.361,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 19.827,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 20.159,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            2.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.010476,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 20.679,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 36.914,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 9.2786,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            2.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 10.14,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            2.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.82908,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 2.0185,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.028572,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.20884,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 20.386,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 35.487,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 8.5662,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            2.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 9.3435,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            2.0
+          ],
+          "preignition": false
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.010476,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_A_3200",
+      "layout": "A",
+      "total_source_kw": 3200,
+      "duration_s": 20,
+      "split": "train",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "A",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "1f95c322d1a45b79859bcd562665d1c195692031bdc83a1c9bad0e23cee2e5ec",
+      "returncode": 0,
+      "wall_seconds": 429.53027569300014,
+      "cpu_user_s": 783.57605,
+      "cpu_system_s": 110.049932,
+      "max_rss_kib": 249268,
+      "voluntary_context_switches": 37743990,
+      "involuntary_context_switches": 1614,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 398.20578,
+        "house_flux_max": 25.009254,
+        "house_burn_max": 0.011697708,
+        "west_temp": 398.20578,
+        "west_flux": 25.009254,
+        "east_temp": 21.443105,
+        "east_flux": 0.066193013,
+        "south_temp": 25.870603,
+        "south_flux": 0.18380247,
+        "north_temp": 55.266213,
+        "north_flux": 1.6028284,
+        "roof_temp": 201.86599,
+        "roof_flux": 8.7318222,
+        "mass foliage": 0.544944,
+        "mass small roundwood": 0.090286565,
+        "mass medium roundwood": 0.13700877,
+        "mass large roundwood": 0.39167988,
+        "crown_A_foliage": 0.544944,
+        "crown_A_small roundwood": 0.090286565,
+        "crown_A_medium roundwood": 0.13700877,
+        "crown_A_large roundwood": 0.39167988
+      },
+      "cgroup_cpu_before": "usage_usec 1413855656\nuser_usec 1235474462\nsystem_usec 178381194\ncore_sched.force_idle_usec 0\nnr_periods 6750\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 2307605283\nuser_usec 2019157377\nsystem_usec 288447905\ncore_sched.force_idle_usec 0\nnr_periods 11037\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": true,
+      "first_ignition_s": 6.5014517,
+      "peak_house_C": 820.53094,
+      "total_HRR_kw": {
+        "10": 8022.254842809813,
+        "20": 5212.4876747317185,
+        "30": 1744.3592506795699,
+        "40": 1725.2826399848802,
+        "60": 1742.9226609581588,
+        "90": 1744.5396
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 242.68,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 639.65,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 470.29,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 383.68,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 61.249,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 84.847,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 29.059,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 22.777,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            2.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.010667,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 43.957,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 39.677,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 11.387,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 9.9118,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            2.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 1.5907,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.5076,
+          "patch_xyz": [
+            14.0,
+            13.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": -0.13876,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            3.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.30262,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 43.816,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 37.592,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 10.599,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 8.4745,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            2.0
+          ],
+          "preignition": false
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.010667,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AB_300",
+      "layout": "AB",
+      "total_source_kw": 300,
+      "duration_s": 20,
+      "split": "train",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AB",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "d5e1c2405f98250d68e0f1d12195c93059852a2646565cbbadcca77041567982",
+      "returncode": 0,
+      "wall_seconds": 284.627263526,
+      "cpu_user_s": 524.011561,
+      "cpu_system_s": 74.734982,
+      "max_rss_kib": 249600,
+      "voluntary_context_switches": 25324992,
+      "involuntary_context_switches": 1078,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 22.978557,
+        "house_flux_max": 0.00056245183,
+        "house_burn_max": 0.0,
+        "west_temp": 22.978557,
+        "west_flux": 0.00056245183,
+        "east_temp": 20.108039,
+        "east_flux": 0.00012608642,
+        "south_temp": 20.285368,
+        "south_flux": 0.0002010356,
+        "north_temp": 20.06471,
+        "north_flux": 0.00012656607,
+        "roof_temp": 20.033212,
+        "roof_flux": -4.7513723e-05,
+        "mass foliage": 5.6597375,
+        "mass small roundwood": 0.97184916,
+        "mass medium roundwood": 0.88624006,
+        "mass large roundwood": 1.3293085,
+        "crown_A_foliage": 2.8279019,
+        "crown_A_small roundwood": 0.48577875,
+        "crown_A_medium roundwood": 0.44301995,
+        "crown_A_large roundwood": 0.66463217,
+        "crown_B_foliage": 2.8318355,
+        "crown_B_small roundwood": 0.48607041,
+        "crown_B_medium roundwood": 0.44322011,
+        "crown_B_large roundwood": 0.66467637
+      },
+      "cgroup_cpu_before": "usage_usec 2307935795\nuser_usec 2019477141\nsystem_usec 288458653\ncore_sched.force_idle_usec 0\nnr_periods 11042\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 2906766402\nuser_usec 2543558042\nsystem_usec 363208359\ncore_sched.force_idle_usec 0\nnr_periods 13880\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": false,
+      "first_ignition_s": null,
+      "peak_house_C": 37.850582,
+      "total_HRR_kw": {
+        "10": 298.25992874377516,
+        "20": 298.96390460638173,
+        "30": 0.005480042527804311,
+        "40": 0.0026432041706153167,
+        "60": 0.0017657365299487858,
+        "90": 0.0014829616
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 24.273,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 33.193,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 33.249,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 25.715,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.8285,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.3323,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.51104,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 0.0057937,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.0,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.69788,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.0198,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.30552,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0011845,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.029539,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 0.085348,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.049563,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0024387,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.693,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.051,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.30673,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0036232,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": true
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.0,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AB_1700",
+      "layout": "AB",
+      "total_source_kw": 1700,
+      "duration_s": 20,
+      "split": "train",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AB",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "11c48727a9728b3b12df3bf7e82126032f26f0025441205f9a3ac496c25bd474",
+      "returncode": 0,
+      "wall_seconds": 373.283015728,
+      "cpu_user_s": 688.120414,
+      "cpu_system_s": 98.810174,
+      "max_rss_kib": 249888,
+      "voluntary_context_switches": 33495238,
+      "involuntary_context_switches": 1417,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 341.42147,
+        "house_flux_max": 22.752293,
+        "house_burn_max": 0.011697708,
+        "west_temp": 341.42147,
+        "west_flux": 22.752293,
+        "east_temp": 21.703141,
+        "east_flux": 0.088411489,
+        "south_temp": 89.104177,
+        "south_flux": 2.5239778,
+        "north_temp": 20.546248,
+        "north_flux": 0.018304351,
+        "roof_temp": 24.694345,
+        "roof_flux": 0.358172,
+        "mass foliage": 3.7983177,
+        "mass small roundwood": 0.6350866,
+        "mass medium roundwood": 0.64439327,
+        "mass large roundwood": 1.2444406,
+        "crown_A_foliage": 1.5038819,
+        "crown_A_small roundwood": 0.25463843,
+        "crown_A_medium roundwood": 0.27442519,
+        "crown_A_large roundwood": 0.6056836,
+        "crown_B_foliage": 2.2944358,
+        "crown_B_small roundwood": 0.38044818,
+        "crown_B_medium roundwood": 0.36996808,
+        "crown_B_large roundwood": 0.63875697
+      },
+      "cgroup_cpu_before": "usage_usec 2907237508\nuser_usec 2544024422\nsystem_usec 363213086\ncore_sched.force_idle_usec 0\nnr_periods 13886\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 3694274124\nuser_usec 3232227070\nsystem_usec 462047053\ncore_sched.force_idle_usec 0\nnr_periods 17611\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": true,
+      "first_ignition_s": 12.508461,
+      "peak_house_C": 524.13916,
+      "total_HRR_kw": {
+        "10": 2193.872587007784,
+        "20": 2699.540464562038,
+        "30": 626.3888294859117,
+        "40": 607.3565719192661,
+        "60": 600.082446984109,
+        "90": 631.25614
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 52.674,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 336.07,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 293.56,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 283.03,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 6.799,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 41.438,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 14.976,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 17.017,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.0098894,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 5.6926,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 29.716,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 8.1477,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 10.041,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.20556,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            3.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.6404,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": -0.082431,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.067119,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 5.6852,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 27.252,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 7.9042,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 9.7129,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            0.0
+          ],
+          "preignition": false
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.0098894,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AB_3200",
+      "layout": "AB",
+      "total_source_kw": 3200,
+      "duration_s": 20,
+      "split": "train",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AB",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "bb48fad5acfcdda4278e1a9f63791152bacdd10b58dc4696c0a68df911341511",
+      "returncode": 0,
+      "wall_seconds": 384.09482848699986,
+      "cpu_user_s": 705.159691,
+      "cpu_system_s": 101.592777,
+      "max_rss_kib": 249600,
+      "voluntary_context_switches": 34414041,
+      "involuntary_context_switches": 1455,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 404.37391,
+        "house_flux_max": 24.047912,
+        "house_burn_max": 0.011697708,
+        "west_temp": 404.37391,
+        "west_flux": 24.047912,
+        "east_temp": 22.526225,
+        "east_flux": 0.074234942,
+        "south_temp": 170.47701,
+        "south_flux": 6.5483546,
+        "north_temp": 20.797689,
+        "north_flux": 0.060310278,
+        "roof_temp": 76.976903,
+        "roof_flux": 2.7722448,
+        "mass foliage": 3.0012885,
+        "mass small roundwood": 0.47587211,
+        "mass medium roundwood": 0.56144938,
+        "mass large roundwood": 1.0733583,
+        "crown_A_foliage": 1.4266821,
+        "crown_A_small roundwood": 0.20281686,
+        "crown_A_medium roundwood": 0.24696062,
+        "crown_A_large roundwood": 0.50597384,
+        "crown_B_foliage": 1.5746064,
+        "crown_B_small roundwood": 0.27305525,
+        "crown_B_medium roundwood": 0.31448875,
+        "crown_B_large roundwood": 0.56738447
+      },
+      "cgroup_cpu_before": "usage_usec 3694637036\nuser_usec 3232579632\nsystem_usec 462057404\ncore_sched.force_idle_usec 0\nnr_periods 17616\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 4501498519\nuser_usec 3937825534\nsystem_usec 563672984\ncore_sched.force_idle_usec 0\nnr_periods 21449\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": true,
+      "first_ignition_s": 7.0382006,
+      "peak_house_C": 657.58776,
+      "total_HRR_kw": {
+        "10": 10101.11329316237,
+        "20": 4550.985054216426,
+        "30": 1257.0477894418793,
+        "40": 1188.3816694988811,
+        "60": 1207.7180181410506,
+        "90": 1206.5197
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 150.62,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 472.39,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 346.38,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 332.69,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 31.975,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 50.838,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 18.535,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 19.801,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.010627,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 24.836,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 30.08,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 8.8663,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 10.708,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.60014,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.296,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            3.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": -0.062861,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.10998,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 24.769,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 26.084,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 8.1175,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 10.16,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            0.0
+          ],
+          "preignition": false
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.010627,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AE_300",
+      "layout": "AE",
+      "total_source_kw": 300,
+      "duration_s": 20,
+      "split": "train",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AE",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "1b6baac8e7a407e592d04fb0c8327ef0d157322a9c768bf19cbf3cd7db010de0",
+      "returncode": 0,
+      "wall_seconds": 285.02330727499975,
+      "cpu_user_s": 522.389809,
+      "cpu_system_s": 76.06705,
+      "max_rss_kib": 249104,
+      "voluntary_context_switches": 25606695,
+      "involuntary_context_switches": 1012,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 22.753719,
+        "house_flux_max": 0.00055303679,
+        "house_burn_max": 0.0,
+        "west_temp": 22.753719,
+        "west_flux": 0.00055303679,
+        "east_temp": 20.082033,
+        "east_flux": 0.00012166359,
+        "south_temp": 20.214939,
+        "south_flux": 0.00018589183,
+        "north_temp": 20.036129,
+        "north_flux": 0.00010089094,
+        "roof_temp": 20.039184,
+        "roof_flux": -5.0556912e-05,
+        "mass foliage": 5.6537927,
+        "mass small roundwood": 0.97156498,
+        "mass medium roundwood": 0.88630991,
+        "mass large roundwood": 1.3294039,
+        "crown_A_foliage": 2.8292774,
+        "crown_A_small roundwood": 0.48604027,
+        "crown_A_medium roundwood": 0.44308283,
+        "crown_A_large roundwood": 0.66468711,
+        "crown_E_foliage": 2.8245153,
+        "crown_E_small roundwood": 0.48552471,
+        "crown_E_medium roundwood": 0.44322708,
+        "crown_E_large roundwood": 0.66471677
+      },
+      "cgroup_cpu_before": "usage_usec 4501842041\nuser_usec 3938162708\nsystem_usec 563679332\ncore_sched.force_idle_usec 0\nnr_periods 21454\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 5100380585\nuser_usec 4460625631\nsystem_usec 639754954\ncore_sched.force_idle_usec 0\nnr_periods 24296\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": false,
+      "first_ignition_s": null,
+      "peak_house_C": 37.407143,
+      "total_HRR_kw": {
+        "10": 300.60874813221676,
+        "20": 302.3305060868504,
+        "30": 0.0055064772335642245,
+        "40": 0.0026337453855131174,
+        "60": 0.0017669634677896413,
+        "90": 0.0014982468
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 23.988,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 31.934,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 31.442,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 24.977,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.74044,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.2579,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.39,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 0.0053833,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.0,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.62157,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 0.99799,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.23658,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.00099983,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.030508,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 0.086787,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.049878,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0020798,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.61665,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 0.9874,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.21007,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0030797,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": true
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.0,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AE_1700",
+      "layout": "AE",
+      "total_source_kw": 1700,
+      "duration_s": 20,
+      "split": "train",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AE",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "99d4240cbceb21251ba9a972557ba7cb60fed2840d3f265bf858d462d3160a2f",
+      "returncode": 0,
+      "wall_seconds": 329.05392282,
+      "cpu_user_s": 604.470316,
+      "cpu_system_s": 86.855141,
+      "max_rss_kib": 249332,
+      "voluntary_context_switches": 29088438,
+      "involuntary_context_switches": 1173,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 252.04024,
+        "house_flux_max": 12.039431,
+        "house_burn_max": 0.011697708,
+        "west_temp": 252.04024,
+        "west_flux": 12.039431,
+        "east_temp": 20.541063,
+        "east_flux": 0.013887453,
+        "south_temp": 64.20913,
+        "south_flux": 2.1085419,
+        "north_temp": 20.267311,
+        "north_flux": 0.0057629162,
+        "roof_temp": 21.0235,
+        "roof_flux": 0.0050124211,
+        "mass foliage": 3.7899774,
+        "mass small roundwood": 0.64747765,
+        "mass medium roundwood": 0.6719712,
+        "mass large roundwood": 1.2502135,
+        "crown_A_foliage": 1.758774,
+        "crown_A_small roundwood": 0.29864597,
+        "crown_A_medium roundwood": 0.31196925,
+        "crown_A_large roundwood": 0.61672197,
+        "crown_E_foliage": 2.0312033,
+        "crown_E_small roundwood": 0.34883168,
+        "crown_E_medium roundwood": 0.36000195,
+        "crown_E_large roundwood": 0.63349153
+      },
+      "cgroup_cpu_before": "usage_usec 5100835844\nuser_usec 4461073176\nsystem_usec 639762668\ncore_sched.force_idle_usec 0\nnr_periods 24302\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 5792254516\nuser_usec 5065619810\nsystem_usec 726634705\ncore_sched.force_idle_usec 0\nnr_periods 27584\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": true,
+      "first_ignition_s": 12.513751,
+      "peak_house_C": 447.23377,
+      "total_HRR_kw": {
+        "10": 6437.87837416975,
+        "20": 2194.5151263343073,
+        "30": 303.84083108185325,
+        "40": 300.89663438938425,
+        "60": 302.31395535017333,
+        "90": 295.4284
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 47.781,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 284.26,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 210.62,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 198.98,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 5.3094,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 41.225,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 8.4597,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 10.274,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.0098511,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 4.4596,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 30.707,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 5.3115,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 6.3758,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.22972,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.3828,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            3.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": -0.028176,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.036531,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 4.3931,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 29.039,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 5.1053,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 5.9636,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            0.0
+          ],
+          "preignition": false
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.0098511,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AE_3200",
+      "layout": "AE",
+      "total_source_kw": 3200,
+      "duration_s": 20,
+      "split": "train",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AE",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "84cab44b885ede1b5298df459784ff39141fd256d257e1abe285218a6b6b93a8",
+      "returncode": 0,
+      "wall_seconds": 415.71467215999974,
+      "cpu_user_s": 764.852018,
+      "cpu_system_s": 109.458669,
+      "max_rss_kib": 249888,
+      "voluntary_context_switches": 36639569,
+      "involuntary_context_switches": 1595,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 378.15193,
+        "house_flux_max": 23.27517,
+        "house_burn_max": 0.011697708,
+        "west_temp": 378.15193,
+        "west_flux": 23.27517,
+        "east_temp": 22.579605,
+        "east_flux": 0.1464714,
+        "south_temp": 174.56061,
+        "south_flux": 6.5343582,
+        "north_temp": 20.526255,
+        "north_flux": 0.015307547,
+        "roof_temp": 29.313078,
+        "roof_flux": 1.0691207,
+        "mass foliage": 2.9143241,
+        "mass small roundwood": 0.49780594,
+        "mass medium roundwood": 0.55381747,
+        "mass large roundwood": 1.1067445,
+        "crown_A_foliage": 1.1997036,
+        "crown_A_small roundwood": 0.1994093,
+        "crown_A_medium roundwood": 0.24191757,
+        "crown_A_large roundwood": 0.5252543,
+        "crown_E_foliage": 1.7146205,
+        "crown_E_small roundwood": 0.29839664,
+        "crown_E_medium roundwood": 0.3118999,
+        "crown_E_large roundwood": 0.58149024
+      },
+      "cgroup_cpu_before": "usage_usec 5792632460\nuser_usec 5065988682\nsystem_usec 726643778\ncore_sched.force_idle_usec 0\nnr_periods 27591\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 6667060953\nuser_usec 5830935731\nsystem_usec 836125221\ncore_sched.force_idle_usec 0\nnr_periods 31740\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": true,
+      "first_ignition_s": 7.5124818,
+      "peak_house_C": 541.25045,
+      "total_HRR_kw": {
+        "10": 6060.74419107781,
+        "20": 4303.314299165483,
+        "30": 1007.0595276184995,
+        "40": 911.9663534191657,
+        "60": 904.5979399295737,
+        "90": 969.25776
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 135.91,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 425.22,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 310.17,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 319.25,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 27.767,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 43.689,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 17.149,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 18.538,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.010603,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 21.746,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 26.977,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 9.6653,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 10.091,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.75151,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            2.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 0.93668,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            2.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": -0.10996,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.073726,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 21.445,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 23.79,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 9.4128,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 9.6263,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            0.0
+          ],
+          "preignition": false
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.010603,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AG_300",
+      "layout": "AG",
+      "total_source_kw": 300,
+      "duration_s": 20,
+      "split": "train",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AG",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "5546740a7b17c05708f49814fc7e8ec914c41815650e56ea22cb263205cd5ebb",
+      "returncode": 0,
+      "wall_seconds": 278.0120014680001,
+      "cpu_user_s": 509.157491,
+      "cpu_system_s": 75.851403,
+      "max_rss_kib": 249336,
+      "voluntary_context_switches": 25494388,
+      "involuntary_context_switches": 994,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 24.060274,
+        "house_flux_max": 0.00076290213,
+        "house_burn_max": 0.0,
+        "west_temp": 24.060274,
+        "west_flux": 0.00076290213,
+        "east_temp": 20.160427,
+        "east_flux": 0.00014992212,
+        "south_temp": 21.038737,
+        "south_flux": 0.00037588564,
+        "north_temp": 20.193458,
+        "north_flux": 0.00022419376,
+        "roof_temp": 20.057448,
+        "roof_flux": -5.8317671e-05,
+        "mass foliage": 5.6631585,
+        "mass small roundwood": 0.97233181,
+        "mass medium roundwood": 0.88644096,
+        "mass large roundwood": 1.3293623,
+        "crown_A_foliage": 2.8268114,
+        "crown_A_small roundwood": 0.48552862,
+        "crown_A_medium roundwood": 0.44294617,
+        "crown_A_large roundwood": 0.66456172,
+        "crown_G_foliage": 2.836347,
+        "crown_G_small roundwood": 0.4868032,
+        "crown_G_medium roundwood": 0.4434948,
+        "crown_G_large roundwood": 0.66480062
+      },
+      "cgroup_cpu_before": "usage_usec 6667410389\nuser_usec 5831274802\nsystem_usec 836135586\ncore_sched.force_idle_usec 0\nnr_periods 31745\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 7252498726\nuser_usec 6340503377\nsystem_usec 911995349\ncore_sched.force_idle_usec 0\nnr_periods 34517\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": false,
+      "first_ignition_s": null,
+      "peak_house_C": 44.08038,
+      "total_HRR_kw": {
+        "10": 300.0093484682035,
+        "20": 299.59944403755156,
+        "30": 0.005110302734239214,
+        "40": 0.0025414934579427594,
+        "60": 0.0017396537592164788,
+        "90": 0.0014749877
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 25.648,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 38.311,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 36.784,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 27.469,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 1.0712,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.8415,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.61942,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 0.0075715,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.0,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.89627,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.4136,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.37841,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0013001,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.031297,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 0.08507,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.076019,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0026639,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.89936,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.4836,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.41713,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0039639,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            4.0
+          ],
+          "preignition": true
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.0,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AG_1700",
+      "layout": "AG",
+      "total_source_kw": 1700,
+      "duration_s": 20,
+      "split": "train",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AG",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "b8417f4a6992b00fe35910d01b1b9f320bb26b8cbad9ea1f8b00008a2f8d66d6",
+      "returncode": 0,
+      "wall_seconds": 338.458760343,
+      "cpu_user_s": 622.153182,
+      "cpu_system_s": 89.76755,
+      "max_rss_kib": 249552,
+      "voluntary_context_switches": 31124396,
+      "involuntary_context_switches": 1295,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 290.39641,
+        "house_flux_max": 15.440242,
+        "house_burn_max": 0.011697708,
+        "west_temp": 290.39641,
+        "west_flux": 15.440242,
+        "east_temp": 21.574816,
+        "east_flux": 0.062847604,
+        "south_temp": 82.536979,
+        "south_flux": 2.2793103,
+        "north_temp": 20.939265,
+        "north_flux": 0.033629299,
+        "roof_temp": 37.433449,
+        "roof_flux": 0.48875884,
+        "mass foliage": 3.8827691,
+        "mass small roundwood": 0.66814286,
+        "mass medium roundwood": 0.69103476,
+        "mass large roundwood": 1.2455164,
+        "crown_A_foliage": 1.7453555,
+        "crown_A_small roundwood": 0.29482989,
+        "crown_A_medium roundwood": 0.31216606,
+        "crown_A_large roundwood": 0.61207502,
+        "crown_G_foliage": 2.1374135,
+        "crown_G_small roundwood": 0.37331297,
+        "crown_G_medium roundwood": 0.3788687,
+        "crown_G_large roundwood": 0.63344139
+      },
+      "cgroup_cpu_before": "usage_usec 7252973902\nuser_usec 6340968874\nsystem_usec 912005027\ncore_sched.force_idle_usec 0\nnr_periods 34524\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 7964989383\nuser_usec 6963205314\nsystem_usec 1001784069\ncore_sched.force_idle_usec 0\nnr_periods 37900\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": true,
+      "first_ignition_s": 11.524613,
+      "peak_house_C": 545.48173,
+      "total_HRR_kw": {
+        "10": 2958.423064837256,
+        "20": 3177.8627541582896,
+        "30": 569.2079733544925,
+        "40": 551.6397055490561,
+        "60": 553.4980444476929,
+        "90": 549.73754
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 53.749,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 365.23,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 264.21,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 234.5,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 6.6145,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 50.509,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 16.971,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 11.017,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.0099402,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 5.6042,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 34.573,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 9.7581,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 6.3845,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.24108,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.9446,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.25469,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.00049237,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 5.5945,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 33.397,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 8.3327,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 6.0779,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.5
+          ],
+          "preignition": false
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.0099402,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AG_3200",
+      "layout": "AG",
+      "total_source_kw": 3200,
+      "duration_s": 20,
+      "split": "train",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AG",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "43e92fcb3cbae364fa94cd3b873398bb5d76e958591e10394e7fc220741ea41b",
+      "returncode": 0,
+      "wall_seconds": 374.6953432490004,
+      "cpu_user_s": 685.836878,
+      "cpu_system_s": 99.296934,
+      "max_rss_kib": 249156,
+      "voluntary_context_switches": 33978992,
+      "involuntary_context_switches": 1423,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 412.41718,
+        "house_flux_max": 27.163033,
+        "house_burn_max": 0.011697708,
+        "west_temp": 412.41718,
+        "west_flux": 27.163033,
+        "east_temp": 22.534121,
+        "east_flux": 0.086278064,
+        "south_temp": 304.60028,
+        "south_flux": 14.059054,
+        "north_temp": 23.748447,
+        "north_flux": 0.14235192,
+        "roof_temp": 126.82274,
+        "roof_flux": 5.6617022,
+        "mass foliage": 2.4995818,
+        "mass small roundwood": 0.38754799,
+        "mass medium roundwood": 0.53592844,
+        "mass large roundwood": 1.0552662,
+        "crown_A_foliage": 1.0618714,
+        "crown_A_small roundwood": 0.15920645,
+        "crown_A_medium roundwood": 0.22495593,
+        "crown_A_large roundwood": 0.47328363,
+        "crown_G_foliage": 1.4377104,
+        "crown_G_small roundwood": 0.22834154,
+        "crown_G_medium roundwood": 0.31097251,
+        "crown_G_large roundwood": 0.58198258
+      },
+      "cgroup_cpu_before": "usage_usec 7965348992\nuser_usec 6963554483\nsystem_usec 1001794509\ncore_sched.force_idle_usec 0\nnr_periods 37906\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 8750587498\nuser_usec 7649473323\nsystem_usec 1101114175\ncore_sched.force_idle_usec 0\nnr_periods 41644\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": true,
+      "first_ignition_s": 7.5146773,
+      "peak_house_C": 678.94529,
+      "total_HRR_kw": {
+        "10": 8333.02795710185,
+        "20": 5146.74013151278,
+        "30": 1891.2145026099067,
+        "40": 1822.1122227336123,
+        "60": 1799.9226815853337,
+        "90": 1801.3511
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 152.18,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 578.99,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 397.17,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 359.76,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 33.859,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 85.232,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 21.099,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            2.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 21.354,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.010567,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 26.615,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 47.982,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 9.8342,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            2.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 10.414,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.77803,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 2.5482,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.16423,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.17779,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 26.509,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 47.483,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 9.3732,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            2.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 9.5384,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            1.5
+          ],
+          "preignition": false
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.010567,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AF_300",
+      "layout": "AF",
+      "total_source_kw": 300,
+      "duration_s": 20,
+      "split": "validation",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AF",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "f2a7e646b5640217716a8a984be8a82a64acac860425254563ad691d523d52c6",
+      "returncode": 0,
+      "wall_seconds": 277.61285877699993,
+      "cpu_user_s": 508.664967,
+      "cpu_system_s": 75.303257,
+      "max_rss_kib": 249332,
+      "voluntary_context_switches": 25691279,
+      "involuntary_context_switches": 1271,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 23.305411,
+        "house_flux_max": 0.00062076368,
+        "house_burn_max": 0.0,
+        "west_temp": 23.305411,
+        "west_flux": 0.00062076368,
+        "east_temp": 20.110107,
+        "east_flux": 0.00011958072,
+        "south_temp": 20.112834,
+        "south_flux": 0.00011305617,
+        "north_temp": 20.448235,
+        "north_flux": 0.0001978694,
+        "roof_temp": 20.029973,
+        "roof_flux": -5.1567408e-05,
+        "mass foliage": 5.6632039,
+        "mass small roundwood": 0.97265123,
+        "mass medium roundwood": 0.88658634,
+        "mass large roundwood": 1.329463,
+        "crown_A_foliage": 2.8319256,
+        "crown_A_small roundwood": 0.48618527,
+        "crown_A_medium roundwood": 0.4432313,
+        "crown_A_large roundwood": 0.66470182,
+        "crown_F_foliage": 2.8312783,
+        "crown_F_small roundwood": 0.48646596,
+        "crown_F_medium roundwood": 0.44335505,
+        "crown_F_large roundwood": 0.66476123
+      },
+      "cgroup_cpu_before": "usage_usec 8750924202\nuser_usec 7649801669\nsystem_usec 1101122533\ncore_sched.force_idle_usec 0\nnr_periods 41650\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 9334971136\nuser_usec 8158534510\nsystem_usec 1176436625\ncore_sched.force_idle_usec 0\nnr_periods 44418\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": false,
+      "first_ignition_s": null,
+      "peak_house_C": 39.62574,
+      "total_HRR_kw": {
+        "10": 300.9986211384726,
+        "20": 299.83796319984987,
+        "30": 0.004569282932739544,
+        "40": 0.002435869747531287,
+        "60": 0.0017419983572826343,
+        "90": 0.0014835343
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 25.062,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 34.901,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 34.055,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 26.149,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.94227,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.5505,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.42833,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 0.0051601,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.0,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.78598,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.2143,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.24992,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0011455,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.027041,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            0.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 0.089164,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.032087,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0022138,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.78605,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.2123,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.2106,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0033592,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": true
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.0,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AF_1700",
+      "layout": "AF",
+      "total_source_kw": 1700,
+      "duration_s": 20,
+      "split": "validation",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AF",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "61b7357683d09d805700a97e954a79a415adc005e5120c40e7ea86127949e6fc",
+      "returncode": 0,
+      "wall_seconds": 322.05741264300013,
+      "cpu_user_s": 589.648277,
+      "cpu_system_s": 86.115553,
+      "max_rss_kib": 249208,
+      "voluntary_context_switches": 29117790,
+      "involuntary_context_switches": 1169,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 292.72965,
+        "house_flux_max": 16.575066,
+        "house_burn_max": 0.011697708,
+        "west_temp": 292.72965,
+        "west_flux": 16.575066,
+        "east_temp": 21.244582,
+        "east_flux": 0.040024744,
+        "south_temp": 20.973854,
+        "south_flux": 0.040707911,
+        "north_temp": 47.025041,
+        "north_flux": 1.4778661,
+        "roof_temp": 24.296926,
+        "roof_flux": 0.073652087,
+        "mass foliage": 3.7867213,
+        "mass small roundwood": 0.6255698,
+        "mass medium roundwood": 0.68065222,
+        "mass large roundwood": 1.2448424,
+        "crown_A_foliage": 1.7404142,
+        "crown_A_small roundwood": 0.27265131,
+        "crown_A_medium roundwood": 0.29670197,
+        "crown_A_large roundwood": 0.60988578,
+        "crown_F_foliage": 2.0463071,
+        "crown_F_small roundwood": 0.35291849,
+        "crown_F_medium roundwood": 0.38395025,
+        "crown_F_large roundwood": 0.63495659
+      },
+      "cgroup_cpu_before": "usage_usec 9335441114\nuser_usec 8158997067\nsystem_usec 1176444047\ncore_sched.force_idle_usec 0\nnr_periods 44425\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 10011295084\nuser_usec 8748722226\nsystem_usec 1262572857\ncore_sched.force_idle_usec 0\nnr_periods 47640\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": true,
+      "first_ignition_s": 12.530505,
+      "peak_house_C": 543.74274,
+      "total_HRR_kw": {
+        "10": 5335.489458080742,
+        "20": 2264.8077541754806,
+        "30": 450.31295147678804,
+        "40": 458.1468987561018,
+        "60": 471.6134329773426,
+        "90": 468.52469
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 54.135,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 327.8,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 282.34,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 261.37,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 6.5503,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 49.981,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 12.169,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 12.699,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.0098673,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 5.5108,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 35.704,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 6.5062,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 6.8161,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.26827,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 0.70879,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            2.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": -0.02564,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.067052,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 5.4409,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 35.608,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 6.2573,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 6.3744,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.0098673,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AF_3200",
+      "layout": "AF",
+      "total_source_kw": 3200,
+      "duration_s": 20,
+      "split": "validation",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AF",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "4a20726bb6071510add7326786cfb7883260c346ad25ab1329406a3d1087104a",
+      "returncode": 0,
+      "wall_seconds": 381.88595440299923,
+      "cpu_user_s": 700.448993,
+      "cpu_system_s": 101.53385,
+      "max_rss_kib": 249852,
+      "voluntary_context_switches": 34814151,
+      "involuntary_context_switches": 1386,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 384.58942,
+        "house_flux_max": 22.618184,
+        "house_burn_max": 0.011697708,
+        "west_temp": 384.58942,
+        "west_flux": 22.618184,
+        "east_temp": 22.655751,
+        "east_flux": 0.07822752,
+        "south_temp": 21.496238,
+        "south_flux": 0.052555434,
+        "north_temp": 172.50814,
+        "north_flux": 6.8603952,
+        "roof_temp": 101.69493,
+        "roof_flux": 3.2435835,
+        "mass foliage": 2.6495981,
+        "mass small roundwood": 0.45545112,
+        "mass medium roundwood": 0.53561282,
+        "mass large roundwood": 1.0726928,
+        "crown_A_foliage": 1.196483,
+        "crown_A_small roundwood": 0.20377976,
+        "crown_A_medium roundwood": 0.22694996,
+        "crown_A_large roundwood": 0.49475396,
+        "crown_F_foliage": 1.4531151,
+        "crown_F_small roundwood": 0.25167136,
+        "crown_F_medium roundwood": 0.30866286,
+        "crown_F_large roundwood": 0.57793883
+      },
+      "cgroup_cpu_before": "usage_usec 10011659241\nuser_usec 8749078015\nsystem_usec 1262581225\ncore_sched.force_idle_usec 0\nnr_periods 47645\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 10813750226\nuser_usec 9449614631\nsystem_usec 1364135595\ncore_sched.force_idle_usec 0\nnr_periods 51455\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": true,
+      "first_ignition_s": 7.0443059,
+      "peak_house_C": 622.39602,
+      "total_HRR_kw": {
+        "10": 6195.460953932014,
+        "20": 4669.53547109848,
+        "30": 1301.3026962546082,
+        "40": 1277.5839940474661,
+        "60": 1253.7235940889564,
+        "90": 1248.4938
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 164.6,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 503.19,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 379.26,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 345.13,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 36.041,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 61.613,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 18.908,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 18.791,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.010624,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 28.025,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 37.596,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 8.543,
+          "patch_xyz": [
+            14.0,
+            13.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 9.1138,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 1.1631,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.3809,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.29423,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.16609,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 27.738,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 33.25,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 8.1398,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            3.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 8.2244,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            1.0
+          ],
+          "preignition": false
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.010624,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AC_300",
+      "layout": "AC",
+      "total_source_kw": 300,
+      "duration_s": 20,
+      "split": "validation",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AC",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "19a6aa8845048a2876dfe0ce1b0cd09ccae28f3b2fea8f4d337556c2b265ae0a",
+      "returncode": 0,
+      "wall_seconds": 274.6191374680002,
+      "cpu_user_s": 501.251552,
+      "cpu_system_s": 75.606351,
+      "max_rss_kib": 249676,
+      "voluntary_context_switches": 25561714,
+      "involuntary_context_switches": 1111,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 23.237399,
+        "house_flux_max": 0.00055291052,
+        "house_burn_max": 0.0,
+        "west_temp": 23.237399,
+        "west_flux": 0.00055291052,
+        "east_temp": 20.096352,
+        "east_flux": 0.00013720741,
+        "south_temp": 20.088716,
+        "south_flux": 8.3351278e-05,
+        "north_temp": 20.289464,
+        "north_flux": 0.00018202647,
+        "roof_temp": 20.040367,
+        "roof_flux": -5.2999681e-05,
+        "mass foliage": 5.6629959,
+        "mass small roundwood": 0.9724163,
+        "mass medium roundwood": 0.88652281,
+        "mass large roundwood": 1.3294364,
+        "crown_A_foliage": 2.831358,
+        "crown_A_small roundwood": 0.4862069,
+        "crown_A_medium roundwood": 0.44321857,
+        "crown_A_large roundwood": 0.66472307,
+        "crown_C_foliage": 2.8316379,
+        "crown_C_small roundwood": 0.4862094,
+        "crown_C_medium roundwood": 0.44330424,
+        "crown_C_large roundwood": 0.66471331
+      },
+      "cgroup_cpu_before": "usage_usec 10814090704\nuser_usec 9449946558\nsystem_usec 1364144145\ncore_sched.force_idle_usec 0\nnr_periods 51460\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 11391025528\nuser_usec 9951271738\nsystem_usec 1439753790\ncore_sched.force_idle_usec 0\nnr_periods 54198\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": false,
+      "first_ignition_s": null,
+      "peak_house_C": 39.209572,
+      "total_HRR_kw": {
+        "10": 298.5092159229944,
+        "20": 302.39728472648653,
+        "30": 0.00474049785369762,
+        "40": 0.00244635910956815,
+        "60": 0.0017360570257132675,
+        "90": 0.0014831121
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 24.731,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 34.127,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 33.156,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 25.758,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.87199,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.436,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.4283,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 0.0043465,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.0,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.72544,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.1191,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.25272,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0011453,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.032615,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            0.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 0.0808,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.037202,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0022461,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.72636,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.1189,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.22047,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0033913,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": true
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.0,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AC_3200",
+      "layout": "AC",
+      "total_source_kw": 3200,
+      "duration_s": 20,
+      "split": "validation",
+      "horizon_s": 90,
+      "seed": 1234,
+      "vegetation": "AC",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "4c7faf83d9e507c2ecdccee567f85a1fd126de71a0f016cd8d18951f33fecae7",
+      "returncode": 0,
+      "wall_seconds": 404.9137915000001,
+      "cpu_user_s": 742.570022,
+      "cpu_system_s": 109.154223,
+      "max_rss_kib": 249852,
+      "voluntary_context_switches": 36809732,
+      "involuntary_context_switches": 1668,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 383.03493,
+        "house_flux_max": 23.43046,
+        "house_burn_max": 0.011697708,
+        "west_temp": 383.03493,
+        "west_flux": 23.43046,
+        "east_temp": 23.218062,
+        "east_flux": 0.19849487,
+        "south_temp": 21.063617,
+        "south_flux": 0.043052974,
+        "north_temp": 173.08392,
+        "north_flux": 7.402755,
+        "roof_temp": 66.130659,
+        "roof_flux": 2.1325892,
+        "mass foliage": 3.0065891,
+        "mass small roundwood": 0.49975211,
+        "mass medium roundwood": 0.57245281,
+        "mass large roundwood": 1.0991875,
+        "crown_A_foliage": 1.2994522,
+        "crown_A_small roundwood": 0.20351403,
+        "crown_A_medium roundwood": 0.24018374,
+        "crown_A_large roundwood": 0.51991815,
+        "crown_C_foliage": 1.7071369,
+        "crown_C_small roundwood": 0.29623808,
+        "crown_C_medium roundwood": 0.33226908,
+        "crown_C_large roundwood": 0.5792694
+      },
+      "cgroup_cpu_before": "usage_usec 11391493430\nuser_usec 9951733298\nsystem_usec 1439760131\ncore_sched.force_idle_usec 0\nnr_periods 54205\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 12243331148\nuser_usec 10694394315\nsystem_usec 1548936832\ncore_sched.force_idle_usec 0\nnr_periods 58246\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": true,
+      "first_ignition_s": 7.5296368,
+      "peak_house_C": 615.36334,
+      "total_HRR_kw": {
+        "10": 6994.298371901226,
+        "20": 4736.87803155115,
+        "30": 1398.4598003864671,
+        "40": 1357.4149510944383,
+        "60": 1345.3799631851496,
+        "90": 1357.3301
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 156.96,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 489.31,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 370.76,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 335.14,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 35.205,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 52.987,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            0.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 22.077,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 18.186,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.010606,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 26.876,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 32.721,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 10.753,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 8.8607,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.8948,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 1.0211,
+          "patch_xyz": [
+            14.0,
+            13.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.028147,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            3.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.11294,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 26.617,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 28.752,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 9.8707,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            1.5
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 8.0812,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            1.0
+          ],
+          "preignition": false
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.010606,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AD_1700_s1234",
+      "layout": "AD",
+      "total_source_kw": 1700,
+      "duration_s": 20,
+      "seed": 1234,
+      "split": "validation",
+      "horizon_s": 90,
+      "vegetation": "AD",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "2b07bd375fbc20912aa9a72e4a0d0e6aef4352e41ad3fcdf529d448f74b41e95",
+      "returncode": 0,
+      "wall_seconds": 332.4636369250002,
+      "cpu_user_s": 608.14389,
+      "cpu_system_s": 88.757852,
+      "max_rss_kib": 249228,
+      "voluntary_context_switches": 29956136,
+      "involuntary_context_switches": 1164,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 95.562962,
+        "house_flux_max": 2.3545132,
+        "house_burn_max": 0.011697708,
+        "west_temp": 95.562962,
+        "west_flux": 2.3545132,
+        "east_temp": 20.255496,
+        "east_flux": 0.0048484412,
+        "south_temp": 20.616785,
+        "south_flux": 0.009079798,
+        "north_temp": 20.812578,
+        "north_flux": 0.017030575,
+        "roof_temp": 22.451502,
+        "roof_flux": 0.001031753,
+        "mass foliage": 2.8044418,
+        "mass small roundwood": 0.46069103,
+        "mass medium roundwood": 0.56897902,
+        "mass large roundwood": 1.199645,
+        "crown_A_foliage": 0.90896888,
+        "crown_A_small roundwood": 0.13460042,
+        "crown_A_medium roundwood": 0.21338415,
+        "crown_A_large roundwood": 0.57310678,
+        "crown_D_foliage": 1.895473,
+        "crown_D_small roundwood": 0.32609061,
+        "crown_D_medium roundwood": 0.35559488,
+        "crown_D_large roundwood": 0.62653824
+      },
+      "cgroup_cpu_before": "usage_usec 12243672311\nuser_usec 10694729219\nsystem_usec 1548943092\ncore_sched.force_idle_usec 0\nnr_periods 58251\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 12940668097\nuser_usec 11302948586\nsystem_usec 1637719511\ncore_sched.force_idle_usec 0\nnr_periods 61567\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": true,
+      "first_ignition_s": 20.016463,
+      "peak_house_C": 353.18345,
+      "total_HRR_kw": {
+        "10": 5277.969258075565,
+        "20": 2757.3096496966455,
+        "30": 68.72832858412164,
+        "40": 62.922493917615526,
+        "60": 48.65679192827911,
+        "90": 50.977633
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 33.196,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 94.266,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 229.7,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 106.43,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 2.1693,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 14.478,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 16.154,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 1.8636,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.0022329,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 1.8581,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 12.09,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 10.909,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 0.86188,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.10361,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 0.2794,
+          "patch_xyz": [
+            14.0,
+            11.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.0098415,
+          "patch_xyz": [
+            14.0,
+            13.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.066521,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 1.8142,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 11.629,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 9.4075,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 0.4836,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": false
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.0022329,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AD_1700_s4321",
+      "layout": "AD",
+      "total_source_kw": 1700,
+      "duration_s": 20,
+      "seed": 4321,
+      "split": "validation",
+      "horizon_s": 90,
+      "vegetation": "AD",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "e34e9e716c6c3b70416f4fe279ad777a8fda6d52e1f5bbdbad7b49832de51859",
+      "returncode": 0,
+      "wall_seconds": 338.8462820670002,
+      "cpu_user_s": 617.561398,
+      "cpu_system_s": 92.489456,
+      "max_rss_kib": 249732,
+      "voluntary_context_switches": 30716358,
+      "involuntary_context_switches": 1233,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 172.99514,
+        "house_flux_max": 10.197272,
+        "house_burn_max": 0.011697708,
+        "west_temp": 172.99514,
+        "west_flux": 10.197272,
+        "east_temp": 20.413566,
+        "east_flux": 0.018500682,
+        "south_temp": 22.895735,
+        "south_flux": 0.17306435,
+        "north_temp": 21.608777,
+        "north_flux": 0.063353698,
+        "roof_temp": 23.33171,
+        "roof_flux": 0.021493683,
+        "mass foliage": 2.9370643,
+        "mass small roundwood": 0.50428161,
+        "mass medium roundwood": 0.5906325,
+        "mass large roundwood": 1.2095535,
+        "crown_A_foliage": 0.77060132,
+        "crown_A_small roundwood": 0.13200129,
+        "crown_A_medium roundwood": 0.21185466,
+        "crown_A_large roundwood": 0.57380009,
+        "crown_D_foliage": 2.1664629,
+        "crown_D_small roundwood": 0.37228032,
+        "crown_D_medium roundwood": 0.37877784,
+        "crown_D_large roundwood": 0.63575341
+      },
+      "cgroup_cpu_before": "usage_usec 12941079476\nuser_usec 11303355169\nsystem_usec 1637724307\ncore_sched.force_idle_usec 0\nnr_periods 61573\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 13651226653\nuser_usec 11920997147\nsystem_usec 1730229505\ncore_sched.force_idle_usec 0\nnr_periods 64954\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": true,
+      "first_ignition_s": 19.028281,
+      "peak_house_C": 444.98933,
+      "total_HRR_kw": {
+        "10": 1733.0459810283362,
+        "20": 3130.1022205318004,
+        "30": 210.79535511214027,
+        "40": 214.74528224323268,
+        "60": 197.21741111776328,
+        "90": 201.25686
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 35.559,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 123.94,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 239.24,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 146.78,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 2.7097,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 18.569,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 16.772,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 4.8811,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.0045532,
+          "patch_xyz": [
+            14.0,
+            11.5,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 2.2972,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 15.261,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 11.478,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 2.8795,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.13867,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 0.56006,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.015002,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.0063219,
+          "patch_xyz": [
+            14.0,
+            14.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 2.2414,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 14.59,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 10.076,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            0.0
+          ],
+          "preignition": false
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 2.5165,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": false
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.0045532,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    },
+    {
+      "case": "dev20_AD_1700_s5678",
+      "layout": "AD",
+      "total_source_kw": 1700,
+      "duration_s": 20,
+      "seed": 5678,
+      "split": "validation",
+      "horizon_s": 90,
+      "vegetation": "AD",
+      "cells": 55296,
+      "profile": false,
+      "variant": "passive",
+      "deck_sha256": "970a8e9c5b6434dfcf4a4eb454452390b5f5118cc2db86d677ed59ab2c8eb843",
+      "returncode": 0,
+      "wall_seconds": 318.0349495729997,
+      "cpu_user_s": 579.998233,
+      "cpu_system_s": 87.045349,
+      "max_rss_kib": 249224,
+      "voluntary_context_switches": 29065628,
+      "involuntary_context_switches": 1209,
+      "stopped_by_budget": false,
+      "physical_seconds_reached": 90.0,
+      "full_horizon": true,
+      "final_devices": {
+        "Time": 90.0,
+        "house_max": 39.952197,
+        "house_flux_max": 0.0057148744,
+        "house_burn_max": 0.0,
+        "west_temp": 39.952197,
+        "west_flux": 0.0057148744,
+        "east_temp": 20.171087,
+        "east_flux": 0.00083723192,
+        "south_temp": 20.411591,
+        "south_flux": 0.0012023338,
+        "north_temp": 20.543912,
+        "north_flux": 0.0011091974,
+        "roof_temp": 21.303773,
+        "roof_flux": 0.00017199112,
+        "mass foliage": 3.9804094,
+        "mass small roundwood": 0.68718342,
+        "mass medium roundwood": 0.73866359,
+        "mass large roundwood": 1.2584325,
+        "crown_A_foliage": 1.9529743,
+        "crown_A_small roundwood": 0.33744939,
+        "crown_A_medium roundwood": 0.39284007,
+        "crown_A_large roundwood": 0.63305589,
+        "crown_D_foliage": 2.0274351,
+        "crown_D_small roundwood": 0.34973403,
+        "crown_D_medium roundwood": 0.34582352,
+        "crown_D_large roundwood": 0.62537661
+      },
+      "cgroup_cpu_before": "usage_usec 13651604827\nuser_usec 11921363780\nsystem_usec 1730241046\ncore_sched.force_idle_usec 0\nnr_periods 64959\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "cgroup_cpu_after": "usage_usec 14318736842\nuser_usec 12501432790\nsystem_usec 1817304052\ncore_sched.force_idle_usec 0\nnr_periods 68132\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+      "binary_sha256": "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692",
+      "ignited": false,
+      "first_ignition_s": null,
+      "peak_house_C": 199.83512,
+      "total_HRR_kw": {
+        "10": 3598.95585437788,
+        "20": 3419.271909064313,
+        "30": 31.79105024501321,
+        "40": 0.5988705964286585,
+        "60": 0.05126969721375513,
+        "90": 0.005143742
+      },
+      "boundary": [
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 34.194,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 54.566,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 118.97,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "WALL TEMPERATURE",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 58.234,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 2.3195,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 3.8293,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 12.142,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "GAUGE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": 0.079297,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "BURNING RATE",
+          "window_s": [
+            0,
+            90
+          ],
+          "maximum_patch_mean": 0.0,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            0.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 1.9819,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 3.0547,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 9.8637,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "RADIATIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.03311,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 0.10808,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 0.39344,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 0.20565,
+          "patch_xyz": [
+            14.0,
+            13.0,
+            4.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "CONVECTIVE HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.042306,
+          "patch_xyz": [
+            14.0,
+            10.5,
+            3.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            0,
+            10
+          ],
+          "maximum_patch_mean": 1.9395,
+          "patch_xyz": [
+            14.0,
+            12.0,
+            1.0
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            10,
+            20
+          ],
+          "maximum_patch_mean": 2.9302,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            20,
+            30
+          ],
+          "maximum_patch_mean": 9.1984,
+          "patch_xyz": [
+            14.0,
+            12.5,
+            1.5
+          ],
+          "preignition": true
+        },
+        {
+          "quantity": "TOTAL HEAT FLUX",
+          "window_s": [
+            32,
+            60
+          ],
+          "maximum_patch_mean": -0.078157,
+          "patch_xyz": [
+            14.0,
+            10.0,
+            4.0
+          ],
+          "preignition": true
+        }
+      ],
+      "all_house_boundary_burning_rate": {
+        "maximum_patch_mean": 0.0,
+        "samples": 513,
+        "window_s": [
+          0,
+          90
+        ],
+        "device_label_agrees": true
+      }
+    }
+  ],
+  "surface": "West house wall x=14,y=10..14,z=0..4,mesh 1,IOR=-1",
+  "caveats": [
+    "Boundary fluxes are maxima of patch time averages, not instantaneous or whole-wall integrated values.",
+    "Flux maxima may occur on different patches: do not add independently maximized radiative and convective fluxes.",
+    "Post-ignition flux and HRR include house-fire feedback.",
+    "Ignition labels are independently checked against all six house surface orientations in raw boundary output."
+  ]
+}

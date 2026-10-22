@@ -1,0 +1,58 @@
+stages:
+  decks:
+    cmd: ../../.venv/bin/python build.py
+    deps:
+    - build.py
+    - base-input.fds
+    - data/fixed-particles.json
+    outs:
+    - decks
+    - cases.json:
+        cache: false
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - preflight.py
+    - cases.json
+    - decks
+    outs:
+    - results/preflight.json:
+        cache: false
+  collect:
+    cmd: ../../.venv/bin/python cloud.py collect
+    deps:
+    - cloud.py
+    - groups.json
+    - cases.json
+    outs:
+    - data/cloud
+  analyze:
+    cmd:
+    - ../../.venv/bin/python analyze.py
+    - ../../.venv/bin/python final_wall_maps.py
+    - ../../.venv/bin/python peak_wall_maps.py
+    - ../../.venv/bin/python layout_maps.py
+    deps:
+    - analyze.py
+    - cases.json
+    - data/cloud
+    - final_wall_maps.py
+    - peak_wall_maps.py
+    - layout_maps.py
+    outs:
+    - data/analysis
+    - results/comparison.json:
+        cache: false
+    - results/final-wall-maps.json:
+        cache: false
+    - results/peak-wall-maps.json:
+        cache: false
+  fields:
+    cmd: ../../.venv/bin/python field_metrics.py
+    deps:
+    - field_metrics.py
+    - cases.json
+    - data/cloud
+    outs:
+    - results/field-comparison.json:
+        cache: false

@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  restore:
+    cmd: ../../../../.venv/bin/python restore.py
+    deps:
+    - path: data/cloud-evidence.tar.gz
+      hash: md5
+      md5: 62a8f26f96bfd7c70bf7b2650bd93339
+      size: 17175733
+    - path: restore.py
+      hash: md5
+      md5: 77c2a4fd24876025f597f10aa7239893
+      size: 166
+    outs:
+    - path: data/cloud
+      hash: md5
+      md5: d2caf2201e89683c593d4ffaf93e097e.dir
+      size: 22303269
+      nfiles: 621
+  diagnose:
+    cmd: ../../../../.venv/bin/python ../../analyze_batch.py diagnostic01
+    deps:
+    - path: ../../../../FDS/install/bin/fds2ascii
+      hash: md5
+      md5: d337095553b56be9f2ef696416a099a7
+      size: 1118368
+      isexec: true
+    - path: ../../analyze_batch.py
+      hash: md5
+      md5: a4adf5b198478c525fd089a8b220e498
+      size: 4470
+    - path: batch.json
+      hash: md5
+      md5: a8c21c5b598733224b7896bea44f2523
+      size: 764
+    - path: data/cloud
+      hash: md5
+      md5: d2caf2201e89683c593d4ffaf93e097e.dir
+      size: 22303269
+      nfiles: 621
+    outs:
+    - path: data/boundary
+      hash: md5
+      md5: 18c52a55307315dbfee6939d7ba5b45e.dir
+      size: 728263
+      nfiles: 270
+    - path: results/diagnosis.json
+      hash: md5
+      md5: cb31a4a8de824762ebf8dfd002772c30
+      size: 44121

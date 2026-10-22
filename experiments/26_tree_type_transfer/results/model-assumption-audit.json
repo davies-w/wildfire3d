@@ -1,0 +1,1231 @@
+{
+  "structural": [
+    {
+      "case": "t26_single_A_0",
+      "oracle_heat_temperature_bound_violations": 142,
+      "temperature_steps": 5670,
+      "largest_impossible_step_C": 22.81407024333177,
+      "below_model_floor_count": 4376,
+      "mass_increase_steps": 0
+    },
+    {
+      "case": "t26_single_A_1",
+      "oracle_heat_temperature_bound_violations": 178,
+      "temperature_steps": 5670,
+      "largest_impossible_step_C": 607.1559775868991,
+      "below_model_floor_count": 127,
+      "mass_increase_steps": 0
+    },
+    {
+      "case": "t26_single_A_2",
+      "oracle_heat_temperature_bound_violations": 241,
+      "temperature_steps": 5670,
+      "largest_impossible_step_C": 588.7961381647528,
+      "below_model_floor_count": 81,
+      "mass_increase_steps": 0
+    },
+    {
+      "case": "t26_single_A_3",
+      "oracle_heat_temperature_bound_violations": 165,
+      "temperature_steps": 5670,
+      "largest_impossible_step_C": 395.6547914422117,
+      "below_model_floor_count": 163,
+      "mass_increase_steps": 0
+    },
+    {
+      "case": "t26_single_B_0",
+      "oracle_heat_temperature_bound_violations": 169,
+      "temperature_steps": 5670,
+      "largest_impossible_step_C": 13.649771987466679,
+      "below_model_floor_count": 4079,
+      "mass_increase_steps": 0
+    },
+    {
+      "case": "t26_single_B_1",
+      "oracle_heat_temperature_bound_violations": 155,
+      "temperature_steps": 5670,
+      "largest_impossible_step_C": 21.992186150519714,
+      "below_model_floor_count": 3172,
+      "mass_increase_steps": 0
+    },
+    {
+      "case": "t26_single_B_2",
+      "oracle_heat_temperature_bound_violations": 216,
+      "temperature_steps": 5670,
+      "largest_impossible_step_C": 596.9947338205657,
+      "below_model_floor_count": 3,
+      "mass_increase_steps": 0
+    },
+    {
+      "case": "t26_single_B_3",
+      "oracle_heat_temperature_bound_violations": 159,
+      "temperature_steps": 5670,
+      "largest_impossible_step_C": 17.89385459479557,
+      "below_model_floor_count": 3171,
+      "mass_increase_steps": 0
+    },
+    {
+      "case": "t26_single_C_0",
+      "oracle_heat_temperature_bound_violations": 156,
+      "temperature_steps": 5760,
+      "largest_impossible_step_C": 21.760184997294207,
+      "below_model_floor_count": 4590,
+      "mass_increase_steps": 0
+    },
+    {
+      "case": "t26_single_C_1",
+      "oracle_heat_temperature_bound_violations": 230,
+      "temperature_steps": 5760,
+      "largest_impossible_step_C": 77.57867832333432,
+      "below_model_floor_count": 253,
+      "mass_increase_steps": 0
+    },
+    {
+      "case": "t26_single_C_2",
+      "oracle_heat_temperature_bound_violations": 260,
+      "temperature_steps": 5760,
+      "largest_impossible_step_C": 62.73218721548801,
+      "below_model_floor_count": 139,
+      "mass_increase_steps": 0
+    },
+    {
+      "case": "t26_single_C_3",
+      "oracle_heat_temperature_bound_violations": 209,
+      "temperature_steps": 5760,
+      "largest_impossible_step_C": 28.223640033576746,
+      "below_model_floor_count": 3512,
+      "mass_increase_steps": 0
+    }
+  ],
+  "reduced_order": [
+    {
+      "case": "t26_single_A_1",
+      "best": {
+        "rank": 4,
+        "delay": 2,
+        "ridge": 0.1,
+        "temperature_MAE_C": 57.2022446093397,
+        "mass_fraction_MAE": 0.023162260458670696,
+        "dynamic_coefficients": 40,
+        "basis_coefficients": 504,
+        "fraction_outside_0_1": 631
+      },
+      "candidates": [
+        {
+          "rank": 2,
+          "delay": 1,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 87.63142521673521,
+          "mass_fraction_MAE": 0.05589795325078631,
+          "dynamic_coefficients": 8,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 980
+        },
+        {
+          "rank": 2,
+          "delay": 1,
+          "ridge": 0.001,
+          "temperature_MAE_C": 87.63616112310785,
+          "mass_fraction_MAE": 0.05592013371934373,
+          "dynamic_coefficients": 8,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 980
+        },
+        {
+          "rank": 2,
+          "delay": 1,
+          "ridge": 0.1,
+          "temperature_MAE_C": 88.06548186866674,
+          "mass_fraction_MAE": 0.05802859555496665,
+          "dynamic_coefficients": 8,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 985
+        },
+        {
+          "rank": 2,
+          "delay": 2,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 79.41553659124942,
+          "mass_fraction_MAE": 0.036852345033975664,
+          "dynamic_coefficients": 12,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 888
+        },
+        {
+          "rank": 2,
+          "delay": 2,
+          "ridge": 0.001,
+          "temperature_MAE_C": 79.48093675275749,
+          "mass_fraction_MAE": 0.037097831936524016,
+          "dynamic_coefficients": 12,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 894
+        },
+        {
+          "rank": 2,
+          "delay": 2,
+          "ridge": 0.1,
+          "temperature_MAE_C": 82.45405672873923,
+          "mass_fraction_MAE": 0.04475132183493758,
+          "dynamic_coefficients": 12,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 915
+        },
+        {
+          "rank": 2,
+          "delay": 4,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 80.08816931795496,
+          "mass_fraction_MAE": 0.037386014239588594,
+          "dynamic_coefficients": 20,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 940
+        },
+        {
+          "rank": 2,
+          "delay": 4,
+          "ridge": 0.001,
+          "temperature_MAE_C": 80.1895988534803,
+          "mass_fraction_MAE": 0.038068510187744556,
+          "dynamic_coefficients": 20,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 959
+        },
+        {
+          "rank": 2,
+          "delay": 4,
+          "ridge": 0.1,
+          "temperature_MAE_C": 81.68743235475378,
+          "mass_fraction_MAE": 0.0448638753457815,
+          "dynamic_coefficients": 20,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 1073
+        },
+        {
+          "rank": 4,
+          "delay": 1,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 63.847373576456675,
+          "mass_fraction_MAE": 0.02808577630598093,
+          "dynamic_coefficients": 24,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 1012
+        },
+        {
+          "rank": 4,
+          "delay": 1,
+          "ridge": 0.001,
+          "temperature_MAE_C": 63.867568825063486,
+          "mass_fraction_MAE": 0.028107955528822663,
+          "dynamic_coefficients": 24,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 1015
+        },
+        {
+          "rank": 4,
+          "delay": 1,
+          "ridge": 0.1,
+          "temperature_MAE_C": 65.52914915878121,
+          "mass_fraction_MAE": 0.02979362899521301,
+          "dynamic_coefficients": 24,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 1039
+        },
+        {
+          "rank": 4,
+          "delay": 2,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 63.14821289382458,
+          "mass_fraction_MAE": 0.02792528612115388,
+          "dynamic_coefficients": 40,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 990
+        },
+        {
+          "rank": 4,
+          "delay": 2,
+          "ridge": 0.001,
+          "temperature_MAE_C": 62.60741404490415,
+          "mass_fraction_MAE": 0.027549685499194634,
+          "dynamic_coefficients": 40,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 982
+        },
+        {
+          "rank": 4,
+          "delay": 2,
+          "ridge": 0.1,
+          "temperature_MAE_C": 57.2022446093397,
+          "mass_fraction_MAE": 0.023162260458670696,
+          "dynamic_coefficients": 40,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 631
+        },
+        {
+          "rank": 4,
+          "delay": 4,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 58.26684013001623,
+          "mass_fraction_MAE": 0.025825347896161185,
+          "dynamic_coefficients": 72,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 836
+        },
+        {
+          "rank": 4,
+          "delay": 4,
+          "ridge": 0.001,
+          "temperature_MAE_C": 58.091558912103686,
+          "mass_fraction_MAE": 0.025704256028240648,
+          "dynamic_coefficients": 72,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 828
+        },
+        {
+          "rank": 4,
+          "delay": 4,
+          "ridge": 0.1,
+          "temperature_MAE_C": 55.63680306076633,
+          "mass_fraction_MAE": 0.02492883202019873,
+          "dynamic_coefficients": 72,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 766
+        },
+        {
+          "rank": 8,
+          "delay": 1,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 73.7701683642867,
+          "mass_fraction_MAE": 0.03547060578329723,
+          "dynamic_coefficients": 80,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 1081
+        },
+        {
+          "rank": 8,
+          "delay": 1,
+          "ridge": 0.001,
+          "temperature_MAE_C": 73.65665142382787,
+          "mass_fraction_MAE": 0.035418642352217276,
+          "dynamic_coefficients": 80,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 1083
+        },
+        {
+          "rank": 8,
+          "delay": 1,
+          "ridge": 0.1,
+          "temperature_MAE_C": 66.59828056693635,
+          "mass_fraction_MAE": 0.03224284386856354,
+          "dynamic_coefficients": 80,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 1067
+        },
+        {
+          "rank": 8,
+          "delay": 2,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 2479.0841540840706,
+          "mass_fraction_MAE": 3.291002080975331,
+          "dynamic_coefficients": 144,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 3814
+        },
+        {
+          "rank": 8,
+          "delay": 2,
+          "ridge": 0.001,
+          "temperature_MAE_C": 541.847451046795,
+          "mass_fraction_MAE": 0.8405378349853352,
+          "dynamic_coefficients": 144,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 3450
+        },
+        {
+          "rank": 8,
+          "delay": 2,
+          "ridge": 0.1,
+          "temperature_MAE_C": 63.68343907285644,
+          "mass_fraction_MAE": 0.031329174888365244,
+          "dynamic_coefficients": 144,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 771
+        },
+        {
+          "rank": 8,
+          "delay": 4,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 4814219.502313244,
+          "mass_fraction_MAE": 4670.650778247088,
+          "dynamic_coefficients": 272,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 4552
+        },
+        {
+          "rank": 8,
+          "delay": 4,
+          "ridge": 0.001,
+          "temperature_MAE_C": 79.07982863832858,
+          "mass_fraction_MAE": 0.1735755280019,
+          "dynamic_coefficients": 272,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 2915
+        },
+        {
+          "rank": 8,
+          "delay": 4,
+          "ridge": 0.1,
+          "temperature_MAE_C": 54.11161240857938,
+          "mass_fraction_MAE": 0.028068780627352678,
+          "dynamic_coefficients": 272,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 438
+        },
+        {
+          "rank": 12,
+          "delay": 1,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 74.6008621432393,
+          "mass_fraction_MAE": 0.03938959004079765,
+          "dynamic_coefficients": 168,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 1304
+        },
+        {
+          "rank": 12,
+          "delay": 1,
+          "ridge": 0.001,
+          "temperature_MAE_C": 74.37007481987445,
+          "mass_fraction_MAE": 0.03926388361009568,
+          "dynamic_coefficients": 168,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 1305
+        },
+        {
+          "rank": 12,
+          "delay": 1,
+          "ridge": 0.1,
+          "temperature_MAE_C": 63.42035081120369,
+          "mass_fraction_MAE": 0.032220166923607824,
+          "dynamic_coefficients": 168,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 790
+        },
+        {
+          "rank": 12,
+          "delay": 2,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 9550.11119742476,
+          "mass_fraction_MAE": 12.556524267320961,
+          "dynamic_coefficients": 312,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 4030
+        },
+        {
+          "rank": 12,
+          "delay": 2,
+          "ridge": 0.001,
+          "temperature_MAE_C": 3069.6184616881756,
+          "mass_fraction_MAE": 4.49105027289442,
+          "dynamic_coefficients": 312,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 3879
+        },
+        {
+          "rank": 12,
+          "delay": 2,
+          "ridge": 0.1,
+          "temperature_MAE_C": 56.81869246881986,
+          "mass_fraction_MAE": 0.02929507527364717,
+          "dynamic_coefficients": 312,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 368
+        },
+        {
+          "rank": 12,
+          "delay": 4,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 362801.0138719665,
+          "mass_fraction_MAE": 205.60365915014566,
+          "dynamic_coefficients": 600,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 4054
+        },
+        {
+          "rank": 12,
+          "delay": 4,
+          "ridge": 0.001,
+          "temperature_MAE_C": 4953.876242215999,
+          "mass_fraction_MAE": 6.765949167434469,
+          "dynamic_coefficients": 600,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 3897
+        },
+        {
+          "rank": 12,
+          "delay": 4,
+          "ridge": 0.1,
+          "temperature_MAE_C": 53.00579044084301,
+          "mass_fraction_MAE": 0.02796895618411134,
+          "dynamic_coefficients": 600,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 367
+        }
+      ],
+      "selection": "Selected by same-trajectory autonomous reconstruction error, not validation; basis fit to entire same trajectory; initial snapshot supplied, no subsequent FDS feedback. No generalization claim."
+    },
+    {
+      "case": "t26_single_B_1",
+      "best": {
+        "rank": 12,
+        "delay": 4,
+        "ridge": 1e-06,
+        "temperature_MAE_C": 0.01558387187504811,
+        "mass_fraction_MAE": 5.341112394274785e-06,
+        "dynamic_coefficients": 600,
+        "basis_coefficients": 1512,
+        "fraction_outside_0_1": 12
+      },
+      "candidates": [
+        {
+          "rank": 2,
+          "delay": 1,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 0.9662652507958255,
+          "mass_fraction_MAE": 0.0005564121943138664,
+          "dynamic_coefficients": 8,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 499
+        },
+        {
+          "rank": 2,
+          "delay": 1,
+          "ridge": 0.001,
+          "temperature_MAE_C": 0.9410531776484105,
+          "mass_fraction_MAE": 0.00046848694067133,
+          "dynamic_coefficients": 8,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 483
+        },
+        {
+          "rank": 2,
+          "delay": 1,
+          "ridge": 0.1,
+          "temperature_MAE_C": 1.7616340909405706,
+          "mass_fraction_MAE": 0.0005107730938408661,
+          "dynamic_coefficients": 8,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 444
+        },
+        {
+          "rank": 2,
+          "delay": 2,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 0.8589144768019495,
+          "mass_fraction_MAE": 0.000538690128302265,
+          "dynamic_coefficients": 12,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 497
+        },
+        {
+          "rank": 2,
+          "delay": 2,
+          "ridge": 0.001,
+          "temperature_MAE_C": 0.911055761001496,
+          "mass_fraction_MAE": 0.0005297921597220073,
+          "dynamic_coefficients": 12,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 489
+        },
+        {
+          "rank": 2,
+          "delay": 2,
+          "ridge": 0.1,
+          "temperature_MAE_C": 1.2628656056973686,
+          "mass_fraction_MAE": 0.0005019078344211702,
+          "dynamic_coefficients": 12,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 440
+        },
+        {
+          "rank": 2,
+          "delay": 4,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 0.8675655996632852,
+          "mass_fraction_MAE": 0.00042461939402290176,
+          "dynamic_coefficients": 20,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 504
+        },
+        {
+          "rank": 2,
+          "delay": 4,
+          "ridge": 0.001,
+          "temperature_MAE_C": 0.8838789114989068,
+          "mass_fraction_MAE": 0.0005565600416581533,
+          "dynamic_coefficients": 20,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 494
+        },
+        {
+          "rank": 2,
+          "delay": 4,
+          "ridge": 0.1,
+          "temperature_MAE_C": 0.949693825037556,
+          "mass_fraction_MAE": 0.0004944345543936255,
+          "dynamic_coefficients": 20,
+          "basis_coefficients": 252,
+          "fraction_outside_0_1": 481
+        },
+        {
+          "rank": 4,
+          "delay": 1,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 0.20694549041397434,
+          "mass_fraction_MAE": 0.00017098435886960463,
+          "dynamic_coefficients": 24,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 266
+        },
+        {
+          "rank": 4,
+          "delay": 1,
+          "ridge": 0.001,
+          "temperature_MAE_C": 0.3669374651786007,
+          "mass_fraction_MAE": 0.0002495317671690267,
+          "dynamic_coefficients": 24,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 56
+        },
+        {
+          "rank": 4,
+          "delay": 1,
+          "ridge": 0.1,
+          "temperature_MAE_C": 1.7237946287478096,
+          "mass_fraction_MAE": 0.0004943744944013223,
+          "dynamic_coefficients": 24,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 290
+        },
+        {
+          "rank": 4,
+          "delay": 2,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 0.14286478116821832,
+          "mass_fraction_MAE": 0.00014171181763324733,
+          "dynamic_coefficients": 40,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 219
+        },
+        {
+          "rank": 4,
+          "delay": 2,
+          "ridge": 0.001,
+          "temperature_MAE_C": 0.2206123342814075,
+          "mass_fraction_MAE": 0.00018377434387790954,
+          "dynamic_coefficients": 40,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 153
+        },
+        {
+          "rank": 4,
+          "delay": 2,
+          "ridge": 0.1,
+          "temperature_MAE_C": 1.176963574065166,
+          "mass_fraction_MAE": 0.00047092916446533965,
+          "dynamic_coefficients": 40,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 246
+        },
+        {
+          "rank": 4,
+          "delay": 4,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 0.11678921357813239,
+          "mass_fraction_MAE": 9.423521410473929e-05,
+          "dynamic_coefficients": 72,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 260
+        },
+        {
+          "rank": 4,
+          "delay": 4,
+          "ridge": 0.001,
+          "temperature_MAE_C": 0.14888411842062851,
+          "mass_fraction_MAE": 0.00015588484055222167,
+          "dynamic_coefficients": 72,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 168
+        },
+        {
+          "rank": 4,
+          "delay": 4,
+          "ridge": 0.1,
+          "temperature_MAE_C": 0.7126741987765892,
+          "mass_fraction_MAE": 0.00041468602177488733,
+          "dynamic_coefficients": 72,
+          "basis_coefficients": 504,
+          "fraction_outside_0_1": 197
+        },
+        {
+          "rank": 8,
+          "delay": 1,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 0.041881403809316854,
+          "mass_fraction_MAE": 2.865608095560838e-05,
+          "dynamic_coefficients": 80,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 65
+        },
+        {
+          "rank": 8,
+          "delay": 1,
+          "ridge": 0.001,
+          "temperature_MAE_C": 0.3610193381745353,
+          "mass_fraction_MAE": 0.00025434256738197773,
+          "dynamic_coefficients": 80,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 9
+        },
+        {
+          "rank": 8,
+          "delay": 1,
+          "ridge": 0.1,
+          "temperature_MAE_C": 1.7213276958087862,
+          "mass_fraction_MAE": 0.0004922114012996923,
+          "dynamic_coefficients": 80,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 247
+        },
+        {
+          "rank": 8,
+          "delay": 2,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 0.03575978414378907,
+          "mass_fraction_MAE": 1.98386885376089e-05,
+          "dynamic_coefficients": 144,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 59
+        },
+        {
+          "rank": 8,
+          "delay": 2,
+          "ridge": 0.001,
+          "temperature_MAE_C": 0.20640549284396295,
+          "mass_fraction_MAE": 0.00017501047536761324,
+          "dynamic_coefficients": 144,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 9
+        },
+        {
+          "rank": 8,
+          "delay": 2,
+          "ridge": 0.1,
+          "temperature_MAE_C": 1.1723268219540568,
+          "mass_fraction_MAE": 0.0004686783874911929,
+          "dynamic_coefficients": 144,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 238
+        },
+        {
+          "rank": 8,
+          "delay": 4,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 0.027432667673831988,
+          "mass_fraction_MAE": 1.4410706547823584e-05,
+          "dynamic_coefficients": 272,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 59
+        },
+        {
+          "rank": 8,
+          "delay": 4,
+          "ridge": 0.001,
+          "temperature_MAE_C": 0.11494303748064899,
+          "mass_fraction_MAE": 0.000120390275891407,
+          "dynamic_coefficients": 272,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 9
+        },
+        {
+          "rank": 8,
+          "delay": 4,
+          "ridge": 0.1,
+          "temperature_MAE_C": 0.7090729814891196,
+          "mass_fraction_MAE": 0.0004128315819743449,
+          "dynamic_coefficients": 272,
+          "basis_coefficients": 1008,
+          "fraction_outside_0_1": 164
+        },
+        {
+          "rank": 12,
+          "delay": 1,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 0.03181467479973019,
+          "mass_fraction_MAE": 1.8429876654469923e-05,
+          "dynamic_coefficients": 168,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 20
+        },
+        {
+          "rank": 12,
+          "delay": 1,
+          "ridge": 0.001,
+          "temperature_MAE_C": 0.3610364255793107,
+          "mass_fraction_MAE": 0.0002545347657989173,
+          "dynamic_coefficients": 168,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 9
+        },
+        {
+          "rank": 12,
+          "delay": 1,
+          "ridge": 0.1,
+          "temperature_MAE_C": 1.721250646469902,
+          "mass_fraction_MAE": 0.0004921133327657738,
+          "dynamic_coefficients": 168,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 246
+        },
+        {
+          "rank": 12,
+          "delay": 2,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 0.02229363444259262,
+          "mass_fraction_MAE": 9.02105811757837e-06,
+          "dynamic_coefficients": 312,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 13
+        },
+        {
+          "rank": 12,
+          "delay": 2,
+          "ridge": 0.001,
+          "temperature_MAE_C": 0.20630728412957355,
+          "mass_fraction_MAE": 0.0001749075313007592,
+          "dynamic_coefficients": 312,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 9
+        },
+        {
+          "rank": 12,
+          "delay": 2,
+          "ridge": 0.1,
+          "temperature_MAE_C": 1.1722761842521097,
+          "mass_fraction_MAE": 0.0004686313920254518,
+          "dynamic_coefficients": 312,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 238
+        },
+        {
+          "rank": 12,
+          "delay": 4,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 0.01558387187504811,
+          "mass_fraction_MAE": 5.341112394274785e-06,
+          "dynamic_coefficients": 600,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 12
+        },
+        {
+          "rank": 12,
+          "delay": 4,
+          "ridge": 0.001,
+          "temperature_MAE_C": 0.11426084727501049,
+          "mass_fraction_MAE": 0.00012043930520720291,
+          "dynamic_coefficients": 600,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 9
+        },
+        {
+          "rank": 12,
+          "delay": 4,
+          "ridge": 0.1,
+          "temperature_MAE_C": 0.709099031556394,
+          "mass_fraction_MAE": 0.000412754810840993,
+          "dynamic_coefficients": 600,
+          "basis_coefficients": 1512,
+          "fraction_outside_0_1": 156
+        }
+      ],
+      "selection": "Selected by same-trajectory autonomous reconstruction error, not validation; basis fit to entire same trajectory; initial snapshot supplied, no subsequent FDS feedback. No generalization claim."
+    },
+    {
+      "case": "t26_single_C_1",
+      "best": {
+        "rank": 12,
+        "delay": 4,
+        "ridge": 1e-06,
+        "temperature_MAE_C": 26.1704478324183,
+        "mass_fraction_MAE": 0.011197332054077486,
+        "dynamic_coefficients": 600,
+        "basis_coefficients": 1536,
+        "fraction_outside_0_1": 528
+      },
+      "candidates": [
+        {
+          "rank": 2,
+          "delay": 1,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 133.5696901338074,
+          "mass_fraction_MAE": 0.08857812329561128,
+          "dynamic_coefficients": 8,
+          "basis_coefficients": 256,
+          "fraction_outside_0_1": 1336
+        },
+        {
+          "rank": 2,
+          "delay": 1,
+          "ridge": 0.001,
+          "temperature_MAE_C": 133.57644678504775,
+          "mass_fraction_MAE": 0.08858085125550086,
+          "dynamic_coefficients": 8,
+          "basis_coefficients": 256,
+          "fraction_outside_0_1": 1336
+        },
+        {
+          "rank": 2,
+          "delay": 1,
+          "ridge": 0.1,
+          "temperature_MAE_C": 134.2261274925165,
+          "mass_fraction_MAE": 0.08882701796862784,
+          "dynamic_coefficients": 8,
+          "basis_coefficients": 256,
+          "fraction_outside_0_1": 1333
+        },
+        {
+          "rank": 2,
+          "delay": 2,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 122.71116408460333,
+          "mass_fraction_MAE": 0.05540747918479759,
+          "dynamic_coefficients": 12,
+          "basis_coefficients": 256,
+          "fraction_outside_0_1": 1066
+        },
+        {
+          "rank": 2,
+          "delay": 2,
+          "ridge": 0.001,
+          "temperature_MAE_C": 121.40363314935944,
+          "mass_fraction_MAE": 0.05377124257992429,
+          "dynamic_coefficients": 12,
+          "basis_coefficients": 256,
+          "fraction_outside_0_1": 1047
+        },
+        {
+          "rank": 2,
+          "delay": 2,
+          "ridge": 0.1,
+          "temperature_MAE_C": 109.39283968253235,
+          "mass_fraction_MAE": 0.039554280976247386,
+          "dynamic_coefficients": 12,
+          "basis_coefficients": 256,
+          "fraction_outside_0_1": 487
+        },
+        {
+          "rank": 2,
+          "delay": 4,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 111.09685991581809,
+          "mass_fraction_MAE": 0.039850430857323434,
+          "dynamic_coefficients": 20,
+          "basis_coefficients": 256,
+          "fraction_outside_0_1": 1014
+        },
+        {
+          "rank": 2,
+          "delay": 4,
+          "ridge": 0.001,
+          "temperature_MAE_C": 109.98483299792301,
+          "mass_fraction_MAE": 0.03852786852000049,
+          "dynamic_coefficients": 20,
+          "basis_coefficients": 256,
+          "fraction_outside_0_1": 807
+        },
+        {
+          "rank": 2,
+          "delay": 4,
+          "ridge": 0.1,
+          "temperature_MAE_C": 109.12152075679263,
+          "mass_fraction_MAE": 0.04070612296668922,
+          "dynamic_coefficients": 20,
+          "basis_coefficients": 256,
+          "fraction_outside_0_1": 517
+        },
+        {
+          "rank": 4,
+          "delay": 1,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 94.99384223475707,
+          "mass_fraction_MAE": 0.039421764900448034,
+          "dynamic_coefficients": 24,
+          "basis_coefficients": 512,
+          "fraction_outside_0_1": 1509
+        },
+        {
+          "rank": 4,
+          "delay": 1,
+          "ridge": 0.001,
+          "temperature_MAE_C": 94.99518426588205,
+          "mass_fraction_MAE": 0.03942364706039603,
+          "dynamic_coefficients": 24,
+          "basis_coefficients": 512,
+          "fraction_outside_0_1": 1509
+        },
+        {
+          "rank": 4,
+          "delay": 1,
+          "ridge": 0.1,
+          "temperature_MAE_C": 95.06718153898748,
+          "mass_fraction_MAE": 0.03963563927505578,
+          "dynamic_coefficients": 24,
+          "basis_coefficients": 512,
+          "fraction_outside_0_1": 1478
+        },
+        {
+          "rank": 4,
+          "delay": 2,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 56.90574880471771,
+          "mass_fraction_MAE": 0.019591201849332017,
+          "dynamic_coefficients": 40,
+          "basis_coefficients": 512,
+          "fraction_outside_0_1": 698
+        },
+        {
+          "rank": 4,
+          "delay": 2,
+          "ridge": 0.001,
+          "temperature_MAE_C": 56.98338538553125,
+          "mass_fraction_MAE": 0.019458402242017066,
+          "dynamic_coefficients": 40,
+          "basis_coefficients": 512,
+          "fraction_outside_0_1": 686
+        },
+        {
+          "rank": 4,
+          "delay": 2,
+          "ridge": 0.1,
+          "temperature_MAE_C": 63.923018493892954,
+          "mass_fraction_MAE": 0.020707654801757323,
+          "dynamic_coefficients": 40,
+          "basis_coefficients": 512,
+          "fraction_outside_0_1": 668
+        },
+        {
+          "rank": 4,
+          "delay": 4,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 57.011523980166636,
+          "mass_fraction_MAE": 0.02081508748708341,
+          "dynamic_coefficients": 72,
+          "basis_coefficients": 512,
+          "fraction_outside_0_1": 865
+        },
+        {
+          "rank": 4,
+          "delay": 4,
+          "ridge": 0.001,
+          "temperature_MAE_C": 56.79418821922962,
+          "mass_fraction_MAE": 0.02060624512136125,
+          "dynamic_coefficients": 72,
+          "basis_coefficients": 512,
+          "fraction_outside_0_1": 833
+        },
+        {
+          "rank": 4,
+          "delay": 4,
+          "ridge": 0.1,
+          "temperature_MAE_C": 58.8193548906105,
+          "mass_fraction_MAE": 0.021772556769945873,
+          "dynamic_coefficients": 72,
+          "basis_coefficients": 512,
+          "fraction_outside_0_1": 747
+        },
+        {
+          "rank": 8,
+          "delay": 1,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 52.601247558687575,
+          "mass_fraction_MAE": 0.023221032834353443,
+          "dynamic_coefficients": 80,
+          "basis_coefficients": 1024,
+          "fraction_outside_0_1": 1252
+        },
+        {
+          "rank": 8,
+          "delay": 1,
+          "ridge": 0.001,
+          "temperature_MAE_C": 52.584879583264595,
+          "mass_fraction_MAE": 0.0231979345753077,
+          "dynamic_coefficients": 80,
+          "basis_coefficients": 1024,
+          "fraction_outside_0_1": 1250
+        },
+        {
+          "rank": 8,
+          "delay": 1,
+          "ridge": 0.1,
+          "temperature_MAE_C": 52.83410560580954,
+          "mass_fraction_MAE": 0.022031228232515288,
+          "dynamic_coefficients": 80,
+          "basis_coefficients": 1024,
+          "fraction_outside_0_1": 1140
+        },
+        {
+          "rank": 8,
+          "delay": 2,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 42.74061645746094,
+          "mass_fraction_MAE": 0.017089904185781865,
+          "dynamic_coefficients": 144,
+          "basis_coefficients": 1024,
+          "fraction_outside_0_1": 617
+        },
+        {
+          "rank": 8,
+          "delay": 2,
+          "ridge": 0.001,
+          "temperature_MAE_C": 42.737179758643585,
+          "mass_fraction_MAE": 0.01709869833637487,
+          "dynamic_coefficients": 144,
+          "basis_coefficients": 1024,
+          "fraction_outside_0_1": 617
+        },
+        {
+          "rank": 8,
+          "delay": 2,
+          "ridge": 0.1,
+          "temperature_MAE_C": 46.38019093302009,
+          "mass_fraction_MAE": 0.018845551851989918,
+          "dynamic_coefficients": 144,
+          "basis_coefficients": 1024,
+          "fraction_outside_0_1": 815
+        },
+        {
+          "rank": 8,
+          "delay": 4,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 39.8784449311358,
+          "mass_fraction_MAE": 0.016312279119648485,
+          "dynamic_coefficients": 272,
+          "basis_coefficients": 1024,
+          "fraction_outside_0_1": 641
+        },
+        {
+          "rank": 8,
+          "delay": 4,
+          "ridge": 0.001,
+          "temperature_MAE_C": 40.739473798696615,
+          "mass_fraction_MAE": 0.016700402583575174,
+          "dynamic_coefficients": 272,
+          "basis_coefficients": 1024,
+          "fraction_outside_0_1": 633
+        },
+        {
+          "rank": 8,
+          "delay": 4,
+          "ridge": 0.1,
+          "temperature_MAE_C": 46.98729211077383,
+          "mass_fraction_MAE": 0.019360876781506057,
+          "dynamic_coefficients": 272,
+          "basis_coefficients": 1024,
+          "fraction_outside_0_1": 577
+        },
+        {
+          "rank": 12,
+          "delay": 1,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 42.73616842125937,
+          "mass_fraction_MAE": 0.017062141697352207,
+          "dynamic_coefficients": 168,
+          "basis_coefficients": 1536,
+          "fraction_outside_0_1": 513
+        },
+        {
+          "rank": 12,
+          "delay": 1,
+          "ridge": 0.001,
+          "temperature_MAE_C": 42.730322312577435,
+          "mass_fraction_MAE": 0.017054573598743662,
+          "dynamic_coefficients": 168,
+          "basis_coefficients": 1536,
+          "fraction_outside_0_1": 513
+        },
+        {
+          "rank": 12,
+          "delay": 1,
+          "ridge": 0.1,
+          "temperature_MAE_C": 44.696756528483704,
+          "mass_fraction_MAE": 0.017609449268341154,
+          "dynamic_coefficients": 168,
+          "basis_coefficients": 1536,
+          "fraction_outside_0_1": 485
+        },
+        {
+          "rank": 12,
+          "delay": 2,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 41.186181460343356,
+          "mass_fraction_MAE": 0.01725273148257117,
+          "dynamic_coefficients": 312,
+          "basis_coefficients": 1536,
+          "fraction_outside_0_1": 642
+        },
+        {
+          "rank": 12,
+          "delay": 2,
+          "ridge": 0.001,
+          "temperature_MAE_C": 41.34271413455152,
+          "mass_fraction_MAE": 0.017324003177863097,
+          "dynamic_coefficients": 312,
+          "basis_coefficients": 1536,
+          "fraction_outside_0_1": 636
+        },
+        {
+          "rank": 12,
+          "delay": 2,
+          "ridge": 0.1,
+          "temperature_MAE_C": 46.020835841255796,
+          "mass_fraction_MAE": 0.018611062104231735,
+          "dynamic_coefficients": 312,
+          "basis_coefficients": 1536,
+          "fraction_outside_0_1": 506
+        },
+        {
+          "rank": 12,
+          "delay": 4,
+          "ridge": 1e-06,
+          "temperature_MAE_C": 26.1704478324183,
+          "mass_fraction_MAE": 0.011197332054077486,
+          "dynamic_coefficients": 600,
+          "basis_coefficients": 1536,
+          "fraction_outside_0_1": 528
+        },
+        {
+          "rank": 12,
+          "delay": 4,
+          "ridge": 0.001,
+          "temperature_MAE_C": 35.12534546399462,
+          "mass_fraction_MAE": 0.01485739087950487,
+          "dynamic_coefficients": 600,
+          "basis_coefficients": 1536,
+          "fraction_outside_0_1": 598
+        },
+        {
+          "rank": 12,
+          "delay": 4,
+          "ridge": 0.1,
+          "temperature_MAE_C": 47.09205821172148,
+          "mass_fraction_MAE": 0.01925416473636808,
+          "dynamic_coefficients": 600,
+          "basis_coefficients": 1536,
+          "fraction_outside_0_1": 560
+        }
+      ],
+      "selection": "Selected by same-trajectory autonomous reconstruction error, not validation; basis fit to entire same trajectory; initial snapshot supplied, no subsequent FDS feedback. No generalization claim."
+    }
+  ],
+  "original_hashes_verified": 37
+}

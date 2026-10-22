@@ -1,0 +1,19 @@
+{
+  "run_matched_grid_diagnostics": true,
+  "evidence": [
+    "results/overnight-stronger-result.json",
+    "results/overnight-stronger-particles.json"
+  ],
+  "conclusion": "Large crown can sustain burning on0.5m grid with50% stronger artificial initiation. Fine grid is not necessary merely to ignite this setup; neither grid is validated.",
+  "reason": "Matched original-source coarse/fine diagnostics add missing y18 gas measurements; fine source-only control resolves whether imposed source directly ignites facade. Needed because43/48 facade comparisons still fail despite both crowns burning.",
+  "allowance_usd": 1,
+  "not_training": true,
+  "limitations": "Generic10m/16m crown patches, synthetic8x6m facade, no trunks/groundcover/embers.40s diagnostics are not180s convergence tests. One random seed and grid-dependent particle positions remain.",
+  "replacement_attempt": {
+    "cases_suffix": "_v2",
+    "additional_reserved_allowance_usd": 1,
+    "reason": "Correct checkpoint preflight output interval; no main scientific simulation ran in failed first attempts.",
+    "keep_failed_reservations": true,
+    "require_all_three_actual_worker_preflight_passes": true
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "total_authorized_usd": 1.5,
+  "scope": "User go for corrected eight-case Stage A rerun; six concurrent VMs due24 C3 CPU quota",
+  "reserved_usd": 1.5,
+  "reserved_vm_hours": 12,
+  "compute_rate_ceiling": 0.08,
+  "ancillary_allowance": 0.54,
+  "automatic_retries": false,
+  "reserved_unix": 1792261560.51101,
+  "cases": [
+    {
+      "case": "ac21_single",
+      "kind": "single",
+      "direction": 270,
+      "hours": 0.75,
+      "cells": 110592,
+      "domain_m": [
+        0,
+        24,
+        0,
+        24,
+        0,
+        24
+      ],
+      "dx_m": 0.5,
+      "horizon_s": 180,
+      "variant": "passive",
+      "profile": false,
+      "source_kw": 120.63715789784807,
+      "source_energy_kj": null,
+      "nominal_dry_fuel_kg": 77.08630613868395,
+      "canopy_patches": [
+        [
+          11,
+          12,
+          3,
+          7,
+          2
+        ]
+      ],
+      "deck_sha256": "9ed3c0e6a10bbc8ce75b3da93630d43c9da9e20d2b1248b58ae54aaf95259fb3",
+      "source_note": "Prescribed1500 C contact heating PLUS nominal chemical HRR; removed21 s. Both double-case crowns deliberately initialized."
+    },
+    {
+      "case": "ac21_double",
+      "kind": "double",
+      "direction": 270,
+      "hours": 0.75,
+      "cells": 110592,
+      "domain_m": [
+        0,
+        24,
+        0,
+        24,
+        0,
+        24
+      ],
+      "dx_m": 0.5,
+      "horizon_s": 180,
+      "variant": "passive",
+      "profile": false,
+      "source_kw": 241.27431579569614,
+      "source_energy_kj": null,
+      "nominal_dry_fuel_kg": 349.64145998617363,
+      "canopy_patches": [
+        [
+          11,
+          12,
+          3,
+          7,
+          2
+        ],
+        [
+          8,
+          18,
+          5,
+          11,
+          3
+        ]
+      ],
+      "deck_sha256": "e15b7dc70fde0ea7bb8a4cc91c7332ddc2a113454b5623c750c0cdabe29dfb17",
+      "source_note": "Prescribed1500 C contact heating PLUS nominal chemical HRR; removed21 s. Both double-case crowns deliberately initialized."
+    },
+    {
+      "case": "ac21_corner",
+      "kind": "corner",
+      "direction": 225,
+      "hours": 0.75,
+      "cells": 110592,
+      "domain_m": [
+        0,
+        24,
+        0,
+        24,
+        0,
+        24
+      ],
+      "dx_m": 0.5,
+      "horizon_s": 180,
+      "variant": "passive",
+      "profile": false,
+      "source_kw": 120.63715789784807,
+      "source_energy_kj": null,
+      "nominal_dry_fuel_kg": 77.08630613868395,
+      "canopy_patches": [
+        [
+          11,
+          12,
+          3,
+          7,
+          2
+        ]
+      ],
+      "deck_sha256": "12a0d5325a414b8cd9f6707cc83c15b61e0fb8c758fb3cf134f44497b8a2650a",
+      "source_note": "Prescribed1500 C contact heating PLUS nominal chemical HRR; removed21 s. Both double-case crowns deliberately initialized."
+    },
+    {
+      "case": "ac21_bare",
+      "kind": "bare",
+      "direction": 270,
+      "hours": 0.75,
+      "cells": 110592,
+      "domain_m": [
+        0,
+        24,
+        0,
+        24,
+        0,
+        24
+      ],
+      "dx_m": 0.5,
+      "horizon_s": 180,
+      "variant": "passive",
+      "profile": false,
+      "source_kw": 120.63715789784807,
+      "source_energy_kj": null,
+      "nominal_dry_fuel_kg": 0,
+      "canopy_patches": [],
+      "deck_sha256": "8793a3440488c0f6e9cb4642c28e992d05ceb78822a0b4c54221d7149a873072",
+      "source_note": "Prescribed1500 C contact heating PLUS nominal chemical HRR; removed21 s. Both double-case crowns deliberately initialized."
+    },
+    {
+      "case": "ac21_single_expanded",
+      "kind": "single",
+      "direction": 270,
+      "expanded": true,
+      "hours": 1,
+      "cells": 409600,
+      "domain_m": [
+        -8,
+        32,
+        -8,
+        32,
+        0,
+        32
+      ],
+      "dx_m": 0.5,
+      "horizon_s": 180,
+      "variant": "passive",
+      "profile": false,
+      "source_kw": 120.63715789784807,
+      "source_energy_kj": null,
+      "nominal_dry_fuel_kg": 77.08630613868395,
+      "canopy_patches": [
+        [
+          11,
+          12,
+          3,
+          7,
+          2
+        ]
+      ],
+      "deck_sha256": "561ef387457341069f153622f111996f713676d27ebb39756ee278aff86be4e5",
+      "source_note": "Prescribed1500 C contact heating PLUS nominal chemical HRR; removed21 s. Both double-case crowns deliberately initialized."
+    },
+    {
+      "case": "ac21_double_expanded",
+      "kind": "double",
+      "direction": 270,
+      "expanded": true,
+      "hours": 1,
+      "cells": 409600,
+      "domain_m": [
+        -8,
+        32,
+        -8,
+        32,
+        0,
+        32
+      ],
+      "dx_m": 0.5,
+      "horizon_s": 180,
+      "variant": "passive",
+      "profile": false,
+      "source_kw": 241.27431579569614,
+      "source_energy_kj": null,
+      "nominal_dry_fuel_kg": 349.64145998617363,
+      "canopy_patches": [
+        [
+          11,
+          12,
+          3,
+          7,
+          2
+        ],
+        [
+          8,
+          18,
+          5,
+          11,
+          3
+        ]
+      ],
+      "deck_sha256": "549b06ab6a0211dca7ec2d5da32e54806e1bba387d2b154e6b3b047593b6b348",
+      "source_note": "Prescribed1500 C contact heating PLUS nominal chemical HRR; removed21 s. Both double-case crowns deliberately initialized."
+    },
+    {
+      "case": "ac21_corner_expanded",
+      "kind": "corner",
+      "direction": 225,
+      "expanded": true,
+      "hours": 1,
+      "cells": 409600,
+      "domain_m": [
+        -8,
+        32,
+        -8,
+        32,
+        0,
+        32
+      ],
+      "dx_m": 0.5,
+      "horizon_s": 180,
+      "variant": "passive",
+      "profile": false,
+      "source_kw": 120.63715789784807,
+      "source_energy_kj": null,
+      "nominal_dry_fuel_kg": 77.08630613868395,
+      "canopy_patches": [
+        [
+          11,
+          12,
+          3,
+          7,
+          2
+        ]
+      ],
+      "deck_sha256": "c5718f97bd8d6204f7fca14191f0a8dc1f38875b93501af58fe48b2fcb5f8f90",
+      "source_note": "Prescribed1500 C contact heating PLUS nominal chemical HRR; removed21 s. Both double-case crowns deliberately initialized."
+    },
+    {
+      "case": "ac21_double_fine",
+      "kind": "double",
+      "direction": 270,
+      "dx": 0.25,
+      "hours": 6,
+      "cells": 884736,
+      "domain_m": [
+        0,
+        24,
+        0,
+        24,
+        0,
+        24
+      ],
+      "dx_m": 0.25,
+      "horizon_s": 180,
+      "variant": "passive",
+      "profile": false,
+      "source_kw": 241.27431579569614,
+      "source_energy_kj": null,
+      "nominal_dry_fuel_kg": 349.64145998617363,
+      "canopy_patches": [
+        [
+          11,
+          12,
+          3,
+          7,
+          2
+        ],
+        [
+          8,
+          18,
+          5,
+          11,
+          3
+        ]
+      ],
+      "deck_sha256": "b57a76ee45f16c5e8868eedadd9472d1465cd7b012f618708ad18b454c0c27aa",
+      "source_note": "Prescribed1500 C contact heating PLUS nominal chemical HRR; removed21 s. Both double-case crowns deliberately initialized."
+    }
+  ],
+  "executions": [
+    "projects/587909259768/locations/us-central1/workflows/fds-ac21-chain-0/executions/15f9dfa0-8124-4fe4-b863-92100e5aed2d",
+    "projects/587909259768/locations/us-central1/workflows/fds-ac21-chain-1/executions/6f014b90-126b-488b-a97f-b2c8e172e035",
+    "projects/587909259768/locations/us-central1/workflows/fds-ac21-chain-2/executions/32567547-9327-442e-a311-cf9344d4608e",
+    "projects/587909259768/locations/us-central1/workflows/fds-ac21-chain-3/executions/99c1f308-3097-40e9-b5c8-8cc2c8ec1db5",
+    "projects/587909259768/locations/us-central1/workflows/fds-ac21-chain-4/executions/017c70bb-9ab4-400c-81ca-cafe2ec1de00",
+    "projects/587909259768/locations/us-central1/workflows/fds-ac21-chain-5/executions/d2a93e6c-dede-44bf-8023-1aeb898a379c"
+  ]
+}

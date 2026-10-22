@@ -72,8 +72,7 @@ hash of every dependency and output, which is what makes a result checkable.
   tree: `FDS/` holds the engine and FDS's own working files, and nothing that
   is authored or versioned goes there.
 - Push and pull are in `docs/storage.md`. Keep the evidence (`.bf`, `.prt5`,
-  `.sf`); **never** store `.restart` (88 MB each, worthless once a solve
-  completes); keep `.s3d` only if you will re-render.
+  `.sf`); retain a bounded restart checkpoint for incomplete or interrupted solves so work can resume; remove obsolete checkpoints only after a completed solve and verified results. Keep `.s3d` only if you will re-render.
 
 Content-addressed storage means adopting existing output needs no re-upload:
 identical bytes keep the same hash and the blobs already in the bucket stand.
@@ -94,3 +93,21 @@ re-solve and vice versa.
 Say so. "I have not proven this" is a useful sentence. Do not present a
 plausible guess as a finding — the cost of a retraction here has already been
 measured in hours.
+
+## Standing instruction: disclose material simplifications
+
+Do not obscure or omit details that materially affect the user's interpretation of an experiment, visualization, or result. Disclose them proactively when proposing the experiment and when presenting results, rather than waiting for the user to discover them or ask. A generic label such as "toy example" is insufficient.
+
+- Use accurate names and give relevant dimensions: for example, "approximately 2 m vegetation crowns beside a 4 m house block," not unqualified "trees and a house." Do not imply a species, mature-tree scale, realistic building, or validated material behavior unless the setup supports it.
+- State consequential assumptions and omissions, including geometry, fuel representation, imposed ignition sources and duration, ignition criterion, mesh resolution, and whether embers are modeled. Explain how they limit the conclusion; prioritize details that change the user's understanding rather than burying them in technical output.
+- Distinguish simulated physics, renderer choices, and learned model values. Explain what colours, dots, arrows, and animation stages mean; do not imply physical time or temperature for neural activations.
+- State precisely what evidence establishes and what remains untested. Do not present success on a simplified scene as validation for realistic properties.
+- If earlier wording concealed a material distinction, correct it plainly and update the relevant description. Do not silently substitute an easier experiment for the user's intended question.
+
+## Standing instruction: status requests do not pause work
+
+A user request for an update or status is a checkpoint, not a stop instruction. Answer briefly and continue the authorized experiment, monitoring, diagnosis and fixes. Keep existing spending limits and approval boundaries. Do not end ongoing work merely because the user asked a question. Stop or pause only when requested, when work is complete, or when a real blocker requires input; complete unaffected authorized work first.
+
+## Long-running simulation recovery
+
+Following the user's explicit request to avoid losing completed computation, future long runs must checkpoint periodically, preserve and upload the final usable checkpoint when interrupted, and support a tested resume path. Do not delete restart files from incomplete runs. Report the runtime estimate, deadline, checkpoint policy and extension limitations before launch. Existing runs without this capability must be described honestly; partial scientific outputs are not a resumable checkpoint.

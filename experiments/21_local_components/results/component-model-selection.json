@@ -1,0 +1,32 @@
+{
+  "selected_unix": 1792311189.5207338,
+  "model_path": "data/recursive_canopy_bounded300_occlusion.json",
+  "model_sha256": "8faec2bb9ccc0b11df5668bf03f6daae0cf730d07a5c08e3e8fabf5baa003ce6",
+  "training_cases": [
+    "b21_single_1",
+    "b21_single_2",
+    "b21_transfer_0",
+    "b21_transfer_hot",
+    "b21_combined_0",
+    "b21_corner_1",
+    "b21_combined_1"
+  ],
+  "validation_cases": [
+    "b21_single_validation",
+    "b21_transfer_validation",
+    "b21_combined_validation",
+    "b21_corner_validation"
+  ],
+  "validation_evidence": "results/local-candidate-comparison-bounded300_final.json",
+  "validation_sha256": "462707ea25956647e65d73a6f3d993bbec8a6115c5df603d48fca5d5419b81c0",
+  "reason": "Bounded300 predicts all4 local validation building labels with0/0/0/2s ignition timing errors where defined; newer11-case models miss two positives. Obstruction mask reduces corner temperature error from40.99 to34.20C, selected using local validation only.",
+  "failed_criteria": [
+    "Combined temperature MAE43.48C and corner34.20C exceed30C.",
+    "Corner median exposed heat-dose error69.47% exceeds20%.",
+    "Unlit validation receiver fuel9.846kg vs0.005872kg, despite correct building non-ignition.",
+    "Grid/context convergence screens remain failed; no real-world accuracy established."
+  ],
+  "test_interpretation": "Proceed as exploratory fixed-reference composition diagnostic, not claim validation gates passed. Original16-case/180s criteria unchanged and cannot be satisfied with2 scenes/90s. No full-scene outputs accessed; freeze before launch.",
+  "baseline": "Independently fitted four single-canopy training curves with separate heat fit; same-weight message suppression also retained as ablation.",
+  "simplifications": "Generic assigned10/16m canopy patches, no trunks/groundcover/embers;20s artificial hot-particle source;0.5m cells;90s;20mm synthetic wood; measured building boundary states during canopy training but autonomous inference; point-component heat exchange and straight-line building obstruction."
+}

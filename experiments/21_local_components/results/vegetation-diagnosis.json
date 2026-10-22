@@ -1,0 +1,59 @@
+{
+  "finding": "No substantial sustained vegetation fire after burner shutdown at21 s.",
+  "caveats": [
+    "Particle mass loss includes water loss and cannot be treated as dry fuel consumed.",
+    "Trace heat release does not establish an exactly zero local ignition event.",
+    "No matched material sensitivity run: material causation unproven.",
+    "Burner/crown separation and wind-advection explanation is a hypothesis; plume and particle-temperature inspection needed."
+  ],
+  "cases": [
+    {
+      "case": "a21_bare",
+      "initial_wet_particle_mass_kg": 0.0,
+      "final_particle_mass_kg": 0.0,
+      "mass_loss_fraction": null,
+      "hrr_at_30s_kw": 0.0,
+      "energy_30_to_180_MJ": 0.0,
+      "file_sha256": {
+        "_devc.csv": "b26ea3a292afb58a4e58231ffef64c5920a3dd1a034d056e539424d3027142c3",
+        "_hrr.csv": "35728bdd7c571eaa130c420689ebb8188df39790459c27dc268ecddc82e0a099"
+      }
+    },
+    {
+      "case": "a21_single",
+      "initial_wet_particle_mass_kg": 87.87815529999999,
+      "final_particle_mass_kg": 87.6196211,
+      "mass_loss_fraction": 0.002941962073707589,
+      "hrr_at_30s_kw": 0.03648282045969591,
+      "energy_30_to_180_MJ": 0.0022873532789409175,
+      "file_sha256": {
+        "_devc.csv": "282facf97ea573ca68439461d92c0b0be82bc9b9c5ea25dc008239273c2c124a",
+        "_hrr.csv": "bd9fc630c4fbdbe158eb9044fa25df628844024975a61a31b5f275104c5b2883"
+      }
+    },
+    {
+      "case": "a21_double",
+      "initial_wet_particle_mass_kg": 398.59022100000004,
+      "final_particle_mass_kg": 397.760208,
+      "mass_loss_fraction": 0.00208237170976672,
+      "hrr_at_30s_kw": 0.07886863758966002,
+      "energy_30_to_180_MJ": 0.009279755068497635,
+      "file_sha256": {
+        "_devc.csv": "5bef0435d231e648da80db6949b9fda03e8f500a682b9fea6deaa21952949ccb",
+        "_hrr.csv": "b4d494624c2952b281fc42753ab7aae2cf1f036274e1142a4e027e22c6365209"
+      }
+    },
+    {
+      "case": "a21_corner",
+      "initial_wet_particle_mass_kg": 87.87814780000001,
+      "final_particle_mass_kg": 87.6937519,
+      "mass_loss_fraction": 0.002098313455805592,
+      "hrr_at_30s_kw": 0.017679171771923546,
+      "energy_30_to_180_MJ": 0.002065347695074851,
+      "file_sha256": {
+        "_devc.csv": "ecd8ce367f2297fa765cda4ca7340332c50ea9a3c81d3f4792d9e8987da8e58a",
+        "_hrr.csv": "434b434409554a2991c5989b723827609544ddb8984d48fd6a666155ecf97111"
+      }
+    }
+  ]
+}

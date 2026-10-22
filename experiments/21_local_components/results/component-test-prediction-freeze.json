@@ -1,0 +1,68 @@
+{
+  "frozen_unix": 1792311200.299731,
+  "frozen_utc": "2026-10-18T08:13:20.299737+00:00",
+  "cases": [
+    "c21_santa_rosa_east_03",
+    "c21_glen_ellen_06"
+  ],
+  "files": {
+    "data/component_frozen/component_occlusion.py": "8da36e0a9425ade5c46ed2b36618585316e1c12bca184edbcba482d43158bc89",
+    "data/component_frozen/c21_glen_ellen_06-ablation.npz": "c04606a517cd91ce1fa7e67d83e8bd2ee215928a8bb4190d9a32066ba36b1c50",
+    "data/component_frozen/prediction-summary.json": "5459df2e571b854f999b9174910da4aba791a6355d39a32ef56e1039f1ec2170",
+    "data/component_frozen/model.json": "8faec2bb9ccc0b11df5668bf03f6daae0cf730d07a5c08e3e8fabf5baa003ce6",
+    "data/component_frozen/component_metrics.py": "f58583e3a83fd33273e7dd6472de87ecad28d14b818a5494e8185ec7298f3da3",
+    "data/component_frozen/evaluate_recursive_canopy_energy_budget.py": "d9bcc2912a49bad3a7f4373ad09314d6be0b2382c70da2d054d98d180eaa9078",
+    "data/component_frozen/test-inputs.json": "f9d43638e424ef8e90eeb7c3b78147ee766797666c75fef1c01fc707ebc4120a",
+    "data/component_frozen/c21_glen_ellen_06-baseline.npz": "201b4c52e7785a2a078d3a5a9e0685ee173967f3c18cac0ab684313556e74f76",
+    "data/component_frozen/c21_santa_rosa_east_03-graph.npz": "1c8f131aefe212f4efeb3a02af4395a30ebae4d3e90e2e12e7a970d24037a73d",
+    "data/component_frozen/diagnose_wall_response.py": "732a9944411240a0df28c900380e8a8d3c39d7b67091c8f6e096376d05bda595",
+    "data/component_frozen/c21_santa_rosa_east_03-ablation.npz": "74a066cfe884a45be4c9f826bc5149aeb7d54bb483b5a95491d3b51ba4cbe51f",
+    "data/component_frozen/analyze_component_tests.py": "90cee19ea165a9b89c2bf3483381e59547f16ae92f51ae4371e35f06d32c5abd",
+    "data/component_frozen/predict.py": "068c5c05a2a0ad87a8979e8fff5f41788c69b68f8f2b095583c83deacebf0c70",
+    "data/component_frozen/scene.py": "74788ca601a9355e7f178bc1b27db161af224f13677599b428ab1c72d4b98eaf",
+    "data/component_frozen/c21_santa_rosa_east_03-baseline.npz": "06b3d4e28e0f5904dd7645a392f545bc6deebe6b0ae0d645cc4dfb6a1088d115",
+    "data/component_frozen/component_model.py": "20ff3f63a16fe00150b657913576a2f950c9952367fb30690eca7c1d221e274e",
+    "data/component_frozen/component_additive_baseline.py": "303aa8b4f1f6e8ceb8da1e9cedf70aa3bc821fa7ae93bc00af66159cae5392f4",
+    "data/component_frozen/component_heat_rule.py": "eb1025f381791649e96b919f64db139e8a22b7704821a6d1f12d521f38acec30",
+    "data/component_frozen/baseline.json": "d4566e168cfac247ab5221483c58646de7ff58d22c4722ce5f5af28139c57c0f",
+    "data/component_frozen/component_hot_state_model.py": "0e1010e103112b39dd3a98e6255e10fa0762fd2ec5f0a2c45f3c71b6a22837d5",
+    "data/component_frozen/selection.json": "18180c4a0e471c9d4f5d696ed9d0fb140e8a51f3e52d4c3c3f3228d68f14ff5b",
+    "data/component_frozen/c21_glen_ellen_06-graph.npz": "df26331eddddd5d5cc866e5468782ad6a0f3142864ef9de5534853c4a5420117",
+    "data/component_frozen/component_release_rule.py": "f97f415392a2aca1362f57a7d8bda78eb379764b72671fca31ed1582a6ee7374",
+    "decks/c21_santa_rosa_east_03.fds": "69e732a8a4c242ef8d8bb7d9258189f46e155b5f1a534c10f6419fce0497fc18",
+    "decks/c21_glen_ellen_06.fds": "b45f559d00e99d76268fe3252e943b0c0f03865b6799d530c21856175b6c066c"
+  },
+  "selection": {
+    "selected_unix": 1792311189.5207338,
+    "model_path": "data/recursive_canopy_bounded300_occlusion.json",
+    "model_sha256": "8faec2bb9ccc0b11df5668bf03f6daae0cf730d07a5c08e3e8fabf5baa003ce6",
+    "training_cases": [
+      "b21_single_1",
+      "b21_single_2",
+      "b21_transfer_0",
+      "b21_transfer_hot",
+      "b21_combined_0",
+      "b21_corner_1",
+      "b21_combined_1"
+    ],
+    "validation_cases": [
+      "b21_single_validation",
+      "b21_transfer_validation",
+      "b21_combined_validation",
+      "b21_corner_validation"
+    ],
+    "validation_evidence": "results/local-candidate-comparison-bounded300_final.json",
+    "validation_sha256": "462707ea25956647e65d73a6f3d993bbec8a6115c5df603d48fca5d5419b81c0",
+    "reason": "Bounded300 predicts all4 local validation building labels with0/0/0/2s ignition timing errors where defined; newer11-case models miss two positives. Obstruction mask reduces corner temperature error from40.99 to34.20C, selected using local validation only.",
+    "failed_criteria": [
+      "Combined temperature MAE43.48C and corner34.20C exceed30C.",
+      "Corner median exposed heat-dose error69.47% exceeds20%.",
+      "Unlit validation receiver fuel9.846kg vs0.005872kg, despite correct building non-ignition.",
+      "Grid/context convergence screens remain failed; no real-world accuracy established."
+    ],
+    "test_interpretation": "Proceed as exploratory fixed-reference composition diagnostic, not claim validation gates passed. Original16-case/180s criteria unchanged and cannot be satisfied with2 scenes/90s. No full-scene outputs accessed; freeze before launch.",
+    "baseline": "Independently fitted four single-canopy training curves with separate heat fit; same-weight message suppression also retained as ablation.",
+    "simplifications": "Generic assigned10/16m canopy patches, no trunks/groundcover/embers;20s artificial hot-particle source;0.5m cells;90s;20mm synthetic wood; measured building boundary states during canopy training but autonomous inference; point-component heat exchange and straight-line building obstruction."
+  },
+  "rule": "No model, baseline, test geometry or prediction changes after this freeze. No test FDS output was accessed during generation."
+}

@@ -1,0 +1,807 @@
+{
+  "status": "DESIGN_ONLY_NOT_LAUNCHED",
+  "calibration_max_runs": 6,
+  "max_total_runs": 48,
+  "anchors_m": {
+    "A": [
+      12,
+      12
+    ],
+    "B": [
+      10,
+      10
+    ],
+    "C": [
+      10,
+      14
+    ],
+    "D": [
+      8,
+      12
+    ]
+  },
+  "cases": [
+    {
+      "case": "train_A_0.65",
+      "split": "train",
+      "layout": "A",
+      "crowns": [
+        [
+          12,
+          12
+        ]
+      ],
+      "total_source_power_factor": 0.65,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_A_0.9",
+      "split": "train",
+      "layout": "A",
+      "crowns": [
+        [
+          12,
+          12
+        ]
+      ],
+      "total_source_power_factor": 0.9,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_A_1.1",
+      "split": "train",
+      "layout": "A",
+      "crowns": [
+        [
+          12,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.1,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_A_1.5",
+      "split": "train",
+      "layout": "A",
+      "crowns": [
+        [
+          12,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.5,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_B_0.65",
+      "split": "train",
+      "layout": "B",
+      "crowns": [
+        [
+          10,
+          10
+        ]
+      ],
+      "total_source_power_factor": 0.65,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_B_0.9",
+      "split": "train",
+      "layout": "B",
+      "crowns": [
+        [
+          10,
+          10
+        ]
+      ],
+      "total_source_power_factor": 0.9,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_B_1.1",
+      "split": "train",
+      "layout": "B",
+      "crowns": [
+        [
+          10,
+          10
+        ]
+      ],
+      "total_source_power_factor": 1.1,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_B_1.5",
+      "split": "train",
+      "layout": "B",
+      "crowns": [
+        [
+          10,
+          10
+        ]
+      ],
+      "total_source_power_factor": 1.5,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_C_0.65",
+      "split": "train",
+      "layout": "C",
+      "crowns": [
+        [
+          10,
+          14
+        ]
+      ],
+      "total_source_power_factor": 0.65,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_C_0.9",
+      "split": "train",
+      "layout": "C",
+      "crowns": [
+        [
+          10,
+          14
+        ]
+      ],
+      "total_source_power_factor": 0.9,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_C_1.1",
+      "split": "train",
+      "layout": "C",
+      "crowns": [
+        [
+          10,
+          14
+        ]
+      ],
+      "total_source_power_factor": 1.1,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_C_1.5",
+      "split": "train",
+      "layout": "C",
+      "crowns": [
+        [
+          10,
+          14
+        ]
+      ],
+      "total_source_power_factor": 1.5,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_D_0.65",
+      "split": "train",
+      "layout": "D",
+      "crowns": [
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 0.65,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_D_0.9",
+      "split": "train",
+      "layout": "D",
+      "crowns": [
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 0.9,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_D_1.1",
+      "split": "train",
+      "layout": "D",
+      "crowns": [
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.1,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_D_1.5",
+      "split": "train",
+      "layout": "D",
+      "crowns": [
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.5,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_AB_0.65",
+      "split": "train",
+      "layout": "AB",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          10
+        ]
+      ],
+      "total_source_power_factor": 0.65,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_AB_0.9",
+      "split": "train",
+      "layout": "AB",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          10
+        ]
+      ],
+      "total_source_power_factor": 0.9,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_AB_1.1",
+      "split": "train",
+      "layout": "AB",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          10
+        ]
+      ],
+      "total_source_power_factor": 1.1,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_AB_1.5",
+      "split": "train",
+      "layout": "AB",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          10
+        ]
+      ],
+      "total_source_power_factor": 1.5,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_CD_0.65",
+      "split": "train",
+      "layout": "CD",
+      "crowns": [
+        [
+          10,
+          14
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 0.65,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_CD_0.9",
+      "split": "train",
+      "layout": "CD",
+      "crowns": [
+        [
+          10,
+          14
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 0.9,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_CD_1.1",
+      "split": "train",
+      "layout": "CD",
+      "crowns": [
+        [
+          10,
+          14
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.1,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "train_CD_1.5",
+      "split": "train",
+      "layout": "CD",
+      "crowns": [
+        [
+          10,
+          14
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.5,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "validation_AC_0.8",
+      "split": "validation",
+      "layout": "AC",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          14
+        ]
+      ],
+      "total_source_power_factor": 0.8,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "validation_AC_1",
+      "split": "validation",
+      "layout": "AC",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          14
+        ]
+      ],
+      "total_source_power_factor": 1.0,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "validation_AC_1.2",
+      "split": "validation",
+      "layout": "AC",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          14
+        ]
+      ],
+      "total_source_power_factor": 1.2,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "validation_BD_0.8",
+      "split": "validation",
+      "layout": "BD",
+      "crowns": [
+        [
+          10,
+          10
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 0.8,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "validation_BD_1",
+      "split": "validation",
+      "layout": "BD",
+      "crowns": [
+        [
+          10,
+          10
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.0,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "validation_BD_1.2",
+      "split": "validation",
+      "layout": "BD",
+      "crowns": [
+        [
+          10,
+          10
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.2,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "test_ABC_0.8",
+      "split": "test",
+      "layout": "ABC",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          14
+        ]
+      ],
+      "total_source_power_factor": 0.8,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "test_ABC_1",
+      "split": "test",
+      "layout": "ABC",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          14
+        ]
+      ],
+      "total_source_power_factor": 1.0,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "test_ABC_1.2",
+      "split": "test",
+      "layout": "ABC",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          14
+        ]
+      ],
+      "total_source_power_factor": 1.2,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "test_ABD_0.8",
+      "split": "test",
+      "layout": "ABD",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 0.8,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "test_ABD_1",
+      "split": "test",
+      "layout": "ABD",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.0,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "test_ABD_1.2",
+      "split": "test",
+      "layout": "ABD",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.2,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "test_ACD_0.8",
+      "split": "test",
+      "layout": "ACD",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          14
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 0.8,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "test_ACD_1",
+      "split": "test",
+      "layout": "ACD",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          14
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.0,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "test_ACD_1.2",
+      "split": "test",
+      "layout": "ACD",
+      "crowns": [
+        [
+          12,
+          12
+        ],
+        [
+          10,
+          14
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.2,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "test_BCD_0.8",
+      "split": "test",
+      "layout": "BCD",
+      "crowns": [
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          14
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 0.8,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "test_BCD_1",
+      "split": "test",
+      "layout": "BCD",
+      "crowns": [
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          14
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.0,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    },
+    {
+      "case": "test_BCD_1.2",
+      "split": "test",
+      "layout": "BCD",
+      "crowns": [
+        [
+          10,
+          10
+        ],
+        [
+          10,
+          14
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      "total_source_power_factor": 1.2,
+      "source_power_rule": "P_total = factor * training_calibration_midpoint; split equally among one 1 m2 burner under each crown",
+      "horizon_s": 90,
+      "seed": 1234
+    }
+  ]
+}

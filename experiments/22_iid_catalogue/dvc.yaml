@@ -1,0 +1,18 @@
+stages:
+  generate:
+    cmd: ../../.venv/bin/python generate_catalogue.py
+    deps:
+    - generate_catalogue.py
+    outs:
+    - data/catalogue.json
+    - data/splits.json
+    - data/input-audit.json:
+        cache: false
+  preview:
+    cmd: ../../.venv/bin/python build_preview.py
+    deps:
+    - build_preview.py
+    - catalogue.template.html
+    - data/catalogue.json
+    outs:
+    - data/catalogue.html

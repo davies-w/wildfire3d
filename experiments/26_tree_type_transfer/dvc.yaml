@@ -1,0 +1,161 @@
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python build.py
+    deps:
+      - build.py
+      - base-input.fds
+      - reference-particles.json
+    outs:
+      - data/tree-templates.json
+      - decks
+      - cases.json:
+          cache: false
+      - results/input-freeze.json:
+          cache: false
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+      - preflight.py
+      - build.py
+      - data/tree-templates.json
+      - cases.json
+      - decks
+    outs:
+      - data/preflight
+      - results/preflight.json:
+          cache: false
+  experiment:
+    cmd: ../../.venv/bin/python finish_pipeline.py
+    frozen: true
+    deps:
+      - finish_pipeline.py
+      - finish_recovery.py
+      - prepare_recovery.py
+      - repair_preflight.py
+      - finish_development.py
+      - dispatch_development.py
+      - finish_calibration.py
+      - cloud.py
+      - extract.py
+      - model_data.py
+      - graph_model.py
+      - train.py
+      - freeze_predictions.py
+      - evaluate.py
+      - evaluate_aligned.py
+      - cases.json
+      - results/input-freeze.json
+    outs:
+      - data/cloud
+      - data/downloads
+      - data/extracted
+      - data/models
+      - data/predictions
+      - results/test-summary.json:
+          cache: false
+      - results/prediction-freeze.json:
+          cache: false
+
+  training_rollout_audit:
+    cmd: ../../.venv/bin/python diagnose_training_rollouts.py
+    frozen: true
+    deps:
+      - diagnose_training_rollouts.py
+      - graph_model.py
+      - model_data.py
+      - data/models
+      - data/extracted
+      - results/prediction-freeze.json
+    outs:
+      - data/development-predictions
+      - results/training-rollout-audit.json:
+          cache: false
+
+  model_assumption_audit:
+    cmd: ../../.venv/bin/python audit_model_assumptions.py && ../../.venv/bin/python audit_target_conventions.py && ../../.venv/bin/python probe_shared_rom.py
+    frozen: true
+    deps:
+      - audit_model_assumptions.py
+      - audit_target_conventions.py
+      - probe_shared_rom.py
+      - data/extracted
+      - data/models
+      - graph_model.py
+      - model_data.py
+    outs:
+      - data/assumption-audit
+      - results/model-assumption-audit.json:
+          cache: false
+      - results/target-convention-audit.json:
+          cache: false
+      - results/shared-rom-probe.json:
+          cache: false
+
+  single_dynamics_initial:
+    cmd: ../../.venv/bin/python compare_single_dynamics.py --epochs 400
+    frozen: true
+    deps:
+      - compare_single_dynamics.py
+      - data/extracted
+      - model_data.py
+      - cases.json
+      - results/prediction-freeze.json
+    outs:
+      - data/single-dynamics
+      - results/single-dynamics-comparison.json:
+          cache: false
+
+  single_dynamics_extended:
+    cmd: ../../.venv/bin/python compare_single_dynamics.py --epochs 2000 --tag extended
+    frozen: true
+    deps:
+      - compare_single_dynamics.py
+      - data/extracted
+      - model_data.py
+      - cases.json
+      - results/prediction-freeze.json
+    outs:
+      - data/single-dynamics-extended
+      - results/single-dynamics-comparison-extended.json:
+          cache: false
+
+  single_dynamics_figures:
+    cmd: ../../.venv/bin/python render_single_dynamics.py
+    deps:
+      - render_single_dynamics.py
+      - data/single-dynamics-extended
+      - data/development-predictions
+      - cases.json
+    outs:
+      - results/visuals/single-dynamics-temperature.png:
+          cache: false
+      - results/visuals/single-dynamics-mass.png:
+          cache: false
+
+  conditional_heat_response:
+    cmd: ../../.venv/bin/python train_heat_response.py
+    frozen: true
+    deps:
+      - train_heat_response.py
+      - model_data.py
+      - cases.json
+      - data/extracted
+      - results/prediction-freeze.json
+    outs:
+      - data/heat-response
+      - results/heat-response.json:
+          cache: false
+      - results/heat-response-freeze.json:
+          cache: false
+
+  conditional_heat_response_figures:
+    cmd: ../../.venv/bin/python render_heat_response.py
+    deps:
+      - render_heat_response.py
+      - data/heat-response
+      - cases.json
+    outs:
+      - results/visuals/single-validation-heat-response.png:
+          cache: false
+      - results/visuals/familiar-pairs-heat-response.png:
+          cache: false

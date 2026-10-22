@@ -1,0 +1,83 @@
+{
+  "scope": "True-state diagnostic is not autonomous inference. Fluxes in radiation,convection order. Patch selected by validation peak solely for diagnosis.",
+  "results": [
+    {
+      "case": "b21_single_validation",
+      "selected_patch": {
+        "kind": "building",
+        "id": "p11.5_4.5",
+        "xyz": [
+          24,
+          11.5,
+          4.5
+        ],
+        "radius": 0.5,
+        "height": 1.0,
+        "area": 1.0,
+        "normal": [
+          -1,
+          0,
+          0
+        ],
+        "initialized": false
+      },
+      "true_state_heating_thermal_peak_C": 467.7060181113687,
+      "reference_peak_C": 590.707249314055,
+      "pre26_selected_true_mean_flux_kw_m2": [
+        7.949620065386151,
+        -0.43454409606687927
+      ],
+      "pre26_selected_true_peak_flux_kw_m2": [
+        62.41439733346454,
+        -0.0012835136
+      ],
+      "pre26_selected_model_mean_given_true_states": [
+        9.560737163593826,
+        -0.3606523318389379
+      ],
+      "pre26_selected_model_mean_autonomous": [
+        4.613362983464,
+        -0.2027439450070869
+      ]
+    },
+    {
+      "case": "b21_transfer_validation",
+      "selected_patch": {
+        "kind": "building",
+        "id": "p11.5_2.5",
+        "xyz": [
+          24,
+          11.5,
+          2.5
+        ],
+        "radius": 0.5,
+        "height": 1.0,
+        "area": 1.0,
+        "normal": [
+          -1,
+          0,
+          0
+        ],
+        "initialized": false
+      },
+      "true_state_heating_thermal_peak_C": 71.33860549204337,
+      "reference_peak_C": 63.53383353881019,
+      "pre26_selected_true_mean_flux_kw_m2": [
+        1.3973944390239477,
+        -0.03071068888228802
+      ],
+      "pre26_selected_true_peak_flux_kw_m2": [
+        4.706224372386813,
+        0.00034320952095960155
+      ],
+      "pre26_selected_model_mean_given_true_states": [
+        1.5269288763940099,
+        -0.09300075301023399
+      ],
+      "pre26_selected_model_mean_autonomous": [
+        2.5756165792201773,
+        -0.12001759727522547
+      ]
+    }
+  ]
+}

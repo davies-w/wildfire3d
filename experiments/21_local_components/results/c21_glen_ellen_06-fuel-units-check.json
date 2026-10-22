@@ -1,0 +1,75 @@
+{
+  "case": "c21_glen_ellen_06",
+  "raw_csv_sha256": "b8bc693c9b0571d05238ec678f260c8b1c35d64c78f9e9fc36180e07fe228313",
+  "raw_integrals": [
+    {
+      "node": "v0",
+      "columns": [
+        "v0 fuel foliage",
+        "v0 fuel small roundwood",
+        "v0 fuel medium roundwood",
+        "v0 fuel large roundwood"
+      ],
+      "units": [
+        "kg/s",
+        "kg/s",
+        "kg/s",
+        "kg/s"
+      ],
+      "integral_interval_average_kg": 3.087190361620353,
+      "integral_raw_timestamp_trapezoid_kg": 3.101409841720989
+    },
+    {
+      "node": "v1",
+      "columns": [
+        "v1 fuel foliage",
+        "v1 fuel small roundwood",
+        "v1 fuel medium roundwood",
+        "v1 fuel large roundwood"
+      ],
+      "units": [
+        "kg/s",
+        "kg/s",
+        "kg/s",
+        "kg/s"
+      ],
+      "integral_interval_average_kg": 7.064946499331815e-05,
+      "integral_raw_timestamp_trapezoid_kg": 7.045202640063557e-05
+    },
+    {
+      "node": "v2",
+      "columns": [
+        "v2 fuel foliage",
+        "v2 fuel small roundwood",
+        "v2 fuel medium roundwood",
+        "v2 fuel large roundwood"
+      ],
+      "units": [
+        "kg/s",
+        "kg/s",
+        "kg/s",
+        "kg/s"
+      ],
+      "integral_interval_average_kg": 0.0004371436947787281,
+      "integral_raw_timestamp_trapezoid_kg": 0.0004362611893091011
+    }
+  ],
+  "reported_resampled_fuel": [
+    {
+      "id": "v0",
+      "reference_kg": 3.109711324751798,
+      "prediction_kg": 56.20748875114473
+    },
+    {
+      "id": "v1",
+      "reference_kg": 7.026417474159712e-05,
+      "prediction_kg": 1.3650350688601096
+    },
+    {
+      "id": "v2",
+      "reference_kg": 0.00043540895864340454,
+      "prediction_kg": 5.033419657136091
+    }
+  ],
+  "definition": "DEVC MASS FLUX of FUEL VAPOR, surface-integrated over each PART_ID/SURF_ID class in each canopy; output kg/s. Sum four disjoint fuel classes, integrate seconds to kg. Surrogate power state is this fuel rate times17425kJ/kg, a chemical-energy-release potential proxy, not independently measured gas-phase HRR. Reported model/reference fuel integrals reverse that same scale. Wet-mass loss includes water and is not substituted for fuel release."
+}

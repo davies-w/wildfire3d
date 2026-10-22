@@ -1,0 +1,142 @@
+{
+  "conclusion": "Increasing vegetation particle density eightfold at fixed0.5m gas grid and fuel mass did not reproduce fine-grid large-crown ignition. Particle density alone does not explain the observed ignition switch.",
+  "cases": [
+    {
+      "case": "ac21_double",
+      "first_nonzero_mass_time_s": 0.50601223,
+      "initial_wet_mass_kg": 398.59022100000004,
+      "wet_mass_at69_5_kg": 315.51079357057137,
+      "foliage_peak_C": {
+        "small": 1878.1329345703125,
+        "large": 285.04608154296875
+      },
+      "foliage_peak_after22_C": {
+        "small": 1878.1329345703125,
+        "large": 209.5108642578125
+      },
+      "igniters_after22_max": 0,
+      "large_crown_early": [
+        {
+          "time_s": 5.035731792449951,
+          "max_C": 187.88992309570312,
+          "p95_C": 62.66916275024414,
+          "fraction_over300C": 0.0
+        },
+        {
+          "time_s": 10.030240058898926,
+          "max_C": 224.27967834472656,
+          "p95_C": 93.15475463867188,
+          "fraction_over300C": 0.0
+        },
+        {
+          "time_s": 15.041215896606445,
+          "max_C": 255.86305236816406,
+          "p95_C": 107.48302459716797,
+          "fraction_over300C": 0.0
+        },
+        {
+          "time_s": 20.01081657409668,
+          "max_C": 285.04608154296875,
+          "p95_C": 117.09809875488281,
+          "fraction_over300C": 0.0
+        }
+      ]
+    },
+    {
+      "case": "sampling21_dense",
+      "first_nonzero_mass_time_s": 0.50632161,
+      "initial_wet_mass_kg": 398.59022100000004,
+      "wet_mass_at69_5_kg": 314.8971998531759,
+      "foliage_peak_C": {
+        "small": 1868.970703125,
+        "large": 340.34295654296875
+      },
+      "foliage_peak_after22_C": {
+        "small": 1868.970703125,
+        "large": 264.5058288574219
+      },
+      "igniters_after22_max": 0,
+      "large_crown_early": [
+        {
+          "time_s": 5.023130416870117,
+          "max_C": 193.86935424804688,
+          "p95_C": 63.20477294921875,
+          "fraction_over300C": 0.0
+        },
+        {
+          "time_s": 10.032115936279297,
+          "max_C": 246.25668334960938,
+          "p95_C": 92.23172760009766,
+          "fraction_over300C": 0.0
+        },
+        {
+          "time_s": 15.015033721923828,
+          "max_C": 294.3662414550781,
+          "p95_C": 108.21742248535156,
+          "fraction_over300C": 0.0
+        },
+        {
+          "time_s": 20.003013610839844,
+          "max_C": 340.34295654296875,
+          "p95_C": 117.82886505126953,
+          "fraction_over300C": 0.0004550970873786408
+        }
+      ]
+    },
+    {
+      "case": "ac21_double_fine",
+      "first_nonzero_mass_time_s": 0.5167933,
+      "initial_wet_mass_kg": 398.590133,
+      "wet_mass_at69_5_kg": 32.50820741724734,
+      "foliage_peak_C": {
+        "small": 1816.19775390625,
+        "large": 1894.11669921875
+      },
+      "foliage_peak_after22_C": {
+        "small": 1816.19775390625,
+        "large": 1894.11669921875
+      },
+      "igniters_after22_max": 0,
+      "large_crown_early": [
+        {
+          "time_s": 5.021960258483887,
+          "max_C": 522.2603759765625,
+          "p95_C": 62.81570053100586,
+          "fraction_over300C": 0.0051297525648762825
+        },
+        {
+          "time_s": 10.009312629699707,
+          "max_C": 1584.3687744140625,
+          "p95_C": 276.317626953125,
+          "fraction_over300C": 0.04269764634882318
+        },
+        {
+          "time_s": 15.00317096710205,
+          "max_C": 1760.2237548828125,
+          "p95_C": 1143.7978515625,
+          "fraction_over300C": 0.17652383826191914
+        },
+        {
+          "time_s": 20.00494384765625,
+          "max_C": 1772.1474609375,
+          "p95_C": 1188.506103515625,
+          "fraction_over300C": 0.3029571514785757
+        }
+      ]
+    }
+  ],
+  "cost": {
+    "controller_hours_upper": 0.41316242722222224,
+    "compute_at_checked_rate_usd": 0.03285798151212889,
+    "including_full_ancillary_allowance_usd": 0.12285798151212889,
+    "reserved_usd": 0.25,
+    "invoice_verified": false
+  },
+  "checkpoint": "One retained Linux checkpoint hash verified; native startup/resume previously tested. Linux checkpoint resume has not been exercised.",
+  "limitations": [
+    "One seed; different sampling positions remain. This does not isolate fluid-grid heat transfer from every other mesh-dependent effect.",
+    "Fine-grid case only69.5s. Fine no-vegetation source control was not run; fine facade ignition precedes igniter removal.",
+    "Generic unvalidated vegetation/materials and prescribed hot sources; no trunks/ground cover/embers."
+  ],
+  "next_step": "Early raw particle histories locate divergence during initialization. Only a y=12 gas slice was saved, so no large-crown y=18 gas slice exists to prove the local gas-heating mechanism. Smallest proposed paid follow-up is the already prepared stronger large-ring source trial ($0.125 planning allowance), explicitly initialization calibration; hold coarse grid and fuel sampling fixed, measure each crown, and do not infer physical accuracy from successful ignition. Do not merely add particles or proceed to Stage B. Keep any stronger-source trial labelled initialization calibration, not accuracy validation."
+}

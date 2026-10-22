@@ -1,0 +1,172 @@
+schema: '2.0'
+stages:
+  generate:
+    cmd: ../../.venv/bin/python generate.py
+    deps:
+    - path: generate.py
+      hash: md5
+      md5: 17aa7e90639e16dcd917d6d242a8eefb
+      size: 4396
+    - path: inputs
+      hash: md5
+      md5: 2d0ec28cfbc3e7eb000570f3f38c1bfd.dir
+      size: 7976
+      nfiles: 2
+    outs:
+    - path: manifest.json
+      hash: md5
+      md5: 824519a05619c750ad18504c87c26191
+      size: 1410
+  preflight:
+    cmd:
+    - ../../.venv/bin/python preflight.py
+    - ../../.venv/bin/python check_alignment.py
+    deps:
+    - path: ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
+      hash: md5
+      md5: 18680afd3f78841d42906b41e3414f62
+      size: 10202320
+      isexec: true
+    - path: check_alignment.py
+      hash: md5
+      md5: fedd5d1710019f722a5fe6bb603a55f7
+      size: 800
+    - path: generate.py
+      hash: md5
+      md5: 17aa7e90639e16dcd917d6d242a8eefb
+      size: 4396
+    - path: inputs
+      hash: md5
+      md5: 2d0ec28cfbc3e7eb000570f3f38c1bfd.dir
+      size: 7976
+      nfiles: 2
+    - path: preflight.py
+      hash: md5
+      md5: 9f22df3d45e47660fbdd6cdd7aea8aca
+      size: 943
+    outs:
+    - path: data/alignment
+      hash: md5
+      md5: f59679330ac7c7f77753632f9a8d3818.dir
+      size: 275937
+      nfiles: 20
+    - path: data/preflight
+      hash: md5
+      md5: 5b45235599bc160781ac556da58a2931.dir
+      size: 327764
+      nfiles: 115
+    - path: results/alignment.json
+      hash: md5
+      md5: f053023eacdcc1bd99052e33d3f63c75
+      size: 354
+    - path: results/local-preflight.json
+      hash: md5
+      md5: 667e3a0690886a92ad4d0fdb736b1e57
+      size: 1630
+  verify_design:
+    cmd: ../../.venv/bin/python verify_design.py
+    deps:
+    - path: generate.py
+      hash: md5
+      md5: 17aa7e90639e16dcd917d6d242a8eefb
+      size: 4396
+    - path: inputs
+      hash: md5
+      md5: 2d0ec28cfbc3e7eb000570f3f38c1bfd.dir
+      size: 7976
+      nfiles: 2
+    - path: verify_design.py
+      hash: md5
+      md5: 20798cd21fc5a4996e5378241d197475
+      size: 1251
+    outs:
+    - path: results/design-check.json
+      hash: md5
+      md5: 590644295a098c9a50685933a1df33ec
+      size: 804
+  restore_cloud:
+    cmd: ../../.venv/bin/python evidence.py extract
+    deps:
+    - path: data/cloud-evidence.tar.gz
+      hash: md5
+      md5: 0500cebe469cf49e26d8f8466664b215
+      size: 3542786
+    - path: evidence.py
+      hash: md5
+      md5: 9e99050095a7f7413ed982c5ab3db7b5
+      size: 510
+    outs:
+    - path: data/cloud
+      hash: md5
+      md5: 6cb8f71157bb751647f861d617bfbb1d.dir
+      size: 8589322
+      nfiles: 477
+  boundary:
+    cmd: ../../.venv/bin/python boundary.py
+    deps:
+    - path: ../../FDS/install/bin/fds2ascii
+      hash: md5
+      md5: d337095553b56be9f2ef696416a099a7
+      size: 1118368
+      isexec: true
+    - path: boundary.py
+      hash: md5
+      md5: bcdf35db55841f5426fc4017732948e6
+      size: 2574
+    - path: data/cloud
+      hash: md5
+      md5: 6cb8f71157bb751647f861d617bfbb1d.dir
+      size: 8589322
+      nfiles: 477
+    outs:
+    - path: data/boundary
+      hash: md5
+      md5: b9c6a12ec422c1a37b2136a11003cf08.dir
+      size: 1107298
+      nfiles: 408
+    - path: results/boundary.json
+      hash: md5
+      md5: e510886373cc95e493c0a8d42fdd010d
+      size: 9946
+  plot:
+    cmd: ../../.venv/bin/python plot.py
+    deps:
+    - path: data/cloud
+      hash: md5
+      md5: 6cb8f71157bb751647f861d617bfbb1d.dir
+      size: 8589322
+      nfiles: 477
+    - path: plot.py
+      hash: md5
+      md5: 8e5d58f5ace385230c891e062bb55d94
+      size: 1730
+    outs:
+    - path: results/comparison.png
+      hash: md5
+      md5: 4fa0e71f558b3e739073bc90e06c3acb
+      size: 338196
+  analyze:
+    cmd: ../../.venv/bin/python analyze.py
+    deps:
+    - path: analyze.py
+      hash: md5
+      md5: 276c738c0adddce1a8c9c855b33168fe
+      size: 6649
+    - path: data/cloud
+      hash: md5
+      md5: 6cb8f71157bb751647f861d617bfbb1d.dir
+      size: 8589322
+      nfiles: 477
+    - path: results/boundary.json
+      hash: md5
+      md5: e510886373cc95e493c0a8d42fdd010d
+      size: 9946
+    outs:
+    - path: results/analysis.json
+      hash: md5
+      md5: 0fcf104e4e3d8b78acbd85eb570976cf
+      size: 57023
+    - path: results/findings.md
+      hash: md5
+      md5: 188f214cd5202ab4816efabf42dd714d
+      size: 2465

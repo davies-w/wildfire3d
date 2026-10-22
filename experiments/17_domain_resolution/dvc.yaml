@@ -1,0 +1,50 @@
+stages:
+  generate:
+    cmd: ../../.venv/bin/python generate.py
+    deps: [generate.py, inputs]
+    outs:
+      - manifest.json:
+          cache: false
+  preflight:
+    cmd:
+      - ../../.venv/bin/python preflight.py
+      - ../../.venv/bin/python check_alignment.py
+    deps: [generate.py, preflight.py, check_alignment.py, inputs, ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx]
+    outs:
+      - data/preflight
+      - data/alignment
+      - results/local-preflight.json:
+          cache: false
+      - results/alignment.json:
+          cache: false
+  restore_cloud:
+    cmd: ../../.venv/bin/python evidence.py extract
+    deps: [evidence.py, data/cloud-evidence.tar.gz]
+    outs: [data/cloud]
+  analyze:
+    cmd: ../../.venv/bin/python analyze.py
+    deps: [analyze.py, data/cloud, results/boundary.json]
+    outs:
+      - results/analysis.json:
+          cache: false
+      - results/findings.md:
+          cache: false
+  boundary:
+    cmd: ../../.venv/bin/python boundary.py
+    deps: [boundary.py, data/cloud, ../../FDS/install/bin/fds2ascii]
+    outs:
+      - data/boundary
+      - results/boundary.json:
+          cache: false
+  verify_design:
+    cmd: ../../.venv/bin/python verify_design.py
+    deps: [verify_design.py, generate.py, inputs]
+    outs:
+      - results/design-check.json:
+          cache: false
+  plot:
+    cmd: ../../.venv/bin/python plot.py
+    deps: [plot.py, data/cloud]
+    outs:
+      - results/comparison.png:
+          cache: false

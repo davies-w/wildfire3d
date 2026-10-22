@@ -1,0 +1,3752 @@
+{
+  "model_path": "data/recursive_canopy_normalized/epoch200.json",
+  "model_sha256": "00a2094caa287571dadd5dc786bc7354c608df3b650f861f8022c88780120c48",
+  "baseline_sha256": "f61849fa1e4eff4d55a7f4748aa59ac6d0e501d39fc5e729358d2c02c553c735",
+  "results": [
+    {
+      "case": "b21_single_validation",
+      "model": "graph",
+      "metrics": {
+        "predicted_ignition": false,
+        "reference_ignition": true,
+        "predicted_ignition_s": null,
+        "reference_ignition_s": 26.0,
+        "temperature_MAE_all_C": 59.32795877254335,
+        "exposed_surface_count": 48,
+        "median_exposed_normalized_dose_error": 0.3743345629430779,
+        "p90_exposed_normalized_dose_error": 0.6865211508051747,
+        "exposed_temperature_MAE_C": 59.32795877254335,
+        "absolute_dose_MAE_all_kj_m2": 356.6465560941627,
+        "per_patch": [
+          {
+            "id": "p8.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 117.33054455948108,
+            "reference_dose_kj_m2": 130.98544319555825,
+            "normalized_error": 0.10424745149497806,
+            "temperature_MAE_C": 9.095051771546862
+          },
+          {
+            "id": "p8.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 151.85157782629216,
+            "reference_dose_kj_m2": 181.3440105979751,
+            "normalized_error": 0.16263251636727763,
+            "temperature_MAE_C": 13.490273584208024
+          },
+          {
+            "id": "p8.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 191.86806816516255,
+            "reference_dose_kj_m2": 258.84206423188346,
+            "normalized_error": 0.25874463745089865,
+            "temperature_MAE_C": 21.591157792359994
+          },
+          {
+            "id": "p8.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 231.70917102797938,
+            "reference_dose_kj_m2": 387.4166263435134,
+            "normalized_error": 0.4019121656835446,
+            "temperature_MAE_C": 37.48225439658242
+          },
+          {
+            "id": "p8.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 261.1416219925453,
+            "reference_dose_kj_m2": 497.78683779366474,
+            "normalized_error": 0.4753946826918917,
+            "temperature_MAE_C": 49.51819784922971
+          },
+          {
+            "id": "p8.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 269.4750418558414,
+            "reference_dose_kj_m2": 548.1898567043697,
+            "normalized_error": 0.5084275300606936,
+            "temperature_MAE_C": 52.38477914133286
+          },
+          {
+            "id": "p9.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 139.6060278315398,
+            "reference_dose_kj_m2": 170.43225885822363,
+            "normalized_error": 0.1808708705335359,
+            "temperature_MAE_C": 14.730667170980333
+          },
+          {
+            "id": "p9.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 187.13620617956303,
+            "reference_dose_kj_m2": 244.00186662755365,
+            "normalized_error": 0.23305420255161738,
+            "temperature_MAE_C": 21.200143449910716
+          },
+          {
+            "id": "p9.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 245.73326546396328,
+            "reference_dose_kj_m2": 367.3616583448147,
+            "normalized_error": 0.3310862473478058,
+            "temperature_MAE_C": 33.15910441822134
+          },
+          {
+            "id": "p9.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 307.8666982548877,
+            "reference_dose_kj_m2": 622.4518288413611,
+            "normalized_error": 0.5053967488087323,
+            "temperature_MAE_C": 61.293985017515865
+          },
+          {
+            "id": "p9.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 356.2611921996306,
+            "reference_dose_kj_m2": 874.238303406438,
+            "normalized_error": 0.5924896097420215,
+            "temperature_MAE_C": 87.99139259413181
+          },
+          {
+            "id": "p9.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 370.3608898251086,
+            "reference_dose_kj_m2": 1004.6670410709665,
+            "normalized_error": 0.6313595702011813,
+            "temperature_MAE_C": 98.65323872501573
+          },
+          {
+            "id": "p10.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 158.7070489350636,
+            "reference_dose_kj_m2": 211.04306765686565,
+            "normalized_error": 0.24798738619026825,
+            "temperature_MAE_C": 20.82098582884413
+          },
+          {
+            "id": "p10.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 219.06285523303032,
+            "reference_dose_kj_m2": 311.3972444114939,
+            "normalized_error": 0.2965163977380894,
+            "temperature_MAE_C": 30.30884697754025
+          },
+          {
+            "id": "p10.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 297.5027386652398,
+            "reference_dose_kj_m2": 495.8382374121827,
+            "normalized_error": 0.4000004109849835,
+            "temperature_MAE_C": 47.8878400562958
+          },
+          {
+            "id": "p10.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 385.51529141591607,
+            "reference_dose_kj_m2": 976.1794620715801,
+            "normalized_error": 0.6050774407834781,
+            "temperature_MAE_C": 97.89847487533596
+          },
+          {
+            "id": "p10.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 457.55154996733256,
+            "reference_dose_kj_m2": 1452.7642097151652,
+            "normalized_error": 0.6850476168758026,
+            "temperature_MAE_C": 140.06769599161683
+          },
+          {
+            "id": "p10.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 479.12482488536335,
+            "reference_dose_kj_m2": 1770.8266751215638,
+            "normalized_error": 0.7294343756977388,
+            "temperature_MAE_C": 168.9452287740079
+          },
+          {
+            "id": "p11.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 169.95862592113676,
+            "reference_dose_kj_m2": 229.72003253838488,
+            "normalized_error": 0.2601488688508798,
+            "temperature_MAE_C": 23.20156875146648
+          },
+          {
+            "id": "p11.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 238.6093764243579,
+            "reference_dose_kj_m2": 339.17598231088664,
+            "normalized_error": 0.2965027334817299,
+            "temperature_MAE_C": 32.941743655346
+          },
+          {
+            "id": "p11.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 330.6562813147668,
+            "reference_dose_kj_m2": 543.3493207534893,
+            "normalized_error": 0.39144806354735223,
+            "temperature_MAE_C": 51.02247361014566
+          },
+          {
+            "id": "p11.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 437.57695789963276,
+            "reference_dose_kj_m2": 1116.0362490755663,
+            "normalized_error": 0.6079186869941849,
+            "temperature_MAE_C": 105.7915777207343
+          },
+          {
+            "id": "p11.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 527.883770471697,
+            "reference_dose_kj_m2": 1702.6278647103234,
+            "normalized_error": 0.6899593966403761,
+            "temperature_MAE_C": 154.11533504280897
+          },
+          {
+            "id": "p11.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 555.4162079107934,
+            "reference_dose_kj_m2": 2116.108878946992,
+            "normalized_error": 0.7375294752379769,
+            "temperature_MAE_C": 190.9017151837583
+          },
+          {
+            "id": "p12.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 169.95862592113676,
+            "reference_dose_kj_m2": 224.43998761601964,
+            "normalized_error": 0.24274356042155748,
+            "temperature_MAE_C": 21.881270105702324
+          },
+          {
+            "id": "p12.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 238.6093764243579,
+            "reference_dose_kj_m2": 332.46410699450587,
+            "normalized_error": 0.2823003403844102,
+            "temperature_MAE_C": 31.32256381099922
+          },
+          {
+            "id": "p12.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 330.6562813147668,
+            "reference_dose_kj_m2": 538.8131588606341,
+            "normalized_error": 0.3863247846174221,
+            "temperature_MAE_C": 49.032773296918116
+          },
+          {
+            "id": "p12.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 437.57695789963276,
+            "reference_dose_kj_m2": 1131.6098044058363,
+            "normalized_error": 0.6133146282437989,
+            "temperature_MAE_C": 106.69928647772743
+          },
+          {
+            "id": "p12.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 527.883770471697,
+            "reference_dose_kj_m2": 1703.7663469178574,
+            "normalized_error": 0.6901665704181515,
+            "temperature_MAE_C": 153.092737241496
+          },
+          {
+            "id": "p12.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 555.4162079107934,
+            "reference_dose_kj_m2": 2102.3614246691313,
+            "normalized_error": 0.7358131663787522,
+            "temperature_MAE_C": 188.40950709795698
+          },
+          {
+            "id": "p13.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 158.7070489350636,
+            "reference_dose_kj_m2": 193.91892857831994,
+            "normalized_error": 0.1815804155963814,
+            "temperature_MAE_C": 16.93772456328569
+          },
+          {
+            "id": "p13.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 219.06285523303032,
+            "reference_dose_kj_m2": 285.0941067486272,
+            "normalized_error": 0.23161212369015358,
+            "temperature_MAE_C": 24.449297172243163
+          },
+          {
+            "id": "p13.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 297.5027386652398,
+            "reference_dose_kj_m2": 450.06556269096853,
+            "normalized_error": 0.3389791103179426,
+            "temperature_MAE_C": 38.76419091984673
+          },
+          {
+            "id": "p13.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 385.51529141591607,
+            "reference_dose_kj_m2": 841.5735617125735,
+            "normalized_error": 0.5419113563508273,
+            "temperature_MAE_C": 78.48999892248256
+          },
+          {
+            "id": "p13.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 457.55154996733256,
+            "reference_dose_kj_m2": 1228.849594573796,
+            "normalized_error": 0.6276586231645167,
+            "temperature_MAE_C": 113.11838789344716
+          },
+          {
+            "id": "p13.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 479.12482488536335,
+            "reference_dose_kj_m2": 1447.0394844855782,
+            "normalized_error": 0.6688930536987442,
+            "temperature_MAE_C": 133.04019441922807
+          },
+          {
+            "id": "p14.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 139.6060278315398,
+            "reference_dose_kj_m2": 151.31649990408783,
+            "normalized_error": 0.07739058252054959,
+            "temperature_MAE_C": 10.483389648365273
+          },
+          {
+            "id": "p14.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 187.13620617956303,
+            "reference_dose_kj_m2": 212.7692091629988,
+            "normalized_error": 0.120473272821157,
+            "temperature_MAE_C": 14.905716495427018
+          },
+          {
+            "id": "p14.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 245.73326546396328,
+            "reference_dose_kj_m2": 314.49926620493466,
+            "normalized_error": 0.21865234081710683,
+            "temperature_MAE_C": 23.34475690573561
+          },
+          {
+            "id": "p14.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 307.8666982548877,
+            "reference_dose_kj_m2": 501.7096440786047,
+            "normalized_error": 0.3863647990656263,
+            "temperature_MAE_C": 42.64519338106233
+          },
+          {
+            "id": "p14.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 356.2611921996306,
+            "reference_dose_kj_m2": 680.7507394467275,
+            "normalized_error": 0.47666425968309944,
+            "temperature_MAE_C": 60.29711156109773
+          },
+          {
+            "id": "p14.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 370.3608898251086,
+            "reference_dose_kj_m2": 754.4472069774242,
+            "normalized_error": 0.5090963471004126,
+            "temperature_MAE_C": 64.29376806591449
+          },
+          {
+            "id": "p15.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 117.33054455948108,
+            "reference_dose_kj_m2": 116.0546826194424,
+            "normalized_error": 0.010993627411160901,
+            "temperature_MAE_C": 4.721467243671518
+          },
+          {
+            "id": "p15.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 151.85157782629216,
+            "reference_dose_kj_m2": 158.71270054499854,
+            "normalized_error": 0.04322982782818382,
+            "temperature_MAE_C": 7.1072766473643005
+          },
+          {
+            "id": "p15.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 191.86806816516255,
+            "reference_dose_kj_m2": 223.7171514776657,
+            "normalized_error": 0.14236317198810183,
+            "temperature_MAE_C": 12.234176786338457
+          },
+          {
+            "id": "p15.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 231.70917102797938,
+            "reference_dose_kj_m2": 322.5176851441382,
+            "normalized_error": 0.28156134779268027,
+            "temperature_MAE_C": 22.790599278241334
+          },
+          {
+            "id": "p15.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 261.1416219925453,
+            "reference_dose_kj_m2": 400.4160016798227,
+            "normalized_error": 0.3478242105784844,
+            "temperature_MAE_C": 31.496562032158756
+          },
+          {
+            "id": "p15.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 269.4750418558414,
+            "reference_dose_kj_m2": 422.60276085687343,
+            "normalized_error": 0.3623443412687337,
+            "temperature_MAE_C": 33.69033873643405
+          }
+        ],
+        "timing_note": "Resampled0.5s temperature crossing for model comparison; raw FDS burning-rate/global-device checks remain authoritative for any-part ignition."
+      },
+      "canopies": [
+        {
+          "id": "v0",
+          "initialized": true,
+          "fuel_kg_predicted": 48.868944140522004,
+          "fuel_kg_reference": 55.28808929934684
+        }
+      ],
+      "wall_seconds": 0.09289174992591143
+    },
+    {
+      "case": "b21_single_validation",
+      "model": "baseline",
+      "metrics": {
+        "predicted_ignition": true,
+        "reference_ignition": true,
+        "predicted_ignition_s": 27.0,
+        "reference_ignition_s": 26.0,
+        "temperature_MAE_all_C": 31.37702801975472,
+        "exposed_surface_count": 48,
+        "median_exposed_normalized_dose_error": 0.20657605428607342,
+        "p90_exposed_normalized_dose_error": 0.4385409704951002,
+        "exposed_temperature_MAE_C": 31.37702801975472,
+        "absolute_dose_MAE_all_kj_m2": 161.23910930028987,
+        "per_patch": [
+          {
+            "id": "p8.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 120.20081779026138,
+            "reference_dose_kj_m2": 130.98544319555825,
+            "normalized_error": 0.08233453383973109,
+            "temperature_MAE_C": 6.23921256729323
+          },
+          {
+            "id": "p8.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 159.6953585065161,
+            "reference_dose_kj_m2": 181.3440105979751,
+            "normalized_error": 0.11937891976731622,
+            "temperature_MAE_C": 9.081883164956643
+          },
+          {
+            "id": "p8.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 207.00921412142972,
+            "reference_dose_kj_m2": 258.84206423188346,
+            "normalized_error": 0.20024894432930854,
+            "temperature_MAE_C": 14.733162827147334
+          },
+          {
+            "id": "p8.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 255.55881965839737,
+            "reference_dose_kj_m2": 387.4166263435134,
+            "normalized_error": 0.3403514400752661,
+            "temperature_MAE_C": 28.283367680424767
+          },
+          {
+            "id": "p8.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 292.2638854770255,
+            "reference_dose_kj_m2": 497.78683779366474,
+            "normalized_error": 0.41287341631525737,
+            "temperature_MAE_C": 38.521149045872356
+          },
+          {
+            "id": "p8.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 302.7726877731123,
+            "reference_dose_kj_m2": 548.1898567043697,
+            "normalized_error": 0.44768644645609906,
+            "temperature_MAE_C": 40.88630042980859
+          },
+          {
+            "id": "p9.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 145.54190043408096,
+            "reference_dose_kj_m2": 170.43225885822363,
+            "normalized_error": 0.14604253086176636,
+            "temperature_MAE_C": 11.122381440999703
+          },
+          {
+            "id": "p9.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 201.34423289554408,
+            "reference_dose_kj_m2": 244.00186662755365,
+            "normalized_error": 0.17482503032291355,
+            "temperature_MAE_C": 15.223424218634939
+          },
+          {
+            "id": "p9.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 272.9797531548913,
+            "reference_dose_kj_m2": 367.3616583448147,
+            "normalized_error": 0.256918224986164,
+            "temperature_MAE_C": 23.701137149139644
+          },
+          {
+            "id": "p9.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 351.9208932651986,
+            "reference_dose_kj_m2": 622.4518288413611,
+            "normalized_error": 0.4346214807975292,
+            "temperature_MAE_C": 47.93053227999642
+          },
+          {
+            "id": "p9.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 415.3154550212905,
+            "reference_dose_kj_m2": 874.238303406438,
+            "normalized_error": 0.5249402212153954,
+            "temperature_MAE_C": 71.54524887646586
+          },
+          {
+            "id": "p9.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 434.07229432322345,
+            "reference_dose_kj_m2": 1004.6670410709665,
+            "normalized_error": 0.5679441281755336,
+            "temperature_MAE_C": 81.34392723338262
+          },
+          {
+            "id": "p10.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 167.70162383780755,
+            "reference_dose_kj_m2": 211.04306765686565,
+            "normalized_error": 0.20536776829612255,
+            "temperature_MAE_C": 17.182987564314256
+          },
+          {
+            "id": "p10.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 240.021010269061,
+            "reference_dose_kj_m2": 311.3972444114939,
+            "normalized_error": 0.2292127994816589,
+            "temperature_MAE_C": 23.694977164442268
+          },
+          {
+            "id": "p10.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 338.5683631992865,
+            "reference_dose_kj_m2": 495.8382374121827,
+            "normalized_error": 0.3171798024970796,
+            "temperature_MAE_C": 36.308204822207884
+          },
+          {
+            "id": "p10.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 454.41959419709985,
+            "reference_dose_kj_m2": 976.1794620715801,
+            "normalized_error": 0.5344917488503986,
+            "temperature_MAE_C": 80.26660580226373
+          },
+          {
+            "id": "p10.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1369.8002237145179,
+            "reference_dose_kj_m2": 1452.7642097151652,
+            "normalized_error": 0.05710767476637765,
+            "temperature_MAE_C": 34.55137961978077
+          },
+          {
+            "id": "p10.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1406.8830994917575,
+            "reference_dose_kj_m2": 1770.8266751215638,
+            "normalized_error": 0.20552185075076432,
+            "temperature_MAE_C": 43.37770703139529
+          },
+          {
+            "id": "p11.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 180.9285332358192,
+            "reference_dose_kj_m2": 229.72003253838488,
+            "normalized_error": 0.21239549186644358,
+            "temperature_MAE_C": 19.23376680175257
+          },
+          {
+            "id": "p11.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 264.1297321712371,
+            "reference_dose_kj_m2": 339.17598231088664,
+            "normalized_error": 0.22126050797683725,
+            "temperature_MAE_C": 25.285672518236456
+          },
+          {
+            "id": "p11.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 381.59962646090463,
+            "reference_dose_kj_m2": 543.3493207534893,
+            "normalized_error": 0.2976900644106418,
+            "temperature_MAE_C": 37.595512667183144
+          },
+          {
+            "id": "p11.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1335.1972540518059,
+            "reference_dose_kj_m2": 1116.0362490755663,
+            "normalized_error": 0.19637445034404105,
+            "temperature_MAE_C": 54.77949056506384
+          },
+          {
+            "id": "p11.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1496.8952389604833,
+            "reference_dose_kj_m2": 1702.6278647103234,
+            "normalized_error": 0.12083240854562331,
+            "temperature_MAE_C": 33.10727301145681
+          },
+          {
+            "id": "p11.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1550.4169602237503,
+            "reference_dose_kj_m2": 2116.108878946992,
+            "normalized_error": 0.2673264709350582,
+            "temperature_MAE_C": 59.72821756846877
+          },
+          {
+            "id": "p12.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 180.9285332358192,
+            "reference_dose_kj_m2": 224.43998761601964,
+            "normalized_error": 0.1938667651980157,
+            "temperature_MAE_C": 18.297846953981857
+          },
+          {
+            "id": "p12.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 264.1297321712371,
+            "reference_dose_kj_m2": 332.46410699450587,
+            "normalized_error": 0.20553910447962442,
+            "temperature_MAE_C": 24.58817613599542
+          },
+          {
+            "id": "p12.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 381.59962646090463,
+            "reference_dose_kj_m2": 538.8131588606341,
+            "normalized_error": 0.2917774553468047,
+            "temperature_MAE_C": 37.118164148458575
+          },
+          {
+            "id": "p12.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1335.1972540518059,
+            "reference_dose_kj_m2": 1131.6098044058363,
+            "normalized_error": 0.1799095844285879,
+            "temperature_MAE_C": 54.97389598358045
+          },
+          {
+            "id": "p12.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1496.8952389604833,
+            "reference_dose_kj_m2": 1703.7663469178574,
+            "normalized_error": 0.1214198815064093,
+            "temperature_MAE_C": 28.37263557166851
+          },
+          {
+            "id": "p12.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1550.4169602237503,
+            "reference_dose_kj_m2": 2102.3614246691313,
+            "normalized_error": 0.2625354793751725,
+            "temperature_MAE_C": 57.37823024720334
+          },
+          {
+            "id": "p13.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 167.70162383780755,
+            "reference_dose_kj_m2": 193.91892857831994,
+            "normalized_error": 0.13519724419230045,
+            "temperature_MAE_C": 13.582666264679297
+          },
+          {
+            "id": "p13.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 240.021010269061,
+            "reference_dose_kj_m2": 285.0941067486272,
+            "normalized_error": 0.15809901156360273,
+            "temperature_MAE_C": 18.565474171579645
+          },
+          {
+            "id": "p13.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 338.5683631992866,
+            "reference_dose_kj_m2": 450.06556269096853,
+            "normalized_error": 0.24773546064052007,
+            "temperature_MAE_C": 28.885857269540004
+          },
+          {
+            "id": "p13.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 454.41959419709985,
+            "reference_dose_kj_m2": 841.5735617125735,
+            "normalized_error": 0.4600358009436852,
+            "temperature_MAE_C": 63.68619455591749
+          },
+          {
+            "id": "p13.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1369.8002237145179,
+            "reference_dose_kj_m2": 1228.849594573796,
+            "normalized_error": 0.11470128627873952,
+            "temperature_MAE_C": 46.45003332330654
+          },
+          {
+            "id": "p13.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1406.8830994917575,
+            "reference_dose_kj_m2": 1447.0394844855782,
+            "normalized_error": 0.02775071822459374,
+            "temperature_MAE_C": 30.852739237822515
+          },
+          {
+            "id": "p14.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 145.541900434081,
+            "reference_dose_kj_m2": 151.31649990408783,
+            "normalized_error": 0.03816239123735406,
+            "temperature_MAE_C": 7.574543144723197
+          },
+          {
+            "id": "p14.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 201.34423289554408,
+            "reference_dose_kj_m2": 212.7692091629988,
+            "normalized_error": 0.05369656780884234,
+            "temperature_MAE_C": 10.182327267071216
+          },
+          {
+            "id": "p14.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 272.9797531548913,
+            "reference_dose_kj_m2": 314.49926620493466,
+            "normalized_error": 0.13201783759644242,
+            "temperature_MAE_C": 15.270166357543275
+          },
+          {
+            "id": "p14.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 351.9208932651986,
+            "reference_dose_kj_m2": 501.7096440786047,
+            "normalized_error": 0.2985566504078167,
+            "temperature_MAE_C": 30.715620648696355
+          },
+          {
+            "id": "p14.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 415.3154550212906,
+            "reference_dose_kj_m2": 680.7507394467275,
+            "normalized_error": 0.38991552861355167,
+            "temperature_MAE_C": 44.83254436538425
+          },
+          {
+            "id": "p14.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 434.07229432322356,
+            "reference_dose_kj_m2": 754.4472069774242,
+            "normalized_error": 0.4246485502116617,
+            "temperature_MAE_C": 47.484089960160205
+          },
+          {
+            "id": "p15.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 120.2008177902614,
+            "reference_dose_kj_m2": 116.0546826194424,
+            "normalized_error": 0.03572570341185354,
+            "temperature_MAE_C": 3.2495324829458947
+          },
+          {
+            "id": "p15.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 159.69535850651616,
+            "reference_dose_kj_m2": 158.71270054499854,
+            "normalized_error": 0.006191426131262961,
+            "temperature_MAE_C": 4.679547062283282
+          },
+          {
+            "id": "p15.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 207.00921412142972,
+            "reference_dose_kj_m2": 223.7171514776657,
+            "normalized_error": 0.07468330991110436,
+            "temperature_MAE_C": 7.388122372749619
+          },
+          {
+            "id": "p15.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 255.5588196583974,
+            "reference_dose_kj_m2": 322.5176851441382,
+            "normalized_error": 0.20761300409252242,
+            "temperature_MAE_C": 14.34819035911898
+          },
+          {
+            "id": "p15.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 292.2638854770255,
+            "reference_dose_kj_m2": 400.4160016798227,
+            "normalized_error": 0.27009938601124367,
+            "temperature_MAE_C": 20.815878092804947
+          },
+          {
+            "id": "p15.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 302.7726877731123,
+            "reference_dose_kj_m2": 422.60276085687343,
+            "normalized_error": 0.28355250884019906,
+            "temperature_MAE_C": 23.081346920324044
+          }
+        ],
+        "timing_note": "Resampled0.5s temperature crossing for model comparison; raw FDS burning-rate/global-device checks remain authoritative for any-part ignition."
+      },
+      "canopies": [
+        {
+          "id": "v0",
+          "initialized": true,
+          "fuel_kg_predicted": 53.08405362175189,
+          "fuel_kg_reference": 55.28808929934684
+        }
+      ],
+      "wall_seconds": 0.083490916993469
+    },
+    {
+      "case": "b21_single_validation",
+      "model": "ablation",
+      "metrics": {
+        "predicted_ignition": false,
+        "reference_ignition": true,
+        "predicted_ignition_s": null,
+        "reference_ignition_s": 26.0,
+        "temperature_MAE_all_C": 59.32795877254335,
+        "exposed_surface_count": 48,
+        "median_exposed_normalized_dose_error": 0.3743345629430779,
+        "p90_exposed_normalized_dose_error": 0.6865211508051747,
+        "exposed_temperature_MAE_C": 59.32795877254335,
+        "absolute_dose_MAE_all_kj_m2": 356.6465560941627,
+        "per_patch": [
+          {
+            "id": "p8.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 117.33054455948108,
+            "reference_dose_kj_m2": 130.98544319555825,
+            "normalized_error": 0.10424745149497806,
+            "temperature_MAE_C": 9.095051771546862
+          },
+          {
+            "id": "p8.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 151.85157782629216,
+            "reference_dose_kj_m2": 181.3440105979751,
+            "normalized_error": 0.16263251636727763,
+            "temperature_MAE_C": 13.490273584208024
+          },
+          {
+            "id": "p8.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 191.86806816516255,
+            "reference_dose_kj_m2": 258.84206423188346,
+            "normalized_error": 0.25874463745089865,
+            "temperature_MAE_C": 21.591157792359994
+          },
+          {
+            "id": "p8.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 231.70917102797938,
+            "reference_dose_kj_m2": 387.4166263435134,
+            "normalized_error": 0.4019121656835446,
+            "temperature_MAE_C": 37.48225439658242
+          },
+          {
+            "id": "p8.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 261.1416219925453,
+            "reference_dose_kj_m2": 497.78683779366474,
+            "normalized_error": 0.4753946826918917,
+            "temperature_MAE_C": 49.51819784922971
+          },
+          {
+            "id": "p8.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 269.4750418558414,
+            "reference_dose_kj_m2": 548.1898567043697,
+            "normalized_error": 0.5084275300606936,
+            "temperature_MAE_C": 52.38477914133286
+          },
+          {
+            "id": "p9.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 139.6060278315398,
+            "reference_dose_kj_m2": 170.43225885822363,
+            "normalized_error": 0.1808708705335359,
+            "temperature_MAE_C": 14.730667170980333
+          },
+          {
+            "id": "p9.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 187.13620617956303,
+            "reference_dose_kj_m2": 244.00186662755365,
+            "normalized_error": 0.23305420255161738,
+            "temperature_MAE_C": 21.200143449910716
+          },
+          {
+            "id": "p9.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 245.73326546396328,
+            "reference_dose_kj_m2": 367.3616583448147,
+            "normalized_error": 0.3310862473478058,
+            "temperature_MAE_C": 33.15910441822134
+          },
+          {
+            "id": "p9.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 307.8666982548877,
+            "reference_dose_kj_m2": 622.4518288413611,
+            "normalized_error": 0.5053967488087323,
+            "temperature_MAE_C": 61.293985017515865
+          },
+          {
+            "id": "p9.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 356.2611921996306,
+            "reference_dose_kj_m2": 874.238303406438,
+            "normalized_error": 0.5924896097420215,
+            "temperature_MAE_C": 87.99139259413181
+          },
+          {
+            "id": "p9.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 370.3608898251086,
+            "reference_dose_kj_m2": 1004.6670410709665,
+            "normalized_error": 0.6313595702011813,
+            "temperature_MAE_C": 98.65323872501573
+          },
+          {
+            "id": "p10.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 158.7070489350636,
+            "reference_dose_kj_m2": 211.04306765686565,
+            "normalized_error": 0.24798738619026825,
+            "temperature_MAE_C": 20.82098582884413
+          },
+          {
+            "id": "p10.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 219.06285523303032,
+            "reference_dose_kj_m2": 311.3972444114939,
+            "normalized_error": 0.2965163977380894,
+            "temperature_MAE_C": 30.30884697754025
+          },
+          {
+            "id": "p10.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 297.5027386652398,
+            "reference_dose_kj_m2": 495.8382374121827,
+            "normalized_error": 0.4000004109849835,
+            "temperature_MAE_C": 47.8878400562958
+          },
+          {
+            "id": "p10.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 385.51529141591607,
+            "reference_dose_kj_m2": 976.1794620715801,
+            "normalized_error": 0.6050774407834781,
+            "temperature_MAE_C": 97.89847487533596
+          },
+          {
+            "id": "p10.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 457.55154996733256,
+            "reference_dose_kj_m2": 1452.7642097151652,
+            "normalized_error": 0.6850476168758026,
+            "temperature_MAE_C": 140.06769599161683
+          },
+          {
+            "id": "p10.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 479.12482488536335,
+            "reference_dose_kj_m2": 1770.8266751215638,
+            "normalized_error": 0.7294343756977388,
+            "temperature_MAE_C": 168.9452287740079
+          },
+          {
+            "id": "p11.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 169.95862592113676,
+            "reference_dose_kj_m2": 229.72003253838488,
+            "normalized_error": 0.2601488688508798,
+            "temperature_MAE_C": 23.20156875146648
+          },
+          {
+            "id": "p11.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 238.6093764243579,
+            "reference_dose_kj_m2": 339.17598231088664,
+            "normalized_error": 0.2965027334817299,
+            "temperature_MAE_C": 32.941743655346
+          },
+          {
+            "id": "p11.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 330.6562813147668,
+            "reference_dose_kj_m2": 543.3493207534893,
+            "normalized_error": 0.39144806354735223,
+            "temperature_MAE_C": 51.02247361014566
+          },
+          {
+            "id": "p11.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 437.57695789963276,
+            "reference_dose_kj_m2": 1116.0362490755663,
+            "normalized_error": 0.6079186869941849,
+            "temperature_MAE_C": 105.7915777207343
+          },
+          {
+            "id": "p11.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 527.883770471697,
+            "reference_dose_kj_m2": 1702.6278647103234,
+            "normalized_error": 0.6899593966403761,
+            "temperature_MAE_C": 154.11533504280897
+          },
+          {
+            "id": "p11.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 555.4162079107934,
+            "reference_dose_kj_m2": 2116.108878946992,
+            "normalized_error": 0.7375294752379769,
+            "temperature_MAE_C": 190.9017151837583
+          },
+          {
+            "id": "p12.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 169.95862592113676,
+            "reference_dose_kj_m2": 224.43998761601964,
+            "normalized_error": 0.24274356042155748,
+            "temperature_MAE_C": 21.881270105702324
+          },
+          {
+            "id": "p12.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 238.6093764243579,
+            "reference_dose_kj_m2": 332.46410699450587,
+            "normalized_error": 0.2823003403844102,
+            "temperature_MAE_C": 31.32256381099922
+          },
+          {
+            "id": "p12.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 330.6562813147668,
+            "reference_dose_kj_m2": 538.8131588606341,
+            "normalized_error": 0.3863247846174221,
+            "temperature_MAE_C": 49.032773296918116
+          },
+          {
+            "id": "p12.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 437.57695789963276,
+            "reference_dose_kj_m2": 1131.6098044058363,
+            "normalized_error": 0.6133146282437989,
+            "temperature_MAE_C": 106.69928647772743
+          },
+          {
+            "id": "p12.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 527.883770471697,
+            "reference_dose_kj_m2": 1703.7663469178574,
+            "normalized_error": 0.6901665704181515,
+            "temperature_MAE_C": 153.092737241496
+          },
+          {
+            "id": "p12.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 555.4162079107934,
+            "reference_dose_kj_m2": 2102.3614246691313,
+            "normalized_error": 0.7358131663787522,
+            "temperature_MAE_C": 188.40950709795698
+          },
+          {
+            "id": "p13.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 158.7070489350636,
+            "reference_dose_kj_m2": 193.91892857831994,
+            "normalized_error": 0.1815804155963814,
+            "temperature_MAE_C": 16.93772456328569
+          },
+          {
+            "id": "p13.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 219.06285523303032,
+            "reference_dose_kj_m2": 285.0941067486272,
+            "normalized_error": 0.23161212369015358,
+            "temperature_MAE_C": 24.449297172243163
+          },
+          {
+            "id": "p13.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 297.5027386652398,
+            "reference_dose_kj_m2": 450.06556269096853,
+            "normalized_error": 0.3389791103179426,
+            "temperature_MAE_C": 38.76419091984673
+          },
+          {
+            "id": "p13.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 385.51529141591607,
+            "reference_dose_kj_m2": 841.5735617125735,
+            "normalized_error": 0.5419113563508273,
+            "temperature_MAE_C": 78.48999892248256
+          },
+          {
+            "id": "p13.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 457.55154996733256,
+            "reference_dose_kj_m2": 1228.849594573796,
+            "normalized_error": 0.6276586231645167,
+            "temperature_MAE_C": 113.11838789344716
+          },
+          {
+            "id": "p13.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 479.12482488536335,
+            "reference_dose_kj_m2": 1447.0394844855782,
+            "normalized_error": 0.6688930536987442,
+            "temperature_MAE_C": 133.04019441922807
+          },
+          {
+            "id": "p14.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 139.6060278315398,
+            "reference_dose_kj_m2": 151.31649990408783,
+            "normalized_error": 0.07739058252054959,
+            "temperature_MAE_C": 10.483389648365273
+          },
+          {
+            "id": "p14.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 187.13620617956303,
+            "reference_dose_kj_m2": 212.7692091629988,
+            "normalized_error": 0.120473272821157,
+            "temperature_MAE_C": 14.905716495427018
+          },
+          {
+            "id": "p14.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 245.73326546396328,
+            "reference_dose_kj_m2": 314.49926620493466,
+            "normalized_error": 0.21865234081710683,
+            "temperature_MAE_C": 23.34475690573561
+          },
+          {
+            "id": "p14.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 307.8666982548877,
+            "reference_dose_kj_m2": 501.7096440786047,
+            "normalized_error": 0.3863647990656263,
+            "temperature_MAE_C": 42.64519338106233
+          },
+          {
+            "id": "p14.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 356.2611921996306,
+            "reference_dose_kj_m2": 680.7507394467275,
+            "normalized_error": 0.47666425968309944,
+            "temperature_MAE_C": 60.29711156109773
+          },
+          {
+            "id": "p14.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 370.3608898251086,
+            "reference_dose_kj_m2": 754.4472069774242,
+            "normalized_error": 0.5090963471004126,
+            "temperature_MAE_C": 64.29376806591449
+          },
+          {
+            "id": "p15.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 117.33054455948108,
+            "reference_dose_kj_m2": 116.0546826194424,
+            "normalized_error": 0.010993627411160901,
+            "temperature_MAE_C": 4.721467243671518
+          },
+          {
+            "id": "p15.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 151.85157782629216,
+            "reference_dose_kj_m2": 158.71270054499854,
+            "normalized_error": 0.04322982782818382,
+            "temperature_MAE_C": 7.1072766473643005
+          },
+          {
+            "id": "p15.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 191.86806816516255,
+            "reference_dose_kj_m2": 223.7171514776657,
+            "normalized_error": 0.14236317198810183,
+            "temperature_MAE_C": 12.234176786338457
+          },
+          {
+            "id": "p15.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 231.70917102797938,
+            "reference_dose_kj_m2": 322.5176851441382,
+            "normalized_error": 0.28156134779268027,
+            "temperature_MAE_C": 22.790599278241334
+          },
+          {
+            "id": "p15.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 261.1416219925453,
+            "reference_dose_kj_m2": 400.4160016798227,
+            "normalized_error": 0.3478242105784844,
+            "temperature_MAE_C": 31.496562032158756
+          },
+          {
+            "id": "p15.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 269.4750418558414,
+            "reference_dose_kj_m2": 422.60276085687343,
+            "normalized_error": 0.3623443412687337,
+            "temperature_MAE_C": 33.69033873643405
+          }
+        ],
+        "timing_note": "Resampled0.5s temperature crossing for model comparison; raw FDS burning-rate/global-device checks remain authoritative for any-part ignition."
+      },
+      "canopies": [
+        {
+          "id": "v0",
+          "initialized": true,
+          "fuel_kg_predicted": 48.868944140522004,
+          "fuel_kg_reference": 55.28808929934684
+        }
+      ],
+      "wall_seconds": 0.12759487493894994
+    },
+    {
+      "case": "b21_transfer_validation",
+      "model": "graph",
+      "metrics": {
+        "predicted_ignition": false,
+        "reference_ignition": false,
+        "predicted_ignition_s": null,
+        "reference_ignition_s": null,
+        "temperature_MAE_all_C": 11.652781934152218,
+        "exposed_surface_count": 0,
+        "median_exposed_normalized_dose_error": null,
+        "p90_exposed_normalized_dose_error": null,
+        "exposed_temperature_MAE_C": null,
+        "absolute_dose_MAE_all_kj_m2": 67.78772538542337,
+        "per_patch": [
+          {
+            "id": "p8.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 80.18401147417713,
+            "reference_dose_kj_m2": 51.28334052124204,
+            "normalized_error": 0.28900670952935087,
+            "temperature_MAE_C": 4.065021377042873
+          },
+          {
+            "id": "p8.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 89.96509515230137,
+            "reference_dose_kj_m2": 63.94055787233577,
+            "normalized_error": 0.260245372799656,
+            "temperature_MAE_C": 3.1477166290846474
+          },
+          {
+            "id": "p8.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 100.53574557137132,
+            "reference_dose_kj_m2": 66.34965176373571,
+            "normalized_error": 0.34186093807635615,
+            "temperature_MAE_C": 5.016190142156611
+          },
+          {
+            "id": "p8.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 111.80246810505223,
+            "reference_dose_kj_m2": 49.13762473739958,
+            "normalized_error": 0.6266484336765266,
+            "temperature_MAE_C": 11.200887781846587
+          },
+          {
+            "id": "p8.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 123.4800576498137,
+            "reference_dose_kj_m2": 38.780180954808635,
+            "normalized_error": 0.8469987669500506,
+            "temperature_MAE_C": 15.677238970684625
+          },
+          {
+            "id": "p8.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 134.87314633405478,
+            "reference_dose_kj_m2": 31.740375939828226,
+            "normalized_error": 1.0313277039422655,
+            "temperature_MAE_C": 19.68744675330699
+          },
+          {
+            "id": "p9.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 85.06244752454285,
+            "reference_dose_kj_m2": 56.58596641580289,
+            "normalized_error": 0.28476481108739954,
+            "temperature_MAE_C": 3.4190445495291115
+          },
+          {
+            "id": "p9.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 96.1135073657332,
+            "reference_dose_kj_m2": 70.75252196296708,
+            "normalized_error": 0.2536098540276612,
+            "temperature_MAE_C": 2.656186084300104
+          },
+          {
+            "id": "p9.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 108.35097526192193,
+            "reference_dose_kj_m2": 74.27094048085591,
+            "normalized_error": 0.3408003478106602,
+            "temperature_MAE_C": 4.399949124231782
+          },
+          {
+            "id": "p9.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 121.82737752949753,
+            "reference_dose_kj_m2": 53.67566728124779,
+            "normalized_error": 0.6815171024824974,
+            "temperature_MAE_C": 11.912195353142796
+          },
+          {
+            "id": "p9.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 136.39687235341194,
+            "reference_dose_kj_m2": 38.69682132611414,
+            "normalized_error": 0.9770005102729781,
+            "temperature_MAE_C": 18.073424226447717
+          },
+          {
+            "id": "p9.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 151.36582937337715,
+            "reference_dose_kj_m2": 20.57979361102352,
+            "normalized_error": 1.3078603576235364,
+            "temperature_MAE_C": 25.15286170579305
+          },
+          {
+            "id": "p10.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 88.61718568674257,
+            "reference_dose_kj_m2": 55.9730168517974,
+            "normalized_error": 0.32644168834945175,
+            "temperature_MAE_C": 4.067613074099906
+          },
+          {
+            "id": "p10.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 100.65834140174721,
+            "reference_dose_kj_m2": 70.59485106271322,
+            "normalized_error": 0.3006349033903399,
+            "temperature_MAE_C": 3.3083571248284405
+          },
+          {
+            "id": "p10.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 114.24006717885675,
+            "reference_dose_kj_m2": 75.80733924527175,
+            "normalized_error": 0.38432727933585,
+            "temperature_MAE_C": 5.057394305570202
+          },
+          {
+            "id": "p10.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 129.57592404037197,
+            "reference_dose_kj_m2": 55.98846235294404,
+            "normalized_error": 0.7358746168742794,
+            "temperature_MAE_C": 12.917320395321665
+          },
+          {
+            "id": "p10.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 146.7038312208266,
+            "reference_dose_kj_m2": 39.55310495903064,
+            "normalized_error": 1.0715072626179596,
+            "temperature_MAE_C": 19.881816273954275
+          },
+          {
+            "id": "p10.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 165.01529302632565,
+            "reference_dose_kj_m2": 15.760992295815827,
+            "normalized_error": 1.492543007305098,
+            "temperature_MAE_C": 28.756931033077187
+          },
+          {
+            "id": "p11.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 90.49562500710559,
+            "reference_dose_kj_m2": 55.968039448811595,
+            "normalized_error": 0.34527585558293994,
+            "temperature_MAE_C": 4.313922771345679
+          },
+          {
+            "id": "p11.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 103.08295595892628,
+            "reference_dose_kj_m2": 71.71390520323092,
+            "normalized_error": 0.31369050755695355,
+            "temperature_MAE_C": 3.5290340600068766
+          },
+          {
+            "id": "p11.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 117.42300486652636,
+            "reference_dose_kj_m2": 78.1055360672471,
+            "normalized_error": 0.39317468799279254,
+            "temperature_MAE_C": 5.03861406957159
+          },
+          {
+            "id": "p11.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 133.83791735825508,
+            "reference_dose_kj_m2": 58.00774498940571,
+            "normalized_error": 0.7583017236884938,
+            "temperature_MAE_C": 13.129845396949465
+          },
+          {
+            "id": "p11.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 152.50127310415118,
+            "reference_dose_kj_m2": 41.0207218080801,
+            "normalized_error": 1.1148055129607108,
+            "temperature_MAE_C": 20.546917560440757
+          },
+          {
+            "id": "p11.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 172.895280372787,
+            "reference_dose_kj_m2": 13.50744280754695,
+            "normalized_error": 1.5938783756524006,
+            "temperature_MAE_C": 30.71903969527484
+          },
+          {
+            "id": "p12.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 90.49562500710559,
+            "reference_dose_kj_m2": 55.17621594137322,
+            "normalized_error": 0.35319409065732366,
+            "temperature_MAE_C": 4.443850446342638
+          },
+          {
+            "id": "p12.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 103.08295595892628,
+            "reference_dose_kj_m2": 70.31258296515853,
+            "normalized_error": 0.3277037299376775,
+            "temperature_MAE_C": 3.7044106871638216
+          },
+          {
+            "id": "p12.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 117.42300486652636,
+            "reference_dose_kj_m2": 76.51481823207448,
+            "normalized_error": 0.4090818663445188,
+            "temperature_MAE_C": 5.406417395924228
+          },
+          {
+            "id": "p12.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 133.83791735825508,
+            "reference_dose_kj_m2": 56.757070127382015,
+            "normalized_error": 0.7708084723087307,
+            "temperature_MAE_C": 13.508064738417415
+          },
+          {
+            "id": "p12.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 152.50127310415118,
+            "reference_dose_kj_m2": 39.92975685776628,
+            "normalized_error": 1.125715162463849,
+            "temperature_MAE_C": 20.789575605892725
+          },
+          {
+            "id": "p12.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 172.895280372787,
+            "reference_dose_kj_m2": 13.789274219411622,
+            "normalized_error": 1.5910600615337538,
+            "temperature_MAE_C": 30.647609662777885
+          },
+          {
+            "id": "p13.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 88.61718568674257,
+            "reference_dose_kj_m2": 55.85865538349784,
+            "normalized_error": 0.3275853030324473,
+            "temperature_MAE_C": 3.9555922248481603
+          },
+          {
+            "id": "p13.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 100.65834140174721,
+            "reference_dose_kj_m2": 70.23356649693305,
+            "normalized_error": 0.30424774904814156,
+            "temperature_MAE_C": 3.185466622057594
+          },
+          {
+            "id": "p13.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 114.24006717885675,
+            "reference_dose_kj_m2": 75.33383167922503,
+            "normalized_error": 0.3890623549963172,
+            "temperature_MAE_C": 5.075863449735986
+          },
+          {
+            "id": "p13.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 129.57592404037197,
+            "reference_dose_kj_m2": 54.909138783940215,
+            "normalized_error": 0.7466678525643176,
+            "temperature_MAE_C": 13.101409852694522
+          },
+          {
+            "id": "p13.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 146.7038312208266,
+            "reference_dose_kj_m2": 38.53593655733513,
+            "normalized_error": 1.0816789466349146,
+            "temperature_MAE_C": 19.931720621258577
+          },
+          {
+            "id": "p13.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 165.01529302632565,
+            "reference_dose_kj_m2": 17.0486002212213,
+            "normalized_error": 1.4796669280510435,
+            "temperature_MAE_C": 28.420670256535182
+          },
+          {
+            "id": "p14.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 85.06244752454285,
+            "reference_dose_kj_m2": 53.83315570281471,
+            "normalized_error": 0.3122929182172814,
+            "temperature_MAE_C": 3.879594462169714
+          },
+          {
+            "id": "p14.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 96.1135073657332,
+            "reference_dose_kj_m2": 67.25355449848303,
+            "normalized_error": 0.2885995286725017,
+            "temperature_MAE_C": 3.108678717242514
+          },
+          {
+            "id": "p14.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 108.35097526192193,
+            "reference_dose_kj_m2": 70.66454267665195,
+            "normalized_error": 0.37686432585269986,
+            "temperature_MAE_C": 5.194853917725062
+          },
+          {
+            "id": "p14.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 121.82737752949753,
+            "reference_dose_kj_m2": 50.730130744673815,
+            "normalized_error": 0.7109724678482371,
+            "temperature_MAE_C": 12.505381787636791
+          },
+          {
+            "id": "p14.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 136.39687235341194,
+            "reference_dose_kj_m2": 36.92539698484437,
+            "normalized_error": 0.9947147536856756,
+            "temperature_MAE_C": 18.25307253647992
+          },
+          {
+            "id": "p14.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 151.36582937337715,
+            "reference_dose_kj_m2": 24.41145841772306,
+            "normalized_error": 1.269543709556541,
+            "temperature_MAE_C": 24.25470334101058
+          },
+          {
+            "id": "p15.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 80.18401147417713,
+            "reference_dose_kj_m2": 45.63038464154306,
+            "normalized_error": 0.34553626832634066,
+            "temperature_MAE_C": 5.403140612914079
+          },
+          {
+            "id": "p15.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 89.96509515230137,
+            "reference_dose_kj_m2": 57.450226578950726,
+            "normalized_error": 0.32514868573350647,
+            "temperature_MAE_C": 4.89752802735444
+          },
+          {
+            "id": "p15.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 100.53574557137132,
+            "reference_dose_kj_m2": 60.50972254431116,
+            "normalized_error": 0.40026023027060165,
+            "temperature_MAE_C": 6.74347101154873
+          },
+          {
+            "id": "p15.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 111.80246810505223,
+            "reference_dose_kj_m2": 45.62274700041257,
+            "normalized_error": 0.6617972110463965,
+            "temperature_MAE_C": 12.133762727492085
+          },
+          {
+            "id": "p15.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 123.4800576498137,
+            "reference_dose_kj_m2": 37.048103280609446,
+            "normalized_error": 0.8643195436920424,
+            "temperature_MAE_C": 16.025943532912425
+          },
+          {
+            "id": "p15.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 134.87314633405478,
+            "reference_dose_kj_m2": 33.92417683984029,
+            "normalized_error": 1.0094896949421448,
+            "temperature_MAE_C": 19.087782143163583
+          }
+        ],
+        "timing_note": "Resampled0.5s temperature crossing for model comparison; raw FDS burning-rate/global-device checks remain authoritative for any-part ignition."
+      },
+      "canopies": [
+        {
+          "id": "v0",
+          "initialized": true,
+          "fuel_kg_predicted": 49.86939527537273,
+          "fuel_kg_reference": 53.97655425372209
+        },
+        {
+          "id": "v1",
+          "initialized": false,
+          "fuel_kg_predicted": 20.177392487566873,
+          "fuel_kg_reference": 0.005871791158249355
+        }
+      ],
+      "wall_seconds": 0.08941116603091359
+    },
+    {
+      "case": "b21_transfer_validation",
+      "model": "baseline",
+      "metrics": {
+        "predicted_ignition": false,
+        "reference_ignition": false,
+        "predicted_ignition_s": null,
+        "reference_ignition_s": null,
+        "temperature_MAE_all_C": 6.7036298835657115,
+        "exposed_surface_count": 0,
+        "median_exposed_normalized_dose_error": null,
+        "p90_exposed_normalized_dose_error": null,
+        "exposed_temperature_MAE_C": null,
+        "absolute_dose_MAE_all_kj_m2": 35.507806697817415,
+        "per_patch": [
+          {
+            "id": "p8.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 69.18285930096805,
+            "reference_dose_kj_m2": 51.28334052124204,
+            "normalized_error": 0.1789951877972601,
+            "temperature_MAE_C": 3.044816185833102
+          },
+          {
+            "id": "p8.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 75.1153230398715,
+            "reference_dose_kj_m2": 63.94055787233577,
+            "normalized_error": 0.11174765167535725,
+            "temperature_MAE_C": 2.1976871992176275
+          },
+          {
+            "id": "p8.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 80.25863528560075,
+            "reference_dose_kj_m2": 66.34965176373571,
+            "normalized_error": 0.1390898352186504,
+            "temperature_MAE_C": 2.1639737271222836
+          },
+          {
+            "id": "p8.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 84.20555095370568,
+            "reference_dose_kj_m2": 49.13762473739958,
+            "normalized_error": 0.35067926216306106,
+            "temperature_MAE_C": 6.137414353844846
+          },
+          {
+            "id": "p8.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 86.60283891140595,
+            "reference_dose_kj_m2": 38.780180954808635,
+            "normalized_error": 0.4782265795659732,
+            "temperature_MAE_C": 8.830252675870568
+          },
+          {
+            "id": "p8.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 87.21835629898484,
+            "reference_dose_kj_m2": 31.740375939828226,
+            "normalized_error": 0.5547798035915662,
+            "temperature_MAE_C": 10.581402076666159
+          },
+          {
+            "id": "p9.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 73.20610800125203,
+            "reference_dose_kj_m2": 56.58596641580289,
+            "normalized_error": 0.1662014158544914,
+            "temperature_MAE_C": 2.5171256819731327
+          },
+          {
+            "id": "p9.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 79.72042185241496,
+            "reference_dose_kj_m2": 70.75252196296708,
+            "normalized_error": 0.08967899889447878,
+            "temperature_MAE_C": 3.105203608080541
+          },
+          {
+            "id": "p9.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 85.39285606253603,
+            "reference_dose_kj_m2": 74.27094048085591,
+            "normalized_error": 0.11121915581680114,
+            "temperature_MAE_C": 2.8749967912342855
+          },
+          {
+            "id": "p9.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 89.76104678517456,
+            "reference_dose_kj_m2": 53.67566728124779,
+            "normalized_error": 0.3608537950392677,
+            "temperature_MAE_C": 6.10259494211812
+          },
+          {
+            "id": "p9.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 92.42058205117226,
+            "reference_dose_kj_m2": 38.69682132611414,
+            "normalized_error": 0.5372376072505812,
+            "temperature_MAE_C": 9.979904095162086
+          },
+          {
+            "id": "p9.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 93.10423455612762,
+            "reference_dose_kj_m2": 20.57979361102352,
+            "normalized_error": 0.7252444094510411,
+            "temperature_MAE_C": 14.042647505403078
+          },
+          {
+            "id": "p10.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 76.10243489700734,
+            "reference_dose_kj_m2": 55.9730168517974,
+            "normalized_error": 0.20129418045209946,
+            "temperature_MAE_C": 3.03967606343574
+          },
+          {
+            "id": "p10.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 83.04904667638256,
+            "reference_dose_kj_m2": 70.59485106271322,
+            "normalized_error": 0.12454195613669342,
+            "temperature_MAE_C": 2.994568600261249
+          },
+          {
+            "id": "p10.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 89.11660336271487,
+            "reference_dose_kj_m2": 75.80733924527175,
+            "normalized_error": 0.1330926411744312,
+            "temperature_MAE_C": 2.920918450251758
+          },
+          {
+            "id": "p10.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 93.80066157778305,
+            "reference_dose_kj_m2": 55.98846235294404,
+            "normalized_error": 0.37812199224839005,
+            "temperature_MAE_C": 6.577883060855051
+          },
+          {
+            "id": "p10.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 96.65737560493176,
+            "reference_dose_kj_m2": 39.55310495903064,
+            "normalized_error": 0.5710427064590111,
+            "temperature_MAE_C": 10.754955427136453
+          },
+          {
+            "id": "p10.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 97.39232622032038,
+            "reference_dose_kj_m2": 15.760992295815827,
+            "normalized_error": 0.8163133392450456,
+            "temperature_MAE_C": 15.891526416115747
+          },
+          {
+            "id": "p11.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 77.6205561087085,
+            "reference_dose_kj_m2": 55.968039448811595,
+            "normalized_error": 0.21652516659896903,
+            "temperature_MAE_C": 3.4362271123485217
+          },
+          {
+            "id": "p11.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 84.79818437138984,
+            "reference_dose_kj_m2": 71.71390520323092,
+            "normalized_error": 0.13084279168158916,
+            "temperature_MAE_C": 3.111329630807504
+          },
+          {
+            "id": "p11.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 91.07757683657798,
+            "reference_dose_kj_m2": 78.1055360672471,
+            "normalized_error": 0.12972040769330875,
+            "temperature_MAE_C": 2.943536972246928
+          },
+          {
+            "id": "p11.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 95.93141399363972,
+            "reference_dose_kj_m2": 58.00774498940571,
+            "normalized_error": 0.3792366900423401,
+            "temperature_MAE_C": 6.638837717579771
+          },
+          {
+            "id": "p11.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 98.89429821454338,
+            "reference_dose_kj_m2": 41.0207218080801,
+            "normalized_error": 0.5787357640646329,
+            "temperature_MAE_C": 10.947768792385217
+          },
+          {
+            "id": "p11.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 99.65689345212111,
+            "reference_dose_kj_m2": 13.50744280754695,
+            "normalized_error": 0.8614945064457415,
+            "temperature_MAE_C": 16.809535455853553
+          },
+          {
+            "id": "p12.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 77.6205561087085,
+            "reference_dose_kj_m2": 55.17621594137322,
+            "normalized_error": 0.22444340167335278,
+            "temperature_MAE_C": 3.4026269541804495
+          },
+          {
+            "id": "p12.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 84.79818437138984,
+            "reference_dose_kj_m2": 70.31258296515853,
+            "normalized_error": 0.1448560140623131,
+            "temperature_MAE_C": 3.062692383441581
+          },
+          {
+            "id": "p12.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 91.07757683657798,
+            "reference_dose_kj_m2": 76.51481823207448,
+            "normalized_error": 0.145627586045035,
+            "temperature_MAE_C": 3.0117607138770963
+          },
+          {
+            "id": "p12.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 95.93141399363972,
+            "reference_dose_kj_m2": 56.757070127382015,
+            "normalized_error": 0.3917434386625771,
+            "temperature_MAE_C": 6.939926592494495
+          },
+          {
+            "id": "p12.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 98.89429821454338,
+            "reference_dose_kj_m2": 39.92975685776628,
+            "normalized_error": 0.589645413567771,
+            "temperature_MAE_C": 11.120645521010571
+          },
+          {
+            "id": "p12.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 99.65689345212111,
+            "reference_dose_kj_m2": 13.789274219411622,
+            "normalized_error": 0.8586761923270949,
+            "temperature_MAE_C": 16.73527012638855
+          },
+          {
+            "id": "p13.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 76.10243489700734,
+            "reference_dose_kj_m2": 55.85865538349784,
+            "normalized_error": 0.20243779513509502,
+            "temperature_MAE_C": 2.918738828798674
+          },
+          {
+            "id": "p13.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 83.04904667638256,
+            "reference_dose_kj_m2": 70.23356649693305,
+            "normalized_error": 0.1281548017944951,
+            "temperature_MAE_C": 3.1446148115714707
+          },
+          {
+            "id": "p13.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 89.11660336271487,
+            "reference_dose_kj_m2": 75.33383167922503,
+            "normalized_error": 0.13782771683489842,
+            "temperature_MAE_C": 3.0608183698186857
+          },
+          {
+            "id": "p13.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 93.80066157778305,
+            "reference_dose_kj_m2": 54.909138783940215,
+            "normalized_error": 0.3889152279384283,
+            "temperature_MAE_C": 6.786818904464541
+          },
+          {
+            "id": "p13.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 96.65737560493176,
+            "reference_dose_kj_m2": 38.53593655733513,
+            "normalized_error": 0.5812143904759663,
+            "temperature_MAE_C": 10.872130669879798
+          },
+          {
+            "id": "p13.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 97.39232622032038,
+            "reference_dose_kj_m2": 17.0486002212213,
+            "normalized_error": 0.8034372599909909,
+            "temperature_MAE_C": 15.558911535133891
+          },
+          {
+            "id": "p14.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 73.20610800125203,
+            "reference_dose_kj_m2": 53.83315570281471,
+            "normalized_error": 0.19372952298437326,
+            "temperature_MAE_C": 3.0529233987108406
+          },
+          {
+            "id": "p14.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 79.72042185241496,
+            "reference_dose_kj_m2": 67.25355449848303,
+            "normalized_error": 0.12466867353931932,
+            "temperature_MAE_C": 2.8469891329626154
+          },
+          {
+            "id": "p14.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 85.39285606253603,
+            "reference_dose_kj_m2": 70.66454267665195,
+            "normalized_error": 0.1472831338588408,
+            "temperature_MAE_C": 2.6423146644083606
+          },
+          {
+            "id": "p14.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 89.76104678517456,
+            "reference_dose_kj_m2": 50.730130744673815,
+            "normalized_error": 0.3903091604050074,
+            "temperature_MAE_C": 6.897292580319691
+          },
+          {
+            "id": "p14.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 92.42058205117226,
+            "reference_dose_kj_m2": 36.92539698484437,
+            "normalized_error": 0.5549518506632789,
+            "temperature_MAE_C": 10.364461049708323
+          },
+          {
+            "id": "p14.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 93.10423455612762,
+            "reference_dose_kj_m2": 24.41145841772306,
+            "normalized_error": 0.6869277613840455,
+            "temperature_MAE_C": 13.180493755273735
+          },
+          {
+            "id": "p15.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 69.18285930096805,
+            "reference_dose_kj_m2": 45.63038464154306,
+            "normalized_error": 0.23552474659424988,
+            "temperature_MAE_C": 4.4193982670055085
+          },
+          {
+            "id": "p15.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 75.1153230398715,
+            "reference_dose_kj_m2": 57.450226578950726,
+            "normalized_error": 0.1766509646092077,
+            "temperature_MAE_C": 3.506140954132682
+          },
+          {
+            "id": "p15.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 80.25863528560075,
+            "reference_dose_kj_m2": 60.50972254431116,
+            "normalized_error": 0.19748912741289587,
+            "temperature_MAE_C": 3.873690724338366
+          },
+          {
+            "id": "p15.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 84.20555095370568,
+            "reference_dose_kj_m2": 45.62274700041257,
+            "normalized_error": 0.3858280395329311,
+            "temperature_MAE_C": 7.212676961850278
+          },
+          {
+            "id": "p15.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 86.60283891140595,
+            "reference_dose_kj_m2": 37.048103280609446,
+            "normalized_error": 0.4955473563079651,
+            "temperature_MAE_C": 9.359429516829792
+          },
+          {
+            "id": "p15.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 87.21835629898484,
+            "reference_dose_kj_m2": 33.92417683984029,
+            "normalized_error": 0.5329417945914455,
+            "temperature_MAE_C": 10.158685452750868
+          }
+        ],
+        "timing_note": "Resampled0.5s temperature crossing for model comparison; raw FDS burning-rate/global-device checks remain authoritative for any-part ignition."
+      },
+      "canopies": [
+        {
+          "id": "v0",
+          "initialized": true,
+          "fuel_kg_predicted": 53.08405362175189,
+          "fuel_kg_reference": 53.97655425372209
+        },
+        {
+          "id": "v1",
+          "initialized": false,
+          "fuel_kg_predicted": 0.0,
+          "fuel_kg_reference": 0.005871791158249355
+        }
+      ],
+      "wall_seconds": 0.08375779096968472
+    },
+    {
+      "case": "b21_transfer_validation",
+      "model": "ablation",
+      "metrics": {
+        "predicted_ignition": false,
+        "reference_ignition": false,
+        "predicted_ignition_s": null,
+        "reference_ignition_s": null,
+        "temperature_MAE_all_C": 5.2391533757156195,
+        "exposed_surface_count": 0,
+        "median_exposed_normalized_dose_error": null,
+        "p90_exposed_normalized_dose_error": null,
+        "exposed_temperature_MAE_C": null,
+        "absolute_dose_MAE_all_kj_m2": 26.96572636836377,
+        "per_patch": [
+          {
+            "id": "p8.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 61.24509556490034,
+            "reference_dose_kj_m2": 51.28334052124204,
+            "normalized_error": 0.099617550436583,
+            "temperature_MAE_C": 1.1134625134633669
+          },
+          {
+            "id": "p8.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 66.47164259234843,
+            "reference_dose_kj_m2": 63.94055787233577,
+            "normalized_error": 0.025310847200126572,
+            "temperature_MAE_C": 2.0814663291540474
+          },
+          {
+            "id": "p8.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 71.30849915751865,
+            "reference_dose_kj_m2": 66.34965176373571,
+            "normalized_error": 0.04958847393782946,
+            "temperature_MAE_C": 1.5122854413789304
+          },
+          {
+            "id": "p8.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 75.51106625167596,
+            "reference_dose_kj_m2": 49.13762473739958,
+            "normalized_error": 0.2637344151427638,
+            "temperature_MAE_C": 4.081063122638418
+          },
+          {
+            "id": "p8.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 78.8372770235402,
+            "reference_dose_kj_m2": 38.780180954808635,
+            "normalized_error": 0.4005709606873156,
+            "temperature_MAE_C": 6.946945038052358
+          },
+          {
+            "id": "p8.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 81.04726526036687,
+            "reference_dose_kj_m2": 31.740375939828226,
+            "normalized_error": 0.49306889320538644,
+            "temperature_MAE_C": 9.192640811421406
+          },
+          {
+            "id": "p9.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 64.51035443058461,
+            "reference_dose_kj_m2": 56.58596641580289,
+            "normalized_error": 0.07924388014781719,
+            "temperature_MAE_C": 1.7044811010682401
+          },
+          {
+            "id": "p9.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 70.26759542322199,
+            "reference_dose_kj_m2": 70.75252196296708,
+            "normalized_error": 0.004849265397450893,
+            "temperature_MAE_C": 3.2788468076573722
+          },
+          {
+            "id": "p9.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 75.66636488511112,
+            "reference_dose_kj_m2": 74.27094048085591,
+            "normalized_error": 0.013954244042552091,
+            "temperature_MAE_C": 2.6845815081272137
+          },
+          {
+            "id": "p9.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 80.45684722623358,
+            "reference_dose_kj_m2": 53.67566728124779,
+            "normalized_error": 0.2678117994498579,
+            "temperature_MAE_C": 3.821518688305784
+          },
+          {
+            "id": "p9.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 84.39327108331112,
+            "reference_dose_kj_m2": 38.69682132611414,
+            "normalized_error": 0.4569644975719698,
+            "temperature_MAE_C": 7.944278217816649
+          },
+          {
+            "id": "p9.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 87.21817038973789,
+            "reference_dose_kj_m2": 20.57979361102352,
+            "normalized_error": 0.6663837677871437,
+            "temperature_MAE_C": 12.708272594837304
+          },
+          {
+            "id": "p10.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 66.85624189413119,
+            "reference_dose_kj_m2": 55.9730168517974,
+            "normalized_error": 0.10883225042333791,
+            "temperature_MAE_C": 1.693219545132787
+          },
+          {
+            "id": "p10.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 73.01347663339459,
+            "reference_dose_kj_m2": 70.59485106271322,
+            "normalized_error": 0.024186255706813712,
+            "temperature_MAE_C": 2.79319243850024
+          },
+          {
+            "id": "p10.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 78.84620487008095,
+            "reference_dose_kj_m2": 75.80733924527175,
+            "normalized_error": 0.030388656248092047,
+            "temperature_MAE_C": 2.482495442586988
+          },
+          {
+            "id": "p10.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 84.10880997065676,
+            "reference_dose_kj_m2": 55.98846235294404,
+            "normalized_error": 0.28120347617712727,
+            "temperature_MAE_C": 4.04720897695067
+          },
+          {
+            "id": "p10.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 88.56518785135331,
+            "reference_dose_kj_m2": 39.55310495903064,
+            "normalized_error": 0.4901208289232267,
+            "temperature_MAE_C": 8.59384070419736
+          },
+          {
+            "id": "p10.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 91.95789594560404,
+            "reference_dose_kj_m2": 15.760992295815827,
+            "normalized_error": 0.7619690364978822,
+            "temperature_MAE_C": 14.643002920927348
+          },
+          {
+            "id": "p11.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 68.08453810644917,
+            "reference_dose_kj_m2": 55.968039448811595,
+            "normalized_error": 0.12116498657637578,
+            "temperature_MAE_C": 1.6697254716026604
+          },
+          {
+            "id": "p11.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 74.45769535645043,
+            "reference_dose_kj_m2": 71.71390520323092,
+            "normalized_error": 0.02743790153219507,
+            "temperature_MAE_C": 2.986380069785456
+          },
+          {
+            "id": "p11.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 80.5285883134776,
+            "reference_dose_kj_m2": 78.1055360672471,
+            "normalized_error": 0.024230522462304976,
+            "temperature_MAE_C": 2.7781518704699133
+          },
+          {
+            "id": "p11.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 86.05736071819457,
+            "reference_dose_kj_m2": 58.00774498940571,
+            "normalized_error": 0.2804961572878886,
+            "temperature_MAE_C": 3.820957012915631
+          },
+          {
+            "id": "p11.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 90.8189023981957,
+            "reference_dose_kj_m2": 41.0207218080801,
+            "normalized_error": 0.49798180590115604,
+            "temperature_MAE_C": 8.59250591249835
+          },
+          {
+            "id": "p11.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 94.56297862216293,
+            "reference_dose_kj_m2": 13.50744280754695,
+            "normalized_error": 0.8105553581461598,
+            "temperature_MAE_C": 15.622698798480572
+          },
+          {
+            "id": "p12.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 68.08453810644917,
+            "reference_dose_kj_m2": 55.17621594137322,
+            "normalized_error": 0.1290832216507595,
+            "temperature_MAE_C": 1.6633169667853391
+          },
+          {
+            "id": "p12.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 74.45769535645043,
+            "reference_dose_kj_m2": 70.31258296515853,
+            "normalized_error": 0.04145112391291903,
+            "temperature_MAE_C": 2.721908982464342
+          },
+          {
+            "id": "p12.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 80.5285883134776,
+            "reference_dose_kj_m2": 76.51481823207448,
+            "normalized_error": 0.04013770081403124,
+            "temperature_MAE_C": 2.4424427122094365
+          },
+          {
+            "id": "p12.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 86.05736071819457,
+            "reference_dose_kj_m2": 56.757070127382015,
+            "normalized_error": 0.2930029059081256,
+            "temperature_MAE_C": 4.19916957271954
+          },
+          {
+            "id": "p12.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 90.8189023981957,
+            "reference_dose_kj_m2": 39.92975685776628,
+            "normalized_error": 0.5088914554042943,
+            "temperature_MAE_C": 8.83516395795032
+          },
+          {
+            "id": "p12.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 94.56297862216293,
+            "reference_dose_kj_m2": 13.789274219411622,
+            "normalized_error": 0.8077370440275131,
+            "temperature_MAE_C": 15.55126876598361
+          },
+          {
+            "id": "p13.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 66.85624189413119,
+            "reference_dose_kj_m2": 55.85865538349784,
+            "normalized_error": 0.10997586510633348,
+            "temperature_MAE_C": 1.76930824946711
+          },
+          {
+            "id": "p13.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 73.01347663339459,
+            "reference_dose_kj_m2": 70.23356649693305,
+            "normalized_error": 0.027799101364615383,
+            "temperature_MAE_C": 2.870999168507769
+          },
+          {
+            "id": "p13.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 78.84620487008095,
+            "reference_dose_kj_m2": 75.33383167922503,
+            "normalized_error": 0.03512373190855925,
+            "temperature_MAE_C": 2.4592108673921502
+          },
+          {
+            "id": "p13.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 84.10880997065676,
+            "reference_dose_kj_m2": 54.909138783940215,
+            "normalized_error": 0.2919967118671655,
+            "temperature_MAE_C": 4.231298434323527
+          },
+          {
+            "id": "p13.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 88.56518785135331,
+            "reference_dose_kj_m2": 38.53593655733513,
+            "normalized_error": 0.5002925129401818,
+            "temperature_MAE_C": 8.64377074135759
+          },
+          {
+            "id": "p13.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 91.95789594560404,
+            "reference_dose_kj_m2": 17.0486002212213,
+            "normalized_error": 0.7490929572438273,
+            "temperature_MAE_C": 14.306743337628268
+          },
+          {
+            "id": "p14.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 64.51035443058461,
+            "reference_dose_kj_m2": 53.83315570281471,
+            "normalized_error": 0.10677198727769906,
+            "temperature_MAE_C": 1.4789678425906452
+          },
+          {
+            "id": "p14.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 70.26759542322199,
+            "reference_dose_kj_m2": 67.25355449848303,
+            "normalized_error": 0.03014040924738964,
+            "temperature_MAE_C": 2.5233953471179684
+          },
+          {
+            "id": "p14.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 75.66636488511112,
+            "reference_dose_kj_m2": 70.66454267665195,
+            "normalized_error": 0.050018222084591744,
+            "temperature_MAE_C": 1.8157573423817737
+          },
+          {
+            "id": "p14.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 80.45684722623358,
+            "reference_dose_kj_m2": 50.730130744673815,
+            "normalized_error": 0.2972671648155976,
+            "temperature_MAE_C": 4.414705122799774
+          },
+          {
+            "id": "p14.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 84.39327108331112,
+            "reference_dose_kj_m2": 36.92539698484437,
+            "normalized_error": 0.4746787409846675,
+            "temperature_MAE_C": 8.123926527848852
+          },
+          {
+            "id": "p14.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 87.21817038973789,
+            "reference_dose_kj_m2": 24.41145841772306,
+            "normalized_error": 0.6280671197201483,
+            "temperature_MAE_C": 11.810116648405478
+          },
+          {
+            "id": "p15.5_0.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 61.24509556490034,
+            "reference_dose_kj_m2": 45.63038464154306,
+            "normalized_error": 0.15614710923357278,
+            "temperature_MAE_C": 1.7916662133846106
+          },
+          {
+            "id": "p15.5_1.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 66.47164259234843,
+            "reference_dose_kj_m2": 57.450226578950726,
+            "normalized_error": 0.09021416013397704,
+            "temperature_MAE_C": 1.0506129688901715
+          },
+          {
+            "id": "p15.5_2.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 71.30849915751865,
+            "reference_dose_kj_m2": 60.50972254431116,
+            "normalized_error": 0.10798776613207493,
+            "temperature_MAE_C": 1.0798284283469843
+          },
+          {
+            "id": "p15.5_3.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 75.51106625167596,
+            "reference_dose_kj_m2": 45.62274700041257,
+            "normalized_error": 0.29888319251263384,
+            "temperature_MAE_C": 5.013936696267261
+          },
+          {
+            "id": "p15.5_4.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 78.8372770235402,
+            "reference_dose_kj_m2": 37.048103280609446,
+            "normalized_error": 0.4178917374293075,
+            "temperature_MAE_C": 7.295649600280155
+          },
+          {
+            "id": "p15.5_5.5",
+            "exposed": false,
+            "predicted_dose_kj_m2": 81.04726526036687,
+            "reference_dose_kj_m2": 33.92417683984029,
+            "normalized_error": 0.47123088420526577,
+            "temperature_MAE_C": 8.592976201278
+          }
+        ],
+        "timing_note": "Resampled0.5s temperature crossing for model comparison; raw FDS burning-rate/global-device checks remain authoritative for any-part ignition."
+      },
+      "canopies": [
+        {
+          "id": "v0",
+          "initialized": true,
+          "fuel_kg_predicted": 48.86894414052201,
+          "fuel_kg_reference": 53.97655425372209
+        },
+        {
+          "id": "v1",
+          "initialized": false,
+          "fuel_kg_predicted": 3.2609846352299563,
+          "fuel_kg_reference": 0.005871791158249355
+        }
+      ],
+      "wall_seconds": 0.08841454098001122
+    },
+    {
+      "case": "b21_combined_validation",
+      "model": "graph",
+      "metrics": {
+        "predicted_ignition": true,
+        "reference_ignition": true,
+        "predicted_ignition_s": 26.5,
+        "reference_ignition_s": 22.0,
+        "temperature_MAE_all_C": 75.96259973173595,
+        "exposed_surface_count": 48,
+        "median_exposed_normalized_dose_error": 0.3370621873851988,
+        "p90_exposed_normalized_dose_error": 0.6073730110979839,
+        "exposed_temperature_MAE_C": 75.96259973173595,
+        "absolute_dose_MAE_all_kj_m2": 513.1010228502422,
+        "per_patch": [
+          {
+            "id": "p8.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 251.03280861094726,
+            "reference_dose_kj_m2": 380.5900792053374,
+            "normalized_error": 0.34041158105041125,
+            "temperature_MAE_C": 37.146772072117294
+          },
+          {
+            "id": "p8.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 337.27853790182394,
+            "reference_dose_kj_m2": 566.4063791380138,
+            "normalized_error": 0.4045290619517533,
+            "temperature_MAE_C": 54.29229937203199
+          },
+          {
+            "id": "p8.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 448.8065246414758,
+            "reference_dose_kj_m2": 949.883560678966,
+            "normalized_error": 0.5275141678200284,
+            "temperature_MAE_C": 86.65726374366146
+          },
+          {
+            "id": "p8.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 574.8559012815556,
+            "reference_dose_kj_m2": 1720.284757902791,
+            "normalized_error": 0.6658367757775371,
+            "temperature_MAE_C": 148.6440156553116
+          },
+          {
+            "id": "p8.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 679.4782368495498,
+            "reference_dose_kj_m2": 2416.0192612707806,
+            "normalized_error": 0.7187612500687776,
+            "temperature_MAE_C": 194.383702393781
+          },
+          {
+            "id": "p8.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1606.6501555460682,
+            "reference_dose_kj_m2": 2930.947222170301,
+            "normalized_error": 0.45183245082237283,
+            "temperature_MAE_C": 125.59989526282435
+          },
+          {
+            "id": "p9.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 268.0617643793834,
+            "reference_dose_kj_m2": 391.2428697078507,
+            "normalized_error": 0.31484562369264185,
+            "temperature_MAE_C": 36.92437384717993
+          },
+          {
+            "id": "p9.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 360.11062843506284,
+            "reference_dose_kj_m2": 582.4960427178745,
+            "normalized_error": 0.38178012891758234,
+            "temperature_MAE_C": 53.77007986737487
+          },
+          {
+            "id": "p9.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 478.17873401534945,
+            "reference_dose_kj_m2": 983.5302630795043,
+            "normalized_error": 0.5138139089709987,
+            "temperature_MAE_C": 88.72690411583986
+          },
+          {
+            "id": "p9.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 610.4798028862917,
+            "reference_dose_kj_m2": 1789.572596916008,
+            "normalized_error": 0.6588683778806521,
+            "temperature_MAE_C": 149.81214831769648
+          },
+          {
+            "id": "p9.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1622.463065063886,
+            "reference_dose_kj_m2": 2435.0806225476736,
+            "normalized_error": 0.3337127937199863,
+            "temperature_MAE_C": 81.6630361999155
+          },
+          {
+            "id": "p9.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1670.1531054391676,
+            "reference_dose_kj_m2": 2489.044120580501,
+            "normalized_error": 0.32899819186425255,
+            "temperature_MAE_C": 77.69488368804879
+          },
+          {
+            "id": "p10.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 276.48371548185594,
+            "reference_dose_kj_m2": 363.28397656399824,
+            "normalized_error": 0.23893225873355042,
+            "temperature_MAE_C": 30.132662788046744
+          },
+          {
+            "id": "p10.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 368.00029538727966,
+            "reference_dose_kj_m2": 526.9332456980843,
+            "normalized_error": 0.30161875647122877,
+            "temperature_MAE_C": 42.74552025740829
+          },
+          {
+            "id": "p10.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 481.5386352477361,
+            "reference_dose_kj_m2": 847.5762803018301,
+            "normalized_error": 0.43186395556485424,
+            "temperature_MAE_C": 69.46367487098053
+          },
+          {
+            "id": "p10.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 603.7506348021718,
+            "reference_dose_kj_m2": 1489.1849799862493,
+            "normalized_error": 0.5945764677214602,
+            "temperature_MAE_C": 124.49235413636487
+          },
+          {
+            "id": "p10.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1581.469348422128,
+            "reference_dose_kj_m2": 1790.7790847989568,
+            "normalized_error": 0.11688194158260852,
+            "temperature_MAE_C": 51.07146635375367
+          },
+          {
+            "id": "p10.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1639.7044511036938,
+            "reference_dose_kj_m2": 1887.1848057699935,
+            "normalized_error": 0.13113731835358056,
+            "temperature_MAE_C": 48.53208281707128
+          },
+          {
+            "id": "p11.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 279.2799900036329,
+            "reference_dose_kj_m2": 332.13536116260707,
+            "normalized_error": 0.15913804231491382,
+            "temperature_MAE_C": 23.664790356975622
+          },
+          {
+            "id": "p11.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 368.4780297924931,
+            "reference_dose_kj_m2": 465.49556961477464,
+            "normalized_error": 0.20841775122063858,
+            "temperature_MAE_C": 32.394417319274375
+          },
+          {
+            "id": "p11.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 475.68513322072585,
+            "reference_dose_kj_m2": 699.0193030649862,
+            "normalized_error": 0.3194964271587468,
+            "temperature_MAE_C": 50.09394911390425
+          },
+          {
+            "id": "p11.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 586.5503958516795,
+            "reference_dose_kj_m2": 1140.0762183021125,
+            "normalized_error": 0.4855165063216435,
+            "temperature_MAE_C": 92.42516456975002
+          },
+          {
+            "id": "p11.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 671.1664664284503,
+            "reference_dose_kj_m2": 1488.4048858225945,
+            "normalized_error": 0.5490699655574446,
+            "temperature_MAE_C": 121.68303653870542
+          },
+          {
+            "id": "p11.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 695.561448308981,
+            "reference_dose_kj_m2": 1502.6654785702463,
+            "normalized_error": 0.5371149079895063,
+            "temperature_MAE_C": 121.02490005249973
+          },
+          {
+            "id": "p12.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 279.2799900036329,
+            "reference_dose_kj_m2": 336.0992980329707,
+            "normalized_error": 0.16905512258393324,
+            "temperature_MAE_C": 23.73366477549568
+          },
+          {
+            "id": "p12.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 368.4780297924931,
+            "reference_dose_kj_m2": 473.0200968321608,
+            "normalized_error": 0.2210097789497553,
+            "temperature_MAE_C": 32.72458695894898
+          },
+          {
+            "id": "p12.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 475.68513322072585,
+            "reference_dose_kj_m2": 707.145296535962,
+            "normalized_error": 0.32731627354247017,
+            "temperature_MAE_C": 50.10480225081531
+          },
+          {
+            "id": "p12.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 586.5503958516795,
+            "reference_dose_kj_m2": 1175.8079271351464,
+            "normalized_error": 0.5011511809749333,
+            "temperature_MAE_C": 94.11225041211837
+          },
+          {
+            "id": "p12.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 671.1664664284503,
+            "reference_dose_kj_m2": 1485.0460814060236,
+            "normalized_error": 0.5480500741141998,
+            "temperature_MAE_C": 117.98613527813515
+          },
+          {
+            "id": "p12.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 695.561448308981,
+            "reference_dose_kj_m2": 1573.094905516848,
+            "normalized_error": 0.5578388526530439,
+            "temperature_MAE_C": 123.60403610069557
+          },
+          {
+            "id": "p13.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 276.48371548185594,
+            "reference_dose_kj_m2": 362.5320702771716,
+            "normalized_error": 0.2373537732248845,
+            "temperature_MAE_C": 29.142630971995786
+          },
+          {
+            "id": "p13.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 368.00029538727966,
+            "reference_dose_kj_m2": 527.0974757320472,
+            "normalized_error": 0.3018363541274962,
+            "temperature_MAE_C": 42.03319322110382
+          },
+          {
+            "id": "p13.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 481.5386352477361,
+            "reference_dose_kj_m2": 848.1293203549195,
+            "normalized_error": 0.4322344202813021,
+            "temperature_MAE_C": 69.45495995937614
+          },
+          {
+            "id": "p13.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 603.7506348021718,
+            "reference_dose_kj_m2": 1489.8076776914681,
+            "normalized_error": 0.5947459233545408,
+            "temperature_MAE_C": 122.03958840525613
+          },
+          {
+            "id": "p13.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1581.469348422128,
+            "reference_dose_kj_m2": 1953.8267819409245,
+            "normalized_error": 0.19057852874188674,
+            "temperature_MAE_C": 52.391217159744954
+          },
+          {
+            "id": "p13.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1639.7044511036938,
+            "reference_dose_kj_m2": 1950.6777138552666,
+            "normalized_error": 0.15941806303665285,
+            "temperature_MAE_C": 54.468339938745714
+          },
+          {
+            "id": "p14.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 268.0617643793834,
+            "reference_dose_kj_m2": 363.86392283242276,
+            "normalized_error": 0.26329117134583563,
+            "temperature_MAE_C": 30.895165728212426
+          },
+          {
+            "id": "p14.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 360.11062843506284,
+            "reference_dose_kj_m2": 533.196715918136,
+            "normalized_error": 0.3246195678175328,
+            "temperature_MAE_C": 44.702471861641385
+          },
+          {
+            "id": "p14.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 478.17873401534945,
+            "reference_dose_kj_m2": 881.8319610463286,
+            "normalized_error": 0.45774392952601606,
+            "temperature_MAE_C": 73.26170190999775
+          },
+          {
+            "id": "p14.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 610.4798028862917,
+            "reference_dose_kj_m2": 1594.1355804114037,
+            "normalized_error": 0.6170464981850896,
+            "temperature_MAE_C": 130.071091736707
+          },
+          {
+            "id": "p14.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1622.463065063886,
+            "reference_dose_kj_m2": 2216.417752577043,
+            "normalized_error": 0.2679795750699804,
+            "temperature_MAE_C": 62.8620278852088
+          },
+          {
+            "id": "p14.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1670.1531054391676,
+            "reference_dose_kj_m2": 2496.666130751246,
+            "normalized_error": 0.33104667665891746,
+            "temperature_MAE_C": 83.75280630964845
+          },
+          {
+            "id": "p15.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 251.03280861094726,
+            "reference_dose_kj_m2": 333.774357000533,
+            "normalized_error": 0.24789666028613935,
+            "temperature_MAE_C": 23.797576778454278
+          },
+          {
+            "id": "p15.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 337.27853790182394,
+            "reference_dose_kj_m2": 485.9019459684064,
+            "normalized_error": 0.3058711933544016,
+            "temperature_MAE_C": 35.572436604002064
+          },
+          {
+            "id": "p15.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 448.8065246414758,
+            "reference_dose_kj_m2": 794.5691233032727,
+            "normalized_error": 0.4351573557557252,
+            "temperature_MAE_C": 61.76680584077209
+          },
+          {
+            "id": "p15.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 574.8559012815556,
+            "reference_dose_kj_m2": 1448.8290177052336,
+            "normalized_error": 0.6032272309177956,
+            "temperature_MAE_C": 117.91516386488503
+          },
+          {
+            "id": "p15.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 679.4782368495498,
+            "reference_dose_kj_m2": 1962.9434128653015,
+            "normalized_error": 0.6538472620269181,
+            "temperature_MAE_C": 151.20990543094808
+          },
+          {
+            "id": "p15.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1606.6501555460682,
+            "reference_dose_kj_m2": 2337.0331837521353,
+            "normalized_error": 0.3125257413048061,
+            "temperature_MAE_C": 75.56283402989855
+          }
+        ],
+        "timing_note": "Resampled0.5s temperature crossing for model comparison; raw FDS burning-rate/global-device checks remain authoritative for any-part ignition."
+      },
+      "canopies": [
+        {
+          "id": "v0",
+          "initialized": true,
+          "fuel_kg_predicted": 53.12792951899784,
+          "fuel_kg_reference": 54.60515143557328
+        },
+        {
+          "id": "v1",
+          "initialized": true,
+          "fuel_kg_predicted": 53.12792951899784,
+          "fuel_kg_reference": 55.256577474600135
+        }
+      ],
+      "wall_seconds": 0.08994900016114116
+    },
+    {
+      "case": "b21_combined_validation",
+      "model": "baseline",
+      "metrics": {
+        "predicted_ignition": true,
+        "reference_ignition": true,
+        "predicted_ignition_s": 26.0,
+        "reference_ignition_s": 22.0,
+        "temperature_MAE_all_C": 47.89506515746257,
+        "exposed_surface_count": 48,
+        "median_exposed_normalized_dose_error": 0.2775585141347006,
+        "p90_exposed_normalized_dose_error": 0.4209646621649051,
+        "exposed_temperature_MAE_C": 47.89506515746257,
+        "absolute_dose_MAE_all_kj_m2": 283.3266662712513,
+        "per_patch": [
+          {
+            "id": "p8.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 239.8783893654242,
+            "reference_dose_kj_m2": 380.5900792053374,
+            "normalized_error": 0.3697198049242789,
+            "temperature_MAE_C": 34.69373292013344
+          },
+          {
+            "id": "p8.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 334.33347609524594,
+            "reference_dose_kj_m2": 566.4063791380138,
+            "normalized_error": 0.4097286181627196,
+            "temperature_MAE_C": 49.226488602710745
+          },
+          {
+            "id": "p8.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 463.08520995085075,
+            "reference_dose_kj_m2": 949.883560678966,
+            "normalized_error": 0.5124821303151696,
+            "temperature_MAE_C": 76.90804554362546
+          },
+          {
+            "id": "p8.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1454.4039570743357,
+            "reference_dose_kj_m2": 1720.284757902791,
+            "normalized_error": 0.15455627308620234,
+            "temperature_MAE_C": 56.31814937875486
+          },
+          {
+            "id": "p8.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1608.6156037431679,
+            "reference_dose_kj_m2": 2416.0192612707806,
+            "normalized_error": 0.3341875913286112,
+            "temperature_MAE_C": 70.62327589459932
+          },
+          {
+            "id": "p8.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1656.8857801710942,
+            "reference_dose_kj_m2": 2930.947222170301,
+            "normalized_error": 0.4346927274438578,
+            "temperature_MAE_C": 106.48385583871038
+          },
+          {
+            "id": "p9.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 256.44723250616204,
+            "reference_dose_kj_m2": 391.2428697078507,
+            "normalized_error": 0.34453186917462136,
+            "temperature_MAE_C": 35.443252061019464
+          },
+          {
+            "id": "p9.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 356.9800513941513,
+            "reference_dose_kj_m2": 582.4960427178745,
+            "normalized_error": 0.387154546615434,
+            "temperature_MAE_C": 50.43927144325672
+          },
+          {
+            "id": "p9.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 492.7287899065338,
+            "reference_dose_kj_m2": 983.5302630795043,
+            "normalized_error": 0.4990202046617616,
+            "temperature_MAE_C": 82.06912374137595
+          },
+          {
+            "id": "p9.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1497.842547662839,
+            "reference_dose_kj_m2": 1789.572596916008,
+            "normalized_error": 0.163016605057493,
+            "temperature_MAE_C": 53.20564310364561
+          },
+          {
+            "id": "p9.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1656.9535689113684,
+            "reference_dose_kj_m2": 2435.0806225476736,
+            "normalized_error": 0.31954878472245374,
+            "temperature_MAE_C": 71.97152173973502
+          },
+          {
+            "id": "p9.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1706.5876010266138,
+            "reference_dose_kj_m2": 2489.044120580501,
+            "normalized_error": 0.31436024499694315,
+            "temperature_MAE_C": 65.49739617144328
+          },
+          {
+            "id": "p10.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 263.81634206185373,
+            "reference_dose_kj_m2": 363.28397656399824,
+            "normalized_error": 0.27380132601202606,
+            "temperature_MAE_C": 28.705219037101056
+          },
+          {
+            "id": "p10.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 362.6421253659085,
+            "reference_dose_kj_m2": 526.9332456980843,
+            "normalized_error": 0.31178735005517055,
+            "temperature_MAE_C": 39.737800096135246
+          },
+          {
+            "id": "p10.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 490.87264286660496,
+            "reference_dose_kj_m2": 847.5762803018301,
+            "normalized_error": 0.4208513684552375,
+            "temperature_MAE_C": 63.97057205339878
+          },
+          {
+            "id": "p10.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1480.0314257265818,
+            "reference_dose_kj_m2": 1489.1849799862493,
+            "normalized_error": 0.006146687203192222,
+            "temperature_MAE_C": 44.301390630089706
+          },
+          {
+            "id": "p10.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1612.946570083281,
+            "reference_dose_kj_m2": 1790.7790847989568,
+            "normalized_error": 0.09930455198254695,
+            "temperature_MAE_C": 42.66048171600584
+          },
+          {
+            "id": "p10.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1655.7139890355543,
+            "reference_dose_kj_m2": 1887.1848057699935,
+            "normalized_error": 0.12265402732510686,
+            "temperature_MAE_C": 39.587488353465396
+          },
+          {
+            "id": "p11.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 265.7427311549098,
+            "reference_dose_kj_m2": 332.13536116260707,
+            "normalized_error": 0.19989630063868064,
+            "temperature_MAE_C": 22.361529412106577
+          },
+          {
+            "id": "p11.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 361.0395983949894,
+            "reference_dose_kj_m2": 465.49556961477464,
+            "normalized_error": 0.22439734776902126,
+            "temperature_MAE_C": 29.52651379996878
+          },
+          {
+            "id": "p11.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 479.98897757008086,
+            "reference_dose_kj_m2": 699.0193030649862,
+            "normalized_error": 0.31333945219327164,
+            "temperature_MAE_C": 44.29122615247305
+          },
+          {
+            "id": "p11.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1445.295062609846,
+            "reference_dose_kj_m2": 1140.0762183021125,
+            "normalized_error": 0.26771792921203846,
+            "temperature_MAE_C": 49.321299697517304
+          },
+          {
+            "id": "p11.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1566.3473212213387,
+            "reference_dose_kj_m2": 1488.4048858225945,
+            "normalized_error": 0.0523664200118961,
+            "temperature_MAE_C": 24.871797842894523
+          },
+          {
+            "id": "p11.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1595.6124166230645,
+            "reference_dose_kj_m2": 1502.6654785702463,
+            "normalized_error": 0.06185471043179569,
+            "temperature_MAE_C": 25.580039413454454
+          },
+          {
+            "id": "p12.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 265.7427311549098,
+            "reference_dose_kj_m2": 336.0992980329707,
+            "normalized_error": 0.20933268022225698,
+            "temperature_MAE_C": 23.124453418072697
+          },
+          {
+            "id": "p12.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 361.0395983949894,
+            "reference_dose_kj_m2": 473.0200968321608,
+            "normalized_error": 0.23673518141641417,
+            "temperature_MAE_C": 30.711238187746655
+          },
+          {
+            "id": "p12.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 479.98897757008086,
+            "reference_dose_kj_m2": 707.145296535962,
+            "normalized_error": 0.32123005000335036,
+            "temperature_MAE_C": 45.19430966922947
+          },
+          {
+            "id": "p12.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1445.295062609846,
+            "reference_dose_kj_m2": 1175.8079271351464,
+            "normalized_error": 0.22919316093684136,
+            "temperature_MAE_C": 52.19231763439311
+          },
+          {
+            "id": "p12.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1566.3473212213387,
+            "reference_dose_kj_m2": 1485.0460814060236,
+            "normalized_error": 0.054746610784185246,
+            "temperature_MAE_C": 33.67156336034816
+          },
+          {
+            "id": "p12.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1595.6124166230645,
+            "reference_dose_kj_m2": 1573.094905516848,
+            "normalized_error": 0.014314146608222757,
+            "temperature_MAE_C": 27.869246158601097
+          },
+          {
+            "id": "p13.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 263.81634206185373,
+            "reference_dose_kj_m2": 362.5320702771716,
+            "normalized_error": 0.27229516036979956,
+            "temperature_MAE_C": 29.223927174559716
+          },
+          {
+            "id": "p13.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 362.6421253659085,
+            "reference_dose_kj_m2": 527.0974757320472,
+            "normalized_error": 0.3120017794388764,
+            "temperature_MAE_C": 40.68444418858123
+          },
+          {
+            "id": "p13.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 490.87264286660496,
+            "reference_dose_kj_m2": 848.1293203549195,
+            "normalized_error": 0.4212290141541294,
+            "temperature_MAE_C": 65.32934187550292
+          },
+          {
+            "id": "p13.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1480.031425726582,
+            "reference_dose_kj_m2": 1489.8076776914681,
+            "normalized_error": 0.00656208993367178,
+            "temperature_MAE_C": 57.919858979343026
+          },
+          {
+            "id": "p13.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1612.946570083281,
+            "reference_dose_kj_m2": 1953.8267819409245,
+            "normalized_error": 0.17446797997057573,
+            "temperature_MAE_C": 42.438873420092875
+          },
+          {
+            "id": "p13.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1655.7139890355543,
+            "reference_dose_kj_m2": 1950.6777138552666,
+            "normalized_error": 0.15121089594895407,
+            "temperature_MAE_C": 44.600601723677975
+          },
+          {
+            "id": "p14.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 256.44723250616204,
+            "reference_dose_kj_m2": 363.86392283242276,
+            "normalized_error": 0.29521115885877863,
+            "temperature_MAE_C": 30.476333884714823
+          },
+          {
+            "id": "p14.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 356.9800513941513,
+            "reference_dose_kj_m2": 533.196715918136,
+            "normalized_error": 0.33049090375687906,
+            "temperature_MAE_C": 42.027931239351055
+          },
+          {
+            "id": "p14.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 492.7287899065338,
+            "reference_dose_kj_m2": 881.8319610463286,
+            "normalized_error": 0.4412441239690479,
+            "temperature_MAE_C": 66.27757755989133
+          },
+          {
+            "id": "p14.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1497.842547662839,
+            "reference_dose_kj_m2": 1594.1355804114037,
+            "normalized_error": 0.060404543962135265,
+            "temperature_MAE_C": 56.14945276327908
+          },
+          {
+            "id": "p14.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1656.9535689113684,
+            "reference_dose_kj_m2": 2216.417752577043,
+            "normalized_error": 0.25241820185530545,
+            "temperature_MAE_C": 51.2708277140063
+          },
+          {
+            "id": "p14.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1706.5876010266138,
+            "reference_dose_kj_m2": 2496.666130751246,
+            "normalized_error": 0.3164534176169153,
+            "temperature_MAE_C": 70.39431737573351
+          },
+          {
+            "id": "p15.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 239.8783893654242,
+            "reference_dose_kj_m2": 333.774357000533,
+            "normalized_error": 0.2813157022573752,
+            "temperature_MAE_C": 23.563632926139295
+          },
+          {
+            "id": "p15.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 334.33347609524594,
+            "reference_dose_kj_m2": 485.9019459684064,
+            "normalized_error": 0.31193221416531536,
+            "temperature_MAE_C": 33.232576032057835
+          },
+          {
+            "id": "p15.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 463.08520995085075,
+            "reference_dose_kj_m2": 794.5691233032727,
+            "normalized_error": 0.4171870056746473,
+            "temperature_MAE_C": 55.249598023925124
+          },
+          {
+            "id": "p15.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1454.4039570743357,
+            "reference_dose_kj_m2": 1448.8290177052336,
+            "normalized_error": 0.0038478932303082636,
+            "temperature_MAE_C": 60.18087294626263
+          },
+          {
+            "id": "p15.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1608.6156037431679,
+            "reference_dose_kj_m2": 1962.9434128653015,
+            "normalized_error": 0.18050841751210883,
+            "temperature_MAE_C": 48.72691305907926
+          },
+          {
+            "id": "p15.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1656.8857801710942,
+            "reference_dose_kj_m2": 2337.0331837521353,
+            "normalized_error": 0.291030272188543,
+            "temperature_MAE_C": 60.657803599993386
+          }
+        ],
+        "timing_note": "Resampled0.5s temperature crossing for model comparison; raw FDS burning-rate/global-device checks remain authoritative for any-part ignition."
+      },
+      "canopies": [
+        {
+          "id": "v0",
+          "initialized": true,
+          "fuel_kg_predicted": 53.08405362175189,
+          "fuel_kg_reference": 54.60515143557328
+        },
+        {
+          "id": "v1",
+          "initialized": true,
+          "fuel_kg_predicted": 53.08405362175189,
+          "fuel_kg_reference": 55.256577474600135
+        }
+      ],
+      "wall_seconds": 0.08462020801380277
+    },
+    {
+      "case": "b21_combined_validation",
+      "model": "ablation",
+      "metrics": {
+        "predicted_ignition": true,
+        "reference_ignition": true,
+        "predicted_ignition_s": 26.0,
+        "reference_ignition_s": 22.0,
+        "temperature_MAE_all_C": 58.75739969403721,
+        "exposed_surface_count": 48,
+        "median_exposed_normalized_dose_error": 0.27928391350891746,
+        "p90_exposed_normalized_dose_error": 0.566545767711603,
+        "exposed_temperature_MAE_C": 58.75739969403721,
+        "absolute_dose_MAE_all_kj_m2": 382.11773126937624,
+        "per_patch": [
+          {
+            "id": "p8.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 268.4164377406091,
+            "reference_dose_kj_m2": 380.5900792053374,
+            "normalized_error": 0.29473611529481814,
+            "temperature_MAE_C": 33.189904121862206
+          },
+          {
+            "id": "p8.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 360.63698898540366,
+            "reference_dose_kj_m2": 566.4063791380138,
+            "normalized_error": 0.3632893232342484,
+            "temperature_MAE_C": 49.18408097649693
+          },
+          {
+            "id": "p8.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 479.8929889839146,
+            "reference_dose_kj_m2": 949.883560678966,
+            "normalized_error": 0.4947875625504114,
+            "temperature_MAE_C": 80.19181612903904
+          },
+          {
+            "id": "p8.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 614.6783105873841,
+            "reference_dose_kj_m2": 1720.284757902791,
+            "normalized_error": 0.6426880446602679,
+            "temperature_MAE_C": 140.89352885985346
+          },
+          {
+            "id": "p8.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1614.6674988090851,
+            "reference_dose_kj_m2": 2416.0192612707806,
+            "normalized_error": 0.3316826878442184,
+            "temperature_MAE_C": 79.8664380873604
+          },
+          {
+            "id": "p8.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1663.3240368079155,
+            "reference_dose_kj_m2": 2930.947222170301,
+            "normalized_error": 0.43249608037081566,
+            "temperature_MAE_C": 117.55824653879063
+          },
+          {
+            "id": "p9.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 286.62479595052355,
+            "reference_dose_kj_m2": 391.2428697078507,
+            "normalized_error": 0.26739931090743624,
+            "temperature_MAE_C": 32.77254962533609
+          },
+          {
+            "id": "p9.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 385.0505288764979,
+            "reference_dose_kj_m2": 582.4960427178745,
+            "normalized_error": 0.33896455831719213,
+            "temperature_MAE_C": 48.46394321830892
+          },
+          {
+            "id": "p9.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 511.29982529090313,
+            "reference_dose_kj_m2": 983.5302630795043,
+            "normalized_error": 0.48013818742090714,
+            "temperature_MAE_C": 82.13873220115121
+          },
+          {
+            "id": "p9.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 652.7700981851706,
+            "reference_dose_kj_m2": 1789.572596916008,
+            "normalized_error": 0.6352368720273784,
+            "temperature_MAE_C": 142.37434824622304
+          },
+          {
+            "id": "p9.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1679.7168117759315,
+            "reference_dose_kj_m2": 2435.0806225476736,
+            "normalized_error": 0.31020073987589447,
+            "temperature_MAE_C": 74.07625520222308
+          },
+          {
+            "id": "p9.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1729.6878886034683,
+            "reference_dose_kj_m2": 2489.044120580501,
+            "normalized_error": 0.3050794582941879,
+            "temperature_MAE_C": 70.13376783288028
+          },
+          {
+            "id": "p10.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 295.63007868515064,
+            "reference_dose_kj_m2": 363.28397656399824,
+            "normalized_error": 0.18622868676656124,
+            "temperature_MAE_C": 25.85433981171621
+          },
+          {
+            "id": "p10.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 393.48689273811533,
+            "reference_dose_kj_m2": 526.9332456980843,
+            "normalized_error": 0.2532509649930675,
+            "temperature_MAE_C": 37.3291519569313
+          },
+          {
+            "id": "p10.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 514.8925607495953,
+            "reference_dose_kj_m2": 847.5762803018301,
+            "normalized_error": 0.39251183319307015,
+            "temperature_MAE_C": 62.83757678772975
+          },
+          {
+            "id": "p10.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 645.5744818279201,
+            "reference_dose_kj_m2": 1489.1849799862493,
+            "normalized_error": 0.5664914093923502,
+            "temperature_MAE_C": 117.22660970341391
+          },
+          {
+            "id": "p10.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1652.2281429172513,
+            "reference_dose_kj_m2": 1790.7790847989568,
+            "normalized_error": 0.07736908648185381,
+            "temperature_MAE_C": 45.80021720942637
+          },
+          {
+            "id": "p10.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1690.2382901526503,
+            "reference_dose_kj_m2": 1887.1848057699935,
+            "normalized_error": 0.10435995193220453,
+            "temperature_MAE_C": 44.55996026984756
+          },
+          {
+            "id": "p11.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 298.6200181169388,
+            "reference_dose_kj_m2": 332.13536116260707,
+            "normalized_error": 0.10090868653175353,
+            "temperature_MAE_C": 19.291571590234344
+          },
+          {
+            "id": "p11.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 393.9979269061456,
+            "reference_dose_kj_m2": 465.49556961477464,
+            "normalized_error": 0.15359467925290374,
+            "temperature_MAE_C": 26.85351238061318
+          },
+          {
+            "id": "p11.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 508.63366275729373,
+            "reference_dose_kj_m2": 699.0193030649862,
+            "normalized_error": 0.27236106281029654,
+            "temperature_MAE_C": 43.33773342864888
+          },
+          {
+            "id": "p11.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 627.182410162267,
+            "reference_dose_kj_m2": 1140.0762183021125,
+            "normalized_error": 0.4498767713124352,
+            "temperature_MAE_C": 84.7249982378162
+          },
+          {
+            "id": "p11.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1598.3750696002412,
+            "reference_dose_kj_m2": 1488.4048858225945,
+            "normalized_error": 0.07388458935141812,
+            "temperature_MAE_C": 27.02889519898779
+          },
+          {
+            "id": "p11.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1639.270150283434,
+            "reference_dose_kj_m2": 1502.6654785702463,
+            "normalized_error": 0.09090823850106959,
+            "temperature_MAE_C": 26.89362410292847
+          },
+          {
+            "id": "p12.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 298.6200181169388,
+            "reference_dose_kj_m2": 336.0992980329707,
+            "normalized_error": 0.11151252066094836,
+            "temperature_MAE_C": 19.43618570028487
+          },
+          {
+            "id": "p12.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 393.9979269061456,
+            "reference_dose_kj_m2": 473.0200968321608,
+            "normalized_error": 0.1670588003664762,
+            "temperature_MAE_C": 27.323970301989988
+          },
+          {
+            "id": "p12.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 508.63366275729373,
+            "reference_dose_kj_m2": 707.145296535962,
+            "normalized_error": 0.2807225541216237,
+            "temperature_MAE_C": 43.57502205433775
+          },
+          {
+            "id": "p12.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 627.182410162267,
+            "reference_dose_kj_m2": 1175.8079271351464,
+            "normalized_error": 0.4665945043503868,
+            "temperature_MAE_C": 86.78411648679528
+          },
+          {
+            "id": "p12.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1598.3750696002412,
+            "reference_dose_kj_m2": 1485.0460814060236,
+            "normalized_error": 0.07631344886410464,
+            "temperature_MAE_C": 36.098113327329855
+          },
+          {
+            "id": "p12.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1639.270150283434,
+            "reference_dose_kj_m2": 1573.094905516848,
+            "normalized_error": 0.0420669118783039,
+            "temperature_MAE_C": 28.91899040525033
+          },
+          {
+            "id": "p13.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 295.63007868515064,
+            "reference_dose_kj_m2": 362.5320702771716,
+            "normalized_error": 0.1845408919019812,
+            "temperature_MAE_C": 25.10596667876398
+          },
+          {
+            "id": "p13.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 393.48689273811533,
+            "reference_dose_kj_m2": 527.0974757320472,
+            "normalized_error": 0.2534836328107432,
+            "temperature_MAE_C": 37.01565381812753
+          },
+          {
+            "id": "p13.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 514.8925607495953,
+            "reference_dose_kj_m2": 848.1293203549195,
+            "normalized_error": 0.39290795826498903,
+            "temperature_MAE_C": 63.2885355115609
+          },
+          {
+            "id": "p13.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 645.5744818279201,
+            "reference_dose_kj_m2": 1489.8076776914681,
+            "normalized_error": 0.5666726037898595,
+            "temperature_MAE_C": 114.76422213875921
+          },
+          {
+            "id": "p13.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1652.2281429172513,
+            "reference_dose_kj_m2": 1953.8267819409245,
+            "normalized_error": 0.15436303863337683,
+            "temperature_MAE_C": 45.943421249100034
+          },
+          {
+            "id": "p13.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1690.2382901526503,
+            "reference_dose_kj_m2": 1950.6777138552666,
+            "normalized_error": 0.13351227722179226,
+            "temperature_MAE_C": 50.70623826830438
+          },
+          {
+            "id": "p14.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 286.62479595052355,
+            "reference_dose_kj_m2": 363.86392283242276,
+            "normalized_error": 0.21227475997248463,
+            "temperature_MAE_C": 26.908802850448996
+          },
+          {
+            "id": "p14.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 385.0505288764979,
+            "reference_dose_kj_m2": 533.196715918136,
+            "normalized_error": 0.2778452728962112,
+            "temperature_MAE_C": 39.560879639801676
+          },
+          {
+            "id": "p14.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 511.29982529090313,
+            "reference_dose_kj_m2": 881.8319610463286,
+            "normalized_error": 0.420184516011162,
+            "temperature_MAE_C": 66.77016420123651
+          },
+          {
+            "id": "p14.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 652.7700981851706,
+            "reference_dose_kj_m2": 1594.1355804114037,
+            "normalized_error": 0.5905178290941175,
+            "temperature_MAE_C": 122.39381233980981
+          },
+          {
+            "id": "p14.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1679.7168117759315,
+            "reference_dose_kj_m2": 2216.417752577043,
+            "normalized_error": 0.24214791646434242,
+            "temperature_MAE_C": 55.37178482338872
+          },
+          {
+            "id": "p14.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1729.6878886034683,
+            "reference_dose_kj_m2": 2496.666130751246,
+            "normalized_error": 0.3072009639979352,
+            "temperature_MAE_C": 75.874181174671
+          },
+          {
+            "id": "p15.5_0.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 268.4164377406091,
+            "reference_dose_kj_m2": 333.774357000533,
+            "normalized_error": 0.1958146810535822,
+            "temperature_MAE_C": 20.080089808428355
+          },
+          {
+            "id": "p15.5_1.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 360.63698898540366,
+            "reference_dose_kj_m2": 485.9019459684064,
+            "normalized_error": 0.25779883785677926,
+            "temperature_MAE_C": 30.7724017344827
+          },
+          {
+            "id": "p15.5_2.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 479.8929889839146,
+            "reference_dose_kj_m2": 794.5691233032727,
+            "normalized_error": 0.3960336805074313,
+            "temperature_MAE_C": 55.66682186631885
+          },
+          {
+            "id": "p15.5_3.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 614.6783105873841,
+            "reference_dose_kj_m2": 1448.8290177052336,
+            "normalized_error": 0.5757413034417556,
+            "temperature_MAE_C": 110.63204564701118
+          },
+          {
+            "id": "p15.5_4.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1614.6674988090851,
+            "reference_dose_kj_m2": 1962.9434128653015,
+            "normalized_error": 0.17742534592367046,
+            "temperature_MAE_C": 56.92314377690406
+          },
+          {
+            "id": "p15.5_5.5",
+            "exposed": true,
+            "predicted_dose_kj_m2": 1663.3240368079155,
+            "reference_dose_kj_m2": 2337.0331837521353,
+            "normalized_error": 0.28827538762738986,
+            "temperature_MAE_C": 67.85881979286077
+          }
+        ],
+        "timing_note": "Resampled0.5s temperature crossing for model comparison; raw FDS burning-rate/global-device checks remain authoritative for any-part ignition."
+      },
+      "canopies": [
+        {
+          "id": "v0",
+          "initialized": true,
+          "fuel_kg_predicted": 56.80987967640569,
+          "fuel_kg_reference": 54.60515143557328
+        },
+        {
+          "id": "v1",
+          "initialized": true,
+          "fuel_kg_predicted": 56.80987967640569,
+          "fuel_kg_reference": 55.256577474600135
+        }
+      ],
+      "wall_seconds": 0.08991770795546472
+    }
+  ],
+  "scope": "Local validation used for model selection; not untouched Stage C testing. Baseline fitted separately on single-canopy cases; ablation uses graph weights. All failed checks remain reported."
+}

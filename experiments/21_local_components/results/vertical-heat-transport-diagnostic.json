@@ -1,0 +1,80 @@
+{
+  "training_cases": [
+    "b21_single_1",
+    "b21_single_2",
+    "b21_transfer_0",
+    "b21_transfer_hot",
+    "b21_combined_0",
+    "b21_corner_1",
+    "b21_combined_1"
+  ],
+  "validation": [
+    {
+      "original_true_state_roof_mean_dose": null,
+      "case": "b21_single_validation",
+      "median_exposed_dose_error": 0.2210397709286552,
+      "roof_reference_mean_dose": null,
+      "roof_predicted_mean_dose": null
+    },
+    {
+      "original_true_state_roof_mean_dose": null,
+      "case": "b21_transfer_validation",
+      "median_exposed_dose_error": null,
+      "roof_reference_mean_dose": null,
+      "roof_predicted_mean_dose": null
+    },
+    {
+      "original_true_state_roof_mean_dose": null,
+      "case": "b21_combined_validation",
+      "median_exposed_dose_error": 0.2693525447524236,
+      "roof_reference_mean_dose": null,
+      "roof_predicted_mean_dose": null
+    },
+    {
+      "original_true_state_roof_mean_dose": 58.095677649300434,
+      "case": "b21_corner_validation",
+      "median_exposed_dose_error": 0.6296117224041613,
+      "roof_reference_mean_dose": 336.2425651202706,
+      "roof_predicted_mean_dose": 152.57092369346537
+    }
+  ],
+  "coefficients": [
+    {
+      "indices": [
+        0,
+        1,
+        2,
+        4,
+        5
+      ],
+      "values": [
+        2.3389147482701422,
+        22.55565499357102,
+        7.246068052559605e-12,
+        5.3451455375978843e-17,
+        71.18456066522033
+      ]
+    },
+    {
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "values": [
+        5.596442132534406e-15,
+        3.576898564858539e-14,
+        1.9404861894436226e-12,
+        8.310589122170175e-15,
+        0.7231228719794013,
+        3.2716981685690967,
+        -5.292973775258245
+      ]
+    }
+  ],
+  "scope": "Measured FDS component states supplied during both fit and validation. Transport-only diagnostic, NOT autonomous model performance. Frozen Stage C code/predictions unchanged. Three canopy emitter heights and separate plume convection are hypotheses; no physical calibration claimed."
+}

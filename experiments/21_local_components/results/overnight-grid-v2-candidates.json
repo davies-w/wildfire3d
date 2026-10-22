@@ -1,0 +1,56 @@
+{
+  "status": "prepared_not_launched_not_reserved",
+  "incremental_allowance_usd": 1.0,
+  "cases": [
+    {
+      "case": "overnight21_grid_coarse_v2",
+      "path": "inputs/overnight_grid_candidates/overnight21_grid_coarse_v2.fds",
+      "grid_m": 0.5,
+      "vegetation_particles_per_cell": 8,
+      "vegetation_present": true,
+      "horizon_s": 40,
+      "max_vm_hours": 2,
+      "allowance_usd": 0.25,
+      "sha256": "83315a50244c4573c88131cbdd7a88716082eec9832d0b207c3f53fa5bb9ca0b"
+    },
+    {
+      "case": "overnight21_grid_fine_v2",
+      "path": "inputs/overnight_grid_candidates/overnight21_grid_fine_v2.fds",
+      "grid_m": 0.25,
+      "vegetation_particles_per_cell": 1,
+      "vegetation_present": true,
+      "horizon_s": 40,
+      "max_vm_hours": 4,
+      "allowance_usd": 0.5,
+      "sha256": "640b3af843f4703f8f95e30c28a25dce3c450558d84c4999eb0e93e9a4dbef58"
+    },
+    {
+      "case": "overnight21_grid_fine_bare_v2",
+      "path": "inputs/overnight_grid_candidates/overnight21_grid_fine_bare_v2.fds",
+      "grid_m": 0.25,
+      "vegetation_particles_per_cell": 1,
+      "vegetation_present": false,
+      "horizon_s": 40,
+      "max_vm_hours": 2,
+      "allowance_usd": 0.25,
+      "sha256": "f207f86283113f19e3ec02ef72379ef6bce4fc6fc6f7767fbbbc7753bffeb451"
+    }
+  ],
+  "purpose": "Resolve early initialization grid dependence with new large-canopy slices, and test direct artificial-source facade ignition on fine grid. These 40s tests do not replace full180s Stage A convergence/context validation.",
+  "controls": "Original two1600-particle1500C rings, off20.1s/removed21s, unchanged3m/s wind and materials. Nominal vegetation particle number density matched coarse8/cell vs fine1/cell. Positions and cone voxelization are not identical.",
+  "required_before_launch": [
+    "Interpret stronger-source result first; do not duplicate cases unnecessarily.",
+    "Actual deck startup validation.",
+    "Matching Linux checkpoint/resume preflight within reserved VM runtime, gate main solve on success.",
+    "Use central budget-overnight.json reservations before submission and fit full worker allowance before end_unix.",
+    "Fine compressed archive allowance at least2GiB; increase upload timeout and ensure sufficient upload/cleanup margin.",
+    "Collector must filter its own job/VM labels if cases run concurrently; old collector asserts project-wide zero and cannot do that."
+  ],
+  "analysis": [
+    "Raw facade boundary burning vs device traces, including matched fine bare control.",
+    "Separate canopy fuel release and mass after22s; no reliance on aggregate HRR.",
+    "Read y18 temperature/HRRPUV slices with fds2ascii before physical mechanism claims.",
+    "Compare same time windows and original facade error criteria; partial output remains censored."
+  ],
+  "repair": "Checkpoint preflight only: DT_DEVC=.01 instead of .5 for .15s test. Main physical decks unchanged except case IDs. Previous reservations are not recycled."
+}

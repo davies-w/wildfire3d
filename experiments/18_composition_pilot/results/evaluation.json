@@ -1,0 +1,149 @@
+{
+  "verdict": "inconclusive_test_lacks_both_classes",
+  "positive_test_cases": 0,
+  "qualifying_graph_seeds": 0,
+  "mean_brier": {
+    "graph": 0.00012069505618532897,
+    "additive": 3.0215107248847883e-07,
+    "simple": 0.12619901799963415
+  },
+  "models": [
+    {
+      "kind": "graph",
+      "seed": 11,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 1.002243711221245e-06,
+      "face_temperature_mae_C": 13.1258087042172,
+      "inference_seconds_per_case": 2.0195312487582365e-05
+    },
+    {
+      "kind": "graph",
+      "seed": 22,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 0.0001124885332719981,
+      "face_temperature_mae_C": 11.4220516367057,
+      "inference_seconds_per_case": 1.8963575712405145e-05
+    },
+    {
+      "kind": "graph",
+      "seed": 33,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 9.618536771386586e-06,
+      "face_temperature_mae_C": 12.920600053155136,
+      "inference_seconds_per_case": 2.1343784173950552e-05
+    },
+    {
+      "kind": "graph",
+      "seed": 44,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 0.00026774879453489615,
+      "face_temperature_mae_C": 16.893925019661864,
+      "inference_seconds_per_case": 1.8974062404595314e-05
+    },
+    {
+      "kind": "graph",
+      "seed": 55,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 0.00021261717263714266,
+      "face_temperature_mae_C": 10.387710304179503,
+      "inference_seconds_per_case": 1.8186180774743358e-05
+    },
+    {
+      "kind": "additive",
+      "seed": 11,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 2.014767540863502e-07,
+      "face_temperature_mae_C": 7.905300037811203,
+      "inference_seconds_per_case": 1.9739756632285816e-05
+    },
+    {
+      "kind": "additive",
+      "seed": 22,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 3.1839800309486245e-07,
+      "face_temperature_mae_C": 10.075836360307882,
+      "inference_seconds_per_case": 1.9954652525484562e-05
+    },
+    {
+      "kind": "additive",
+      "seed": 33,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 2.0716355586905434e-07,
+      "face_temperature_mae_C": 16.311832452491533,
+      "inference_seconds_per_case": 1.9665589982954166e-05
+    },
+    {
+      "kind": "additive",
+      "seed": 44,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 5.033060308537047e-07,
+      "face_temperature_mae_C": 15.514369454502082,
+      "inference_seconds_per_case": 2.157034759875387e-05
+    },
+    {
+      "kind": "additive",
+      "seed": 55,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 2.804110185384225e-07,
+      "face_temperature_mae_C": 10.95174549836485,
+      "inference_seconds_per_case": 2.3398507425251104e-05
+    },
+    {
+      "kind": "simple",
+      "seed": 11,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 0.1125952323552667,
+      "face_temperature_mae_C": 35.54697918658456,
+      "inference_seconds_per_case": 7.476733298972249e-07
+    },
+    {
+      "kind": "simple",
+      "seed": 22,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 0.11920907878328652,
+      "face_temperature_mae_C": 33.35847504175854,
+      "inference_seconds_per_case": 2.598819943765799e-06
+    },
+    {
+      "kind": "simple",
+      "seed": 33,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 0.12656446858734358,
+      "face_temperature_mae_C": 31.86995410932949,
+      "inference_seconds_per_case": 7.49756582081318e-07
+    },
+    {
+      "kind": "simple",
+      "seed": 44,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 0.1261736055999097,
+      "face_temperature_mae_C": 27.121803782162516,
+      "inference_seconds_per_case": 7.845133465404313e-07
+    },
+    {
+      "kind": "simple",
+      "seed": 55,
+      "correct": 12,
+      "false_negatives": 0,
+      "brier": 0.1464527046723643,
+      "face_temperature_mae_C": 28.815870690880654,
+      "inference_seconds_per_case": 8.196174167096615e-07
+    }
+  ],
+  "frozen_sha256": "715721ab102c120342d825ca4f485b64f924ccc059ecec890239d949121d247a",
+  "limitation": "Four test layouts, one FDS seed, fixed wind/material/moisture; not physical validation or probability calibration."
+}

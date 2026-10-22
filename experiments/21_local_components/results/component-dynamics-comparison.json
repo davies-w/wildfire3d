@@ -1,0 +1,426 @@
+{
+  "training_cases": [
+    "b21_single_1",
+    "b21_transfer_0",
+    "b21_single_2",
+    "b21_combined_0"
+  ],
+  "scope": "In-sample autonomous replay used to diagnose numerical formulation. Not validation, not selected/frozen model. All variants impose ambient equilibrium. Emission encoding is a numerical modelling choice.",
+  "source_sha256": "5caaa1c4d1c2c07bb4e5d01c072066236aec7cfa7c46b227a662f3428a8a0a2c",
+  "candidates": [
+    {
+      "transform": "log",
+      "alpha": 10,
+      "metrics": [
+        {
+          "case": "b21_single_1",
+          "facade_mae_C": 72.22190087884925,
+          "facade_peak_C": 81.75359874737126,
+          "fds_facade_peak_C": 435.11225990750836,
+          "clipped_values": 255,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 30015.44973215882,
+          "fds_max_emission_kw": 106681.37463993525
+        },
+        {
+          "case": "b21_transfer_0",
+          "facade_mae_C": 8.3499024890183,
+          "facade_peak_C": 36.658239705297945,
+          "fds_facade_peak_C": 77.54477997313082,
+          "clipped_values": 128,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 23749.732584690508,
+          "fds_max_emission_kw": 54113.64231423299
+        },
+        {
+          "case": "b21_single_2",
+          "facade_mae_C": 13.182933771292468,
+          "facade_peak_C": 65.06933329892958,
+          "fds_facade_peak_C": 146.03897122415015,
+          "clipped_values": 12,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 14490.724943300102,
+          "fds_max_emission_kw": 31748.588524248105
+        },
+        {
+          "case": "b21_combined_0",
+          "facade_mae_C": 52.18804042936095,
+          "facade_peak_C": 956.8623436149575,
+          "fds_facade_peak_C": 841.6933318771239,
+          "clipped_values": 328,
+          "emission_ceiling_hit": true,
+          "max_emission_kw": 100000.00000000004,
+          "fds_max_emission_kw": 85102.02726625442
+        }
+      ]
+    },
+    {
+      "transform": "log",
+      "alpha": 100,
+      "metrics": [
+        {
+          "case": "b21_single_1",
+          "facade_mae_C": 87.0790958930738,
+          "facade_peak_C": 28.53958619476144,
+          "fds_facade_peak_C": 435.11225990750836,
+          "clipped_values": 264,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 3043.480440690297,
+          "fds_max_emission_kw": 106681.37463993525
+        },
+        {
+          "case": "b21_transfer_0",
+          "facade_mae_C": 12.31403775723383,
+          "facade_peak_C": 26.969126560724806,
+          "fds_facade_peak_C": 77.54477997313082,
+          "clipped_values": 94,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 11002.539742052866,
+          "fds_max_emission_kw": 54113.64231423299
+        },
+        {
+          "case": "b21_single_2",
+          "facade_mae_C": 19.926260319772272,
+          "facade_peak_C": 122.23272810773733,
+          "fds_facade_peak_C": 146.03897122415015,
+          "clipped_values": 42,
+          "emission_ceiling_hit": true,
+          "max_emission_kw": 100000.00000000004,
+          "fds_max_emission_kw": 31748.588524248105
+        },
+        {
+          "case": "b21_combined_0",
+          "facade_mae_C": 78.78912442416053,
+          "facade_peak_C": 639.1844404200464,
+          "fds_facade_peak_C": 841.6933318771239,
+          "clipped_values": 256,
+          "emission_ceiling_hit": true,
+          "max_emission_kw": 100000.00000000004,
+          "fds_max_emission_kw": 85102.02726625442
+        }
+      ]
+    },
+    {
+      "transform": "log",
+      "alpha": 1000,
+      "metrics": [
+        {
+          "case": "b21_single_1",
+          "facade_mae_C": 88.58130846620519,
+          "facade_peak_C": 26.90733526405945,
+          "fds_facade_peak_C": 435.11225990750836,
+          "clipped_values": 333,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 331.22932502752656,
+          "fds_max_emission_kw": 106681.37463993525
+        },
+        {
+          "case": "b21_transfer_0",
+          "facade_mae_C": 13.998661822634562,
+          "facade_peak_C": 23.021144548849303,
+          "fds_facade_peak_C": 77.54477997313082,
+          "clipped_values": 122,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 1669.907254892138,
+          "fds_max_emission_kw": 54113.64231423299
+        },
+        {
+          "case": "b21_single_2",
+          "facade_mae_C": 26.77403710953147,
+          "facade_peak_C": 33.272493243328796,
+          "fds_facade_peak_C": 146.03897122415015,
+          "clipped_values": 29,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 17207.601351949328,
+          "fds_max_emission_kw": 31748.588524248105
+        },
+        {
+          "case": "b21_combined_0",
+          "facade_mae_C": 166.33925291794517,
+          "facade_peak_C": 47.405501302519156,
+          "fds_facade_peak_C": 841.6933318771239,
+          "clipped_values": 92,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 6443.917961505748,
+          "fds_max_emission_kw": 85102.02726625442
+        }
+      ]
+    },
+    {
+      "transform": "sqrt",
+      "alpha": 10,
+      "metrics": [
+        {
+          "case": "b21_single_1",
+          "facade_mae_C": 43.34665928367564,
+          "facade_peak_C": 242.41211455539496,
+          "fds_facade_peak_C": 435.11225990750836,
+          "clipped_values": 476,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 32393.57257543485,
+          "fds_max_emission_kw": 106681.37463993525
+        },
+        {
+          "case": "b21_transfer_0",
+          "facade_mae_C": 12.842967456826143,
+          "facade_peak_C": 104.10808937518172,
+          "fds_facade_peak_C": 77.54477997313082,
+          "clipped_values": 267,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 29230.181805629676,
+          "fds_max_emission_kw": 54113.64231423299
+        },
+        {
+          "case": "b21_single_2",
+          "facade_mae_C": 14.96099892766605,
+          "facade_peak_C": 71.42067370575054,
+          "fds_facade_peak_C": 146.03897122415015,
+          "clipped_values": 9,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 13520.732478465883,
+          "fds_max_emission_kw": 31748.588524248105
+        },
+        {
+          "case": "b21_combined_0",
+          "facade_mae_C": 52.155913771754776,
+          "facade_peak_C": 596.6911228487483,
+          "fds_facade_peak_C": 841.6933318771239,
+          "clipped_values": 218,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 41655.52033066394,
+          "fds_max_emission_kw": 85102.02726625442
+        }
+      ]
+    },
+    {
+      "transform": "sqrt",
+      "alpha": 100,
+      "metrics": [
+        {
+          "case": "b21_single_1",
+          "facade_mae_C": 53.067906547217525,
+          "facade_peak_C": 296.7801812316944,
+          "fds_facade_peak_C": 435.11225990750836,
+          "clipped_values": 775,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 24226.329787993192,
+          "fds_max_emission_kw": 106681.37463993525
+        },
+        {
+          "case": "b21_transfer_0",
+          "facade_mae_C": 41.63808666165058,
+          "facade_peak_C": 177.31834924540328,
+          "fds_facade_peak_C": 77.54477997313082,
+          "clipped_values": 585,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 28412.424612193507,
+          "fds_max_emission_kw": 54113.64231423299
+        },
+        {
+          "case": "b21_single_2",
+          "facade_mae_C": 18.265237522839264,
+          "facade_peak_C": 74.87770382751228,
+          "fds_facade_peak_C": 146.03897122415015,
+          "clipped_values": 86,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 17693.975031320162,
+          "fds_max_emission_kw": 31748.588524248105
+        },
+        {
+          "case": "b21_combined_0",
+          "facade_mae_C": 55.01110728314611,
+          "facade_peak_C": 453.4062757989711,
+          "fds_facade_peak_C": 841.6933318771239,
+          "clipped_values": 584,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 34718.72377848517,
+          "fds_max_emission_kw": 85102.02726625442
+        }
+      ]
+    },
+    {
+      "transform": "sqrt",
+      "alpha": 1000,
+      "metrics": [
+        {
+          "case": "b21_single_1",
+          "facade_mae_C": 55.96810209247693,
+          "facade_peak_C": 160.61084559001813,
+          "fds_facade_peak_C": 435.11225990750836,
+          "clipped_values": 705,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 10287.341080473023,
+          "fds_max_emission_kw": 106681.37463993525
+        },
+        {
+          "case": "b21_transfer_0",
+          "facade_mae_C": 47.091351409710306,
+          "facade_peak_C": 252.97406154165884,
+          "fds_facade_peak_C": 77.54477997313082,
+          "clipped_values": 481,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 19851.82457883045,
+          "fds_max_emission_kw": 54113.64231423299
+        },
+        {
+          "case": "b21_single_2",
+          "facade_mae_C": 19.972004299635305,
+          "facade_peak_C": 74.73355560951616,
+          "fds_facade_peak_C": 146.03897122415015,
+          "clipped_values": 400,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 12641.642150042568,
+          "fds_max_emission_kw": 31748.588524248105
+        },
+        {
+          "case": "b21_combined_0",
+          "facade_mae_C": 86.12367446878697,
+          "facade_peak_C": 432.29197602193466,
+          "fds_facade_peak_C": 841.6933318771239,
+          "clipped_values": 480,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 14729.05178730679,
+          "fds_max_emission_kw": 85102.02726625442
+        }
+      ]
+    },
+    {
+      "transform": "linear",
+      "alpha": 10,
+      "metrics": [
+        {
+          "case": "b21_single_1",
+          "facade_mae_C": 71.767493534601,
+          "facade_peak_C": 482.1483059633637,
+          "fds_facade_peak_C": 435.11225990750836,
+          "clipped_values": 480,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 46838.34587598031,
+          "fds_max_emission_kw": 106681.37463993525
+        },
+        {
+          "case": "b21_transfer_0",
+          "facade_mae_C": 38.49296579343051,
+          "facade_peak_C": 181.81130101363294,
+          "fds_facade_peak_C": 77.54477997313082,
+          "clipped_values": 177,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 41962.141822606936,
+          "fds_max_emission_kw": 54113.64231423299
+        },
+        {
+          "case": "b21_single_2",
+          "facade_mae_C": 17.340051006990493,
+          "facade_peak_C": 87.42084558514945,
+          "fds_facade_peak_C": 146.03897122415015,
+          "clipped_values": 9,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 18434.834681738146,
+          "fds_max_emission_kw": 31748.588524248105
+        },
+        {
+          "case": "b21_combined_0",
+          "facade_mae_C": 79.01208628708892,
+          "facade_peak_C": 943.5939418760016,
+          "fds_facade_peak_C": 841.6933318771239,
+          "clipped_values": 236,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 53263.122921385126,
+          "fds_max_emission_kw": 85102.02726625442
+        }
+      ]
+    },
+    {
+      "transform": "linear",
+      "alpha": 100,
+      "metrics": [
+        {
+          "case": "b21_single_1",
+          "facade_mae_C": 78.67503237188743,
+          "facade_peak_C": 519.3152820178938,
+          "fds_facade_peak_C": 435.11225990750836,
+          "clipped_values": 778,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 36177.847554970256,
+          "fds_max_emission_kw": 106681.37463993525
+        },
+        {
+          "case": "b21_transfer_0",
+          "facade_mae_C": 90.48170291803189,
+          "facade_peak_C": 312.4500666407513,
+          "fds_facade_peak_C": 77.54477997313082,
+          "clipped_values": 620,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 41961.4089726837,
+          "fds_max_emission_kw": 54113.64231423299
+        },
+        {
+          "case": "b21_single_2",
+          "facade_mae_C": 22.752803352133242,
+          "facade_peak_C": 97.14891015182165,
+          "fds_facade_peak_C": 146.03897122415015,
+          "clipped_values": 93,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 23496.638999689534,
+          "fds_max_emission_kw": 31748.588524248105
+        },
+        {
+          "case": "b21_combined_0",
+          "facade_mae_C": 115.85697311732105,
+          "facade_peak_C": 875.4347937263531,
+          "fds_facade_peak_C": 841.6933318771239,
+          "clipped_values": 622,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 47924.84319684297,
+          "fds_max_emission_kw": 85102.02726625442
+        }
+      ]
+    },
+    {
+      "transform": "linear",
+      "alpha": 1000,
+      "metrics": [
+        {
+          "case": "b21_single_1",
+          "facade_mae_C": 55.18900757443028,
+          "facade_peak_C": 311.51170290487397,
+          "fds_facade_peak_C": 435.11225990750836,
+          "clipped_values": 714,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 20700.52376394998,
+          "fds_max_emission_kw": 106681.37463993525
+        },
+        {
+          "case": "b21_transfer_0",
+          "facade_mae_C": 111.93883731077507,
+          "facade_peak_C": 540.9761158463084,
+          "fds_facade_peak_C": 77.54477997313082,
+          "clipped_values": 514,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 35437.88515956981,
+          "fds_max_emission_kw": 54113.64231423299
+        },
+        {
+          "case": "b21_single_2",
+          "facade_mae_C": 29.90088614170469,
+          "facade_peak_C": 23.535934113920447,
+          "fds_facade_peak_C": 146.03897122415015,
+          "clipped_values": 649,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 0.0,
+          "fds_max_emission_kw": 31748.588524248105
+        },
+        {
+          "case": "b21_combined_0",
+          "facade_mae_C": 113.96131361646681,
+          "facade_peak_C": 879.3296560914442,
+          "fds_facade_peak_C": 841.6933318771239,
+          "clipped_values": 500,
+          "emission_ceiling_hit": false,
+          "max_emission_kw": 28017.122406892824,
+          "fds_max_emission_kw": 85102.02726625442
+        }
+      ]
+    }
+  ]
+}

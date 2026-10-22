@@ -1,0 +1,814 @@
+{
+  "repeated_conditions": [
+    {
+      "layout": "ABG",
+      "total_source_kw": 300,
+      "duration_s": 20,
+      "runs": 2,
+      "ignitions": 0,
+      "seed_disagreement": false,
+      "cases": [
+        "confirm20_ABG_300_s4321",
+        "confirm20_ABG_300_s5678"
+      ]
+    },
+    {
+      "layout": "ABG",
+      "total_source_kw": 1700,
+      "duration_s": 20,
+      "runs": 2,
+      "ignitions": 2,
+      "seed_disagreement": false,
+      "cases": [
+        "confirm20_ABG_1700_s4321",
+        "confirm20_ABG_1700_s5678"
+      ]
+    },
+    {
+      "layout": "ABG",
+      "total_source_kw": 3200,
+      "duration_s": 20,
+      "runs": 2,
+      "ignitions": 2,
+      "seed_disagreement": false,
+      "cases": [
+        "confirm20_ABG_3200_s4321",
+        "confirm20_ABG_3200_s5678"
+      ]
+    },
+    {
+      "layout": "ACG",
+      "total_source_kw": 300,
+      "duration_s": 20,
+      "runs": 2,
+      "ignitions": 0,
+      "seed_disagreement": false,
+      "cases": [
+        "confirm20_ACG_300_s4321",
+        "confirm20_ACG_300_s5678"
+      ]
+    },
+    {
+      "layout": "ACG",
+      "total_source_kw": 1700,
+      "duration_s": 20,
+      "runs": 2,
+      "ignitions": 2,
+      "seed_disagreement": false,
+      "cases": [
+        "confirm20_ACG_1700_s4321",
+        "confirm20_ACG_1700_s5678"
+      ]
+    },
+    {
+      "layout": "ACG",
+      "total_source_kw": 3200,
+      "duration_s": 20,
+      "runs": 2,
+      "ignitions": 2,
+      "seed_disagreement": false,
+      "cases": [
+        "confirm20_ACG_3200_s4321",
+        "confirm20_ACG_3200_s5678"
+      ]
+    },
+    {
+      "layout": "AEG",
+      "total_source_kw": 300,
+      "duration_s": 20,
+      "runs": 2,
+      "ignitions": 0,
+      "seed_disagreement": false,
+      "cases": [
+        "confirm20_AEG_300_s4321",
+        "confirm20_AEG_300_s5678"
+      ]
+    },
+    {
+      "layout": "AEG",
+      "total_source_kw": 1700,
+      "duration_s": 20,
+      "runs": 2,
+      "ignitions": 1,
+      "seed_disagreement": true,
+      "cases": [
+        "confirm20_AEG_1700_s4321",
+        "confirm20_AEG_1700_s5678"
+      ]
+    },
+    {
+      "layout": "AEG",
+      "total_source_kw": 3200,
+      "duration_s": 20,
+      "runs": 2,
+      "ignitions": 2,
+      "seed_disagreement": false,
+      "cases": [
+        "confirm20_AEG_3200_s4321",
+        "confirm20_AEG_3200_s5678"
+      ]
+    },
+    {
+      "layout": "ADG",
+      "total_source_kw": 300,
+      "duration_s": 20,
+      "runs": 2,
+      "ignitions": 0,
+      "seed_disagreement": false,
+      "cases": [
+        "confirm20_ADG_300_s4321",
+        "confirm20_ADG_300_s5678"
+      ]
+    },
+    {
+      "layout": "ADG",
+      "total_source_kw": 1700,
+      "duration_s": 20,
+      "runs": 2,
+      "ignitions": 0,
+      "seed_disagreement": false,
+      "cases": [
+        "confirm20_ADG_1700_s4321",
+        "confirm20_ADG_1700_s5678"
+      ]
+    },
+    {
+      "layout": "ADG",
+      "total_source_kw": 3200,
+      "duration_s": 20,
+      "runs": 2,
+      "ignitions": 2,
+      "seed_disagreement": false,
+      "cases": [
+        "confirm20_ADG_3200_s4321",
+        "confirm20_ADG_3200_s5678"
+      ]
+    }
+  ],
+  "unique_initial_conditions": 12,
+  "conditions_with_seed_disagreement": 1,
+  "coverage": {
+    "n": 24,
+    "positives": 13,
+    "negatives": 11,
+    "brier": 0.5416666666666666,
+    "accuracy": 0.4583333333333333,
+    "positive_recall": 0.0,
+    "negative_recall": 1.0,
+    "balanced_accuracy": 0.5
+  },
+  "models": {
+    "graph": {
+      "seeds": [
+        {
+          "seed": 11,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.17663604279750214,
+            "accuracy": 0.7083333333333334,
+            "positive_recall": 1.0,
+            "negative_recall": 0.36363636363636365,
+            "balanced_accuracy": 0.6818181818181819
+          },
+          "inference_s": 1.4102708276671669e-05
+        },
+        {
+          "seed": 22,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.12372247762717441,
+            "accuracy": 0.875,
+            "positive_recall": 1.0,
+            "negative_recall": 0.7272727272727273,
+            "balanced_accuracy": 0.8636363636363636
+          },
+          "inference_s": 1.3980451233995458e-05
+        },
+        {
+          "seed": 33,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.230313961641912,
+            "accuracy": 0.7083333333333334,
+            "positive_recall": 1.0,
+            "negative_recall": 0.36363636363636365,
+            "balanced_accuracy": 0.6818181818181819
+          },
+          "inference_s": 1.4070052129682153e-05
+        },
+        {
+          "seed": 44,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.18978546963632947,
+            "accuracy": 0.7083333333333334,
+            "positive_recall": 1.0,
+            "negative_recall": 0.36363636363636365,
+            "balanced_accuracy": 0.6818181818181819
+          },
+          "inference_s": 1.3622534655344982e-05
+        },
+        {
+          "seed": 55,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.3300595511181612,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 2.3375937501744678e-05
+        }
+      ],
+      "ensemble": {
+        "n": 24,
+        "positives": 13,
+        "negatives": 11,
+        "brier": 0.1793891301152529,
+        "accuracy": 0.7916666666666666,
+        "positive_recall": 1.0,
+        "negative_recall": 0.5454545454545454,
+        "balanced_accuracy": 0.7727272727272727
+      },
+      "predictions": {
+        "confirm20_ABG_300_s4321": 0.6503568212967366,
+        "confirm20_ABG_300_s5678": 0.6503568212967366,
+        "confirm20_ABG_1700_s4321": 0.9274346113204956,
+        "confirm20_ABG_1700_s5678": 0.9274346113204956,
+        "confirm20_ABG_3200_s4321": 0.9329959034919739,
+        "confirm20_ABG_3200_s5678": 0.9329959034919739,
+        "confirm20_ACG_300_s4321": 0.45792399924248456,
+        "confirm20_ACG_300_s5678": 0.45792399924248456,
+        "confirm20_ACG_1700_s4321": 0.9171171665191651,
+        "confirm20_ACG_1700_s5678": 0.9171171665191651,
+        "confirm20_ACG_3200_s4321": 0.9317247986793518,
+        "confirm20_ACG_3200_s5678": 0.9317247986793518,
+        "confirm20_AEG_300_s4321": 0.3968844373477623,
+        "confirm20_AEG_300_s5678": 0.3968844373477623,
+        "confirm20_AEG_1700_s4321": 0.9179405808448792,
+        "confirm20_AEG_1700_s5678": 0.9179405808448792,
+        "confirm20_AEG_3200_s4321": 0.9319545149803161,
+        "confirm20_AEG_3200_s5678": 0.9319545149803161,
+        "confirm20_ADG_300_s4321": 0.2817201954079792,
+        "confirm20_ADG_300_s5678": 0.2817201954079792,
+        "confirm20_ADG_1700_s4321": 0.9098354935646057,
+        "confirm20_ADG_1700_s5678": 0.9098354935646057,
+        "confirm20_ADG_3200_s4321": 0.9311802506446838,
+        "confirm20_ADG_3200_s5678": 0.9311802506446838
+      },
+      "per_layout": {
+        "ABG": {
+          "n": 6,
+          "positives": 4,
+          "negatives": 2,
+          "brier": 0.14423975986341991,
+          "accuracy": 0.6666666666666666,
+          "positive_recall": 1.0,
+          "negative_recall": 0.0,
+          "balanced_accuracy": 0.5
+        },
+        "ACG": {
+          "n": 6,
+          "positives": 4,
+          "negatives": 2,
+          "brier": 0.07374181876113929,
+          "accuracy": 1.0,
+          "positive_recall": 1.0,
+          "negative_recall": 1.0,
+          "balanced_accuracy": 1.0
+        },
+        "ADG": {
+          "n": 6,
+          "positives": 2,
+          "negatives": 4,
+          "brier": 0.30396768391732937,
+          "accuracy": 0.6666666666666666,
+          "positive_recall": 1.0,
+          "negative_recall": 0.5,
+          "balanced_accuracy": 0.75
+        },
+        "AEG": {
+          "n": 6,
+          "positives": 3,
+          "negatives": 3,
+          "brier": 0.19560725791912295,
+          "accuracy": 0.8333333333333334,
+          "positive_recall": 1.0,
+          "negative_recall": 0.6666666666666666,
+          "balanced_accuracy": 0.8333333333333333
+        }
+      }
+    },
+    "additive": {
+      "seeds": [
+        {
+          "seed": 11,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.29483086951347737,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 2.740519082484146e-05
+        },
+        {
+          "seed": 22,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.2772314726378206,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 2.4977430390814938e-05
+        },
+        {
+          "seed": 33,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.17503741198151027,
+            "accuracy": 0.7083333333333334,
+            "positive_recall": 1.0,
+            "negative_recall": 0.36363636363636365,
+            "balanced_accuracy": 0.6818181818181819
+          },
+          "inference_s": 1.4853923251697173e-05
+        },
+        {
+          "seed": 44,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.2521220998369955,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 1.4565850336415072e-05
+        },
+        {
+          "seed": 55,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.2549248658569061,
+            "accuracy": 0.625,
+            "positive_recall": 1.0,
+            "negative_recall": 0.18181818181818182,
+            "balanced_accuracy": 0.5909090909090909
+          },
+          "inference_s": 1.4594427096502236e-05
+        }
+      ],
+      "ensemble": {
+        "n": 24,
+        "positives": 13,
+        "negatives": 11,
+        "brier": 0.2462729800566894,
+        "accuracy": 0.5416666666666666,
+        "positive_recall": 1.0,
+        "negative_recall": 0.0,
+        "balanced_accuracy": 0.5
+      },
+      "predictions": {
+        "confirm20_ABG_300_s4321": 0.7904801487922668,
+        "confirm20_ABG_300_s5678": 0.7904801487922668,
+        "confirm20_ABG_1700_s4321": 0.8643442869186402,
+        "confirm20_ABG_1700_s5678": 0.8643442869186402,
+        "confirm20_ABG_3200_s4321": 0.8822261929512024,
+        "confirm20_ABG_3200_s5678": 0.8822261929512024,
+        "confirm20_ACG_300_s4321": 0.6189414978027343,
+        "confirm20_ACG_300_s5678": 0.6189414978027343,
+        "confirm20_ACG_1700_s4321": 0.8277518510818481,
+        "confirm20_ACG_1700_s5678": 0.8277518510818481,
+        "confirm20_ACG_3200_s4321": 0.8727137565612793,
+        "confirm20_ACG_3200_s5678": 0.8727137565612793,
+        "confirm20_AEG_300_s4321": 0.6862574338912963,
+        "confirm20_AEG_300_s5678": 0.6862574338912963,
+        "confirm20_AEG_1700_s4321": 0.8439747571945191,
+        "confirm20_AEG_1700_s5678": 0.8439747571945191,
+        "confirm20_AEG_3200_s4321": 0.8767549395561218,
+        "confirm20_AEG_3200_s5678": 0.8767549395561218,
+        "confirm20_ADG_300_s4321": 0.5724719107151032,
+        "confirm20_ADG_300_s5678": 0.5724719107151032,
+        "confirm20_ADG_1700_s4321": 0.8187136292457581,
+        "confirm20_ADG_1700_s5678": 0.8187136292457581,
+        "confirm20_ADG_3200_s4321": 0.8707304239273072,
+        "confirm20_ADG_3200_s5678": 0.8707304239273072
+      },
+      "per_layout": {
+        "ABG": {
+          "n": 6,
+          "positives": 4,
+          "negatives": 2,
+          "brier": 0.2190440025843413,
+          "accuracy": 0.6666666666666666,
+          "positive_recall": 1.0,
+          "negative_recall": 0.0,
+          "balanced_accuracy": 0.5
+        },
+        "ACG": {
+          "n": 6,
+          "positives": 4,
+          "negatives": 2,
+          "brier": 0.14298659675892111,
+          "accuracy": 0.6666666666666666,
+          "positive_recall": 1.0,
+          "negative_recall": 0.0,
+          "balanced_accuracy": 0.5
+        },
+        "ADG": {
+          "n": 6,
+          "positives": 2,
+          "negatives": 4,
+          "brier": 0.33824223952285853,
+          "accuracy": 0.3333333333333333,
+          "positive_recall": 1.0,
+          "negative_recall": 0.0,
+          "balanced_accuracy": 0.5
+        },
+        "AEG": {
+          "n": 6,
+          "positives": 3,
+          "negatives": 3,
+          "brier": 0.2848190813606368,
+          "accuracy": 0.5,
+          "positive_recall": 1.0,
+          "negative_recall": 0.0,
+          "balanced_accuracy": 0.5
+        }
+      }
+    },
+    "simple": {
+      "seeds": [
+        {
+          "seed": 11,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.21262882836463545,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 5.289062391966581e-07
+        },
+        {
+          "seed": 22,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.19989528122235387,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 4.752953342782954e-07
+        },
+        {
+          "seed": 33,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.22525787196891608,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 4.76215403371801e-07
+        },
+        {
+          "seed": 44,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.233528221858695,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 5.825691429587702e-07
+        },
+        {
+          "seed": 55,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.20126114889697058,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 4.761633075152834e-07
+        }
+      ],
+      "ensemble": {
+        "n": 24,
+        "positives": 13,
+        "negatives": 11,
+        "brier": 0.2141487289623314,
+        "accuracy": 0.5416666666666666,
+        "positive_recall": 1.0,
+        "negative_recall": 0.0,
+        "balanced_accuracy": 0.5
+      },
+      "predictions": {
+        "confirm20_ABG_300_s4321": 0.6235705137252807,
+        "confirm20_ABG_300_s5678": 0.6235705137252807,
+        "confirm20_ABG_1700_s4321": 0.8462531208992005,
+        "confirm20_ABG_1700_s5678": 0.8462531208992005,
+        "confirm20_ABG_3200_s4321": 0.9521788239479065,
+        "confirm20_ABG_3200_s5678": 0.9521788239479065,
+        "confirm20_ACG_300_s4321": 0.6361618280410767,
+        "confirm20_ACG_300_s5678": 0.6361618280410767,
+        "confirm20_ACG_1700_s4321": 0.8532839894294739,
+        "confirm20_ACG_1700_s5678": 0.8532839894294739,
+        "confirm20_ACG_3200_s4321": 0.9546442270278931,
+        "confirm20_ACG_3200_s5678": 0.9546442270278931,
+        "confirm20_AEG_300_s4321": 0.5872941732406616,
+        "confirm20_AEG_300_s5678": 0.5872941732406616,
+        "confirm20_AEG_1700_s4321": 0.8223981499671936,
+        "confirm20_AEG_1700_s5678": 0.8223981499671936,
+        "confirm20_AEG_3200_s4321": 0.9424378037452698,
+        "confirm20_AEG_3200_s5678": 0.9424378037452698,
+        "confirm20_ADG_300_s4321": 0.5872941732406616,
+        "confirm20_ADG_300_s5678": 0.5872941732406616,
+        "confirm20_ADG_1700_s4321": 0.8223981499671936,
+        "confirm20_ADG_1700_s5678": 0.8223981499671936,
+        "confirm20_ADG_3200_s4321": 0.9424378037452698,
+        "confirm20_ADG_3200_s5678": 0.9424378037452698
+      },
+      "per_layout": {
+        "ABG": {
+          "n": 6,
+          "positives": 4,
+          "negatives": 2,
+          "brier": 0.13825505109995057,
+          "accuracy": 0.6666666666666666,
+          "positive_recall": 1.0,
+          "negative_recall": 0.0,
+          "balanced_accuracy": 0.5
+        },
+        "ACG": {
+          "n": 6,
+          "positives": 4,
+          "negatives": 2,
+          "brier": 0.14276153511873083,
+          "accuracy": 0.6666666666666666,
+          "positive_recall": 1.0,
+          "negative_recall": 0.0,
+          "balanced_accuracy": 0.5
+        },
+        "ADG": {
+          "n": 6,
+          "positives": 2,
+          "negatives": 4,
+          "brier": 0.3415221898098542,
+          "accuracy": 0.3333333333333333,
+          "positive_recall": 1.0,
+          "negative_recall": 0.0,
+          "balanced_accuracy": 0.5
+        },
+        "AEG": {
+          "n": 6,
+          "positives": 3,
+          "negatives": 3,
+          "brier": 0.2340561398207898,
+          "accuracy": 0.5,
+          "positive_recall": 1.0,
+          "negative_recall": 0.0,
+          "balanced_accuracy": 0.5
+        }
+      }
+    },
+    "ignition_only": {
+      "seeds": [
+        {
+          "seed": 11,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.2044161780772651,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 1.4744786312803625e-07
+        },
+        {
+          "seed": 22,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.19754467339308,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 1.5086833930884797e-07
+        },
+        {
+          "seed": 33,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.19832146034103668,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 1.422224643950661e-07
+        },
+        {
+          "seed": 44,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.24123585297875305,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 2.797570778056979e-07
+        },
+        {
+          "seed": 55,
+          "metrics": {
+            "n": 24,
+            "positives": 13,
+            "negatives": 11,
+            "brier": 0.23839275865046824,
+            "accuracy": 0.5416666666666666,
+            "positive_recall": 1.0,
+            "negative_recall": 0.0,
+            "balanced_accuracy": 0.5
+          },
+          "inference_s": 1.4878460206091403e-07
+        }
+      ],
+      "ensemble": {
+        "n": 24,
+        "positives": 13,
+        "negatives": 11,
+        "brier": 0.21528365186527934,
+        "accuracy": 0.5416666666666666,
+        "positive_recall": 1.0,
+        "negative_recall": 0.0,
+        "balanced_accuracy": 0.5
+      },
+      "predictions": {
+        "confirm20_ABG_300_s4321": 0.6252402782440185,
+        "confirm20_ABG_300_s5678": 0.6252402782440185,
+        "confirm20_ABG_1700_s4321": 0.8444542169570923,
+        "confirm20_ABG_1700_s5678": 0.8444542169570923,
+        "confirm20_ABG_3200_s4321": 0.9507629632949829,
+        "confirm20_ABG_3200_s5678": 0.9507629632949829,
+        "confirm20_ACG_300_s4321": 0.6375931620597839,
+        "confirm20_ACG_300_s5678": 0.6375931620597839,
+        "confirm20_ACG_1700_s4321": 0.8515783190727234,
+        "confirm20_ACG_1700_s5678": 0.8515783190727234,
+        "confirm20_ACG_3200_s4321": 0.9532934546470642,
+        "confirm20_ACG_3200_s5678": 0.9532934546470642,
+        "confirm20_AEG_300_s4321": 0.591499674320221,
+        "confirm20_AEG_300_s5678": 0.591499674320221,
+        "confirm20_AEG_1700_s4321": 0.821597445011139,
+        "confirm20_AEG_1700_s5678": 0.821597445011139,
+        "confirm20_AEG_3200_s4321": 0.9411226034164428,
+        "confirm20_AEG_3200_s5678": 0.9411226034164428,
+        "confirm20_ADG_300_s4321": 0.591499674320221,
+        "confirm20_ADG_300_s5678": 0.591499674320221,
+        "confirm20_ADG_1700_s4321": 0.821597445011139,
+        "confirm20_ADG_1700_s5678": 0.821597445011139,
+        "confirm20_ADG_3200_s4321": 0.9411226034164428,
+        "confirm20_ADG_3200_s5678": 0.9411226034164428
+      },
+      "per_layout": {
+        "ABG": {
+          "n": 6,
+          "positives": 4,
+          "negatives": 2,
+          "brier": 0.1391813939815267,
+          "accuracy": 0.6666666666666666,
+          "positive_recall": 1.0,
+          "negative_recall": 0.0,
+          "balanced_accuracy": 0.5
+        },
+        "ACG": {
+          "n": 6,
+          "positives": 4,
+          "negatives": 2,
+          "brier": 0.14357851235115934,
+          "accuracy": 0.6666666666666666,
+          "positive_recall": 1.0,
+          "negative_recall": 0.0,
+          "balanced_accuracy": 0.5
+        },
+        "ADG": {
+          "n": 6,
+          "positives": 2,
+          "negatives": 4,
+          "brier": 0.3427869247327389,
+          "accuracy": 0.3333333333333333,
+          "positive_recall": 1.0,
+          "negative_recall": 0.0,
+          "balanced_accuracy": 0.5
+        },
+        "AEG": {
+          "n": 6,
+          "positives": 3,
+          "negatives": 3,
+          "brier": 0.23558777639569253,
+          "accuracy": 0.5,
+          "positive_recall": 1.0,
+          "negative_recall": 0.0,
+          "balanced_accuracy": 0.5
+        }
+      }
+    }
+  },
+  "baselines": {
+    "0.0": {
+      "n": 24,
+      "positives": 13,
+      "negatives": 11,
+      "brier": 0.5416666666666666,
+      "accuracy": 0.4583333333333333,
+      "positive_recall": 0.0,
+      "negative_recall": 1.0,
+      "balanced_accuracy": 0.5
+    },
+    "1.0": {
+      "n": 24,
+      "positives": 13,
+      "negatives": 11,
+      "brier": 0.4583333333333333,
+      "accuracy": 0.5416666666666666,
+      "positive_recall": 1.0,
+      "negative_recall": 0.0,
+      "balanced_accuracy": 0.5
+    },
+    "0.5": {
+      "n": 24,
+      "positives": 13,
+      "negatives": 11,
+      "brier": 0.25,
+      "accuracy": 0.5416666666666666,
+      "positive_recall": 1.0,
+      "negative_recall": 0.0,
+      "balanced_accuracy": 0.5
+    },
+    "0.40816326530612246": {
+      "n": 24,
+      "positives": 13,
+      "negatives": 11,
+      "brier": 0.26608704706372344,
+      "accuracy": 0.4583333333333333,
+      "positive_recall": 0.0,
+      "negative_recall": 1.0,
+      "balanced_accuracy": 0.5
+    }
+  },
+  "caution": "Small synthetic, fixed-house/fixed-weather test. Optimization seed spread is not uncertainty about real wildfire risk. Two FDS seeds per condition do not establish a reliable ignition probability; repeated runs are not independent geometry coverage. No field validation.",
+  "conclusions": "Both classes present. Compare held-out Brier and class recalls; this small sample cannot prove general composition."
+}

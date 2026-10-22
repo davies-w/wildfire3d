@@ -1,0 +1,139 @@
+{
+  "particle_class_order": [
+    "foliage",
+    "small roundwood",
+    "medium roundwood",
+    "large roundwood"
+  ],
+  "particle_output_sampling_fraction": 0.1,
+  "particle_output_interval_s": 5,
+  "particles": {
+    "a21_single": {
+      "sampled_particle_maxima": [
+        {
+          "max_C": 88.79348,
+          "time_s": 20.00813
+        },
+        {
+          "max_C": 96.35851,
+          "time_s": 20.00813
+        },
+        {
+          "max_C": 94.53596,
+          "time_s": 20.00813
+        },
+        {
+          "max_C": 66.36113,
+          "time_s": 20.00813
+        }
+      ],
+      "source_sha256": "a7a2ceac293b74a2f3a12894bca1e9f06fdf4f0d4d677b66f08ee0e0b0a1a7bf"
+    },
+    "a21_double": {
+      "sampled_particle_maxima": [
+        {
+          "max_C": 75.31729,
+          "time_s": 20.01711
+        },
+        {
+          "max_C": 63.17295,
+          "time_s": 20.01711
+        },
+        {
+          "max_C": 81.55454,
+          "time_s": 20.01711
+        },
+        {
+          "max_C": 56.38746,
+          "time_s": 20.01711
+        }
+      ],
+      "source_sha256": "94f9cc79f30a3dd25a32aeddf399a6f13f6de2c68a898b2d154f74af3acdd3c6"
+    },
+    "a21_corner": {
+      "sampled_particle_maxima": [
+        {
+          "max_C": 45.4158,
+          "time_s": 20.04355
+        },
+        {
+          "max_C": 55.16103,
+          "time_s": 20.04355
+        },
+        {
+          "max_C": 42.09002,
+          "time_s": 20.04355
+        },
+        {
+          "max_C": 43.13699,
+          "time_s": 20.04355
+        }
+      ],
+      "source_sha256": "7507703b1e1d0aa156c4e1cd2383571ed5ce517439c4a604e24888ded93b067f"
+    },
+    "a21_double_fine": {
+      "sampled_particle_maxima": [
+        {
+          "max_C": 69.02435,
+          "time_s": 15.01564
+        },
+        {
+          "max_C": 74.97803,
+          "time_s": 20.00431
+        },
+        {
+          "max_C": 53.82674,
+          "time_s": 20.00431
+        },
+        {
+          "max_C": 49.47433,
+          "time_s": 20.00431
+        }
+      ],
+      "source_sha256": "644e9ee27908b7ac596525b3565cc2de08d2e28f2f18c37e45afce77c091832b"
+    }
+  },
+  "slice": {
+    "plane_y_m": 12,
+    "averaging_s": [
+      10,
+      20
+    ],
+    "canopy_midplane_mean_C": 31.736142857142852,
+    "canopy_midplane_max_C": 119.46,
+    "hottest_x_at_canopy_base_m": 13.5,
+    "canopy_center_x_m": 11,
+    "canopy_base_m": 3
+  },
+  "diagnosis": "Insufficient canopy heating; plume bypass consistent with downstream deflection. Not a material validation.",
+  "limitations": [
+    "Only y=12 plane saved, not a3D plume volume.",
+    "Displayed-particle bounds cover approximately10% of particles at5 s intervals.",
+    "Tiny reactions are not excluded.",
+    "Material parameters, mesh and fuel distribution remain unvalidated."
+  ],
+  "proposed_test": {
+    "case": "a21_single_upstream",
+    "status": "NOT_RUN",
+    "change": "Move2x2 m ground ignition patch center from x11 to x8.5, y12 unchanged; all physics/materials otherwise unchanged.",
+    "reason": "Offset by observed2.5 m downstream plume displacement at canopy-base height.",
+    "instrumentation": "All particles saved every1 s; local gas/particle diagnostics and per-class mass flux; retain raw slices/boundaries.",
+    "horizon_s": 180,
+    "cell_m": 0.5,
+    "source_kw": 4000,
+    "source_duration_s": 20,
+    "success": "At least100 kW total HRR throughout40\u201350 s and at least1 MJ released over40\u201360 s, after source shutdown21 s; check vegetation fuel release and distinguish any building contribution. Engineering gate, not a universal ignition definition.",
+    "next_if_success": "Request a matched shifted-source bare control before attributing building heating to vegetation; no automatic run.",
+    "budget": {
+      "expected_usd": [
+        0.03,
+        0.08
+      ],
+      "proposed_allowance_usd": 0.15,
+      "compute_rate_ceiling_usd_per_vm_hour": 0.08,
+      "one_worker_hour_reserved": true,
+      "ancillary_reserve_usd": 0.07,
+      "requires_new_authorization": true
+    }
+  }
+}

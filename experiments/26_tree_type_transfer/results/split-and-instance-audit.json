@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "cases": 32,
+  "split_counts": {
+    "train": 18,
+    "validation": 8,
+    "familiar_test": 2,
+    "transfer_test": 4
+  },
+  "checks": [
+    "Explicit vegetation and heater positions only",
+    "Deck/template hashes unchanged",
+    "C isolated data allowed; C interaction training/validation forbidden",
+    "Every removal control retains identical heater and receiver",
+    "Whole configurations split"
+  ],
+  "scope": "Input-only audit; no held-out FDS outputs read"
+}

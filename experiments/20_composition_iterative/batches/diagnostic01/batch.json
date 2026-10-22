@@ -1,0 +1,39 @@
+{
+  "name": "diagnostic01",
+  "cases": [
+    {
+      "case": "control_AC_bare",
+      "layout": "AC",
+      "vegetation": "",
+      "total_source_kw": 1700
+    },
+    {
+      "case": "control_AD_bare",
+      "layout": "AD",
+      "vegetation": "",
+      "total_source_kw": 1700
+    },
+    {
+      "case": "control_AD_without_D",
+      "layout": "AD",
+      "vegetation": "A",
+      "total_source_kw": 1700
+    },
+    {
+      "case": "AD_seed_4321",
+      "layout": "AD",
+      "total_source_kw": 1700,
+      "seed": 4321
+    },
+    {
+      "case": "AD_seed_5678",
+      "layout": "AD",
+      "total_source_kw": 1700,
+      "seed": 5678
+    }
+  ],
+  "controller_seconds": 3600,
+  "allowance_usd": 0.15,
+  "ancillary_allowance_usd": 0.07,
+  "worker_seconds": 2700
+}

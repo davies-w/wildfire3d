@@ -1,0 +1,29 @@
+{
+  "epoch": 150,
+  "model_sha256": "e840e336c2fd80de204d51e18053b1ecb140d347887e75afcf571791897361e9",
+  "validation": [
+    {
+      "case": "b21_single_validation",
+      "MAE_C": 67.09155979928667,
+      "peak_C": 280.3237255069066,
+      "reference_peak_C": 590.707249314055,
+      "ignition_s": null,
+      "reference_ignition_s": 26.0,
+      "wall_seconds": 0.08956050011329353,
+      "minimum_remaining_mass_fraction": 0.16249766369949192,
+      "maximum_hot_fraction": 0.5485372677002837
+    },
+    {
+      "case": "b21_transfer_validation",
+      "MAE_C": 5.507583352077667,
+      "peak_C": 67.23827022638284,
+      "reference_peak_C": 63.53383353881019,
+      "ignition_s": null,
+      "reference_ignition_s": null,
+      "wall_seconds": 0.08848008303903043,
+      "minimum_remaining_mass_fraction": 0.16475144681962417,
+      "maximum_hot_fraction": 0.5504790385561177
+    }
+  ],
+  "scope": "Fully autonomous local validation; no FDS states supplied during rollout. Bounds enforce nonnegative remaining mass and ordered heated fractions, but full energy/chemical conservation is unproven. No Stage C outputs."
+}

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/Users/wdavies/pi/wildfire3d/experiments/21_local_components/finish_stage_a.py", line 74, in <module>
+    try:run()
+        ^^^^^
+  File "/Users/wdavies/pi/wildfire3d/experiments/21_local_components/finish_stage_a.py", line 67, in run
+    control.prepare(second,2);control.launch(2);wait_done();control.fetch();audits.extend(audit(r['case']) for r in second)
+                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wdavies/pi/wildfire3d/experiments/21_local_components/finish_stage_a.py", line 67, in <genexpr>
+    control.prepare(second,2);control.launch(2);wait_done();control.fetch();audits.extend(audit(r['case']) for r in second)
+                                                                                          ^^^^^^^^^^^^^^^^
+  File "/Users/wdavies/pi/wildfire3d/experiments/21_local_components/finish_stage_a.py", line 28, in audit
+    r=json.loads((ROOT/'data/cloud'/name/'result.json').read_text());assert r['full_horizon'],name+' incomplete'
+                                                                            ~^^^^^^^^^^^^^^^^
+AssertionError: a21_double_fine incomplete

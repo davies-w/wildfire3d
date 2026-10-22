@@ -1,0 +1,182 @@
+{
+  "checked_utc": "2026-10-18T08:36:26.521078+00:00",
+  "instances": [
+    {
+      "name": "fds-c21-glen-ellen-477c0d89-9b0e-48320-group0-0-b735",
+      "id": "5303742167808327941",
+      "status": "RUNNING",
+      "trial": "c21-glen-ellen-06",
+      "recent_cpu": [
+        {
+          "utc": "2026-10-18T08:33:00Z",
+          "utilization": 0.674293660828217
+        },
+        {
+          "utc": "2026-10-18T08:32:00Z",
+          "utilization": 0.673382487269733
+        },
+        {
+          "utc": "2026-10-18T08:31:00Z",
+          "utilization": 0.6863711680501543
+        }
+      ]
+    },
+    {
+      "name": "fds-c21-santa-rosa-81479bc4-e8dc-4dec0-group0-0-gs3s",
+      "id": "3347499076898373890",
+      "status": "RUNNING",
+      "trial": "c21-santa-rosa-east-03",
+      "recent_cpu": [
+        {
+          "utc": "2026-10-18T08:33:00Z",
+          "utilization": 0.6727117876120853
+        },
+        {
+          "utc": "2026-10-18T08:32:00Z",
+          "utilization": 0.6725604344566098
+        },
+        {
+          "utc": "2026-10-18T08:31:00Z",
+          "utilization": 0.6731091771425194
+        }
+      ]
+    },
+    {
+      "name": "fds-overnight21-gr-ff9ea19f-1be3-45560-group0-0-nhf4",
+      "id": "5843437836849242699",
+      "status": "RUNNING",
+      "trial": "overnight21-grid-fine-v2",
+      "recent_cpu": [
+        {
+          "utc": "2026-10-18T08:33:00Z",
+          "utilization": 0.5783212237563323
+        },
+        {
+          "utc": "2026-10-18T08:32:00Z",
+          "utilization": 0.5846203069607023
+        },
+        {
+          "utc": "2026-10-18T08:31:00Z",
+          "utilization": 0.5804688849797609
+        }
+      ]
+    }
+  ],
+  "jobs": [
+    {
+      "name": "projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-c21-glen-ellen-06",
+      "status": {
+        "runDuration": "1290.082062052s",
+        "state": "RUNNING",
+        "statusEvents": [
+          {
+            "description": "Job state is set from QUEUED to SCHEDULED for job projects/587909259768/locations/us-central1/jobs/fds-c21-glen-ellen-06.",
+            "eventTime": "2026-10-18T08:14:22.097583022Z",
+            "type": "STATUS_CHANGED"
+          },
+          {
+            "description": "Job state is set from SCHEDULED to RUNNING for job projects/587909259768/locations/us-central1/jobs/fds-c21-glen-ellen-06.",
+            "eventTime": "2026-10-18T08:14:58.463951997Z",
+            "type": "STATUS_CHANGED"
+          }
+        ],
+        "taskGroups": {
+          "group0": {
+            "counts": {
+              "RUNNING": "1"
+            },
+            "instances": [
+              {
+                "bootDisk": {
+                  "image": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261001-00-p01",
+                  "sizeGb": "30",
+                  "type": "pd-balanced"
+                },
+                "machineType": "c3-standard-4",
+                "provisioningModel": "SPOT",
+                "taskPack": "1"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-overnight21-grid-fine-v2",
+      "status": {
+        "runDuration": "10321.279136700s",
+        "state": "RUNNING",
+        "statusEvents": [
+          {
+            "description": "Job state is set from QUEUED to SCHEDULED for job projects/587909259768/locations/us-central1/jobs/fds-overnight21-grid-fine-v2.",
+            "eventTime": "2026-10-18T05:43:45.898304328Z",
+            "type": "STATUS_CHANGED"
+          },
+          {
+            "description": "Job state is set from SCHEDULED to RUNNING for job projects/587909259768/locations/us-central1/jobs/fds-overnight21-grid-fine-v2.",
+            "eventTime": "2026-10-18T05:44:27.267153269Z",
+            "type": "STATUS_CHANGED"
+          }
+        ],
+        "taskGroups": {
+          "group0": {
+            "counts": {
+              "RUNNING": "1"
+            },
+            "instances": [
+              {
+                "bootDisk": {
+                  "image": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261001-00-p01",
+                  "sizeGb": "30",
+                  "type": "pd-balanced"
+                },
+                "machineType": "c3-standard-4",
+                "provisioningModel": "SPOT",
+                "taskPack": "1"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-c21-santa-rosa-east-03",
+      "status": {
+        "runDuration": "1287.627297843s",
+        "state": "RUNNING",
+        "statusEvents": [
+          {
+            "description": "Job state is set from QUEUED to SCHEDULED for job projects/587909259768/locations/us-central1/jobs/fds-c21-santa-rosa-east-03.",
+            "eventTime": "2026-10-18T08:14:22.154948580Z",
+            "type": "STATUS_CHANGED"
+          },
+          {
+            "description": "Job state is set from SCHEDULED to RUNNING for job projects/587909259768/locations/us-central1/jobs/fds-c21-santa-rosa-east-03.",
+            "eventTime": "2026-10-18T08:15:00.919167766Z",
+            "type": "STATUS_CHANGED"
+          }
+        ],
+        "taskGroups": {
+          "group0": {
+            "counts": {
+              "RUNNING": "1"
+            },
+            "instances": [
+              {
+                "bootDisk": {
+                  "image": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261001-00-p01",
+                  "sizeGb": "30",
+                  "type": "pd-balanced"
+                },
+                "machineType": "c3-standard-4",
+                "provisioningModel": "SPOT",
+                "taskPack": "1"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "limit": "CPU activity is evidence of computation, not a verified FDS timestep. Worker solver logs are retained in final bundles, not streamed."
+}

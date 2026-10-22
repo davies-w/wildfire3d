@@ -1,0 +1,58 @@
+{
+  "intervention": "Provide measured FDS incoming heat histories only to uninitialized canopy nodes, and zero their three explicit direct-source features. Keep all fitted weights and source/building dynamics. This is deliberately NOT autonomous inference; frozen predictions unchanged.",
+  "results": [
+    {
+      "case": "c21_santa_rosa_east_03",
+      "canopies": [
+        {
+          "id": "v0",
+          "initialized": true,
+          "diagnostic_fuel_kg": 73.58005614022638,
+          "FDS_fuel_kg": 52.09950083898514
+        },
+        {
+          "id": "v1",
+          "initialized": false,
+          "diagnostic_fuel_kg": 0.0033378966704656152,
+          "FDS_fuel_kg": 0.00015881784053983335
+        },
+        {
+          "id": "v2",
+          "initialized": false,
+          "diagnostic_fuel_kg": 0.019960305054602525,
+          "FDS_fuel_kg": 0.0009920884650243987
+        }
+      ],
+      "temperature_MAE_C": 2.822362155280325,
+      "dose_MAE_kj_m2": 11.58452789017829,
+      "predicted_ignition": false
+    },
+    {
+      "case": "c21_glen_ellen_06",
+      "canopies": [
+        {
+          "id": "v0",
+          "initialized": true,
+          "diagnostic_fuel_kg": 56.49219010746551,
+          "FDS_fuel_kg": 3.109711324751798
+        },
+        {
+          "id": "v1",
+          "initialized": false,
+          "diagnostic_fuel_kg": 14.575167975623293,
+          "FDS_fuel_kg": 7.026417474159712e-05
+        },
+        {
+          "id": "v2",
+          "initialized": false,
+          "diagnostic_fuel_kg": 272.55515384748986,
+          "FDS_fuel_kg": 0.00043540895864340454
+        }
+      ],
+      "temperature_MAE_C": 10.542768265435667,
+      "dose_MAE_kj_m2": 86.76163955729959,
+      "predicted_ignition": true
+    }
+  ],
+  "scope": "Post-test sensitivity diagnostic, NOT autonomous performance. Measured signed convection is conditioned on FDS surface temperature; prescribing it to a different predicted state breaks cooling feedback. Opposite responses across scenes therefore do not isolate a causal failure. Frozen results unchanged."
+}

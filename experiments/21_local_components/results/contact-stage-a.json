@@ -1,0 +1,103 @@
+{
+  "status": "not_passed",
+  "cases": [
+    {
+      "case": "ac21_single",
+      "first_ignition_s": 24.505744,
+      "peak_house_C": 492.08189,
+      "raw_boundary": {
+        "maximum_0_180_mean_burning_rate": 0.010014,
+        "samples": 528
+      },
+      "wall_seconds": 1191.953619564,
+      "cpu_s": 2837.284945,
+      "complete": true,
+      "wet_particle_mass_loss_40_60_kg": 5.164025915286367,
+      "hrr_min_40_50_kw": 2955.339550065092,
+      "energy_40_60_MJ": 77.86634446407274,
+      "sustained_gate": true
+    },
+    {
+      "case": "ac21_double",
+      "first_ignition_s": 23.50902,
+      "peak_house_C": 501.3405,
+      "raw_boundary": {
+        "maximum_0_180_mean_burning_rate": 0.010108,
+        "samples": 528
+      },
+      "wall_seconds": 1219.17319001,
+      "cpu_s": 2947.617121,
+      "complete": true,
+      "wet_particle_mass_loss_40_60_kg": 5.953201962786181,
+      "hrr_min_40_50_kw": 2914.4285716705303,
+      "energy_40_60_MJ": 84.13312895485838,
+      "sustained_gate": true
+    },
+    {
+      "case": "ac21_corner",
+      "first_ignition_s": 22.504011,
+      "peak_house_C": 524.21213,
+      "raw_boundary": {
+        "maximum_0_180_mean_burning_rate": 0.010148,
+        "samples": 1522
+      },
+      "wall_seconds": 1145.577245904,
+      "cpu_s": 2677.075185,
+      "complete": true,
+      "wet_particle_mass_loss_40_60_kg": 4.714069044005569,
+      "hrr_min_40_50_kw": 2312.0583556056567,
+      "energy_40_60_MJ": 67.09149837880541,
+      "sustained_gate": true
+    },
+    {
+      "case": "ac21_bare",
+      "first_ignition_s": null,
+      "peak_house_C": 73.184026,
+      "raw_boundary": {
+        "maximum_0_180_mean_burning_rate": 0.0,
+        "samples": 528
+      },
+      "wall_seconds": 763.1439678959999,
+      "cpu_s": 1809.016691,
+      "complete": true,
+      "wet_particle_mass_loss_40_60_kg": 0.0,
+      "hrr_min_40_50_kw": 0.0,
+      "energy_40_60_MJ": 0.0,
+      "sustained_gate": false
+    },
+    {
+      "case": "ac21_single_expanded",
+      "complete": false,
+      "physical_seconds_reached": 155.0155,
+      "stopped_by_budget": true
+    },
+    {
+      "case": "ac21_double_expanded",
+      "complete": false,
+      "physical_seconds_reached": 141.50277,
+      "stopped_by_budget": true
+    },
+    {
+      "case": "ac21_corner_expanded",
+      "complete": false,
+      "physical_seconds_reached": 145.54968,
+      "stopped_by_budget": true
+    },
+    {
+      "case": "ac21_double_fine",
+      "complete": false,
+      "physical_seconds_reached": 69.509206,
+      "stopped_by_budget": true
+    }
+  ],
+  "comparisons": [],
+  "no_training_started": true,
+  "reserved_usd": 1.5,
+  "invoice_verified": false,
+  "limitations": [
+    "Artificial contact initialization; generic materials, no trunks/ground cover/embers.",
+    "Expanded cases change domain and building mass together.",
+    "Total HRR includes facade combustion; wet particle loss is not fuel vapour.",
+    "Single seed and assigned canopy geometry; no real-property validation."
+  ]
+}

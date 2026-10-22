@@ -1,0 +1,428 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python build.py
+    deps:
+    - path: base-input.fds
+      hash: md5
+      md5: 720be8f61c8a439a7ecb7c364ba91126
+      size: 26700
+    - path: build.py
+      hash: md5
+      md5: 64fb8a8ff9edb1598c34096d8f75f7ab
+      size: 6552
+    - path: reference-particles.json
+      hash: md5
+      md5: 1c413cd103379cf2338ac01a4e04a970
+      size: 314124
+    outs:
+    - path: cases.json
+      hash: md5
+      md5: bd8afdec95e9f1f95882349d33c033d7
+      size: 17643
+    - path: data/tree-templates.json
+      hash: md5
+      md5: 5b851ec2ce572088b53ba1d13878ef0c
+      size: 1638658
+    - path: decks
+      hash: md5
+      md5: 739c28da4767e68bf28b3f89c2e33551.dir
+      size: 17494411
+      nfiles: 32
+    - path: results/input-freeze.json
+      hash: md5
+      md5: f12052b8479f08e332c98d4eea04630f
+      size: 3515
+  preflight:
+    cmd: ../../.venv/bin/python preflight.py
+    deps:
+    - path: build.py
+      hash: md5
+      md5: 64fb8a8ff9edb1598c34096d8f75f7ab
+      size: 6552
+    - path: cases.json
+      hash: md5
+      md5: bd8afdec95e9f1f95882349d33c033d7
+      size: 17643
+    - path: data/tree-templates.json
+      hash: md5
+      md5: 5b851ec2ce572088b53ba1d13878ef0c
+      size: 1638658
+    - path: decks
+      hash: md5
+      md5: 739c28da4767e68bf28b3f89c2e33551.dir
+      size: 17494411
+      nfiles: 32
+    - path: preflight.py
+      hash: md5
+      md5: 43913d79dc4bacd3558e15346a5e633d
+      size: 4358
+    outs:
+    - path: data/preflight
+      hash: md5
+      md5: dad93cec184968acd31cd4a25b877559.dir
+      size: 748922358
+      nfiles: 308
+    - path: results/preflight.json
+      hash: md5
+      md5: 71fb92b82104842e78b1d351e3c96ffa
+      size: 14604
+  experiment:
+    cmd: ../../.venv/bin/python finish_pipeline.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 91be5c75d4735bcbd7a4ca6fb9ae0add
+      size: 17643
+    - path: cloud.py
+      hash: md5
+      md5: 23e54980cdb76306174b1b09d3ce87b7
+      size: 8103
+    - path: dispatch_development.py
+      hash: md5
+      md5: eefbc0a8f07576b94496a5f8da8969f7
+      size: 863
+    - path: evaluate.py
+      hash: md5
+      md5: 98fdb653a31301cd7bd814c87aeb5825
+      size: 3357
+    - path: evaluate_aligned.py
+      hash: md5
+      md5: 390a46098cde1a6aaf2e39693a4f61da
+      size: 4064
+    - path: extract.py
+      hash: md5
+      md5: 9624863d2c9c6813d9f5f7e459d1e9a7
+      size: 4628
+    - path: finish_calibration.py
+      hash: md5
+      md5: 80c9c354512778e71aef1a6d76c72052
+      size: 1411
+    - path: finish_development.py
+      hash: md5
+      md5: b26cb2542f3e559a9655c645fe055b12
+      size: 2204
+    - path: finish_pipeline.py
+      hash: md5
+      md5: 82f63cb68cba6ad69b065c47e2540169
+      size: 2873
+    - path: finish_recovery.py
+      hash: md5
+      md5: c85b52d47bb17037cf6642d914b67492
+      size: 1144
+    - path: freeze_predictions.py
+      hash: md5
+      md5: bffbcd2579e52bca8db313ea6e47103b
+      size: 2595
+    - path: graph_model.py
+      hash: md5
+      md5: 4b349c2011a888f8b27f21c19c93f5cf
+      size: 5490
+    - path: model_data.py
+      hash: md5
+      md5: 6007019ed5e188e79663a93ead1d37d7
+      size: 2963
+    - path: prepare_recovery.py
+      hash: md5
+      md5: 9b9083a871ad630ecadb70b1f132d08a
+      size: 4214
+    - path: repair_preflight.py
+      hash: md5
+      md5: f56049d75c477f3615ca774d8325743b
+      size: 1858
+    - path: results/input-freeze.json
+      hash: md5
+      md5: 44e2cb595cfba392e8f65d33d71a28f8
+      size: 3515
+    - path: train.py
+      hash: md5
+      md5: cd55d0e9ad92e43ababf921605e258a6
+      size: 5050
+    outs:
+    - path: data/cloud
+      hash: md5
+      md5: fb052245662d61d9e0b68be6500a72f8.dir
+      size: 2354411841
+      nfiles: 1120
+    - path: data/downloads
+      hash: md5
+      md5: c0f40f9438b8293a6d2315606760ae5d.dir
+      size: 780361562
+      nfiles: 33
+    - path: data/extracted
+      hash: md5
+      md5: 55ed6e4f06720d806bad02cf28b4b5eb.dir
+      size: 4818165
+      nfiles: 64
+    - path: data/models
+      hash: md5
+      md5: 1dc4224b27ed76f21eb09843a4c3abb8.dir
+      size: 94254
+      nfiles: 3
+    - path: data/predictions
+      hash: md5
+      md5: 0298f6f905986b2f52a2663fc199d143.dir
+      size: 2666843
+      nfiles: 18
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 3e23c6494cade06ffc210e6c0e3eda89
+      size: 7402
+    - path: results/test-summary.json
+      hash: md5
+      md5: caeaa6a3d3d348a559f470fa5c243180
+      size: 24455
+  training_rollout_audit:
+    cmd: ../../.venv/bin/python diagnose_training_rollouts.py
+    deps:
+    - path: data/extracted
+      hash: md5
+      md5: 55ed6e4f06720d806bad02cf28b4b5eb.dir
+      size: 4818165
+      nfiles: 64
+    - path: data/models
+      hash: md5
+      md5: 1dc4224b27ed76f21eb09843a4c3abb8.dir
+      size: 94254
+      nfiles: 3
+    - path: diagnose_training_rollouts.py
+      hash: md5
+      md5: c4d5019a3b2d7f504dd4689cd178bcb1
+      size: 2199
+    - path: graph_model.py
+      hash: md5
+      md5: 4b349c2011a888f8b27f21c19c93f5cf
+      size: 5490
+    - path: model_data.py
+      hash: md5
+      md5: 6007019ed5e188e79663a93ead1d37d7
+      size: 2963
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 3e23c6494cade06ffc210e6c0e3eda89
+      size: 7402
+    outs:
+    - path: data/development-predictions
+      hash: md5
+      md5: 181d0d4fb891235bd4f5b82a25f90fdb.dir
+      size: 9126381
+      nfiles: 78
+    - path: results/training-rollout-audit.json
+      hash: md5
+      md5: f655ba67dbe84e067916412a7f63ccbd
+      size: 17752
+  model_assumption_audit:
+    cmd: ../../.venv/bin/python audit_model_assumptions.py && 
+      ../../.venv/bin/python audit_target_conventions.py && 
+      ../../.venv/bin/python probe_shared_rom.py
+    deps:
+    - path: audit_model_assumptions.py
+      hash: md5
+      md5: 90446d761f6375ed1bb81a52feac7552
+      size: 3324
+    - path: audit_target_conventions.py
+      hash: md5
+      md5: ade35df67ecacfb2298763324fd64921
+      size: 1089
+    - path: data/extracted
+      hash: md5
+      md5: 55ed6e4f06720d806bad02cf28b4b5eb.dir
+      size: 4818165
+      nfiles: 64
+    - path: data/models
+      hash: md5
+      md5: 1dc4224b27ed76f21eb09843a4c3abb8.dir
+      size: 94254
+      nfiles: 3
+    - path: graph_model.py
+      hash: md5
+      md5: 4b349c2011a888f8b27f21c19c93f5cf
+      size: 5490
+    - path: model_data.py
+      hash: md5
+      md5: 6007019ed5e188e79663a93ead1d37d7
+      size: 2963
+    - path: probe_shared_rom.py
+      hash: md5
+      md5: 565e880cd2db63fd153c73d00622db99
+      size: 2054
+    outs:
+    - path: data/assumption-audit
+      hash: md5
+      md5: cca7bf5825cc6fec9ddd732b6e96cf62.dir
+      size: 508919
+      nfiles: 3
+    - path: results/model-assumption-audit.json
+      hash: md5
+      md5: a47c5c0c158a26a91b486bd22e359265
+      size: 38065
+    - path: results/shared-rom-probe.json
+      hash: md5
+      md5: a96ddc8fd044b6efea397622f2348285
+      size: 46805
+    - path: results/target-convention-audit.json
+      hash: md5
+      md5: 70a5fcb08eebd43e7c5827395d469601
+      size: 2653
+  single_dynamics_initial:
+    cmd: ../../.venv/bin/python compare_single_dynamics.py --epochs 400
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 91be5c75d4735bcbd7a4ca6fb9ae0add
+      size: 17643
+    - path: compare_single_dynamics.py
+      hash: md5
+      md5: 8b0fb6550caa196d143a4ea21fd95036
+      size: 6450
+    - path: data/extracted
+      hash: md5
+      md5: 55ed6e4f06720d806bad02cf28b4b5eb.dir
+      size: 4818165
+      nfiles: 64
+    - path: model_data.py
+      hash: md5
+      md5: 6007019ed5e188e79663a93ead1d37d7
+      size: 2963
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 3e23c6494cade06ffc210e6c0e3eda89
+      size: 7402
+    outs:
+    - path: data/single-dynamics
+      hash: md5
+      md5: 4ed2384e24917e42ccab70eef4509ebf.dir
+      size: 5011593
+      nfiles: 42
+    - path: results/single-dynamics-comparison.json
+      hash: md5
+      md5: a2c389cc1dddd42d3030708df23eb826
+      size: 50814
+  single_dynamics_extended:
+    cmd: ../../.venv/bin/python compare_single_dynamics.py --epochs 2000 --tag 
+      extended
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 91be5c75d4735bcbd7a4ca6fb9ae0add
+      size: 17643
+    - path: compare_single_dynamics.py
+      hash: md5
+      md5: 8b0fb6550caa196d143a4ea21fd95036
+      size: 6450
+    - path: data/extracted
+      hash: md5
+      md5: 55ed6e4f06720d806bad02cf28b4b5eb.dir
+      size: 4818165
+      nfiles: 64
+    - path: model_data.py
+      hash: md5
+      md5: 6007019ed5e188e79663a93ead1d37d7
+      size: 2963
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 3e23c6494cade06ffc210e6c0e3eda89
+      size: 7402
+    outs:
+    - path: data/single-dynamics-extended
+      hash: md5
+      md5: e454a747cb84021304df67fced7e83d5.dir
+      size: 5028083
+      nfiles: 42
+    - path: results/single-dynamics-comparison-extended.json
+      hash: md5
+      md5: 1e793225fc93fdb5d477b00ddb5ae285
+      size: 124888
+  single_dynamics_figures:
+    cmd: ../../.venv/bin/python render_single_dynamics.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 91be5c75d4735bcbd7a4ca6fb9ae0add
+      size: 17643
+    - path: data/development-predictions
+      hash: md5
+      md5: 181d0d4fb891235bd4f5b82a25f90fdb.dir
+      size: 9126381
+      nfiles: 78
+    - path: data/single-dynamics-extended
+      hash: md5
+      md5: e454a747cb84021304df67fced7e83d5.dir
+      size: 5028083
+      nfiles: 42
+    - path: render_single_dynamics.py
+      hash: md5
+      md5: dfbaf0f3a07e03f4306974486b657735
+      size: 2616
+    outs:
+    - path: results/visuals/single-dynamics-mass.png
+      hash: md5
+      md5: 4e2551509aa8c09f6de83c1d9c73584b
+      size: 497072
+    - path: results/visuals/single-dynamics-temperature.png
+      hash: md5
+      md5: 14cd4d0d373afbb32b8d0cda16ffd671
+      size: 556751
+  conditional_heat_response:
+    cmd: ../../.venv/bin/python train_heat_response.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 91be5c75d4735bcbd7a4ca6fb9ae0add
+      size: 17643
+    - path: data/extracted
+      hash: md5
+      md5: 55ed6e4f06720d806bad02cf28b4b5eb.dir
+      size: 4818165
+      nfiles: 64
+    - path: model_data.py
+      hash: md5
+      md5: 6007019ed5e188e79663a93ead1d37d7
+      size: 2963
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 3e23c6494cade06ffc210e6c0e3eda89
+      size: 7402
+    - path: train_heat_response.py
+      hash: md5
+      md5: 3d3f88c90dd76b499835690c9588275c
+      size: 7627
+    outs:
+    - path: data/heat-response
+      hash: md5
+      md5: 16d891ee9fd9d9c2dbe386974d5a9c46.dir
+      size: 6409833
+      nfiles: 33
+    - path: results/heat-response-freeze.json
+      hash: md5
+      md5: 7ba45c0465bb1b3e2e14d41e7c1985d7
+      size: 494
+    - path: results/heat-response.json
+      hash: md5
+      md5: 8db53e6444d8047673f25eaccdcbbf15
+      size: 62533
+  conditional_heat_response_figures:
+    cmd: ../../.venv/bin/python render_heat_response.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 91be5c75d4735bcbd7a4ca6fb9ae0add
+      size: 17643
+    - path: data/heat-response
+      hash: md5
+      md5: 16d891ee9fd9d9c2dbe386974d5a9c46.dir
+      size: 6409833
+      nfiles: 33
+    - path: render_heat_response.py
+      hash: md5
+      md5: b66131f0f80244e7cd899cbaa0e7a95b
+      size: 2478
+    outs:
+    - path: results/visuals/familiar-pairs-heat-response.png
+      hash: md5
+      md5: ef11a68680bbc50ee78f2d00ea6dedf8
+      size: 563854
+    - path: results/visuals/single-validation-heat-response.png
+      hash: md5
+      md5: 2044aba19f52bad33a97638e442fda40
+      size: 404855
