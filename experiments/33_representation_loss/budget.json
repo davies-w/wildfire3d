@@ -1,7 +1,7 @@
 {
   "authorized_usd": 35,
   "authorization": "User approved up to $35 for model improvement experiments; conservatively cumulative including experiment32",
-  "reserved_usd": 32.6,
+  "reserved_usd": 34.6,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -47,12 +47,22 @@
       "failure_reason": "Spot preemption exit50001 before task startup; no new checkpoints"
     },
     "pilot05": {
-      "state": "submitted",
+      "state": "terminal_cleanup_verified",
       "allowance_usd": 2.0,
       "reserved_unix": 1792646155.717697,
       "compute_allowance_usd": 1.2,
       "ancillary_cleanup_allowance_usd": 0.8,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu33-pilot05/executions/56cc09b8-146a-4df2-8882-16265ff8a22f"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu33-pilot05/executions/56cc09b8-146a-4df2-8882-16265ff8a22f",
+      "completed_unix": 1792647470.9741282,
+      "failure_reason": "Zone resource pool exhausted; queue deadline; runtime0s"
+    },
+    "pilot06": {
+      "state": "submitted",
+      "allowance_usd": 2.0,
+      "reserved_unix": 1792647945.582557,
+      "compute_allowance_usd": 1.2,
+      "ancillary_cleanup_allowance_usd": 0.8,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu33-pilot06/executions/5ea7f7e6-cde6-4750-ab08-cc0ab1e1079f"
     }
   },
   "recycle_reservations": false,
