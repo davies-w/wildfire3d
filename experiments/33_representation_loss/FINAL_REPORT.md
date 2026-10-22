@@ -1,3 +1,7 @@
+# Latest: convergence remains unproven
+
+Checkpoint audit16 supersedes any inference that high errors prove architectural limits or sufficient training. Coverage360 has noisy, metric-dependent late behavior;48-case refinements improve training fit while validation temperature/heat release worsen. See the final convergence-audit section and saved curves.
+
 # Current decision after attempt15
 
 Retain attempt14 expanded360 as the best overall candidate from this refinement series. Attempt15 substantially reduces weak-fire overprediction but worsens stronger fires and aggregate validation heat release. No faithful FDS replacement or independent physical validation has been demonstrated. All cloud jobs are finished and cleaned up. Detailed current results are in the final section; earlier sections retain the experimental history.
@@ -86,3 +90,18 @@ Conclusion: weak-fire training fit can improve, but this48case strength-stratifi
 Four previously selected height-based full-history animations show FDS, saved expanded360 and three refinements. They are maximum-through-y gas temperature and heat-release-density projections, common nonlinear color scales, accelerated playback, not literal flame geometry. Allcases remain generic3mwidecones4/6/8/10mabove2m,1600weightedparticles,.5m24x16x16m180s, artificial1500C20s source, no trunks/buildings/embers; six gasoutputs omit solid-ground temperature. Previous development validation is not a pristine test or physical validation. Three-frame snapshot loss is not recurrence.
 
 Cumulative reservations65.60/75USD, including retained failures/archive;9.40unreserved. Reservations are not actual invoice spend, which remains unknown. No active cloud compute.
+
+
+## Checkpoint convergence audit16: enough cycles was not established
+
+Evaluated52saved states (every500updates plus starts) on identical12training-panel configs and all32validation configs/40trajectories:2704full180s histories. Checkpoint hash/case plans verified;15starting predictions exactly equal14final on shared cases. Training panel has3casesperTRAIN strength band, not the whole360/48training sets. Mean fixed-history objective reconstructed; historical average minibatch loss was not recorded and cannot be recovered. No optimizer run.
+
+Coverage360 over12000additionalupdates: training-panel objective0.261→0.204; first5checkpointmean0.239 versuslast5mean0.205. Validationobjective0.357→0.318 endpoints, but first5mean0.358 versuslast5mean0.346, with substantial oscillation. Crucially, the last5 training-objective slope is slightly positive (+0.00525 per1000updates), so these data do not establish continuing late descent either. ValidationhotT last2000updates changes only−0.094percentagepoints, heat-release worsens+3.80points, radiation improves−2.29points. Temperature is approximately flat on validation late in this run; the overall optimization has no clean stable plateau. Do not infer convergence or an architectural limit from high endpoint error.
+
+For15control, over4000updates fixed-panel objective0.204→0.179 while validationobjective0.318→0.460. Last2000updates training-panelhotT improves3.68points andHRR14.43points, whilevalidationhotT worsens0.90points andHRR9.34points. Both strength-penalty refinements also improve some training metrics while worsening validation temperature/heat release. This is evidence of specialization/overfitting to the sampled training regime rather than a general benefit from more cycles. Radiation/background tradeoffs persist.
+
+Cycle accounting:14's12000updates/360configs is33.3expected configuration draws;15's4000/48 is83.3draws. Eachdraw uses onlythree consecutive timeframes, and draws are with replacement, so these are not full-dataset/full-trajectory epochs. Prior pretraining is additional and not represented by this refinement-stage x-axis.
+
+Answer: we did not establish sufficient optimization cycles or stable convergence. The latest refinements are not simply too short in the sense that validation would clearly improve with more of the same; their validation trends worsen. A controlled continuation should add fixed-panel validation at regular intervals, averaged training loss by output/strength, and a documented learning-rate schedule before claiming a plateau. No additional training launched by this audit. Fullcurves and late trends:attempt16/results/curves.json anddata/visuals. Previous architectural conclusions based only on endpoint underfit were premature.
+
+Allcloudresources cleaned and temporary permissions removed. Reservations70.10/75USD, actualinvoiceunknown;4.90unreserved. Previous genericcone/artificialsource/.5m/noembers/sixgasfields limitations apply; priorvalidationnotpristine and no physicalvalidation.

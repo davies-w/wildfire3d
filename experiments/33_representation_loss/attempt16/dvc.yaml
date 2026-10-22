@@ -63,3 +63,12 @@ stages:
         cache: false
     outs:
     - data/visuals
+  audit_curves:
+    cmd: ../../../.venv/bin/python audit_curves.py
+    deps:
+    - audit_curves.py
+    - coverage-plan.json
+    - data/collected
+    metrics:
+    - results/curve-audit.json:
+        cache: false

@@ -122,3 +122,75 @@ stages:
       hash: md5
       md5: c46620c9b5f9c31b90bdd5558bb9216b
       size: 332
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 6cf56f0a5e2a0b583853fb7923874100
+      size: 565
+    - path: collect.py
+      hash: md5
+      md5: 5aafc2940f36bf7c360eeb1abbbb7125
+      size: 2574
+    - path: results/execution.json
+      hash: md5
+      md5: c46620c9b5f9c31b90bdd5558bb9216b
+      size: 332
+    outs:
+    - path: data/collected
+      hash: md5
+      md5: 6c00c4d014f0a75400167be47c9dd584.dir
+      size: 17811968
+      nfiles: 55
+    - path: results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: results/permission-removed.json
+      hash: md5
+      md5: a9118d0de1c080380f8f8d8d46c2c267
+      size: 57
+  learning_curves:
+    cmd: ../../../.venv/bin/python analyze_curves.py
+    deps:
+    - path: analyze_curves.py
+      hash: md5
+      md5: 3acbe953537b37f754a35c373696925f
+      size: 3878
+    - path: data/collected
+      hash: md5
+      md5: 6c00c4d014f0a75400167be47c9dd584.dir
+      size: 17811968
+      nfiles: 55
+    outs:
+    - path: data/visuals
+      hash: md5
+      md5: 756246d0b8b5ce1363e029464cb54a8a.dir
+      size: 763228
+      nfiles: 4
+    - path: results/curves.json
+      hash: md5
+      md5: 3d394cba53cecda8d1391fe338976646
+      size: 1057657
+  audit_curves:
+    cmd: ../../../.venv/bin/python audit_curves.py
+    deps:
+    - path: audit_curves.py
+      hash: md5
+      md5: 4f332d87a8519db16f1d4fe2d8836f72
+      size: 967
+    - path: coverage-plan.json
+      hash: md5
+      md5: 5434a49f5a968f6323278ea41b9caaf8
+      size: 18450
+    - path: data/collected
+      hash: md5
+      md5: 6c00c4d014f0a75400167be47c9dd584.dir
+      size: 17811968
+      nfiles: 55
+    outs:
+    - path: results/curve-audit.json
+      hash: md5
+      md5: dcfd85e57567b0129099eed64b096bf2
+      size: 192

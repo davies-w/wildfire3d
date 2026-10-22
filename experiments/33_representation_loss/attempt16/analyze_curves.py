@@ -7,6 +7,10 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 R=Path(__file__).parent;rep=json.loads((R/'data/collected/report.json').read_text());rows=rep['rows'];plan=rep['plan'];out=R/'data/visuals';out.mkdir(parents=True,exist_ok=True)
 keys=['truth_hot_temperature_relative_L1_percent','HRR_curve_relative_L1_percent','radiation_dose_relative_L1_percent','temperature_rise_relative_L1_percent','velocity_vector_relative_L1_percent','temperature_MAE_C']
+def avg(v):
+ v=[x for x in v if x is not None];return statistics.mean(v) if v else None
+def med(v):
+ v=[x for x in v if x is not None];return statistics.median(v) if v else None
 summary=[]
 for item in plan['models']:
  for split in ['train','validation']:
@@ -15,10 +19,10 @@ for item in plan['models']:
   for window in ['all','post_source','late']:
    configs=[]
    for name in sorted({r['configuration'] for r in rr}):
-    ss=[r for r in rr if r['configuration']==name];m={k:statistics.mean(r[window][k] for r in ss if r[window][k] is not None) for k in keys};m['fixed_history_objective']=statistics.mean(r['fixed_history_objective'] for r in ss);m['truth_mean_HRR_kW']=statistics.mean(r[window]['truth_mean_HRR_kW'] for r in ss);configs.append(m)
+    ss=[r for r in rr if r['configuration']==name];m={k:avg(r[window][k] for r in ss) for k in keys};m['fixed_history_objective']=statistics.mean(r['fixed_history_objective'] for r in ss);m['truth_mean_HRR_kW']=statistics.mean(r[window]['truth_mean_HRR_kW'] for r in ss);configs.append(m)
    for lo,hi in [(0,None),(0,10),(100,None)]:
     gg=[m for m in configs if lo<=m['truth_mean_HRR_kW'] and (hi is None or m['truth_mean_HRR_kW']<hi)]
-    summary.append(dict(arm=item['arm'],step=item['step'],expected_sampling_passes=item['step']/item['training_configurations'],split=split,window=window,strength_range=[lo,hi],configurations=len(gg),mean={k:statistics.mean(m[k] for m in gg) if gg else None for k in keys+['fixed_history_objective']},median={k:statistics.median(m[k] for m in gg) if gg else None for k in keys+['fixed_history_objective']}))
+    summary.append(dict(arm=item['arm'],step=item['step'],expected_sampling_passes=item['step']/item['training_configurations'],split=split,window=window,strength_range=[lo,hi],configurations=len(gg),mean={k:avg(m[k] for m in gg) for k in keys+['fixed_history_objective']},median={k:med(m[k] for m in gg) for k in keys+['fixed_history_objective']}))
 late=[]
 for arm in sorted({m['arm'] for m in plan['models']}):
  for split in ['train','validation']:
