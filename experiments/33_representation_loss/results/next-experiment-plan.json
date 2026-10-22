@@ -1,0 +1,35 @@
+{
+  "status": "prepared_only; do not launch until public archive verifies",
+  "observations": [
+    {
+      "fact": "Final radiation loss trains per-frame squared encoded absolute intensity; evaluator compares accumulated excess over the initial ambient field",
+      "source": [
+        "attempt06/losses.py:revised",
+        "snapshot_evaluation.py:metrics"
+      ]
+    },
+    {
+      "fact": "Final temperature/radiation background losses have coefficient0.1; validation whole-volume/radiation errors worsened while hot temperature improved",
+      "source": [
+        "attempt06/losses.py",
+        "attempt06/results/report.json"
+      ]
+    }
+  ],
+  "hypotheses": [
+    "Loss/metric mismatch can reward hot-region fit while tolerating accumulated background bias",
+    "Shared-encoder gradients from strength and field tasks may conflict; not yet measured"
+  ],
+  "next_steps": [
+    "GPU-only diagnostic on saved checkpoints and a few development windows: log each loss contribution and per-head/shared-encoder gradient norms and pairwise cosine; no optimizer updates",
+    "On the same development trajectories measure radiation excess-dose and false-positive background error explicitly",
+    "Predeclare a small equal-initialization comparison: existing loss versus physical-unit excess-dose/background calibration; keep current reference fixed",
+    "Record full-history training/validation metrics and reject a candidate that only trades one field for another; keep untouched tests out"
+  ],
+  "constraints": [
+    "No new FDS",
+    "No laptop training",
+    "New fully reserved cloud attempt only after archive completion",
+    "All comparisons remain development diagnostics; no physical validation"
+  ]
+}
