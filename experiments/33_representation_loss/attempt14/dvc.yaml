@@ -91,3 +91,11 @@ stages:
     - groups.json
     - gpu-workflow.yaml
     - data/pilot-overlay.tar
+  strength_diagnosis:
+    cmd: ../../../.venv/bin/python diagnose_strength.py
+    deps:
+    - diagnose_strength.py
+    - results/coverage-summary.json
+    metrics:
+    - results/strength-diagnosis.json:
+        cache: false
