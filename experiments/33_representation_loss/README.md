@@ -69,3 +69,17 @@ Broader12evaluation completedcleaned. Across32valconfigs40trajectories, config-b
 Attempt13 frozenfixedloss coveragecomparison submitted: pilot12 vs expanded120trainconfigs (30perheight,108additional fixedrandomwithouttargets), samecurrent6000 weights/optimizer and6000updates, physical_lowloss. All32newgeometryvalconfigs40trajectories; no pristine test,newFDS orlaptoptraining. Larger arm getsfewerepochs underfixedupdates; oldpretrainingalreadyincludedexp32 configs.3USDfullreservation cumulative58.10/75. Samecloudlimits/checkpoints/cleanup, expected25–45min including160casepreprocessing. SelectioncodeandDVCcoverage_inputs retained.
 
 13 completed/cleaned: identicalinitialweights/optimizer/fullhistories verified. Atfixed6000updates,12→120coverage improvesvalidationhotT56.34→46.99%,HRR73.39→67.98%,rad77.76→74.20%,combustionIoU.354→.403;wholevolume228.41→228.44% unchanged,velocity15.28→16.17% worse. Broadertrainfitstilllimited45.65%hotT/54.07%HRR. CheckpointsDVC/publicsynced.14continuesfromsame13expandedcheckpoint:120vs360configs,12kmoreupdates each,fixedloss,32valconfigs40trajectories.4.50fullreserve cumulative62.60/75;100GBdisk90mintask95minVM120minabsolute20minqueue,500updatecheckpoints,expected60–85minafterallocation. No newFDS/laptoptraining; oldpretrainingalreadyincludesexp32data,notfromscratch/freshtest.
+
+
+## Completed coverage comparison14
+
+Both arms completed12000 additional updates from identical attempt13 weights/optimizer; all400 initial full-history predictions match. Cleanup verified: no job, VM or disk; temporary input grant removed. Configuration-balanced post-source validation medians (32configs/40trajectories):
+
+| Refinement coverage | Hot temperature error % | Heat-release error % | Radiation-dose error % | Whole-volume temperature-rise error % | Velocity error % | Combustion-region IoU |
+|---|---:|---:|---:|---:|---:|---:|
+| Continue120 |45.95|63.71|77.56|215.15|15.93|0.377|
+| Expand360 |45.98|60.56|65.19|208.36|15.65|0.427|
+
+Broader coverage improves several median metrics, not every configuration: heat-release improves17/32, radiation18/32, whole-volume temperature26/32. Weak burning remains problematic: x32_381 mean heat release0.70kW is predicted11.22kW by expanded360 (continue120:5.56kW); radiation error417% versus270%. This is a useful development candidate, not a faithful replacement for FDS. Training all360 hotT/HRR/radiation errors44.86/51.15/58.58% still show substantial fit limitations. Full histories, seed spread, means and per-case differences retained in attempt14/results/coverage-summary.json.
+
+Same update budget, fewer epochs with360; prior pretraining already used exp32 data. Validation previously examined, not pristine or physical validation. Generic3m-wide conical crowns4/6/8/10m above2m,1600particles,.5m24x16x16m180s, artificial1500C20s source, no trunks/buildings/embers; six gasfields exclude solid-ground temperature. Three-frame loss is not recurrence. Reservations remain62.60/75USD; invoice spend unknown. Next useful work is frozen candidate visualization and targeted weak-fire diagnosis, rather than indiscriminate longer training.

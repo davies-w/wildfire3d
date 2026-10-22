@@ -170,3 +170,53 @@ stages:
       hash: md5
       md5: 11c797259b7405850f6038c9077ff9e3
       size: 3745
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 6cf56f0a5e2a0b583853fb7923874100
+      size: 565
+    - path: collect.py
+      hash: md5
+      md5: 97e4263b6f55373f4dbf78525ba2b28a
+      size: 2464
+    - path: results/execution.json
+      hash: md5
+      md5: bb64fee7f7c1aaa2b76e91ea4f0cebef
+      size: 332
+    outs:
+    - path: data/collected
+      hash: md5
+      md5: 0520355abf809f7d7b00431bbc335593.dir
+      size: 106989409
+      nfiles: 56
+    - path: results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: results/permission-removed.json
+      hash: md5
+      md5: d7ce3f73cb3d43868dec5bb8c94eeda6
+      size: 55
+  coverage_analysis:
+    cmd: ../../../.venv/bin/python analyze_coverage.py
+    deps:
+    - path: analyze_coverage.py
+      hash: md5
+      md5: 3779b82d6415f736b56a68ef805e190a
+      size: 4205
+    - path: coverage-plan.json
+      hash: md5
+      md5: 9f133704ff5f7d5e96868fbc6186ce6d
+      size: 8027
+    - path: data/collected
+      hash: md5
+      md5: 0520355abf809f7d7b00431bbc335593.dir
+      size: 106989409
+      nfiles: 56
+    outs:
+    - path: results/coverage-summary.json
+      hash: md5
+      md5: 319857bb982a4fc17211285b1e0c4bb0
+      size: 7992516

@@ -41,3 +41,17 @@ The physical penalty improves temperature but sacrifices radiation relative to t
 ## Training coverage result13
 
 Equal6000refinementupdates on12versus120configurations, fromidenticalweights/optimizer, yieldvalidationmedianhotT56.34→46.99%,HRR73.39→67.98%,radiation77.76→74.20%,wholevolumeT228.41→228.44%. CombustionIoU.354→.403,velocityerror15.28→16.17% worsens. Broadercoveragehelpsfiremetrics,notalloutputs. Moreconfigurationcoverageusesfewerepochs atfixedcompute; modelalreadypretrainedonexp32data. Full32configurationvalidation stilldevelopment,notindependenttest.14testscontinued120versus360at12kmoreupdates, fixedlossandcheckpoint, bounded90mintask withuploadedcheckpoints. Reservations62.60/75,notinvoicespend.
+
+
+## Completed coverage comparison14
+
+Both arms completed12000 additional updates from identical attempt13 weights/optimizer; all400 initial full-history predictions match. Cleanup verified: no job, VM or disk; temporary input grant removed. Configuration-balanced post-source validation medians (32configs/40trajectories):
+
+| Refinement coverage | Hot temperature error % | Heat-release error % | Radiation-dose error % | Whole-volume temperature-rise error % | Velocity error % | Combustion-region IoU |
+|---|---:|---:|---:|---:|---:|---:|
+| Continue120 |45.95|63.71|77.56|215.15|15.93|0.377|
+| Expand360 |45.98|60.56|65.19|208.36|15.65|0.427|
+
+Broader coverage improves several median metrics, not every configuration: heat-release improves17/32, radiation18/32, whole-volume temperature26/32. Weak burning remains problematic: x32_381 mean heat release0.70kW is predicted11.22kW by expanded360 (continue120:5.56kW); radiation error417% versus270%. This is a useful development candidate, not a faithful replacement for FDS. Training all360 hotT/HRR/radiation errors44.86/51.15/58.58% still show substantial fit limitations. Full histories, seed spread, means and per-case differences retained in attempt14/results/coverage-summary.json.
+
+Same update budget, fewer epochs with360; prior pretraining already used exp32 data. Validation previously examined, not pristine or physical validation. Generic3m-wide conical crowns4/6/8/10m above2m,1600particles,.5m24x16x16m180s, artificial1500C20s source, no trunks/buildings/embers; six gasfields exclude solid-ground temperature. Three-frame loss is not recurrence. Reservations remain62.60/75USD; invoice spend unknown. Next useful work is frozen candidate visualization and targeted weak-fire diagnosis, rather than indiscriminate longer training.
