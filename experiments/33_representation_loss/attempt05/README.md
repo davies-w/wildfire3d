@@ -1,0 +1,3 @@
+# Attempt05: regular-GPU replacement
+
+Attempt04 suffered Spot reclamation before task startup (exit50001, runtime0s). Cleanup and exact permission removal verified. Identical scientific inputs and6000→12000 targeted-loss plan, regular g2-standard-4 L4 instead of Spot. Quota1 confirmed. New$2 reservation: $1.20 compute (90min at conservative$0.80/hr),$0.80 ancillary/cleanup. Price reference https://cloud.google.com/compute/all-pricing (g2-standard-4 approximately$0.7068/hr); not invoice cost. Cumulative$32.60, all failures retained. Same60min task/65min VM-age/90min absolute deadlines and checkpoints. Expected10–25minutes. Parent limitations unchanged.

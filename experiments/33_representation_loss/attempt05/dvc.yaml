@@ -1,0 +1,22 @@
+stages:
+  package:
+    cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python prepare_pilot.py
+    deps:
+      - worker.py
+      - models.py
+      - losses.py
+      - prepare_pilot.py
+      - validate.py
+      - cases.json
+      - groups.json
+      - data/resume
+      - data/geometries.npz
+      - data/initial_snapshot.pt
+    outs:
+      - data/pilot-overlay.tar
+      - results/input-freeze.json:
+          cache: false
+      - results/preflight.json:
+          cache: false
+      - gpu-workflow.yaml:
+          cache: false
