@@ -147,3 +147,26 @@ stages:
       hash: md5
       md5: 7f9868baa4a9a3ace217872751817af7
       size: 228
+  recover_submission:
+    cmd: ../../../.venv/bin/python resume_submission.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 6cf56f0a5e2a0b583853fb7923874100
+      size: 565
+    - path: data/pilot-overlay.tar
+      hash: md5
+      md5: 969f65959e27753725ba7628e012e868
+      size: 4003840
+    - path: gpu-workflow.yaml
+      hash: md5
+      md5: 52185c82c6349ddaf344a24284a88aba
+      size: 8497
+    - path: groups.json
+      hash: md5
+      md5: 69d5aa3712dd79ac589fb615f8a06d70
+      size: 13528
+    - path: resume_submission.py
+      hash: md5
+      md5: 11c797259b7405850f6038c9077ff9e3
+      size: 3745

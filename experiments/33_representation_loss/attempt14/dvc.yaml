@@ -83,3 +83,11 @@ stages:
     metrics:
     - results/coverage-summary.json:
         cache: false
+  recover_submission:
+    cmd: ../../../.venv/bin/python resume_submission.py
+    deps:
+    - resume_submission.py
+    - cloud.py
+    - groups.json
+    - gpu-workflow.yaml
+    - data/pilot-overlay.tar
