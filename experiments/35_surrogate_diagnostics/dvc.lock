@@ -1,0 +1,151 @@
+schema: '2.0'
+stages:
+  inputs:
+    cmd: ../../.venv/bin/python setup_inputs.py
+    deps:
+    - path: ../32_tree_expansion/data/geometries.npz
+      hash: md5
+      md5: 29e0c4fef08edf5fc26352c01bc57794
+      size: 1087495
+    - path: ../32_tree_expansion/development.json
+      hash: md5
+      md5: 6ea022fdfa88cb9ba237df85d40f5667
+      size: 384870
+    - path: ../32_tree_expansion/groups.json
+      hash: md5
+      md5: aea62e9f1f6573349e01221121b69e7b
+      size: 14993
+    - path: ../33_representation_loss/attempt14/results/coverage-summary.json
+      hash: md5
+      md5: 319857bb982a4fc17211285b1e0c4bb0
+      size: 7992516
+    - path: setup_inputs.py
+      hash: md5
+      md5: d09e5157a670c5b89a403fba1ca370be
+      size: 2394
+    outs:
+    - path: cases.json
+      hash: md5
+      md5: 4e86a9cceb3cfd183386a0080d7036cb
+      size: 39975
+    - path: coverage-plan.json
+      hash: md5
+      md5: c516587e02eeff080ce71846caf31ec7
+      size: 1225
+    - path: data/geometries.npz
+      hash: md5
+      md5: 9d35d8647048a1460d0780276dcd4c5d
+      size: 100616
+    - path: groups.json
+      hash: md5
+      md5: 6579d72f7441c262a6a1cd66f9c6a6da
+      size: 3765
+  package:
+    cmd: ../../.venv/bin/python validate.py && ../../.venv/bin/python 
+      prepare_pilot.py
+    deps:
+    - path: ../32_tree_expansion/gpu-workflow.yaml
+      hash: md5
+      md5: 0ad9e39f9c2e98445d0ee17ddc6e2f13
+      size: 8827
+    - path: cases.json
+      hash: md5
+      md5: 4e86a9cceb3cfd183386a0080d7036cb
+      size: 39975
+    - path: cloud.py
+      hash: md5
+      md5: a98d76c2a369260551593d26e25c4f44
+      size: 590
+    - path: collect.py
+      hash: md5
+      md5: 350f53cb665c325bc00d2eebf3e0d03a
+      size: 2625
+    - path: coverage-plan.json
+      hash: md5
+      md5: c516587e02eeff080ce71846caf31ec7
+      size: 1225
+    - path: data/geometries.npz
+      hash: md5
+      md5: 9d35d8647048a1460d0780276dcd4c5d
+      size: 100616
+    - path: deterministic_interpolation.py
+      hash: md5
+      md5: 613f23bb7fbdb0c9b3cd4da1f0b5252b
+      size: 810
+    - path: diagnostic_model.py
+      hash: md5
+      md5: 449cea5fab6e31549689b3738dfdf664
+      size: 546
+    - path: fields.py
+      hash: md5
+      md5: 8f5a27bcdc1dfcb4e602e54b23dea08f
+      size: 2884
+    - path: fortran_records.py
+      hash: md5
+      md5: 47c5b62759ee16bfc7cfe36934e16ac2
+      size: 711
+    - path: geometry_model.py
+      hash: md5
+      md5: 39c38847574521ce0d07eb9a70b3aff5
+      size: 1252
+    - path: groups.json
+      hash: md5
+      md5: 6579d72f7441c262a6a1cd66f9c6a6da
+      size: 3765
+    - path: launch.py
+      hash: md5
+      md5: 1c3b80a0672f5bdd400c1cdc7346c3d6
+      size: 3285
+    - path: material_reader.py
+      hash: md5
+      md5: abfdcb198f6ca238a558e65d2f3aebca
+      size: 2709
+    - path: original_cnn.py
+      hash: md5
+      md5: fda0f39f0d17ad85497804aa2fb02090
+      size: 6325
+    - path: prepare_pilot.py
+      hash: md5
+      md5: adb964560b7b9cf2f45aeff4df948bc3
+      size: 3463
+    - path: preprocess_cloud.py
+      hash: md5
+      md5: 5aebcfc6909dacce4f5792857eb3655c
+      size: 3357
+    - path: runtime.py
+      hash: md5
+      md5: feac1fb75ca44ffd9eb77bf590e0b718
+      size: 987
+    - path: snapshot_evaluation.py
+      hash: md5
+      md5: 07aefc37c0aaf34a7ca81b1bf57dc61e
+      size: 5367
+    - path: validate.py
+      hash: md5
+      md5: 256d1faad784174cde25cd3671990617
+      size: 1817
+    - path: validate_interpolation.py
+      hash: md5
+      md5: 4e689df4978afb5dd18e224e7d567ecf
+      size: 1147
+    - path: worker.py
+      hash: md5
+      md5: 4b71669b66787e72971774aefa8143c2
+      size: 11660
+    outs:
+    - path: data/pilot-overlay.tar
+      hash: md5
+      md5: be6b6999ed9e9d65c7308c5a1496df21
+      size: 245760
+    - path: gpu-workflow.yaml
+      hash: md5
+      md5: b6b996625eb96e418d1827b17189ef99
+      size: 8699
+    - path: results/input-freeze.json
+      hash: md5
+      md5: 446f0b5d3ded108a5cc80ae0d4badd08
+      size: 2052
+    - path: results/preflight.json
+      hash: md5
+      md5: f2642c541293504f76f47b75340dbbab
+      size: 230
