@@ -44,3 +44,11 @@ stages:
         cache: false
     - results/permission-removed.json:
         cache: false
+  gradient_summary:
+    cmd: ../../../.venv/bin/python analyze_gradients.py
+    deps:
+    - analyze_gradients.py
+    - data/collected/report.json
+    metrics:
+    - results/gradient-summary.json:
+        cache: false
