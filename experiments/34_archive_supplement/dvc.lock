@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  archive:
+    cmd: ../../.venv/bin/python archive.py
+    deps:
+    - path: archive.py
+      hash: md5
+      md5: f0bd13fb3c47b7ed19271db68d861560
+      size: 1581
+    outs:
+    - path: data/supplement.tar
+      hash: md5
+      md5: 0327f877311f566f5e1c9d1ff8f6b243
+      size: 1424527360
+    - path: manifest.json
+      hash: md5
+      md5: 5c2c28b6c66785cba6ac33e1972aa94c
+      size: 162759

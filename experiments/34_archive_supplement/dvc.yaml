@@ -1,0 +1,9 @@
+stages:
+  archive:
+    cmd: ../../.venv/bin/python archive.py
+    deps:
+    - archive.py
+    outs:
+    - data/supplement.tar
+    - manifest.json:
+        cache: false
