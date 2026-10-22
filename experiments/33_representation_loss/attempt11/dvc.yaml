@@ -1,0 +1,67 @@
+stages:
+  package:
+    cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python prepare_pilot.py
+    deps:
+    - worker.py
+    - deterministic_interpolation.py
+    - validate_interpolation.py
+    - original_cnn.py
+    - worker_base.py
+    - matched_losses.py
+    - baseline_losses.py
+    - models.py
+    - losses.py
+    - prepare_pilot.py
+    - validate.py
+    - cases.json
+    - groups.json
+    - data/resume
+    - data/geometries.npz
+    - data/initial_snapshot.pt
+    outs:
+    - data/pilot-overlay.tar
+    - results/input-freeze.json:
+        cache: false
+    - results/preflight.json:
+        cache: false
+    - gpu-workflow.yaml:
+        cache: false
+  cloud_submit:
+    cmd: ../../../.venv/bin/python launch.py
+    frozen: false
+    deps:
+    - launch.py
+    - cloud.py
+    - gpu-workflow.yaml
+    - data/pilot-overlay.tar
+    metrics:
+    - results/execution.json:
+        cache: false
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - collect.py
+    - cloud.py
+    - results/execution.json
+    outs:
+    - data/collected
+    metrics:
+    - results/cleanup.json:
+        cache: false
+    - results/permission-removed.json:
+        cache: false
+  resume_inputs:
+    cmd: ../../../.venv/bin/python restore_inputs.py
+    deps:
+    - restore_inputs.py
+    - ../attempt02/data/collected/current-checkpoint-6000.pt
+    outs:
+    - data/resume
+  matched_analysis:
+    cmd: ../../../.venv/bin/python analyze_matched.py
+    deps:
+    - analyze_matched.py
+    - data/collected
+    metrics:
+    - results/matched-summary.json:
+        cache: false
