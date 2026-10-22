@@ -1,0 +1,5 @@
+# Attempt07: shared-layer gradient diagnosis
+
+After public archive verification, measure losses and gradient norms/pairwise cosines on six fixed TRAINING configurations and three3-frame windows at10/30/120s. No optimizer updates, no validation/test gradient access. Compare saved current6000, loss-only12000, spatial12000 weights. Current-model shared scope is fc parameters; spatial scope is e0/e1/e2. Norms across different architectures are not directly comparable. Negative cosine suggests local competition, not causal proof of failure. Candidate physical temperature/excess-radiation losses are diagnosed but not trained. No new FDS. Same generic-cone/artificial-source limitations in parent README.
+
+Reserve$2 under cumulative75; regular L4 us-central1-c,20min queue/60min task/65minVM/90min absolute hard limits and cleanup. Expected10–20minutes incl preprocessing. Existing model checkpoints preserved; no model updates to checkpoint. Submission and collection are explicit DVC stages; no laptop training.
