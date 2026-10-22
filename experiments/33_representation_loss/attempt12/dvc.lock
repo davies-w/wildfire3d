@@ -1,0 +1,145 @@
+schema: '2.0'
+stages:
+  resume_inputs:
+    cmd: ../../../.venv/bin/python restore_inputs.py
+    deps:
+    - path: ../attempt11/data/collected/control-checkpoint-2500.pt
+      hash: md5
+      md5: 3606f8cfb2521d54d554c1faf31350ee
+      size: 2016000
+    - path: ../attempt11/data/collected/dose_background-checkpoint-2500.pt
+      hash: md5
+      md5: 6f4666730d4bf944623ba79e6c19116a
+      size: 2016000
+    - path: ../attempt11/data/collected/physical_low-checkpoint-2500.pt
+      hash: md5
+      md5: 431c17b706fb1fd42fa340a099a5e0b5
+      size: 2016000
+    - path: ../attempt11/data/resume/current.pt
+      hash: md5
+      md5: 33a69fa0c023fe7becb692d650c18059
+      size: 2016000
+    - path: restore_inputs.py
+      hash: md5
+      md5: 65a54b0b36a9309666aec8cdf5d8d2a6
+      size: 344
+    outs:
+    - path: data/resume
+      hash: md5
+      md5: f15648a7e0fbade4f70fd9c0151c9bac.dir
+      size: 8064000
+      nfiles: 4
+  package:
+    cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python 
+      prepare_pilot.py
+    deps:
+    - path: baseline_losses.py
+      hash: md5
+      md5: d32e173f829b09fc121490896ee1a6b5
+      size: 746
+    - path: cases.json
+      hash: md5
+      md5: 8ce1ec71de3f590410ca93769fc0322f
+      size: 43295
+    - path: data/geometries.npz
+      hash: md5
+      md5: 21daf34edf5afc9d455a5706ec38f3f3
+      size: 109185
+    - path: data/initial_snapshot.pt
+      hash: md5
+      md5: ca4576c78d1b64bf241d951631f41530
+      size: 668978
+    - path: data/resume
+      hash: md5
+      md5: f15648a7e0fbade4f70fd9c0151c9bac.dir
+      size: 8064000
+      nfiles: 4
+    - path: deterministic_interpolation.py
+      hash: md5
+      md5: 613f23bb7fbdb0c9b3cd4da1f0b5252b
+      size: 810
+    - path: evaluation-plan.json
+      hash: md5
+      md5: 9c4aa85e96ccdeba6716af66b703342c
+      size: 1659
+    - path: groups.json
+      hash: md5
+      md5: f31c6e821d230099e72b3d0342020bdc
+      size: 5665
+    - path: losses.py
+      hash: md5
+      md5: 100e61918772a48c78c9865c9a910222
+      size: 1246
+    - path: matched_losses.py
+      hash: md5
+      md5: 447dc97ecc336450e16bab2581805fe0
+      size: 640
+    - path: models.py
+      hash: md5
+      md5: 26c53ca21d4854cc9b52402dc08ed9ab
+      size: 2054
+    - path: original_cnn.py
+      hash: md5
+      md5: fda0f39f0d17ad85497804aa2fb02090
+      size: 6325
+    - path: prepare_pilot.py
+      hash: md5
+      md5: 573e1c3f858990479ae90157aae89d3d
+      size: 3343
+    - path: validate.py
+      hash: md5
+      md5: 3d423e685ca9ca36341888ffec38c9ec
+      size: 1514
+    - path: validate_interpolation.py
+      hash: md5
+      md5: 4e689df4978afb5dd18e224e7d567ecf
+      size: 1147
+    - path: worker.py
+      hash: md5
+      md5: fc508af10635125105b68066e5e95757
+      size: 2653
+    - path: worker_base.py
+      hash: md5
+      md5: 1df360c86bdd61f347958ace7fbe92c3
+      size: 6627
+    outs:
+    - path: data/pilot-overlay.tar
+      hash: md5
+      md5: c6de167b5bd8bfe94999d2249e49a702
+      size: 9021440
+    - path: gpu-workflow.yaml
+      hash: md5
+      md5: c32f4daea7c9f448029402ca4a6f0c5a
+      size: 8496
+    - path: results/input-freeze.json
+      hash: md5
+      md5: 311bc6f91f9790290f8b73fc860bd207
+      size: 2993
+    - path: results/preflight.json
+      hash: md5
+      md5: 7f9868baa4a9a3ace217872751817af7
+      size: 228
+  cloud_submit:
+    cmd: ../../../.venv/bin/python launch.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 6cf56f0a5e2a0b583853fb7923874100
+      size: 565
+    - path: data/pilot-overlay.tar
+      hash: md5
+      md5: c6de167b5bd8bfe94999d2249e49a702
+      size: 9021440
+    - path: gpu-workflow.yaml
+      hash: md5
+      md5: c32f4daea7c9f448029402ca4a6f0c5a
+      size: 8496
+    - path: launch.py
+      hash: md5
+      md5: f7024ddf9a31ac96d87b1d0759d3c92b
+      size: 2941
+    outs:
+    - path: results/execution.json
+      hash: md5
+      md5: bea505317fbf88d28610fce14b24c976
+      size: 332

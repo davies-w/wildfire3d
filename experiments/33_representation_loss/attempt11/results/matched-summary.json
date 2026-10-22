@@ -1,0 +1,2907 @@
+{
+  "optimizer_isolation_and_repeat_verified": true,
+  "initial_weights_and_metrics_identical": true,
+  "scope": "12 strength-stratified training / 8 development-validation configurations, not pristine or IID test. All trajectory windows retained. Percent metrics can be unstable for weak truth.",
+  "summary": [
+    {
+      "split": "train",
+      "arm": "control",
+      "stage": "initial",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 54.77659225463867,
+        "HRR_curve_relative_L1_percent": 26.868497848510742,
+        "radiation_dose_relative_L1_percent": 35.73091506958008,
+        "temperature_rise_relative_L1_percent": 243.58928680419922,
+        "flame_IoU": 0.4781795643738911,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 14.946160793304443
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 12,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "stage": "initial",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 52.56843185424805,
+        "HRR_curve_relative_L1_percent": 25.557159423828125,
+        "radiation_dose_relative_L1_percent": 37.08919906616211,
+        "temperature_rise_relative_L1_percent": 316.5426940917969,
+        "flame_IoU": 0.5399234083293442,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.321638107299805
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 9,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "stage": "initial",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 94.1707649230957,
+        "radiation_dose_relative_L1_percent": 170.0393829345703,
+        "temperature_rise_relative_L1_percent": 17766.8525390625,
+        "flame_IoU": null,
+        "minimum_C": 9.315577983856201,
+        "velocity_vector_relative_L1_percent": 13.46796703338623
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 0,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "stage": "final",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 44.42334175109863,
+        "HRR_curve_relative_L1_percent": 24.835695266723633,
+        "radiation_dose_relative_L1_percent": 52.43356132507324,
+        "temperature_rise_relative_L1_percent": 383.7340393066406,
+        "flame_IoU": 0.4690653794466374,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 16.090898513793945
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 12,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "stage": "final",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 43.01205253601074,
+        "HRR_curve_relative_L1_percent": 25.464759826660156,
+        "radiation_dose_relative_L1_percent": 95.65233993530273,
+        "temperature_rise_relative_L1_percent": 454.0795135498047,
+        "flame_IoU": 0.5013752617102508,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 16.395529747009277
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 9,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "stage": "final",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 99.19490051269531,
+        "radiation_dose_relative_L1_percent": 5679.4052734375,
+        "temperature_rise_relative_L1_percent": 17023.70556640625,
+        "flame_IoU": null,
+        "minimum_C": 8.61709451675415,
+        "velocity_vector_relative_L1_percent": 15.007617950439453
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 0,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "stage": "initial",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 54.77659225463867,
+        "HRR_curve_relative_L1_percent": 26.868497848510742,
+        "radiation_dose_relative_L1_percent": 35.73091506958008,
+        "temperature_rise_relative_L1_percent": 243.58928680419922,
+        "flame_IoU": 0.4781795643738911,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 14.946160793304443
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 12,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "stage": "initial",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 52.56843185424805,
+        "HRR_curve_relative_L1_percent": 25.557159423828125,
+        "radiation_dose_relative_L1_percent": 37.08919906616211,
+        "temperature_rise_relative_L1_percent": 316.5426940917969,
+        "flame_IoU": 0.5399234083293442,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.321638107299805
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 9,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "stage": "initial",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 94.1707649230957,
+        "radiation_dose_relative_L1_percent": 170.0393829345703,
+        "temperature_rise_relative_L1_percent": 17766.8525390625,
+        "flame_IoU": null,
+        "minimum_C": 9.315577983856201,
+        "velocity_vector_relative_L1_percent": 13.46796703338623
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 0,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "stage": "final",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 44.05695724487305,
+        "HRR_curve_relative_L1_percent": 24.825987815856934,
+        "radiation_dose_relative_L1_percent": 43.064640045166016,
+        "temperature_rise_relative_L1_percent": 248.89981079101562,
+        "flame_IoU": 0.4518983398452986,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.755011558532715
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 12,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "stage": "final",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 42.976600646972656,
+        "HRR_curve_relative_L1_percent": 24.62932300567627,
+        "radiation_dose_relative_L1_percent": 47.23980712890625,
+        "temperature_rise_relative_L1_percent": 306.0711975097656,
+        "flame_IoU": 0.48893223982801176,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 16.027096271514893
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 9,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "stage": "final",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 91.04847717285156,
+        "radiation_dose_relative_L1_percent": 110.5449104309082,
+        "temperature_rise_relative_L1_percent": 13438.830078125,
+        "flame_IoU": null,
+        "minimum_C": 8.651766777038574,
+        "velocity_vector_relative_L1_percent": 13.459228038787842
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 0,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "stage": "initial",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 54.77659225463867,
+        "HRR_curve_relative_L1_percent": 26.868497848510742,
+        "radiation_dose_relative_L1_percent": 35.73091506958008,
+        "temperature_rise_relative_L1_percent": 243.58928680419922,
+        "flame_IoU": 0.4781795643738911,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 14.946160793304443
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 12,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "stage": "initial",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 52.56843185424805,
+        "HRR_curve_relative_L1_percent": 25.557159423828125,
+        "radiation_dose_relative_L1_percent": 37.08919906616211,
+        "temperature_rise_relative_L1_percent": 316.5426940917969,
+        "flame_IoU": 0.5399234083293442,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.321638107299805
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 9,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "stage": "initial",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 94.1707649230957,
+        "radiation_dose_relative_L1_percent": 170.0393829345703,
+        "temperature_rise_relative_L1_percent": 17766.8525390625,
+        "flame_IoU": null,
+        "minimum_C": 9.315577983856201,
+        "velocity_vector_relative_L1_percent": 13.46796703338623
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 0,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "stage": "final",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 44.72473335266113,
+        "HRR_curve_relative_L1_percent": 25.245125770568848,
+        "radiation_dose_relative_L1_percent": 42.895164489746094,
+        "temperature_rise_relative_L1_percent": 170.50450897216797,
+        "flame_IoU": 0.4417556339850568,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.81942367553711
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 12,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "stage": "final",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 43.37612533569336,
+        "HRR_curve_relative_L1_percent": 22.13819122314453,
+        "radiation_dose_relative_L1_percent": 47.12163162231445,
+        "temperature_rise_relative_L1_percent": 200.11504364013672,
+        "flame_IoU": 0.4771776202254935,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 16.113629817962646
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 10,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "stage": "final",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 83.85750961303711,
+        "radiation_dose_relative_L1_percent": 103.64632034301758,
+        "temperature_rise_relative_L1_percent": 6329.7451171875,
+        "flame_IoU": null,
+        "minimum_C": 11.579396724700928,
+        "velocity_vector_relative_L1_percent": 13.708592891693115
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 0,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "stage": "initial",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 54.77659225463867,
+        "HRR_curve_relative_L1_percent": 26.868497848510742,
+        "radiation_dose_relative_L1_percent": 35.73091506958008,
+        "temperature_rise_relative_L1_percent": 243.58928680419922,
+        "flame_IoU": 0.4781795643738911,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 14.946160793304443
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 12,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "stage": "initial",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 52.56843185424805,
+        "HRR_curve_relative_L1_percent": 25.557159423828125,
+        "radiation_dose_relative_L1_percent": 37.08919906616211,
+        "temperature_rise_relative_L1_percent": 316.5426940917969,
+        "flame_IoU": 0.5399234083293442,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.321638107299805
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 9,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "stage": "initial",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 94.1707649230957,
+        "radiation_dose_relative_L1_percent": 170.0393829345703,
+        "temperature_rise_relative_L1_percent": 17766.8525390625,
+        "flame_IoU": null,
+        "minimum_C": 9.315577983856201,
+        "velocity_vector_relative_L1_percent": 13.46796703338623
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 0,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "stage": "final",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 44.05695724487305,
+        "HRR_curve_relative_L1_percent": 24.825987815856934,
+        "radiation_dose_relative_L1_percent": 43.064640045166016,
+        "temperature_rise_relative_L1_percent": 248.89981079101562,
+        "flame_IoU": 0.4518983398452986,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.755011558532715
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 12,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "stage": "final",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 42.976600646972656,
+        "HRR_curve_relative_L1_percent": 24.62932300567627,
+        "radiation_dose_relative_L1_percent": 47.23980712890625,
+        "temperature_rise_relative_L1_percent": 306.0711975097656,
+        "flame_IoU": 0.48893223982801176,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 16.027096271514893
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 12,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 9,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "stage": "final",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 91.04847717285156,
+        "radiation_dose_relative_L1_percent": 110.5449104309082,
+        "temperature_rise_relative_L1_percent": 13438.830078125,
+        "flame_IoU": null,
+        "minimum_C": 8.651766777038574,
+        "velocity_vector_relative_L1_percent": 13.459228038787842
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 12,
+        "radiation_dose_relative_L1_percent": 12,
+        "temperature_rise_relative_L1_percent": 12,
+        "flame_IoU": 0,
+        "minimum_C": 12,
+        "velocity_vector_relative_L1_percent": 12
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "stage": "initial",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 70.2127914428711,
+        "HRR_curve_relative_L1_percent": 57.56674385070801,
+        "radiation_dose_relative_L1_percent": 53.85080528259277,
+        "temperature_rise_relative_L1_percent": 343.3492736816406,
+        "flame_IoU": 0.3862319844789357,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 14.456414222717285
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "stage": "initial",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 66.27066421508789,
+        "HRR_curve_relative_L1_percent": 58.98884391784668,
+        "radiation_dose_relative_L1_percent": 61.0994930267334,
+        "temperature_rise_relative_L1_percent": 554.4682464599609,
+        "flame_IoU": 0.3801601488863936,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 14.59404182434082
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "stage": "initial",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 100.0,
+        "radiation_dose_relative_L1_percent": 237.68180084228516,
+        "temperature_rise_relative_L1_percent": 28219.841796875,
+        "flame_IoU": null,
+        "minimum_C": 9.055048942565918,
+        "velocity_vector_relative_L1_percent": 13.987033367156982
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 0,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "stage": "final",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 53.25852966308594,
+        "HRR_curve_relative_L1_percent": 60.745046615600586,
+        "radiation_dose_relative_L1_percent": 79.36221313476562,
+        "temperature_rise_relative_L1_percent": 539.9330139160156,
+        "flame_IoU": 0.33635992739165166,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.642518997192383
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "stage": "final",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 50.60966110229492,
+        "HRR_curve_relative_L1_percent": 67.42679214477539,
+        "radiation_dose_relative_L1_percent": 129.86561965942383,
+        "temperature_rise_relative_L1_percent": 826.9222717285156,
+        "flame_IoU": 0.3597195947337351,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 16.043270587921143
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "stage": "final",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 100.0,
+        "radiation_dose_relative_L1_percent": 5422.1083984375,
+        "temperature_rise_relative_L1_percent": 29843.4951171875,
+        "flame_IoU": null,
+        "minimum_C": 7.20789098739624,
+        "velocity_vector_relative_L1_percent": 16.01647186279297
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 0,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "stage": "initial",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 70.2127914428711,
+        "HRR_curve_relative_L1_percent": 57.56674385070801,
+        "radiation_dose_relative_L1_percent": 53.85080528259277,
+        "temperature_rise_relative_L1_percent": 343.3492736816406,
+        "flame_IoU": 0.3862319844789357,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 14.456414222717285
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "stage": "initial",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 66.27066421508789,
+        "HRR_curve_relative_L1_percent": 58.98884391784668,
+        "radiation_dose_relative_L1_percent": 61.0994930267334,
+        "temperature_rise_relative_L1_percent": 554.4682464599609,
+        "flame_IoU": 0.3801601488863936,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 14.59404182434082
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "stage": "initial",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 100.0,
+        "radiation_dose_relative_L1_percent": 237.68180084228516,
+        "temperature_rise_relative_L1_percent": 28219.841796875,
+        "flame_IoU": null,
+        "minimum_C": 9.055048942565918,
+        "velocity_vector_relative_L1_percent": 13.987033367156982
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 0,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "stage": "final",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 53.61479377746582,
+        "HRR_curve_relative_L1_percent": 56.792131423950195,
+        "radiation_dose_relative_L1_percent": 56.306955337524414,
+        "temperature_rise_relative_L1_percent": 352.23199462890625,
+        "flame_IoU": 0.33023810203603465,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.043423175811768
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "stage": "final",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 50.64655876159668,
+        "HRR_curve_relative_L1_percent": 65.16516876220703,
+        "radiation_dose_relative_L1_percent": 65.74424743652344,
+        "temperature_rise_relative_L1_percent": 553.3034820556641,
+        "flame_IoU": 0.35519676454754784,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.292078971862793
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "stage": "final",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 100.0,
+        "radiation_dose_relative_L1_percent": 121.84978485107422,
+        "temperature_rise_relative_L1_percent": 23837.494140625,
+        "flame_IoU": null,
+        "minimum_C": 9.389595031738281,
+        "velocity_vector_relative_L1_percent": 13.956179141998291
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 0,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "stage": "initial",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 70.2127914428711,
+        "HRR_curve_relative_L1_percent": 57.56674385070801,
+        "radiation_dose_relative_L1_percent": 53.85080528259277,
+        "temperature_rise_relative_L1_percent": 343.3492736816406,
+        "flame_IoU": 0.3862319844789357,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 14.456414222717285
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "stage": "initial",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 66.27066421508789,
+        "HRR_curve_relative_L1_percent": 58.98884391784668,
+        "radiation_dose_relative_L1_percent": 61.0994930267334,
+        "temperature_rise_relative_L1_percent": 554.4682464599609,
+        "flame_IoU": 0.3801601488863936,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 14.59404182434082
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "stage": "initial",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 100.0,
+        "radiation_dose_relative_L1_percent": 237.68180084228516,
+        "temperature_rise_relative_L1_percent": 28219.841796875,
+        "flame_IoU": null,
+        "minimum_C": 9.055048942565918,
+        "velocity_vector_relative_L1_percent": 13.987033367156982
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 0,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "stage": "final",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 56.7423095703125,
+        "HRR_curve_relative_L1_percent": 58.528879165649414,
+        "radiation_dose_relative_L1_percent": 57.467355728149414,
+        "temperature_rise_relative_L1_percent": 217.9998779296875,
+        "flame_IoU": 0.34756490605833096,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.087215423583984
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "stage": "final",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 53.643959045410156,
+        "HRR_curve_relative_L1_percent": 66.73555755615234,
+        "radiation_dose_relative_L1_percent": 64.88649559020996,
+        "temperature_rise_relative_L1_percent": 309.7133026123047,
+        "flame_IoU": 0.32435675064271985,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.422501564025879
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "stage": "final",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 97.77930068969727,
+        "radiation_dose_relative_L1_percent": 103.88085174560547,
+        "temperature_rise_relative_L1_percent": 9664.6875,
+        "flame_IoU": null,
+        "minimum_C": 11.491346836090088,
+        "velocity_vector_relative_L1_percent": 14.176311016082764
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 0,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "stage": "initial",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 70.2127914428711,
+        "HRR_curve_relative_L1_percent": 57.56674385070801,
+        "radiation_dose_relative_L1_percent": 53.85080528259277,
+        "temperature_rise_relative_L1_percent": 343.3492736816406,
+        "flame_IoU": 0.3862319844789357,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 14.456414222717285
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "stage": "initial",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 66.27066421508789,
+        "HRR_curve_relative_L1_percent": 58.98884391784668,
+        "radiation_dose_relative_L1_percent": 61.0994930267334,
+        "temperature_rise_relative_L1_percent": 554.4682464599609,
+        "flame_IoU": 0.3801601488863936,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 14.59404182434082
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "stage": "initial",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 100.0,
+        "radiation_dose_relative_L1_percent": 237.68180084228516,
+        "temperature_rise_relative_L1_percent": 28219.841796875,
+        "flame_IoU": null,
+        "minimum_C": 9.055048942565918,
+        "velocity_vector_relative_L1_percent": 13.987033367156982
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 0,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "stage": "final",
+      "window": "all",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 53.61479377746582,
+        "HRR_curve_relative_L1_percent": 56.792131423950195,
+        "radiation_dose_relative_L1_percent": 56.306955337524414,
+        "temperature_rise_relative_L1_percent": 352.23199462890625,
+        "flame_IoU": 0.33023810203603465,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.043423175811768
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "stage": "final",
+      "window": "post_source",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": 50.64655876159668,
+        "HRR_curve_relative_L1_percent": 65.16516876220703,
+        "radiation_dose_relative_L1_percent": 65.74424743652344,
+        "temperature_rise_relative_L1_percent": 553.3034820556641,
+        "flame_IoU": 0.35519676454754784,
+        "minimum_C": 6.0,
+        "velocity_vector_relative_L1_percent": 15.292078971862793
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 8,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 8,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "stage": "final",
+      "window": "late",
+      "median": {
+        "truth_hot_temperature_relative_L1_percent": null,
+        "HRR_curve_relative_L1_percent": 100.0,
+        "radiation_dose_relative_L1_percent": 121.84978485107422,
+        "temperature_rise_relative_L1_percent": 23837.494140625,
+        "flame_IoU": null,
+        "minimum_C": 9.389595031738281,
+        "velocity_vector_relative_L1_percent": 13.956179141998291
+      },
+      "defined": {
+        "truth_hot_temperature_relative_L1_percent": 0,
+        "HRR_curve_relative_L1_percent": 8,
+        "radiation_dose_relative_L1_percent": 8,
+        "temperature_rise_relative_L1_percent": 8,
+        "flame_IoU": 0,
+        "minimum_C": 8,
+        "velocity_vector_relative_L1_percent": 8
+      }
+    }
+  ],
+  "paired": [
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_037_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_005_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_066_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_146_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": null,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_095_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_177_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_200_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": null,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_223_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_266_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_295_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": null,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_283_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_356_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_037_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -1.2765007019042969,
+        "HRR_curve_relative_L1_percent": 69.25135803222656,
+        "radiation_dose_relative_L1_percent": -3523.154525756836,
+        "temperature_rise_relative_L1_percent": -1886.16650390625,
+        "flame_IoU": 0.024516129032258062,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -1.2455158233642578
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_005_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.054485321044921875,
+        "HRR_curve_relative_L1_percent": 4.346616744995117,
+        "radiation_dose_relative_L1_percent": -44.259986877441406,
+        "temperature_rise_relative_L1_percent": -145.3719482421875,
+        "flame_IoU": 0.02592200939339062,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -4.71537971496582
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_066_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.9868659973144531,
+        "HRR_curve_relative_L1_percent": -1.0759191513061523,
+        "radiation_dose_relative_L1_percent": -14.711599349975586,
+        "temperature_rise_relative_L1_percent": -149.12771606445312,
+        "flame_IoU": -0.01982436406103394,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -3.876832962036133
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_146_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.6482295989990234,
+        "HRR_curve_relative_L1_percent": 456.6158752441406,
+        "radiation_dose_relative_L1_percent": -10672.0537109375,
+        "temperature_rise_relative_L1_percent": -2327.458984375,
+        "flame_IoU": null,
+        "minimum_C": 0.009091377258300781,
+        "velocity_vector_relative_L1_percent": -0.8597373962402344
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_095_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -1.3476181030273438,
+        "HRR_curve_relative_L1_percent": -5.33234977722168,
+        "radiation_dose_relative_L1_percent": -71.4715690612793,
+        "temperature_rise_relative_L1_percent": -184.93165588378906,
+        "flame_IoU": 4.567626814444559e-06,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -3.532075881958008
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_177_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0995635986328125,
+        "HRR_curve_relative_L1_percent": -1.379568099975586,
+        "radiation_dose_relative_L1_percent": 12.373043060302734,
+        "temperature_rise_relative_L1_percent": -113.489013671875,
+        "flame_IoU": -0.021426306397794692,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.6413784027099609
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_200_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 7.851673126220703,
+        "HRR_curve_relative_L1_percent": 57.54229736328125,
+        "radiation_dose_relative_L1_percent": -12306.619598388672,
+        "temperature_rise_relative_L1_percent": -2093.34765625,
+        "flame_IoU": null,
+        "minimum_C": 0.027956008911132812,
+        "velocity_vector_relative_L1_percent": -0.4510688781738281
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_223_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.836334228515625,
+        "HRR_curve_relative_L1_percent": -2.811708450317383,
+        "radiation_dose_relative_L1_percent": -100.15283966064453,
+        "temperature_rise_relative_L1_percent": -245.69976806640625,
+        "flame_IoU": -0.014078892082121486,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.23813629150390625
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_266_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.20265579223632812,
+        "HRR_curve_relative_L1_percent": -1.1101303100585938,
+        "radiation_dose_relative_L1_percent": 6.326595306396484,
+        "temperature_rise_relative_L1_percent": -101.92752075195312,
+        "flame_IoU": -0.012443021882239058,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.6542854309082031
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_295_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.6123161315917969,
+        "HRR_curve_relative_L1_percent": -19.362091064453125,
+        "radiation_dose_relative_L1_percent": -14026.247802734375,
+        "temperature_rise_relative_L1_percent": -2084.56103515625,
+        "flame_IoU": null,
+        "minimum_C": 0.0005426406860351562,
+        "velocity_vector_relative_L1_percent": -0.33516407012939453
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_283_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.01641845703125,
+        "HRR_curve_relative_L1_percent": -0.5397167205810547,
+        "radiation_dose_relative_L1_percent": -43.903167724609375,
+        "temperature_rise_relative_L1_percent": -150.64468383789062,
+        "flame_IoU": -0.022367710778772865,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.0954885482788086
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_356_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.0079803466796875,
+        "HRR_curve_relative_L1_percent": -1.1311569213867188,
+        "radiation_dose_relative_L1_percent": 5.551458358764648,
+        "temperature_rise_relative_L1_percent": -89.7940673828125,
+        "flame_IoU": -0.0009730572667950854,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.6433029174804688
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_037_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 1.2927818298339844,
+        "HRR_curve_relative_L1_percent": 93.17254638671875,
+        "radiation_dose_relative_L1_percent": -3542.8554458618164,
+        "temperature_rise_relative_L1_percent": -5471.855712890625,
+        "flame_IoU": 0.0034782608695652154,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -1.0751934051513672
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_005_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.36197662353515625,
+        "HRR_curve_relative_L1_percent": 3.484126091003418,
+        "radiation_dose_relative_L1_percent": -42.560428619384766,
+        "temperature_rise_relative_L1_percent": -259.0454406738281,
+        "flame_IoU": 0.023859037769784153,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -4.132228851318359
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_066_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.7397499084472656,
+        "HRR_curve_relative_L1_percent": -0.9669866561889648,
+        "radiation_dose_relative_L1_percent": -10.89450454711914,
+        "temperature_rise_relative_L1_percent": -202.89797973632812,
+        "flame_IoU": -0.01638432663863343,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -3.5181007385253906
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_146_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 6.893430709838867,
+        "HRR_curve_relative_L1_percent": 40.761009216308594,
+        "radiation_dose_relative_L1_percent": -10669.383483886719,
+        "temperature_rise_relative_L1_percent": -5337.330078125,
+        "flame_IoU": null,
+        "minimum_C": 1.4617595672607422,
+        "velocity_vector_relative_L1_percent": -0.7431831359863281
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_095_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -2.008800506591797,
+        "HRR_curve_relative_L1_percent": -5.53428840637207,
+        "radiation_dose_relative_L1_percent": -69.87743377685547,
+        "temperature_rise_relative_L1_percent": -253.39305114746094,
+        "flame_IoU": 0.006351158948160296,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -2.9603099822998047
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_177_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.7117729187011719,
+        "HRR_curve_relative_L1_percent": -2.324312210083008,
+        "radiation_dose_relative_L1_percent": 11.560718536376953,
+        "temperature_rise_relative_L1_percent": -154.07711791992188,
+        "flame_IoU": -0.022851699860964303,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.6103687286376953
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_200_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 18.154584884643555,
+        "HRR_curve_relative_L1_percent": 1261.4500427246094,
+        "radiation_dose_relative_L1_percent": -12224.661987304688,
+        "temperature_rise_relative_L1_percent": -4764.410888671875,
+        "flame_IoU": null,
+        "minimum_C": 0.09070491790771484,
+        "velocity_vector_relative_L1_percent": -0.27152156829833984
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_223_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 2.2689552307128906,
+        "HRR_curve_relative_L1_percent": -12.795677185058594,
+        "radiation_dose_relative_L1_percent": -103.04574966430664,
+        "temperature_rise_relative_L1_percent": -412.1098937988281,
+        "flame_IoU": -0.05794833363091473,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.1582651138305664
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_266_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.08732223510742188,
+        "HRR_curve_relative_L1_percent": -0.7866668701171875,
+        "radiation_dose_relative_L1_percent": 6.947910308837891,
+        "temperature_rise_relative_L1_percent": -134.92378997802734,
+        "flame_IoU": -0.012009314621148237,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.5192718505859375
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_295_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 11.49447250366211,
+        "HRR_curve_relative_L1_percent": 2294.3431396484375,
+        "radiation_dose_relative_L1_percent": -13839.554321289062,
+        "temperature_rise_relative_L1_percent": -4312.495361328125,
+        "flame_IoU": null,
+        "minimum_C": 0.0027208328247070312,
+        "velocity_vector_relative_L1_percent": -0.14956188201904297
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_283_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.3661689758300781,
+        "HRR_curve_relative_L1_percent": 11.221817016601562,
+        "radiation_dose_relative_L1_percent": -46.11027145385742,
+        "temperature_rise_relative_L1_percent": -248.8834991455078,
+        "flame_IoU": -0.038860638008397785,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.046568870544433594
+      }
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_356_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.2942161560058594,
+        "HRR_curve_relative_L1_percent": -1.2656574249267578,
+        "radiation_dose_relative_L1_percent": 6.303316116333008,
+        "temperature_rise_relative_L1_percent": -118.16422271728516,
+        "flame_IoU": -0.0027092889943430842,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.44425392150878906
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_037_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -1.2765007019042969,
+        "HRR_curve_relative_L1_percent": 69.25135803222656,
+        "radiation_dose_relative_L1_percent": -3523.154525756836,
+        "temperature_rise_relative_L1_percent": -1886.16650390625,
+        "flame_IoU": 0.024516129032258062,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -1.2455158233642578
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_005_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.054485321044921875,
+        "HRR_curve_relative_L1_percent": 4.346616744995117,
+        "radiation_dose_relative_L1_percent": -44.259986877441406,
+        "temperature_rise_relative_L1_percent": -145.3719482421875,
+        "flame_IoU": 0.02592200939339062,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -4.71537971496582
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_066_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.9868659973144531,
+        "HRR_curve_relative_L1_percent": -1.0759191513061523,
+        "radiation_dose_relative_L1_percent": -14.711599349975586,
+        "temperature_rise_relative_L1_percent": -149.12771606445312,
+        "flame_IoU": -0.01982436406103394,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -3.876832962036133
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_146_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.6482295989990234,
+        "HRR_curve_relative_L1_percent": 456.6158752441406,
+        "radiation_dose_relative_L1_percent": -10672.0537109375,
+        "temperature_rise_relative_L1_percent": -2327.458984375,
+        "flame_IoU": null,
+        "minimum_C": 0.009091377258300781,
+        "velocity_vector_relative_L1_percent": -0.8597373962402344
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_095_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -1.3476181030273438,
+        "HRR_curve_relative_L1_percent": -5.33234977722168,
+        "radiation_dose_relative_L1_percent": -71.4715690612793,
+        "temperature_rise_relative_L1_percent": -184.93165588378906,
+        "flame_IoU": 4.567626814444559e-06,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -3.532075881958008
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_177_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0995635986328125,
+        "HRR_curve_relative_L1_percent": -1.379568099975586,
+        "radiation_dose_relative_L1_percent": 12.373043060302734,
+        "temperature_rise_relative_L1_percent": -113.489013671875,
+        "flame_IoU": -0.021426306397794692,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.6413784027099609
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_200_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 7.851673126220703,
+        "HRR_curve_relative_L1_percent": 57.54229736328125,
+        "radiation_dose_relative_L1_percent": -12306.619598388672,
+        "temperature_rise_relative_L1_percent": -2093.34765625,
+        "flame_IoU": null,
+        "minimum_C": 0.027956008911132812,
+        "velocity_vector_relative_L1_percent": -0.4510688781738281
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_223_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.836334228515625,
+        "HRR_curve_relative_L1_percent": -2.811708450317383,
+        "radiation_dose_relative_L1_percent": -100.15283966064453,
+        "temperature_rise_relative_L1_percent": -245.69976806640625,
+        "flame_IoU": -0.014078892082121486,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.23813629150390625
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_266_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.20265579223632812,
+        "HRR_curve_relative_L1_percent": -1.1101303100585938,
+        "radiation_dose_relative_L1_percent": 6.326595306396484,
+        "temperature_rise_relative_L1_percent": -101.92752075195312,
+        "flame_IoU": -0.012443021882239058,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.6542854309082031
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_295_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.6123161315917969,
+        "HRR_curve_relative_L1_percent": -19.362091064453125,
+        "radiation_dose_relative_L1_percent": -14026.247802734375,
+        "temperature_rise_relative_L1_percent": -2084.56103515625,
+        "flame_IoU": null,
+        "minimum_C": 0.0005426406860351562,
+        "velocity_vector_relative_L1_percent": -0.33516407012939453
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_283_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.01641845703125,
+        "HRR_curve_relative_L1_percent": -0.5397167205810547,
+        "radiation_dose_relative_L1_percent": -43.903167724609375,
+        "temperature_rise_relative_L1_percent": -150.64468383789062,
+        "flame_IoU": -0.022367710778772865,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.0954885482788086
+      }
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_356_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.0079803466796875,
+        "HRR_curve_relative_L1_percent": -1.1311569213867188,
+        "radiation_dose_relative_L1_percent": 5.551458358764648,
+        "temperature_rise_relative_L1_percent": -89.7940673828125,
+        "flame_IoU": -0.0009730572667950854,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.6433029174804688
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "case": "x32_364_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "case": "x32_365_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "case": "x32_373_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "case": "x32_372_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "case": "x32_379_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "case": "x32_378_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "case": "x32_388_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "case": "x32_389_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.0,
+        "HRR_curve_relative_L1_percent": 0.0,
+        "radiation_dose_relative_L1_percent": 0.0,
+        "temperature_rise_relative_L1_percent": 0.0,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": 0.0
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "case": "x32_364_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.5081329345703125,
+        "HRR_curve_relative_L1_percent": -0.19944000244140625,
+        "radiation_dose_relative_L1_percent": -20.58185577392578,
+        "temperature_rise_relative_L1_percent": -279.815673828125,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.11246204376220703,
+        "velocity_vector_relative_L1_percent": -0.8841123580932617
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "case": "x32_365_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 1.03564453125,
+        "HRR_curve_relative_L1_percent": -0.5570907592773438,
+        "radiation_dose_relative_L1_percent": -21.83777618408203,
+        "temperature_rise_relative_L1_percent": -219.18630981445312,
+        "flame_IoU": -0.022041291219445813,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.5695285797119141
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "case": "x32_373_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.7483024597167969,
+        "HRR_curve_relative_L1_percent": -2.2024917602539062,
+        "radiation_dose_relative_L1_percent": -1152.3483657836914,
+        "temperature_rise_relative_L1_percent": -904.5086669921875,
+        "flame_IoU": -0.01631155007054705,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -1.4796867370605469
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "case": "x32_372_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.6503944396972656,
+        "HRR_curve_relative_L1_percent": 0.7557907104492188,
+        "radiation_dose_relative_L1_percent": -33.40519714355469,
+        "temperature_rise_relative_L1_percent": -163.6631317138672,
+        "flame_IoU": -0.008751051513113839,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -3.2408275604248047
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "case": "x32_379_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.842071533203125,
+        "HRR_curve_relative_L1_percent": -3.8757667541503906,
+        "radiation_dose_relative_L1_percent": -248.9516830444336,
+        "temperature_rise_relative_L1_percent": -328.05126953125,
+        "flame_IoU": -0.00439897698209718,
+        "minimum_C": 0.004370689392089844,
+        "velocity_vector_relative_L1_percent": -0.8767585754394531
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "case": "x32_378_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.06447982788085938,
+        "HRR_curve_relative_L1_percent": 18.30748748779297,
+        "radiation_dose_relative_L1_percent": -45.68981170654297,
+        "temperature_rise_relative_L1_percent": -200.877685546875,
+        "flame_IoU": -0.011988875537497556,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.5693702697753906
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "case": "x32_388_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -4.706123352050781,
+        "HRR_curve_relative_L1_percent": 387.796630859375,
+        "radiation_dose_relative_L1_percent": -8108.516845703125,
+        "temperature_rise_relative_L1_percent": -2687.8310546875,
+        "flame_IoU": -0.007845917523336882,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.6256246566772461
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "case": "x32_389_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -1.9435081481933594,
+        "HRR_curve_relative_L1_percent": -7.304012298583984,
+        "radiation_dose_relative_L1_percent": -94.06909561157227,
+        "temperature_rise_relative_L1_percent": -182.884765625,
+        "flame_IoU": -0.004646683390277351,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.5268030166625977
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "case": "x32_364_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 5.196769714355469,
+        "HRR_curve_relative_L1_percent": -0.6157150268554688,
+        "radiation_dose_relative_L1_percent": -20.694137573242188,
+        "temperature_rise_relative_L1_percent": -654.3692932128906,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.9045343399047852,
+        "velocity_vector_relative_L1_percent": -0.8614120483398438
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "case": "x32_365_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 4.603977203369141,
+        "HRR_curve_relative_L1_percent": -4.902812957763672,
+        "radiation_dose_relative_L1_percent": -21.262420654296875,
+        "temperature_rise_relative_L1_percent": -419.71575927734375,
+        "flame_IoU": -0.008198159134359506,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.5583562850952148
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "case": "x32_373_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 1.7087249755859375,
+        "HRR_curve_relative_L1_percent": -3.5147247314453125,
+        "radiation_dose_relative_L1_percent": -1146.412094116211,
+        "temperature_rise_relative_L1_percent": -1783.5486450195312,
+        "flame_IoU": -0.008308340763556785,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -1.3795490264892578
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "case": "x32_372_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.4598960876464844,
+        "HRR_curve_relative_L1_percent": -1.4093284606933594,
+        "radiation_dose_relative_L1_percent": -31.629947662353516,
+        "temperature_rise_relative_L1_percent": -219.56085205078125,
+        "flame_IoU": -0.004064863900096971,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -2.6532669067382812
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "case": "x32_379_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 2.3250808715820312,
+        "HRR_curve_relative_L1_percent": -18.44888687133789,
+        "radiation_dose_relative_L1_percent": -251.2425422668457,
+        "temperature_rise_relative_L1_percent": -607.487060546875,
+        "flame_IoU": -0.06006148440931047,
+        "minimum_C": 0.006232261657714844,
+        "velocity_vector_relative_L1_percent": -0.6804342269897461
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "case": "x32_378_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.1005859375,
+        "HRR_curve_relative_L1_percent": 11.969337463378906,
+        "radiation_dose_relative_L1_percent": -46.45928955078125,
+        "temperature_rise_relative_L1_percent": -260.78485107421875,
+        "flame_IoU": -0.011588583725197776,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.2812919616699219
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "case": "x32_388_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -6.396156311035156,
+        "HRR_curve_relative_L1_percent": 686.62451171875,
+        "radiation_dose_relative_L1_percent": -8057.4283447265625,
+        "temperature_rise_relative_L1_percent": -4654.552978515625,
+        "flame_IoU": -0.013544822669755839,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.5611038208007812
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "case": "x32_389_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 1.5942649841308594,
+        "HRR_curve_relative_L1_percent": -0.6617965698242188,
+        "radiation_dose_relative_L1_percent": -93.10774230957031,
+        "temperature_rise_relative_L1_percent": -288.3251647949219,
+        "flame_IoU": -0.010664203772719982,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.5126171112060547
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "case": "x32_364_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.5081329345703125,
+        "HRR_curve_relative_L1_percent": -0.19944000244140625,
+        "radiation_dose_relative_L1_percent": -20.58185577392578,
+        "temperature_rise_relative_L1_percent": -279.815673828125,
+        "flame_IoU": 0.0,
+        "minimum_C": 0.11246204376220703,
+        "velocity_vector_relative_L1_percent": -0.8841123580932617
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "case": "x32_365_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 1.03564453125,
+        "HRR_curve_relative_L1_percent": -0.5570907592773438,
+        "radiation_dose_relative_L1_percent": -21.83777618408203,
+        "temperature_rise_relative_L1_percent": -219.18630981445312,
+        "flame_IoU": -0.022041291219445813,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.5695285797119141
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "case": "x32_373_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.7483024597167969,
+        "HRR_curve_relative_L1_percent": -2.2024917602539062,
+        "radiation_dose_relative_L1_percent": -1152.3483657836914,
+        "temperature_rise_relative_L1_percent": -904.5086669921875,
+        "flame_IoU": -0.01631155007054705,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -1.4796867370605469
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "case": "x32_372_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -0.6503944396972656,
+        "HRR_curve_relative_L1_percent": 0.7557907104492188,
+        "radiation_dose_relative_L1_percent": -33.40519714355469,
+        "temperature_rise_relative_L1_percent": -163.6631317138672,
+        "flame_IoU": -0.008751051513113839,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -3.2408275604248047
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "case": "x32_379_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.842071533203125,
+        "HRR_curve_relative_L1_percent": -3.8757667541503906,
+        "radiation_dose_relative_L1_percent": -248.9516830444336,
+        "temperature_rise_relative_L1_percent": -328.05126953125,
+        "flame_IoU": -0.00439897698209718,
+        "minimum_C": 0.004370689392089844,
+        "velocity_vector_relative_L1_percent": -0.8767585754394531
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "case": "x32_378_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": 0.06447982788085938,
+        "HRR_curve_relative_L1_percent": 18.30748748779297,
+        "radiation_dose_relative_L1_percent": -45.68981170654297,
+        "temperature_rise_relative_L1_percent": -200.877685546875,
+        "flame_IoU": -0.011988875537497556,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.5693702697753906
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "case": "x32_388_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -4.706123352050781,
+        "HRR_curve_relative_L1_percent": 387.796630859375,
+        "radiation_dose_relative_L1_percent": -8108.516845703125,
+        "temperature_rise_relative_L1_percent": -2687.8310546875,
+        "flame_IoU": -0.007845917523336882,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.6256246566772461
+      }
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "case": "x32_389_s0",
+      "post_source_delta_vs_control": {
+        "truth_hot_temperature_relative_L1_percent": -1.9435081481933594,
+        "HRR_curve_relative_L1_percent": -7.304012298583984,
+        "radiation_dose_relative_L1_percent": -94.06909561157227,
+        "temperature_rise_relative_L1_percent": -182.884765625,
+        "flame_IoU": -0.004646683390277351,
+        "minimum_C": 0.0,
+        "velocity_vector_relative_L1_percent": -0.5268030166625977
+      }
+    }
+  ],
+  "weak_cases": [
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_146_s0",
+      "hot_MAE_C": 33.14159393310547,
+      "temperature_MAE_C": 3.003708839416504,
+      "HRR_curve_relative_L1": 0.5637241005897522,
+      "radiation_dose_relative_L1": 109.1886978149414,
+      "peak_error_C": 7.379608154296875,
+      "truth_peak_C": 91.70641326904297,
+      "predicted_peak_C": 84.3268051147461,
+      "truth_mean_HRR_kW": 0.07589130848646164,
+      "predicted_mean_HRR_kW": 0.10324655473232269,
+      "velocity_MAE_m_s": 0.7163117527961731,
+      "flame_IoU": null,
+      "minimum_C": 6.000034332275391,
+      "truth_minimum_C": 19.83516502380371,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 7805.1669921875,
+      "truth_hot_temperature_relative_L1_percent": 25.958974838256836,
+      "union_hot_temperature_relative_L1_percent": 966.8843994140625,
+      "HRR_curve_relative_L1_percent": 56.372406005859375,
+      "radiation_dose_relative_L1_percent": 10918.8701171875,
+      "peak_temperature_rise_error_percent": 10.291419982910156,
+      "velocity_vector_relative_L1_percent": 14.484639167785645
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_295_s0",
+      "hot_MAE_C": 31.80267333984375,
+      "temperature_MAE_C": 3.335003614425659,
+      "HRR_curve_relative_L1": 2.9597008228302,
+      "radiation_dose_relative_L1": 147.63845825195312,
+      "peak_error_C": 11.991958618164062,
+      "truth_peak_C": 90.16056823730469,
+      "predicted_peak_C": 102.15252685546875,
+      "truth_mean_HRR_kW": 0.08223055303096771,
+      "predicted_mean_HRR_kW": 0.30396556854248047,
+      "velocity_MAE_m_s": 0.7286016345024109,
+      "flame_IoU": null,
+      "minimum_C": 6.0,
+      "truth_minimum_C": 19.900836944580078,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 6561.365234375,
+      "truth_hot_temperature_relative_L1_percent": 24.3519287109375,
+      "union_hot_temperature_relative_L1_percent": 876.2250366210938,
+      "HRR_curve_relative_L1_percent": 295.9700927734375,
+      "radiation_dose_relative_L1_percent": 14763.845703125,
+      "peak_temperature_rise_error_percent": 17.092161178588867,
+      "velocity_vector_relative_L1_percent": 14.946219444274902
+    },
+    {
+      "split": "train",
+      "arm": "control",
+      "case": "x32_200_s0",
+      "hot_MAE_C": 30.461462020874023,
+      "temperature_MAE_C": 3.131728172302246,
+      "HRR_curve_relative_L1": 1.8933206796646118,
+      "radiation_dose_relative_L1": 127.60491943359375,
+      "peak_error_C": 11.002861022949219,
+      "truth_peak_C": 85.96470642089844,
+      "predicted_peak_C": 96.96756744384766,
+      "truth_mean_HRR_kW": 0.108029305934906,
+      "predicted_mean_HRR_kW": 0.2842329144477844,
+      "velocity_MAE_m_s": 0.6929916739463806,
+      "flame_IoU": null,
+      "minimum_C": 6.0,
+      "truth_minimum_C": 19.906782150268555,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 7141.3056640625,
+      "truth_hot_temperature_relative_L1_percent": 17.092004776000977,
+      "union_hot_temperature_relative_L1_percent": 698.6229248046875,
+      "HRR_curve_relative_L1_percent": 189.33206176757812,
+      "radiation_dose_relative_L1_percent": 12760.4921875,
+      "peak_temperature_rise_error_percent": 16.679922103881836,
+      "velocity_vector_relative_L1_percent": 14.112449645996094
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_146_s0",
+      "hot_MAE_C": 29.026065826416016,
+      "temperature_MAE_C": 2.1080191135406494,
+      "HRR_curve_relative_L1": 5.1298828125,
+      "radiation_dose_relative_L1": 2.4681642055511475,
+      "peak_error_C": 4.817680358886719,
+      "truth_peak_C": 91.70641326904297,
+      "predicted_peak_C": 96.52409362792969,
+      "truth_mean_HRR_kW": 0.07589130848646164,
+      "predicted_mean_HRR_kW": 0.46072226762771606,
+      "velocity_MAE_m_s": 0.6737949848175049,
+      "flame_IoU": null,
+      "minimum_C": 6.009125709533691,
+      "truth_minimum_C": 19.83516502380371,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 5477.7080078125,
+      "truth_hot_temperature_relative_L1_percent": 25.310745239257812,
+      "union_hot_temperature_relative_L1_percent": 304.3216247558594,
+      "HRR_curve_relative_L1_percent": 512.98828125,
+      "radiation_dose_relative_L1_percent": 246.81640625,
+      "peak_temperature_rise_error_percent": 6.718618392944336,
+      "velocity_vector_relative_L1_percent": 13.62490177154541
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_295_s0",
+      "hot_MAE_C": 29.226543426513672,
+      "temperature_MAE_C": 2.275465488433838,
+      "HRR_curve_relative_L1": 2.766080141067505,
+      "radiation_dose_relative_L1": 7.375978469848633,
+      "peak_error_C": 24.67884063720703,
+      "truth_peak_C": 90.16056823730469,
+      "predicted_peak_C": 114.83940887451172,
+      "truth_mean_HRR_kW": 0.08223055303096771,
+      "predicted_mean_HRR_kW": 0.2949689030647278,
+      "velocity_MAE_m_s": 0.7122630476951599,
+      "flame_IoU": null,
+      "minimum_C": 6.000542640686035,
+      "truth_minimum_C": 19.900836944580078,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 4476.80419921875,
+      "truth_hot_temperature_relative_L1_percent": 24.964244842529297,
+      "union_hot_temperature_relative_L1_percent": 373.57781982421875,
+      "HRR_curve_relative_L1_percent": 276.6080017089844,
+      "radiation_dose_relative_L1_percent": 737.597900390625,
+      "peak_temperature_rise_error_percent": 35.174800872802734,
+      "velocity_vector_relative_L1_percent": 14.611055374145508
+    },
+    {
+      "split": "train",
+      "arm": "dose_background",
+      "case": "x32_200_s0",
+      "hot_MAE_C": 27.200687408447266,
+      "temperature_MAE_C": 2.213717460632324,
+      "HRR_curve_relative_L1": 2.4687438011169434,
+      "radiation_dose_relative_L1": 4.538725852966309,
+      "peak_error_C": 18.714637756347656,
+      "truth_peak_C": 85.96470642089844,
+      "predicted_peak_C": 104.6793441772461,
+      "truth_mean_HRR_kW": 0.108029305934906,
+      "predicted_mean_HRR_kW": 0.35306552052497864,
+      "velocity_MAE_m_s": 0.6708419919013977,
+      "flame_IoU": null,
+      "minimum_C": 6.027956008911133,
+      "truth_minimum_C": 19.906782150268555,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 5047.9580078125,
+      "truth_hot_temperature_relative_L1_percent": 24.94367790222168,
+      "union_hot_temperature_relative_L1_percent": 289.9230041503906,
+      "HRR_curve_relative_L1_percent": 246.87435913085938,
+      "radiation_dose_relative_L1_percent": 453.8725891113281,
+      "peak_temperature_rise_error_percent": 28.370681762695312,
+      "velocity_vector_relative_L1_percent": 13.661380767822266
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_146_s0",
+      "hot_MAE_C": 27.588151931762695,
+      "temperature_MAE_C": 0.9497124552726746,
+      "HRR_curve_relative_L1": 0.9713341593742371,
+      "radiation_dose_relative_L1": 2.494866371154785,
+      "peak_error_C": 3.4380111694335938,
+      "truth_peak_C": 91.70641326904297,
+      "predicted_peak_C": 95.14442443847656,
+      "truth_mean_HRR_kW": 0.07589130848646164,
+      "predicted_mean_HRR_kW": 0.14018741250038147,
+      "velocity_MAE_m_s": 0.6795589923858643,
+      "flame_IoU": null,
+      "minimum_C": 7.461793899536133,
+      "truth_minimum_C": 19.83516502380371,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 2467.8369140625,
+      "truth_hot_temperature_relative_L1_percent": 32.8524055480957,
+      "union_hot_temperature_relative_L1_percent": 207.37709045410156,
+      "HRR_curve_relative_L1_percent": 97.13341522216797,
+      "radiation_dose_relative_L1_percent": 249.48663330078125,
+      "peak_temperature_rise_error_percent": 4.794565677642822,
+      "velocity_vector_relative_L1_percent": 13.741456031799316
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_295_s0",
+      "hot_MAE_C": 31.45345687866211,
+      "temperature_MAE_C": 1.1430531740188599,
+      "HRR_curve_relative_L1": 25.90313148498535,
+      "radiation_dose_relative_L1": 9.242914199829102,
+      "peak_error_C": 45.77256774902344,
+      "truth_peak_C": 90.16056823730469,
+      "predicted_peak_C": 135.93313598632812,
+      "truth_mean_HRR_kW": 0.08223055303096771,
+      "predicted_mean_HRR_kW": 2.2062339782714844,
+      "velocity_MAE_m_s": 0.7213107943534851,
+      "flame_IoU": null,
+      "minimum_C": 6.002720832824707,
+      "truth_minimum_C": 19.900836944580078,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 2248.869873046875,
+      "truth_hot_temperature_relative_L1_percent": 35.84640121459961,
+      "union_hot_temperature_relative_L1_percent": 358.82537841796875,
+      "HRR_curve_relative_L1_percent": 2590.313232421875,
+      "radiation_dose_relative_L1_percent": 924.2913818359375,
+      "peak_temperature_rise_error_percent": 65.23973083496094,
+      "velocity_vector_relative_L1_percent": 14.79665756225586
+    },
+    {
+      "split": "train",
+      "arm": "physical_low",
+      "case": "x32_200_s0",
+      "hot_MAE_C": 28.59758758544922,
+      "temperature_MAE_C": 1.0423567295074463,
+      "HRR_curve_relative_L1": 14.507821083068848,
+      "radiation_dose_relative_L1": 5.358301639556885,
+      "peak_error_C": 39.5341796875,
+      "truth_peak_C": 85.96470642089844,
+      "predicted_peak_C": 125.49888610839844,
+      "truth_mean_HRR_kW": 0.108029305934906,
+      "predicted_mean_HRR_kW": 1.666766881942749,
+      "velocity_MAE_m_s": 0.6796586513519287,
+      "flame_IoU": 0.0,
+      "minimum_C": 6.090704917907715,
+      "truth_minimum_C": 19.906782150268555,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 2376.894775390625,
+      "truth_hot_temperature_relative_L1_percent": 35.24658966064453,
+      "union_hot_temperature_relative_L1_percent": 261.0375061035156,
+      "HRR_curve_relative_L1_percent": 1450.7821044921875,
+      "radiation_dose_relative_L1_percent": 535.8302001953125,
+      "peak_temperature_rise_error_percent": 59.93231964111328,
+      "velocity_vector_relative_L1_percent": 13.840928077697754
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_146_s0",
+      "hot_MAE_C": 29.026065826416016,
+      "temperature_MAE_C": 2.1080191135406494,
+      "HRR_curve_relative_L1": 5.1298828125,
+      "radiation_dose_relative_L1": 2.4681642055511475,
+      "peak_error_C": 4.817680358886719,
+      "truth_peak_C": 91.70641326904297,
+      "predicted_peak_C": 96.52409362792969,
+      "truth_mean_HRR_kW": 0.07589130848646164,
+      "predicted_mean_HRR_kW": 0.46072226762771606,
+      "velocity_MAE_m_s": 0.6737949848175049,
+      "flame_IoU": null,
+      "minimum_C": 6.009125709533691,
+      "truth_minimum_C": 19.83516502380371,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 5477.7080078125,
+      "truth_hot_temperature_relative_L1_percent": 25.310745239257812,
+      "union_hot_temperature_relative_L1_percent": 304.3216247558594,
+      "HRR_curve_relative_L1_percent": 512.98828125,
+      "radiation_dose_relative_L1_percent": 246.81640625,
+      "peak_temperature_rise_error_percent": 6.718618392944336,
+      "velocity_vector_relative_L1_percent": 13.62490177154541
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_295_s0",
+      "hot_MAE_C": 29.226543426513672,
+      "temperature_MAE_C": 2.275465488433838,
+      "HRR_curve_relative_L1": 2.766080141067505,
+      "radiation_dose_relative_L1": 7.375978469848633,
+      "peak_error_C": 24.67884063720703,
+      "truth_peak_C": 90.16056823730469,
+      "predicted_peak_C": 114.83940887451172,
+      "truth_mean_HRR_kW": 0.08223055303096771,
+      "predicted_mean_HRR_kW": 0.2949689030647278,
+      "velocity_MAE_m_s": 0.7122630476951599,
+      "flame_IoU": null,
+      "minimum_C": 6.000542640686035,
+      "truth_minimum_C": 19.900836944580078,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 4476.80419921875,
+      "truth_hot_temperature_relative_L1_percent": 24.964244842529297,
+      "union_hot_temperature_relative_L1_percent": 373.57781982421875,
+      "HRR_curve_relative_L1_percent": 276.6080017089844,
+      "radiation_dose_relative_L1_percent": 737.597900390625,
+      "peak_temperature_rise_error_percent": 35.174800872802734,
+      "velocity_vector_relative_L1_percent": 14.611055374145508
+    },
+    {
+      "split": "train",
+      "arm": "dose_repeat",
+      "case": "x32_200_s0",
+      "hot_MAE_C": 27.200687408447266,
+      "temperature_MAE_C": 2.213717460632324,
+      "HRR_curve_relative_L1": 2.4687438011169434,
+      "radiation_dose_relative_L1": 4.538725852966309,
+      "peak_error_C": 18.714637756347656,
+      "truth_peak_C": 85.96470642089844,
+      "predicted_peak_C": 104.6793441772461,
+      "truth_mean_HRR_kW": 0.108029305934906,
+      "predicted_mean_HRR_kW": 0.35306552052497864,
+      "velocity_MAE_m_s": 0.6708419919013977,
+      "flame_IoU": null,
+      "minimum_C": 6.027956008911133,
+      "truth_minimum_C": 19.906782150268555,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 5047.9580078125,
+      "truth_hot_temperature_relative_L1_percent": 24.94367790222168,
+      "union_hot_temperature_relative_L1_percent": 289.9230041503906,
+      "HRR_curve_relative_L1_percent": 246.87435913085938,
+      "radiation_dose_relative_L1_percent": 453.8725891113281,
+      "peak_temperature_rise_error_percent": 28.370681762695312,
+      "velocity_vector_relative_L1_percent": 13.661380767822266
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "case": "x32_388_s0",
+      "hot_MAE_C": 39.173641204833984,
+      "temperature_MAE_C": 4.64036226272583,
+      "HRR_curve_relative_L1": 24.489107131958008,
+      "radiation_dose_relative_L1": 91.80059051513672,
+      "peak_error_C": 45.738372802734375,
+      "truth_peak_C": 192.2913360595703,
+      "predicted_peak_C": 238.0297088623047,
+      "truth_mean_HRR_kW": 1.314202904701233,
+      "predicted_mean_HRR_kW": 33.479820251464844,
+      "velocity_MAE_m_s": 0.7804750800132751,
+      "flame_IoU": 0.043010752688172046,
+      "minimum_C": 6.0,
+      "truth_minimum_C": 19.679794311523438,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 6719.72607421875,
+      "truth_hot_temperature_relative_L1_percent": 88.84917449951172,
+      "union_hot_temperature_relative_L1_percent": 1255.3255615234375,
+      "HRR_curve_relative_L1_percent": 2448.91064453125,
+      "radiation_dose_relative_L1_percent": 9180.05859375,
+      "peak_temperature_rise_error_percent": 26.54711151123047,
+      "velocity_vector_relative_L1_percent": 15.979857444763184
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "case": "x32_373_s0",
+      "hot_MAE_C": 33.464942932128906,
+      "temperature_MAE_C": 3.711263418197632,
+      "HRR_curve_relative_L1": 0.7271427512168884,
+      "radiation_dose_relative_L1": 12.526832580566406,
+      "peak_error_C": 447.7193603515625,
+      "truth_peak_C": 711.5724487304688,
+      "predicted_peak_C": 263.85308837890625,
+      "truth_mean_HRR_kW": 81.0997314453125,
+      "predicted_mean_HRR_kW": 27.083515167236328,
+      "velocity_MAE_m_s": 0.4656207263469696,
+      "flame_IoU": 0.12191780821917808,
+      "minimum_C": 6.0,
+      "truth_minimum_C": 19.816356658935547,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 2644.5810546875,
+      "truth_hot_temperature_relative_L1_percent": 49.592872619628906,
+      "union_hot_temperature_relative_L1_percent": 348.82391357421875,
+      "HRR_curve_relative_L1_percent": 72.71427154541016,
+      "radiation_dose_relative_L1_percent": 1252.6832275390625,
+      "peak_temperature_rise_error_percent": 64.73933410644531,
+      "velocity_vector_relative_L1_percent": 15.64261531829834
+    },
+    {
+      "split": "validation",
+      "arm": "control",
+      "case": "x32_364_s0",
+      "hot_MAE_C": 55.206661224365234,
+      "temperature_MAE_C": 3.071315288543701,
+      "HRR_curve_relative_L1": 0.998323917388916,
+      "radiation_dose_relative_L1": 1.1457096338272095,
+      "peak_error_C": 1340.6943359375,
+      "truth_peak_C": 1430.0985107421875,
+      "predicted_peak_C": 89.40414428710938,
+      "truth_mean_HRR_kW": 170.00863647460938,
+      "predicted_mean_HRR_kW": 0.284916490316391,
+      "velocity_MAE_m_s": 0.7253390550613403,
+      "flame_IoU": 0.0,
+      "minimum_C": 6.0,
+      "truth_minimum_C": 19.965900421142578,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 1022.5673217773438,
+      "truth_hot_temperature_relative_L1_percent": 73.69100952148438,
+      "union_hot_temperature_relative_L1_percent": 89.094482421875,
+      "HRR_curve_relative_L1_percent": 99.8323974609375,
+      "radiation_dose_relative_L1_percent": 114.57096099853516,
+      "peak_temperature_rise_error_percent": 95.07806396484375,
+      "velocity_vector_relative_L1_percent": 14.561251640319824
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "case": "x32_388_s0",
+      "hot_MAE_C": 38.08197784423828,
+      "temperature_MAE_C": 2.7842583656311035,
+      "HRR_curve_relative_L1": 28.36707305908203,
+      "radiation_dose_relative_L1": 10.715417861938477,
+      "peak_error_C": 55.04927062988281,
+      "truth_peak_C": 192.2913360595703,
+      "predicted_peak_C": 247.34060668945312,
+      "truth_mean_HRR_kW": 1.314202904701233,
+      "predicted_mean_HRR_kW": 38.58538818359375,
+      "velocity_MAE_m_s": 0.7499188780784607,
+      "flame_IoU": 0.035164835164835165,
+      "minimum_C": 6.0,
+      "truth_minimum_C": 19.679794311523438,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 4031.89501953125,
+      "truth_hot_temperature_relative_L1_percent": 84.14305114746094,
+      "union_hot_temperature_relative_L1_percent": 719.0726928710938,
+      "HRR_curve_relative_L1_percent": 2836.707275390625,
+      "radiation_dose_relative_L1_percent": 1071.541748046875,
+      "peak_temperature_rise_error_percent": 31.951271057128906,
+      "velocity_vector_relative_L1_percent": 15.354232788085938
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "case": "x32_373_s0",
+      "hot_MAE_C": 31.501617431640625,
+      "temperature_MAE_C": 2.441924571990967,
+      "HRR_curve_relative_L1": 0.7051177620887756,
+      "radiation_dose_relative_L1": 1.003348708152771,
+      "peak_error_C": 455.7647399902344,
+      "truth_peak_C": 711.5724487304688,
+      "predicted_peak_C": 255.80770874023438,
+      "truth_mean_HRR_kW": 81.0997314453125,
+      "predicted_mean_HRR_kW": 31.371566772460938,
+      "velocity_MAE_m_s": 0.4215761125087738,
+      "flame_IoU": 0.10560625814863103,
+      "minimum_C": 6.0,
+      "truth_minimum_C": 19.816356658935547,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 1740.0723876953125,
+      "truth_hot_temperature_relative_L1_percent": 48.84457015991211,
+      "union_hot_temperature_relative_L1_percent": 184.8781280517578,
+      "HRR_curve_relative_L1_percent": 70.51177978515625,
+      "radiation_dose_relative_L1_percent": 100.3348617553711,
+      "peak_temperature_rise_error_percent": 65.90267181396484,
+      "velocity_vector_relative_L1_percent": 14.162928581237793
+    },
+    {
+      "split": "validation",
+      "arm": "dose_background",
+      "case": "x32_364_s0",
+      "hot_MAE_C": 64.34644317626953,
+      "temperature_MAE_C": 2.230879545211792,
+      "HRR_curve_relative_L1": 0.9963295459747314,
+      "radiation_dose_relative_L1": 0.9398910999298096,
+      "peak_error_C": 1339.99462890625,
+      "truth_peak_C": 1430.0985107421875,
+      "predicted_peak_C": 90.1039047241211,
+      "truth_mean_HRR_kW": 170.00863647460938,
+      "predicted_mean_HRR_kW": 0.623988926410675,
+      "velocity_MAE_m_s": 0.6812987923622131,
+      "flame_IoU": 0.0,
+      "minimum_C": 6.112462043762207,
+      "truth_minimum_C": 19.965900421142578,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 742.7516479492188,
+      "truth_hot_temperature_relative_L1_percent": 74.19914245605469,
+      "union_hot_temperature_relative_L1_percent": 75.13458251953125,
+      "HRR_curve_relative_L1_percent": 99.6329574584961,
+      "radiation_dose_relative_L1_percent": 93.98910522460938,
+      "peak_temperature_rise_error_percent": 95.0284423828125,
+      "velocity_vector_relative_L1_percent": 13.677139282226562
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "case": "x32_388_s0",
+      "hot_MAE_C": 39.1993522644043,
+      "temperature_MAE_C": 1.4261223077774048,
+      "HRR_curve_relative_L1": 31.3553524017334,
+      "radiation_dose_relative_L1": 11.226302146911621,
+      "peak_error_C": 68.43272399902344,
+      "truth_peak_C": 192.2913360595703,
+      "predicted_peak_C": 260.72406005859375,
+      "truth_mean_HRR_kW": 1.314202904701233,
+      "predicted_mean_HRR_kW": 42.502685546875,
+      "velocity_MAE_m_s": 0.7530701160430908,
+      "flame_IoU": 0.029465930018416207,
+      "minimum_C": 6.0,
+      "truth_minimum_C": 19.679794311523438,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 2065.173095703125,
+      "truth_hot_temperature_relative_L1_percent": 82.45301818847656,
+      "union_hot_temperature_relative_L1_percent": 573.8472290039062,
+      "HRR_curve_relative_L1_percent": 3135.53515625,
+      "radiation_dose_relative_L1_percent": 1122.6302490234375,
+      "peak_temperature_rise_error_percent": 39.71919250488281,
+      "velocity_vector_relative_L1_percent": 15.418753623962402
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "case": "x32_373_s0",
+      "hot_MAE_C": 32.99243927001953,
+      "temperature_MAE_C": 1.208326816558838,
+      "HRR_curve_relative_L1": 0.6919955015182495,
+      "radiation_dose_relative_L1": 1.0627113580703735,
+      "peak_error_C": 432.8332214355469,
+      "truth_peak_C": 711.5724487304688,
+      "predicted_peak_C": 278.7392272949219,
+      "truth_mean_HRR_kW": 81.0997314453125,
+      "predicted_mean_HRR_kW": 35.697608947753906,
+      "velocity_MAE_m_s": 0.42455682158470154,
+      "flame_IoU": 0.1136094674556213,
+      "minimum_C": 6.0,
+      "truth_minimum_C": 19.816356658935547,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 861.0324096679688,
+      "truth_hot_temperature_relative_L1_percent": 51.301597595214844,
+      "union_hot_temperature_relative_L1_percent": 147.41497802734375,
+      "HRR_curve_relative_L1_percent": 69.19954681396484,
+      "radiation_dose_relative_L1_percent": 106.27113342285156,
+      "peak_temperature_rise_error_percent": 62.58681869506836,
+      "velocity_vector_relative_L1_percent": 14.263066291809082
+    },
+    {
+      "split": "validation",
+      "arm": "physical_low",
+      "case": "x32_364_s0",
+      "hot_MAE_C": 71.16078186035156,
+      "temperature_MAE_C": 1.1058951616287231,
+      "HRR_curve_relative_L1": 0.9921668767929077,
+      "radiation_dose_relative_L1": 0.938768208026886,
+      "peak_error_C": 1327.849365234375,
+      "truth_peak_C": 1430.0985107421875,
+      "predicted_peak_C": 102.24909973144531,
+      "truth_mean_HRR_kW": 170.00863647460938,
+      "predicted_mean_HRR_kW": 1.331787347793579,
+      "velocity_MAE_m_s": 0.6824294924736023,
+      "flame_IoU": 0.0,
+      "minimum_C": 6.904534339904785,
+      "truth_minimum_C": 19.965900421142578,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 368.1980285644531,
+      "truth_hot_temperature_relative_L1_percent": 78.88777923583984,
+      "union_hot_temperature_relative_L1_percent": 79.01972961425781,
+      "HRR_curve_relative_L1_percent": 99.21668243408203,
+      "radiation_dose_relative_L1_percent": 93.87682342529297,
+      "peak_temperature_rise_error_percent": 94.1671371459961,
+      "velocity_vector_relative_L1_percent": 13.69983959197998
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "case": "x32_388_s0",
+      "hot_MAE_C": 38.08197784423828,
+      "temperature_MAE_C": 2.7842583656311035,
+      "HRR_curve_relative_L1": 28.36707305908203,
+      "radiation_dose_relative_L1": 10.715417861938477,
+      "peak_error_C": 55.04927062988281,
+      "truth_peak_C": 192.2913360595703,
+      "predicted_peak_C": 247.34060668945312,
+      "truth_mean_HRR_kW": 1.314202904701233,
+      "predicted_mean_HRR_kW": 38.58538818359375,
+      "velocity_MAE_m_s": 0.7499188780784607,
+      "flame_IoU": 0.035164835164835165,
+      "minimum_C": 6.0,
+      "truth_minimum_C": 19.679794311523438,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 4031.89501953125,
+      "truth_hot_temperature_relative_L1_percent": 84.14305114746094,
+      "union_hot_temperature_relative_L1_percent": 719.0726928710938,
+      "HRR_curve_relative_L1_percent": 2836.707275390625,
+      "radiation_dose_relative_L1_percent": 1071.541748046875,
+      "peak_temperature_rise_error_percent": 31.951271057128906,
+      "velocity_vector_relative_L1_percent": 15.354232788085938
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "case": "x32_373_s0",
+      "hot_MAE_C": 31.501617431640625,
+      "temperature_MAE_C": 2.441924571990967,
+      "HRR_curve_relative_L1": 0.7051177620887756,
+      "radiation_dose_relative_L1": 1.003348708152771,
+      "peak_error_C": 455.7647399902344,
+      "truth_peak_C": 711.5724487304688,
+      "predicted_peak_C": 255.80770874023438,
+      "truth_mean_HRR_kW": 81.0997314453125,
+      "predicted_mean_HRR_kW": 31.371566772460938,
+      "velocity_MAE_m_s": 0.4215761125087738,
+      "flame_IoU": 0.10560625814863103,
+      "minimum_C": 6.0,
+      "truth_minimum_C": 19.816356658935547,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 1740.0723876953125,
+      "truth_hot_temperature_relative_L1_percent": 48.84457015991211,
+      "union_hot_temperature_relative_L1_percent": 184.8781280517578,
+      "HRR_curve_relative_L1_percent": 70.51177978515625,
+      "radiation_dose_relative_L1_percent": 100.3348617553711,
+      "peak_temperature_rise_error_percent": 65.90267181396484,
+      "velocity_vector_relative_L1_percent": 14.162928581237793
+    },
+    {
+      "split": "validation",
+      "arm": "dose_repeat",
+      "case": "x32_364_s0",
+      "hot_MAE_C": 64.34644317626953,
+      "temperature_MAE_C": 2.230879545211792,
+      "HRR_curve_relative_L1": 0.9963295459747314,
+      "radiation_dose_relative_L1": 0.9398910999298096,
+      "peak_error_C": 1339.99462890625,
+      "truth_peak_C": 1430.0985107421875,
+      "predicted_peak_C": 90.1039047241211,
+      "truth_mean_HRR_kW": 170.00863647460938,
+      "predicted_mean_HRR_kW": 0.623988926410675,
+      "velocity_MAE_m_s": 0.6812987923622131,
+      "flame_IoU": 0.0,
+      "minimum_C": 6.112462043762207,
+      "truth_minimum_C": 19.965900421142578,
+      "subzero_fraction": 0.0,
+      "temperature_rise_relative_L1_percent": 742.7516479492188,
+      "truth_hot_temperature_relative_L1_percent": 74.19914245605469,
+      "union_hot_temperature_relative_L1_percent": 75.13458251953125,
+      "HRR_curve_relative_L1_percent": 99.6329574584961,
+      "radiation_dose_relative_L1_percent": 93.98910522460938,
+      "peak_temperature_rise_error_percent": 95.0284423828125,
+      "velocity_vector_relative_L1_percent": 13.677139282226562
+    }
+  ]
+}
