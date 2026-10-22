@@ -3,7 +3,7 @@ import json,hashlib,shutil
 from pathlib import Path
 import yaml
 R=Path(__file__).resolve().parents[1];rows=[]
-for name,stages in [('03_vegetation',['solve_veg','solve_veg_obst']),('08_isolated_ember_ignition',['solve_ember'])]:
+for name,stages in [('03_vegetation',['solve_veg','solve_veg_obst']),('08_isolated_ember_ignition',['solve_ember']),('23_mesh_domain_pilot',['prepare'])]:
  d=yaml.safe_load((R/'experiments'/name/'dvc.lock').read_text())
  for s in stages:
   for o in d['stages'][s]['outs']:
