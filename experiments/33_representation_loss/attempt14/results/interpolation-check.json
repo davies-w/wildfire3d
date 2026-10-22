@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "device": "cpu",
+  "scope": "Synthetic operator and gradient checks, no training; CPU check does not establish CUDA determinism",
+  "rows": [
+    {
+      "shape": [
+        2,
+        2,
+        6,
+        4,
+        4
+      ],
+      "forward_max_abs": 2.384185791015625e-07,
+      "gradient_max_abs": 1.1920928955078125e-06
+    },
+    {
+      "shape": [
+        1,
+        2,
+        12,
+        8,
+        8
+      ],
+      "forward_max_abs": 2.384185791015625e-07,
+      "gradient_max_abs": 1.430511474609375e-06
+    },
+    {
+      "shape": [
+        1,
+        1,
+        24,
+        16,
+        16
+      ],
+      "forward_max_abs": 4.76837158203125e-07,
+      "gradient_max_abs": 1.430511474609375e-06
+    }
+  ]
+}

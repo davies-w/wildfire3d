@@ -1,0 +1,9 @@
+# Attempt14: equal-compute continuation with full new-geometry coverage
+
+Start both arms from the saved13expanded120checkpoint (6000refinementupdates) with identical weights/independentlycopiedoptimizer. Continue120 versus expand360 receive12000additionalupdates with fixedphysical_low loss. All360existing primary-seed newgeometrytrainingconfigs versus reference120;32validationconfigs40trajectories. Legacy40training/8validation excluded. Oneprimaryseedpertrainingconfiguration; validationreplicas averagedwithinconfiguration. Morecoverage means fewerpasses/config atsameupdatebudget. Modelalreadypretrained onexp32; not training unseen trees fromscratch. Previousvalidationexamined; no fresh/pristine/IIDtest claim.
+
+13coverage result at6000updates: hotT56.34→46.99%,HRR73.39→67.98%,rad77.76→74.20%,wholevolume228.41→228.44% for12→120coverage. Broadertraining improvedfiremetrics but notbackground. This justifies boundedcoveragecontinuation, not claims that360willimprove. Evaluate all400trajectories fullhistories, trainreference120/additional240/val32 and weakfires/seedspread. Preserveallmetrics/tradeoffs.
+
+Same deterministicseparable interpolation and optimizerimmutabilitychecks;11repeatedarmverifiedbitwise. No newFDS orlaptoptraining. Generic3mwidecones4/6/8/10mabove2m1600particles,.5m24x16x16m180s1500C20s artificialsource,no trunks/buildings/embers,6gasfieldsnotgroundtemperature;no physicalvalidation.Threeframe lossnotrecurrence/fullhistorydose.
+
+Reserve4.50USD (1.60compute,2.90ancillary/cleanup), cumulative75cap. RegularL4us-central1-c,100GBbootdisk for400decodedcases. Expected60–85min afterallocation includingpreprocess; cloud20minqueue/90mintask/95minVM/120minabsolute limits.500updateuploadedcheckpoints, newprefix/reservationrequiredforinterruptedresume. No blindretry. ExplicitDVCinputs/submit/collect/analysis, archiveallcode/checkpoints/results.

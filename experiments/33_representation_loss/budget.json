@@ -1,7 +1,7 @@
 {
   "authorized_usd": 75,
   "authorization": "User increased cumulative cap from $35 to $75; archive code/data/models first, then continue model experimentation",
-  "reserved_usd": 58.1,
+  "reserved_usd": 62.6,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -126,12 +126,20 @@
       "completed_unix": 1792660238.611357
     },
     "pilot13": {
-      "state": "submitted",
+      "state": "terminal_cleanup_verified",
       "allowance_usd": 3.0,
       "reserved_unix": 1792660521.666187,
       "compute_allowance_usd": 1.2,
       "ancillary_cleanup_allowance_usd": 1.8,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu33-pilot13/executions/bb8b8b9f-7ac0-4fca-aceb-19c4cbafa7ca"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu33-pilot13/executions/bb8b8b9f-7ac0-4fca-aceb-19c4cbafa7ca",
+      "completed_unix": 1792683969.0803049
+    },
+    "pilot14": {
+      "state": "reserved_before_upload",
+      "allowance_usd": 4.5,
+      "reserved_unix": 1792684149.961304,
+      "compute_allowance_usd": 1.6,
+      "ancillary_cleanup_allowance_usd": 2.9
     }
   },
   "recycle_reservations": false,

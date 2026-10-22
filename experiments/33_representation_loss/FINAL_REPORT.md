@@ -37,3 +37,7 @@ Broader frozen evaluation (32newgeometryvalidationconfigs,40trajectories; averag
 | Physical background penalty |56.11|72.99|75.61|265.93|
 
 The physical penalty improves temperature but sacrifices radiation relative to the originalsavedmodel. Not an overallwinner, and errorsremainlarge. Dataarepreviousdevelopment, notfreshindependenttest; legacy8valexcluded. Fourpreselectedanimations showmax-y gasT/HRR projections withsharednonlinearscales, notflamegeometry. L4predictionmedian0.22s/180s trajectory excludespreprocessing/metrics. Attempt13tests12vs120refinementtrainingcoverage atequal6000updates; reserve58.10/75 cumulative, invoiceunknown. Allpriorraw/code/checkpoints retained; no physicalvalidation.
+
+## Training coverage result13
+
+Equal6000refinementupdates on12versus120configurations, fromidenticalweights/optimizer, yieldvalidationmedianhotT56.34→46.99%,HRR73.39→67.98%,radiation77.76→74.20%,wholevolumeT228.41→228.44%. CombustionIoU.354→.403,velocityerror15.28→16.17% worsens. Broadercoveragehelpsfiremetrics,notalloutputs. Moreconfigurationcoverageusesfewerepochs atfixedcompute; modelalreadypretrainedonexp32data. Full32configurationvalidation stilldevelopment,notindependenttest.14testscontinued120versus360at12kmoreupdates, fixedlossandcheckpoint, bounded90mintask withuploadedcheckpoints. Reservations62.60/75,notinvoicespend.

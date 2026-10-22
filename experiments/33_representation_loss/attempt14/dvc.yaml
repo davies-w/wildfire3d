@@ -1,0 +1,85 @@
+stages:
+  package:
+    cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python prepare_pilot.py
+    deps:
+    - worker.py
+    - coverage-plan.json
+    - deterministic_interpolation.py
+    - validate_interpolation.py
+    - original_cnn.py
+    - worker_base.py
+    - matched_losses.py
+    - baseline_losses.py
+    - models.py
+    - losses.py
+    - prepare_pilot.py
+    - validate.py
+    - cases.json
+    - groups.json
+    - data/resume
+    - data/geometries.npz
+    - data/initial_snapshot.pt
+    outs:
+    - data/pilot-overlay.tar
+    - results/input-freeze.json:
+        cache: false
+    - results/preflight.json:
+        cache: false
+    - gpu-workflow.yaml:
+        cache: false
+  cloud_submit:
+    cmd: ../../../.venv/bin/python launch.py
+    frozen: false
+    deps:
+    - launch.py
+    - cloud.py
+    - gpu-workflow.yaml
+    - data/pilot-overlay.tar
+    metrics:
+    - results/execution.json:
+        cache: false
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - collect.py
+    - cloud.py
+    - results/execution.json
+    outs:
+    - data/collected
+    metrics:
+    - results/cleanup.json:
+        cache: false
+    - results/permission-removed.json:
+        cache: false
+  resume_inputs:
+    cmd: ../../../.venv/bin/python restore_inputs.py
+    deps:
+    - restore_inputs.py
+    - ../attempt13/data/collected/expanded120-checkpoint-6000.pt
+    outs:
+    - data/resume
+  coverage_inputs:
+    cmd: ../../../.venv/bin/python setup_coverage.py
+    deps:
+    - setup_coverage.py
+    - ../../32_tree_expansion/development.json
+    - ../../32_tree_expansion/groups.json
+    - ../../32_tree_expansion/data/geometries.npz
+    - ../attempt13/coverage-plan.json
+    outs:
+    - cases.json:
+        cache: false
+    - groups.json:
+        cache: false
+    - coverage-plan.json:
+        cache: false
+    - data/geometries.npz
+  coverage_analysis:
+    cmd: ../../../.venv/bin/python analyze_coverage.py
+    deps:
+    - analyze_coverage.py
+    - coverage-plan.json
+    - data/collected
+    metrics:
+    - results/coverage-summary.json:
+        cache: false
