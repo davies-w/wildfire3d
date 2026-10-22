@@ -1,0 +1,9 @@
+# Experiment35 attempt04: single-trajectory optimization continuation
+
+Compare constant learning rate1e-5 with cosine restart3e-4 to1e-5, each80 additional epochs, from identical attempt03 single epoch80 weights and optimizer. Same loss, training case x32_033_s0, normalization from original8TRAIN configurations, and shuffled nonoverlapping3-frame batch order (seed3501+80+epoch). Each epoch visits all91frames once. All32 development validation configurations40trajectories evaluated EVERYepoch. Not recurrence or a pristine test. No architecture or auxiliary-loss changes. Initial model/optimizer tensor hashes and initial full-history rows must match; learning-rate metadata intentionally differs after the shared restore. Resume preserves each arm's scheduler, RNG, schedule position and aggregate.
+
+Question: did decay to a tiny learning rate prematurely stall fitting? A restart improving fit supports an optimization explanation; failure to improve does not prove a capacity limit. Prespecified training normalized MAE target0.05 remains distinct from physical fidelity. Report all physical outputs and late curves, not just aggregate loss.
+
+Fully reserve4.50USD before upload/compute: cumulative88.10 of100 including prior failures/archive, invoice unknown. No laptop training/newFDS. Estimated40–70minutes;90min task,95minVM,120minabsolute,20minqueue limits. Checkpoint each epoch/every250updates; preserve interruption evidence. No blind retries. Fresh SHAverified copies of all48existing trajectories avoid bucket age1expiry; policy unchanged. Collector verifies job/VM/disks empty and removes exact temporary read grant.
+
+Simulation scope: generic3mwide conical crowns4/6/8/10m above2m,1600weightedparticles,0.5m24x16x16m domain180s, artificial1500C20s source; no trunks/buildings/embers. Six gasfields, not solid ground temperature. Snapshot model uses geometry summaries, not evolving fuel state. No physical validation claim.

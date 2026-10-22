@@ -1,0 +1,167 @@
+schema: '2.0'
+stages:
+  inputs:
+    cmd: ../../../.venv/bin/python restore_inputs.py
+    deps:
+    - path: ../attempt03/cases.json
+      hash: md5
+      md5: 4e86a9cceb3cfd183386a0080d7036cb
+      size: 39975
+    - path: ../attempt03/data/collected/single-epoch-080.pt
+      hash: md5
+      md5: 7c1912dc2343bc78c76e67bb83abfc6d
+      size: 4395712
+    - path: ../attempt03/data/geometries.npz
+      hash: md5
+      md5: 9d35d8647048a1460d0780276dcd4c5d
+      size: 100616
+    - path: ../attempt03/groups.json
+      hash: md5
+      md5: 6579d72f7441c262a6a1cd66f9c6a6da
+      size: 3765
+    - path: restore_inputs.py
+      hash: md5
+      md5: de3cb49db7c9eb7b6092a5be4338a67d
+      size: 314
+    outs:
+    - path: cases.json
+      hash: md5
+      md5: 4e86a9cceb3cfd183386a0080d7036cb
+      size: 39975
+    - path: data/geometries.npz
+      hash: md5
+      md5: 9d35d8647048a1460d0780276dcd4c5d
+      size: 100616
+    - path: data/initial/single.pt
+      hash: md5
+      md5: 7c1912dc2343bc78c76e67bb83abfc6d
+      size: 4395712
+    - path: groups.json
+      hash: md5
+      md5: 6579d72f7441c262a6a1cd66f9c6a6da
+      size: 3765
+  package:
+    cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python 
+      prepare_pilot.py
+    deps:
+    - path: ../../32_tree_expansion/gpu-workflow.yaml
+      hash: md5
+      md5: 0ad9e39f9c2e98445d0ee17ddc6e2f13
+      size: 8827
+    - path: cases.json
+      hash: md5
+      md5: 4e86a9cceb3cfd183386a0080d7036cb
+      size: 39975
+    - path: cloud.py
+      hash: md5
+      md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
+      size: 597
+    - path: collect.py
+      hash: md5
+      md5: 4cac368d4dad108d2c0b23218ef948ff
+      size: 2753
+    - path: coverage-plan.json
+      hash: md5
+      md5: 57840c10c1fbcb713c10169b6a3c4675
+      size: 1114
+    - path: data/geometries.npz
+      hash: md5
+      md5: 9d35d8647048a1460d0780276dcd4c5d
+      size: 100616
+    - path: data/initial/single.pt
+      hash: md5
+      md5: 7c1912dc2343bc78c76e67bb83abfc6d
+      size: 4395712
+    - path: deterministic_interpolation.py
+      hash: md5
+      md5: 613f23bb7fbdb0c9b3cd4da1f0b5252b
+      size: 810
+    - path: diagnostic_model.py
+      hash: md5
+      md5: 449cea5fab6e31549689b3738dfdf664
+      size: 546
+    - path: fields.py
+      hash: md5
+      md5: 8f5a27bcdc1dfcb4e602e54b23dea08f
+      size: 2884
+    - path: fortran_records.py
+      hash: md5
+      md5: 47c5b62759ee16bfc7cfe36934e16ac2
+      size: 711
+    - path: geometry_model.py
+      hash: md5
+      md5: 39c38847574521ce0d07eb9a70b3aff5
+      size: 1252
+    - path: groups.json
+      hash: md5
+      md5: 6579d72f7441c262a6a1cd66f9c6a6da
+      size: 3765
+    - path: input-sources.json
+      hash: md5
+      md5: 517132d27a8ef7d54e9e33a7e3d205d0
+      size: 3026
+    - path: launch.py
+      hash: md5
+      md5: 4485f634f8056264e33bb23a2558f379
+      size: 4796
+    - path: material_reader.py
+      hash: md5
+      md5: abfdcb198f6ca238a558e65d2f3aebca
+      size: 2709
+    - path: original_cnn.py
+      hash: md5
+      md5: fda0f39f0d17ad85497804aa2fb02090
+      size: 6325
+    - path: prepare_pilot.py
+      hash: md5
+      md5: 5560256d84930b04b51d4c5ca66ba62d
+      size: 3585
+    - path: preprocess_cloud.py
+      hash: md5
+      md5: 72ad078fb466cfe94272926a17999e60
+      size: 3382
+    - path: replica-time-audit.json
+      hash: md5
+      md5: 4089b16e8067c579fc62a2f9a8e5f923
+      size: 2603
+    - path: restore-manifest.json
+      hash: md5
+      md5: 510ecb595dff49ac7c9d062e7b9829f3
+      size: 23912
+    - path: runtime.py
+      hash: md5
+      md5: 97db7e1b9b83777ebb3dac4bfc90b6d9
+      size: 987
+    - path: snapshot_evaluation.py
+      hash: md5
+      md5: 07aefc37c0aaf34a7ca81b1bf57dc61e
+      size: 5367
+    - path: validate.py
+      hash: md5
+      md5: 0afb256324d84d5ff0bb2c64b6922877
+      size: 1989
+    - path: validate_interpolation.py
+      hash: md5
+      md5: 4e689df4978afb5dd18e224e7d567ecf
+      size: 1147
+    - path: worker.py
+      hash: md5
+      md5: 81b1df926bd3ffc83ba444d5454a2ba1
+      size: 12808
+    outs:
+    - path: data/pilot-overlay.tar
+      hash: md5
+      md5: 688066fe61fc2e87ee0381271089f944
+      size: 4689920
+    - path: gpu-workflow.yaml
+      hash: md5
+      md5: ba8db7ea03c731c06e6bf8852e01ebe0
+      size: 8699
+    - path: results/input-freeze.json
+      hash: md5
+      md5: 629cec5296e2df2ca404f26702e4c686
+      size: 2523
+    - path: results/preflight.json
+      hash: md5
+      md5: f2642c541293504f76f47b75340dbbab
+      size: 230
