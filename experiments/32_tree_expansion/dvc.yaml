@@ -304,3 +304,11 @@ stages:
     outs:
     - data/models/geometry_snapshot.pt
     - data/models/hybrid.pt
+  verify_archive:
+    cmd: ../../.venv/bin/python verify_archive.py
+    deps:
+    - verify_archive.py
+    - data/cloud_archive
+    metrics:
+    - results/cloud-archive-verified.json:
+        cache: false

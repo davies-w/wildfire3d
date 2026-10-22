@@ -876,3 +876,45 @@ stages:
       hash: md5
       md5: 0539c18867ae5a376206f08ff49210d5
       size: 2718682
+  archive_cloud:
+    cmd: ../../.venv/bin/python archive_cloud.py
+    deps:
+    - path: archive_cloud.py
+      hash: md5
+      md5: bec37724d28d5e6fff154bcbbc4d7cfb
+      size: 689
+    - path: groups.json
+      hash: md5
+      md5: aea62e9f1f6573349e01221121b69e7b
+      size: 14993
+    - path: results/prediction-freeze.json
+      hash: md5
+      md5: 6b76eb27c012453510c28dcd91d4a4e3
+      size: 33622
+    outs:
+    - path: data/cloud_archive
+      hash: md5
+      md5: adcddd017f722e3ea900f9c0a00521d3.dir
+      size: 57485004436
+      nfiles: 1174
+    - path: results/cloud-archive-collected.json
+      hash: md5
+      md5: 700928d024aeb5a9df902fad3682b333
+      size: 164
+  verify_archive:
+    cmd: ../../.venv/bin/python verify_archive.py
+    deps:
+    - path: data/cloud_archive
+      hash: md5
+      md5: adcddd017f722e3ea900f9c0a00521d3.dir
+      size: 57485004436
+      nfiles: 1174
+    - path: verify_archive.py
+      hash: md5
+      md5: 96fd254565992e685b8eec6b9efd348d
+      size: 824
+    outs:
+    - path: results/cloud-archive-verified.json
+      hash: md5
+      md5: 40225897cb0c592888cea0ef8f59eff3
+      size: 70649
