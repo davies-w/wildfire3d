@@ -1,0 +1,5 @@
+{
+  "workflow_state": "SUCCEEDED",
+  "error": "Traceback (most recent call last):\n  File \"/tmp/study/worker.py\", line 111, in <module>\n    try:main()\n        ^^^^^^\n  File \"/tmp/study/worker.py\", line 39, in main\n    a,t=arrays[cc[0]['case']];b,tb=arrays[cc[1]['case']];assert np.array_equal(t,tb);pairs.append(dict(configuration=cfg,cases=[c['case'] for c in cc],metrics=metrics(np.array(a),np.array(b),t)))\n                                                                ^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "cleanup_verified": true
+}
