@@ -1,0 +1,42 @@
+stages:
+  package:
+    cmd: ../../../.venv/bin/python package.py
+    deps:
+    - package.py
+    - cloud_worker.py
+    - evaluate.py
+    - ../models.py
+    - ../original_cnn.py
+    - ../previous_loss.py
+    - ../cases.json
+    - ../data/fields
+    - ../data/models/previous.pt
+    - ../data/models/strength.pt
+    - ../data/models/bounded.pt
+    outs:
+    - data/inputs.tar
+    metrics:
+    - results/input-hashes.json:
+        cache: false
+  collect:
+    cmd: ../../../.venv/bin/python collect02.py --once
+    deps:
+    - collect02.py
+    - results/execution02.json
+    outs:
+    - data/train01
+    metrics:
+    - results/cleanup.json:
+        cache: false
+  ingest:
+    cmd: ../../../.venv/bin/python ingest.py
+    deps:
+    - ingest.py
+    - data/train01
+    - results/cleanup.json
+    outs:
+    - data/adopted
+    - data/prior-local-results
+    metrics:
+    - results/adopted.json:
+        cache: false

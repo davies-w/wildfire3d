@@ -156,3 +156,56 @@ stages:
       hash: md5
       md5: 37f4e2ba3685d9c7637e8220bc3facf2
       size: 807
+  cloud_submit:
+    cmd: ../../.venv/bin/python launch.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: dd30d088ef9752c524c868ccb82482d3
+      size: 498
+    - path: data/pilot-overlay.tar
+      hash: md5
+      md5: 365b0d2974c9b2d00888399cd926bf9f
+      size: 819200
+    - path: gpu-workflow.yaml
+      hash: md5
+      md5: 792a270951370cee382201ebc28d5b3e
+      size: 8492
+    - path: launch.py
+      hash: md5
+      md5: 1312bade721a95a0d0a1df9db9c22160
+      size: 2933
+    outs:
+    - path: results/execution.json
+      hash: md5
+      md5: d9079ed4ad229cb753a831e1d427b5be
+      size: 332
+  cloud_collect:
+    cmd: ../../.venv/bin/python collect.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: dd30d088ef9752c524c868ccb82482d3
+      size: 498
+    - path: collect.py
+      hash: md5
+      md5: c7f8b95eaae4bdecd02b17b1e9d6b1b4
+      size: 2399
+    - path: results/execution.json
+      hash: md5
+      md5: d9079ed4ad229cb753a831e1d427b5be
+      size: 332
+    outs:
+    - path: data/collected
+      hash: md5
+      md5: e6f20a53929af58854a7b0cdbf6ea0c6.dir
+      size: 54456979
+      nfiles: 27
+    - path: results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: results/permission-removed.json
+      hash: md5
+      md5: ad8499e2e63c8e8f9908d4447392f916
+      size: 56

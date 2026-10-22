@@ -1,0 +1,25 @@
+{
+  "authorized_usd": 1,
+  "reserved_usd": 1,
+  "attempt": "gpu29-test01",
+  "reserved_unix": 1792534585.541286,
+  "state": "terminal_cleanup_verified",
+  "published_reference_usd_per_hour": 0.402748,
+  "conservative_compute_rate_usd_per_hour": 0.8,
+  "queue_limit_s": 1800,
+  "vm_age_limit_s": 1200,
+  "overall_deadline_s": 3000,
+  "compute_envelope_50min_usd": 0.6666666666666666,
+  "ancillary_cleanup_allowance_usd": 0.33333333333333337,
+  "retries": 0,
+  "recycle_reservations": false,
+  "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu29-test01/executions/9e2f8954-cfb9-4fd0-9cfe-04935c5909fc",
+  "accounting_note": "Full $1 overall hold retained. Both failures ended before Python and VM/disk deletion verified within five minutes each; assign conservative $0.20 allowances each (not invoice spend). Explicit final correction reserves remaining $0.60 with shorter deadlines. Original attempt reservation records retained for audit; no automatic retry.",
+  "attempt_allowances_usd": {
+    "gpu29-test01": 0.2,
+    "gpu29-test02": 0.2,
+    "gpu29-test03": 0.6
+  },
+  "original_full_test_reservation_usd": 1,
+  "completion_unix": 1792534910.871449
+}

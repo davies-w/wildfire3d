@@ -285,3 +285,22 @@ stages:
     metrics:
     - results/final-summary.json:
         cache: false
+  archive_cloud:
+    cmd: ../../.venv/bin/python archive_cloud.py
+    deps:
+    - archive_cloud.py
+    - groups.json
+    - results/prediction-freeze.json
+    outs:
+    - data/cloud_archive
+    metrics:
+    - results/cloud-archive-collected.json:
+        cache: false
+  extract_trained_models:
+    cmd: ../../.venv/bin/python extract_trained_models.py
+    deps:
+    - extract_trained_models.py
+    - data/gpu/cloud/outputs.tar
+    outs:
+    - data/models/geometry_snapshot.pt
+    - data/models/hybrid.pt

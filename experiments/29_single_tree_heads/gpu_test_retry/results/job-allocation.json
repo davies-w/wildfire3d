@@ -1,0 +1,70 @@
+{
+  "allocationPolicy": {
+    "instances": [
+      {
+        "installGpuDrivers": true,
+        "policy": {
+          "bootDisk": {
+            "sizeGb": "60",
+            "type": "pd-balanced"
+          },
+          "machineType": "g2-standard-4",
+          "provisioningModel": "SPOT"
+        }
+      }
+    ],
+    "labels": {
+      "batch-job-id": "fds-gpu29-test02",
+      "trial_id": "gpu29-test02"
+    },
+    "location": {
+      "allowedLocations": [
+        "regions/us-central1",
+        "zones/us-central1-a"
+      ]
+    },
+    "network": {
+      "networkInterfaces": [
+        {
+          "network": "projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+          "subnetwork": "projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial"
+        }
+      ]
+    },
+    "serviceAccount": {
+      "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com"
+    }
+  },
+  "createTime": "2026-10-20T22:21:44.263313511Z",
+  "status": {
+    "runDuration": "0s",
+    "state": "SCHEDULED",
+    "statusEvents": [
+      {
+        "description": "Job state is set from QUEUED to SCHEDULED for job projects/587909259768/locations/us-central1/jobs/fds-gpu29-test02.",
+        "eventTime": "2026-10-20T22:21:52.250208753Z",
+        "type": "STATUS_CHANGED"
+      }
+    ],
+    "taskGroups": {
+      "group0": {
+        "counts": {
+          "PENDING": "1"
+        },
+        "instances": [
+          {
+            "bootDisk": {
+              "image": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261001-00-p01",
+              "sizeGb": "60",
+              "type": "pd-balanced"
+            },
+            "machineType": "g2-standard-4",
+            "provisioningModel": "SPOT",
+            "taskPack": "1"
+          }
+        ]
+      }
+    }
+  },
+  "uid": "fds-gpu29-test02-1dba7d1f-1327-4590-80"
+}

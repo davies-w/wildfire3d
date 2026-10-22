@@ -1,0 +1,21 @@
+{
+  "authorized_scope": "User requested full training migration to cloud",
+  "cap_usd": 1,
+  "reserved_usd": 1,
+  "reserved_unix": 1792536412.603827,
+  "state": "terminal_cleanup_verified",
+  "compute_rate_envelope_usd_hour": 0.8,
+  "absolute_deadline_s": 3000,
+  "queue_limit_s": 1200,
+  "vm_age_limit_s": 1800,
+  "task_limit_s": 1800,
+  "ancillary_allowance_usd": 0.13333333333333341,
+  "automatic_retries": 0,
+  "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu29-train02/executions/90c6961d-9f49-4dd7-a86c-cdfb3911d194",
+  "completion_unix": 1792537522.858047,
+  "attempt_allowances_usd": {
+    "train01_failed_startup": 0.2,
+    "train02": 0.8
+  },
+  "correction_note": "Original $1 total hold retained; first VM deleted within five minutes before any training. $0.20 conservative retired allowance, $0.80 for explicitly corrected command encoding, no automatic retry."
+}

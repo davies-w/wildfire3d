@@ -62,3 +62,81 @@ stages:
       hash: md5
       md5: 7f9868baa4a9a3ace217872751817af7
       size: 228
+  cloud_submit:
+    cmd: ../../../.venv/bin/python launch.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 6cf56f0a5e2a0b583853fb7923874100
+      size: 565
+    - path: data/pilot-overlay.tar
+      hash: md5
+      md5: cc535867462bd97d41a532b2816e90ca
+      size: 9789440
+    - path: gpu-workflow.yaml
+      hash: md5
+      md5: 4cd74295406de34bd634fa6875998ea5
+      size: 8492
+    - path: launch.py
+      hash: md5
+      md5: 8f34e1d4ef0e61ff45c989f29264b583
+      size: 2940
+    outs:
+    - path: results/execution.json
+      hash: md5
+      md5: ecbca7c43e691d7be12a46dfd01786f2
+      size: 332
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 6cf56f0a5e2a0b583853fb7923874100
+      size: 565
+    - path: collect.py
+      hash: md5
+      md5: 80e6c0fdd2e209b7a3bfb31ab5bedb91
+      size: 2406
+    - path: results/execution.json
+      hash: md5
+      md5: ecbca7c43e691d7be12a46dfd01786f2
+      size: 332
+    outs:
+    - path: data/collected
+      hash: md5
+      md5: 95d73dba303d49dad8c4874c4d8267f3.dir
+      size: 77041873
+      nfiles: 31
+    - path: results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: results/permission-removed.json
+      hash: md5
+      md5: 0ada3066782f64369e1de2d022e93885
+      size: 56
+  resume_inputs:
+    cmd: ../../../.venv/bin/python restore_inputs.py
+    deps:
+    - path: ../attempt02/data/collected/current-checkpoint-6000.pt
+      hash: md5
+      md5: 33a69fa0c023fe7becb692d650c18059
+      size: 2016000
+    - path: ../data/collected/loss_only-checkpoint-600.pt
+      hash: md5
+      md5: 33a6f802f579c5a5dac5623a92d2ad1f
+      size: 2015808
+    - path: ../data/collected/spatial_heads-checkpoint-600.pt
+      hash: md5
+      md5: 0ed167b584cdba44f25793e95254aab0
+      size: 4917612
+    - path: restore_inputs.py
+      hash: md5
+      md5: 75f6954f2efef739db9f150f7a07f56b
+      size: 386
+    outs:
+    - path: data/resume
+      hash: md5
+      md5: c8635d724214a8823625bb84f488c107.dir
+      size: 8949420
+      nfiles: 3

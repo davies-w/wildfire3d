@@ -1,0 +1,148 @@
+stages:
+  reuse:
+    cmd: ../../.venv/bin/python setup.py
+    frozen: true
+    deps:
+    - setup.py
+    - ../28_single_tree_repair/results/prediction-freeze.json
+    outs:
+    - data/fields
+    - data/models/previous.pt
+    metrics:
+    - results/reuse.json:
+        cache: false
+  targets:
+    cmd: ../../.venv/bin/python prepare_targets.py
+    deps:
+    - prepare_targets.py
+    - data/fields
+    - cases.json
+    outs:
+    - data/scalar_targets.npz
+    - data/ambient_radiation.npy
+    metrics:
+    - results/temperature-bound.json:
+        cache: false
+  strength:
+    cmd: ../../.venv/bin/python train_strength.py
+    deps:
+    - train_strength.py
+    - models.py
+    - data/scalar_targets.npz
+    outs:
+    - data/models/strength.pt
+    metrics:
+    - results/strength-training.json:
+        cache: false
+  bounded:
+    cmd: ../../.venv/bin/python train.py bounded --steps 3200
+    deps:
+    - train.py
+    - models.py
+    - original_cnn.py
+    - previous_loss.py
+    - data/fields
+    - cases.json
+    - data/models/previous.pt
+    - results/temperature-bound.json
+    outs:
+    - data/models/bounded.pt
+    metrics:
+    - results/bounded-training.json:
+        cache: false
+  heads:
+    cmd: ../../.venv/bin/python train.py heads --steps 3200
+    deps:
+    - train.py
+    - models.py
+    - original_cnn.py
+    - previous_loss.py
+    - data/fields
+    - cases.json
+    - data/models/previous.pt
+    - data/models/strength.pt
+    - results/temperature-bound.json
+    outs:
+    - data/models/heads.pt
+    metrics:
+    - results/heads-training.json:
+        cache: false
+  evaluate:
+    cmd: ../../.venv/bin/python evaluate.py previous && ../../.venv/bin/python evaluate.py
+      bound_only && ../../.venv/bin/python evaluate.py bounded && ../../.venv/bin/python
+      evaluate.py heads && ../../.venv/bin/python evaluate.py interpolation && ../../.venv/bin/python
+      evaluate.py strength_only
+    deps:
+    - evaluate.py
+    - models.py
+    - original_cnn.py
+    - data/fields
+    - cases.json
+    - data/models/previous.pt
+    - data/models/bounded.pt
+    - data/models/heads.pt
+    outs:
+    - data/validation_predictions
+    metrics:
+    - results/previous-evaluation.json:
+        cache: false
+    - results/bound_only-evaluation.json:
+        cache: false
+    - results/bounded-evaluation.json:
+        cache: false
+    - results/heads-evaluation.json:
+        cache: false
+    - results/interpolation-evaluation.json:
+        cache: false
+    - results/strength_only-evaluation.json:
+        cache: false
+  checks:
+    cmd: ../../.venv/bin/python checks.py && ../../.venv/bin/python check_strength.py
+    deps:
+    - checks.py
+    - check_strength.py
+    - models.py
+    - data/models/previous.pt
+    - data/models/strength.pt
+    - data/scalar_targets.npz
+    - results/temperature-bound.json
+    metrics:
+    - results/structural-checks.json:
+        cache: false
+    - results/strength-check.json:
+        cache: false
+  report:
+    cmd: ../../.venv/bin/python report.py && ../../.venv/bin/python animate.py
+    deps:
+    - report.py
+    - animate.py
+    - cases.json
+    - data/fields
+    - data/validation_predictions
+    - results/previous-evaluation.json
+    - results/bound_only-evaluation.json
+    - results/bounded-evaluation.json
+    - results/heads-evaluation.json
+    - results/interpolation-evaluation.json
+    - results/strength_only-evaluation.json
+    outs:
+    - results/visuals:
+        cache: false
+    metrics:
+    - results/comparison.json:
+        cache: false
+  benchmark:
+    cmd: ../../.venv/bin/python benchmark.py
+    deps:
+    - benchmark.py
+    - models.py
+    - original_cnn.py
+    - cases.json
+    - data/models/previous.pt
+    - data/models/strength.pt
+    - data/models/bounded.pt
+    - data/models/heads.pt
+    - results/temperature-bound.json
+    metrics:
+    - results/benchmark.json:
+        cache: false

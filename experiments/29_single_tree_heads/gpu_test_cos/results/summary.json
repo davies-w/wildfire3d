@@ -1,0 +1,33 @@
+{
+  "benchmark": {
+    "gpu": "NVIDIA L4",
+    "torch": "2.5.1+cu124",
+    "cuda": "12.4",
+    "training_steps": 100,
+    "training_seconds_including_four_checkpoint_uploads": 2.603229208999977,
+    "seconds_per_step_including_checkpoints": 0.02603229208999977,
+    "inference_91_frames_seconds": [
+      0.1714072270000031,
+      0.1647020290000114,
+      0.164285652999979,
+      0.16596214199998371
+    ],
+    "inference_median_s": 0.1647020290000114,
+    "peak_gpu_allocated_bytes": 81289216,
+    "checkpoint_resume_max_weight_difference": 7.450580596923828e-09,
+    "loss_first": 11.678025245666504,
+    "loss_last": 9.063009262084961,
+    "target_note": "Two training frames spatially subsampled by 4 then nearest-upsampled to full output dimensions; fresh model weights; hardware/recovery test only. No validation/test data. Not a fitted scientific model."
+  },
+  "job_state": "SUCCEEDED",
+  "cleanup_verified": true,
+  "checkpoints_sha256": {
+    "checkpoint-075.pt": "a1ba6774263e0a5a5a308cf9cc81c49540c0a29797ae10d50ad17485d02706bb",
+    "checkpoint-025.pt": "8cce0c6e690be78a44a90052b3506656f3cdc39e8ae5b0cd440694bf4ed79c12",
+    "checkpoint-100.pt": "19a344f13645d9f11a12060aa2758cc07dc93e6da576794928a8a5515118537b",
+    "checkpoint-050.pt": "69ba146ba88c14da7aefa7770c89876b4fc0c18e1a52786149d1f7597d81ca7a"
+  },
+  "total_authorized_usd": 1,
+  "overall_allowance_held_usd": 1,
+  "cost_note": "No invoice measured. Three VM lifetimes each under five minutes imply less than $0.101 compute at the published $0.402748/hour reference, excluding disks, networking, storage and workflow charges. Overall $1 allowance remains held."
+}

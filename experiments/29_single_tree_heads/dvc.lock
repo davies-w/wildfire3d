@@ -1,0 +1,166 @@
+schema: '2.0'
+stages:
+  reuse:
+    cmd: ../../.venv/bin/python setup.py
+    deps:
+    - path: ../28_single_tree_repair/results/prediction-freeze.json
+      hash: md5
+      md5: 66a854a9923c0ba74710214b69b6d371
+      size: 2961
+    - path: setup.py
+      hash: md5
+      md5: 075d9fd677f96296149bef1101c0feb8
+      size: 1183
+    outs:
+    - path: data/fields
+      hash: md5
+      md5: 43197ef7a21361c668a5b66f804fd241.dir
+      size: 4079282392
+      nfiles: 114
+    - path: data/models/previous.pt
+      hash: md5
+      md5: bdc21e483730d7087633c0a138d501e5
+      size: 668177
+    - path: results/reuse.json
+      hash: md5
+      md5: b6addea3ee0933c1226f45e55c521fb9
+      size: 19606
+  targets:
+    cmd: ../../.venv/bin/python prepare_targets.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 482809e3a88c8b1fdb095edd7a14e651
+      size: 22294
+    - path: data/fields
+      hash: md5
+      md5: 43197ef7a21361c668a5b66f804fd241.dir
+      size: 4079282392
+      nfiles: 114
+    - path: prepare_targets.py
+      hash: md5
+      md5: cb6d8dc81aa4d1681312cfa5214974b0
+      size: 973
+    outs:
+    - path: data/ambient_radiation.npy
+      hash: md5
+      md5: b1be04beb73a315426dfb3cd99bd1f15
+      size: 196736
+    - path: data/scalar_targets.npz
+      hash: md5
+      md5: fad49e8d13e09e2975993832bd3a2e09
+      size: 263546
+    - path: results/temperature-bound.json
+      hash: md5
+      md5: 4d9335bc02b56f9b22e1179cf61539ca
+      size: 253
+  strength:
+    cmd: ../../.venv/bin/python train_strength.py
+    deps:
+    - path: data/scalar_targets.npz
+      hash: md5
+      md5: fad49e8d13e09e2975993832bd3a2e09
+      size: 263546
+    - path: models.py
+      hash: md5
+      md5: ff307db1b2d1ee7b7c9f2e44a6a5ddde
+      size: 2229
+    - path: train_strength.py
+      hash: md5
+      md5: bc5a2579ad02323b159205cbe4bf97b3
+      size: 1270
+    outs:
+    - path: data/models/strength.pt
+      hash: md5
+      md5: 351b571f4c42c3b6faa40c45a102dfa2
+      size: 29022
+    - path: results/strength-training.json
+      hash: md5
+      md5: cfbe2a4aecc75666afd3e49f0b474d0f
+      size: 1399
+  bounded:
+    cmd: ../../.venv/bin/python train.py bounded --steps 3200
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 482809e3a88c8b1fdb095edd7a14e651
+      size: 22294
+    - path: data/fields
+      hash: md5
+      md5: 43197ef7a21361c668a5b66f804fd241.dir
+      size: 4079282392
+      nfiles: 114
+    - path: data/models/previous.pt
+      hash: md5
+      md5: bdc21e483730d7087633c0a138d501e5
+      size: 668177
+    - path: models.py
+      hash: md5
+      md5: ff307db1b2d1ee7b7c9f2e44a6a5ddde
+      size: 2229
+    - path: original_cnn.py
+      hash: md5
+      md5: 089a7510f25209a7e15fecf3485bd75b
+      size: 6317
+    - path: previous_loss.py
+      hash: md5
+      md5: f42c3d197f153a928b2e9ded7352cd62
+      size: 3701
+    - path: results/temperature-bound.json
+      hash: md5
+      md5: 4d9335bc02b56f9b22e1179cf61539ca
+      size: 253
+    - path: train.py
+      hash: md5
+      md5: 4f6252ae24aa39c402e0d8a061ea4686
+      size: 2709
+    outs:
+    - path: data/models/bounded.pt
+      hash: md5
+      md5: 9463b3f9285172f483a3bf3a09ab387c
+      size: 667964
+    - path: results/bounded-training.json
+      hash: md5
+      md5: 80f4d9e981ec546853cc4025312c3fdd
+      size: 1447
+  checks:
+    cmd: ../../.venv/bin/python checks.py && ../../.venv/bin/python 
+      check_strength.py
+    deps:
+    - path: check_strength.py
+      hash: md5
+      md5: 519d019516c122bffd2a9df420dc7a18
+      size: 691
+    - path: checks.py
+      hash: md5
+      md5: 4a6caf387aa99aad2b5095ad15174734
+      size: 1179
+    - path: data/models/previous.pt
+      hash: md5
+      md5: bdc21e483730d7087633c0a138d501e5
+      size: 668177
+    - path: data/models/strength.pt
+      hash: md5
+      md5: 351b571f4c42c3b6faa40c45a102dfa2
+      size: 29022
+    - path: data/scalar_targets.npz
+      hash: md5
+      md5: fad49e8d13e09e2975993832bd3a2e09
+      size: 263546
+    - path: models.py
+      hash: md5
+      md5: ff307db1b2d1ee7b7c9f2e44a6a5ddde
+      size: 2229
+    - path: results/temperature-bound.json
+      hash: md5
+      md5: 4d9335bc02b56f9b22e1179cf61539ca
+      size: 253
+    outs:
+    - path: results/strength-check.json
+      hash: md5
+      md5: 1ddac720067816c97f936400519a0a72
+      size: 354
+    - path: results/structural-checks.json
+      hash: md5
+      md5: d43c38cc8d3422b14046bd2f588f3aa2
+      size: 312

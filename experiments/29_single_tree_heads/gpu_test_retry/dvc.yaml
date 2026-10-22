@@ -1,0 +1,25 @@
+stages:
+  prepare:
+    cmd: ../../../.venv/bin/python prepare.py
+    deps:
+      - prepare.py
+      - benchmark_worker.py
+      - ../models.py
+      - ../original_cnn.py
+      - ../previous_loss.py
+      - ../cases.json
+    outs:
+      - workflow.yaml
+    metrics:
+      - results/input-manifest.json:
+          cache: false
+  collect:
+    cmd: ../../../.venv/bin/python collect.py --once
+    deps:
+      - collect.py
+      - results/execution.json
+    outs:
+      - data/test02
+    metrics:
+      - results/cleanup.json:
+          cache: false

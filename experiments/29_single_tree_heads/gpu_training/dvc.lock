@@ -1,0 +1,111 @@
+schema: '2.0'
+stages:
+  package:
+    cmd: ../../../.venv/bin/python package.py
+    deps:
+    - path: ../cases.json
+      hash: md5
+      md5: 482809e3a88c8b1fdb095edd7a14e651
+      size: 22294
+    - path: ../data/fields
+      hash: md5
+      md5: 43197ef7a21361c668a5b66f804fd241.dir
+      size: 4079282392
+      nfiles: 114
+    - path: ../data/models/bounded.pt
+      hash: md5
+      md5: 9463b3f9285172f483a3bf3a09ab387c
+      size: 667964
+    - path: ../data/models/previous.pt
+      hash: md5
+      md5: bdc21e483730d7087633c0a138d501e5
+      size: 668177
+    - path: ../data/models/strength.pt
+      hash: md5
+      md5: 351b571f4c42c3b6faa40c45a102dfa2
+      size: 29022
+    - path: ../models.py
+      hash: md5
+      md5: ff307db1b2d1ee7b7c9f2e44a6a5ddde
+      size: 2229
+    - path: ../original_cnn.py
+      hash: md5
+      md5: 089a7510f25209a7e15fecf3485bd75b
+      size: 6317
+    - path: ../previous_loss.py
+      hash: md5
+      md5: f42c3d197f153a928b2e9ded7352cd62
+      size: 3701
+    - path: cloud_worker.py
+      hash: md5
+      md5: dca63fc211e126d90569670bbce1a283
+      size: 5803
+    - path: evaluate.py
+      hash: md5
+      md5: a80aa24b4e44ad5ce2273e4b66d2f3ea
+      size: 4607
+    - path: package.py
+      hash: md5
+      md5: f83c079a9c5bd8f18839c22f3b469170
+      size: 1224
+    outs:
+    - path: data/inputs.tar
+      hash: md5
+      md5: 0e236a604db1458a904b41330b47d212
+      size: 4080865280
+    - path: results/input-hashes.json
+      hash: md5
+      md5: 0a427666de1350fc058aff28b2239015
+      size: 9185
+  collect:
+    cmd: ../../../.venv/bin/python collect02.py --once
+    deps:
+    - path: collect02.py
+      hash: md5
+      md5: d03c711aae19a2186f66d946965f1786
+      size: 1864
+    - path: results/execution02.json
+      hash: md5
+      md5: f67bfaf8a0191b533f9c7224bb739304
+      size: 331
+    outs:
+    - path: data/train01
+      hash: md5
+      md5: 4fc6df8a1caaccd73b2ecfde2c7a381f.dir
+      size: 1341704463
+      nfiles: 30
+    - path: results/cleanup.json
+      hash: md5
+      md5: 3b9d4051900979e6766bbe384d6af152
+      size: 50
+  ingest:
+    cmd: ../../../.venv/bin/python ingest.py
+    deps:
+    - path: data/train01
+      hash: md5
+      md5: 4fc6df8a1caaccd73b2ecfde2c7a381f.dir
+      size: 1341704463
+      nfiles: 30
+    - path: ingest.py
+      hash: md5
+      md5: 567601786e75159c0be272459581aa36
+      size: 1448
+    - path: results/cleanup.json
+      hash: md5
+      md5: 3b9d4051900979e6766bbe384d6af152
+      size: 50
+    outs:
+    - path: data/adopted
+      hash: md5
+      md5: 529f663ca53cc1a8230173cf4a54ae0a.dir
+      size: 1291798452
+      nfiles: 24
+    - path: data/prior-local-results
+      hash: md5
+      md5: 414213f43fe9e023b8acb8adf1dc315d.dir
+      size: 430479702
+      nfiles: 6
+    - path: results/adopted.json
+      hash: md5
+      md5: 6b57a5ed9c3d7c79550d211ab130ae4e
+      size: 2429

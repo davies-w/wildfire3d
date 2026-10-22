@@ -1,0 +1,46 @@
+[
+  {
+    "insertId": "1d5jy98feiihcb",
+    "labels": {
+      "hostname": "fds-gpu29-test01-b7bde467-6ce3-4ad6-90-group0-0-7fvp",
+      "job_uid": "fds-gpu29-test01-b7bde467-6ce3-4ad6-90",
+      "task_group_name": "projects/587909259768/locations/us-central1/jobs/fds-gpu29-test01/taskGroups/group0"
+    },
+    "logName": "projects/tmrw-wildfire-20261015/logs/batch_agent_logs",
+    "receiveTimestamp": "2026-10-20T22:19:40.267128354Z",
+    "resource": {
+      "labels": {
+        "instance_id": "4278851817229145786",
+        "project_id": "tmrw-wildfire-20261015",
+        "zone": "us-central1-a"
+      },
+      "type": "gce_instance"
+    },
+    "severity": "ERROR",
+    "textPayload": "Task task/fds-gpu29-test01-b7bde467-6ce3-4ad6-90-group0-0/0/0 runnable 0 execution err: command failed with exitCode 125\n",
+    "timestamp": "2026-10-20T22:19:40.241752756Z"
+  },
+  {
+    "insertId": "s1a2tlfp4ut5y",
+    "labels": {
+      "hostname": "fds-gpu29-test01-b7bde467-6ce3-4ad6-90-group0-0-7fvp",
+      "job_uid": "fds-gpu29-test01-b7bde467-6ce3-4ad6-90",
+      "task_group_name": "projects/587909259768/locations/us-central1/jobs/fds-gpu29-test01/taskGroups/group0",
+      "task_id": "fds-gpu29-test01-b7bde467-6ce3-4ad6-90-group0-0",
+      "trial_id": "gpu29-test01"
+    },
+    "logName": "projects/tmrw-wildfire-20261015/logs/batch_task_logs",
+    "receiveTimestamp": "2026-10-20T22:19:40.337060004Z",
+    "resource": {
+      "labels": {
+        "job_id": "fds-gpu29-test01-b7bde467-6ce3-4ad6-90",
+        "location": "us-central1-a",
+        "resource_container": "tmrw-wildfire-20261015"
+      },
+      "type": "batch.googleapis.com/Job"
+    },
+    "severity": "ERROR",
+    "textPayload": "invoking the NVIDIA Container Runtime Hook directly (e.g. specifying the docker --gpus flag) is not supported. Please use the NVIDIA Container Runtime (e.g. specify the --runtime=nvidia flag) instead.: unknown.",
+    "timestamp": "2026-10-20T22:19:40.239057315Z"
+  }
+]

@@ -1,0 +1,59 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../../.venv/bin/python prepare.py
+    deps:
+    - path: ../cases.json
+      hash: md5
+      md5: 482809e3a88c8b1fdb095edd7a14e651
+      size: 22294
+    - path: ../models.py
+      hash: md5
+      md5: ff307db1b2d1ee7b7c9f2e44a6a5ddde
+      size: 2229
+    - path: ../original_cnn.py
+      hash: md5
+      md5: 089a7510f25209a7e15fecf3485bd75b
+      size: 6317
+    - path: ../previous_loss.py
+      hash: md5
+      md5: f42c3d197f153a928b2e9ded7352cd62
+      size: 3701
+    - path: benchmark_worker.py
+      hash: md5
+      md5: 3b243eb8a355afdacefa13781b493e9c
+      size: 4290
+    - path: prepare.py
+      hash: md5
+      md5: 644436c3392b8b4e315bc554e215a0f8
+      size: 3643
+    outs:
+    - path: results/input-manifest.json
+      hash: md5
+      md5: a2ec1a77d36014a7b308d079afc8d549
+      size: 1368
+    - path: workflow.yaml
+      hash: md5
+      md5: 868af859671f8c7d2efec6d5fe20e02e
+      size: 63848
+  collect:
+    cmd: ../../../.venv/bin/python collect.py --once
+    deps:
+    - path: collect.py
+      hash: md5
+      md5: c1b13506819e336e795645aaa76b990a
+      size: 1564
+    - path: results/execution.json
+      hash: md5
+      md5: 8723feda6dd5969b78ab7c1fe5fd14b8
+      size: 330
+    outs:
+    - path: data/test02
+      hash: md5
+      md5: 782c5945adef0f54cadebc7a86b106c0.dir
+      size: 59894
+      nfiles: 1
+    - path: results/cleanup.json
+      hash: md5
+      md5: 3b9d4051900979e6766bbe384d6af152
+      size: 50

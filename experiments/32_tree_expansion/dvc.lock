@@ -856,3 +856,23 @@ stages:
       hash: md5
       md5: 20a5aaaed2cb23fc6faf666b79c9af80
       size: 1305607
+  extract_trained_models:
+    cmd: ../../.venv/bin/python extract_trained_models.py
+    deps:
+    - path: data/gpu/cloud/outputs.tar
+      hash: md5
+      md5: e8b468fe79ca58ab3349b14b54aeb4d4
+      size: 18503680
+    - path: extract_trained_models.py
+      hash: md5
+      md5: 4ce419512cfc5d7b74042c88de343aaf
+      size: 272
+    outs:
+    - path: data/models/geometry_snapshot.pt
+      hash: md5
+      md5: ca4576c78d1b64bf241d951631f41530
+      size: 668978
+    - path: data/models/hybrid.pt
+      hash: md5
+      md5: 0539c18867ae5a376206f08ff49210d5
+      size: 2718682

@@ -1,0 +1,11 @@
+{
+ "data": {"training_configurations":32,"validation_configurations":6,"frames_per_case":91,"old_tests_excluded":true},
+ "candidates":["previous physical-loss CNN","same CNN with temperature bound only, no fit","bounded CNN fine-tuned3200steps","bounded CNN with separate residual heads and normalized spatial combustion driven by separately learned total strength,3200spatial steps"],
+ "selection":"Lowest previous physical objective over complete validation histories; report all individual metrics even when contradictory",
+ "training_seed":2902,
+ "spatial_steps":3200,
+ "learning_rate":0.0001,
+ "strength_steps":8000,
+ "cloud_spend_usd":0,
+ "conclusions":"Development comparison only; no claim of untouched test performance. Do not expand to sequence learning in this experiment."
+}

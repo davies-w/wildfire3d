@@ -1,0 +1,3 @@
+# Corrective GPU infrastructure test
+
+Explicit correction after test01 failed at Docker startup: use --runtime=nvidia instead of --gpus all. Same benchmark targets and architecture, no scientific retraining. One failed attempt cost allowance $0.20 plus this attempt $0.80 stays within the original $1 overall hold; no additional spending authorization. Test01 VM and disks were verified deleted before this attempt. No automatic retries. Same 30-minute queue, 20-minute VM-age and 50-minute absolute deadlines, including setup. Full-size outputs with spatially subsampled training targets and fresh weights: not a quality assessment. Refer to the parent gpu_test README for physical omissions and benchmark details.

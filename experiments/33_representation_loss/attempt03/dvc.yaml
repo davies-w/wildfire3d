@@ -2,21 +2,63 @@ stages:
   package:
     cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python prepare_pilot.py
     deps:
-      - worker.py
-      - models.py
-      - losses.py
-      - prepare_pilot.py
-      - validate.py
-      - cases.json
-      - groups.json
-      - data/resume
-      - data/geometries.npz
-      - data/initial_snapshot.pt
+    - worker.py
+    - models.py
+    - losses.py
+    - prepare_pilot.py
+    - validate.py
+    - cases.json
+    - groups.json
+    - data/resume
+    - data/geometries.npz
+    - data/initial_snapshot.pt
     outs:
-      - data/pilot-overlay.tar
-      - results/input-freeze.json:
-          cache: false
-      - results/preflight.json:
-          cache: false
-      - gpu-workflow.yaml:
-          cache: false
+    - data/pilot-overlay.tar
+    - results/input-freeze.json:
+        cache: false
+    - results/preflight.json:
+        cache: false
+    - gpu-workflow.yaml:
+        cache: false
+  cloud_submit:
+    cmd: ../../../.venv/bin/python launch.py
+    frozen: true
+    deps:
+    - launch.py
+    - cloud.py
+    - gpu-workflow.yaml
+    - data/pilot-overlay.tar
+    metrics:
+    - results/execution.json:
+        cache: false
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - collect.py
+    - cloud.py
+    - results/execution.json
+    outs:
+    - data/collected
+    metrics:
+    - results/cleanup.json:
+        cache: false
+    - results/permission-removed.json:
+        cache: false
+  analyze:
+    cmd: ../../../.venv/bin/python analyze_pilot.py
+    deps:
+    - analyze_pilot.py
+    - data/collected
+    - results/report.json
+    outs:
+    - results/summary.json:
+        cache: false
+  resume_inputs:
+    cmd: ../../../.venv/bin/python restore_inputs.py
+    deps:
+    - restore_inputs.py
+    - ../data/collected/spatial_heads-checkpoint-600.pt
+    - ../attempt02/data/collected/current-checkpoint-6000.pt
+    - ../data/collected/loss_only-checkpoint-600.pt
+    outs:
+    - data/resume

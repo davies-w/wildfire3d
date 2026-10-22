@@ -1,0 +1,216 @@
+main:
+  steps:
+  - initialize:
+      assign:
+      - deadline: ${sys.now() + 3000}
+      - job:
+          taskGroups:
+          - taskCount: '1'
+            parallelism: '1'
+            taskCountPerNode: '1'
+            taskSpec:
+              computeResource:
+                cpuMilli: 4000
+                memoryMib: 12000
+              maxRunDuration: 1560s
+              maxRetryCount: 0
+              runnables:
+              - container:
+                  imageUri: pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime
+                  entrypoint: python
+                  commands:
+                  - -c
+                  - import base64;exec(compile(base64.b64decode('aW1wb3J0IHVybGxpYi5yZXF1ZXN0LHVybGxpYi5wYXJzZSxqc29uLHRhcmZpbGUscGF0aGxpYixzeXMscnVucHksaGFzaGxpYixzaHV0aWwKcD1wYXRobGliLlBhdGgoJy90bXAvc3R1ZHknKTtwLm1rZGlyKGV4aXN0X29rPVRydWUpOyhwLydkYXRhJykubWtkaXIoZXhpc3Rfb2s9VHJ1ZSk7KHAvJ3Jlc3VsdHMnKS5ta2RpcihleGlzdF9vaz1UcnVlKQpyPXVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoJ2h0dHA6Ly9tZXRhZGF0YS5nb29nbGUuaW50ZXJuYWwvY29tcHV0ZU1ldGFkYXRhL3YxL2luc3RhbmNlL3NlcnZpY2UtYWNjb3VudHMvZGVmYXVsdC90b2tlbicsaGVhZGVycz17J01ldGFkYXRhLUZsYXZvcic6J0dvb2dsZSd9KTt0b2tlbj1qc29uLmxvYWQodXJsbGliLnJlcXVlc3QudXJsb3BlbihyLHRpbWVvdXQ9MjApKVsnYWNjZXNzX3Rva2VuJ10KdT0naHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3N0b3JhZ2UvdjEvYi90bXJ3LXdpbGRmaXJlLTIwMjYxMDE1LXRyaWFsL28vJyt1cmxsaWIucGFyc2UucXVvdGUoJ2V4cGFuc2lvbjMyL2V2YWx1YXRpb24wMS9vdmVybGF5LnRhcicsc2FmZT0nJykrJz9hbHQ9bWVkaWEnCndpdGggdXJsbGliLnJlcXVlc3QudXJsb3Blbih1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KHUsaGVhZGVycz17J0F1dGhvcml6YXRpb24nOidCZWFyZXIgJyt0b2tlbn0pLHRpbWVvdXQ9MTgwKSBhcyBzcmMsKHAvJ3RyYW5zZmVyLnRhcicpLm9wZW4oJ3diJykgYXMgZHN0OnNodXRpbC5jb3B5ZmlsZW9iaihzcmMsZHN0LDgqMTAyNCoqMikKd2l0aCB0YXJmaWxlLm9wZW4ocC8ndHJhbnNmZXIudGFyJykgYXMgdGFyOgogZm9yIG0gaW4gdGFyLmdldG1lbWJlcnMoKTphc3NlcnQgbm90IG0ubmFtZS5zdGFydHN3aXRoKCcvJykgYW5kICcuLicgbm90IGluIHBhdGhsaWIuUGF0aChtLm5hbWUpLnBhcnRzIGFuZCBub3QgbS5pc3N5bSgpIGFuZCBub3QgbS5pc2xuaygpCiB0YXIuZXh0cmFjdGFsbChwKQpmb3IgbixoIGluIGpzb24ubG9hZHMoKHAvJ2V2YWx1YXRpb24taGFzaGVzLmpzb24nKS5yZWFkX3RleHQoKSkuaXRlbXMoKTphc3NlcnQgaGFzaGxpYi5zaGEyNTYoKHAvbikucmVhZF9ieXRlcygpKS5oZXhkaWdlc3QoKT09aApzeXMucGF0aC5pbnNlcnQoMCxzdHIocCkpO3J1bnB5LnJ1bl9wYXRoKHN0cihwLydldmFsdWF0ZV9jbG91ZC5weScpLHJ1bl9uYW1lPSdfX21haW5fXycpCg=='),'bootstrap','exec'))
+                  options: --shm-size=1g
+          allocationPolicy:
+            instances:
+            - policy:
+                machineType: g2-standard-4
+                provisioningModel: SPOT
+                bootDisk:
+                  sizeGb: '60'
+                  type: pd-balanced
+              installGpuDrivers: true
+            location:
+              allowedLocations:
+              - zones/us-central1-a
+            serviceAccount:
+              email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+            labels:
+              trial_id: gpu32-evaluation01
+            network:
+              networkInterfaces:
+              - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                subnetwork: projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial
+          labels:
+            trial_id: gpu32-evaluation01
+          logsPolicy:
+            destination: CLOUD_LOGGING
+      - status:
+          body:
+            status:
+              state: UNKNOWN
+      - queue_deadline: ${sys.now() + 1200}
+  - create:
+      call: http.post
+      args:
+        url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs
+        query:
+          jobId: fds-gpu32-evaluation01
+        auth:
+          type: OAuth2
+        body: ${job}
+      result: created
+  - monitor:
+      try:
+        steps:
+        - get_status:
+            call: http.get
+            args:
+              url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-gpu32-evaluation01
+              auth:
+                type: OAuth2
+            result: status
+        - get_vm:
+            call: http.get
+            args:
+              url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances
+              query:
+                filter: labels.trial_id = gpu32-evaluation01
+              auth:
+                type: OAuth2
+            result: active_vms
+        - reset_age:
+            assign:
+            - age_expired: false
+        - check_vm_age:
+            for:
+              value: active_vm
+              in: ${default(map.get(active_vms.body, "items"), [])}
+              steps:
+              - age_limit:
+                  switch:
+                  - condition: ${sys.now() >= time.parse(active_vm.creationTimestamp)
+                      + 1800}
+                    assign:
+                    - age_expired: true
+        - check:
+            switch:
+            - condition: ${status.body.status.state == "SUCCEEDED" or status.body.status.state
+                == "FAILED"}
+              next: record
+            - condition: ${sys.now() >= deadline}
+              next: record
+            - condition: ${age_expired}
+              next: record
+            - condition: ${len(default(map.get(active_vms.body, "items"), [])) ==
+                0 and sys.now() >= queue_deadline}
+              next: record
+        - wait:
+            call: sys.sleep
+            args:
+              seconds: 30
+            next: get_status
+      except:
+        as: monitor_error
+        steps:
+        - monitor_failure:
+            call: sys.log
+            args:
+              text: Monitoring failed; proceeding to cleanup
+              severity: ERROR
+  - record:
+      try:
+        call: http.post
+        args:
+          url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+          query:
+            uploadType: media
+            name: expansion32/evaluation01/job-status.json
+          auth:
+            type: OAuth2
+          headers:
+            Content-Type: application/json
+          body: ${status.body}
+      except:
+        as: record_error
+        steps:
+        - record_failure:
+            call: sys.log
+            args:
+              text: Could not persist final status; proceeding with cleanup
+              severity: ERROR
+  - delete_job:
+      try:
+        call: http.delete
+        args:
+          url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-gpu32-evaluation01
+          auth:
+            type: OAuth2
+        result: deletion
+      except:
+        as: delete_error
+        steps:
+        - delete_failure:
+            call: sys.log
+            args:
+              text: Batch deletion failed; checking workers directly
+              severity: ERROR
+  - cleanup_wait:
+      call: sys.sleep
+      args:
+        seconds: 30
+  - list_workers:
+      call: http.get
+      args:
+        url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances
+        query:
+          filter: labels.trial_id = gpu32-evaluation01
+        auth:
+          type: OAuth2
+      result: workers
+  - delete_stragglers:
+      for:
+        value: vm
+        in: ${default(map.get(workers.body, "items"), [])}
+        steps:
+        - delete_vm:
+            try:
+              call: http.delete
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances/"
+                  + vm.name}
+                auth:
+                  type: OAuth2
+            except:
+              as: cleanup_error
+              steps:
+              - check_cleanup_error:
+                  switch:
+                  - condition: ${map.get(cleanup_error, "code") != 404}
+                    steps:
+                    - rethrow_cleanup:
+                        raise: ${cleanup_error}
+  - verify_wait:
+      call: sys.sleep
+      args:
+        seconds: 30
+  - verify:
+      call: http.get
+      args:
+        url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances
+        query:
+          filter: labels.trial_id = gpu32-evaluation01
+        auth:
+          type: OAuth2
+      result: remaining
+  - assert_empty:
+      switch:
+      - condition: ${len(default(map.get(remaining.body, "items"), [])) > 0}
+        raise: 'Cleanup incomplete: labeled workers remain'
+  - done:
+      return:
+        mode: domain17
+        final_state: ${status.body.status.state}
+        workers_remaining: 0
+        job_uid: ${created.body.uid}
