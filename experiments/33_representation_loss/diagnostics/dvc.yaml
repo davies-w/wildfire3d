@@ -1,0 +1,10 @@
+stages:
+  learning_evidence:
+    cmd: ../../../.venv/bin/python plot_learning_evidence.py
+    deps:
+    - plot_learning_evidence.py
+    - ../attempt14/data/collected/report.json
+    - ../attempt14/results/coverage-summary.json
+    outs:
+    - learning-evidence.png:
+        cache: false

@@ -1,0 +1,22 @@
+schema: '2.0'
+stages:
+  learning_evidence:
+    cmd: ../../../.venv/bin/python plot_learning_evidence.py
+    deps:
+    - path: ../attempt14/data/collected/report.json
+      hash: md5
+      md5: cc5bdf8ba21c98d9c87e42b7cabb9190
+      size: 5584945
+    - path: ../attempt14/results/coverage-summary.json
+      hash: md5
+      md5: 319857bb982a4fc17211285b1e0c4bb0
+      size: 7992516
+    - path: plot_learning_evidence.py
+      hash: md5
+      md5: baf317817ac7f3868f923eee50581ffb
+      size: 2291
+    outs:
+    - path: learning-evidence.png
+      hash: md5
+      md5: 996eb858077f14b9f305ef3971588f19
+      size: 222529
