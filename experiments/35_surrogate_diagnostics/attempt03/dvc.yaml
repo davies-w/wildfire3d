@@ -51,16 +51,6 @@ stages:
         cache: false
     - gpu-workflow.yaml:
         cache: false
-  cloud_submit:
-    cmd: ../../../.venv/bin/python launch.py
-    deps:
-    - launch.py
-    - cloud.py
-    - gpu-workflow.yaml
-    - data/pilot-overlay.tar
-    metrics:
-    - results/execution.json:
-        cache: false
   cloud_collect:
     cmd: ../../../.venv/bin/python collect.py
     deps:
@@ -84,4 +74,14 @@ stages:
     - data/visuals
     metrics:
     - results/analysis.json:
+        cache: false
+  recover_submission:
+    cmd: ../../../.venv/bin/python launch.py --recover-reserved-setup
+    deps:
+    - launch.py
+    - cloud.py
+    - gpu-workflow.yaml
+    - data/pilot-overlay.tar
+    metrics:
+    - results/execution.json:
         cache: false

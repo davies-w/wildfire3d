@@ -11,3 +11,5 @@ Attempt02: separately reserved4.50 replacement for startup404 in attempt01. Five
 
 
 Attempt03 separately reserves4.50 after attempt02 completed preprocessing and CUDA checks but failed exact timestamp equality BEFOREtraining. Raw slice audit:8 primary-vs-replica pairs from4 triple-seed configs; maxdifference0.155724s, each91frames, all nearestmatches sameindices. Pairdiagnostic now accepts one-to-one nearestframes<=.2s and records offset; includes temporaljitter, not pure stochasticerrorfloor. Alltraining/validationtargets and optimization unchanged. Reuse five hashverified bundles fromattempt02/restored via narrow temporaryprefixgrant. No automaticretry or recycledbudget. Cumulative83.60/100.
+
+Pre-submission availability check caught further missing originals. Read-only bucket inspection confirms Delete age1 lifecycle rule. No attempt03 workflow existed or compute was submitted. Recovery uses same alreadyreserved4.50 allowance, restoring all48 raw+summary pairs to fresh immutableprefix after localSHA verification;96objects~6GB, narrow24hreadgrantonlynewprefix+overlay. Bucketpolicyunchanged. This avoids ongoing expiration of old inputs.
