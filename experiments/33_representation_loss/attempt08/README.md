@@ -1,0 +1,9 @@
+# Attempt08: matched loss/evaluation comparison
+
+Three identical GeometryCNN copies start from current6000 weights AND optimizer, use schedule seed3308 and2500additional updates. Control: targeted encoded loss. Dose: replace encoded radiation term by0.1 times three-frame positive-radiation-excess absolute error normalized by reference mean+1. Dose_background: also increase encoded cold-temperature weight0.1→0.5. This isolates the dose replacement and then background penalty; neither is full-history optimization or recurrence. Initial evaluation occurs after restore and weight hashes must match. Evaluate all20full histories with unchanged physical/percentage metrics, including weak fires and background. A successful direction must improve radiation without sacrificing temperature/heat substantially; report all tradeoffs, not just training loss.
+
+Pilot07 found revised-model radiation-dose candidate norm3.15 versus bright encoded0.407; adding it at unit weight is not justified. Gradient cosine is local diagnostic evidence, not causal proof. Here0.1 is fixed before validation and not tuned on test data.12train/8validation are deliberately strength-stratified development cases, not IID/pristine test; old exp32 tests remain examined.
+
+No new FDS. Generic3m-wide conical crowns4/6/8/10m above2m base,1600weightedparticles,.5m grid24x16x16m,180s,1500C artificial20s source,no trunks/buildings/embers. Six gas fields, not solid-ground temperature; no physical validation.
+
+Reserve$2 full allowance before submission, cumulative cap75. Regular L4 us-central1-c. Expected10–20minutes; cloud20minqueue/60mintask/65minVM/90minabsolute deadlines. Checkpoint every500updates; separately budgeted replacement required after interruption, with new prefix. No laptop training. DVC submission/collection stages execute the workflow and retain outputs.

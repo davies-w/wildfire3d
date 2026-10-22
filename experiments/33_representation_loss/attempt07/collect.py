@@ -12,7 +12,8 @@ def main():
   inv={k:gc(*args,'--filter=labels.trial_id=gpu33-pilot07') for k,args in {'instances':('compute','instances','list'),'disks':('compute','disks','list'),'jobs':('batch','jobs','list','--location=us-central1')}.items()};save('results/cleanup.json',inv);assert not any(inv.values()),'cleanup incomplete'
   # gcloud cp wildcard retains all partial checkpoints, even on a failed job.
   dest=R/'data/collected';dest.mkdir(exist_ok=True)
-  subprocess.run([G,'storage','cp','gs://'+BUCKET+'/repair33/pilot07/*.json','gs://'+BUCKET+'/repair33/pilot07/*.pt',str(dest)],check=False)
+  subprocess.run([G,'storage','cp','gs://'+BUCKET+'/repair33/pilot07/*.json',str(dest)],check=True)
+  subprocess.run([G,'storage','cp','gs://'+BUCKET+'/repair33/pilot07/*.pt',str(dest)],check=False)
   subprocess.run([G,'storage','cp','gs://'+BUCKET+'/repair33/pilot07/error.txt',str(dest)],check=False)
   subprocess.run([G,'storage','buckets','remove-iam-policy-binding','gs://'+BUCKET,'--member=serviceAccount:fds-worker@'+PROJECT+'.iam.gserviceaccount.com','--role=roles/storage.objectViewer','--condition-from-file='+str(R/'results/input-read-condition.json')],check=True,capture_output=True)
   save('results/permission-removed.json',dict(removed=True,time_unix=time.time()))

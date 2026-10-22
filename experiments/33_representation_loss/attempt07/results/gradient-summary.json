@@ -1,0 +1,2461 @@
+{
+  "interpretation": "Within-architecture local gradients only; no optimizer steps. Negative cosines do not establish causal training failure. Candidate radiation loss uses three-frame windows, not full-history dose.",
+  "groups": {
+    "current/all_windows": {
+      "windows": 18,
+      "checkpoint_step": 6000,
+      "parameter_scope": [
+        "fc.0.weight",
+        "fc.0.bias",
+        "fc.2.weight",
+        "fc.2.bias"
+      ],
+      "norms": {
+        "temperature_hot": {
+          "median": 0.4824659079313278,
+          "min": 0.0,
+          "max": 1.6488397121429443,
+          "zero_count": 7
+        },
+        "temperature_background": {
+          "median": 0.002620974148157984,
+          "min": 5.5436281400034204e-05,
+          "max": 0.02129090204834938,
+          "zero_count": 0
+        },
+        "strength": {
+          "median": 0.2802177891135216,
+          "min": 0.0,
+          "max": 5.288135528564453,
+          "zero_count": 1
+        },
+        "allocation": {
+          "median": 0.07967881485819817,
+          "min": 0.0,
+          "max": 0.6981886029243469,
+          "zero_count": 8
+        },
+        "radiation_bright": {
+          "median": 1.3647717833518982,
+          "min": 0.0,
+          "max": 5.378851890563965,
+          "zero_count": 5
+        },
+        "radiation_background": {
+          "median": 0.005702100461348891,
+          "min": 4.098402769159293e-06,
+          "max": 0.08257155865430832,
+          "zero_count": 0
+        },
+        "candidate_radiation_excess": {
+          "median": 1.1386085152626038,
+          "min": 0.042236242443323135,
+          "max": 7.3296217918396,
+          "zero_count": 0
+        },
+        "candidate_temperature_physical": {
+          "median": 2.659160852432251,
+          "min": 0.8926341533660889,
+          "max": 7.562653064727783,
+          "zero_count": 0
+        }
+      },
+      "cosines": {
+        "temperature_background / temperature_hot": {
+          "median": 0.24328911304473877,
+          "negative_count": 5,
+          "defined_count": 11
+        },
+        "strength / temperature_hot": {
+          "median": 0.20965877175331116,
+          "negative_count": 5,
+          "defined_count": 11
+        },
+        "strength / temperature_background": {
+          "median": -0.15560288727283478,
+          "negative_count": 12,
+          "defined_count": 17
+        },
+        "allocation / temperature_hot": {
+          "median": 0.10098806396126747,
+          "negative_count": 5,
+          "defined_count": 10
+        },
+        "allocation / temperature_background": {
+          "median": -0.1098738294094801,
+          "negative_count": 5,
+          "defined_count": 10
+        },
+        "allocation / strength": {
+          "median": 0.4125664755702019,
+          "negative_count": 1,
+          "defined_count": 10
+        },
+        "allocation / radiation_bright": {
+          "median": 0.46610327064991,
+          "negative_count": 1,
+          "defined_count": 10
+        },
+        "allocation / radiation_background": {
+          "median": 0.4414132386445999,
+          "negative_count": 1,
+          "defined_count": 10
+        },
+        "allocation / candidate_radiation_excess": {
+          "median": 0.495712086558342,
+          "negative_count": 1,
+          "defined_count": 10
+        },
+        "allocation / candidate_temperature_physical": {
+          "median": -0.09727176278829575,
+          "negative_count": 6,
+          "defined_count": 10
+        },
+        "radiation_bright / temperature_hot": {
+          "median": 0.7215291857719421,
+          "negative_count": 4,
+          "defined_count": 11
+        },
+        "radiation_bright / temperature_background": {
+          "median": -0.6772492527961731,
+          "negative_count": 11,
+          "defined_count": 13
+        },
+        "radiation_bright / strength": {
+          "median": 0.4659995436668396,
+          "negative_count": 4,
+          "defined_count": 13
+        },
+        "radiation_background / temperature_hot": {
+          "median": 0.42964884638786316,
+          "negative_count": 3,
+          "defined_count": 11
+        },
+        "radiation_background / temperature_background": {
+          "median": 0.3919937461614609,
+          "negative_count": 5,
+          "defined_count": 18
+        },
+        "radiation_background / strength": {
+          "median": 0.12613151967525482,
+          "negative_count": 7,
+          "defined_count": 17
+        },
+        "radiation_background / radiation_bright": {
+          "median": 0.710404634475708,
+          "negative_count": 5,
+          "defined_count": 13
+        },
+        "candidate_radiation_excess / temperature_hot": {
+          "median": 0.4792492985725403,
+          "negative_count": 5,
+          "defined_count": 11
+        },
+        "candidate_radiation_excess / temperature_background": {
+          "median": 0.03504471946507692,
+          "negative_count": 8,
+          "defined_count": 18
+        },
+        "candidate_radiation_excess / strength": {
+          "median": 0.5800765156745911,
+          "negative_count": 7,
+          "defined_count": 17
+        },
+        "candidate_radiation_excess / radiation_bright": {
+          "median": 0.8850483298301697,
+          "negative_count": 4,
+          "defined_count": 13
+        },
+        "candidate_radiation_excess / radiation_background": {
+          "median": 0.8773733973503113,
+          "negative_count": 3,
+          "defined_count": 18
+        },
+        "candidate_radiation_excess / candidate_temperature_physical": {
+          "median": -0.14165955409407616,
+          "negative_count": 10,
+          "defined_count": 18
+        },
+        "candidate_temperature_physical / temperature_hot": {
+          "median": -0.008624574169516563,
+          "negative_count": 6,
+          "defined_count": 11
+        },
+        "candidate_temperature_physical / temperature_background": {
+          "median": 0.9659587442874908,
+          "negative_count": 0,
+          "defined_count": 18
+        },
+        "candidate_temperature_physical / strength": {
+          "median": -0.23898810148239136,
+          "negative_count": 12,
+          "defined_count": 17
+        },
+        "candidate_temperature_physical / radiation_bright": {
+          "median": -0.5980656743049622,
+          "negative_count": 11,
+          "defined_count": 13
+        },
+        "candidate_temperature_physical / radiation_background": {
+          "median": 0.10815805941820145,
+          "negative_count": 6,
+          "defined_count": 18
+        }
+      }
+    },
+    "current/10s": {
+      "windows": 6,
+      "checkpoint_step": 6000,
+      "parameter_scope": [
+        "fc.0.weight",
+        "fc.0.bias",
+        "fc.2.weight",
+        "fc.2.bias"
+      ],
+      "norms": {
+        "temperature_hot": {
+          "median": 0.6272962689399719,
+          "min": 0.4920663833618164,
+          "max": 1.6488397121429443,
+          "zero_count": 0
+        },
+        "temperature_background": {
+          "median": 0.004835803993046284,
+          "min": 0.0012945346534252167,
+          "max": 0.02129090204834938,
+          "zero_count": 0
+        },
+        "strength": {
+          "median": 1.1440114378929138,
+          "min": 0.777226448059082,
+          "max": 1.8099298477172852,
+          "zero_count": 0
+        },
+        "allocation": {
+          "median": 0.30886197090148926,
+          "min": 0.07999000698328018,
+          "max": 0.5645262598991394,
+          "zero_count": 0
+        },
+        "radiation_bright": {
+          "median": 1.4706190824508667,
+          "min": 1.0443048477172852,
+          "max": 4.129331111907959,
+          "zero_count": 0
+        },
+        "radiation_background": {
+          "median": 0.00892310356721282,
+          "min": 0.00398179842159152,
+          "max": 0.03605581447482109,
+          "zero_count": 0
+        },
+        "candidate_radiation_excess": {
+          "median": 2.249530792236328,
+          "min": 1.0025992393493652,
+          "max": 2.775317430496216,
+          "zero_count": 0
+        },
+        "candidate_temperature_physical": {
+          "median": 5.1058268547058105,
+          "min": 1.2394046783447266,
+          "max": 7.562653064727783,
+          "zero_count": 0
+        }
+      },
+      "cosines": {
+        "temperature_background / temperature_hot": {
+          "median": 0.4934227764606476,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "strength / temperature_hot": {
+          "median": 0.00957787036895752,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "strength / temperature_background": {
+          "median": -0.7779643833637238,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "allocation / temperature_hot": {
+          "median": 0.037951983511447906,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "allocation / temperature_background": {
+          "median": -0.18564801290631294,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "allocation / strength": {
+          "median": 0.40563028305768967,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "allocation / radiation_bright": {
+          "median": 0.47544410824775696,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "allocation / radiation_background": {
+          "median": 0.4414132386445999,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "allocation / candidate_radiation_excess": {
+          "median": 0.495712086558342,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "allocation / candidate_temperature_physical": {
+          "median": -0.17919539660215378,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "radiation_bright / temperature_hot": {
+          "median": -0.24693355709314346,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "radiation_bright / temperature_background": {
+          "median": -0.7226727902889252,
+          "negative_count": 5,
+          "defined_count": 6
+        },
+        "radiation_bright / strength": {
+          "median": 0.7895239591598511,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "radiation_background / temperature_hot": {
+          "median": 0.400621660402976,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "radiation_background / temperature_background": {
+          "median": 0.01989954710006714,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "radiation_background / strength": {
+          "median": 0.6296106278896332,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "radiation_background / radiation_bright": {
+          "median": 0.8215530514717102,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / temperature_hot": {
+          "median": -0.24197860807180405,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / temperature_background": {
+          "median": -0.8105061054229736,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / strength": {
+          "median": 0.8697052299976349,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / radiation_bright": {
+          "median": 0.9381478726863861,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / radiation_background": {
+          "median": 0.9042999744415283,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / candidate_temperature_physical": {
+          "median": -0.8324632346630096,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / temperature_hot": {
+          "median": 0.5509940832853317,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / temperature_background": {
+          "median": 0.969895750284195,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / strength": {
+          "median": -0.7567265629768372,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / radiation_bright": {
+          "median": -0.6549504697322845,
+          "negative_count": 5,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / radiation_background": {
+          "median": 0.02709987759590149,
+          "negative_count": 3,
+          "defined_count": 6
+        }
+      }
+    },
+    "current/30s": {
+      "windows": 6,
+      "checkpoint_step": 6000,
+      "parameter_scope": [
+        "fc.0.weight",
+        "fc.0.bias",
+        "fc.2.weight",
+        "fc.2.bias"
+      ],
+      "norms": {
+        "temperature_hot": {
+          "median": 0.485038623213768,
+          "min": 0.0,
+          "max": 1.1213818788528442,
+          "zero_count": 1
+        },
+        "temperature_background": {
+          "median": 0.007467504125088453,
+          "min": 0.0002757090260274708,
+          "max": 0.018602434545755386,
+          "zero_count": 0
+        },
+        "strength": {
+          "median": 0.2802177891135216,
+          "min": 0.008267470635473728,
+          "max": 5.288135528564453,
+          "zero_count": 0
+        },
+        "allocation": {
+          "median": 0.14622624218463898,
+          "min": 0.0,
+          "max": 0.6981886029243469,
+          "zero_count": 2
+        },
+        "radiation_bright": {
+          "median": 2.40834641456604,
+          "min": 0.8419740796089172,
+          "max": 5.378851890563965,
+          "zero_count": 0
+        },
+        "radiation_background": {
+          "median": 0.009058153256773949,
+          "min": 0.00013821851462125778,
+          "max": 0.08257155865430832,
+          "zero_count": 0
+        },
+        "candidate_radiation_excess": {
+          "median": 1.9581343531608582,
+          "min": 0.41182878613471985,
+          "max": 7.3296217918396,
+          "zero_count": 0
+        },
+        "candidate_temperature_physical": {
+          "median": 3.504431128501892,
+          "min": 1.4608197212219238,
+          "max": 5.916834354400635,
+          "zero_count": 0
+        }
+      },
+      "cosines": {
+        "temperature_background / temperature_hot": {
+          "median": -0.6509525179862976,
+          "negative_count": 4,
+          "defined_count": 5
+        },
+        "strength / temperature_hot": {
+          "median": 0.20965877175331116,
+          "negative_count": 2,
+          "defined_count": 5
+        },
+        "strength / temperature_background": {
+          "median": -0.489472359418869,
+          "negative_count": 5,
+          "defined_count": 6
+        },
+        "allocation / temperature_hot": {
+          "median": 0.18480080738663673,
+          "negative_count": 2,
+          "defined_count": 4
+        },
+        "allocation / temperature_background": {
+          "median": -0.1098738294094801,
+          "negative_count": 2,
+          "defined_count": 4
+        },
+        "allocation / strength": {
+          "median": 0.4672425910830498,
+          "negative_count": 0,
+          "defined_count": 4
+        },
+        "allocation / radiation_bright": {
+          "median": 0.17088047228753567,
+          "negative_count": 1,
+          "defined_count": 4
+        },
+        "allocation / radiation_background": {
+          "median": 0.2462160438299179,
+          "negative_count": 1,
+          "defined_count": 4
+        },
+        "allocation / candidate_radiation_excess": {
+          "median": 0.33011556789278984,
+          "negative_count": 1,
+          "defined_count": 4
+        },
+        "allocation / candidate_temperature_physical": {
+          "median": -0.09727176278829575,
+          "negative_count": 3,
+          "defined_count": 4
+        },
+        "radiation_bright / temperature_hot": {
+          "median": 0.7617245316505432,
+          "negative_count": 0,
+          "defined_count": 5
+        },
+        "radiation_bright / temperature_background": {
+          "median": -0.7030312716960907,
+          "negative_count": 5,
+          "defined_count": 6
+        },
+        "radiation_bright / strength": {
+          "median": 0.36494462192058563,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "radiation_background / temperature_hot": {
+          "median": 0.42964884638786316,
+          "negative_count": 1,
+          "defined_count": 5
+        },
+        "radiation_background / temperature_background": {
+          "median": 0.21524274721741676,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "radiation_background / strength": {
+          "median": -0.31400831043720245,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "radiation_background / radiation_bright": {
+          "median": 0.5835256725549698,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / temperature_hot": {
+          "median": 0.6184542179107666,
+          "negative_count": 1,
+          "defined_count": 5
+        },
+        "candidate_radiation_excess / temperature_background": {
+          "median": 0.12317299842834473,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / strength": {
+          "median": -0.41417499631643295,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / radiation_bright": {
+          "median": 0.861327588558197,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / radiation_background": {
+          "median": 0.9012132287025452,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / candidate_temperature_physical": {
+          "median": 0.14682111889123917,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / temperature_hot": {
+          "median": -0.5332551598548889,
+          "negative_count": 4,
+          "defined_count": 5
+        },
+        "candidate_temperature_physical / temperature_background": {
+          "median": 0.9673492908477783,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / strength": {
+          "median": -0.47104884684085846,
+          "negative_count": 5,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / radiation_bright": {
+          "median": -0.625560462474823,
+          "negative_count": 5,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / radiation_background": {
+          "median": 0.20723611488938332,
+          "negative_count": 2,
+          "defined_count": 6
+        }
+      }
+    },
+    "current/120s": {
+      "windows": 6,
+      "checkpoint_step": 6000,
+      "parameter_scope": [
+        "fc.0.weight",
+        "fc.0.bias",
+        "fc.2.weight",
+        "fc.2.bias"
+      ],
+      "norms": {
+        "temperature_hot": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "zero_count": 6
+        },
+        "temperature_background": {
+          "median": 8.113270814646967e-05,
+          "min": 5.5436281400034204e-05,
+          "max": 0.00011251233809161931,
+          "zero_count": 0
+        },
+        "strength": {
+          "median": 0.0002520025009289384,
+          "min": 0.0,
+          "max": 0.0015736586647108197,
+          "zero_count": 1
+        },
+        "allocation": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "zero_count": 6
+        },
+        "radiation_bright": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.07905025035142899,
+          "zero_count": 5
+        },
+        "radiation_background": {
+          "median": 7.843971161491936e-06,
+          "min": 4.098402769159293e-06,
+          "max": 7.15187779860571e-05,
+          "zero_count": 0
+        },
+        "candidate_radiation_excess": {
+          "median": 0.060467908158898354,
+          "min": 0.042236242443323135,
+          "max": 0.20524953305721283,
+          "zero_count": 0
+        },
+        "candidate_temperature_physical": {
+          "median": 1.0751994848251343,
+          "min": 0.8926341533660889,
+          "max": 1.6032613515853882,
+          "zero_count": 0
+        }
+      },
+      "cosines": {
+        "temperature_background / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "strength / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "strength / temperature_background": {
+          "median": -0.0730590671300888,
+          "negative_count": 3,
+          "defined_count": 5
+        },
+        "allocation / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / temperature_background": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / strength": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / radiation_bright": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / radiation_background": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / candidate_radiation_excess": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / candidate_temperature_physical": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "radiation_bright / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "radiation_bright / temperature_background": {
+          "median": -0.1883448362350464,
+          "negative_count": 1,
+          "defined_count": 1
+        },
+        "radiation_bright / strength": {
+          "median": -0.05166828632354736,
+          "negative_count": 1,
+          "defined_count": 1
+        },
+        "radiation_background / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "radiation_background / temperature_background": {
+          "median": 0.462536484003067,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "radiation_background / strength": {
+          "median": 0.06498219072818756,
+          "negative_count": 2,
+          "defined_count": 5
+        },
+        "radiation_background / radiation_bright": {
+          "median": -0.029011733829975128,
+          "negative_count": 1,
+          "defined_count": 1
+        },
+        "candidate_radiation_excess / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "candidate_radiation_excess / temperature_background": {
+          "median": 0.08383035659790039,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / strength": {
+          "median": -0.11049549281597137,
+          "negative_count": 3,
+          "defined_count": 5
+        },
+        "candidate_radiation_excess / radiation_bright": {
+          "median": -0.09475038945674896,
+          "negative_count": 1,
+          "defined_count": 1
+        },
+        "candidate_radiation_excess / radiation_background": {
+          "median": 0.10482266172766685,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / candidate_temperature_physical": {
+          "median": -0.02104274369776249,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "candidate_temperature_physical / temperature_background": {
+          "median": 0.9471997618675232,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / strength": {
+          "median": -0.0772864818572998,
+          "negative_count": 3,
+          "defined_count": 5
+        },
+        "candidate_temperature_physical / radiation_bright": {
+          "median": -0.18282170593738556,
+          "negative_count": 1,
+          "defined_count": 1
+        },
+        "candidate_temperature_physical / radiation_background": {
+          "median": 0.10815805941820145,
+          "negative_count": 1,
+          "defined_count": 6
+        }
+      }
+    },
+    "loss_only/all_windows": {
+      "windows": 18,
+      "checkpoint_step": 12000,
+      "parameter_scope": [
+        "fc.0.weight",
+        "fc.0.bias",
+        "fc.2.weight",
+        "fc.2.bias"
+      ],
+      "norms": {
+        "temperature_hot": {
+          "median": 0.11328595504164696,
+          "min": 0.0,
+          "max": 0.7083011269569397,
+          "zero_count": 7
+        },
+        "temperature_background": {
+          "median": 0.007054104236885905,
+          "min": 0.00028415228007361293,
+          "max": 0.030694734305143356,
+          "zero_count": 0
+        },
+        "strength": {
+          "median": 0.3020789623260498,
+          "min": 0.0,
+          "max": 4.059786796569824,
+          "zero_count": 6
+        },
+        "allocation": {
+          "median": 0.06582823768258095,
+          "min": 0.0,
+          "max": 0.5502721667289734,
+          "zero_count": 8
+        },
+        "radiation_bright": {
+          "median": 0.4069276750087738,
+          "min": 0.0,
+          "max": 2.7109079360961914,
+          "zero_count": 5
+        },
+        "radiation_background": {
+          "median": 0.02574037667363882,
+          "min": 0.002459590556100011,
+          "max": 0.1162642315030098,
+          "zero_count": 0
+        },
+        "candidate_radiation_excess": {
+          "median": 3.146582245826721,
+          "min": 0.482902467250824,
+          "max": 14.390032768249512,
+          "zero_count": 0
+        },
+        "candidate_temperature_physical": {
+          "median": 5.019355773925781,
+          "min": 1.7848639488220215,
+          "max": 28.79808235168457,
+          "zero_count": 0
+        }
+      },
+      "cosines": {
+        "temperature_background / temperature_hot": {
+          "median": -0.0034544472582638264,
+          "negative_count": 6,
+          "defined_count": 11
+        },
+        "strength / temperature_hot": {
+          "median": 0.36531534790992737,
+          "negative_count": 3,
+          "defined_count": 11
+        },
+        "strength / temperature_background": {
+          "median": -0.04763101786375046,
+          "negative_count": 6,
+          "defined_count": 12
+        },
+        "allocation / temperature_hot": {
+          "median": 0.3935682326555252,
+          "negative_count": 2,
+          "defined_count": 10
+        },
+        "allocation / temperature_background": {
+          "median": -0.39554378390312195,
+          "negative_count": 7,
+          "defined_count": 10
+        },
+        "allocation / strength": {
+          "median": -0.13812070712447166,
+          "negative_count": 6,
+          "defined_count": 10
+        },
+        "allocation / radiation_bright": {
+          "median": -0.05374810192734003,
+          "negative_count": 6,
+          "defined_count": 10
+        },
+        "allocation / radiation_background": {
+          "median": -0.30961789190769196,
+          "negative_count": 8,
+          "defined_count": 10
+        },
+        "allocation / candidate_radiation_excess": {
+          "median": 0.025600537657737732,
+          "negative_count": 5,
+          "defined_count": 10
+        },
+        "allocation / candidate_temperature_physical": {
+          "median": -0.29601363837718964,
+          "negative_count": 8,
+          "defined_count": 10
+        },
+        "radiation_bright / temperature_hot": {
+          "median": 0.28667426109313965,
+          "negative_count": 4,
+          "defined_count": 11
+        },
+        "radiation_bright / temperature_background": {
+          "median": -0.5312255620956421,
+          "negative_count": 7,
+          "defined_count": 13
+        },
+        "radiation_bright / strength": {
+          "median": 0.1759841199964285,
+          "negative_count": 4,
+          "defined_count": 12
+        },
+        "radiation_background / temperature_hot": {
+          "median": -0.08649497479200363,
+          "negative_count": 6,
+          "defined_count": 11
+        },
+        "radiation_background / temperature_background": {
+          "median": 0.9135546684265137,
+          "negative_count": 0,
+          "defined_count": 18
+        },
+        "radiation_background / strength": {
+          "median": 0.04514192417263985,
+          "negative_count": 6,
+          "defined_count": 12
+        },
+        "radiation_background / radiation_bright": {
+          "median": -0.3062330484390259,
+          "negative_count": 7,
+          "defined_count": 13
+        },
+        "candidate_radiation_excess / temperature_hot": {
+          "median": 0.14371085166931152,
+          "negative_count": 5,
+          "defined_count": 11
+        },
+        "candidate_radiation_excess / temperature_background": {
+          "median": 0.7181589007377625,
+          "negative_count": 6,
+          "defined_count": 18
+        },
+        "candidate_radiation_excess / strength": {
+          "median": -0.028452232480049133,
+          "negative_count": 6,
+          "defined_count": 12
+        },
+        "candidate_radiation_excess / radiation_bright": {
+          "median": 0.6573184132575989,
+          "negative_count": 3,
+          "defined_count": 13
+        },
+        "candidate_radiation_excess / radiation_background": {
+          "median": 0.9282721877098083,
+          "negative_count": 4,
+          "defined_count": 18
+        },
+        "candidate_radiation_excess / candidate_temperature_physical": {
+          "median": 0.4559779018163681,
+          "negative_count": 7,
+          "defined_count": 18
+        },
+        "candidate_temperature_physical / temperature_hot": {
+          "median": 0.018202565610408783,
+          "negative_count": 5,
+          "defined_count": 11
+        },
+        "candidate_temperature_physical / temperature_background": {
+          "median": 0.9811979234218597,
+          "negative_count": 0,
+          "defined_count": 18
+        },
+        "candidate_temperature_physical / strength": {
+          "median": 0.007644392549991608,
+          "negative_count": 6,
+          "defined_count": 12
+        },
+        "candidate_temperature_physical / radiation_bright": {
+          "median": -0.37566640973091125,
+          "negative_count": 7,
+          "defined_count": 13
+        },
+        "candidate_temperature_physical / radiation_background": {
+          "median": 0.8909044563770294,
+          "negative_count": 0,
+          "defined_count": 18
+        }
+      }
+    },
+    "loss_only/10s": {
+      "windows": 6,
+      "checkpoint_step": 12000,
+      "parameter_scope": [
+        "fc.0.weight",
+        "fc.0.bias",
+        "fc.2.weight",
+        "fc.2.bias"
+      ],
+      "norms": {
+        "temperature_hot": {
+          "median": 0.22805749624967575,
+          "min": 0.17190086841583252,
+          "max": 0.7083011269569397,
+          "zero_count": 0
+        },
+        "temperature_background": {
+          "median": 0.01023070840165019,
+          "min": 0.0032482899259775877,
+          "max": 0.019972560927271843,
+          "zero_count": 0
+        },
+        "strength": {
+          "median": 0.9998226761817932,
+          "min": 0.18541276454925537,
+          "max": 1.70744788646698,
+          "zero_count": 0
+        },
+        "allocation": {
+          "median": 0.22539924830198288,
+          "min": 0.07078009098768234,
+          "max": 0.5502721667289734,
+          "zero_count": 0
+        },
+        "radiation_bright": {
+          "median": 0.5604177713394165,
+          "min": 0.25200149416923523,
+          "max": 1.1180247068405151,
+          "zero_count": 0
+        },
+        "radiation_background": {
+          "median": 0.054368872195482254,
+          "min": 0.009375103749334812,
+          "max": 0.05899082124233246,
+          "zero_count": 0
+        },
+        "candidate_radiation_excess": {
+          "median": 2.096492290496826,
+          "min": 0.8230652809143066,
+          "max": 5.811820983886719,
+          "zero_count": 0
+        },
+        "candidate_temperature_physical": {
+          "median": 7.775127172470093,
+          "min": 2.9139771461486816,
+          "max": 12.659070014953613,
+          "zero_count": 0
+        }
+      },
+      "cosines": {
+        "temperature_background / temperature_hot": {
+          "median": -0.17166312062181532,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "strength / temperature_hot": {
+          "median": 0.6008285582065582,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "strength / temperature_background": {
+          "median": 0.3867228254675865,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "allocation / temperature_hot": {
+          "median": 0.6841364800930023,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "allocation / temperature_background": {
+          "median": -0.5610403418540955,
+          "negative_count": 5,
+          "defined_count": 6
+        },
+        "allocation / strength": {
+          "median": -0.52321358025074,
+          "negative_count": 5,
+          "defined_count": 6
+        },
+        "allocation / radiation_bright": {
+          "median": 0.2219522586092353,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "allocation / radiation_background": {
+          "median": -0.5392673313617706,
+          "negative_count": 5,
+          "defined_count": 6
+        },
+        "allocation / candidate_radiation_excess": {
+          "median": 0.08767743408679962,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "allocation / candidate_temperature_physical": {
+          "median": -0.4751862436532974,
+          "negative_count": 5,
+          "defined_count": 6
+        },
+        "radiation_bright / temperature_hot": {
+          "median": 0.5053327083587646,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "radiation_bright / temperature_background": {
+          "median": -0.033102259039878845,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "radiation_bright / strength": {
+          "median": 0.5248052924871445,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "radiation_background / temperature_hot": {
+          "median": -0.24252137169241905,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "radiation_background / temperature_background": {
+          "median": 0.9631631374359131,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "radiation_background / strength": {
+          "median": 0.3890855461359024,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "radiation_background / radiation_bright": {
+          "median": 0.059893250465393066,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / temperature_hot": {
+          "median": 0.130590999731794,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / temperature_background": {
+          "median": 0.5521926358342171,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / strength": {
+          "median": 0.5699683576822281,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / radiation_bright": {
+          "median": 0.6732298731803894,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / radiation_background": {
+          "median": 0.7132483422756195,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / candidate_temperature_physical": {
+          "median": 0.6773788779973984,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / temperature_hot": {
+          "median": -0.11413134261965752,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / temperature_background": {
+          "median": 0.9811979234218597,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / strength": {
+          "median": 0.3053993172943592,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / radiation_bright": {
+          "median": 0.04885116219520569,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / radiation_background": {
+          "median": 0.9680270850658417,
+          "negative_count": 0,
+          "defined_count": 6
+        }
+      }
+    },
+    "loss_only/30s": {
+      "windows": 6,
+      "checkpoint_step": 12000,
+      "parameter_scope": [
+        "fc.0.weight",
+        "fc.0.bias",
+        "fc.2.weight",
+        "fc.2.bias"
+      ],
+      "norms": {
+        "temperature_hot": {
+          "median": 0.11328595504164696,
+          "min": 0.0,
+          "max": 0.4872061014175415,
+          "zero_count": 1
+        },
+        "temperature_background": {
+          "median": 0.010348960291594267,
+          "min": 0.00331790279597044,
+          "max": 0.030694734305143356,
+          "zero_count": 0
+        },
+        "strength": {
+          "median": 0.5177423059940338,
+          "min": 0.028022000566124916,
+          "max": 4.059786796569824,
+          "zero_count": 0
+        },
+        "allocation": {
+          "median": 0.07196883484721184,
+          "min": 0.0,
+          "max": 0.3303050994873047,
+          "zero_count": 2
+        },
+        "radiation_bright": {
+          "median": 0.5851643830537796,
+          "min": 0.17385083436965942,
+          "max": 2.7109079360961914,
+          "zero_count": 0
+        },
+        "radiation_background": {
+          "median": 0.04304335452616215,
+          "min": 0.006186689715832472,
+          "max": 0.1162642315030098,
+          "zero_count": 0
+        },
+        "candidate_radiation_excess": {
+          "median": 5.147477388381958,
+          "min": 0.7001039981842041,
+          "max": 14.390032768249512,
+          "zero_count": 0
+        },
+        "candidate_temperature_physical": {
+          "median": 5.662644267082214,
+          "min": 1.7848639488220215,
+          "max": 28.79808235168457,
+          "zero_count": 0
+        }
+      },
+      "cosines": {
+        "temperature_background / temperature_hot": {
+          "median": 0.35813048481941223,
+          "negative_count": 2,
+          "defined_count": 5
+        },
+        "strength / temperature_hot": {
+          "median": 0.2585710883140564,
+          "negative_count": 1,
+          "defined_count": 5
+        },
+        "strength / temperature_background": {
+          "median": -0.37240244448184967,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "allocation / temperature_hot": {
+          "median": 0.2912243381142616,
+          "negative_count": 1,
+          "defined_count": 4
+        },
+        "allocation / temperature_background": {
+          "median": -0.175265037920326,
+          "negative_count": 2,
+          "defined_count": 4
+        },
+        "allocation / strength": {
+          "median": 0.29937679320573807,
+          "negative_count": 1,
+          "defined_count": 4
+        },
+        "allocation / radiation_bright": {
+          "median": -0.25746728479862213,
+          "negative_count": 3,
+          "defined_count": 4
+        },
+        "allocation / radiation_background": {
+          "median": -0.17021148465573788,
+          "negative_count": 3,
+          "defined_count": 4
+        },
+        "allocation / candidate_radiation_excess": {
+          "median": -0.025008782744407654,
+          "negative_count": 2,
+          "defined_count": 4
+        },
+        "allocation / candidate_temperature_physical": {
+          "median": -0.1670799609273672,
+          "negative_count": 3,
+          "defined_count": 4
+        },
+        "radiation_bright / temperature_hot": {
+          "median": 0.26801761984825134,
+          "negative_count": 2,
+          "defined_count": 5
+        },
+        "radiation_bright / temperature_background": {
+          "median": 0.010931462049484253,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "radiation_bright / strength": {
+          "median": -0.13759615551680326,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "radiation_background / temperature_hot": {
+          "median": 0.10151234269142151,
+          "negative_count": 2,
+          "defined_count": 5
+        },
+        "radiation_background / temperature_background": {
+          "median": 0.9108352661132812,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "radiation_background / strength": {
+          "median": -0.2799266055226326,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "radiation_background / radiation_bright": {
+          "median": 0.2138752043247223,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / temperature_hot": {
+          "median": 0.14371085166931152,
+          "negative_count": 2,
+          "defined_count": 5
+        },
+        "candidate_radiation_excess / temperature_background": {
+          "median": 0.9018876552581787,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / strength": {
+          "median": -0.46878862380981445,
+          "negative_count": 5,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / radiation_bright": {
+          "median": 0.6525392234325409,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / radiation_background": {
+          "median": 0.9851022064685822,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / candidate_temperature_physical": {
+          "median": 0.8908141851425171,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / temperature_hot": {
+          "median": 0.26841726899147034,
+          "negative_count": 2,
+          "defined_count": 5
+        },
+        "candidate_temperature_physical / temperature_background": {
+          "median": 0.9857680797576904,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / strength": {
+          "median": -0.34758956730365753,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / radiation_bright": {
+          "median": -0.02754753828048706,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / radiation_background": {
+          "median": 0.904049426317215,
+          "negative_count": 0,
+          "defined_count": 6
+        }
+      }
+    },
+    "loss_only/120s": {
+      "windows": 6,
+      "checkpoint_step": 12000,
+      "parameter_scope": [
+        "fc.0.weight",
+        "fc.0.bias",
+        "fc.2.weight",
+        "fc.2.bias"
+      ],
+      "norms": {
+        "temperature_hot": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "zero_count": 6
+        },
+        "temperature_background": {
+          "median": 0.0004099099023733288,
+          "min": 0.00028415228007361293,
+          "max": 0.0009882288286462426,
+          "zero_count": 0
+        },
+        "strength": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "zero_count": 6
+        },
+        "allocation": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "zero_count": 6
+        },
+        "radiation_bright": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.12074723094701767,
+          "zero_count": 5
+        },
+        "radiation_background": {
+          "median": 0.005795670440420508,
+          "min": 0.002459590556100011,
+          "max": 0.014237201772630215,
+          "zero_count": 0
+        },
+        "candidate_radiation_excess": {
+          "median": 2.5743871331214905,
+          "min": 0.482902467250824,
+          "max": 5.309772968292236,
+          "zero_count": 0
+        },
+        "candidate_temperature_physical": {
+          "median": 4.295925259590149,
+          "min": 2.9218056201934814,
+          "max": 5.253223419189453,
+          "zero_count": 0
+        }
+      },
+      "cosines": {
+        "temperature_background / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "strength / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "strength / temperature_background": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / temperature_background": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / strength": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / radiation_bright": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / radiation_background": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / candidate_radiation_excess": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / candidate_temperature_physical": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "radiation_bright / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "radiation_bright / temperature_background": {
+          "median": -0.9036908745765686,
+          "negative_count": 1,
+          "defined_count": 1
+        },
+        "radiation_bright / strength": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "radiation_background / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "radiation_background / temperature_background": {
+          "median": 0.8885258436203003,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "radiation_background / strength": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "radiation_background / radiation_bright": {
+          "median": -0.8446015119552612,
+          "negative_count": 1,
+          "defined_count": 1
+        },
+        "candidate_radiation_excess / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "candidate_radiation_excess / temperature_background": {
+          "median": 0.016528397798538208,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / strength": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "candidate_radiation_excess / radiation_bright": {
+          "median": -0.6409241557121277,
+          "negative_count": 1,
+          "defined_count": 1
+        },
+        "candidate_radiation_excess / radiation_background": {
+          "median": 0.5387037098407745,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / candidate_temperature_physical": {
+          "median": -0.5070393830537796,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "candidate_temperature_physical / temperature_background": {
+          "median": 0.9528628885746002,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / strength": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "candidate_temperature_physical / radiation_bright": {
+          "median": -0.39132967591285706,
+          "negative_count": 1,
+          "defined_count": 1
+        },
+        "candidate_temperature_physical / radiation_background": {
+          "median": 0.625294879078865,
+          "negative_count": 0,
+          "defined_count": 6
+        }
+      }
+    },
+    "spatial_heads/all_windows": {
+      "windows": 18,
+      "checkpoint_step": 12000,
+      "parameter_scope": [
+        "e0.0.weight",
+        "e0.0.bias",
+        "e0.2.weight",
+        "e0.2.bias",
+        "e1.0.weight",
+        "e1.0.bias",
+        "e1.2.weight",
+        "e1.2.bias",
+        "e2.0.weight",
+        "e2.0.bias",
+        "e2.2.weight",
+        "e2.2.bias"
+      ],
+      "norms": {
+        "temperature_hot": {
+          "median": 0.3533370718359947,
+          "min": 0.0,
+          "max": 5.066251277923584,
+          "zero_count": 7
+        },
+        "temperature_background": {
+          "median": 0.15841658785939217,
+          "min": 2.5575864128768444e-05,
+          "max": 0.3670945167541504,
+          "zero_count": 0
+        },
+        "strength": {
+          "median": 3.7082167863845825,
+          "min": 3.0783339752815664e-06,
+          "max": 41.84549331665039,
+          "zero_count": 0
+        },
+        "allocation": {
+          "median": 0.8438813090324402,
+          "min": 0.0,
+          "max": 2.2937822341918945,
+          "zero_count": 8
+        },
+        "radiation_bright": {
+          "median": 2.114899694919586,
+          "min": 0.0,
+          "max": 21.956439971923828,
+          "zero_count": 5
+        },
+        "radiation_background": {
+          "median": 0.4424974024295807,
+          "min": 0.0036474259104579687,
+          "max": 1.3784974813461304,
+          "zero_count": 0
+        },
+        "candidate_radiation_excess": {
+          "median": 28.132415771484375,
+          "min": 0.9730070233345032,
+          "max": 106.8302230834961,
+          "zero_count": 0
+        },
+        "candidate_temperature_physical": {
+          "median": 34.386961936950684,
+          "min": 2.0298779010772705,
+          "max": 120.79744720458984,
+          "zero_count": 0
+        }
+      },
+      "cosines": {
+        "temperature_background / temperature_hot": {
+          "median": -0.4327327311038971,
+          "negative_count": 6,
+          "defined_count": 11
+        },
+        "strength / temperature_hot": {
+          "median": 0.8788324594497681,
+          "negative_count": 3,
+          "defined_count": 11
+        },
+        "strength / temperature_background": {
+          "median": 0.37078896164894104,
+          "negative_count": 8,
+          "defined_count": 18
+        },
+        "allocation / temperature_hot": {
+          "median": 0.49919477105140686,
+          "negative_count": 3,
+          "defined_count": 10
+        },
+        "allocation / temperature_background": {
+          "median": 0.37190045416355133,
+          "negative_count": 4,
+          "defined_count": 10
+        },
+        "allocation / strength": {
+          "median": 0.4836772382259369,
+          "negative_count": 3,
+          "defined_count": 10
+        },
+        "allocation / radiation_bright": {
+          "median": 0.09329243004322052,
+          "negative_count": 5,
+          "defined_count": 10
+        },
+        "allocation / radiation_background": {
+          "median": 0.218950092792511,
+          "negative_count": 4,
+          "defined_count": 10
+        },
+        "allocation / candidate_radiation_excess": {
+          "median": 0.24560680985450745,
+          "negative_count": 4,
+          "defined_count": 10
+        },
+        "allocation / candidate_temperature_physical": {
+          "median": 0.37111739814281464,
+          "negative_count": 4,
+          "defined_count": 10
+        },
+        "radiation_bright / temperature_hot": {
+          "median": 0.8995761871337891,
+          "negative_count": 2,
+          "defined_count": 11
+        },
+        "radiation_bright / temperature_background": {
+          "median": 0.5423948764801025,
+          "negative_count": 6,
+          "defined_count": 13
+        },
+        "radiation_bright / strength": {
+          "median": 0.6708394289016724,
+          "negative_count": 6,
+          "defined_count": 13
+        },
+        "radiation_background / temperature_hot": {
+          "median": -0.17101731896400452,
+          "negative_count": 6,
+          "defined_count": 11
+        },
+        "radiation_background / temperature_background": {
+          "median": 0.9185859560966492,
+          "negative_count": 0,
+          "defined_count": 18
+        },
+        "radiation_background / strength": {
+          "median": 0.18273440189659595,
+          "negative_count": 8,
+          "defined_count": 18
+        },
+        "radiation_background / radiation_bright": {
+          "median": 0.4577878713607788,
+          "negative_count": 5,
+          "defined_count": 13
+        },
+        "candidate_radiation_excess / temperature_hot": {
+          "median": 0.4021311402320862,
+          "negative_count": 4,
+          "defined_count": 11
+        },
+        "candidate_radiation_excess / temperature_background": {
+          "median": 0.9149934649467468,
+          "negative_count": 2,
+          "defined_count": 18
+        },
+        "candidate_radiation_excess / strength": {
+          "median": 0.1745084673166275,
+          "negative_count": 8,
+          "defined_count": 18
+        },
+        "candidate_radiation_excess / radiation_bright": {
+          "median": 0.6687105894088745,
+          "negative_count": 4,
+          "defined_count": 13
+        },
+        "candidate_radiation_excess / radiation_background": {
+          "median": 0.9971026182174683,
+          "negative_count": 2,
+          "defined_count": 18
+        },
+        "candidate_radiation_excess / candidate_temperature_physical": {
+          "median": 0.8992128074169159,
+          "negative_count": 2,
+          "defined_count": 18
+        },
+        "candidate_temperature_physical / temperature_hot": {
+          "median": -0.42320647835731506,
+          "negative_count": 6,
+          "defined_count": 11
+        },
+        "candidate_temperature_physical / temperature_background": {
+          "median": 0.9947742521762848,
+          "negative_count": 0,
+          "defined_count": 18
+        },
+        "candidate_temperature_physical / strength": {
+          "median": 0.2789146210998297,
+          "negative_count": 9,
+          "defined_count": 18
+        },
+        "candidate_temperature_physical / radiation_bright": {
+          "median": 0.2978615164756775,
+          "negative_count": 6,
+          "defined_count": 13
+        },
+        "candidate_temperature_physical / radiation_background": {
+          "median": 0.9063833057880402,
+          "negative_count": 0,
+          "defined_count": 18
+        }
+      }
+    },
+    "spatial_heads/10s": {
+      "windows": 6,
+      "checkpoint_step": 12000,
+      "parameter_scope": [
+        "e0.0.weight",
+        "e0.0.bias",
+        "e0.2.weight",
+        "e0.2.bias",
+        "e1.0.weight",
+        "e1.0.bias",
+        "e1.2.weight",
+        "e1.2.bias",
+        "e2.0.weight",
+        "e2.0.bias",
+        "e2.2.weight",
+        "e2.2.bias"
+      ],
+      "norms": {
+        "temperature_hot": {
+          "median": 1.7112818360328674,
+          "min": 0.2490149885416031,
+          "max": 2.789984703063965,
+          "zero_count": 0
+        },
+        "temperature_background": {
+          "median": 0.21273032575845718,
+          "min": 0.11675576120615005,
+          "max": 0.3670945167541504,
+          "zero_count": 0
+        },
+        "strength": {
+          "median": 15.326168537139893,
+          "min": 2.607182741165161,
+          "max": 29.0235595703125,
+          "zero_count": 0
+        },
+        "allocation": {
+          "median": 1.4518601894378662,
+          "min": 0.898954451084137,
+          "max": 2.2519986629486084,
+          "zero_count": 0
+        },
+        "radiation_bright": {
+          "median": 3.237927794456482,
+          "min": 1.2958300113677979,
+          "max": 6.926692962646484,
+          "zero_count": 0
+        },
+        "radiation_background": {
+          "median": 0.6779904365539551,
+          "min": 0.41121768951416016,
+          "max": 1.0062484741210938,
+          "zero_count": 0
+        },
+        "candidate_radiation_excess": {
+          "median": 38.896339416503906,
+          "min": 0.9730070233345032,
+          "max": 62.73939514160156,
+          "zero_count": 0
+        },
+        "candidate_temperature_physical": {
+          "median": 98.91084671020508,
+          "min": 37.40434265136719,
+          "max": 120.79744720458984,
+          "zero_count": 0
+        }
+      },
+      "cosines": {
+        "temperature_background / temperature_hot": {
+          "median": 0.06020420789718628,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "strength / temperature_hot": {
+          "median": 0.8941887617111206,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "strength / temperature_background": {
+          "median": -0.8238043785095215,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "allocation / temperature_hot": {
+          "median": 0.3642898127436638,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "allocation / temperature_background": {
+          "median": 0.05987204611301422,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "allocation / strength": {
+          "median": -0.12741320952773094,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "allocation / radiation_bright": {
+          "median": 0.0886480063199997,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "allocation / radiation_background": {
+          "median": 0.011190220713615417,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "allocation / candidate_radiation_excess": {
+          "median": 0.24560680985450745,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "allocation / candidate_temperature_physical": {
+          "median": 0.05273103713989258,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "radiation_bright / temperature_hot": {
+          "median": 0.9209399521350861,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "radiation_bright / temperature_background": {
+          "median": 0.934330016374588,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "radiation_bright / strength": {
+          "median": 0.7733209431171417,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "radiation_background / temperature_hot": {
+          "median": 0.036785006523132324,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "radiation_background / temperature_background": {
+          "median": 0.9665816724300385,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "radiation_background / strength": {
+          "median": -0.8233985304832458,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "radiation_background / radiation_bright": {
+          "median": 0.9598882794380188,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / temperature_hot": {
+          "median": 0.5157206356525421,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / temperature_background": {
+          "median": 0.9651888906955719,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / strength": {
+          "median": -0.36399319767951965,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / radiation_bright": {
+          "median": 0.9564812779426575,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / radiation_background": {
+          "median": 0.9995546340942383,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / candidate_temperature_physical": {
+          "median": 0.9539552927017212,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / temperature_hot": {
+          "median": 0.062463223934173584,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / temperature_background": {
+          "median": 0.9977370798587799,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / strength": {
+          "median": -0.8048954606056213,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / radiation_bright": {
+          "median": 0.9247243702411652,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / radiation_background": {
+          "median": 0.9557569324970245,
+          "negative_count": 0,
+          "defined_count": 6
+        }
+      }
+    },
+    "spatial_heads/30s": {
+      "windows": 6,
+      "checkpoint_step": 12000,
+      "parameter_scope": [
+        "e0.0.weight",
+        "e0.0.bias",
+        "e0.2.weight",
+        "e0.2.bias",
+        "e1.0.weight",
+        "e1.0.bias",
+        "e1.2.weight",
+        "e1.2.bias",
+        "e2.0.weight",
+        "e2.0.bias",
+        "e2.2.weight",
+        "e2.2.bias"
+      ],
+      "norms": {
+        "temperature_hot": {
+          "median": 0.7336176186800003,
+          "min": 0.0,
+          "max": 5.066251277923584,
+          "zero_count": 1
+        },
+        "temperature_background": {
+          "median": 0.2640099748969078,
+          "min": 0.0057077775709331036,
+          "max": 0.32238444685935974,
+          "zero_count": 0
+        },
+        "strength": {
+          "median": 9.371976375579834,
+          "min": 0.12963427603244781,
+          "max": 41.84549331665039,
+          "zero_count": 0
+        },
+        "allocation": {
+          "median": 0.9822070300579071,
+          "min": 0.0,
+          "max": 2.2937822341918945,
+          "zero_count": 2
+        },
+        "radiation_bright": {
+          "median": 2.351558566093445,
+          "min": 1.0074033737182617,
+          "max": 21.956439971923828,
+          "zero_count": 0
+        },
+        "radiation_background": {
+          "median": 0.47950579226017,
+          "min": 0.018133394420146942,
+          "max": 1.3784974813461304,
+          "zero_count": 0
+        },
+        "candidate_radiation_excess": {
+          "median": 39.860581398010254,
+          "min": 3.588320255279541,
+          "max": 106.8302230834961,
+          "zero_count": 0
+        },
+        "candidate_temperature_physical": {
+          "median": 40.27405261993408,
+          "min": 11.65478229522705,
+          "max": 117.95661926269531,
+          "zero_count": 0
+        }
+      },
+      "cosines": {
+        "temperature_background / temperature_hot": {
+          "median": -0.4327327311038971,
+          "negative_count": 3,
+          "defined_count": 5
+        },
+        "strength / temperature_hot": {
+          "median": 0.11929353326559067,
+          "negative_count": 2,
+          "defined_count": 5
+        },
+        "strength / temperature_background": {
+          "median": -0.02336418628692627,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "allocation / temperature_hot": {
+          "median": 0.5521522164344788,
+          "negative_count": 1,
+          "defined_count": 4
+        },
+        "allocation / temperature_background": {
+          "median": 0.43131574988365173,
+          "negative_count": 1,
+          "defined_count": 4
+        },
+        "allocation / strength": {
+          "median": 0.536717027425766,
+          "negative_count": 0,
+          "defined_count": 4
+        },
+        "allocation / radiation_bright": {
+          "median": 0.1667025089263916,
+          "negative_count": 2,
+          "defined_count": 4
+        },
+        "allocation / radiation_background": {
+          "median": 0.2881397306919098,
+          "negative_count": 1,
+          "defined_count": 4
+        },
+        "allocation / candidate_radiation_excess": {
+          "median": 0.0581657737493515,
+          "negative_count": 2,
+          "defined_count": 4
+        },
+        "allocation / candidate_temperature_physical": {
+          "median": 0.44765937328338623,
+          "negative_count": 1,
+          "defined_count": 4
+        },
+        "radiation_bright / temperature_hot": {
+          "median": 0.8433573842048645,
+          "negative_count": 1,
+          "defined_count": 5
+        },
+        "radiation_bright / temperature_background": {
+          "median": -0.46698346734046936,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "radiation_bright / strength": {
+          "median": 0.16015255451202393,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "radiation_background / temperature_hot": {
+          "median": -0.17101731896400452,
+          "negative_count": 3,
+          "defined_count": 5
+        },
+        "radiation_background / temperature_background": {
+          "median": 0.9185859560966492,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "radiation_background / strength": {
+          "median": -0.23844092898070812,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "radiation_background / radiation_bright": {
+          "median": -0.06359388306736946,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / temperature_hot": {
+          "median": 0.4021311402320862,
+          "negative_count": 2,
+          "defined_count": 5
+        },
+        "candidate_radiation_excess / temperature_background": {
+          "median": 0.9206615388393402,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / strength": {
+          "median": -0.7313780188560486,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / radiation_bright": {
+          "median": 0.2830290384590626,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / radiation_background": {
+          "median": 0.9916588664054871,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / candidate_temperature_physical": {
+          "median": 0.8996910154819489,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / temperature_hot": {
+          "median": -0.42320647835731506,
+          "negative_count": 3,
+          "defined_count": 5
+        },
+        "candidate_temperature_physical / temperature_background": {
+          "median": 0.9954594373703003,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / strength": {
+          "median": -0.05521279573440552,
+          "negative_count": 3,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / radiation_bright": {
+          "median": -0.48974719643592834,
+          "negative_count": 4,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / radiation_background": {
+          "median": 0.9063833057880402,
+          "negative_count": 0,
+          "defined_count": 6
+        }
+      }
+    },
+    "spatial_heads/120s": {
+      "windows": 6,
+      "checkpoint_step": 12000,
+      "parameter_scope": [
+        "e0.0.weight",
+        "e0.0.bias",
+        "e0.2.weight",
+        "e0.2.bias",
+        "e1.0.weight",
+        "e1.0.bias",
+        "e1.2.weight",
+        "e1.2.bias",
+        "e2.0.weight",
+        "e2.0.bias",
+        "e2.2.weight",
+        "e2.2.bias"
+      ],
+      "norms": {
+        "temperature_hot": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "zero_count": 6
+        },
+        "temperature_background": {
+          "median": 0.00011650546002783813,
+          "min": 2.5575864128768444e-05,
+          "max": 0.0005660949973389506,
+          "zero_count": 0
+        },
+        "strength": {
+          "median": 0.0008030452736420557,
+          "min": 3.0783339752815664e-06,
+          "max": 0.01064511202275753,
+          "zero_count": 0
+        },
+        "allocation": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "zero_count": 6
+        },
+        "radiation_bright": {
+          "median": 0.0,
+          "min": 0.0,
+          "max": 4.7340474128723145,
+          "zero_count": 5
+        },
+        "radiation_background": {
+          "median": 0.04721406660974026,
+          "min": 0.0036474259104579687,
+          "max": 0.12296261638402939,
+          "zero_count": 0
+        },
+        "candidate_radiation_excess": {
+          "median": 14.232695579528809,
+          "min": 1.8562036752700806,
+          "max": 35.28927230834961,
+          "zero_count": 0
+        },
+        "candidate_temperature_physical": {
+          "median": 4.682594537734985,
+          "min": 2.0298779010772705,
+          "max": 5.8353471755981445,
+          "zero_count": 0
+        }
+      },
+      "cosines": {
+        "temperature_background / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "strength / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "strength / temperature_background": {
+          "median": 0.48990747332572937,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "allocation / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / temperature_background": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / strength": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / radiation_bright": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / radiation_background": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / candidate_radiation_excess": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "allocation / candidate_temperature_physical": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "radiation_bright / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "radiation_bright / temperature_background": {
+          "median": 0.560535192489624,
+          "negative_count": 0,
+          "defined_count": 1
+        },
+        "radiation_bright / strength": {
+          "median": -0.43121427297592163,
+          "negative_count": 1,
+          "defined_count": 1
+        },
+        "radiation_background / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "radiation_background / temperature_background": {
+          "median": 0.8618284463882446,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "radiation_background / strength": {
+          "median": 0.41154907643795013,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "radiation_background / radiation_bright": {
+          "median": 0.4577878713607788,
+          "negative_count": 0,
+          "defined_count": 1
+        },
+        "candidate_radiation_excess / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "candidate_radiation_excess / temperature_background": {
+          "median": 0.8553517758846283,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / strength": {
+          "median": 0.3297591656446457,
+          "negative_count": 1,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / radiation_bright": {
+          "median": 0.38359081745147705,
+          "negative_count": 0,
+          "defined_count": 1
+        },
+        "candidate_radiation_excess / radiation_background": {
+          "median": 0.994269073009491,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_radiation_excess / candidate_temperature_physical": {
+          "median": 0.7844578921794891,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / temperature_hot": {
+          "median": null,
+          "negative_count": 0,
+          "defined_count": 0
+        },
+        "candidate_temperature_physical / temperature_background": {
+          "median": 0.9386881589889526,
+          "negative_count": 0,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / strength": {
+          "median": 0.6194398701190948,
+          "negative_count": 2,
+          "defined_count": 6
+        },
+        "candidate_temperature_physical / radiation_bright": {
+          "median": 0.2978615164756775,
+          "negative_count": 0,
+          "defined_count": 1
+        },
+        "candidate_temperature_physical / radiation_background": {
+          "median": 0.748858779668808,
+          "negative_count": 0,
+          "defined_count": 6
+        }
+      }
+    }
+  }
+}

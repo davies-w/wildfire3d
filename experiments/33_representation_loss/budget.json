@@ -1,7 +1,7 @@
 {
   "authorized_usd": 75,
   "authorization": "User increased cumulative cap from $35 to $75; archive code/data/models first, then continue model experimentation",
-  "reserved_usd": 44.6,
+  "reserved_usd": 46.6,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -72,12 +72,21 @@
       "purpose": "57.5GB GCS dataset transfer, archive storage and operations"
     },
     "pilot07": {
-      "state": "submitted",
+      "state": "terminal_cleanup_verified",
       "allowance_usd": 2.0,
       "reserved_unix": 1792654500.493655,
       "compute_allowance_usd": 1.2,
       "ancillary_cleanup_allowance_usd": 0.8,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu33-pilot07/executions/e0eef02d-303e-4ccd-b893-88263a239486"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu33-pilot07/executions/e0eef02d-303e-4ccd-b893-88263a239486",
+      "completed_unix": 1792655044.748332
+    },
+    "pilot08": {
+      "state": "submitted",
+      "allowance_usd": 2.0,
+      "reserved_unix": 1792655765.64165,
+      "compute_allowance_usd": 1.2,
+      "ancillary_cleanup_allowance_usd": 0.8,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu33-pilot08/executions/b2b7da10-3916-4360-a689-fe421002add9"
     }
   },
   "recycle_reservations": false,
