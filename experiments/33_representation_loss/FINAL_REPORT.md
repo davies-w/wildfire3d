@@ -22,3 +22,18 @@ Next steps: diagnose per-output gradient magnitudes on existing training data, c
 Twelve training and eight validation cases were deliberately strength-stratified. Old models were warm-started; spatial model started fresh. Temporal-difference loss does not make this recurrent. Generic3m-wide conical crowns4/6/8/10m tall above2m,1600weighted particles,0.5m24×16×16m grid,180s;1500°C artificial20s source;no trunks/buildings/embers. Six gas outputs exclude solid-ground temperature. No physical validation.
 
 All six attempts have verified terminal cleanup and removal of temporary input grants. Two Spot interruptions and one regular-GPU stockout consumed retained reservations. Total cumulative reserved$34.60/$35, including$24.60 prior experiment32; experiment33 reservations$10.00. Reservations are not invoice charges; actual invoice spend is unknown. No further compute authorized within remaining$.40. Checkpoints and immutable inputs retained.
+
+## Later verified development results (attempts11–12)
+
+Deterministic equivalent-interpolation training produced exactly matching repeated-dose weights onL4, with immutable optimizer checks. The earlier optimizer-contamination hypothesis was withdrawn: existing pre-training serialization already broke sharing. No such contamination established.
+
+Broader frozen evaluation (32newgeometryvalidationconfigs,40trajectories; average seeds withinconfiguration) gives postsource medianpercent errors:
+
+| Model | Hot temperature | Heat release | Radiation dose | Whole-volume temperature |
+|---|---:|---:|---:|---:|
+| Saved current6000 |69.56|74.38|69.82|471.79|
+| Encoded refinement |53.94|75.88|123.98|662.02|
+| Dose + background |54.11|74.57|76.21|473.08|
+| Physical background penalty |56.11|72.99|75.61|265.93|
+
+The physical penalty improves temperature but sacrifices radiation relative to the originalsavedmodel. Not an overallwinner, and errorsremainlarge. Dataarepreviousdevelopment, notfreshindependenttest; legacy8valexcluded. Fourpreselectedanimations showmax-y gasT/HRR projections withsharednonlinearscales, notflamegeometry. L4predictionmedian0.22s/180s trajectory excludespreprocessing/metrics. Attempt13tests12vs120refinementtrainingcoverage atequal6000updates; reserve58.10/75 cumulative, invoiceunknown. Allpriorraw/code/checkpoints retained; no physicalvalidation.

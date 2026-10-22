@@ -70,3 +70,12 @@ stages:
     metrics:
     - results/broader-summary.json:
         cache: false
+  render_projections:
+    cmd: ../../../.venv/bin/python render_projections.py
+    deps:
+    - render_projections.py
+    - evaluation-plan.json
+    - cases.json
+    - data/collected/projections.npz
+    outs:
+    - data/visuals

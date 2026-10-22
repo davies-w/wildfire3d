@@ -143,3 +143,78 @@ stages:
       hash: md5
       md5: bea505317fbf88d28610fce14b24c976
       size: 332
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 6cf56f0a5e2a0b583853fb7923874100
+      size: 565
+    - path: collect.py
+      hash: md5
+      md5: 6be9091618bb096f4fc32fdfdd5acd1a
+      size: 2465
+    - path: results/execution.json
+      hash: md5
+      md5: bea505317fbf88d28610fce14b24c976
+      size: 332
+    outs:
+    - path: data/collected
+      hash: md5
+      md5: abc9f11687c61ed82f84db17e0c5fcec.dir
+      size: 14104111
+      nfiles: 8
+    - path: results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: results/permission-removed.json
+      hash: md5
+      md5: a61e2e084fa428cc64491d4fd107401c
+      size: 57
+  broader_analysis:
+    cmd: ../../../.venv/bin/python analyze_broader.py
+    deps:
+    - path: analyze_broader.py
+      hash: md5
+      md5: 9a63a90d0f069bdbb9d463aeb99fe30d
+      size: 2650
+    - path: data/collected
+      hash: md5
+      md5: abc9f11687c61ed82f84db17e0c5fcec.dir
+      size: 14104111
+      nfiles: 8
+    - path: pilot-cases.json
+      hash: md5
+      md5: fbac826e8bb9eea51e628c46d2ebe598
+      size: 16625
+    outs:
+    - path: results/broader-summary.json
+      hash: md5
+      md5: 08c99ab10b2ea0215cc0d277cfac095a
+      size: 735243
+  render_projections:
+    cmd: ../../../.venv/bin/python render_projections.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 8ce1ec71de3f590410ca93769fc0322f
+      size: 43295
+    - path: data/collected/projections.npz
+      hash: md5
+      md5: fa7e50e2acb0af304e22a49d8fb9de3a
+      size: 10173933
+    - path: evaluation-plan.json
+      hash: md5
+      md5: 9c4aa85e96ccdeba6716af66b703342c
+      size: 1659
+    - path: render_projections.py
+      hash: md5
+      md5: 636700d9b5c3522097556866b2eb6bec
+      size: 3135
+    outs:
+    - path: data/visuals
+      hash: md5
+      md5: fcf0e8a9759bb35a7431263e73d5f3a7.dir
+      size: 12037659
+      nfiles: 9
