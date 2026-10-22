@@ -13,3 +13,25 @@ Attempt02: separately reserved4.50 replacement for startup404 in attempt01. Five
 Attempt03 separately reserves4.50 after attempt02 completed preprocessing and CUDA checks but failed exact timestamp equality BEFOREtraining. Raw slice audit:8 primary-vs-replica pairs from4 triple-seed configs; maxdifference0.155724s, each91frames, all nearestmatches sameindices. Pairdiagnostic now accepts one-to-one nearestframes<=.2s and records offset; includes temporaljitter, not pure stochasticerrorfloor. Alltraining/validationtargets and optimization unchanged. Reuse five hashverified bundles fromattempt02/restored via narrow temporaryprefixgrant. No automaticretry or recycledbudget. Cumulative83.60/100.
 
 Pre-submission availability check caught further missing originals. Read-only bucket inspection confirms Delete age1 lifecycle rule. No attempt03 workflow existed or compute was submitted. Recovery uses same alreadyreserved4.50 allowance, restoring all48 raw+summary pairs to fresh immutableprefix after localSHA verification;96objects~6GB, narrow24hreadgrantonlynewprefix+overlay. Bucketpolicyunchanged. This avoids ongoing expiration of old inputs.
+
+
+## Completed diagnostic, 2026-10-22
+
+All four arms completed, with per-epoch training and validation histories. CUDA checks, matched initial predictions and serialization replay passed. Collector verified no remaining jobs, VMs or disks and removed the temporary input grant.
+
+| Arm | Epochs | Final train normalized MAE | Final validation normalized MAE |
+|---|---:|---:|---:|
+| Source HRR MLP | 100 | 0.41835 | 3.14982 |
+| Single trajectory field model | 80 | 0.11824 | 0.44419 |
+| Eight trajectory field model | 20 | 0.27755 | 0.41150 |
+| Eight trajectory true-HRR oracle | 20 | 0.26404 | 0.37052 |
+
+Source normalization differs from field normalization; do not compare their magnitudes directly. Validation averages replicas within configurations, then configurations equally. Source metrics include the artificial ignition period. The oracle uses true instantaneous FDS HRR and is not deployable.
+
+No field arm reached the prespecified 0.05 training fit target. Oracle information lowered validation normalized MAE by approximately 10% relative to the matched eight-case arm, but improved training fit only approximately 5%. Thus source information helps, but this test does not establish it as the sole bottleneck. Even one trajectory remains imperfectly fitted.
+
+The single-case last five training errors were 0.118321, 0.118226, 0.118209, 0.118227, 0.118243. Eight-case errors declined 0.279158 to 0.277548 over the last five epochs; oracle declined 0.265377 to 0.264040. These are late plateaus under cosine decay to 1e-5, not proof of architectural capacity limits or adequate optimization at a useful learning rate. Source training continued slightly downward while validation slightly worsened near the end.
+
+Next justified diagnostic: isolate optimization on the single trajectory, compare a bounded learning-rate restart against continued low-rate training from identical saved weights and optimizer state, retaining per-epoch full train/validation evaluation. Do not add auxiliary losses or expand data before resolving this fitting question. This follow-up has not yet been launched or reserved.
+
+Evidence: results/analysis.json and data/visuals/*-curves.png, with original epoch JSON and all checkpoints in the DVC cloud_collect output. Cumulative retained reservations remain $83.60 of $100; actual invoice unknown. Existing simulation and validation limitations above still apply.
