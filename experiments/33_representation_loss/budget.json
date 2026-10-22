@@ -1,7 +1,7 @@
 {
   "authorized_usd": 35,
   "authorization": "User approved up to $35 for model improvement experiments; conservatively cumulative including experiment32",
-  "reserved_usd": 27.6,
+  "reserved_usd": 29.1,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -18,12 +18,22 @@
       "completed_unix": 1792643009.9809332
     },
     "pilot02": {
-      "state": "submitted",
+      "state": "terminal_cleanup_verified",
       "allowance_usd": 1.5,
       "reserved_unix": 1792643465.788078,
       "compute_allowance_usd": 1.2,
       "ancillary_cleanup_allowance_usd": 0.3,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu33-pilot02/executions/1ee758da-b98c-4e24-9803-f00b73db12db"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu33-pilot02/executions/1ee758da-b98c-4e24-9803-f00b73db12db",
+      "completed_unix": 1792644020.784224,
+      "failure_reason": "Spot preemption exit50001; current6000 checkpoint preserved"
+    },
+    "pilot03": {
+      "state": "submitted",
+      "allowance_usd": 1.5,
+      "reserved_unix": 1792644345.0416589,
+      "compute_allowance_usd": 1.2,
+      "ancillary_cleanup_allowance_usd": 0.3,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu33-pilot03/executions/3aed2d2c-cd69-4b80-8172-9860560478e2"
     }
   },
   "recycle_reservations": false,

@@ -1,0 +1,64 @@
+schema: '2.0'
+stages:
+  package:
+    cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python 
+      prepare_pilot.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: fbac826e8bb9eea51e628c46d2ebe598
+      size: 16625
+    - path: data/geometries.npz
+      hash: md5
+      md5: bcaf4448500b6141ed143dffb82c11f9
+      size: 41719
+    - path: data/initial_snapshot.pt
+      hash: md5
+      md5: ca4576c78d1b64bf241d951631f41530
+      size: 668978
+    - path: data/resume
+      hash: md5
+      md5: c8635d724214a8823625bb84f488c107.dir
+      size: 8949420
+      nfiles: 3
+    - path: groups.json
+      hash: md5
+      md5: f31c6e821d230099e72b3d0342020bdc
+      size: 5665
+    - path: losses.py
+      hash: md5
+      md5: 3e3c3f85188640e786887294ff266835
+      size: 1192
+    - path: models.py
+      hash: md5
+      md5: 26c53ca21d4854cc9b52402dc08ed9ab
+      size: 2054
+    - path: prepare_pilot.py
+      hash: md5
+      md5: 12a83e84f479812d4d2ae649c4810c67
+      size: 3195
+    - path: validate.py
+      hash: md5
+      md5: b31a899537975a573edc8ca19843c252
+      size: 1171
+    - path: worker.py
+      hash: md5
+      md5: 375515dbb5ffbd521e538414192eb77e
+      size: 6605
+    outs:
+    - path: data/pilot-overlay.tar
+      hash: md5
+      md5: cc535867462bd97d41a532b2816e90ca
+      size: 9789440
+    - path: gpu-workflow.yaml
+      hash: md5
+      md5: 4cd74295406de34bd634fa6875998ea5
+      size: 8492
+    - path: results/input-freeze.json
+      hash: md5
+      md5: 2f71d1a36af6117d9e24fed56781d91c
+      size: 2229
+    - path: results/preflight.json
+      hash: md5
+      md5: 7f9868baa4a9a3ace217872751817af7
+      size: 228
