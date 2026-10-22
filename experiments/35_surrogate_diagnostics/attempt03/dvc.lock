@@ -161,3 +161,27 @@ stages:
       hash: md5
       md5: f2642c541293504f76f47b75340dbbab
       size: 230
+  recover_submission:
+    cmd: ../../../.venv/bin/python launch.py --recover-reserved-setup
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
+      size: 597
+    - path: data/pilot-overlay.tar
+      hash: md5
+      md5: 3957b8fd50093fbe4908993c77b01245
+      size: 286720
+    - path: gpu-workflow.yaml
+      hash: md5
+      md5: eba229929ecdd26f9957a5eed6dfb5bb
+      size: 8699
+    - path: launch.py
+      hash: md5
+      md5: 5a8a681437a85f601cad0ef87083637a
+      size: 4796
+    outs:
+    - path: results/execution.json
+      hash: md5
+      md5: 465473a22d77f3593c424fd512d6c900
+      size: 331
