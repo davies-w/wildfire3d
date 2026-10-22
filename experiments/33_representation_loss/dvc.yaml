@@ -47,3 +47,15 @@ stages:
     outs:
       - results/summary.json:
           cache: false
+  diagnose_temperature:
+    cmd: ../../.venv/bin/python diagnose_temperature.py
+    deps:
+      - diagnose_temperature.py
+      - attempt03/data/collected/spatial_heads-checkpoint-6000.pt
+      - attempt03/models.py
+      - attempt03/worker.py
+      - data/geometries.npz
+      - cases.json
+    outs:
+      - results/spatial-temperature-diagnostic.json:
+          cache: false

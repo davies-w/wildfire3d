@@ -124,3 +124,35 @@ stages:
       hash: md5
       md5: 8a4357daa6064f6de12170acdae8cf50
       size: 4721
+  diagnose_temperature:
+    cmd: ../../.venv/bin/python diagnose_temperature.py
+    deps:
+    - path: attempt03/data/collected/spatial_heads-checkpoint-6000.pt
+      hash: md5
+      md5: cf5afb6760d818cf36616532b7cb9dd1
+      size: 4918252
+    - path: attempt03/models.py
+      hash: md5
+      md5: 26c53ca21d4854cc9b52402dc08ed9ab
+      size: 2054
+    - path: attempt03/worker.py
+      hash: md5
+      md5: 375515dbb5ffbd521e538414192eb77e
+      size: 6605
+    - path: cases.json
+      hash: md5
+      md5: fbac826e8bb9eea51e628c46d2ebe598
+      size: 16625
+    - path: data/geometries.npz
+      hash: md5
+      md5: bcaf4448500b6141ed143dffb82c11f9
+      size: 41719
+    - path: diagnose_temperature.py
+      hash: md5
+      md5: 9d073164333f0492d34826ce3be25d74
+      size: 1236
+    outs:
+    - path: results/spatial-temperature-diagnostic.json
+      hash: md5
+      md5: 37f4e2ba3685d9c7637e8220bc3facf2
+      size: 807
