@@ -7,3 +7,9 @@ Prior08dose_background improved radiation and wholevolume temperature for all8de
 Generic3mwidecones4/6/8/10mabove2m,1600weightedparticles,.5m24x16x16mdomain180s,artificial1500C20s ignition,no trunks/buildings/embers; six gasoutputs not solidgroundtemperature. No physicalvalidation.
 
 Reserve2USD before submission within cumulative75; regularL4us-central1-c,expected10–20min,20minqueue60mintask65minVM90minabsolute limits. Checkpoint every500updates, recovery path retained, no automatic paid retry. DVCsubmit/collect and all workflow-generating code preserved.
+
+## Completed results and reproducibility check
+
+Cleanup/permission removal verified. Validation median hotT/HRR/radiation/wholevolumeT%: control49.98/65.49/66.93/568.99; physical_low53.04/64.70/66.13/297.91; physical_high58.05/67.38/69.49/183.16. The physical penalty reduces background error with worse hot-temperature accuracy. Repeated control differs from08dose_background despite identical initial predictions; causes are not established.
+
+Initial optimizer.load_state_dict aliases saved tensors, but the already-existing serialization roundtrip before training breaks sharing. No-training complete-path storage check confirms this. Earlier transient diagnosis of optimizer contamination is withdrawn. Attempt10 adds explicit saved-optimizer immutability checks, independent deepcopy, deterministic settings and a repeated arm. These are stronger verification, not evidence that prior optimizer isolation failed. Original results retained; do not treat tiny improvements as robust until repeated.

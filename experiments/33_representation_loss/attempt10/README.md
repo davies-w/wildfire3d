@@ -1,0 +1,9 @@
+# Attempt10: corrected optimizer-isolated loss comparison
+
+Attempts08–09 repeated control results varied despite identical initial predictions. Initial optimizer tensor alias was suspected, but their existing save/reload before training already breaks sharing (complete-path pointer-only diagnostic confirms). No optimizer contamination established. This run strengthens optimizer isolation assertions and adds deterministic repeated-arm verification to assess reproducibility before further tuning.
+
+Four GeometryCNN arms: encoded control; dose_background (0.1shortwindow excessradiation loss replacing encoded radiation plus0.5encodedtemperaturebackground); physical_low adds0.02backgroundphysicalMAE/10C; dose_repeat repeats dose_background exactly. All restore independent deepcopies of current6000 optimizer, identical weights, same3308schedule2500updates. Assert optimizer hash equals original before each arm and original remains unchanged after training. Deterministic algorithms and cuDNN enabled, CUBLAS workspace fixed. Final dose/repeat weight hashes must match; report fails if not. Actual GPU isolation/replication checks mandatory before interpretation. The control is encodedloss, not09dosecontrol.
+
+Same12train8developmentvalidation strengthstratified configs, fullhistory metrics/allpaired/weakfire output, not IID/pristinetest. Three-frame loss not recurrence/fullhistorydose. No newFDS/no laptoptraining. Generic3mwidecones4/6/8/10mabove2m,1600particles,.5m24x16x16m180s,artificial1500C20s,no trunks/buildings/embers,6gasfieldsnotgroundtemperature; no physicalvalidation.
+
+Reserve2USD before submission, cumulative75cap; expected15–25min,20minqueue60mintask65minVM90minabsolute. Checkpoint500updates, preserve on interruption and separately budget recovery. ExplicitDVCsubmit/collect, archive code/weights/results.

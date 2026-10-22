@@ -15,3 +15,6 @@ All3initial weights and full-history metrics were exactly identical. Post-source
 Weakest validation case x32_388_s0 averages1.314kW truth after source: wholevolume MAE4.61→2.19C and radiation relativeerror9014.6→1045.5%. Thus relative errors remain huge when truth is small; this is not solved. All-arm median minimum6C reaches the model floor; insufficient metrics to localize or quantify cold pockets. Follow-up09 tests physical-unit background-temperature penalty from identical initial states, with fixed coefficients0.02/0.1, not more data. No additional FDS.
 
 Report hash verified, VM/job/disks empty and temporary input permission removed. All checkpoints retained. DVC analysis records all/after-source/late metrics, per-configuration differences and weak cases. Cumulative reservations46.60USD; actual invoice cost unknown.
+
+
+Reproducibility follow-up:09 repeated this dose_background control with identical initial predictions, but final wholevolume temperature error changed412.73→568.99%. An initially suspected optimizer alias is NOT established: although initial load shares tensors, the existing serialization/restore before training breaks that sharing. Full-path no-training check in09 confirms isolation. Deterministic repeat in10 will test reproducibility. Treat small differences cautiously.
