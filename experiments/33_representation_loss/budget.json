@@ -1,0 +1,31 @@
+{
+  "authorized_usd": 35,
+  "authorization": "User approved up to $35 for model improvement experiments; conservatively cumulative including experiment32",
+  "reserved_usd": 27.6,
+  "prior_ledger": "../32_tree_expansion/budget.json",
+  "reservations": {
+    "experiment32_retained": {
+      "allowance_usd": 24.6,
+      "state": "retained_previous_campaign"
+    },
+    "pilot01": {
+      "state": "terminal_cleanup_verified",
+      "allowance_usd": 1.5,
+      "reserved_unix": 1792642416.06622,
+      "compute_allowance_usd": 1.2,
+      "ancillary_cleanup_allowance_usd": 0.3,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu33-pilot01/executions/9ba176d9-1093-4204-aa33-fae42d14c27c",
+      "completed_unix": 1792643009.9809332
+    },
+    "pilot02": {
+      "state": "submitted",
+      "allowance_usd": 1.5,
+      "reserved_unix": 1792643465.788078,
+      "compute_allowance_usd": 1.2,
+      "ancillary_cleanup_allowance_usd": 0.3,
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu33-pilot02/executions/1ee758da-b98c-4e24-9803-f00b73db12db"
+    }
+  },
+  "recycle_reservations": false,
+  "automatic_retries": false
+}

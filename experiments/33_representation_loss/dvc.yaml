@@ -1,0 +1,49 @@
+stages:
+  setup:
+    cmd: ../../.venv/bin/python setup.py
+    deps:
+      - setup.py
+      - ../32_tree_expansion/development.json
+      - ../32_tree_expansion/results/learning.json
+      - ../32_tree_expansion/data/geometries.npz
+      - ../32_tree_expansion/data/models/geometry_snapshot.pt
+    outs:
+      - data/geometries.npz
+      - data/initial_snapshot.pt
+  validate:
+    cmd: ../../.venv/bin/python validate.py
+    deps:
+      - validate.py
+      - models.py
+      - losses.py
+      - worker.py
+      - cases.json
+    outs:
+      - results/preflight.json:
+          cache: false
+  package:
+    cmd: ../../.venv/bin/python prepare_pilot.py
+    deps:
+      - prepare_pilot.py
+      - worker.py
+      - models.py
+      - losses.py
+      - results/preflight.json
+      - data/geometries.npz
+      - data/initial_snapshot.pt
+    outs:
+      - data/pilot-overlay.tar
+      - results/input-freeze.json:
+          cache: false
+      - results/prepared.json:
+          cache: false
+      - gpu-workflow.yaml:
+          cache: false
+  analyze_pilot:
+    cmd: ../../.venv/bin/python analyze_pilot.py
+    deps:
+      - analyze_pilot.py
+      - results/report.json
+    outs:
+      - results/summary.json:
+          cache: false
