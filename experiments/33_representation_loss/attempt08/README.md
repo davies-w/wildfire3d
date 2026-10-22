@@ -7,3 +7,11 @@ Pilot07 found revised-model radiation-dose candidate norm3.15 versus bright enco
 No new FDS. Generic3m-wide conical crowns4/6/8/10m above2m base,1600weightedparticles,.5m grid24x16x16m,180s,1500C artificial20s source,no trunks/buildings/embers. Six gas fields, not solid-ground temperature; no physical validation.
 
 Reserve$2 full allowance before submission, cumulative cap75. Regular L4 us-central1-c. Expected10–20minutes; cloud20minqueue/60mintask/65minVM/90minabsolute deadlines. Checkpoint every500updates; separately budgeted replacement required after interruption, with new prefix. No laptop training. DVC submission/collection stages execute the workflow and retain outputs.
+
+## Measured outcome
+
+All3initial weights and full-history metrics were exactly identical. Post-source median validation errors (hot temperature / HRR curve / radiation dose / whole-volume temperature rise), percent: control50.05/69.45/126.83/798.38; dose49.78/65.62/67.71/1065.99; dose_background50.06/67.24/66.91/412.73. Dose_background reduced radiation and whole-volume temperature errors in all8validation configurations versus matched control. Training errors likewise improved for radiation90.72→47.80 and wholevolume461.74→245.38. Hottemperature42.89→42.91 and HRR22.52→24.54 show the tradeoff. This supports the short-window physical-dose loss and stronger background weight on this development sample, not general validation.
+
+Weakest validation case x32_388_s0 averages1.314kW truth after source: wholevolume MAE4.61→2.19C and radiation relativeerror9014.6→1045.5%. Thus relative errors remain huge when truth is small; this is not solved. All-arm median minimum6C reaches the model floor; insufficient metrics to localize or quantify cold pockets. Follow-up09 tests physical-unit background-temperature penalty from identical initial states, with fixed coefficients0.02/0.1, not more data. No additional FDS.
+
+Report hash verified, VM/job/disks empty and temporary input permission removed. All checkpoints retained. DVC analysis records all/after-source/late metrics, per-configuration differences and weak cases. Cumulative reservations46.60USD; actual invoice cost unknown.

@@ -53,3 +53,11 @@ stages:
     - ../attempt02/data/collected/current-checkpoint-6000.pt
     outs:
     - data/resume
+  matched_analysis:
+    cmd: ../../../.venv/bin/python analyze_matched.py
+    deps:
+    - analyze_matched.py
+    - data/collected
+    metrics:
+    - results/matched-summary.json:
+        cache: false
