@@ -87,3 +87,11 @@ stages:
     metrics:
     - results/analysis.json:
         cache: false
+  progress_snapshot:
+    cmd: ../../../.venv/bin/python plot_progress.py
+    deps:
+    - plot_progress.py
+    - results/execution.json
+    always_changed: true
+    outs:
+    - data/progress
