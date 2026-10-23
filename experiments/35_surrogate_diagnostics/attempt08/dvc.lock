@@ -1,0 +1,58 @@
+schema: '2.0'
+stages:
+  prepare_viewer:
+    cmd: ../../../.venv/bin/python prepare_viewer_inputs.py
+    deps:
+    - path: ../../32_tree_expansion/cases.json
+      hash: md5
+      md5: 0524706ce558a58ab1e6da8e3015289d
+      size: 378956
+    - path: ../../32_tree_expansion/data/cloud_archive
+      hash: md5
+      md5: adcddd017f722e3ea900f9c0a00521d3.dir
+      size: 57485004436
+      nfiles: 1174
+    - path: ../../32_tree_expansion/data/geometries.npz
+      hash: md5
+      md5: 29e0c4fef08edf5fc26352c01bc57794
+      size: 1087495
+    - path: ../attempt07/cases.json
+      hash: md5
+      md5: 707e0ae0e64fad26c85ac05e1865bca2
+      size: 331617
+    - path: ../attempt07/data/labels
+      hash: md5
+      md5: 38a2e5489f30269076edeae3d61b0c18.dir
+      size: 3629963
+      nfiles: 800
+    - path: prepare_viewer_inputs.py
+      hash: md5
+      md5: d72c38b6dfbda072fbab6f13edeef5e7
+      size: 4014
+    outs:
+    - path: data/geometries.npz
+      hash: md5
+      md5: 97720a81cb6e5062c3ec9c7806866d71
+      size: 984773
+    - path: data/labels
+      hash: md5
+      md5: fa78c60e0ec7f2e24e0d92c65559a4a3.dir
+      size: 4278799
+      nfiles: 944
+    - path: data/models
+      hash: md5
+      md5: 067d10bb9a28df9bdedbed3ff8438c9e.dir
+      size: 58132300
+      nfiles: 10
+    - path: data/training-report.json
+      hash: md5
+      md5: c5db6b43c90d2cc75deb546ebca5adfa
+      size: 2984943
+    - path: results/input-audit.json
+      hash: md5
+      md5: afb8160c78bcad2f4582eb3f2d4ad43e
+      size: 164349
+    - path: results/model-freeze.json
+      hash: md5
+      md5: 0a653963b4a74850cc3c18c250d0de6d
+      size: 1228
