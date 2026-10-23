@@ -11,3 +11,7 @@ Remaining particle mass is total material, not separately dryfuel/water/char. Cl
 Generic3mwide conical crowns4/6/8/10m tall above2m,1600weightedparticles,0.5m24×16×16m domain180s,artificial1500°C20s source; no trunks/buildings/embers. Six gas fields, no solid-ground temperature. No physical validation.
 
 Reproduce local pipeline with dvc repro dvc.yaml. data/report.html displays every candidate/diagnostic quantity at every saved time; data/storyboards has all 48 storyboards at nominal times 2, 4, 8, 16, 20, 32, 48, 64, 72, 76, 78 and 90 seconds (nearest saved timestamps labeled; source switches off at 20 seconds); data/states contains machine-readable histories and provenance. All original raw/checkpoints remain unchanged.
+
+Public report: https://wdavies-fire-state-storyboards.static.hf.space/
+
+Publish with `../../../.venv/bin/python publish_space.py` from this directory. Only prepared HTML, storyboards and compact state JSON are uploaded; no compute is provisioned. Publication commit and file hashes are in results/space-publication.json.
