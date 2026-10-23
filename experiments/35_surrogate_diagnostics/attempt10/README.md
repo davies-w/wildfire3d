@@ -34,3 +34,5 @@ Original raw archives are SHA256-verified, decoded locally without training, and
 ## Scope
 
 Generic 3m-wide conical crowns, heights4/6/8/10m above a2m base, 1600 weighted particles, 0.5m grid and24×16×16m domain,180s histories, imposed1500°C ignition for20s. No trunks, buildings or embers. These six gas fields do not include solid-ground temperature or a separately evolving fuel/water/char state. Successful fitting would be a representation diagnostic, not generalization to realistic trees or replacement of FDS.
+
+The total-HRR metric is the physical-cell integral of saved gas HRRPUV (cell volume0.125m³), not a substitute for the separate global solid-oxidation CSV. Energy integrates that field-derived rate over actual saved timestamps. The local `finish_run.py` controller waits for the already-running launcher, invokes one locked collector, and then analyzes and archives. It never submits paid compute.

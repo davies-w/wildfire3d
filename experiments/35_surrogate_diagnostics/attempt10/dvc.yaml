@@ -127,3 +127,15 @@ stages:
     metrics:
     - results/analysis.json:
         cache: false
+  archive_inventory:
+    cmd: ../../../.venv/bin/python finalize_archive.py --inventory-only
+    deps:
+    - finalize_archive.py
+    - data/collected
+    - results/cleanup.json
+    - results/permission-removed.json
+    outs:
+    - data/checkpoint-inventory.json
+    metrics:
+    - results/archive-preservation.json:
+        cache: false
