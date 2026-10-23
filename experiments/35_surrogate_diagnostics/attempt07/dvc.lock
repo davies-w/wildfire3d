@@ -197,3 +197,79 @@ stages:
       md5: 55b26589781f78b72b1ec34532655f62.dir
       size: 3065289
       nfiles: 213
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
+      size: 597
+    - path: collect.py
+      hash: md5
+      md5: fe97d7c6deba845ab833c57f58a1bd80
+      size: 3085
+    - path: results/execution.json
+      hash: md5
+      md5: 5580c682565e7b2636ebd82a4ba27c77
+      size: 330
+    outs:
+    - path: data/collected
+      hash: md5
+      md5: a8a986322c4a64679b4caefff2ff7c58.dir
+      size: 15667036636
+      nfiles: 7988
+    - path: results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: results/permission-removed.json
+      hash: md5
+      md5: a1798cab7aae76ce483ff5d03c927dba
+      size: 55
+  analysis:
+    cmd: ../../../.venv/bin/python analyze.py
+    deps:
+    - path: analyze.py
+      hash: md5
+      md5: 73d5c91a5f863de75d3a1696df1218d1
+      size: 2457
+    - path: coverage-plan.json
+      hash: md5
+      md5: 00f5926aca63c2e02e2cc684510565d5
+      size: 8083
+    - path: data/collected
+      hash: md5
+      md5: a8a986322c4a64679b4caefff2ff7c58.dir
+      size: 15667036636
+      nfiles: 7988
+    outs:
+    - path: data/visuals
+      hash: md5
+      md5: a481566aebb5e49a9cb097fbe914c71e.dir
+      size: 854043
+      nfiles: 2
+    - path: results/analysis.json
+      hash: md5
+      md5: a0b0645189b4257098e7fdefc7a0ab98
+      size: 18405
+  archive_inventory:
+    cmd: ../../../.venv/bin/python finalize_archive.py --inventory-only
+    deps:
+    - path: data/collected
+      hash: md5
+      md5: a8a986322c4a64679b4caefff2ff7c58.dir
+      size: 15667036636
+      nfiles: 7988
+    - path: finalize_archive.py
+      hash: md5
+      md5: 65ce06799000d74d29c9f162e539a851
+      size: 4143
+    outs:
+    - path: data/checkpoint-inventory.json
+      hash: md5
+      md5: b241ce885bb27247843de6e2393fa99f
+      size: 1134844
+    - path: results/archive-preservation.json
+      hash: md5
+      md5: c5b6dee31723c65c1cdb9f5b4ecd4383
+      size: 376
