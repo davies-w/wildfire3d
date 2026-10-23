@@ -1,0 +1,80 @@
+stages:
+  baseline_audit:
+    cmd: ../../../.venv/bin/python audit_baselines.py
+    deps:
+    - audit_baselines.py
+    - fields.py
+    - fortran_records.py
+    - original_cnn.py
+    - ../attempt05/cases.json
+    - ../attempt05/restore-manifest.json
+    - ../attempt03/data/collected/scales.json
+    outs:
+    - data/fields
+    - cases.json:
+        cache: false
+    - scales.json:
+        cache: false
+    metrics:
+    - results/baseline-audit.json:
+        cache: false
+  package:
+    cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python prepare_pilot.py
+    deps:
+    - worker.py
+    - coordinate_model.py
+    - validate.py
+    - prepare_pilot.py
+    - launch.py
+    - collect.py
+    - runtime.py
+    - cloud.py
+    - original_cnn.py
+    - deterministic_interpolation.py
+    - cases.json
+    - scales.json
+    - coverage-plan.json
+    - data/fields
+    - ../../32_tree_expansion/gpu-workflow.yaml
+    outs:
+    - data/pilot-overlay.tar
+    - gpu-workflow.yaml:
+        cache: false
+    - results/input-freeze.json:
+        cache: false
+    - results/preflight.json:
+        cache: false
+  cloud_submit:
+    cmd: ../../../.venv/bin/python launch.py
+    deps:
+    - launch.py
+    - cloud.py
+    - gpu-workflow.yaml
+    - data/pilot-overlay.tar
+    metrics:
+    - results/execution.json:
+        cache: false
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - collect.py
+    - cloud.py
+    - results/execution.json
+    outs:
+    - data/collected
+    metrics:
+    - results/cleanup.json:
+        cache: false
+    - results/permission-removed.json:
+        cache: false
+  analysis:
+    cmd: ../../../.venv/bin/python analyze.py
+    deps:
+    - analyze.py
+    - data/collected
+    - coverage-plan.json
+    outs:
+    - data/visuals
+    metrics:
+    - results/analysis.json:
+        cache: false
