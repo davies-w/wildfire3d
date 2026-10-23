@@ -17,3 +17,24 @@ Reserve12USD beforeupload/compute:7compute+5ancillarycleanup. Cumulative109.10/1
 Package contains compact labels andstaticgeometry from SHAverified localarchivedrawdata; no expiredGCSinputs. DVCpipeline preservesprepare/validate/package/actualsubmit/collect/analysis, checkpoints andper-epochcounts. GitHub source/workflowgenerators andpublicHF DVC archive authorized for35. No newFDS.
 
 HOT gas is not combustion/visibleflames. Generic3mwideconicalcrowns4/6/8/10m above2m,1600weightedparticles,0.5m24x16x16mdomain180s,artificial1500Csource20s,no trunks/buildings/embers. Initialcondition-to-snapshot classifier: no evolvingfuel/materialstate, recurrence orguaranteedtimeconsistency. Validation previouslyexamineddevelopment, notpristinetest/physicalvalidation.
+
+## Completed ten-model run
+
+All ten independent models completed. The active-fire snapshots at20–100s each reached300 epochs without meeting the prescribed plateau rule. The all-cold snapshots at0 and120–180s met the empirical rule at200epochs; their undefined positive recall/F1 is not a perfect positive-class score.
+
+| Time (s) | Epochs | Validation precision | Recall | F1 |
+|---|---:|---:|---:|---:|
+| 0 | 200 | undefined | undefined | undefined |
+| 20 | 300 | 0.6515 | 0.8208 | 0.7264 |
+| 40 | 300 | 0.5098 | 0.6383 | 0.5669 |
+| 60 | 300 | 0.5280 | 0.8040 | 0.6374 |
+| 80 | 300 | 0.3535 | 0.9772 | 0.5192 |
+| 100 | 300 | 0.0566 | 1.0000 | 0.1071 |
+| 120 | 200 | undefined | undefined | undefined |
+| 140 | 200 | undefined | undefined | undefined |
+| 160 | 200 | undefined | undefined | undefined |
+| 180 | 200 | undefined | undefined | undefined |
+
+Training BCE falls while validation BCE rises at20–60s. This is an observed generalization gap under the loss, despite some F1 improvement. More epochs alone are not justified by these curves. At100s high recall accompanies many false positives and low precision. Fixed threshold0.5 was not tuned on validation.
+
+Final plots are in data/visuals. The separate attempt08 viewer pools recorded cases for visualization only and does not retrain or select checkpoints. All validation/test results remain previously examined development evidence, not physical validation.

@@ -1,0 +1,48 @@
+stages:
+  prepare_viewer:
+    cmd: ../../../.venv/bin/python prepare_viewer_inputs.py
+    deps:
+    - prepare_viewer_inputs.py
+    - ../attempt07/cases.json
+    - ../attempt07/data/labels
+    - ../../32_tree_expansion/cases.json
+    - ../../32_tree_expansion/data/cloud_archive
+    - ../../32_tree_expansion/data/geometries.npz
+    outs:
+    - data/models
+    - data/training-report.json
+    - data/geometries.npz
+    - data/labels
+    metrics:
+    - results/input-audit.json:
+        cache: false
+    - results/model-freeze.json:
+        cache: false
+  frozen_predictions:
+    cmd: ../../../.venv/bin/python predict_viewer.py
+    deps:
+    - predict_viewer.py
+    - ../attempt07/model.py
+    - ../attempt07/cases.json
+    - cases.json
+    - data/models
+    - data/training-report.json
+    - data/geometries.npz
+    - data/labels
+    - results/model-freeze.json
+    outs:
+    - data/viewer
+    metrics:
+    - results/prediction-audit.json:
+        cache: false
+  inference_parity:
+    cmd: ../../../.venv/bin/python check_prediction_parity.py
+    deps:
+    - check_prediction_parity.py
+    - data/training-report.json
+    - results/prediction-audit.json
+    outs:
+    - data/gpu-counts
+    metrics:
+    - results/cpu-gpu-parity.json:
+        cache: false

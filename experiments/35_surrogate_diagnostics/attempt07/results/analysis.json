@@ -1,0 +1,616 @@
+{
+  "models": [
+    {
+      "nominal_time_s": 0,
+      "epochs": 200,
+      "reason": "prespecified_empirical_plateau",
+      "final": {
+        "train": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "iou": null,
+          "false_positive_rate": 0.0,
+          "hot_fraction": 0.0,
+          "predicted_hot_fraction": 0.0,
+          "tp": 0.0,
+          "fp": 0.0,
+          "fn": 0.0,
+          "tn": 17694720.0,
+          "balanced_BCE": 0.00015074073170479906,
+          "unweighted_BCE": 0.00015074073170479906,
+          "configurations": 360,
+          "macro_precision": null,
+          "macro_recall": null,
+          "macro_f1": null,
+          "macro_iou": null
+        },
+        "validation": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "iou": null,
+          "false_positive_rate": 0.0,
+          "hot_fraction": 0.0,
+          "predicted_hot_fraction": 0.0,
+          "tp": 0.0,
+          "fp": 0.0,
+          "fn": 0.0,
+          "tn": 1572864.0,
+          "balanced_BCE": 0.00015074105795065407,
+          "unweighted_BCE": 0.00015074105795065407,
+          "configurations": 32,
+          "macro_precision": null,
+          "macro_recall": null,
+          "macro_f1": null,
+          "macro_iou": null
+        }
+      },
+      "always_NOT": {
+        "train": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_positive_rate": 0
+        },
+        "validation": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_positive_rate": 0
+        }
+      }
+    },
+    {
+      "nominal_time_s": 20,
+      "epochs": 300,
+      "reason": "maximum_epochs_not_plateau",
+      "final": {
+        "train": {
+          "precision": 0.8063034848736017,
+          "recall": 0.9983211351387891,
+          "f1": 0.8920966735784073,
+          "iou": 0.8052116572840182,
+          "false_positive_rate": 0.011559216459852232,
+          "hot_fraction": 0.04598236083984375,
+          "predicted_hot_fraction": 0.05693285906756366,
+          "tp": 812279.0,
+          "fp": 195132.0,
+          "fn": 1366.0,
+          "tn": 16685943.0,
+          "balanced_BCE": 0.02260362144766923,
+          "unweighted_BCE": 0.0315735958514543,
+          "configurations": 360,
+          "macro_precision": 0.7662932403659789,
+          "macro_recall": 0.9980498844425256,
+          "macro_f1": 0.8646770371098461,
+          "macro_iou": 0.7651502981282184
+        },
+        "validation": {
+          "precision": 0.651509944093117,
+          "recall": 0.8207823572710348,
+          "f1": 0.7264153554328827,
+          "iou": 0.5703706923066637,
+          "false_positive_rate": 0.020231079959731602,
+          "hot_fraction": 0.044051064385308154,
+          "predicted_hot_fraction": 0.0554962158203125,
+          "tp": 56869.0,
+          "fp": 30419.000000000004,
+          "fn": 12417.333333333334,
+          "tn": 1473158.6666666667,
+          "balanced_BCE": 0.7078998695578779,
+          "unweighted_BCE": 0.14231286708046456,
+          "configurations": 32,
+          "macro_precision": 0.6135779315586914,
+          "macro_recall": 0.8131837286102834,
+          "macro_f1": 0.6853290882044105,
+          "macro_iou": 0.5340886158835185
+        }
+      },
+      "always_NOT": {
+        "train": {
+          "precision": null,
+          "recall": 0,
+          "f1": 0,
+          "false_positive_rate": 0
+        },
+        "validation": {
+          "precision": null,
+          "recall": 0,
+          "f1": 0,
+          "false_positive_rate": 0
+        }
+      }
+    },
+    {
+      "nominal_time_s": 40,
+      "epochs": 300,
+      "reason": "maximum_epochs_not_plateau",
+      "final": {
+        "train": {
+          "precision": 0.648235971886162,
+          "recall": 0.9998151794536421,
+          "f1": 0.7865243309138492,
+          "iou": 0.6481583034179565,
+          "false_positive_rate": 0.00876613975724165,
+          "hot_fraction": 0.015900449399594906,
+          "predicted_hot_fraction": 0.024524264865451388,
+          "tp": 281302.0,
+          "fp": 152648.0,
+          "fn": 52.0,
+          "tn": 17260718.0,
+          "balanced_BCE": 0.01765650180478748,
+          "unweighted_BCE": 0.0280058429160148,
+          "configurations": 360,
+          "macro_precision": 0.4950311046999874,
+          "macro_recall": 0.9996422627285292,
+          "macro_f1": 0.6295636968274572,
+          "macro_iou": 0.4949280609274802
+        },
+        "validation": {
+          "precision": 0.5098373125347684,
+          "recall": 0.638332954287014,
+          "f1": 0.5668949411430555,
+          "iou": 0.3955710976243537,
+          "false_positive_rate": 0.009288461869438753,
+          "hot_fraction": 0.014909532335069442,
+          "predicted_hot_fraction": 0.018667221069335938,
+          "tp": 14969.333333333334,
+          "fp": 14391.666666666666,
+          "fn": 8481.333333333332,
+          "tn": 1535021.6666666667,
+          "balanced_BCE": 1.3493578229312106,
+          "unweighted_BCE": 0.07704654371812225,
+          "configurations": 32,
+          "macro_precision": 0.44340328874398954,
+          "macro_recall": 0.7159457946879769,
+          "macro_f1": 0.41100703895894936,
+          "macro_iou": 0.2960164602499313
+        }
+      },
+      "always_NOT": {
+        "train": {
+          "precision": null,
+          "recall": 0,
+          "f1": 0,
+          "false_positive_rate": 0
+        },
+        "validation": {
+          "precision": null,
+          "recall": 0,
+          "f1": 0,
+          "false_positive_rate": 0
+        }
+      }
+    },
+    {
+      "nominal_time_s": 60,
+      "epochs": 300,
+      "reason": "maximum_epochs_not_plateau",
+      "final": {
+        "train": {
+          "precision": 0.4638229827246884,
+          "recall": 0.9999705345040957,
+          "f1": 0.6337086624465483,
+          "iou": 0.46381664366056663,
+          "false_positive_rate": 0.0022213625648060207,
+          "hot_fraction": 0.0019179732711226852,
+          "predicted_hot_fraction": 0.00413501880787037,
+          "tp": 33937.0,
+          "fp": 39231.0,
+          "fn": 1.0,
+          "tn": 17621551.0,
+          "balanced_BCE": 0.00608620432020142,
+          "unweighted_BCE": 0.00859836811764549,
+          "configurations": 360,
+          "macro_precision": 0.31470778679213174,
+          "macro_recall": 0.9999869536855838,
+          "macro_f1": 0.43383043528812115,
+          "macro_iou": 0.3147047814950644
+        },
+        "validation": {
+          "precision": 0.5279510934644229,
+          "recall": 0.804011901334101,
+          "f1": 0.6373735068097085,
+          "iou": 0.46775364341950965,
+          "false_positive_rate": 0.0015908506335684776,
+          "hot_fraction": 0.0022080739339192705,
+          "predicted_hot_fraction": 0.003362655639648437,
+          "tp": 2792.333333333333,
+          "fp": 2496.666666666667,
+          "fn": 680.6666666666667,
+          "tn": 1566894.3333333335,
+          "balanced_BCE": 0.9999743807298525,
+          "unweighted_BCE": 0.009975568248695449,
+          "configurations": 32,
+          "macro_precision": 0.32722147505356386,
+          "macro_recall": 0.8483776679404665,
+          "macro_f1": 0.36782136198014553,
+          "macro_iou": 0.2797168735661997
+        }
+      },
+      "always_NOT": {
+        "train": {
+          "precision": null,
+          "recall": 0,
+          "f1": 0,
+          "false_positive_rate": 0
+        },
+        "validation": {
+          "precision": null,
+          "recall": 0,
+          "f1": 0,
+          "false_positive_rate": 0
+        }
+      }
+    },
+    {
+      "nominal_time_s": 80,
+      "epochs": 300,
+      "reason": "maximum_epochs_not_plateau",
+      "final": {
+        "train": {
+          "precision": 0.4120510111681256,
+          "recall": 1.0,
+          "f1": 0.583620574482298,
+          "iou": 0.4120510111681256,
+          "false_positive_rate": 0.0008812020539251775,
+          "hot_fraction": 0.0006171897605613426,
+          "predicted_hot_fraction": 0.0014978479456018519,
+          "tp": 10921.0,
+          "fp": 15583.0,
+          "fn": 0.0,
+          "tn": 17668216.0,
+          "balanced_BCE": 0.0024629783567053395,
+          "unweighted_BCE": 0.004095452222158547,
+          "configurations": 360,
+          "macro_precision": 0.22796179040469788,
+          "macro_recall": 1.0,
+          "macro_f1": 0.3198747626488031,
+          "macro_iou": 0.22796179040469788
+        },
+        "validation": {
+          "precision": 0.3534877633817563,
+          "recall": 0.9772069464544139,
+          "f1": 0.5191734742912062,
+          "iou": 0.35059709241952236,
+          "false_positive_rate": 0.0010475360848614494,
+          "hot_fraction": 0.0005857679578993056,
+          "predicted_hot_fraction": 0.0016193389892578125,
+          "tp": 900.3333333333334,
+          "fp": 1646.6666666666665,
+          "fn": 21.0,
+          "tn": 1570296.0,
+          "balanced_BCE": 0.04275564268370317,
+          "unweighted_BCE": 0.005654268093462911,
+          "configurations": 32,
+          "macro_precision": 0.2580519791935811,
+          "macro_recall": 0.8248560597423327,
+          "macro_f1": 0.3263535721440343,
+          "macro_iou": 0.23681752352981633
+        }
+      },
+      "always_NOT": {
+        "train": {
+          "precision": null,
+          "recall": 0,
+          "f1": 0,
+          "false_positive_rate": 0
+        },
+        "validation": {
+          "precision": null,
+          "recall": 0,
+          "f1": 0,
+          "false_positive_rate": 0
+        }
+      }
+    },
+    {
+      "nominal_time_s": 100,
+      "epochs": 300,
+      "reason": "maximum_epochs_not_plateau",
+      "final": {
+        "train": {
+          "precision": 0.0824605754183219,
+          "recall": 1.0,
+          "f1": 0.1523576512455516,
+          "iou": 0.0824605754183219,
+          "false_positive_rate": 0.0004307666397178484,
+          "hot_fraction": 3.871211299189815e-05,
+          "predicted_hot_fraction": 0.00046946207682291665,
+          "tp": 685.0,
+          "fp": 7622.0,
+          "fn": 0.0,
+          "tn": 17686413.0,
+          "balanced_BCE": 0.0022210525735492075,
+          "unweighted_BCE": 0.002043525636274077,
+          "configurations": 360,
+          "macro_precision": 0.029630825467760073,
+          "macro_recall": 1.0,
+          "macro_f1": 0.049379297064641385,
+          "macro_iou": 0.029630825467760073
+        },
+        "validation": {
+          "precision": 0.05660377358490566,
+          "recall": 1.0,
+          "f1": 0.10714285714285714,
+          "iou": 0.05660377358490566,
+          "false_positive_rate": 0.0002861072062775736,
+          "hot_fraction": 1.71661376953125e-05,
+          "predicted_hot_fraction": 0.0003032684326171875,
+          "tp": 27.0,
+          "fp": 450.0,
+          "fn": 0.0,
+          "tn": 1572387.0,
+          "balanced_BCE": 0.008549080490424977,
+          "unweighted_BCE": 0.0013898368052747874,
+          "configurations": 32,
+          "macro_precision": 0.02100309820898056,
+          "macro_recall": 1.0,
+          "macro_f1": 0.03867537722025418,
+          "macro_iou": 0.02100309820898056
+        }
+      },
+      "always_NOT": {
+        "train": {
+          "precision": null,
+          "recall": 0,
+          "f1": 0,
+          "false_positive_rate": 0
+        },
+        "validation": {
+          "precision": null,
+          "recall": 0,
+          "f1": 0,
+          "false_positive_rate": 0
+        }
+      }
+    },
+    {
+      "nominal_time_s": 120,
+      "epochs": 200,
+      "reason": "prespecified_empirical_plateau",
+      "final": {
+        "train": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "iou": null,
+          "false_positive_rate": 0.0,
+          "hot_fraction": 0.0,
+          "predicted_hot_fraction": 0.0,
+          "tp": 0.0,
+          "fp": 0.0,
+          "fn": 0.0,
+          "tn": 17694720.0,
+          "balanced_BCE": 0.00015074073170479906,
+          "unweighted_BCE": 0.00015074073170479906,
+          "configurations": 360,
+          "macro_precision": null,
+          "macro_recall": null,
+          "macro_f1": null,
+          "macro_iou": null
+        },
+        "validation": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "iou": null,
+          "false_positive_rate": 0.0,
+          "hot_fraction": 0.0,
+          "predicted_hot_fraction": 0.0,
+          "tp": 0.0,
+          "fp": 0.0,
+          "fn": 0.0,
+          "tn": 1572864.0,
+          "balanced_BCE": 0.00015074105795065407,
+          "unweighted_BCE": 0.00015074105795065407,
+          "configurations": 32,
+          "macro_precision": null,
+          "macro_recall": null,
+          "macro_f1": null,
+          "macro_iou": null
+        }
+      },
+      "always_NOT": {
+        "train": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_positive_rate": 0
+        },
+        "validation": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_positive_rate": 0
+        }
+      }
+    },
+    {
+      "nominal_time_s": 140,
+      "epochs": 200,
+      "reason": "prespecified_empirical_plateau",
+      "final": {
+        "train": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "iou": null,
+          "false_positive_rate": 0.0,
+          "hot_fraction": 0.0,
+          "predicted_hot_fraction": 0.0,
+          "tp": 0.0,
+          "fp": 0.0,
+          "fn": 0.0,
+          "tn": 17694720.0,
+          "balanced_BCE": 0.00015074073170479906,
+          "unweighted_BCE": 0.00015074073170479906,
+          "configurations": 360,
+          "macro_precision": null,
+          "macro_recall": null,
+          "macro_f1": null,
+          "macro_iou": null
+        },
+        "validation": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "iou": null,
+          "false_positive_rate": 0.0,
+          "hot_fraction": 0.0,
+          "predicted_hot_fraction": 0.0,
+          "tp": 0.0,
+          "fp": 0.0,
+          "fn": 0.0,
+          "tn": 1572864.0,
+          "balanced_BCE": 0.00015074105795065407,
+          "unweighted_BCE": 0.00015074105795065407,
+          "configurations": 32,
+          "macro_precision": null,
+          "macro_recall": null,
+          "macro_f1": null,
+          "macro_iou": null
+        }
+      },
+      "always_NOT": {
+        "train": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_positive_rate": 0
+        },
+        "validation": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_positive_rate": 0
+        }
+      }
+    },
+    {
+      "nominal_time_s": 160,
+      "epochs": 200,
+      "reason": "prespecified_empirical_plateau",
+      "final": {
+        "train": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "iou": null,
+          "false_positive_rate": 0.0,
+          "hot_fraction": 0.0,
+          "predicted_hot_fraction": 0.0,
+          "tp": 0.0,
+          "fp": 0.0,
+          "fn": 0.0,
+          "tn": 17694720.0,
+          "balanced_BCE": 0.00015074073170479906,
+          "unweighted_BCE": 0.00015074073170479906,
+          "configurations": 360,
+          "macro_precision": null,
+          "macro_recall": null,
+          "macro_f1": null,
+          "macro_iou": null
+        },
+        "validation": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "iou": null,
+          "false_positive_rate": 0.0,
+          "hot_fraction": 0.0,
+          "predicted_hot_fraction": 0.0,
+          "tp": 0.0,
+          "fp": 0.0,
+          "fn": 0.0,
+          "tn": 1572864.0,
+          "balanced_BCE": 0.00015074105795065407,
+          "unweighted_BCE": 0.00015074105795065407,
+          "configurations": 32,
+          "macro_precision": null,
+          "macro_recall": null,
+          "macro_f1": null,
+          "macro_iou": null
+        }
+      },
+      "always_NOT": {
+        "train": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_positive_rate": 0
+        },
+        "validation": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_positive_rate": 0
+        }
+      }
+    },
+    {
+      "nominal_time_s": 180,
+      "epochs": 200,
+      "reason": "prespecified_empirical_plateau",
+      "final": {
+        "train": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "iou": null,
+          "false_positive_rate": 0.0,
+          "hot_fraction": 0.0,
+          "predicted_hot_fraction": 0.0,
+          "tp": 0.0,
+          "fp": 0.0,
+          "fn": 0.0,
+          "tn": 17694720.0,
+          "balanced_BCE": 0.00015074073170479906,
+          "unweighted_BCE": 0.00015074073170479906,
+          "configurations": 360,
+          "macro_precision": null,
+          "macro_recall": null,
+          "macro_f1": null,
+          "macro_iou": null
+        },
+        "validation": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "iou": null,
+          "false_positive_rate": 0.0,
+          "hot_fraction": 0.0,
+          "predicted_hot_fraction": 0.0,
+          "tp": 0.0,
+          "fp": 0.0,
+          "fn": 0.0,
+          "tn": 1572864.0,
+          "balanced_BCE": 0.00015074105795065407,
+          "unweighted_BCE": 0.00015074105795065407,
+          "configurations": 32,
+          "macro_precision": null,
+          "macro_recall": null,
+          "macro_f1": null,
+          "macro_iou": null
+        }
+      },
+      "always_NOT": {
+        "train": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_positive_rate": 0
+        },
+        "validation": {
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "false_positive_rate": 0
+        }
+      }
+    }
+  ],
+  "scope": "Previously examined development configurations, not pristine test. Direct time-conditioned HOT snapshots, no state evolution/fuel consumption. Legacy40train8val omitted.",
+  "warning": "HOT T>50C is not flame/combustion. Macro and aggregate metrics retained; validationpreviousdevelopment, notpristinetest. A deadline/epochcap is not convergence."
+}

@@ -10,7 +10,9 @@ for frame,ax,ax2 in zip(plan['selected_frames'],axs.flat,axs2.flat):
  for split,style in [('train','--'),('validation','-')]:
   for key,color in [('precision','tab:blue'),('recall','tab:orange'),('f1','tab:green')]:ax.plot([r['epoch'] for r in recs],[r['summary'][split][key] for r in recs],style,color=color,label=split+' '+key)
   ax2.plot([r['epoch'] for r in recs],[r['summary'][split]['balanced_BCE'] for r in recs],style,label=split)
- ax.set(title=f'{frame*2}s',xlabel='Epoch',ylim=(-.02,1.02));ax.grid(alpha=.2);ax2.set(title=f'{frame*2}s',xlabel='Epoch');ax2.grid(alpha=.2)
+ ax.set(title=f'{frame*2}s',xlabel='Epoch',ylim=(-.02,1.02));ax.grid(alpha=.2);ax2.set(title=f'{frame*2}s',xlabel='Epoch');ax2.grid(alpha=.2);ax2.set_yscale('log')
+ if recs and all(r['summary']['train']['hot_fraction']==0 for r in recs):
+  ax.text(.5,.5,'No HOT training cells\nRecall is undefined\nInspect false positives',ha='center',va='center',transform=ax.transAxes)
  report=R/'data/collected'/f'time-{frame:03}-report.json';reason=json.loads(report.read_text())['reason'] if report.exists() else 'incomplete'
  if recs:
   final=recs[-1];summary.append(dict(nominal_time_s=frame*2,epochs=final['epoch'],reason=reason,final=final['summary'],always_NOT={s:dict(precision=None,recall=0 if final['summary'][s]['hot_fraction'] else None,f1=0 if final['summary'][s]['hot_fraction'] else None,false_positive_rate=0) for s in ['train','validation']}))
