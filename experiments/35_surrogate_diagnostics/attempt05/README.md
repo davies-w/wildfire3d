@@ -7,3 +7,12 @@ Hypothesis: hardclamp creates zero direct HRR gradient in negative region. Actua
 Reserve full4.50USD before paid action, cumulative92.60/100 retaining failed attempts/archive; invoice unknown. Estimated40–70min,20minqueue90mintask95minVM120minabsolute. Uploaded checkpoints every250updates/eachepoch preserve optimizer/scheduler/RNG/scheduleposition/aggregates. No automatic paid retry. Fresh SHAverified96inputs avoid age1expiry; bucket policy unchanged. Collector removes exact temporary grant and verifies VM/job/disks empty. DVC stages execute submit/collect/analysis; preserve all code/workflowgenerator/checkpoints in Git/DVC/public archive.
 
 Generic3mwideconicalcrowns4/6/8/10mabove2m,1600weightedparticles,.5m24x16x16m180s,artificial1500C20s source,no trunks/buildings/embers,sixgasfieldsnotgroundtemperature. Snapshotgeometrysummaries,no evolvingfuelstate;3framebatches notrecurrence. No physicalvalidation.
+
+
+## Completed result
+
+Both80epoch arms completed. CUDA direct-HRR derivative check passed (clamped0,raw approximately1); initial model/optimizer tensor hashes and common/physical evaluation rows matched. Raw objective intentionally differs. No successful burning-fit repair: train post-source HRR error100.00%control vs100.59%raw; hot-temperature92.17%vs93.18%. Commonnormalized trainingMAE0.10159vs0.10263, validation0.58862vs0.58310, both worse validation thaninitial0.49054. Rawobjective finaltrain0.10317.
+
+ValidationHRR configuration-balanced mean102.09%control vs1386.43%raw, median99.98%vs100.74%, max219.29%vs26122.29%. The extreme mean reflects weak-denominator outliers; median also shows no useful HRR fit. Restoring gradient is necessary for that local output path but insufficient to learn burning here. Sparse-field MAE preference for background is a plausible remaining mechanism, not established sole cause.
+
+Collector first observed a lingering terminal Batch job after instances/disks were empty and stopped. Preserved cleanup-first-observation.json; subsequent read confirmed job gone. Collection-only rerun succeeded without compute restart. Finalcleanup all empty, exactgrantremoved, reporthashverified. All checkpoints retained. No additional paid run justified merely by unused allowance. Close this diagnostic series with92.60/100 reserved, actualinvoiceunknown. See ../FINAL_REPORT.md and reproducible final_summary stage.

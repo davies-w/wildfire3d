@@ -193,3 +193,89 @@ stages:
       hash: md5
       md5: 8f0c33d1a04dcb205203139571de8ceb
       size: 331
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
+      size: 597
+    - path: collect.py
+      hash: md5
+      md5: bedca0782c64871ad1109ec46d3435d2
+      size: 2753
+    - path: results/execution.json
+      hash: md5
+      md5: 8f0c33d1a04dcb205203139571de8ceb
+      size: 331
+    outs:
+    - path: data/collected
+      hash: md5
+      md5: 2adecb0a6cd80bcfff5811de4356a111.dir
+      size: 603900607
+      nfiles: 353
+    - path: results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: results/permission-removed.json
+      hash: md5
+      md5: 2fc2f697b36d5163f9dc512e93b7bf71
+      size: 57
+  analysis:
+    cmd: ../../../.venv/bin/python analyze.py
+    deps:
+    - path: analyze.py
+      hash: md5
+      md5: 72a89fd3b499004948ec8d126b77df4b
+      size: 3753
+    - path: coverage-plan.json
+      hash: md5
+      md5: d7648502dab33aebdadacfe386a56c1a
+      size: 1178
+    - path: data/collected
+      hash: md5
+      md5: 2adecb0a6cd80bcfff5811de4356a111.dir
+      size: 603900607
+      nfiles: 353
+    outs:
+    - path: data/visuals
+      hash: md5
+      md5: 1cd5f23cf7010fefb4a811b33e0979a6.dir
+      size: 593213
+      nfiles: 2
+    - path: results/analysis.json
+      hash: md5
+      md5: 6b88017bb496b625e9b595a49c170240
+      size: 39475
+  final_summary:
+    cmd: ../../../.venv/bin/python summarize_diagnostics.py
+    deps:
+    - path: ../attempt03/data/collected
+      hash: md5
+      md5: f452c2fd2a8f26a517b03ec9a9024378.dir
+      size: 579267728
+      nfiles: 605
+    - path: ../attempt04/data/collected
+      hash: md5
+      md5: 5bb9a67362f50f9bf7688499c763f36b.dir
+      size: 598772621
+      nfiles: 353
+    - path: data/collected
+      hash: md5
+      md5: 2adecb0a6cd80bcfff5811de4356a111.dir
+      size: 603900607
+      nfiles: 353
+    - path: summarize_diagnostics.py
+      hash: md5
+      md5: 69f32e03cda260bbbad2a0f61f9a0473
+      size: 2704
+    outs:
+    - path: data/final-summary.png
+      hash: md5
+      md5: 38f107a109856602634c31d0fea0efd3
+      size: 132547
+    - path: results/final-summary.json
+      hash: md5
+      md5: d2da4c5f58095592fcb1373aa9bf6428
+      size: 53173

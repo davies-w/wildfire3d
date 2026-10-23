@@ -86,3 +86,15 @@ stages:
     metrics:
     - results/execution.json:
         cache: false
+  final_summary:
+    cmd: ../../../.venv/bin/python summarize_diagnostics.py
+    deps:
+    - summarize_diagnostics.py
+    - data/collected
+    - ../attempt03/data/collected
+    - ../attempt04/data/collected
+    outs:
+    - data/final-summary.png
+    metrics:
+    - results/final-summary.json:
+        cache: false
