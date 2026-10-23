@@ -1,0 +1,5 @@
+{
+  "title": "exp35-diag03-fresh-inputs",
+  "description": "24h fresh verified development48cases only; no old expiring prefixes",
+  "expression": "request.time < timestamp('2026-10-24T01:19:00Z') && (resource.name.startsWith(\"projects/_/buckets/tmrw-wildfire-20261015-trial/objects/diagnostics35/attempt05/restored/\") || resource.name == \"projects/_/buckets/tmrw-wildfire-20261015-trial/objects/diagnostics35/attempt05/pilot-overlay.tar\")"
+}
