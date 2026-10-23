@@ -7,9 +7,9 @@ R=Path(__file__).parent;out=R/'data/visuals';out.mkdir(exist_ok=True);records=[j
 for r in records:
  assert len(r['rows'])==91 and {x['frame'] for x in r['rows']}==set(range(91))
  summary={}
- for split in ['train','validation_time']:
+ for split in ['train','validation_time','all_frames']:
   for win,pred in [('all',lambda t:True),('ignition',lambda t:t<=20),('post_source',lambda t:t>=22),('late',lambda t:t>=120)]:
-   rows=[x for x in r['rows'] if x['split']==split and pred(x['time_s'])];assert rows
+   rows=[x for x in r['rows'] if (split=='all_frames' or x['split']==split) and pred(x['time_s'])];assert rows
    def region(key,count):
     n=sum(x[count] for x in rows);return sum((x[key] or 0)*x[count] for x in rows)/n if n else None
    summary[split+'/'+win]={'objective_MAE':float(np.mean([x['objective_MAE'] for x in rows])),'channel_objective_MAE':np.mean([x['channel_objective_MAE'] for x in rows],axis=0).tolist(),'channel_physical_MAE':np.mean([x['channel_physical_MAE'] for x in rows],axis=0).tolist(),'hot_temperature_MAE_C':region('hot_temperature_MAE_C','hot_cells'),'burning_HRR_MAE_kWm3':region('burning_HRR_MAE_kWm3','burning_cells'),'total_HRR_relative_L1_percent':100*sum(x['HRR_absolute_error_kW'] for x in rows)/max(sum(x['truth_HRR_kW'] for x in rows),1e-8)}
@@ -24,6 +24,6 @@ if (R/'data/collected/projections.npz').exists():
  z=np.load(R/'data/collected/projections.npz');frames=plan['projection_frames'];fig,axs=plt.subplots(len(frames),4,figsize=(12,12));limits=[max(float(z[k][:,:,ch].max()) for k in z.files) for ch in [0,1]]
  for i,f in enumerate(frames):
   for j,(who,ch) in enumerate([('truth',0),('pred',0),('truth',1),('pred',1)]):
-   ax=axs[i,j];im=ax.imshow(z[f'{who}_{f}'][:,:,ch].T,origin='lower',extent=[0,24,0,16],vmin=20 if ch==0 else 0,vmax=limits[ch],cmap='inferno',aspect='equal');ax.set_title(f'{who}: '+('gas T(C)' if ch==0 else 'HRR(kW/m3)')+f' frame{f}');fig.colorbar(im,ax=ax,shrink=.65)
+   ax=axs[i,j];im=ax.imshow(z[f'{who}_{f}'][:,:,ch].T,origin='lower',extent=[0,24,0,16],vmin=20 if ch==0 else 0,vmax=limits[ch],cmap='inferno',aspect='equal');ax.set_title(f'{who}: '+('gas T(C)' if ch==0 else 'HRR(kW/m3)')+f'\nframe {f}',fontsize=9);fig.colorbar(im,ax=ax,shrink=.65)
  fig.suptitle('Max-through-y projections, shared scales; not flame geometry');fig.tight_layout();fig.savefig(out/'projections.png',dpi=130);plt.close(fig)
 (R/'results/analysis.json').write_text(json.dumps(result,indent=2));print(json.dumps(result['epochs'][-1],indent=2))
