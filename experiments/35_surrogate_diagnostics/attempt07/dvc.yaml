@@ -105,3 +105,15 @@ stages:
     metrics:
     - results/archive-preservation.json:
         cache: false
+  time20_analysis:
+    cmd: ../../../.venv/bin/python analyze_time20.py
+    deps:
+    - analyze_time20.py
+    - cases.json
+    - data/collected/time-010-report.json
+    - data/collected/time-010-epoch-300-counts.npz
+    outs:
+    - data/time20
+    metrics:
+    - results/time20-summary.json:
+        cache: false

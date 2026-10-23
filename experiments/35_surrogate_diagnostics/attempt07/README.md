@@ -38,3 +38,10 @@ All ten independent models completed. The active-fire snapshots at20–100s each
 Training BCE falls while validation BCE rises at20–60s. This is an observed generalization gap under the loss, despite some F1 improvement. More epochs alone are not justified by these curves. At100s high recall accompanies many false positives and low precision. Fixed threshold0.5 was not tuned on validation.
 
 Final plots are in data/visuals. The separate attempt08 viewer pools recorded cases for visualization only and does not retrain or select checkpoints. All validation/test results remain previously examined development evidence, not physical validation.
+
+
+## Focused20-second learning curves
+
+See data/time20/learning-curves.png and results/time20-summary.json (DVC time20_analysis). Final train/validation precision80.63/65.15%, recall99.83/82.08%, F189.21/72.64%, IoU80.52/57.04%. Train360configurations; validation32configurations/40trajectories with replicas averaged per configuration before pooled counts. Equal-configuration mean F1 is86.47/68.53%; validation per-configuration F1 spans46.76–88.94%.
+
+Epochs201–250 versus251–300: mean training F185.32→87.39%, validation71.44→71.98%; balanced BCE training0.03143→0.02683, validation0.46728→0.58733. Training fit continues improving; validation F1 is flattening while weighted validation loss deteriorates. The formal joint plateau rule was not met. Minimum observed validation loss at54 and maximum observed validation F1 at294 are descriptive only: no checkpoint was substituted or selected for the viewer. Threshold0.5 and constant learning rate0.0003 unchanged. HOT>50°C is not flame classification;20s still includes the imposed igniter near shutoff. Previously examined validation, not an independent physical-validation test.

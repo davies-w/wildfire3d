@@ -273,3 +273,32 @@ stages:
       hash: md5
       md5: c5b6dee31723c65c1cdb9f5b4ecd4383
       size: 376
+  time20_analysis:
+    cmd: ../../../.venv/bin/python analyze_time20.py
+    deps:
+    - path: analyze_time20.py
+      hash: md5
+      md5: e69addbe4a3404feb492fec55c8c13b4
+      size: 3553
+    - path: cases.json
+      hash: md5
+      md5: 707e0ae0e64fad26c85ac05e1865bca2
+      size: 331617
+    - path: data/collected/time-010-epoch-300-counts.npz
+      hash: md5
+      md5: da0fb81fa17ed8c3e2558cbac4a1b433
+      size: 10871
+    - path: data/collected/time-010-report.json
+      hash: md5
+      md5: 19f5d254b595b4d466b10c06e91b7eb7
+      size: 405181
+    outs:
+    - path: data/time20
+      hash: md5
+      md5: d4ade204ca255cbc38002944027ecd5d.dir
+      size: 391147
+      nfiles: 2
+    - path: results/time20-summary.json
+      hash: md5
+      md5: a11bd6407a0d073341424f364f7320d6
+      size: 13197
