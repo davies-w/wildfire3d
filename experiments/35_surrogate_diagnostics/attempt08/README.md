@@ -19,3 +19,9 @@ From the repository root, serve this directory with Python's HTTP server and ope
 ## Scope
 
 Generic 3m-wide conical crowns 4/6/8/10m tall above2m, represented by1600 weighted particles. Fixed +X wind, artificial1500°C source for20s, no trunks, buildings or embers. Independent setup-to-snapshot classifiers have no evolving material/fuel state, recurrence or guaranteed temporal consistency. This is not real-world physical validation.
+
+## Validation
+
+All4,720 exported snapshots passed sparse-mask and recomputed confusion-count checks. On400 shared cases per model, CPU/GPU confusion-count entries differed by at most6 cells (49,152 cells per snapshot). Cold-model counts matched exactly. This count comparison does not prove identical spatial masks. Viewer metrics are computed from the displayed CPU masks; original learning curves retain original GPU metrics.
+
+Browser checks verified actual rendered truth/prediction masks, synchronized rotation, parameter selection and180s undefined positive-class metrics. Narrow windows stack the views; widen the window for side-by-side comparison.

@@ -56,3 +56,96 @@ stages:
       hash: md5
       md5: 0a653963b4a74850cc3c18c250d0de6d
       size: 1228
+  frozen_predictions:
+    cmd: ../../../.venv/bin/python predict_viewer.py
+    deps:
+    - path: ../attempt07/cases.json
+      hash: md5
+      md5: 707e0ae0e64fad26c85ac05e1865bca2
+      size: 331617
+    - path: ../attempt07/model.py
+      hash: md5
+      md5: 0a34bdf2d444e16b55a6fadb491a95f1
+      size: 1272
+    - path: cases.json
+      hash: md5
+      md5: 87e3c05547190d0288c8967f2e7e7533
+      size: 397051
+    - path: data/geometries.npz
+      hash: md5
+      md5: 97720a81cb6e5062c3ec9c7806866d71
+      size: 984773
+    - path: data/labels
+      hash: md5
+      md5: fa78c60e0ec7f2e24e0d92c65559a4a3.dir
+      size: 4278799
+      nfiles: 944
+    - path: data/models
+      hash: md5
+      md5: 067d10bb9a28df9bdedbed3ff8438c9e.dir
+      size: 58132300
+      nfiles: 10
+    - path: data/training-report.json
+      hash: md5
+      md5: c5db6b43c90d2cc75deb546ebca5adfa
+      size: 2984943
+    - path: predict_viewer.py
+      hash: md5
+      md5: c75b720fa068360f42fca77826e3ebc8
+      size: 3293
+    - path: results/model-freeze.json
+      hash: md5
+      md5: 0a653963b4a74850cc3c18c250d0de6d
+      size: 1228
+    outs:
+    - path: data/viewer
+      hash: md5
+      md5: 7d1bc6322078f3e28c3197933a3d5223.dir
+      size: 11018415
+      nfiles: 473
+    - path: results/prediction-audit.json
+      hash: md5
+      md5: a002b7e238cb43bc2accf583584a4335
+      size: 374712
+  inference_parity:
+    cmd: ../../../.venv/bin/python check_prediction_parity.py
+    deps:
+    - path: check_prediction_parity.py
+      hash: md5
+      md5: 2f4a7ce0c9ef4baabe1e7179852f3e7b
+      size: 1331
+    - path: data/training-report.json
+      hash: md5
+      md5: c5db6b43c90d2cc75deb546ebca5adfa
+      size: 2984943
+    - path: results/prediction-audit.json
+      hash: md5
+      md5: a002b7e238cb43bc2accf583584a4335
+      size: 374712
+    outs:
+    - path: data/gpu-counts
+      hash: md5
+      md5: 46f48432351f2db65fdcdce8f88abe15.dir
+      size: 59948
+      nfiles: 10
+    - path: results/cpu-gpu-parity.json
+      hash: md5
+      md5: 7825ce6e2257d5b49f6a83b1633be0ae
+      size: 1975
+  validate_viewer:
+    cmd: ../../../.venv/bin/python validate_viewer.py
+    deps:
+    - path: data/viewer
+      hash: md5
+      md5: 7d1bc6322078f3e28c3197933a3d5223.dir
+      size: 11018415
+      nfiles: 473
+    - path: validate_viewer.py
+      hash: md5
+      md5: 0e15495b3aa4eac0a672a08867a883b6
+      size: 1187
+    outs:
+    - path: results/viewer-validation.json
+      hash: md5
+      md5: 6319f8d3a8df89a7b4db1beb75d1f32d
+      size: 202

@@ -46,3 +46,11 @@ stages:
     metrics:
     - results/cpu-gpu-parity.json:
         cache: false
+  validate_viewer:
+    cmd: ../../../.venv/bin/python validate_viewer.py
+    deps:
+    - validate_viewer.py
+    - data/viewer
+    metrics:
+    - results/viewer-validation.json:
+        cache: false
