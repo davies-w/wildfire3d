@@ -1,0 +1,2550 @@
+{
+  "arms": [
+    {
+      "arm": "single",
+      "epochs": 200,
+      "reason": "maximum_epochs_not_convergence",
+      "selected_epoch": 24,
+      "final": {
+        "train": {
+          "all": {
+            "objective_MSE": 2.0753798484802246,
+            "channel_objective_MSE": [
+              5.112537384033203,
+              6.189791202545166,
+              0.09661916643381119,
+              0.1899699568748474,
+              0.3675729036331177,
+              0.4957869052886963
+            ],
+            "whole_normalized_MSE": [
+              0.45032572746276855,
+              0.36364495754241943,
+              0.09661916643381119,
+              0.1899699568748474,
+              0.3675729036331177,
+              0.4957869052886963
+            ],
+            "channel_physical_MAE": [
+              0.8779414892196655,
+              0.07741492986679077,
+              0.08399014174938202,
+              0.05573100224137306,
+              0.07899103313684464,
+              0.2365678995847702
+            ],
+            "hot_temperature_MAE_C": 43.747501373291016,
+            "hot_temperature_relative_L1_percent": 49.79698944091797,
+            "burning_HRR_MAE_kWm3": 12.000460624694824,
+            "burning_HRR_relative_L1_percent": 86.17484283447266,
+            "total_HRR_relative_L1_percent": 73.85147094726562,
+            "total_HRR_MAE_kW": 275.93646240234375,
+            "energy_pred_kJ": 44849.451366780166,
+            "energy_truth_kJ": 67973.58172282673,
+            "hot_precision": 0.35130175948143005,
+            "hot_recall": 0.7355712056159973,
+            "hot_f1": 0.4755062758922577,
+            "negative_encoded_HRR_fraction": 0.5095816254615784,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "ignition": {
+            "objective_MSE": 7.502566337585449,
+            "channel_objective_MSE": [
+              17.61220359802246,
+              22.953258514404297,
+              0.2926250398159027,
+              0.6519877910614014,
+              1.2468796968460083,
+              2.258439540863037
+            ],
+            "whole_normalized_MSE": [
+              2.486015558242798,
+              1.3010529279708862,
+              0.2926250398159027,
+              0.6519877910614014,
+              1.2468796968460083,
+              2.258439540863037
+            ],
+            "channel_physical_MAE": [
+              3.542328119277954,
+              0.32330039143562317,
+              0.18044477701187134,
+              0.11774399131536484,
+              0.19138440489768982,
+              1.0441514253616333
+            ],
+            "hot_temperature_MAE_C": 36.5295295715332,
+            "hot_temperature_relative_L1_percent": 42.07280349731445,
+            "burning_HRR_MAE_kWm3": 12.67551040649414,
+            "burning_HRR_relative_L1_percent": 82.2006607055664,
+            "total_HRR_relative_L1_percent": 50.475528717041016,
+            "total_HRR_MAE_kW": 827.2898559570312,
+            "energy_pred_kJ": 25657.200685592397,
+            "energy_truth_kJ": 31986.31714816117,
+            "hot_precision": 0.27370592951774597,
+            "hot_recall": 0.8854204416275024,
+            "hot_f1": 0.4181508421897888,
+            "negative_encoded_HRR_fraction": 0.34274569153785706,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "post_source": {
+            "objective_MSE": 1.329141616821289,
+            "channel_objective_MSE": [
+              3.393833637237549,
+              3.8848156929016113,
+              0.06966833770275116,
+              0.12644252181053162,
+              0.24666814506053925,
+              0.253422349691391
+            ],
+            "whole_normalized_MSE": [
+              0.1704183667898178,
+              0.23475149273872375,
+              0.06966833770275116,
+              0.12644252181053162,
+              0.24666814506053925,
+              0.253422349691391
+            ],
+            "channel_physical_MAE": [
+              0.5115882754325867,
+              0.04360567778348923,
+              0.0707276314496994,
+              0.047204211354255676,
+              0.06353694200515747,
+              0.12552520632743835
+            ],
+            "hot_temperature_MAE_C": 51.16765213012695,
+            "hot_temperature_relative_L1_percent": 57.5515022277832,
+            "burning_HRR_MAE_kWm3": 11.380125999450684,
+            "burning_HRR_relative_L1_percent": 90.66111755371094,
+            "total_HRR_relative_L1_percent": 100.23784637451172,
+            "total_HRR_MAE_kW": 200.1253662109375,
+            "energy_pred_kJ": 15746.09125098055,
+            "energy_truth_kJ": 26216.733468459923,
+            "hot_precision": 0.6315471529960632,
+            "hot_recall": 0.5815247893333435,
+            "hot_f1": 0.60550457239151,
+            "negative_encoded_HRR_fraction": 0.5325216054916382,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "active_window": {
+            "objective_MSE": 3.5240447521209717,
+            "channel_objective_MSE": [
+              9.041315078735352,
+              10.351619720458984,
+              0.14145879447460175,
+              0.3046063482761383,
+              0.6350135803222656,
+              0.670257568359375
+            ],
+            "whole_normalized_MSE": [
+              0.44553953409194946,
+              0.6168047189712524,
+              0.14145879447460175,
+              0.3046063482761383,
+              0.6350135803222656,
+              0.670257568359375
+            ],
+            "channel_physical_MAE": [
+              0.9180110096931458,
+              0.10105181485414505,
+              0.11810307204723358,
+              0.07969251275062561,
+              0.11775781959295273,
+              0.2890346348285675
+            ],
+            "hot_temperature_MAE_C": 51.16765213012695,
+            "hot_temperature_relative_L1_percent": 57.5515022277832,
+            "burning_HRR_MAE_kWm3": 11.435126304626465,
+            "burning_HRR_relative_L1_percent": 90.6613540649414,
+            "total_HRR_relative_L1_percent": 82.66918182373047,
+            "total_HRR_MAE_kW": 440.1185607910156,
+            "energy_pred_kJ": 10158.330877531014,
+            "energy_truth_kJ": 26215.714404505034,
+            "hot_precision": 0.6315471529960632,
+            "hot_recall": 0.5815247893333435,
+            "hot_f1": 0.60550457239151,
+            "negative_encoded_HRR_fraction": 0.5930671095848083,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "late": {
+            "objective_MSE": 0.01231619343161583,
+            "channel_objective_MSE": [
+              0.005431737285107374,
+              0.005360504612326622,
+              0.030027132481336594,
+              0.017822882160544395,
+              0.011878127232193947,
+              0.0033767831046134233
+            ],
+            "whole_normalized_MSE": [
+              0.005431737285107374,
+              0.005360504612326622,
+              0.030027132481336594,
+              0.017822882160544395,
+              0.011878127232193947,
+              0.0033767831046134233
+            ],
+            "channel_physical_MAE": [
+              0.2739800810813904,
+              0.009651925414800644,
+              0.043244197964668274,
+              0.026863910257816315,
+              0.029382942244410515,
+              0.027712056413292885
+            ],
+            "hot_temperature_MAE_C": null,
+            "hot_temperature_relative_L1_percent": null,
+            "burning_HRR_MAE_kWm3": null,
+            "burning_HRR_relative_L1_percent": null,
+            "total_HRR_relative_L1_percent": 1593937.0,
+            "total_HRR_MAE_kW": 59.29435348510742,
+            "energy_pred_kJ": 3552.9538153310423,
+            "energy_truth_kJ": 0.22079906833727847,
+            "hot_precision": null,
+            "hot_recall": null,
+            "hot_f1": null,
+            "negative_encoded_HRR_fraction": 0.47276782989501953,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "configurations": 1
+        },
+        "validation": {
+          "all": {
+            "objective_MSE": 12.06587785979112,
+            "channel_objective_MSE": [
+              35.40337791045506,
+              29.675178557634354,
+              1.2874330454505982,
+              1.3533803969621656,
+              1.8920695496102176,
+              2.7838290485863886
+            ],
+            "whole_normalized_MSE": [
+              3.110269141073028,
+              3.092741599616905,
+              1.2874330454505982,
+              1.3533803969621656,
+              1.8920695496102176,
+              2.7838290485863886
+            ],
+            "channel_physical_MAE": [
+              1.9464856224755445,
+              0.29876884693900746,
+              0.28970930764141184,
+              0.20278550684452057,
+              0.25054128762955463,
+              0.943853743529568
+            ],
+            "hot_temperature_MAE_C": 99.2780358393987,
+            "hot_temperature_relative_L1_percent": 90.4934701124827,
+            "burning_HRR_MAE_kWm3": 22.973106866081555,
+            "burning_HRR_relative_L1_percent": 109.54686196645102,
+            "total_HRR_relative_L1_percent": 145.82076327006024,
+            "total_HRR_MAE_kW": 1646.0486175219216,
+            "energy_pred_kJ": 45374.79770774818,
+            "energy_truth_kJ": 298186.2388717504,
+            "hot_precision": 0.18516703739684698,
+            "hot_recall": 0.12091741522817756,
+            "hot_f1": 0.11340577179119767,
+            "negative_encoded_HRR_fraction": 0.5224240577469269,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "ignition": {
+            "objective_MSE": 47.75158743063609,
+            "channel_objective_MSE": [
+              134.61391460895538,
+              134.6632610956828,
+              0.9767869718683262,
+              1.7070946206028261,
+              4.339065322031577,
+              10.209408604850372
+            ],
+            "whole_normalized_MSE": [
+              11.431086473166944,
+              13.531328834593298,
+              0.9767869718683262,
+              1.7070946206028261,
+              4.339065322031577,
+              10.209408604850372
+            ],
+            "channel_physical_MAE": [
+              6.186119146645069,
+              1.3306109936287007,
+              0.27419657461966074,
+              0.18664460652507842,
+              0.3179757838758329,
+              3.4155850124855838
+            ],
+            "hot_temperature_MAE_C": 106.60355222225189,
+            "hot_temperature_relative_L1_percent": 90.43008001645406,
+            "burning_HRR_MAE_kWm3": 30.07302988072236,
+            "burning_HRR_relative_L1_percent": 108.19905749956767,
+            "total_HRR_relative_L1_percent": 106.9064373175303,
+            "total_HRR_MAE_kW": 7142.83673731486,
+            "energy_pred_kJ": 18769.224560950992,
+            "energy_truth_kJ": 148387.690451703,
+            "hot_precision": 0.1675619630453487,
+            "hot_recall": 0.13147846258652862,
+            "hot_f1": 0.11855917609257935,
+            "negative_encoded_HRR_fraction": 0.46800608684619266,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "post_source": {
+            "objective_MSE": 7.159092624982199,
+            "channel_objective_MSE": [
+              21.761926332488652,
+              15.239317772599557,
+              1.330146907751138,
+              1.304744741724183,
+              1.555607648566365,
+              1.7628119153378068
+            ],
+            "whole_normalized_MSE": [
+              1.9661566140130162,
+              1.6574361378249403,
+              1.330146907751138,
+              1.304744741724183,
+              1.555607648566365,
+              1.7628119153378068
+            ],
+            "channel_physical_MAE": [
+              1.3635359887654581,
+              0.15689056244445962,
+              0.29184230890435475,
+              0.20500487504371756,
+              0.2412690510197232,
+              0.6039907338563354
+            ],
+            "hot_temperature_MAE_C": 84.52801118294397,
+            "hot_temperature_relative_L1_percent": 86.8168829282125,
+            "burning_HRR_MAE_kWm3": 14.926957048475742,
+            "burning_HRR_relative_L1_percent": 203.97279516855878,
+            "total_HRR_relative_L1_percent": 4882.183078130087,
+            "total_HRR_MAE_kW": 890.2402578194935,
+            "energy_pred_kJ": 24676.337425293008,
+            "energy_truth_kJ": 119118.23224807983,
+            "hot_precision": 0.38653662088648255,
+            "hot_recall": 0.13207085879306152,
+            "hot_f1": 0.10863536529359408,
+            "negative_encoded_HRR_fraction": 0.5299065237243971,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "active_window": {
+            "objective_MSE": 17.902783125638962,
+            "channel_objective_MSE": [
+              55.8935404283305,
+              40.6065028719604,
+              1.3250018858040373,
+              1.726210922934115,
+              3.1781768978883824,
+              4.68726541971167
+            ],
+            "whole_normalized_MSE": [
+              5.214145694238443,
+              4.405472173471935,
+              1.3250018858040373,
+              1.726210922934115,
+              3.1781768978883824,
+              4.68726541971167
+            ],
+            "channel_physical_MAE": [
+              3.161035177608331,
+              0.4000855081443054,
+              0.3283145444778105,
+              0.23192559687110284,
+              0.32801359317575884,
+              1.5635566860049344
+            ],
+            "hot_temperature_MAE_C": 84.89586418867111,
+            "hot_temperature_relative_L1_percent": 86.8146844704946,
+            "burning_HRR_MAE_kWm3": 15.095488245288532,
+            "burning_HRR_relative_L1_percent": 204.00671219825745,
+            "total_HRR_relative_L1_percent": 3422.1112029155097,
+            "total_HRR_MAE_kW": 2261.7688071727753,
+            "energy_pred_kJ": 17952.586046939097,
+            "energy_truth_kJ": 119110.60832092466,
+            "hot_precision": 0.38653662088648255,
+            "hot_recall": 0.13253448303536666,
+            "hot_f1": 0.10913038418705884,
+            "negative_encoded_HRR_fraction": 0.5901628065233429,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "late": {
+            "objective_MSE": 0.48512260205461644,
+            "channel_objective_MSE": [
+              0.007009629703437289,
+              0.008317557706808051,
+              1.3326295215714103,
+              1.0209734605547662,
+              0.5385106428196498,
+              0.0032947496923346384
+            ],
+            "whole_normalized_MSE": [
+              0.007009629703437289,
+              0.008352470894654592,
+              1.3326295215714103,
+              1.0209734605547662,
+              0.5385106428196498,
+              0.0032947496923346384
+            ],
+            "channel_physical_MAE": [
+              0.2596983867697418,
+              0.011387506645405665,
+              0.26653264509513974,
+              0.18368250019072244,
+              0.18182579678250474,
+              0.025304859213065356
+            ],
+            "hot_temperature_MAE_C": null,
+            "hot_temperature_relative_L1_percent": null,
+            "burning_HRR_MAE_kWm3": 0.015284699387848377,
+            "burning_HRR_relative_L1_percent": 106.95461545671735,
+            "total_HRR_relative_L1_percent": 2468871.7591145835,
+            "total_HRR_MAE_kW": 69.95759097735086,
+            "energy_pred_kJ": 4194.353515706092,
+            "energy_truth_kJ": 0.33209873559305436,
+            "hot_precision": null,
+            "hot_recall": null,
+            "hot_f1": null,
+            "negative_encoded_HRR_fraction": 0.4717676155269146,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "configurations": 32
+        }
+      },
+      "selected": {
+        "arm": "single-selected",
+        "epoch": 24,
+        "summary": {
+          "train": {
+            "all": {
+              "objective_MSE": 2.823607921600342,
+              "channel_objective_MSE": [
+                5.873271465301514,
+                8.882811546325684,
+                0.1369238942861557,
+                0.2819932997226715,
+                0.5090454816818237,
+                1.257603645324707
+              ],
+              "whole_normalized_MSE": [
+                0.9386067390441895,
+                0.598389744758606,
+                0.1369238942861557,
+                0.2819932997226715,
+                0.5090454816818237,
+                1.257603645324707
+              ],
+              "channel_physical_MAE": [
+                1.6558895111083984,
+                0.11840516328811646,
+                0.1113080233335495,
+                0.07485350221395493,
+                0.11199162900447845,
+                0.5966218113899231
+              ],
+              "hot_temperature_MAE_C": 42.45429992675781,
+              "hot_temperature_relative_L1_percent": 48.32495880126953,
+              "burning_HRR_MAE_kWm3": 13.510763168334961,
+              "burning_HRR_relative_L1_percent": 97.02025604248047,
+              "total_HRR_relative_L1_percent": 112.75187683105469,
+              "total_HRR_MAE_kW": 421.2828063964844,
+              "energy_pred_kJ": 78685.13231614849,
+              "energy_truth_kJ": 67973.58172282673,
+              "hot_precision": 0.20631566643714905,
+              "hot_recall": 0.9196926951408386,
+              "hot_f1": 0.3370259404182434,
+              "negative_encoded_HRR_fraction": 0.3800802528858185,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "ignition": {
+              "objective_MSE": 13.251191139221191,
+              "channel_objective_MSE": [
+                27.034912109375,
+                44.289344787597656,
+                0.33628904819488525,
+                0.8894853591918945,
+                1.9038772583007812,
+                5.053238391876221
+              ],
+              "whole_normalized_MSE": [
+                5.070097923278809,
+                2.5992891788482666,
+                0.33628904819488525,
+                0.8894853591918945,
+                1.9038772583007812,
+                5.053238391876221
+              ],
+              "channel_physical_MAE": [
+                5.842996597290039,
+                0.43255576491355896,
+                0.21118812263011932,
+                0.15116678178310394,
+                0.3242149353027344,
+                1.5720715522766113
+              ],
+              "hot_temperature_MAE_C": 41.3043212890625,
+              "hot_temperature_relative_L1_percent": 47.57215881347656,
+              "burning_HRR_MAE_kWm3": 14.902143478393555,
+              "burning_HRR_relative_L1_percent": 96.64036560058594,
+              "total_HRR_relative_L1_percent": 72.51405334472656,
+              "total_HRR_MAE_kW": 1188.49951171875,
+              "energy_pred_kJ": 29414.324530695216,
+              "energy_truth_kJ": 31986.31714816117,
+              "hot_precision": 0.16808898746967316,
+              "hot_recall": 0.9133886694908142,
+              "hot_f1": 0.28392741084098816,
+              "negative_encoded_HRR_fraction": 0.49031946063041687,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "post_source": {
+              "objective_MSE": 1.3898149728775024,
+              "channel_objective_MSE": [
+                2.9635448455810547,
+                4.014411926269531,
+                0.10951115936040878,
+                0.19846321642398834,
+                0.31725627183914185,
+                0.7357035279273987
+              ],
+              "whole_normalized_MSE": [
+                0.3705267906188965,
+                0.3232661485671997,
+                0.10951115936040878,
+                0.19846321642398834,
+                0.31725627183914185,
+                0.7357035279273987
+              ],
+              "channel_physical_MAE": [
+                1.0801615715026855,
+                0.07520945370197296,
+                0.09757450222969055,
+                0.06436043232679367,
+                0.08281087130308151,
+                0.4624975323677063
+              ],
+              "hot_temperature_MAE_C": 43.63648986816406,
+              "hot_temperature_relative_L1_percent": 49.080726623535156,
+              "burning_HRR_MAE_kWm3": 12.232157707214355,
+              "burning_HRR_relative_L1_percent": 97.44892883300781,
+              "total_HRR_relative_L1_percent": 158.17166137695312,
+              "total_HRR_MAE_kW": 315.7904968261719,
+              "energy_pred_kJ": 46281.54269907018,
+              "energy_truth_kJ": 26216.733468459923,
+              "hot_precision": 0.2681381106376648,
+              "hot_recall": 0.9261732697486877,
+              "hot_f1": 0.4158754050731659,
+              "negative_encoded_HRR_fraction": 0.36492234468460083,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "active_window": {
+              "objective_MSE": 3.5742461681365967,
+              "channel_objective_MSE": [
+                7.847510814666748,
+                10.641701698303223,
+                0.21781164407730103,
+                0.46671244502067566,
+                0.8035116195678711,
+                1.4682289361953735
+              ],
+              "whole_normalized_MSE": [
+                0.9327957630157471,
+                0.7879525423049927,
+                0.21781164407730103,
+                0.46671244502067566,
+                0.8035116195678711,
+                1.4682289361953735
+              ],
+              "channel_physical_MAE": [
+                1.8559709787368774,
+                0.15131469070911407,
+                0.15958108007907867,
+                0.10584128648042679,
+                0.15301074087619781,
+                0.6516131162643433
+              ],
+              "hot_temperature_MAE_C": 43.63648986816406,
+              "hot_temperature_relative_L1_percent": 49.080726623535156,
+              "burning_HRR_MAE_kWm3": 12.291254997253418,
+              "burning_HRR_relative_L1_percent": 97.44901275634766,
+              "total_HRR_relative_L1_percent": 101.34933471679688,
+              "total_HRR_MAE_kW": 539.5689697265625,
+              "energy_pred_kJ": 28215.277384601883,
+              "energy_truth_kJ": 26215.714404505034,
+              "hot_precision": 0.2681381106376648,
+              "hot_recall": 0.9261732697486877,
+              "hot_f1": 0.4158754050731659,
+              "negative_encoded_HRR_fraction": 0.4113905131816864,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "late": {
+              "objective_MSE": 0.07996849715709686,
+              "channel_objective_MSE": [
+                0.03355395421385765,
+                0.044599749147892,
+                0.04860333725810051,
+                0.035065434873104095,
+                0.022253327071666718,
+                0.2957351803779602
+              ],
+              "whole_normalized_MSE": [
+                0.03355395421385765,
+                0.044599749147892,
+                0.04860333725810051,
+                0.035065434873104095,
+                0.022253327071666718,
+                0.2957351803779602
+              ],
+              "channel_physical_MAE": [
+                0.6243368983268738,
+                0.03131856769323349,
+                0.06125927343964577,
+                0.038458533585071564,
+                0.03877750039100647,
+                0.34873470664024353
+              ],
+              "hot_temperature_MAE_C": null,
+              "hot_temperature_relative_L1_percent": null,
+              "burning_HRR_MAE_kWm3": null,
+              "burning_HRR_relative_L1_percent": null,
+              "total_HRR_relative_L1_percent": 5172473.0,
+              "total_HRR_MAE_kW": 192.41566467285156,
+              "energy_pred_kJ": 11530.200892184512,
+              "energy_truth_kJ": 0.22079906833727847,
+              "hot_precision": null,
+              "hot_recall": null,
+              "hot_f1": null,
+              "negative_encoded_HRR_fraction": 0.32401400804519653,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "configurations": 1
+          },
+          "validation": {
+            "all": {
+              "objective_MSE": 11.08021589120229,
+              "channel_objective_MSE": [
+                31.29364171127478,
+                26.614034066597622,
+                1.3610888241479795,
+                1.4383953822155793,
+                1.9495763244728246,
+                3.824562005698681
+              ],
+              "whole_normalized_MSE": [
+                3.6093175609906516,
+                3.1213690917938948,
+                1.3610888241479795,
+                1.4383953822155793,
+                1.9495763244728246,
+                3.824562005698681
+              ],
+              "channel_physical_MAE": [
+                2.8728571372727556,
+                0.3488125736669948,
+                0.30650514069323737,
+                0.2148968578161051,
+                0.26576335029676557,
+                1.3024164484813812
+              ],
+              "hot_temperature_MAE_C": 93.27362815539041,
+              "hot_temperature_relative_L1_percent": 84.95901517073312,
+              "burning_HRR_MAE_kWm3": 22.516904930273693,
+              "burning_HRR_relative_L1_percent": 104.6071396668752,
+              "total_HRR_relative_L1_percent": 258.29938165346783,
+              "total_HRR_MAE_kW": 1792.4260965983074,
+              "energy_pred_kJ": 103125.14139299864,
+              "energy_truth_kJ": 298186.2388717504,
+              "hot_precision": 0.15036030846143453,
+              "hot_recall": 0.2666501636807273,
+              "hot_f1": 0.15444982497744303,
+              "negative_encoded_HRR_fraction": 0.39339859783649445,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "ignition": {
+              "objective_MSE": 41.690874000390366,
+              "channel_objective_MSE": [
+                107.35807430744171,
+                121.98484539985657,
+                1.142839914187789,
+                1.9262150035550196,
+                4.419573236256838,
+                13.313696399331095
+              ],
+              "whole_normalized_MSE": [
+                12.75260586043199,
+                13.165030325452488,
+                1.142839914187789,
+                1.9262150035550196,
+                4.419573236256838,
+                13.313696399331095
+              ],
+              "channel_physical_MAE": [
+                8.210231895248096,
+                1.4229316503430407,
+                0.3039131655047337,
+                0.21888969605788589,
+                0.3809301815927028,
+                3.8483672812581062
+              ],
+              "hot_temperature_MAE_C": 98.01609567801157,
+              "hot_temperature_relative_L1_percent": 83.46197398503622,
+              "burning_HRR_MAE_kWm3": 29.68699340025584,
+              "burning_HRR_relative_L1_percent": 104.198237657547,
+              "total_HRR_relative_L1_percent": 106.3828316529592,
+              "total_HRR_MAE_kW": 6876.501008987427,
+              "energy_pred_kJ": 32734.40741418609,
+              "energy_truth_kJ": 148387.690451703,
+              "hot_precision": 0.13653346966020763,
+              "hot_recall": 0.32260386138902203,
+              "hot_f1": 0.17644000726189307,
+              "negative_encoded_HRR_fraction": 0.4688488844161232,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "post_source": {
+              "objective_MSE": 6.871250713864962,
+              "channel_objective_MSE": [
+                20.834781184792515,
+                13.500545199339586,
+                1.3910980600242813,
+                1.371320233059426,
+                1.6099518133948245,
+                2.5198060671488443
+              ],
+              "whole_normalized_MSE": [
+                2.3521152871350446,
+                1.7403654997857907,
+                1.3910980600242813,
+                1.371320233059426,
+                1.6099518133948245,
+                2.5198060671488443
+              ],
+              "channel_physical_MAE": [
+                2.1389682702720165,
+                0.20112118990315742,
+                0.30686153587885207,
+                0.21434784377925098,
+                0.24992790872541568,
+                0.9523481447249651
+              ],
+              "hot_temperature_MAE_C": 79.88627048333485,
+              "hot_temperature_relative_L1_percent": 80.92537132898966,
+              "burning_HRR_MAE_kWm3": 14.556716322898865,
+              "burning_HRR_relative_L1_percent": 182.81744305292767,
+              "total_HRR_relative_L1_percent": 20609.791922330856,
+              "total_HRR_MAE_kW": 1093.365761756897,
+              "energy_pred_kJ": 67458.45003223263,
+              "energy_truth_kJ": 119118.23224807983,
+              "hot_precision": 0.28966720557655207,
+              "hot_recall": 0.27427329425942537,
+              "hot_f1": 0.13107500844610814,
+              "negative_encoded_HRR_fraction": 0.3830241871376832,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "active_window": {
+              "objective_MSE": 16.96729285145799,
+              "channel_objective_MSE": [
+                53.24130584547917,
+                35.8234454964598,
+                1.416956156802674,
+                1.8531482970962923,
+                3.2977554599444066,
+                6.171145450323819
+              ],
+              "whole_normalized_MSE": [
+                6.179397379358609,
+                4.503724290058017,
+                1.416956156802674,
+                1.8531482970962923,
+                3.2977554599444066,
+                6.171145450323819
+              ],
+              "channel_physical_MAE": [
+                4.482091405739387,
+                0.4687020745283614,
+                0.34801557613536716,
+                0.24674667386958996,
+                0.3418260469722251,
+                1.9316624272614717
+              ],
+              "hot_temperature_MAE_C": 80.23960920174916,
+              "hot_temperature_relative_L1_percent": 80.92019283771515,
+              "burning_HRR_MAE_kWm3": 14.721182682861883,
+              "burning_HRR_relative_L1_percent": 182.82740171750385,
+              "total_HRR_relative_L1_percent": 14604.526409864426,
+              "total_HRR_MAE_kW": 2500.3634748458862,
+              "energy_pred_kJ": 42579.80886930921,
+              "energy_truth_kJ": 119110.60832092466,
+              "hot_precision": 0.2897797662991151,
+              "hot_recall": 0.27498952487076167,
+              "hot_f1": 0.13177901489082916,
+              "negative_encoded_HRR_fraction": 0.41831064379463595,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "late": {
+              "objective_MSE": 0.570419954524065,
+              "channel_objective_MSE": [
+                0.04435848107095808,
+                0.08260610602640858,
+                1.3753142456213632,
+                1.0514778004338345,
+                0.5527771128302751,
+                0.3159858913471301
+              ],
+              "whole_normalized_MSE": [
+                0.04435848107095808,
+                0.08232556267951927,
+                1.3753142456213632,
+                1.0514778004338345,
+                0.5527771128302751,
+                0.3159858913471301
+              ],
+              "channel_physical_MAE": [
+                0.7072629711280266,
+                0.04165594675578176,
+                0.27911506360396743,
+                0.1901462022603179,
+                0.18770208632728702,
+                0.3599283769726753
+              ],
+              "hot_temperature_MAE_C": null,
+              "hot_temperature_relative_L1_percent": null,
+              "burning_HRR_MAE_kWm3": 0.013541480260235923,
+              "burning_HRR_relative_L1_percent": 97.75539180210659,
+              "total_HRR_relative_L1_percent": 8263559.213541666,
+              "total_HRR_MAE_kW": 255.92488622665405,
+              "energy_pred_kJ": 15342.29782478505,
+              "energy_truth_kJ": 0.33209873559305436,
+              "hot_precision": null,
+              "hot_recall": null,
+              "hot_f1": null,
+              "negative_encoded_HRR_fraction": 0.3493400306130449,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "configurations": 32
+          }
+        },
+        "elapsed_s": 2841.1675262969998
+      },
+      "final_fit_gate": [
+        {
+          "case": "x32_033_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 1.329141616821289,
+            "channel_objective_MSE": [
+              3.393833637237549,
+              3.8848156929016113,
+              0.06966833770275116,
+              0.12644252181053162,
+              0.24666814506053925,
+              0.253422349691391
+            ],
+            "whole_normalized_MSE": [
+              0.1704183667898178,
+              0.23475149273872375,
+              0.06966833770275116,
+              0.12644252181053162,
+              0.24666814506053925,
+              0.253422349691391
+            ],
+            "channel_physical_MAE": [
+              0.5115882754325867,
+              0.04360567778348923,
+              0.0707276314496994,
+              0.047204211354255676,
+              0.06353694200515747,
+              0.12552520632743835
+            ],
+            "hot_temperature_MAE_C": 51.16765213012695,
+            "hot_temperature_relative_L1_percent": 57.5515022277832,
+            "burning_HRR_MAE_kWm3": 11.380125999450684,
+            "burning_HRR_relative_L1_percent": 90.66111755371094,
+            "total_HRR_relative_L1_percent": 100.23784637451172,
+            "total_HRR_MAE_kW": 200.1253662109375,
+            "energy_pred_kJ": 15746.09125098055,
+            "energy_truth_kJ": 26216.733468459923,
+            "hot_precision": 0.6315471529960632,
+            "hot_recall": 0.5815247893333435,
+            "hot_f1": 0.60550457239151,
+            "negative_encoded_HRR_fraction": 0.5325216054916382,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        }
+      ],
+      "selected_fit_gate": [
+        {
+          "case": "x32_033_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 1.3898149728775024,
+            "channel_objective_MSE": [
+              2.9635448455810547,
+              4.014411926269531,
+              0.10951115936040878,
+              0.19846321642398834,
+              0.31725627183914185,
+              0.7357035279273987
+            ],
+            "whole_normalized_MSE": [
+              0.3705267906188965,
+              0.3232661485671997,
+              0.10951115936040878,
+              0.19846321642398834,
+              0.31725627183914185,
+              0.7357035279273987
+            ],
+            "channel_physical_MAE": [
+              1.0801615715026855,
+              0.07520945370197296,
+              0.09757450222969055,
+              0.06436043232679367,
+              0.08281087130308151,
+              0.4624975323677063
+            ],
+            "hot_temperature_MAE_C": 43.63648986816406,
+            "hot_temperature_relative_L1_percent": 49.080726623535156,
+            "burning_HRR_MAE_kWm3": 12.232157707214355,
+            "burning_HRR_relative_L1_percent": 97.44892883300781,
+            "total_HRR_relative_L1_percent": 158.17166137695312,
+            "total_HRR_MAE_kW": 315.7904968261719,
+            "energy_pred_kJ": 46281.54269907018,
+            "energy_truth_kJ": 26216.733468459923,
+            "hot_precision": 0.2681381106376648,
+            "hot_recall": 0.9261732697486877,
+            "hot_f1": 0.4158754050731659,
+            "negative_encoded_HRR_fraction": 0.36492234468460083,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "arm": "eight",
+      "epochs": 200,
+      "reason": "maximum_epochs_not_convergence",
+      "selected_epoch": 4,
+      "final": {
+        "train": {
+          "all": {
+            "objective_MSE": 1.1880315132439137,
+            "channel_objective_MSE": [
+              2.260833591222763,
+              2.877426315099001,
+              0.2421038756147027,
+              0.8402220997959375,
+              0.6323728188872337,
+              0.27523066755384207
+            ],
+            "whole_normalized_MSE": [
+              0.3721748245880008,
+              0.27091976092197,
+              0.2421038756147027,
+              0.8402220997959375,
+              0.6323728188872337,
+              0.27523066755384207
+            ],
+            "channel_physical_MAE": [
+              0.8768350481987,
+              0.09229418425820768,
+              0.1765313670039177,
+              0.1693731341511011,
+              0.1858477983623743,
+              0.30006034672260284
+            ],
+            "hot_temperature_MAE_C": 26.553516268730164,
+            "hot_temperature_relative_L1_percent": 29.010358810424805,
+            "burning_HRR_MAE_kWm3": 8.895153224468231,
+            "burning_HRR_relative_L1_percent": 65.41995859146118,
+            "total_HRR_relative_L1_percent": 159.60338354110718,
+            "total_HRR_MAE_kW": 381.89879512786865,
+            "energy_pred_kJ": 89717.5513721561,
+            "energy_truth_kJ": 92028.18218166349,
+            "hot_precision": 0.3325096219778061,
+            "hot_recall": 0.9568334594368935,
+            "hot_f1": 0.4890844412147999,
+            "negative_encoded_HRR_fraction": 0.28293177857995033,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "ignition": {
+            "objective_MSE": 6.4121167957782745,
+            "channel_objective_MSE": [
+              14.403502106666565,
+              19.617176562547684,
+              0.45189108699560165,
+              0.8819368183612823,
+              1.339928824454546,
+              1.7782653123140335
+            ],
+            "whole_normalized_MSE": [
+              2.2697486989200115,
+              1.8371313121169806,
+              0.45189108699560165,
+              0.8819368183612823,
+              1.339928824454546,
+              1.7782653123140335
+            ],
+            "channel_physical_MAE": [
+              3.147753283381462,
+              0.49120961781591177,
+              0.20125870406627655,
+              0.13854963425546885,
+              0.2081182263791561,
+              1.649128507822752
+            ],
+            "hot_temperature_MAE_C": 30.330604076385498,
+            "hot_temperature_relative_L1_percent": 29.68679141998291,
+            "burning_HRR_MAE_kWm3": 12.615435108542442,
+            "burning_HRR_relative_L1_percent": 65.3422122001648,
+            "total_HRR_relative_L1_percent": 64.34946918487549,
+            "total_HRR_MAE_kW": 1859.0262641906738,
+            "energy_pred_kJ": 46040.874807471584,
+            "energy_truth_kJ": 70533.84868490408,
+            "hot_precision": 0.3351080734282732,
+            "hot_recall": 0.9606387987732887,
+            "hot_f1": 0.4923286736011505,
+            "negative_encoded_HRR_fraction": 0.4461122080683708,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "post_source": {
+            "objective_MSE": 0.46971981041133404,
+            "channel_objective_MSE": [
+              0.5912168370559812,
+              0.5757103525102139,
+              0.21325815515592694,
+              0.8344863271340728,
+              0.5350838750600815,
+              0.06856342346873134
+            ],
+            "whole_normalized_MSE": [
+              0.1112583780195564,
+              0.05556561617413536,
+              0.21325815515592694,
+              0.8344863271340728,
+              0.5350838750600815,
+              0.06856342346873134
+            ],
+            "channel_physical_MAE": [
+              0.5645838379859924,
+              0.037443333538249135,
+              0.17313136253505945,
+              0.17361136060208082,
+              0.1827855957672,
+              0.11456346977502108
+            ],
+            "hot_temperature_MAE_C": 18.677010595798492,
+            "hot_temperature_relative_L1_percent": 27.341315150260925,
+            "burning_HRR_MAE_kWm3": 3.1294199973344803,
+            "burning_HRR_relative_L1_percent": 86.78480339050293,
+            "total_HRR_relative_L1_percent": 7148.603864192963,
+            "total_HRR_MAE_kW": 178.79375743865967,
+            "energy_pred_kJ": 37575.2281396382,
+            "energy_truth_kJ": 13993.333245933714,
+            "hot_precision": 0.3000037856400013,
+            "hot_recall": 0.9512343779206276,
+            "hot_f1": 0.43923911824822426,
+            "negative_encoded_HRR_fraction": 0.2604944594204426,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "active_window": {
+            "objective_MSE": 0.8442173264920712,
+            "channel_objective_MSE": [
+              1.5506523167714477,
+              1.5265650069341063,
+              0.25755077227950096,
+              0.9132851772010326,
+              0.6447151377797127,
+              0.17253542505204678
+            ],
+            "whole_normalized_MSE": [
+              0.2748433602973819,
+              0.13999822223559022,
+              0.25755077227950096,
+              0.9132851772010326,
+              0.6447151377797127,
+              0.17253542505204678
+            ],
+            "channel_physical_MAE": [
+              0.8665026128292084,
+              0.06439419253729284,
+              0.18909077160060406,
+              0.18145043961703777,
+              0.19549369625747204,
+              0.24224203312769532
+            ],
+            "hot_temperature_MAE_C": 18.67856651544571,
+            "hot_temperature_relative_L1_percent": 27.341509461402893,
+            "burning_HRR_MAE_kWm3": 3.147830940783024,
+            "burning_HRR_relative_L1_percent": 86.74599170684814,
+            "total_HRR_relative_L1_percent": 3289.170021057129,
+            "total_HRR_MAE_kW": 258.9574661254883,
+            "energy_pred_kJ": 24494.476056825548,
+            "energy_truth_kJ": 13992.326930127627,
+            "hot_precision": 0.30073263868689537,
+            "hot_recall": 0.9512339234352112,
+            "hot_f1": 0.43994512036442757,
+            "negative_encoded_HRR_fraction": 0.28653252124786377,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "late": {
+            "objective_MSE": 0.24006894859485328,
+            "channel_objective_MSE": [
+              0.010718192643253133,
+              0.0046512998233083636,
+              0.18443167163059115,
+              0.7714379942044616,
+              0.46337560762185603,
+              0.005798837228212506
+            ],
+            "whole_normalized_MSE": [
+              0.010718192643253133,
+              0.0046512998233083636,
+              0.18443167163059115,
+              0.7714379942044616,
+              0.46337560762185603,
+              0.005798837228212506
+            ],
+            "channel_physical_MAE": [
+              0.3781745173037052,
+              0.020900023984722793,
+              0.1618345626629889,
+              0.16664522187784314,
+              0.1731477074790746,
+              0.03758961288258433
+            ],
+            "hot_temperature_MAE_C": null,
+            "hot_temperature_relative_L1_percent": null,
+            "burning_HRR_MAE_kWm3": null,
+            "burning_HRR_relative_L1_percent": null,
+            "total_HRR_relative_L1_percent": 3840776.546875,
+            "total_HRR_MAE_kW": 128.40702533721924,
+            "energy_pred_kJ": 7697.612701082311,
+            "energy_truth_kJ": 0.2586970963667936,
+            "hot_precision": null,
+            "hot_recall": null,
+            "hot_f1": null,
+            "negative_encoded_HRR_fraction": 0.24232318997383118,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "configurations": 8
+        },
+        "validation": {
+          "all": {
+            "objective_MSE": 11.256681639701128,
+            "channel_objective_MSE": [
+              33.45324066653848,
+              27.79809863492846,
+              0.6760845504080256,
+              1.2055466501042245,
+              1.864614559027056,
+              2.54249785343806
+            ],
+            "whole_normalized_MSE": [
+              3.0024048018579688,
+              3.059302435566982,
+              0.6760845504080256,
+              1.2055466501042245,
+              1.864614559027056,
+              2.54249785343806
+            ],
+            "channel_physical_MAE": [
+              1.7826432020713887,
+              0.307288830789427,
+              0.24286522126446164,
+              0.1925644619235148,
+              0.23758824138591686,
+              0.984137467186277
+            ],
+            "hot_temperature_MAE_C": 97.0744254887104,
+            "hot_temperature_relative_L1_percent": 87.10126821200052,
+            "burning_HRR_MAE_kWm3": 22.871329226841528,
+            "burning_HRR_relative_L1_percent": 101.83028562863669,
+            "total_HRR_relative_L1_percent": 128.88975644111633,
+            "total_HRR_MAE_kW": 1706.5951071580253,
+            "energy_pred_kJ": 58702.345712331284,
+            "energy_truth_kJ": 298186.2388717504,
+            "hot_precision": 0.2686205419000759,
+            "hot_recall": 0.216149113640616,
+            "hot_f1": 0.18483762444035773,
+            "negative_encoded_HRR_fraction": 0.23463872695962587,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "ignition": {
+            "objective_MSE": 42.621191854278244,
+            "channel_objective_MSE": [
+              116.78844381372136,
+              123.36158851782481,
+              0.7798577343734603,
+              1.514237840970357,
+              4.425096003959576,
+              8.857927886769174
+            ],
+            "whole_normalized_MSE": [
+              10.572648095587889,
+              12.931915749795737,
+              0.7798577343734603,
+              1.514237840970357,
+              4.425096003959576,
+              8.857927886769174
+            ],
+            "channel_physical_MAE": [
+              5.33062456920743,
+              1.3192233293472477,
+              0.2499977561334769,
+              0.17565308899308246,
+              0.29921967675909394,
+              3.6185333005463085
+            ],
+            "hot_temperature_MAE_C": 101.33497469623885,
+            "hot_temperature_relative_L1_percent": 84.50748505194983,
+            "burning_HRR_MAE_kWm3": 29.67073380947113,
+            "burning_HRR_relative_L1_percent": 98.92880642414093,
+            "total_HRR_relative_L1_percent": 91.23929301897685,
+            "total_HRR_MAE_kW": 7104.628508408865,
+            "energy_pred_kJ": 21446.136875016236,
+            "energy_truth_kJ": 148387.690451703,
+            "hot_precision": 0.29094252446966784,
+            "hot_recall": 0.24568560851427415,
+            "hot_f1": 0.20640496355190407,
+            "negative_encoded_HRR_fraction": 0.3564625085176279,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "post_source": {
+            "objective_MSE": 6.9440613820528,
+            "channel_objective_MSE": [
+              21.99465412382657,
+              14.658118828626659,
+              0.6618157626750568,
+              1.1631016186438499,
+              1.5125483737016718,
+              1.6741263495544747
+            ],
+            "whole_normalized_MSE": [
+              1.9614965407527054,
+              1.7018178851625028,
+              0.6618157626750568,
+              1.1631016186438499,
+              1.5125483737016718,
+              1.6741263495544747
+            ],
+            "channel_physical_MAE": [
+              1.294795683895548,
+              0.1681478659253723,
+              0.2418845035135746,
+              0.19488976849243045,
+              0.22911390863979855,
+              0.6219080026494339
+            ],
+            "hot_temperature_MAE_C": 85.59200210372606,
+            "hot_temperature_relative_L1_percent": 86.19968316952388,
+            "burning_HRR_MAE_kWm3": 15.218095136340708,
+            "burning_HRR_relative_L1_percent": 112.3876059850057,
+            "total_HRR_relative_L1_percent": 3796.748356978098,
+            "total_HRR_MAE_kW": 964.3655628363291,
+            "energy_pred_kJ": 36105.943833382305,
+            "energy_truth_kJ": 119118.23224807983,
+            "hot_precision": 0.6512584638448409,
+            "hot_recall": 0.19551181678965196,
+            "hot_f1": 0.1531279071031122,
+            "negative_encoded_HRR_fraction": 0.2178879540103177,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "active_window": {
+            "objective_MSE": 17.641315208127104,
+            "channel_objective_MSE": [
+              56.80749067012221,
+              39.05894088702432,
+              0.8241248855677744,
+              1.578989333473146,
+              3.130510554338495,
+              4.447830599063309
+            ],
+            "whole_normalized_MSE": [
+              5.197317036256815,
+              4.530397792070289,
+              0.8241248855677744,
+              1.578989333473146,
+              3.130510554338495,
+              4.447830599063309
+            ],
+            "channel_physical_MAE": [
+              2.8221557438373566,
+              0.41082519145372015,
+              0.2837590846853952,
+              0.22011864705321685,
+              0.3047245490985612,
+              1.5917142614101372
+            ],
+            "hot_temperature_MAE_C": 85.9811898370584,
+            "hot_temperature_relative_L1_percent": 86.21000041564307,
+            "burning_HRR_MAE_kWm3": 15.396546171202013,
+            "burning_HRR_relative_L1_percent": 112.37370570500691,
+            "total_HRR_relative_L1_percent": 1626.8136698404949,
+            "total_HRR_MAE_kW": 2340.950915813446,
+            "energy_pred_kJ": 22237.293098121634,
+            "energy_truth_kJ": 119110.60832092466,
+            "hot_precision": 0.6515312875494544,
+            "hot_recall": 0.19570914982072432,
+            "hot_f1": 0.153552759879517,
+            "negative_encoded_HRR_fraction": 0.24483775114640594,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "late": {
+            "objective_MSE": 0.3301818515659155,
+            "channel_objective_MSE": [
+              0.009477902164993187,
+              0.006957339030729297,
+              0.571942245219058,
+              0.8845259797332498,
+              0.5026379115297459,
+              0.005549709453286293
+            ],
+            "whole_normalized_MSE": [
+              0.009477902164993187,
+              0.00435876366342806,
+              0.571942245219058,
+              0.8845259797332498,
+              0.5026379115297459,
+              0.005549709453286293
+            ],
+            "channel_physical_MAE": [
+              0.3560028740515312,
+              0.021937816801558558,
+              0.21469404152594507,
+              0.17548624398962903,
+              0.1772324634948745,
+              0.03835306297211598
+            ],
+            "hot_temperature_MAE_C": null,
+            "hot_temperature_relative_L1_percent": null,
+            "burning_HRR_MAE_kWm3": 0.08057282093380179,
+            "burning_HRR_relative_L1_percent": 589.926150730678,
+            "total_HRR_relative_L1_percent": 4697163.347005208,
+            "total_HRR_MAE_kW": 134.78251067797342,
+            "energy_pred_kJ": 8077.31436319893,
+            "energy_truth_kJ": 0.33209873559305436,
+            "hot_precision": null,
+            "hot_recall": null,
+            "hot_f1": null,
+            "negative_encoded_HRR_fraction": 0.2028144511859864,
+            "upper_clipped_HRR_fraction": 0.0
+          },
+          "configurations": 32
+        }
+      },
+      "selected": {
+        "arm": "eight-selected",
+        "epoch": 4,
+        "summary": {
+          "train": {
+            "all": {
+              "objective_MSE": 5.214465484023094,
+              "channel_objective_MSE": [
+                13.933841079473495,
+                12.941886723041534,
+                0.8354962281882763,
+                1.1050141118466854,
+                1.082936368882656,
+                1.3876169919967651
+              ],
+              "whole_normalized_MSE": [
+                2.991587996482849,
+                1.1309717558324337,
+                0.8354962281882763,
+                1.1050141118466854,
+                1.082936368882656,
+                1.3876169919967651
+              ],
+              "channel_physical_MAE": [
+                3.1817240118980408,
+                0.1648600408807397,
+                0.30341668240725994,
+                0.20086817350238562,
+                0.24869777634739876,
+                0.4748322572559118
+              ],
+              "hot_temperature_MAE_C": 56.21699094772339,
+              "hot_temperature_relative_L1_percent": 63.47466230392456,
+              "burning_HRR_MAE_kWm3": 13.575140744447708,
+              "burning_HRR_relative_L1_percent": 114.53124046325684,
+              "total_HRR_relative_L1_percent": 478.20730113983154,
+              "total_HRR_MAE_kW": 847.6174468994141,
+              "energy_pred_kJ": 103290.56294560853,
+              "energy_truth_kJ": 92028.18218166349,
+              "hot_precision": 0.06788241467438638,
+              "hot_recall": 0.6812950409948826,
+              "hot_f1": 0.11538147740066051,
+              "negative_encoded_HRR_fraction": 0.48113688454031944,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "ignition": {
+              "objective_MSE": 21.210888385772705,
+              "channel_objective_MSE": [
+                49.2207305431366,
+                64.75650000572205,
+                1.0314482301473618,
+                1.4545453265309334,
+                2.875342071056366,
+                7.926769107580185
+              ],
+              "whole_normalized_MSE": [
+                10.842397809028625,
+                6.358395114541054,
+                1.0314482301473618,
+                1.4545453265309334,
+                2.875342071056366,
+                7.926769107580185
+              ],
+              "channel_physical_MAE": [
+                7.226474404335022,
+                0.7056724820286036,
+                0.37202028185129166,
+                0.2028856761753559,
+                0.37767455726861954,
+                2.246047519147396
+              ],
+              "hot_temperature_MAE_C": 61.16442394256592,
+              "hot_temperature_relative_L1_percent": 62.7474365234375,
+              "burning_HRR_MAE_kWm3": 18.019005805253983,
+              "burning_HRR_relative_L1_percent": 110.10412502288818,
+              "total_HRR_relative_L1_percent": 123.22268676757812,
+              "total_HRR_MAE_kW": 3272.4784927368164,
+              "energy_pred_kJ": 26668.461078227967,
+              "energy_truth_kJ": 70533.84868490408,
+              "hot_precision": 0.11408752761781216,
+              "hot_recall": 0.6609848625957966,
+              "hot_f1": 0.17918770294636488,
+              "negative_encoded_HRR_fraction": 0.7597658932209015,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "post_source": {
+              "objective_MSE": 3.0149573981761932,
+              "channel_objective_MSE": [
+                9.081896811723709,
+                5.817377083003521,
+                0.8085528239607811,
+                1.0569535456597805,
+                0.8364805728197098,
+                0.4884835942648351
+              ],
+              "whole_normalized_MSE": [
+                1.9121016189455986,
+                0.41220125555992126,
+                0.8085528239607811,
+                1.0569535456597805,
+                0.8364805728197098,
+                0.4884835942648351
+              ],
+              "channel_physical_MAE": [
+                2.625571221113205,
+                0.0904983188956976,
+                0.29398372024297714,
+                0.20059076230973005,
+                0.2309634741395712,
+                0.23129016160964966
+              ],
+              "hot_temperature_MAE_C": 58.30520796775818,
+              "hot_temperature_relative_L1_percent": 101.19138717651367,
+              "burning_HRR_MAE_kWm3": 6.7001984268426895,
+              "burning_HRR_relative_L1_percent": 520.3594417572021,
+              "total_HRR_relative_L1_percent": 28322.204050064087,
+              "total_HRR_MAE_kW": 514.199089050293,
+              "energy_pred_kJ": 74304.6903683032,
+              "energy_truth_kJ": 13993.333245933714,
+              "hot_precision": 0.039977234380785376,
+              "hot_recall": 0.789141871035099,
+              "hot_f1": 0.0702890845714137,
+              "negative_encoded_HRR_fraction": 0.4428253769874573,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "active_window": {
+              "objective_MSE": 7.111379072070122,
+              "channel_objective_MSE": [
+                22.850038796663284,
+                15.10583870112896,
+                0.9499605260789394,
+                1.2305534295737743,
+                1.3036006465554237,
+                1.2282796334475279
+              ],
+              "whole_normalized_MSE": [
+                3.8715275675058365,
+                0.99149090051651,
+                0.9499605260789394,
+                1.2305534295737743,
+                1.3036006465554237,
+                1.2282796334475279
+              ],
+              "channel_physical_MAE": [
+                3.8998321890830994,
+                0.142374062910676,
+                0.34136100485920906,
+                0.21969343721866608,
+                0.28344762697815895,
+                0.4331741090863943
+              ],
+              "hot_temperature_MAE_C": 58.30767512321472,
+              "hot_temperature_relative_L1_percent": 101.19101238250732,
+              "burning_HRR_MAE_kWm3": 6.74262823164463,
+              "burning_HRR_relative_L1_percent": 519.7366371154785,
+              "total_HRR_relative_L1_percent": 14021.592330932617,
+              "total_HRR_MAE_kW": 763.2197914123535,
+              "energy_pred_kJ": 37851.00652954493,
+              "energy_truth_kJ": 13992.326930127627,
+              "hot_precision": 0.04889381513930857,
+              "hot_recall": 0.7891375049948692,
+              "hot_f1": 0.08369397808564827,
+              "negative_encoded_HRR_fraction": 0.5716502033174038,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "late": {
+              "objective_MSE": 0.48078606836497784,
+              "channel_objective_MSE": [
+                0.6134578883647919,
+                0.060293860267847776,
+                0.701301209628582,
+                0.932274819817394,
+                0.5378500283695757,
+                0.039538517128676176
+              ],
+              "whole_normalized_MSE": [
+                0.6134578883647919,
+                0.060293860267847776,
+                0.701301209628582,
+                0.932274819817394,
+                0.5378500283695757,
+                0.039538517128676176
+              ],
+              "channel_physical_MAE": [
+                1.7653195410966873,
+                0.059986121486872435,
+                0.25838784221559763,
+                0.18602596735581756,
+                0.19446864537894726,
+                0.10580685921013355
+              ],
+              "hot_temperature_MAE_C": null,
+              "hot_temperature_relative_L1_percent": null,
+              "burning_HRR_MAE_kWm3": null,
+              "burning_HRR_relative_L1_percent": null,
+              "total_HRR_relative_L1_percent": 10371143.8125,
+              "total_HRR_MAE_kW": 368.55441665649414,
+              "energy_pred_kJ": 22090.901345760532,
+              "energy_truth_kJ": 0.2586970963667936,
+              "hot_precision": 0.0,
+              "hot_recall": null,
+              "hot_f1": 0.0,
+              "negative_encoded_HRR_fraction": 0.34350545704364777,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "configurations": 8
+          },
+          "validation": {
+            "all": {
+              "objective_MSE": 8.818128069241842,
+              "channel_objective_MSE": [
+                21.135707845290504,
+                23.908615410327908,
+                1.0663031625250976,
+                1.4274221779778602,
+                1.9066431435445943,
+                3.464074378522734
+              ],
+              "whole_normalized_MSE": [
+                3.6314539238810535,
+                2.776605688345929,
+                1.0663031625250976,
+                1.4274221779778602,
+                1.9066431435445943,
+                3.464074378522734
+              ],
+              "channel_physical_MAE": [
+                3.377076829473178,
+                0.33605909665736067,
+                0.3264962560497225,
+                0.21497773829226693,
+                0.2756666097169121,
+                1.0632333128402631
+              ],
+              "hot_temperature_MAE_C": 80.45693471034367,
+              "hot_temperature_relative_L1_percent": 71.92981712023416,
+              "burning_HRR_MAE_kWm3": 22.38786585380634,
+              "burning_HRR_relative_L1_percent": 102.94527435302734,
+              "total_HRR_relative_L1_percent": 212.28704595565796,
+              "total_HRR_MAE_kW": 1829.8150119781494,
+              "energy_pred_kJ": 94561.52685991212,
+              "energy_truth_kJ": 298186.2388717504,
+              "hot_precision": 0.16172597724168253,
+              "hot_recall": 0.5086046809641024,
+              "hot_f1": 0.21173667729211354,
+              "negative_encoded_HRR_fraction": 0.46561855419228476,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "ignition": {
+              "objective_MSE": 32.155567184090614,
+              "channel_objective_MSE": [
+                70.23508656024933,
+                102.29268789291383,
+                1.2352298827220995,
+                1.9562049427380164,
+                4.395160620411237,
+                12.819027729332447
+              ],
+              "whole_normalized_MSE": [
+                12.33522441983223,
+                11.632730311403673,
+                1.2352298827220995,
+                1.9562049427380164,
+                4.395160620411237,
+                12.819027729332447
+              ],
+              "channel_physical_MAE": [
+                7.64621601998806,
+                1.3255854342132807,
+                0.3851745727782448,
+                0.21980360134815174,
+                0.3999948098013799,
+                3.6362263678262634
+              ],
+              "hot_temperature_MAE_C": 85.29442709684372,
+              "hot_temperature_relative_L1_percent": 70.54649658997853,
+              "burning_HRR_MAE_kWm3": 29.359560765326023,
+              "burning_HRR_relative_L1_percent": 101.86742655436197,
+              "total_HRR_relative_L1_percent": 93.58445795377096,
+              "total_HRR_MAE_kW": 6929.6723016103115,
+              "energy_pred_kJ": 23250.84500609196,
+              "energy_truth_kJ": 148387.690451703,
+              "hot_precision": 0.1752401061433678,
+              "hot_recall": 0.5342775114501517,
+              "hot_f1": 0.24443479340213042,
+              "negative_encoded_HRR_fraction": 0.7377640195190907,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "post_source": {
+              "objective_MSE": 5.609230217834314,
+              "channel_objective_MSE": [
+                14.384543602665266,
+                13.130807384848596,
+                1.043075724504888,
+                1.354714578948915,
+                1.5644720122218134,
+                2.177767844715466
+              ],
+              "whole_normalized_MSE": [
+                2.4346850495785475,
+                1.5588886442128569,
+                1.043075724504888,
+                1.354714578948915,
+                1.5644720122218134,
+                2.177767844715466
+              ],
+              "channel_physical_MAE": [
+                2.7900703139603142,
+                0.19999923425105712,
+                0.31842799453685683,
+                0.21431418174567324,
+                0.2585714949915806,
+                0.7094467918698986
+              ],
+              "hot_temperature_MAE_C": 71.6250138481458,
+              "hot_temperature_relative_L1_percent": 74.82208911577861,
+              "burning_HRR_MAE_kWm3": 14.698225618650515,
+              "burning_HRR_relative_L1_percent": 218.20725854237872,
+              "total_HRR_relative_L1_percent": 15283.451752980549,
+              "total_HRR_MAE_kW": 1128.5846293767295,
+              "energy_pred_kJ": 69383.06878821591,
+              "energy_truth_kJ": 119118.23224807983,
+              "hot_precision": 0.15480318384409958,
+              "hot_recall": 0.5557465887007613,
+              "hot_f1": 0.1854178841895191,
+              "negative_encoded_HRR_fraction": 0.42819854989647865,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "active_window": {
+              "objective_MSE": 13.761739583065111,
+              "channel_objective_MSE": [
+                36.58212376137574,
+                34.06713232398033,
+                1.2293794403473537,
+                1.823148591443896,
+                3.1524858058740697,
+                5.716164572397247
+              ],
+              "whole_normalized_MSE": [
+                5.27635365476211,
+                4.047586243754874,
+                1.2293794403473537,
+                1.823148591443896,
+                3.1524858058740697,
+                5.716164572397247
+              ],
+              "channel_physical_MAE": [
+                4.410436791678269,
+                0.4340359709846477,
+                0.3767496325696508,
+                0.2457083786527316,
+                0.3497427051576476,
+                1.699577544660618
+              ],
+              "hot_temperature_MAE_C": 72.01266449689865,
+              "hot_temperature_relative_L1_percent": 74.86441659927368,
+              "burning_HRR_MAE_kWm3": 14.857466388493776,
+              "burning_HRR_relative_L1_percent": 217.97882906595865,
+              "total_HRR_relative_L1_percent": 6928.432218869527,
+              "total_HRR_MAE_kW": 2399.5496651331587,
+              "energy_pred_kJ": 32790.81173803992,
+              "energy_truth_kJ": 119110.60832092466,
+              "hot_precision": 0.21116769851748057,
+              "hot_recall": 0.5546663801651448,
+              "hot_f1": 0.21866939533598878,
+              "negative_encoded_HRR_fraction": 0.5310548910250267,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "late": {
+              "objective_MSE": 0.5562264573139449,
+              "channel_objective_MSE": [
+                0.6384329603364071,
+                0.1441376790171489,
+                0.9046294828876853,
+                1.039862369458812,
+                0.5683259596116841,
+                0.041970189195126295
+              ],
+              "whole_normalized_MSE": [
+                0.6384329603364071,
+                0.06126461341045797,
+                0.9046294828876853,
+                1.039862369458812,
+                0.5683259596116841,
+                0.041970189195126295
+              ],
+              "channel_physical_MAE": [
+                1.739194390674432,
+                0.0596620130042235,
+                0.2750366964998344,
+                0.19018215635636201,
+                0.19558747648261487,
+                0.10807526328911383
+              ],
+              "hot_temperature_MAE_C": null,
+              "hot_temperature_relative_L1_percent": null,
+              "burning_HRR_MAE_kWm3": 1.0630997674805778,
+              "burning_HRR_relative_L1_percent": 7595.992815290178,
+              "total_HRR_relative_L1_percent": 12836756.984375,
+              "total_HRR_MAE_kW": 366.56297365824383,
+              "energy_pred_kJ": 21970.12772317694,
+              "energy_truth_kJ": 0.33209873559305436,
+              "hot_precision": 0.0,
+              "hot_recall": null,
+              "hot_f1": 0.0,
+              "negative_encoded_HRR_fraction": 0.350209629163146,
+              "upper_clipped_HRR_fraction": 0.0
+            },
+            "configurations": 32
+          }
+        },
+        "elapsed_s": 2846.5174580119997
+      },
+      "final_fit_gate": [
+        {
+          "case": "x32_033_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 0.3970860242843628,
+            "channel_objective_MSE": [
+              0.8992973566055298,
+              1.0709850788116455,
+              0.05482279136776924,
+              0.11674991995096207,
+              0.15415483713150024,
+              0.08650621771812439
+            ],
+            "whole_normalized_MSE": [
+              0.1644498109817505,
+              0.07683493196964264,
+              0.05482279136776924,
+              0.11674991995096207,
+              0.15415483713150024,
+              0.08650621771812439
+            ],
+            "channel_physical_MAE": [
+              0.5242894887924194,
+              0.05324558541178703,
+              0.06876800209283829,
+              0.04555618762969971,
+              0.05928169935941696,
+              0.12783780694007874
+            ],
+            "hot_temperature_MAE_C": 27.335609436035156,
+            "hot_temperature_relative_L1_percent": 30.746091842651367,
+            "burning_HRR_MAE_kWm3": 7.880014419555664,
+            "burning_HRR_relative_L1_percent": 62.777061462402344,
+            "total_HRR_relative_L1_percent": 125.19590759277344,
+            "total_HRR_MAE_kW": 249.95425415039062,
+            "energy_pred_kJ": 46273.130631398584,
+            "energy_truth_kJ": 26216.733468459923,
+            "hot_precision": 0.4089459478855133,
+            "hot_recall": 0.9751437306404114,
+            "hot_f1": 0.5762358903884888,
+            "negative_encoded_HRR_fraction": 0.14720562100410461,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_036_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 0.6984924674034119,
+            "channel_objective_MSE": [
+              0.25637662410736084,
+              0.20357045531272888,
+              0.4209880232810974,
+              2.056676149368286,
+              1.2378547191619873,
+              0.015489218756556511
+            ],
+            "whole_normalized_MSE": [
+              0.03632957115769386,
+              0.010428810492157936,
+              0.4209880232810974,
+              2.056676149368286,
+              1.2378547191619873,
+              0.015489218756556511
+            ],
+            "channel_physical_MAE": [
+              0.43630361557006836,
+              0.022031018510460854,
+              0.27593719959259033,
+              0.3121712803840637,
+              0.32520854473114014,
+              0.042580004781484604
+            ],
+            "hot_temperature_MAE_C": 12.718119621276855,
+            "hot_temperature_relative_L1_percent": 25.595813751220703,
+            "burning_HRR_MAE_kWm3": 0.9958551526069641,
+            "burning_HRR_relative_L1_percent": 72.7673110961914,
+            "total_HRR_relative_L1_percent": 1675.33251953125,
+            "total_HRR_MAE_kW": 131.2578887939453,
+            "energy_pred_kJ": 21539.350262216205,
+            "energy_truth_kJ": 1083.0243704028746,
+            "hot_precision": 0.2241630256175995,
+            "hot_recall": 0.9935483932495117,
+            "hot_f1": 0.36579573154449463,
+            "negative_encoded_HRR_fraction": 0.2597040832042694,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_056_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 0.30941906571388245,
+            "channel_objective_MSE": [
+              0.25095683336257935,
+              0.24186141788959503,
+              0.15431174635887146,
+              0.7621913552284241,
+              0.43076175451278687,
+              0.016431130468845367
+            ],
+            "whole_normalized_MSE": [
+              0.04046063497662544,
+              0.013320553116500378,
+              0.15431174635887146,
+              0.7621913552284241,
+              0.43076175451278687,
+              0.016431130468845367
+            ],
+            "channel_physical_MAE": [
+              0.36980992555618286,
+              0.026083966717123985,
+              0.16522648930549622,
+              0.1868201494216919,
+              0.18584327399730682,
+              0.049325671046972275
+            ],
+            "hot_temperature_MAE_C": 16.45847511291504,
+            "hot_temperature_relative_L1_percent": 25.489412307739258,
+            "burning_HRR_MAE_kWm3": 2.2819015979766846,
+            "burning_HRR_relative_L1_percent": 76.47443389892578,
+            "total_HRR_relative_L1_percent": 1146.82958984375,
+            "total_HRR_MAE_kW": 149.3530731201172,
+            "energy_pred_kJ": 24873.904086303926,
+            "energy_truth_kJ": 1169.7714252984642,
+            "hot_precision": 0.2579305171966553,
+            "hot_recall": 0.9841498732566833,
+            "hot_f1": 0.40873727202415466,
+            "negative_encoded_HRR_fraction": 0.15029118955135345,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_057_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 0.47084343433380127,
+            "channel_objective_MSE": [
+              0.5730223655700684,
+              0.6747031211853027,
+              0.17826411128044128,
+              0.8123690485954285,
+              0.527981162071228,
+              0.058721303939819336
+            ],
+            "whole_normalized_MSE": [
+              0.12086410820484161,
+              0.06456946581602097,
+              0.17826411128044128,
+              0.8123690485954285,
+              0.527981162071228,
+              0.058721303939819336
+            ],
+            "channel_physical_MAE": [
+              0.5139308571815491,
+              0.03783877566456795,
+              0.17094707489013672,
+              0.18741126358509064,
+              0.19431810081005096,
+              0.07979778945446014
+            ],
+            "hot_temperature_MAE_C": 25.235416412353516,
+            "hot_temperature_relative_L1_percent": 40.49471664428711,
+            "burning_HRR_MAE_kWm3": 3.9888391494750977,
+            "burning_HRR_relative_L1_percent": 81.54755401611328,
+            "total_HRR_relative_L1_percent": 294.78369140625,
+            "total_HRR_MAE_kW": 189.7792510986328,
+            "energy_pred_kJ": 29591.460764093383,
+            "energy_truth_kJ": 6550.755701834749,
+            "hot_precision": 0.44236207008361816,
+            "hot_recall": 0.6839889883995056,
+            "hot_f1": 0.5372583866119385,
+            "negative_encoded_HRR_fraction": 0.1697840392589569,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_218_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 0.2143862098455429,
+            "channel_objective_MSE": [
+              0.11535894870758057,
+              0.05999046564102173,
+              0.1597740203142166,
+              0.604436993598938,
+              0.33711400628089905,
+              0.009642870165407658
+            ],
+            "whole_normalized_MSE": [
+              0.02398785389959812,
+              0.006373109761625528,
+              0.1597740203142166,
+              0.604436993598938,
+              0.33711400628089905,
+              0.009642870165407658
+            ],
+            "channel_physical_MAE": [
+              0.43786558508872986,
+              0.021271396428346634,
+              0.16117294132709503,
+              0.16474869847297668,
+              0.16391795873641968,
+              0.04115448147058487
+            ],
+            "hot_temperature_MAE_C": 9.716466903686523,
+            "hot_temperature_relative_L1_percent": 22.489765167236328,
+            "burning_HRR_MAE_kWm3": 0.30892810225486755,
+            "burning_HRR_relative_L1_percent": 131.70252990722656,
+            "total_HRR_relative_L1_percent": 29036.576171875,
+            "total_HRR_MAE_kW": 130.6439208984375,
+            "energy_pred_kJ": 20416.78412638587,
+            "energy_truth_kJ": 56.696353363954096,
+            "hot_precision": 0.15189872682094574,
+            "hot_recall": 1.0,
+            "hot_f1": 0.2637362778186798,
+            "negative_encoded_HRR_fraction": 0.26068878173828125,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_239_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": true,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 0.4795670509338379,
+            "channel_objective_MSE": [
+              0.042678721249103546,
+              0.030279099941253662,
+              0.4028688371181488,
+              1.5104234218597412,
+              0.879368782043457,
+              0.011783329769968987
+            ],
+            "whole_normalized_MSE": [
+              0.03243555501103401,
+              0.009830441325902939,
+              0.4028688371181488,
+              1.5104234218597412,
+              0.879368782043457,
+              0.011783329769968987
+            ],
+            "channel_physical_MAE": [
+              0.655005693435669,
+              0.01436791755259037,
+              0.2580855190753937,
+              0.2628014087677002,
+              0.2697577178478241,
+              0.042512670159339905
+            ],
+            "hot_temperature_MAE_C": 4.303514003753662,
+            "hot_temperature_relative_L1_percent": 11.107760429382324,
+            "burning_HRR_MAE_kWm3": 0.43805167078971863,
+            "burning_HRR_relative_L1_percent": 110.18142700195312,
+            "total_HRR_relative_L1_percent": 16070.236328125,
+            "total_HRR_MAE_kW": 87.52802276611328,
+            "energy_pred_kJ": 13808.815609802958,
+            "energy_truth_kJ": 44.07157570799718,
+            "hot_precision": 0.3309481143951416,
+            "hot_recall": 0.9893048405647278,
+            "hot_f1": 0.49597856402397156,
+            "negative_encoded_HRR_fraction": 0.5903083682060242,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_270_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 0.9383141398429871,
+            "channel_objective_MSE": [
+              2.3747780323028564,
+              2.161942720413208,
+              0.15299572050571442,
+              0.2275596410036087,
+              0.3751737177371979,
+              0.33743518590927124
+            ],
+            "whole_normalized_MSE": [
+              0.4392215311527252,
+              0.2544843554496765,
+              0.15299572050571442,
+              0.2275596410036087,
+              0.3751737177371979,
+              0.33743518590927124
+            ],
+            "channel_physical_MAE": [
+              1.081505537033081,
+              0.10485532134771347,
+              0.1161612868309021,
+              0.06848905235528946,
+              0.1007922887802124,
+              0.49061933159828186
+            ],
+            "hot_temperature_MAE_C": 40.04170227050781,
+            "hot_temperature_relative_L1_percent": 30.989309310913086,
+            "burning_HRR_MAE_kWm3": 8.685276985168457,
+            "burning_HRR_relative_L1_percent": 55.27429962158203,
+            "total_HRR_relative_L1_percent": 63.744869232177734,
+            "total_HRR_MAE_kW": 370.0321350097656,
+            "energy_pred_kJ": 125033.36367017776,
+            "energy_truth_kJ": 76632.49441176868,
+            "hot_precision": 0.429496169090271,
+            "hot_recall": 0.9898741841316223,
+            "hot_f1": 0.5990644693374634,
+            "negative_encoded_HRR_fraction": 0.1689092069864273,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_291_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 0.24965009093284607,
+            "channel_objective_MSE": [
+              0.21726581454277039,
+              0.16235046088695526,
+              0.1820399910211563,
+              0.5854840874671936,
+              0.33826202154159546,
+              0.012498131021857262
+            ],
+            "whole_normalized_MSE": [
+              0.032317958772182465,
+              0.008683261461555958,
+              0.1820399910211563,
+              0.5854840874671936,
+              0.33826202154159546,
+              0.012498131021857262
+            ],
+            "channel_physical_MAE": [
+              0.49796000123023987,
+              0.019852686673402786,
+              0.16875238716602325,
+              0.16089284420013428,
+              0.16316518187522888,
+              0.04268000274896622
+            ],
+            "hot_temperature_MAE_C": 13.606781005859375,
+            "hot_temperature_relative_L1_percent": 31.817651748657227,
+            "burning_HRR_MAE_kWm3": 0.45649290084838867,
+            "burning_HRR_relative_L1_percent": 103.5538101196289,
+            "total_HRR_relative_L1_percent": 8776.1318359375,
+            "total_HRR_MAE_kW": 121.801513671875,
+            "energy_pred_kJ": 19065.015966726904,
+            "energy_truth_kJ": 193.11866063307167,
+            "hot_precision": 0.1542857140302658,
+            "hot_recall": 0.9938650131225586,
+            "hot_f1": 0.2671063542366028,
+            "negative_encoded_HRR_fraction": 0.33706438541412354,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        }
+      ],
+      "selected_fit_gate": [
+        {
+          "case": "x32_033_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 2.176494598388672,
+            "channel_objective_MSE": [
+              5.87388277053833,
+              5.7224931716918945,
+              0.30916827917099,
+              0.20231366157531738,
+              0.44423627853393555,
+              0.5068734884262085
+            ],
+            "whole_normalized_MSE": [
+              1.600600242614746,
+              0.4359830319881439,
+              0.30916827917099,
+              0.20231366157531738,
+              0.44423627853393555,
+              0.5068734884262085
+            ],
+            "channel_physical_MAE": [
+              2.4661571979522705,
+              0.09434755146503448,
+              0.17799115180969238,
+              0.07193553447723389,
+              0.1248234361410141,
+              0.23382942378520966
+            ],
+            "hot_temperature_MAE_C": 48.58042526245117,
+            "hot_temperature_relative_L1_percent": 54.641483306884766,
+            "burning_HRR_MAE_kWm3": 12.999258041381836,
+            "burning_HRR_relative_L1_percent": 103.56011962890625,
+            "total_HRR_relative_L1_percent": 240.84043884277344,
+            "total_HRR_MAE_kW": 480.83917236328125,
+            "energy_pred_kJ": 64748.39990489546,
+            "energy_truth_kJ": 26216.733468459923,
+            "hot_precision": 0.08502362668514252,
+            "hot_recall": 0.810981273651123,
+            "hot_f1": 0.15391114354133606,
+            "negative_encoded_HRR_fraction": 0.4559338688850403,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_036_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 2.3373146057128906,
+            "channel_objective_MSE": [
+              6.259767532348633,
+              2.7749276161193848,
+              1.2444511651992798,
+              2.2664995193481445,
+              1.386700987815857,
+              0.09153956919908524
+            ],
+            "whole_normalized_MSE": [
+              1.5760693550109863,
+              0.2024534046649933,
+              1.2444511651992798,
+              2.2664995193481445,
+              1.386700987815857,
+              0.09153956919908524
+            ],
+            "channel_physical_MAE": [
+              2.464252233505249,
+              0.07239921391010284,
+              0.39087700843811035,
+              0.32751864194869995,
+              0.34437549114227295,
+              0.13224437832832336
+            ],
+            "hot_temperature_MAE_C": 39.38316345214844,
+            "hot_temperature_relative_L1_percent": 79.2604751586914,
+            "burning_HRR_MAE_kWm3": 3.020206928253174,
+            "burning_HRR_relative_L1_percent": 220.68704223632812,
+            "total_HRR_relative_L1_percent": 5558.6474609375,
+            "total_HRR_MAE_kW": 435.50537109375,
+            "energy_pred_kJ": 69438.70894307294,
+            "energy_truth_kJ": 1083.0243704028746,
+            "hot_precision": 0.009560052305459976,
+            "hot_recall": 0.8860214948654175,
+            "hot_f1": 0.01891600340604782,
+            "negative_encoded_HRR_fraction": 0.4214271605014801,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_056_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 1.9051707983016968,
+            "channel_objective_MSE": [
+              5.316982269287109,
+              4.043463706970215,
+              0.49784737825393677,
+              0.8770675659179688,
+              0.5827866196632385,
+              0.11287609487771988
+            ],
+            "whole_normalized_MSE": [
+              1.6689863204956055,
+              0.21216675639152527,
+              0.49784737825393677,
+              0.8770675659179688,
+              0.5827866196632385,
+              0.11287609487771988
+            ],
+            "channel_physical_MAE": [
+              2.4865880012512207,
+              0.07234229147434235,
+              0.262665331363678,
+              0.20226164162158966,
+              0.21893605589866638,
+              0.13657602667808533
+            ],
+            "hot_temperature_MAE_C": 42.688697814941406,
+            "hot_temperature_relative_L1_percent": 66.11244201660156,
+            "burning_HRR_MAE_kWm3": 4.6040802001953125,
+            "burning_HRR_relative_L1_percent": 154.29869079589844,
+            "total_HRR_relative_L1_percent": 3257.662109375,
+            "total_HRR_MAE_kW": 424.24951171875,
+            "energy_pred_kJ": 68484.9518445204,
+            "energy_truth_kJ": 1169.7714252984642,
+            "hot_precision": 0.009677140973508358,
+            "hot_recall": 0.6469740867614746,
+            "hot_f1": 0.01906905695796013,
+            "negative_encoded_HRR_fraction": 0.4275128245353699,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_057_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 1.5125043392181396,
+            "channel_objective_MSE": [
+              3.742913007736206,
+              2.9604458808898926,
+              0.44058531522750854,
+              0.9206128120422363,
+              0.7552163600921631,
+              0.25525325536727905
+            ],
+            "whole_normalized_MSE": [
+              1.283493995666504,
+              0.24043700098991394,
+              0.44058531522750854,
+              0.9206128120422363,
+              0.7552163600921631,
+              0.25525325536727905
+            ],
+            "channel_physical_MAE": [
+              2.3653318881988525,
+              0.0776183158159256,
+              0.25217798352241516,
+              0.20154495537281036,
+              0.22376778721809387,
+              0.174697607755661
+            ],
+            "hot_temperature_MAE_C": 49.08625793457031,
+            "hot_temperature_relative_L1_percent": 78.76763153076172,
+            "burning_HRR_MAE_kWm3": 5.31727409362793,
+            "burning_HRR_relative_L1_percent": 108.70599365234375,
+            "total_HRR_relative_L1_percent": 679.6368408203125,
+            "total_HRR_MAE_kW": 437.54449462890625,
+            "energy_pred_kJ": 66975.10694579943,
+            "energy_truth_kJ": 6550.755701834749,
+            "hot_precision": 0.05903231352567673,
+            "hot_recall": 0.28541362285614014,
+            "hot_f1": 0.09783031046390533,
+            "negative_encoded_HRR_fraction": 0.4071029722690582,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_218_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 3.27618670463562,
+            "channel_objective_MSE": [
+              11.5563383102417,
+              5.9206013679504395,
+              0.6950555443763733,
+              0.8389366269111633,
+              0.550071656703949,
+              0.09611336141824722
+            ],
+            "whole_normalized_MSE": [
+              2.142679214477539,
+              0.28304797410964966,
+              0.6950555443763733,
+              0.8389366269111633,
+              0.550071656703949,
+              0.09611336141824722
+            ],
+            "channel_physical_MAE": [
+              2.6428513526916504,
+              0.07560880482196808,
+              0.29155728220939636,
+              0.19477322697639465,
+              0.2088145911693573,
+              0.13394394516944885
+            ],
+            "hot_temperature_MAE_C": 92.43584442138672,
+            "hot_temperature_relative_L1_percent": 213.95228576660156,
+            "burning_HRR_MAE_kWm3": 4.831208229064941,
+            "burning_HRR_relative_L1_percent": 2059.645263671875,
+            "total_HRR_relative_L1_percent": 103241.140625,
+            "total_HRR_MAE_kW": 464.5116271972656,
+            "energy_pred_kJ": 72743.86256016127,
+            "energy_truth_kJ": 56.696353363954096,
+            "hot_precision": 0.0020401570945978165,
+            "hot_recall": 1.0,
+            "hot_f1": 0.004072006791830063,
+            "negative_encoded_HRR_fraction": 0.44771042466163635,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_239_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 1.2301768064498901,
+            "channel_objective_MSE": [
+              1.5501480102539062,
+              0.7176112532615662,
+              2.0136594772338867,
+              1.9985249042510986,
+              1.0505832433700562,
+              0.0505337230861187
+            ],
+            "whole_normalized_MSE": [
+              0.8847038149833679,
+              0.1101580262184143,
+              2.0136594772338867,
+              1.9985249042510986,
+              1.0505832433700562,
+              0.0505337230861187
+            ],
+            "channel_physical_MAE": [
+              2.0057532787323,
+              0.067703977227211,
+              0.43231043219566345,
+              0.2996528446674347,
+              0.2939523160457611,
+              0.11639691889286041
+            ],
+            "hot_temperature_MAE_C": 17.464258193969727,
+            "hot_temperature_relative_L1_percent": 45.076839447021484,
+            "burning_HRR_MAE_kWm3": 1.1838189363479614,
+            "burning_HRR_relative_L1_percent": 297.7613220214844,
+            "total_HRR_relative_L1_percent": 76284.734375,
+            "total_HRR_MAE_kW": 415.4918518066406,
+            "energy_pred_kJ": 65561.89642203262,
+            "energy_truth_kJ": 44.07157570799718,
+            "hot_precision": 0.006808431353420019,
+            "hot_recall": 0.7807486653327942,
+            "hot_f1": 0.013499144464731216,
+            "negative_encoded_HRR_fraction": 0.3827756345272064,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_270_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 7.3617262840271,
+            "channel_objective_MSE": [
+              21.977502822875977,
+              17.309246063232422,
+              0.4282612204551697,
+              0.46264252066612244,
+              1.3176205158233643,
+              2.6750900745391846
+            ],
+            "whole_normalized_MSE": [
+              3.412090301513672,
+              1.38422429561615,
+              0.4282612204551697,
+              0.46264252066612244,
+              1.3176205158233643,
+              2.6750900745391846
+            ],
+            "channel_physical_MAE": [
+              3.6947951316833496,
+              0.17997314035892487,
+              0.22590532898902893,
+              0.10909638553857803,
+              0.21668741106987,
+              0.7800160646438599
+            ],
+            "hot_temperature_MAE_C": 90.5821304321289,
+            "hot_temperature_relative_L1_percent": 70.10385131835938,
+            "burning_HRR_MAE_kWm3": 16.74530029296875,
+            "burning_HRR_relative_L1_percent": 106.56939697265625,
+            "total_HRR_relative_L1_percent": 161.90023803710938,
+            "total_HRR_MAE_kW": 939.8134765625,
+            "energy_pred_kJ": 105737.25995587069,
+            "energy_truth_kJ": 76632.49441176868,
+            "hot_precision": 0.1453929841518402,
+            "hot_recall": 0.9029958248138428,
+            "hot_f1": 0.25045907497406006,
+            "negative_encoded_HRR_fraction": 0.5287656188011169,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        },
+        {
+          "case": "x32_291_s0",
+          "passed": false,
+          "checks": {
+            "hot_temperature_relative_L1_percent": false,
+            "burning_HRR_relative_L1_percent": false,
+            "total_HRR_relative_L1_percent": false
+          },
+          "metrics": {
+            "objective_MSE": 4.320085048675537,
+            "channel_objective_MSE": [
+              16.377639770507812,
+              7.0902276039123535,
+              0.839394211769104,
+              0.8890307545661926,
+              0.6046289205551147,
+              0.1195891872048378
+            ],
+            "whole_normalized_MSE": [
+              2.728189706802368,
+              0.42913955450057983,
+              0.839394211769104,
+              0.8890307545661926,
+              0.6046289205551147,
+              0.1195891872048378
+            ],
+            "channel_physical_MAE": [
+              2.878840684890747,
+              0.08399325609207153,
+              0.3183852434158325,
+              0.19794286787509918,
+              0.2163507044315338,
+              0.14261692762374878
+            ],
+            "hot_temperature_MAE_C": 86.22088623046875,
+            "hot_temperature_relative_L1_percent": 201.6160888671875,
+            "burning_HRR_MAE_kWm3": 4.900440692901611,
+            "burning_HRR_relative_L1_percent": 1111.647705078125,
+            "total_HRR_relative_L1_percent": 37153.0703125,
+            "total_HRR_MAE_kW": 515.63720703125,
+            "energy_pred_kJ": 80747.3363700728,
+            "energy_truth_kJ": 193.11866063307167,
+            "hot_precision": 0.0022831689566373825,
+            "hot_recall": 1.0,
+            "hot_f1": 0.004555935971438885,
+            "negative_encoded_HRR_fraction": 0.47137451171875,
+            "upper_clipped_HRR_fraction": 0.0
+          }
+        }
+      ]
+    }
+  ],
+  "scope": "Continuous setup+time fitting diagnostic on one andeight existingTRAIN histories. Not stateevolution, not independentlyvalidated FDSreplacement. Generic3m-widecones4/6/8/10mabove2m,1600weightedparticles,.5m24x16x16m180s,1500C20s source,no trunks/buildings/embers. Radiation is integrated gas intensity, not surfaceflux.",
+  "note": "Final training fit and validation-selected checkpoint are distinct questions. Epoch/deadline limits do not prove convergence; no expansion without passing physical fitting checks."
+}

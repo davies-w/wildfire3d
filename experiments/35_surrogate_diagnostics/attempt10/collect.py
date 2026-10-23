@@ -19,7 +19,7 @@ def main():
   dest=R/'data/collected';dest.mkdir(exist_ok=True)
   subprocess.run([G,'storage','cp','gs://'+BUCKET+'/diagnostics35/attempt10/*.json',str(dest)],check=True)
   subprocess.run([G,'storage','cp','gs://'+BUCKET+'/diagnostics35/attempt10/*.pt',str(dest)],check=False)
-  subprocess.run([G,'storage','cp','gs://'+BUCKET+'/diagnostics35/attempt10/projections.npz',str(dest)],check=False)
+  subprocess.run([G,'storage','cp','gs://'+BUCKET+'/diagnostics35/attempt10/*.npz',str(dest)],check=False)
   subprocess.run([G,'storage','cp','gs://'+BUCKET+'/diagnostics35/attempt10/bootstrap-error.txt',str(dest)],check=False)
   subprocess.run([G,'storage','cp','gs://'+BUCKET+'/diagnostics35/attempt10/error.txt',str(dest)],check=False)
   subprocess.run([G,'storage','buckets','remove-iam-policy-binding','gs://'+BUCKET,'--member=serviceAccount:fds-worker@'+PROJECT+'.iam.gserviceaccount.com','--role=roles/storage.objectViewer','--condition-from-file='+str(R/'results/input-read-condition.json')],check=True,capture_output=True)

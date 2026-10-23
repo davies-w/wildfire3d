@@ -25,7 +25,7 @@ def main():
   proof=dict(complete=True,expected_files=len(expected),checkpoint_count=sum(n.endswith('.pt') for n in expected),files={n:dict(bytes=(dest/n).stat().st_size,sha256=sha(dest/n)) for n in expected},cleanup_verified=True,exact_input_grant_removed=True,scope='Every expected epoch and250-update checkpoint/report/statistics present, SHA256 inventory; report hash matches worker completion. Remote archive verifies paths/sizes plus sampled hashes separately.')
   (R/'data/checkpoint-inventory.json').write_text(json.dumps(proof,indent=2)+'\n');(R/'results/archive-preservation.json').write_text(json.dumps({k:v for k,v in proof.items() if k!='files'},indent=2)+'\n')
   if '--inventory-only' in sys.argv:return
-  run([py,R/'analyze.py']);run([dvc,'commit','-f',str(R/'dvc.yaml')+':analysis']);run([dvc,'commit','-f',str(R/'dvc.yaml')+':archive_inventory'])
+  run([dvc,'commit','-f',str(R/'dvc.yaml')+':cloud_collect']);run([py,R/'analyze.py']);run([dvc,'commit','-f',str(R/'dvc.yaml')+':analysis']);run([dvc,'commit','-f',str(R/'dvc.yaml')+':archive_inventory'])
   run([dvc,'push','-r','mirror',*[str(R/'dvc.yaml')+':'+s for s in ['decode_inputs','package','cloud_collect','analysis','archive_inventory']]])
   run([hf,'buckets','sync',repo/'FDS/hf_dvc_mirror','hf://buckets/wdavies/dvc_storage/wildfire3d','--no-delete','--ignore-existing']);run([py,repo/'scripts/verify_public_model_archive.py'])
   verified=read(repo/'experiments/33_representation_loss/results/public-archive-verification.json');assert verified['verified'];budget=read(repo/'experiments/33_representation_loss/budget.json')
