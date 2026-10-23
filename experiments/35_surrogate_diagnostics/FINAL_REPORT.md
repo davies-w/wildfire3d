@@ -1,5 +1,7 @@
 # Experiment35: surrogate fitting diagnostics
 
+**Update:** The user authorized a further baseline/occupancy audit and explicit coordinate/time fitting diagnostic after this report. Attempt06 is now submitted; see attempt06/README.md. The conclusions below describe attempts03–05 and are retained. New results will be appended after collection.
+
 ## Decision
 
 These diagnostics did not produce a reliable replacement for burning physics. Do not adopt their models over the preserved experiment33 candidates. We established that more cycles and a learning-rate restart can improve aggregate training fit without learning heat release; we also confirmed and removed a local zero-gradient output obstruction, but that change did not repair physical prediction. Stop this diagnostic series rather than spend the remaining allowance on another similar continuation.
