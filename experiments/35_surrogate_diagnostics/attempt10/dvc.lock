@@ -1,0 +1,377 @@
+schema: '2.0'
+stages:
+  decode_inputs:
+    cmd: ../../../.venv/bin/python prepare_data.py
+    deps:
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_033_s0.tar.gz
+      hash: md5
+      md5: 582ede47da887e5ca10dfd6ab05ed9b8
+      size: 92860679
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_036_s0.tar.gz
+      hash: md5
+      md5: 82610017492b41009ec7d0c6de0df885
+      size: 91820699
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_056_s0.tar.gz
+      hash: md5
+      md5: 88eff1214a3086bd7d76214bf8c7ed43
+      size: 91745699
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_057_s0.tar.gz
+      hash: md5
+      md5: 3b29f6c1b37cddce36416451e9cde7e2
+      size: 93247045
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_218_s0.tar.gz
+      hash: md5
+      md5: dbdeb9d4a0b0f8f662642ca996853a85
+      size: 91930715
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_239_s0.tar.gz
+      hash: md5
+      md5: 9f8546c9e6621f22b6a84998141906ef
+      size: 90860688
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_270_s0.tar.gz
+      hash: md5
+      md5: 47e20885a5ecc5e06f5228b77346bbc7
+      size: 96155283
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_291_s0.tar.gz
+      hash: md5
+      md5: ebf9039cafc49f3bbd43905ca2c12acf
+      size: 92274496
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_360_s0.tar.gz
+      hash: md5
+      md5: 821a629fbdd3c2dbc0a15ebca9bb0a42
+      size: 93418433
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_361_s0.tar.gz
+      hash: md5
+      md5: 70811a468b1e873e203b470c6791b096
+      size: 94254687
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_362_s0.tar.gz
+      hash: md5
+      md5: 53c6c62176b135ee7ab69e67d57afab3
+      size: 92667044
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_363_s0.tar.gz
+      hash: md5
+      md5: a6ad8ca288c9d5643a0d3d6481bf0d84
+      size: 96327731
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_364_s0.tar.gz
+      hash: md5
+      md5: 504c1871bdcc752f7dd93aba80e79060
+      size: 93751362
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_365_s0.tar.gz
+      hash: md5
+      md5: f902091290080a479c2c59cfde83cd11
+      size: 94556230
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_366_s0.tar.gz
+      hash: md5
+      md5: 16c909626a3045584c4045e12035c67e
+      size: 93138829
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_367_s0.tar.gz
+      hash: md5
+      md5: c34688aec87eb04896d992aff3299db8
+      size: 94347455
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_368_s0.tar.gz
+      hash: md5
+      md5: 91fa627f6baebb057e2d8526cf8fc878
+      size: 95391255
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_369_s0.tar.gz
+      hash: md5
+      md5: a83dd86db9b47712aa6a695627fc7b11
+      size: 91787746
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_370_s0.tar.gz
+      hash: md5
+      md5: 63c747974bc99c7e9baf473c10cf9716
+      size: 96006175
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_371_s0.tar.gz
+      hash: md5
+      md5: cd6489cd0c8c79b179ab5475ea24c42e
+      size: 97004095
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_372_s0.tar.gz
+      hash: md5
+      md5: 054257ca16178b841d7a644be553647d
+      size: 96259313
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_373_s0.tar.gz
+      hash: md5
+      md5: 4a898a26adc0a6e2f524f9bac20ec15a
+      size: 92492837
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_374_s0.tar.gz
+      hash: md5
+      md5: 9a5cb7eab90f87fa9ea2e20d11ec9ba8
+      size: 92085251
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_375_s0.tar.gz
+      hash: md5
+      md5: 1b90b0b1cbf1f11514a7e5eeaea7c94a
+      size: 95663514
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_376_s0.tar.gz
+      hash: md5
+      md5: aecdc74b9bcb9bf4829493263e815406
+      size: 96014031
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_377_s0.tar.gz
+      hash: md5
+      md5: bb279d569d89e3b7276b087a7faacb51
+      size: 96790778
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_377_s1.tar.gz
+      hash: md5
+      md5: 01e390c45e123799129a986184d4fa37
+      size: 96790828
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_377_s2.tar.gz
+      hash: md5
+      md5: 682b63dd82598cdf1ab9b974bbb60015
+      size: 96885146
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_378_s0.tar.gz
+      hash: md5
+      md5: 933230c2b1216b510b7c143b498a0012
+      size: 96081429
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_379_s0.tar.gz
+      hash: md5
+      md5: 36df7cb1300ccd0a8e5a46dbcfd1e12a
+      size: 94481173
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_380_s0.tar.gz
+      hash: md5
+      md5: 1f16c8ff56e4c9b1295ce0b4deb4e916
+      size: 96560639
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_381_s0.tar.gz
+      hash: md5
+      md5: 21b140e3901cbc6237c3d4a2487648b8
+      size: 91950651
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_381_s1.tar.gz
+      hash: md5
+      md5: 517137587253aca7a9cd38b9d8c0b8e4
+      size: 91976083
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_381_s2.tar.gz
+      hash: md5
+      md5: 4c5197e8f0d168b37ec5c34b784e8aa2
+      size: 91848724
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_382_s0.tar.gz
+      hash: md5
+      md5: d8a481c786bcf3031f8bd7765d7b9c9d
+      size: 92547505
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_383_s0.tar.gz
+      hash: md5
+      md5: 674f594ea145627607d928533b30ddc9
+      size: 97734211
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_384_s0.tar.gz
+      hash: md5
+      md5: 78bd837ac8d44b61b7a0f3a00116d129
+      size: 97138722
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_385_s0.tar.gz
+      hash: md5
+      md5: ac7247d9a3c6787141c3161399ede1ed
+      size: 95569206
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_386_s0.tar.gz
+      hash: md5
+      md5: 2787ccc3ff486cdc439665f4bf863ee7
+      size: 92139115
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_386_s1.tar.gz
+      hash: md5
+      md5: 597dd824ef80475919679b3752b4b7ec
+      size: 92235098
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_386_s2.tar.gz
+      hash: md5
+      md5: 388227820b54af3f633bfc518bedf17f
+      size: 92283377
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_387_s0.tar.gz
+      hash: md5
+      md5: d2555802c8a31de2b4b2bac8ba8ed89a
+      size: 91031853
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_388_s0.tar.gz
+      hash: md5
+      md5: 684f52a213cd163540d3381991d1518c
+      size: 92310034
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_388_s1.tar.gz
+      hash: md5
+      md5: c3b6575cf6ff66648b8fd5fcc75cefb1
+      size: 92333144
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_388_s2.tar.gz
+      hash: md5
+      md5: 47dc5c3f6072b4112f4e1aabdc1d01a6
+      size: 92200583
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_389_s0.tar.gz
+      hash: md5
+      md5: 4c7840d9ffc93df195bdc5cde42133e8
+      size: 96670519
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_390_s0.tar.gz
+      hash: md5
+      md5: 4b31ca52503fb1caf5fb0313b4c48ea6
+      size: 92249415
+    - path:
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_391_s0.tar.gz
+      hash: md5
+      md5: 498bbcd1ceb8e496a12271f2ede51f04
+      size: 97581110
+    - path: ../attempt03/data/collected/scales.json
+      hash: md5
+      md5: 9a3a12f753fc3b5d3ddfe9e0be70c446
+      size: 286
+    - path: ../attempt05/cases.json
+      hash: md5
+      md5: 4e86a9cceb3cfd183386a0080d7036cb
+      size: 39975
+    - path: ../attempt05/restore-manifest.json
+      hash: md5
+      md5: e0ab52e407ed1e4f46e6e7ef016cceff
+      size: 23912
+    - path: ../attempt07/data/geometries.npz
+      hash: md5
+      md5: b583bfabc9a15872834d88f2cac1ba36
+      size: 835258
+    - path: fields.py
+      hash: md5
+      md5: 8f5a27bcdc1dfcb4e602e54b23dea08f
+      size: 2884
+    - path: fortran_records.py
+      hash: md5
+      md5: 47c5b62759ee16bfc7cfe36934e16ac2
+      size: 711
+    - path: prepare_data.py
+      hash: md5
+      md5: 763d70b3d15631e9f14d4f3f3a87b288
+      size: 2470
+    outs:
+    - path: cases.json
+      hash: md5
+      md5: f1f753c640584e2fd7776b1d990c181e
+      size: 39976
+    - path: data/fields
+      hash: md5
+      md5: 83135d054441d9a802015b0887b354a3.dir
+      size: 5152777727
+      nfiles: 144
+    - path: data/geometries.npz
+      hash: md5
+      md5: aa7a2597bb16a5c1377dd3748eee0781
+      size: 100616
+    - path: results/data-verification.json
+      hash: md5
+      md5: 3a20f1042b59cd22693f030412f9b5a2
+      size: 13254
+    - path: scales.json
+      hash: md5
+      md5: 2c3dfa7f3dfde6cbc41a4ed03b6c7fe8
+      size: 246
+  package:
+    cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python
+      prepare_pilot.py
+    deps:
+    - path: ../../32_tree_expansion/gpu-workflow.yaml
+      hash: md5
+      md5: 0ad9e39f9c2e98445d0ee17ddc6e2f13
+      size: 8827
+    - path: cases.json
+      hash: md5
+      md5: f1f753c640584e2fd7776b1d990c181e
+      size: 39976
+    - path: cloud.py
+      hash: md5
+      md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
+      size: 597
+    - path: collect.py
+      hash: md5
+      md5: c75a4af5fa0701d6ef51f3a0390e6b2f
+      size: 3095
+    - path: coverage-plan.json
+      hash: md5
+      md5: 65e528d2b76164043da36947f588796f
+      size: 2512
+    - path: data/fields
+      hash: md5
+      md5: 83135d054441d9a802015b0887b354a3.dir
+      size: 5152777727
+      nfiles: 144
+    - path: data/geometries.npz
+      hash: md5
+      md5: aa7a2597bb16a5c1377dd3748eee0781
+      size: 100616
+    - path: launch.py
+      hash: md5
+      md5: fd41c024551e545fa89e6ee7244bb0e9
+      size: 3113
+    - path: metrics.py
+      hash: md5
+      md5: e3da445d02f43592f5050f68fd01ca4b
+      size: 2429
+    - path: model.py
+      hash: md5
+      md5: 3a96b2185c210c6e4db96fddab9cca21
+      size: 1881
+    - path: prepare_pilot.py
+      hash: md5
+      md5: 1130b24373734ccd094539ba11d249cf
+      size: 3443
+    - path: runtime.py
+      hash: md5
+      md5: 3fddfb7201539a4030ee0617d7d8ce36
+      size: 1663
+    - path: scales.json
+      hash: md5
+      md5: 2c3dfa7f3dfde6cbc41a4ed03b6c7fe8
+      size: 246
+    - path: validate.py
+      hash: md5
+      md5: d8360d8978938a48bb55fcd83337631b
+      size: 3275
+    - path: worker.py
+      hash: md5
+      md5: 4f1ea5d36483bf1faf6adf1745325f6a
+      size: 12485
+    outs:
+    - path: data/pilot-overlay.tar
+      hash: md5
+      md5: 3f12139bca1d556225213a857a93dc84
+      size: 5153280000
+    - path: gpu-workflow.yaml
+      hash: md5
+      md5: 1328d134b9de745715e2d60932a53d9a
+      size: 8606
+    - path: results/input-freeze.json
+      hash: md5
+      md5: 3e5c68b88a7dda44fa84fe31dfcca480
+      size: 16149
+    - path: results/preflight.json
+      hash: md5
+      md5: 7607019ab45288005a5a10c3f17a0cbc
+      size: 389

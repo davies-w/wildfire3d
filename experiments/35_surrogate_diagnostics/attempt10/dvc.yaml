@@ -1,0 +1,129 @@
+stages:
+  decode_inputs:
+    cmd: ../../../.venv/bin/python prepare_data.py
+    deps:
+    - prepare_data.py
+    - fields.py
+    - fortran_records.py
+    - ../attempt05/cases.json
+    - ../attempt05/restore-manifest.json
+    - ../attempt03/data/collected/scales.json
+    - ../attempt07/data/geometries.npz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_033_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_036_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_056_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_057_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_218_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_239_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_270_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_291_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_360_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_361_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_362_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_363_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_364_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_365_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_366_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_367_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_368_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_369_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_370_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_371_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_372_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_373_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_374_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_375_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_376_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_377_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_377_s1.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_377_s2.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_378_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_379_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_380_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_381_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_381_s1.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_381_s2.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_382_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_383_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_384_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_385_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_386_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_386_s1.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_386_s2.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_387_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_388_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_388_s1.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_388_s2.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_389_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_390_s0.tar.gz
+    - ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_391_s0.tar.gz
+    outs:
+    - data/fields
+    - data/geometries.npz
+    - cases.json:
+        cache: false
+    - scales.json:
+        cache: false
+    metrics:
+    - results/data-verification.json:
+        cache: false
+  package:
+    cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python prepare_pilot.py
+    deps:
+    - worker.py
+    - model.py
+    - metrics.py
+    - validate.py
+    - prepare_pilot.py
+    - launch.py
+    - collect.py
+    - runtime.py
+    - cloud.py
+    - cases.json
+    - scales.json
+    - coverage-plan.json
+    - data/fields
+    - data/geometries.npz
+    - ../../32_tree_expansion/gpu-workflow.yaml
+    outs:
+    - data/pilot-overlay.tar
+    - gpu-workflow.yaml:
+        cache: false
+    - results/input-freeze.json:
+        cache: false
+    - results/preflight.json:
+        cache: false
+  cloud_submit:
+    cmd: ../../../.venv/bin/python launch.py
+    deps:
+    - launch.py
+    - cloud.py
+    - gpu-workflow.yaml
+    - data/pilot-overlay.tar
+    metrics:
+    - results/execution.json:
+        cache: false
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - collect.py
+    - cloud.py
+    - results/execution.json
+    outs:
+    - data/collected
+    metrics:
+    - results/cleanup.json:
+        cache: false
+    - results/permission-removed.json:
+        cache: false
+  analysis:
+    cmd: ../../../.venv/bin/python analyze.py
+    deps:
+    - analyze.py
+    - data/collected
+    - coverage-plan.json
+    outs:
+    - data/visuals
+    metrics:
+    - results/analysis.json:
+        cache: false

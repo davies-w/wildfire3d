@@ -1,0 +1,33 @@
+{
+  "seed": 3510,
+  "arms": [
+    "single",
+    "eight"
+  ],
+  "single_case": "x32_033_s0",
+  "maximum_epochs": 200,
+  "minimum_epochs": 50,
+  "learning_rate": 0.0003,
+  "weight_decay": 1e-05,
+  "batch_size": 4,
+  "evaluation_batch_size": 8,
+  "soft_deadline_s": 9900,
+  "task_deadline_s": 10800,
+  "vm_age_limit_s": 11100,
+  "absolute_deadline_s": 12600,
+  "queue_limit_s": 1200,
+  "reservation_usd": 7,
+  "architecture": "Attempt07 U-Net blocks/widths/down/up/skip paths unchanged. Input14:13static+actualtime/90-1. Output6 raw encoded continuous fields. Fresh equal initial weights across arms; independent optimizer.",
+  "loss": "Per-frame per-channel standardized encoded squared error, original TRAIN8 std floor.05. T>50C and HRR>.01kW/m3 each average active and inactive means equally if both exist; cold-only frames use ordinary mean. Four other channels ordinary whole-volume MSE. Six channel terms averaged equally. No auxiliary losses, no sweep, no training output clamp.",
+  "normalization": "Frozen attempt03 TRAIN8 encoded std; geometry scale from TRAIN8 only. Single arm uses disclosed eight-training-case scales.",
+  "schedule": "Constant3e-4 AdamW. Each epoch every91frame snapshot per trainingcase exactly once, shuffled withoutreplacement. No recurrence.",
+  "validation": "All32 existing development configs40trajectories everyepoch. Replica-average withinconfig then average configs. No test used. Select minimum validation/all objective_MSE; retain final and selected; selection never changes training stopping.",
+  "stopping": "After50epochs compare disjoint10epochmeans of train AND validation post_source objective,hot-temperature-relativeL1,total-HRR-relativeL1. Relativechange<1% or1e-4 for three consecutive10epochchecks. Epoch/time caps explicitly not convergence.",
+  "fit_gate": {
+    "scope": "Every trained case at BOTH final and validation-selected checkpoints; separate outcomes. Engineering diagnostic thresholds, not physical validation. No automatic expansion based on aggregate objective.",
+    "hot_temperature_relative_L1_percent_max": 20,
+    "burning_HRR_relative_L1_percent_max": 30,
+    "total_HRR_relative_L1_percent_max": 20
+  },
+  "scope": "Continuous setup+time fitting diagnostic on one andeight existingTRAIN histories. Not stateevolution, not independentlyvalidated FDSreplacement. Generic3m-widecones4/6/8/10mabove2m,1600weightedparticles,.5m24x16x16m180s,1500C20s source,no trunks/buildings/embers. Radiation is integrated gas intensity, not surfaceflux."
+}
