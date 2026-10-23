@@ -25,3 +25,28 @@ for row,arm in enumerate(plan['arms']):
   ax.set(title=arm+': '+['T C','HRR kW/m3','u m/s','v m/s','w m/s','radiation kW/m2'][j],xlabel='Epoch');ax.grid(alpha=.2)
 fig.suptitle('Whole-volume physical MAE, shown separately from burning-region errors');fig.tight_layout();fig.savefig(out/'channel-learning-curves.png',dpi=140)
 (R/'results/analysis.json').write_text(json.dumps(dict(arms=summary,scope=plan['scope'],note='Final training fit and validation-selected checkpoint are distinct questions. Epoch/deadline limits do not prove convergence; no expansion without passing physical fitting checks.'),indent=2)+'\n')
+
+# Match the baseline to each arm's actual training cases; never compare single to TRAIN8.
+base=json.loads((R/'data/collected/background_baseline-epoch-000.json').read_text())
+from metrics import aggregate
+fig,axs=plt.subplots(2,4,figsize=(17,8))
+for row,arm in enumerate(plan['arms']):
+ records=[json.loads(p.read_text()) for p in sorted((R/'data/collected').glob(arm+'-epoch-*.json'))]
+ cases=base['case_metrics'];windows=[c['windows'] for c in cases]
+ ids=[i for i,c in enumerate(cases) if c['split']=='train' and (arm=='eight' or c['case']==plan['single_case'])]
+ matched={'train':aggregate(windows,cases,ids),'validation':base['summary']['validation']}
+ for ax,key,label in zip(axs[row],['objective_MSE','hot_temperature_MAE_C','burning_HRR_MAE_kWm3','total_HRR_MAE_kW'],['Region-balanced MSE','Hot-region MAE (C)','Burning-region HRR MAE (kW/m3)','Total gas-HRR MAE (kW)']):
+  for split,color in [('train','tab:blue'),('validation','tab:orange')]:
+   ax.plot([r['epoch'] for r in records],[r['summary'][split]['post_source'][key] for r in records],color=color,label=split)
+   ax.axhline(matched[split]['post_source'][key],color=color,linestyle=':',label=split+' background baseline')
+  ax.set(title=arm+': '+label,xlabel='Epoch');ax.grid(alpha=.2)
+axs[0,0].legend(fontsize=7);fig.suptitle('Post-source model versus matched constant-background baseline');fig.tight_layout();fig.savefig(out/'baseline-learning-curves.png',dpi=140);plt.close(fig)
+fig,axs=plt.subplots(2,2,figsize=(13,8))
+for row,arm in enumerate(plan['arms']):
+ records=[json.loads(p.read_text()) for p in sorted((R/'data/collected').glob(arm+'-epoch-*.json'))]
+ for ax,split in zip(axs[row],['train','validation']):
+  for window,color in [('all','tab:blue'),('post_source','tab:orange')]:
+   ax.plot([r['epoch'] for r in records],[r['summary'][split][window]['energy_pred_kJ']/1000 for r in records],color=color,label=window+' predicted')
+   ax.axhline(records[0]['summary'][split][window]['energy_truth_kJ']/1000,color=color,linestyle=':',label=window+' truth')
+  ax.set(title=arm+': '+split,xlabel='Epoch',ylabel='Configuration-mean gas energy (MJ)');ax.grid(alpha=.2)
+axs[0,0].legend(fontsize=8);fig.suptitle('Energy integrated from saved gas HRRPUV; separate from global solid oxidation');fig.tight_layout();fig.savefig(out/'energy-learning-curves.png',dpi=140);plt.close(fig)
