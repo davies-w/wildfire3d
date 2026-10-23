@@ -117,3 +117,18 @@ stages:
     metrics:
     - results/time20-summary.json:
         cache: false
+  time20_roc:
+    cmd: ../../../.venv/bin/python analyze_time20_roc.py
+    deps:
+    - analyze_time20_roc.py
+    - model.py
+    - cases.json
+    - data/geometries.npz
+    - data/labels
+    - ../attempt08/data/models/time-010-epoch-300.pt
+    - ../attempt08/results/model-freeze.json
+    outs:
+    - data/time20_roc
+    metrics:
+    - results/time20-roc.json:
+        cache: false

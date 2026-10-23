@@ -1,0 +1,30 @@
+{
+  "train": {
+    "ROC_AUC": 0.999255203772095,
+    "average_precision": 0.9837495094019215,
+    "hot_prevalence": 0.04598236083984375,
+    "threshold_05": {
+      "fpr": 0.011561704453063563,
+      "recall": 0.9983199061015553,
+      "precision": 0.8062696783568845
+    },
+    "configurations": 360,
+    "trajectories": 360,
+    "unique_scores": 7686130
+  },
+  "validation": {
+    "ROC_AUC": 0.9451031270073862,
+    "average_precision": 0.7865034396224281,
+    "hot_prevalence": 0.044051064385308175,
+    "threshold_05": {
+      "fpr": 0.02023085826627291,
+      "recall": 0.8207294367816643,
+      "precision": 0.6514977926462275
+    },
+    "configurations": 32,
+    "trajectories": 40,
+    "unique_scores": 1410966
+  },
+  "method": "Exact ROC trapezoid AUC and non-interpolated average precision, grouping all equal float32 logits; every cell included. Configurations equal total weight, replicas averaged. Display only downsampled to<=20000vertices; metrics use full curves. CPU inference can differ slightly from originalGPU. Class-balanced training scores are not calibrated probabilities.",
+  "checkpoint_sha256": "e9862d0b4025455e7f50ccd58772ef5e73a3135f550464fb11a2d6fe7e25ee65"
+}

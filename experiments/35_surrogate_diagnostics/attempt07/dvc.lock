@@ -302,3 +302,45 @@ stages:
       hash: md5
       md5: a11bd6407a0d073341424f364f7320d6
       size: 13197
+  time20_roc:
+    cmd: ../../../.venv/bin/python analyze_time20_roc.py
+    deps:
+    - path: ../attempt08/data/models/time-010-epoch-300.pt
+      hash: md5
+      md5: 51efaa41e457ee6f60cdcf0c3dc75f38
+      size: 5862830
+    - path: ../attempt08/results/model-freeze.json
+      hash: md5
+      md5: 0a653963b4a74850cc3c18c250d0de6d
+      size: 1228
+    - path: analyze_time20_roc.py
+      hash: md5
+      md5: abe4ffb75926f3d4187e305e87aebc93
+      size: 4686
+    - path: cases.json
+      hash: md5
+      md5: 707e0ae0e64fad26c85ac05e1865bca2
+      size: 331617
+    - path: data/geometries.npz
+      hash: md5
+      md5: b583bfabc9a15872834d88f2cac1ba36
+      size: 835258
+    - path: data/labels
+      hash: md5
+      md5: 38a2e5489f30269076edeae3d61b0c18.dir
+      size: 3629963
+      nfiles: 800
+    - path: model.py
+      hash: md5
+      md5: 0a34bdf2d444e16b55a6fadb491a95f1
+      size: 1272
+    outs:
+    - path: data/time20_roc
+      hash: md5
+      md5: e247ad2abc9a74dfe95b1f1b1f54771e.dir
+      size: 79374440
+      nfiles: 3
+    - path: results/time20-roc.json
+      hash: md5
+      md5: f1e682bc7ff0088243a4e539e570611e
+      size: 1190
