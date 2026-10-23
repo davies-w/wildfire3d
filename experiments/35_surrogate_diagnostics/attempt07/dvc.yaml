@@ -1,0 +1,89 @@
+stages:
+  prepare_labels:
+    cmd: ../../../.venv/bin/python prepare_labels.py
+    deps:
+    - prepare_labels.py
+    - fields.py
+    - fortran_records.py
+    - cases.json
+    - coverage-plan.json
+    - ../../33_representation_loss/attempt14/data/geometries.npz
+    - ../../33_representation_loss/attempt14/results/input-freeze.json
+    - ../../32_tree_expansion/data/cloud_archive
+    outs:
+    - data/labels
+    - data/geometries.npz
+    - data/class-population.json
+    metrics:
+    - results/labels-audit.json:
+        cache: false
+  validate:
+    cmd: ../../../.venv/bin/python validate.py
+    deps:
+    - validate.py
+    - model.py
+    - data/labels
+    - coverage-plan.json
+    - results/labels-audit.json
+    metrics:
+    - results/preflight.json:
+        cache: false
+  package:
+    cmd: ../../../.venv/bin/python prepare_pilot.py
+    deps:
+    - worker.py
+    - model.py
+    - prepare_pilot.py
+    - launch.py
+    - collect.py
+    - runtime.py
+    - cloud.py
+    - data/labels
+    - data/geometries.npz
+    - data/class-population.json
+    - cases.json
+    - coverage-plan.json
+    - results/preflight.json
+    outs:
+    - data/pilot-overlay.tar
+    - gpu-workflow.yaml:
+        cache: false
+    metrics:
+    - results/prepared.json:
+        cache: false
+    - results/input-freeze.json:
+        cache: false
+  cloud_submit:
+    cmd: ../../../.venv/bin/python launch.py
+    deps:
+    - launch.py
+    - cloud.py
+    - gpu-workflow.yaml
+    - data/pilot-overlay.tar
+    metrics:
+    - results/execution.json:
+        cache: false
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - collect.py
+    - cloud.py
+    - results/execution.json
+    outs:
+    - data/collected
+    metrics:
+    - results/cleanup.json:
+        cache: false
+    - results/permission-removed.json:
+        cache: false
+  analysis:
+    cmd: ../../../.venv/bin/python analyze.py
+    deps:
+    - analyze.py
+    - data/collected
+    - coverage-plan.json
+    outs:
+    - data/visuals
+    metrics:
+    - results/analysis.json:
+        cache: false
