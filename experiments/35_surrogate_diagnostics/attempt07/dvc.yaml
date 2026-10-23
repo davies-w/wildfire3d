@@ -95,3 +95,13 @@ stages:
     always_changed: true
     outs:
     - data/progress
+  archive_inventory:
+    cmd: ../../../.venv/bin/python finalize_archive.py --inventory-only
+    deps:
+    - finalize_archive.py
+    - data/collected
+    outs:
+    - data/checkpoint-inventory.json
+    metrics:
+    - results/archive-preservation.json:
+        cache: false
