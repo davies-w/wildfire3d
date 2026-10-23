@@ -1,0 +1,88 @@
+stages:
+  inputs:
+    cmd: ../../../.venv/bin/python restore_inputs.py
+    deps:
+    - restore_inputs.py
+    - ../attempt04/cases.json
+    - ../attempt04/groups.json
+    - ../attempt04/data/geometries.npz
+    - ../attempt04/data/collected/restart-epoch-080.pt
+    outs:
+    - cases.json:
+        cache: false
+    - groups.json:
+        cache: false
+    - data/geometries.npz
+    - data/initial/single.pt
+  package:
+    cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python prepare_pilot.py
+    deps:
+    - cloud.py
+    - collect.py
+    - deterministic_interpolation.py
+    - fields.py
+    - fortran_records.py
+    - geometry_model.py
+    - launch.py
+    - material_reader.py
+    - original_cnn.py
+    - prepare_pilot.py
+    - preprocess_cloud.py
+    - runtime.py
+    - snapshot_evaluation.py
+    - validate.py
+    - validate_interpolation.py
+    - worker.py
+    - cases.json
+    - groups.json
+    - coverage-plan.json
+    - data/geometries.npz
+    - ../../32_tree_expansion/gpu-workflow.yaml
+    - diagnostic_model.py
+    - input-sources.json
+    - restore-manifest.json
+    - replica-time-audit.json
+    - data/initial/single.pt
+    - raw_hrr_model.py
+    outs:
+    - data/pilot-overlay.tar
+    - results/input-freeze.json:
+        cache: false
+    - results/preflight.json:
+        cache: false
+    - gpu-workflow.yaml:
+        cache: false
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - collect.py
+    - cloud.py
+    - results/execution.json
+    outs:
+    - data/collected
+    metrics:
+    - results/cleanup.json:
+        cache: false
+    - results/permission-removed.json:
+        cache: false
+  analysis:
+    cmd: ../../../.venv/bin/python analyze.py
+    deps:
+    - analyze.py
+    - data/collected
+    - coverage-plan.json
+    outs:
+    - data/visuals
+    metrics:
+    - results/analysis.json:
+        cache: false
+  cloud_submit:
+    cmd: ../../../.venv/bin/python launch.py
+    deps:
+    - launch.py
+    - cloud.py
+    - gpu-workflow.yaml
+    - data/pilot-overlay.tar
+    metrics:
+    - results/execution.json:
+        cache: false

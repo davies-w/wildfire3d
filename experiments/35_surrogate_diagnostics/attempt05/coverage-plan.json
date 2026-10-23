@@ -1,0 +1,26 @@
+{
+  "seed": 3501,
+  "single_case": "x32_033_s0",
+  "train_configurations": [
+    "x32_239",
+    "x32_218",
+    "x32_291",
+    "x32_036",
+    "x32_057",
+    "x32_056",
+    "x32_033",
+    "x32_270"
+  ],
+  "epochs": {
+    "clamped": 80,
+    "raw_hrr": 80
+  },
+  "loss": "Equal-channel normalized MAE in existing encoded variables; scales are training8 encoded population std floored at0.05. No auxiliary penalties.",
+  "epoch": "Every nonoverlapping three-frame window of every training trajectory, final short window retained; shuffled without replacement.",
+  "diagnostic_threshold": "Normalized training MAE <=0.05 is a prespecified representability target, not physical fidelity. Report per-channel and physical metrics regardless.",
+  "scope": "Matched HRR output-clamp diagnostic from attempt04 restart epoch80, identical weights/optimizer and physical predictions. One TRAINtrajectory,32developmentvalidationconfigs40trajectories. Encoded training objective differs by HRR clamp only; common normalized evaluation uses clamped HRR for both. No pristine test.",
+  "learning_rates": {
+    "both": "cosine3e-4 to1e-5 over80additionalepochs"
+  },
+  "schedule_seed_offset": 160
+}
