@@ -1,0 +1,13 @@
+# Compact state preparation and fire storyboards
+
+Local extraction only, requested23October2026. No training, simulation or paid job. First preparation batch:48 already-decoded development histories (8TRAIN and40validation trajectories),91frames each. The eight TRAIN histories form the previously selected strength-stratified sample panel; not a representative random sample. Original split/configuration/replica identifiers retained. No new test data.
+
+Input archives are SHA256 verified. Particle temperature, mass, weighting factor, diameter, incident and convective heat flux are read from raw PRT5. Four class-wise totals/weighted averages are stored. All6 saved gas fields are reduced to gas-HRR, temperature/HOT volume and moments, HOT-weighted velocity and integrated radiation intensity. Global HRR, solid-oxidation HRR and released fuel-vapour rate retain distinct CSV provenance. Original timestamps and nearest particle-frame alignment differences retained. The existing field decoding has an independent fds2ascii cross-check in attempt09; this stage does not rerun FDS.
+
+Orange storyboard arrow = displacement from crown centre to temperature-excess-weighted centroid of cells>50°C. Ellipse=2σ covariance extent in x-z, not a flame boundary or confidence interval. Blue wind arrow scale1plotmetre per m/s. All panels share spatial scales. Full3Dcentroids/covariances retained despite side-view projection. Weak/cold states use null shape, never invented directions. Arrow length is spatial displacement, NOT energy or heat-release magnitude. Cell-temperature-volume integral is a proxy, not joules. No density/heat-capacity inference is silently inserted.
+
+Remaining particle mass is total material, not separately dryfuel/water/char. Class mean temperatures omit internal/spatial variability; representation sufficiency is untested. Incident/convective fluxes are mass-weighted local particle diagnostics, not total transferred power. Ambient wind/initialgeometry are external/static; source on/off is a command, not measured ignition heat. All displayed fields are candidate state/diagnostic information; no final learned state dimension or network has been selected.
+
+Generic3mwide conical crowns4/6/8/10m tall above2m,1600weightedparticles,0.5m24×16×16m domain180s,artificial1500°C20s source; no trunks/buildings/embers. Six gas fields, no solid-ground temperature. No physical validation.
+
+Reproduce local pipeline with dvc repro dvc.yaml. data/report.html displays every candidate/diagnostic quantity at every saved time; data/storyboards has eight static sample storyboards; data/states contains machine-readable histories and provenance. All original raw/checkpoints remain unchanged.
