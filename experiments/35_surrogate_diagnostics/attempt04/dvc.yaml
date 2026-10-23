@@ -85,3 +85,17 @@ stages:
     metrics:
     - results/execution.json:
         cache: false
+  output_clamp_audit:
+    cmd: ../../../.venv/bin/python audit_output_clamps.py
+    deps:
+    - audit_output_clamps.py
+    - geometry_model.py
+    - original_cnn.py
+    - cases.json
+    - data/geometries.npz
+    - data/initial/single.pt
+    - data/collected/low-epoch-080.pt
+    - data/collected/restart-epoch-080.pt
+    metrics:
+    - results/output-clamp-audit.json:
+        cache: false

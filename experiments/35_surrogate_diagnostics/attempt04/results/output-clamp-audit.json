@@ -1,0 +1,387 @@
+{
+  "case": "x32_033_s0",
+  "times_s": [
+    0.0,
+    10.0,
+    20.0,
+    30.0,
+    60.0,
+    120.0,
+    180.0
+  ],
+  "scope": "Inference only on seven nominal times, not full-history truth comparison. Negative pre-clamp outputs have zero direct clamp derivative. Shared parameters can still change through other channels. This does not alone prove the sole cause of poor fitting.",
+  "checkpoints": {
+    "initial": {
+      "sha256": "c858bae4ba0ece1fd3d6435c7c25aaf4ff73d97c8f9c4b39f53ff75cb649eaf9",
+      "rows": [
+        {
+          "time_s": 0.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.5857044458389282,
+              "raw_max": -0.008353409357368946,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.42694494128227234,
+              "raw_max": 2.8593451976776123,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 10.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.494998574256897,
+              "raw_max": -0.008256969042122364,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.43290385603904724,
+              "raw_max": 2.464460849761963,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 20.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.3769577145576477,
+              "raw_max": -0.004284008871763945,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.4350458085536957,
+              "raw_max": 1.9310015439987183,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 30.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.2621156573295593,
+              "raw_max": 0.0003645347314886749,
+              "fraction_below_zero": 0.9999592900276184,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.434667706489563,
+              "raw_max": 1.390602707862854,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 60.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.08443531394004822,
+              "raw_max": -0.007972579449415207,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.4257199764251709,
+              "raw_max": 0.6812039017677307,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 120.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.07834381610155106,
+              "raw_max": -0.007360236719250679,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.41952455043792725,
+              "raw_max": 0.665078341960907,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 180.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.07780247926712036,
+              "raw_max": -0.007585541810840368,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.41939350962638855,
+              "raw_max": 0.6656274199485779,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        }
+      ]
+    },
+    "low": {
+      "sha256": "b3d5437513a2e1c8178d988f44156d42237a758e23f5b7e40d679fe77a3ca2bc",
+      "rows": [
+        {
+          "time_s": 0.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.6101055145263672,
+              "raw_max": -0.008302384987473488,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.4290589392185211,
+              "raw_max": 2.9294698238372803,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 10.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.5171124339103699,
+              "raw_max": -0.008198018185794353,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.4351016879081726,
+              "raw_max": 2.525686740875244,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 20.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.39315125346183777,
+              "raw_max": -0.00523631414398551,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.43878912925720215,
+              "raw_max": 1.9672247171401978,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 30.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.27238625288009644,
+              "raw_max": -0.0004764953919220716,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.43854597210884094,
+              "raw_max": 1.397632360458374,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 60.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.08592770248651505,
+              "raw_max": -0.007970022037625313,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.42902761697769165,
+              "raw_max": 0.6737061738967896,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 120.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.07862714678049088,
+              "raw_max": -0.007406376302242279,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.42245975136756897,
+              "raw_max": 0.6597542762756348,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 180.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.07861077785491943,
+              "raw_max": -0.007638071663677692,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.42208659648895264,
+              "raw_max": 0.6598464846611023,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        }
+      ]
+    },
+    "restart": {
+      "sha256": "e584d1dda3e1c2d3cda7a6068bcc77018ddab20aaf395427fe503a5a4143abe9",
+      "rows": [
+        {
+          "time_s": 0.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.6524149775505066,
+              "raw_max": -0.00827683787792921,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.45263195037841797,
+              "raw_max": 3.1197221279144287,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 10.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.6324040293693542,
+              "raw_max": -0.008154849521815777,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.45717206597328186,
+              "raw_max": 2.9301979541778564,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 20.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.5360984802246094,
+              "raw_max": -0.00811392068862915,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.45909735560417175,
+              "raw_max": 2.3524694442749023,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 30.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.38249504566192627,
+              "raw_max": -0.001411487814038992,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.4574428200721741,
+              "raw_max": 1.6021533012390137,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 60.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.0809750109910965,
+              "raw_max": -0.008274558931589127,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.45131930708885193,
+              "raw_max": 0.6441842317581177,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 120.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.07891864329576492,
+              "raw_max": -0.007955330424010754,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.4525187015533447,
+              "raw_max": 0.6355493664741516,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        },
+        {
+          "time_s": 180.0,
+          "channels": {
+            "1": {
+              "raw_min": -0.07916460931301117,
+              "raw_max": -0.008058971725404263,
+              "fraction_below_zero": 1.0,
+              "fraction_above_ten": 0.0
+            },
+            "5": {
+              "raw_min": 0.44794175028800964,
+              "raw_max": 0.635215163230896,
+              "fraction_below_zero": 0.0,
+              "fraction_above_ten": 0.0
+            }
+          }
+        }
+      ]
+    }
+  }
+}

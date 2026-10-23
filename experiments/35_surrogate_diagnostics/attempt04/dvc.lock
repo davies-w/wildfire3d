@@ -189,3 +189,98 @@ stages:
       hash: md5
       md5: e78732dcb0d0b3728189a98be520be38
       size: 331
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
+      size: 597
+    - path: collect.py
+      hash: md5
+      md5: 4cac368d4dad108d2c0b23218ef948ff
+      size: 2753
+    - path: results/execution.json
+      hash: md5
+      md5: e78732dcb0d0b3728189a98be520be38
+      size: 331
+    outs:
+    - path: data/collected
+      hash: md5
+      md5: 5bb9a67362f50f9bf7688499c763f36b.dir
+      size: 598772621
+      nfiles: 353
+    - path: results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: results/permission-removed.json
+      hash: md5
+      md5: 802a3a4a9e33549d63b67a05298b3b57
+      size: 56
+  analysis:
+    cmd: ../../../.venv/bin/python analyze.py
+    deps:
+    - path: analyze.py
+      hash: md5
+      md5: 8dcf899ad3a96fa95439d3d68599b182
+      size: 3414
+    - path: coverage-plan.json
+      hash: md5
+      md5: 57840c10c1fbcb713c10169b6a3c4675
+      size: 1114
+    - path: data/collected
+      hash: md5
+      md5: 5bb9a67362f50f9bf7688499c763f36b.dir
+      size: 598772621
+      nfiles: 353
+    outs:
+    - path: data/visuals
+      hash: md5
+      md5: b194feb1447cbd38ec661e6e086480f6.dir
+      size: 469816
+      nfiles: 2
+    - path: results/analysis.json
+      hash: md5
+      md5: df5f7122d1de5d57f0240ee50e854ebd
+      size: 25942
+  output_clamp_audit:
+    cmd: ../../../.venv/bin/python audit_output_clamps.py
+    deps:
+    - path: audit_output_clamps.py
+      hash: md5
+      md5: 543e1747784cb3addb98af85e64cf27b
+      size: 1767
+    - path: cases.json
+      hash: md5
+      md5: 4e86a9cceb3cfd183386a0080d7036cb
+      size: 39975
+    - path: data/collected/low-epoch-080.pt
+      hash: md5
+      md5: 5d4794b7a106b0fce748e30a2e47582d
+      size: 4396032
+    - path: data/collected/restart-epoch-080.pt
+      hash: md5
+      md5: 84e44a9799745727a6c61e49b1541ea8
+      size: 4396032
+    - path: data/geometries.npz
+      hash: md5
+      md5: 9d35d8647048a1460d0780276dcd4c5d
+      size: 100616
+    - path: data/initial/single.pt
+      hash: md5
+      md5: 7c1912dc2343bc78c76e67bb83abfc6d
+      size: 4395712
+    - path: geometry_model.py
+      hash: md5
+      md5: 39c38847574521ce0d07eb9a70b3aff5
+      size: 1252
+    - path: original_cnn.py
+      hash: md5
+      md5: fda0f39f0d17ad85497804aa2fb02090
+      size: 6325
+    outs:
+    - path: results/output-clamp-audit.json
+      hash: md5
+      md5: 50bc2d6aaae784ae64f8a1b8863be0d4
+      size: 11286
