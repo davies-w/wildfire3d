@@ -57,10 +57,9 @@ for c in cases:
  result=dict(case=n,conditions=c,raw_sha256=item['sha256'],particle_quantities=units[:4],snapshots=rows,unavailable=['separate remaining dry fuel, water and char masses','gas thermal energy in joules (density/composition not captured here)','directional radiative flux at a receiving tree'],scope='Measured saved FDS fields and particles; derived moments are lossy summaries, not a trained state model. Initial particle frame may slightly follow zero; original timestamps retained.')
  dest.write_text(json.dumps(result,indent=2,allow_nan=False));allrows.append(result);print('PREPARED',n,round(time.monotonic()-start),flush=True)
 (R/'data/states/index.json').write_text(json.dumps([dict(case=x['case'],conditions=x['conditions'],path=x['case']+'.json') for x in allrows],indent=2))
-# Representative existing TRAIN panel: all eight strength-stratified training cases, no new selection on validation.
+# Render every prepared development history at user-selected times.
 for x in allrows:
- if x['conditions']['split']!='train':continue
- c=x['conditions'];fig,axs=plt.subplots(2,4,figsize=(20,11));target=[0,10,20,30,40,60,100,180];initial=x['snapshots'][0]['remaining_total_material_mass_kg']
+ c=x['conditions'];fig,axs=plt.subplots(3,4,figsize=(20,16));target=[2,4,8,16,20,32,48,64,72,76,78,90];initial=x['snapshots'][0]['remaining_total_material_mass_kg']
  for ax,t in zip(axs.flat,target):
   r=min(x['snapshots'],key=lambda v:abs(v['time_s']-t));h=c['crown_height_m'];ax.add_patch(Polygon([[6.5,2],[9.5,2],[8,2+h]],facecolor='#bac6b6',edgecolor='#52664b',alpha=.7))
   mo=r['hot_plume']
@@ -75,5 +74,5 @@ for x in allrows:
  fig.suptitle(f"{x['case']} · crown {c['crown_height_m']:g} m · moisture {c['moisture']:.0%} dry basis · loading {c['loading_multiplier']:g} · ignition angle {c['angle_deg']:g}°\nSide-view storyboard from FDS: orange arrow crown centre → hot-gas centroid; ellipse = 2σ temperature-weighted extent (not flame boundary)",fontsize=14)
  fig.text(.5,.015,'Generic 3 m-wide crown above 2 m; 0.5 m grid; artificial 1500°C / 20 s igniter; no trunks/buildings/embers.\nMass includes water/reaction products. Ellipse and arrow are derived summaries; HOT means gas >50°C, not combustion. View collapses y; full 3-D moments retained.',ha='center',fontsize=10)
  fig.subplots_adjust(top=.84,bottom=.13,hspace=.72,wspace=.25);fig.savefig(figs/(x['case']+'.png'),dpi=130);plt.close(fig)
-proof=dict(cases=len(allrows),snapshots=sum(len(x['snapshots']) for x in allrows),storyboards=sum(x['conditions']['split']=='train' for x in allrows),max_particle_alignment_s=max(r['alignment_error_s'] for x in allrows for r in x['snapshots']),training=False,new_simulations=False)
+proof=dict(cases=len(allrows),snapshots=sum(len(x['snapshots']) for x in allrows),storyboards=len(allrows),storyboard_times_s=[2,4,8,16,20,32,48,64,72,76,78,90],max_particle_alignment_s=max(r['alignment_error_s'] for x in allrows for r in x['snapshots']),training=False,new_simulations=False)
 (R/'results/prepared.json').write_text(json.dumps(proof,indent=2));print(proof)
