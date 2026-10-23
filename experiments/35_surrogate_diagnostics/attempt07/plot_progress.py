@@ -28,7 +28,9 @@ for name,keys in [('f1',['f1']),('positive-metrics',['precision','recall','f1'])
   ax.set_title(f'{f*2} seconds\n{s["status"]}',fontsize=10);ax.set_xlabel('Epoch');ax.grid(alpha=.2)
   if name=='loss':ax.set_yscale('log');ax.set_ylabel('Balanced BCE (log scale)')
   else:ax.set_ylim(-.03,1.03);ax.set_ylabel('Score')
-  if not rr:ax.text(.5,.5,'Pending',ha='center',transform=ax.transAxes)
+  if not rr:
+   if name=='loss':ax.set_ylim(.0001,1)
+   ax.text(.5,.5,'Pending',ha='center',transform=ax.transAxes)
   elif name!='loss' and rr[-1]['summary']['train']['hot_fraction']==0 and rr[-1]['summary']['validation']['hot_fraction']==0:
    ax.text(.5,.45,'No HOT cells\nHOT recall/F1 undefined\nFinal false-positive rate: '+f'{rr[-1]["summary"]["validation"]["false_positive_rate"]:.1%}',ha='center',fontsize=9,transform=ax.transAxes)
  handles,labels=axs.flat[1].get_legend_handles_labels();fig.legend(handles,labels,loc='lower center',ncol=min(6,len(labels)),fontsize=9);fig.suptitle('Independent HOT models — validation solid, training dashed\nLive snapshot; all evaluations use full train/validation configurations',fontsize=13);fig.tight_layout(rect=[0,.06,1,.91]);fig.savefig(out/(name+'-curves.png'),dpi=140);plt.close(fig)
