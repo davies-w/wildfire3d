@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  audit:
+    cmd: ../../../.venv/bin/python audit.py && ../../../.venv/bin/python 
+      verify_converter.py && ../../../.venv/bin/python plot_audit.py
+    deps:
+    - path: ../../32_tree_expansion/cases.json
+      hash: md5
+      md5: 0524706ce558a58ab1e6da8e3015289d
+      size: 378956
+    - path: ../../32_tree_expansion/data/cloud_archive
+      hash: md5
+      md5: adcddd017f722e3ea900f9c0a00521d3.dir
+      size: 57485004436
+      nfiles: 1174
+    - path: ../../32_tree_expansion/data/geometries.npz
+      hash: md5
+      md5: 29e0c4fef08edf5fc26352c01bc57794
+      size: 1087495
+    - path: ../attempt08/data/labels
+      hash: md5
+      md5: fa78c60e0ec7f2e24e0d92c65559a4a3.dir
+      size: 4278799
+      nfiles: 944
+    - path: audit.py
+      hash: md5
+      md5: 724ec5f90dbd4fef4031741573da8d80
+      size: 5349
+    - path: plot_audit.py
+      hash: md5
+      md5: e71e27453bc2708d9343cf9e940ec0f0
+      size: 1665
+    - path: verify_converter.py
+      hash: md5
+      md5: c217a2b1ecb340f3a69ab0d58beecd31
+      size: 1785
+    outs:
+    - path: data
+      hash: md5
+      md5: 2d9758cab4ed656334c10164254137ae.dir
+      size: 32894292
+      nfiles: 477
+    - path: results/independent-converter.json
+      hash: md5
+      md5: fbee2a4ce6cf454ac78a914986e77e38
+      size: 502
+    - path: results/summary.json
+      hash: md5
+      md5: 64400f8c0a74c1978075b19ec40f09cf
+      size: 6231

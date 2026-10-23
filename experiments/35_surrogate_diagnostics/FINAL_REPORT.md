@@ -66,3 +66,10 @@ Decision: the requested diagnostic is complete, but the prerequisite successful 
 The nine withheld times are interpolation in the same realization, and historical normalization includes those frames. This is not independent validation. The underlying simulation uses generic 3m-wide conical crowns, 1600 weighted particles, a 0.5m mesh in a 24x16x16m domain and an artificial 1500 C ignition source for20s; no trunks, buildings or embers. Outputs are six gas fields, not solid-ground temperature. The coordinate model has no evolving fuel state or recurrence. Projection images show maximum-through-y gas temperature/HRR, not flame geometry.
 
 All failures and archival allowances remain reserved: cumulative $97.10 of $100, with $2.90 unreserved. Invoice cost is unknown. No further paid job launched.
+
+
+## Original-physics audit (attempt09)
+
+All472 original runs checked. Real post-ignition burning is present: median21–40s gas-phase HRR4.175MW, declining to1.287kW at60–80s and5.28W at120–180s. Solid oxidation is tracked separately and can persist. Viewer masks match independent raw decoding for all42,952 saved snapshots. Official fds2ascii cross-check passed within0.0005°C. These are short-duration burning simulations, not merely heater cooling, but not sustained burning through180s. Earlier broad “nothing to learn” and “just heating/cooling” characterizations were incorrect. The five late/initial all-cold classification tasks remain trivial.
+
+Physical-cell versus boundary-record distinction matters: at120s physical-cell maxima staybelow50°C, but some excluded index-zero boundary values exceed50°C (maximum62.39°C). No missing physical gas-cell plume was found. Median particle mass reduction48.2% includes moisture/reaction products and cannot be equated to dryfuel burned. See attempt09/README.md for all quantities, limitations and preserved original histories. No new paid work; retained reservations109.10USD of125USD, invoice unknown.

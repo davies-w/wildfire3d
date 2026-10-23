@@ -1,0 +1,19 @@
+stages:
+  audit:
+    cmd: ../../../.venv/bin/python audit.py && ../../../.venv/bin/python verify_converter.py && ../../../.venv/bin/python plot_audit.py
+    deps:
+    - audit.py
+    - plot_audit.py
+    - verify_converter.py
+    - ../../32_tree_expansion/data/cloud_archive
+    - ../../32_tree_expansion/data/geometries.npz
+    - ../../32_tree_expansion/cases.json
+    - ../attempt08/data/labels
+    outs:
+    - data:
+        persist: true
+    metrics:
+    - results/summary.json:
+        cache: false
+    - results/independent-converter.json:
+        cache: false
