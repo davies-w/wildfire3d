@@ -1,12 +1,14 @@
 """Prepare all 520 archived histories locally, one case at a time; no fitting."""
 from pathlib import Path
-import json,hashlib,tarfile,io,csv,time,shutil,fcntl
+import json,hashlib,tarfile,io,csv,time,shutil,fcntl,sys
 import numpy as np
 from material_reader import frames
 import fields
 R=Path(__file__).resolve().parent;E=R.parent.parent
-items=json.loads((R/'inventory.json').read_text());out=R/'data/states';out.mkdir(exist_ok=True);(R/'data/cloud').mkdir(exist_ok=True)
-lock=(R/'data/prepare.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+items=json.loads((R/'inventory.json').read_text());legacy_only='--legacy-only' in sys.argv
+if legacy_only:items=[x for x in items if x['source']=='legacy']
+out=R/'data/states';out.mkdir(exist_ok=True);(R/'data/cloud').mkdir(exist_ok=True)
+lock=(R/('data/legacy-prepare.lock' if legacy_only else 'data/prepare.lock')).open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
 xyz=np.stack(np.meshgrid(*[(np.arange(n)+.5)*.5 for n in (48,32,32)],indexing='ij'),-1).reshape(-1,3)
 def moments(w):
  w=w.reshape(-1).astype(float);s=w.sum()
@@ -31,7 +33,7 @@ for item in items:
    if m.isfile() and m.name.endswith(('.sf','_devc.csv')):
     with tar.extractfile(m) as src,(folder/Path(m.name).name).open('wb') as dst:shutil.copyfileobj(src,dst)
  fields.extract(c)
- part=R/'data/particle.tmp';globalcsv={};units=[];deck=''
+ part=R/'data'/('particle-'+n+'.tmp');globalcsv={};units=[];deck=''
  with tarfile.open(p) as tar:
   for m in tar:
    if m.name.endswith('_1.prt5'):part.write_bytes(tar.extractfile(m).read())
@@ -68,6 +70,8 @@ for item in items:
  for q in (R/'data/fields').glob(n+'*'):q.unlink()
  print('PREPARED',n,len(rows),round(time.monotonic()-start),flush=True)
 
+if legacy_only:
+ (R/'results/legacy-prepared.json').write_text(json.dumps(index,indent=2));print('LEGACY COMPLETE',len(index),flush=True);sys.exit(0)
 (out/'index.json').write_text(json.dumps(index,indent=2))
 proof=dict(complete=True,histories=len(index),snapshots=sum(x['snapshots'] for x in index),transitions=sum(x['snapshots']-1 for x in index),new_histories=sum(x['source']=='exp32_new' for x in index),legacy_histories=sum(x['source']=='legacy' for x in index),training=False)
 (R/'results/prepared.json').write_text(json.dumps(proof,indent=2));print(proof,flush=True)
