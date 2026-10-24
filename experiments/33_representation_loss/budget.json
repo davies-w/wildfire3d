@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 3,
+  "reserved_usd": 0,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -486,19 +486,23 @@
       "historical_allowance_usd": 7
     },
     "min35-15": {
-      "state": "submitted",
+      "state": "terminal_cleanup_verified",
       "allowance_usd": 3,
       "reserved_unix": 1792821321.707638,
       "compute_allowance_usd": 2.2,
       "ancillary_cleanup_allowance_usd": 0.8,
       "cost": {
-        "stage": "pre_run_estimate",
-        "expected_usd": [
-          0.5,
-          1.2
+        "stage": "runtime_estimate",
+        "usd": 0.8250132552059732,
+        "vm_hours": 1.1671980513888889,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-gpu35-min15-d01a2bbc-3b89-4461-970-group0-0-813r"
         ]
       },
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu35-min15/executions/e940b24e-1b78-481f-95db-b52779469795"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu35-min15/executions/e940b24e-1b78-481f-95db-b52779469795",
+      "completed_unix": 1792825724.449016,
+      "historical_allowance_usd": 3
     }
   },
   "recycle_reservations": true,
@@ -508,13 +512,13 @@
   "accounting": {
     "billing_export_status": "awaiting_records_for_period",
     "posted_source": "Previously captured Billing Reports; Oct1\u201323;16.55USD",
-    "as_of_utc": "2026-10-24T05:54:34.073655+00:00",
+    "as_of_utc": "2026-10-24T07:08:53.406362+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
     "project_posted_comparison_usd": 16.55,
-    "project_compute_runtime_estimate_usd": 16.719406532774602,
+    "project_compute_runtime_estimate_usd": 17.544419787980573,
     "shared_cost_estimate_usd": 1.26,
-    "spend_estimate_usd": 17.979406532774604,
-    "matched_vms": 191,
+    "spend_estimate_usd": 18.804419787980574,
+    "matched_vms": 192,
     "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
     "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare totals using max, never add posted and runtime totals.",
     "rates_usd_per_vm_hour": {
@@ -523,5 +527,5 @@
       "c3-standard-4/SPOT": 0.07725118278354724
     }
   },
-  "estimated_spend_usd": 17.979406532774604
+  "estimated_spend_usd": 18.804419787980574
 }
