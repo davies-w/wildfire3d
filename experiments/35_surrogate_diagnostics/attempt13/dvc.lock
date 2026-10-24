@@ -102,3 +102,27 @@ stages:
       hash: md5
       md5: 3bf52935c52b3fd277b1f9e27be5d947
       size: 556
+  cloud_submit:
+    cmd: ../../../.venv/bin/python launch.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
+      size: 597
+    - path: data/pilot-overlay.tar
+      hash: md5
+      md5: 4ff9bbb83d2d9d9652f513aad8c7fcbd
+      size: 7936000
+    - path: gpu-workflow.yaml
+      hash: md5
+      md5: e1458d226502cebcee8c6f198e3d3512
+      size: 8606
+    - path: launch.py
+      hash: md5
+      md5: 604f5b71250de262a0d32fb93215bc1b
+      size: 3123
+    outs:
+    - path: results/execution.json
+      hash: md5
+      md5: ec622871e1af553cda4625f7aa27cb72
+      size: 330
