@@ -27663,5 +27663,131 @@
       }
     }
   ],
-  "scope": "Water/dryfuel/fuel-gas release only; char inert; no gas combustion or heat prediction; reshuffled data not historically pristine"
+  "scope": "Water/dryfuel/fuel-gas release only; char inert; no gas combustion or heat prediction; reshuffled data not historically pristine",
+  "aggregate": {
+    "one_step": {
+      "objective": 0.016304441541433335,
+      "physical_MAE_by_feature": [
+        0.019500659219920634,
+        0.19328191503882408,
+        0.03057435154914856
+      ],
+      "negative_fraction_by_feature": [
+        0.015185185997688677,
+        0.0,
+        0.2202623590826988
+      ],
+      "negative_magnitude_mean_by_feature": [
+        3.95037119517383e-05,
+        0.0,
+        4.94695877932827e-05
+      ],
+      "mass_increase_fraction": [
+        0.11437501162290573,
+        0.30829477608203887
+      ],
+      "mass_increase_total_kg": [
+        0.11364920884370804,
+        3.0595224797725677
+      ],
+      "released_fuel_integral_MAE_kg": 1.240932083129883,
+      "peak_release_MAE_kg_s": 0.2243160992860794,
+      "peak_time_MAE_s": 3.145577836036682,
+      "global_minimum_by_feature": [
+        -0.04563113674521446,
+        0.4949355125427246,
+        -0.004353709984570742
+      ],
+      "window_fold_mean_MAE": {
+        "ignition": [
+          0.08300644457340241,
+          1.0862929582595826,
+          0.15785585343837738
+        ],
+        "post_source_to90": [
+          0.022605939768254757,
+          0.161884668469429,
+          0.03778345063328743
+        ],
+        "after90": [
+          0.0047128991689533,
+          0.04245156273245811,
+          0.00018626405217219143
+        ],
+        "active": [
+          0.020492829196155072,
+          0.2067865788936615,
+          0.034973480924963954
+        ],
+        "quiet": [
+          0.0017209272424224763,
+          0.003963495790958405,
+          8.19446322566364e-05
+        ]
+      }
+    },
+    "rollout": {
+      "objective": 0.13397446051239967,
+      "physical_MAE_by_feature": [
+        0.7220366597175598,
+        4.662802910804748,
+        0.05221126563847065
+      ],
+      "negative_fraction_by_feature": [
+        0.06270833946764469,
+        0.0120138899423182,
+        0.2246142104268074
+      ],
+      "negative_magnitude_mean_by_feature": [
+        0.007966005278285592,
+        0.007222019176697359,
+        0.00012259748255019076
+      ],
+      "mass_increase_fraction": [
+        0.3432330474257469,
+        0.39829478561878207
+      ],
+      "mass_increase_total_kg": [
+        0.2759385287761688,
+        3.685341942310333
+      ],
+      "released_fuel_integral_MAE_kg": 6.328285026550293,
+      "peak_release_MAE_kg_s": 0.6134792029857635,
+      "peak_time_MAE_s": 4.747750663757325,
+      "global_minimum_by_feature": [
+        -0.6600853800773621,
+        -3.7737748622894287,
+        -0.00705396942794323
+      ],
+      "window_fold_mean_MAE": {
+        "ignition": [
+          0.23104425221681596,
+          2.4635113000869753,
+          0.20919720828533173
+        ],
+        "post_source_to90": [
+          0.725655609369278,
+          4.529689311981201,
+          0.07975760400295258
+        ],
+        "after90": [
+          0.8153467774391174,
+          5.1943810224533085,
+          0.0005374529340770095
+        ],
+        "active": [
+          0.7244885504245758,
+          4.697947597503662,
+          0.05934239402413368
+        ],
+        "quiet": [
+          0.13157939165830612,
+          1.5254452854394913,
+          0.0005056710768258199
+        ]
+      }
+    },
+    "persistence_rollout_objective_mean": 1.6067874073982238,
+    "scope": "Equal configuration averages across ten disjoint 48-configuration test folds; active/quiet window results are means of fold conditional means. Negative magnitude averages include nonnegative predictions as zero. Minima are global. Formerly examined data, reshuffled with authorization."
+  }
 }
