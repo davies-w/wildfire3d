@@ -1,0 +1,11 @@
+{
+  "cause": "Checkpoint upload HTTP503 followed by metadata read HTTP403. Worker has create access for outputs, while temporary read grant covers only input overlay. Existing upload recovery requires output metadata read.",
+  "scientific_failure": false,
+  "completed_models": 15,
+  "resume_checkpoint_verified_present_in_GCS": "fold15-epoch373.pt",
+  "tests_started": false,
+  "cloud_cleanup_verified": true,
+  "collector": "Existing finish_run controller still owns collection; finalizer now preserves partial run instead of requiring success.",
+  "proposed_repair": "For separately approved/reserved continuation with NEW prefix, grant 24h objectViewer on exact fresh input plus that output prefix. Retry transient metadata503/429/5xx with bounded backoff; do not resubmit compute or overwrite uncertain objects. Preserve old source/failure evidence. Skip15 completed models and resume model15 after epoch373 with optimizer/RNG/selection; train remaining4 then freeze all20 before test.",
+  "new_compute_submitted": false
+}

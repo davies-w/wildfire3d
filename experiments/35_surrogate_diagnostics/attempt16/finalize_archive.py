@@ -6,6 +6,9 @@ def run(xs):subprocess.run([str(x) for x in xs],cwd=repo,check=True)
 def main():
  with (R/'data/archive.lock').open('w') as lock:
   fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+  if (R/'results/collection-error.json').exists() and not (R/'results/collected.json').exists():
+   from archive_partial import main as preserve_partial
+   preserve_partial();return
   assert json.loads((R/'results/collected.json').read_text())['complete']
   assert not any(json.loads((R/'results/cleanup.json').read_text()).values())
   assert json.loads((R/'results/permission-removed.json').read_text())['removed']
