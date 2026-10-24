@@ -1,0 +1,2608 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../../.venv/bin/python prepare.py
+    deps:
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_0.tar.gz
+      hash: md5
+      md5: 0e2017aa17fb639be9d7ef59e321356d
+      size: 96264760
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_1.tar.gz
+      hash: md5
+      md5: e358f2665fb5a4b68589a8b1d92dc02d
+      size: 95044774
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_10.tar.gz
+      hash: md5
+      md5: 70bd1b07ac8d2dcf55c673a084e4608c
+      size: 96114875
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_11.tar.gz
+      hash: md5
+      md5: e58c9e509cf5929348b3a51b771701eb
+      size: 96639774
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_12.tar.gz
+      hash: md5
+      md5: de04dd38b8adc30ccf511f38ec85a367
+      size: 96193487
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_13.tar.gz
+      hash: md5
+      md5: 694c8a70aa491c8a01285bcea9cb5e00
+      size: 95811877
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_14.tar.gz
+      hash: md5
+      md5: f5953f1ed7a62c73922036e2a35576e7
+      size: 95290103
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_15.tar.gz
+      hash: md5
+      md5: ac2b7d8fe8079035c594212fe12ae674
+      size: 96438561
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_16.tar.gz
+      hash: md5
+      md5: 17df3997788e28414048aeac9013c102
+      size: 97112591
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_17.tar.gz
+      hash: md5
+      md5: c5727cff9261eca1316e6c7f7a48b6f4
+      size: 95308326
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_18.tar.gz
+      hash: md5
+      md5: 9a3634f79b966a2d1d1aaaef5f5b3666
+      size: 96275325
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_19.tar.gz
+      hash: md5
+      md5: e776a92bf6c925fc8acaaa153f775517
+      size: 96404801
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_2.tar.gz
+      hash: md5
+      md5: c0460bc563f56dea8d6f0ea93fa5a482
+      size: 95769194
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_20.tar.gz
+      hash: md5
+      md5: 7eeb39b19b5dc25248bbc821a59ef352
+      size: 96030663
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_21.tar.gz
+      hash: md5
+      md5: 95ed8039deacbc46ce251eab925ae269
+      size: 95955638
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_22.tar.gz
+      hash: md5
+      md5: 58af3caf360d3f164ae7cdc9e2ec9ee9
+      size: 95476184
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_23.tar.gz
+      hash: md5
+      md5: 5f6895ffc9863a245183d138193894cf
+      size: 96234548
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_24.tar.gz
+      hash: md5
+      md5: e2f65ee70815e2cd282501ca158d162b
+      size: 96228232
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_25.tar.gz
+      hash: md5
+      md5: 652725c3f2a15fbb6f7eebb594432aae
+      size: 95164512
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_26.tar.gz
+      hash: md5
+      md5: 78932df30a60ca8ed0e1275c9b94de53
+      size: 95701138
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_27.tar.gz
+      hash: md5
+      md5: dcef22579970a825014eff9c5de63810
+      size: 96033390
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_28.tar.gz
+      hash: md5
+      md5: be8c5afb76179879f5f7cb53c82c0e26
+      size: 96454139
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_29.tar.gz
+      hash: md5
+      md5: 8cd5f1ea700c5d734aa018a4c76fbfac
+      size: 96081327
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_3.tar.gz
+      hash: md5
+      md5: 03c1207e66624c4cb7f658151a3a02c1
+      size: 96225059
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_30.tar.gz
+      hash: md5
+      md5: 85882cebccd310aac7c7aab6f12dff4e
+      size: 95343679
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_31.tar.gz
+      hash: md5
+      md5: c4a5d792722a3a9ec960b50eae1efcba
+      size: 96842443
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_4.tar.gz
+      hash: md5
+      md5: 58954fbb64f24bfc2449338a615fa53d
+      size: 97149874
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_5.tar.gz
+      hash: md5
+      md5: e7d5b0527c7662fca7ad36cf058b16a0
+      size: 96115319
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_6.tar.gz
+      hash: md5
+      md5: 862211b676c4d2449b467a41551ad39d
+      size: 95512175
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_7.tar.gz
+      hash: md5
+      md5: 60c4a3d874c94e7abdd27ed53ff9026e
+      size: 96494395
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_8.tar.gz
+      hash: md5
+      md5: 3984268325a25f320132acf7bc8904c5
+      size: 96676760
+    - path: ../../27_single_tree_cnn/data/downloads/s27_train_9.tar.gz
+      hash: md5
+      md5: 36c15fea6031fbca965302198c2cd814
+      size: 95509943
+    - path: ../../27_single_tree_cnn/data/downloads/s27_validation_0.tar.gz
+      hash: md5
+      md5: df7e3e28e47027e3601b274b5469f2b4
+      size: 96484454
+    - path: ../../27_single_tree_cnn/data/downloads/s27_validation_1.tar.gz
+      hash: md5
+      md5: fed0d1bb2865a2677dbfd13f98e20faf
+      size: 96029294
+    - path: ../../27_single_tree_cnn/data/downloads/s27_validation_2.tar.gz
+      hash: md5
+      md5: efc730d747bee4c8f6ba1f087a50800e
+      size: 95490369
+    - path: ../../27_single_tree_cnn/data/downloads/s27_validation_3.tar.gz
+      hash: md5
+      md5: d16cae0b571c27b737c3d525c5b96cb8
+      size: 96544984
+    - path: ../../27_single_tree_cnn/data/downloads/s27_validation_4.tar.gz
+      hash: md5
+      md5: 4b68561b40b07b4a5b20a41fbf84fe4c
+      size: 96235370
+    - path: ../../27_single_tree_cnn/data/downloads/s27_validation_5.tar.gz
+      hash: md5
+      md5: a4c308fe1090cf4495efb007c90ba22f
+      size: 95280976
+    - path: ../../31_tree_variations/data/downloads/v31_00.tar.gz
+      hash: md5
+      md5: 29f84a71521ecfd79da518c36dfe1c6d
+      size: 95513892
+    - path: ../../31_tree_variations/data/downloads/v31_01.tar.gz
+      hash: md5
+      md5: 3d54e11eb27ab0d1e2e88072fc784f58
+      size: 94268642
+    - path: ../../31_tree_variations/data/downloads/v31_02.tar.gz
+      hash: md5
+      md5: ccff2adbcd2304cb2de18fdd3d8331ee
+      size: 96471912
+    - path: ../../31_tree_variations/data/downloads/v31_03.tar.gz
+      hash: md5
+      md5: 0e5eb063db608af0bbb0508aabf6e7a9
+      size: 96185649
+    - path: ../../31_tree_variations/data/downloads/v31_05.tar.gz
+      hash: md5
+      md5: 0fb77892880baf04221a481115099411
+      size: 94989751
+    - path: ../../31_tree_variations/data/downloads/v31_06.tar.gz
+      hash: md5
+      md5: 2fc33eb4737527312b9e6b2acd003a58
+      size: 97014122
+    - path: ../../31_tree_variations/data/downloads/v31_07.tar.gz
+      hash: md5
+      md5: 5f08964ff77046a22ad5fc859aa0da6c
+      size: 96906217
+    - path: ../../31_tree_variations/data/downloads/v31_08.tar.gz
+      hash: md5
+      md5: 60d6e3957b9cdbaad7c95f6efec77a6b
+      size: 96610834
+    - path: ../../31_tree_variations/data/downloads/v31_09.tar.gz
+      hash: md5
+      md5: 480a6095bc1115b7d4176083822842ea
+      size: 91755079
+    - path: ../../31_tree_variations/data/downloads/v31_10.tar.gz
+      hash: md5
+      md5: 0c83bcce4c71f45927aaf7538cd9615b
+      size: 97488926
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-coverage-00-r1/x32_000_s0.tar.gz
+      hash: md5
+      md5: 85bfc6f71b17ae4ab546664ad2a57aa8
+      size: 94367130
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-coverage-00-r1/x32_016_s0.tar.gz
+      hash: md5
+      md5: 0b317c36123709fba5f81f7b3688590c
+      size: 94625541
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-coverage-00-r1/x32_045_s0.tar.gz
+      hash: md5
+      md5: c4b5274481355ee51f1704aeaf84f727
+      size: 96356632
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-coverage-00-r1/x32_045_s1.tar.gz
+      hash: md5
+      md5: e758cdaa0e43fb1dfcc4ce0d7b5fe953
+      size: 96529960
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-coverage-00-r1/x32_050_s0.tar.gz
+      hash: md5
+      md5: 22bbf89228831c047188ec39228dfd49
+      size: 93706752
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-coverage-00-r1/x32_343_s0.tar.gz
+      hash: md5
+      md5: b615500b7de4b94c7232694dc668e68f
+      size: 92578373
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-01/x32_001_s0.tar.gz
+      hash: md5
+      md5: 5d6184c95b65b8eee823b905d764a2ef
+      size: 94417652
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-01/x32_002_s0.tar.gz
+      hash: md5
+      md5: 7392de7807ebfb723056084260d08278
+      size: 93636313
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-01/x32_003_s0.tar.gz
+      hash: md5
+      md5: 32683a7c692483500e6ae5f4aa37e645
+      size: 92583215
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-01/x32_004_s0.tar.gz
+      hash: md5
+      md5: 96de4dad7e601a618fd3a5faa45808fc
+      size: 95488185
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-01/x32_005_s0.tar.gz
+      hash: md5
+      md5: dbefe40631ea54ea84b1b6151ec780dd
+      size: 94986097
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-01/x32_006_s0.tar.gz
+      hash: md5
+      md5: bb041c409874b57f3468632d270ba16f
+      size: 94737253
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-01/x32_007_s0.tar.gz
+      hash: md5
+      md5: 2e3db78e8c9e74d17ec3f4b9b5136d7d
+      size: 95160992
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-01/x32_008_s0.tar.gz
+      hash: md5
+      md5: 08e0ff142412effb91955c80447d3cc4
+      size: 94223341
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-01/x32_009_s0.tar.gz
+      hash: md5
+      md5: 3d90b9a90f9499504be5d2c2e96af7cd
+      size: 93637474
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-01/x32_010_s0.tar.gz
+      hash: md5
+      md5: 13f86adc325954497f692ccc2465f2e6
+      size: 94008572
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-01/x32_011_s0.tar.gz
+      hash: md5
+      md5: 25252b815bcf7b7ee87c14576c63599f
+      size: 95837682
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-01/x32_012_s0.tar.gz
+      hash: md5
+      md5: 34f1f1b0449d2809b2817a0702f3f6b4
+      size: 95810769
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-02/x32_013_s0.tar.gz
+      hash: md5
+      md5: 93b1efbc625387785106e7b350304afc
+      size: 95542477
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-02/x32_014_s0.tar.gz
+      hash: md5
+      md5: 36e24e4e5d452f55406a8108d3223f47
+      size: 95588359
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-02/x32_015_s0.tar.gz
+      hash: md5
+      md5: 22d5c477aec03822cda60877f252575e
+      size: 95312678
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-02/x32_017_s0.tar.gz
+      hash: md5
+      md5: acbe93ce35b55d5b1a521239a7392da1
+      size: 94888000
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-02/x32_018_s0.tar.gz
+      hash: md5
+      md5: 5d7b5d9e3a0eb21bd85bfafb49ed44ad
+      size: 94613402
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-02/x32_019_s0.tar.gz
+      hash: md5
+      md5: ea1e524988a53f543a1646f15f0ecc21
+      size: 93699345
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-02/x32_020_s0.tar.gz
+      hash: md5
+      md5: c04c41b0ae38f350967e699a85f46874
+      size: 91775904
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-02/x32_021_s0.tar.gz
+      hash: md5
+      md5: 79964966abf90bf88472ce82987e8fb0
+      size: 95692779
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-02/x32_022_s0.tar.gz
+      hash: md5
+      md5: 73cb919e9fbc4038c530a2c59a89900c
+      size: 94536684
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-02/x32_023_s0.tar.gz
+      hash: md5
+      md5: 8774eb8de0ddaaf5684ffc1b82ec9d6c
+      size: 94846886
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-02/x32_024_s0.tar.gz
+      hash: md5
+      md5: f42441bc43da319a8523f9077f2bba85
+      size: 94339289
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-02/x32_025_s0.tar.gz
+      hash: md5
+      md5: dcddcba5e65aa7063149d9b51e3fb0dd
+      size: 93928736
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_026_s0.tar.gz
+      hash: md5
+      md5: e4d374bcebbf8bb26c641a6f441aab91
+      size: 96232909
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_027_s0.tar.gz
+      hash: md5
+      md5: 86fcb6eb3f136ed279bffd44b4031aea
+      size: 95951436
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_028_s0.tar.gz
+      hash: md5
+      md5: 10c6f36114762a52525046734edb55f8
+      size: 95458799
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_029_s0.tar.gz
+      hash: md5
+      md5: 7ac2ba214e2d46f310f71053042f93fc
+      size: 94957767
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_030_s0.tar.gz
+      hash: md5
+      md5: e4d3ddf27b778be6cc8b3955d9962792
+      size: 94852387
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_031_s0.tar.gz
+      hash: md5
+      md5: ca2359cad39bb2452e430f3e80cef5a7
+      size: 94875662
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_032_s0.tar.gz
+      hash: md5
+      md5: 7568842acba4f939d03a09b6d01137ff
+      size: 93075253
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_033_s0.tar.gz
+      hash: md5
+      md5: 582ede47da887e5ca10dfd6ab05ed9b8
+      size: 92860679
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_034_s0.tar.gz
+      hash: md5
+      md5: 2cdb503faf8782e2acda329c52283098
+      size: 93163987
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_035_s0.tar.gz
+      hash: md5
+      md5: 3caf823583d2f028ebe52ff8d7d12f91
+      size: 93464978
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_036_s0.tar.gz
+      hash: md5
+      md5: 82610017492b41009ec7d0c6de0df885
+      size: 91820699
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-03/x32_037_s0.tar.gz
+      hash: md5
+      md5: 42869dea7fb3896627eead1d82315529
+      size: 91323594
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-04/x32_038_s0.tar.gz
+      hash: md5
+      md5: 903aa25772a1aec3e003c6488ee3d492
+      size: 91766857
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-04/x32_039_s0.tar.gz
+      hash: md5
+      md5: b400ff00f9d1879f1e0a969fc104505b
+      size: 95574077
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-04/x32_040_s0.tar.gz
+      hash: md5
+      md5: 66bad78de9f7508182232ebe5ec3ab90
+      size: 94120853
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-04/x32_041_s0.tar.gz
+      hash: md5
+      md5: c2ef02df26a6550ce837b46a8b49cba9
+      size: 94319730
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-04/x32_042_s0.tar.gz
+      hash: md5
+      md5: 2e417b296d1e8a450bc09d8ccb77f29f
+      size: 94204581
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-04/x32_043_s0.tar.gz
+      hash: md5
+      md5: 6c85fd92e93d9bcef7c18c1f7d87439d
+      size: 92983958
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-04/x32_044_s0.tar.gz
+      hash: md5
+      md5: 3f000f44f3e7936588cda2d9bc46e57a
+      size: 93785320
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-04/x32_045_s2.tar.gz
+      hash: md5
+      md5: 8233c28416d80a50069768e67047071c
+      size: 96432776
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-04/x32_046_s0.tar.gz
+      hash: md5
+      md5: 6965209196bb355f2e7e089286a31198
+      size: 95939402
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-04/x32_047_s0.tar.gz
+      hash: md5
+      md5: e04b123ab632ca7e9120835660673bce
+      size: 95172391
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-04/x32_048_s0.tar.gz
+      hash: md5
+      md5: 01aa92518c8ac334205e48af2c806965
+      size: 95605472
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-04/x32_049_s0.tar.gz
+      hash: md5
+      md5: 27a459f00d7bc62e7f348e0cf5f54555
+      size: 95239628
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_051_s0.tar.gz
+      hash: md5
+      md5: dc5cad667cf2718aeb4002fa65fab189
+      size: 94647859
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_052_s0.tar.gz
+      hash: md5
+      md5: 4b931aafce7f5a13e01dc8e9d6630da4
+      size: 95033029
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_053_s0.tar.gz
+      hash: md5
+      md5: b9643bcbf75ab901288a26eb17969395
+      size: 92727835
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_054_s0.tar.gz
+      hash: md5
+      md5: 9b432a20544c39a5c6b07ec00873cd1a
+      size: 92026781
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_055_s0.tar.gz
+      hash: md5
+      md5: bff62698cc9a2b353ba8e931e21c3916
+      size: 92971700
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_056_s0.tar.gz
+      hash: md5
+      md5: 88eff1214a3086bd7d76214bf8c7ed43
+      size: 91745699
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_057_s0.tar.gz
+      hash: md5
+      md5: 3b29f6c1b37cddce36416451e9cde7e2
+      size: 93247045
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_058_s0.tar.gz
+      hash: md5
+      md5: 24d4b4ab94c8382607985b793f72f459
+      size: 91543422
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_059_s0.tar.gz
+      hash: md5
+      md5: e7f819eaa211debeea10127206f45f27
+      size: 91315908
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_060_s0.tar.gz
+      hash: md5
+      md5: 6aff14b4953d8adc344eda5bba24bc73
+      size: 94438837
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_061_s0.tar.gz
+      hash: md5
+      md5: a94644050df2c28ffa5b0ea89e340e31
+      size: 95541013
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-05/x32_062_s0.tar.gz
+      hash: md5
+      md5: 7c5a964b365aa3e21a26cbfe57980b0c
+      size: 94428903
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-06/x32_063_s0.tar.gz
+      hash: md5
+      md5: 9703f3d302a5930144802524b426734a
+      size: 92293704
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-06/x32_064_s0.tar.gz
+      hash: md5
+      md5: 0c7a255061038e2149f4ffa2cee36a33
+      size: 93453157
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-06/x32_065_s0.tar.gz
+      hash: md5
+      md5: 76f5fe41af73a1e2280d6d83c2507337
+      size: 96772715
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-06/x32_066_s0.tar.gz
+      hash: md5
+      md5: 8cd9ebd580a77a951b2d62127fd0169e
+      size: 96468827
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-06/x32_067_s0.tar.gz
+      hash: md5
+      md5: 4d9d4274578051bb4241b40ca15ca8ac
+      size: 96297410
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-06/x32_068_s0.tar.gz
+      hash: md5
+      md5: e645fcc53a03d94142835079d09bc1ea
+      size: 94967973
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-06/x32_069_s0.tar.gz
+      hash: md5
+      md5: 17f50d8d7a2bc5d9bdbd4fa3a718e727
+      size: 95068114
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-06/x32_070_s0.tar.gz
+      hash: md5
+      md5: eed27b9dad780bad2dae25c215ac3338
+      size: 93410103
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-06/x32_071_s0.tar.gz
+      hash: md5
+      md5: 7e621af20e77a14ea35ea154f1404942
+      size: 91607343
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-06/x32_072_s0.tar.gz
+      hash: md5
+      md5: 0df0ea7193d7b9ea75941c8743f16dfd
+      size: 93257981
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-06/x32_073_s0.tar.gz
+      hash: md5
+      md5: 5676a964c6eef77f5c567d194d884e4a
+      size: 92119959
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-06/x32_074_s0.tar.gz
+      hash: md5
+      md5: f46ee59d0429924de3ac44b306610179
+      size: 93100807
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-07/x32_075_s0.tar.gz
+      hash: md5
+      md5: acc192befeb9c97374c3747020ac3b61
+      size: 91447497
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-07/x32_076_s0.tar.gz
+      hash: md5
+      md5: bbbb0360a565bac3b277e4bb63bb880f
+      size: 91111928
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-07/x32_077_s0.tar.gz
+      hash: md5
+      md5: d5d053544df27e80e8a99923558a8108
+      size: 90529102
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-07/x32_077_s1.tar.gz
+      hash: md5
+      md5: 9d7c59a4c2fd96b27c217e3c47631134
+      size: 90502355
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-07/x32_077_s2.tar.gz
+      hash: md5
+      md5: ac5ac3998bc0a35bc3c611491e126707
+      size: 90593917
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-07/x32_078_s0.tar.gz
+      hash: md5
+      md5: 1bf953a57e7c025f11667606950f141b
+      size: 93856809
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-07/x32_079_s0.tar.gz
+      hash: md5
+      md5: e40a45d7a568fda92ab6b26549db0152
+      size: 94027809
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-07/x32_080_s0.tar.gz
+      hash: md5
+      md5: 4059ab0afc65f04a3647d5e0ac777b4c
+      size: 93841719
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-07/x32_081_s0.tar.gz
+      hash: md5
+      md5: 9f09316085a722feb75d1cbddbd827a4
+      size: 92297301
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-07/x32_082_s0.tar.gz
+      hash: md5
+      md5: da2a520a284fdd70fc28aacaa1e464a2
+      size: 93027344
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-07/x32_083_s0.tar.gz
+      hash: md5
+      md5: c47045bbcec1cc59b5541fa54a15c799
+      size: 90557451
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-07/x32_084_s0.tar.gz
+      hash: md5
+      md5: eaacf6dbf180159cd3fd390edcf0945a
+      size: 96023671
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_084_s1.tar.gz
+      hash: md5
+      md5: ef96b5f64f6cd6ab3a30a29a9fb686c7
+      size: 96167696
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_084_s2.tar.gz
+      hash: md5
+      md5: 297515f4550057c8d9eb9a167b0a28a5
+      size: 96217908
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_085_s0.tar.gz
+      hash: md5
+      md5: f7a20b1b3811f3b66e3e2be7fae93da8
+      size: 96554955
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_086_s0.tar.gz
+      hash: md5
+      md5: 704631598d7d88ff2edb2b2adbfee8e7
+      size: 96531580
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_087_s0.tar.gz
+      hash: md5
+      md5: a6d98fb844b814ae71db075bd928eb1a
+      size: 94557412
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_088_s0.tar.gz
+      hash: md5
+      md5: 634dde9244b4f1e7b3161cb1e786030f
+      size: 95253532
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_089_s0.tar.gz
+      hash: md5
+      md5: 6cae68b98b4b641a6fc4d5dc86ecf911
+      size: 93463216
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_090_s0.tar.gz
+      hash: md5
+      md5: e1f90ea23eb63c215ff542f2676d4996
+      size: 95076372
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_091_s0.tar.gz
+      hash: md5
+      md5: 4fb14bd9638a36514fb045be032546da
+      size: 91963339
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_092_s0.tar.gz
+      hash: md5
+      md5: c4007a491195a32d65a5f5eed7e841a2
+      size: 91624395
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_093_s0.tar.gz
+      hash: md5
+      md5: 684020ce2a7835ff3d4cd17b5a1154aa
+      size: 93113354
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_094_s0.tar.gz
+      hash: md5
+      md5: 0f059ba7e8a0379e3cee7f9fd5d297c9
+      size: 96019416
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-09/x32_095_s0.tar.gz
+      hash: md5
+      md5: a688cbbcdc3258fda50edc309dc583ce
+      size: 95841148
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-09/x32_095_s1.tar.gz
+      hash: md5
+      md5: 5869f43035c2c7c07601ed3ca759df75
+      size: 95757826
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-09/x32_095_s2.tar.gz
+      hash: md5
+      md5: eece9e6a13f4965b92204720f344e4f2
+      size: 95730670
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-09/x32_096_s0.tar.gz
+      hash: md5
+      md5: a682e7ab201cbeee50a3b53d35a02be0
+      size: 95036374
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-09/x32_097_s0.tar.gz
+      hash: md5
+      md5: 84e95f8bc7bc5344654102bbf5b53900
+      size: 94527154
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-09/x32_098_s0.tar.gz
+      hash: md5
+      md5: 3cf39168f26824bb8c35f8791ea2ea0f
+      size: 94611474
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-09/x32_099_s0.tar.gz
+      hash: md5
+      md5: f837f0366b9be38e18ae2c5d7ca41685
+      size: 94798190
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-09/x32_100_s0.tar.gz
+      hash: md5
+      md5: c5fe158f45b8321d08d404caea90e1d9
+      size: 96718599
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-09/x32_101_s0.tar.gz
+      hash: md5
+      md5: bfcdd6ab2c1699115fbdb275272de5dd
+      size: 96499197
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-09/x32_102_s0.tar.gz
+      hash: md5
+      md5: b3c7b2028f22f662b9fb4b625c1638f7
+      size: 96258823
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-09/x32_103_s0.tar.gz
+      hash: md5
+      md5: 3d0834a0885c0779db8a761aa4b573f5
+      size: 96474226
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-09/x32_104_s0.tar.gz
+      hash: md5
+      md5: 93f4c42ff65fe056457d57c11aa641ba
+      size: 95537458
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-10/x32_105_s0.tar.gz
+      hash: md5
+      md5: cc9b77097f0f6fcda6b7ce87a1f2522f
+      size: 95379280
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-10/x32_106_s0.tar.gz
+      hash: md5
+      md5: 73765938aa9a79e4d3a3484226620fec
+      size: 95632522
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-10/x32_107_s0.tar.gz
+      hash: md5
+      md5: dc1315bb9ed7a5e8ee580af5570fb038
+      size: 91789763
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-10/x32_108_s0.tar.gz
+      hash: md5
+      md5: 814a6b54af4b0c5f8332645e1298d5b5
+      size: 94975036
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-10/x32_109_s0.tar.gz
+      hash: md5
+      md5: 87b8b315316813cc1eb7bf0fa5b4c3a2
+      size: 95055360
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-10/x32_109_s1.tar.gz
+      hash: md5
+      md5: 17d4d22c550cb0f822ad264b67111c6f
+      size: 95020343
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-10/x32_109_s2.tar.gz
+      hash: md5
+      md5: 8333051cf6c7a1f56e24a78919f6140b
+      size: 95067127
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-10/x32_110_s0.tar.gz
+      hash: md5
+      md5: 1b32e1774bf72cd7d08c9cae1ba16343
+      size: 91847502
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-10/x32_111_s0.tar.gz
+      hash: md5
+      md5: f32e6a7b97d0909fd5e638d87312aaed
+      size: 94312409
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-10/x32_112_s0.tar.gz
+      hash: md5
+      md5: abd43697bab1b8c6fb1d923ba90cf4a0
+      size: 94562939
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-10/x32_113_s0.tar.gz
+      hash: md5
+      md5: 91c559ad198e9bac13fcb9303b373a58
+      size: 91794366
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-10/x32_114_s0.tar.gz
+      hash: md5
+      md5: 5efa8961b9a00766ef1225b4c1ee33d6
+      size: 91578388
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-11/x32_115_s0.tar.gz
+      hash: md5
+      md5: 67801687814ff04173c329b69c2df9a0
+      size: 91404755
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-11/x32_116_s0.tar.gz
+      hash: md5
+      md5: aeeecf84239d49d5dc3cf317dbdfc735
+      size: 96072267
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-11/x32_117_s0.tar.gz
+      hash: md5
+      md5: 09ef7853a2c6e2eb833751b704cc0dd6
+      size: 95493050
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-11/x32_118_s0.tar.gz
+      hash: md5
+      md5: 7a27ab4628a93c5e00f0c285fdde8fef
+      size: 95691275
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-11/x32_119_s0.tar.gz
+      hash: md5
+      md5: 31707681a0a2bedddd20c90264676ee1
+      size: 95197943
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-11/x32_120_s0.tar.gz
+      hash: md5
+      md5: d4fafc6bfe17a1f070dd6f2aeb26e747
+      size: 94621848
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-11/x32_121_s0.tar.gz
+      hash: md5
+      md5: c4973fae93a771d473bbfa9218ecaecd
+      size: 96759873
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-11/x32_122_s0.tar.gz
+      hash: md5
+      md5: 484492d3db24260e3f14172c8d0e3ed1
+      size: 96522699
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-11/x32_123_s0.tar.gz
+      hash: md5
+      md5: 636e2b110529da237d8a9aa5b1f2e526
+      size: 96300785
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-11/x32_124_s0.tar.gz
+      hash: md5
+      md5: 584c1758ca84a12962d8f7d0a77841ac
+      size: 95776603
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-11/x32_125_s0.tar.gz
+      hash: md5
+      md5: 6c468abeff1b8c186a64ef2e608c0a07
+      size: 95372622
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-11/x32_126_s0.tar.gz
+      hash: md5
+      md5: 7bb9b3b5b665b4f9b6bcff939937f675
+      size: 95824533
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-12/x32_127_s0.tar.gz
+      hash: md5
+      md5: 60a049ad0a9fdc6327ef1f10e4a0e0b5
+      size: 95083464
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-12/x32_128_s0.tar.gz
+      hash: md5
+      md5: 5f1142cac4c1fae255a0c01f69730f14
+      size: 91637889
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-12/x32_129_s0.tar.gz
+      hash: md5
+      md5: 39e3d8c96c5c44fe7ff40669b445378e
+      size: 93381701
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-12/x32_129_s1.tar.gz
+      hash: md5
+      md5: 4c3e45a2859467357462c13a37704e4f
+      size: 93108106
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-12/x32_129_s2.tar.gz
+      hash: md5
+      md5: 909b8ff5e7ecfeac5133f279846ac17a
+      size: 93374875
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-12/x32_130_s0.tar.gz
+      hash: md5
+      md5: bf6a5a0342500d13481efb0b1ac4d4b4
+      size: 91414929
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-12/x32_131_s0.tar.gz
+      hash: md5
+      md5: ea1617030a7700ae9a8c87c408d7a46a
+      size: 91497049
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-12/x32_132_s0.tar.gz
+      hash: md5
+      md5: 8e9fedc4b8c25a3a0f48d2bffb310b8a
+      size: 90843730
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-12/x32_133_s0.tar.gz
+      hash: md5
+      md5: 07acd48dfd8ed9e27e2cdd198a7f587e
+      size: 96420585
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-12/x32_134_s0.tar.gz
+      hash: md5
+      md5: 36c462e9bd1732b0bbe81f84950a3d34
+      size: 95890664
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-12/x32_135_s0.tar.gz
+      hash: md5
+      md5: 447dc65676afba73528f4c6b7affa7ae
+      size: 92020053
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-12/x32_136_s0.tar.gz
+      hash: md5
+      md5: 3e8b94f9ca96da731ec9fd268f3381ec
+      size: 95480942
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-13/x32_137_s0.tar.gz
+      hash: md5
+      md5: b7062fea526edbede72db28acab36662
+      size: 91825164
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-13/x32_138_s0.tar.gz
+      hash: md5
+      md5: 9cf269d45b962b28a3ff4ee8b9d1b81b
+      size: 93950668
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-13/x32_139_s0.tar.gz
+      hash: md5
+      md5: f32845284d7d25b2a17200f90eccbf13
+      size: 97309734
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-13/x32_140_s0.tar.gz
+      hash: md5
+      md5: 5df0998d28567fd4f018c18aa1c206a5
+      size: 96970159
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-13/x32_141_s0.tar.gz
+      hash: md5
+      md5: 5fe04ace4dd3ec6bc981a6dd4ae8cf1f
+      size: 96636018
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-13/x32_142_s0.tar.gz
+      hash: md5
+      md5: 30c15cc0a93d350bbf138eed401dcc9f
+      size: 96509492
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-13/x32_143_s0.tar.gz
+      hash: md5
+      md5: f81f077828a02eeb05a2fa18003153a3
+      size: 95504933
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-13/x32_144_s0.tar.gz
+      hash: md5
+      md5: dc192565f55c8963cc69eef13b992e94
+      size: 95409089
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-13/x32_145_s0.tar.gz
+      hash: md5
+      md5: cf9b8a32f7c3315ce76547bb56def284
+      size: 91776027
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-13/x32_146_s0.tar.gz
+      hash: md5
+      md5: d767af5b09f8f55c2bb50d0057bcc703
+      size: 90639038
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-13/x32_147_s0.tar.gz
+      hash: md5
+      md5: bebbceb2c34bb2e9b7ecab14e6bd58af
+      size: 92299877
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-13/x32_148_s0.tar.gz
+      hash: md5
+      md5: 32ff9b39120aed43b6ac4187ed394593
+      size: 96200635
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-14/x32_149_s0.tar.gz
+      hash: md5
+      md5: 2bc4eaf7e22c15b57f99cd420e06e901
+      size: 96346867
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-14/x32_150_s0.tar.gz
+      hash: md5
+      md5: 14a29003764568e4dcc7502c97cda59c
+      size: 95355890
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-14/x32_151_s0.tar.gz
+      hash: md5
+      md5: 1e7eb089906397ff8ff2454b0fdb0f77
+      size: 95667538
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-14/x32_152_s0.tar.gz
+      hash: md5
+      md5: afee388d6a44e5cca831abafbbbf5217
+      size: 91730105
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-14/x32_153_s0.tar.gz
+      hash: md5
+      md5: 189e0f019a807f1d727263c216d41e7d
+      size: 92228614
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-14/x32_153_s1.tar.gz
+      hash: md5
+      md5: 14a70cde5e78b0a372b15272fe1717e9
+      size: 92211028
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-14/x32_153_s2.tar.gz
+      hash: md5
+      md5: 9036782cedf5fc6f13141645475a2cd8
+      size: 92208250
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-14/x32_154_s0.tar.gz
+      hash: md5
+      md5: 354109226c155e02cbbbc9a91881292e
+      size: 91009610
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-14/x32_155_s0.tar.gz
+      hash: md5
+      md5: fec75d3394e905d7f802bf4d13b56ef9
+      size: 96946264
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-14/x32_156_s0.tar.gz
+      hash: md5
+      md5: 0e3e38b8d1e130e01039e3fd168cbbd1
+      size: 92240722
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-14/x32_157_s0.tar.gz
+      hash: md5
+      md5: 70f6e36850f32254b190d96db3195f81
+      size: 96682102
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-14/x32_158_s0.tar.gz
+      hash: md5
+      md5: 6d1c3dba06f995dcc8181affb16b2205
+      size: 96154972
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-15/x32_159_s0.tar.gz
+      hash: md5
+      md5: 2b218e8e5d4d7261d4b7a1f359587c36
+      size: 95097907
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-15/x32_160_s0.tar.gz
+      hash: md5
+      md5: 1492a5b2c1086207ffe074e03391bee6
+      size: 95428900
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-15/x32_161_s0.tar.gz
+      hash: md5
+      md5: 3208bbeb792811d18084a24f959a52a6
+      size: 91799683
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-15/x32_162_s0.tar.gz
+      hash: md5
+      md5: 1ccafc18678ffb0beb7c8a218d8f46b2
+      size: 91656631
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-15/x32_163_s0.tar.gz
+      hash: md5
+      md5: f62e605b69c6ceb273ffe78a6245e3bf
+      size: 93730992
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-15/x32_164_s0.tar.gz
+      hash: md5
+      md5: 45005614bc7e3418cdbdcd1cf4891ae0
+      size: 91712475
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-15/x32_165_s0.tar.gz
+      hash: md5
+      md5: b00dccab9b0a9ac7cb6688120185c7c7
+      size: 92107432
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-15/x32_166_s0.tar.gz
+      hash: md5
+      md5: 0bc2e060d9764df10d596d962b54b3ff
+      size: 93754206
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-15/x32_167_s0.tar.gz
+      hash: md5
+      md5: 2bb80ea220ce5d181e57158a63b29806
+      size: 91499182
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-15/x32_168_s0.tar.gz
+      hash: md5
+      md5: eb10372f019cb737c38b44714a6255d3
+      size: 92228705
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-15/x32_169_s0.tar.gz
+      hash: md5
+      md5: 3c15c4fad37a3d08ea050e88c95c09ad
+      size: 96078108
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-15/x32_170_s0.tar.gz
+      hash: md5
+      md5: 1169d4c4c58c853ad44cba663f684ac8
+      size: 96767518
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-16/x32_171_s0.tar.gz
+      hash: md5
+      md5: 42702beb0c8e8d1d2a2fff9c65df6f09
+      size: 92027891
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-16/x32_172_s0.tar.gz
+      hash: md5
+      md5: 57575b381ebd240835099a3819e79ffe
+      size: 93457502
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-16/x32_173_s0.tar.gz
+      hash: md5
+      md5: 92f3bc6a4b8a043b3e294b94fe6cb5b9
+      size: 91807022
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-16/x32_174_s0.tar.gz
+      hash: md5
+      md5: 5745be0ada9e328f43e45abac9e93b2f
+      size: 90652257
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-16/x32_175_s0.tar.gz
+      hash: md5
+      md5: 76834be658bcdd3e8302fb66bd768461
+      size: 97337539
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-16/x32_176_s0.tar.gz
+      hash: md5
+      md5: 50dfc6dd961097e4c832379b7b4e8855
+      size: 96192860
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-16/x32_177_s0.tar.gz
+      hash: md5
+      md5: aaf3e7e37bd25087d21018c94567b172
+      size: 96292375
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-16/x32_178_s0.tar.gz
+      hash: md5
+      md5: b0400bbf34ca51ffdc55414a4919f733
+      size: 93754700
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-16/x32_179_s0.tar.gz
+      hash: md5
+      md5: a58ef7eb86b8645f65ece26f0bf9996e
+      size: 94368403
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-16/x32_180_s0.tar.gz
+      hash: md5
+      md5: fb38b199cc7a3319c074cc1855efe643
+      size: 95617263
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-16/x32_181_s0.tar.gz
+      hash: md5
+      md5: 4cb38a43f291495bb7f0ed08fe23bc46
+      size: 95324408
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-16/x32_182_s0.tar.gz
+      hash: md5
+      md5: 9fbc2eb89ea35f3ae6b31af12a040d2d
+      size: 95121737
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-17/x32_183_s0.tar.gz
+      hash: md5
+      md5: 849ded5e1a1eba3d0f77f6a138c48246
+      size: 92319987
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-17/x32_184_s0.tar.gz
+      hash: md5
+      md5: 3689d50bd8f8960a046ea5704b153b07
+      size: 95007021
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-17/x32_185_s0.tar.gz
+      hash: md5
+      md5: de20e01c15e1d8d29a58eae1f35b1aef
+      size: 95054719
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-17/x32_186_s0.tar.gz
+      hash: md5
+      md5: 6e164b3594e834b6aad972b7473a5cc8
+      size: 91763475
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-17/x32_187_s0.tar.gz
+      hash: md5
+      md5: 3982b035586bb3b5eefb3a5a4f4c7159
+      size: 91997357
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-17/x32_188_s0.tar.gz
+      hash: md5
+      md5: 24b2c78cd170f668952bab44b46baf5e
+      size: 96652096
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-17/x32_189_s0.tar.gz
+      hash: md5
+      md5: 505fa973442d1e55fb65c8b9a533bd1c
+      size: 96342523
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-17/x32_190_s0.tar.gz
+      hash: md5
+      md5: b34f81d4600ab8e07be8c73546dd6c90
+      size: 96444316
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-17/x32_191_s0.tar.gz
+      hash: md5
+      md5: 6c058326bb71eaa21f23fccb59c38db8
+      size: 95991887
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-17/x32_192_s0.tar.gz
+      hash: md5
+      md5: 3f8dba3d22f81afe49bb3770d85c17e4
+      size: 92362014
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-17/x32_193_s0.tar.gz
+      hash: md5
+      md5: 7d578f760191babf1d2fb98a0c7adfca
+      size: 95273067
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-17/x32_194_s0.tar.gz
+      hash: md5
+      md5: dee1f7533c7a4c67951ca9f8b50efefb
+      size: 95383399
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-18/x32_195_s0.tar.gz
+      hash: md5
+      md5: b2146ed0878f73216c1f8c423fb22e09
+      size: 96565945
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-18/x32_196_s0.tar.gz
+      hash: md5
+      md5: 0f32087766dbb8ceb84ef711b63ccc71
+      size: 96527991
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-18/x32_197_s0.tar.gz
+      hash: md5
+      md5: 99a691665cf04a7dd822b15d9b2adba6
+      size: 95794576
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-18/x32_198_s0.tar.gz
+      hash: md5
+      md5: b8bef3a244f5115b9f44f00e3101faed
+      size: 92302722
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-18/x32_198_s1.tar.gz
+      hash: md5
+      md5: 724ccc2b878b30f6c2b8cc4a4ffa0723
+      size: 91980578
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-18/x32_198_s2.tar.gz
+      hash: md5
+      md5: e58c4d61398acbd965f3594f08ac91e4
+      size: 91983139
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-18/x32_199_s0.tar.gz
+      hash: md5
+      md5: ce245fe41e7edc7ee1ea783c1b4efd92
+      size: 91739210
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-18/x32_200_s0.tar.gz
+      hash: md5
+      md5: ec8090e358a775577fc55ae2c92dc186
+      size: 90903871
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-18/x32_201_s0.tar.gz
+      hash: md5
+      md5: 7969465c0b1874558678498f04dfc79e
+      size: 96764532
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-18/x32_202_s0.tar.gz
+      hash: md5
+      md5: 14adb17ee3b87e96716d09568025fc70
+      size: 96489884
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-18/x32_203_s0.tar.gz
+      hash: md5
+      md5: c5aa5663ef66b6661929e2ac56691fe3
+      size: 96218474
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-18/x32_204_s0.tar.gz
+      hash: md5
+      md5: 167785ca37d5c97cfad52acca73eda30
+      size: 92183135
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-19/x32_205_s0.tar.gz
+      hash: md5
+      md5: a0cbae19b9e1c682b5f0546b9047c6eb
+      size: 94742133
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-19/x32_206_s0.tar.gz
+      hash: md5
+      md5: f0f040dc465059ae5ff7a8ebbe312598
+      size: 95265157
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-19/x32_207_s0.tar.gz
+      hash: md5
+      md5: 0995670a6943347afe8c2ad19404a9bd
+      size: 97672706
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-19/x32_208_s0.tar.gz
+      hash: md5
+      md5: 738bf98620fe470cbb6c43e73d4b490e
+      size: 97263614
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-19/x32_209_s0.tar.gz
+      hash: md5
+      md5: b801de97acc3cb7771651cdf7a37b1f9
+      size: 96874037
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-19/x32_210_s0.tar.gz
+      hash: md5
+      md5: 22ee147ddce7e42e84184cd4d6ef3a22
+      size: 96931218
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-19/x32_211_s0.tar.gz
+      hash: md5
+      md5: 2c4f4f09fc5766f2190d346b2cda0b4e
+      size: 96581049
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-19/x32_211_s1.tar.gz
+      hash: md5
+      md5: c708305a55a685ed78809edc8e2a15e7
+      size: 96520718
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-19/x32_211_s2.tar.gz
+      hash: md5
+      md5: 74d56da68752012e8ccf10ed0430c86d
+      size: 96544388
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-19/x32_212_s0.tar.gz
+      hash: md5
+      md5: eec56e4284c6d5e551163a7c9eaa4253
+      size: 95787936
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-19/x32_213_s0.tar.gz
+      hash: md5
+      md5: 698cda1fbe554e31a9cf7dfb1883e705
+      size: 96104296
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-19/x32_214_s0.tar.gz
+      hash: md5
+      md5: 8fead61843eb0f46344fef7024d1d113
+      size: 96163705
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_215_s0.tar.gz
+      hash: md5
+      md5: b4402351312c6e6c53e542519a089a0e
+      size: 94671121
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_216_s0.tar.gz
+      hash: md5
+      md5: d689f395a97f59acef60dab0e6d601c1
+      size: 95794392
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_217_s0.tar.gz
+      hash: md5
+      md5: da2e8eba0cb25f19db3a9525ec73d8be
+      size: 95922113
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_218_s0.tar.gz
+      hash: md5
+      md5: dbdeb9d4a0b0f8f662642ca996853a85
+      size: 91930715
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_219_s0.tar.gz
+      hash: md5
+      md5: d108817d0acf802a25f511f58c4e607b
+      size: 93278586
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_220_s0.tar.gz
+      hash: md5
+      md5: e27685fb4dde9d5cc74e9585622b6c37
+      size: 91713771
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_221_s0.tar.gz
+      hash: md5
+      md5: 93e75bafee2f0852b986fb1491cf37f6
+      size: 92261679
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_222_s0.tar.gz
+      hash: md5
+      md5: f585a7b614f44cf8decf81ba2ea732be
+      size: 96165029
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_223_s0.tar.gz
+      hash: md5
+      md5: 4671c5e3f07cd150de6f4da46a059853
+      size: 94310422
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_224_s0.tar.gz
+      hash: md5
+      md5: b4e6a085be38ef01cb0fc5570d682d6a
+      size: 97919476
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_225_s0.tar.gz
+      hash: md5
+      md5: e96e1552ff3ff88fa6725b755e13ff69
+      size: 97573604
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-20/x32_226_s0.tar.gz
+      hash: md5
+      md5: 754590ab8faeb6ea95fd8d033502a39f
+      size: 97160819
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-21/x32_227_s0.tar.gz
+      hash: md5
+      md5: 97e862c0fdef315e5d935c9caf9f8890
+      size: 97211639
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-21/x32_228_s0.tar.gz
+      hash: md5
+      md5: f78f02572fd0f55a6af04e124567473c
+      size: 96731125
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-21/x32_229_s0.tar.gz
+      hash: md5
+      md5: eb739c5c500702e8ef3a9737a5410f07
+      size: 92217715
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-21/x32_230_s0.tar.gz
+      hash: md5
+      md5: 19b4303f674207fc0a0a6628ba11b2bd
+      size: 96002272
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-21/x32_231_s0.tar.gz
+      hash: md5
+      md5: 6d545a929557991534b3c6be57b0e4fb
+      size: 92105476
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-21/x32_232_s0.tar.gz
+      hash: md5
+      md5: 898d93cd11ad803081c060530b45fe53
+      size: 95102920
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-21/x32_233_s0.tar.gz
+      hash: md5
+      md5: 63de3744df0d56bcbae6132b839936fd
+      size: 94418643
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-21/x32_234_s0.tar.gz
+      hash: md5
+      md5: f9ef2fade1893166ec5e568a63dff242
+      size: 91948982
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-21/x32_235_s0.tar.gz
+      hash: md5
+      md5: 0c869ef20974526dcf6eccc1cf23a973
+      size: 92680567
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-21/x32_236_s0.tar.gz
+      hash: md5
+      md5: 84c698fb084cd49d00c6a2a7a72ab78e
+      size: 94263592
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-21/x32_237_s0.tar.gz
+      hash: md5
+      md5: 861c094385169ca451eea8183b96d932
+      size: 91680065
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-21/x32_238_s0.tar.gz
+      hash: md5
+      md5: 4c215c5866a13f1f85944f214ad82d6b
+      size: 91458585
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_239_s0.tar.gz
+      hash: md5
+      md5: 9f8546c9e6621f22b6a84998141906ef
+      size: 90860688
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_240_s0.tar.gz
+      hash: md5
+      md5: 18e819ef6343e6d3c3895f04ace2b13b
+      size: 96898896
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_241_s0.tar.gz
+      hash: md5
+      md5: 6ad5e6699e2f32f7e15ce8d62145582e
+      size: 96827364
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_242_s0.tar.gz
+      hash: md5
+      md5: f4bcb8120b628d7427c719b8fd514f51
+      size: 92258943
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_243_s0.tar.gz
+      hash: md5
+      md5: a6d6a128c69589f7218b7b639328f29c
+      size: 94904246
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_243_s1.tar.gz
+      hash: md5
+      md5: f724404366ce9f7c6ab88a9292feb98d
+      size: 95467879
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_243_s2.tar.gz
+      hash: md5
+      md5: 72fe02c742b30d20059934838a5dd5e8
+      size: 94872207
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_244_s0.tar.gz
+      hash: md5
+      md5: 2e38f3fd809a61f04057dd8238b0aa24
+      size: 96385416
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_245_s0.tar.gz
+      hash: md5
+      md5: 1a0cde8feea9cc6fbf0d73029c3bfcbe
+      size: 91999816
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_246_s0.tar.gz
+      hash: md5
+      md5: 8f8213d16ae249cd920bb03f0876e511
+      size: 93432443
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_247_s0.tar.gz
+      hash: md5
+      md5: eb9c0faae7155049d678d63e5ac5255d
+      size: 97891159
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-22/x32_248_s0.tar.gz
+      hash: md5
+      md5: 773afc3cc1d073b73cb6ea737ed23615
+      size: 97397216
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_249_s0.tar.gz
+      hash: md5
+      md5: f54ccbe798623d6f60e6a94e5fb95b7f
+      size: 92593578
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_250_s0.tar.gz
+      hash: md5
+      md5: 8b5d55b45b2fa5e09f44c292ab6fa7b4
+      size: 97593014
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_251_s0.tar.gz
+      hash: md5
+      md5: 7f830ce916233ce545e1ec0d2895f3ef
+      size: 97035226
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_252_s0.tar.gz
+      hash: md5
+      md5: e46c2eee4cfcc20a6f6c398705c6f31e
+      size: 94263700
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_253_s0.tar.gz
+      hash: md5
+      md5: 672ff3b6c5516acf74c02896f5099d1b
+      size: 92115357
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_254_s0.tar.gz
+      hash: md5
+      md5: 9705ca6e6cc6321e90278d8705fc9239
+      size: 94244675
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_255_s0.tar.gz
+      hash: md5
+      md5: 22b883765e3f2e7d86d7d39af9aa9c11
+      size: 92001571
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_256_s0.tar.gz
+      hash: md5
+      md5: a83b0bc58ad003bdcf5fdaba0c94b2ac
+      size: 92650347
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_257_s0.tar.gz
+      hash: md5
+      md5: e28bda87201dc34615fae06b19fa0267
+      size: 94296009
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_258_s0.tar.gz
+      hash: md5
+      md5: ad0327326b3c1c6ed7fc4d7831f18df9
+      size: 90893474
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_259_s0.tar.gz
+      hash: md5
+      md5: 3a907ff5f4abff12562c73e1b65793a0
+      size: 97197171
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_260_s0.tar.gz
+      hash: md5
+      md5: b99e4e25d0376a1e743db7585f80df35
+      size: 92297711
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_261_s0.tar.gz
+      hash: md5
+      md5: 7423aff2d4a395aeeed8d8c1d60dd99c
+      size: 94183538
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_262_s0.tar.gz
+      hash: md5
+      md5: 1defdfea5b4c97cd3145866d03feeaa7
+      size: 91989844
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_263_s0.tar.gz
+      hash: md5
+      md5: f37f0b274d2fde3b360cdd5e78015a87
+      size: 91038883
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_264_s0.tar.gz
+      hash: md5
+      md5: 781b18bfbff232829ee30746bd612364
+      size: 98524200
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_265_s0.tar.gz
+      hash: md5
+      md5: 9eb43c908c54e4307e95e6f8d4f4ad83
+      size: 92606616
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_266_s0.tar.gz
+      hash: md5
+      md5: e8758fe60174756f20f3ce7387ca9e46
+      size: 97212009
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_267_s0.tar.gz
+      hash: md5
+      md5: a0053ca2d10635700dd734c1d4b10404
+      size: 92228940
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_268_s0.tar.gz
+      hash: md5
+      md5: 6d6ea5353bfac5f17dbce59b11b8030f
+      size: 93641495
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_269_s0.tar.gz
+      hash: md5
+      md5: 54ec1b0df282b8d93311f2963bae4980
+      size: 95087015
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_270_s0.tar.gz
+      hash: md5
+      md5: 47e20885a5ecc5e06f5228b77346bbc7
+      size: 96155283
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_271_s0.tar.gz
+      hash: md5
+      md5: 4e17f78850a3f56c3950abdd65bf870e
+      size: 95966035
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_272_s0.tar.gz
+      hash: md5
+      md5: f6c05f9b447143fe0b7093cc26ccd865
+      size: 95722870
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-25/x32_273_s0.tar.gz
+      hash: md5
+      md5: b5a208212f04bb33c9ededd10a9ea711
+      size: 95594898
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-25/x32_274_s0.tar.gz
+      hash: md5
+      md5: b2c760f4b244d8901580b51be15db469
+      size: 95666516
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-25/x32_275_s0.tar.gz
+      hash: md5
+      md5: 3e029499aa305ba741ae787aa141fa59
+      size: 91932438
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-25/x32_276_s0.tar.gz
+      hash: md5
+      md5: 2d5760785b1f2a953dea778561d17ee6
+      size: 92935214
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-25/x32_277_s0.tar.gz
+      hash: md5
+      md5: 8ae8417625bc3d86ba1574d882845bbb
+      size: 91138042
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-25/x32_278_s0.tar.gz
+      hash: md5
+      md5: 5895cbd22b7421422b836f268d0cf944
+      size: 96926147
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-25/x32_279_s0.tar.gz
+      hash: md5
+      md5: 8c448b5532fb1bf06c6a7e0f4176a4b7
+      size: 97189337
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-25/x32_280_s0.tar.gz
+      hash: md5
+      md5: c253946f8d26e50bdedf2bd5c49a74c1
+      size: 96543395
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-25/x32_281_s0.tar.gz
+      hash: md5
+      md5: ebe9a42f896847f87e9bec9df2b26525
+      size: 96176127
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-25/x32_282_s0.tar.gz
+      hash: md5
+      md5: 94520c79373c3e6d1986bea37657518a
+      size: 95759266
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-25/x32_282_s1.tar.gz
+      hash: md5
+      md5: 3dfc17049761c1545631fd4cb86f5b75
+      size: 95749710
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-25/x32_282_s2.tar.gz
+      hash: md5
+      md5: 076367b2bef4b533af47570846567fe3
+      size: 95550862
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_283_s0.tar.gz
+      hash: md5
+      md5: b949f840526ed8fd8c49be93b5940404
+      size: 95796085
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_284_s0.tar.gz
+      hash: md5
+      md5: c37434b0754715cfd7466012209a298f
+      size: 97217041
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_285_s0.tar.gz
+      hash: md5
+      md5: 81f592d7644b6327254bd7a145582e95
+      size: 97436281
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_285_s1.tar.gz
+      hash: md5
+      md5: 0b271734015961fd347049f8ab850016
+      size: 97397765
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_285_s2.tar.gz
+      hash: md5
+      md5: 4a9a4c1ede6283123dd802fe2b21492a
+      size: 97470867
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_286_s0.tar.gz
+      hash: md5
+      md5: 49d58caec3a0ab7f8c00ade245faa791
+      size: 96848627
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_287_s0.tar.gz
+      hash: md5
+      md5: 7496e196bd06ff9ce741b70120d98e5a
+      size: 96955580
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_288_s0.tar.gz
+      hash: md5
+      md5: dc9b04cdaf39968a6b33ed0428f4c1c4
+      size: 97002967
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_289_s0.tar.gz
+      hash: md5
+      md5: 192bc3f46e0bb892b0ebae2692f2ecf1
+      size: 96327619
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_290_s0.tar.gz
+      hash: md5
+      md5: 4354275c6e4230d7b3b2495b94f0b596
+      size: 95909588
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_291_s0.tar.gz
+      hash: md5
+      md5: ebf9039cafc49f3bbd43905ca2c12acf
+      size: 92274496
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-26/x32_292_s0.tar.gz
+      hash: md5
+      md5: 8f5f097a174c6e06b64a37fa134fec08
+      size: 94818513
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-27/x32_293_s0.tar.gz
+      hash: md5
+      md5: 315936385ee2138630298920cb8fe609
+      size: 95922526
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-27/x32_294_s0.tar.gz
+      hash: md5
+      md5: f1d5d2dd502a820b4792b8c41eae6b23
+      size: 92031131
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-27/x32_295_s0.tar.gz
+      hash: md5
+      md5: f0da8f688aeb9e7aa25ca6682b22b914
+      size: 91112708
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-27/x32_296_s0.tar.gz
+      hash: md5
+      md5: 4a2be74b8e2a75007ca1eb8480883ebf
+      size: 97238938
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-27/x32_297_s0.tar.gz
+      hash: md5
+      md5: 6f30f550ab1f955e990147ce8b67f211
+      size: 97042818
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-27/x32_298_s0.tar.gz
+      hash: md5
+      md5: eff1e85439d3a0bf4bf80e2e91558099
+      size: 96710259
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-27/x32_299_s0.tar.gz
+      hash: md5
+      md5: f5984b8740e6b69ee7ef064b0a961560
+      size: 92743737
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-27/x32_300_s0.tar.gz
+      hash: md5
+      md5: a53d1fd15a085f825abd1106ed4fb469
+      size: 96841006
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-27/x32_301_s0.tar.gz
+      hash: md5
+      md5: 229477ff88bcc04ca13a57acf716b965
+      size: 96613811
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-27/x32_302_s0.tar.gz
+      hash: md5
+      md5: eef02bb5111ee58eeee4e32e54ac3abb
+      size: 95733873
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-27/x32_303_s0.tar.gz
+      hash: md5
+      md5: aaa6a08fcdb2836339b513195dc8ec1f
+      size: 97934592
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-27/x32_304_s0.tar.gz
+      hash: md5
+      md5: 37b25357c407801f9bcc24f4acd09ccf
+      size: 97454139
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-28/x32_305_s0.tar.gz
+      hash: md5
+      md5: 73fa3f40d06bdb4c7a3f82c24e4ac07c
+      size: 97399849
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-28/x32_306_s0.tar.gz
+      hash: md5
+      md5: 7617abe3edca6552957a8d8b10db28f3
+      size: 97084041
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-28/x32_307_s0.tar.gz
+      hash: md5
+      md5: f97946a6967b5242c7143b669f59bf8e
+      size: 92759744
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-28/x32_308_s0.tar.gz
+      hash: md5
+      md5: f14e633618d9888faa05a1db5f14a7ba
+      size: 96436983
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-28/x32_309_s0.tar.gz
+      hash: md5
+      md5: d8d697ca004d99634016fd1a5c165b49
+      size: 96757651
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-28/x32_310_s0.tar.gz
+      hash: md5
+      md5: 785dfd223f2b3ac93ced4149d07c8c91
+      size: 96470786
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-28/x32_311_s0.tar.gz
+      hash: md5
+      md5: 605a7e4e6d702b92451ad33d587dbfea
+      size: 96158419
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-28/x32_312_s0.tar.gz
+      hash: md5
+      md5: e7e3145b4497aed483a731cc0928fa87
+      size: 94219871
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-28/x32_313_s0.tar.gz
+      hash: md5
+      md5: 266e6c7c5bb33bf20b4f48b7e71b74f6
+      size: 91846779
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-28/x32_314_s0.tar.gz
+      hash: md5
+      md5: 82c6ffdb25a3c704f9f277cecf0fe951
+      size: 91628504
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-28/x32_315_s0.tar.gz
+      hash: md5
+      md5: 5fdbe4d2d3cee4fc4c5c65c4026d1d24
+      size: 97409661
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-28/x32_316_s0.tar.gz
+      hash: md5
+      md5: e5b26d26a92c13678b8fa766edd6a7ea
+      size: 97208746
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-29/x32_317_s0.tar.gz
+      hash: md5
+      md5: 63bad2075466832e09b3fefb84b42c85
+      size: 97097850
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-29/x32_318_s0.tar.gz
+      hash: md5
+      md5: feb487a7532a1a9c996a5ab00c375daa
+      size: 96785324
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-29/x32_319_s0.tar.gz
+      hash: md5
+      md5: c7319bdd3b14d13cdbb00d2a07fe0206
+      size: 96725648
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-29/x32_320_s0.tar.gz
+      hash: md5
+      md5: ec04a2898d1846dcf526f90957021383
+      size: 95191812
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-29/x32_321_s0.tar.gz
+      hash: md5
+      md5: ad8468c029a0d59c323ef40f92f11cb2
+      size: 91315599
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-29/x32_322_s0.tar.gz
+      hash: md5
+      md5: bd8a9ba60ce713936a545604f6dc2f55
+      size: 98139004
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-29/x32_323_s0.tar.gz
+      hash: md5
+      md5: 5fd759d184f4bc1c191960fc9daff7af
+      size: 98013498
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-29/x32_324_s0.tar.gz
+      hash: md5
+      md5: ef817f1329e03603eb50196d50a89dd3
+      size: 97611525
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-29/x32_325_s0.tar.gz
+      hash: md5
+      md5: a8ed10aa1c8bfc84a4b68ee372b575db
+      size: 92872547
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-29/x32_326_s0.tar.gz
+      hash: md5
+      md5: cdf6f65f953bcf5b8bc3f68a7babffb4
+      size: 96421439
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-29/x32_327_s0.tar.gz
+      hash: md5
+      md5: adb632572ef92b0392c8aa7071c683c6
+      size: 92620512
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-29/x32_328_s0.tar.gz
+      hash: md5
+      md5: 23694a3a4df1bbceb5ecceb334d6a857
+      size: 94398872
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-30/x32_329_s0.tar.gz
+      hash: md5
+      md5: 8cccd56b6615d04cad847c0b29f7ccb3
+      size: 95090131
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-30/x32_330_s0.tar.gz
+      hash: md5
+      md5: 7083c080a4cb6e96b33f7a49982324ad
+      size: 92255672
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-30/x32_331_s0.tar.gz
+      hash: md5
+      md5: 3ca4eb32bb96b74aaba78e778bee8b60
+      size: 93207054
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-30/x32_332_s0.tar.gz
+      hash: md5
+      md5: f032eb1e157830e474712e1d1bf3f1dc
+      size: 94831005
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-30/x32_333_s0.tar.gz
+      hash: md5
+      md5: 2e200f8a0c88e8255ad91e74792fcfd1
+      size: 91829156
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-30/x32_334_s0.tar.gz
+      hash: md5
+      md5: 46d7e75d914d0914dd84a80f7f68bdb8
+      size: 91713049
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-30/x32_335_s0.tar.gz
+      hash: md5
+      md5: 74e8a17733d0d6d1de31dc070e789e00
+      size: 97706343
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-30/x32_336_s0.tar.gz
+      hash: md5
+      md5: b7e6c92174a2b17844c47a7d40bcc1a6
+      size: 97208797
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-30/x32_337_s0.tar.gz
+      hash: md5
+      md5: 6061958bda4241981d4892cc91dc49a1
+      size: 96390963
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-30/x32_338_s0.tar.gz
+      hash: md5
+      md5: 26347840c03ab03b3dd28addd62d9726
+      size: 97033062
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-30/x32_339_s0.tar.gz
+      hash: md5
+      md5: 67659d3477e6a9e3471c07a1fcea2467
+      size: 92361921
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-30/x32_340_s0.tar.gz
+      hash: md5
+      md5: 9b4091124f6e388572a76d1a49d2d039
+      size: 98393083
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-31/x32_341_s0.tar.gz
+      hash: md5
+      md5: 295cf69c34dc6ccbf64be8d667fbc0d7
+      size: 98071087
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-31/x32_342_s0.tar.gz
+      hash: md5
+      md5: 9029f814507054e466ebcbc0ab9e24ea
+      size: 92582374
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-31/x32_344_s0.tar.gz
+      hash: md5
+      md5: f968477c637c1500b95a7bca695f3622
+      size: 92923446
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-31/x32_345_s0.tar.gz
+      hash: md5
+      md5: 73e94c5183a0d1a21b37b550e74c3fdf
+      size: 94792415
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-31/x32_346_s0.tar.gz
+      hash: md5
+      md5: 489dc8a83cd74a10573da3ceb608f6e3
+      size: 91558240
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-31/x32_347_s0.tar.gz
+      hash: md5
+      md5: 3bbd1eaea7e7f5e83b306bc85c1efacd
+      size: 97747706
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-31/x32_348_s0.tar.gz
+      hash: md5
+      md5: aa2453a66e6ee71e25d2624f31882f8c
+      size: 92651672
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-31/x32_349_s0.tar.gz
+      hash: md5
+      md5: ca3f94fd6fe24f6e4fbe6d96cbcaef85
+      size: 95213761
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-31/x32_350_s0.tar.gz
+      hash: md5
+      md5: 152b47d9a2c6bb9e7fd9a5cfb9696dfe
+      size: 97167001
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-31/x32_351_s0.tar.gz
+      hash: md5
+      md5: f7fba25785ed55306192fd435592f2fb
+      size: 92278903
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-31/x32_352_s0.tar.gz
+      hash: md5
+      md5: 5ee50252589a0efbd79ad41490704331
+      size: 92126203
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-31/x32_353_s0.tar.gz
+      hash: md5
+      md5: 957e9c10dfa607263e1e7654ff23eba2
+      size: 98708324
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_354_s0.tar.gz
+      hash: md5
+      md5: dbafeb15c6322309394f5d5580e47429
+      size: 93004214
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_355_s0.tar.gz
+      hash: md5
+      md5: 0344640487085f29aa32e3bcf7b5bb1a
+      size: 97815437
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_356_s0.tar.gz
+      hash: md5
+      md5: f2fe6879aecf68ce0c462cd3cfbb33c8
+      size: 98009109
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_357_s0.tar.gz
+      hash: md5
+      md5: aa0b3551c08cd42054cc5ab4ef5b1304
+      size: 92553042
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_358_s0.tar.gz
+      hash: md5
+      md5: ea3de81599635e5d12808868ab8f2d04
+      size: 92599691
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_359_s0.tar.gz
+      hash: md5
+      md5: 6dbf5139c25ed6637f22cbe5e72f24e5
+      size: 91659975
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_360_s0.tar.gz
+      hash: md5
+      md5: 821a629fbdd3c2dbc0a15ebca9bb0a42
+      size: 93418433
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_361_s0.tar.gz
+      hash: md5
+      md5: 70811a468b1e873e203b470c6791b096
+      size: 94254687
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_362_s0.tar.gz
+      hash: md5
+      md5: 53c6c62176b135ee7ab69e67d57afab3
+      size: 92667044
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_363_s0.tar.gz
+      hash: md5
+      md5: a6ad8ca288c9d5643a0d3d6481bf0d84
+      size: 96327731
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_364_s0.tar.gz
+      hash: md5
+      md5: 504c1871bdcc752f7dd93aba80e79060
+      size: 93751362
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-32/x32_365_s0.tar.gz
+      hash: md5
+      md5: f902091290080a479c2c59cfde83cd11
+      size: 94556230
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_366_s0.tar.gz
+      hash: md5
+      md5: 16c909626a3045584c4045e12035c67e
+      size: 93138829
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_367_s0.tar.gz
+      hash: md5
+      md5: c34688aec87eb04896d992aff3299db8
+      size: 94347455
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_368_s0.tar.gz
+      hash: md5
+      md5: 91fa627f6baebb057e2d8526cf8fc878
+      size: 95391255
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_369_s0.tar.gz
+      hash: md5
+      md5: a83dd86db9b47712aa6a695627fc7b11
+      size: 91787746
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_370_s0.tar.gz
+      hash: md5
+      md5: 63c747974bc99c7e9baf473c10cf9716
+      size: 96006175
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_371_s0.tar.gz
+      hash: md5
+      md5: cd6489cd0c8c79b179ab5475ea24c42e
+      size: 97004095
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_372_s0.tar.gz
+      hash: md5
+      md5: 054257ca16178b841d7a644be553647d
+      size: 96259313
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_373_s0.tar.gz
+      hash: md5
+      md5: 4a898a26adc0a6e2f524f9bac20ec15a
+      size: 92492837
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_374_s0.tar.gz
+      hash: md5
+      md5: 9a5cb7eab90f87fa9ea2e20d11ec9ba8
+      size: 92085251
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_375_s0.tar.gz
+      hash: md5
+      md5: 1b90b0b1cbf1f11514a7e5eeaea7c94a
+      size: 95663514
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_376_s0.tar.gz
+      hash: md5
+      md5: aecdc74b9bcb9bf4829493263e815406
+      size: 96014031
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-33/x32_377_s0.tar.gz
+      hash: md5
+      md5: bb279d569d89e3b7276b087a7faacb51
+      size: 96790778
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_377_s1.tar.gz
+      hash: md5
+      md5: 01e390c45e123799129a986184d4fa37
+      size: 96790828
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_377_s2.tar.gz
+      hash: md5
+      md5: 682b63dd82598cdf1ab9b974bbb60015
+      size: 96885146
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_378_s0.tar.gz
+      hash: md5
+      md5: 933230c2b1216b510b7c143b498a0012
+      size: 96081429
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_379_s0.tar.gz
+      hash: md5
+      md5: 36df7cb1300ccd0a8e5a46dbcfd1e12a
+      size: 94481173
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_380_s0.tar.gz
+      hash: md5
+      md5: 1f16c8ff56e4c9b1295ce0b4deb4e916
+      size: 96560639
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_381_s0.tar.gz
+      hash: md5
+      md5: 21b140e3901cbc6237c3d4a2487648b8
+      size: 91950651
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_381_s1.tar.gz
+      hash: md5
+      md5: 517137587253aca7a9cd38b9d8c0b8e4
+      size: 91976083
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_381_s2.tar.gz
+      hash: md5
+      md5: 4c5197e8f0d168b37ec5c34b784e8aa2
+      size: 91848724
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_382_s0.tar.gz
+      hash: md5
+      md5: d8a481c786bcf3031f8bd7765d7b9c9d
+      size: 92547505
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_383_s0.tar.gz
+      hash: md5
+      md5: 674f594ea145627607d928533b30ddc9
+      size: 97734211
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_384_s0.tar.gz
+      hash: md5
+      md5: 78bd837ac8d44b61b7a0f3a00116d129
+      size: 97138722
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-34/x32_385_s0.tar.gz
+      hash: md5
+      md5: ac7247d9a3c6787141c3161399ede1ed
+      size: 95569206
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_386_s0.tar.gz
+      hash: md5
+      md5: 2787ccc3ff486cdc439665f4bf863ee7
+      size: 92139115
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_386_s1.tar.gz
+      hash: md5
+      md5: 597dd824ef80475919679b3752b4b7ec
+      size: 92235098
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_386_s2.tar.gz
+      hash: md5
+      md5: 388227820b54af3f633bfc518bedf17f
+      size: 92283377
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_387_s0.tar.gz
+      hash: md5
+      md5: d2555802c8a31de2b4b2bac8ba8ed89a
+      size: 91031853
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_388_s0.tar.gz
+      hash: md5
+      md5: 684f52a213cd163540d3381991d1518c
+      size: 92310034
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_388_s1.tar.gz
+      hash: md5
+      md5: c3b6575cf6ff66648b8fd5fcc75cefb1
+      size: 92333144
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_388_s2.tar.gz
+      hash: md5
+      md5: 47dc5c3f6072b4112f4e1aabdc1d01a6
+      size: 92200583
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_389_s0.tar.gz
+      hash: md5
+      md5: 4c7840d9ffc93df195bdc5cde42133e8
+      size: 96670519
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_390_s0.tar.gz
+      hash: md5
+      md5: 4b31ca52503fb1caf5fb0313b4c48ea6
+      size: 92249415
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-development-35/x32_391_s0.tar.gz
+      hash: md5
+      md5: 498bbcd1ceb8e496a12271f2ede51f04
+      size: 97581110
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-36/x32_392_s0.tar.gz
+      hash: md5
+      md5: 725be36ef4d07255e08760d4f2da13a4
+      size: 93270165
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-36/x32_393_s0.tar.gz
+      hash: md5
+      md5: 5c53e18117fdc63fa4a1106caaf2d9af
+      size: 94213700
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-36/x32_394_s0.tar.gz
+      hash: md5
+      md5: 7e22f280d93d3d6716743a3d0595da7d
+      size: 92238466
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-36/x32_395_s0.tar.gz
+      hash: md5
+      md5: 976f62be0e2029f6bf6c11b4009e6766
+      size: 92731859
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-36/x32_396_s0.tar.gz
+      hash: md5
+      md5: 944f5182392326842cd6153a5639bba3
+      size: 95667261
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-36/x32_396_s1.tar.gz
+      hash: md5
+      md5: aa7edc05fd10bcd0837df68344a7975e
+      size: 95601197
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-36/x32_396_s2.tar.gz
+      hash: md5
+      md5: 30671bbbe621f457ef909921c549553d
+      size: 95619082
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-36/x32_397_s0.tar.gz
+      hash: md5
+      md5: fbaf9fdaaeffdbd062b5c2ea35dc17de
+      size: 90465328
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-36/x32_398_s0.tar.gz
+      hash: md5
+      md5: ecf92f8071d24fa8149639efc62f5e8e
+      size: 93746898
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-36/x32_399_s0.tar.gz
+      hash: md5
+      md5: cf31914b73805796006d653daf55a536
+      size: 91233006
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-36/x32_400_s0.tar.gz
+      hash: md5
+      md5: 7fd2010f1afcc35178036a2e0ca40b55
+      size: 94890101
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-36/x32_400_s1.tar.gz
+      hash: md5
+      md5: b4c07c835ee5a4b5153b76460c8ea8d7
+      size: 94870859
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-37/x32_400_s2.tar.gz
+      hash: md5
+      md5: d42ee325c4a7bfab8c459102c65f0f86
+      size: 94806168
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-37/x32_401_s0.tar.gz
+      hash: md5
+      md5: 64517c3134ed446b590543dd1007ad31
+      size: 90610372
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-37/x32_402_s0.tar.gz
+      hash: md5
+      md5: 45c1191aaeda8cc54a56e66ae8b8a704
+      size: 94346008
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-37/x32_403_s0.tar.gz
+      hash: md5
+      md5: 4d5ba82a76132ed5e50fc7ebc5d8f33f
+      size: 94436482
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-37/x32_404_s0.tar.gz
+      hash: md5
+      md5: 2111186fcb543d29d5143541821dc180
+      size: 96292702
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-37/x32_405_s0.tar.gz
+      hash: md5
+      md5: 59706f6b0003a1e30f7c37fc3d1ed2b2
+      size: 96513526
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-37/x32_406_s0.tar.gz
+      hash: md5
+      md5: 8f6d3be323e92dbbd407f57f44b10ba2
+      size: 95912016
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-37/x32_407_s0.tar.gz
+      hash: md5
+      md5: e02eaac5d83cf17221a59aed6b051e54
+      size: 92052415
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-37/x32_408_s0.tar.gz
+      hash: md5
+      md5: 387fc92349c84d1934e54acbc51f919b
+      size: 91627578
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-37/x32_409_s0.tar.gz
+      hash: md5
+      md5: 65e835c591df742f480cc8b94e96ab7c
+      size: 94080221
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-37/x32_410_s0.tar.gz
+      hash: md5
+      md5: 9fd6d64b63e293b403d605522d02305a
+      size: 91257582
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-37/x32_410_s1.tar.gz
+      hash: md5
+      md5: 401800b55b11fcf40b17329ae743e5bc
+      size: 91306497
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-38/x32_410_s2.tar.gz
+      hash: md5
+      md5: fcce04376dd41a7dc7ea438bf2069fe6
+      size: 91309265
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-38/x32_411_s0.tar.gz
+      hash: md5
+      md5: 962fb1e63db7c92761aa9b697368d03b
+      size: 92199649
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-38/x32_412_s0.tar.gz
+      hash: md5
+      md5: 64daaecd8a54e632be39919ad3592c91
+      size: 96231489
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-38/x32_413_s0.tar.gz
+      hash: md5
+      md5: ea4e4a458cbafa80e56a713eb13f1a43
+      size: 95501888
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-38/x32_414_s0.tar.gz
+      hash: md5
+      md5: 106d5575cf77f6de583a6eba7eb0feed
+      size: 91892080
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-38/x32_415_s0.tar.gz
+      hash: md5
+      md5: 95a13479945c9b592c7b36df0f98c26a
+      size: 95835875
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-38/x32_416_s0.tar.gz
+      hash: md5
+      md5: 8c608e29e2cf3aecf5561fe5b54d8584
+      size: 96796288
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-38/x32_417_s0.tar.gz
+      hash: md5
+      md5: 28887d78b323508e1cf5409be3f25065
+      size: 97413182
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-38/x32_418_s0.tar.gz
+      hash: md5
+      md5: 588e0fa6d54c0fef688127ba8f4f6607
+      size: 97057807
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-38/x32_419_s0.tar.gz
+      hash: md5
+      md5: 2ed80b33e254930f3ed4cd972f612307
+      size: 97039417
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-38/x32_420_s0.tar.gz
+      hash: md5
+      md5: 816cc641a0fc6a15fa693da6498270b4
+      size: 96524175
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-38/x32_421_s0.tar.gz
+      hash: md5
+      md5: 95bb20ba1a22ad17521270810598ca1c
+      size: 92121365
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-39/x32_422_s0.tar.gz
+      hash: md5
+      md5: 5f5713d552ea1f93d8ef0e38c3f76263
+      size: 96622481
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-39/x32_423_s0.tar.gz
+      hash: md5
+      md5: 5872e5d65d474a42fa982f0ea7ec8686
+      size: 97465885
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-39/x32_424_s0.tar.gz
+      hash: md5
+      md5: 289a18720640f0c6e6bdb832743d6f11
+      size: 91729499
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-39/x32_425_s0.tar.gz
+      hash: md5
+      md5: 7d6e59175da7804455c339946613dc35
+      size: 98334920
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-39/x32_426_s0.tar.gz
+      hash: md5
+      md5: f9cf5c2e37c0de85d5717631c4992bee
+      size: 92638339
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-39/x32_427_s0.tar.gz
+      hash: md5
+      md5: f77f151828a0e9491b9728a6cf87025f
+      size: 97805522
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-39/x32_428_s0.tar.gz
+      hash: md5
+      md5: 1b9048631eac4b01ce53baec2c5883fd
+      size: 92533360
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-39/x32_429_s0.tar.gz
+      hash: md5
+      md5: 1a1626ef62d7c1a279ec9a20e0c6ab16
+      size: 97643886
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-39/x32_430_s0.tar.gz
+      hash: md5
+      md5: e25cac88ba4fd2633e5ccac9de151f25
+      size: 98000991
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-39/x32_431_s0.tar.gz
+      hash: md5
+      md5: e267f19bae88f9608b30f33e27a15bb2
+      size: 91241025
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-39/x32_431_s1.tar.gz
+      hash: md5
+      md5: cd5b49e4c7ec89a89d5e980c040e16d5
+      size: 91193702
+    - path: 
+        ../../32_tree_expansion/data/cloud_archive/x32-test-39/x32_431_s2.tar.gz
+      hash: md5
+      md5: c1f059239ebac8f0310a06eac43059a8
+      size: 91222846
+    - path: fields.py
+      hash: md5
+      md5: f19d24f4acb704f353e3e71e449791c9
+      size: 2897
+    - path: fortran_records.py
+      hash: md5
+      md5: 47c5b62759ee16bfc7cfe36934e16ac2
+      size: 711
+    - path: inventory.json
+      hash: md5
+      md5: 415e701a05241aa417d609a44b20748d
+      size: 564764
+    - path: material_reader.py
+      hash: md5
+      md5: abfdcb198f6ca238a558e65d2f3aebca
+      size: 2709
+    - path: prepare.py
+      hash: md5
+      md5: c7563a164fd5f4741b7afe7a4e2a5af1
+      size: 6339
+    outs:
+    - path: data/states
+      hash: md5
+      md5: 1f7afa4c84ed40407238079fa5c85641.dir
+      size: 160397839
+      nfiles: 521
+    - path: results/prepared.json
+      hash: md5
+      md5: de2440072c884e1534c54ab337b0abe2
+      size: 159
+  validate:
+    cmd: ../../../.venv/bin/python validate.py
+    deps:
+    - path: data/states
+      hash: md5
+      md5: 1f7afa4c84ed40407238079fa5c85641.dir
+      size: 160397839
+      nfiles: 521
+    - path: inventory.json
+      hash: md5
+      md5: 415e701a05241aa417d609a44b20748d
+      size: 564764
+    - path: validate.py
+      hash: md5
+      md5: 89649db030e24cef11aa66a8263aee2a
+      size: 2367
+    outs:
+    - path: results/validation.json
+      hash: md5
+      md5: a5808a4ac74d0e443254e82e23bf77e4
+      size: 84724

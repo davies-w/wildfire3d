@@ -4,6 +4,7 @@ import json,io
 import numpy as np
 import torch
 from model import Transition,normalize_fit
+torch.set_num_threads(4)
 R=Path(__file__).resolve().parent;meta=json.loads((R/'schema.json').read_text());a=np.load(R/'data/sequences.npz');raw=torch.tensor(a['state']);mask=torch.tensor(a['mask']);config=torch.tensor(a['configuration']);scale=torch.tensor(meta['physical_encoding_scales'])
 assert raw.shape==(520,91,52) and a['geometry'].shape==(520,10)
 seen=[]
@@ -18,14 +19,18 @@ for h in [1,8]:
  counts=np.zeros(90,int)
  for j in range(0,90,h):counts[j:min(j+h,90)]+=1
  assert np.all(counts==1)
-(R/'results/preflight.json').write_text(json.dumps(dict(passed=True,local_training=False,histories=520,configurations=480,state_shape=[520,91,52],model_input_features=65,model_output_features=52,parameters=sum(p.numel() for p in m.parameters()),checks=['all cases each test exactly once','physical configurations disjoint 384/48/48','test perturbation leaves train normalization unchanged','initial persistence exact','nonzero direct gradients','serialization replay exact','every training transition covered once at horizons1and8']),indent=2));print('PREFLIGHT PASSED: no local optimization')
 # Exercise the exact worker evaluation functions on CPU without executing its training loop.
 import ast
-source=ast.parse((R/'worker.py').read_text());wanted={'mean_groups','objective','predictions','evaluate'};nodes=[n for n in source.body if isinstance(n,ast.FunctionDef) and n.name in wanted]
+source=ast.parse((R/'worker.py').read_text());wanted={'mean_groups','objective','feedback','predictions','evaluate'};nodes=[n for n in source.body if isinstance(n,ast.FunctionDef) and n.name in wanted]
 ns=dict(torch=torch,config=config,raw=raw,mask=mask,scale=scale,meta=meta,times=torch.tensor(a['time']))
 dt=ns['times'][:,1:]-ns['times'][:,:-1];on=(20-ns['times'][:,:-1]).clamp_min(0).minimum(dt)/dt;g=torch.tensor(a['geometry']);ns['external']=torch.cat([g[:,None,:].expand(-1,90,-1),torch.full_like(dt[:,:,None],.2),on[:,:,None],dt[:,:,None]/2],-1)
 exec(compile(ast.Module(body=nodes,type_ignores=[]),'worker-evaluation-check','exec'),ns)
 ids=torch.tensor(meta['rotations'][0]['train']);mean,std=normalize_fit(raw,mask,ids,config,scale);z=torch.where(mask.bool(),(torch.asinh(raw/scale)-mean)/std,torch.zeros_like(raw))
 out=ns['evaluate'](m,z,ids[:3],mean,std,True);assert out['rollout']['finite'] and len(out['rollout']['cases'])==3
 assert len(out['rollout']['physical_MAE_by_feature'])==52
+m.zero_grad();state=z[ids[:3],0];loss=0
+for j in range(8):
+ predicted=m(state,ns['external'][ids[:3],j]);loss=loss+ns['objective'](predicted,z[ids[:3],j+1],mask[ids[:3],j+1]).mean();state=ns['feedback'](predicted,mean,std)
+loss.backward();assert all(p.grad is None or torch.isfinite(p.grad).all() for p in m.parameters())
 print('Exact worker metric and rollout functions passed CPU inference check')
+(R/'results/preflight.json').write_text(json.dumps(dict(passed=True,local_training=False,histories=520,configurations=480,state_shape=[520,91,52],model_input_features=65,model_output_features=52,parameters=sum(p.numel() for p in m.parameters()),checks=['all cases each test exactly once','physical configurations disjoint 384/48/48','test perturbation leaves train normalization unchanged','initial persistence exact','nonzero direct gradients','serialization replay exact','every training transition covered once at horizons1and8']),indent=2));print('PREFLIGHT PASSED: no local optimization')

@@ -7,8 +7,9 @@ class Transition(nn.Module):
   nn.init.zeros_(self.net[-1].weight);nn.init.zeros_(self.net[-1].bias)
  def forward(self,state,external):return state+self.net(torch.cat([state,external],-1))*(external[:,-1:])
 def normalize_fit(raw,mask,ids,config,scale):
- # Configuration-balanced, training-only moments. Replicas divide their configuration weight.
+ # Configuration-balanced, training-only moments; each observed configuration/feature has unit weight.
  x=torch.asinh(raw/scale);w=mask[ids].clone()
- for c in torch.unique(config[ids]):w[config[ids]==c]/=(config[ids]==c).sum()
+ for c in torch.unique(config[ids]):
+  selected=config[ids]==c;w[selected]/=w[selected].sum((0,1)).clamp_min(1)
  den=w.sum((0,1)).clamp_min(1);mean=(x[ids]*w).sum((0,1))/den;std=(((x[ids]-mean).square()*w).sum((0,1))/den).sqrt().clamp_min(.05)
  return mean,std

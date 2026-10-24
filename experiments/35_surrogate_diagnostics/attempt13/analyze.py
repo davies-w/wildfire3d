@@ -14,6 +14,14 @@ for ax,fold,test in zip(axs.flat,r['folds'],r['tests']):
  ax.axvline(fold['selected_epoch'],ls='--',color='black',lw=.8);ax.set(title=f"Fold{fold['fold']} | {fold['stop_reason']}",xlabel='epoch',ylabel='Autonomous rollout normalized MSE');ax.set_yscale('symlog',linthresh=.001);ax.grid(alpha=.2);ax.legend(fontsize=8)
  summary.append(dict(fold=fold['fold'],epochs=fold['epochs'],selected_epoch=fold['selected_epoch'],stop_reason=fold['stop_reason'],test_rollout_objective=test['metrics']['rollout']['objective'],persistence_rollout_objective=test['persistence']['rollout']['objective'],test_one_step_objective=test['metrics']['one_step']['objective'],negative_gas_HRR_fraction=test['metrics']['rollout']['negative_gas_HRR_fraction'],invalid_active_covariance_fraction=test['metrics']['rollout']['invalid_active_covariance_fraction']))
 fig.tight_layout();fig.savefig(out/'ten-fold-learning-curves.png',dpi=150);plt.close(fig)
+for feature_index,name in enumerate(schema['state_names']):
+ fig,axs=plt.subplots(2,5,figsize=(20,7))
+ for ax,fold in zip(axs.flat,r['folds']):
+  h=fold['history']
+  for split,color in [('train','#1779a8'),('validation','#d67324')]:
+   vals=[v[split]['rollout'].get('physical_MAE_by_feature') for v in h];ax.plot([v['epoch'] for v in h],[x[feature_index] if x is not None else np.nan for x in vals],label=split,color=color)
+  ax.axvline(fold['selected_epoch'],ls='--',color='black',lw=.7);ax.set(title=f"Fold{fold['fold']}",xlabel='epoch');ax.grid(alpha=.2)
+ fig.suptitle(name+' | autonomous rollout MAE in recorded physical units');axs.flat[0].legend();fig.tight_layout();fig.savefig(out/f'feature-{feature_index:02}.png',dpi=110);plt.close(fig)
 rows=[row for t in r['tests'] for row in t['metrics']['rollout']['cases']];assert len(rows)==520 and len({v['case'] for v in rows})==520
 groups={}
 for v in rows:groups.setdefault(v['configuration'],[]).append(v)
