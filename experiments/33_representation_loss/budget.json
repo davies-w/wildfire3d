@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 0,
+  "reserved_usd": 6,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -503,6 +503,21 @@
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu35-min15/executions/e940b24e-1b78-481f-95db-b52779469795",
       "completed_unix": 1792825724.449016,
       "historical_allowance_usd": 3
+    },
+    "memory35-16": {
+      "state": "submitted",
+      "allowance_usd": 6,
+      "reserved_unix": 1792828562.3788722,
+      "compute_allowance_usd": 4.4,
+      "ancillary_cleanup_allowance_usd": 1.6,
+      "cost": {
+        "stage": "pre_run_estimate",
+        "expected_usd": [
+          2,
+          4.5
+        ]
+      },
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu35-memory16/executions/5e80472a-eb3c-45b9-b65c-6b4041971e77"
     }
   },
   "recycle_reservations": true,

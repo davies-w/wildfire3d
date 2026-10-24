@@ -93,3 +93,31 @@ stages:
       hash: md5
       md5: 25e81831bc67228765430c129ffbbb05
       size: 796
+  cloud_submit:
+    cmd: ../../../.venv/bin/python launch.py
+    deps:
+    - path: ../../../scripts/reconcile_runtime_costs.py
+      hash: md5
+      md5: 52728e3afe03080fd332ce40c8dfa59c
+      size: 6826
+    - path: cloud.py
+      hash: md5
+      md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
+      size: 597
+    - path: data/pilot-overlay.tar
+      hash: md5
+      md5: 88716b9a49b900f6426d421b33b9b7da
+      size: 880640
+    - path: gpu-workflow.yaml
+      hash: md5
+      md5: 4b88df560831426947710f01942d84e8
+      size: 8630
+    - path: launch.py
+      hash: md5
+      md5: d0f3fe6e096dab1e9696711605c4fee0
+      size: 3249
+    outs:
+    - path: results/execution.json
+      hash: md5
+      md5: cd383a56615d618e861916c297c6c5a0
+      size: 333
