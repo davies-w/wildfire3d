@@ -1,0 +1,9 @@
+{
+  "cause": "torch.load(map_location=cuda) moved saved CUDA RNG ByteTensors onto GPU; torch.cuda.set_rng_state_all requires CPU ByteTensors. restore_rng did not call cpu() on each CUDA RNG state.",
+  "training_resumed": false,
+  "transport_cloud_checks_passed": true,
+  "cuda_forward_backward_checks_passed": true,
+  "checkpoint_intact": "../attempt16/data/collected/fold15-epoch373.pt",
+  "repair": "Convert each saved CUDA RNG state to CPU before set_rng_state_all; run actual saved-checkpoint RNG replay and optimizer/model restoration on GPU before fitting.",
+  "new_job_submitted": false
+}
