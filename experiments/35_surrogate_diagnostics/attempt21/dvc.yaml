@@ -2,15 +2,25 @@ stages:
   extract_spatial:
     cmd: ../../../.venv/bin/python prepare.py
     deps:
-      - prepare.py
-      - material_reader.py
-      - fortran_records.py
-      - ../attempt12/inventory.json
-      - ../attempt12/data/states
-      - ../attempt19/data/thermal_candidates.npz
+    - prepare.py
+    - material_reader.py
+    - fortran_records.py
+    - ../attempt12/inventory.json
+    - ../attempt12/data/states
+    - ../attempt19/data/thermal_candidates.npz
     outs:
-      - data/cases
-      - data/spatial_candidates.npz
+    - data/cases
+    - data/spatial_candidates.npz
     metrics:
-      - results/audit.json:
-          cache: false
+    - results/audit.json:
+        cache: false
+  validation_residuals:
+    cmd: ../../../.venv/bin/python validation_residuals.py
+    deps:
+    - validation_residuals.py
+    - data/spatial_candidates.npz
+    - ../attempt20/schema.json
+    - ../attempt20/data/sequences.npz
+    - ../attempt20/data/collected
+    outs:
+    - data/validation_residuals

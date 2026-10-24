@@ -42,3 +42,33 @@ stages:
       hash: md5
       md5: 511f8e4085c5b28e0ca8388dd035fd86
       size: 163450
+  validation_residuals:
+    cmd: ../../../.venv/bin/python validation_residuals.py
+    deps:
+    - path: ../attempt20/data/collected
+      hash: md5
+      md5: 4013549f9c6d168c65b49139aa03fc9c.dir
+      size: 2254351365
+      nfiles: 9751
+    - path: ../attempt20/data/sequences.npz
+      hash: md5
+      md5: 1bde7a6a93c4646c6c620478ddc4f9bd
+      size: 807269
+    - path: ../attempt20/schema.json
+      hash: md5
+      md5: 3f1d8636dc7c20f3aa3ed5cbb7735204
+      size: 174781
+    - path: data/spatial_candidates.npz
+      hash: md5
+      md5: f0f2fa06b626ec05a43721b0928761d0
+      size: 1826300
+    - path: validation_residuals.py
+      hash: md5
+      md5: 0faabb3a0275bcbdb037b774ec461f4a
+      size: 4537
+    outs:
+    - path: data/validation_residuals
+      hash: md5
+      md5: 293c78aa9389055ce3a6b7fed0dbb7e7.dir
+      size: 400441
+      nfiles: 1

@@ -1,0 +1,68 @@
+{
+  "experiment": "Matched four-state scalar versus seven-state spatial-heating GRU",
+  "seed": 3516,
+  "state_features": 7,
+  "history_steps": 4,
+  "external_features": 9,
+  "input_features": 37,
+  "epochs_max": 400,
+  "warmup_epochs": 20,
+  "sequence_horizon_steps": 32,
+  "batch_windows": 256,
+  "learning_rate": 0.0003,
+  "minimum_epochs": 100,
+  "patience_epochs": 30,
+  "improvement_relative": 0.001,
+  "improvement_absolute": 1e-05,
+  "selection": "Minimum original-three-state autonomous validation MSE; extra thermal state excluded from selection score. All20 selections frozen before test.",
+  "test": "All20 selections frozen before either architecture tests; same ten grouped rotations; test not historically pristine",
+  "training_balance": "Within each TRAIN history, active and quiet transitions share equal total weight if both exist; replica-balanced. Active means release>1e-6kg/s OR absolute water/fuel change>1e-5kg per step.",
+  "evaluation": "Unweighted full histories, active and quiet separately; train-defined normalization only",
+  "history": "four states ending at current time; repeat initial state for missing history, never future truth",
+  "architecture": "BothGRU37->32->7; scalar maskslast3history/readoutchannels effective25inputs4outputs, spatial37inputs7outputs. Sameinitializedparameters.",
+  "physics": "Unconstrained raw predictions; report negative values and mass increases; no silent physical clipping",
+  "budget": {
+    "expected_usd": [
+      2,
+      4.5
+    ],
+    "maximum_allowance_usd": 8,
+    "task_seconds": 21600,
+    "vm_seconds": 21900,
+    "absolute_seconds": 23400,
+    "soft_seconds": 20400,
+    "queue_seconds": 1200
+  },
+  "arms": [
+    "scalar",
+    "spatial"
+  ],
+  "horizon_curriculum": [
+    {
+      "first_epoch": 1,
+      "steps": 1
+    },
+    {
+      "first_epoch": 21,
+      "steps": 8
+    },
+    {
+      "first_epoch": 41,
+      "steps": 16
+    },
+    {
+      "first_epoch": 61,
+      "steps": 32
+    }
+  ],
+  "evaluation_horizons": [
+    1,
+    4,
+    8,
+    16,
+    45
+  ],
+  "burn_in": "GRU memory initialized zero; teacher-forced prefix up to each training window recomputed with current parameters under no_grad; gradients within window only. Full autonomous evaluation uses predicted states from initial time, never true future states.",
+  "thermal_loss": "Original4channel loss unchanged with1/3weight each; add each normalized spatial component squared error at1/3. Tests spatial observations plus spatial supervision, not isolated causality. Select ONLY original3state validation.",
+  "stage3_decision": "Validation-only: scalar improves gasrelease but residual remains; spatial offset y modest absolute-error Spearman.202 afterwithin-time heatingdecilecentering, signedassociationweak; confoundingpossible. JustifiesONE controlledablation,notpresumptionofbenefit. No test scores used to choose this addition."
+}

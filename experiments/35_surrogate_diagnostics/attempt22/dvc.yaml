@@ -1,0 +1,75 @@
+stages:
+  prepare_data:
+    cmd: ../../../.venv/bin/python prepare.py
+    deps:
+    - prepare.py
+    - ../attempt20/data/sequences.npz
+    - ../attempt20/schema.json
+    - ../attempt21/data/spatial_candidates.npz
+    outs:
+    - data/sequences.npz
+    - schema.json:
+        cache: false
+  package:
+    cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python validate_transport.py
+      && ../../../.venv/bin/python prepare_pilot.py
+    deps:
+    - validate.py
+    - prepare_pilot.py
+    - worker.py
+    - model.py
+    - runtime.py
+    - launch.py
+    - collect.py
+    - cloud.py
+    - coverage-plan.json
+    - schema.json
+    - data/sequences.npz
+    - ../../32_tree_expansion/gpu-workflow.yaml
+    - validate_transport.py
+    outs:
+    - data/pilot-overlay.tar
+    - gpu-workflow.yaml:
+        cache: false
+    - results/input-freeze.json:
+        cache: false
+    - results/preflight.json:
+        cache: false
+    metrics:
+    - results/transport-preflight.json:
+        cache: false
+  cloud_submit:
+    cmd: ../../../.venv/bin/python launch.py
+    deps:
+    - launch.py
+    - cloud.py
+    - gpu-workflow.yaml
+    - data/pilot-overlay.tar
+    - ../../../scripts/reconcile_runtime_costs.py
+    metrics:
+    - results/execution.json:
+        cache: false
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - collect.py
+    - cloud.py
+    - results/execution.json
+    outs:
+    - data/collected
+    metrics:
+    - results/cleanup.json:
+        cache: false
+    - results/permission-removed.json:
+        cache: false
+  analysis:
+    cmd: ../../../.venv/bin/python analyze.py
+    deps:
+    - analyze.py
+    - schema.json
+    - data/collected
+    outs:
+    - data/visuals
+    metrics:
+    - results/analysis.json:
+        cache: false

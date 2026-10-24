@@ -1,0 +1,4 @@
+from pathlib import Path
+import numpy as np,json
+R=Path(__file__).resolve().parent;a=np.load(R.parent/'attempt20/data/sequences.npz');v=np.load(R.parent/'attempt21/data/spatial_candidates.npz');assert np.array_equal(a['time'],v['time']);data={k:a[k] for k in a.files};data['state']=np.concatenate([a['state'],v['values'][:,:,2:]],-1).astype('float32');assert data['state'].shape==(520,91,7);np.savez_compressed(R/'data/sequences.npz',**data)
+s=json.loads((R.parent/'attempt20/schema.json').read_text());s['state_names']+=['surface_heating_moment_x_Km','surface_heating_moment_y_Km','surface_heating_moment_z_Km'];s['physical_encoding_scales']+=[100.,100.,100.];s['model_input_shape']=[None,37];s['model_output_shape']=[None,7];s['comparison']='Same32-memory GRUs; scalar masks3spatial channels, spatial enables3surfaceheating moments relative to measuredinitialmasscentroid. No energy or heatflow claim.';(R/'schema.json').write_text(json.dumps(s,indent=2))

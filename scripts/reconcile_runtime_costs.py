@@ -9,7 +9,7 @@ G=str(Path.home()/'.local/google-cloud-sdk/bin/gcloud')
 rates={('g2-standard-4','STANDARD'):.706832276,('g2-standard-4','SPOT'):(1.14/3.41+4*.21/13.81+16*.10/55.26),('c3-standard-4','SPOT'):(4*5.45/410.6+16*2.48/1642.51)}
 def reconcile():
  query='resource.type="gce_instance" AND (protoPayload.methodName="v1.compute.instances.insert" OR protoPayload.methodName="v1.compute.instances.delete") AND timestamp>="2026-10-15T00:00:00Z"'
- events=json.loads(subprocess.check_output([G,'logging','read',query,'--project=tmrw-wildfire-20261015','--limit=5000','--format=json(timestamp,protoPayload.methodName,protoPayload.resourceName,protoPayload.request.machineType,protoPayload.request.scheduling,protoPayload.status,operation)'],text=True));assert len(events)<5000,'Inventory may be truncated'
+ events=json.loads(subprocess.check_output([G,'logging','read',query,'--project=tmrw-wildfire-20261015','--limit=5000','--format=json(timestamp,protoPayload.methodName,protoPayload.resourceName,protoPayload.request.machineType,protoPayload.request.scheduling,protoPayload.request.labels,protoPayload.status,operation)'],text=True));assert len(events)<5000,'Inventory may be truncated'
  groups={}
  for e in events:groups.setdefault(e['protoPayload']['resourceName'],[]).append(e)
  records=[]
@@ -24,7 +24,7 @@ def reconcile():
    if not dels:continue
    deletion=min(dels,key=stamp);starts=[e for e in es if e.get('operation',{}).get('id')==deletion['operation']['id']];end=min(starts,key=stamp);hours=(stamp(end)-stamp(endinsert)).total_seconds()/3600
    assert hours>=0 and key in rates,(name,key,hours)
-   records.append(dict(vm=name.split('/')[-1],machine=machine,provisioning=provision,hours=hours,start=endinsert['timestamp'],end=end['timestamp'],estimated_compute_usd=hours*rates[key]))
+   records.append(dict(vm=name.split('/')[-1],trial_id=req.get('labels',{}).get('trial_id'),machine=machine,provisioning=provision,hours=hours,start=endinsert['timestamp'],end=end['timestamp'],estimated_compute_usd=hours*rates[key]))
  assert records
  D.mkdir(exist_ok=True);(D/'vm-runtime.json').write_text(json.dumps(records,indent=2)+'\n')
  # Export has not yet backfilled; these are the independently observed project report totals.
@@ -38,7 +38,7 @@ def reconcile():
   fcntl.flock(f,fcntl.LOCK_EX);b=json.loads(B.read_text());b.setdefault('historical_allowances_usd',b['reserved_usd']);b['accounting_policy']='Expected estimate -> measured-runtime cost estimate -> posted charge, preserving history. Historical maximum allowances are not spend. Supersedes retained-allowance accounting by explicit user instruction.';b['recycle_reservations']=True;b['accounting']=result
   for key,res in b['reservations'].items():
    workflow=res.get('execution','').split('/workflows/')[-1].split('/executions/')[0]
-   match=[r for r in records if workflow and r['vm'].startswith(workflow+'-')]
+   match=[r for r in records if workflow and (r.get('trial_id')==workflow.removeprefix('fds-') or r['vm'].startswith(workflow+'-'))]
    if match:res['cost']=dict(stage='runtime_estimate',usd=sum(r['estimated_compute_usd'] for r in match),vm_hours=sum(r['hours'] for r in match),scope='compute only; shared cost at project level',resources=[r['vm'] for r in match]);res['historical_allowance_usd']=res['allowance_usd']
    if match and billed:
     # Only replace when identifiable resource records cover each allocation's whole interval
