@@ -121,3 +121,32 @@ stages:
       hash: md5
       md5: cd383a56615d618e861916c297c6c5a0
       size: 333
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
+      size: 597
+    - path: collect.py
+      hash: md5
+      md5: 57f271190ac2a44bbd803137a9e28f9d
+      size: 3295
+    - path: results/execution.json
+      hash: md5
+      md5: cd383a56615d618e861916c297c6c5a0
+      size: 333
+    outs:
+    - path: data/collected
+      hash: md5
+      md5: 2ed0936fc1821e5723f7c10c54003f50.dir
+      size: 1650247851
+      nfiles: 7778
+    - path: results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: results/permission-removed.json
+      hash: md5
+      md5: f164d80ad4054a9d2050e6c0c4933c6d
+      size: 56
