@@ -84,3 +84,13 @@ stages:
     metrics:
     - results/analysis.json:
         cache: false
+  validation_burn_audit:
+    cmd: ../../../.venv/bin/python validation_burn_audit.py
+    deps:
+    - validation_burn_audit.py
+    - model.py
+    - schema.json
+    - data/sequences.npz
+    - data/collected
+    outs:
+    - data/validation_burn_audit

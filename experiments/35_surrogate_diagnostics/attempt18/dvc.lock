@@ -220,3 +220,33 @@ stages:
       hash: md5
       md5: 916457d8f4619b863fa1d640a9a5fa97
       size: 2423641
+  validation_burn_audit:
+    cmd: ../../../.venv/bin/python validation_burn_audit.py
+    deps:
+    - path: data/collected
+      hash: md5
+      md5: e071b26ea32b44572173e85a135de6a7.dir
+      size: 300393284
+      nfiles: 1517
+    - path: data/sequences.npz
+      hash: md5
+      md5: d558c37997b6e5d31e37fe848ad6eac2
+      size: 627552
+    - path: model.py
+      hash: md5
+      md5: b5040a977ad91bbd9d2e478804cbd57a
+      size: 1254
+    - path: schema.json
+      hash: md5
+      md5: 998e00ce0e44c581a01753238862ea0f
+      size: 174702
+    - path: validation_burn_audit.py
+      hash: md5
+      md5: fb93d7319e86d90a3d0037a156d63869
+      size: 5325
+    outs:
+    - path: data/validation_burn_audit
+      hash: md5
+      md5: ed71b9626dfa43354b45ae257ae501da.dir
+      size: 2220717
+      nfiles: 2
