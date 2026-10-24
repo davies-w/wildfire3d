@@ -1,0 +1,78 @@
+{
+  "definition": "100 * configuration-balanced MAE / configuration-balanced mean absolute true next-state value. Ratio of means, not mean per-point percentage; zero release states retained. Each of ten folds has 48 configurations; replicas averaged first. One-step predictions use observed past history. Not error relative to the state increment.",
+  "features": [
+    "water_kg",
+    "dry_fuel_kg",
+    "fuel_gas_release_kg_s"
+  ],
+  "windows": {
+    "full": {
+      "mean_absolute_true_state": [
+        3.6572504238858023,
+        22.49482688974244,
+        0.10048747972773175
+      ],
+      "MAE": [
+        0.019500659219920634,
+        0.19328191503882408,
+        0.03057435154914856
+      ],
+      "normalized_MAE_percent": [
+        0.5332054674889154,
+        0.8592282838458292,
+        30.426030816962452
+      ]
+    },
+    "ignition": {
+      "mean_absolute_true_state": [
+        6.706445650014752,
+        41.063388944647194,
+        0.4091722297526837
+      ],
+      "MAE": [
+        0.08300644457340241,
+        1.0862929582595826,
+        0.15785585343837738
+      ],
+      "normalized_MAE_percent": [
+        1.237711433227224,
+        2.6454050339680646,
+        38.57931745118439
+      ]
+    },
+    "post_source_to90": {
+      "mean_absolute_true_state": [
+        3.4666136114833828,
+        21.35503115884191,
+        0.15317809441171354
+      ],
+      "MAE": [
+        0.022605939768254757,
+        0.161884668469429,
+        0.03778345063328743
+      ],
+      "normalized_MAE_percent": [
+        0.6521043964453123,
+        0.758063368137029,
+        24.66635374881523
+      ]
+    },
+    "after90": {
+      "mean_absolute_true_state": [
+        3.2057184977754574,
+        19.729083239468,
+        1.9522459071657977e-06
+      ],
+      "MAE": [
+        0.0047128991689533,
+        0.04245156273245811,
+        0.00018626405217219143
+      ],
+      "normalized_MAE_percent": [
+        0.1470153780571725,
+        0.2151725055705266,
+        9541.013838907367
+      ]
+    }
+  }
+}

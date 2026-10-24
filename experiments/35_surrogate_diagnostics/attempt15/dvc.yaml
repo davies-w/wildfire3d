@@ -76,3 +76,12 @@ stages:
     metrics:
     - results/analysis.json:
         cache: false
+  percentage_errors:
+    cmd: ../../../.venv/bin/python percentage_errors.py
+    deps:
+    - percentage_errors.py
+    - data/collected
+    - data/sequences.npz
+    metrics:
+    - results/percentage-errors.json:
+        cache: false

@@ -208,3 +208,24 @@ stages:
       hash: md5
       md5: d858c3ec16be14f64fd4fb399e5f0909
       size: 986521
+  percentage_errors:
+    cmd: ../../../.venv/bin/python percentage_errors.py
+    deps:
+    - path: data/collected
+      hash: md5
+      md5: 22dbae66a863bf246100aa5d7ff9b048.dir
+      size: 673635814
+      nfiles: 3632
+    - path: data/sequences.npz
+      hash: md5
+      md5: d558c37997b6e5d31e37fe848ad6eac2
+      size: 627552
+    - path: percentage_errors.py
+      hash: md5
+      md5: f0a0f53e0e38a131a7e4440d9cf19873
+      size: 1832
+    outs:
+    - path: results/percentage-errors.json
+      hash: md5
+      md5: c6e69f8a0da176a011e4662c76e79451
+      size: 2005
