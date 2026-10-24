@@ -1,0 +1,44 @@
+schema: '2.0'
+stages:
+  extract_spatial:
+    cmd: ../../../.venv/bin/python prepare.py
+    deps:
+    - path: ../attempt12/data/states
+      hash: md5
+      md5: 1f7afa4c84ed40407238079fa5c85641.dir
+      size: 160397839
+      nfiles: 521
+    - path: ../attempt12/inventory.json
+      hash: md5
+      md5: 415e701a05241aa417d609a44b20748d
+      size: 564764
+    - path: ../attempt19/data/thermal_candidates.npz
+      hash: md5
+      md5: 8e9e13ba1709879496316e8fd9a55cc8
+      size: 735602
+    - path: fortran_records.py
+      hash: md5
+      md5: 47c5b62759ee16bfc7cfe36934e16ac2
+      size: 711
+    - path: material_reader.py
+      hash: md5
+      md5: abfdcb198f6ca238a558e65d2f3aebca
+      size: 2709
+    - path: prepare.py
+      hash: md5
+      md5: 44b51f036067bede4a8f88584743d9a5
+      size: 3702
+    outs:
+    - path: data/cases
+      hash: md5
+      md5: 376a56cecfddda4317a0ad009de36b1d.dir
+      size: 2557121
+      nfiles: 520
+    - path: data/spatial_candidates.npz
+      hash: md5
+      md5: f0f2fa06b626ec05a43721b0928761d0
+      size: 1826300
+    - path: results/audit.json
+      hash: md5
+      md5: 511f8e4085c5b28e0ca8388dd035fd86
+      size: 163450
