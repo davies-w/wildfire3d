@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "local_training": false,
+  "histories": 520,
+  "configurations": 480,
+  "input_features": 21,
+  "outputs": 3,
+  "history_steps": 4,
+  "parameters": 5763,
+  "checks": [
+    "configuration-disjoint folds; all520 test once",
+    "train-only normalization invariant to test changes",
+    "initial persistence",
+    "nonzero output gradient",
+    "8-step BPTT finite",
+    "serialization exact",
+    "autonomous rollout independent of future truth",
+    "all90 transitions covered",
+    "physical metrics exercised"
+  ]
+}

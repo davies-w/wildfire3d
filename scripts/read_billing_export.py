@@ -39,13 +39,14 @@ def main():
           SUM(cost) AS gross_cost,
           SUM(IFNULL((SELECT SUM(c.amount) FROM UNNEST(credits) c),0)) AS credits,
           SUM(cost + IFNULL((SELECT SUM(c.amount) FROM UNNEST(credits) c),0)) AS net_cost,
+          MIN(usage_start_time) AS first_usage_start, MAX(usage_end_time) AS last_usage_end,
           MAX(export_time) AS latest_export_time
         FROM `{PROJECT}.{DATASET}.{TABLE}`
         WHERE project.id = '{PROJECT}' AND usage_start_time >= TIMESTAMP('{args.start}')
           AND usage_start_time < TIMESTAMP('{args.end}')
         GROUP BY 1,2,3,4,5,6,7,8 ORDER BY 1,3,4,6'''
         rows = json.loads(run('query', '--use_legacy_sql=false', '--maximum_bytes_billed=1000000000', '--max_rows=1000000', query))
-        result.update(status='posted_costs_subject_to_adjustment', costs=rows)
+        result.update(status='posted_costs_subject_to_adjustment' if rows else 'awaiting_records_for_period', costs=rows if rows else None)
     output = json.dumps(result, indent=2) + '\n'
     if args.output:
         args.output.write_text(output)

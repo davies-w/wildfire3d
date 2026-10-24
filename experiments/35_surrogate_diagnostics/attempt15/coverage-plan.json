@@ -1,0 +1,36 @@
+{
+  "experiment": "three-state water/fuel/fuel-gas sequence transition",
+  "seed": 3515,
+  "state_features": 3,
+  "history_steps": 4,
+  "external_features": 9,
+  "input_features": 21,
+  "epochs_max": 400,
+  "warmup_epochs": 20,
+  "sequence_horizon_steps": 8,
+  "batch_windows": 256,
+  "learning_rate": 0.0003,
+  "minimum_epochs": 50,
+  "patience_epochs": 30,
+  "improvement_relative": 0.001,
+  "improvement_absolute": 1e-05,
+  "selection": "Minimum configuration-balanced full autonomous validation MSE across all trained epochs; patience resets at epoch21",
+  "test": "All ten selections frozen before any test scoring; each configuration tested once",
+  "training_balance": "Within each TRAIN history, active and quiet transitions share equal total weight if both exist; replica-balanced. Active means release>1e-6kg/s OR absolute water/fuel change>1e-5kg per step.",
+  "evaluation": "Unweighted full histories, active and quiet separately; train-defined normalization only",
+  "history": "four states ending at current time; repeat initial state for missing history, never future truth",
+  "architecture": "21 -> 64 SiLU -> 64 SiLU -> 3 residual; output increment scaled by dt/2",
+  "physics": "Unconstrained raw predictions; report negative values and mass increases; no silent physical clipping",
+  "budget": {
+    "expected_usd": [
+      0.5,
+      1.2
+    ],
+    "maximum_allowance_usd": 3,
+    "task_seconds": 10800,
+    "vm_seconds": 11100,
+    "absolute_seconds": 12600,
+    "soft_seconds": 9900,
+    "queue_seconds": 1200
+  }
+}
