@@ -1,0 +1,16 @@
+stages:
+  extract_spatial:
+    cmd: ../../../.venv/bin/python prepare.py
+    deps:
+      - prepare.py
+      - material_reader.py
+      - fortran_records.py
+      - ../attempt12/inventory.json
+      - ../attempt12/data/states
+      - ../attempt19/data/thermal_candidates.npz
+    outs:
+      - data/cases
+      - data/spatial_candidates.npz
+    metrics:
+      - results/audit.json:
+          cache: false

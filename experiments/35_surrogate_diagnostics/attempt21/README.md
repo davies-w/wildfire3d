@@ -1,0 +1,9 @@
+# Spatial heating observability, stage3 preparation
+
+Local extraction only, no training or new simulation. User authorized staged evaluation. Scalar controlled comparison is attempt20; its validation, not tests, will inform whether a further spatial comparison is justified.
+
+Existing gas-plume centroids are influenced by imposed ignition and undefined in cold frames. Instead audit particle surface-heating first moments from all520 raw archives: sum(mass * max(surfaceT-20C,0) * (position-reference)) / initialmass. Reference is the measured initial vegetation mass centroid in each simulation. Three components have unitsK m. This is heating-location asymmetry, not energy transport, a plume velocity, or a plume length. It is zero when heating vanishes and avoids an undefined normalized centroid. An arrow would point from the initial material centroid toward hotter material; it must not be portrayed as heat flowing along that arrow.
+
+Retain signed scalar and positive scalar separately; reconstruct signed scalar against stage19 to within0.002K and preserve raw SHA256 and actual particle time alignment. Per-case caching permits interruption without repeating extraction; full raw archives unchanged. Initial particle center is observed near timezero; source samples about2s apart, alignment<=0.21s. Remaining weighted particle mass includes char/ash; this is not exact internal storedenergy. Shape and temperature distribution beyond its first moment remain omitted.
+
+No automatic addition of these three states. Assess meaningful variation and original-state validation residual association first, without future-time information, then a matched no-vector/vector comparison only if justified. Added states and loss/selection definitions must be explicit. No selection from held-out test scores.
