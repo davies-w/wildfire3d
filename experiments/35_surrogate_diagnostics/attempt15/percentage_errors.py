@@ -9,7 +9,7 @@ r=json.loads((R/'data/collected/report.json').read_text())
 z=np.load(R/'data/sequences.npz');state=z['state'].astype(float);time=z['time'];config=z['configuration']
 rows={}
 for window in ['full','ignition','post_source_to90','after90']:
- bases=[];errors=[]
+ bases=[];errors=[];previous_errors=[];initial_errors=[]
  for test in r['tests']:
   f=test['fold'];ids=np.load(R/f'data/collected/fold{f:02}-test-predictions.npz')['case_indices']
   t=time[ids,1:];truth=np.abs(state[ids,1:])
@@ -19,7 +19,13 @@ for window in ['full','ignition','post_source_to90','after90']:
   base=np.mean([percase[config[ids]==c].mean(0) for c in np.unique(config[ids])],axis=0)
   m=test['metrics']['one_step'];mae=m['physical_MAE_by_feature'] if window=='full' else m['physical_MAE_by_window'][window]
   bases.append(base);errors.append(mae)
+  for prediction,destination in [(state[ids,:-1],previous_errors),(state[ids,0:1],initial_errors)]:
+   percase=(np.abs(prediction-state[ids,1:])*mask[:,:,None]).sum(1)/n[:,None]
+   destination.append(np.mean([percase[config[ids]==c].mean(0) for c in np.unique(config[ids])],axis=0))
  base=np.mean(bases,axis=0);mae=np.mean(errors,axis=0)
  rows[window]={'mean_absolute_true_state':base.tolist(),'MAE':mae.tolist(),'normalized_MAE_percent':(100*mae/base).tolist()}
+ for label,values in [('previous_state',previous_errors),('initial_state',initial_errors)]:
+  baseline=np.mean(values,axis=0)
+  rows[window][label]={'MAE':baseline.tolist(),'normalized_MAE_percent':(100*baseline/base).tolist(),'model_error_reduction_percent':(100*(1-mae/baseline)).tolist()}
 out={'definition':'100 * configuration-balanced MAE / configuration-balanced mean absolute true next-state value. Ratio of means, not mean per-point percentage; zero release states retained. Each of ten folds has 48 configurations; replicas averaged first. One-step predictions use observed past history. Not error relative to the state increment.','features':['water_kg','dry_fuel_kg','fuel_gas_release_kg_s'],'windows':rows}
 (R/'results/percentage-errors.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
