@@ -1,0 +1,108 @@
+{
+  "instances": [],
+  "disks": [],
+  "jobs": [
+    {
+      "allocationPolicy": {
+        "instances": [
+          {
+            "installGpuDrivers": true,
+            "policy": {
+              "bootDisk": {
+                "sizeGb": "60",
+                "type": "pd-balanced"
+              },
+              "machineType": "g2-standard-4",
+              "provisioningModel": "STANDARD"
+            }
+          }
+        ],
+        "labels": {
+          "batch-job-id": "fds-gpu35-seq13",
+          "trial_id": "gpu35-seq13"
+        },
+        "location": {
+          "allowedLocations": [
+            "regions/us-central1",
+            "zones/us-central1-c"
+          ]
+        },
+        "network": {
+          "networkInterfaces": [
+            {
+              "network": "projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+              "subnetwork": "projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial"
+            }
+          ]
+        },
+        "serviceAccount": {
+          "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com"
+        }
+      },
+      "createTime": "2026-10-24T00:25:22.687028766Z",
+      "labels": {
+        "trial_id": "gpu35-seq13"
+      },
+      "logsPolicy": {
+        "destination": "CLOUD_LOGGING"
+      },
+      "name": "projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-gpu35-seq13",
+      "status": {
+        "runDuration": "3174.032695062s",
+        "state": "DELETION_IN_PROGRESS",
+        "statusEvents": [
+          {
+            "description": "Job state is set from QUEUED to SCHEDULED for job projects/587909259768/locations/us-central1/jobs/fds-gpu35-seq13.",
+            "eventTime": "2026-10-24T00:25:31.711461403Z",
+            "type": "STATUS_CHANGED"
+          },
+          {
+            "description": "Job state is set from SCHEDULED to RUNNING for job projects/587909259768/locations/us-central1/jobs/fds-gpu35-seq13.",
+            "eventTime": "2026-10-24T00:28:39.137767399Z",
+            "type": "STATUS_CHANGED"
+          },
+          {
+            "description": "Job state is set from RUNNING to SUCCEEDED for job projects/587909259768/locations/us-central1/jobs/fds-gpu35-seq13.",
+            "eventTime": "2026-10-24T01:21:33.170462461Z",
+            "type": "STATUS_CHANGED"
+          },
+          {
+            "description": "Job state is set from SUCCEEDED to DELETION_IN_PROGRESS for job projects/587909259768/locations/us-central1/jobs/fds-gpu35-seq13.",
+            "eventTime": "2026-10-24T01:22:10.577311230Z",
+            "type": "STATUS_CHANGED"
+          }
+        ]
+      },
+      "taskGroups": [
+        {
+          "name": "projects/587909259768/locations/us-central1/jobs/fds-gpu35-seq13/taskGroups/group0",
+          "parallelism": "1",
+          "taskCount": "1",
+          "taskCountPerNode": "1",
+          "taskSpec": {
+            "computeResource": {
+              "cpuMilli": "4000",
+              "memoryMib": "12000"
+            },
+            "maxRunDuration": "10800s",
+            "runnables": [
+              {
+                "container": {
+                  "commands": [
+                    "-c",
+                    "import base64;exec(compile(base64.b64decode('aW1wb3J0IHBhdGhsaWIsc3lzLHJ1bnB5LHVybGxpYi5yZXF1ZXN0LHVybGxpYi5wYXJzZSxqc29uLHRhcmZpbGUsc2h1dGlsLGhhc2hsaWIKcD1wYXRobGliLlBhdGgoJy90bXAvc3R1ZHknKTtwLm1rZGlyKGV4aXN0X29rPVRydWUpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pO3Rva2VuPWpzb24ubG9hZCh1cmxsaWIucmVxdWVzdC51cmxvcGVuKHIsdGltZW91dD0yMCkpWydhY2Nlc3NfdG9rZW4nXQp1PSdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vc3RvcmFnZS92MS9iL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvby8nK3VybGxpYi5wYXJzZS5xdW90ZSgnZGlhZ25vc3RpY3MzNS9hdHRlbXB0MTMvcGlsb3Qtb3ZlcmxheS50YXInLHNhZmU9JycpKyc/YWx0PW1lZGlhJwp3aXRoIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4odXJsbGliLnJlcXVlc3QuUmVxdWVzdCh1LGhlYWRlcnM9eydBdXRob3JpemF0aW9uJzonQmVhcmVyICcrdG9rZW59KSx0aW1lb3V0PTE4MCkgYXMgc3JjLChwLyd0cmFuc2Zlci50YXInKS5vcGVuKCd3YicpIGFzIGRzdDpzaHV0aWwuY29weWZpbGVvYmooc3JjLGRzdCkKd2l0aCB0YXJmaWxlLm9wZW4ocC8ndHJhbnNmZXIudGFyJykgYXMgdGFyOgogZm9yIG0gaW4gdGFyLmdldG1lbWJlcnMoKTphc3NlcnQgbm90IG0ubmFtZS5zdGFydHN3aXRoKCcvJykgYW5kICcuLicgbm90IGluIHBhdGhsaWIuUGF0aChtLm5hbWUpLnBhcnRzIGFuZCBub3QgbS5pc3N5bSgpIGFuZCBub3QgbS5pc2xuaygpCiB0YXIuZXh0cmFjdGFsbChwKQpmb3IgbixoIGluIGpzb24ubG9hZHMoKHAvJ2hhc2hlcy5qc29uJykucmVhZF90ZXh0KCkpLml0ZW1zKCk6YXNzZXJ0IGhhc2hsaWIuc2hhMjU2KChwL24pLnJlYWRfYnl0ZXMoKSkuaGV4ZGlnZXN0KCk9PWgKKHAvJ3Jlc3VsdHMnKS5ta2RpcihleGlzdF9vaz1UcnVlKTtzeXMucGF0aC5pbnNlcnQoMCxzdHIocCkpOwp0cnk6CiBydW5weS5ydW5fcGF0aChzdHIocC8nd29ya2VyLnB5JykscnVuX25hbWU9J19fbWFpbl9fJykKZXhjZXB0IEJhc2VFeGNlcHRpb246CiBpbXBvcnQgdHJhY2ViYWNrCiBmcm9tIHJ1bnRpbWUgaW1wb3J0IHVwbG9hZAogdXBsb2FkKCdib290c3RyYXAtZXJyb3IudHh0Jyx0cmFjZWJhY2suZm9ybWF0X2V4YygpLmVuY29kZSgpKTtyYWlzZQo='),'bootstrap','exec'))"
+                  ],
+                  "entrypoint": "python",
+                  "imageUri": "pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime",
+                  "options": "--shm-size=1g"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "uid": "fds-gpu35-seq13-98a0ffcf-e417-4d08-830",
+      "updateTime": "2026-10-24T01:22:10.577311230Z"
+    }
+  ]
+}
