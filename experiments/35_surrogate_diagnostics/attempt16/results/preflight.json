@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "local_training": false,
+  "histories": 520,
+  "configurations": 480,
+  "checks": [
+    {
+      "kind": "mlp",
+      "parameters": 5763,
+      "checks": [
+        "initial persistence",
+        "32step backward all parameters finite",
+        "serialization exact",
+        "no future truth in autonomous or prefix",
+        "one-step cached memory equivalence"
+      ]
+    },
+    {
+      "kind": "gru",
+      "parameters": 5379,
+      "checks": [
+        "initial persistence",
+        "32step backward all parameters finite",
+        "serialization exact",
+        "no future truth in autonomous or prefix",
+        "one-step cached memory equivalence"
+      ]
+    }
+  ],
+  "matched_shuffle": "same rotation/epoch seed for both arms",
+  "split_normalization_tests": true
+}

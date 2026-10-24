@@ -1,0 +1,66 @@
+{
+  "experiment": "Matched MLP versus GRU sequence-memory comparison",
+  "seed": 3516,
+  "state_features": 3,
+  "history_steps": 4,
+  "external_features": 9,
+  "input_features": 21,
+  "epochs_max": 400,
+  "warmup_epochs": 20,
+  "sequence_horizon_steps": 32,
+  "batch_windows": 256,
+  "learning_rate": 0.0003,
+  "minimum_epochs": 100,
+  "patience_epochs": 30,
+  "improvement_relative": 0.001,
+  "improvement_absolute": 1e-05,
+  "selection": "Minimum full autonomous validation objective across all trained epochs; patience resets at21/41/61; no stopping before100",
+  "test": "All20 selections frozen before either architecture tests; same ten grouped rotations; test not historically pristine",
+  "training_balance": "Within each TRAIN history, active and quiet transitions share equal total weight if both exist; replica-balanced. Active means release>1e-6kg/s OR absolute water/fuel change>1e-5kg per step.",
+  "evaluation": "Unweighted full histories, active and quiet separately; train-defined normalization only",
+  "history": "four states ending at current time; repeat initial state for missing history, never future truth",
+  "architecture": "MLP21->64->64->3 versus GRU21->32 plus32->3 readout; three states, four explicit history frames, GRU32 internal latent values",
+  "physics": "Unconstrained raw predictions; report negative values and mass increases; no silent physical clipping",
+  "budget": {
+    "expected_usd": [
+      2,
+      4.5
+    ],
+    "maximum_allowance_usd": 6,
+    "task_seconds": 21600,
+    "vm_seconds": 21900,
+    "absolute_seconds": 23400,
+    "soft_seconds": 20400,
+    "queue_seconds": 1200
+  },
+  "arms": [
+    "mlp",
+    "gru"
+  ],
+  "horizon_curriculum": [
+    {
+      "first_epoch": 1,
+      "steps": 1
+    },
+    {
+      "first_epoch": 21,
+      "steps": 8
+    },
+    {
+      "first_epoch": 41,
+      "steps": 16
+    },
+    {
+      "first_epoch": 61,
+      "steps": 32
+    }
+  ],
+  "evaluation_horizons": [
+    1,
+    4,
+    8,
+    16,
+    45
+  ],
+  "burn_in": "GRU memory initialized zero; teacher-forced prefix up to each training window recomputed with current parameters under no_grad; gradients within window only. Full autonomous evaluation uses predicted states from initial time, never true future states."
+}
