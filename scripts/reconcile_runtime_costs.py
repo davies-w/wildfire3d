@@ -24,7 +24,9 @@ def reconcile():
    if not dels:continue
    deletion=min(dels,key=stamp);starts=[e for e in es if e.get('operation',{}).get('id')==deletion['operation']['id']];end=min(starts,key=stamp);hours=(stamp(end)-stamp(endinsert)).total_seconds()/3600
    assert hours>=0 and key in rates,(name,key,hours)
-   records.append(dict(vm=name.split('/')[-1],trial_id=req.get('labels',{}).get('trial_id'),machine=machine,provisioning=provision,hours=hours,start=endinsert['timestamp'],end=end['timestamp'],estimated_compute_usd=hours*rates[key]))
+   labels=req.get('labels',{})
+   if isinstance(labels,list):labels={x['key']:x.get('value') for x in labels}
+   records.append(dict(vm=name.split('/')[-1],trial_id=labels.get('trial_id'),machine=machine,provisioning=provision,hours=hours,start=endinsert['timestamp'],end=end['timestamp'],estimated_compute_usd=hours*rates[key]))
  assert records
  D.mkdir(exist_ok=True);(D/'vm-runtime.json').write_text(json.dumps(records,indent=2)+'\n')
  # Export has not yet backfilled; these are the independently observed project report totals.

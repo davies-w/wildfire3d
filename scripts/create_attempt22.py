@@ -14,6 +14,8 @@ for n in ['cloud.py','runtime.py','launch.py','collect.py','prepare_pilot.py','f
   s=s.replace('Matched thermal surface-heating proxy fourth-state; not stored energy J.','Matched scalar4 versus spatial7 surface-heating states; not energy/heatflux.')
  if n=='validate.py':
   s=s.replace('(520,91,4)','(520,91,7)').replace('armraw[:,:,3]=0','armraw[:,:,4:]=0')
+ if n=='analyze.py':
+  s=s.replace("(2,'Fuel-gas release MAE kg/s')","(2,'Fuel-gas release MAE kg/s'),(3,'Surface-heating index MAE K'),(4,'Heating moment X MAE K m'),(5,'Heating moment Y MAE K m'),(6,'Heating moment Z MAE K m')")
  (r/n).write_text(s)
 (r/'prepare.py').write_text('''from pathlib import Path
 import numpy as np,json
@@ -22,4 +24,4 @@ s=json.loads((R.parent/'attempt20/schema.json').read_text());s['state_names']+=[
 ''')
 p=json.loads((o/'coverage-plan.json').read_text());p.update(experiment='Matched four-state scalar versus seven-state spatial-heating GRU',arms=['scalar','spatial'],state_features=7,input_features=37,architecture='BothGRU37->32->7; scalar maskslast3history/readoutchannels effective25inputs4outputs, spatial37inputs7outputs. Sameinitializedparameters.',thermal_loss='Original4channel loss unchanged with1/3weight each; add each normalized spatial component squared error at1/3. Tests spatial observations plus spatial supervision, not isolated causality. Select ONLY original3state validation.',stage3_decision='Validation-only: scalar improves gasrelease but residual remains; spatial offset y modest absolute-error Spearman.202 afterwithin-time heatingdecilecentering, signedassociationweak; confoundingpossible. JustifiesONE controlledablation,notpresumptionofbenefit. No test scores used to choose this addition.')
 (r/'coverage-plan.json').write_text(json.dumps(p,indent=2))
-d=yaml.safe_load((o/'dvc.yaml').read_text());d['stages']['prepare_data']['deps']=['prepare.py','../attempt20/data/sequences.npz','../attempt20/schema.json','../attempt21/data/spatial_candidates.npz'];(r/'dvc.yaml').write_text(yaml.safe_dump(d,sort_keys=False))
+d=yaml.safe_load((o/'dvc.yaml').read_text());d['stages']['prepare_data']['deps']=['prepare.py','../attempt20/data/sequences.npz','../attempt20/schema.json','../attempt21/data/spatial_candidates.npz'];d['stages']['package']['deps']=sorted(set(d['stages']['package']['deps'])|{x.name for x in r.glob('*.py')});(r/'dvc.yaml').write_text(yaml.safe_dump(d,sort_keys=False))

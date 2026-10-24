@@ -14,19 +14,23 @@ stages:
     cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python validate_transport.py
       && ../../../.venv/bin/python prepare_pilot.py
     deps:
-    - validate.py
-    - prepare_pilot.py
-    - worker.py
-    - model.py
-    - runtime.py
-    - launch.py
-    - collect.py
-    - cloud.py
-    - coverage-plan.json
-    - schema.json
-    - data/sequences.npz
     - ../../32_tree_expansion/gpu-workflow.yaml
+    - analyze.py
+    - cloud.py
+    - collect.py
+    - coverage-plan.json
+    - data/sequences.npz
+    - finalize_archive.py
+    - finish_run.py
+    - launch.py
+    - model.py
+    - prepare.py
+    - prepare_pilot.py
+    - runtime.py
+    - schema.json
+    - validate.py
     - validate_transport.py
+    - worker.py
     outs:
     - data/pilot-overlay.tar
     - gpu-workflow.yaml:

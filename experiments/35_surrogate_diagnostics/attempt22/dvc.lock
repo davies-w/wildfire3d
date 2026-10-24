@@ -36,6 +36,10 @@ stages:
       hash: md5
       md5: 0ad9e39f9c2e98445d0ee17ddc6e2f13
       size: 8827
+    - path: analyze.py
+      hash: md5
+      md5: 01af35d269a38068c49a77e08ae95ef0
+      size: 2689
     - path: cloud.py
       hash: md5
       md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
@@ -52,6 +56,14 @@ stages:
       hash: md5
       md5: 0c72d00943dd01354c925dd31a077681
       size: 1358632
+    - path: finalize_archive.py
+      hash: md5
+      md5: 92f9a65c3b57d9c7211dbacc43860d0f
+      size: 2079
+    - path: finish_run.py
+      hash: md5
+      md5: 69f86c8fd4729f3c57176e5c0fe0eed6
+      size: 625
     - path: launch.py
       hash: md5
       md5: a3c6287ab2d3149b24dff71f16b8c148
@@ -60,6 +72,10 @@ stages:
       hash: md5
       md5: 15ea7d9254093e834599828380e777ab
       size: 1295
+    - path: prepare.py
+      hash: md5
+      md5: 1c0a88d81701346bd89554778454420a
+      size: 958
     - path: prepare_pilot.py
       hash: md5
       md5: 10b4f08b71bea37e2112275a3ea588c6
@@ -87,7 +103,7 @@ stages:
     outs:
     - path: data/pilot-overlay.tar
       hash: md5
-      md5: f61499e9094247b244a92ade0aefaf2f
+      md5: 5a31e8ea7edcadec6e1cc36c42b78aaf
       size: 1617920
     - path: gpu-workflow.yaml
       hash: md5
@@ -95,7 +111,7 @@ stages:
       size: 9102
     - path: results/input-freeze.json
       hash: md5
-      md5: 3cbab50c7545a83698d589a9418e3857
+      md5: 7ec206a6fa9eec694e5118427aa88684
       size: 1387
     - path: results/preflight.json
       hash: md5
