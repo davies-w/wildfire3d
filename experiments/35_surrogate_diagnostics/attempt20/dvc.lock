@@ -133,3 +133,58 @@ stages:
       hash: md5
       md5: 82fd0caf586f9d13b039a70de44f2bf0
       size: 334
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
+      size: 597
+    - path: collect.py
+      hash: md5
+      md5: 9cddc24f1ee98441b647d69fe8a4d881
+      size: 3299
+    - path: results/execution.json
+      hash: md5
+      md5: 82fd0caf586f9d13b039a70de44f2bf0
+      size: 334
+    outs:
+    - path: data/collected
+      hash: md5
+      md5: 4013549f9c6d168c65b49139aa03fc9c.dir
+      size: 2254351365
+      nfiles: 9751
+    - path: results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: results/permission-removed.json
+      hash: md5
+      md5: b1f5599500bde1ae898f80d43bac492a
+      size: 56
+  analysis:
+    cmd: ../../../.venv/bin/python analyze.py
+    deps:
+    - path: analyze.py
+      hash: md5
+      md5: a2b0d26c189e3dbdc81cdfeec641837a
+      size: 2564
+    - path: data/collected
+      hash: md5
+      md5: 4013549f9c6d168c65b49139aa03fc9c.dir
+      size: 2254351365
+      nfiles: 9751
+    - path: schema.json
+      hash: md5
+      md5: 3f1d8636dc7c20f3aa3ed5cbb7735204
+      size: 174781
+    outs:
+    - path: data/visuals
+      hash: md5
+      md5: a4953b5dbf4f05a08a597c4d4cda3a44.dir
+      size: 3966516
+      nfiles: 9
+    - path: results/analysis.json
+      hash: md5
+      md5: e487a41ca1eba255a1025a7cc0325d7b
+      size: 2615290
