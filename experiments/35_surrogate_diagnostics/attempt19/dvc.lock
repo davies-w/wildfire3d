@@ -1,0 +1,35 @@
+schema: '2.0'
+stages:
+  audit:
+    cmd: ../../../.venv/bin/python audit.py
+    deps:
+    - path: ../attempt12/data/states
+      hash: md5
+      md5: 1f7afa4c84ed40407238079fa5c85641.dir
+      size: 160397839
+      nfiles: 521
+    - path: ../attempt12/inventory.json
+      hash: md5
+      md5: 415e701a05241aa417d609a44b20748d
+      size: 564764
+    - path: ../attempt18/data/sequences.npz
+      hash: md5
+      md5: d558c37997b6e5d31e37fe848ad6eac2
+      size: 627552
+    - path: ../attempt18/schema.json
+      hash: md5
+      md5: 998e00ce0e44c581a01753238862ea0f
+      size: 174702
+    - path: audit.py
+      hash: md5
+      md5: 4cfa11ef7aeef55154eaf86c343ab40a
+      size: 3130
+    outs:
+    - path: data/thermal_candidates.npz
+      hash: md5
+      md5: 8e9e13ba1709879496316e8fd9a55cc8
+      size: 735602
+    - path: results/audit.json
+      hash: md5
+      md5: 08218a6c78d80c7d59fd600d6c8844c8
+      size: 451929

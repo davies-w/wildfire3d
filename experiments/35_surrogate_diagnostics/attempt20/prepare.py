@@ -1,0 +1,4 @@
+from pathlib import Path
+import numpy as np,json
+R=Path(__file__).resolve().parent;a=np.load(R.parent/'attempt18/data/sequences.npz');h=np.load(R.parent/'attempt19/data/thermal_candidates.npz');assert np.array_equal(a['time'],h['time']);data={k:a[k] for k in a.files};data['state']=np.concatenate([a['state'],h['thermal'][:,:,None]],-1).astype('float32');assert data['state'].shape==(520,91,4);np.savez_compressed(R/'data/sequences.npz',**data)
+s=json.loads((R.parent/'attempt18/schema.json').read_text());s['state_names']=s['state_names']+['surface_heating_index_K'];s['physical_encoding_scales']=s['physical_encoding_scales']+[100.];s['model_input_shape']=[None,25];s['model_output_shape']=[None,4];s['comparison']='Three-state GRU control vs additional surface-heating index (not thermal energy J); fourth channel masked for control; same grouped rotations.';(R/'schema.json').write_text(json.dumps(s,indent=2))

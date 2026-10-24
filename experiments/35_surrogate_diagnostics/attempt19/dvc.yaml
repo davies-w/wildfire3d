@@ -1,0 +1,14 @@
+stages:
+  audit:
+    cmd: ../../../.venv/bin/python audit.py
+    deps:
+      - audit.py
+      - ../attempt12/data/states
+      - ../attempt12/inventory.json
+      - ../attempt18/data/sequences.npz
+      - ../attempt18/schema.json
+    outs:
+      - data/thermal_candidates.npz
+    metrics:
+      - results/audit.json:
+          cache: false
