@@ -1,0 +1,10 @@
+{
+  "failed_before_training": true,
+  "cause": "Strict deterministic mode rejects CUDA cumsum in new activity metric during initial evaluation.",
+  "model_cuda_checks_passed": true,
+  "checkpoints": 0,
+  "cleanup_verified": true,
+  "estimated_compute_usd": 0.0347436708,
+  "proposal": "Detached CPU reporting cumulative sum; keep training deterministic; require complete evaluation preflight.",
+  "retry_launched": false
+}
