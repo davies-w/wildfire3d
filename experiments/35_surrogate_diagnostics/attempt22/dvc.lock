@@ -149,3 +149,108 @@ stages:
       hash: md5
       md5: a338d4803ce3177f46d378df58c4bba4
       size: 334
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
+      size: 597
+    - path: collect.py
+      hash: md5
+      md5: b83f9983fa81a90bbc3b14dcf4bc014d
+      size: 3299
+    - path: results/execution.json
+      hash: md5
+      md5: a338d4803ce3177f46d378df58c4bba4
+      size: 334
+    outs:
+    - path: data/collected
+      hash: md5
+      md5: 7007b6fd3eebb49f29519afafbded558.dir
+      size: 3076534791
+      nfiles: 9811
+    - path: results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: results/permission-removed.json
+      hash: md5
+      md5: 59cd8012e917fa2910ae5096b0354126
+      size: 56
+  analysis:
+    cmd: ../../../.venv/bin/python analyze.py
+    deps:
+    - path: analyze.py
+      hash: md5
+      md5: 01af35d269a38068c49a77e08ae95ef0
+      size: 2689
+    - path: data/collected
+      hash: md5
+      md5: 7007b6fd3eebb49f29519afafbded558.dir
+      size: 3076534791
+      nfiles: 9811
+    - path: schema.json
+      hash: md5
+      md5: 8556772db0c95c2d771b4fe201e872ef
+      size: 174936
+    outs:
+    - path: data/visuals
+      hash: md5
+      md5: 23747be44cf5e9313a77521559499d69.dir
+      size: 6780520
+      nfiles: 17
+    - path: results/analysis.json
+      hash: md5
+      md5: 9ceeef207e57ca0db30aea160042a61a
+      size: 3232440
+  posthoc_validation:
+    cmd: ../../../.venv/bin/python posthoc.py validation
+    deps:
+    - path: data/collected
+      hash: md5
+      md5: 7007b6fd3eebb49f29519afafbded558.dir
+      size: 3076534791
+      nfiles: 9811
+    - path: data/sequences.npz
+      hash: md5
+      md5: 0c72d00943dd01354c925dd31a077681
+      size: 1358632
+    - path: posthoc.py
+      hash: md5
+      md5: c6d95f1034c4be9915f500c66631fc1f
+      size: 3508
+    - path: schema.json
+      hash: md5
+      md5: 8556772db0c95c2d771b4fe201e872ef
+      size: 174936
+    outs:
+    - path: results/posthoc-validation.json
+      hash: md5
+      md5: 20e30e3fcd82d2f84df53db470719aea
+      size: 2367
+  posthoc_test:
+    cmd: ../../../.venv/bin/python posthoc.py test
+    deps:
+    - path: data/collected
+      hash: md5
+      md5: 7007b6fd3eebb49f29519afafbded558.dir
+      size: 3076534791
+      nfiles: 9811
+    - path: data/sequences.npz
+      hash: md5
+      md5: 0c72d00943dd01354c925dd31a077681
+      size: 1358632
+    - path: posthoc.py
+      hash: md5
+      md5: c6d95f1034c4be9915f500c66631fc1f
+      size: 3508
+    - path: schema.json
+      hash: md5
+      md5: 8556772db0c95c2d771b4fe201e872ef
+      size: 174936
+    outs:
+    - path: results/posthoc-test.json
+      hash: md5
+      md5: 982c6563264ba212329e6ed06a83f611
+      size: 2373

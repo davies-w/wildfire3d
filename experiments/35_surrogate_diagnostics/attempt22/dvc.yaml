@@ -77,3 +77,23 @@ stages:
     metrics:
     - results/analysis.json:
         cache: false
+  posthoc_validation:
+    cmd: ../../../.venv/bin/python posthoc.py validation
+    deps:
+    - posthoc.py
+    - schema.json
+    - data/sequences.npz
+    - data/collected
+    metrics:
+    - results/posthoc-validation.json:
+        cache: false
+  posthoc_test:
+    cmd: ../../../.venv/bin/python posthoc.py test
+    deps:
+    - posthoc.py
+    - schema.json
+    - data/sequences.npz
+    - data/collected
+    metrics:
+    - results/posthoc-test.json:
+        cache: false
