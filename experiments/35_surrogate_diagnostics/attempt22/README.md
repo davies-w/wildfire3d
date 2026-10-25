@@ -11,3 +11,10 @@ Train-only asinhnormalization, scales1kg/1kg/.01kg_s/100K/100Km/100Km/100Km. Ori
 CPUnooptimizerpreflight split/leakage/normalization/prefix32stepgradient/replaypassed. GPUchecksmandatorybeforetraining; actualnonemptyoptimizer/RNG/modelcheckpointreplay afterepoch1. Everyepochuploadedcheckpoint optimizer/RNG/history/selection; noautomaticpaidretry,unknownsubmissioninvestigate. Readgrant onlynewprefix24h,immutableuploads boundedtransientretries. No laptoptraining/newFDS. Expected$2–4.50compute,max$8allowanceincludingancillary/cleanup.20minqueue6htask6h05VM6h30absolute5h40soft. Runtimeestimate replacesallowance then matchingbilling replacesestimate; historicallowancesnotspend. Preserveallraw/checkpoints,DVCpublicHFapproved35,Gitcode/workflowgenerators. CollectorverifiesVMjobdiskempty/removesexactgrant.
 
 Generic3mwidecones4/6/8/10mabove2m,1600weightedparticles,.5m24x16x16m180s,1500C20ssource,no trunks/buildings/embers;48legacygeometryretained. Derivedfuelgas.75andwaterintegration, no physicalvalidation. Spatial gain orfailure applies to this measured surface-heating representation, not all possible heat/gasvectors.
+
+
+## Completed result
+
+All20models and test evaluations completed;17stopped by validation patience and3spatial models hit400epochs without demonstrated convergence. Compared with scalar4, spatial7 worsened test full180s rollout MAE by7.2%water,10.0%dryfuel,17.9%fuel-gas release; validation also worsened. Keep the simpler scalar representation for this tested comparison. Full findings and definitions are in ../FINAL_REPORT.md and results/posthoc-{validation,test}.json. No further model is launched.
+
+All9,807manifest files SHA256-verified locally;74,361public archive objects verified by path/size plus six anonymous SHA256 downloads. Recovery from an HTTP429 archive rate limit completed; original failure files remain historical evidence. VM/jobs/disks empty and exact temporary grant removed. Measured-runtime compute estimate$2.34105 over3.312VMhours; projectestimate$25.6710, not an invoice.
