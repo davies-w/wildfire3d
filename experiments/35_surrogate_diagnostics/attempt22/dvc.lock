@@ -271,3 +271,60 @@ stages:
       md5: 85ade2c6bc5142d4e02e2f779d2df0e0.dir
       size: 600920
       nfiles: 2
+  activity_comparison:
+    cmd: ../../../.venv/bin/python compare_activity.py && 
+      ../../../.venv/bin/python render_activity_report.py
+    deps:
+    - path: ../attempt18/data/collected
+      hash: md5
+      md5: e071b26ea32b44572173e85a135de6a7.dir
+      size: 300393284
+      nfiles: 1517
+    - path: ../attempt18/data/sequences.npz
+      hash: md5
+      md5: d558c37997b6e5d31e37fe848ad6eac2
+      size: 627552
+    - path: ../attempt18/model.py
+      hash: md5
+      md5: b5040a977ad91bbd9d2e478804cbd57a
+      size: 1254
+    - path: ../attempt18/schema.json
+      hash: md5
+      md5: 998e00ce0e44c581a01753238862ea0f
+      size: 174702
+    - path: compare_activity.py
+      hash: md5
+      md5: 6d56828facd3bc7bd84be115e9f56aaf
+      size: 5023
+    - path: data/activity_audit
+      hash: md5
+      md5: 85ade2c6bc5142d4e02e2f779d2df0e0.dir
+      size: 600920
+      nfiles: 2
+    - path: data/collected
+      hash: md5
+      md5: 7007b6fd3eebb49f29519afafbded558.dir
+      size: 3076534791
+      nfiles: 9811
+    - path: data/sequences.npz
+      hash: md5
+      md5: 0c72d00943dd01354c925dd31a077681
+      size: 1358632
+    - path: model.py
+      hash: md5
+      md5: 15ea7d9254093e834599828380e777ab
+      size: 1295
+    - path: render_activity_report.py
+      hash: md5
+      md5: 7b75426a89c5391bc1625a9eba43f51f
+      size: 5496
+    - path: schema.json
+      hash: md5
+      md5: 8556772db0c95c2d771b4fe201e872ef
+      size: 174936
+    outs:
+    - path: data/activity_comparison
+      hash: md5
+      md5: 35317d7c2c5b2f17e74229a4517164b7.dir
+      size: 1649106
+      nfiles: 3

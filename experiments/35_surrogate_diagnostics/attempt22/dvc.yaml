@@ -104,3 +104,20 @@ stages:
     - data/sequences.npz
     outs:
     - data/activity_audit
+  activity_comparison:
+    cmd: ../../../.venv/bin/python compare_activity.py && ../../../.venv/bin/python
+      render_activity_report.py
+    deps:
+    - compare_activity.py
+    - render_activity_report.py
+    - data/sequences.npz
+    - schema.json
+    - data/activity_audit
+    - data/collected
+    - ../attempt18/data/collected
+    - ../attempt18/data/sequences.npz
+    - ../attempt18/schema.json
+    - ../attempt18/model.py
+    - model.py
+    outs:
+    - data/activity_comparison
