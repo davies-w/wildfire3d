@@ -103,3 +103,41 @@ stages:
         cache: false
     - results/scenario-audit.json:
         cache: false
+  scenario_values:
+    cmd: ../../../.venv/bin/python plot_scenario_values.py
+    deps:
+    - plot_scenario_values.py
+    - schema.json
+    - data/sequences.npz
+    - data/collected/fold01-horizon01-predictions.npz
+    - data/collected/fold01-horizon16-predictions.npz
+    - scenario_chart.html
+    - data/scenario_horizons
+    outs:
+    - data/scenario_values
+  scenario_horizons:
+    cmd: ../../../.venv/bin/python predict_scenario_horizons.py
+    deps:
+    - predict_scenario_horizons.py
+    - model.py
+    - schema.json
+    - data/sequences.npz
+    - data/collected/fold01-selected.pt
+    - data/collected/fold01-horizon01-predictions.npz
+    - data/collected/fold01-horizon04-predictions.npz
+    - data/collected/fold01-horizon08-predictions.npz
+    - data/collected/fold01-horizon16-predictions.npz
+    outs:
+    - data/scenario_horizons
+  scenario_gallery:
+    cmd: ../../../.venv/bin/python build_gallery.py && node validate_gallery.cjs
+    deps:
+    - build_gallery.py
+    - gallery.html
+    - validate_gallery.cjs
+    - model.py
+    - schema.json
+    - data/sequences.npz
+    - data/collected
+    outs:
+    - data/scenario_gallery

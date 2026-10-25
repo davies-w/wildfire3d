@@ -274,3 +274,124 @@ stages:
       hash: md5
       md5: a0748800638fc31e804fe1640f484b40
       size: 37733
+  scenario_values:
+    cmd: ../../../.venv/bin/python plot_scenario_values.py
+    deps:
+    - path: data/collected/fold01-horizon01-predictions.npz
+      hash: md5
+      md5: be3cfdeefe3e2ade12322b9b80f60f29
+      size: 67678
+    - path: data/collected/fold01-horizon16-predictions.npz
+      hash: md5
+      md5: 9a7caf7a4b4e02dcb75e0fd4e8c9573b
+      size: 58436
+    - path: data/scenario_horizons
+      hash: md5
+      md5: ee156fce9282e80994da730ae7da2884.dir
+      size: 25363
+      nfiles: 2
+    - path: data/sequences.npz
+      hash: md5
+      md5: 19d4aefdea3e2d9246d66453112fe269
+      size: 1276042
+    - path: plot_scenario_values.py
+      hash: md5
+      md5: ff3a63b9bdc8a9971a4fe6ae25dfa11d
+      size: 3186
+    - path: scenario_chart.html
+      hash: md5
+      md5: bdb657d7710941aefb4e05910e591017
+      size: 5782
+    - path: schema.json
+      hash: md5
+      md5: f73e5ea174356fd7b85d9087a8ed2e28
+      size: 174822
+    outs:
+    - path: data/scenario_values
+      hash: md5
+      md5: 610ffcf2cb0833eb5ff7b1067f136668.dir
+      size: 360128
+      nfiles: 4
+  scenario_horizons:
+    cmd: ../../../.venv/bin/python predict_scenario_horizons.py
+    deps:
+    - path: data/collected/fold01-horizon01-predictions.npz
+      hash: md5
+      md5: be3cfdeefe3e2ade12322b9b80f60f29
+      size: 67678
+    - path: data/collected/fold01-horizon04-predictions.npz
+      hash: md5
+      md5: 27ad0591bcd52575162d7be1a6af0e34
+      size: 66721
+    - path: data/collected/fold01-horizon08-predictions.npz
+      hash: md5
+      md5: 4e6da9b87e1377497532558a9a6eb185
+      size: 64169
+    - path: data/collected/fold01-horizon16-predictions.npz
+      hash: md5
+      md5: 9a7caf7a4b4e02dcb75e0fd4e8c9573b
+      size: 58436
+    - path: data/collected/fold01-selected.pt
+      hash: md5
+      md5: cceafd2b73ba03bfe5856ccb228c1686
+      size: 27250
+    - path: data/sequences.npz
+      hash: md5
+      md5: 19d4aefdea3e2d9246d66453112fe269
+      size: 1276042
+    - path: model.py
+      hash: md5
+      md5: 513f5de378861e54802f4a6217fe5958
+      size: 1937
+    - path: predict_scenario_horizons.py
+      hash: md5
+      md5: b6bebe4c3309e128882bc4f9de0b98c0
+      size: 1943
+    - path: schema.json
+      hash: md5
+      md5: f73e5ea174356fd7b85d9087a8ed2e28
+      size: 174822
+    outs:
+    - path: data/scenario_horizons
+      hash: md5
+      md5: ee156fce9282e80994da730ae7da2884.dir
+      size: 25363
+      nfiles: 2
+  scenario_gallery:
+    cmd: ../../../.venv/bin/python build_gallery.py && node validate_gallery.cjs
+    deps:
+    - path: build_gallery.py
+      hash: md5
+      md5: 3aa3500f6774bc4a95ff042e214f179b
+      size: 3360
+    - path: data/collected
+      hash: md5
+      md5: 21e5198f5c3ff6bd3477da5b65dd3004.dir
+      size: 2063643642
+      nfiles: 8950
+    - path: data/sequences.npz
+      hash: md5
+      md5: 19d4aefdea3e2d9246d66453112fe269
+      size: 1276042
+    - path: gallery.html
+      hash: md5
+      md5: 5ac914a171541cb998ef043185d22777
+      size: 7882
+    - path: model.py
+      hash: md5
+      md5: 513f5de378861e54802f4a6217fe5958
+      size: 1937
+    - path: schema.json
+      hash: md5
+      md5: f73e5ea174356fd7b85d9087a8ed2e28
+      size: 174822
+    - path: validate_gallery.cjs
+      hash: md5
+      md5: e8fd91b00f0b52a0d1fe79455e71d197
+      size: 1800
+    outs:
+    - path: data/scenario_gallery
+      hash: md5
+      md5: 2cba5d8bd3b9464e919bd25069986f19.dir
+      size: 15800568
+      nfiles: 176
