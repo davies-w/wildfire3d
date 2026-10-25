@@ -175,3 +175,102 @@ stages:
       hash: md5
       md5: 54ce35653924ff8ff85e69cf44363aa0
       size: 332
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
+      size: 597
+    - path: collect.py
+      hash: md5
+      md5: 449f7016ea6095b02965c420b7a60608
+      size: 3291
+    - path: results/execution.json
+      hash: md5
+      md5: 54ce35653924ff8ff85e69cf44363aa0
+      size: 332
+    outs:
+    - path: data/collected
+      hash: md5
+      md5: 21e5198f5c3ff6bd3477da5b65dd3004.dir
+      size: 2063643642
+      nfiles: 8950
+    - path: results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: results/permission-removed.json
+      hash: md5
+      md5: 6fa2f38166b734e9809adf1d7643322f
+      size: 57
+  analysis:
+    cmd: ../../../.venv/bin/python analyze.py
+    deps:
+    - path: analyze.py
+      hash: md5
+      md5: b99ac4448c43dbf8250e9355a4757802
+      size: 2594
+    - path: data/collected
+      hash: md5
+      md5: 21e5198f5c3ff6bd3477da5b65dd3004.dir
+      size: 2063643642
+      nfiles: 8950
+    - path: schema.json
+      hash: md5
+      md5: f73e5ea174356fd7b85d9087a8ed2e28
+      size: 174822
+    outs:
+    - path: data/visuals
+      hash: md5
+      md5: 851b451e628b441e91d98a0ac8e9bad6.dir
+      size: 4892413
+      nfiles: 11
+    - path: results/analysis.json
+      hash: md5
+      md5: a76db0b2c33b61a5d62d003a54f25bce
+      size: 3007919
+  scorecard:
+    cmd: ../../../.venv/bin/python scorecard_summary.py && 
+      ../../../.venv/bin/python audit_scorecard.py && ../../../.venv/bin/python 
+      render_scorecard.py
+    deps:
+    - path: ../scorecard-v1.json
+      hash: md5
+      md5: f181565b59d268b8a4a2efb5b0ae2702
+      size: 4453
+    - path: audit_scorecard.py
+      hash: md5
+      md5: 103ae79284607f7abec7acb99bdbba88
+      size: 4750
+    - path: data/collected
+      hash: md5
+      md5: 21e5198f5c3ff6bd3477da5b65dd3004.dir
+      size: 2063643642
+      nfiles: 8950
+    - path: data/sequences.npz
+      hash: md5
+      md5: 19d4aefdea3e2d9246d66453112fe269
+      size: 1276042
+    - path: render_scorecard.py
+      hash: md5
+      md5: c53c7af114841228bba2e825f04898fd
+      size: 4709
+    - path: scorecard_summary.py
+      hash: md5
+      md5: 870791fe9f87c9f3c31468232936b868
+      size: 2140
+    outs:
+    - path: data/scorecard
+      hash: md5
+      md5: fffdd53c581e057afc91d4a36665b649.dir
+      size: 13159
+      nfiles: 1
+    - path: results/scenario-audit.json
+      hash: md5
+      md5: 9f9fba078ba2deba03531ae583da603c
+      size: 6586513
+    - path: results/scorecard-summary.json
+      hash: md5
+      md5: a0748800638fc31e804fe1640f484b40
+      size: 37733

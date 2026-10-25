@@ -1,0 +1,24 @@
+Running stage 'experiments/35_surrogate_diagnostics/attempt24/dvc.yaml:cloud_collect':
+> ../../../.venv/bin/python collect.py
+Traceback (most recent call last):
+  File "/Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt24/collect.py", line 33, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt24/collect.py", line 12, in main
+    inv={k:gc(*args,'--filter=labels.trial_id=gpu35-gates24') for k,args in {'instances':('compute','instances','list'),'disks':('compute','disks','list'),'jobs':('batch','jobs','list','--location=us-central1')}.items()};save('results/cleanup-first-observation.json',inv)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt24/cloud.py", line 6, in gc
+    p=subprocess.run([G,*args,'--project='+PROJECT,'--format=json'],text=True,capture_output=True,timeout=180)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wdavies/.pyenv/versions/3.12.7/lib/python3.12/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wdavies/.pyenv/versions/3.12.7/lib/python3.12/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wdavies/.pyenv/versions/3.12.7/lib/python3.12/subprocess.py", line 2116, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/Users/wdavies/.pyenv/versions/3.12.7/lib/python3.12/subprocess.py", line 1253, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['/Users/wdavies/.local/google-cloud-sdk/bin/gcloud', 'compute', 'disks', 'list', '--filter=labels.trial_id=gpu35-gates24', '--project=tmrw-wildfire-20261015', '--format=json']' timed out after 180 seconds
+ERROR: failed to reproduce 'experiments/35_surrogate_diagnostics/attempt24/dvc.yaml:cloud_collect': failed to run: ../../../.venv/bin/python collect.py, exited with 1

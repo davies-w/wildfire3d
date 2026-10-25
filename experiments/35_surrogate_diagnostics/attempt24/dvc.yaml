@@ -86,3 +86,20 @@ stages:
     metrics:
     - results/analysis.json:
         cache: false
+  scorecard:
+    cmd: ../../../.venv/bin/python scorecard_summary.py && ../../../.venv/bin/python
+      audit_scorecard.py && ../../../.venv/bin/python render_scorecard.py
+    deps:
+    - scorecard_summary.py
+    - audit_scorecard.py
+    - render_scorecard.py
+    - data/sequences.npz
+    - data/collected
+    - ../scorecard-v1.json
+    outs:
+    - data/scorecard
+    metrics:
+    - results/scorecard-summary.json:
+        cache: false
+    - results/scenario-audit.json:
+        cache: false
