@@ -68,3 +68,15 @@ stages:
         cache: false
     - results/permission-removed.json:
         cache: false
+  analysis:
+    cmd: ../../../.venv/bin/python analyze_learning_curve.py
+    deps:
+    - analyze_learning_curve.py
+    - schema.json
+    - data/collected
+    - ../scorecard-v1.json
+    outs:
+    - data/learning_curve
+    metrics:
+    - results/learning-curve.json:
+        cache: false
