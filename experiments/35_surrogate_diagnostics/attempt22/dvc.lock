@@ -254,3 +254,20 @@ stages:
       hash: md5
       md5: 982c6563264ba212329e6ed06a83f611
       size: 2373
+  activity_audit:
+    cmd: ../../../.venv/bin/python activity_audit.py
+    deps:
+    - path: activity_audit.py
+      hash: md5
+      md5: 08ddc979341711b42e78f9654e9678b4
+      size: 3076
+    - path: data/sequences.npz
+      hash: md5
+      md5: 0c72d00943dd01354c925dd31a077681
+      size: 1358632
+    outs:
+    - path: data/activity_audit
+      hash: md5
+      md5: 85ade2c6bc5142d4e02e2f779d2df0e0.dir
+      size: 600920
+      nfiles: 2

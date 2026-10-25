@@ -97,3 +97,10 @@ stages:
     metrics:
     - results/posthoc-test.json:
         cache: false
+  activity_audit:
+    cmd: ../../../.venv/bin/python activity_audit.py
+    deps:
+    - activity_audit.py
+    - data/sequences.npz
+    outs:
+    - data/activity_audit
