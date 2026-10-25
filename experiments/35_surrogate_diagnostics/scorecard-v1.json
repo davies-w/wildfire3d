@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "status": "frozen by user",
+  "scope": "Evaluation standard; no new training authorization. Posthoc development on historically examined data, not pristine validation.",
+  "reference_sha256": {
+    "attempt22/activity_audit.py": "ea3bdd302e192afec8a561d47b476ffaf65a3c696f5fcc499e916b2914bff808",
+    "attempt22/compare_activity.py": "378e355abca9219b792bffd000a2731a6432025c19c4edc2c16c4a9b14889e43",
+    "attempt22/posthoc.py": "6d7599372e767089acd0a589767e1f017cb45e074a5be26ab5714c9466af5cc2",
+    "attempt22/schema.json": "ff9c2338f281b8a1f6abe9204ef0f3c456f4ec9560e03dd6d26108ae9475b299"
+  },
+  "activity": {
+    "source": "Simulation truth only, shared across models",
+    "window": "Trailing five two-second intervals; shorter startup elapsed time",
+    "fuel_fraction_rate": "Integral(max(fuel-gas release,0))/0.75/initial dry fuel/elapsed seconds",
+    "water_fraction_rate": "max(water at window start - water at window end,0)/initial water/elapsed seconds",
+    "active_rate_per_second": 0.0001,
+    "quiet_rate_per_second": 1e-05,
+    "classes": [
+      "fuel-release active: fuel rate >= active threshold",
+      "drying only: water rate >= active threshold and fuel below active threshold",
+      "quiet: both rates below quiet threshold",
+      "weak residual: all remaining intervals"
+    ],
+    "forecast_groups": "Active if every predicted step is release-active or drying; quiet if every step quiet; weak if every step weak; transition otherwise. Transition means category change, not necessarily physical ignition/shutdown.",
+    "limitations": "Engineering tolerances, smoothing lag; not combustion or extinction criterion. Heat cooling alone does not make a window active."
+  },
+  "forecasts": {
+    "headline_seconds": 16,
+    "horizons_seconds": [
+      2,
+      8,
+      16,
+      32,
+      90
+    ],
+    "origin": "All valid observed origins; observed history through origin, self-fed predictions afterward",
+    "full_rollout": "Separate initial-state-to180seconds autonomous forecast",
+    "baseline": "Hold origin state fixed for entire forecast"
+  },
+  "aggregation": "Mean error over eligible origins per history; average seed replicas within configuration; equal configurations within fold; equal available folds. Report counts and missing groups. Same eligible samples and folds for all compared models.",
+  "metrics": {
+    "error_vs_sim_percent": "100 * aggregate absolute error / aggregate absolute truth; ratio of aggregates, not mean of per-case percentages",
+    "reduction_vs_no_change_percent": "100 * (1 - aggregate model absolute error / aggregate no-change absolute error)",
+    "absolute_errors": "Always report water/fuel kg or clearly converted g, gas kg/s or g/s, heating index K. Near-zero denominator is not evidence of large physical error; show denominator and absolute error; zero denominator means undefined.",
+    "event": "Full-rollout positive-release total and peak errors, raw fixed-time release error, cumulative release t10/t50/t90 errors, excess after true t99, quiet error share. Separate water/fuel net-loss errors.",
+    "physical_validity": "Raw negative fractions/magnitudes and mass increases, without silent clipping",
+    "scenario_distribution": "Per-state per-group configuration-level MAE median and90th percentile, fraction configurations beating no-change using paired MAE, ties separately. Not yet computed in current activity report.",
+    "timing_alignment": "Best +/-10second shift is optimistic descriptive diagnostic only, never primary forecast score."
+  },
+  "selection": "Declare training loss, validation checkpoint criterion and stopping rules before run; current reference uses original-three-state full autonomous validation normalized MSE. Freeze all rotation selections before test. Never select thresholds or checkpoints using test performance.",
+  "change_control": "Do not overwrite v1 or silently change thresholds/groups/denominators. Proposed changes require a new version and side-by-side evaluation; retain v1. Features/architecture/training changes need their own authorized experiment.",
+  "current_coverage": "16second activity comparison for3-state MLP,3-state GRU,4-state GRU completed. No4-state MLP trained. Other horizons currently have old broad active masks; not yet recomputed with v1. Event metrics and physical-invalid metrics exist; per-configuration distribution and net-loss summaries still require implementation."
+}
