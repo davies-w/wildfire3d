@@ -1,0 +1,70 @@
+{
+  "experiment": "Four-state GRU versus soft-gated four-state GRU",
+  "seed": 3516,
+  "state_features": 4,
+  "history_steps": 4,
+  "external_features": 9,
+  "input_features": 25,
+  "epochs_max": 400,
+  "warmup_epochs": 20,
+  "sequence_horizon_steps": 32,
+  "batch_windows": 256,
+  "learning_rate": 0.0003,
+  "minimum_epochs": 100,
+  "patience_epochs": 30,
+  "improvement_relative": 0.001,
+  "improvement_absolute": 1e-05,
+  "selection": "Minimum original-three-state autonomous validation MSE; extra thermal state excluded from selection score. All20 selections frozen before test.",
+  "test": "All20 selections frozen before either architecture tests; same ten grouped rotations; test not historically pristine",
+  "training_balance": "Within each TRAIN history, active and quiet transitions share equal total weight if both exist; replica-balanced. Active means release>1e-6kg/s OR absolute water/fuel change>1e-5kg per step.",
+  "evaluation": "Unweighted full histories, active and quiet separately; train-defined normalization only",
+  "history": "four states ending at current time; repeat initial state for missing history, never future truth",
+  "architecture": "Both GRU25->32 with4state readouts and3internal gate logits. Control ignores gate outputs; shared initial tensors, fresh weights. Gated gas starts with sigmoid(4) factor .982; initial full-state persistence differs for nonzero gas histories and is disclosed.",
+  "physics": "No positivity or monotonicity clamp. Water/dryfuel deltas multiplied by sigmoid gates; gas physical next rate multiplied by gasgate, not its delta; heating delta ungated. Report invalid states and premature suppression.",
+  "budget": {
+    "expected_usd": [
+      2,
+      4.5
+    ],
+    "maximum_allowance_usd": 8,
+    "task_seconds": 21600,
+    "vm_seconds": 21900,
+    "absolute_seconds": 23400,
+    "soft_seconds": 20400,
+    "queue_seconds": 1200
+  },
+  "arms": [
+    "control",
+    "gated"
+  ],
+  "horizon_curriculum": [
+    {
+      "first_epoch": 1,
+      "steps": 1
+    },
+    {
+      "first_epoch": 21,
+      "steps": 8
+    },
+    {
+      "first_epoch": 41,
+      "steps": 16
+    },
+    {
+      "first_epoch": 61,
+      "steps": 32
+    }
+  ],
+  "evaluation_horizons": [
+    1,
+    4,
+    8,
+    16,
+    45
+  ],
+  "burn_in": "GRU memory initialized zero; teacher-forced prefix up to each training window recomputed with current parameters under no_grad; gradients within window only. Full autonomous evaluation uses predicted states from initial time, never true future states.",
+  "thermal_loss": "Four-state standardized encoded squared error sum/3 unchanged in both. Gated adds0.1*mean masked BCE of3activity gates; no sweep. Weak rates[1e-5,1e-4) excluded from gate supervision only; still included in state loss.",
+  "gate_loss_weight": 0.1,
+  "scorecard": "Frozen scorecard-v1, meaningful stable active/quiet/weak and transition windows at all forecast horizons. Primary selection remains original3state full autonomous validation MSE. Activity thresholds never tuned on predictions.",
+  "gate_targets": "Trailing10s truth rates per initial mass: water loss, dryfuel loss, and gasintegral/.75. Active>=1e-4/s, quiet<1e-5/s; ambiguous excluded from gateBCE. Different material labels, no fixed shutdown time."
+}
