@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "local_training": false,
+  "histories": 520,
+  "configurations": 480,
+  "checks": [
+    {
+      "kind": "control",
+      "parameters": 5796,
+      "checks": [
+        "initial persistence; no gates",
+        "32step backward all parameters finite",
+        "serialization exact",
+        "no future truth in autonomous or prefix",
+        "one-step cached memory equivalence"
+      ]
+    }
+  ],
+  "matched_shuffle": "same rotation/epoch seed across sizes",
+  "split_normalization_tests": true
+}

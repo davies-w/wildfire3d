@@ -1,0 +1,84 @@
+{
+  "experiment": "Nested training-fold learning curve: one fixed random validation/test split",
+  "seed": 3516,
+  "state_features": 4,
+  "history_steps": 4,
+  "external_features": 9,
+  "input_features": 25,
+  "epochs_max": 400,
+  "warmup_epochs": 20,
+  "sequence_horizon_steps": 32,
+  "batch_windows": 256,
+  "learning_rate": 0.0003,
+  "minimum_epochs": 100,
+  "patience_epochs": 30,
+  "improvement_relative": 0.001,
+  "improvement_absolute": 1e-05,
+  "selection": "Minimum original-three-state autonomous validation MSE; all eight selections frozen before any test",
+  "test": "One fixed test fold, eight predeclared training sizes; no test-based selection",
+  "training_balance": "Within each TRAIN history, active and quiet transitions share equal total weight if both exist; replica-balanced. Active means release>1e-6kg/s OR absolute water/fuel change>1e-5kg per step.",
+  "evaluation": "Unweighted full histories, active and quiet separately; train-defined normalization only",
+  "history": "four states ending at current time; repeat initial state for missing history, never future truth",
+  "architecture": "Plain four-state residual GRU 25->32->4, 5796 parameters; no gates or constraints",
+  "physics": "No positivity, monotonicity or cessation constraints",
+  "budget": {
+    "expected_usd": [
+      0.5,
+      1.5
+    ],
+    "maximum_allowance_usd": 3,
+    "task_seconds": 10800,
+    "vm_seconds": 11100,
+    "absolute_seconds": 12600,
+    "soft_seconds": 9900,
+    "queue_seconds": 1200
+  },
+  "arms": [
+    "control"
+  ],
+  "horizon_curriculum": [
+    {
+      "first_epoch": 1,
+      "steps": 1
+    },
+    {
+      "first_epoch": 21,
+      "steps": 8
+    },
+    {
+      "first_epoch": 41,
+      "steps": 16
+    },
+    {
+      "first_epoch": 61,
+      "steps": 32
+    }
+  ],
+  "evaluation_horizons": [
+    1,
+    4,
+    8,
+    16,
+    45
+  ],
+  "burn_in": "GRU memory initialized zero; teacher-forced prefix up to each training window recomputed with current parameters under no_grad; gradients within window only. Full autonomous evaluation uses predicted states from initial time, never true future states.",
+  "thermal_loss": "Original four-state normalized squared error sum/3",
+  "gate_loss_weight": 0,
+  "scorecard": "Frozen scorecard-v1, meaningful stable active/quiet/weak and transition windows at all forecast horizons. Primary selection remains original3state full autonomous validation MSE. Activity thresholds never tuned on predictions.",
+  "learning_curve": {
+    "split_seed": 4117850021,
+    "sizes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "nested": true,
+    "reinitialize_each_size": true,
+    "limitation": "One split and one nested order/initialization; not ten complete learning curves. Same epochs do not imply equal optimizer updates; record updates and caps."
+  }
+}
