@@ -1,0 +1,8 @@
+stages:
+  render:
+    cmd: python3 build.py
+    deps:
+      - build.py
+      - inputs
+    outs:
+      - data
