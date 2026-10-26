@@ -186,22 +186,22 @@ stages:
       size: 73899
     - path: repair/activate.py
       hash: md5
-      md5: 375509db13a8912ca11b4c490de3a220
-      size: 2149
+      md5: 140f6586c78162fc144e37ea34a8d610
+      size: 2153
     - path: results/restore-build-status.json
       hash: md5
       md5: 3674d03468da9ad3bee34e3c6c8fb17e
       size: 3724
     outs:
-    - path: active-groups.json
-      hash: md5
-      md5: a1d2b8850bae461beb4d67323f1cab1f
-      size: 99637
     - path: data/repair-packages
       hash: md5
       md5: 3eba2dc250d0d9fffb88686043384d12.dir
       size: 110172
       nfiles: 1
+    - path: restored-groups.json
+      hash: md5
+      md5: a1d2b8850bae461beb4d67323f1cab1f
+      size: 99637
   validate_restore:
     cmd: ../../.venv/bin/python repair/validate.py
     deps:
@@ -231,10 +231,6 @@ stages:
   prepare_queue_recovery:
     cmd: ../../.venv/bin/python repair/prepare_queue_recovery.py
     deps:
-    - path: active-groups.json
-      hash: md5
-      md5: a1d2b8850bae461beb4d67323f1cab1f
-      size: 99637
     - path: data/packages
       hash: md5
       md5: 725332d4eccd1d22a02c63eef6848482.dir
@@ -290,8 +286,12 @@ stages:
       size: 161
     - path: repair/prepare_queue_recovery.py
       hash: md5
-      md5: 6ba73f9b71228e45c7ee2031c3435852
-      size: 2074
+      md5: 9439b1c17719534be6574be76950a54f
+      size: 2076
+    - path: restored-groups.json
+      hash: md5
+      md5: a1d2b8850bae461beb4d67323f1cab1f
+      size: 99637
     outs:
     - path: data/queue-recovery-packages
       hash: md5
@@ -302,3 +302,32 @@ stages:
       hash: md5
       md5: 843070d094015db784a058006ed33b1c
       size: 100561
+  activate_queue_recovery:
+    cmd: ../../.venv/bin/python repair/activate_queue_recovery.py
+    deps:
+    - path: data/queue-recovery-packages
+      hash: md5
+      md5: 737a2746af122ee9506d810f52e6c8bb.dir
+      size: 1036332
+      nfiles: 12
+    - path: proposed-queue-recovery-groups.json
+      hash: md5
+      md5: 843070d094015db784a058006ed33b1c
+      size: 100561
+    - path: repair/activate_queue_recovery.py
+      hash: md5
+      md5: 41bb043f07c21bc92293d9068185a5f6
+      size: 2538
+    - path: restored-groups.json
+      hash: md5
+      md5: a1d2b8850bae461beb4d67323f1cab1f
+      size: 99637
+    outs:
+    - path: active-groups.json
+      hash: md5
+      md5: 843070d094015db784a058006ed33b1c
+      size: 100561
+    - path: results/queue-recovery-activation.json
+      hash: md5
+      md5: eccb06a2e36abc141e8aed75f5ec9389
+      size: 323

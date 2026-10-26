@@ -41,3 +41,7 @@ Six coverage cases passed. Twenty bulk groups were submitted before Google rejec
 ## Global quota queue interruption
 
 Groups009–020 reached the20-minute queue deadline with zero recorded run duration. The regional96-core quota had been approved, but the global32-core limit prevented allocation. Global96 was approved too late for these waiting groups. All12cleanup inventories are empty and temporary grants removed. Groups001–008 continue under collection-only monitoring; no new submissions occur while replacement approval is pending. A prepared, inactive replacement plan covers144cases using byte-identical packages except group identities. Maximum new allowance4.80USD within125cap. New launches now check globalCPU plus regionalCPU/address/disk limits. Do not resubmit original job IDs.
+
+## Approved overnight continuation
+
+The user approved the twelve queue replacements ($4.80 maximum) and subsequently authorized necessary diagnosed restarts and repairs overnight within the $125 cumulative cap. The original failed IDs remain preserved; new IDs009-r1 through020-r1 use byte-equivalent scientific packages. Global and regional quotas are checked before each launch. The collection-only monitor was stopped and a single dispatcher resumed with the activated manifest. Existing completed/running executions are retained. Additional recovery must diagnose the cause, preserve partial outputs/checkpoints, reserve its full allowance and avoid duplicate submissions; this authorization does not expand the scientific campaign or authorize public publication.

@@ -94,7 +94,7 @@ stages:
     - data/packages
     outs:
     - data/repair-packages
-    - active-groups.json:
+    - restored-groups.json:
         cache: false
   validate_restore:
     cmd: ../../.venv/bin/python repair/validate.py
@@ -110,7 +110,7 @@ stages:
     cmd: ../../.venv/bin/python repair/prepare_queue_recovery.py
     deps:
     - repair/prepare_queue_recovery.py
-    - active-groups.json
+    - restored-groups.json
     - data/packages
     - jobs/x36-density-009/terminal-no-results.json
     - jobs/x36-density-010/terminal-no-results.json
@@ -127,4 +127,17 @@ stages:
     outs:
     - data/queue-recovery-packages
     - proposed-queue-recovery-groups.json:
+        cache: false
+  activate_queue_recovery:
+    cmd: ../../.venv/bin/python repair/activate_queue_recovery.py
+    deps:
+    - repair/activate_queue_recovery.py
+    - restored-groups.json
+    - proposed-queue-recovery-groups.json
+    - data/queue-recovery-packages
+    outs:
+    - active-groups.json:
+        cache: false
+    metrics:
+    - results/queue-recovery-activation.json:
         cache: false

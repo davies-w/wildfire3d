@@ -3,7 +3,7 @@ from pathlib import Path
 import json,lzma,hashlib,copy,yaml
 R=Path(__file__).resolve().parent.parent
 sha=lambda b:hashlib.sha256(b).hexdigest()
-groups=json.loads((R/'active-groups.json').read_text());out=[];replacements=[]
+groups=json.loads((R/'restored-groups.json').read_text());out=[];replacements=[]
 for old in groups:
  if old['id'] not in [f'x36-density-{i:03d}' for i in range(9,21)]:out.append(old);continue
  n=old['id'];proof=json.loads((R/'jobs'/n/'terminal-no-results.json').read_text());assert proof['run_duration_s']==0 and proof['cleanup_verified'] and proof['grant_removed']
