@@ -1,0 +1,118 @@
+main:
+  steps:
+  - load:
+      try:
+        call: http.get
+        args:
+          url: https://storage.googleapis.com/tmrw-wildfire-20261015-trial/density36/orchestration/run-queue.json
+          auth:
+            type: OAuth2
+        result: queue
+      retry: ${http.default_retry}
+  - run:
+      parallel:
+        concurrency_limit: 20
+        for:
+          value: g
+          in: ${queue.body}
+          steps:
+          - verify:
+              call: verify_group
+              args:
+                g: ${g}
+  - done:
+      return: Verification finished; consult individual completion markers and failed
+        Batch statuses
+verify_group:
+  params:
+  - g
+  steps:
+  - status:
+      try:
+        call: http.get
+        args:
+          url: ${"https://storage.googleapis.com/tmrw-wildfire-20261015-trial/density36/"
+            + g.id + "/job-status.json"}
+          auth:
+            type: OAuth2
+        result: status
+      retry: ${http.default_retry}
+      except:
+        as: e
+        steps:
+        - missing:
+            switch:
+            - condition: ${map.get(e,"code") == 404}
+              next: wait
+        - fail:
+            raise: ${e}
+  - terminal:
+      switch:
+      - condition: ${status.body.status.state == "SUCCEEDED"}
+        next: summaries
+      - condition: ${status.body.status.state == "FAILED"}
+        next: failed
+  - wait:
+      switch:
+      - condition: ${sys.now() > time.parse("2026-10-28T16:00:00Z")}
+        raise: Verification deadline exceeded
+  - sleep_wait:
+      call: sys.sleep
+      args:
+        seconds: 60
+      next: status
+  - summaries:
+      for:
+        value: c
+        in: ${g.cases}
+        steps:
+        - summary:
+            try:
+              call: http.get
+              args:
+                url: ${"https://storage.googleapis.com/tmrw-wildfire-20261015-trial/density36/"
+                  + g.id + "/" + c + ".summary.json"}
+                auth:
+                  type: OAuth2
+              result: summary
+            retry: ${http.default_retry}
+        - decode:
+            switch:
+            - condition: ${get_type(summary.body) != "map"}
+              assign:
+              - summary:
+                  body: ${json.decode(summary.body)}
+        - validate:
+            switch:
+            - condition: ${not summary.body.result.full_horizon or not summary.body.resume.passed
+                or summary.body.result.binary_sha256 != "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692"
+                or summary.body.deck_sha256 != g.deck_hashes[c]}
+              raise: Scientific summary verification failed
+  - complete:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        query:
+          uploadType: media
+          name: ${"density36/orchestration/completed/" + g.id + ".json"}
+          ifGenerationMatch: 0
+        auth:
+          type: OAuth2
+        headers:
+          Content-Type: application/json
+        body:
+          group: ${g.id}
+          cases: ${len(g.cases)}
+          all_full_horizon: true
+          execution: ${sys.get_env("GOOGLE_CLOUD_WORKFLOW_EXECUTION_ID")}
+  - done:
+      return: ${g.id}
+  - failed:
+      call: sys.log
+      args:
+        severity: WARNING
+        text: '${"Scientific group failed: " + g.id}'
+  - failed_return:
+      return:
+        group: ${g.id}
+        state: FAILED
