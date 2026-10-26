@@ -411,3 +411,32 @@ stages:
       hash: md5
       md5: f487a3b45bb3816391a06fb91123fa76
       size: 601
+  collect_cloud:
+    cmd: ../../.venv/bin/python collect_cloud.py
+    deps:
+    - path: active-groups.json
+      hash: md5
+      md5: 843070d094015db784a058006ed33b1c
+      size: 100561
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: collect_cloud.py
+      hash: md5
+      md5: 3d616bf1d7b7d80d2baa45312beeae5d
+      size: 2714
+    - path: results/input-freeze.json
+      hash: md5
+      md5: d83531f07429baa3c5035c2404eebebf
+      size: 135918
+    outs:
+    - path: data/cloud-collected
+      hash: md5
+      md5: 3a674617418863eb0190820fbe5aa41a.dir
+      size: 1902727
+      nfiles: 420
+    - path: results/cloud-collection.json
+      hash: md5
+      md5: feb85ff44076f5f677588301e7f52798
+      size: 75

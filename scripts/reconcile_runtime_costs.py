@@ -47,7 +47,7 @@ def reconcile():
  with (B.parent/'data/budget.lock').open('w') as f:
   fcntl.flock(f,fcntl.LOCK_EX);b=json.loads(B.read_text());b.setdefault('historical_allowances_usd',b['reserved_usd']);b['accounting_policy']='Expected estimate -> measured-runtime cost estimate -> posted charge, preserving history. Historical maximum allowances are not spend. Supersedes retained-allowance accounting by explicit user instruction.';b['recycle_reservations']=True;b['accounting']=result
   for key,res in b['reservations'].items():
-   workflow=res.get('execution','').split('/workflows/')[-1].split('/executions/')[0]
+   workflow=('fds-'+key) if key.startswith('x36-') else res.get('execution','').split('/workflows/')[-1].split('/executions/')[0]
    match=[r for r in records if workflow and (r.get('trial_id')==workflow.removeprefix('fds-') or r['vm'].startswith(workflow+'-'))]
    if match:res['cost']=dict(stage='runtime_estimate',usd=sum(r['estimated_compute_usd'] for r in match),vm_hours=sum(r['hours'] for r in match),scope='compute only; shared cost at project level',resources=[r['vm'] for r in match]);res['historical_allowance_usd']=res['allowance_usd']
    if match and billed:
@@ -67,7 +67,7 @@ def reconcile():
       covered=covered and bool(rr) and min(ts(r['first_usage_start']) for r in rr)<=ts(vm['start']) and max(ts(r['last_usage_end']) for r in rr)>=ts(vm['end'])
     if covered:res['cost']=dict(stage='posted_billing_subject_to_adjustment',usd=sum(float(r['net_cost']) for r in actual),scope='matched detailed-export resource rows; shared/unattributed costs separate',resource_rows=len(actual))
 
-  active=[r for r in b['reservations'].values() if r['state'] in ['reserved_before_upload','submission_pending','submitted']]
+  active=[r for r in b['reservations'].values() if r['state'] in ['reserved_before_upload','submission_pending','submitted','delegated_to_cloud_queue']]
   b['reserved_usd']=sum(r['allowance_usd'] for r in active);b['estimated_spend_usd']=result['spend_estimate_usd'];B.write_text(json.dumps(b,indent=2)+'\n')
  (D/'runtime-reconciliation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
 if __name__=='__main__':reconcile()
