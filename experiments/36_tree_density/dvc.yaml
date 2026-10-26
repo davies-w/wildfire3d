@@ -58,6 +58,8 @@ stages:
     - groups.json
     - data/packages
     - results/reserved.json
+    - active-groups.json
+    - results/repair-workflow-preflight.json
     outs:
     - data/summaries
     metrics:
@@ -82,4 +84,25 @@ stages:
     - data/restore-context
     metrics:
     - results/restore-preflight.json:
+        cache: false
+  activate_restore:
+    cmd: ../../.venv/bin/python repair/activate.py
+    deps:
+    - repair/activate.py
+    - results/restore-build-status.json
+    - groups.json
+    - data/packages
+    outs:
+    - data/repair-packages
+    - active-groups.json:
+        cache: false
+  validate_restore:
+    cmd: ../../.venv/bin/python repair/validate.py
+    deps:
+    - repair/validate.py
+    - active-groups.json
+    - data/repair-packages
+    - data/packages
+    metrics:
+    - results/repair-workflow-preflight.json:
         cache: false

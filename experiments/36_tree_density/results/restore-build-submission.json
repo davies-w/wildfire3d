@@ -1,0 +1,50 @@
+{
+  "artifacts": {
+    "images": [
+      "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver36:restored"
+    ]
+  },
+  "createTime": "2026-10-26T05:47:20.834003198Z",
+  "id": "58f55a79-1946-4a50-9c10-a22807acd734",
+  "images": [
+    "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver36:restored"
+  ],
+  "logUrl": "https://console.cloud.google.com/cloud-build/builds/58f55a79-1946-4a50-9c10-a22807acd734?project=587909259768",
+  "name": "projects/587909259768/locations/global/builds/58f55a79-1946-4a50-9c10-a22807acd734",
+  "options": {
+    "diskSizeGb": "30",
+    "logging": "CLOUD_LOGGING_ONLY",
+    "pool": {},
+    "workerRelease": "legacy"
+  },
+  "projectId": "tmrw-wildfire-20261015",
+  "queueTtl": "600s",
+  "serviceAccount": "projects/tmrw-wildfire-20261015/serviceAccounts/fds-builder@tmrw-wildfire-20261015.iam.gserviceaccount.com",
+  "source": {
+    "storageSource": {
+      "bucket": "tmrw-wildfire-20261015-trial",
+      "generation": "1792993640616961",
+      "object": "density36/restore-build/1792993635.039899-e357833c98fc45aa813d667d6cd0745a.tgz"
+    }
+  },
+  "sourceProvenance": {
+    "resolvedStorageSource": {
+      "bucket": "tmrw-wildfire-20261015-trial",
+      "generation": "1792993640616961",
+      "object": "density36/restore-build/1792993635.039899-e357833c98fc45aa813d667d6cd0745a.tgz"
+    }
+  },
+  "status": "QUEUED",
+  "steps": [
+    {
+      "args": [
+        "build",
+        "-t",
+        "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver36:restored",
+        "."
+      ],
+      "name": "gcr.io/cloud-builders/docker"
+    }
+  ],
+  "timeout": "1200s"
+}

@@ -2,11 +2,11 @@
 from pathlib import Path
 import json,subprocess,tarfile,hashlib
 import numpy as np
-from cloud import G,read,save
+from cloud import G,read,save,active_groups
 from material_reader import frames
 R=Path(__file__).parent
 def main():
- g=next(g for g in read('groups.json') if g['phase']=='coverage');assert read('jobs/'+g['id']+'/completion.json')['all_full_horizon'];cases={c['case']:c for c in read('cases.json')};geoms=dict(np.load(R/'data/coverage-geometries.npz'));audit=[]
+ g=next(g for g in active_groups() if g['phase']=='coverage');assert read('jobs/'+g['id']+'/completion.json')['all_full_horizon'];cases={c['case']:c for c in read('cases.json')};geoms=dict(np.load(R/'data/coverage-geometries.npz'));audit=[]
  for n in g['cases']:
   c=cases[n];m=json.loads((R/'data/summaries'/(n+'.json')).read_text());p=R/'data/downloads'/(n+'.tar.gz');p.parent.mkdir(exist_ok=True)
   if not p.exists():subprocess.run([G,'storage','cp','gs://tmrw-wildfire-20261015-trial/density36/'+g['id']+'/'+n+'.tar.gz',str(p)],check=True)

@@ -32,11 +32,15 @@ def reserve():
   for g in groups:b['reservations'][g['id']]=dict(state='reserved_before_upload',allowance_usd=g['allowance_usd'],reserved_unix=time.time(),scope='CPU group maximum lifetime at .08USD/h',cases=len(g['cases']))
   for key,value in [('density36-storage',10),('density36-learning',8)]:b['reservations'][key]=dict(state='reserved_before_upload',allowance_usd=value,reserved_unix=time.time(),scope='Campaign ancillary/storage' if value==10 else 'Later unchanged-model grouped ten-fold evaluation; hyperparameter trials not launched')
   b['reserved_usd']=round(b['reserved_usd']+total,2);B.write_text(json.dumps(b,indent=2)+'\n');save('results/reserved.json',dict(total_allowance_usd=total,pre_run_estimate_usd=b['estimated_spend_usd'],cap_usd=b['authorized_usd']))
+def active_groups():return read('active-groups.json') if (R/'active-groups.json').exists() else read('groups.json')
 def launch(name):
- g=next(g for g in read('groups.json') if g['id']==name);folder=R/'jobs'/name
+ g=next(g for g in active_groups() if g['id']==name);folder=R/'jobs'/name
  assert read('results/preflight.json')['passed'] and read('results/workflow-preflight.json')['passed'] and read('results/transport-preflight.json')['passed']
  if g['phase']!='coverage':assert read('results/coverage-review.json')['passed']
- assert hashlib.sha256((folder/'workflow.yaml').read_bytes()).hexdigest()==g['workflow_sha256']
+ assert hashlib.sha256((folder/g.get('workflow_file','workflow.yaml')).read_bytes()).hexdigest()==g['workflow_sha256']
+ assert g.get('image_uri'),'Repaired pinned image required'
+ assert read('results/repair-workflow-preflight.json')['passed']
+ gc('artifacts','docker','images','describe',g['image_uri'])
  with (B.parent/'data/budget.lock').open('w') as f:
   fcntl.flock(f,fcntl.LOCK_EX);b=json.loads(B.read_text());entry=b['reservations'][name];assert entry['state']=='reserved_before_upload' and not (folder/'execution.json').exists()
   vms=gc('compute','instances','list');jobs=gc('batch','jobs','list','--location=us-central1');assert len(vms)<24 and len(jobs)<24;assert all(x.get('labels',{}).get('trial_id','').startswith('x36-') for x in vms+jobs)
@@ -44,7 +48,7 @@ def launch(name):
   if (folder/'read-condition.json').exists():condition=read(f'jobs/{name}/read-condition.json')
   else:save(f'jobs/{name}/read-condition.json',condition)
   subprocess.run([G,'storage','buckets','add-iam-policy-binding','gs://'+BUCKET,'--member=serviceAccount:fds-worker@'+PROJECT+'.iam.gserviceaccount.com','--role=roles/storage.objectViewer','--condition-from-file='+str(folder/'read-condition.json')],check=True,capture_output=True)
-  package=R/'data/packages'/(name+'.xz');assert hashlib.sha256(package.read_bytes()).hexdigest()==g['package_sha256']
+  package=R/g.get('package_file','data/packages/'+name+'.xz');assert hashlib.sha256(package.read_bytes()).hexdigest()==g['package_sha256']
   uri='gs://'+BUCKET+'/density36/'+name+'/input.xz'
   if not (folder/'input-upload.json').exists():
    probe=subprocess.run([G,'storage','objects','describe',uri,'--format=json'],capture_output=True,text=True)
@@ -52,13 +56,13 @@ def launch(name):
     assert '404' in probe.stderr or 'not found' in probe.stderr.lower(),probe.stderr
     subprocess.run([G,'storage','cp',str(package),uri,'--if-generation-match=0'],check=True,capture_output=True,timeout=240)
   meta=gc('storage','objects','describe',uri);assert meta['md5_hash']==base64.b64encode(hashlib.md5(package.read_bytes()).digest()).decode();save(f'jobs/{name}/input-upload.json',meta)
-  sa=gc('workflows','describe','fds-domain17','--location=us-central1')['serviceAccount'];gc('workflows','deploy','fds-'+name,'--location=us-central1','--source='+str(folder/'workflow.yaml'),'--service-account='+sa)
-  assert yaml.safe_load(gc('workflows','describe','fds-'+name,'--location=us-central1')['sourceContents'])==yaml.safe_load((folder/'workflow.yaml').read_text())
+  sa=gc('workflows','describe','fds-domain17','--location=us-central1')['serviceAccount'];gc('workflows','deploy','fds-'+name,'--location=us-central1','--source='+str(folder/g.get('workflow_file','workflow.yaml')),'--service-account='+sa)
+  assert yaml.safe_load(gc('workflows','describe','fds-'+name,'--location=us-central1')['sourceContents'])==yaml.safe_load((folder/g.get('workflow_file','workflow.yaml')).read_text())
   assert not gc('workflows','executions','list','fds-'+name,'--location=us-central1')
   entry['state']='submission_pending';B.write_text(json.dumps(b,indent=2)+'\n')
   e=gc('workflows','execute','fds-'+name,'--location=us-central1');save(f'jobs/{name}/execution.json',e);entry.update(state='submitted',execution=e['name']);B.write_text(json.dumps(b,indent=2)+'\n');print('SUBMITTED',name,e['name'],flush=True)
 def collect(name):
- g=next(g for g in read('groups.json') if g['id']==name);folder=R/'jobs'/name;e=read(f'jobs/{name}/execution.json')['name'].split('/');st=gc('workflows','executions','describe',e[-1],'--workflow='+e[-3],'--location=us-central1');save(f'jobs/{name}/status.json',st)
+ g=next(g for g in active_groups() if g['id']==name);folder=R/'jobs'/name;e=read(f'jobs/{name}/execution.json')['name'].split('/');st=gc('workflows','executions','describe',e[-1],'--workflow='+e[-3],'--location=us-central1');save(f'jobs/{name}/status.json',st)
  if st['state']=='ACTIVE':return False
  inv={k:gc(*args,'--filter=labels.trial_id='+name) for k,args in {'instances':('compute','instances','list'),'disks':('compute','disks','list'),'jobs':('batch','jobs','list','--location=us-central1')}.items()};save(f'jobs/{name}/cleanup.json',inv);assert not any(inv.values())
  if not (folder/'permission-removed.json').exists():
@@ -67,7 +71,7 @@ def collect(name):
  for n in g['cases']:
   uri='gs://'+BUCKET+'/density36/'+name+'/'+n;p=R/'data/summaries'/(n+'.json')
   if not p.exists():subprocess.run([G,'storage','cp',uri+'.summary.json',str(p)],check=True,capture_output=True,timeout=240)
-  s=json.loads(p.read_text());assert s['deck_sha256']==read('results/input-freeze.json')['cases'][n] and s['resume']['passed'] and s['checkpoint_manifest']['files']
+  s=json.loads(p.read_text());assert s['result']['binary_sha256']=='70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692';assert s['deck_sha256']==read('results/input-freeze.json')['cases'][n] and s['resume']['passed'] and s['checkpoint_manifest']['files']
   m=gc('storage','objects','describe',uri+'.tar.gz');assert int(m['size'])==s['raw_bytes'];save(f'jobs/{name}/{n}-raw-object.json',m);assert s['result']['full_horizon'];rows.append(s['result'])
  save(f'jobs/{name}/completion.json',dict(all_full_horizon=True,collected=len(rows),workflow_state=st['state'],cleanup_verified=True));print('COLLECTED',name,flush=True);return True
 if __name__=='__main__':

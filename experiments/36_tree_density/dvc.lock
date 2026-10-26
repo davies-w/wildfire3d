@@ -172,3 +172,59 @@ stages:
       hash: md5
       md5: 7ed09778d50b3c84766868b35151505e
       size: 156
+  activate_restore:
+    cmd: ../../.venv/bin/python repair/activate.py
+    deps:
+    - path: data/packages
+      hash: md5
+      md5: 725332d4eccd1d22a02c63eef6848482.dir
+      size: 11300008
+      nfiles: 131
+    - path: groups.json
+      hash: md5
+      md5: 179045676106393f9ee972a1635e5ce7
+      size: 73899
+    - path: repair/activate.py
+      hash: md5
+      md5: 375509db13a8912ca11b4c490de3a220
+      size: 2149
+    - path: results/restore-build-status.json
+      hash: md5
+      md5: 3674d03468da9ad3bee34e3c6c8fb17e
+      size: 3724
+    outs:
+    - path: active-groups.json
+      hash: md5
+      md5: a1d2b8850bae461beb4d67323f1cab1f
+      size: 99637
+    - path: data/repair-packages
+      hash: md5
+      md5: 3eba2dc250d0d9fffb88686043384d12.dir
+      size: 110172
+      nfiles: 1
+  validate_restore:
+    cmd: ../../.venv/bin/python repair/validate.py
+    deps:
+    - path: active-groups.json
+      hash: md5
+      md5: a1d2b8850bae461beb4d67323f1cab1f
+      size: 99637
+    - path: data/packages
+      hash: md5
+      md5: 725332d4eccd1d22a02c63eef6848482.dir
+      size: 11300008
+      nfiles: 131
+    - path: data/repair-packages
+      hash: md5
+      md5: 3eba2dc250d0d9fffb88686043384d12.dir
+      size: 110172
+      nfiles: 1
+    - path: repair/validate.py
+      hash: md5
+      md5: 6fc51f6ec1d7c145f45a688b048387bb
+      size: 1721
+    outs:
+    - path: results/repair-workflow-preflight.json
+      hash: md5
+      md5: 00b56dd8817c2730cfe41572f9054a58
+      size: 143

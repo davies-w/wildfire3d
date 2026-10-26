@@ -1,14 +1,14 @@
 """Single campaign owner; no automatic compute retry or duplicate submission."""
 from pathlib import Path
 import fcntl,time,traceback,json
-from cloud import read,save,launch,collect,B
+from cloud import read,save,launch,collect,B,active_groups
 from coverage_review import main as review
 R=Path(__file__).resolve().parent
 with (R/'data/dispatcher.lock').open('w') as lock:
  fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
  try:
   while True:
-   groups=read('groups.json');active=[];b=json.loads(B.read_text())
+   groups=active_groups();active=[];b=json.loads(B.read_text())
    for g in groups:
     n=g['id'];f=R/'jobs'/n
     if (f/'completion.json').exists():continue
