@@ -124,7 +124,7 @@ stages:
       md5: 80f4d9e981ec546853cc4025312c3fdd
       size: 1447
   checks:
-    cmd: ../../.venv/bin/python checks.py && ../../.venv/bin/python 
+    cmd: ../../.venv/bin/python checks.py && ../../.venv/bin/python
       check_strength.py
     deps:
     - path: check_strength.py
@@ -164,3 +164,73 @@ stages:
       hash: md5
       md5: d43c38cc8d3422b14046bd2f588f3aa2
       size: 312
+  evaluate:
+    cmd: ../../.venv/bin/python evaluate.py previous && ../../.venv/bin/python
+      evaluate.py bound_only && ../../.venv/bin/python evaluate.py bounded &&
+      ../../.venv/bin/python evaluate.py heads && ../../.venv/bin/python
+      evaluate.py interpolation && ../../.venv/bin/python evaluate.py
+      strength_only
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: 482809e3a88c8b1fdb095edd7a14e651
+      size: 22294
+    - path: data/fields
+      hash: md5
+      md5: 43197ef7a21361c668a5b66f804fd241.dir
+      size: 4079282392
+      nfiles: 114
+    - path: data/models/bounded.pt
+      hash: md5
+      md5: 9463b3f9285172f483a3bf3a09ab387c
+      size: 667964
+    - path: data/models/heads.pt
+      hash: md5
+      md5: c6f736b12e16a8b865e54dea15fc0f47
+      size: 731226
+    - path: data/models/previous.pt
+      hash: md5
+      md5: bdc21e483730d7087633c0a138d501e5
+      size: 668177
+    - path: evaluate.py
+      hash: md5
+      md5: 9fc4cac70a2e83f900ebb1264e889e52
+      size: 4600
+    - path: models.py
+      hash: md5
+      md5: ff307db1b2d1ee7b7c9f2e44a6a5ddde
+      size: 2229
+    - path: original_cnn.py
+      hash: md5
+      md5: 089a7510f25209a7e15fecf3485bd75b
+      size: 6317
+    outs:
+    - path: data/validation_predictions
+      hash: md5
+      md5: ccca1303c56bc133a8d0b7ff7cf32254.dir
+      size: 1288177152
+      nfiles: 12
+    - path: results/bound_only-evaluation.json
+      hash: md5
+      md5: 380e7fd1af19d8f06c9356ae25fbe873
+      size: 542544
+    - path: results/bounded-evaluation.json
+      hash: md5
+      md5: 32a639de705ade66b66cab2bb7797685
+      size: 546527
+    - path: results/heads-evaluation.json
+      hash: md5
+      md5: 0ed5d48f4ba5060a27a2417a9fdaab91
+      size: 569861
+    - path: results/interpolation-evaluation.json
+      hash: md5
+      md5: fe5171a36da3f86e6dca8b7e0d3e64af
+      size: 91753
+    - path: results/previous-evaluation.json
+      hash: md5
+      md5: ddea761ad442048f7f560fc3e5cdc1db
+      size: 545106
+    - path: results/strength_only-evaluation.json
+      hash: md5
+      md5: 263830b0ed99012970988899b7abfe55
+      size: 569994

@@ -1,564 +1,1411 @@
 {
-  "audited_at_utc": "2026-10-26T06:21:42.010928+00:00",
-  "scope": "Experiment files at least 10 MiB; path inventory only, not repository-wide content hash validation. Lock/pointer path membership does not establish current bytes match.",
-  "large_file_count": 1772,
-  "outside_committed_lock_or_pointer_outputs": [
+  "audited_at_utc": "2026-10-26T06:31:20.148568+00:00",
+  "correction": "The original 91-item unresolved count was misleading: it ignored DVC stage wdir, treated Git text reports as gaps, and did not verify duplicated archive contents. This revision classifies each original entry by checksum evidence.",
+  "scope": "Reconciliation of the original 91 experiment files >=10 MiB. Not a full repository audit; stage lock path resolution includes wdir. Cache/mirror booleans in original observations are retained as initial-state evidence.",
+  "resolution_counts": {
+    "awaiting_approval_for_retained_volume_caching": 19,
+    "byte_identical_member_of_locked_and_mirrored_output_tar": 12,
+    "external_capture_tracking_blocked_by_existing_experiment21_overlapping_outputs": 3,
+    "awaiting_approval_for_checkpoint_retention_metadata": 17,
+    "already_preserved_in_git_text_report": 4,
+    "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs": 24,
+    "adopted_existing_evaluate_stage_and_verified_local_mirror": 12
+  },
+  "entries": [
     {
       "path": "experiments/05_ember_lofting/data/garden_loft_1_1.s3d",
       "bytes": 13086694,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "c9483786b2e9df7334376c7d2700887a",
+      "lock_matches": [
+        {
+          "lock": "experiments/05_ember_lofting/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "c9483786b2e9df7334376c7d2700887a"
+        }
+      ],
+      "cache_present": true,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/30_tree_sequence/data/extracted/data/sequence_s27_validation_0.npz",
       "bytes": 73331376,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "4df5b01152d636767392db85186914e9",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "byte_identical_member_of_locked_and_mirrored_output_tar",
+      "archive_evidence": {
+        "path": "experiments/30_tree_sequence/data/extracted/data/sequence_s27_validation_0.npz",
+        "duplicate_of": "experiments/30_tree_sequence/data/cloud/outputs.tar",
+        "member": "data/sequence_s27_validation_0.npz",
+        "md5": "4df5b01152d636767392db85186914e9"
+      }
     },
     {
       "path": "experiments/30_tree_sequence/data/extracted/data/sequence_s27_validation_1.npz",
       "bytes": 73722813,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "7e4534687f23bcaeba09a1f2ba9bc14b",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "byte_identical_member_of_locked_and_mirrored_output_tar",
+      "archive_evidence": {
+        "path": "experiments/30_tree_sequence/data/extracted/data/sequence_s27_validation_1.npz",
+        "duplicate_of": "experiments/30_tree_sequence/data/cloud/outputs.tar",
+        "member": "data/sequence_s27_validation_1.npz",
+        "md5": "7e4534687f23bcaeba09a1f2ba9bc14b"
+      }
     },
     {
       "path": "experiments/21_local_components/data/sampling-price-source.html",
       "bytes": 18693752,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "deab0ae4fafffacff9096c6145d1301d",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "external_capture_tracking_blocked_by_existing_experiment21_overlapping_outputs",
+      "limitation": "Two captured public pricing HTML pages and a historical HF sync-plan response. DVC add failed graph validation; no science pipelines changed to work around it."
     },
     {
       "path": "experiments/21_local_components/data/spot-price-source.html",
       "bytes": 18693739,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "1e2d767ac58eb02c159fd45053499265",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "external_capture_tracking_blocked_by_existing_experiment21_overlapping_outputs",
+      "limitation": "Two captured public pricing HTML pages and a historical HF sync-plan response. DVC add failed graph validation; no science pipelines changed to work around it."
     },
     {
       "path": "experiments/21_local_components/data/overnight_stronger_preflight/overnight21_stronger_1.restart",
       "bytes": 100268144,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "a13301902594d98adb5e346e4ccd0c19",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/04_fence_and_trees_large/data/wick/wick_1_3.s3d",
       "bytes": 20417798,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "f05e5ecdc08e13453f535366a8b73f3f",
+      "lock_matches": [
+        {
+          "lock": "experiments/04_fence_and_trees_large/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "f05e5ecdc08e13453f535366a8b73f3f"
+        }
+      ],
+      "cache_present": true,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/04_fence_and_trees_large/data/wick/wick_1_1.s3d",
       "bytes": 30581848,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "c579ddc929bdd32b01b7a66ba3ffec5e",
+      "lock_matches": [
+        {
+          "lock": "experiments/04_fence_and_trees_large/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "c579ddc929bdd32b01b7a66ba3ffec5e"
+        }
+      ],
+      "cache_present": true,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_1.s3d",
       "bytes": 17458987,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "62948491e32e086b97b08823b096f191",
+      "lock_matches": [
+        {
+          "lock": "experiments/04_fence_and_trees_large/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "62948491e32e086b97b08823b096f191"
+        }
+      ],
+      "cache_present": true,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_3.s3d",
       "bytes": 13058151,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "3823779fb3a2ece21afc7fa44d02b152",
+      "lock_matches": [
+        {
+          "lock": "experiments/04_fence_and_trees_large/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "3823779fb3a2ece21afc7fa44d02b152"
+        }
+      ],
+      "cache_present": true,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/03_vegetation/data/garden_veg_obst/garden_veg_obst_1_1.s3d",
       "bytes": 13089031,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "5d310765bd16434d0713fe112ddffeaa",
+      "lock_matches": [
+        {
+          "lock": "experiments/03_vegetation/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "5d310765bd16434d0713fe112ddffeaa"
+        }
+      ],
+      "cache_present": true,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/35_surrogate_diagnostics/attempt05/results/report.json",
       "bytes": 19784479,
       "git_tracked": true,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "e1ccdf5e121ca590fca0ebd7dd881701",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "already_preserved_in_git_text_report"
     },
     {
       "path": "experiments/35_surrogate_diagnostics/attempt03/results/report.json",
       "bytes": 17312829,
       "git_tracked": true,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "78864b3a6c9c760c0ef685da74ebe582",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "already_preserved_in_git_text_report"
     },
     {
       "path": "experiments/35_surrogate_diagnostics/attempt04/results/report.json",
       "bytes": 19267544,
       "git_tracked": true,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "0e9648e6f3a63d0a065adf3a5db1770e",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "already_preserved_in_git_text_report"
     },
     {
       "path": "experiments/35_surrogate_diagnostics/attempt23/data/archive-sync-plan.jsonl",
       "bytes": 19684243,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "ef2a635e4185a52873e4ffe2e7926ac6",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "external_capture_tracking_blocked_by_existing_experiment21_overlapping_outputs",
+      "limitation": "Two captured public pricing HTML pages and a historical HF sync-plan response. DVC add failed graph validation; no science pipelines changed to work around it."
     },
     {
       "path": "experiments/07_wick3_house_ignition/data/wick3c_1_3.s3d",
       "bytes": 38869634,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "670733614a7ca03964847e59a0c900cf",
+      "lock_matches": [
+        {
+          "lock": "experiments/07_wick3_house_ignition/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "670733614a7ca03964847e59a0c900cf"
+        }
+      ],
+      "cache_present": true,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/07_wick3_house_ignition/data/wick3c_1_2.s3d",
       "bytes": 10989929,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "514e7e2e6cdf8a7e981f86a8f9656ec6",
+      "lock_matches": [
+        {
+          "lock": "experiments/07_wick3_house_ignition/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "514e7e2e6cdf8a7e981f86a8f9656ec6"
+        }
+      ],
+      "cache_present": true,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/07_wick3_house_ignition/data/wick3c_1_1.s3d",
       "bytes": 48735274,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "a5e93fbc0cc222020b8162ac0af75631",
+      "lock_matches": [
+        {
+          "lock": "experiments/07_wick3_house_ignition/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "a5e93fbc0cc222020b8162ac0af75631"
+        }
+      ],
+      "cache_present": true,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/07_wick3_house_ignition/data/wick3c_1.restart",
       "bytes": 87954956,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "3020ec20753499332ae32b93ad7bbf4c",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/hybrid_v31_04.npz",
       "bytes": 77719356,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "d0d86d4135633bacd83e75bc93435e1f",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "byte_identical_member_of_locked_and_mirrored_output_tar",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/hybrid_v31_04.npz",
+        "duplicate_of": "experiments/31_tree_variations/data/gpu/cloud/outputs.tar",
+        "member": "data/predictions/hybrid_v31_04.npz",
+        "md5": "d0d86d4135633bacd83e75bc93435e1f"
+      }
     },
     {
       "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/hybrid_v31_11.npz",
       "bytes": 76956681,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "46ccce9de8792ada6f47a6148dab4418",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "byte_identical_member_of_locked_and_mirrored_output_tar",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/hybrid_v31_11.npz",
+        "duplicate_of": "experiments/31_tree_variations/data/gpu/cloud/outputs.tar",
+        "member": "data/predictions/hybrid_v31_11.npz",
+        "md5": "46ccce9de8792ada6f47a6148dab4418"
+      }
     },
     {
       "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/hybrid_v31_01.npz",
       "bytes": 76858810,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "5b9830e8901040437353a126fba35466",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "byte_identical_member_of_locked_and_mirrored_output_tar",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/hybrid_v31_01.npz",
+        "duplicate_of": "experiments/31_tree_variations/data/gpu/cloud/outputs.tar",
+        "member": "data/predictions/hybrid_v31_01.npz",
+        "md5": "5b9830e8901040437353a126fba35466"
+      }
     },
     {
       "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/snapshot_v31_08.npz",
       "bytes": 78048146,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "a448baf5de6aa75c10a4c54c9e5726b2",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "byte_identical_member_of_locked_and_mirrored_output_tar",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/snapshot_v31_08.npz",
+        "duplicate_of": "experiments/31_tree_variations/data/gpu/cloud/outputs.tar",
+        "member": "data/predictions/snapshot_v31_08.npz",
+        "md5": "a448baf5de6aa75c10a4c54c9e5726b2"
+      }
     },
     {
       "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/state_reset_ablation_v31_04.npz",
       "bytes": 78427802,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "700e99b06acbd118911d28c8adbbe98e",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "byte_identical_member_of_locked_and_mirrored_output_tar",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/state_reset_ablation_v31_04.npz",
+        "duplicate_of": "experiments/31_tree_variations/data/gpu/cloud/outputs.tar",
+        "member": "data/predictions/state_reset_ablation_v31_04.npz",
+        "md5": "700e99b06acbd118911d28c8adbbe98e"
+      }
     },
     {
       "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/state_reset_ablation_v31_11.npz",
       "bytes": 77558091,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "2dbf5674f3aac592b17cc774a25736cf",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "byte_identical_member_of_locked_and_mirrored_output_tar",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/state_reset_ablation_v31_11.npz",
+        "duplicate_of": "experiments/31_tree_variations/data/gpu/cloud/outputs.tar",
+        "member": "data/predictions/state_reset_ablation_v31_11.npz",
+        "md5": "2dbf5674f3aac592b17cc774a25736cf"
+      }
     },
     {
       "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/snapshot_v31_01.npz",
       "bytes": 77519526,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "05567455bec354bcab37a59d7b6b161e",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "byte_identical_member_of_locked_and_mirrored_output_tar",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/snapshot_v31_01.npz",
+        "duplicate_of": "experiments/31_tree_variations/data/gpu/cloud/outputs.tar",
+        "member": "data/predictions/snapshot_v31_01.npz",
+        "md5": "05567455bec354bcab37a59d7b6b161e"
+      }
     },
     {
       "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/snapshot_v31_04.npz",
       "bytes": 78054654,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "2a26a2a091c6be29d871481a2f31a129",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "byte_identical_member_of_locked_and_mirrored_output_tar",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/snapshot_v31_04.npz",
+        "duplicate_of": "experiments/31_tree_variations/data/gpu/cloud/outputs.tar",
+        "member": "data/predictions/snapshot_v31_04.npz",
+        "md5": "2a26a2a091c6be29d871481a2f31a129"
+      }
     },
     {
       "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/snapshot_v31_11.npz",
       "bytes": 77558787,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "0d2498aebd32358cd125674c18c55152",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "byte_identical_member_of_locked_and_mirrored_output_tar",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/snapshot_v31_11.npz",
+        "duplicate_of": "experiments/31_tree_variations/data/gpu/cloud/outputs.tar",
+        "member": "data/predictions/snapshot_v31_11.npz",
+        "md5": "0d2498aebd32358cd125674c18c55152"
+      }
     },
     {
       "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/hybrid_v31_08.npz",
       "bytes": 77705305,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "82c8ef901e9796b2c19a86c95008cb03",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "byte_identical_member_of_locked_and_mirrored_output_tar",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/gpu/adopted/data/predictions/hybrid_v31_08.npz",
+        "duplicate_of": "experiments/31_tree_variations/data/gpu/cloud/outputs.tar",
+        "member": "data/predictions/hybrid_v31_08.npz",
+        "md5": "82c8ef901e9796b2c19a86c95008cb03"
+      }
     },
     {
       "path": "experiments/31_tree_variations/data/downloads/v31_01.tar.gz",
       "bytes": 94268642,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "3d54e11eb27ab0d1e2e88072fc784f58",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/downloads/v31_01.tar.gz",
+        "members": 37,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/31_tree_variations/data/downloads/v31_11.tar.gz",
       "bytes": 96694697,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "a08763b2572acf619350599790bb271a",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/downloads/v31_11.tar.gz",
+        "members": 37,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/31_tree_variations/data/downloads/v31_03.tar.gz",
       "bytes": 96185649,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "0e5eb063db608af0bbb0508aabf6e7a9",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/downloads/v31_03.tar.gz",
+        "members": 37,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/31_tree_variations/data/downloads/v31_07.tar.gz",
       "bytes": 96906217,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "5f08964ff77046a22ad5fc859aa0da6c",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/downloads/v31_07.tar.gz",
+        "members": 37,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/31_tree_variations/data/downloads/v31_09.tar.gz",
       "bytes": 91755079,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "480a6095bc1115b7d4176083822842ea",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/downloads/v31_09.tar.gz",
+        "members": 37,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/31_tree_variations/data/downloads/v31_05.tar.gz",
       "bytes": 94989751,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "0fb77892880baf04221a481115099411",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/downloads/v31_05.tar.gz",
+        "members": 37,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/31_tree_variations/data/downloads/v31_00.tar.gz",
       "bytes": 95513892,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "29f84a71521ecfd79da518c36dfe1c6d",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/downloads/v31_00.tar.gz",
+        "members": 37,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/31_tree_variations/data/downloads/v31_10.tar.gz",
       "bytes": 97488926,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "0c83bcce4c71f45927aaf7538cd9615b",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/downloads/v31_10.tar.gz",
+        "members": 37,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/31_tree_variations/data/downloads/v31_02.tar.gz",
       "bytes": 96471912,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "ccff2adbcd2304cb2de18fdd3d8331ee",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/downloads/v31_02.tar.gz",
+        "members": 37,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/31_tree_variations/data/downloads/v31_06.tar.gz",
       "bytes": 97014122,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "2fc33eb4737527312b9e6b2acd003a58",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/downloads/v31_06.tar.gz",
+        "members": 37,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/31_tree_variations/data/downloads/v31_08.tar.gz",
       "bytes": 96610834,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "60d6e3957b9cdbaad7c95f6efec77a6b",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/downloads/v31_08.tar.gz",
+        "members": 37,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/31_tree_variations/data/downloads/v31_04.tar.gz",
       "bytes": 96137121,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "cb7727c135de07db051f1896e5d1f1da",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/31_tree_variations/data/downloads/v31_04.tar.gz",
+        "members": 37,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_B_compact_0p5.tar.gz",
       "bytes": 28866911,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "5671c61ebd7dc12f9ef5c0d7a49e801f",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_B_compact_0p5.tar.gz",
+        "members": 35,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_A_compact_1.tar.gz",
       "bytes": 11671714,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "79a05b8dd7a93af9928d7b1c7560f30a",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_A_compact_1.tar.gz",
+        "members": 35,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_A_compact_0p5.tar.gz",
       "bytes": 28864176,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "f4c8708aa3841692485a8c90aabd3896",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_A_compact_0p5.tar.gz",
+        "members": 35,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_C_expanded_0p5.tar.gz",
       "bytes": 64514250,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "e5217f2f62550e90416835bbe9e420eb",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_C_expanded_0p5.tar.gz",
+        "members": 35,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_B_expanded_0p5.tar.gz",
       "bytes": 64492102,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "c9cab19a75c82b42d329b3407608395c",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_B_expanded_0p5.tar.gz",
+        "members": 35,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_A_expanded_0p5.tar.gz",
       "bytes": 64492831,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "39d6247c4534db8ff672a3c9ee782b3d",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_A_expanded_0p5.tar.gz",
+        "members": 35,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_C_expanded_1.tar.gz",
       "bytes": 16954526,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "375caaa2e964b0c410909f82935c23b5",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_C_expanded_1.tar.gz",
+        "members": 35,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_C_compact_1.tar.gz",
       "bytes": 11636373,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "fbef3fa11a3fe1803494837eb0e5d85e",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_C_compact_1.tar.gz",
+        "members": 35,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_B_expanded_1.tar.gz",
       "bytes": 16996883,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "eb61bd1c8031cfd13badd72de1572952",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_B_expanded_1.tar.gz",
+        "members": 35,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_B_compact_1.tar.gz",
       "bytes": 11680202,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "8f1f6f6ca587bac5b5783d6cb16c1e34",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_B_compact_1.tar.gz",
+        "members": 35,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_A_expanded_1.tar.gz",
       "bytes": 16981039,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "0ea35c863650f748a4ac01fc2411199f",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_A_expanded_1.tar.gz",
+        "members": 35,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_C_compact_0p5.tar.gz",
       "bytes": 28706741,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "20b2aa445b821e3ee67c9e58fcf0d163",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "all_archive_file_contents_identical_to_locked_and_mirrored_cloud_outputs",
+      "archive_evidence": {
+        "path": "experiments/23_mesh_domain_pilot/data/downloads/p23_C_compact_0p5.tar.gz",
+        "members": 35,
+        "not_verified": []
+      },
+      "limitation": "Original gzip/tar packaging bytes are not separately DVC tracked. Every regular-file member has been checked against the committed DVC directory manifest and its mirror object. No archive was deleted."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/preflight/p23_B_expanded_1/p23_B_expanded_1_1.restart",
       "bytes": 38138588,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "dc466813b211d49a736423b6e66a852f",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/preflight/p23_A_expanded_0p5/p23_A_expanded_0p5_1.restart",
       "bytes": 157006092,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "507538505a436962de33973c4669908a",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/preflight/p23_A_compact_0p5/p23_A_compact_0p5_1.restart",
       "bytes": 60011580,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "bf2cc4d0200258349f9a6065a30d61ad",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/preflight/p23_A_compact_1/p23_A_compact_1_1.restart",
       "bytes": 18889268,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "af7ecd7bfccd7b9b9b9348e9e4dc6df6",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/preflight/p23_B_compact_0p5/p23_B_compact_0p5_1.restart",
       "bytes": 60011580,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "06147abbc75bb38d6f59b46ee5f3840a",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/preflight/p23_B_compact_1/p23_B_compact_1_1.restart",
       "bytes": 18889268,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "399cb1a1629b36ce85190613914afd17",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/preflight/p23_C_expanded_1/p23_C_expanded_1_1.restart",
       "bytes": 38138588,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "30d578f54d34ad30a6d08c66e1064f16",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/preflight/p23_C_compact_1/p23_C_compact_1_1.restart",
       "bytes": 18889268,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "74fb1a10ade46e5d2d80bda3f31ff670",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/preflight/p23_B_expanded_0p5/p23_B_expanded_0p5_1.restart",
       "bytes": 157006092,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "8163b1bfd4d37be0a5825e21631c9640",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/preflight/p23_C_compact_0p5/p23_C_compact_0p5_1.restart",
       "bytes": 60011580,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "5e9a4757fe9fcded09cf088320bd480a",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/preflight/p23_A_expanded_1/p23_A_expanded_1_1.restart",
       "bytes": 38138588,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "7f55331f5e7d771dcce25fc438ed1bba",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/23_mesh_domain_pilot/data/preflight/p23_C_expanded_0p5/p23_C_expanded_0p5_1.restart",
       "bytes": 157006092,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "8f4d69328eec5b040d5b967fc7b5ded7",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/13_ladder_tree_pair/data/without_tree/without_tree_1_1.s3d",
       "bytes": 49048289,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "31b62809c737e50d6203816c40b25438",
+      "lock_matches": [
+        {
+          "lock": "experiments/13_ladder_tree_pair/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "31b62809c737e50d6203816c40b25438"
+        }
+      ],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/13_ladder_tree_pair/data/without_tree/without_tree_1_3.s3d",
       "bytes": 39149496,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "2fb803618c0d384fec828f4f4e62e413",
+      "lock_matches": [
+        {
+          "lock": "experiments/13_ladder_tree_pair/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "2fb803618c0d384fec828f4f4e62e413"
+        }
+      ],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/13_ladder_tree_pair/data/without_tree/without_tree_1.restart",
       "bytes": 86358052,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "a2b4172f47f73b1cbc98e6bd8f973e39",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/13_ladder_tree_pair/data/with_tree/with_tree_1.restart",
       "bytes": 87954956,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "92a2cc0badf1bc2b09c476bdb8d285fb",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/13_ladder_tree_pair/data/with_tree/with_tree_1_1.s3d",
       "bytes": 51775912,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "e1be75dac82ff1aadd6423509e985403",
+      "lock_matches": [
+        {
+          "lock": "experiments/13_ladder_tree_pair/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "e1be75dac82ff1aadd6423509e985403"
+        }
+      ],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/13_ladder_tree_pair/data/with_tree/with_tree_1_2.s3d",
       "bytes": 13951469,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "5c2f17810e1c4c2bd5b9a0bc2c789a86",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/13_ladder_tree_pair/data/with_tree/with_tree_1_3.s3d",
       "bytes": 44193115,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "9688c47245a5aeffabc2944d4c045011",
+      "lock_matches": [
+        {
+          "lock": "experiments/13_ladder_tree_pair/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "9688c47245a5aeffabc2944d4c045011"
+        }
+      ],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/29_single_tree_heads/data/validation_predictions/strength_only_s27_validation_0.npy",
       "bytes": 107348096,
       "git_tracked": false,
-      "declared_stage_output": true
+      "declared_stage_output": true,
+      "md5": "9bb776cd985931f8185df90c0efd0557",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "adopted_existing_evaluate_stage_and_verified_local_mirror"
     },
     {
       "path": "experiments/29_single_tree_heads/data/validation_predictions/strength_only_s27_validation_1.npy",
       "bytes": 107348096,
       "git_tracked": false,
-      "declared_stage_output": true
+      "declared_stage_output": true,
+      "md5": "ab083707a360709df4ab6d86a26aa6e1",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "adopted_existing_evaluate_stage_and_verified_local_mirror"
     },
     {
       "path": "experiments/29_single_tree_heads/data/validation_predictions/heads_s27_validation_1.npy",
       "bytes": 107348096,
       "git_tracked": false,
-      "declared_stage_output": true
+      "declared_stage_output": true,
+      "md5": "37cf40e756cbe99b6229c67e2f5fa35c",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "adopted_existing_evaluate_stage_and_verified_local_mirror"
     },
     {
       "path": "experiments/29_single_tree_heads/data/validation_predictions/heads_s27_validation_0.npy",
       "bytes": 107348096,
       "git_tracked": false,
-      "declared_stage_output": true
+      "declared_stage_output": true,
+      "md5": "68365d596490919217d7a18d81bb4db8",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "adopted_existing_evaluate_stage_and_verified_local_mirror"
     },
     {
       "path": "experiments/29_single_tree_heads/data/validation_predictions/previous_s27_validation_0.npy",
       "bytes": 107348096,
       "git_tracked": false,
-      "declared_stage_output": true
+      "declared_stage_output": true,
+      "md5": "853a22ca95ae97c22f2e538398698a58",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "adopted_existing_evaluate_stage_and_verified_local_mirror"
     },
     {
       "path": "experiments/29_single_tree_heads/data/validation_predictions/previous_s27_validation_1.npy",
       "bytes": 107348096,
       "git_tracked": false,
-      "declared_stage_output": true
+      "declared_stage_output": true,
+      "md5": "2e257e1fbc47ce18ec1ab6baebf1d294",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "adopted_existing_evaluate_stage_and_verified_local_mirror"
     },
     {
       "path": "experiments/29_single_tree_heads/data/validation_predictions/interpolation_s27_validation_1.npy",
       "bytes": 107348096,
       "git_tracked": false,
-      "declared_stage_output": true
+      "declared_stage_output": true,
+      "md5": "3de78a6c32e1e9122b9f979ae433e63b",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "adopted_existing_evaluate_stage_and_verified_local_mirror"
     },
     {
       "path": "experiments/29_single_tree_heads/data/validation_predictions/interpolation_s27_validation_0.npy",
       "bytes": 107348096,
       "git_tracked": false,
-      "declared_stage_output": true
+      "declared_stage_output": true,
+      "md5": "8ebaee6a2acbfc0187f218170bfb86a7",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "adopted_existing_evaluate_stage_and_verified_local_mirror"
     },
     {
       "path": "experiments/29_single_tree_heads/data/validation_predictions/bounded_s27_validation_0.npy",
       "bytes": 107348096,
       "git_tracked": false,
-      "declared_stage_output": true
+      "declared_stage_output": true,
+      "md5": "4033402e3bd277f4ccfec07b813b9836",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "adopted_existing_evaluate_stage_and_verified_local_mirror"
     },
     {
       "path": "experiments/29_single_tree_heads/data/validation_predictions/bounded_s27_validation_1.npy",
       "bytes": 107348096,
       "git_tracked": false,
-      "declared_stage_output": true
+      "declared_stage_output": true,
+      "md5": "36ccaf0c0c94f51dc5b328b0c0553f16",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "adopted_existing_evaluate_stage_and_verified_local_mirror"
     },
     {
       "path": "experiments/29_single_tree_heads/data/validation_predictions/bound_only_s27_validation_0.npy",
       "bytes": 107348096,
       "git_tracked": false,
-      "declared_stage_output": true
+      "declared_stage_output": true,
+      "md5": "26e99a6530bd65046e98bd44ebf315b0",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "adopted_existing_evaluate_stage_and_verified_local_mirror"
     },
     {
       "path": "experiments/29_single_tree_heads/data/validation_predictions/bound_only_s27_validation_1.npy",
       "bytes": 107348096,
       "git_tracked": false,
-      "declared_stage_output": true
+      "declared_stage_output": true,
+      "md5": "c38a37b6c59c717b621c3072af77b8ec",
+      "lock_matches": [],
+      "cache_present": true,
+      "mirror_present": true,
+      "resolution": "adopted_existing_evaluate_stage_and_verified_local_mirror"
     },
     {
       "path": "experiments/06_half_metre_ladder/data/wick2_1_1.s3d",
       "bytes": 73671898,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "0c7f4782323f48d25269b90c7f7abd43",
+      "lock_matches": [
+        {
+          "lock": "experiments/06_half_metre_ladder/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "0c7f4782323f48d25269b90c7f7abd43"
+        }
+      ],
+      "cache_present": true,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/06_half_metre_ladder/data/wick2_1_3.s3d",
       "bytes": 54635355,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "08e5753ff6c7eb00e3cb248d480df2b2",
+      "lock_matches": [
+        {
+          "lock": "experiments/06_half_metre_ladder/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "08e5753ff6c7eb00e3cb248d480df2b2"
+        }
+      ],
+      "cache_present": true,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/06_half_metre_ladder/data/wick2_1_2.s3d",
       "bytes": 11028001,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "19a1077d285ed3618a4fce636cd52041",
+      "lock_matches": [
+        {
+          "lock": "experiments/06_half_metre_ladder/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "19a1077d285ed3618a4fce636cd52041"
+        }
+      ],
+      "cache_present": true,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/32_tree_expansion/results/learning.json",
       "bytes": 14988344,
       "git_tracked": true,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "c2334b4a74b5ffbc3f650e528fc73ba1",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "already_preserved_in_git_text_report"
     },
     {
       "path": "experiments/12_no_ladder_tree/data/wick4_1.restart",
       "bytes": 86358052,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "6733effb582fc7639079a4fff62e3d8c",
+      "lock_matches": [],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_checkpoint_retention_metadata",
+      "limitation": "Retained unchanged; not adopted or deleted. No claim of whole-solve completeness or tested resume for this inventory."
     },
     {
       "path": "experiments/12_no_ladder_tree/data/wick4_1_1.s3d",
       "bytes": 45551125,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "2c3a4dc829ab81a13480b9157299cc58",
+      "lock_matches": [
+        {
+          "lock": "experiments/12_no_ladder_tree/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "2c3a4dc829ab81a13480b9157299cc58"
+        }
+      ],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     },
     {
       "path": "experiments/12_no_ladder_tree/data/wick4_1_3.s3d",
       "bytes": 33867157,
       "git_tracked": false,
-      "declared_stage_output": false
+      "declared_stage_output": false,
+      "md5": "ae0d3fc721159a23637c6d4ec641b198",
+      "lock_matches": [
+        {
+          "lock": "experiments/12_no_ladder_tree/dvc.lock",
+          "stage": "solve",
+          "match": true,
+          "md5": "ae0d3fc721159a23637c6d4ec641b198"
+        }
+      ],
+      "cache_present": false,
+      "mirror_present": false,
+      "resolution": "awaiting_approval_for_retained_volume_caching",
+      "limitation": "18 of 19 volumes match committed lock hashes, but cache:false excludes them from DVC push; with_tree_1_2.s3d was not declared. Existing lock paths were misresolved in the original audit."
     }
   ],
   "completed": [
-    "Gallery publication manifest: all 175 SHA256 values match local assets.",
-    "Gallery DVC directory manifest and all 176 objects verified in cache and mirror after scoped dvc push -r mirror.",
-    "Gallery script/template/lock/publication manifest and historical 833-event VM snapshot committed in 527ab65."
+    "Gallery publication provenance pushed in 527ab65 and prior audit in 05b918c.",
+    "Experiment29 existing evaluate stage adopted with dvc commit --force --no-relink; no inference/training run. Its 12 arrays (1,288,177,152 bytes), directory manifest and mirror objects checksum verified.",
+    "Twelve extracted files verified against two original output tar files; both output tars verified against committed DVC directory manifests and mirror hashes.",
+    "All 864 regular-file members of 24 downloaded case archives match committed directory-manifest hashes and mirror object hashes. Original packaging retained locally.",
+    "Four text reports already Git tracked, permitted by repository rules."
   ],
-  "deferred": [
-    "Experiment36 remains actively supervised. Do not adopt mutable data/summaries or jobs/x36-coverage-r1/status.json until supervisor finalizes; existing cloud_dispatch stage names summaries and final completion metric. No cloud polling or changes performed.",
-    "Historical files listed here are not newly adopted. Git-tracked text reports are allowed by repository policy. Declared outputs without lock membership need scoped readiness/dependency review and dvc commit. Other generated files require provenance review and reproducible stages, not dvc add.",
-    "Downloaded archives may duplicate existing collected data; no byte-equivalence or completeness claim made. Restart and Smoke3D files retained unchanged; no deletion or rerun.",
-    "No new public HF publication. This audit does not establish all historical blobs are cached or mirrored."
-  ]
+  "pending": [
+    "Approval requested for prepared historical storage metadata patch: /tmp/preservation-dvc-changes.patch. No patch applied.",
+    "Experiment36 mutable summaries/status remain exclusively with the supervisor; no compute polling or modifications performed.",
+    "Existing experiment21 overlapping output declarations prevent dvc add of external inputs; no workaround altering old science attempted."
+  ],
+  "publication": "Local DVC mirror only; no new public publication."
 }
