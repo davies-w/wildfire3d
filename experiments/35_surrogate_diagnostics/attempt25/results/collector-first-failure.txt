@@ -1,0 +1,52 @@
+stics35/attempt25/fold05-horizon16-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold05-horizon16-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold05-horizon45-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold05-horizon45-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold05-test-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold05-test-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold05-validation-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold05-validation-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold06-horizon01-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold06-horizon01-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold06-horizon04-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold06-horizon04-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold06-horizon08-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold06-horizon08-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold06-horizon16-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold06-horizon16-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold06-horizon45-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold06-horizon45-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold06-test-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold06-test-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold06-validation-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold06-validation-predictions.npz
+.Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold07-horizon01-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold07-horizon01-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold07-horizon04-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold07-horizon04-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold07-horizon08-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold07-horizon08-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold07-horizon16-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold07-horizon16-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold07-horizon45-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold07-horizon45-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold07-test-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold07-test-predictions.npz
+Copying gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/fold07-validation-predictions.npz to file:///Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/data/collected/fold07-validation-predictions.npz
+............................................................
+
+Average throughput: 304.4kiB/s
+ERROR: (gcloud.storage.cp) The following URLs matched no objects or files:
+gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/bootstrap-error.txt
+ERROR: (gcloud.storage.cp) The following URLs matched no objects or files:
+gs://tmrw-wildfire-20261015-trial/diagnostics35/attempt25/error.txt
+Traceback (most recent call last):
+  File "/Users/wdavies/pi/wildfire3d/scripts/reconcile_runtime_costs.py", line 62, in <module>
+    if __name__=='__main__':reconcile()
+                            ^^^^^^^^^^^
+  File "/Users/wdavies/pi/wildfire3d/scripts/reconcile_runtime_costs.py", line 56, in reconcile
+    covered=covered and bool(rr) and min(ts(r['first_usage_start']) for r in rr)<=ts(vm['start']) and max(ts(r['last_usage_end']) for r in rr)>=ts(vm['end'])
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: can't compare offset-naive and offset-aware datetimes
+Traceback (most recent call last):
+  File "/Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/collect.py", line 33, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/collect.py", line 29, in main
+    subprocess.run([str(R.parents[2]/'.venv/bin/python'),str(R.parents[2]/'scripts/reconcile_runtime_costs.py')],check=True)
+  File "/Users/wdavies/.pyenv/versions/3.12.7/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/Users/wdavies/pi/wildfire3d/.venv/bin/python', '/Users/wdavies/pi/wildfire3d/scripts/reconcile_runtime_costs.py']' returned non-zero exit status 1.
+ERROR: failed to reproduce 'experiments/35_surrogate_diagnostics/attempt25/dvc.yaml:cloud_collect': failed to run: ../../../.venv/bin/python collect.py, exited with 1
+Traceback (most recent call last):
+  File "/Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/finish_run.py", line 9, in <module>
+    run(dvc,'repro','--single-item',str(R/'dvc.yaml')+':cloud_collect')
+  File "/Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/finish_run.py", line 5, in run
+    def run(*args):subprocess.run([str(x) for x in args],cwd=repo,check=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wdavies/.pyenv/versions/3.12.7/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/Users/wdavies/pi/wildfire3d/.venv/bin/dvc', 'repro', '--single-item', '/Users/wdavies/pi/wildfire3d/experiments/35_surrogate_diagnostics/attempt25/dvc.yaml:cloud_collect']' returned non-zero exit status 255.

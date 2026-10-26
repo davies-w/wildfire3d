@@ -80,3 +80,14 @@ stages:
     metrics:
     - results/learning-curve.json:
         cache: false
+  audit:
+    cmd: ../../../.venv/bin/python audit_scorecard.py
+    deps:
+    - audit_scorecard.py
+    - schema.json
+    - data/sequences.npz
+    - data/collected
+    - ../scorecard-v1.json
+    metrics:
+    - results/scenario-audit.json:
+        cache: false

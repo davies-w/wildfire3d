@@ -47,7 +47,10 @@ def reconcile():
     # and contain all compute resource categories. Otherwise retain the runtime estimate.
     actual=[row for row in billed if any(r['vm'] in (row.get('resource_name') or '') for r in match)]
     covered=bool(actual)
-    def ts(x):return datetime.datetime.fromisoformat(x.replace(' UTC','+00:00').replace('Z','+00:00'))
+    def ts(x):
+     value=datetime.datetime.fromisoformat(x.replace(' UTC','+00:00').replace('Z','+00:00'))
+     # BigQuery TIMESTAMP strings may omit the UTC suffix; audit-log times include it.
+     return value.replace(tzinfo=datetime.timezone.utc) if value.tzinfo is None else value.astimezone(datetime.timezone.utc)
     for vm in match:
      rows=[r for r in actual if vm['vm'] in (r.get('resource_name') or '') and r['service']=='Compute Engine']
      kinds=['Core','Ram']+(['GPU'] if vm['machine'].startswith('g2') else [])

@@ -31,4 +31,11 @@ html=['<html><meta charset="utf-8"><title>Training-data learning curve</title><b
 for phase in ['v1_active','v1_quiet','v1_weak','v1_transition']:html.append('<img style="width:100%" src="'+phase+'.png">')
 html.append('<h2>Training completeness</h2><table><tr><th>Folds</th><th>Histories</th><th>Epochs</th><th>Selected</th><th>Updates</th><th>Stop reason</th></tr>')
 for r in out['sizes']:html.append('<tr>'+''.join('<td style="padding:8px">'+str(r[k])+'</td>' for k in ['training_folds','training_histories','epochs','selected_epoch','optimizer_updates','stop_reason'])+'</tr>')
-html.append('</table></body></html>');(D/'report.html').write_text(''.join(html));print('Saved learning-curve report')
+
+for phase in ['v1_active','v1_quiet','v1_weak','v1_transition']:
+ html.append('<h2>16 s: '+phase.removeprefix('v1_')+'</h2><p>Each cell: MAE / no-change MAE / mean absolute simulation value. Units: kg, kg, kg/s, K.</p><table><tr><th>Folds</th>'+''.join('<th>'+n+'</th>' for n in names)+'</tr>')
+ for r in out['sizes']:
+  v=r['horizons']['16'][phase]
+  html.append('<tr><td>'+str(r['training_folds'])+'</td>'+''.join('<td style="padding:8px">'+('undefined' if v is None else ' / '.join(format(v[k][i],'.5g') for k in ['MAE','no_change_MAE','mean_absolute_truth']))+'</td>' for i in range(4))+'</tr>')
+ html.append('</table>')
+html.append('</body></html>');(D/'report.html').write_text(''.join(html));print('Saved learning-curve report')

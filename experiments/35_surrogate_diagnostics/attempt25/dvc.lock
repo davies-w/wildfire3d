@@ -150,3 +150,91 @@ stages:
       hash: md5
       md5: 7b30b179770ad4be38cd530e59fcf032
       size: 335
+  analysis:
+    cmd: ../../../.venv/bin/python analyze_learning_curve.py
+    deps:
+    - path: ../scorecard-v1.json
+      hash: md5
+      md5: f181565b59d268b8a4a2efb5b0ae2702
+      size: 4453
+    - path: analyze_learning_curve.py
+      hash: md5
+      md5: 615b6544cde7a3ca75cc241d86ad53b4
+      size: 4526
+    - path: data/collected
+      hash: md5
+      md5: 65131cc3f3519237eb9f87146425e7f3.dir
+      size: 588826729
+      nfiles: 3062
+    - path: schema.json
+      hash: md5
+      md5: 56ff79b2e21b73269f1bca4685991b61
+      size: 161199
+    outs:
+    - path: data/learning_curve
+      hash: md5
+      md5: 7ef124f2c032bb0649d888e2b2774b0d.dir
+      size: 772528
+      nfiles: 5
+    - path: results/learning-curve.json
+      hash: md5
+      md5: 2ffc5ea68f3a71f15c9b5d4823d480f9
+      size: 355715
+  audit:
+    cmd: ../../../.venv/bin/python audit_scorecard.py
+    deps:
+    - path: ../scorecard-v1.json
+      hash: md5
+      md5: f181565b59d268b8a4a2efb5b0ae2702
+      size: 4453
+    - path: audit_scorecard.py
+      hash: md5
+      md5: 1b977013fa5a8f50b5d55656f6914bbd
+      size: 4969
+    - path: data/collected
+      hash: md5
+      md5: 65131cc3f3519237eb9f87146425e7f3.dir
+      size: 588826729
+      nfiles: 3062
+    - path: data/sequences.npz
+      hash: md5
+      md5: 19d4aefdea3e2d9246d66453112fe269
+      size: 1276042
+    - path: schema.json
+      hash: md5
+      md5: 56ff79b2e21b73269f1bca4685991b61
+      size: 161199
+    outs:
+    - path: results/scenario-audit.json
+      hash: md5
+      md5: c6650e38a0a531fbdf91a5ecdde2b0ee
+      size: 2715599
+  cloud_collect:
+    cmd: ../../../.venv/bin/python collect.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 71bb0c2a9a6d6b9f37bd9b8745b55bb2
+      size: 597
+    - path: collect.py
+      hash: md5
+      md5: 9486f705ee6b0a321dfbd4a29b16396d
+      size: 3303
+    - path: results/execution.json
+      hash: md5
+      md5: 7b30b179770ad4be38cd530e59fcf032
+      size: 335
+    outs:
+    - path: data/collected
+      hash: md5
+      md5: 65131cc3f3519237eb9f87146425e7f3.dir
+      size: 588826729
+      nfiles: 3062
+    - path: results/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: results/permission-removed.json
+      hash: md5
+      md5: cdfe4c2b3ff15a6e0ac3547cc6217f4c
+      size: 57
