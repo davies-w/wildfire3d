@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 76.8,
+  "reserved_usd": 76.80000000000001,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -545,13 +545,10 @@
       "compute_allowance_usd": 2.3,
       "ancillary_cleanup_allowance_usd": 0.7,
       "cost": {
-        "stage": "runtime_estimate",
-        "usd": 0.5619458041155543,
-        "vm_hours": 0.7950200113888889,
-        "scope": "compute only; shared cost at project level",
-        "resources": [
-          "fds-gpu35-learning-f941728b-bb1c-4b230-group0-0-6bp7"
-        ]
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.568383,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 31
       },
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu35-learning25/executions/a2b00512-17d1-4e81-b973-246b21341a93",
       "completed_unix": 1792975471.015609,
@@ -565,13 +562,10 @@
       "cases": 6,
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-coverage-000/executions/195037db-44fb-47e2-b208-8f1fe0a3d693",
       "cost": {
-        "stage": "runtime_estimate",
-        "usd": 0.0011314158231796139,
-        "vm_hours": 0.014645935277777777,
-        "scope": "compute only; shared cost at project level",
-        "resources": [
-          "fds-x36-coverage-0-9da14b83-fa77-460e0-group0-0-xh2k"
-        ]
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.00133,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 12
       },
       "historical_allowance_usd": 0.4,
       "failure_reason": "Pinned image deleted by seven-day registry cleanup; no task or solver started"
@@ -582,7 +576,14 @@
       "reserved_unix": 1792991300.0215628,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-001/executions/9b6f8f76-23f7-4d2c-9d2b-a8e4d5ec68af"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-001/executions/9b6f8f76-23f7-4d2c-9d2b-a8e4d5ec68af",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.07281,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 20
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-002": {
       "state": "submitted",
@@ -590,7 +591,14 @@
       "reserved_unix": 1792991300.0215628,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-002/executions/f5b741af-c431-4434-a747-89eaafb153df"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-002/executions/f5b741af-c431-4434-a747-89eaafb153df",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.095624,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 21
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-003": {
       "state": "submitted",
@@ -598,7 +606,14 @@
       "reserved_unix": 1792991300.021564,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-003/executions/ec963578-a3f5-4f12-8ad3-29d9c61ee000"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-003/executions/ec963578-a3f5-4f12-8ad3-29d9c61ee000",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.08499899999999999,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 21
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-004": {
       "state": "submitted",
@@ -606,7 +621,14 @@
       "reserved_unix": 1792991300.021564,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-004/executions/26d0063e-6a93-433c-a42c-90120b750eb9"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-004/executions/26d0063e-6a93-433c-a42c-90120b750eb9",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.101068,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 6
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-005": {
       "state": "submitted",
@@ -614,7 +636,14 @@
       "reserved_unix": 1792991300.021564,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-005/executions/e5ec3452-ba08-445a-8195-36ea3c87a504"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-005/executions/e5ec3452-ba08-445a-8195-36ea3c87a504",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.092707,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 8
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-006": {
       "state": "submitted",
@@ -622,7 +651,14 @@
       "reserved_unix": 1792991300.021564,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-006/executions/7f773ee9-93cf-4f49-baa9-81bb7e16dec5"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-006/executions/7f773ee9-93cf-4f49-baa9-81bb7e16dec5",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.08618200000000001,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 21
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-007": {
       "state": "submitted",
@@ -630,7 +666,14 @@
       "reserved_unix": 1792991300.021565,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-007/executions/dab0bd4a-08e3-4a4a-b567-9e65e86f5cbe"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-007/executions/dab0bd4a-08e3-4a4a-b567-9e65e86f5cbe",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.085956,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 20
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-008": {
       "state": "submitted",
@@ -638,7 +681,14 @@
       "reserved_unix": 1792991300.021565,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-008/executions/76eb2558-adef-476f-b6ec-821cbb2d3275"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-008/executions/76eb2558-adef-476f-b6ec-821cbb2d3275",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.066938,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 19
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-009": {
       "state": "submitted",
@@ -742,7 +792,17 @@
       "reserved_unix": 1792991300.021568,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-021/executions/875bc4ec-c8fd-45e1-9c09-d31e1b74202f"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-021/executions/875bc4ec-c8fd-45e1-9c09-d31e1b74202f",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.07998684662417486,
+        "vm_hours": 1.0354125819444444,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-02-8352f9ad-ac9b-4ba00-group0-0-kz8g"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-022": {
       "state": "submitted",
@@ -750,7 +810,17 @@
       "reserved_unix": 1792991300.021568,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-022/executions/42190793-c4d8-4456-920d-e35b47a1fa21"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-022/executions/42190793-c4d8-4456-920d-e35b47a1fa21",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09028047286989546,
+        "vm_hours": 1.1686613669444446,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-02-165b6b93-a151-49c60-group0-0-rn96"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-023": {
       "state": "submitted",
@@ -758,7 +828,14 @@
       "reserved_unix": 1792991300.021569,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-023/executions/95320ed9-2058-4de9-9535-e41af3baafb9"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-023/executions/95320ed9-2058-4de9-9535-e41af3baafb9",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.065622,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 9
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-024": {
       "state": "submitted",
@@ -766,7 +843,17 @@
       "reserved_unix": 1792991300.021569,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-024/executions/a47ca710-91f2-43ec-ba7c-352629b29a6b"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-024/executions/a47ca710-91f2-43ec-ba7c-352629b29a6b",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09866958313246807,
+        "vm_hours": 1.2772566008333333,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-02-41f3437b-eedd-4ee30-group0-0-lvg1"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-025": {
       "state": "submitted",
@@ -774,7 +861,17 @@
       "reserved_unix": 1792991300.021569,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-025/executions/cd507c00-4744-4a64-92ce-50cf1b07cf11"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-025/executions/cd507c00-4744-4a64-92ce-50cf1b07cf11",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.08899618341504441,
+        "vm_hours": 1.1520365152777776,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-02-c753ed21-f97a-4f200-group0-0-g4gp"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-026": {
       "state": "submitted",
@@ -782,7 +879,17 @@
       "reserved_unix": 1792991300.021569,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-026/executions/fdf40975-73ca-4ca5-8717-63366f16c836"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-026/executions/fdf40975-73ca-4ca5-8717-63366f16c836",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09993740297848823,
+        "vm_hours": 1.2936682569444444,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-02-4d9b3e7c-b5e8-4e310-group0-0-zf6b"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-027": {
       "state": "submitted",
@@ -790,7 +897,14 @@
       "reserved_unix": 1792991300.021569,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-027/executions/3d0d5f8f-5362-454c-821b-2b89f77588cf"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-027/executions/3d0d5f8f-5362-454c-821b-2b89f77588cf",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.061543,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 14
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-028": {
       "state": "submitted",
@@ -798,7 +912,17 @@
       "reserved_unix": 1792991300.02157,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-028/executions/46b8e8b0-a5f0-4a91-937f-6bec0c3d5749"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-028/executions/46b8e8b0-a5f0-4a91-937f-6bec0c3d5749",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.08800653507849138,
+        "vm_hours": 1.1392257297222221,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-02-e1325204-4126-4eb50-group0-0-h0tr"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-029": {
       "state": "delegated_to_cloud_queue",
@@ -806,7 +930,17 @@
       "reserved_unix": 1792991300.02157,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.07938113143014254,
+        "vm_hours": 1.027571728611111,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-02-b15cd223-8ac0-424d0-group0-0-70l6"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-030": {
       "state": "delegated_to_cloud_queue",
@@ -814,7 +948,17 @@
       "reserved_unix": 1792991300.02157,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09274150873426891,
+        "vm_hours": 1.2005189486111112,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-03-b0b9f0e5-6e28-44c70-group0-0-rkbk"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-031": {
       "state": "delegated_to_cloud_queue",
@@ -822,7 +966,17 @@
       "reserved_unix": 1792991300.0215712,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09085729131482646,
+        "vm_hours": 1.1761281580555556,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-03-ed2df013-7b43-4b0d0-group0-0-621z"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-032": {
       "state": "delegated_to_cloud_queue",
@@ -830,7 +984,18 @@
       "reserved_unix": 1792991300.0215712,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.026545849432800656,
+        "vm_hours": 0.34363033,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-03-e4e45135-8b76-4dcf0-group0-0-b7ck",
+          "fds-x36-density-03-e4e45135-8b76-4dcf0-group0-0-b7ck"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-033": {
       "state": "delegated_to_cloud_queue",
@@ -838,7 +1003,17 @@
       "reserved_unix": 1792991300.0215712,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09026678576283381,
+        "vm_hours": 1.1684841902777778,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-03-1d6388fa-ae61-4ad10-group0-0-kjqv"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-034": {
       "state": "delegated_to_cloud_queue",
@@ -846,7 +1021,17 @@
       "reserved_unix": 1792991300.0215712,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.0864360741318948,
+        "vm_hours": 1.1188964494444444,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-03-6728100e-aa54-40680-group0-0-gcqb"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-035": {
       "state": "delegated_to_cloud_queue",
@@ -854,7 +1039,17 @@
       "reserved_unix": 1792991300.0215712,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09729125969683242,
+        "vm_hours": 1.2594144994444443,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-03-1c64f26c-86ef-48320-group0-0-jqc2"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-036": {
       "state": "delegated_to_cloud_queue",
@@ -862,7 +1057,17 @@
       "reserved_unix": 1792991300.021572,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09482417549402028,
+        "vm_hours": 1.2274786233333335,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-03-5e637fc7-9c30-40480-group0-0-mh7n"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-037": {
       "state": "delegated_to_cloud_queue",
@@ -870,7 +1075,17 @@
       "reserved_unix": 1792991300.021572,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.10444276356597942,
+        "vm_hours": 1.351989183888889,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-03-347ada5c-02af-48ae0-group0-0-79nk"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-038": {
       "state": "delegated_to_cloud_queue",
@@ -878,7 +1093,17 @@
       "reserved_unix": 1792991300.021572,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.10066040525287225,
+        "vm_hours": 1.303027366388889,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-03-17a197ca-456c-45830-group0-0-9c1p"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-039": {
       "state": "delegated_to_cloud_queue",
@@ -886,7 +1111,17 @@
       "reserved_unix": 1792991300.021573,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.11410477122314729,
+        "vm_hours": 1.4770618016666668,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-03-f5adfde9-ddf8-40150-group0-0-60sh"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-040": {
       "state": "delegated_to_cloud_queue",
@@ -894,7 +1129,17 @@
       "reserved_unix": 1792991300.021573,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.07486518301012567,
+        "vm_hours": 0.9691137444444444,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-04-77dd19a5-de0f-4bde0-group0-0-npfp"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-041": {
       "state": "delegated_to_cloud_queue",
@@ -902,7 +1147,17 @@
       "reserved_unix": 1792991300.021573,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.10004833466840832,
+        "vm_hours": 1.2951042438888891,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-04-eeda1fed-ecba-4b430-group0-0-285n"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-042": {
       "state": "delegated_to_cloud_queue",
@@ -910,7 +1165,17 @@
       "reserved_unix": 1792991300.021573,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.08962270872582294,
+        "vm_hours": 1.1601467511111112,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-04-026313d0-1405-405f0-group0-0-1gds"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-043": {
       "state": "delegated_to_cloud_queue",
@@ -918,7 +1183,17 @@
       "reserved_unix": 1792991300.021573,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.10379261499371632,
+        "vm_hours": 1.3435731499999999,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-04-d2945ace-abec-4ad70-group0-0-9mz1"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-044": {
       "state": "delegated_to_cloud_queue",
@@ -926,7 +1201,17 @@
       "reserved_unix": 1792991300.0215738,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09931552134360014,
+        "vm_hours": 1.2856181324999998,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-04-82bbc955-6d14-4ec60-group0-0-z81x"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-045": {
       "state": "delegated_to_cloud_queue",
@@ -934,7 +1219,17 @@
       "reserved_unix": 1792991300.0215738,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.1115274314499337,
+        "vm_hours": 1.4436986908333334,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-04-d8be49dc-db09-44eb0-group0-0-xzxz"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-046": {
       "state": "delegated_to_cloud_queue",
@@ -942,7 +1237,17 @@
       "reserved_unix": 1792991300.0215738,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.08652846111746249,
+        "vm_hours": 1.1200923791666668,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-04-a29bb26a-626a-416a0-group0-0-z958"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-047": {
       "state": "delegated_to_cloud_queue",
@@ -950,7 +1255,17 @@
       "reserved_unix": 1792991300.0215738,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.08849425994890474,
+        "vm_hours": 1.145539223611111,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-04-8920e564-63e6-4a650-group0-0-j9r6"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-048": {
       "state": "delegated_to_cloud_queue",
@@ -958,7 +1273,17 @@
       "reserved_unix": 1792991300.021575,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 12,
-      "cloud_workflow": "fds-density36-parent"
+      "cloud_workflow": "fds-density36-parent",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09995955954043301,
+        "vm_hours": 1.2939550688888888,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-04-1e3853d5-16fa-4a770-group0-0-q5wr"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-049": {
       "state": "delegated_to_cloud_queue",
@@ -1640,7 +1965,14 @@
       "allowance_usd": 0.4,
       "reserved_unix": 1792993620.464344,
       "authorization": "Explicit user repair and continuation approval, total1USD",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-coverage-r1/executions/c6af83bf-8032-4968-9fbb-a282fc0e54f8"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-coverage-r1/executions/c6af83bf-8032-4968-9fbb-a282fc0e54f8",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.050049,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 19
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-009-r1": {
       "state": "submitted",
@@ -1648,7 +1980,17 @@
       "cases": 12,
       "reserved_unix": 1793000982.457261,
       "authorization": "User explicitly approved replacement groups and continuation; subsequently authorized necessary overnight repairs within budget",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-009-r1/executions/3520b095-10f2-4c1c-b05e-6febac5e5146"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-009-r1/executions/3520b095-10f2-4c1c-b05e-6febac5e5146",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.0967905931288953,
+        "vm_hours": 1.2529334780555557,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-00-e926eb97-1d95-4f020-group0-0-3zgf"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-010-r1": {
       "state": "submitted",
@@ -1656,7 +1998,14 @@
       "cases": 12,
       "reserved_unix": 1793000982.457262,
       "authorization": "User explicitly approved replacement groups and continuation; subsequently authorized necessary overnight repairs within budget",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-010-r1/executions/0b595c95-5261-405b-89f8-86c386773314"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-010-r1/executions/0b595c95-5261-405b-89f8-86c386773314",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.069551,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 14
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-011-r1": {
       "state": "submitted",
@@ -1664,7 +2013,17 @@
       "cases": 12,
       "reserved_unix": 1793000982.457263,
       "authorization": "User explicitly approved replacement groups and continuation; subsequently authorized necessary overnight repairs within budget",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-011-r1/executions/dc515ee1-ae0c-42e4-95ee-047488772e7c"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-011-r1/executions/dc515ee1-ae0c-42e4-95ee-047488772e7c",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.10509874917323765,
+        "vm_hours": 1.3604807769444445,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-01-f624bfa0-a776-43300-group0-0-m9f0"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-012-r1": {
       "state": "submitted",
@@ -1672,7 +2031,14 @@
       "cases": 12,
       "reserved_unix": 1793000982.457263,
       "authorization": "User explicitly approved replacement groups and continuation; subsequently authorized necessary overnight repairs within budget",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-012-r1/executions/82b42201-f6e2-4dce-a454-515909637ac5"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-012-r1/executions/82b42201-f6e2-4dce-a454-515909637ac5",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.062259,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 15
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-013-r1": {
       "state": "submitted",
@@ -1680,7 +2046,17 @@
       "cases": 12,
       "reserved_unix": 1793000982.4572642,
       "authorization": "User explicitly approved replacement groups and continuation; subsequently authorized necessary overnight repairs within budget",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-013-r1/executions/1a29768b-b343-475e-a875-b65eb344aa82"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-013-r1/executions/1a29768b-b343-475e-a875-b65eb344aa82",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.10714283006158037,
+        "vm_hours": 1.3869409658333332,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-01-dfd30002-225e-4ec70-group0-0-gfm1"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-014-r1": {
       "state": "submitted",
@@ -1688,7 +2064,14 @@
       "cases": 12,
       "reserved_unix": 1793000982.4572642,
       "authorization": "User explicitly approved replacement groups and continuation; subsequently authorized necessary overnight repairs within budget",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-014-r1/executions/988b3b31-46a6-4457-9a43-5767014db283"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-014-r1/executions/988b3b31-46a6-4457-9a43-5767014db283",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.06523100000000001,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 6
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-015-r1": {
       "state": "submitted",
@@ -1696,7 +2079,17 @@
       "cases": 12,
       "reserved_unix": 1793000982.4572642,
       "authorization": "User explicitly approved replacement groups and continuation; subsequently authorized necessary overnight repairs within budget",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-015-r1/executions/4c194aa6-6c5a-47e8-b8cc-ace85580ee1d"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-015-r1/executions/4c194aa6-6c5a-47e8-b8cc-ace85580ee1d",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09485797372337589,
+        "vm_hours": 1.2279161341666667,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-01-35c2ff27-10fb-42a60-group0-0-tp2f"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-016-r1": {
       "state": "submitted",
@@ -1704,7 +2097,14 @@
       "cases": 12,
       "reserved_unix": 1793000982.4572642,
       "authorization": "User explicitly approved replacement groups and continuation; subsequently authorized necessary overnight repairs within budget",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-016-r1/executions/fff4ef88-b0b2-4ebc-ace5-f9072546368d"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-016-r1/executions/fff4ef88-b0b2-4ebc-ace5-f9072546368d",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.06785300000000001,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 14
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-017-r1": {
       "state": "submitted",
@@ -1712,7 +2112,17 @@
       "cases": 12,
       "reserved_unix": 1793000982.4572642,
       "authorization": "User explicitly approved replacement groups and continuation; subsequently authorized necessary overnight repairs within budget",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-017-r1/executions/d651a80c-de15-40c6-a795-5ec8ccf4dda3"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-017-r1/executions/d651a80c-de15-40c6-a795-5ec8ccf4dda3",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09028409620787195,
+        "vm_hours": 1.1687082702777778,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-01-30f30588-9384-44df0-group0-0-zv57"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-018-r1": {
       "state": "submitted",
@@ -1720,7 +2130,17 @@
       "cases": 12,
       "reserved_unix": 1793000982.4572642,
       "authorization": "User explicitly approved replacement groups and continuation; subsequently authorized necessary overnight repairs within budget",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-018-r1/executions/f423b957-8548-42bd-948f-98b6cb3969af"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-018-r1/executions/f423b957-8548-42bd-948f-98b6cb3969af",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09721056905534609,
+        "vm_hours": 1.258369976388889,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-01-812ea970-8730-42ce0-group0-0-l1rm"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-019-r1": {
       "state": "submitted",
@@ -1728,7 +2148,17 @@
       "cases": 12,
       "reserved_unix": 1793000982.457265,
       "authorization": "User explicitly approved replacement groups and continuation; subsequently authorized necessary overnight repairs within budget",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-019-r1/executions/8acaa65c-11a7-4a5f-a174-a76228fbe66a"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-019-r1/executions/8acaa65c-11a7-4a5f-a174-a76228fbe66a",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.09931647249878818,
+        "vm_hours": 1.285630445,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-density-01-c55fb01c-0bd3-4f760-group0-0-x848"
+        ]
+      },
+      "historical_allowance_usd": 0.4
     },
     "x36-density-020-r1": {
       "state": "submitted",
@@ -1736,7 +2166,14 @@
       "cases": 12,
       "reserved_unix": 1793000982.457265,
       "authorization": "User explicitly approved replacement groups and continuation; subsequently authorized necessary overnight repairs within budget",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-020-r1/executions/0dcf7cc2-870a-4a6c-b0f9-ed26bdeca7c0"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-020-r1/executions/0dcf7cc2-870a-4a6c-b0f9-ed26bdeca7c0",
+      "cost": {
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.06615499999999999,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 11
+      },
+      "historical_allowance_usd": 0.4
     },
     "density36-cloud-orchestration": {
       "state": "submitted",
@@ -1753,18 +2190,37 @@
   "accounting": {
     "billing_export_status": "posted_costs_subject_to_adjustment",
     "posted_source": "BigQuery detailed export",
-    "as_of_utc": "2026-10-26T05:26:19.542219+00:00",
+    "as_of_utc": "2026-10-26T17:50:15.348618+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
-    "project_posted_comparison_usd": 28.665198,
-    "project_compute_runtime_estimate_usd": 27.548981903679532,
+    "project_posted_comparison_usd": 31.554869999999998,
+    "project_compute_runtime_estimate_usd": 31.921183395379103,
     "shared_cost_estimate_usd": 1.26,
-    "spend_estimate_usd": 29.228275219938734,
-    "unposted_compute_after_export_usd": 0.5630772199387339,
+    "spend_estimate_usd": 33.38657609083803,
+    "unposted_compute_after_export_usd": 1.831706090838026,
     "unposted_resources": [
-      "fds-x36-coverage-0-9da14b83-fa77-460e0-group0-0-xh2k",
-      "fds-gpu35-learning-f941728b-bb1c-4b230-group0-0-6bp7"
+      "fds-x36-density-03-f5adfde9-ddf8-40150-group0-0-60sh",
+      "fds-x36-density-04-d8be49dc-db09-44eb0-group0-0-xzxz",
+      "fds-x36-density-03-347ada5c-02af-48ae0-group0-0-79nk",
+      "fds-x36-density-04-d2945ace-abec-4ad70-group0-0-9mz1",
+      "fds-x36-density-03-17a197ca-456c-45830-group0-0-9c1p",
+      "fds-x36-density-04-eeda1fed-ecba-4b430-group0-0-285n",
+      "fds-x36-density-04-1e3853d5-16fa-4a770-group0-0-q5wr",
+      "fds-x36-density-04-82bbc955-6d14-4ec60-group0-0-z81x",
+      "fds-x36-density-03-1c64f26c-86ef-48320-group0-0-jqc2",
+      "fds-x36-density-03-5e637fc7-9c30-40480-group0-0-mh7n",
+      "fds-x36-density-03-b0b9f0e5-6e28-44c70-group0-0-rkbk",
+      "fds-x36-density-03-ed2df013-7b43-4b0d0-group0-0-621z",
+      "fds-x36-density-03-1d6388fa-ae61-4ad10-group0-0-kjqv",
+      "fds-x36-density-04-026313d0-1405-405f0-group0-0-1gds",
+      "fds-x36-density-04-8920e564-63e6-4a650-group0-0-j9r6",
+      "fds-x36-density-04-a29bb26a-626a-416a0-group0-0-z958",
+      "fds-x36-density-03-6728100e-aa54-40680-group0-0-gcqb",
+      "fds-x36-density-02-b15cd223-8ac0-424d0-group0-0-70l6",
+      "fds-x36-density-04-77dd19a5-de0f-4bde0-group0-0-npfp",
+      "fds-x36-density-03-e4e45135-8b76-4dcf0-group0-0-b7ck",
+      "fds-x36-density-03-e4e45135-8b76-4dcf0-group0-0-b7ck"
     ],
-    "matched_vms": 201,
+    "matched_vms": 251,
     "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
     "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
     "rates_usd_per_vm_hour": {
@@ -1773,5 +2229,5 @@
       "c3-standard-4/SPOT": 0.07725118278354724
     }
   },
-  "estimated_spend_usd": 29.228275219938734
+  "estimated_spend_usd": 33.38657609083803
 }
