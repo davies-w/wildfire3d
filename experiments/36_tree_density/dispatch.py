@@ -4,6 +4,7 @@ import fcntl,time,traceback,json
 from cloud import read,save,launch,collect,B,active_groups
 from coverage_review import main as review
 R=Path(__file__).resolve().parent
+assert not (R/'orchestration/cloud-owner.json').exists(), 'Campaign transferred to cloud; local submission is disabled'
 with (R/'data/dispatcher.lock').open('w') as lock:
  fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
  try:

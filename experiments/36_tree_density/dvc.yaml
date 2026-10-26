@@ -141,3 +141,27 @@ stages:
     metrics:
     - results/queue-recovery-activation.json:
         cache: false
+  cloud_queue_prepare:
+    cmd: ../../.venv/bin/python orchestration/prepare.py && ../../.venv/bin/python
+      orchestration/inline.py
+    deps:
+    - orchestration/prepare.py
+    - orchestration/inline.py
+    - active-groups.json
+    - results/input-freeze.json
+    outs:
+    - orchestration/queue.json:
+        cache: false
+    - orchestration/run-queue.json:
+        cache: false
+    - orchestration/parent.yaml:
+        cache: false
+    - orchestration/parent-inline.yaml:
+        cache: false
+    - orchestration/specs:
+        cache: false
+    metrics:
+    - orchestration/inline-equivalence.json:
+        cache: false
+    - orchestration/preflight.json:
+        cache: false

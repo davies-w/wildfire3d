@@ -1,0 +1,22 @@
+main:
+  steps:
+  - load:
+      try:
+        call: http.get
+        args:
+          url: https://storage.googleapis.com/tmrw-wildfire-20261015-trial/density36/orchestration/run-queue.json
+          auth:
+            type: OAuth2
+        result: queue
+      retry: ${http.default_retry}
+  - list:
+      call: http.get
+      args:
+        url: https://workflowexecutions.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/workflows/fds-x36-density-029/executions
+        auth:
+          type: OAuth2
+      result: executions
+  - done:
+      return:
+        queue_groups: ${len(queue.body)}
+        existing_executions: ${len(default(map.get(executions.body,"executions"),[]))}

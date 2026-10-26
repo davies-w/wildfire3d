@@ -50,6 +50,7 @@ def reserve():
   b['reserved_usd']=round(b['reserved_usd']+total,2);B.write_text(json.dumps(b,indent=2)+'\n');save('results/reserved.json',dict(total_allowance_usd=total,pre_run_estimate_usd=b['estimated_spend_usd'],cap_usd=b['authorized_usd']))
 def active_groups():return read('active-groups.json') if (R/'active-groups.json').exists() else read('groups.json')
 def launch(name):
+ assert not (R/'orchestration/cloud-owner.json').exists(), 'Campaign owned by cloud; do not launch locally'
  g=next(g for g in active_groups() if g['id']==name);folder=R/'jobs'/name
  assert read('results/preflight.json')['passed'] and read('results/workflow-preflight.json')['passed'] and read('results/transport-preflight.json')['passed']
  if g['phase']!='coverage':assert read('results/coverage-review.json')['passed']

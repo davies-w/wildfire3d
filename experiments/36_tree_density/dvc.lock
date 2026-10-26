@@ -331,3 +331,53 @@ stages:
       hash: md5
       md5: eccb06a2e36abc141e8aed75f5ec9389
       size: 323
+  cloud_queue_prepare:
+    cmd: ../../.venv/bin/python orchestration/prepare.py && 
+      ../../.venv/bin/python orchestration/inline.py
+    deps:
+    - path: active-groups.json
+      hash: md5
+      md5: 843070d094015db784a058006ed33b1c
+      size: 100561
+    - path: orchestration/inline.py
+      hash: md5
+      md5: 6d5ddbe1d16a3ac05d1c098b74897b45
+      size: 2233
+    - path: orchestration/prepare.py
+      hash: md5
+      md5: 16c9b99db048dedb803acda0e00f5084
+      size: 5685
+    - path: results/input-freeze.json
+      hash: md5
+      md5: d83531f07429baa3c5035c2404eebebf
+      size: 135918
+    outs:
+    - path: orchestration/inline-equivalence.json
+      hash: md5
+      md5: c3d6e70ea8750ab4b94ba0cf8252c2af
+      size: 212
+    - path: orchestration/parent-inline.yaml
+      hash: md5
+      md5: 488f30e515ed4dbc19eb445dd0a359c4
+      size: 8114
+    - path: orchestration/parent.yaml
+      hash: md5
+      md5: 185dad7a90d6103c2e20e616579d6474
+      size: 5039
+    - path: orchestration/preflight.json
+      hash: md5
+      md5: c4c3086e27b1c7d3fe54b335af9f9854
+      size: 237
+    - path: orchestration/queue.json
+      hash: md5
+      md5: d1068ac62dcbb2f0af5deaed0ef41da9
+      size: 77601
+    - path: orchestration/run-queue.json
+      hash: md5
+      md5: 8badfeb64442d768f1af9ce5b1bbbf75
+      size: 124975
+    - path: orchestration/specs
+      hash: md5
+      md5: 212e980f6428346c19b744eb16cb1ca3.dir
+      size: 206958
+      nfiles: 102

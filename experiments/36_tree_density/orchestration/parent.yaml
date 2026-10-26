@@ -1,0 +1,165 @@
+main:
+  steps:
+  - lease:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        query:
+          uploadType: media
+          name: density36/orchestration/parent-lease.json
+          ifGenerationMatch: 0
+        auth:
+          type: OAuth2
+        headers:
+          Content-Type: application/json
+        body:
+          execution: ${sys.get_env("GOOGLE_CLOUD_WORKFLOW_EXECUTION_ID")}
+          purpose: Single-owner campaign queue
+  - load:
+      try:
+        call: http.get
+        args:
+          url: https://storage.googleapis.com/tmrw-wildfire-20261015-trial/density36/orchestration/run-queue.json
+          auth:
+            type: OAuth2
+        result: queue
+      retry: ${http.default_retry}
+  - run:
+      parallel:
+        concurrency_limit: 20
+        for:
+          value: g
+          in: ${queue.body}
+          steps:
+          - group:
+              call: run_group
+              args:
+                g: ${g}
+  - done:
+      return:
+        complete: true
+        groups: 102
+run_group:
+  params:
+  - g
+  steps:
+  - intent:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        query:
+          uploadType: media
+          name: ${"density36/orchestration/intents/" + g.id + ".json"}
+          ifGenerationMatch: 0
+        auth:
+          type: OAuth2
+        headers:
+          Content-Type: application/json
+        body: ${g}
+  - prior:
+      try:
+        call: http.get
+        args:
+          url: ${"https://workflowexecutions.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/workflows/fds-"
+            + g.id + "/executions"}
+          auth:
+            type: OAuth2
+        result: prior
+      retry: ${http.default_retry}
+  - unique:
+      switch:
+      - condition: ${len(default(map.get(prior.body,"executions"),[])) != 0}
+        raise: Existing execution found; refusing duplicate
+  - create:
+      call: http.post
+      args:
+        url: ${"https://workflowexecutions.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/workflows/fds-"
+          + g.id + "/executions"}
+        auth:
+          type: OAuth2
+        body: {}
+      result: created
+  - save_execution:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        query:
+          uploadType: media
+          name: ${"density36/orchestration/executions/" + g.id + ".json"}
+          ifGenerationMatch: 0
+        auth:
+          type: OAuth2
+        headers:
+          Content-Type: application/json
+        body: ${created.body}
+  - deadline:
+      assign:
+      - deadline: ${sys.now()+18000}
+  - poll:
+      try:
+        call: http.get
+        args:
+          url: ${"https://workflowexecutions.googleapis.com/v1/" + created.body.name}
+          auth:
+            type: OAuth2
+        result: execution
+      retry: ${http.default_retry}
+  - check:
+      switch:
+      - condition: ${execution.body.state == "SUCCEEDED"}
+        next: scientific
+      - condition: ${execution.body.state != "ACTIVE" or sys.now() > deadline}
+        raise: Child workflow failed or exceeded bounded deadline
+  - wait:
+      call: sys.sleep
+      args:
+        seconds: 60
+      next: poll
+  - scientific:
+      assign:
+      - result: ${json.decode(execution.body.result)}
+  - success:
+      switch:
+      - condition: ${result.final_state != "SUCCEEDED" or result.workers_remaining
+          != 0}
+        raise: Batch task did not succeed; cleanup success alone is insufficient
+  - summaries:
+      for:
+        value: c
+        in: ${g.cases}
+        steps:
+        - summary:
+            try:
+              call: http.get
+              args:
+                url: ${"https://storage.googleapis.com/tmrw-wildfire-20261015-trial/density36/"
+                  + g.id + "/" + c + ".summary.json"}
+                auth:
+                  type: OAuth2
+              result: summary
+            retry: ${http.default_retry}
+        - validate:
+            switch:
+            - condition: ${not summary.body.result.full_horizon or not summary.body.resume.passed
+                or summary.body.result.binary_sha256 != "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692"
+                or summary.body.deck_sha256 != g.deck_hashes[c]}
+              raise: Scientific summary verification failed
+  - complete:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        query:
+          uploadType: media
+          name: ${"density36/orchestration/completed/" + g.id + ".json"}
+          ifGenerationMatch: 0
+        auth:
+          type: OAuth2
+        headers:
+          Content-Type: application/json
+        body:
+          group: ${g.id}
+          cases: ${len(g.cases)}
+          all_full_horizon: true
+          execution: ${created.body.name}
+  - done:
+      return: ${g.id}

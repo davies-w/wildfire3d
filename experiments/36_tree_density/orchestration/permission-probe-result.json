@@ -1,0 +1,35 @@
+{
+  "argument": "null",
+  "createTime": "2026-10-26T16:09:58.409767281Z",
+  "duration": "0.581619828s",
+  "endTime": "2026-10-26T16:09:58.991387109Z",
+  "error": {
+    "context": "HTTP server responded with error code 403\nin step \"list\", routine \"main\", line: 13",
+    "payload": "{\"body\":{\"error\":{\"code\":403,\"details\":[{\"@type\":\"type.googleapis.com/google.rpc.ErrorInfo\",\"domain\":\"workflows.googleapis.com\",\"metadata\":{\"error_info_id\":\"CiQwMWExNzhmOS1jYjVhLTdhNWItODkxNS03OTkyODVjMzc3OTgSU3Byb2plY3RzL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUvbG9jYXRpb25zL3VzLWNlbnRyYWwxL3dvcmtmbG93cy9mZHMteDM2LWRlbnNpdHktMDI5\",\"permission\":\"workflows.executions.list\",\"resource\":\"projects/tmrw-wildfire-20261015/locations/us-central1/workflows/fds-x36-density-029\",\"troubleshooter_url\":\"https://console.cloud.google.com/iam-admin/troubleshooter/summary;errorId=CiQwMWExNzhmOS1jYjVhLTdhNWItODkxNS03OTkyODVjMzc3OTgSU3Byb2plY3RzL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUvbG9jYXRpb25zL3VzLWNlbnRyYWwxL3dvcmtmbG93cy9mZHMteDM2LWRlbnNpdHktMDI5\"},\"reason\":\"IAM_PERMISSION_DENIED\"}],\"message\":\"Permission 'workflows.executions.list' denied on resource '//workflows.googleapis.com/projects/tmrw-wildfire-20261015/locations/us-central1/workflows/fds-x36-density-029' (or it may not exist). Remediate access with this Troubleshooter URL or share it with your administrator - https://console.cloud.google.com/iam-admin/troubleshooter/summary;errorId=CiQwMWExNzhmOS1jYjVhLTdhNWItODkxNS03OTkyODVjMzc3OTgSU3Byb2plY3RzL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUvbG9jYXRpb25zL3VzLWNlbnRyYWwxL3dvcmtmbG93cy9mZHMteDM2LWRlbnNpdHktMDI5 .\",\"status\":\"PERMISSION_DENIED\"}},\"code\":403,\"headers\":{\"Alt-Svc\":\"h3=\\\":443\\\"; ma=2592000,h3-29=\\\":443\\\"; ma=2592000\",\"Content-Length\":\"1461\",\"Content-Type\":\"application/json; charset=UTF-8\",\"Date\":\"Mon, 26 Oct 2026 16:09:58 GMT\",\"Server\":\"ESF\",\"Vary\":\"Origin, X-Origin, Referer\",\"X-Content-Type-Options\":\"nosniff\",\"X-Frame-Options\":\"SAMEORIGIN\",\"X-Xss-Protection\":\"0\"},\"message\":\"HTTP server responded with error code 403\",\"tags\":[\"HttpError\"]}",
+    "stackTrace": {
+      "elements": [
+        {
+          "position": {
+            "column": "7",
+            "length": "4",
+            "line": "13"
+          },
+          "routine": "main",
+          "step": "list"
+        }
+      ]
+    }
+  },
+  "name": "projects/587909259768/locations/us-central1/workflows/fds-density36-permission-probe/executions/c5792af3-a1fc-4502-a1ed-3c6dfed80e53",
+  "startTime": "2026-10-26T16:09:58.409767281Z",
+  "state": "FAILED",
+  "status": {
+    "currentSteps": [
+      {
+        "routine": "main",
+        "step": "list"
+      }
+    ]
+  },
+  "workflowRevisionId": "000001-cce"
+}

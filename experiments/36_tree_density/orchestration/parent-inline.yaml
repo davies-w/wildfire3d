@@ -1,0 +1,271 @@
+main:
+  steps:
+  - lease:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        query:
+          uploadType: media
+          name: density36/orchestration/parent-lease.json
+          ifGenerationMatch: 0
+        auth:
+          type: OAuth2
+        headers:
+          Content-Type: application/json
+        body:
+          execution: ${sys.get_env("GOOGLE_CLOUD_WORKFLOW_EXECUTION_ID")}
+          purpose: Single-owner campaign queue
+  - load:
+      try:
+        call: http.get
+        args:
+          url: https://storage.googleapis.com/tmrw-wildfire-20261015-trial/density36/orchestration/run-queue.json
+          auth:
+            type: OAuth2
+        result: queue
+      retry: ${http.default_retry}
+  - run:
+      parallel:
+        concurrency_limit: 20
+        for:
+          value: g
+          in: ${queue.body}
+          steps:
+          - group:
+              call: run_group
+              args:
+                g: ${g}
+  - done:
+      return:
+        complete: true
+        groups: 102
+run_group:
+  params:
+  - g
+  steps:
+  - intent:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        query:
+          uploadType: media
+          name: ${"density36/orchestration/intents/" + g.id + ".json"}
+          ifGenerationMatch: 0
+        auth:
+          type: OAuth2
+        headers:
+          Content-Type: application/json
+        body: ${g}
+  - solve:
+      call: run_job
+      args:
+        g: ${g}
+      result: result
+  - success:
+      switch:
+      - condition: ${result.final_state != "SUCCEEDED" or result.workers_remaining
+          != 0}
+        raise: Batch task did not succeed; cleanup success alone is insufficient
+  - summaries:
+      for:
+        value: c
+        in: ${g.cases}
+        steps:
+        - summary:
+            try:
+              call: http.get
+              args:
+                url: ${"https://storage.googleapis.com/tmrw-wildfire-20261015-trial/density36/"
+                  + g.id + "/" + c + ".summary.json"}
+                auth:
+                  type: OAuth2
+              result: summary
+            retry: ${http.default_retry}
+        - validate:
+            switch:
+            - condition: ${not summary.body.result.full_horizon or not summary.body.resume.passed
+                or summary.body.result.binary_sha256 != "70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692"
+                or summary.body.deck_sha256 != g.deck_hashes[c]}
+              raise: Scientific summary verification failed
+  - complete:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        query:
+          uploadType: media
+          name: ${"density36/orchestration/completed/" + g.id + ".json"}
+          ifGenerationMatch: 0
+        auth:
+          type: OAuth2
+        headers:
+          Content-Type: application/json
+        body:
+          group: ${g.id}
+          cases: ${len(g.cases)}
+          all_full_horizon: true
+          execution: ${sys.get_env("GOOGLE_CLOUD_WORKFLOW_EXECUTION_ID")}
+  - done:
+      return: ${g.id}
+run_job:
+  params:
+  - g
+  steps:
+  - spec:
+      try:
+        call: http.get
+        args:
+          url: ${"https://storage.googleapis.com/tmrw-wildfire-20261015-trial/density36/orchestration/specs/"
+            + g.id + ".json"}
+          auth:
+            type: OAuth2
+        result: spec
+      retry: ${http.default_retry}
+  - initialize:
+      assign:
+      - deadline: ${sys.now() + 17820}
+      - job: ${spec.body.job}
+      - status:
+          body:
+            status:
+              state: UNKNOWN
+      - queue_deadline: ${sys.now() + 1200}
+  - create:
+      call: http.post
+      args:
+        url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs
+        query:
+          jobId: ${"fds-" + g.id + ""}
+        auth:
+          type: OAuth2
+        body: ${job}
+      result: created
+  - monitor:
+      try:
+        steps:
+        - get_status:
+            call: http.get
+            args:
+              url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-"
+                + g.id + ""}
+              auth:
+                type: OAuth2
+            result: status
+        - check:
+            switch:
+            - condition: ${status.body.status.state == "SUCCEEDED" or status.body.status.state
+                == "FAILED"}
+              next: record
+            - condition: ${sys.now() >= deadline}
+              next: record
+            - condition: ${(status.body.status.state == "QUEUED" or status.body.status.state
+                == "SCHEDULED") and sys.now() >= queue_deadline}
+              next: record
+        - wait:
+            call: sys.sleep
+            args:
+              seconds: 30
+            next: get_status
+      except:
+        as: monitor_error
+        steps:
+        - monitor_failure:
+            call: sys.log
+            args:
+              text: Monitoring failed; proceeding to cleanup
+              severity: ERROR
+  - record:
+      try:
+        call: http.post
+        args:
+          url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+          query:
+            uploadType: media
+            name: ${"density36/" + g.id + "/job-status.json"}
+          auth:
+            type: OAuth2
+          headers:
+            Content-Type: application/json
+          body: ${status.body}
+      except:
+        as: record_error
+        steps:
+        - record_failure:
+            call: sys.log
+            args:
+              text: Could not persist final status; proceeding with cleanup
+              severity: ERROR
+  - delete_job:
+      try:
+        call: http.delete
+        args:
+          url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-"
+            + g.id + ""}
+          auth:
+            type: OAuth2
+        result: deletion
+      except:
+        as: delete_error
+        steps:
+        - delete_failure:
+            call: sys.log
+            args:
+              text: Batch deletion failed; checking workers directly
+              severity: ERROR
+  - cleanup_wait:
+      call: sys.sleep
+      args:
+        seconds: 30
+  - list_workers:
+      call: http.get
+      args:
+        url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances
+        query:
+          filter: ${"labels.trial_id = " + g.id + ""}
+        auth:
+          type: OAuth2
+      result: workers
+  - delete_stragglers:
+      for:
+        value: vm
+        in: ${default(map.get(workers.body, "items"), [])}
+        steps:
+        - delete_vm:
+            try:
+              call: http.delete
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances/"
+                  + vm.name}
+                auth:
+                  type: OAuth2
+            except:
+              as: cleanup_error
+              steps:
+              - check_cleanup_error:
+                  switch:
+                  - condition: ${map.get(cleanup_error, "code") != 404}
+                    steps:
+                    - rethrow_cleanup:
+                        raise: ${cleanup_error}
+  - verify_wait:
+      call: sys.sleep
+      args:
+        seconds: 30
+  - verify:
+      call: http.get
+      args:
+        url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances
+        query:
+          filter: ${"labels.trial_id = " + g.id + ""}
+        auth:
+          type: OAuth2
+      result: remaining
+  - assert_empty:
+      switch:
+      - condition: ${len(default(map.get(remaining.body, "items"), [])) > 0}
+        raise: 'Cleanup incomplete: labeled workers remain'
+  - done:
+      return:
+        mode: domain17
+        final_state: ${status.body.status.state}
+        workers_remaining: 0
+        job_uid: ${created.body.uid}
