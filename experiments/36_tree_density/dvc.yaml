@@ -106,3 +106,25 @@ stages:
     metrics:
     - results/repair-workflow-preflight.json:
         cache: false
+  prepare_queue_recovery:
+    cmd: ../../.venv/bin/python repair/prepare_queue_recovery.py
+    deps:
+    - repair/prepare_queue_recovery.py
+    - active-groups.json
+    - data/packages
+    - jobs/x36-density-009/terminal-no-results.json
+    - jobs/x36-density-010/terminal-no-results.json
+    - jobs/x36-density-011/terminal-no-results.json
+    - jobs/x36-density-012/terminal-no-results.json
+    - jobs/x36-density-013/terminal-no-results.json
+    - jobs/x36-density-014/terminal-no-results.json
+    - jobs/x36-density-015/terminal-no-results.json
+    - jobs/x36-density-016/terminal-no-results.json
+    - jobs/x36-density-017/terminal-no-results.json
+    - jobs/x36-density-018/terminal-no-results.json
+    - jobs/x36-density-019/terminal-no-results.json
+    - jobs/x36-density-020/terminal-no-results.json
+    outs:
+    - data/queue-recovery-packages
+    - proposed-queue-recovery-groups.json:
+        cache: false

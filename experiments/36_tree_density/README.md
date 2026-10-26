@@ -37,3 +37,7 @@ User approved a $1 bounded repair and continuation. Cloud build58f55a79-1946-4a5
 ## Effective concurrency
 
 Six coverage cases passed. Twenty bulk groups were submitted before Google rejected the 21st temporary prefix-read grant: a principal/role can have at most20different conditional bindings. Dispatcher concurrency is therefore20, while compute quota remains24. Existing jobs are unchanged and no paid job is retried. Keep the per-job narrow grants rather than widening access. Expected total duration is closer to10–14hours, subject to capacity.
+
+## Global quota queue interruption
+
+Groups009–020 reached the20-minute queue deadline with zero recorded run duration. The regional96-core quota had been approved, but the global32-core limit prevented allocation. Global96 was approved too late for these waiting groups. All12cleanup inventories are empty and temporary grants removed. Groups001–008 continue under collection-only monitoring; no new submissions occur while replacement approval is pending. A prepared, inactive replacement plan covers144cases using byte-identical packages except group identities. Maximum new allowance4.80USD within125cap. New launches now check globalCPU plus regionalCPU/address/disk limits. Do not resubmit original job IDs.

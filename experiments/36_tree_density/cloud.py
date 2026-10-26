@@ -41,6 +41,10 @@ def launch(name):
  assert g.get('image_uri'),'Repaired pinned image required'
  assert read('results/repair-workflow-preflight.json')['passed']
  gc('artifacts','docker','images','describe',g['image_uri'])
+ global_q={q['metric']:q for q in gc('compute','project-info','describe')['quotas']}
+ region_q={q['metric']:q for q in gc('compute','regions','describe','us-central1')['quotas']}
+ assert global_q['CPUS_ALL_REGIONS']['limit']>=80 and region_q['C3_CPUS']['limit']>=80 and region_q['IN_USE_ADDRESSES']['limit']>=20 and region_q['SSD_TOTAL_GB']['limit']>=600,'Required20-worker quotas missing; do not submit'
+
  with (B.parent/'data/budget.lock').open('w') as f:
   fcntl.flock(f,fcntl.LOCK_EX);b=json.loads(B.read_text());entry=b['reservations'][name];assert entry['state']=='reserved_before_upload' and not (folder/'execution.json').exists()
   vms=gc('compute','instances','list');jobs=gc('batch','jobs','list','--location=us-central1');assert len(vms)<20 and len(jobs)<20;assert all(x.get('labels',{}).get('trial_id','').startswith('x36-') for x in vms+jobs)

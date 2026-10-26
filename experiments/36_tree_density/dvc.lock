@@ -228,3 +228,77 @@ stages:
       hash: md5
       md5: 00b56dd8817c2730cfe41572f9054a58
       size: 143
+  prepare_queue_recovery:
+    cmd: ../../.venv/bin/python repair/prepare_queue_recovery.py
+    deps:
+    - path: active-groups.json
+      hash: md5
+      md5: a1d2b8850bae461beb4d67323f1cab1f
+      size: 99637
+    - path: data/packages
+      hash: md5
+      md5: 725332d4eccd1d22a02c63eef6848482.dir
+      size: 11300008
+      nfiles: 131
+    - path: jobs/x36-density-009/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-010/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-011/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-012/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-013/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-014/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-015/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-016/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-017/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-018/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-019/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-020/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: repair/prepare_queue_recovery.py
+      hash: md5
+      md5: 6ba73f9b71228e45c7ee2031c3435852
+      size: 2074
+    outs:
+    - path: data/queue-recovery-packages
+      hash: md5
+      md5: 737a2746af122ee9506d810f52e6c8bb.dir
+      size: 1036332
+      nfiles: 12
+    - path: proposed-queue-recovery-groups.json
+      hash: md5
+      md5: 843070d094015db784a058006ed33b1c
+      size: 100561
