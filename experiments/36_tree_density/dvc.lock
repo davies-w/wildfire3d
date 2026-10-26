@@ -508,9 +508,9 @@ stages:
     outs:
     - path: data/verified-material
       hash: md5
-      md5: c549e1c0974f0d116552bf68221b8e45.dir
-      size: 21713411117
-      nfiles: 7343
+      md5: 1b4d7e8928fdce14a3cf5dc793d07418.dir
+      size: 30046277553
+      nfiles: 10151
   extract_states:
     cmd: ../../.venv/bin/python extract_states.py
     deps:
@@ -520,9 +520,9 @@ stages:
       size: 1259971
     - path: data/verified-material
       hash: md5
-      md5: c549e1c0974f0d116552bf68221b8e45.dir
-      size: 21713411117
-      nfiles: 7343
+      md5: 1b4d7e8928fdce14a3cf5dc793d07418.dir
+      size: 30046277553
+      nfiles: 10151
     - path: extract_states.py
       hash: md5
       md5: 9a9ca4f59f08fe82afc0097e1246e90a
@@ -538,13 +538,13 @@ stages:
     outs:
     - path: data/four-state
       hash: md5
-      md5: 2786dc82e371eb9cf88f86d20d8b995e.dir
-      size: 1680656
-      nfiles: 813
+      md5: 82b2171b88cd7658351f90488dd5c42f.dir
+      size: 2324637
+      nfiles: 1125
     - path: results/four-state-extraction.json
       hash: md5
-      md5: ac7d18bf0da904a497e1b198d965ef35
-      size: 489538
+      md5: 3402df9e8ccc06f9f4357d86d8c0b927
+      size: 676913
   validate_state_replay:
     cmd: ../../.venv/bin/python validate_state_replay.py
     deps:
