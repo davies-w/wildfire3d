@@ -475,3 +475,39 @@ stages:
       hash: md5
       md5: 98642ce8177fa8d3b9ab5a4aa0a50b35
       size: 302907
+  verify_material:
+    cmd: ../../.venv/bin/python verify_material.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: data/cloud-collected
+      hash: md5
+      md5: 8b812e16aaf8f9682538b458be22a27e.dir
+      size: 4946186
+      nfiles: 1092
+    - path: data/interrupted
+      hash: md5
+      md5: e758b886272f1f1bff6194992f8d91c7.dir
+      size: 35113
+      nfiles: 9
+    - path: data/raw-inventory.json
+      hash: md5
+      md5: 98642ce8177fa8d3b9ab5a4aa0a50b35
+      size: 302907
+    - path: data/summaries
+      hash: md5
+      md5: d9182b1fb92056e0a5569f3f8f1dcae7.dir
+      size: 3298299
+      nfiles: 343
+    - path: verify_material.py
+      hash: md5
+      md5: 2bf0d655b9923f01e8df8aba3c001d9c
+      size: 3494
+    outs:
+    - path: data/verified-material
+      hash: md5
+      md5: 7b6a452066900bca461029d1c4770b80.dir
+      size: 7281872
+      nfiles: 8

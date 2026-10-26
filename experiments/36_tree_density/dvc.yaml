@@ -200,3 +200,14 @@ stages:
     - data/interrupted
     outs:
     - data/raw-inventory.json
+  verify_material:
+    cmd: ../../.venv/bin/python verify_material.py
+    deps:
+    - verify_material.py
+    - cloud.py
+    - data/raw-inventory.json
+    - data/summaries
+    - data/cloud-collected
+    - data/interrupted
+    outs:
+    - data/verified-material
