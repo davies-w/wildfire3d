@@ -433,12 +433,12 @@ stages:
     outs:
     - path: data/cloud-collected
       hash: md5
-      md5: 8b812e16aaf8f9682538b458be22a27e.dir
-      size: 4946186
-      nfiles: 1092
+      md5: ab172ae19f9766ad4dcb933284bf9131.dir
+      size: 7353607
+      nfiles: 1624
     - path: results/cloud-collection.json
       hash: md5
-      md5: d5e08a9e9efb766bd7bdeda034b52e9d
+      md5: 821dba302d906f5d970332711fca2016
       size: 75
   raw_inventory:
     cmd: ../../.venv/bin/python raw_inventory.py
@@ -449,9 +449,9 @@ stages:
       size: 100561
     - path: data/cloud-collected
       hash: md5
-      md5: 8b812e16aaf8f9682538b458be22a27e.dir
-      size: 4946186
-      nfiles: 1092
+      md5: ab172ae19f9766ad4dcb933284bf9131.dir
+      size: 7353607
+      nfiles: 1624
     - path: data/interrupted
       hash: md5
       md5: e758b886272f1f1bff6194992f8d91c7.dir
@@ -473,8 +473,8 @@ stages:
     outs:
     - path: data/raw-inventory.json
       hash: md5
-      md5: 98642ce8177fa8d3b9ab5a4aa0a50b35
-      size: 302907
+      md5: 4a62e7fe7c859b843c7d746cfc4c38d0
+      size: 387496
   verify_material:
     cmd: ../../.venv/bin/python verify_material.py
     deps:
@@ -545,3 +545,55 @@ stages:
       hash: md5
       md5: eda9b7c5d818fcd56be2f93cf7252cb2
       size: 8388
+  validate_state_replay:
+    cmd: ../../.venv/bin/python validate_state_replay.py
+    deps:
+    - path: 
+        ../32_tree_expansion/data/cloud_archive/x32-coverage-00-r1/x32_000_s0.tar.gz
+      hash: md5
+      md5: 85bfc6f71b17ae4ab546664ad2a57aa8
+      size: 94367130
+    - path: 
+        ../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_094_s0.tar.gz
+      hash: md5
+      md5: 0f059ba7e8a0379e3cee7f9fd5d297c9
+      size: 96019416
+    - path: 
+        ../32_tree_expansion/data/cloud_archive/x32-development-33/x32_376_s0.tar.gz
+      hash: md5
+      md5: aecdc74b9bcb9bf4829493263e815406
+      size: 96014031
+    - path: ../35_surrogate_diagnostics/attempt12/inventory.json
+      hash: md5
+      md5: 415e701a05241aa417d609a44b20748d
+      size: 564764
+    - path: ../35_surrogate_diagnostics/attempt20/data/sequences.npz
+      hash: md5
+      md5: 1bde7a6a93c4646c6c620478ddc4f9bd
+      size: 807269
+    - path: extract_states.py
+      hash: md5
+      md5: 9a9ca4f59f08fe82afc0097e1246e90a
+      size: 3858
+    - path: fortran_records.py
+      hash: md5
+      md5: 47c5b62759ee16bfc7cfe36934e16ac2
+      size: 711
+    - path: material_reader.py
+      hash: md5
+      md5: abfdcb198f6ca238a558e65d2f3aebca
+      size: 2709
+    - path: validate_state_replay.py
+      hash: md5
+      md5: f34bad8b3227a14feacf1a10d59d9c6c
+      size: 2125
+    outs:
+    - path: data/extraction-replay
+      hash: md5
+      md5: 72aee9d80477b0a83db871bd1136ef51.dir
+      size: 80108960
+      nfiles: 24
+    - path: results/extraction-replay.json
+      hash: md5
+      md5: 2a4fa5e6400fade895de35e3f809ff6f
+      size: 1299

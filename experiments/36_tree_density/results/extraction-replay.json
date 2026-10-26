@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "x32_000_s0",
+      "index": 0,
+      "raw_sha256": "f6c76aac0437e8a0e2f75058375c1635983e4f7ffeecbbae84cd3b30370a90fe",
+      "bitwise_state_match": true,
+      "max_abs_difference_by_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "timestamps_bitwise_match": true
+    },
+    {
+      "case": "x32_094_s0",
+      "index": 100,
+      "raw_sha256": "f57c97d068f4cacfad395d1969a55c3de558f7ca45f9437e2255d9e20fa67178",
+      "bitwise_state_match": true,
+      "max_abs_difference_by_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "timestamps_bitwise_match": true
+    },
+    {
+      "case": "x32_376_s0",
+      "index": 400,
+      "raw_sha256": "6b1b7c796086a61364475e158910bcf568afe83152b7110b3856e7c997645abb",
+      "bitwise_state_match": true,
+      "max_abs_difference_by_state": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "timestamps_bitwise_match": true
+    }
+  ],
+  "reference": "attempt20/data/sequences.npz",
+  "states": [
+    "water_kg",
+    "dry_fuel_kg",
+    "gas_release_kg_s",
+    "surface_heating_K"
+  ],
+  "training": false,
+  "scope": "Three archived old histories replayed against frozen prior four-state arrays; does not establish model accuracy."
+}

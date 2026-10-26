@@ -224,3 +224,20 @@ stages:
     metrics:
     - results/four-state-extraction.json:
         cache: false
+  validate_state_replay:
+    cmd: ../../.venv/bin/python validate_state_replay.py
+    deps:
+    - validate_state_replay.py
+    - extract_states.py
+    - material_reader.py
+    - fortran_records.py
+    - ../35_surrogate_diagnostics/attempt12/inventory.json
+    - ../35_surrogate_diagnostics/attempt20/data/sequences.npz
+    - ../32_tree_expansion/data/cloud_archive/x32-coverage-00-r1/x32_000_s0.tar.gz
+    - ../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_094_s0.tar.gz
+    - ../32_tree_expansion/data/cloud_archive/x32-development-33/x32_376_s0.tar.gz
+    outs:
+    - data/extraction-replay
+    metrics:
+    - results/extraction-replay.json:
+        cache: false
