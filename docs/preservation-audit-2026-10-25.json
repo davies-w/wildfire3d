@@ -1407,5 +1407,11 @@
     "Experiment36 mutable summaries/status remain exclusively with the supervisor; no compute polling or modifications performed.",
     "Existing experiment21 overlapping output declarations prevent dvc add of external inputs; no workaround altering old science attempted."
   ],
-  "publication": "Local DVC mirror only; no new public publication."
+  "publication": "Local DVC mirror only; no new public publication.",
+  "verification": {
+    "command": ".venv/bin/python scripts/verify_preservation_audit.py",
+    "verified_current_files": 91,
+    "verified_mirror_objects": 825,
+    "result": "passed; unresolved entries explicitly retained as pending, not certified preserved"
+  }
 }
