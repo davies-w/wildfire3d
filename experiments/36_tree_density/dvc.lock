@@ -669,3 +669,28 @@ stages:
       hash: md5
       md5: 44be6c76cd7dd8870d4497612a66b4a0
       size: 671656
+  collect_partial_recovery:
+    cmd: ../../.venv/bin/python repair/collect_partial.py
+    deps:
+    - path: repair/collect_partial.py
+      hash: md5
+      md5: 210027baedf787611bfc354d71043170
+      size: 2483
+    - path: results/partial-recovery-execution.json
+      hash: md5
+      md5: 5cbc73d79e36b5b422f819d9d76cedac
+      size: 667
+    - path: results/partial-recovery-workflow.json
+      hash: md5
+      md5: 68f4488e1a334a57d9172d72d9804baf
+      size: 1383
+    outs:
+    - path: data/recovery-collected
+      hash: md5
+      md5: b5f6014d08049962c7ebed59847d24b6.dir
+      size: 96842
+      nfiles: 22
+    - path: results/partial-recovery-collection.json
+      hash: md5
+      md5: 540b221e92b4f6e11537ef6fea1818fa
+      size: 397

@@ -198,6 +198,8 @@ stages:
     - data/summaries
     - data/cloud-collected
     - data/interrupted
+    - data/recovery-collected
+    - results/partial-recovery-plan.json
     outs:
     - data/raw-inventory.json
   verify_material:
@@ -209,6 +211,8 @@ stages:
     - data/summaries
     - data/cloud-collected
     - data/interrupted
+    - data/recovery-collected
+    - results/partial-recovery-plan.json
     outs:
     - data/verified-material
   extract_states:
