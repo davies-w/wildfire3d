@@ -1,0 +1,115 @@
+{
+  "allocationPolicy": {
+    "instances": [
+      {
+        "policy": {
+          "bootDisk": {
+            "sizeGb": "30",
+            "type": "pd-balanced"
+          },
+          "machineType": "c3-standard-4",
+          "provisioningModel": "SPOT"
+        }
+      }
+    ],
+    "labels": {
+      "batch-job-id": "fds-x36-density-128",
+      "trial_id": "x36-density-128"
+    },
+    "location": {
+      "allowedLocations": [
+        "regions/us-central1",
+        "zones/us-central1-a"
+      ]
+    },
+    "network": {
+      "networkInterfaces": [
+        {
+          "network": "projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+          "subnetwork": "projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial"
+        }
+      ]
+    },
+    "serviceAccount": {
+      "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com"
+    }
+  },
+  "createTime": "2026-10-26T21:49:13.675099151Z",
+  "labels": {
+    "trial_id": "x36-density-128"
+  },
+  "logsPolicy": {
+    "destination": "CLOUD_LOGGING"
+  },
+  "name": "projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-x36-density-128",
+  "status": {
+    "runDuration": "5341.888492629s",
+    "state": "SUCCEEDED",
+    "statusEvents": [
+      {
+        "description": "Job state is set from QUEUED to SCHEDULED for job projects/587909259768/locations/us-central1/jobs/fds-x36-density-128.",
+        "eventTime": "2026-10-26T21:49:18.878033705Z",
+        "type": "STATUS_CHANGED"
+      },
+      {
+        "description": "Job state is set from SCHEDULED to RUNNING for job projects/587909259768/locations/us-central1/jobs/fds-x36-density-128.",
+        "eventTime": "2026-10-26T21:50:00.215337242Z",
+        "type": "STATUS_CHANGED"
+      },
+      {
+        "description": "Job state is set from RUNNING to SUCCEEDED for job projects/587909259768/locations/us-central1/jobs/fds-x36-density-128.",
+        "eventTime": "2026-10-26T23:19:02.103829871Z",
+        "type": "STATUS_CHANGED"
+      }
+    ],
+    "taskGroups": {
+      "group0": {
+        "counts": {
+          "SUCCEEDED": "1"
+        },
+        "instances": [
+          {
+            "bootDisk": {
+              "image": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261016-00-p00",
+              "sizeGb": "30",
+              "type": "pd-balanced"
+            },
+            "machineType": "c3-standard-4",
+            "provisioningModel": "SPOT",
+            "taskPack": "1"
+          }
+        ]
+      }
+    }
+  },
+  "taskGroups": [
+    {
+      "name": "projects/587909259768/locations/us-central1/jobs/fds-x36-density-128/taskGroups/group0",
+      "parallelism": "1",
+      "taskCount": "1",
+      "taskCountPerNode": "1",
+      "taskSpec": {
+        "computeResource": {
+          "cpuMilli": "4000",
+          "memoryMib": "12000"
+        },
+        "maxRunDuration": "15960s",
+        "runnables": [
+          {
+            "container": {
+              "commands": [
+                "-c",
+                "import json,lzma,pathlib,sys,runpy,urllib.request,hashlib;req=urllib.request.Request('http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token',headers={'Metadata-Flavor':'Google'});tok=json.load(urllib.request.urlopen(req,timeout=30))['access_token'];req=urllib.request.Request('https://storage.googleapis.com/tmrw-wildfire-20261015-trial/density36/x36-density-128/input.xz',headers={'Authorization':'Bearer '+tok});blob=urllib.request.urlopen(req,timeout=120).read();assert hashlib.sha256(blob).hexdigest()=='3c0dade6343800549f1573568ae2f4771393e1dfd585eb70b8b881480852ac3c';root=pathlib.Path('/study');payload=json.loads(lzma.decompress(blob));[(root/n).parent.mkdir(parents=True,exist_ok=True) for n in payload];[(root/n).write_text(v) for n,v in payload.items()];sys.path.insert(0,'/study');runpy.run_path('/study/worker.py',run_name='__main__')"
+              ],
+              "entrypoint": "python3",
+              "imageUri": "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver36@sha256:b4bc461b8ebf2b4b3d0b7376ad69dcf19055f8abb5f1001ebd952f1d84f3cfb7",
+              "options": "--cpus=4 --memory=12g --pids-limit=256"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "uid": "fds-x36-density-12-af119c03-01bb-45df0",
+  "updateTime": "2026-10-26T23:19:02.103829871Z"
+}

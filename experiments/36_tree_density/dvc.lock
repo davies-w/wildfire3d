@@ -433,13 +433,13 @@ stages:
     outs:
     - path: data/cloud-collected
       hash: md5
-      md5: fb7e3ee48b67f3c5b8f800282617a981.dir
-      size: 9887969
-      nfiles: 2184
+      md5: ea7d3cdc85b688c77e2ca99dd3679f47.dir
+      size: 12236019
+      nfiles: 2704
     - path: results/cloud-collection.json
       hash: md5
-      md5: 4f837399c5ea0a564db5d9ed42237eda
-      size: 75
+      md5: 72360731fae0386aa76c1f7b19fee87e
+      size: 76
   raw_inventory:
     cmd: ../../.venv/bin/python raw_inventory.py
     deps:
@@ -449,14 +449,19 @@ stages:
       size: 100561
     - path: data/cloud-collected
       hash: md5
-      md5: fb7e3ee48b67f3c5b8f800282617a981.dir
-      size: 9887969
-      nfiles: 2184
+      md5: ea7d3cdc85b688c77e2ca99dd3679f47.dir
+      size: 12236019
+      nfiles: 2704
     - path: data/interrupted
       hash: md5
       md5: e758b886272f1f1bff6194992f8d91c7.dir
       size: 35113
       nfiles: 9
+    - path: data/recovery-collected
+      hash: md5
+      md5: b5f6014d08049962c7ebed59847d24b6.dir
+      size: 96842
+      nfiles: 22
     - path: data/summaries
       hash: md5
       md5: d9182b1fb92056e0a5569f3f8f1dcae7.dir
@@ -464,17 +469,21 @@ stages:
       nfiles: 343
     - path: raw_inventory.py
       hash: md5
-      md5: bca723ce91c99665d41107eb6f28b414
-      size: 1911
+      md5: 941199907f5a6172a01a77cd3a5c590a
+      size: 2431
     - path: results/input-freeze.json
       hash: md5
       md5: d83531f07429baa3c5035c2404eebebf
       size: 135918
+    - path: results/partial-recovery-plan.json
+      hash: md5
+      md5: f487a3b45bb3816391a06fb91123fa76
+      size: 601
     outs:
     - path: data/raw-inventory.json
       hash: md5
-      md5: 89266e6c52b5e732ec59d69c14a7b9e2
-      size: 476537
+      md5: fd93a068fab0ab78640fe31cc9b8fc3e
+      size: 562292
   verify_material:
     cmd: ../../.venv/bin/python verify_material.py
     deps:

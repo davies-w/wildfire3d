@@ -1,0 +1,35 @@
+{
+  "argument": "null",
+  "createTime": "2026-10-26T16:13:40.129838888Z",
+  "duration": "25351.428083705s",
+  "endTime": "2026-10-26T23:16:11.557922593Z",
+  "error": {
+    "context": "unable to store unhandled child thread exception, the max capacity of 100 unhandled child thread exceptions has been reached\nin step \"group\", routine \"main\", line: 35",
+    "payload": "{\"message\":\"unable to store unhandled child thread exception, the max capacity of 100 unhandled child thread exceptions has been reached\",\"tags\":[\"ExceptionLimitExceededError\",\"ResourceLimitError\"]}",
+    "stackTrace": {
+      "elements": [
+        {
+          "position": {
+            "column": "15",
+            "length": "4",
+            "line": "35"
+          },
+          "routine": "main",
+          "step": "group"
+        }
+      ]
+    }
+  },
+  "name": "projects/587909259768/locations/us-central1/workflows/fds-density36-parent/executions/4b1e487c-a806-408c-828b-7d012a8a31ff",
+  "startTime": "2026-10-26T16:13:40.129838888Z",
+  "state": "FAILED",
+  "status": {
+    "currentSteps": [
+      {
+        "routine": "main",
+        "step": "run"
+      }
+    ]
+  },
+  "workflowRevisionId": "000002-52c"
+}
