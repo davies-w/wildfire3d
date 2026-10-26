@@ -189,3 +189,14 @@ stages:
     metrics:
     - results/partial-recovery-plan.json:
         cache: false
+  raw_inventory:
+    cmd: ../../.venv/bin/python raw_inventory.py
+    deps:
+    - raw_inventory.py
+    - active-groups.json
+    - results/input-freeze.json
+    - data/summaries
+    - data/cloud-collected
+    - data/interrupted
+    outs:
+    - data/raw-inventory.json
