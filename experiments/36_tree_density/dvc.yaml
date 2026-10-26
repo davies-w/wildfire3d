@@ -254,3 +254,25 @@ stages:
     metrics:
     - results/partial-recovery-workflow.json:
         cache: false
+  launch_partial_recovery:
+    cmd: ../../.venv/bin/python repair/launch_partial.py --execute
+    frozen: true
+    deps:
+    - repair/launch_partial.py
+    - results/partial-recovery-workflow.json
+    - data/partial-recovery/x36-density-032-r1.xz
+    - jobs/x36-density-032-r1/workflow.yaml
+    metrics:
+    - results/partial-recovery-execution.json:
+        cache: false
+  collect_partial_recovery:
+    cmd: ../../.venv/bin/python repair/collect_partial.py
+    deps:
+    - repair/collect_partial.py
+    - results/partial-recovery-execution.json
+    - results/partial-recovery-workflow.json
+    outs:
+    - data/recovery-collected
+    metrics:
+    - results/partial-recovery-collection.json:
+        cache: false

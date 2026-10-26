@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 69.2,
+  "reserved_usd": 69.60000000000001,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -2841,6 +2841,14 @@
       "reserved_unix": 1793047096.648633,
       "scope": "At most160GiB total external archive reads at0.12USD/GiB plus0.80 operations cushion; 2GiB allowance inside byte cap for prior duplicate timestamp reads",
       "source": "https://cloud.google.com/storage/pricing#network-pricing"
+    },
+    "x36-density-032-r1": {
+      "state": "submitted",
+      "allowance_usd": 0.4,
+      "reserved_unix": 1793053350.6162848,
+      "cases": 9,
+      "scope": "Approved diagnosed recovery of unfinished cases only",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-density-032-r1/executions/bcc2a2a8-67e3-4ed5-a264-d9e46f34d25f"
     }
   },
   "recycle_reservations": true,

@@ -51,7 +51,7 @@ def main():
      while stream.read(1024*1024):pass
      assert proc.wait(timeout=30)==0,'Archive transport failed; partial evidence retained'
      assert stream.size==row['bytes'] and stream.digest.hexdigest()==row['sha256'],'Raw archive checksum mismatch'
-     sources=[R/'data/summaries'/f'{n}.json',R/'data/cloud-collected'/row['group']/f'{n}.json',R/'data/interrupted'/row['group']/f'{n}.json']
+     sources=[R/'data/summaries'/f'{n}.json',R/'data/cloud-collected'/row['group']/f'{n}.json',R/'data/interrupted'/row['group']/f'{n}.json',R/'data/recovery-collected'/row['group']/f'{n}.json']
      summary=next(json.loads(p.read_text()) for p in sources if p.exists())
      assert all((partial/name).exists() or (dest/name).exists() for name in [f'{n}_1.prt5',f'{n}_devc.csv'])
      assert members[n+'.fds']['sha256']==summary['deck_sha256']

@@ -433,12 +433,12 @@ stages:
     outs:
     - path: data/cloud-collected
       hash: md5
-      md5: afcff853db94db631ecdfeaa6563a243.dir
-      size: 8241697
-      nfiles: 1820
+      md5: fb7e3ee48b67f3c5b8f800282617a981.dir
+      size: 9887969
+      nfiles: 2184
     - path: results/cloud-collection.json
       hash: md5
-      md5: c0fe9cd3f8f61ec7a30c7535387b3b4e
+      md5: 4f837399c5ea0a564db5d9ed42237eda
       size: 75
   raw_inventory:
     cmd: ../../.venv/bin/python raw_inventory.py
@@ -449,9 +449,9 @@ stages:
       size: 100561
     - path: data/cloud-collected
       hash: md5
-      md5: afcff853db94db631ecdfeaa6563a243.dir
-      size: 8241697
-      nfiles: 1820
+      md5: fb7e3ee48b67f3c5b8f800282617a981.dir
+      size: 9887969
+      nfiles: 2184
     - path: data/interrupted
       hash: md5
       md5: e758b886272f1f1bff6194992f8d91c7.dir
@@ -473,8 +473,8 @@ stages:
     outs:
     - path: data/raw-inventory.json
       hash: md5
-      md5: 52210daabf36b0ee242f731980cf5665
-      size: 418661
+      md5: 89266e6c52b5e732ec59d69c14a7b9e2
+      size: 476537
   verify_material:
     cmd: ../../.venv/bin/python verify_material.py
     deps:
@@ -625,3 +625,27 @@ stages:
       hash: md5
       md5: 68f4488e1a334a57d9172d72d9804baf
       size: 1383
+  launch_partial_recovery:
+    cmd: ../../.venv/bin/python repair/launch_partial.py --execute
+    deps:
+    - path: data/partial-recovery/x36-density-032-r1.xz
+      hash: md5
+      md5: cff180c2f191548e52826f2cc400d5ec
+      size: 84460
+    - path: jobs/x36-density-032-r1/workflow.yaml
+      hash: md5
+      md5: 93709caaf1f55045a738c6e8a5d30e26
+      size: 7040
+    - path: repair/launch_partial.py
+      hash: md5
+      md5: 339134a48a9bdb9be7fa4013123597db
+      size: 4761
+    - path: results/partial-recovery-workflow.json
+      hash: md5
+      md5: 68f4488e1a334a57d9172d72d9804baf
+      size: 1383
+    outs:
+    - path: results/partial-recovery-execution.json
+      hash: md5
+      md5: 5cbc73d79e36b5b422f819d9d76cedac
+      size: 667

@@ -11,6 +11,13 @@ def main():
  for d in (R/'data/cloud-collected').glob('*'):
   if (d/'verified.json').exists():sources.extend(d.glob('x36_*.json'))
  sources.extend((R/'data/interrupted').glob('*/x36_*.json'))
+ for d in (R/'data/recovery-collected').glob('*'):
+  if not (d/'verified.json').exists():continue
+  v=json.loads((d/'verified.json').read_text());plan=json.loads((R/'results/partial-recovery-plan.json').read_text())
+  assert v['group']==plan['new_group'] and v['cases']==plan['cases'] and v['cleanup_verified'] and v['all_full_horizon']
+  assert not set(v['cases']) & set(plan['reused_completed_cases'])
+  for c in v['cases']:
+   assert owner[c]==plan['original_group'];owner[c]=v['group'];sources.append(d/(c+'.json'))
  rows={}
  for p in sorted(sources):
   c=p.stem
