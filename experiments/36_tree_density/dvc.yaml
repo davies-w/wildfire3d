@@ -200,6 +200,7 @@ stages:
     - data/interrupted
     - data/recovery-collected
     - results/partial-recovery-plan.json
+    - data/late-recovery
     outs:
     - data/raw-inventory.json
   verify_material:
@@ -213,6 +214,7 @@ stages:
     - data/interrupted
     - data/recovery-collected
     - results/partial-recovery-plan.json
+    - data/late-recovery
     outs:
     - data/verified-material
   extract_states:
@@ -270,15 +272,30 @@ stages:
     - results/partial-recovery-execution.json:
         cache: false
   collect_partial_recovery:
-    cmd: ../../.venv/bin/python repair/collect_partial.py
+    cmd: ../../.venv/bin/python repair/collect_partial.py && ../../.venv/bin/python
+      repair/collect_partial.py --proof data/late-recovery/x36-density-088-r1/proof.json
+      && ../../.venv/bin/python repair/collect_partial.py --proof data/late-recovery/x36-density-093-r1/proof.json
+      && ../../.venv/bin/python repair/collect_partial.py --proof data/late-recovery/x36-density-115-r1/proof.json
     deps:
     - repair/collect_partial.py
     - results/partial-recovery-execution.json
     - results/partial-recovery-workflow.json
+    - data/late-recovery/x36-density-088-r1/proof.json
+    - results/x36-density-088-r1-execution.json
+    - data/late-recovery/x36-density-093-r1/proof.json
+    - results/x36-density-093-r1-execution.json
+    - data/late-recovery/x36-density-115-r1/proof.json
+    - results/x36-density-115-r1-execution.json
     outs:
     - data/recovery-collected
     metrics:
     - results/partial-recovery-collection.json:
+        cache: false
+    - results/x36-density-088-r1-collection.json:
+        cache: false
+    - results/x36-density-093-r1-collection.json:
+        cache: false
+    - results/x36-density-115-r1-collection.json:
         cache: false
   prepare_grouped_folds:
     cmd: ../../.venv/bin/python prepare_grouped_folds.py
@@ -307,4 +324,65 @@ stages:
         cache: false
     metrics:
     - results/learning-data.json:
+        cache: false
+  audit_late_preemptions:
+    cmd: ../../.venv/bin/python repair/audit_preemptions.py
+    deps:
+    - repair/audit_preemptions.py
+    - active-groups.json
+    - results/input-freeze.json
+    - results/terminal-088.json
+    - results/terminal-093.json
+    - results/terminal-115.json
+    outs:
+    - data/interrupted/x36-density-088
+    - data/interrupted/x36-density-093
+    - data/interrupted/x36-density-115
+    metrics:
+    - results/preemption-088.json:
+        cache: false
+    - results/preemption-093.json:
+        cache: false
+    - results/preemption-115.json:
+        cache: false
+  prepare_late_recovery:
+    cmd: ../../.venv/bin/python repair/prepare_late_recovery.py
+    deps:
+    - repair/prepare_late_recovery.py
+    - active-groups.json
+    - data/packages
+    - results/preemption-088.json
+    - results/preemption-093.json
+    - results/preemption-115.json
+    - jobs/x36-density-088/workflow-r1.yaml
+    - jobs/x36-density-093/workflow-r1.yaml
+    - jobs/x36-density-115/workflow-r1.yaml
+    outs:
+    - data/late-recovery
+  launch_recovery_088:
+    cmd: ../../.venv/bin/python repair/launch_partial.py --execute --proof data/late-recovery/x36-density-088-r1/proof.json
+    frozen: true
+    deps:
+    - repair/launch_partial.py
+    - data/late-recovery/x36-density-088-r1
+    metrics:
+    - results/x36-density-088-r1-execution.json:
+        cache: false
+  launch_recovery_093:
+    cmd: ../../.venv/bin/python repair/launch_partial.py --execute --proof data/late-recovery/x36-density-093-r1/proof.json
+    frozen: true
+    deps:
+    - repair/launch_partial.py
+    - data/late-recovery/x36-density-093-r1
+    metrics:
+    - results/x36-density-093-r1-execution.json:
+        cache: false
+  launch_recovery_115:
+    cmd: ../../.venv/bin/python repair/launch_partial.py --execute --proof data/late-recovery/x36-density-115-r1/proof.json
+    frozen: true
+    deps:
+    - repair/launch_partial.py
+    - data/late-recovery/x36-density-115-r1
+    metrics:
+    - results/x36-density-115-r1-execution.json:
         cache: false

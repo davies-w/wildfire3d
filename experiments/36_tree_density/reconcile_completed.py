@@ -8,7 +8,7 @@ def main():
   for key,res in b['reservations'].items():
    if not key.startswith('x36-') or res['state'] not in ('submitted','delegated_to_cloud_queue'):continue
    if res.get('cost',{}).get('stage') not in ('runtime_estimate','posted_billing_subject_to_adjustment'):continue
-   proofs=[(R/'jobs'/key/'completion.json',R/'jobs'/key/'cleanup.json'),(R/'data/cloud-collected'/key/'verified.json',R/'data/cloud-collected'/key/'cleanup.json')]
+   proofs=[(R/'jobs'/key/'completion.json',R/'jobs'/key/'cleanup.json'),(R/'data/cloud-collected'/key/'verified.json',R/'data/cloud-collected'/key/'cleanup.json'),(R/'data/recovery-collected'/key/'verified.json',R/'data/recovery-collected'/key/'cleanup.json')]
    for proof,clean in proofs:
     if not proof.exists() or not clean.exists():continue
     p=json.loads(proof.read_text());c=json.loads(clean.read_text())

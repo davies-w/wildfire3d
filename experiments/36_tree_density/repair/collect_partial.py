@@ -1,13 +1,14 @@
 """Read-only collection of the nine-case recovery; retains original ownership elsewhere."""
-import fcntl,json,sys
+import argparse,fcntl,json,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent.parent))
 from cloud import R,BUCKET,gc,read,download_summary
 
 def main():
+ ap=argparse.ArgumentParser();ap.add_argument('--proof',default='results/partial-recovery-workflow.json');args=ap.parse_args()
  with (R/'data/partial-collector.lock').open('w') as lock:
   fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-  proof=read('results/partial-recovery-workflow.json');name=proof['group']
+  proof=read(args.proof);name=proof['group']
   execution=read('jobs/'+name+'/execution.json')['name'].split('/')
   status=gc('workflows','executions','describe',execution[-1],'--workflow='+execution[-3],'--location=us-central1')
   if status['state']=='ACTIVE':print('RECOVERY_ACTIVE');return
@@ -26,7 +27,7 @@ def main():
    assert s['deck_sha256']==freeze[case] and s['result']['binary_sha256']=='70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692'
    meta=gc('storage','objects','describe',prefix+case+'.tar.gz');assert int(meta['size'])==s['raw_bytes']
    (root/(case+'-raw-object.json')).write_text(json.dumps(meta,indent=2)+'\n')
-  report={'group':name,'cases':proof['cases'],'cleanup_verified':True,'all_full_horizon':True,'raw_sha_verification_pending':True,'shared_permission_removal_deferred_until_entire_campaign_complete':True}
+  report={'proof_file':args.proof,'group':name,'cases':proof['cases'],'cleanup_verified':True,'all_full_horizon':True,'raw_sha_verification_pending':True,'shared_permission_removal_deferred_until_entire_campaign_complete':True}
   (root/'verified.json').write_text(json.dumps(report,indent=2)+'\n')
-  (R/'results/partial-recovery-collection.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))
+  (R/('results/partial-recovery-collection.json' if name=='x36-density-032-r1' else 'results/'+name+'-collection.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))
 if __name__=='__main__':main()

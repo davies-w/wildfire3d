@@ -1,0 +1,115 @@
+{
+  "allocationPolicy": {
+    "instances": [
+      {
+        "policy": {
+          "bootDisk": {
+            "sizeGb": "30",
+            "type": "pd-balanced"
+          },
+          "machineType": "c3-standard-4",
+          "provisioningModel": "SPOT"
+        }
+      }
+    ],
+    "labels": {
+      "batch-job-id": "fds-x36-density-115",
+      "trial_id": "x36-density-115"
+    },
+    "location": {
+      "allowedLocations": [
+        "regions/us-central1",
+        "zones/us-central1-a"
+      ]
+    },
+    "network": {
+      "networkInterfaces": [
+        {
+          "network": "projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+          "subnetwork": "projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial"
+        }
+      ]
+    },
+    "serviceAccount": {
+      "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com"
+    }
+  },
+  "createTime": "2026-10-26T21:12:50.423978885Z",
+  "labels": {
+    "trial_id": "x36-density-115"
+  },
+  "logsPolicy": {
+    "destination": "CLOUD_LOGGING"
+  },
+  "name": "projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-x36-density-115",
+  "status": {
+    "runDuration": "1218.076848896s",
+    "state": "FAILED",
+    "statusEvents": [
+      {
+        "description": "Job state is set from QUEUED to SCHEDULED for job projects/587909259768/locations/us-central1/jobs/fds-x36-density-115.",
+        "eventTime": "2026-10-26T21:12:58.894520592Z",
+        "type": "STATUS_CHANGED"
+      },
+      {
+        "description": "Job state is set from SCHEDULED to RUNNING for job projects/587909259768/locations/us-central1/jobs/fds-x36-density-115.",
+        "eventTime": "2026-10-26T21:13:45.359608791Z",
+        "type": "STATUS_CHANGED"
+      },
+      {
+        "description": "Job state is set from RUNNING to FAILED for job projects/587909259768/locations/us-central1/jobs/fds-x36-density-115.Job failed due to task failure. Specifically, task with index 0 failed due to the following task event: \"Task state is updated from RUNNING to FAILED on zones/us-central1-a/instances/6729682829182139523 due to Spot VM preemption with exit code 50001.\"",
+        "eventTime": "2026-10-26T21:34:03.436457687Z",
+        "type": "STATUS_CHANGED"
+      }
+    ],
+    "taskGroups": {
+      "group0": {
+        "counts": {
+          "FAILED": "1"
+        },
+        "instances": [
+          {
+            "bootDisk": {
+              "image": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261016-00-p00",
+              "sizeGb": "30",
+              "type": "pd-balanced"
+            },
+            "machineType": "c3-standard-4",
+            "provisioningModel": "SPOT",
+            "taskPack": "1"
+          }
+        ]
+      }
+    }
+  },
+  "taskGroups": [
+    {
+      "name": "projects/587909259768/locations/us-central1/jobs/fds-x36-density-115/taskGroups/group0",
+      "parallelism": "1",
+      "taskCount": "1",
+      "taskCountPerNode": "1",
+      "taskSpec": {
+        "computeResource": {
+          "cpuMilli": "4000",
+          "memoryMib": "12000"
+        },
+        "maxRunDuration": "15960s",
+        "runnables": [
+          {
+            "container": {
+              "commands": [
+                "-c",
+                "import json,lzma,pathlib,sys,runpy,urllib.request,hashlib;req=urllib.request.Request('http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token',headers={'Metadata-Flavor':'Google'});tok=json.load(urllib.request.urlopen(req,timeout=30))['access_token'];req=urllib.request.Request('https://storage.googleapis.com/tmrw-wildfire-20261015-trial/density36/x36-density-115/input.xz',headers={'Authorization':'Bearer '+tok});blob=urllib.request.urlopen(req,timeout=120).read();assert hashlib.sha256(blob).hexdigest()=='50f71b30a72e5c0990ba6ed11cbb35554ceb31d7815250dc55ab497705d13ebc';root=pathlib.Path('/study');payload=json.loads(lzma.decompress(blob));[(root/n).parent.mkdir(parents=True,exist_ok=True) for n in payload];[(root/n).write_text(v) for n,v in payload.items()];sys.path.insert(0,'/study');runpy.run_path('/study/worker.py',run_name='__main__')"
+              ],
+              "entrypoint": "python3",
+              "imageUri": "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver36@sha256:b4bc461b8ebf2b4b3d0b7376ad69dcf19055f8abb5f1001ebd952f1d84f3cfb7",
+              "options": "--cpus=4 --memory=12g --pids-limit=256"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "uid": "fds-x36-density-11-679404cc-c4dd-4a670",
+  "updateTime": "2026-10-26T21:34:03.436457687Z"
+}

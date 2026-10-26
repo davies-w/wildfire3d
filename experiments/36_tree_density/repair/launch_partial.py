@@ -6,10 +6,10 @@ sys.path.insert(0,str(Path(__file__).resolve().parent.parent))
 from cloud import R,B,G,PROJECT,BUCKET,gc,read
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--execute',action='store_true');args=ap.parse_args()
- proof=read('results/partial-recovery-workflow.json');name=proof['group'];folder=R/'jobs'/name
- package=R/'data/partial-recovery'/(name+'.xz');workflow=folder/'workflow.yaml'
- assert proof['only_identity_and_package_hash_changed'] and len(proof['cases'])==9
+ ap=argparse.ArgumentParser();ap.add_argument('--execute',action='store_true');ap.add_argument('--proof',default='results/partial-recovery-workflow.json');args=ap.parse_args()
+ proof=read(args.proof);name=proof['group'];folder=R/'jobs'/name
+ package=R/proof.get('package_file','data/partial-recovery/'+name+'.xz');workflow=R/proof.get('workflow_file','jobs/'+name+'/workflow.yaml')
+ assert proof['only_identity_and_package_hash_changed'] and 0<len(proof['cases'])<=12 and not set(proof['cases'])&set(proof['excluded_completed_cases'])
  assert hashlib.sha256(package.read_bytes()).hexdigest()==proof['package_sha256']
  assert hashlib.sha256(workflow.read_bytes()).hexdigest()==proof['workflow_sha256']
  assert read('results/overnight-authorization.json')['approved']
@@ -30,7 +30,7 @@ def main():
   fcntl.flock(lock,fcntl.LOCK_EX);b=json.loads(B.read_text())
   assert name not in b['reservations'],'Existing reservation requires reconciliation before retry'
   assert b['estimated_spend_usd']+b['reserved_usd']+.4<=125
-  b['reservations'][name]={'state':'reserved_before_upload','allowance_usd':.4,'reserved_unix':time.time(),'cases':9,'scope':'Approved diagnosed recovery of unfinished cases only'}
+  b['reservations'][name]={'state':'reserved_before_upload','allowance_usd':.4,'reserved_unix':time.time(),'cases':len(proof['cases']),'scope':'Approved diagnosed recovery of unfinished cases only'}
   b['reserved_usd']+=.4;B.write_text(json.dumps(b,indent=2)+'\n')
  uri='gs://'+BUCKET+'/density36/'+name+'/input.xz'
  probe=subprocess.run([G,'storage','objects','describe',uri,'--format=json'],capture_output=True,text=True)
@@ -51,7 +51,7 @@ def main():
  # No retry around paid execution. Any ambiguous outcome remains submission_pending.
  execution=gc('workflows','execute','fds-'+name,'--location=us-central1')
  (folder/'execution.json').write_text(json.dumps(execution,indent=2)+'\n')
- (R/'results/partial-recovery-execution.json').write_text(json.dumps({'group':name,'cases':proof['cases'],'execution':execution,'allowance_usd':.4,'uses_existing_campaign_read_permission':True},indent=2)+'\n')
+ (R/('results/partial-recovery-execution.json' if name=='x36-density-032-r1' else 'results/'+name+'-execution.json')).write_text(json.dumps({'group':name,'cases':proof['cases'],'execution':execution,'allowance_usd':.4,'uses_existing_campaign_read_permission':True},indent=2)+'\n')
  with (B.parent/'data/budget.lock').open('w') as lock:
   fcntl.flock(lock,fcntl.LOCK_EX);b=json.loads(B.read_text());b['reservations'][name].update(state='submitted',execution=execution['name']);B.write_text(json.dumps(b,indent=2)+'\n')
  print('SUBMITTED',execution['name'],flush=True)

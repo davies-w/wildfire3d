@@ -13,7 +13,8 @@ def main():
  sources.extend((R/'data/interrupted').glob('*/x36_*.json'))
  for d in (R/'data/recovery-collected').glob('*'):
   if not (d/'verified.json').exists():continue
-  v=json.loads((d/'verified.json').read_text());plan=json.loads((R/'results/partial-recovery-plan.json').read_text())
+  v=json.loads((d/'verified.json').read_text());plan=json.loads((R/'results/partial-recovery-plan.json').read_text()) if v['group']=='x36-density-032-r1' else json.loads((R/v['proof_file']).read_text())
+  if 'new_group' not in plan:plan=dict(plan,new_group=plan['group'],reused_completed_cases=plan['excluded_completed_cases'])
   assert v['group']==plan['new_group'] and v['cases']==plan['cases'] and v['cleanup_verified'] and v['all_full_horizon']
   assert not set(v['cases']) & set(plan['reused_completed_cases'])
   for c in v['cases']:
