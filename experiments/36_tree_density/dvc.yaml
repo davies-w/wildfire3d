@@ -211,3 +211,16 @@ stages:
     - data/interrupted
     outs:
     - data/verified-material
+  extract_states:
+    cmd: ../../.venv/bin/python extract_states.py
+    deps:
+    - extract_states.py
+    - material_reader.py
+    - fortran_records.py
+    - cases.json
+    - data/verified-material
+    outs:
+    - data/four-state
+    metrics:
+    - results/four-state-extraction.json:
+        cache: false

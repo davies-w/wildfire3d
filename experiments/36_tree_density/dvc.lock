@@ -503,11 +503,45 @@ stages:
       nfiles: 343
     - path: verify_material.py
       hash: md5
-      md5: 2bf0d655b9923f01e8df8aba3c001d9c
-      size: 3494
+      md5: c7fd63a2e4b5f057109f0e7e7a7f8603
+      size: 4292
     outs:
     - path: data/verified-material
       hash: md5
-      md5: 0aa5299b9e3ae0515a724d85df72792c.dir
-      size: 94664416
-      nfiles: 104
+      md5: f64bd974678db2d2a87359b2990b8d55.dir
+      size: 114095590
+      nfiles: 107
+  extract_states:
+    cmd: ../../.venv/bin/python extract_states.py
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: a0cd6895e2b2cfa892d7b1fcb6dd2bdd
+      size: 1259971
+    - path: data/verified-material
+      hash: md5
+      md5: f64bd974678db2d2a87359b2990b8d55.dir
+      size: 114095590
+      nfiles: 107
+    - path: extract_states.py
+      hash: md5
+      md5: 9a9ca4f59f08fe82afc0097e1246e90a
+      size: 3858
+    - path: fortran_records.py
+      hash: md5
+      md5: 47c5b62759ee16bfc7cfe36934e16ac2
+      size: 711
+    - path: material_reader.py
+      hash: md5
+      md5: abfdcb198f6ca238a558e65d2f3aebca
+      size: 2709
+    outs:
+    - path: data/four-state
+      hash: md5
+      md5: 6eb3ec9d9dec93e8f7d42c636c879110.dir
+      size: 2088
+      nfiles: 1
+    - path: results/four-state-extraction.json
+      hash: md5
+      md5: 1553f4dfea9ddb0cc950a85ee5b51dfd
+      size: 1425

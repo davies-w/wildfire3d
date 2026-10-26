@@ -1,0 +1,47 @@
+{
+  "histories": 1,
+  "awaiting_exact_timestamps": [
+    "x36_0001_s0",
+    "x36_0002_s0",
+    "x36_0003_s0",
+    "x36_0004_s0",
+    "x36_0005_s0",
+    "x36_0006_s0",
+    "x36_0007_s0",
+    "x36_0008_s0",
+    "x36_0009_s0",
+    "x36_0010_s0",
+    "x36_0011_s0",
+    "x36_0012_s0"
+  ],
+  "training": false,
+  "states": [
+    "estimated_remaining_water_kg",
+    "estimated_remaining_unreacted_vegetation_kg",
+    "vegetation_fuel_release_kg_s",
+    "surface_heating_index_K"
+  ],
+  "definitions": "Same attempt15/19 formulas: right-endpoint water integral, trapezoidal fuel integral /0.75, initial wet particle mass and dry-basis moisture, mass-weighted particle surface T excess / initial mass. Char inert; gas release is not heat; heating index is not energy. No clamps. Actual slice timestamps retained.",
+  "cases": [
+    {
+      "case": "x36_0000_s0",
+      "raw_sha256": "647eddead426ba2eb768506b7231ce872539987488783ebc8f6570d56ab56616",
+      "max_particle_alignment_s": 0.0,
+      "initial_wet_mass_kg": 18.3850839138031,
+      "state_min": [
+        0.04481801020471332,
+        2.5165526167387977,
+        0.0,
+        2.898386129497868e-06
+      ],
+      "state_max": [
+        1.0406651271964016,
+        17.3444187866067,
+        0.948588437910582,
+        202.58730273998108
+      ],
+      "maximum_water_increase_kg": -9.104381973067122e-06,
+      "maximum_dry_increase_kg": -1.3346695570959355e-07
+    }
+  ]
+}
