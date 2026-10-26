@@ -1,0 +1,193 @@
+main:
+  steps:
+  - initialize:
+      assign:
+      - deadline: ${sys.now() + 17820}
+      - job:
+          taskGroups:
+          - taskCount: '1'
+            parallelism: '1'
+            taskCountPerNode: '1'
+            taskSpec:
+              computeResource:
+                cpuMilli: 4000
+                memoryMib: 12000
+              maxRunDuration: 15960s
+              maxRetryCount: 0
+              runnables:
+              - container:
+                  imageUri: us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/profile16@sha256:16b97adefa6a0d3e27681909592eb5116888052bc8b2cb517a29ca9e2dae46dc
+                  entrypoint: python3
+                  commands:
+                  - -c
+                  - import json,lzma,pathlib,sys,runpy,urllib.request,hashlib;req=urllib.request.Request('http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token',headers={'Metadata-Flavor':'Google'});tok=json.load(urllib.request.urlopen(req,timeout=30))['access_token'];req=urllib.request.Request('https://storage.googleapis.com/tmrw-wildfire-20261015-trial/density36/x36-density-097/input.xz',headers={'Authorization':'Bearer
+                    '+tok});blob=urllib.request.urlopen(req,timeout=120).read();assert
+                    hashlib.sha256(blob).hexdigest()=='0f2467207c377b99d25a7bc316f19aae1c266662504b612bd02c3a1f8cf012ba';root=pathlib.Path('/study');payload=json.loads(lzma.decompress(blob));[(root/n).parent.mkdir(parents=True,exist_ok=True)
+                    for n in payload];[(root/n).write_text(v) for n,v in payload.items()];sys.path.insert(0,'/study');runpy.run_path('/study/worker.py',run_name='__main__')
+                  options: --cpus=4 --memory=12g --pids-limit=256
+          allocationPolicy:
+            instances:
+            - policy:
+                machineType: c3-standard-4
+                provisioningModel: SPOT
+                bootDisk:
+                  sizeGb: '30'
+                  type: pd-balanced
+            location:
+              allowedLocations:
+              - zones/us-central1-a
+            serviceAccount:
+              email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+            labels:
+              trial_id: x36-density-097
+            network:
+              networkInterfaces:
+              - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                subnetwork: projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial
+          labels:
+            trial_id: x36-density-097
+          logsPolicy:
+            destination: CLOUD_LOGGING
+      - status:
+          body:
+            status:
+              state: UNKNOWN
+      - queue_deadline: ${sys.now() + 1200}
+  - create:
+      call: http.post
+      args:
+        url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs
+        query:
+          jobId: fds-x36-density-097
+        auth:
+          type: OAuth2
+        body: ${job}
+      result: created
+  - monitor:
+      try:
+        steps:
+        - get_status:
+            call: http.get
+            args:
+              url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-x36-density-097
+              auth:
+                type: OAuth2
+            result: status
+        - check:
+            switch:
+            - condition: ${status.body.status.state == "SUCCEEDED" or status.body.status.state
+                == "FAILED"}
+              next: record
+            - condition: ${sys.now() >= deadline}
+              next: record
+            - condition: ${(status.body.status.state == "QUEUED" or status.body.status.state
+                == "SCHEDULED") and sys.now() >= queue_deadline}
+              next: record
+        - wait:
+            call: sys.sleep
+            args:
+              seconds: 30
+            next: get_status
+      except:
+        as: monitor_error
+        steps:
+        - monitor_failure:
+            call: sys.log
+            args:
+              text: Monitoring failed; proceeding to cleanup
+              severity: ERROR
+  - record:
+      try:
+        call: http.post
+        args:
+          url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+          query:
+            uploadType: media
+            name: density36/x36-density-097/job-status.json
+          auth:
+            type: OAuth2
+          headers:
+            Content-Type: application/json
+          body: ${status.body}
+      except:
+        as: record_error
+        steps:
+        - record_failure:
+            call: sys.log
+            args:
+              text: Could not persist final status; proceeding with cleanup
+              severity: ERROR
+  - delete_job:
+      try:
+        call: http.delete
+        args:
+          url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-x36-density-097
+          auth:
+            type: OAuth2
+        result: deletion
+      except:
+        as: delete_error
+        steps:
+        - delete_failure:
+            call: sys.log
+            args:
+              text: Batch deletion failed; checking workers directly
+              severity: ERROR
+  - cleanup_wait:
+      call: sys.sleep
+      args:
+        seconds: 30
+  - list_workers:
+      call: http.get
+      args:
+        url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances
+        query:
+          filter: labels.trial_id = x36-density-097
+        auth:
+          type: OAuth2
+      result: workers
+  - delete_stragglers:
+      for:
+        value: vm
+        in: ${default(map.get(workers.body, "items"), [])}
+        steps:
+        - delete_vm:
+            try:
+              call: http.delete
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances/"
+                  + vm.name}
+                auth:
+                  type: OAuth2
+            except:
+              as: cleanup_error
+              steps:
+              - check_cleanup_error:
+                  switch:
+                  - condition: ${map.get(cleanup_error, "code") != 404}
+                    steps:
+                    - rethrow_cleanup:
+                        raise: ${cleanup_error}
+  - verify_wait:
+      call: sys.sleep
+      args:
+        seconds: 30
+  - verify:
+      call: http.get
+      args:
+        url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-a/instances
+        query:
+          filter: labels.trial_id = x36-density-097
+        auth:
+          type: OAuth2
+      result: remaining
+  - assert_empty:
+      switch:
+      - condition: ${len(default(map.get(remaining.body, "items"), [])) > 0}
+        raise: 'Cleanup incomplete: labeled workers remain'
+  - done:
+      return:
+        mode: domain17
+        final_state: ${status.body.status.state}
+        workers_remaining: 0
+        job_uid: ${created.body.uid}

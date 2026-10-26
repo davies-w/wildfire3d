@@ -1,0 +1,27 @@
+# Experiment 36: denser in-range tree ignition data
+
+User authorized launch and private input upload to `gs://tmrw-wildfire-20261015-trial/density36/`. Google approved capacity for 24 four-core C3 workers. Public publication is not authorized by this launch.
+
+Exactly 1,560 new simulations: four diagonal ignition angles (45/135/225/315 degrees) at existing 1/3/5 m/s winds (720), plus 2/4 m/s at seven angles (0/45/90/135/180/225/315; 840). Existing 520 histories are retained, making 2,080 histories and 2,040 unique configurations. No new replicas, South 270-degree cases, or missing 108 old-grid cells are silently added.
+
+Same simplified physics: generic 3 m diameter vegetation cones, crown heights 4/6/8/10 m above a 2 m base, 1,600 frozen weighted particles in four material classes, loading 0.7/1/1.3, uniform water-to-dry-mass moisture 0.06/0.12/0.18/0.24/0.30. Steady wind along +x. A 60-degree ignition arc at radius 1.2 m and height 2.1 m imposes 1500 C for 20 s. Domain 24x16x16 m, 0.5 m cells, 180 s simulated time, 2 s particle snapshots. No trunks, buildings, or embers; this is not physical validation or a stronger-wind study. The existing 48 legacy geometries remain documented in the old dataset.
+
+## Execution and evidence
+
+`prepare.py` creates and hashes all decks, checks exact reconstruction of an old deck and excludes duplicate configurations. No local FDS or model training. `cloud.py prepare` creates 131 bounded job groups and compressed private input packages. The worker verifies the package SHA256 and each deck SHA256. Eight offline upload-failure tests check immutable creates, uncertain outcomes, matching content, and bounded retries. Each cloud case must pass an actual Linux checkpoint/resume test before its solve.
+
+One dispatcher owns all submissions and collection. It runs six coverage simulations first and compares their initial material density with the frozen reference, full horizon and restart hashes; only a passed coverage audit releases the remaining 1,554 cases. Maximum 24 jobs concurrently. No automatic paid retries; any interruption/failure preserves available evidence and stops further dispatch. Previously completed cases are immutable. Each case writes 30-s physical-time restart checkpoints; a failed run must be diagnosed and separately resumed, never blindly resubmitted.
+
+Per group: 4 h 26 min task maximum, 4 h 57 min absolute workflow deadline, 20 min queue limit, zero Batch retries. A case has a 20 min solve limit with a bounded stop grace. Raw archives and summary hashes are retained in the private bucket; coverage raw files are also downloaded and SHA256 checked. Other raw files remain in GCS until downstream extraction/archive. Completion must verify all 1,560 hashes and output inventories, cleanup and exact permission removal. A workflow cleanup success alone is not scientific success.
+
+## Budget and expected duration
+
+Before launch: posted charges $28.6652 plus $0.56195 measured compute wholly after billing coverage = $29.22714 project estimate, not an invoice. $125 cumulative cap. Reserve $52.40 for 131 CPU jobs (each $0.40 maximum at conservative $0.08/hour), $10 storage/overhead and $8 later unchanged-model evaluation: $70.40 maximum allowance, leaving about $25.37 unallocated. Allowances are not spend. Reconcile measured VM lifetimes, then replace estimates with matching billed rows; never add overlapping billing and runtime totals.
+
+Previous 472 cases averaged 352 s per solve. With 24 workers allow roughly 8–12 hours including validation, scheduling and I/O; capacity is not guaranteed. Expected new raw storage is approximately 147 GB, with ongoing storage charges until a separately authorized archival/retention decision. The $10 overhead allowance is finite, not indefinite free storage.
+
+## Evaluation after collection
+
+Merge with old cases and rebuild grouped ten-fold splits, retaining replicas together. First compare using the unchanged plain four-state GRU and frozen Scorecard V1: water kg, derived dry fuel kg, vegetation fuel-gas release kg/s, and surface-heating index K (not stored energy). Char is inert ash and derived fuel uses yield 0.75. No gates, monotonicity clamps or positivity constraints. Report active/quiet/weak/transition errors, 16-s headline, all four features, simulation denominators, no-change baseline, invalid states and scenario distributions. Reshuffled previously examined data is not pristine. More data also changes updates per epoch; report updates and stopping conditions.
+
+Conclusion pending: these are input/launch checks, not evidence of improved accuracy. Hyperparameter exploration is planned separately; none is launched here.

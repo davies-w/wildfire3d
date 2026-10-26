@@ -1,0 +1,148 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py
+    deps:
+    - path: ../32_tree_expansion/cases.json
+      hash: md5
+      md5: 0524706ce558a58ab1e6da8e3015289d
+      size: 378956
+    - path: ../32_tree_expansion/data/geometries.npz
+      hash: md5
+      md5: 29e0c4fef08edf5fc26352c01bc57794
+      size: 1087495
+    - path: base-input.fds
+      hash: md5
+      md5: 720be8f61c8a439a7ecb7c364ba91126
+      size: 26700
+    - path: data/tree-templates.json
+      hash: md5
+      md5: e65cb45142db9df6fcba41f183d65028
+      size: 7239707
+    - path: legacy_build.py
+      hash: md5
+      md5: 21c0d49066a3ffb7b1e2bf724db1ad0a
+      size: 6686
+    - path: legacy_single.py
+      hash: md5
+      md5: 8f4b75ab626bfd999fb5490a3cdc2755
+      size: 2815
+    - path: prepare.py
+      hash: md5
+      md5: 4c1b5948dcd7b68166975ade76a6d9de
+      size: 4231
+    outs:
+    - path: cases.json
+      hash: md5
+      md5: a0cd6895e2b2cfa892d7b1fcb6dd2bdd
+      size: 1259971
+    - path: data/coverage-geometries.npz
+      hash: md5
+      md5: 4bf5e81885b9315a6223dee737f1f611
+      size: 12528
+    - path: data/decks
+      hash: md5
+      md5: 12b4211dd7d2fb6e5d76c582a1325120.dir
+      size: 698992702
+      nfiles: 1560
+    - path: results/preflight.json
+      hash: md5
+      md5: ef08c8c913b62eef4c44d5bbf2b67ecf
+      size: 243
+  package:
+    cmd: ../../.venv/bin/python cloud.py prepare
+    deps:
+    - path: cases.json
+      hash: md5
+      md5: a0cd6895e2b2cfa892d7b1fcb6dd2bdd
+      size: 1259971
+    - path: cloud.py
+      hash: md5
+      md5: afb48dd38236a607aa8fd93e2f07c422
+      size: 9894
+    - path: data/decks
+      hash: md5
+      md5: 12b4211dd7d2fb6e5d76c582a1325120.dir
+      size: 698992702
+      nfiles: 1560
+    - path: results/input-freeze.json
+      hash: md5
+      md5: d83531f07429baa3c5035c2404eebebf
+      size: 135918
+    - path: runner-template.py
+      hash: md5
+      md5: df82e936b0cc1d8b1dd1da4a245f8748
+      size: 4875
+    - path: transport.py
+      hash: md5
+      md5: 0e8eb370d4363e1b74284e1a6f494d0a
+      size: 2270
+    - path: worker.py
+      hash: md5
+      md5: 857eb2492dd4974a5868cdc1c7a590a3
+      size: 3487
+    - path: workflow-template.json
+      hash: md5
+      md5: 2554e65a3691c694e815eb0fc1a30cab
+      size: 9994
+    outs:
+    - path: data/packages
+      hash: md5
+      md5: 725332d4eccd1d22a02c63eef6848482.dir
+      size: 11300008
+      nfiles: 131
+    - path: groups.json
+      hash: md5
+      md5: 179045676106393f9ee972a1635e5ce7
+      size: 73899
+  transport_check:
+    cmd: ../../.venv/bin/python validate_transport.py
+    deps:
+    - path: transport.py
+      hash: md5
+      md5: 0e8eb370d4363e1b74284e1a6f494d0a
+      size: 2270
+    - path: validate_transport.py
+      hash: md5
+      md5: 86ad6a60f5b5523ad12f5073f9da8081
+      size: 1881
+    outs:
+    - path: results/transport-preflight.json
+      hash: md5
+      md5: daae2db58ea6f7521f2ef9db4df22326
+      size: 335
+  template:
+    cmd: ../../.venv/bin/python -c "import shutil; 
+      shutil.copyfile('../32_tree_expansion/data/tree-templates.json', 
+      'data/tree-templates.json')"
+    deps:
+    - path: ../32_tree_expansion/data/tree-templates.json
+      hash: md5
+      md5: e65cb45142db9df6fcba41f183d65028
+      size: 7239707
+    outs:
+    - path: data/tree-templates.json
+      hash: md5
+      md5: e65cb45142db9df6fcba41f183d65028
+      size: 7239707
+  workflow_check:
+    cmd: ../../.venv/bin/python validate_workflows.py
+    deps:
+    - path: data/packages
+      hash: md5
+      md5: 725332d4eccd1d22a02c63eef6848482.dir
+      size: 11300008
+      nfiles: 131
+    - path: groups.json
+      hash: md5
+      md5: 179045676106393f9ee972a1635e5ce7
+      size: 73899
+    - path: validate_workflows.py
+      hash: md5
+      md5: 71b24494cec42820c3045030d864d6c8
+      size: 1279
+    outs:
+    - path: results/workflow-preflight.json
+      hash: md5
+      md5: 36d8fe6f383de6e56f5c3bc9437fd321
+      size: 163

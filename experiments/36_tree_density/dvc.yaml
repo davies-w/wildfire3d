@@ -1,0 +1,74 @@
+stages:
+  template:
+    cmd: ../../.venv/bin/python -c "import shutil; shutil.copyfile('../32_tree_expansion/data/tree-templates.json',
+      'data/tree-templates.json')"
+    deps:
+    - ../32_tree_expansion/data/tree-templates.json
+    outs:
+    - data/tree-templates.json
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py
+    deps:
+    - prepare.py
+    - legacy_single.py
+    - legacy_build.py
+    - base-input.fds
+    - data/tree-templates.json
+    - ../32_tree_expansion/cases.json
+    - ../32_tree_expansion/data/geometries.npz
+    outs:
+    - data/decks
+    - data/coverage-geometries.npz
+    - cases.json:
+        cache: false
+    metrics:
+    - results/preflight.json:
+        cache: false
+  package:
+    cmd: ../../.venv/bin/python cloud.py prepare
+    deps:
+    - cloud.py
+    - worker.py
+    - runner-template.py
+    - transport.py
+    - workflow-template.json
+    - cases.json
+    - data/decks
+    - results/input-freeze.json
+    outs:
+    - data/packages
+    - groups.json:
+        cache: false
+  transport_check:
+    cmd: ../../.venv/bin/python validate_transport.py
+    deps:
+    - validate_transport.py
+    - transport.py
+    metrics:
+    - results/transport-preflight.json:
+        cache: false
+  cloud_dispatch:
+    cmd: ../../.venv/bin/python dispatch.py
+    deps:
+    - dispatch.py
+    - cloud.py
+    - coverage_review.py
+    - material_reader.py
+    - fortran_records.py
+    - groups.json
+    - data/packages
+    - results/reserved.json
+    outs:
+    - data/summaries
+    metrics:
+    - results/simulations-complete.json:
+        cache: false
+  workflow_check:
+    cmd: ../../.venv/bin/python validate_workflows.py
+    deps:
+    - validate_workflows.py
+    - groups.json
+    - data/packages
+    metrics:
+    - results/workflow-preflight.json:
+        cache: false

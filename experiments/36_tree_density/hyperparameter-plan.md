@@ -1,0 +1,5 @@
+# Subsequent hyperparameter exploration — plan only
+
+Complete the denser-data comparison with unchanged architecture, learning rate and loss weighting first. Then use fixed grouped train/validation folds for a bounded comparison of recurrent depth (one versus two layers), dropout between recurrent layers (zero versus a modest fixed rate), and learning rate around the current 3e-4. PyTorch GRU built-in inter-layer dropout has no effect on a one-layer GRU; do not present that as a tested regularizer. Freeze selections before inspecting test results, count optimizer updates, report early stopping and epoch caps, and reserve a new explicit allowance before any sweep.
+
+Loss weighting changes what the network prioritizes and can substantially change stopping/quiet behaviour. Keep the current feature weights and active/quiet balancing fixed for the data-density study and initial architecture comparisons. Any later loss-weighting experiment should be a separately named ablation with unchanged evaluation scorecard, rather than changing the scoreboard to favor the model. No learned cutoff gates or imposed physical clamps are proposed.

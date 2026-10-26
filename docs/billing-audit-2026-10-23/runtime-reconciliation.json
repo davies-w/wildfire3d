@@ -1,15 +1,19 @@
 {
   "billing_export_status": "posted_costs_subject_to_adjustment",
   "posted_source": "BigQuery detailed export",
-  "as_of_utc": "2026-10-26T00:55:58.599679+00:00",
+  "as_of_utc": "2026-10-26T04:42:10.595112+00:00",
   "status": "runtime_estimate_pending_per_resource_billing",
-  "project_posted_comparison_usd": 28.6423,
+  "project_posted_comparison_usd": 28.665198,
   "project_compute_runtime_estimate_usd": 27.54785048785635,
   "shared_cost_estimate_usd": 1.26,
-  "spend_estimate_usd": 28.807850487856353,
+  "spend_estimate_usd": 29.227143804115556,
+  "unposted_compute_after_export_usd": 0.5619458041155543,
+  "unposted_resources": [
+    "fds-gpu35-learning-f941728b-bb1c-4b230-group0-0-6bp7"
+  ],
   "matched_vms": 200,
   "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
-  "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare totals using max, never add posted and runtime totals.",
+  "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
   "rates_usd_per_vm_hour": {
     "g2-standard-4/STANDARD": 0.706832276,
     "g2-standard-4/SPOT": 0.42409037468482524,
