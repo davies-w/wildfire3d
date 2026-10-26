@@ -78,3 +78,15 @@ for href,title,tag,desc in cards:
  hub+=f'<a class="card" href="{html.escape(href)}"><span class="tag">{tag}</span><h2>{title} →</h2><p>{desc}</p></a>'
 hub+='''</div><div class="foot"><p>These reports concern simplified simulated vegetation fires, not validated real-tree fire forecasts. Heating is a surface-heating index, not stored energy; gas is vegetation fuel-gas release, not heat release. Geometry, ignition and evaluation limitations are documented in each report. Older reports retain their original models and definitions.</p><p><a href="https://github.com/davies-w/wildfire3d/tree/codex/ignition-surrogate-pilot/experiments/35_surrogate_diagnostics/simple_scorecard">Report source and provenance on GitHub</a></p></div></main></body></html>'''
 (out/'index.html').write_text(hub)
+# HF hosts static Spaces inside an iframe. External sites refuse nested framing.
+# User preference: every link opens in a new top-level tab.
+import re
+for rendered in out.rglob('*.html'):
+ text=rendered.read_text()
+ def external_tab(match):
+  anchor=match.group(0)
+  if 'target=' not in anchor:
+   return anchor[:-1]+' target="_blank" rel="noopener noreferrer">'
+  return anchor
+ text=re.sub(r'<a\b[^>]*\bhref=[^>]*>',external_tab,text)
+ rendered.write_text(text)
