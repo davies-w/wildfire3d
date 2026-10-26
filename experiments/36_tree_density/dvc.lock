@@ -381,3 +381,33 @@ stages:
       md5: 212e980f6428346c19b744eb16cb1ca3.dir
       size: 206958
       nfiles: 102
+  prepare_partial_recovery:
+    cmd: ../../.venv/bin/python repair/prepare_partial.py
+    deps:
+    - path: active-groups.json
+      hash: md5
+      md5: 843070d094015db784a058006ed33b1c
+      size: 100561
+    - path: data/packages
+      hash: md5
+      md5: 725332d4eccd1d22a02c63eef6848482.dir
+      size: 11300008
+      nfiles: 131
+    - path: repair/prepare_partial.py
+      hash: md5
+      md5: ce3ecce2f8cb531bbcd41590d0a32c94
+      size: 1762
+    - path: results/preemption-032.json
+      hash: md5
+      md5: 616c8ecf23d8e172bf300b22f0f05fb2
+      size: 646
+    outs:
+    - path: data/partial-recovery
+      hash: md5
+      md5: fcb342f74b8b72a290dff1e32ca56c5f.dir
+      size: 84460
+      nfiles: 1
+    - path: results/partial-recovery-plan.json
+      hash: md5
+      md5: f487a3b45bb3816391a06fb91123fa76
+      size: 601

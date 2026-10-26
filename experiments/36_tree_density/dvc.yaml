@@ -165,3 +165,27 @@ stages:
         cache: false
     - orchestration/preflight.json:
         cache: false
+  collect_cloud:
+    cmd: ../../.venv/bin/python collect_cloud.py
+    deps:
+    - collect_cloud.py
+    - cloud.py
+    - active-groups.json
+    - results/input-freeze.json
+    outs:
+    - data/cloud-collected
+    metrics:
+    - results/cloud-collection.json:
+        cache: false
+  prepare_partial_recovery:
+    cmd: ../../.venv/bin/python repair/prepare_partial.py
+    deps:
+    - repair/prepare_partial.py
+    - results/preemption-032.json
+    - data/packages
+    - active-groups.json
+    outs:
+    - data/partial-recovery
+    metrics:
+    - results/partial-recovery-plan.json:
+        cache: false
