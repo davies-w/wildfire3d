@@ -484,9 +484,9 @@ stages:
       size: 11926
     - path: data/cloud-collected
       hash: md5
-      md5: afcff853db94db631ecdfeaa6563a243.dir
-      size: 8241697
-      nfiles: 1820
+      md5: fb7e3ee48b67f3c5b8f800282617a981.dir
+      size: 9887969
+      nfiles: 2184
     - path: data/interrupted
       hash: md5
       md5: e758b886272f1f1bff6194992f8d91c7.dir
@@ -494,8 +494,8 @@ stages:
       nfiles: 9
     - path: data/raw-inventory.json
       hash: md5
-      md5: 52210daabf36b0ee242f731980cf5665
-      size: 418661
+      md5: 89266e6c52b5e732ec59d69c14a7b9e2
+      size: 476537
     - path: data/summaries
       hash: md5
       md5: d9182b1fb92056e0a5569f3f8f1dcae7.dir
@@ -503,14 +503,14 @@ stages:
       nfiles: 343
     - path: verify_material.py
       hash: md5
-      md5: cd85bc068038614fdacf434e9d72cb76
-      size: 4578
+      md5: 5a12d0271d439a8b9bc79b5d37c7484f
+      size: 4631
     outs:
     - path: data/verified-material
       hash: md5
-      md5: 1b4d7e8928fdce14a3cf5dc793d07418.dir
-      size: 30046277553
-      nfiles: 10151
+      md5: 0ebae0abebfa0a89e27e0d386b4a39f8.dir
+      size: 34212705629
+      nfiles: 11555
   extract_states:
     cmd: ../../.venv/bin/python extract_states.py
     deps:
@@ -520,9 +520,9 @@ stages:
       size: 1259971
     - path: data/verified-material
       hash: md5
-      md5: 1b4d7e8928fdce14a3cf5dc793d07418.dir
-      size: 30046277553
-      nfiles: 10151
+      md5: 0ebae0abebfa0a89e27e0d386b4a39f8.dir
+      size: 34212705629
+      nfiles: 11555
     - path: extract_states.py
       hash: md5
       md5: 9a9ca4f59f08fe82afc0097e1246e90a
@@ -538,13 +538,13 @@ stages:
     outs:
     - path: data/four-state
       hash: md5
-      md5: 82b2171b88cd7658351f90488dd5c42f.dir
-      size: 2324637
-      nfiles: 1125
+      md5: 6de365f89921e862381d342e27832bb9.dir
+      size: 2647706
+      nfiles: 1281
     - path: results/four-state-extraction.json
       hash: md5
-      md5: 3402df9e8ccc06f9f4357d86d8c0b927
-      size: 676913
+      md5: 18feb23aebaad03e9b924f0bbe25da76
+      size: 770703
   validate_state_replay:
     cmd: ../../.venv/bin/python validate_state_replay.py
     deps:
