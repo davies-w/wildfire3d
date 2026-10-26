@@ -597,3 +597,31 @@ stages:
       hash: md5
       md5: 2a4fa5e6400fade895de35e3f809ff6f
       size: 1299
+  prepare_partial_workflow:
+    cmd: ../../.venv/bin/python repair/prepare_partial_workflow.py
+    deps:
+    - path: active-groups.json
+      hash: md5
+      md5: 843070d094015db784a058006ed33b1c
+      size: 100561
+    - path: jobs/x36-density-032/workflow-r1.yaml
+      hash: md5
+      md5: 95abe6f4d2643131ff77e559d6f27b3a
+      size: 7013
+    - path: repair/prepare_partial_workflow.py
+      hash: md5
+      md5: 324399a6b38369c459d0bd217074034a
+      size: 2075
+    - path: results/partial-recovery-plan.json
+      hash: md5
+      md5: f487a3b45bb3816391a06fb91123fa76
+      size: 601
+    outs:
+    - path: jobs/x36-density-032-r1/workflow.yaml
+      hash: md5
+      md5: 93709caaf1f55045a738c6e8a5d30e26
+      size: 7040
+    - path: results/partial-recovery-workflow.json
+      hash: md5
+      md5: 68f4488e1a334a57d9172d72d9804baf
+      size: 1383

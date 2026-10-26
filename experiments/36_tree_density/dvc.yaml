@@ -241,3 +241,16 @@ stages:
     metrics:
     - results/extraction-replay.json:
         cache: false
+  prepare_partial_workflow:
+    cmd: ../../.venv/bin/python repair/prepare_partial_workflow.py
+    deps:
+    - repair/prepare_partial_workflow.py
+    - active-groups.json
+    - results/partial-recovery-plan.json
+    - jobs/x36-density-032/workflow-r1.yaml
+    outs:
+    - jobs/x36-density-032-r1/workflow.yaml:
+        cache: false
+    metrics:
+    - results/partial-recovery-workflow.json:
+        cache: false
