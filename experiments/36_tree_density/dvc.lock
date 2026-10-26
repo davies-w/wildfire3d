@@ -433,10 +433,45 @@ stages:
     outs:
     - path: data/cloud-collected
       hash: md5
-      md5: 3a674617418863eb0190820fbe5aa41a.dir
-      size: 1902727
-      nfiles: 420
+      md5: 8b812e16aaf8f9682538b458be22a27e.dir
+      size: 4946186
+      nfiles: 1092
     - path: results/cloud-collection.json
       hash: md5
-      md5: feb85ff44076f5f677588301e7f52798
+      md5: d5e08a9e9efb766bd7bdeda034b52e9d
       size: 75
+  raw_inventory:
+    cmd: ../../.venv/bin/python raw_inventory.py
+    deps:
+    - path: active-groups.json
+      hash: md5
+      md5: 843070d094015db784a058006ed33b1c
+      size: 100561
+    - path: data/cloud-collected
+      hash: md5
+      md5: 8b812e16aaf8f9682538b458be22a27e.dir
+      size: 4946186
+      nfiles: 1092
+    - path: data/interrupted
+      hash: md5
+      md5: e758b886272f1f1bff6194992f8d91c7.dir
+      size: 35113
+      nfiles: 9
+    - path: data/summaries
+      hash: md5
+      md5: d9182b1fb92056e0a5569f3f8f1dcae7.dir
+      size: 3298299
+      nfiles: 343
+    - path: raw_inventory.py
+      hash: md5
+      md5: bca723ce91c99665d41107eb6f28b414
+      size: 1911
+    - path: results/input-freeze.json
+      hash: md5
+      md5: d83531f07429baa3c5035c2404eebebf
+      size: 135918
+    outs:
+    - path: data/raw-inventory.json
+      hash: md5
+      md5: 98642ce8177fa8d3b9ab5a4aa0a50b35
+      size: 302907
