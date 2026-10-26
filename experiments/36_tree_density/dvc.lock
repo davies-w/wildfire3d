@@ -433,12 +433,12 @@ stages:
     outs:
     - path: data/cloud-collected
       hash: md5
-      md5: ab172ae19f9766ad4dcb933284bf9131.dir
-      size: 7353607
-      nfiles: 1624
+      md5: afcff853db94db631ecdfeaa6563a243.dir
+      size: 8241697
+      nfiles: 1820
     - path: results/cloud-collection.json
       hash: md5
-      md5: 821dba302d906f5d970332711fca2016
+      md5: c0fe9cd3f8f61ec7a30c7535387b3b4e
       size: 75
   raw_inventory:
     cmd: ../../.venv/bin/python raw_inventory.py
@@ -449,9 +449,9 @@ stages:
       size: 100561
     - path: data/cloud-collected
       hash: md5
-      md5: ab172ae19f9766ad4dcb933284bf9131.dir
-      size: 7353607
-      nfiles: 1624
+      md5: afcff853db94db631ecdfeaa6563a243.dir
+      size: 8241697
+      nfiles: 1820
     - path: data/interrupted
       hash: md5
       md5: e758b886272f1f1bff6194992f8d91c7.dir
@@ -473,8 +473,8 @@ stages:
     outs:
     - path: data/raw-inventory.json
       hash: md5
-      md5: 4a62e7fe7c859b843c7d746cfc4c38d0
-      size: 387496
+      md5: 52210daabf36b0ee242f731980cf5665
+      size: 418661
   verify_material:
     cmd: ../../.venv/bin/python verify_material.py
     deps:
@@ -484,9 +484,9 @@ stages:
       size: 11926
     - path: data/cloud-collected
       hash: md5
-      md5: 8b812e16aaf8f9682538b458be22a27e.dir
-      size: 4946186
-      nfiles: 1092
+      md5: afcff853db94db631ecdfeaa6563a243.dir
+      size: 8241697
+      nfiles: 1820
     - path: data/interrupted
       hash: md5
       md5: e758b886272f1f1bff6194992f8d91c7.dir
@@ -494,8 +494,8 @@ stages:
       nfiles: 9
     - path: data/raw-inventory.json
       hash: md5
-      md5: 98642ce8177fa8d3b9ab5a4aa0a50b35
-      size: 302907
+      md5: 52210daabf36b0ee242f731980cf5665
+      size: 418661
     - path: data/summaries
       hash: md5
       md5: d9182b1fb92056e0a5569f3f8f1dcae7.dir
@@ -503,14 +503,14 @@ stages:
       nfiles: 343
     - path: verify_material.py
       hash: md5
-      md5: c7fd63a2e4b5f057109f0e7e7a7f8603
-      size: 4292
+      md5: cd85bc068038614fdacf434e9d72cb76
+      size: 4578
     outs:
     - path: data/verified-material
       hash: md5
-      md5: 55516bfcd5d6eca489f6b89aa3f06d7d.dir
-      size: 347269678
-      nfiles: 143
+      md5: c549e1c0974f0d116552bf68221b8e45.dir
+      size: 21713411117
+      nfiles: 7343
   extract_states:
     cmd: ../../.venv/bin/python extract_states.py
     deps:
