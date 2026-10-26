@@ -284,3 +284,23 @@ stages:
     - ../35_surrogate_diagnostics/attempt20/schema.json
     outs:
     - data/grouped-folds.json
+  prepare_learning_data:
+    cmd: ../../.venv/bin/python prepare_learning_data.py
+    deps:
+    - prepare_learning_data.py
+    - cases.json
+    - data/grouped-folds.json
+    - data/four-state
+    - data/verified-material
+    - results/four-state-extraction.json
+    - ../35_surrogate_diagnostics/attempt20/data/sequences.npz
+    - ../35_surrogate_diagnostics/attempt20/schema.json
+    - ../35_surrogate_diagnostics/attempt22/data/activity_audit/labels.npz
+    - ../35_surrogate_diagnostics/scorecard-v1.json
+    outs:
+    - data/learning
+    - learning-schema.json:
+        cache: false
+    metrics:
+    - results/learning-data.json:
+        cache: false
