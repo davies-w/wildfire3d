@@ -30,7 +30,9 @@ def main():
       for member in tar:
        if not member.isfile():continue
        name=Path(member.name).name;assert name not in members,member.name
-       keep=name.endswith(('.prt5','.csv','.fds'))
+       # Keep one slice solely for its actual output timestamps; nominal 2-s times
+       # would change the established state sampling protocol.
+       keep=name.endswith(('.prt5','.csv','.fds')) or (name.endswith('.sf') and not any(x.endswith('.sf') for x in retained))
        dst=(partial/name).open('wb') if keep else None;sha=hashlib.sha256();size=0
        try:
         with tar.extractfile(member) as src:
