@@ -146,3 +146,29 @@ stages:
       hash: md5
       md5: 36d8fe6f383de6e56f5c3bc9437fd321
       size: 163
+  prepare_restore:
+    cmd: ../../.venv/bin/python repair/prepare.py
+    deps:
+    - path: ../16_code_profiling/data/binary/fds
+      hash: md5
+      md5: cb9a38a7897cb60953668ab3f2355d8c
+      size: 17122504
+      isexec: true
+    - path: repair/Dockerfile
+      hash: md5
+      md5: 7ce3a69c3bb86fa1b751b39e48d175dd
+      size: 609
+    - path: repair/prepare.py
+      hash: md5
+      md5: 27cd514fd59d9ecda540b3f90816c76c
+      size: 617
+    outs:
+    - path: data/restore-context
+      hash: md5
+      md5: 76a7a6f308a4eceb311e2f592bc5092e.dir
+      size: 17123113
+      nfiles: 2
+    - path: results/restore-preflight.json
+      hash: md5
+      md5: 7ed09778d50b3c84766868b35151505e
+      size: 156

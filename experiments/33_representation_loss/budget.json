@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 70.4,
+  "reserved_usd": 70.00000000000001,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -558,12 +558,23 @@
       "historical_allowance_usd": 3
     },
     "x36-coverage-000": {
-      "state": "submitted",
+      "state": "terminal_cleanup_verified",
       "allowance_usd": 0.4,
       "reserved_unix": 1792991300.0215611,
       "scope": "CPU group maximum lifetime at .08USD/h",
       "cases": 6,
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-coverage-000/executions/195037db-44fb-47e2-b208-8f1fe0a3d693"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-x36-coverage-000/executions/195037db-44fb-47e2-b208-8f1fe0a3d693",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.0011314158231796139,
+        "vm_hours": 0.014645935277777777,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-x36-coverage-0-9da14b83-fa77-460e0-group0-0-xh2k"
+        ]
+      },
+      "historical_allowance_usd": 0.4,
+      "failure_reason": "Pinned image deleted by seven-day registry cleanup; no task or solver started"
     },
     "x36-density-001": {
       "state": "reserved_before_upload",
@@ -1495,17 +1506,18 @@
   "accounting": {
     "billing_export_status": "posted_costs_subject_to_adjustment",
     "posted_source": "BigQuery detailed export",
-    "as_of_utc": "2026-10-26T04:42:10.595112+00:00",
+    "as_of_utc": "2026-10-26T05:26:19.542219+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
     "project_posted_comparison_usd": 28.665198,
-    "project_compute_runtime_estimate_usd": 27.54785048785635,
+    "project_compute_runtime_estimate_usd": 27.548981903679532,
     "shared_cost_estimate_usd": 1.26,
-    "spend_estimate_usd": 29.227143804115556,
-    "unposted_compute_after_export_usd": 0.5619458041155543,
+    "spend_estimate_usd": 29.228275219938734,
+    "unposted_compute_after_export_usd": 0.5630772199387339,
     "unposted_resources": [
+      "fds-x36-coverage-0-9da14b83-fa77-460e0-group0-0-xh2k",
       "fds-gpu35-learning-f941728b-bb1c-4b230-group0-0-6bp7"
     ],
-    "matched_vms": 200,
+    "matched_vms": 201,
     "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
     "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
     "rates_usd_per_vm_hour": {
@@ -1514,5 +1526,5 @@
       "c3-standard-4/SPOT": 0.07725118278354724
     }
   },
-  "estimated_spend_usd": 29.227143804115556
+  "estimated_spend_usd": 29.228275219938734
 }

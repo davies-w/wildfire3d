@@ -72,3 +72,14 @@ stages:
     metrics:
     - results/workflow-preflight.json:
         cache: false
+  prepare_restore:
+    cmd: ../../.venv/bin/python repair/prepare.py
+    deps:
+    - repair/prepare.py
+    - repair/Dockerfile
+    - ../16_code_profiling/data/binary/fds
+    outs:
+    - data/restore-context
+    metrics:
+    - results/restore-preflight.json:
+        cache: false
