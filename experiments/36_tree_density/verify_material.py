@@ -21,6 +21,9 @@ def main():
    if (dest/'verified.json').exists():
     old=json.loads((dest/'verified.json').read_text());assert old['raw_sha256']==row['sha256']
     if any(x.endswith('.sf') for x in old['retained_material_inputs']):continue
+   # Include a conservative 2GiB cushion for earlier timestamp backfill reads.
+   used=2*1024**3+sum(json.loads(p.read_text())['raw_bytes'] for p in root.glob('*/verified.json'))
+   assert used+row['bytes']<=160*1024**3,'Reserved transfer byte cap reached; reconcile before continuing'
    partial=root/(n+'.partial');assert not partial.exists(),f'Inspect preserved interrupted extraction before retry: {partial}'
    partial.mkdir();members={};retained=[]
    with (partial/'transport.log').open('wb') as log:
