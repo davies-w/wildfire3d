@@ -40,14 +40,21 @@ def launch(name):
  with (B.parent/'data/budget.lock').open('w') as f:
   fcntl.flock(f,fcntl.LOCK_EX);b=json.loads(B.read_text());entry=b['reservations'][name];assert entry['state']=='reserved_before_upload' and not (folder/'execution.json').exists()
   vms=gc('compute','instances','list');jobs=gc('batch','jobs','list','--location=us-central1');assert len(vms)<24 and len(jobs)<24;assert all(x.get('labels',{}).get('trial_id','').startswith('x36-') for x in vms+jobs)
-  expiry=(datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(hours=24)).strftime('%Y-%m-%dT%H:%M:%SZ');condition=dict(title=name+'-read',description='Read only this immutable output prefix for upload verification',expression="request.time < timestamp('"+expiry+"') && resource.name.startsWith('projects/_/buckets/"+BUCKET+'/objects/density36/'+name+"/')");save(f'jobs/{name}/read-condition.json',condition)
+  expiry=(datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(hours=24)).strftime('%Y-%m-%dT%H:%M:%SZ');condition=dict(title=name+'-read',description='Read only this immutable output prefix for upload verification',expression="request.time < timestamp('"+expiry+"') && resource.name.startsWith('projects/_/buckets/"+BUCKET+'/objects/density36/'+name+"/')")
+  if (folder/'read-condition.json').exists():condition=read(f'jobs/{name}/read-condition.json')
+  else:save(f'jobs/{name}/read-condition.json',condition)
   subprocess.run([G,'storage','buckets','add-iam-policy-binding','gs://'+BUCKET,'--member=serviceAccount:fds-worker@'+PROJECT+'.iam.gserviceaccount.com','--role=roles/storage.objectViewer','--condition-from-file='+str(folder/'read-condition.json')],check=True,capture_output=True)
   package=R/'data/packages'/(name+'.xz');assert hashlib.sha256(package.read_bytes()).hexdigest()==g['package_sha256']
-  subprocess.run([G,'storage','cp',str(package),'gs://'+BUCKET+'/density36/'+name+'/input.xz','--if-generation-match=0'],check=True,capture_output=True,timeout=240)
-  meta=gc('storage','objects','describe','gs://'+BUCKET+'/density36/'+name+'/input.xz');assert meta['md5_hash']==base64.b64encode(hashlib.md5(package.read_bytes()).digest()).decode()
+  uri='gs://'+BUCKET+'/density36/'+name+'/input.xz'
+  if not (folder/'input-upload.json').exists():
+   probe=subprocess.run([G,'storage','objects','describe',uri,'--format=json'],capture_output=True,text=True)
+   if probe.returncode:
+    assert '404' in probe.stderr or 'not found' in probe.stderr.lower(),probe.stderr
+    subprocess.run([G,'storage','cp',str(package),uri,'--if-generation-match=0'],check=True,capture_output=True,timeout=240)
+  meta=gc('storage','objects','describe',uri);assert meta['md5_hash']==base64.b64encode(hashlib.md5(package.read_bytes()).digest()).decode();save(f'jobs/{name}/input-upload.json',meta)
   sa=gc('workflows','describe','fds-domain17','--location=us-central1')['serviceAccount'];gc('workflows','deploy','fds-'+name,'--location=us-central1','--source='+str(folder/'workflow.yaml'),'--service-account='+sa)
   assert yaml.safe_load(gc('workflows','describe','fds-'+name,'--location=us-central1')['sourceContents'])==yaml.safe_load((folder/'workflow.yaml').read_text())
-  assert not gc('workflows','executions','list','--workflow=fds-'+name,'--location=us-central1')
+  assert not gc('workflows','executions','list','fds-'+name,'--location=us-central1')
   entry['state']='submission_pending';B.write_text(json.dumps(b,indent=2)+'\n')
   e=gc('workflows','execute','fds-'+name,'--location=us-central1');save(f'jobs/{name}/execution.json',e);entry.update(state='submitted',execution=e['name']);B.write_text(json.dumps(b,indent=2)+'\n');print('SUBMITTED',name,e['name'],flush=True)
 def collect(name):
