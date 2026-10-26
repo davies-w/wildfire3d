@@ -1,0 +1,84 @@
+{
+  "checked_utc": "2026-10-26T19:18:50.680780+00:00",
+  "source": "docs/billing-audit-2026-10-23/vm-runtime.json",
+  "allocations": 251,
+  "reused_vm_names": 7,
+  "all_reused_name_intervals_disjoint": true,
+  "conclusion": "Repeated VM names describe distinct non-overlapping allocation intervals. Deduplicating by name would undercount runtime. No cost correction needed.",
+  "intervals": {
+    "fds-x36-density-03-e4e45135-8b76-4dcf0-group0-0-b7ck": [
+      {
+        "start": "2026-10-26T16:14:33.940303Z",
+        "end": "2026-10-26T16:34:58.026377Z"
+      },
+      {
+        "start": "2026-10-26T16:35:22.445868Z",
+        "end": "2026-10-26T16:35:35.428982Z"
+      }
+    ],
+    "fds-gpu33-pilot04-ca1f6bcc-4d9c-4e9f-0-group0-0-1gsv": [
+      {
+        "start": "2026-10-22T05:01:51.779771Z",
+        "end": "2026-10-22T05:02:12.123679Z"
+      },
+      {
+        "start": "2026-10-22T05:04:17.583665Z",
+        "end": "2026-10-22T05:06:45.379437Z"
+      },
+      {
+        "start": "2026-10-22T05:07:02.256806Z",
+        "end": "2026-10-22T05:07:18.437725Z"
+      }
+    ],
+    "fds-gpu33-pilot02-1c4436d7-97ff-4f4d-0-group0-0-4jw9": [
+      {
+        "start": "2026-10-22T04:31:52.442308Z",
+        "end": "2026-10-22T04:38:10.324593Z"
+      },
+      {
+        "start": "2026-10-22T04:38:33.047955Z",
+        "end": "2026-10-22T04:38:48.917519Z"
+      }
+    ],
+    "fds-x32-developmen-ac241267-618b-45830-group0-0-6ww0": [
+      {
+        "start": "2026-10-21T07:26:49.282670Z",
+        "end": "2026-10-21T07:29:50.808057Z"
+      },
+      {
+        "start": "2026-10-21T07:30:09.982087Z",
+        "end": "2026-10-21T07:30:24.898992Z"
+      }
+    ],
+    "fds-x32-developmen-878db8e8-04ea-47920-group0-0-2jwh": [
+      {
+        "start": "2026-10-21T07:22:45.958793Z",
+        "end": "2026-10-21T07:28:25.945664Z"
+      },
+      {
+        "start": "2026-10-21T07:28:40.567623Z",
+        "end": "2026-10-21T07:28:54.463111Z"
+      }
+    ],
+    "fds-x32-developmen-3c35a107-0576-4a600-group0-0-58m9": [
+      {
+        "start": "2026-10-21T04:32:39.939043Z",
+        "end": "2026-10-21T04:32:48.406898Z"
+      },
+      {
+        "start": "2026-10-21T04:33:08.122503Z",
+        "end": "2026-10-21T05:51:16.350985Z"
+      }
+    ],
+    "fds-x32-developmen-badd7b98-aa97-4d430-group0-0-4c26": [
+      {
+        "start": "2026-10-21T04:30:51.970793Z",
+        "end": "2026-10-21T04:33:29.846746Z"
+      },
+      {
+        "start": "2026-10-21T04:33:51.264445Z",
+        "end": "2026-10-21T04:34:07.103907Z"
+      }
+    ]
+  }
+}
