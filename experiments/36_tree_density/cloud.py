@@ -6,6 +6,22 @@ def gc(*args):
  p=subprocess.run([G,*args,'--project='+PROJECT,'--format=json'],text=True,capture_output=True,timeout=240)
  if p.returncode:raise RuntimeError(p.stderr)
  return json.loads(p.stdout or '{}')
+def download_summary(uri,p):
+ # Reads only; use an atomic destination so interrupted downloads cannot look complete.
+ if p.exists():
+  json.loads(p.read_text());return
+ tmp=p.with_suffix('.download')
+ for attempt in range(4):
+  try:
+   subprocess.run([G,'storage','cp',uri,str(tmp)],check=True,capture_output=True,timeout=120)
+   json.loads(tmp.read_text());tmp.replace(p);return
+  except (subprocess.TimeoutExpired,subprocess.CalledProcessError) as exc:
+   if isinstance(exc,subprocess.CalledProcessError):
+    msg=(exc.stderr or b'').decode(errors='replace')
+    if not any(x in msg.lower() for x in ['429','500','502','503','504','timeout','timed out','connection','temporarily']):raise
+   if attempt==3:raise
+   time.sleep(2**attempt)
+
 def read(p):return json.loads((R/p).read_text())
 def save(p,x):(R/p).write_text(json.dumps(x,indent=2)+'\n')
 def prepare():
@@ -74,7 +90,7 @@ def collect(name):
  rows=[];(R/'data/summaries').mkdir(exist_ok=True)
  for n in g['cases']:
   uri='gs://'+BUCKET+'/density36/'+name+'/'+n;p=R/'data/summaries'/(n+'.json')
-  if not p.exists():subprocess.run([G,'storage','cp',uri+'.summary.json',str(p)],check=True,capture_output=True,timeout=240)
+  download_summary(uri+'.summary.json',p)
   s=json.loads(p.read_text());assert s['result']['binary_sha256']=='70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692';assert s['deck_sha256']==read('results/input-freeze.json')['cases'][n] and s['resume']['passed'] and s['checkpoint_manifest']['files']
   m=gc('storage','objects','describe',uri+'.tar.gz');assert int(m['size'])==s['raw_bytes'];save(f'jobs/{name}/{n}-raw-object.json',m);assert s['result']['full_horizon'];rows.append(s['result'])
  save(f'jobs/{name}/completion.json',dict(all_full_horizon=True,collected=len(rows),workflow_state=st['state'],cleanup_verified=True));print('COLLECTED',name,flush=True);return True
