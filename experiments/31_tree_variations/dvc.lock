@@ -70,6 +70,46 @@ stages:
       md5: 66d04026a62528b792a6b72a0cfb9a16.dir
       size: 180842733
       nfiles: 37
+    - path: data/downloads/v31_00.tar.gz
+      hash: md5
+      md5: 29f84a71521ecfd79da518c36dfe1c6d
+      size: 95513892
+    - path: data/downloads/v31_01.tar.gz
+      hash: md5
+      md5: 3d54e11eb27ab0d1e2e88072fc784f58
+      size: 94268642
+    - path: data/downloads/v31_02.tar.gz
+      hash: md5
+      md5: ccff2adbcd2304cb2de18fdd3d8331ee
+      size: 96471912
+    - path: data/downloads/v31_03.tar.gz
+      hash: md5
+      md5: 0e5eb063db608af0bbb0508aabf6e7a9
+      size: 96185649
+    - path: data/downloads/v31_05.tar.gz
+      hash: md5
+      md5: 0fb77892880baf04221a481115099411
+      size: 94989751
+    - path: data/downloads/v31_06.tar.gz
+      hash: md5
+      md5: 2fc33eb4737527312b9e6b2acd003a58
+      size: 97014122
+    - path: data/downloads/v31_07.tar.gz
+      hash: md5
+      md5: 5f08964ff77046a22ad5fc859aa0da6c
+      size: 96906217
+    - path: data/downloads/v31_08.tar.gz
+      hash: md5
+      md5: 60d6e3957b9cdbaad7c95f6efec77a6b
+      size: 96610834
+    - path: data/downloads/v31_09.tar.gz
+      hash: md5
+      md5: 480a6095bc1115b7d4176083822842ea
+      size: 91755079
+    - path: data/downloads/v31_10.tar.gz
+      hash: md5
+      md5: 0c83bcce4c71f45927aaf7538cd9615b
+      size: 97488926
   learning_data:
     cmd: ../../.venv/bin/python prepare_learning.py
     deps:
@@ -986,6 +1026,11 @@ stages:
       md5: d07e04c51ad9d62d29938b1d5768f7b8
       size: 7832
     outs:
+    - path: data/gpu/adopted
+      hash: md5
+      md5: e6eceead798a30840601629ff12105c2.dir
+      size: 781223578
+      nfiles: 18
     - path: data/models/geometry_snapshot.pt
       hash: md5
       md5: a80a9aef162ca21c3f8a89c42cd33c63
@@ -1033,6 +1078,14 @@ stages:
       md5: 215a9d778dc03c85da031fa3d140e8ea.dir
       size: 180843529
       nfiles: 37
+    - path: data/downloads/v31_04.tar.gz
+      hash: md5
+      md5: cb7727c135de07db051f1896e5d1f1da
+      size: 96137121
+    - path: data/downloads/v31_11.tar.gz
+      hash: md5
+      md5: a08763b2572acf619350599790bb271a
+      size: 96694697
   evaluate_tests:
     cmd: ../../.venv/bin/python evaluate_tests.py
     deps:

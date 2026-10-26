@@ -6,8 +6,8 @@
 # run's wall clock.
 #
 # `dvc repro` runs this file; `dvc.lock` is committed. Outputs go to data/, one
-# subdirectory per case. `.s3d` volumes are uncached: DVC knows this stage
-# produces them, but never copies or pushes them.
+# Retained Smoke3D volumes are cached for archival recovery. Preservation
+# adopts the existing bytes; it does not rerun or validate the simulation.
 stages:
   solve:
     wdir: ../..
@@ -36,11 +36,11 @@ stages:
       - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_6.sf
       - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_7.sf
       - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_1.s3d:
-          cache: false
+          cache: true
       - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_2.s3d:
-          cache: false
+          cache: true
       - experiments/04_fence_and_trees_large/data/garden_tall/garden_tall_1_3.s3d:
-          cache: false
+          cache: true
       - experiments/04_fence_and_trees_large/data/wick/wick.smv
       - experiments/04_fence_and_trees_large/data/wick/wick_1.prt5
       - experiments/04_fence_and_trees_large/data/wick/wick_1_1.bf
@@ -53,11 +53,11 @@ stages:
       - experiments/04_fence_and_trees_large/data/wick/wick_1_6.sf
       - experiments/04_fence_and_trees_large/data/wick/wick_1_7.sf
       - experiments/04_fence_and_trees_large/data/wick/wick_1_1.s3d:
-          cache: false
+          cache: true
       - experiments/04_fence_and_trees_large/data/wick/wick_1_2.s3d:
-          cache: false
+          cache: true
       - experiments/04_fence_and_trees_large/data/wick/wick_1_3.s3d:
-          cache: false
+          cache: true
 
   boundary_tall:
     wdir: ../..

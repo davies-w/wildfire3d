@@ -16,6 +16,7 @@ stages:
     - cases.json
     - decks
     outs:
+    - data/preflight
     - results/preflight.json:
         cache: false
   collect:
@@ -25,6 +26,7 @@ stages:
     - groups.json
     - cases.json
     outs:
+    - data/downloads
     - data/cloud
   analyze:
     cmd:

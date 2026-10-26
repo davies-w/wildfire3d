@@ -1,9 +1,9 @@
 schema: '2.0'
 stages:
   solve:
-    cmd: .venv/bin/python scripts/run_fds.py 
+    cmd: .venv/bin/python scripts/run_fds.py
       experiments/05_ember_lofting/garden_loft.fds:experiments/05_ember_lofting/data
-      --threads 4 && .venv/bin/python scripts/strip_terrain.py 
+      --threads 4 && .venv/bin/python scripts/strip_terrain.py
       experiments/05_ember_lofting/data garden_loft
     deps:
     - path: experiments/05_ember_lofting/garden_loft.fds
@@ -76,7 +76,7 @@ stages:
       md5: f4084a2e91ae3539097a8be3c16519df
       size: 411530
   boundary:
-    cmd: .venv/bin/python scripts/surface_temp.py 
+    cmd: .venv/bin/python scripts/surface_temp.py
       experiments/05_ember_lofting/render.json
     deps:
     - path: experiments/05_ember_lofting/data/garden_loft_1_1.bf
@@ -105,7 +105,7 @@ stages:
       md5: dca795d14e6be2f37715866b6629683c
       size: 955
   render:
-    cmd: .venv/bin/python scripts/render_animation.py 
+    cmd: .venv/bin/python scripts/render_animation.py
       experiments/05_ember_lofting/render.json
     deps:
     - path: experiments/05_ember_lofting/data/garden_loft.smv

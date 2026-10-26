@@ -1,9 +1,9 @@
 schema: '2.0'
 stages:
   solve:
-    cmd: .venv/bin/python scripts/run_fds.py 
+    cmd: .venv/bin/python scripts/run_fds.py
       experiments/07_wick3_house_ignition/wick3c.fds:experiments/07_wick3_house_ignition/data
-      --threads 4 && .venv/bin/python scripts/strip_terrain.py 
+      --threads 4 && .venv/bin/python scripts/strip_terrain.py
       experiments/07_wick3_house_ignition/data wick3c
     deps:
     - path: experiments/07_wick3_house_ignition/wick3c.fds
@@ -27,6 +27,10 @@ stages:
       hash: md5
       md5: b6ac8327166379887f29bd55bd4a693a
       size: 206800
+    - path: experiments/07_wick3_house_ignition/data/wick3c_1.restart
+      hash: md5
+      md5: 3020ec20753499332ae32b93ad7bbf4c
+      size: 87954956
     - path: experiments/07_wick3_house_ignition/data/wick3c_1_1.bf
       hash: md5
       md5: e416892a80aec54736f673e4b91d2798
@@ -56,7 +60,7 @@ stages:
       md5: 670733614a7ca03964847e59a0c900cf
       size: 38869634
   boundary:
-    cmd: .venv/bin/python scripts/surface_temp.py 
+    cmd: .venv/bin/python scripts/surface_temp.py
       experiments/07_wick3_house_ignition/render.json
     deps:
     - path: experiments/07_wick3_house_ignition/data/wick3c_1_1.bf
@@ -85,7 +89,7 @@ stages:
       md5: 2d5fe52c8c0159682f4b97d5dcd7af08
       size: 1335
   render:
-    cmd: .venv/bin/python scripts/render_animation.py 
+    cmd: .venv/bin/python scripts/render_animation.py
       experiments/07_wick3_house_ignition/render.json
     deps:
     - path: experiments/07_wick3_house_ignition/data/ign_state.json
@@ -131,7 +135,7 @@ stages:
       size: 562140
       nfiles: 3
   validate:
-    cmd: .venv/bin/python scripts/validate_animation.py 
+    cmd: .venv/bin/python scripts/validate_animation.py
       experiments/07_wick3_house_ignition/render.json
     deps:
     - path: experiments/07_wick3_house_ignition/data/ign_state.json

@@ -17,6 +17,16 @@ stages:
     - groups.json
     - results/input-freeze.json
     outs:
+    - data/downloads/v31_00.tar.gz
+    - data/downloads/v31_01.tar.gz
+    - data/downloads/v31_02.tar.gz
+    - data/downloads/v31_03.tar.gz
+    - data/downloads/v31_05.tar.gz
+    - data/downloads/v31_06.tar.gz
+    - data/downloads/v31_07.tar.gz
+    - data/downloads/v31_08.tar.gz
+    - data/downloads/v31_09.tar.gz
+    - data/downloads/v31_10.tar.gz
     - data/cloud/v31_00
     - data/cloud/v31_01
     - data/cloud/v31_02
@@ -262,6 +272,7 @@ stages:
     - data/gpu/cloud
     - results/learning-input-freeze.json
     outs:
+    - data/gpu/adopted
     - data/models/geometry_snapshot.pt
     - data/models/hybrid.pt
     - data/predictions
@@ -277,6 +288,8 @@ stages:
     - cloud.py
     - results/prediction-freeze.json
     outs:
+    - data/downloads/v31_04.tar.gz
+    - data/downloads/v31_11.tar.gz
     - data/cloud/v31_04
     - data/cloud/v31_11
   evaluate_tests:

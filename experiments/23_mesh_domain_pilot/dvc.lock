@@ -62,6 +62,11 @@ stages:
       md5: 66d7d5885de87791d0f0b1283bf3bbbd
       size: 2239
     outs:
+    - path: data/preflight
+      hash: md5
+      md5: c440668d2231678192bbae16b30872fe.dir
+      size: 876825397
+      nfiles: 336
     - path: results/preflight.json
       hash: md5
       md5: b3b44d1858bd9c7f1ae63a13819a38aa
@@ -87,6 +92,11 @@ stages:
       md5: 811079bfe07af62793eb7d91b4f62aba.dir
       size: 1072042546
       nfiles: 420
+    - path: data/downloads
+      hash: md5
+      md5: 1790eb8c8535600f4f3fa684f521fefd.dir
+      size: 365857748
+      nfiles: 12
   analyze:
     cmd:
     - ../../.venv/bin/python analyze.py

@@ -4,9 +4,8 @@
 # 07's file, so the two pipelines have the same shape; here the case directory
 # and the CHID are both wick4.
 #
-# The .s3d volumes carry `cache: false`: outputs DVC knows about, tracks and can
-# re-solve when missing, but never copies or pushes.  The gif and stills stay in
-# git so they render on GitHub, and are uncached for the same reason.
+# Retained Smoke3D volumes are cached for archival recovery. Preservation
+# adopts the existing bytes; it does not rerun or validate the simulation.
 stages:
   solve:
     wdir: ../..
@@ -20,6 +19,7 @@ stages:
       - scripts/run_fds.py
       - scripts/strip_terrain.py
     outs:
+      - experiments/12_no_ladder_tree/data/wick4_1.restart
       - experiments/12_no_ladder_tree/data/wick4.smv
       - experiments/12_no_ladder_tree/data/wick4_1.prt5
       - experiments/12_no_ladder_tree/data/wick4_1_1.bf
@@ -27,11 +27,11 @@ stages:
       - experiments/12_no_ladder_tree/data/wick4_1_1.sf
       - experiments/12_no_ladder_tree/data/wick4_1_2.sf
       - experiments/12_no_ladder_tree/data/wick4_1_1.s3d:
-          cache: false
+          cache: true
       - experiments/12_no_ladder_tree/data/wick4_1_2.s3d:
-          cache: false
+          cache: true
       - experiments/12_no_ladder_tree/data/wick4_1_3.s3d:
-          cache: false
+          cache: true
 
   boundary:
     wdir: ../..

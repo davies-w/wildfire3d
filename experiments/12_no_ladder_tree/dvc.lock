@@ -1,9 +1,9 @@
 schema: '2.0'
 stages:
   solve:
-    cmd: .venv/bin/python scripts/run_fds.py 
+    cmd: .venv/bin/python scripts/run_fds.py
       experiments/12_no_ladder_tree/wick4.fds:experiments/12_no_ladder_tree/data
-      --threads 4 && .venv/bin/python scripts/strip_terrain.py 
+      --threads 4 && .venv/bin/python scripts/strip_terrain.py
       experiments/12_no_ladder_tree/data wick4
     deps:
     - path: experiments/12_no_ladder_tree/wick4.fds
@@ -27,6 +27,10 @@ stages:
       hash: md5
       md5: 667aead484d9d6b4ed57808cced444b8
       size: 191316
+    - path: experiments/12_no_ladder_tree/data/wick4_1.restart
+      hash: md5
+      md5: 6733effb582fc7639079a4fff62e3d8c
+      size: 86358052
     - path: experiments/12_no_ladder_tree/data/wick4_1_1.bf
       hash: md5
       md5: 44b33015a817692800f9999eb0565ee0
@@ -56,7 +60,7 @@ stages:
       md5: ae0d3fc721159a23637c6d4ec641b198
       size: 33867157
   boundary:
-    cmd: .venv/bin/python scripts/surface_temp.py 
+    cmd: .venv/bin/python scripts/surface_temp.py
       experiments/12_no_ladder_tree/render.json
     deps:
     - path: experiments/12_no_ladder_tree/data/wick4_1_1.bf
@@ -85,7 +89,7 @@ stages:
       md5: a22f8a608e712ec32e230e2c579bfaf3
       size: 1228
   render:
-    cmd: .venv/bin/python scripts/render_animation.py 
+    cmd: .venv/bin/python scripts/render_animation.py
       experiments/12_no_ladder_tree/render.json
     deps:
     - path: experiments/12_no_ladder_tree/data/ign_state.json
@@ -131,7 +135,7 @@ stages:
       size: 518391
       nfiles: 3
   validate:
-    cmd: .venv/bin/python scripts/validate_animation.py 
+    cmd: .venv/bin/python scripts/validate_animation.py
       experiments/12_no_ladder_tree/render.json
     deps:
     - path: experiments/12_no_ladder_tree/data/ign_state.json

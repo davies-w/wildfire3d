@@ -1,9 +1,9 @@
 schema: '2.0'
 stages:
   solve:
-    cmd: .venv/bin/python scripts/run_fds.py 
+    cmd: .venv/bin/python scripts/run_fds.py
       experiments/06_half_metre_ladder/wick2.fds:experiments/06_half_metre_ladder/data
-      --threads 4 && .venv/bin/python scripts/strip_terrain.py 
+      --threads 4 && .venv/bin/python scripts/strip_terrain.py
       experiments/06_half_metre_ladder/data wick2
     deps:
     - path: experiments/06_half_metre_ladder/wick2.fds
@@ -56,7 +56,7 @@ stages:
       md5: 08e5753ff6c7eb00e3cb248d480df2b2
       size: 54635355
   boundary:
-    cmd: .venv/bin/python scripts/surface_temp.py 
+    cmd: .venv/bin/python scripts/surface_temp.py
       experiments/06_half_metre_ladder/render.json
     deps:
     - path: experiments/06_half_metre_ladder/data/wick2_1_1.bf
@@ -85,7 +85,7 @@ stages:
       md5: cc63d633331ae63750f3bfcc2861ae64
       size: 953
   render:
-    cmd: .venv/bin/python scripts/render_animation.py 
+    cmd: .venv/bin/python scripts/render_animation.py
       experiments/06_half_metre_ladder/render.json
     deps:
     - path: experiments/06_half_metre_ladder/data/ign_state.json

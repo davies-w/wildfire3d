@@ -83,3 +83,9 @@ stages:
     metrics:
     - results/analysis.json:
         cache: false
+  archive_plan:
+    cmd: ../../../.venv/bin/python plan_archive.py
+    deps:
+    - plan_archive.py
+    outs:
+    - data/archive-sync-plan.jsonl

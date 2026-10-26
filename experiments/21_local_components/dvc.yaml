@@ -1524,3 +1524,13 @@ stages:
     - data/component_states/b21_single_1.json
     outs:
     - data/individual_components
+  overnight_stronger_preflight:
+    cmd: ../../.venv/bin/python overnight_test.py preflight
+    deps:
+    - overnight_test.py
+    - decks/overnight21_stronger.fds
+    outs:
+    - data/overnight_stronger_preflight
+    metrics:
+    - results/overnight-stronger-preflight.json:
+        cache: false

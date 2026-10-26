@@ -288,7 +288,7 @@ stages:
       size: 5337491
       nfiles: 26
   contact_control:
-    cmd: ../../.venv/bin/python -c "from contact_ignition import run; 
+    cmd: ../../.venv/bin/python -c "from contact_ignition import run;
       run('contact_ring20_bare', bare=True)"
     deps:
     - path: ../../FDS/src/fds/Build/ompi_gnu_osx/fds_ompi_gnu_osx
@@ -1661,7 +1661,7 @@ stages:
       md5: 12c28cb704afae7bf687fb010102ad1d
       size: 709
   b21_single_validation_collect:
-    cmd: ../../.venv/bin/python component_control.py collect 
+    cmd: ../../.venv/bin/python component_control.py collect
       b21_single_validation
     deps:
     - path: component_control.py
@@ -1683,7 +1683,7 @@ stages:
       md5: 0154fd607e8a06c7e37840ace93891a5
       size: 8392
   b21_single_validation_extract:
-    cmd: ../../.venv/bin/python extract_component_states.py 
+    cmd: ../../.venv/bin/python extract_component_states.py
       b21_single_validation
     deps:
     - path: component-development.json
@@ -1873,7 +1873,7 @@ stages:
       md5: 995adbcdd2fafa89f92b252701059e73
       size: 1015
   b21_transfer_hot_source_control_collect:
-    cmd: ../../.venv/bin/python component_control.py collect 
+    cmd: ../../.venv/bin/python component_control.py collect
       b21_transfer_hot_source_control
     deps:
     - path: component_control.py
@@ -1895,7 +1895,7 @@ stages:
       md5: 609f940320e7fdd511f857807cbdfddf
       size: 8412
   b21_transfer_hot_source_control_extract:
-    cmd: ../../.venv/bin/python extract_component_states.py 
+    cmd: ../../.venv/bin/python extract_component_states.py
       b21_transfer_hot_source_control
     deps:
     - path: component-development.json
@@ -1917,7 +1917,7 @@ stages:
       md5: 17e7e477933caa11da5a3cfe4305c21c
       size: 753838
   b21_transfer_hot_source_control_audit:
-    cmd: ../../.venv/bin/python audit_component_runs.py 
+    cmd: ../../.venv/bin/python audit_component_runs.py
       b21_transfer_hot_source_control
     deps:
     - path: audit_component_runs.py
@@ -1944,7 +1944,7 @@ stages:
       md5: d9f17c29346e7f3c2fb8ed2ce5e855cc
       size: 671
   b21_transfer_validation_collect:
-    cmd: ../../.venv/bin/python component_control.py collect 
+    cmd: ../../.venv/bin/python component_control.py collect
       b21_transfer_validation
     deps:
     - path: component_control.py
@@ -1966,7 +1966,7 @@ stages:
       md5: bed34bfec0b3a12fd4eed21bd90377b3
       size: 8718
   b21_transfer_validation_extract:
-    cmd: ../../.venv/bin/python extract_component_states.py 
+    cmd: ../../.venv/bin/python extract_component_states.py
       b21_transfer_validation
     deps:
     - path: component-development.json
@@ -2883,7 +2883,7 @@ stages:
       md5: 3feb1db12d6af3d633f2bfdeff6d0f53
       size: 686
   b21_combined_validation_collect:
-    cmd: ../../.venv/bin/python component_control.py collect 
+    cmd: ../../.venv/bin/python component_control.py collect
       b21_combined_validation
     deps:
     - path: component_control.py
@@ -2905,7 +2905,7 @@ stages:
       md5: 2f1c1d10d52a7441be397bdc6a90de95
       size: 8865
   b21_combined_validation_extract:
-    cmd: ../../.venv/bin/python extract_component_states.py 
+    cmd: ../../.venv/bin/python extract_component_states.py
       b21_combined_validation
     deps:
     - path: component-development.json
@@ -3133,7 +3133,7 @@ stages:
       md5: b52a33bb41e02b6b24d831689ef07a71
       size: 13395
   b21_single_midcondition_collect:
-    cmd: ../../.venv/bin/python component_control.py collect 
+    cmd: ../../.venv/bin/python component_control.py collect
       b21_single_midcondition
     deps:
     - path: component_control.py
@@ -3155,7 +3155,7 @@ stages:
       md5: f309f122bc2d260feb35343d0868aa16
       size: 8370
   b21_single_midcondition_extract:
-    cmd: ../../.venv/bin/python extract_component_states.py 
+    cmd: ../../.venv/bin/python extract_component_states.py
       b21_single_midcondition
     deps:
     - path: component-development.json
@@ -3203,7 +3203,7 @@ stages:
       md5: 7495e988cb3f809da44d2eba5eb1f63f
       size: 716
   b21_corner_validation_collect:
-    cmd: ../../.venv/bin/python component_control.py collect 
+    cmd: ../../.venv/bin/python component_control.py collect
       b21_corner_validation
     deps:
     - path: component_control.py
@@ -3225,7 +3225,7 @@ stages:
       md5: f2c4fb270e667c29ce57924b6a31b0dd
       size: 26994
   b21_corner_validation_extract:
-    cmd: ../../.venv/bin/python extract_component_states.py 
+    cmd: ../../.venv/bin/python extract_component_states.py
       b21_corner_validation
     deps:
     - path: component-development.json
@@ -3317,7 +3317,7 @@ stages:
       md5: dae978e6bf3f64437b5784da05d97347
       size: 20054
   freeze_component_test:
-    cmd: ../../.venv/bin/python freeze_component_predictions.py 
+    cmd: ../../.venv/bin/python freeze_component_predictions.py
       data/recursive_canopy_bounded300_occlusion.json
     deps:
     - path: analyze_component_tests.py
@@ -3542,7 +3542,7 @@ stages:
       md5: 604dcd3f744e4cfdff2b9220d201d332
       size: 5954
   c21_glen_ellen_06_collect:
-    cmd: ../../.venv/bin/python component_test_control.py collect 
+    cmd: ../../.venv/bin/python component_test_control.py collect
       c21_glen_ellen_06
     deps:
     - path: component_test_control.py
@@ -3661,7 +3661,7 @@ stages:
       md5: 8aa63a0d15b5606b6ae3cb914b3e7f76
       size: 2215
   c21_santa_rosa_east_03_collect:
-    cmd: ../../.venv/bin/python component_test_control.py collect 
+    cmd: ../../.venv/bin/python component_test_control.py collect
       c21_santa_rosa_east_03
     deps:
     - path: component_test_control.py
@@ -3687,7 +3687,7 @@ stages:
       md5: e12263e336b9bdcaff6d1be578046ac9
       size: 119185
   c21_santa_rosa_east_03_analyze:
-    cmd: ../../.venv/bin/python analyze_component_tests.py 
+    cmd: ../../.venv/bin/python analyze_component_tests.py
       c21_santa_rosa_east_03
     deps:
     - path: analyze_component_tests.py
@@ -3842,7 +3842,7 @@ stages:
       md5: bfd741ef7991b7ceab3a63d25d98973a
       size: 7533
   direct_source_pathway:
-    cmd: OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 
+    cmd: OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1
       ../../.venv/bin/python diagnose_direct_source_features.py
     deps:
     - path: data/component_frozen
@@ -3868,7 +3868,7 @@ stages:
       md5: 135f7aab99ee2131331065caefb8bcfa
       size: 1916
   unlit_heat_forcing:
-    cmd: OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 
+    cmd: OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1
       ../../.venv/bin/python diagnose_unlit_heat_forcing.py
     deps:
     - path: data/component_frozen
@@ -4153,3 +4153,24 @@ stages:
       md5: ff62665a8190a6b41bbd4d2bcae15358.dir
       size: 240537
       nfiles: 2
+  overnight_stronger_preflight:
+    cmd: ../../.venv/bin/python overnight_test.py preflight
+    deps:
+    - path: decks/overnight21_stronger.fds
+      hash: md5
+      md5: 720be8f61c8a439a7ecb7c364ba91126
+      size: 26700
+    - path: overnight_test.py
+      hash: md5
+      md5: dc84a9c6c94a1217c4b8aa0f97ca850a
+      size: 6978
+    outs:
+    - path: data/overnight_stronger_preflight
+      hash: md5
+      md5: a65c4cccc67f71b12dcdb8f9c4e05589.dir
+      size: 101249947
+      nfiles: 22
+    - path: results/overnight-stronger-preflight.json
+      hash: md5
+      md5: d5aeb4f694f6907932547adb144da5d8
+      size: 490

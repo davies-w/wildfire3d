@@ -33,8 +33,8 @@ stages:
       md5: f73e5ea174356fd7b85d9087a8ed2e28
       size: 174822
   package:
-    cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python 
-      validate_gates.py && ../../../.venv/bin/python validate_transport.py && 
+    cmd: ../../../.venv/bin/python validate.py && ../../../.venv/bin/python
+      validate_gates.py && ../../../.venv/bin/python validate_transport.py &&
       ../../../.venv/bin/python prepare_pilot.py
     deps:
     - path: ../../32_tree_expansion/gpu-workflow.yaml
@@ -195,3 +195,15 @@ stages:
       hash: md5
       md5: 9fc19ab22b96ce25d463958278391ffb
       size: 56
+  archive_plan:
+    cmd: ../../../.venv/bin/python plan_archive.py
+    deps:
+    - path: plan_archive.py
+      hash: md5
+      md5: 14654ce682e53d834811c80612b60021
+      size: 815
+    outs:
+    - path: data/archive-sync-plan.jsonl
+      hash: md5
+      md5: ef2a635e4185a52873e4ffe2e7926ac6
+      size: 19684243

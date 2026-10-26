@@ -5,11 +5,8 @@
 # the experiment's data/, because the boundary reader and the renderer both use
 # fixed filenames that would collide if the two cases shared a directory.
 #
-# The .s3d volumes carry `cache: false`: they are outputs, so DVC knows what
-# produces them and will re-solve when they are missing, but they are never
-# copied into the cache or pushed.  They are most of the output by size and
-# renders are not evidence.
-
+# Retained Smoke3D volumes are cached for archival recovery. Preservation
+# adopts the existing bytes; it does not rerun or validate the simulation.
 stages:
   solve:
     wdir: ../..
@@ -26,6 +23,10 @@ stages:
       - scripts/run_fds.py
       - scripts/strip_terrain.py
     outs:
+      - experiments/13_ladder_tree_pair/data/with_tree/with_tree_1.restart
+      - experiments/13_ladder_tree_pair/data/with_tree/with_tree_1_2.s3d
+      - experiments/13_ladder_tree_pair/data/without_tree/without_tree_1.restart
+      - experiments/13_ladder_tree_pair/data/without_tree/without_tree_1_2.s3d
       - experiments/13_ladder_tree_pair/data/with_tree/with_tree.smv
       - experiments/13_ladder_tree_pair/data/with_tree/with_tree_1.prt5
       - experiments/13_ladder_tree_pair/data/with_tree/with_tree_1_1.bf
@@ -39,13 +40,13 @@ stages:
       - experiments/13_ladder_tree_pair/data/without_tree/without_tree_1_1.sf
       - experiments/13_ladder_tree_pair/data/without_tree/without_tree_1_2.sf
       - experiments/13_ladder_tree_pair/data/with_tree/with_tree_1_1.s3d:
-          cache: false
+          cache: true
       - experiments/13_ladder_tree_pair/data/with_tree/with_tree_1_3.s3d:
-          cache: false
+          cache: true
       - experiments/13_ladder_tree_pair/data/without_tree/without_tree_1_1.s3d:
-          cache: false
+          cache: true
       - experiments/13_ladder_tree_pair/data/without_tree/without_tree_1_3.s3d:
-          cache: false
+          cache: true
 
   boundary:
     foreach:

@@ -389,3 +389,33 @@ stages:
       hash: md5
       md5: 3b9d4051900979e6766bbe384d6af152
       size: 50
+  analyze:
+    cmd: ../../.venv/bin/python analyze.py
+    deps:
+    - path: ../29_single_tree_heads/results/previous-evaluation.json
+      hash: md5
+      md5: ddea761ad442048f7f560fc3e5cdc1db
+      size: 545106
+    - path: analyze.py
+      hash: md5
+      md5: 82b3d9b67452cdf8443e44503ffec5d0
+      size: 1822
+    - path: data/cloud
+      hash: md5
+      md5: af3fb3074def2b424a2891235ce6b15f.dir
+      size: 229126056
+      nfiles: 19
+    - path: results/cleanup.json
+      hash: md5
+      md5: 3b9d4051900979e6766bbe384d6af152
+      size: 50
+    outs:
+    - path: data/extracted
+      hash: md5
+      md5: 68a6f439da868842b8cf3ce12cb8b3ce.dir
+      size: 147597760
+      nfiles: 4
+    - path: results/decision.json
+      hash: md5
+      md5: 7de8427d4814b97573c33f5e692b830d
+      size: 4471

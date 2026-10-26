@@ -111,3 +111,15 @@ stages:
     metrics:
     - results/cleanup.json:
         cache: false
+  analyze:
+    cmd: ../../.venv/bin/python analyze.py
+    deps:
+    - analyze.py
+    - data/cloud
+    - results/cleanup.json
+    - ../29_single_tree_heads/results/previous-evaluation.json
+    outs:
+    - data/extracted
+    metrics:
+    - results/decision.json:
+        cache: false

@@ -4,8 +4,8 @@
 # is the expensive experiment: roughly 52 minutes of solver time.
 #
 # `dvc repro` runs this file; `dvc.lock` is committed. Outputs go to data/.
-# `.s3d` volumes are uncached: DVC knows this stage produces them, but never
-# copies or pushes them.
+# Retained Smoke3D volumes are cached for archival recovery. Preservation
+# adopts the existing bytes; it does not rerun or validate the simulation.
 stages:
   solve:
     wdir: ../..
@@ -26,11 +26,11 @@ stages:
       - experiments/06_half_metre_ladder/data/wick2_1_1.sf
       - experiments/06_half_metre_ladder/data/wick2_1_2.sf
       - experiments/06_half_metre_ladder/data/wick2_1_1.s3d:
-          cache: false
+          cache: true
       - experiments/06_half_metre_ladder/data/wick2_1_2.s3d:
-          cache: false
+          cache: true
       - experiments/06_half_metre_ladder/data/wick2_1_3.s3d:
-          cache: false
+          cache: true
 
   boundary:
     wdir: ../..
