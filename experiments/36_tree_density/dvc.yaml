@@ -276,3 +276,11 @@ stages:
     metrics:
     - results/partial-recovery-collection.json:
         cache: false
+  prepare_grouped_folds:
+    cmd: ../../.venv/bin/python prepare_grouped_folds.py
+    deps:
+    - prepare_grouped_folds.py
+    - cases.json
+    - ../35_surrogate_diagnostics/attempt20/schema.json
+    outs:
+    - data/grouped-folds.json

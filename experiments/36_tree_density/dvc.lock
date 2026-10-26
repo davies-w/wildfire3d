@@ -649,3 +649,23 @@ stages:
       hash: md5
       md5: 5cbc73d79e36b5b422f819d9d76cedac
       size: 667
+  prepare_grouped_folds:
+    cmd: ../../.venv/bin/python prepare_grouped_folds.py
+    deps:
+    - path: ../35_surrogate_diagnostics/attempt20/schema.json
+      hash: md5
+      md5: 3f1d8636dc7c20f3aa3ed5cbb7735204
+      size: 174781
+    - path: cases.json
+      hash: md5
+      md5: a0cd6895e2b2cfa892d7b1fcb6dd2bdd
+      size: 1259971
+    - path: prepare_grouped_folds.py
+      hash: md5
+      md5: 930f4b65aedf8c73862205f8b24bcfb8
+      size: 2746
+    outs:
+    - path: data/grouped-folds.json
+      hash: md5
+      md5: 44be6c76cd7dd8870d4497612a66b4a0
+      size: 671656
