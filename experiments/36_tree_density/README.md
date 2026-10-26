@@ -33,3 +33,7 @@ The first coverage job failed before any solver ran: the registry seven-day dele
 ## Approved restoration
 
 User approved a $1 bounded repair and continuation. Cloud build58f55a79-1946-4a50-9c10-a22807acd734 succeeded with the unchanged solver binary and checked dynamic libraries. The replacement image is pinned to sha256:b4bc461b8ebf2b4b3d0b7376ad69dcf19055f8abb5f1001ebd952f1d84f3cfb7. `active-groups.json` selects replacement coverage `x36-coverage-r1` plus the 130 originally unsubmitted bulk groups. Original inputs and workflows remain preserved. The offline repair audit proves all scientific inputs and worker code unchanged; only image and replacement coverage identity differ. Every launch now checks registry image availability first. Actual full solver/resume checks remain mandatory on cloud.
+
+## Effective concurrency
+
+Six coverage cases passed. Twenty bulk groups were submitted before Google rejected the 21st temporary prefix-read grant: a principal/role can have at most20different conditional bindings. Dispatcher concurrency is therefore20, while compute quota remains24. Existing jobs are unchanged and no paid job is retried. Keep the per-job narrow grants rather than widening access. Expected total duration is closer to10–14hours, subject to capacity.

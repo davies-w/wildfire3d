@@ -43,7 +43,7 @@ def launch(name):
  gc('artifacts','docker','images','describe',g['image_uri'])
  with (B.parent/'data/budget.lock').open('w') as f:
   fcntl.flock(f,fcntl.LOCK_EX);b=json.loads(B.read_text());entry=b['reservations'][name];assert entry['state']=='reserved_before_upload' and not (folder/'execution.json').exists()
-  vms=gc('compute','instances','list');jobs=gc('batch','jobs','list','--location=us-central1');assert len(vms)<24 and len(jobs)<24;assert all(x.get('labels',{}).get('trial_id','').startswith('x36-') for x in vms+jobs)
+  vms=gc('compute','instances','list');jobs=gc('batch','jobs','list','--location=us-central1');assert len(vms)<20 and len(jobs)<20;assert all(x.get('labels',{}).get('trial_id','').startswith('x36-') for x in vms+jobs)
   expiry=(datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(hours=24)).strftime('%Y-%m-%dT%H:%M:%SZ');condition=dict(title=name+'-read',description='Read only this immutable output prefix for upload verification',expression="request.time < timestamp('"+expiry+"') && resource.name.startsWith('projects/_/buckets/"+BUCKET+'/objects/density36/'+name+"/')")
   if (folder/'read-condition.json').exists():condition=read(f'jobs/{name}/read-condition.json')
   else:save(f'jobs/{name}/read-condition.json',condition)

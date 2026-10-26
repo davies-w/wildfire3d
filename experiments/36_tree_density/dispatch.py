@@ -19,7 +19,7 @@ with (R/'data/dispatcher.lock').open('w') as lock:
    if (R/'jobs'/coverage['id']/'completion.json').exists() and not (R/'results/coverage-review.json').exists():review()
    ready=(R/'results/coverage-review.json').exists()
    for g in groups:
-    if len(active)>=24:break
+    if len(active)>=20:break
     if g['phase']!='coverage' and not ready:continue
     if (R/'jobs'/g['id']/'execution.json').exists():continue
     launch(g['id']);active.append(g['id'])
