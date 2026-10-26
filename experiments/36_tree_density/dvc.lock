@@ -703,3 +703,104 @@ stages:
       hash: md5
       md5: 540b221e92b4f6e11537ef6fea1818fa
       size: 397
+  audit_late_preemptions:
+    cmd: ../../.venv/bin/python repair/audit_preemptions.py
+    deps:
+    - path: active-groups.json
+      hash: md5
+      md5: 843070d094015db784a058006ed33b1c
+      size: 100561
+    - path: repair/audit_preemptions.py
+      hash: md5
+      md5: c4e20322e726da97787c94cd77328e4d
+      size: 2233
+    - path: results/input-freeze.json
+      hash: md5
+      md5: d83531f07429baa3c5035c2404eebebf
+      size: 135918
+    - path: results/terminal-088.json
+      hash: md5
+      md5: 0c8a4ab40c8bc522cbce67cb525bd4af
+      size: 4560
+    - path: results/terminal-093.json
+      hash: md5
+      md5: 91b78f82911f8be20cc11be71f382295
+      size: 4560
+    - path: results/terminal-115.json
+      hash: md5
+      md5: 74123ba6bb183301cadf51100b86bc38
+      size: 4560
+    outs:
+    - path: data/interrupted/x36-density-088
+      hash: md5
+      md5: c77b31060829ad0e00387905da3f0888.dir
+      size: 71730
+      nfiles: 14
+    - path: data/interrupted/x36-density-093
+      hash: md5
+      md5: bc500e372f728cf85f5aeee946020304.dir
+      size: 72203
+      nfiles: 14
+    - path: data/interrupted/x36-density-115
+      hash: md5
+      md5: 1e83e0c6526abe51f269b5b87d17d513.dir
+      size: 20606
+      nfiles: 4
+    - path: results/preemption-088.json
+      hash: md5
+      md5: 7bf09787de80a9755ecd71e37b3bd8b0
+      size: 2067
+    - path: results/preemption-093.json
+      hash: md5
+      md5: f852555e78c208e612e195612d27e4e0
+      size: 2067
+    - path: results/preemption-115.json
+      hash: md5
+      md5: 7140e2ec81486d529cde0d6efd240e12
+      size: 1177
+  prepare_late_recovery:
+    cmd: ../../.venv/bin/python repair/prepare_late_recovery.py
+    deps:
+    - path: active-groups.json
+      hash: md5
+      md5: 843070d094015db784a058006ed33b1c
+      size: 100561
+    - path: data/packages
+      hash: md5
+      md5: 725332d4eccd1d22a02c63eef6848482.dir
+      size: 11300008
+      nfiles: 131
+    - path: jobs/x36-density-088/workflow-r1.yaml
+      hash: md5
+      md5: ca49ee64dd2819cd4bccbb429389bb57
+      size: 7013
+    - path: jobs/x36-density-093/workflow-r1.yaml
+      hash: md5
+      md5: e1c35549b0d1d877660d130ba9abf815
+      size: 7013
+    - path: jobs/x36-density-115/workflow-r1.yaml
+      hash: md5
+      md5: e964160046ff35d593f86fd2f9f846f8
+      size: 7013
+    - path: repair/prepare_late_recovery.py
+      hash: md5
+      md5: bac64e915830b0f84cb8080164179490
+      size: 2336
+    - path: results/preemption-088.json
+      hash: md5
+      md5: 7bf09787de80a9755ecd71e37b3bd8b0
+      size: 2067
+    - path: results/preemption-093.json
+      hash: md5
+      md5: f852555e78c208e612e195612d27e4e0
+      size: 2067
+    - path: results/preemption-115.json
+      hash: md5
+      md5: 7140e2ec81486d529cde0d6efd240e12
+      size: 1177
+    outs:
+    - path: data/late-recovery
+      hash: md5
+      md5: 70f62685c7f11cb8db6d0358f93a25ec.dir
+      size: 251598
+      nfiles: 9
