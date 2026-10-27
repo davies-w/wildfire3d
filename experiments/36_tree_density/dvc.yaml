@@ -1430,3 +1430,113 @@ stages:
     metrics:
     - results/gas-shape-head-preflight.json:
         cache: false
+  plan_gas_shape_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/plan_gas_shape_pilot.py
+    deps:
+    - model_evaluation/plan_gas_shape_pilot.py
+    - model_evaluation/gas_shape_head.py
+    - results/gas-shape-head-preflight.json
+    - results/gas-head-pilot01-analysis.json
+    - results/gas-head-pilot-plan.json
+    - data/gas-head-candidate
+    metrics:
+    - results/gas-shape-pilot-plan.json:
+        cache: false
+  validate_gas_shape_selection:
+    cmd: ../../.venv/bin/python model_evaluation/validate_gas_shape_selection.py
+    deps:
+    - model_evaluation/validate_gas_shape_selection.py
+    - model_evaluation/gas_shape_metrics.py
+    - model_evaluation/gas_head_metrics.py
+    - results/gas-shape-pilot-plan.json
+    - results/gas-head-metrics-preflight.json
+    metrics:
+    - results/gas-shape-selection-preflight.json:
+        cache: false
+  prepare_gas_shape_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_gas_shape_pilot.py
+    deps:
+    - model_evaluation/prepare_gas_shape_pilot.py
+    - model_evaluation/gas_shape_worker.py
+    - model_evaluation/gas_head_metrics.py
+    - results/gas-head-candidate-preflight.json
+    - results/gas-head-metrics-preflight.json
+    - results/gas-shape-pilot-plan.json
+    - data/gas-head-candidate
+    - data/exposure-pilot02/bootstrap.py
+    - data/exposure-pilot02/runtime.py
+    - data/exposure-pilot02/workflow.yaml
+    - model_evaluation/gas_shape_head.py
+    - model_evaluation/gas_shape_metrics.py
+    - results/gas-shape-head-preflight.json
+    outs:
+    - data/gas-shape-pilot01
+    metrics:
+    - results/gas-shape-pilot01-prepared.json:
+        cache: false
+  validate_gas_shape_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/validate_gas_shape_pilot.py
+    deps:
+    - model_evaluation/validate_gas_shape_pilot.py
+    - model_evaluation/launch_gas_shape_pilot01.py
+    - model_evaluation/collect_gas_shape_pilot01.py
+    - model_evaluation/close_gas_shape_pilot01.py
+    - model_evaluation/reconcile_gas_shape_pilot01.py
+    - data/gas-shape-pilot01
+    - results/gas-shape-pilot01-prepared.json
+    - results/gas-head-candidate-preflight.json
+    - results/gas-head-metrics-preflight.json
+    - results/gas-shape-selection-preflight.json
+    - results/gas-shape-head-preflight.json
+    metrics:
+    - results/gas-shape-pilot01-offline-preflight.json:
+        cache: false
+  launch_gas_shape_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/launch_gas_shape_pilot01.py --execute
+    frozen: true
+    deps:
+    - model_evaluation/launch_gas_shape_pilot01.py
+    - results/gas-shape-pilot01-offline-preflight.json
+    - results/gas-shape-pilot01-prepared.json
+    - data/gas-shape-pilot01
+    outs:
+    - results/gas-shape-pilot01-execution.json:
+        persist: true
+  collect_gas_shape_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/collect_gas_shape_pilot01.py
+    deps:
+    - model_evaluation/collect_gas_shape_pilot01.py
+    - results/gas-shape-pilot01-execution.json
+    outs:
+    - data/gas-shape-pilot01-results
+    metrics:
+    - results/gas-shape-pilot01-collected.json:
+        cache: false
+  close_gas_shape_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/close_gas_shape_pilot01.py
+    deps:
+    - model_evaluation/close_gas_shape_pilot01.py
+    - results/gas-shape-pilot01-collected.json
+    metrics:
+    - results/gas-shape-pilot01-permission-removed.json:
+        cache: false
+  reconcile_gas_shape_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_gas_shape_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/reconcile_gas_shape_pilot01.py
+    - results/gas-shape-pilot01-collected.json
+    - results/gas-shape-pilot01-permission-removed.json
+    metrics:
+    - results/gas-shape-pilot01-cost-reconciled.json:
+        cache: false
+  analyze_gas_shape_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_gas_shape_pilot01.py
+    deps:
+    - model_evaluation/analyze_gas_shape_pilot01.py
+    - data/gas-shape-pilot01
+    - data/gas-shape-pilot01-results
+    - results/gas-shape-pilot01-collected.json
+    metrics:
+    - results/gas-shape-pilot01-analysis.json:
+        cache: false

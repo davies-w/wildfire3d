@@ -3461,3 +3461,183 @@ stages:
       hash: md5
       md5: 396672e54e3218d60a1f419ac81eb0aa
       size: 917
+  plan_gas_shape_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/plan_gas_shape_pilot.py
+    deps:
+    - path: data/gas-head-candidate
+      hash: md5
+      md5: 1bae6163fbc3780981d71b7ec0c65e96.dir
+      size: 26581682
+      nfiles: 6
+    - path: model_evaluation/gas_shape_head.py
+      hash: md5
+      md5: 4701d490c44b774e887a7f2c9ef730f7
+      size: 1258
+    - path: model_evaluation/plan_gas_shape_pilot.py
+      hash: md5
+      md5: 3e5f65c8b02bc3a69b2647938557d475
+      size: 2919
+    - path: results/gas-head-pilot-plan.json
+      hash: md5
+      md5: 06a72738d75dda88255ff19a3ec34bb1
+      size: 4656
+    - path: results/gas-head-pilot01-analysis.json
+      hash: md5
+      md5: 687054c26d7f9318c11f306ddc88922d
+      size: 8877
+    - path: results/gas-shape-head-preflight.json
+      hash: md5
+      md5: 396672e54e3218d60a1f419ac81eb0aa
+      size: 917
+    outs:
+    - path: results/gas-shape-pilot-plan.json
+      hash: md5
+      md5: b5021e7def5d40e3c5f2fe7ee837f538
+      size: 5759
+  validate_gas_shape_selection:
+    cmd: ../../.venv/bin/python model_evaluation/validate_gas_shape_selection.py
+    deps:
+    - path: model_evaluation/gas_head_metrics.py
+      hash: md5
+      md5: 1b092dc20edf7bac2340dbc376fd4a53
+      size: 3824
+    - path: model_evaluation/gas_shape_metrics.py
+      hash: md5
+      md5: 581ccf0f313efb401231933535d21ab2
+      size: 889
+    - path: model_evaluation/validate_gas_shape_selection.py
+      hash: md5
+      md5: 96ab809b0dc1e85045bff164fac8ae3a
+      size: 2071
+    - path: results/gas-head-metrics-preflight.json
+      hash: md5
+      md5: 344801f6a906444fdeb239c1a9eb9abd
+      size: 2009
+    - path: results/gas-shape-pilot-plan.json
+      hash: md5
+      md5: b5021e7def5d40e3c5f2fe7ee837f538
+      size: 5759
+    outs:
+    - path: results/gas-shape-selection-preflight.json
+      hash: md5
+      md5: 28492dc0cc9d00332ab2721e355e9282
+      size: 468
+  prepare_gas_shape_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_gas_shape_pilot.py
+    deps:
+    - path: data/exposure-pilot02/bootstrap.py
+      hash: md5
+      md5: 79378b16d144ecd2e903a0bc6d2c004d
+      size: 1639
+    - path: data/exposure-pilot02/runtime.py
+      hash: md5
+      md5: c2580ca44c969e0e2d79ac1387137bd8
+      size: 2202
+    - path: data/exposure-pilot02/workflow.yaml
+      hash: md5
+      md5: 2f3688caa6ed417cc3532b74b2f2c067
+      size: 9117
+    - path: data/gas-head-candidate
+      hash: md5
+      md5: 1bae6163fbc3780981d71b7ec0c65e96.dir
+      size: 26581682
+      nfiles: 6
+    - path: model_evaluation/gas_head_metrics.py
+      hash: md5
+      md5: 1b092dc20edf7bac2340dbc376fd4a53
+      size: 3824
+    - path: model_evaluation/gas_shape_head.py
+      hash: md5
+      md5: 4701d490c44b774e887a7f2c9ef730f7
+      size: 1258
+    - path: model_evaluation/gas_shape_metrics.py
+      hash: md5
+      md5: 581ccf0f313efb401231933535d21ab2
+      size: 889
+    - path: model_evaluation/gas_shape_worker.py
+      hash: md5
+      md5: efc7d2d1e0739a7dc2f4e97a6da5564d
+      size: 7690
+    - path: model_evaluation/prepare_gas_shape_pilot.py
+      hash: md5
+      md5: 5c0ef9b6456058cfeb5a16b62db5d1d6
+      size: 3725
+    - path: results/gas-head-candidate-preflight.json
+      hash: md5
+      md5: 9fa679c922aebf74699fd8427376bad7
+      size: 717
+    - path: results/gas-head-metrics-preflight.json
+      hash: md5
+      md5: 344801f6a906444fdeb239c1a9eb9abd
+      size: 2009
+    - path: results/gas-shape-head-preflight.json
+      hash: md5
+      md5: 396672e54e3218d60a1f419ac81eb0aa
+      size: 917
+    - path: results/gas-shape-pilot-plan.json
+      hash: md5
+      md5: b5021e7def5d40e3c5f2fe7ee837f538
+      size: 5759
+    outs:
+    - path: data/gas-shape-pilot01
+      hash: md5
+      md5: f67814da74bf678de00b5667da149ea0.dir
+      size: 53225588
+      nfiles: 14
+    - path: results/gas-shape-pilot01-prepared.json
+      hash: md5
+      md5: f759c4bf331128af62af1da1e982ee7e
+      size: 1429
+  validate_gas_shape_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/validate_gas_shape_pilot.py
+    deps:
+    - path: data/gas-shape-pilot01
+      hash: md5
+      md5: a8478e3f233d6edbb7032d4c0d0e619e.dir
+      size: 53229772
+      nfiles: 15
+    - path: model_evaluation/close_gas_shape_pilot01.py
+      hash: md5
+      md5: bfebb4df2cba01bf5b113584c60d232c
+      size: 1711
+    - path: model_evaluation/collect_gas_shape_pilot01.py
+      hash: md5
+      md5: 191c9a6da9f7542786556a4e8eab784a
+      size: 5191
+    - path: model_evaluation/launch_gas_shape_pilot01.py
+      hash: md5
+      md5: 68706bc6f888c1ba7864eaf0ec428649
+      size: 5387
+    - path: model_evaluation/reconcile_gas_shape_pilot01.py
+      hash: md5
+      md5: 06c16d2223d8fb1abdb69480a7a40ad3
+      size: 1658
+    - path: model_evaluation/validate_gas_shape_pilot.py
+      hash: md5
+      md5: d15424909ba497a708ccb1cdcf753990
+      size: 4660
+    - path: results/gas-head-candidate-preflight.json
+      hash: md5
+      md5: 9fa679c922aebf74699fd8427376bad7
+      size: 717
+    - path: results/gas-head-metrics-preflight.json
+      hash: md5
+      md5: 344801f6a906444fdeb239c1a9eb9abd
+      size: 2009
+    - path: results/gas-shape-head-preflight.json
+      hash: md5
+      md5: 396672e54e3218d60a1f419ac81eb0aa
+      size: 917
+    - path: results/gas-shape-pilot01-prepared.json
+      hash: md5
+      md5: f759c4bf331128af62af1da1e982ee7e
+      size: 1429
+    - path: results/gas-shape-selection-preflight.json
+      hash: md5
+      md5: 28492dc0cc9d00332ab2721e355e9282
+      size: 468
+    outs:
+    - path: results/gas-shape-pilot01-offline-preflight.json
+      hash: md5
+      md5: 45e100ac73e039e15426d567a4d17ae2
+      size: 733
