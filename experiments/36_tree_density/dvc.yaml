@@ -866,3 +866,13 @@ stages:
     outs:
       - results/model-pair-0-summary.json
       - results/model-pair-1-summary.json
+  build_pair_gallery:
+    cmd: ../../.venv/bin/python model_evaluation/build_pair_gallery.py
+    deps:
+      - model_evaluation/build_pair_gallery.py
+      - results/model-pair-training-collected.json
+      - data/model-pair-training-results
+      - data/learning/sequences.npz
+      - ../35_surrogate_diagnostics/attempt24/gallery.html
+    outs:
+      - data/pair-gallery
