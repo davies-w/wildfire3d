@@ -1,0 +1,296 @@
+{
+  "passed": true,
+  "repair_acceptance_passed": false,
+  "checks": {
+    "startup_gas": false,
+    "peak_amplitude": false,
+    "original_objective": true,
+    "each_state_MAE": true,
+    "quiet_MAE": true,
+    "integral": true,
+    "peak_time": true,
+    "consistency": true,
+    "finite": true,
+    "overprediction_tail": true
+  },
+  "baseline": {
+    "finite": true,
+    "objective": 0.027773123234510422,
+    "physical_MAE_by_feature": [
+      0.36789748072624207,
+      1.9480615854263306,
+      0.03031487576663494,
+      2.584258556365967
+    ],
+    "peak_release_MAE_kg_s": 0.26653170585632324,
+    "peak_time_MAE_s": 3.053849220275879,
+    "released_fuel_integral_MAE_kg": 2.2493631839752197,
+    "gas_dry_fuel_consistency_residual_kg": 3.023805618286133,
+    "startup_gas_p90_deficit": 0.6047728657722473,
+    "startup_gas_p90_overprediction": 0.5024611353874207,
+    "zero_gas_peak_histories": 0,
+    "quiet_physical_MAE": [
+      0.10455946624279022,
+      1.0270665884017944,
+      3.7500565213122172e-06,
+      0.3228808045387268
+    ],
+    "minimum_by_feature": [
+      -0.21417772769927979,
+      0.5392847657203674,
+      -0.004222758114337921,
+      -2.288879632949829
+    ],
+    "negative_fraction_by_feature": [
+      0.047657955437898636,
+      0.0,
+      0.030228763818740845,
+      0.030773425474762917
+    ],
+    "negative_magnitude_mean_by_feature": [
+      0.0021972982212901115,
+      0.0,
+      2.8547292458824813e-06,
+      0.011207552626729012
+    ],
+    "mass_increase_fraction": [
+      0.11913582682609558,
+      0.0627632662653923
+    ],
+    "mass_increase_total_kg": [
+      0.30404719710350037,
+      0.9060425162315369
+    ],
+    "factor_fraction_near_bounds": 0.0
+  },
+  "arms": [
+    {
+      "integrals_preserved_by_sign": true,
+      "max_per_history_integral_residual_kg": {
+        "positive": 7.62939453125e-06,
+        "negative": 9.313225746154785e-10
+      },
+      "arm": "encoded_only",
+      "epoch": 90,
+      "prospective_constrained_selection_verified": true,
+      "selected_hash_exact": true,
+      "other_state_MAEs_unchanged_exactly": true,
+      "cpu_replay_close": true,
+      "cpu_metrics": {
+        "finite": true,
+        "objective": 0.027217989787459373,
+        "physical_MAE_by_feature": [
+          0.36789748072624207,
+          1.948061466217041,
+          0.028901224955916405,
+          2.5842583179473877
+        ],
+        "peak_release_MAE_kg_s": 0.2637540102005005,
+        "peak_time_MAE_s": 3.0844643115997314,
+        "released_fuel_integral_MAE_kg": 2.2493631839752197,
+        "gas_dry_fuel_consistency_residual_kg": 3.0238051414489746,
+        "startup_gas_p90_deficit": 0.5716195106506348,
+        "startup_gas_p90_overprediction": 0.49630653858184814,
+        "zero_gas_peak_histories": 0,
+        "quiet_physical_MAE": [
+          0.10455946624279022,
+          1.0270664691925049,
+          3.7496786262636306e-06,
+          0.3228808343410492
+        ],
+        "minimum_by_feature": [
+          -0.21417772769927979,
+          0.5392847657203674,
+          -0.0041563366539776325,
+          -2.288879632949829
+        ],
+        "negative_fraction_by_feature": [
+          0.04765795171260834,
+          0.0,
+          0.030228758230805397,
+          0.03077341988682747
+        ],
+        "negative_magnitude_mean_by_feature": [
+          0.0021972977556288242,
+          0.0,
+          2.854913645933266e-06,
+          0.011207551695406437
+        ],
+        "mass_increase_fraction": [
+          0.11913581192493439,
+          0.0627632588148117
+        ],
+        "mass_increase_total_kg": [
+          0.30404719710350037,
+          0.9060426354408264
+        ]
+      },
+      "gpu_metrics": {
+        "finite": true,
+        "objective": 0.027217989787459373,
+        "physical_MAE_by_feature": [
+          0.36789748072624207,
+          1.9480615854263306,
+          0.028901226818561554,
+          2.584258556365967
+        ],
+        "peak_release_MAE_kg_s": 0.2637539803981781,
+        "peak_time_MAE_s": 3.0844643115997314,
+        "released_fuel_integral_MAE_kg": 2.2493629455566406,
+        "gas_dry_fuel_consistency_residual_kg": 3.0238053798675537,
+        "startup_gas_p90_deficit": 0.5716195702552795,
+        "startup_gas_p90_overprediction": 0.4963065981864929,
+        "zero_gas_peak_histories": 0,
+        "quiet_physical_MAE": [
+          0.10455946624279022,
+          1.0270665884017944,
+          3.749678853637306e-06,
+          0.3228808045387268
+        ],
+        "minimum_by_feature": [
+          -0.21417772769927979,
+          0.5392847657203674,
+          -0.0041563366539776325,
+          -2.288879632949829
+        ],
+        "negative_fraction_by_feature": [
+          0.047657955437898636,
+          0.0,
+          0.030228763818740845,
+          0.030773425474762917
+        ],
+        "negative_magnitude_mean_by_feature": [
+          0.0021972982212901115,
+          0.0,
+          2.8549138733069412e-06,
+          0.011207552626729012
+        ],
+        "mass_increase_fraction": [
+          0.11913582682609558,
+          0.0627632662653923
+        ],
+        "mass_increase_total_kg": [
+          0.30404719710350037,
+          0.9060425162315369
+        ],
+        "factor_fraction_near_bounds": 0.0
+      }
+    },
+    {
+      "integrals_preserved_by_sign": true,
+      "max_per_history_integral_residual_kg": {
+        "positive": 0.0,
+        "negative": 0.0
+      },
+      "arm": "peak_aware",
+      "epoch": 0,
+      "prospective_constrained_selection_verified": true,
+      "selected_hash_exact": true,
+      "other_state_MAEs_unchanged_exactly": true,
+      "cpu_replay_close": true,
+      "cpu_metrics": {
+        "finite": true,
+        "objective": 0.027773123234510422,
+        "physical_MAE_by_feature": [
+          0.36789748072624207,
+          1.948061466217041,
+          0.03031487576663494,
+          2.5842583179473877
+        ],
+        "peak_release_MAE_kg_s": 0.26653167605400085,
+        "peak_time_MAE_s": 3.053849220275879,
+        "released_fuel_integral_MAE_kg": 2.2493631839752197,
+        "gas_dry_fuel_consistency_residual_kg": 3.023805618286133,
+        "startup_gas_p90_deficit": 0.6047728657722473,
+        "startup_gas_p90_overprediction": 0.5024611353874207,
+        "zero_gas_peak_histories": 0,
+        "quiet_physical_MAE": [
+          0.10455946624279022,
+          1.0270664691925049,
+          3.7500562939385418e-06,
+          0.3228808343410492
+        ],
+        "minimum_by_feature": [
+          -0.21417772769927979,
+          0.5392847657203674,
+          -0.004222758114337921,
+          -2.288879632949829
+        ],
+        "negative_fraction_by_feature": [
+          0.04765795171260834,
+          0.0,
+          0.030228758230805397,
+          0.03077341988682747
+        ],
+        "negative_magnitude_mean_by_feature": [
+          0.0021972977556288242,
+          0.0,
+          2.854729018508806e-06,
+          0.011207551695406437
+        ],
+        "mass_increase_fraction": [
+          0.11913581192493439,
+          0.0627632588148117
+        ],
+        "mass_increase_total_kg": [
+          0.30404719710350037,
+          0.9060426354408264
+        ]
+      },
+      "gpu_metrics": {
+        "finite": true,
+        "objective": 0.027773123234510422,
+        "physical_MAE_by_feature": [
+          0.36789748072624207,
+          1.9480615854263306,
+          0.03031487576663494,
+          2.584258556365967
+        ],
+        "peak_release_MAE_kg_s": 0.26653170585632324,
+        "peak_time_MAE_s": 3.053849220275879,
+        "released_fuel_integral_MAE_kg": 2.2493631839752197,
+        "gas_dry_fuel_consistency_residual_kg": 3.023805618286133,
+        "startup_gas_p90_deficit": 0.6047728657722473,
+        "startup_gas_p90_overprediction": 0.5024611353874207,
+        "zero_gas_peak_histories": 0,
+        "quiet_physical_MAE": [
+          0.10455946624279022,
+          1.0270665884017944,
+          3.7500565213122172e-06,
+          0.3228808045387268
+        ],
+        "minimum_by_feature": [
+          -0.21417772769927979,
+          0.5392847657203674,
+          -0.004222758114337921,
+          -2.288879632949829
+        ],
+        "negative_fraction_by_feature": [
+          0.047657955437898636,
+          0.0,
+          0.030228763818740845,
+          0.030773425474762917
+        ],
+        "negative_magnitude_mean_by_feature": [
+          0.0021972982212901115,
+          0.0,
+          2.8547292458824813e-06,
+          0.011207552626729012
+        ],
+        "mass_increase_fraction": [
+          0.11913582682609558,
+          0.0627632662653923
+        ],
+        "mass_increase_total_kg": [
+          0.30404719710350037,
+          0.9060425162315369
+        ],
+        "factor_fraction_near_bounds": 0.0
+      }
+    }
+  ],
+  "independent_acceptance_recomputed": true,
+  "test_evaluated": false,
+  "optimizer_updates": 0,
+  "scope": "Terminal frozen output-head development verification only. Continuous CPU/CUDA metrics are compared within0.2%relative for original objective/state MAEs and0.002absolute for startup p90. Discrete peak-time indices are reported and may change near tied peaks. Scoring uses previously examined validation, not pristine confirmation. A gas-only calibration does not solve other states or validate physical behavior."
+}

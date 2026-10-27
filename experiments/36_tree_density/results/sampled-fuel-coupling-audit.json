@@ -1,0 +1,36 @@
+{
+  "train_only": true,
+  "optimizer_updates": 0,
+  "histories": 1662,
+  "configurations": 1632,
+  "gas_to_dry_fuel_divisor": 0.75,
+  "oracle_sampled_gas_integrated_unclipped": {
+    "configuration_balanced_MAE_kg": 0.4432620422419172,
+    "median_case_max_error_kg": 0.5723549866164941,
+    "p90_case_max_error_kg": 1.3250248043635364,
+    "maximum_error_kg": 2.997633345899203
+  },
+  "oracle_sampled_gas_integrated_clipped_zero": {
+    "configuration_balanced_MAE_kg": 0.439835671308356,
+    "median_case_max_error_kg": 0.5723549866164941,
+    "p90_case_max_error_kg": 1.3250248043635364,
+    "maximum_error_kg": 2.997633345899203
+  },
+  "existing_GRU_dry_fuel_prediction": {
+    "configuration_balanced_MAE_kg": 1.6548234239047475,
+    "median_case_max_error_kg": 2.8283700942993164,
+    "p90_case_max_error_kg": 6.318787002563477,
+    "maximum_error_kg": 33.533634185791016
+  },
+  "truth_state_minimum": [
+    -0.0008103071595542133,
+    0.2144225686788559,
+    0.0,
+    -0.355705201625824
+  ],
+  "truth_mass_increase_fraction_by_feature": [
+    0.0,
+    0.0
+  ],
+  "scope": "Use TRUE retained approximately2s gas rates and actual sample times, trapezoid integration /0.75 from initial dry mass, compare to derived dry-fuel label integrated upstream at finer device output. This is a truth-assisted representation oracle, NEVER a usable model forecast, lower error bound or physical conservation validation. It quantifies sampling/label-coupling mismatch only. Predictions use no new optimizer or fitting; comparison to frozen GRU is descriptive TRAIN evidence. Clipping zero is reported separately, not silently applied. No validation/test outcomes. Geometry, ignition, mesh and missing embers remain the simplified single-crown setup documented in README."
+}

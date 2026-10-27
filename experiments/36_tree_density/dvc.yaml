@@ -1549,3 +1549,53 @@ stages:
     metrics:
     - results/retained-cpu-reservation-audit.json:
         cache: false
+  audit_gas_shape_trajectory:
+    cmd: ../../.venv/bin/python model_evaluation/audit_gas_shape_trajectory.py
+    deps:
+    - model_evaluation/audit_gas_shape_trajectory.py
+    - data/gas-shape-pilot01
+    - data/gas-shape-pilot01-results
+    - results/gas-shape-pilot01-collected.json
+    metrics:
+    - results/gas-shape-trajectory-audit.json:
+        cache: false
+  snapshot_billing_shape_close:
+    cmd: ../../.venv/bin/python ../../scripts/read_billing_export.py --end 2026-10-28 --output data/billing-export-shape-close.json
+    frozen: true
+    deps:
+    - ../../scripts/read_billing_export.py
+    outs:
+    - data/billing-export-shape-close.json
+  reconcile_closed_preempted_cpu:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_closed_preempted_cpu.py
+    frozen: true
+    deps:
+    - model_evaluation/reconcile_closed_preempted_cpu.py
+    - cloud.py
+    - active-groups.json
+    - results/dataset-completeness.json
+    - results/cloud-campaign-closed.json
+    - results/preemption-088.json
+    - results/preemption-093.json
+    - results/preemption-115.json
+    - data/interrupted/x36-density-032
+    - data/recovery-collected/x36-density-032-r1/verified.json
+    - data/recovery-collected/x36-density-032-r1/cleanup.json
+    - data/recovery-collected/x36-density-088-r1/verified.json
+    - data/recovery-collected/x36-density-088-r1/cleanup.json
+    - data/recovery-collected/x36-density-093-r1/verified.json
+    - data/recovery-collected/x36-density-093-r1/cleanup.json
+    - data/recovery-collected/x36-density-115-r1/verified.json
+    - data/recovery-collected/x36-density-115-r1/cleanup.json
+    metrics:
+    - results/closed-preempted-cpu-reconciliation.json:
+        cache: false
+  audit_sampled_fuel_coupling:
+    cmd: ../../.venv/bin/python model_evaluation/audit_sampled_fuel_coupling.py
+    deps:
+    - model_evaluation/audit_sampled_fuel_coupling.py
+    - data/gas-head-candidate
+    - data/exposure-pilot02/schema.json
+    metrics:
+    - results/sampled-fuel-coupling-audit.json:
+        cache: false

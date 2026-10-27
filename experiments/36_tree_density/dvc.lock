@@ -3688,3 +3688,224 @@ stages:
       hash: md5
       md5: 50138bdbfafa8b3c46aaf0f7673634a8
       size: 14543
+  collect_gas_shape_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/collect_gas_shape_pilot01.py
+    deps:
+    - path: model_evaluation/collect_gas_shape_pilot01.py
+      hash: md5
+      md5: 191c9a6da9f7542786556a4e8eab784a
+      size: 5191
+    - path: results/gas-shape-pilot01-execution.json
+      hash: md5
+      md5: d3ced3b3c97b160683a4e17e8d2b6af9
+      size: 335
+    outs:
+    - path: data/gas-shape-pilot01-results
+      hash: md5
+      md5: 10dd9c282fcd9b8f2312c7b135226629.dir
+      size: 28606090
+      nfiles: 672
+    - path: results/gas-shape-pilot01-collected.json
+      hash: md5
+      md5: a87882aa8c5e000fb17acaad4ace3fef
+      size: 591
+  close_gas_shape_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/close_gas_shape_pilot01.py
+    deps:
+    - path: model_evaluation/close_gas_shape_pilot01.py
+      hash: md5
+      md5: bfebb4df2cba01bf5b113584c60d232c
+      size: 1711
+    - path: results/gas-shape-pilot01-collected.json
+      hash: md5
+      md5: a87882aa8c5e000fb17acaad4ace3fef
+      size: 591
+    outs:
+    - path: results/gas-shape-pilot01-permission-removed.json
+      hash: md5
+      md5: 9e1dc40aeb1da91a3f232a6346cd6434
+      size: 457
+  analyze_gas_shape_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_gas_shape_pilot01.py
+    deps:
+    - path: data/gas-shape-pilot01
+      hash: md5
+      md5: 0f9ef245d41f905943c52ad059eac1c1.dir
+      size: 53242573
+      nfiles: 17
+    - path: data/gas-shape-pilot01-results
+      hash: md5
+      md5: 10dd9c282fcd9b8f2312c7b135226629.dir
+      size: 28606090
+      nfiles: 672
+    - path: model_evaluation/analyze_gas_shape_pilot01.py
+      hash: md5
+      md5: 0ad3e8c2cb5cdd96efea5718d2c454f6
+      size: 5103
+    - path: results/gas-shape-pilot01-collected.json
+      hash: md5
+      md5: a87882aa8c5e000fb17acaad4ace3fef
+      size: 591
+    outs:
+    - path: results/gas-shape-pilot01-analysis.json
+      hash: md5
+      md5: 1a06210521be84b6849c9b33c7ea97f9
+      size: 9264
+  reconcile_gas_shape_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_gas_shape_pilot01.py
+    deps:
+    - path: model_evaluation/reconcile_gas_shape_pilot01.py
+      hash: md5
+      md5: 06c16d2223d8fb1abdb69480a7a40ad3
+      size: 1658
+    - path: results/gas-shape-pilot01-collected.json
+      hash: md5
+      md5: a87882aa8c5e000fb17acaad4ace3fef
+      size: 591
+    - path: results/gas-shape-pilot01-permission-removed.json
+      hash: md5
+      md5: 9e1dc40aeb1da91a3f232a6346cd6434
+      size: 457
+    outs:
+    - path: results/gas-shape-pilot01-cost-reconciled.json
+      hash: md5
+      md5: 82f930b80afc1ae083732955259ba2cd
+      size: 472
+  audit_gas_shape_trajectory:
+    cmd: ../../.venv/bin/python model_evaluation/audit_gas_shape_trajectory.py
+    deps:
+    - path: data/gas-shape-pilot01
+      hash: md5
+      md5: 0f9ef245d41f905943c52ad059eac1c1.dir
+      size: 53242573
+      nfiles: 17
+    - path: data/gas-shape-pilot01-results
+      hash: md5
+      md5: 10dd9c282fcd9b8f2312c7b135226629.dir
+      size: 28606090
+      nfiles: 672
+    - path: model_evaluation/audit_gas_shape_trajectory.py
+      hash: md5
+      md5: 882c463170f6637f87395950d8c67183
+      size: 2371
+    - path: results/gas-shape-pilot01-collected.json
+      hash: md5
+      md5: a87882aa8c5e000fb17acaad4ace3fef
+      size: 591
+    outs:
+    - path: results/gas-shape-trajectory-audit.json
+      hash: md5
+      md5: b2d338d2302354139f2bff339c356fde
+      size: 242391
+  snapshot_billing_shape_close:
+    cmd: ../../.venv/bin/python ../../scripts/read_billing_export.py --end 
+      2026-10-28 --output data/billing-export-shape-close.json
+    deps:
+    - path: ../../scripts/read_billing_export.py
+      hash: md5
+      md5: efa28e6e107e970bd887261affca0958
+      size: 2905
+    outs:
+    - path: data/billing-export-shape-close.json
+      hash: md5
+      md5: 6bb3a94ab1ca48d79f0f2410d9237c6a
+      size: 3787591
+  reconcile_closed_preempted_cpu:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/reconcile_closed_preempted_cpu.py
+    deps:
+    - path: active-groups.json
+      hash: md5
+      md5: 843070d094015db784a058006ed33b1c
+      size: 100561
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: data/interrupted/x36-density-032
+      hash: md5
+      md5: cbe1ee93e2a2824fc16b9cf4e0033dc5.dir
+      size: 35113
+      nfiles: 9
+    - path: data/recovery-collected/x36-density-032-r1/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: data/recovery-collected/x36-density-032-r1/verified.json
+      hash: md5
+      md5: 540b221e92b4f6e11537ef6fea1818fa
+      size: 397
+    - path: data/recovery-collected/x36-density-088-r1/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: data/recovery-collected/x36-density-088-r1/verified.json
+      hash: md5
+      md5: c0f2818389a09e22faef7fb87e2f12e8
+      size: 389
+    - path: data/recovery-collected/x36-density-093-r1/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: data/recovery-collected/x36-density-093-r1/verified.json
+      hash: md5
+      md5: c80e47b9b21c1465e2fc57662cc6a0fc
+      size: 389
+    - path: data/recovery-collected/x36-density-115-r1/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: data/recovery-collected/x36-density-115-r1/verified.json
+      hash: md5
+      md5: 674e38dea2430b6bf65a3c7c161e0cc8
+      size: 484
+    - path: model_evaluation/reconcile_closed_preempted_cpu.py
+      hash: md5
+      md5: 36d7bf41481a1039f532893a6b922b60
+      size: 5085
+    - path: results/cloud-campaign-closed.json
+      hash: md5
+      md5: e48838fe994b0cf9e9cf2ee6ff81ac5d
+      size: 713
+    - path: results/dataset-completeness.json
+      hash: md5
+      md5: bca407937c95345cc80604a5e12cddf6
+      size: 496
+    - path: results/preemption-088.json
+      hash: md5
+      md5: 7bf09787de80a9755ecd71e37b3bd8b0
+      size: 2067
+    - path: results/preemption-093.json
+      hash: md5
+      md5: f852555e78c208e612e195612d27e4e0
+      size: 2067
+    - path: results/preemption-115.json
+      hash: md5
+      md5: 7140e2ec81486d529cde0d6efd240e12
+      size: 1177
+    outs:
+    - path: results/closed-preempted-cpu-reconciliation.json
+      hash: md5
+      md5: ae5bb033ddb349fa8d1b40e206d9aa91
+      size: 4078
+  audit_sampled_fuel_coupling:
+    cmd: ../../.venv/bin/python model_evaluation/audit_sampled_fuel_coupling.py
+    deps:
+    - path: data/exposure-pilot02/schema.json
+      hash: md5
+      md5: 72f1f49ef09731507728a13b8eff1997
+      size: 418638
+    - path: data/gas-head-candidate
+      hash: md5
+      md5: 1bae6163fbc3780981d71b7ec0c65e96.dir
+      size: 26581682
+      nfiles: 6
+    - path: model_evaluation/audit_sampled_fuel_coupling.py
+      hash: md5
+      md5: 809e1719da14fd6cb39c266c09a63a15
+      size: 2586
+    outs:
+    - path: results/sampled-fuel-coupling-audit.json
+      hash: md5
+      md5: c96960964e8ac684697283e239622c9e
+      size: 1765
