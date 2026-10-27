@@ -2363,3 +2363,60 @@ stages:
       hash: md5
       md5: 9ad30f483381362b6518f06acdb05c06
       size: 6793
+  prepare_flex_queue:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_flex_queue.py && 
+      ../../.venv/bin/python model_evaluation/setup_flex_queue.py && 
+      ../../.venv/bin/python model_evaluation/check_flex_queue.py && 
+      ../../.venv/bin/python model_evaluation/check_flex_watchdog.py
+    deps:
+    - path: data/pair-sequence/rotation1
+      hash: md5
+      md5: 586096b0aef4da6a4bd4921486c65e40.dir
+      size: 11141393
+      nfiles: 12
+    - path: learning-schema.json
+      hash: md5
+      md5: 0dbee67e38424d53816fe78799442133
+      size: 672301
+    - path: model_evaluation/check_flex_queue.py
+      hash: md5
+      md5: 3100fd1e73186fe170203525cde2e29d
+      size: 3311
+    - path: model_evaluation/check_flex_watchdog.py
+      hash: md5
+      md5: 58c659e6c19849aa882cc21612e46f00
+      size: 2315
+    - path: model_evaluation/prepare_flex_queue.py
+      hash: md5
+      md5: f1dee30b04c01a22214e6a5ac7988bcc
+      size: 11602
+    - path: model_evaluation/setup_flex_queue.py
+      hash: md5
+      md5: a32f2b98a8c54f28408c6c8500f633dd
+      size: 4658
+    - path: results/pair-sequence-cost-reconciled.json
+      hash: md5
+      md5: 3a2c9f09658f46ba01a88c3292ac3088
+      size: 414
+    outs:
+    - path: data/flex-queue
+      hash: md5
+      md5: f28733adf871287322017148edf64dbe.dir
+      size: 100371436
+      nfiles: 106
+    - path: results/flex-queue-checks.json
+      hash: md5
+      md5: 243633ce54309cadf9dcb69f6f636905
+      size: 2687
+    - path: results/flex-queue-prepared.json
+      hash: md5
+      md5: 6ae2c4eeed622e4e8b356c4330c0a153
+      size: 11324
+    - path: results/flex-queue-readiness.json
+      hash: md5
+      md5: 862adfc61582f1f1760017d9a97051e2
+      size: 583
+    - path: results/flex-watchdog-checks.json
+      hash: md5
+      md5: b4df0fb129b86cc14e0a7fc8d82b0506
+      size: 1551

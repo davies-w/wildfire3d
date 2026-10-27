@@ -991,3 +991,34 @@ stages:
     - results/pair-rotation1-stockout.json
     - results/pair-rotation1-capacity-a-readiness.json
     - results/pair-rotation1-capacity-a-execution.json
+
+  prepare_flex_queue:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_flex_queue.py && ../../.venv/bin/python model_evaluation/setup_flex_queue.py && ../../.venv/bin/python model_evaluation/check_flex_queue.py && ../../.venv/bin/python model_evaluation/check_flex_watchdog.py
+    frozen: true
+    deps:
+    - model_evaluation/prepare_flex_queue.py
+    - model_evaluation/setup_flex_queue.py
+    - model_evaluation/check_flex_queue.py
+    - model_evaluation/check_flex_watchdog.py
+    - data/pair-sequence/rotation1
+    - learning-schema.json
+    - results/pair-sequence-cost-reconciled.json
+    outs:
+    - data/flex-queue:
+        persist: true
+    - results/flex-queue-prepared.json
+    - results/flex-queue-checks.json
+    - results/flex-watchdog-checks.json
+    - results/flex-queue-readiness.json
+  launch_flex_queue:
+    cmd: ../../.venv/bin/python model_evaluation/launch_flex_queue.py
+    frozen: true
+    deps:
+    - model_evaluation/launch_flex_queue.py
+    - data/flex-queue
+    - results/flex-queue-prepared.json
+    - results/flex-queue-checks.json
+    - results/flex-watchdog-checks.json
+    outs:
+    - results/flex-queue-execution.json:
+        persist: true

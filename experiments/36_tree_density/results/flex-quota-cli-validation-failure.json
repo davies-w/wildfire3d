@@ -1,0 +1,178 @@
+{
+  "recorded_utc": "2026-10-27T17:47:57.126461+00:00",
+  "purpose": "User-authorized Flex-start Batch capacity",
+  "before": [
+    {
+      "createTime": "2026-10-26T05:01:11.547340809Z",
+      "dimensions": {
+        "region": "us-central1"
+      },
+      "etag": "R6jz8E8MSopMUgj6Ee9gF-d4u1DriIyth1lqW-VcvEw",
+      "name": "projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/density36-c3-96",
+      "quotaConfig": {
+        "grantedValue": "96",
+        "preferredValue": "96",
+        "stateDetail": "Quota request approved to 96",
+        "traceId": "9b51d264-8a5d-44da-9ec6-ccde50e36b03"
+      },
+      "quotaId": "C3-CPUS-per-project-region",
+      "service": "compute.googleapis.com",
+      "updateTime": "2026-10-26T05:01:17.376162171Z"
+    },
+    {
+      "createTime": "2026-10-26T06:51:31.059597142Z",
+      "etag": "Elj6aiVpx-5NIYwMQUo-ZnNer1Hw4mybLn9oSJjmxQ0",
+      "name": "projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/density36-global-cpus-96",
+      "quotaConfig": {
+        "grantedValue": "96",
+        "preferredValue": "96",
+        "stateDetail": "Quota request approved to 96",
+        "traceId": "d1176de0-ceaa-4eae-a2e9-3d186632d2d2"
+      },
+      "quotaId": "CPUS-ALL-REGIONS-per-project",
+      "service": "compute.googleapis.com",
+      "updateTime": "2026-10-26T06:51:34.759348616Z"
+    },
+    {
+      "createTime": "2026-10-26T05:01:33.277229433Z",
+      "dimensions": {
+        "region": "us-central1"
+      },
+      "etag": "_qmQijoQIOlNb_KRV3lycx4xTRoIfeUOkyjANP1dBPY",
+      "name": "projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/density36-addresses-24",
+      "quotaConfig": {
+        "grantedValue": "24",
+        "preferredValue": "24",
+        "stateDetail": "Quota request approved to 24",
+        "traceId": "1dc81485-6dcd-474f-8063-fc2e0c4c147f"
+      },
+      "quotaId": "IN-USE-ADDRESSES-per-project-region",
+      "service": "compute.googleapis.com",
+      "updateTime": "2026-10-26T05:01:39.034385781Z"
+    },
+    {
+      "createTime": "2026-10-27T06:10:27.524123285Z",
+      "dimensions": {
+        "region": "us-central1"
+      },
+      "etag": "PaMUjohDxXo2yxau7878981_dedBZDSCawi49p1KiGQ",
+      "name": "projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/density36-l4-four",
+      "quotaConfig": {
+        "grantedValue": "1",
+        "preferredValue": "2",
+        "stateDetail": "Quota request denied",
+        "traceId": "127887e4-6bca-4ddf-aef4-e4d1fcaa6781"
+      },
+      "quotaId": "NVIDIA-L4-GPUS-per-project-region",
+      "service": "compute.googleapis.com",
+      "updateTime": "2026-10-27T17:06:54.768107028Z"
+    },
+    {
+      "createTime": "2026-10-20T21:56:24.609731990Z",
+      "etag": "R8ZY5yNqDMhlVqUGyVH2e0yr2dH37e5ulif91XfmxSU",
+      "name": "projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/372adac7-559a-4615-b3df-079a62ad6c89",
+      "quotaConfig": {
+        "grantedValue": "1",
+        "preferredValue": "2",
+        "stateDetail": "Quota request denied",
+        "traceId": "3b2129e8-38d9-4fd6-8d97-52784f39b390"
+      },
+      "quotaId": "GPUS-ALL-REGIONS-per-project",
+      "service": "compute.googleapis.com",
+      "updateTime": "2026-10-27T17:06:49.896525073Z"
+    },
+    {
+      "createTime": "2026-10-26T05:01:18.406493101Z",
+      "dimensions": {
+        "region": "us-central1"
+      },
+      "etag": "5yycMGXrJqLPdmLIerHEHjAw72X-Dzg9KvUj-kjc280",
+      "name": "projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/density36-disk-720",
+      "quotaConfig": {
+        "grantedValue": "720",
+        "preferredValue": "720",
+        "stateDetail": "Quota request approved to 720",
+        "traceId": "b3c5f337-477c-49df-8905-a0ac4c3ecf62"
+      },
+      "quotaId": "SSD-TOTAL-GB-per-project-region",
+      "service": "compute.googleapis.com",
+      "updateTime": "2026-10-26T05:01:22.323005024Z"
+    }
+  ],
+  "requests": {
+    "l4": {
+      "returncode": 2,
+      "stdout": "",
+      "stderr": "ERROR: (gcloud.beta.quotas.preferences.create) unrecognized arguments: --quota-preference-id=density36-flex-l4-4 (did you mean '--preference-id'?) \n\nTo search the help text of gcloud commands, run:\n  gcloud help -- SEARCH_TERMS\n"
+    }
+  },
+  "l4_definition": {
+    "containerType": "PROJECT",
+    "dimensions": [
+      "region"
+    ],
+    "dimensionsInfos": [
+      {
+        "applicableLocations": [
+          "africa-south1",
+          "asia-east1",
+          "asia-east2",
+          "asia-northeast1",
+          "asia-northeast2",
+          "asia-northeast3",
+          "asia-south1",
+          "asia-south2",
+          "asia-southeast1",
+          "asia-southeast2",
+          "asia-southeast3",
+          "australia-southeast1",
+          "australia-southeast2",
+          "europe-central2",
+          "europe-north1",
+          "europe-north2",
+          "europe-southwest1",
+          "europe-west1",
+          "europe-west10",
+          "europe-west12",
+          "europe-west2",
+          "europe-west3",
+          "europe-west4",
+          "europe-west6",
+          "europe-west8",
+          "europe-west9",
+          "me-central1",
+          "me-central2",
+          "me-west1",
+          "northamerica-northeast1",
+          "northamerica-northeast2",
+          "northamerica-south1",
+          "southamerica-east1",
+          "southamerica-west1",
+          "us-central1",
+          "us-east1",
+          "us-east4",
+          "us-east5",
+          "us-south1",
+          "us-west1",
+          "us-west2",
+          "us-west3",
+          "us-west4"
+        ],
+        "details": {
+          "value": "1"
+        }
+      }
+    ],
+    "isPrecise": true,
+    "metric": "compute.googleapis.com/preemptible_nvidia_l4_gpus",
+    "metricDisplayName": "Preemptible NVIDIA L4 GPUs",
+    "metricUnit": "1",
+    "name": "projects/587909259768/locations/global/services/compute.googleapis.com/quotaInfos/PREEMPTIBLE-NVIDIA-L4-GPUS-per-project-region",
+    "quotaDisplayName": "Preemptible NVIDIA L4 GPUs",
+    "quotaId": "PREEMPTIBLE-NVIDIA-L4-GPUS-per-project-region",
+    "quotaIncreaseEligibility": {
+      "isEligible": true
+    },
+    "service": "compute.googleapis.com"
+  }
+}

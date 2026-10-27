@@ -1,0 +1,589 @@
+{
+  "recorded_utc": "2026-10-27T17:48:10.831439+00:00",
+  "purpose": "User-authorized Flex-start Batch capacity",
+  "before": [
+    {
+      "createTime": "2026-10-26T05:01:11.547340809Z",
+      "dimensions": {
+        "region": "us-central1"
+      },
+      "etag": "R6jz8E8MSopMUgj6Ee9gF-d4u1DriIyth1lqW-VcvEw",
+      "name": "projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/density36-c3-96",
+      "quotaConfig": {
+        "grantedValue": "96",
+        "preferredValue": "96",
+        "stateDetail": "Quota request approved to 96",
+        "traceId": "9b51d264-8a5d-44da-9ec6-ccde50e36b03"
+      },
+      "quotaId": "C3-CPUS-per-project-region",
+      "service": "compute.googleapis.com",
+      "updateTime": "2026-10-26T05:01:17.376162171Z"
+    },
+    {
+      "createTime": "2026-10-26T06:51:31.059597142Z",
+      "etag": "Elj6aiVpx-5NIYwMQUo-ZnNer1Hw4mybLn9oSJjmxQ0",
+      "name": "projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/density36-global-cpus-96",
+      "quotaConfig": {
+        "grantedValue": "96",
+        "preferredValue": "96",
+        "stateDetail": "Quota request approved to 96",
+        "traceId": "d1176de0-ceaa-4eae-a2e9-3d186632d2d2"
+      },
+      "quotaId": "CPUS-ALL-REGIONS-per-project",
+      "service": "compute.googleapis.com",
+      "updateTime": "2026-10-26T06:51:34.759348616Z"
+    },
+    {
+      "createTime": "2026-10-26T05:01:33.277229433Z",
+      "dimensions": {
+        "region": "us-central1"
+      },
+      "etag": "_qmQijoQIOlNb_KRV3lycx4xTRoIfeUOkyjANP1dBPY",
+      "name": "projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/density36-addresses-24",
+      "quotaConfig": {
+        "grantedValue": "24",
+        "preferredValue": "24",
+        "stateDetail": "Quota request approved to 24",
+        "traceId": "1dc81485-6dcd-474f-8063-fc2e0c4c147f"
+      },
+      "quotaId": "IN-USE-ADDRESSES-per-project-region",
+      "service": "compute.googleapis.com",
+      "updateTime": "2026-10-26T05:01:39.034385781Z"
+    },
+    {
+      "createTime": "2026-10-27T06:10:27.524123285Z",
+      "dimensions": {
+        "region": "us-central1"
+      },
+      "etag": "PaMUjohDxXo2yxau7878981_dedBZDSCawi49p1KiGQ",
+      "name": "projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/density36-l4-four",
+      "quotaConfig": {
+        "grantedValue": "1",
+        "preferredValue": "2",
+        "stateDetail": "Quota request denied",
+        "traceId": "127887e4-6bca-4ddf-aef4-e4d1fcaa6781"
+      },
+      "quotaId": "NVIDIA-L4-GPUS-per-project-region",
+      "service": "compute.googleapis.com",
+      "updateTime": "2026-10-27T17:06:54.768107028Z"
+    },
+    {
+      "createTime": "2026-10-20T21:56:24.609731990Z",
+      "etag": "R8ZY5yNqDMhlVqUGyVH2e0yr2dH37e5ulif91XfmxSU",
+      "name": "projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/372adac7-559a-4615-b3df-079a62ad6c89",
+      "quotaConfig": {
+        "grantedValue": "1",
+        "preferredValue": "2",
+        "stateDetail": "Quota request denied",
+        "traceId": "3b2129e8-38d9-4fd6-8d97-52784f39b390"
+      },
+      "quotaId": "GPUS-ALL-REGIONS-per-project",
+      "service": "compute.googleapis.com",
+      "updateTime": "2026-10-27T17:06:49.896525073Z"
+    },
+    {
+      "createTime": "2026-10-26T05:01:18.406493101Z",
+      "dimensions": {
+        "region": "us-central1"
+      },
+      "etag": "5yycMGXrJqLPdmLIerHEHjAw72X-Dzg9KvUj-kjc280",
+      "name": "projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/density36-disk-720",
+      "quotaConfig": {
+        "grantedValue": "720",
+        "preferredValue": "720",
+        "stateDetail": "Quota request approved to 720",
+        "traceId": "b3c5f337-477c-49df-8905-a0ac4c3ecf62"
+      },
+      "quotaId": "SSD-TOTAL-GB-per-project-region",
+      "service": "compute.googleapis.com",
+      "updateTime": "2026-10-26T05:01:22.323005024Z"
+    }
+  ],
+  "requests": {
+    "l4": {
+      "returncode": 0,
+      "stdout": "{\n  \"createTime\": \"2026-10-27T17:48:15.087397176Z\",\n  \"dimensions\": {\n    \"region\": \"us-central1\"\n  },\n  \"etag\": \"M0xH7x3vEnO-cYDHoZ8vKR5RNTOMijO8LZgkbutbUnc\",\n  \"name\": \"projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/density36-flex-l4-4\",\n  \"quotaConfig\": {\n    \"grantedValue\": \"1\",\n    \"preferredValue\": \"4\",\n    \"traceId\": \"3bd1b7c7-1290-4c74-a64d-8a62a26f89ab\"\n  },\n  \"quotaId\": \"PREEMPTIBLE-NVIDIA-L4-GPUS-per-project-region\",\n  \"reconciling\": true,\n  \"service\": \"compute.googleapis.com\",\n  \"updateTime\": \"2026-10-27T17:48:15.087397176Z\"\n}\n",
+      "stderr": ""
+    },
+    "cpu": {
+      "returncode": 0,
+      "stdout": "{\n  \"createTime\": \"2026-10-27T17:48:20.490703647Z\",\n  \"dimensions\": {\n    \"region\": \"us-central1\"\n  },\n  \"etag\": \"EuqPK943MxeAN4PXkjsZdoq38b0Q2AnzUhjuFlnYF2k\",\n  \"name\": \"projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/density36-flex-cpus-16\",\n  \"quotaConfig\": {\n    \"grantedValue\": \"0\",\n    \"preferredValue\": \"16\",\n    \"traceId\": \"1e541d62-13c3-4188-9eda-1f49cef0ff4d\"\n  },\n  \"quotaId\": \"PREEMPTIBLE-CPUS-per-project-region\",\n  \"reconciling\": true,\n  \"service\": \"compute.googleapis.com\",\n  \"updateTime\": \"2026-10-27T17:48:20.490703647Z\"\n}\n",
+      "stderr": ""
+    }
+  },
+  "l4_definition": {
+    "containerType": "PROJECT",
+    "dimensions": [
+      "region"
+    ],
+    "dimensionsInfos": [
+      {
+        "applicableLocations": [
+          "africa-south1",
+          "asia-east1",
+          "asia-east2",
+          "asia-northeast1",
+          "asia-northeast2",
+          "asia-northeast3",
+          "asia-south1",
+          "asia-south2",
+          "asia-southeast1",
+          "asia-southeast2",
+          "asia-southeast3",
+          "australia-southeast1",
+          "australia-southeast2",
+          "europe-central2",
+          "europe-north1",
+          "europe-north2",
+          "europe-southwest1",
+          "europe-west1",
+          "europe-west10",
+          "europe-west12",
+          "europe-west2",
+          "europe-west3",
+          "europe-west4",
+          "europe-west6",
+          "europe-west8",
+          "europe-west9",
+          "me-central1",
+          "me-central2",
+          "me-west1",
+          "northamerica-northeast1",
+          "northamerica-northeast2",
+          "northamerica-south1",
+          "southamerica-east1",
+          "southamerica-west1",
+          "us-central1",
+          "us-east1",
+          "us-east4",
+          "us-east5",
+          "us-south1",
+          "us-west1",
+          "us-west2",
+          "us-west3",
+          "us-west4"
+        ],
+        "details": {
+          "value": "1"
+        }
+      }
+    ],
+    "isPrecise": true,
+    "metric": "compute.googleapis.com/preemptible_nvidia_l4_gpus",
+    "metricDisplayName": "Preemptible NVIDIA L4 GPUs",
+    "metricUnit": "1",
+    "name": "projects/587909259768/locations/global/services/compute.googleapis.com/quotaInfos/PREEMPTIBLE-NVIDIA-L4-GPUS-per-project-region",
+    "quotaDisplayName": "Preemptible NVIDIA L4 GPUs",
+    "quotaId": "PREEMPTIBLE-NVIDIA-L4-GPUS-per-project-region",
+    "quotaIncreaseEligibility": {
+      "isEligible": true
+    },
+    "service": "compute.googleapis.com"
+  },
+  "cpu_definition": {
+    "containerType": "PROJECT",
+    "dimensions": [
+      "region"
+    ],
+    "dimensionsInfos": [
+      {
+        "applicableLocations": [
+          "africa-south1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "africa-south1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "asia-east1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "asia-east1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "asia-east2"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "asia-east2"
+        }
+      },
+      {
+        "applicableLocations": [
+          "asia-northeast1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "asia-northeast1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "asia-northeast2"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "asia-northeast2"
+        }
+      },
+      {
+        "applicableLocations": [
+          "asia-northeast3"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "asia-northeast3"
+        }
+      },
+      {
+        "applicableLocations": [
+          "asia-south1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "asia-south1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "asia-south2"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "asia-south2"
+        }
+      },
+      {
+        "applicableLocations": [
+          "asia-southeast1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "asia-southeast1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "asia-southeast2"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "asia-southeast2"
+        }
+      },
+      {
+        "applicableLocations": [
+          "asia-southeast3"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "asia-southeast3"
+        }
+      },
+      {
+        "applicableLocations": [
+          "australia-southeast1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "australia-southeast1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "australia-southeast2"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "australia-southeast2"
+        }
+      },
+      {
+        "applicableLocations": [
+          "europe-central2"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "europe-central2"
+        }
+      },
+      {
+        "applicableLocations": [
+          "europe-north1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "europe-north1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "europe-north2"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "europe-north2"
+        }
+      },
+      {
+        "applicableLocations": [
+          "europe-southwest1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "europe-southwest1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "europe-west10"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "europe-west10"
+        }
+      },
+      {
+        "applicableLocations": [
+          "europe-west12"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "europe-west12"
+        }
+      },
+      {
+        "applicableLocations": [
+          "europe-west1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "europe-west1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "europe-west2"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "europe-west2"
+        }
+      },
+      {
+        "applicableLocations": [
+          "europe-west3"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "europe-west3"
+        }
+      },
+      {
+        "applicableLocations": [
+          "europe-west4"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "europe-west4"
+        }
+      },
+      {
+        "applicableLocations": [
+          "europe-west6"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "europe-west6"
+        }
+      },
+      {
+        "applicableLocations": [
+          "europe-west8"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "europe-west8"
+        }
+      },
+      {
+        "applicableLocations": [
+          "europe-west9"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "europe-west9"
+        }
+      },
+      {
+        "applicableLocations": [
+          "me-central1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "me-central1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "me-central2"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "me-central2"
+        }
+      },
+      {
+        "applicableLocations": [
+          "me-west1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "me-west1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "northamerica-northeast1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "northamerica-northeast1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "northamerica-northeast2"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "northamerica-northeast2"
+        }
+      },
+      {
+        "applicableLocations": [
+          "northamerica-south1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "northamerica-south1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "southamerica-east1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "southamerica-east1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "southamerica-west1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "southamerica-west1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "us-central1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "us-central1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "us-east1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "us-east1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "us-east4"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "us-east4"
+        }
+      },
+      {
+        "applicableLocations": [
+          "us-east5"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "us-east5"
+        }
+      },
+      {
+        "applicableLocations": [
+          "us-south1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "us-south1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "us-west1"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "us-west1"
+        }
+      },
+      {
+        "applicableLocations": [
+          "us-west2"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "us-west2"
+        }
+      },
+      {
+        "applicableLocations": [
+          "us-west3"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "us-west3"
+        }
+      },
+      {
+        "applicableLocations": [
+          "us-west4"
+        ],
+        "details": {},
+        "dimensions": {
+          "region": "us-west4"
+        }
+      }
+    ],
+    "isPrecise": true,
+    "metric": "compute.googleapis.com/preemptible_cpus",
+    "metricDisplayName": "Preemptible CPUs",
+    "metricUnit": "1",
+    "name": "projects/587909259768/locations/global/services/compute.googleapis.com/quotaInfos/PREEMPTIBLE-CPUS-per-project-region",
+    "quotaDisplayName": "Preemptible CPUs",
+    "quotaId": "PREEMPTIBLE-CPUS-per-project-region",
+    "quotaIncreaseEligibility": {
+      "isEligible": true
+    },
+    "service": "compute.googleapis.com"
+  }
+}

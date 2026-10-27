@@ -1,0 +1,17 @@
+{
+  "member": "fds-watchdog@tmrw-wildfire-20261015.iam.gserviceaccount.com",
+  "role": {
+    "description": "Read disk inventory to verify bounded training cleanup",
+    "etag": "BwZe1h8qOvo=",
+    "includedPermissions": [
+      "compute.disks.list"
+    ],
+    "name": "projects/tmrw-wildfire-20261015/roles/density36CleanupInventory",
+    "stage": "GA",
+    "title": "Density36 cleanup inventory"
+  },
+  "condition": "expression=request.time < timestamp('2026-11-16T17:53:16Z'),title=density36-flex-cleanup-read",
+  "expires": "2026-11-16T17:53:16Z",
+  "permission": "compute.disks.list",
+  "purpose": "Read-only cleanup verification; remove after terminal collection"
+}
