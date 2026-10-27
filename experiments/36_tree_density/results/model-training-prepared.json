@@ -1,0 +1,27 @@
+{
+  "submitted": false,
+  "training": true,
+  "workflow_id": "fds-gpu36-training01",
+  "input_sha256": "9771ba708b1f850c73508261c0b1f897888315ff8a240ceb009df08dd9affbe5",
+  "input_bytes": 3952640,
+  "workflow_sha256": "20ed0e80d72fe4a7121782cb0da79d1610868ab097414960069b6810c082b45c",
+  "files": {
+    "worker.py": "50bedecf6fad0f9555be3c2b8fab4a1d6c0a5839779ae6b6dc4807b2c9234e38",
+    "model.py": "f921f3f08d6b9880b849e3dd458aa865d20f64c08e6fab7dd5b4fa94c2e71875",
+    "runtime.py": "11a648cbb7cc202c689f23ba15b7d659f7f3a1b91e5dd2d50c0e8e6d0176683f",
+    "schema.json": "cb89233f68ede238a32353f3729dd61fdc79dbb0c66cb9bc9762f9705a7490cb",
+    "data/sequences.npz": "3e6598f14a33fe1d21d4a02bda68699645601a43e8711d2e6314e50394150d18",
+    "coverage-plan.json": "7f0b94a0c2ec4e0e2d64708421bbc1f650c9158bca786d204f330f7319825572"
+  },
+  "maximum_allowance_usd": 6.5,
+  "soft_seconds": 25200,
+  "task_seconds": 27900,
+  "vm_age_seconds": 28800,
+  "absolute_seconds": 30600,
+  "queue_seconds": 1200,
+  "rate_ceiling_usd_per_hour": 0.8,
+  "maximum_vm_cost_at_ceiling": 6.4,
+  "checkpoint_policy": "Every completed epoch retains model, optimizer, RNG, history and best state; first epoch validates nonempty optimizer replay. Deadline checkpoint; no automatic continuation.",
+  "reporting_difference": "Equal configuration weighting with changed floating reduction order; GPU equivalence rtol1e-5 atol1e-7, deterministic replay passed.",
+  "no_test_before_all_ten_selections": true
+}

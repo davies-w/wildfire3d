@@ -1533,3 +1533,121 @@ stages:
       hash: md5
       md5: fca1dd9129a652c333645f96404a459b
       size: 336
+  collect_model_timing03:
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing03.py
+    deps:
+    - path: model_evaluation/collect_timing03.py
+      hash: md5
+      md5: 012a3fba11294d46c8217b7c74581527
+      size: 1949
+    - path: results/model-timing03-execution.json
+      hash: md5
+      md5: fca1dd9129a652c333645f96404a459b
+      size: 336
+    outs:
+    - path: data/model-timing03-results
+      hash: md5
+      md5: 0bd05d002f5b8b874cf6ea07f6da31cc.dir
+      size: 6564
+      nfiles: 7
+    - path: results/model-timing03-collected.json
+      hash: md5
+      md5: e23b8592597905074d95ab5b05e7ab2d
+      size: 1198
+  close_model_timing03:
+    cmd: ../../.venv/bin/python model_evaluation/close_timing03.py
+    deps:
+    - path: model_evaluation/close_timing03.py
+      hash: md5
+      md5: a3f81251a46329349f3ead06a2b4ed56
+      size: 1045
+    - path: results/model-timing03-cleanup.json
+      hash: md5
+      md5: 9fce3b0329f161163703cb8f756d9e1f
+      size: 51
+    - path: results/model-timing03-collected.json
+      hash: md5
+      md5: e23b8592597905074d95ab5b05e7ab2d
+      size: 1198
+    - path: results/model-timing03-read-condition.json
+      hash: md5
+      md5: be39e372ef4692c8c549fb30a41fe817
+      size: 324
+    outs:
+    - path: results/model-timing03-permission-removed.json
+      hash: md5
+      md5: d3230bdf8c0ff73fb58d6e825d29eede
+      size: 419
+  plan_training_runtime03:
+    cmd: ../../.venv/bin/python model_evaluation/plan_training_runtime03.py
+    deps:
+    - path: data/grouped-folds.json
+      hash: md5
+      md5: 44be6c76cd7dd8870d4497612a66b4a0
+      size: 671656
+    - path: data/model-timing03-results
+      hash: md5
+      md5: 0bd05d002f5b8b874cf6ea07f6da31cc.dir
+      size: 6564
+      nfiles: 7
+    - path: model_evaluation/plan_training_runtime03.py
+      hash: md5
+      md5: 021482fb1bb5caac5f7a2cc7abef215a
+      size: 1973
+    - path: results/model-timing03-collected.json
+      hash: md5
+      md5: e23b8592597905074d95ab5b05e7ab2d
+      size: 1198
+    outs:
+    - path: results/model-training-runtime-plan03.json
+      hash: md5
+      md5: b6eefcc6d49d0adb32c8f4a287103c75
+      size: 1377
+  prepare_training:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_training.py
+    deps:
+    - path: data/model-preflight03
+      hash: md5
+      md5: d79916d09dce3decde76ae3ddf6823f5.dir
+      size: 3977295
+      nfiles: 16
+    - path: data/model-report-candidate
+      hash: md5
+      md5: 5e4bdc58d1e6750e668ea96d5744611b.dir
+      size: 20233
+      nfiles: 1
+    - path: data/model-timing03
+      hash: md5
+      md5: fa7318c66d97a3ae7a58deb316451acb.dir
+      size: 3994134
+      nfiles: 3
+    - path: model_evaluation/prepare_training.py
+      hash: md5
+      md5: e1927f1a3d3eecd24692a393795e417f
+      size: 4152
+    - path: results/dataset-completeness.json
+      hash: md5
+      md5: bca407937c95345cc80604a5e12cddf6
+      size: 496
+    - path: results/model-data-preflight.json
+      hash: md5
+      md5: a9d9fdc1b97b21eb8acf6af9e8b03173
+      size: 1985
+    - path: results/model-timing03-collected.json
+      hash: md5
+      md5: e23b8592597905074d95ab5b05e7ab2d
+      size: 1198
+    - path: results/model-training-runtime-plan03.json
+      hash: md5
+      md5: b6eefcc6d49d0adb32c8f4a287103c75
+      size: 1377
+    outs:
+    - path: data/model-training
+      hash: md5
+      md5: 29bd1a1576a7bb386bcf1e2d91419252.dir
+      size: 7900232
+      nfiles: 9
+    - path: results/model-training-prepared.json
+      hash: md5
+      md5: 51051ab3ea1503611873f10cc55f1ee9
+      size: 1477

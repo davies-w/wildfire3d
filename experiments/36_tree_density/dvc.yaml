@@ -644,3 +644,40 @@ stages:
     metrics:
     - results/model-timing02-diagnosis.json:
         cache: false
+  plan_training_runtime03:
+    cmd: ../../.venv/bin/python model_evaluation/plan_training_runtime03.py
+    deps:
+    - model_evaluation/plan_training_runtime03.py
+    - results/model-timing03-collected.json
+    - data/model-timing03-results
+    - data/grouped-folds.json
+    metrics:
+    - results/model-training-runtime-plan03.json:
+        cache: false
+  prepare_training:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_training.py
+    deps:
+    - model_evaluation/prepare_training.py
+    - data/model-preflight03
+    - data/model-timing03
+    - data/model-report-candidate
+    - results/model-timing03-collected.json
+    - results/model-training-runtime-plan03.json
+    - results/dataset-completeness.json
+    - results/model-data-preflight.json
+    outs:
+    - data/model-training
+    metrics:
+    - results/model-training-prepared.json:
+        cache: false
+  launch_training:
+    cmd: ../../.venv/bin/python model_evaluation/launch_training.py --execute
+    frozen: true
+    deps:
+    - model_evaluation/launch_training.py
+    - data/model-training
+    - results/model-training-prepared.json
+    - results/model-timing03-collected.json
+    metrics:
+    - results/model-training-execution.json:
+        cache: false
