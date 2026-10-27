@@ -464,9 +464,9 @@ stages:
       nfiles: 9
     - path: data/recovery-collected
       hash: md5
-      md5: 8809cb46d31b1f3da72a7b0e97a1d18a.dir
-      size: 208636
-      nfiles: 50
+      md5: 819719a84ff5780173657decbb95e353.dir
+      size: 315675
+      nfiles: 74
     - path: data/summaries
       hash: md5
       md5: d9182b1fb92056e0a5569f3f8f1dcae7.dir
@@ -487,8 +487,8 @@ stages:
     outs:
     - path: data/raw-inventory.json
       hash: md5
-      md5: 426d4ea22772d2b9bc31e5b5c7fda336
-      size: 576450
+      md5: a2f190ad5019588a66b3585eeb0f9ec6
+      size: 580220
   verify_material:
     cmd: ../../.venv/bin/python verify_material.py
     deps:
@@ -513,13 +513,13 @@ stages:
       nfiles: 9
     - path: data/raw-inventory.json
       hash: md5
-      md5: 426d4ea22772d2b9bc31e5b5c7fda336
-      size: 576450
+      md5: a2f190ad5019588a66b3585eeb0f9ec6
+      size: 580220
     - path: data/recovery-collected
       hash: md5
-      md5: 8809cb46d31b1f3da72a7b0e97a1d18a.dir
-      size: 208636
-      nfiles: 50
+      md5: 819719a84ff5780173657decbb95e353.dir
+      size: 315675
+      nfiles: 74
     - path: data/summaries
       hash: md5
       md5: d9182b1fb92056e0a5569f3f8f1dcae7.dir
@@ -536,9 +536,9 @@ stages:
     outs:
     - path: data/verified-material
       hash: md5
-      md5: 61eeb6a9da6c54f90d00c74b8844b8e9.dir
-      size: 41397120985
-      nfiles: 13976
+      md5: 04d118ba282c93edf27eda419e06744b.dir
+      size: 41664202402
+      nfiles: 14066
   extract_states:
     cmd: ../../.venv/bin/python extract_states.py
     deps:
@@ -548,9 +548,9 @@ stages:
       size: 1259971
     - path: data/verified-material
       hash: md5
-      md5: 61eeb6a9da6c54f90d00c74b8844b8e9.dir
-      size: 41397120985
-      nfiles: 13976
+      md5: 04d118ba282c93edf27eda419e06744b.dir
+      size: 41664202402
+      nfiles: 14066
     - path: extract_states.py
       hash: md5
       md5: 9a9ca4f59f08fe82afc0097e1246e90a
@@ -566,13 +566,13 @@ stages:
     outs:
     - path: data/four-state
       hash: md5
-      md5: 9e997ba2dd4e9455333942b1843b1a05.dir
-      size: 3199429
-      nfiles: 1550
+      md5: e08f57042d5fa4ea1971e595bc7bff46.dir
+      size: 3220361
+      nfiles: 1560
     - path: results/four-state-extraction.json
       hash: md5
-      md5: 34837bf785be3fa260f2e0a792f83ade
-      size: 932088
+      md5: 10c00ca840320745dd6cb756f12d5131
+      size: 938108
   validate_state_replay:
     cmd: ../../.venv/bin/python validate_state_replay.py
     deps:
@@ -698,12 +698,30 @@ stages:
       md5: 44be6c76cd7dd8870d4497612a66b4a0
       size: 671656
   collect_partial_recovery:
-    cmd: ../../.venv/bin/python repair/collect_partial.py
+    cmd: ../../.venv/bin/python repair/collect_partial.py && 
+      ../../.venv/bin/python repair/collect_partial.py --proof 
+      data/late-recovery/x36-density-088-r1/proof.json && ../../.venv/bin/python
+      repair/collect_partial.py --proof 
+      data/late-recovery/x36-density-093-r1/proof.json && ../../.venv/bin/python
+      repair/collect_partial.py --proof 
+      data/late-recovery/x36-density-115-r1/proof.json
     deps:
+    - path: data/late-recovery/x36-density-088-r1/proof.json
+      hash: md5
+      md5: 034c2030add07919f303e158b8191a20
+      size: 878
+    - path: data/late-recovery/x36-density-093-r1/proof.json
+      hash: md5
+      md5: 32e4565268d7e28f4840cc9895db4454
+      size: 878
+    - path: data/late-recovery/x36-density-115-r1/proof.json
+      hash: md5
+      md5: 299e68c0189cf539be0540beb5687034
+      size: 878
     - path: repair/collect_partial.py
       hash: md5
-      md5: 210027baedf787611bfc354d71043170
-      size: 2483
+      md5: 1ccfc8519938bd732db55dc202a92088
+      size: 2685
     - path: results/partial-recovery-execution.json
       hash: md5
       md5: 5cbc73d79e36b5b422f819d9d76cedac
@@ -712,16 +730,40 @@ stages:
       hash: md5
       md5: 68f4488e1a334a57d9172d72d9804baf
       size: 1383
+    - path: results/x36-density-088-r1-execution.json
+      hash: md5
+      md5: 92d1de587f2c06179ecc2db9e45d9a96
+      size: 591
+    - path: results/x36-density-093-r1-execution.json
+      hash: md5
+      md5: a2da2d9cec2b607c17b07f2b9b4ea787
+      size: 591
+    - path: results/x36-density-115-r1-execution.json
+      hash: md5
+      md5: a63c9c50e05e8a5558bd9d53f991b4c1
+      size: 686
     outs:
     - path: data/recovery-collected
       hash: md5
-      md5: b5f6014d08049962c7ebed59847d24b6.dir
-      size: 96842
-      nfiles: 22
+      md5: 819719a84ff5780173657decbb95e353.dir
+      size: 315675
+      nfiles: 74
     - path: results/partial-recovery-collection.json
       hash: md5
       md5: 540b221e92b4f6e11537ef6fea1818fa
       size: 397
+    - path: results/x36-density-088-r1-collection.json
+      hash: md5
+      md5: c0f2818389a09e22faef7fb87e2f12e8
+      size: 389
+    - path: results/x36-density-093-r1-collection.json
+      hash: md5
+      md5: c80e47b9b21c1465e2fc57662cc6a0fc
+      size: 389
+    - path: results/x36-density-115-r1-collection.json
+      hash: md5
+      md5: 674e38dea2430b6bf65a3c7c161e0cc8
+      size: 484
   audit_late_preemptions:
     cmd: ../../.venv/bin/python repair/audit_preemptions.py
     deps:
@@ -934,3 +976,164 @@ stages:
       hash: md5
       md5: 804d2500d74a7ad7386743ab50873439
       size: 1744
+  prepare_learning_data:
+    cmd: ../../.venv/bin/python prepare_learning_data.py
+    deps:
+    - path: ../35_surrogate_diagnostics/attempt20/data/sequences.npz
+      hash: md5
+      md5: 1bde7a6a93c4646c6c620478ddc4f9bd
+      size: 807269
+    - path: ../35_surrogate_diagnostics/attempt20/schema.json
+      hash: md5
+      md5: 3f1d8636dc7c20f3aa3ed5cbb7735204
+      size: 174781
+    - path: ../35_surrogate_diagnostics/attempt22/data/activity_audit/labels.npz
+      hash: md5
+      md5: 3e4d689e5874d67452f1ee36f8c55b42
+      size: 598439
+    - path: ../35_surrogate_diagnostics/scorecard-v1.json
+      hash: md5
+      md5: f181565b59d268b8a4a2efb5b0ae2702
+      size: 4453
+    - path: cases.json
+      hash: md5
+      md5: a0cd6895e2b2cfa892d7b1fcb6dd2bdd
+      size: 1259971
+    - path: data/four-state
+      hash: md5
+      md5: e08f57042d5fa4ea1971e595bc7bff46.dir
+      size: 3220361
+      nfiles: 1560
+    - path: data/grouped-folds.json
+      hash: md5
+      md5: 44be6c76cd7dd8870d4497612a66b4a0
+      size: 671656
+    - path: data/verified-material
+      hash: md5
+      md5: 04d118ba282c93edf27eda419e06744b.dir
+      size: 41664202402
+      nfiles: 14066
+    - path: prepare_learning_data.py
+      hash: md5
+      md5: 0ddffd38c02c0008df663c49bc70c07c
+      size: 3900
+    - path: results/four-state-extraction.json
+      hash: md5
+      md5: 10c00ca840320745dd6cb756f12d5131
+      size: 938108
+    outs:
+    - path: data/learning
+      hash: md5
+      md5: 1a825007340d2f9d84a9744df853bd53.dir
+      size: 3238491
+      nfiles: 1
+    - path: learning-schema.json
+      hash: md5
+      md5: 0dbee67e38424d53816fe78799442133
+      size: 672301
+    - path: results/learning-data.json
+      hash: md5
+      md5: 29cfd0e269b1afbbc5e527ea1f22df4a
+      size: 330
+  audit_complete_dataset:
+    cmd: ../../.venv/bin/python audit_complete_dataset.py
+    deps:
+    - path: audit_complete_dataset.py
+      hash: md5
+      md5: b692fdcca5b0672d6216d13c8232c9a0
+      size: 2505
+    - path: cases.json
+      hash: md5
+      md5: a0cd6895e2b2cfa892d7b1fcb6dd2bdd
+      size: 1259971
+    - path: data/four-state
+      hash: md5
+      md5: e08f57042d5fa4ea1971e595bc7bff46.dir
+      size: 3220361
+      nfiles: 1560
+    - path: data/learning
+      hash: md5
+      md5: 1a825007340d2f9d84a9744df853bd53.dir
+      size: 3238491
+      nfiles: 1
+    - path: data/raw-inventory.json
+      hash: md5
+      md5: a2f190ad5019588a66b3585eeb0f9ec6
+      size: 580220
+    - path: data/recovery-collected
+      hash: md5
+      md5: 819719a84ff5780173657decbb95e353.dir
+      size: 315675
+      nfiles: 74
+    - path: data/verified-material
+      hash: md5
+      md5: 04d118ba282c93edf27eda419e06744b.dir
+      size: 41664202402
+      nfiles: 14066
+    - path: results/four-state-extraction.json
+      hash: md5
+      md5: 10c00ca840320745dd6cb756f12d5131
+      size: 938108
+    - path: results/learning-data.json
+      hash: md5
+      md5: 29cfd0e269b1afbbc5e527ea1f22df4a
+      size: 330
+    outs:
+    - path: results/dataset-completeness.json
+      hash: md5
+      md5: bca407937c95345cc80604a5e12cddf6
+      size: 496
+  validate_model_data:
+    cmd: ../../.venv/bin/python model_evaluation/validate_data.py
+    deps:
+    - path: data/grouped-folds.json
+      hash: md5
+      md5: 44be6c76cd7dd8870d4497612a66b4a0
+      size: 671656
+    - path: data/learning
+      hash: md5
+      md5: 1a825007340d2f9d84a9744df853bd53.dir
+      size: 3238491
+      nfiles: 1
+    - path: data/model-runner
+      hash: md5
+      md5: 6b6cf13d18c23336cac2745c3e12e2f9.dir
+      size: 25344
+      nfiles: 3
+    - path: learning-schema.json
+      hash: md5
+      md5: 0dbee67e38424d53816fe78799442133
+      size: 672301
+    - path: model_evaluation/validate_data.py
+      hash: md5
+      md5: 9f62b68e0fa8358be0a41e4b079e0d6d
+      size: 3276
+    - path: results/dataset-completeness.json
+      hash: md5
+      md5: bca407937c95345cc80604a5e12cddf6
+      size: 496
+    outs:
+    - path: results/model-data-preflight.json
+      hash: md5
+      md5: a9d9fdc1b97b21eb8acf6af9e8b03173
+      size: 1985
+  close_cloud_campaign:
+    cmd: ../../.venv/bin/python orchestration/close_campaign.py
+    deps:
+    - path: orchestration/close_campaign.py
+      hash: md5
+      md5: c3a712d0246b4dd04cde6b64fb298fda
+      size: 2000
+    - path: orchestration/read-condition.json
+      hash: md5
+      md5: fab23e5e1e18e1f8237967038db8427d
+      size: 291
+    - path: results/dataset-completeness.json
+      hash: md5
+      md5: bca407937c95345cc80604a5e12cddf6
+      size: 496
+    outs:
+    - path: results/cloud-campaign-closed.json
+      hash: md5
+      md5: e48838fe994b0cf9e9cf2ee6ff81ac5d
+      size: 713

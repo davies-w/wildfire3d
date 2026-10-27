@@ -424,3 +424,25 @@ stages:
     metrics:
     - results/dataset-completeness.json:
         cache: false
+  validate_model_data:
+    cmd: ../../.venv/bin/python model_evaluation/validate_data.py
+    deps:
+    - model_evaluation/validate_data.py
+    - results/dataset-completeness.json
+    - data/learning
+    - learning-schema.json
+    - data/grouped-folds.json
+    - data/model-runner
+    metrics:
+    - results/model-data-preflight.json:
+        cache: false
+  close_cloud_campaign:
+    cmd: ../../.venv/bin/python orchestration/close_campaign.py
+    frozen: true
+    deps:
+    - orchestration/close_campaign.py
+    - orchestration/read-condition.json
+    - results/dataset-completeness.json
+    metrics:
+    - results/cloud-campaign-closed.json:
+        cache: false

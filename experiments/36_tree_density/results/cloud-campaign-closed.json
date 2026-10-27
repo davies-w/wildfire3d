@@ -1,0 +1,19 @@
+{
+  "utc": "2026-10-27T01:37:24.892208+00:00",
+  "inventory": {
+    "jobs": [],
+    "instances": [],
+    "disks": []
+  },
+  "exact_condition": {
+    "title": "density36-cloud-queue-read",
+    "description": "Time-limited private campaign inputs and result verification",
+    "expression": "request.time < timestamp('2026-10-28T16:07:01Z') && resource.name.startsWith('projects/_/buckets/tmrw-wildfire-20261015-trial/objects/density36/')"
+  },
+  "removed_members": [
+    "serviceAccount:fds-watchdog@tmrw-wildfire-20261015.iam.gserviceaccount.com",
+    "serviceAccount:fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com"
+  ],
+  "exact_campaign_grant_absent": true,
+  "raw_and_checkpoints_preserved": true
+}
