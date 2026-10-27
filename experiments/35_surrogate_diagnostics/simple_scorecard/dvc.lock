@@ -3,10 +3,14 @@ stages:
   render:
     cmd: python3 build.py
     deps:
+    - path: ../../36_tree_density/results/model-four-state-summary.json
+      hash: md5
+      md5: 9acf84830495aeb434ee1a09a6814e53
+      size: 28885
     - path: build.py
       hash: md5
-      md5: 6ce169dffa38d945a8ac5a8c8022145b
-      size: 12101
+      md5: eb891beb2e6c1c0b8d7ea67a498b7c93
+      size: 13396
     - path: inputs
       hash: md5
       md5: bba786d7be4ff7e6d32437dbe67af7d8.dir
@@ -15,6 +19,6 @@ stages:
     outs:
     - path: data
       hash: md5
-      md5: 904e15dd24022532cf19c30fafc7077b.dir
-      size: 820759
+      md5: b333c378b73e22eaa00f1a4ed6a0f5dd.dir
+      size: 826097
       nfiles: 13
