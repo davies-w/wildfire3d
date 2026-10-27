@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 53.7,
+  "reserved_usd": 53.699999999999996,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -3054,7 +3054,17 @@
       "allowance_usd": 0.5,
       "reserved_unix": 1793084004.518566,
       "scope": "Authorized matched pair CUDA full-epoch timing;20min VM bound",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-paircheck01/executions/ef09117c-5248-4aa1-aa63-869d5aaa3c8a"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-paircheck01/executions/ef09117c-5248-4aa1-aa63-869d5aaa3c8a",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.07025063721534225,
+        "vm_hours": 0.09938798722222222,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-gpu36-pairchec-a7af1d5b-7556-44a50-group0-0-zfb5"
+        ]
+      },
+      "historical_allowance_usd": 0.5
     },
     "density36-pair-training01": {
       "state": "submitted",
@@ -3062,7 +3072,17 @@
       "reserved_unix": 1793084601.805815,
       "scope": "Authorized single rotation0 plain/gated stride-one pair; cloud watchdog; no automatic retries",
       "workflow": "fds-gpu36-pairtrain01",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-pairtrain01/executions/c74635a4-40f1-4b9c-9cd6-c3c0d9097e05"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-pairtrain01/executions/c74635a4-40f1-4b9c-9cd6-c3c0d9097e05",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.033309160196640854,
+        "vm_hours": 0.047124560277777776,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-gpu36-pairtrai-d8551c39-3be7-408b0-group0-0-nr7v"
+        ]
+      },
+      "historical_allowance_usd": 15.2
     }
   },
   "recycle_reservations": true,
@@ -3072,21 +3092,23 @@
   "accounting": {
     "billing_export_status": "posted_costs_subject_to_adjustment",
     "posted_source": "BigQuery detailed export",
-    "as_of_utc": "2026-10-27T05:56:42.508619+00:00",
+    "as_of_utc": "2026-10-27T07:16:03.745129+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
     "project_posted_comparison_usd": 39.832028,
-    "project_compute_runtime_estimate_usd": 41.77019753760627,
+    "project_compute_runtime_estimate_usd": 41.873757335018254,
     "shared_cost_estimate_usd": 1.26,
-    "spend_estimate_usd": 43.03019753760627,
-    "unposted_compute_after_export_usd": 1.630002794338317,
+    "spend_estimate_usd": 43.13375733501825,
+    "unposted_compute_after_export_usd": 1.7335625917503001,
     "unposted_resources": [
+      "fds-gpu36-pairtrai-d8551c39-3be7-408b0-group0-0-nr7v",
+      "fds-gpu36-pairchec-a7af1d5b-7556-44a50-group0-0-zfb5",
       "fds-gpu36-training-9f9156ab-eb17-42820-group0-0-1pz0",
       "fds-gpu36-prefligh-895515d3-99bc-41a40-group0-0-83jx",
       "fds-gpu36-prefligh-c3363725-e51f-42850-group0-0-jfqr",
       "fds-gpu36-prefligh-0337c69c-065c-48d70-group0-0-ztp7",
       "fds-x36-density-11-54e36152-181e-42e50-group0-0-hrtn"
     ],
-    "matched_vms": 344,
+    "matched_vms": 346,
     "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
     "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
     "rates_usd_per_vm_hour": {
@@ -3095,5 +3117,5 @@
       "c3-standard-4/SPOT": 0.07725118278354724
     }
   },
-  "estimated_spend_usd": 43.03019753760627
+  "estimated_spend_usd": 43.13375733501825
 }

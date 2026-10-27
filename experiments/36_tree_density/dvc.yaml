@@ -876,3 +876,23 @@ stages:
       - ../35_surrogate_diagnostics/attempt24/gallery.html
     outs:
       - data/pair-gallery
+  audit_pair_failure:
+    cmd: ../../.venv/bin/python model_evaluation/audit_pair_failure.py
+    deps:
+      - model_evaluation/audit_pair_failure.py
+      - results/model-pair-training-execution.json
+    outs:
+      - data/model-pair-failure:
+          persist: true
+      - results/model-pair-training-failure.json
+  prepare_pair_sequence:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_pair_sequence.py
+    deps:
+      - model_evaluation/prepare_pair_sequence.py
+      - data/model-pair-training
+      - learning-schema.json
+      - results/model-pair-training-failure.json
+    outs:
+      - data/pair-sequence:
+          persist: true
+      - results/pair-sequence-prepared.json

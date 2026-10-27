@@ -2091,3 +2091,54 @@ stages:
       hash: md5
       md5: 49a3d976c209e5412b88226ae7be1b24
       size: 2317
+  audit_pair_failure:
+    cmd: ../../.venv/bin/python model_evaluation/audit_pair_failure.py
+    deps:
+    - path: model_evaluation/audit_pair_failure.py
+      hash: md5
+      md5: 3d7c37cffc57db5a58f6d8dbe227c992
+      size: 2321
+    - path: results/model-pair-training-execution.json
+      hash: md5
+      md5: b1c9ecfbdeb1fcccc9fb7a86bd3af8bf
+      size: 336
+    outs:
+    - path: data/model-pair-failure
+      hash: md5
+      md5: 7865a29639c3364026e889a8c57ff5b3.dir
+      size: 6180
+      nfiles: 4
+    - path: results/model-pair-training-failure.json
+      hash: md5
+      md5: c22dc4bcf9435368eafd0ad9e5546e30
+      size: 460
+  prepare_pair_sequence:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_pair_sequence.py
+    deps:
+    - path: data/model-pair-training
+      hash: md5
+      md5: c8396032a4cea5145b56c64ba1e565bb.dir
+      size: 11141412
+      nfiles: 12
+    - path: learning-schema.json
+      hash: md5
+      md5: 0dbee67e38424d53816fe78799442133
+      size: 672301
+    - path: model_evaluation/prepare_pair_sequence.py
+      hash: md5
+      md5: 6cb1ac1b44f657fc42e68d5606733a6f
+      size: 8089
+    - path: results/model-pair-training-failure.json
+      hash: md5
+      md5: c22dc4bcf9435368eafd0ad9e5546e30
+      size: 460
+    outs:
+    - path: data/pair-sequence
+      hash: md5
+      md5: 3c149e95ba597967c472586de9fd8179.dir
+      size: 22306339
+      nfiles: 25
+    - path: results/pair-sequence-prepared.json
+      hash: md5
+      md5: 12a5a836a1d9d1c05c2d4e7d9f0722ef
+      size: 2916
