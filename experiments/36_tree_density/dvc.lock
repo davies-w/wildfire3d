@@ -1359,3 +1359,77 @@ stages:
       hash: md5
       md5: 54937f29797e76d7f529fec8cdae2645
       size: 419
+  prepare_reporting_preflight:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_reporting_preflight.py
+    deps:
+    - path: data/model-preflight
+      hash: md5
+      md5: bdb16a53a55427a4397cd6c898e00da0.dir
+      size: 3955802
+      nfiles: 15
+    - path: data/model-report-candidate
+      hash: md5
+      md5: 5e4bdc58d1e6750e668ea96d5744611b.dir
+      size: 20233
+      nfiles: 1
+    - path: data/model-timing
+      hash: md5
+      md5: 2387a0fbb101e83c5281c23a2140c1f7.dir
+      size: 3973654
+      nfiles: 3
+    - path: model_evaluation/prepare_reporting_preflight.py
+      hash: md5
+      md5: d61c463f32b4f64be443232f0293c6d8
+      size: 4346
+    - path: results/model-fast-reporting-check.json
+      hash: md5
+      md5: ee7a51e03fe10f1d4cd9a38b3cce07a4
+      size: 808
+    - path: results/model-preflight-inputs.json
+      hash: md5
+      md5: c8e43f2dec86d7c97efc1c21e5facb6a
+      size: 1147
+    outs:
+    - path: data/model-preflight02
+      hash: md5
+      md5: 8860dcdaa083fbe0aae554a3e6caf860.dir
+      size: 3977229
+      nfiles: 16
+    - path: data/model-timing02
+      hash: md5
+      md5: 95f69a593b77311cea3e71298edeb4ba.dir
+      size: 3994134
+      nfiles: 3
+    - path: results/model-preflight02-inputs.json
+      hash: md5
+      md5: f8d6d8cd014868e26150fdb2f2b1700d
+      size: 1037
+    - path: results/model-timing02-prepared.json
+      hash: md5
+      md5: b2bafb8bf24bacf6815d55ad07f31061
+      size: 650
+  launch_model_timing02:
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing02.py --execute
+    deps:
+    - path: data/model-timing02
+      hash: md5
+      md5: 95f69a593b77311cea3e71298edeb4ba.dir
+      size: 3994134
+      nfiles: 3
+    - path: model_evaluation/launch_timing02.py
+      hash: md5
+      md5: 171058908a3a631958bedb5f212be82b
+      size: 5059
+    - path: results/model-preflight02-inputs.json
+      hash: md5
+      md5: f8d6d8cd014868e26150fdb2f2b1700d
+      size: 1037
+    - path: results/model-timing02-prepared.json
+      hash: md5
+      md5: b2bafb8bf24bacf6815d55ad07f31061
+      size: 650
+    outs:
+    - path: results/model-timing02-execution.json
+      hash: md5
+      md5: a78de2cc735609de892b3f6538c39409
+      size: 336

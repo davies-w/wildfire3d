@@ -447,7 +447,9 @@ stages:
     - results/cloud-campaign-closed.json:
         cache: false
   prepare_model_preflight:
-    cmd: ../../.venv/bin/python model_evaluation/prepare_preflight.py && ../../.venv/bin/python data/model-preflight/validate.py && ../../.venv/bin/python data/model-preflight/validate_evaluation.py && ../../.venv/bin/python data/model-preflight/validate_transport.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_preflight.py && ../../.venv/bin/python
+      data/model-preflight/validate.py && ../../.venv/bin/python data/model-preflight/validate_evaluation.py
+      && ../../.venv/bin/python data/model-preflight/validate_transport.py
     deps:
     - model_evaluation/prepare_preflight.py
     - model_evaluation/time_cloud.py
@@ -531,4 +533,53 @@ stages:
     - results/model-timing-read-condition.json
     metrics:
     - results/model-timing-permission-removed.json:
+        cache: false
+  prepare_reporting_preflight:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_reporting_preflight.py
+    deps:
+    - model_evaluation/prepare_reporting_preflight.py
+    - data/model-preflight
+    - data/model-timing
+    - data/model-report-candidate
+    - results/model-fast-reporting-check.json
+    - results/model-preflight-inputs.json
+    outs:
+    - data/model-preflight02
+    - data/model-timing02
+    metrics:
+    - results/model-preflight02-inputs.json:
+        cache: false
+    - results/model-timing02-prepared.json:
+        cache: false
+  launch_model_timing02:
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing02.py --execute
+    deps:
+    - model_evaluation/launch_timing02.py
+    - data/model-timing02
+    - results/model-timing02-prepared.json
+    - results/model-preflight02-inputs.json
+    frozen: true
+    metrics:
+    - results/model-timing02-execution.json:
+        cache: false
+  collect_model_timing02:
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing02.py
+    deps:
+    - model_evaluation/collect_timing02.py
+    - results/model-timing02-execution.json
+    metrics:
+    - results/model-timing02-collected.json:
+        cache: false
+    outs:
+    - data/model-timing02-results
+  close_model_timing02:
+    cmd: ../../.venv/bin/python model_evaluation/close_timing02.py
+    deps:
+    - model_evaluation/close_timing02.py
+    - results/model-timing02-collected.json
+    - results/model-timing02-cleanup.json
+    - results/model-timing02-read-condition.json
+    frozen: true
+    metrics:
+    - results/model-timing02-permission-removed.json:
         cache: false
