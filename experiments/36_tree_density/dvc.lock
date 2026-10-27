@@ -3305,3 +3305,29 @@ stages:
       hash: md5
       md5: 27d33f5b27a760eb70ce55c35cc7fed9
       size: 615
+  launch_gas_head_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/launch_gas_head_pilot01.py 
+      --execute
+    deps:
+    - path: data/gas-head-pilot01
+      hash: md5
+      md5: e5952d053636860d25e6f994a4ba9717.dir
+      size: 53222201
+      nfiles: 12
+    - path: model_evaluation/launch_gas_head_pilot01.py
+      hash: md5
+      md5: a045115c191e1bb7745ef818b674b804
+      size: 5370
+    - path: results/gas-head-pilot01-offline-preflight.json
+      hash: md5
+      md5: 27d33f5b27a760eb70ce55c35cc7fed9
+      size: 615
+    - path: results/gas-head-pilot01-prepared.json
+      hash: md5
+      md5: 83376c8281715287ef3af5f2f83b555f
+      size: 1238
+    outs:
+    - path: results/gas-head-pilot01-execution.json
+      hash: md5
+      md5: ba3d9af41c03d4fe096b35f2c4b4e853
+      size: 334

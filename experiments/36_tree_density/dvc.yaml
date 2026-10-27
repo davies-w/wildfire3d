@@ -1401,3 +1401,13 @@ stages:
     metrics:
     - results/gas-head-pilot01-cost-reconciled.json:
         cache: false
+  analyze_gas_head_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_gas_head_pilot01.py
+    deps:
+    - model_evaluation/analyze_gas_head_pilot01.py
+    - data/gas-head-pilot01
+    - data/gas-head-pilot01-results
+    - results/gas-head-pilot01-collected.json
+    metrics:
+    - results/gas-head-pilot01-analysis.json:
+        cache: false

@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 78.0,
+  "reserved_usd": 78.4,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -2999,6 +2999,14 @@
       },
       "historical_allowance_usd": 0.75,
       "terminal_evidence": "experiments/36_tree_density/results/exposure-pilot02-status.json"
+    },
+    "density36-gas-head-pilot01": {
+      "state": "submitted",
+      "allowance_usd": 0.4,
+      "reserved_unix": 1793138204.169209,
+      "scope": "Authorized controlled bounded gas-head repair pilot, max0.40USD, private inputs, no tests, no automatic retries",
+      "workflow": "fds-gpu36-gashead01",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-gashead01/executions/0c89a72b-1e18-46d1-8e4d-9cef46084c9f"
     }
   },
   "recycle_reservations": true,
@@ -3008,7 +3016,7 @@
   "accounting": {
     "billing_export_status": "posted_costs_subject_to_adjustment",
     "posted_source": "BigQuery detailed export",
-    "as_of_utc": "2026-10-27T21:36:57.585509+00:00",
+    "as_of_utc": "2026-10-27T21:54:42.775443+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
     "project_posted_comparison_usd": 45.438776,
     "project_compute_runtime_estimate_usd": 45.08678338519638,
