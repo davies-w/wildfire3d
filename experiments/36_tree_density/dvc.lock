@@ -2882,3 +2882,29 @@ stages:
       hash: md5
       md5: 1f086672f0c8e8467e32b810cc51e683
       size: 485
+  launch_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/launch_exposure_pilot02.py 
+      --execute
+    deps:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: model_evaluation/launch_exposure_pilot02.py
+      hash: md5
+      md5: 34b9d0ad43e8a3131f289fa774bbabdf
+      size: 5782
+    - path: results/exposure-pilot02-offline-preflight.json
+      hash: md5
+      md5: 1f086672f0c8e8467e32b810cc51e683
+      size: 485
+    - path: results/exposure-pilot02-prepared.json
+      hash: md5
+      md5: 9ffd58d45deb76be48d73ac32143f456
+      size: 1599
+    outs:
+    - path: results/exposure-pilot02-execution.json
+      hash: md5
+      md5: 1cc4ab99f432a81cf0f630843d8c4dc1
+      size: 335

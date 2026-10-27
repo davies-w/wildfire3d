@@ -1,0 +1,188 @@
+[
+  {
+    "insertId": "16imwcrf7tyte1",
+    "jsonPayload": {
+      "localTimestamp": "2026-10-27T21:10:18.5406Z",
+      "message": "Completed adding/removing routes for aliases, forwarded IP and target-instance IPs",
+      "omitempty": null
+    },
+    "labels": {
+      "compute.googleapis.com/instance_group_manager/name": "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0",
+      "compute.googleapis.com/instance_group_manager/region": "us-central1",
+      "instance_name": "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv"
+    },
+    "logName": "projects/tmrw-wildfire-20261015/logs/GCEGuestAgent",
+    "receiveTimestamp": "2026-10-27T21:10:19.557729467Z",
+    "resource": {
+      "labels": {
+        "instance_id": "5064933301723901084",
+        "project_id": "tmrw-wildfire-20261015",
+        "zone": "us-central1-a"
+      },
+      "type": "gce_instance"
+    },
+    "severity": "INFO",
+    "sourceLocation": {
+      "file": "addresses.go",
+      "function": "main.(*addressMgr).Set",
+      "line": "419"
+    },
+    "timestamp": "2026-10-27T21:10:18.540646842Z"
+  },
+  {
+    "insertId": "16imwcrf7tyte0",
+    "jsonPayload": {
+      "localTimestamp": "2026-10-27T21:10:18.5376Z",
+      "message": "Network interface setup disabled, skipping...",
+      "omitempty": null
+    },
+    "labels": {
+      "compute.googleapis.com/instance_group_manager/name": "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0",
+      "compute.googleapis.com/instance_group_manager/region": "us-central1",
+      "instance_name": "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv"
+    },
+    "logName": "projects/tmrw-wildfire-20261015/logs/GCEGuestAgent",
+    "receiveTimestamp": "2026-10-27T21:10:19.557729467Z",
+    "resource": {
+      "labels": {
+        "instance_id": "5064933301723901084",
+        "project_id": "tmrw-wildfire-20261015",
+        "zone": "us-central1-a"
+      },
+      "type": "gce_instance"
+    },
+    "severity": "INFO",
+    "sourceLocation": {
+      "file": "manager.go",
+      "function": "github.com/GoogleCloudPlatform/guest-agent/google_guest_agent/network/manager.SetupInterfaces",
+      "line": "189"
+    },
+    "timestamp": "2026-10-27T21:10:18.537687869Z"
+  },
+  {
+    "insertId": "1fmk0v4f9ny2md",
+    "labels": {
+      "hostname": "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv",
+      "job_uid": "fds-gpu36-exposure-30c2a56a-3806-40bf0",
+      "task_group_name": "projects/587909259768/locations/us-central1/jobs/fds-gpu36-exposure02/taskGroups/group0"
+    },
+    "logName": "projects/tmrw-wildfire-20261015/logs/batch_agent_logs",
+    "receiveTimestamp": "2026-10-27T21:10:18.161394566Z",
+    "resource": {
+      "labels": {
+        "instance_id": "5064933301723901084",
+        "project_id": "tmrw-wildfire-20261015",
+        "zone": "us-central1-a"
+      },
+      "type": "gce_instance"
+    },
+    "severity": "INFO",
+    "textPayload": "Runnable command line: docker run --rm --name 3596de15-bc5f-4f7f-aefd-dcf46f2cdb2a --entrypoint /bin/sh --env BATCH_TASK_COUNT=1 --env BATCH_TASK_INDEX=0 --env BATCH_TASK_RETRY_ATTEMPT=0 --env BATCH_TASK_UID=fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0 --env CLOUDSDK_PYTHON=/usr/bin/python3 --env BATCH_JOB_UID=fds-gpu36-exposure-30c2a56a-3806-40bf0 --env BATCH_JOB_ID=fds-gpu36-exposure02 --volume /var/lib/nvidia/lib64:/usr/local/nvidia/lib64 --volume /var/lib/nvidia/bin:/usr/local/nvidia/bin --shm-size=1g --privileged pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime -c export PATH=\"$PATH:/usr/local/nvidia/bin\"; export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:/usr/local/nvidia/lib64\"; \"$@\" -- python -c import base64;exec(compile(base64.b64decode('aW1wb3J0IHBhdGhsaWIsc3lzLHJ1bnB5LHVybGxpYi5yZXF1ZXN0LHVybGxpYi5wYXJzZSxqc29uLHRhcmZpbGUsc2h1dGlsLGhhc2hsaWIKcD1wYXRobGliLlBhdGgoJy90bXAvc3R1ZHknKTtwLm1rZGlyKGV4aXN0X29rPVRydWUpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pO3Rva2VuPWpzb24ubG9hZCh1cmxsaWIucmVxdWVzdC51cmxvcGVuKHIsdGltZW91dD0yMCkpWydhY2Nlc3NfdG9rZW4nXQp1PSdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vc3RvcmFnZS92MS9iL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvby8nK3VybGxpYi5wYXJzZS5xdW90ZSgnZGVuc2l0eTM2L2V4cG9zdXJlLXBpbG90MDIvaW5wdXRzLnRhcicsc2FmZT0nJykrJz9hbHQ9bWVkaWEnCndpdGggdXJsbGliLnJlcXVlc3QudXJsb3Blbih1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KHUsaGVhZGVycz17J0F1dGhvcml6YXRpb24nOidCZWFyZXIgJyt0b2tlbn0pLHRpbWVvdXQ9MTgwKSBhcyBzcmMsKHAvJ3RyYW5zZmVyLnRhcicpLm9wZW4oJ3diJykgYXMgZHN0OnNodXRpbC5jb3B5ZmlsZW9iaihzcmMsZHN0KQp3aXRoIHRhcmZpbGUub3BlbihwLyd0cmFuc2Zlci50YXInKSBhcyB0YXI6CiBmb3IgbSBpbiB0YXIuZ2V0bWVtYmVycygpOmFzc2VydCBub3QgbS5uYW1lLnN0YXJ0c3dpdGgoJy8nKSBhbmQgJy4uJyBub3QgaW4gcGF0aGxpYi5QYXRoKG0ubmFtZSkucGFydHMgYW5kIG5vdCBtLmlzc3ltKCkgYW5kIG5vdCBtLmlzbG5rKCkKIHRhci5leHRyYWN0YWxsKHApCmZvciBuLGggaW4ganNvbi5sb2FkcygocC8naGFzaGVzLmpzb24nKS5yZWFkX3RleHQoKSkuaXRlbXMoKTphc3NlcnQgaGFzaGxpYi5zaGEyNTYoKHAvbikucmVhZF9ieXRlcygpKS5oZXhkaWdlc3QoKT09aAoocC8ncmVzdWx0cycpLm1rZGlyKGV4aXN0X29rPVRydWUpO3N5cy5wYXRoLmluc2VydCgwLHN0cihwKSk7CnRyeToKIGZyb20gcnVudGltZSBpbXBvcnQgdXBsb2FkLG9iamVjdF9tZXRhZGF0YSxtYXRjaGVzCiBwcm9iZT1iJ2RlbnNpdHkzNi1wcmVmbGlnaHQtdXBsb2FkLXZlcmlmaWNhdGlvbi1wcm9iZSc7dXBsb2FkKCd1cGxvYWQtcHJvYmUuYmluJyxwcm9iZSk7YXNzZXJ0IG1hdGNoZXMob2JqZWN0X21ldGFkYXRhKCd1cGxvYWQtcHJvYmUuYmluJykscHJvYmUpO3VwbG9hZCgndXBsb2FkLXByb2JlLmJpbicscHJvYmUpCiB1cGxvYWQoJ3RyYW5zcG9ydC1jbG91ZC1jaGVjay5qc29uJyxqc29uLmR1bXBzKHsncGFzc2VkJzpUcnVlLCd2ZXJpZmllZF9tZXRhZGF0YSc6VHJ1ZSwnaWRlbXBvdGVudF9yZXBsYXknOlRydWV9KS5lbmNvZGUoKSkKIHJ1bnB5LnJ1bl9wYXRoKHN0cihwLyd3b3JrZXIucHknKSxydW5fbmFtZT0nX19tYWluX18nKQpleGNlcHQgQmFzZUV4Y2VwdGlvbjoKIGltcG9ydCB0cmFjZWJhY2sKIGZyb20gcnVudGltZSBpbXBvcnQgdXBsb2FkCiB1cGxvYWQoJ2Jvb3RzdHJhcC1lcnJvci50eHQnLHRyYWNlYmFjay5mb3JtYXRfZXhjKCkuZW5jb2RlKCkpO3JhaXNlCg=='),'bootstrap','exec'))",
+    "timestamp": "2026-10-27T21:09:48.245640899Z"
+  },
+  {
+    "insertId": "1fmk0v4f9ny2mc",
+    "labels": {
+      "hostname": "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv",
+      "job_uid": "fds-gpu36-exposure-30c2a56a-3806-40bf0",
+      "task_group_name": "projects/587909259768/locations/us-central1/jobs/fds-gpu36-exposure02/taskGroups/group0"
+    },
+    "logName": "projects/tmrw-wildfire-20261015/logs/batch_agent_logs",
+    "receiveTimestamp": "2026-10-27T21:10:18.161394566Z",
+    "resource": {
+      "labels": {
+        "instance_id": "5064933301723901084",
+        "project_id": "tmrw-wildfire-20261015",
+        "zone": "us-central1-a"
+      },
+      "type": "gce_instance"
+    },
+    "severity": "INFO",
+    "textPayload": "Executing runnable container:{image_uri:\"pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime\" commands:\"-c\" commands:\"import base64;exec(compile(base64.b64decode('aW1wb3J0IHBhdGhsaWIsc3lzLHJ1bnB5LHVybGxpYi5yZXF1ZXN0LHVybGxpYi5wYXJzZSxqc29uLHRhcmZpbGUsc2h1dGlsLGhhc2hsaWIKcD1wYXRobGliLlBhdGgoJy90bXAvc3R1ZHknKTtwLm1rZGlyKGV4aXN0X29rPVRydWUpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pO3Rva2VuPWpzb24ubG9hZCh1cmxsaWIucmVxdWVzdC51cmxvcGVuKHIsdGltZW91dD0yMCkpWydhY2Nlc3NfdG9rZW4nXQp1PSdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vc3RvcmFnZS92MS9iL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvby8nK3VybGxpYi5wYXJzZS5xdW90ZSgnZGVuc2l0eTM2L2V4cG9zdXJlLXBpbG90MDIvaW5wdXRzLnRhcicsc2FmZT0nJykrJz9hbHQ9bWVkaWEnCndpdGggdXJsbGliLnJlcXVlc3QudXJsb3Blbih1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KHUsaGVhZGVycz17J0F1dGhvcml6YXRpb24nOidCZWFyZXIgJyt0b2tlbn0pLHRpbWVvdXQ9MTgwKSBhcyBzcmMsKHAvJ3RyYW5zZmVyLnRhcicpLm9wZW4oJ3diJykgYXMgZHN0OnNodXRpbC5jb3B5ZmlsZW9iaihzcmMsZHN0KQp3aXRoIHRhcmZpbGUub3BlbihwLyd0cmFuc2Zlci50YXInKSBhcyB0YXI6CiBmb3IgbSBpbiB0YXIuZ2V0bWVtYmVycygpOmFzc2VydCBub3QgbS5uYW1lLnN0YXJ0c3dpdGgoJy8nKSBhbmQgJy4uJyBub3QgaW4gcGF0aGxpYi5QYXRoKG0ubmFtZSkucGFydHMgYW5kIG5vdCBtLmlzc3ltKCkgYW5kIG5vdCBtLmlzbG5rKCkKIHRhci5leHRyYWN0YWxsKHApCmZvciBuLGggaW4ganNvbi5sb2FkcygocC8naGFzaGVzLmpzb24nKS5yZWFkX3RleHQoKSkuaXRlbXMoKTphc3NlcnQgaGFzaGxpYi5zaGEyNTYoKHAvbikucmVhZF9ieXRlcygpKS5oZXhkaWdlc3QoKT09aAoocC8ncmVzdWx0cycpLm1rZGlyKGV4aXN0X29rPVRydWUpO3N5cy5wYXRoLmluc2VydCgwLHN0cihwKSk7CnRyeToKIGZyb20gcnVudGltZSBpbXBvcnQgdXBsb2FkLG9iamVjdF9tZXRhZGF0YSxtYXRjaGVzCiBwcm9iZT1iJ2RlbnNpdHkzNi1wcmVmbGlnaHQtdXBsb2FkLXZlcmlmaWNhdGlvbi1wcm9iZSc7dXBsb2FkKCd1cGxvYWQtcHJvYmUuYmluJyxwcm9iZSk7YXNzZXJ0IG1hdGNoZXMob2JqZWN0X21ldGFkYXRhKCd1cGxvYWQtcHJvYmUuYmluJykscHJvYmUpO3VwbG9hZCgndXBsb2FkLXByb2JlLmJpbicscHJvYmUpCiB1cGxvYWQoJ3RyYW5zcG9ydC1jbG91ZC1jaGVjay5qc29uJyxqc29uLmR1bXBzKHsncGFzc2VkJzpUcnVlLCd2ZXJpZmllZF9tZXRhZGF0YSc6VHJ1ZSwnaWRlbXBvdGVudF9yZXBsYXknOlRydWV9KS5lbmNvZGUoKSkKIHJ1bnB5LnJ1bl9wYXRoKHN0cihwLyd3b3JrZXIucHknKSxydW5fbmFtZT0nX19tYWluX18nKQpleGNlcHQgQmFzZUV4Y2VwdGlvbjoKIGltcG9ydCB0cmFjZWJhY2sKIGZyb20gcnVudGltZSBpbXBvcnQgdXBsb2FkCiB1cGxvYWQoJ2Jvb3RzdHJhcC1lcnJvci50eHQnLHRyYWNlYmFjay5mb3JtYXRfZXhjKCkuZW5jb2RlKCkpO3JhaXNlCg=='),'bootstrap','exec'))\" entrypoint:\"python\" options:\"--shm-size=1g\"} for Task task/fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0/0/0 in TaskGroup group0 of Job fds-gpu36-exposure-30c2a56a-3806-40bf0.",
+    "timestamp": "2026-10-27T21:09:48.245623210Z"
+  },
+  {
+    "insertId": "1fmk0v4f9ny2mb",
+    "labels": {
+      "hostname": "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv",
+      "job_uid": "fds-gpu36-exposure-30c2a56a-3806-40bf0",
+      "task_group_name": "projects/587909259768/locations/us-central1/jobs/fds-gpu36-exposure02/taskGroups/group0"
+    },
+    "logName": "projects/tmrw-wildfire-20261015/logs/batch_agent_logs",
+    "receiveTimestamp": "2026-10-27T21:10:18.161394566Z",
+    "resource": {
+      "labels": {
+        "instance_id": "5064933301723901084",
+        "project_id": "tmrw-wildfire-20261015",
+        "zone": "us-central1-a"
+      },
+      "type": "gce_instance"
+    },
+    "severity": "INFO",
+    "textPayload": "Container name is 3596de15-bc5f-4f7f-aefd-dcf46f2cdb2a",
+    "timestamp": "2026-10-27T21:09:48.245202672Z"
+  },
+  {
+    "insertId": "1fmk0v4f9ny2ma",
+    "labels": {
+      "hostname": "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv",
+      "job_uid": "fds-gpu36-exposure-30c2a56a-3806-40bf0",
+      "task_group_name": "projects/587909259768/locations/us-central1/jobs/fds-gpu36-exposure02/taskGroups/group0"
+    },
+    "logName": "projects/tmrw-wildfire-20261015/logs/batch_agent_logs",
+    "receiveTimestamp": "2026-10-27T21:10:18.161394566Z",
+    "resource": {
+      "labels": {
+        "instance_id": "5064933301723901084",
+        "project_id": "tmrw-wildfire-20261015",
+        "zone": "us-central1-a"
+      },
+      "type": "gce_instance"
+    },
+    "severity": "INFO",
+    "textPayload": "Server response for instance 5064933301723901084: tasks:{task:\"action/STARTUP/0/0/group0\" status:{state:SUCCEEDED status_events:{type:\"ASSIGNED\" description:\"task action/STARTUP/0/0/group0 ASSIGNED\" event_time:{seconds:1793135239 nanos:954331060} task_state:ASSIGNED} status_events:{type:\"RUNNING\" description:\"task action/STARTUP/0/0/group0 RUNNING\" event_time:{seconds:1793135239 nanos:954335900} task_state:RUNNING} status_events:{type:\"SUCCEEDED\" description:\"succeeded\" event_time:{seconds:1793135388 nanos:134420770} task_state:SUCCEEDED}} intended_state:ASSIGNED job_uid:\"fds-gpu36-exposure-30c2a56a-3806-40bf0\" task_group_id:\"group0\" location:\"us-central1\" job_id:\"fds-gpu36-exposure02\"} tasks:{task:\"task/fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0/0/0\" spec:{runnables:{container:{image_uri:\"pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime\" commands:\"-c\" commands:\"import base64;exec(compile(base64.b64decode('aW1wb3J0IHBhdGhsaWIsc3lzLHJ1bnB5LHVybGxpYi5yZXF1ZXN0LHVybGxpYi5wYXJzZSxqc29uLHRhcmZpbGUsc2h1dGlsLGhhc2hsaWIKcD1wYXRobGliLlBhdGgoJy90bXAvc3R1ZHknKTtwLm1rZGlyKGV4aXN0X29rPVRydWUpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pO3Rva2VuPWpzb24ubG9hZCh1cmxsaWIucmVxdWVzdC51cmxvcGVuKHIsdGltZW91dD0yMCkpWydhY2Nlc3NfdG9rZW4nXQp1PSdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vc3RvcmFnZS92MS9iL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvby8nK3VybGxpYi5wYXJzZS5xdW90ZSgnZGVuc2l0eTM2L2V4cG9zdXJlLXBpbG90MDIvaW5wdXRzLnRhcicsc2FmZT0nJykrJz9hbHQ9bWVkaWEnCndpdGggdXJsbGliLnJlcXVlc3QudXJsb3Blbih1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KHUsaGVhZGVycz17J0F1dGhvcml6YXRpb24nOidCZWFyZXIgJyt0b2tlbn0pLHRpbWVvdXQ9MTgwKSBhcyBzcmMsKHAvJ3RyYW5zZmVyLnRhcicpLm9wZW4oJ3diJykgYXMgZHN0OnNodXRpbC5jb3B5ZmlsZW9iaihzcmMsZHN0KQp3aXRoIHRhcmZpbGUub3BlbihwLyd0cmFuc2Zlci50YXInKSBhcyB0YXI6CiBmb3IgbSBpbiB0YXIuZ2V0bWVtYmVycygpOmFzc2VydCBub3QgbS5uYW1lLnN0YXJ0c3dpdGgoJy8nKSBhbmQgJy4uJyBub3QgaW4gcGF0aGxpYi5QYXRoKG0ubmFtZSkucGFydHMgYW5kIG5vdCBtLmlzc3ltKCkgYW5kIG5vdCBtLmlzbG5rKCkKIHRhci5leHRyYWN0YWxsKHApCmZvciBuLGggaW4ganNvbi5sb2FkcygocC8naGFzaGVzLmpzb24nKS5yZWFkX3RleHQoKSkuaXRlbXMoKTphc3NlcnQgaGFzaGxpYi5zaGEyNTYoKHAvbikucmVhZF9ieXRlcygpKS5oZXhkaWdlc3QoKT09aAoocC8ncmVzdWx0cycpLm1rZGlyKGV4aXN0X29rPVRydWUpO3N5cy5wYXRoLmluc2VydCgwLHN0cihwKSk7CnRyeToKIGZyb20gcnVudGltZSBpbXBvcnQgdXBsb2FkLG9iamVjdF9tZXRhZGF0YSxtYXRjaGVzCiBwcm9iZT1iJ2RlbnNpdHkzNi1wcmVmbGlnaHQtdXBsb2FkLXZlcmlmaWNhdGlvbi1wcm9iZSc7dXBsb2FkKCd1cGxvYWQtcHJvYmUuYmluJyxwcm9iZSk7YXNzZXJ0IG1hdGNoZXMob2JqZWN0X21ldGFkYXRhKCd1cGxvYWQtcHJvYmUuYmluJykscHJvYmUpO3VwbG9hZCgndXBsb2FkLXByb2JlLmJpbicscHJvYmUpCiB1cGxvYWQoJ3RyYW5zcG9ydC1jbG91ZC1jaGVjay5qc29uJyxqc29uLmR1bXBzKHsncGFzc2VkJzpUcnVlLCd2ZXJpZmllZF9tZXRhZGF0YSc6VHJ1ZSwnaWRlbXBvdGVudF9yZXBsYXknOlRydWV9KS5lbmNvZGUoKSkKIHJ1bnB5LnJ1bl9wYXRoKHN0cihwLyd3b3JrZXIucHknKSxydW5fbmFtZT0nX19tYWluX18nKQpleGNlcHQgQmFzZUV4Y2VwdGlvbjoKIGltcG9ydCB0cmFjZWJhY2sKIGZyb20gcnVudGltZSBpbXBvcnQgdXBsb2FkCiB1cGxvYWQoJ2Jvb3RzdHJhcC1lcnJvci50eHQnLHRyYWNlYmFjay5mb3JtYXRfZXhjKCkuZW5jb2RlKCkpO3JhaXNlCg=='),'bootstrap','exec'))\" entrypoint:\"python\" options:\"--shm-size=1g\"}} compute_resource:{cpu_milli:4000 memory_mib:12000} max_run_duration:{seconds:2850} environment:{variables:{key:\"BATCH_TASK_COUNT\" value:\"1\"} variables:{key:\"BATCH_TASK_INDEX\" value:\"0\"} variables:{key:\"BATCH_TASK_UID\" value:\"fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0\"} variables:{key:\"CLOUDSDK_PYTHON\" value:\"/usr/bin/python3\"}}} agent_task_spec:{logging_option:{labels:{key:\"trial_id\" value:\"gpu36-exposure02\"}}} status:{state:PENDING} intended_state:ASSIGNED task_source:USER job_uid:\"fds-gpu36-exposure-30c2a56a-3806-40bf0\" task_group_id:\"group0\" location:\"us-central1\" job_id:\"fds-gpu36-exposure02\"} use_batch_monitored_resource:true.",
+    "timestamp": "2026-10-27T21:09:48.245106500Z"
+  },
+  {
+    "insertId": "1fmk0v4f9ny2m9",
+    "labels": {
+      "hostname": "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv",
+      "job_uid": "fds-gpu36-exposure-30c2a56a-3806-40bf0",
+      "task_group_name": "projects/587909259768/locations/us-central1/jobs/fds-gpu36-exposure02/taskGroups/group0"
+    },
+    "logName": "projects/tmrw-wildfire-20261015/logs/batch_agent_logs",
+    "receiveTimestamp": "2026-10-27T21:10:18.161394566Z",
+    "resource": {
+      "labels": {
+        "instance_id": "5064933301723901084",
+        "project_id": "tmrw-wildfire-20261015",
+        "zone": "us-central1-a"
+      },
+      "type": "gce_instance"
+    },
+    "severity": "INFO",
+    "textPayload": "report agent state: metadata:{parent:\"projects/587909259768/locations/us-central1\" zone:\"us-central1-a\" instance:\"fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv\" instance_id:5064933301723901084 creation_time:{seconds:1793135239 nanos:149322473} creator:\"projects/587909259768/regions/us-central1/instanceGroupManagers/fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0\" version:\"cloud-batch-agent_20261014.00_p00\" os_release:{key:\"BUILD_ID\" value:\"18867.638.5\"} os_release:{key:\"ID\" value:\"cos\"} os_release:{key:\"NAME\" value:\"Container-Optimized OS\"} os_release:{key:\"VERSION\" value:\"121\"} os_release:{key:\"VERSION_ID\" value:\"121\"} image_version:\"batch-cos-stable-20261016-00-p00\" machine_type:\"g2-standard-4\"} agent_info:{state:AGENT_RUNNING job_id:\"fds-gpu36-exposure-30c2a56a-3806-40bf0\" user_project_num:587909259768 tasks:{task_id:\"action/STARTUP/0/0/group0\" task_status:{state:SUCCEEDED status_events:{type:\"ASSIGNED\" description:\"task action/STARTUP/0/0/group0 ASSIGNED\" event_time:{seconds:1793135239 nanos:954331060} task_state:ASSIGNED} status_events:{type:\"RUNNING\" description:\"task action/STARTUP/0/0/group0 RUNNING\" event_time:{seconds:1793135239 nanos:954335900} task_state:RUNNING} status_events:{type:\"SUCCEEDED\" description:\"succeeded\" event_time:{seconds:1793135388 nanos:134420770} task_state:SUCCEEDED}}} report_time:{seconds:1793135388 nanos:134533602} task_group_id:\"group0\"} agent_timing_info:{boot_time:{seconds:1793135231 nanos:354571291} script_startup_time:{seconds:1793135238 nanos:594571291} agent_startup_time:{seconds:1793135239 nanos:149322473}}",
+    "timestamp": "2026-10-27T21:09:48.134689311Z"
+  },
+  {
+    "insertId": "1fmk0v4f9ny2m8",
+    "labels": {
+      "hostname": "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv",
+      "job_uid": "fds-gpu36-exposure-30c2a56a-3806-40bf0",
+      "task_group_name": "projects/587909259768/locations/us-central1/jobs/fds-gpu36-exposure02/taskGroups/group0"
+    },
+    "logName": "projects/tmrw-wildfire-20261015/logs/batch_agent_logs",
+    "receiveTimestamp": "2026-10-27T21:10:18.161394566Z",
+    "resource": {
+      "labels": {
+        "instance_id": "5064933301723901084",
+        "project_id": "tmrw-wildfire-20261015",
+        "zone": "us-central1-a"
+      },
+      "type": "gce_instance"
+    },
+    "severity": "INFO",
+    "textPayload": "Scheduler reported task \"action/STARTUP/0/0/group0\"",
+    "timestamp": "2026-10-27T21:09:48.134481808Z"
+  }
+]
