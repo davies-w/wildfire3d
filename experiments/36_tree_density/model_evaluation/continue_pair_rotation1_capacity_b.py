@@ -31,7 +31,7 @@ def main():
   original=(R/'data/pair-sequence/rotation1/workflow.yaml').read_text()
   modified=original.replace('us-central1-c','us-central1-b').replace('fds-gpu36-seq01-r1','fds-gpu36-seq01-r1b').replace('gpu36-seq01-r1','gpu36-seq01-r1b').replace('/job-status.json','/job-status-capacity-b.json')
   # Replacements above may double-suffix the job name; use one fixed replacement.
-  modified=modified.replace('fds-gpu36-seq01-r1ba','fds-gpu36-seq01-r1b')
+  modified=modified.replace('fds-gpu36-seq01-r1bb','fds-gpu36-seq01-r1b')
   w=yaml.safe_load(modified)
   oldjob=yaml.safe_load(original)['main']['steps'][0]['initialize']['assign'][1]['job']
   newjob=w['main']['steps'][0]['initialize']['assign'][1]['job']
@@ -39,7 +39,7 @@ def main():
   assert newjob['allocationPolicy']['location']['allowedLocations']==['zones/us-central1-b']
   # Same proven single-job watchdog used successfully for rotation0. No regional Batch list call.
   assert 'batch.googleapis.com' in json.dumps(w) and 'check_jobs' not in json.dumps(w)
-  lease={'claim':{'call':'http.post','args':{'url':'https://storage.googleapis.com/upload/storage/v1/b/'+BUCKET+'/o','query':{'uploadType':'media','name':PREFIX+'capacity-b-lease.json','ifGenerationMatch':0},'auth':{'type':'OAuth2'},'headers':{'Content-Type':'application/json'},'body':{'workflow':WF,'rotation':1,'reason':'Previous rotation1 attempt had zero runtime due zone a stockout; unchanged job in zone a'}}}}
+  lease={'claim':{'call':'http.post','args':{'url':'https://storage.googleapis.com/upload/storage/v1/b/'+BUCKET+'/o','query':{'uploadType':'media','name':PREFIX+'capacity-b-lease.json','ifGenerationMatch':0},'auth':{'type':'OAuth2'},'headers':{'Content-Type':'application/json'},'body':{'workflow':WF,'rotation':1,'reason':'Previous rotation1 attempt had zero runtime due zone a stockout; unchanged job in zone b'}}}}
   w['main']['steps'].insert(0,lease);D.mkdir(exist_ok=True);(D/'workflow.yaml').write_text(yaml.safe_dump(w,sort_keys=False))
   # Exercise controller read/list permissions in cloud before allocating any GPU.
   check={'main':{'steps':[{'instances':{'call':'http.get','args':{'url':'https://compute.googleapis.com/compute/v1/projects/'+PROJECT+'/zones/us-central1-b/instances','auth':{'type':'OAuth2'}},'result':'v'}},{'input':{'call':'http.get','args':{'url':'https://storage.googleapis.com/storage/v1/b/'+BUCKET+'/o/density36%2Fpair-sequence01%2Frotation1%2Finputs.tar','auth':{'type':'OAuth2'}},'result':'p'}},{'done':{'return':{'passed':True,'input_size':'${p.body.size}','instances':'${map.get(v.body,"items")}'}}}]}}
