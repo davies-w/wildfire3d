@@ -19,6 +19,6 @@ def main():
  for item in files:
   p=Path(hf_hub_download(repo_id=repo,repo_type='space',filename=item['path'],revision=commit.oid))
   assert hashlib.sha256(p.read_bytes()).hexdigest()==item['sha256']
- proof=dict(repo=repo,commit=commit.oid,previous_commit=revision,files=files,report_only=True,raw_data_published=False,url='https://wdavies-fire-reports.hf.space/'+prefix+'/index.html')
+ proof=dict(repo=repo,commit=commit.oid,previous_commit=revision,files=files,report_only=True,raw_data_published=False,url='https://wdavies-fire-reports.static.hf.space/'+prefix+'/index.html')
  (R/'results/report-publication.json').write_text(json.dumps(proof,indent=2)+'\n');print(proof['url'])
 if __name__=='__main__':main()

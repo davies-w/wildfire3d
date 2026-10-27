@@ -1822,8 +1822,8 @@ stages:
       nfiles: 4
     - path: model_evaluation/publish_report.py
       hash: md5
-      md5: eb01b440a7feb39b4f97bdc278ecc824
-      size: 2035
+      md5: 128c30c337fccdbd7980bcadf460bb56
+      size: 2042
     - path: results/model-training-collected.json
       hash: md5
       md5: 6474c6f7c2c5e69c8d5aaa4cf172ead2
@@ -1831,8 +1831,8 @@ stages:
     outs:
     - path: results/report-publication.json
       hash: md5
-      md5: 8512a7470871ea7cce5136ee19cfcccf
-      size: 982
+      md5: 330cae113d5b336b7e9e85131b407c37
+      size: 989
   prepare_overlap_candidate:
     cmd: ../../.venv/bin/python model_evaluation/prepare_overlap_candidate.py
     deps:
