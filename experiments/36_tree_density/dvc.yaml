@@ -478,3 +478,25 @@ stages:
     metrics:
     - results/model-timing-prepared.json:
         cache: false
+  launch_model_timing:
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing.py --execute
+    frozen: true
+    deps:
+    - model_evaluation/launch_timing.py
+    - model_evaluation/finish_timing_setup.py
+    - data/model-timing
+    - results/model-timing-prepared.json
+    - results/model-preflight-inputs.json
+    metrics:
+    - results/model-timing-execution.json:
+        cache: false
+  collect_model_timing:
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing.py
+    deps:
+    - model_evaluation/collect_timing.py
+    - results/model-timing-execution.json
+    outs:
+    - data/model-timing-results
+    metrics:
+    - results/model-timing-collected.json:
+        cache: false

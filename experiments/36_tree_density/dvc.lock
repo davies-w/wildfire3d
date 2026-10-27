@@ -1233,3 +1233,32 @@ stages:
       hash: md5
       md5: a12847111dd3558cb4d9d75367b5256f
       size: 784
+  launch_model_timing:
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing.py --execute
+    deps:
+    - path: data/model-timing
+      hash: md5
+      md5: 2387a0fbb101e83c5281c23a2140c1f7.dir
+      size: 3973654
+      nfiles: 3
+    - path: model_evaluation/finish_timing_setup.py
+      hash: md5
+      md5: a0d3c5c83adb8948d17b0206d6a81f41
+      size: 2748
+    - path: model_evaluation/launch_timing.py
+      hash: md5
+      md5: dafb1e6a903627c3edc1966699c004d5
+      size: 5036
+    - path: results/model-preflight-inputs.json
+      hash: md5
+      md5: c8e43f2dec86d7c97efc1c21e5facb6a
+      size: 1147
+    - path: results/model-timing-prepared.json
+      hash: md5
+      md5: a12847111dd3558cb4d9d75367b5256f
+      size: 784
+    outs:
+    - path: results/model-timing-execution.json
+      hash: md5
+      md5: a4f88ff786598052bb72f434108c5b72
+      size: 336
