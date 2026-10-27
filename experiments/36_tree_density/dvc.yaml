@@ -896,3 +896,27 @@ stages:
       - data/pair-sequence:
           persist: true
       - results/pair-sequence-prepared.json
+
+  collect_pair_sequence_r0:
+    cmd: ../../.venv/bin/python model_evaluation/collect_pair_sequence.py --rotation 0
+    deps:
+    - model_evaluation/collect_pair_sequence.py
+    - results/pair-sequence-execution.json
+    - data/pair-sequence/rotation0/schema.json
+    outs:
+    - data/pair-sequence-r0-results:
+        persist: true
+    - results/pair-sequence-r0-collected.json
+    - results/pair-sequence-r0-output-inventory.json
+
+  collect_pair_sequence_r1:
+    cmd: ../../.venv/bin/python model_evaluation/collect_pair_sequence.py --rotation 1
+    deps:
+    - model_evaluation/collect_pair_sequence.py
+    - results/pair-sequence-execution.json
+    - data/pair-sequence/rotation1/schema.json
+    outs:
+    - data/pair-sequence-r1-results:
+        persist: true
+    - results/pair-sequence-r1-collected.json
+    - results/pair-sequence-r1-output-inventory.json
