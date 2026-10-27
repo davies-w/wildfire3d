@@ -1,0 +1,450 @@
+{
+  "passed": true,
+  "compute_allocation_seconds": 0,
+  "successful_vm_inserts": 0,
+  "failed_capacity_inserts": 6,
+  "task_run_duration": "0s",
+  "basis": "Every retained VM insert operation completed with capacity error; zero task runtime; live job/VM/disk prefix inventory empty; exact temporary read permission removed.",
+  "not_a_posted_bill": true,
+  "ancillary_costs": "Workflow/storage remain covered by existing ancillary reservations; no zero-total-project-cost claim.",
+  "operations": [
+    {
+      "clientOperationId": "cddcfbe4-708c-3290-bb3c-7250155d78da",
+      "endTime": "2026-10-27T13:46:35.886-07:00",
+      "error": {
+        "errors": [
+          {
+            "code": "ZONE_RESOURCE_POOL_EXHAUSTED_WITH_DETAILS",
+            "errorDetails": [
+              {
+                "help": {
+                  "links": [
+                    {
+                      "description": "Troubleshooting documentation",
+                      "url": "https://cloud.google.com/compute/docs/resource-error"
+                    }
+                  ]
+                }
+              },
+              {
+                "localizedMessage": {
+                  "locale": "en-US",
+                  "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-central1-c zone. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                }
+              },
+              {
+                "errorInfo": {
+                  "domain": "compute.googleapis.com",
+                  "metadatas": {
+                    "attachment": "nvidia-l4:1",
+                    "vmType": "g2-standard-4",
+                    "zone": "us-central1-c",
+                    "zonesAvailable": ""
+                  },
+                  "reason": "resource_availability"
+                }
+              }
+            ],
+            "message": "The zone 'projects/tmrw-wildfire-20261015/zones/us-central1-c' does not have enough resources available to fulfill the request.  'NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)'."
+          }
+        ]
+      },
+      "httpErrorMessage": "SERVICE UNAVAILABLE",
+      "httpErrorStatusCode": 503,
+      "id": "4520400550319928137",
+      "insertTime": "2026-10-27T13:46:30.713-07:00",
+      "kind": "compute#operation",
+      "name": "operation-1793133990306-65ed88a86e412-fb4ac71e-493b1d0a",
+      "operationType": "insert",
+      "progress": 100,
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c/operations/operation-1793133990306-65ed88a86e412-fb4ac71e-493b1d0a",
+      "startTime": "2026-10-27T13:46:30.760-07:00",
+      "status": "DONE",
+      "targetId": "643116057896989513",
+      "targetLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c/instances/fds-gpu36-exposure-153c79b3-5237-453f0-group0-0-6z27",
+      "user": "587909259768@cloudservices.gserviceaccount.com",
+      "warnings": [
+        {
+          "code": "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+          "data": [
+            {
+              "key": "disk_size_gb",
+              "value": "60"
+            },
+            {
+              "key": "image_size_gb",
+              "value": "30"
+            }
+          ],
+          "message": "Disk size: '60 GB' is larger than image size: '30 GB'. You might need to resize the root repartition manually if the operating system does not support automatic resizing. See https://cloud.google.com/compute/docs/disks/add-persistent-disk#resize_pd for details."
+        }
+      ],
+      "zone": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c"
+    },
+    {
+      "clientOperationId": "6f21dcec-9b49-3747-97e6-927a86281388",
+      "endTime": "2026-10-27T13:46:52.170-07:00",
+      "error": {
+        "errors": [
+          {
+            "code": "ZONE_RESOURCE_POOL_EXHAUSTED_WITH_DETAILS",
+            "errorDetails": [
+              {
+                "help": {
+                  "links": [
+                    {
+                      "description": "Troubleshooting documentation",
+                      "url": "https://cloud.google.com/compute/docs/resource-error"
+                    }
+                  ]
+                }
+              },
+              {
+                "localizedMessage": {
+                  "locale": "en-US",
+                  "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-central1-c zone. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                }
+              },
+              {
+                "errorInfo": {
+                  "domain": "compute.googleapis.com",
+                  "metadatas": {
+                    "attachment": "nvidia-l4:1",
+                    "vmType": "g2-standard-4",
+                    "zone": "us-central1-c",
+                    "zonesAvailable": ""
+                  },
+                  "reason": "resource_availability"
+                }
+              }
+            ],
+            "message": "The zone 'projects/tmrw-wildfire-20261015/zones/us-central1-c' does not have enough resources available to fulfill the request.  'NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)'."
+          }
+        ]
+      },
+      "httpErrorMessage": "SERVICE UNAVAILABLE",
+      "httpErrorStatusCode": 503,
+      "id": "6747903682472096603",
+      "insertTime": "2026-10-27T13:46:44.130-07:00",
+      "kind": "compute#operation",
+      "name": "operation-1793134003600-65ed88b51bda7-f52c98a1-b0059644",
+      "operationType": "insert",
+      "progress": 100,
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c/operations/operation-1793134003600-65ed88b51bda7-f52c98a1-b0059644",
+      "startTime": "2026-10-27T13:46:44.177-07:00",
+      "status": "DONE",
+      "targetId": "7246824877624963932",
+      "targetLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c/instances/fds-gpu36-exposure-153c79b3-5237-453f0-group0-0-6z27",
+      "user": "587909259768@cloudservices.gserviceaccount.com",
+      "warnings": [
+        {
+          "code": "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+          "data": [
+            {
+              "key": "disk_size_gb",
+              "value": "60"
+            },
+            {
+              "key": "image_size_gb",
+              "value": "30"
+            }
+          ],
+          "message": "Disk size: '60 GB' is larger than image size: '30 GB'. You might need to resize the root repartition manually if the operating system does not support automatic resizing. See https://cloud.google.com/compute/docs/disks/add-persistent-disk#resize_pd for details."
+        }
+      ],
+      "zone": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c"
+    },
+    {
+      "clientOperationId": "fe73f312-26a4-334a-ab8a-a361e39723ae",
+      "endTime": "2026-10-27T13:48:33.168-07:00",
+      "error": {
+        "errors": [
+          {
+            "code": "ZONE_RESOURCE_POOL_EXHAUSTED_WITH_DETAILS",
+            "errorDetails": [
+              {
+                "help": {
+                  "links": [
+                    {
+                      "description": "Troubleshooting documentation",
+                      "url": "https://cloud.google.com/compute/docs/resource-error"
+                    }
+                  ]
+                }
+              },
+              {
+                "localizedMessage": {
+                  "locale": "en-US",
+                  "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-central1-c zone. Consider trying your request in the us-central1-a zone(s), which currently has capacity to accommodate your request. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                }
+              },
+              {
+                "errorInfo": {
+                  "domain": "compute.googleapis.com",
+                  "metadatas": {
+                    "attachment": "nvidia-l4:1",
+                    "vmType": "g2-standard-4",
+                    "zone": "us-central1-c",
+                    "zonesAvailable": "us-central1-a"
+                  },
+                  "reason": "resource_availability"
+                }
+              }
+            ],
+            "message": "The zone 'projects/tmrw-wildfire-20261015/zones/us-central1-c' does not have enough resources available to fulfill the request.  'NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)'."
+          }
+        ]
+      },
+      "httpErrorMessage": "SERVICE UNAVAILABLE",
+      "httpErrorStatusCode": 503,
+      "id": "7090363861891330295",
+      "insertTime": "2026-10-27T13:48:25.013-07:00",
+      "kind": "compute#operation",
+      "name": "operation-1793134104450-65ed89154956d-a60fcf84-fb0ebb20",
+      "operationType": "insert",
+      "progress": 100,
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c/operations/operation-1793134104450-65ed89154956d-a60fcf84-fb0ebb20",
+      "startTime": "2026-10-27T13:48:25.063-07:00",
+      "status": "DONE",
+      "targetId": "4094802839275876599",
+      "targetLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c/instances/fds-gpu36-exposure-153c79b3-5237-453f0-group0-0-6z27",
+      "user": "587909259768@cloudservices.gserviceaccount.com",
+      "warnings": [
+        {
+          "code": "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+          "data": [
+            {
+              "key": "disk_size_gb",
+              "value": "60"
+            },
+            {
+              "key": "image_size_gb",
+              "value": "30"
+            }
+          ],
+          "message": "Disk size: '60 GB' is larger than image size: '30 GB'. You might need to resize the root repartition manually if the operating system does not support automatic resizing. See https://cloud.google.com/compute/docs/disks/add-persistent-disk#resize_pd for details."
+        }
+      ],
+      "zone": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c"
+    },
+    {
+      "clientOperationId": "845df3d7-a0d1-308d-9544-60ea241c9c1f",
+      "endTime": "2026-10-27T13:50:59.776-07:00",
+      "error": {
+        "errors": [
+          {
+            "code": "ZONE_RESOURCE_POOL_EXHAUSTED_WITH_DETAILS",
+            "errorDetails": [
+              {
+                "help": {
+                  "links": [
+                    {
+                      "description": "Troubleshooting documentation",
+                      "url": "https://cloud.google.com/compute/docs/resource-error"
+                    }
+                  ]
+                }
+              },
+              {
+                "localizedMessage": {
+                  "locale": "en-US",
+                  "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-central1-c zone. Consider trying your request in the us-central1-a zone(s), which currently has capacity to accommodate your request. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                }
+              },
+              {
+                "errorInfo": {
+                  "domain": "compute.googleapis.com",
+                  "metadatas": {
+                    "attachment": "nvidia-l4:1",
+                    "vmType": "g2-standard-4",
+                    "zone": "us-central1-c",
+                    "zonesAvailable": "us-central1-a"
+                  },
+                  "reason": "resource_availability"
+                }
+              }
+            ],
+            "message": "The zone 'projects/tmrw-wildfire-20261015/zones/us-central1-c' does not have enough resources available to fulfill the request.  'NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)'."
+          }
+        ]
+      },
+      "httpErrorMessage": "SERVICE UNAVAILABLE",
+      "httpErrorStatusCode": 503,
+      "id": "4119793441495101509",
+      "insertTime": "2026-10-27T13:50:51.003-07:00",
+      "kind": "compute#operation",
+      "name": "operation-1793134250499-65ed89a091c9e-8639b602-e7c1bf56",
+      "operationType": "insert",
+      "progress": 100,
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c/operations/operation-1793134250499-65ed89a091c9e-8639b602-e7c1bf56",
+      "startTime": "2026-10-27T13:50:51.063-07:00",
+      "status": "DONE",
+      "targetId": "1491729805208236101",
+      "targetLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c/instances/fds-gpu36-exposure-153c79b3-5237-453f0-group0-0-6z27",
+      "user": "587909259768@cloudservices.gserviceaccount.com",
+      "warnings": [
+        {
+          "code": "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+          "data": [
+            {
+              "key": "disk_size_gb",
+              "value": "60"
+            },
+            {
+              "key": "image_size_gb",
+              "value": "30"
+            }
+          ],
+          "message": "Disk size: '60 GB' is larger than image size: '30 GB'. You might need to resize the root repartition manually if the operating system does not support automatic resizing. See https://cloud.google.com/compute/docs/disks/add-persistent-disk#resize_pd for details."
+        }
+      ],
+      "zone": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c"
+    },
+    {
+      "clientOperationId": "11a8c48b-5ac1-3054-81aa-e5cc6cd71329",
+      "endTime": "2026-10-27T13:54:33.496-07:00",
+      "error": {
+        "errors": [
+          {
+            "code": "ZONE_RESOURCE_POOL_EXHAUSTED_WITH_DETAILS",
+            "errorDetails": [
+              {
+                "help": {
+                  "links": [
+                    {
+                      "description": "Troubleshooting documentation",
+                      "url": "https://cloud.google.com/compute/docs/resource-error"
+                    }
+                  ]
+                }
+              },
+              {
+                "localizedMessage": {
+                  "locale": "en-US",
+                  "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-central1-c zone. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                }
+              },
+              {
+                "errorInfo": {
+                  "domain": "compute.googleapis.com",
+                  "metadatas": {
+                    "attachment": "nvidia-l4:1",
+                    "vmType": "g2-standard-4",
+                    "zone": "us-central1-c",
+                    "zonesAvailable": ""
+                  },
+                  "reason": "resource_availability"
+                }
+              }
+            ],
+            "message": "The zone 'projects/tmrw-wildfire-20261015/zones/us-central1-c' does not have enough resources available to fulfill the request.  'NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)'."
+          }
+        ]
+      },
+      "httpErrorMessage": "SERVICE UNAVAILABLE",
+      "httpErrorStatusCode": 503,
+      "id": "5178211848680157551",
+      "insertTime": "2026-10-27T13:54:24.584-07:00",
+      "kind": "compute#operation",
+      "name": "operation-1793134464058-65ed8a6c3c388-95792029-25acc180",
+      "operationType": "insert",
+      "progress": 100,
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c/operations/operation-1793134464058-65ed8a6c3c388-95792029-25acc180",
+      "startTime": "2026-10-27T13:54:24.653-07:00",
+      "status": "DONE",
+      "targetId": "5873224130828743023",
+      "targetLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c/instances/fds-gpu36-exposure-153c79b3-5237-453f0-group0-0-6z27",
+      "user": "587909259768@cloudservices.gserviceaccount.com",
+      "warnings": [
+        {
+          "code": "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+          "data": [
+            {
+              "key": "disk_size_gb",
+              "value": "60"
+            },
+            {
+              "key": "image_size_gb",
+              "value": "30"
+            }
+          ],
+          "message": "Disk size: '60 GB' is larger than image size: '30 GB'. You might need to resize the root repartition manually if the operating system does not support automatic resizing. See https://cloud.google.com/compute/docs/disks/add-persistent-disk#resize_pd for details."
+        }
+      ],
+      "zone": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c"
+    },
+    {
+      "clientOperationId": "fd98f8de-39cb-3a88-925d-e3fc7df1b830",
+      "endTime": "2026-10-27T13:59:46.850-07:00",
+      "error": {
+        "errors": [
+          {
+            "code": "ZONE_RESOURCE_POOL_EXHAUSTED_WITH_DETAILS",
+            "errorDetails": [
+              {
+                "help": {
+                  "links": [
+                    {
+                      "description": "Troubleshooting documentation",
+                      "url": "https://cloud.google.com/compute/docs/resource-error"
+                    }
+                  ]
+                }
+              },
+              {
+                "localizedMessage": {
+                  "locale": "en-US",
+                  "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-central1-c zone. Consider trying your request in the us-central1-a zone(s), which currently has capacity to accommodate your request. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                }
+              },
+              {
+                "errorInfo": {
+                  "domain": "compute.googleapis.com",
+                  "metadatas": {
+                    "attachment": "nvidia-l4:1",
+                    "vmType": "g2-standard-4",
+                    "zone": "us-central1-c",
+                    "zonesAvailable": "us-central1-a"
+                  },
+                  "reason": "resource_availability"
+                }
+              }
+            ],
+            "message": "The zone 'projects/tmrw-wildfire-20261015/zones/us-central1-c' does not have enough resources available to fulfill the request.  'NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)'."
+          }
+        ]
+      },
+      "httpErrorMessage": "SERVICE UNAVAILABLE",
+      "httpErrorStatusCode": 503,
+      "id": "8491973761167044180",
+      "insertTime": "2026-10-27T13:59:39.408-07:00",
+      "kind": "compute#operation",
+      "name": "operation-1793134778748-65ed8b9858ed2-0c2459c7-d6fd1579",
+      "operationType": "insert",
+      "progress": 100,
+      "selfLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c/operations/operation-1793134778748-65ed8b9858ed2-0c2459c7-d6fd1579",
+      "startTime": "2026-10-27T13:59:39.476-07:00",
+      "status": "DONE",
+      "targetId": "3352617982127550036",
+      "targetLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c/instances/fds-gpu36-exposure-153c79b3-5237-453f0-group0-0-6z27",
+      "user": "587909259768@cloudservices.gserviceaccount.com",
+      "warnings": [
+        {
+          "code": "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+          "data": [
+            {
+              "key": "disk_size_gb",
+              "value": "60"
+            },
+            {
+              "key": "image_size_gb",
+              "value": "30"
+            }
+          ],
+          "message": "Disk size: '60 GB' is larger than image size: '30 GB'. You might need to resize the root repartition manually if the operating system does not support automatic resizing. See https://cloud.google.com/compute/docs/disks/add-persistent-disk#resize_pd for details."
+        }
+      ],
+      "zone": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-central1-c"
+    }
+  ]
+}

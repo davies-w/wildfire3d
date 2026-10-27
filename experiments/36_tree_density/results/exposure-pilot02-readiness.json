@@ -1,0 +1,287 @@
+{
+  "passed": true,
+  "inventory": {
+    "jobs": [
+      {
+        "allocationPolicy": {
+          "instances": [
+            {
+              "installGpuDrivers": true,
+              "policy": {
+                "bootDisk": {
+                  "sizeGb": "60",
+                  "type": "pd-balanced"
+                },
+                "machineType": "g2-standard-4",
+                "provisioningModel": "FLEX_START",
+                "reservation": "NO_RESERVATION"
+              }
+            }
+          ],
+          "labels": {
+            "batch-job-id": "fds-gpu36-flex01-r1",
+            "trial_id": "gpu36-flex01-r1"
+          },
+          "location": {
+            "allowedLocations": [
+              "regions/us-central1",
+              "zones/us-central1-a",
+              "zones/us-central1-b",
+              "zones/us-central1-c"
+            ]
+          },
+          "network": {
+            "networkInterfaces": [
+              {
+                "network": "projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+                "subnetwork": "projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial"
+              }
+            ]
+          },
+          "serviceAccount": {
+            "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com"
+          }
+        },
+        "createTime": "2026-10-27T17:57:09.961511520Z",
+        "labels": {
+          "trial_id": "gpu36-flex01-r1"
+        },
+        "logsPolicy": {
+          "destination": "CLOUD_LOGGING"
+        },
+        "name": "projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-gpu36-flex01-r1",
+        "status": {
+          "runDuration": "0s",
+          "state": "SCHEDULED",
+          "statusEvents": [
+            {
+              "description": "Job state is set from QUEUED to SCHEDULED for job projects/587909259768/locations/us-central1/jobs/fds-gpu36-flex01-r1.",
+              "eventTime": "2026-10-27T17:57:18.574483757Z",
+              "type": "STATUS_CHANGED"
+            },
+            {
+              "description": "Waiting for resources. Currently there are not enough resources available to fulfill the request.",
+              "eventTime": "2026-10-27T21:04:22.265613850Z",
+              "type": "OPERATIONAL_INFO"
+            }
+          ],
+          "taskGroups": {
+            "group0": {
+              "counts": {
+                "PENDING": "1"
+              },
+              "instances": [
+                {
+                  "bootDisk": {
+                    "image": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261016-00-p00",
+                    "sizeGb": "60",
+                    "type": "pd-balanced"
+                  },
+                  "machineType": "g2-standard-4",
+                  "provisioningModel": "FLEX_START",
+                  "taskPack": "1"
+                }
+              ]
+            }
+          }
+        },
+        "taskGroups": [
+          {
+            "name": "projects/587909259768/locations/us-central1/jobs/fds-gpu36-flex01-r1/taskGroups/group0",
+            "parallelism": "1",
+            "taskCount": "1",
+            "taskCountPerNode": "1",
+            "taskSpec": {
+              "computeResource": {
+                "cpuMilli": "4000",
+                "memoryMib": "12000"
+              },
+              "maxRunDuration": "65700s",
+              "runnables": [
+                {
+                  "container": {
+                    "commands": [
+                      "-c",
+                      "import base64;exec(compile(base64.b64decode('aW1wb3J0IHBhdGhsaWIsc3lzLHJ1bnB5LHVybGxpYi5yZXF1ZXN0LHVybGxpYi5wYXJzZSxqc29uLHRhcmZpbGUsc2h1dGlsLGhhc2hsaWIKcD1wYXRobGliLlBhdGgoJy90bXAvc3R1ZHknKTtwLm1rZGlyKGV4aXN0X29rPVRydWUpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pO3Rva2VuPWpzb24ubG9hZCh1cmxsaWIucmVxdWVzdC51cmxvcGVuKHIsdGltZW91dD0yMCkpWydhY2Nlc3NfdG9rZW4nXQp1PSdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vc3RvcmFnZS92MS9iL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvby8nK3VybGxpYi5wYXJzZS5xdW90ZSgnZGVuc2l0eTM2L2ZsZXgtcXVldWUwMS9yb3RhdGlvbjEvaW5wdXRzLnRhcicsc2FmZT0nJykrJz9hbHQ9bWVkaWEnCndpdGggdXJsbGliLnJlcXVlc3QudXJsb3Blbih1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KHUsaGVhZGVycz17J0F1dGhvcml6YXRpb24nOidCZWFyZXIgJyt0b2tlbn0pLHRpbWVvdXQ9MTgwKSBhcyBzcmMsKHAvJ3RyYW5zZmVyLnRhcicpLm9wZW4oJ3diJykgYXMgZHN0OnNodXRpbC5jb3B5ZmlsZW9iaihzcmMsZHN0KQp3aXRoIHRhcmZpbGUub3BlbihwLyd0cmFuc2Zlci50YXInKSBhcyB0YXI6CiBmb3IgbSBpbiB0YXIuZ2V0bWVtYmVycygpOmFzc2VydCBub3QgbS5uYW1lLnN0YXJ0c3dpdGgoJy8nKSBhbmQgJy4uJyBub3QgaW4gcGF0aGxpYi5QYXRoKG0ubmFtZSkucGFydHMgYW5kIG5vdCBtLmlzc3ltKCkgYW5kIG5vdCBtLmlzbG5rKCkKIHRhci5leHRyYWN0YWxsKHApCmZvciBuLGggaW4ganNvbi5sb2FkcygocC8naGFzaGVzLmpzb24nKS5yZWFkX3RleHQoKSkuaXRlbXMoKTphc3NlcnQgaGFzaGxpYi5zaGEyNTYoKHAvbikucmVhZF9ieXRlcygpKS5oZXhkaWdlc3QoKT09aAoocC8ncmVzdWx0cycpLm1rZGlyKGV4aXN0X29rPVRydWUpO3N5cy5wYXRoLmluc2VydCgwLHN0cihwKSk7CnRyeToKIGZyb20gcnVudGltZSBpbXBvcnQgdXBsb2FkLG9iamVjdF9tZXRhZGF0YSxtYXRjaGVzCiBwcm9iZT1iJ2RlbnNpdHkzNi1wcmVmbGlnaHQtdXBsb2FkLXZlcmlmaWNhdGlvbi1wcm9iZSc7dXBsb2FkKCd1cGxvYWQtcHJvYmUuYmluJyxwcm9iZSk7YXNzZXJ0IG1hdGNoZXMob2JqZWN0X21ldGFkYXRhKCd1cGxvYWQtcHJvYmUuYmluJykscHJvYmUpO3VwbG9hZCgndXBsb2FkLXByb2JlLmJpbicscHJvYmUpCiB1cGxvYWQoJ3RyYW5zcG9ydC1jbG91ZC1jaGVjay5qc29uJyxqc29uLmR1bXBzKHsncGFzc2VkJzpUcnVlLCd2ZXJpZmllZF9tZXRhZGF0YSc6VHJ1ZSwnaWRlbXBvdGVudF9yZXBsYXknOlRydWV9KS5lbmNvZGUoKSkKIHJ1bnB5LnJ1bl9wYXRoKHN0cihwLydjaGVja19yZXN1bWUucHknKSxydW5fbmFtZT0nX19tYWluX18nKQogcnVucHkucnVuX3BhdGgoc3RyKHAvJ3dvcmtlci5weScpLHJ1bl9uYW1lPSdfX21haW5fXycpCmV4Y2VwdCBCYXNlRXhjZXB0aW9uOgogaW1wb3J0IHRyYWNlYmFjawogZnJvbSBydW50aW1lIGltcG9ydCB1cGxvYWQKIHVwbG9hZCgnYm9vdHN0cmFwLWVycm9yLnR4dCcsdHJhY2ViYWNrLmZvcm1hdF9leGMoKS5lbmNvZGUoKSk7cmFpc2UK'),'bootstrap','exec'))"
+                    ],
+                    "entrypoint": "python",
+                    "imageUri": "pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime",
+                    "options": "--shm-size=1g"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "uid": "fds-gpu36-flex01-r-87c1dc7e-e1dc-4f0c0",
+        "updateTime": "2026-10-27T17:59:15.935040717Z"
+      }
+    ],
+    "instances": []
+  },
+  "regional_available": {
+    "CPUS": 200.0,
+    "DISKS_TOTAL_GB": 4096.0,
+    "SNAPSHOTS": 1000.0,
+    "STATIC_ADDRESSES": 8.0,
+    "IN_USE_ADDRESSES": 24.0,
+    "SSD_TOTAL_GB": 720.0,
+    "INSTANCE_TEMPLATES": 300.0,
+    "LOCAL_SSD_TOTAL_GB": 9.223372036854776e+18,
+    "INSTANCE_GROUPS": 100.0,
+    "INSTANCE_GROUP_MANAGERS": 150.0,
+    "INSTANCES": 24.0,
+    "AUTOSCALERS": 50.0,
+    "REGIONAL_AUTOSCALERS": 50.0,
+    "REGIONAL_INSTANCE_GROUP_MANAGERS": 149.0,
+    "TARGET_TCP_PROXIES": 10.0,
+    "PREEMPTIBLE_CPUS": 16.0,
+    "NVIDIA_K80_GPUS": 1.0,
+    "COMMITTED_CPUS": 0.0,
+    "COMMITTED_LOCAL_SSD_TOTAL_GB": 0.0,
+    "COMMITMENTS": 0.0,
+    "NETWORK_ENDPOINT_GROUPS": 100.0,
+    "INTERNAL_ADDRESSES": 200.0,
+    "NVIDIA_P100_GPUS": 1.0,
+    "PREEMPTIBLE_LOCAL_SSD_GB": 0.0,
+    "SSL_POLICIES": 10.0,
+    "PREEMPTIBLE_NVIDIA_K80_GPUS": 1.0,
+    "PREEMPTIBLE_NVIDIA_P100_GPUS": 1.0,
+    "NVIDIA_P100_VWS_GPUS": 1.0,
+    "NVIDIA_V100_GPUS": 1.0,
+    "NVIDIA_P4_GPUS": 1.0,
+    "NVIDIA_P4_VWS_GPUS": 1.0,
+    "NODE_GROUPS": 100.0,
+    "NODE_TEMPLATES": 100.0,
+    "PREEMPTIBLE_NVIDIA_V100_GPUS": 1.0,
+    "PREEMPTIBLE_NVIDIA_P4_GPUS": 1.0,
+    "PREEMPTIBLE_NVIDIA_P100_VWS_GPUS": 1.0,
+    "PREEMPTIBLE_NVIDIA_P4_VWS_GPUS": 1.0,
+    "INTERCONNECT_ATTACHMENTS_PER_REGION": 16.0,
+    "INTERCONNECT_ATTACHMENTS_TOTAL_MBPS": 80000.0,
+    "RESOURCE_POLICIES": 250.0,
+    "IN_USE_SNAPSHOT_SCHEDULES": 20.0,
+    "NVIDIA_T4_GPUS": 1.0,
+    "NVIDIA_T4_VWS_GPUS": 1.0,
+    "PREEMPTIBLE_NVIDIA_T4_GPUS": 1.0,
+    "PREEMPTIBLE_NVIDIA_T4_VWS_GPUS": 1.0,
+    "IN_USE_BACKUP_SCHEDULES": 20.0,
+    "PUBLIC_DELEGATED_PREFIXES": 10.0,
+    "COMMITTED_NVIDIA_K80_GPUS": 0.0,
+    "COMMITTED_NVIDIA_P100_GPUS": 0.0,
+    "COMMITTED_NVIDIA_P4_GPUS": 0.0,
+    "COMMITTED_NVIDIA_V100_GPUS": 0.0,
+    "COMMITTED_NVIDIA_T4_GPUS": 0.0,
+    "C2_CPUS": 8.0,
+    "N2_CPUS": 200.0,
+    "COMMITTED_N2_CPUS": 0.0,
+    "COMMITTED_C2_CPUS": 0.0,
+    "RESERVATIONS": 100.0,
+    "COMMITTED_LICENSES": 0.0,
+    "N2D_CPUS": 16.0,
+    "COMMITTED_N2D_CPUS": 0.0,
+    "SERVICE_ATTACHMENTS": 400.0,
+    "STATIC_BYOIP_ADDRESSES": 128.0,
+    "AFFINITY_GROUPS": 9.223372036854776e+18,
+    "NVIDIA_A100_GPUS": 0.0,
+    "PREEMPTIBLE_NVIDIA_A100_GPUS": 0.0,
+    "COMMITTED_NVIDIA_A100_GPUS": 0.0,
+    "M1_CPUS": 640.0,
+    "M2_CPUS": 0.0,
+    "A2_CPUS": 0.0,
+    "COMMITTED_A2_CPUS": 0.0,
+    "COMMITTED_MEMORY_OPTIMIZED_CPUS": 0.0,
+    "NETWORK_FIREWALL_POLICIES": 10.0,
+    "PSC_INTERNAL_LB_FORWARDING_RULES": 400.0,
+    "EXTERNAL_NETWORK_LB_FORWARDING_RULES": 50.0,
+    "EXTERNAL_PROTOCOL_FORWARDING_RULES": 50.0,
+    "PD_EXTREME_TOTAL_PROVISIONED_IOPS": 120000.0,
+    "E2_CPUS": 24.0,
+    "COMMITTED_E2_CPUS": 0.0,
+    "EXTERNAL_MANAGED_FORWARDING_RULES": 15.0,
+    "C2D_CPUS": 100.0,
+    "COMMITTED_C2D_CPUS": 0.0,
+    "N2A_CPUS": 8.0,
+    "SECURITY_POLICIES_PER_REGION": 10.0,
+    "SECURITY_POLICY_RULES_PER_REGION": 100.0,
+    "T2D_CPUS": 24.0,
+    "COMMITTED_T2D_CPUS": 0.0,
+    "C3_CPUS": 96.0,
+    "COMMITTED_C3_CPUS": 0.0,
+    "T2A_CPUS": 96.0,
+    "M3_CPUS": 248.0,
+    "COMMITTED_M3_CPUS": 0.0,
+    "NVIDIA_A100_80GB_GPUS": 0.0,
+    "PREEMPTIBLE_NVIDIA_A100_80GB_GPUS": 0.0,
+    "COMMITTED_NVIDIA_A100_80GB_GPUS": 0.0,
+    "NETWORK_ATTACHMENTS": 400.0,
+    "REGIONAL_INTERNAL_MANAGED_BACKEND_SERVICES": 50.0,
+    "REGIONAL_EXTERNAL_MANAGED_BACKEND_SERVICES": 50.0,
+    "REGIONAL_EXTERNAL_NETWORK_LB_BACKEND_SERVICES": 50.0,
+    "REGIONAL_INTERNAL_LB_BACKEND_SERVICES": 50.0,
+    "REGIONAL_INTERNAL_TRAFFIC_DIRECTOR_BACKEND_SERVICES": 250.0,
+    "NET_LB_SECURITY_POLICIES_PER_REGION": 1.0,
+    "NET_LB_SECURITY_POLICY_RULES_PER_REGION": 0.0,
+    "NET_LB_SECURITY_POLICY_RULE_ATTRIBUTES_PER_REGION": 0.0,
+    "TPU_LITE_DEVICE_V5": 0.0,
+    "PREEMPTIBLE_TPU_LITE_DEVICE_V5": 0.0,
+    "TPU_LITE_PODSLICE_V5": 16.0,
+    "NVIDIA_L4_GPUS": 1.0,
+    "PREEMPTIBLE_NVIDIA_L4_GPUS": 3.0,
+    "COMMITTED_NVIDIA_L4_GPUS": 1.0,
+    "STATIC_EXTERNAL_IPV6_ADDRESS_RANGES": 200.0,
+    "SECURITY_POLICY_ADVANCED_RULES_PER_REGION": 20.0,
+    "PREEMPTIBLE_TPU_LITE_PODSLICE_V5": 16.0,
+    "VARIABLE_IPV6_PUBLIC_DELEGATED_PREFIXES": 0.0
+  },
+  "global_available": {
+    "SNAPSHOTS": 1000.0,
+    "NETWORKS": 3.0,
+    "FIREWALLS": 96.0,
+    "IMAGES": 100.0,
+    "STATIC_ADDRESSES": 8.0,
+    "ROUTES": 200.0,
+    "FORWARDING_RULES": 15.0,
+    "TARGET_POOLS": 50.0,
+    "HEALTH_CHECKS": 75.0,
+    "IN_USE_ADDRESSES": 8.0,
+    "TARGET_INSTANCES": 50.0,
+    "TARGET_HTTP_PROXIES": 10.0,
+    "URL_MAPS": 10.0,
+    "BACKEND_SERVICES": 50.0,
+    "INSTANCE_TEMPLATES": 99.0,
+    "TARGET_VPN_GATEWAYS": 5.0,
+    "VPN_TUNNELS": 10.0,
+    "BACKEND_BUCKETS": 3.0,
+    "ROUTERS": 10.0,
+    "TARGET_SSL_PROXIES": 10.0,
+    "TARGET_HTTPS_PROXIES": 10.0,
+    "SSL_CERTIFICATES": 10.0,
+    "SUBNETWORKS": 100.0,
+    "TARGET_TCP_PROXIES": 10.0,
+    "CPUS_ALL_REGIONS": 96.0,
+    "SECURITY_POLICIES": 10.0,
+    "SECURITY_POLICY_RULES": 100.0,
+    "XPN_SERVICE_PROJECTS": 1000.0,
+    "PACKET_MIRRORINGS": 20.0,
+    "NETWORK_ENDPOINT_GROUPS": 100.0,
+    "INTERCONNECTS": 6.0,
+    "SSL_POLICIES": 10.0,
+    "GLOBAL_INTERNAL_ADDRESSES": 5000.0,
+    "VPN_GATEWAYS": 5.0,
+    "MACHINE_IMAGES": 100.0,
+    "SECURITY_POLICY_CEVAL_RULES": 20.0,
+    "GPUS_ALL_REGIONS": 1.0,
+    "EXTERNAL_VPN_GATEWAYS": 5.0,
+    "PUBLIC_ADVERTISED_PREFIXES": 1.0,
+    "PUBLIC_DELEGATED_PREFIXES": 10.0,
+    "STATIC_BYOIP_ADDRESSES": 128.0,
+    "NETWORK_FIREWALL_POLICIES": 10.0,
+    "INTERNAL_TRAFFIC_DIRECTOR_FORWARDING_RULES": 15.0,
+    "GLOBAL_EXTERNAL_MANAGED_FORWARDING_RULES": 15.0,
+    "GLOBAL_INTERNAL_MANAGED_BACKEND_SERVICES": 50.0,
+    "GLOBAL_EXTERNAL_MANAGED_BACKEND_SERVICES": 50.0,
+    "GLOBAL_EXTERNAL_PROXY_LB_BACKEND_SERVICES": 50.0,
+    "GLOBAL_INTERNAL_TRAFFIC_DIRECTOR_BACKEND_SERVICES": 250.0
+  }
+}

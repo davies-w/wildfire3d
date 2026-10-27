@@ -1160,3 +1160,60 @@ stages:
     metrics:
     - results/startup-gate-audit.json:
         cache: false
+  prepare_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_exposure_pilot02.py
+    deps:
+    - model_evaluation/prepare_exposure_pilot02.py
+    - model_evaluation/exposure_pilot_body.py
+    - results/exposure-pilot-plan.json
+    - results/exposure-pilot-zero-allocation-proof.json
+    - results/exposure-pilot-permission-removed.json
+    - results/exposure-candidate-preflight.json
+    - data/exposure-candidate
+    - data/pair-sequence/rotation0
+    - data/pair-sequence-r0-results/fold01-epoch183.pt
+    - data/model-pair-training/bootstrap.py
+    - data/model-pair-training/workflow.yaml
+    outs:
+    - data/exposure-pilot02
+    metrics:
+    - results/exposure-pilot02-prepared.json:
+        cache: false
+  validate_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/validate_exposure_pilot02.py
+    deps:
+    - model_evaluation/validate_exposure_pilot02.py
+    - data/exposure-pilot02
+    - results/exposure-pilot02-prepared.json
+    metrics:
+    - results/exposure-pilot02-offline-preflight.json:
+        cache: false
+  launch_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/launch_exposure_pilot02.py --execute
+    frozen: true
+    deps:
+    - model_evaluation/launch_exposure_pilot02.py
+    - results/exposure-pilot02-offline-preflight.json
+    - results/exposure-pilot02-prepared.json
+    - data/exposure-pilot02
+    outs:
+    - results/exposure-pilot02-execution.json:
+        persist: true
+  collect_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/collect_exposure_pilot02.py
+    deps:
+    - model_evaluation/collect_exposure_pilot02.py
+    - results/exposure-pilot02-execution.json
+    outs:
+    - data/exposure-pilot02-results
+    metrics:
+    - results/exposure-pilot02-collected.json:
+        cache: false
+  close_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/close_exposure_pilot02.py
+    deps:
+    - model_evaluation/close_exposure_pilot02.py
+    - results/exposure-pilot02-collected.json
+    metrics:
+    - results/exposure-pilot02-permission-removed.json:
+        cache: false

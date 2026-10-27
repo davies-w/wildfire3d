@@ -2765,3 +2765,120 @@ stages:
       hash: md5
       md5: 47865686b6a713a61f6323e5b212f506
       size: 1833
+  collect_exposure_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/collect_exposure_pilot.py
+    deps:
+    - path: model_evaluation/collect_exposure_pilot.py
+      hash: md5
+      md5: f56fd5728bbede451503233308297599
+      size: 5155
+    - path: results/exposure-pilot-execution.json
+      hash: md5
+      md5: 6eafa2bc4b4c331aa17e9573ae5a1800
+      size: 335
+    outs:
+    - path: data/exposure-pilot01-results
+      hash: md5
+      md5: 743b06ada594c697c7b049b417df1597.dir
+      size: 4705
+      nfiles: 1
+    - path: results/exposure-pilot-collected.json
+      hash: md5
+      md5: 9bf65b79eaa5dddc5010a1647e9adc88
+      size: 189
+  close_exposure_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/close_exposure_pilot.py
+    deps:
+    - path: model_evaluation/close_exposure_pilot.py
+      hash: md5
+      md5: b3679fa39f7381ec9e634089259a2082
+      size: 1686
+    - path: results/exposure-pilot-collected.json
+      hash: md5
+      md5: 9bf65b79eaa5dddc5010a1647e9adc88
+      size: 189
+    outs:
+    - path: results/exposure-pilot-permission-removed.json
+      hash: md5
+      md5: 72bdb9cf1a8fb6b42bfba39b1b8213ae
+      size: 458
+  prepare_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_exposure_pilot02.py
+    deps:
+    - path: data/exposure-candidate
+      hash: md5
+      md5: 2afb58814992bd040e5358fdd1452c6d.dir
+      size: 21464
+      nfiles: 2
+    - path: data/model-pair-training/bootstrap.py
+      hash: md5
+      md5: 54eb2a21d34ab57cf56a81bc033a849d
+      size: 1706
+    - path: data/model-pair-training/workflow.yaml
+      hash: md5
+      md5: 0834010f2b624d766e2f556724747011
+      size: 9222
+    - path: data/pair-sequence-r0-results/fold01-epoch183.pt
+      hash: md5
+      md5: 3b850ca9f3ffd9199b8df576ba638287
+      size: 606543
+    - path: data/pair-sequence/rotation0
+      hash: md5
+      md5: ecf579c6875641d20609a12ffb1c961b.dir
+      size: 11141393
+      nfiles: 12
+    - path: model_evaluation/exposure_pilot_body.py
+      hash: md5
+      md5: ce72981a51bb9665bc151f7e5f04c2dd
+      size: 10011
+    - path: model_evaluation/prepare_exposure_pilot02.py
+      hash: md5
+      md5: cb181423a6ea1cdad637c0b673afe30b
+      size: 4633
+    - path: results/exposure-candidate-preflight.json
+      hash: md5
+      md5: 3bc9852df520faf82fdb5a3ebd3fb332
+      size: 2961
+    - path: results/exposure-pilot-permission-removed.json
+      hash: md5
+      md5: 72bdb9cf1a8fb6b42bfba39b1b8213ae
+      size: 458
+    - path: results/exposure-pilot-plan.json
+      hash: md5
+      md5: 92674595ca9f8b1c16a8c8cc1bcb01a2
+      size: 3776
+    - path: results/exposure-pilot-zero-allocation-proof.json
+      hash: md5
+      md5: a78eef4d19e8a8cab58877c7e651cad5
+      size: 20868
+    outs:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: results/exposure-pilot02-prepared.json
+      hash: md5
+      md5: 9ffd58d45deb76be48d73ac32143f456
+      size: 1599
+  validate_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/validate_exposure_pilot02.py
+    deps:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: model_evaluation/validate_exposure_pilot02.py
+      hash: md5
+      md5: f362ab5db3a1f84e07c8514a45136917
+      size: 4339
+    - path: results/exposure-pilot02-prepared.json
+      hash: md5
+      md5: 9ffd58d45deb76be48d73ac32143f456
+      size: 1599
+    outs:
+    - path: results/exposure-pilot02-offline-preflight.json
+      hash: md5
+      md5: 1f086672f0c8e8467e32b810cc51e683
+      size: 485

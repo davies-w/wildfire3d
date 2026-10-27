@@ -40,7 +40,8 @@ def main():
   for n in output_names:fetch(n)
   save('results/exposure-pilot-output-inventory.json',{'prefix':PREFIX,'bytes':size,'objects':{n:objects[n] for n in output_names}})
   if 'complete.json' not in objects:
-   save('results/exposure-pilot-incomplete.json',dict(terminal=status['state'],cleanup_verified=True,preserved_outputs=output_names,automatic_retry=False));print('INCOMPLETE; evidence and checkpoints retained; diagnose before any continuation');return
+   proof=dict(passed=False,experiment_complete=False,terminal=status['state'],cleanup_verified=True,preserved_outputs=output_names,automatic_retry=False)
+   save('results/exposure-pilot-incomplete.json',proof);save('results/exposure-pilot-collected.json',proof);print('INCOMPLETE; evidence and checkpoints retained; diagnose before any continuation');return
   complete=json.loads((root/'complete.json').read_text());assert complete['passed'] and complete['arms_completed']==2 and complete['epochs_per_arm']==12 and complete['test_evaluated'] is False
   for n,h in complete['manifest'].items():fetch(n,h)
   assert json.loads((root/'optimizer-replay.json').read_text())['passed'];freeze=json.loads((root/'selection-freeze.json').read_text());assert freeze['test_evaluated'] is False and len(freeze['arms'])==2
