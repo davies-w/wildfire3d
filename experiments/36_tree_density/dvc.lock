@@ -2142,3 +2142,114 @@ stages:
       hash: md5
       md5: 12a5a836a1d9d1c05c2d4e7d9f0722ef
       size: 2916
+  collect_pair_sequence_r0:
+    cmd: ../../.venv/bin/python model_evaluation/collect_pair_sequence.py 
+      --rotation 0
+    deps:
+    - path: data/pair-sequence/rotation0/schema.json
+      hash: md5
+      md5: 72f1f49ef09731507728a13b8eff1997
+      size: 418638
+    - path: model_evaluation/collect_pair_sequence.py
+      hash: md5
+      md5: 1731d87a75e701cfd06c713caa292427
+      size: 6284
+    - path: results/pair-sequence-execution.json
+      hash: md5
+      md5: 86706ea3f4435be726667a6ed979e342
+      size: 340
+    outs:
+    - path: data/pair-sequence-r0-results
+      hash: md5
+      md5: baa96f8eb658f43d4a649aafc03d5044.dir
+      size: 175729098
+      nfiles: 828
+    - path: results/pair-sequence-r0-collected.json
+      hash: md5
+      md5: 3cd952863625843addbc849d7da954b1
+      size: 342
+    - path: results/pair-sequence-r0-output-inventory.json
+      hash: md5
+      md5: 98297e7c27c301c21994ee5bcace027d
+      size: 951069
+  summarize_pair:
+    cmd: ../../.venv/bin/python model_evaluation/summarize_pair.py
+    deps:
+    - path: data/learning/sequences.npz
+      hash: md5
+      md5: 432e6904ee4c70cba22e2b72ae96809a
+      size: 3238491
+    - path: data/pair-sequence-r0-results
+      hash: md5
+      md5: baa96f8eb658f43d4a649aafc03d5044.dir
+      size: 175729098
+      nfiles: 828
+    - path: model_evaluation/summarize_pair.py
+      hash: md5
+      md5: 29ba98b4f1eb89449c7a097381cfc50d
+      size: 4337
+    - path: results/pair-sequence-r0-collected.json
+      hash: md5
+      md5: 3cd952863625843addbc849d7da954b1
+      size: 342
+    outs:
+    - path: results/model-pair-0-summary.json
+      hash: md5
+      md5: 2c074f195f97b71fc7572f86fcb9e85b
+      size: 27674
+    - path: results/model-pair-1-summary.json
+      hash: md5
+      md5: cddfd7e7ca2bf2adeaa68a79bf9d2919
+      size: 27713
+  build_pair_gallery:
+    cmd: ../../.venv/bin/python model_evaluation/build_pair_gallery.py
+    deps:
+    - path: ../35_surrogate_diagnostics/attempt24/gallery.html
+      hash: md5
+      md5: 45b6712093e6bd16cc10b8286638fc62
+      size: 7710
+    - path: data/learning/sequences.npz
+      hash: md5
+      md5: 432e6904ee4c70cba22e2b72ae96809a
+      size: 3238491
+    - path: data/pair-sequence-r0-results
+      hash: md5
+      md5: baa96f8eb658f43d4a649aafc03d5044.dir
+      size: 175729098
+      nfiles: 828
+    - path: model_evaluation/build_pair_gallery.py
+      hash: md5
+      md5: d5cf80509da87492a934e127065961d7
+      size: 3568
+    - path: results/pair-sequence-r0-collected.json
+      hash: md5
+      md5: 3cd952863625843addbc849d7da954b1
+      size: 342
+    outs:
+    - path: data/pair-gallery
+      hash: md5
+      md5: 36b3c4d921a7acdad58189119bc2fe3a.dir
+      size: 6334574
+      nfiles: 72
+  publish_pair:
+    cmd: ../../.venv/bin/python model_evaluation/publish_pair.py
+    deps:
+    - path: ../35_surrogate_diagnostics/simple_scorecard/data
+      hash: md5
+      md5: c0ede316f122d618d630457dfd37f34a.dir
+      size: 839572
+      nfiles: 13
+    - path: data/pair-gallery
+      hash: md5
+      md5: 36b3c4d921a7acdad58189119bc2fe3a.dir
+      size: 6334574
+      nfiles: 72
+    - path: model_evaluation/publish_pair.py
+      hash: md5
+      md5: c3f0473f1100723d0501e7254d04f101
+      size: 1824
+    outs:
+    - path: results/pair-publication.json
+      hash: md5
+      md5: 3caf5a95e02d63167913e82803b18076
+      size: 8531

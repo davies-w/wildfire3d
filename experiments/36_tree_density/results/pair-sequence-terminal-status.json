@@ -1,0 +1,35 @@
+{
+  "argument": "null",
+  "createTime": "2026-10-27T07:20:19.558690242Z",
+  "duration": "15222.022868285s",
+  "endTime": "2026-10-27T11:34:01.581558527Z",
+  "error": {
+    "context": "HTTP server responded with error code 403\nin step \"check_jobs\", routine \"main\", line: 73",
+    "payload": "{\"body\":{\"error\":{\"code\":403,\"message\":\"Permission 'batch.jobs.list' denied on 'projects/tmrw-wildfire-20261015/locations/us-central1/jobs'\",\"status\":\"PERMISSION_DENIED\"}},\"code\":403,\"headers\":{\"Alt-Svc\":\"h3=\\\":443\\\"; ma=2592000,h3-29=\\\":443\\\"; ma=2592000\",\"Content-Length\":\"190\",\"Content-Type\":\"application/json; charset=UTF-8\",\"Date\":\"Tue, 27 Oct 2026 11:34:01 GMT\",\"Server\":\"ESF\",\"Vary\":\"Origin, X-Origin, Referer\",\"X-Content-Type-Options\":\"nosniff\",\"X-Frame-Options\":\"SAMEORIGIN\",\"X-Xss-Protection\":\"0\"},\"message\":\"HTTP server responded with error code 403\",\"tags\":[\"HttpError\"]}",
+    "stackTrace": {
+      "elements": [
+        {
+          "position": {
+            "column": "7",
+            "length": "4",
+            "line": "73"
+          },
+          "routine": "main",
+          "step": "check_jobs"
+        }
+      ]
+    }
+  },
+  "name": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-pair-sequence01/executions/ae4b8b76-30f2-4af3-a507-063d6477dddb",
+  "startTime": "2026-10-27T07:20:19.558690242Z",
+  "state": "FAILED",
+  "status": {
+    "currentSteps": [
+      {
+        "routine": "main",
+        "step": "check_jobs"
+      }
+    ]
+  },
+  "workflowRevisionId": "000001-71e"
+}

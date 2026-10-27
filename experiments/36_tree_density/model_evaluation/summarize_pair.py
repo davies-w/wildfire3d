@@ -3,10 +3,10 @@ from pathlib import Path
 import hashlib,json,numpy as np
 R=Path(__file__).resolve().parents[1]
 def summarize(index):
- assert json.loads((R/'results/model-pair-training-collected.json').read_text())['passed']
- root=R/'data/model-pair-training-results';a=np.load(R/'data/learning/sequences.npz');truth=a['state'];labels=a['activity_labels'];configs=a['configuration'];times=a['time']
+ assert json.loads((R/'results/pair-sequence-r0-collected.json').read_text())['passed']
+ root=R/'data/pair-sequence-r0-results';a=np.load(R/'data/learning/sequences.npz');truth=a['state'];labels=a['activity_labels'];configs=a['configuration'];times=a['time']
  report=json.loads((root/'report.json').read_text());assert len(report['tests'])==2
- expected=json.loads((R/'data/model-pair-training/schema.json').read_text())['rotations'][0]['test'];report['tests']=[report['tests'][index]];report['folds']=[report['folds'][index]]
+ expected=json.loads((R/'data/pair-sequence/rotation0/schema.json').read_text())['rotations'][0]['test'];report['tests']=[report['tests'][index]];report['folds']=[report['folds'][index]]
  out={'features':['water_kg','dry_fuel_kg','fuel_gas_release_kg_s','surface_heating_index_K'],'headline_nominal_seconds':16,'horizons':{},'training':[]}
  for fold in report['folds']:
   out['training'].append({k:fold[k] for k in ['fold','rotation','epochs','selected_epoch','stop_reason']})

@@ -3,8 +3,8 @@ from pathlib import Path
 import json,numpy as np
 R=Path(__file__).resolve().parents[1]
 def main():
- assert json.loads((R/'results/model-pair-training-collected.json').read_text())['passed']
- root=R/'data/model-pair-training-results';a=np.load(R/'data/learning/sequences.npz');meta=json.loads((R/'data/model-pair-training/schema.json').read_text());expected=meta['rotations'][0]['test'];arms=[]
+ assert json.loads((R/'results/pair-sequence-r0-collected.json').read_text())['passed']
+ root=R/'data/pair-sequence-r0-results';a=np.load(R/'data/learning/sequences.npz');meta=json.loads((R/'data/pair-sequence/rotation0/schema.json').read_text());expected=meta['rotations'][0]['test'];arms=[]
  for fold in (0,1):
   one=np.load(root/f'fold{fold:02}-horizon01-predictions.npz');six=np.load(root/f'fold{fold:02}-horizon16-predictions.npz');full=np.load(root/f'fold{fold:02}-test-predictions.npz');ids=full['case_indices'];assert ids.tolist()==expected and np.array_equal(ids,one['case_indices']) and np.array_equal(ids,six['case_indices'])
   ramp=np.sinh(full['normalized_rollout']*full['std']+full['mean'])*full['physical_scales'];assert np.allclose(ramp[:,0],one['predicted_physical'][:,0],rtol=.002,atol=.002) and np.allclose(ramp[:,15],six['predicted_physical'][:,0],rtol=.002,atol=.002)
@@ -17,7 +17,7 @@ def main():
  for page in range((len(records)+2)//3):(D/f'page-{page}.js').write_text('window.receivePage('+str(page)+','+json.dumps(records[page*3:page*3+3],separators=(',',':'),allow_nan=False)+');')
  template=(R.parent/'35_surrogate_diagnostics/attempt24/gallery.html').read_text().replace('__TOTAL__','208')
  template=template.replace('Test fire scenarios','Stride-one · plain and gated').replace('Held-out scenarios · water, fuel, gas & heating','Stride-one · plain and gated')
- template=template.replace('Held-out predictions across all 10 test folds · Gated GRU','Shared test fold0 · 208 histories / 204 configurations · plain and soft-gated GRUs · stride-one training')
+ template=template.replace('Held-out predictions across all 10 test folds · Gated GRU','Shared test fold 1 (rotation 0) · 208 histories / 204 configurations · plain and soft-gated GRUs · stride-one training')
  template=template.replace('First predicted change × steps','Plain GRU').replace('Recursive model','Soft-gated GRU').replace('data-series="2" aria-pressed="false"','data-series="2" aria-pressed="true"').replace('visible=[true,false,false,true]','visible=[true,false,true,true]')
  template=template.replace('Cone schematic, not a species; no trunk implied.','Cone schematic, not a species; no trunk implied. Generic3m crowns above2m base;1600weightedparticles;0.5m mesh;1500°C20s ignition; no buildings/embers/physical validation. Single split, not ten-fold aggregate.')
  (D/'index.html').write_text(template)

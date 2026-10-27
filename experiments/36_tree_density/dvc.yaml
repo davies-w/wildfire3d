@@ -860,8 +860,8 @@ stages:
     cmd: ../../.venv/bin/python model_evaluation/summarize_pair.py
     deps:
       - model_evaluation/summarize_pair.py
-      - results/model-pair-training-collected.json
-      - data/model-pair-training-results
+      - results/pair-sequence-r0-collected.json
+      - data/pair-sequence-r0-results
       - data/learning/sequences.npz
     outs:
       - results/model-pair-0-summary.json
@@ -870,8 +870,8 @@ stages:
     cmd: ../../.venv/bin/python model_evaluation/build_pair_gallery.py
     deps:
       - model_evaluation/build_pair_gallery.py
-      - results/model-pair-training-collected.json
-      - data/model-pair-training-results
+      - results/pair-sequence-r0-collected.json
+      - data/pair-sequence-r0-results
       - data/learning/sequences.npz
       - ../35_surrogate_diagnostics/attempt24/gallery.html
     outs:
@@ -920,3 +920,12 @@ stages:
         persist: true
     - results/pair-sequence-r1-collected.json
     - results/pair-sequence-r1-output-inventory.json
+
+  publish_pair:
+    cmd: ../../.venv/bin/python model_evaluation/publish_pair.py
+    deps:
+    - model_evaluation/publish_pair.py
+    - data/pair-gallery
+    - ../35_surrogate_diagnostics/simple_scorecard/data
+    outs:
+    - results/pair-publication.json
