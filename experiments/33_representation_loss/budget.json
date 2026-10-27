@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 53.699999999999996,
+  "reserved_usd": 68.4,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -3050,7 +3050,7 @@
       "terminal_evidence": "experiments/36_tree_density/results/model-timing03-status.json"
     },
     "density36-model-pair-preflight01": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 0.5,
       "reserved_unix": 1793084004.518566,
       "scope": "Authorized matched pair CUDA full-epoch timing;20min VM bound",
@@ -3067,7 +3067,7 @@
       "historical_allowance_usd": 0.5
     },
     "density36-pair-training01": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 15.2,
       "reserved_unix": 1793084601.805815,
       "scope": "Authorized single rotation0 plain/gated stride-one pair; cloud watchdog; no automatic retries",
@@ -3083,6 +3083,13 @@
         ]
       },
       "historical_allowance_usd": 15.2
+    },
+    "density36-pair-sequence01": {
+      "state": "submitted",
+      "allowance_usd": 30.4,
+      "reserved_unix": 1793085597.363061,
+      "scope": "Explicitly authorized repaired rotation0 pair and conditional rotation1 before08Pacific; two15.2maxbounds, zero retries",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-pair-sequence01/executions/ae4b8b76-30f2-4af3-a507-063d6477dddb"
     }
   },
   "recycle_reservations": true,

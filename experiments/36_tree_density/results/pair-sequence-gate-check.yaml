@@ -1,0 +1,41 @@
+main:
+  steps:
+  - fetch:
+      call: http.get
+      args:
+        url: https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/density36%2Fpair-sequence01%2Fgate-fixture.json
+        query:
+          alt: media
+        auth:
+          type: OAuth2
+      result: r
+  - decode:
+      call: decode_document
+      args:
+        value: ${r.body}
+      result: d
+  - assert_valid:
+      switch:
+      - condition: ${d.success != true or d.folds != 2 or len(d.selected) != 2 or
+          d.test_not_evaluated_yet != true}
+        raise: Decode gate failed
+  - map_decode:
+      call: decode_document
+      args:
+        value: ${d}
+      result: d2
+  - done:
+      return:
+        passed: true
+        decoded: ${d2}
+        no_compute: true
+decode_document:
+  params:
+  - value
+  steps:
+  - already_decoded:
+      switch:
+      - condition: ${get_type(value) == "map"}
+        return: ${value}
+  - decode:
+      return: ${json.decode(value)}
