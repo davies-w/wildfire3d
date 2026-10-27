@@ -1,0 +1,21 @@
+{
+  "before": {
+    "createTime": "2026-10-20T21:56:24.609731990Z",
+    "etag": "tzlAie-2bKDaKDsKrIuaDLRwNvhma9pPezTu_kl_CHk",
+    "name": "projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/372adac7-559a-4615-b3df-079a62ad6c89",
+    "quotaConfig": {
+      "grantedValue": "1",
+      "preferredValue": "2",
+      "stateDetail": "Quota request denied",
+      "traceId": "0d859571-ce09-42b5-90fb-b0e83cf77ffe"
+    },
+    "quotaId": "GPUS-ALL-REGIONS-per-project",
+    "service": "compute.googleapis.com",
+    "updateTime": "2026-10-27T17:57:42.303243593Z"
+  },
+  "justification": "We are developing small, computationally efficient models to predict vegetation-fire behaviour, with the longer-term aim of helping prevent wildfires and improve wildfire risk reduction. This is simulation-based scientific research, not yet validated for operational wildfire decisions. We train and compare plain and soft-gated recurrent neural networks (approximately 5800 parameters) on 2080 preserved simulation histories, using fixed grouped training/validation/test folds. We request 2 GPUs total globally (one additional) for Google Batch FLEX_START. Google has already approved 3 preemptible NVIDIA L4 GPUs and 16 preemptible CPUs in us-central1, but the global limit of 1 prevents using that regional allowance. The first matched plain/gated pair took approximately 4 hours on one L4; remaining pairs have the same recipe, with actual runtime depending on validation stopping. Each Batch job has an 18.25-hour maximum task runtime and an 18.5-hour VM-age watchdog, and may wait up to 24 hours for allocation. We use immutable per-epoch checkpoints, verified optimizer/RNG resume checks, cloud supervision, cleanup, and no automatic paid retries. The cumulative experiment budget is USD125; launches are gated by the remaining budget. Please reconsider the minimum global increase to 2 for this delay-tolerant wildfire-prevention research workload.",
+  "requested_global_gpus": 2,
+  "returncode": 0,
+  "stdout": "{\n  \"createTime\": \"2026-10-20T21:56:24.609731990Z\",\n  \"etag\": \"899hMJXlyQZv12mDmNDfiEd2OLjueTrH5jdnCQPjfy8\",\n  \"name\": \"projects/tmrw-wildfire-20261015/locations/global/quotaPreferences/372adac7-559a-4615-b3df-079a62ad6c89\",\n  \"quotaConfig\": {\n    \"grantedValue\": \"1\",\n    \"preferredValue\": \"2\",\n    \"traceId\": \"2101e807-db8a-42e2-9a23-f7e8ca9a7801\"\n  },\n  \"quotaId\": \"GPUS-ALL-REGIONS-per-project\",\n  \"reconciling\": true,\n  \"service\": \"compute.googleapis.com\",\n  \"updateTime\": \"2026-10-27T18:08:16.622800694Z\"\n}\n",
+  "stderr": ""
+}
