@@ -2449,3 +2449,114 @@ stages:
       hash: md5
       md5: 28aaf5fa07fc85fcbe70ec0a7b7aba39
       size: 337
+  diagnose_undershoots:
+    cmd: ../../.venv/bin/python model_evaluation/diagnose_undershoots.py
+    deps:
+    - path: ../35_surrogate_diagnostics/attempt24/data/collected
+      hash: md5
+      md5: 21e5198f5c3ff6bd3477da5b65dd3004.dir
+      size: 2063643642
+      nfiles: 8950
+    - path: ../35_surrogate_diagnostics/attempt24/data/sequences.npz
+      hash: md5
+      md5: 19d4aefdea3e2d9246d66453112fe269
+      size: 1276042
+    - path: ../35_surrogate_diagnostics/attempt24/schema.json
+      hash: md5
+      md5: f73e5ea174356fd7b85d9087a8ed2e28
+      size: 174822
+    - path: data/learning
+      hash: md5
+      md5: 1a825007340d2f9d84a9744df853bd53.dir
+      size: 3238491
+      nfiles: 1
+    - path: data/model-training-results
+      hash: md5
+      md5: 8e37ac7d16ec20263900692358f4bb82.dir
+      size: 1636087441
+      nfiles: 5863
+    - path: data/pair-sequence-r0-results
+      hash: md5
+      md5: baa96f8eb658f43d4a649aafc03d5044.dir
+      size: 175729098
+      nfiles: 828
+    - path: data/pair-sequence/rotation0/schema.json
+      hash: md5
+      md5: 72f1f49ef09731507728a13b8eff1997
+      size: 418638
+    - path: data/verified-material
+      hash: md5
+      md5: 04d118ba282c93edf27eda419e06744b.dir
+      size: 41664202402
+      nfiles: 14066
+    - path: learning-schema.json
+      hash: md5
+      md5: 0dbee67e38424d53816fe78799442133
+      size: 672301
+    - path: model_evaluation/diagnose_undershoots.py
+      hash: md5
+      md5: 7fec73e55e538e0a4c9198ac68d9b233
+      size: 5755
+    outs:
+    - path: results/undershoot-diagnosis.json
+      hash: md5
+      md5: e278f8654efca943b483402ffb295aed
+      size: 1074481
+  summarize_undershoots:
+    cmd: ../../.venv/bin/python model_evaluation/summarize_undershoots.py && 
+      ../../.venv/bin/python model_evaluation/audit_gallery_undershoots.py && 
+      ../../.venv/bin/python model_evaluation/plot_gallery_diagnosis.py
+    deps:
+    - path: ../35_surrogate_diagnostics/attempt24/data/scenario_gallery
+      hash: md5
+      md5: 36f0443c2ee89110d42b16b937400209.dir
+      size: 15800396
+      nfiles: 176
+    - path: data/denser
+      hash: md5
+      md5: ca3a9e1890e5da9a42ebcc53669b8409.dir
+      size: 63252112
+      nfiles: 698
+    - path: data/pair-gallery
+      hash: md5
+      md5: 36b3c4d921a7acdad58189119bc2fe3a.dir
+      size: 6334574
+      nfiles: 72
+    - path: model_evaluation/audit_gallery_undershoots.py
+      hash: md5
+      md5: 2b439ef44fe1e70aeadf02f99412b690
+      size: 5014
+    - path: model_evaluation/diagnose_undershoots.py
+      hash: md5
+      md5: 7fec73e55e538e0a4c9198ac68d9b233
+      size: 5755
+    - path: model_evaluation/plot_gallery_diagnosis.py
+      hash: md5
+      md5: 29a3725965394ad3406f06451d33528c
+      size: 2553
+    - path: model_evaluation/summarize_undershoots.py
+      hash: md5
+      md5: 69bbb48c089b7fc04e09af142a38b5b4
+      size: 6678
+    - path: results/undershoot-diagnosis.json
+      hash: md5
+      md5: e278f8654efca943b483402ffb295aed
+      size: 1074481
+    outs:
+    - path: data/undershoot-diagnosis
+      hash: md5
+      md5: 1b2055648aed2b49d635c556237155a6.dir
+      size: 740332
+      nfiles: 4
+    - path: results/gallery-undershoot-diagnosis.json
+      hash: md5
+      md5: 9cf06d97cca5c1ec63da624d9aee6712
+      size: 86483
+    - path: results/undershoot-gallery-truth-checks.json
+      hash: md5
+      md5: 41a5306651da476b09259bde6416a4e2
+      size: 297
+    - path: results/undershoot-matched-checks.json
+      hash: md5
+      md5: 112f939bb91f47fd7ed27855841ca63e
+      size: 7449

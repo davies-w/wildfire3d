@@ -1022,3 +1022,39 @@ stages:
     outs:
     - results/flex-queue-execution.json:
         persist: true
+  diagnose_undershoots:
+    cmd: ../../.venv/bin/python model_evaluation/diagnose_undershoots.py
+    deps:
+    - model_evaluation/diagnose_undershoots.py
+    - learning-schema.json
+    - data/learning
+    - data/verified-material
+    - data/model-training-results
+    - data/pair-sequence-r0-results
+    - data/pair-sequence/rotation0/schema.json
+    - ../35_surrogate_diagnostics/attempt24/data/collected
+    - ../35_surrogate_diagnostics/attempt24/data/sequences.npz
+    - ../35_surrogate_diagnostics/attempt24/schema.json
+    metrics:
+    - results/undershoot-diagnosis.json:
+        cache: false
+  summarize_undershoots:
+    cmd: ../../.venv/bin/python model_evaluation/summarize_undershoots.py && ../../.venv/bin/python model_evaluation/audit_gallery_undershoots.py && ../../.venv/bin/python model_evaluation/plot_gallery_diagnosis.py
+    deps:
+    - model_evaluation/diagnose_undershoots.py
+    - model_evaluation/summarize_undershoots.py
+    - model_evaluation/audit_gallery_undershoots.py
+    - model_evaluation/plot_gallery_diagnosis.py
+    - results/undershoot-diagnosis.json
+    - data/denser
+    - data/pair-gallery
+    - ../35_surrogate_diagnostics/attempt24/data/scenario_gallery
+    outs:
+    - data/undershoot-diagnosis
+    metrics:
+    - results/undershoot-matched-checks.json:
+        cache: false
+    - results/gallery-undershoot-diagnosis.json:
+        cache: false
+    - results/undershoot-gallery-truth-checks.json:
+        cache: false
