@@ -1599,3 +1599,59 @@ stages:
     metrics:
     - results/sampled-fuel-coupling-audit.json:
         cache: false
+  validate_joint_decoder:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_decoder.py
+    deps:
+    - model_evaluation/validate_joint_decoder.py
+    - model_evaluation/joint_decoder.py
+    - data/gas-head-candidate
+    metrics:
+    - results/joint-decoder-preflight.json:
+        cache: false
+  prepare_joint_decoder_candidate:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_joint_decoder_candidate.py
+    deps:
+    - model_evaluation/prepare_joint_decoder_candidate.py
+    - model_evaluation/joint_decoder.py
+    - results/joint-decoder-preflight.json
+    - data/gas-head-candidate
+    outs:
+    - data/joint-decoder-candidate
+    metrics:
+    - results/joint-decoder-candidate-prepared.json:
+        cache: false
+  prepare_joint_rolling_features:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_joint_rolling_features.py
+    deps:
+    - model_evaluation/prepare_joint_rolling_features.py
+    - data/joint-decoder-candidate
+    - data/gas-head-candidate
+    - data/exposure-pilot02
+    outs:
+    - data/joint-rolling-features
+    metrics:
+    - results/joint-rolling-features-prepared.json:
+        cache: false
+  validate_joint_objective:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_objective.py
+    deps:
+    - model_evaluation/validate_joint_objective.py
+    - model_evaluation/joint_objective.py
+    - model_evaluation/joint_decoder.py
+    - data/joint-decoder-candidate
+    metrics:
+    - results/joint-objective-preflight.json:
+        cache: false
+  plan_joint_decoder_trial:
+    cmd: ../../.venv/bin/python model_evaluation/plan_joint_decoder_trial.py
+    deps:
+    - model_evaluation/plan_joint_decoder_trial.py
+    - model_evaluation/joint_decoder.py
+    - model_evaluation/joint_objective.py
+    - results/joint-decoder-preflight.json
+    - results/joint-objective-preflight.json
+    - results/joint-rolling-features-prepared.json
+    - data/joint-decoder-candidate
+    metrics:
+    - results/joint-decoder-trial-plan.json:
+        cache: false

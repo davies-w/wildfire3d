@@ -1,0 +1,43 @@
+{
+  "prepared": true,
+  "submitted": false,
+  "optimizer_updates": 0,
+  "test_features_included": false,
+  "partition_counts": {
+    "fit": {
+      "histories": 1332,
+      "configurations": 1306
+    },
+    "selection": {
+      "histories": 330,
+      "configurations": 326
+    },
+    "confirmation": {
+      "histories": 210,
+      "configurations": 204
+    }
+  },
+  "files": {
+    "features.npz": {
+      "sha256": "e814d2791e932a0b3466139544a43eb3ee18bdb8ecf529711a1f054a3f5de78b",
+      "bytes": 26551807
+    },
+    "candidate-plan.json": {
+      "sha256": "cd6692268c5aa99a02b06524b5c9602983413469512b05676137799d25fb6734",
+      "bytes": 20579
+    },
+    "base-normalization.json": {
+      "sha256": "754672239ef65828030aa37f55af785f02be79d5432ccd574694104aca5fb5b8",
+      "bytes": 316
+    },
+    "initial-decoder.pt": {
+      "sha256": "2f063d3d725f978e865a6408f319d519ece39f23db490a8fc1d857f575fc8150",
+      "bytes": 16965
+    },
+    "joint_decoder.py": {
+      "sha256": "1509ce0cfc4c1560318e62ce3ef5c9e52ab4d6932da53cac9735ef51abd9097f",
+      "bytes": 4106
+    }
+  },
+  "scope": "Untrained all-four-output candidate. Interval mass-loss rates are separate from endpoint gas; no exact coarse trapezoid gas/fuel equality imposed. Small negative water labels and negative observed initial water are projected to nonnegative mass for interval decoding and cannot be represented exactly; heating-index negatives are allowed. No accuracy claim, optimizer update, test features or launch."
+}

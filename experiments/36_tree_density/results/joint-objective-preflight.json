@@ -1,0 +1,51 @@
+{
+  "padding_future_values_invariant": true,
+  "source_hashes": {
+    "joint_decoder.py": "1509ce0cfc4c1560318e62ce3ef5c9e52ab4d6932da53cac9735ef51abd9097f",
+    "joint_objective.py": "a6ad149726ef5835bf1b8440458374c14d78958336cb90a3e03d3c51e9a91f60",
+    "validate_joint_objective.py": "8b655ffaae5519128c18ec8c885acd81bfa9f500d4896a087f799c1e5008e75a"
+  },
+  "passed": true,
+  "fit_partition_only": true,
+  "synthetic_weighted_tail_and_gradient_checks": true,
+  "replica_weight_split_invariance": true,
+  "optimizer_instantiated": false,
+  "optimizer_updates": 0,
+  "modes": {
+    "direct": {
+      "loss": 0.10006768256425858,
+      "components": {
+        "state": 0.027377262711524963,
+        "under_tail": 0.44849470257759094,
+        "over_tail": 0.4549499452114105,
+        "peak_error": 0.08348587155342102,
+        "sampling_residual_error": 0.009191534481942654
+      },
+      "last_layer_gradient_norm_per_head": [
+        0.013113263063132763,
+        0.02082148566842079,
+        0.0870475098490715,
+        0.011015335097908974
+      ],
+      "parameters_unchanged": true
+    },
+    "interval": {
+      "loss": 0.10122960060834885,
+      "components": {
+        "state": 0.028402380645275116,
+        "under_tail": 0.44849470257759094,
+        "over_tail": 0.4549499452114105,
+        "peak_error": 0.08348587155342102,
+        "sampling_residual_error": 0.010559623129665852
+      },
+      "last_layer_gradient_norm_per_head": [
+        0.05982423201203346,
+        0.1207028403878212,
+        0.0861205980181694,
+        0.011015335097908974
+      ],
+      "parameters_unchanged": true
+    }
+  },
+  "scope": "Isolated initialization derivatives only; no parameter update, fitted score or selection/confirmation outcome. Tail risk is replica-balanced minibatch CVaR over20%weight mass, not exact configuration-mean p90. State loss balances active/quiet within each sampled forecast. Auxiliary gas/fuel residual matches the TRUE sampling discrepancy instead of forcing it to zero."
+}
