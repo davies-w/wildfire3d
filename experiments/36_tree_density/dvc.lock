@@ -1262,3 +1262,100 @@ stages:
       hash: md5
       md5: a4f88ff786598052bb72f434108c5b72
       size: 336
+  collect_model_timing:
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing.py
+    deps:
+    - path: model_evaluation/collect_timing.py
+      hash: md5
+      md5: 238ab1b2d7d0f623b7ee8cd90de31fb1
+      size: 1913
+    - path: results/model-timing-execution.json
+      hash: md5
+      md5: a4f88ff786598052bb72f434108c5b72
+      size: 336
+    outs:
+    - path: data/model-timing-results
+      hash: md5
+      md5: 9a4687f69ca29623cd2165326e756b7d.dir
+      size: 6258
+      nfiles: 6
+    - path: results/model-timing-collected.json
+      hash: md5
+      md5: 0065b00882537dccf7840ff0309cbfc3
+      size: 1015
+  plan_training_runtime:
+    cmd: ../../.venv/bin/python model_evaluation/plan_training_runtime.py
+    deps:
+    - path: data/grouped-folds.json
+      hash: md5
+      md5: 44be6c76cd7dd8870d4497612a66b4a0
+      size: 671656
+    - path: data/model-timing-results
+      hash: md5
+      md5: 9a4687f69ca29623cd2165326e756b7d.dir
+      size: 6258
+      nfiles: 6
+    - path: model_evaluation/plan_training_runtime.py
+      hash: md5
+      md5: 84abfe730f327a26c51f3747b8c507d4
+      size: 1967
+    - path: results/model-timing-collected.json
+      hash: md5
+      md5: 0065b00882537dccf7840ff0309cbfc3
+      size: 1015
+    outs:
+    - path: results/model-training-runtime-plan.json
+      hash: md5
+      md5: 0f3d4ec87a456aa30496c47cf9dbd651
+      size: 1375
+  check_fast_reporting:
+    cmd: ../../.venv/bin/python model_evaluation/check_fast_reporting.py
+    deps:
+    - path: data/model-preflight
+      hash: md5
+      md5: bdb16a53a55427a4397cd6c898e00da0.dir
+      size: 3955802
+      nfiles: 15
+    - path: data/model-runner
+      hash: md5
+      md5: 6b6cf13d18c23336cac2745c3e12e2f9.dir
+      size: 25344
+      nfiles: 3
+    - path: model_evaluation/check_fast_reporting.py
+      hash: md5
+      md5: 1fb9b3fa5f5b67ae32056286513830fc
+      size: 3444
+    outs:
+    - path: data/model-report-candidate
+      hash: md5
+      md5: 5e4bdc58d1e6750e668ea96d5744611b.dir
+      size: 20233
+      nfiles: 1
+    - path: results/model-fast-reporting-check.json
+      hash: md5
+      md5: ee7a51e03fe10f1d4cd9a38b3cce07a4
+      size: 808
+  close_model_timing:
+    cmd: ../../.venv/bin/python model_evaluation/close_timing.py
+    deps:
+    - path: model_evaluation/close_timing.py
+      hash: md5
+      md5: 7a4edd6d40f5b28cb2fc546fa67a4ea4
+      size: 1035
+    - path: results/model-timing-cleanup.json
+      hash: md5
+      md5: 9fce3b0329f161163703cb8f756d9e1f
+      size: 51
+    - path: results/model-timing-collected.json
+      hash: md5
+      md5: 0065b00882537dccf7840ff0309cbfc3
+      size: 1015
+    - path: results/model-timing-read-condition.json
+      hash: md5
+      md5: 5a5f258c161ef7438959365c22d42427
+      size: 324
+    outs:
+    - path: results/model-timing-permission-removed.json
+      hash: md5
+      md5: 54937f29797e76d7f529fec8cdae2645
+      size: 419

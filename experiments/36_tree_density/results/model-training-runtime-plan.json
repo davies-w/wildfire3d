@@ -1,0 +1,43 @@
+{
+  "timing_only_no_accuracy": true,
+  "batch_seconds_upper_observed": {
+    "1": 0.005042438999993237,
+    "8": 0.020289593000001105,
+    "16": 0.03912076500000694,
+    "32": 0.07631479799999852
+  },
+  "evaluation_seconds_per_epoch": 6.671331527999996,
+  "projections": {
+    "100": {
+      "updates_by_horizon": {
+        "1": 117060,
+        "8": 15660,
+        "16": 7860,
+        "32": 8000
+      },
+      "measured_component_seconds": 8497.342060619265,
+      "conservative_seconds": 20794.68412123853,
+      "hours": 5.776301144788481
+    },
+    "400": {
+      "updates_by_horizon": {
+        "1": 117060,
+        "8": 15660,
+        "16": 7860,
+        "32": 68000
+      },
+      "measured_component_seconds": 33090.22452461916,
+      "conservative_seconds": 75980.44904923832,
+      "hours": 21.105680291455087
+    }
+  },
+  "limitations": [
+    "Only one timing batch per origin/horizon; cold start and GPU variability remain",
+    "Batch timing excludes AdamW updates, included indirectly in2x compute margin",
+    "Two seconds per epoch reserved for JSON/checkpoint transfers; network stalls can exceed this",
+    "Thirty minutes reserved for selected all-origin forecasts, initialization and final reports",
+    "Patience can stop before400epochs; estimate is not a completion guarantee"
+  ],
+  "model_allowance_remaining_usd": 7.5,
+  "training_started": false
+}

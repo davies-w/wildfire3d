@@ -500,3 +500,35 @@ stages:
     metrics:
     - results/model-timing-collected.json:
         cache: false
+  plan_training_runtime:
+    cmd: ../../.venv/bin/python model_evaluation/plan_training_runtime.py
+    deps:
+    - model_evaluation/plan_training_runtime.py
+    - results/model-timing-collected.json
+    - data/model-timing-results
+    - data/grouped-folds.json
+    metrics:
+    - results/model-training-runtime-plan.json:
+        cache: false
+  check_fast_reporting:
+    cmd: ../../.venv/bin/python model_evaluation/check_fast_reporting.py
+    deps:
+    - model_evaluation/check_fast_reporting.py
+    - data/model-runner
+    - data/model-preflight
+    outs:
+    - data/model-report-candidate
+    metrics:
+    - results/model-fast-reporting-check.json:
+        cache: false
+  close_model_timing:
+    cmd: ../../.venv/bin/python model_evaluation/close_timing.py
+    frozen: true
+    deps:
+    - model_evaluation/close_timing.py
+    - results/model-timing-collected.json
+    - results/model-timing-cleanup.json
+    - results/model-timing-read-condition.json
+    metrics:
+    - results/model-timing-permission-removed.json:
+        cache: false
