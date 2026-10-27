@@ -1,0 +1,614 @@
+{
+  "train_only": true,
+  "replicated_configurations": 15,
+  "histories": 45,
+  "scope": "Descriptive seed sensitivity only. Interpolate each retained approximately2s trajectory onto a common nominal2s grid to compare replicas; timing jitter recorded. Seed-mean uses all replicas and is an optimistic oracle, not an independent forecast or a proved irreducible error floor. Leave-one-seed-out uses other TRAIN replicas only. No validation/test outcomes or fitting.",
+  "cases": [
+    {
+      "configuration": 167,
+      "cases": [
+        "x32_396_s0",
+        "x32_396_s1",
+        "x32_396_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        1.6274667655853998,
+        1.8306749430334912
+      ],
+      "gas_peak_time_range_s": 2.0,
+      "seed_mean_startup_deficits": [
+        0.05399141601132753,
+        0.04693726656899289,
+        0.07325255479654579
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.08098712401699126,
+        0.07040589985348934,
+        0.10987883219481874
+      ],
+      "max_timing_jitter_s": 0.1980743408203125
+    },
+    {
+      "configuration": 263,
+      "cases": [
+        "x32_045_s0",
+        "x32_045_s1",
+        "x32_045_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        1.2618833036887656,
+        1.3083206196467045
+      ],
+      "gas_peak_time_range_s": 0.0,
+      "seed_mean_startup_deficits": [
+        0.0840989567163175,
+        0.09142899332494218,
+        0.08238846069169914
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.12614843507447618,
+        0.13714348998741324,
+        0.12358269103754867
+      ],
+      "max_timing_jitter_s": 0.1993560791015625
+    },
+    {
+      "configuration": 427,
+      "cases": [
+        "x32_077_s0",
+        "x32_077_s1",
+        "x32_077_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        0.11009250115160088,
+        0.11054578447727806
+      ],
+      "gas_peak_time_range_s": 0.0,
+      "seed_mean_startup_deficits": [
+        0.0031564798584139604,
+        0.0072858998382794,
+        0.012003912837315667
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.004734719787620941,
+        0.0109288497574191,
+        0.018005869255973497
+      ],
+      "max_timing_jitter_s": 0.0657036304473877
+    },
+    {
+      "configuration": 481,
+      "cases": [
+        "x32_400_s0",
+        "x32_400_s1",
+        "x32_400_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        2.2941952629143767,
+        2.3476691079406034
+      ],
+      "gas_peak_time_range_s": 2.0,
+      "seed_mean_startup_deficits": [
+        0.05468325884638263,
+        0.11064189126395918,
+        0.020690278258046434
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.08202488826957392,
+        0.1659628368959387,
+        0.031035417387069553
+      ],
+      "max_timing_jitter_s": 0.10474395751953125
+    },
+    {
+      "configuration": 534,
+      "cases": [
+        "x32_095_s0",
+        "x32_095_s1",
+        "x32_095_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        2.6451894771347524,
+        2.7008824475053053
+      ],
+      "gas_peak_time_range_s": 0.0,
+      "seed_mean_startup_deficits": [
+        0.04953907575655724,
+        0.018736169041507413,
+        0.014325589073925617
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.07430861363483586,
+        0.02810425356226112,
+        0.021488383610888406
+      ],
+      "max_timing_jitter_s": 0.1987457275390625
+    },
+    {
+      "configuration": 716,
+      "cases": [
+        "x32_129_s0",
+        "x32_129_s1",
+        "x32_129_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        0.30093629597553634,
+        0.5179084128436466
+      ],
+      "gas_peak_time_range_s": 6.0,
+      "seed_mean_startup_deficits": [
+        0.23299259363485578,
+        0.07326846905007446,
+        0.32269751756472415
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.3494888904522837,
+        0.1099027035751117,
+        0.4840462763470862
+      ],
+      "max_timing_jitter_s": 0.10137176513671875
+    },
+    {
+      "configuration": 829,
+      "cases": [
+        "x32_410_s0",
+        "x32_410_s1",
+        "x32_410_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        0.26342913736237045,
+        0.2679138126803664
+      ],
+      "gas_peak_time_range_s": 0.0,
+      "seed_mean_startup_deficits": [
+        0.014774111220629403,
+        0.025194758469673433,
+        0.05824738523047391
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.022161166830944157,
+        0.037792137704510176,
+        0.08737107784571087
+      ],
+      "max_timing_jitter_s": 0.059528350830078125
+    },
+    {
+      "configuration": 863,
+      "cases": [
+        "x32_153_s0",
+        "x32_153_s1",
+        "x32_153_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        0.33760626446552555,
+        0.33945369029553196
+      ],
+      "gas_peak_time_range_s": 0.0,
+      "seed_mean_startup_deficits": [
+        0.1281367969188062,
+        0.04539611298395472,
+        0.07249277200393707
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.19220519537820932,
+        0.06809416947593208,
+        0.1087391580059056
+      ],
+      "max_timing_jitter_s": 0.057952880859375
+    },
+    {
+      "configuration": 1112,
+      "cases": [
+        "x32_198_s0",
+        "x32_198_s1",
+        "x32_198_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        0.058150441053474895,
+        0.08858138683276552
+      ],
+      "gas_peak_time_range_s": 0.0,
+      "seed_mean_startup_deficits": [
+        0.05489354024130451,
+        0.10047976630889688,
+        0.1771525875109081
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.08234031036195676,
+        0.15071964946334532,
+        0.2657288812663621
+      ],
+      "max_timing_jitter_s": 0.0985870361328125
+    },
+    {
+      "configuration": 1222,
+      "cases": [
+        "x32_211_s0",
+        "x32_211_s1",
+        "x32_211_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        3.2673470098134643,
+        3.397378355253052
+      ],
+      "gas_peak_time_range_s": 0.0,
+      "seed_mean_startup_deficits": [
+        0.01974596693914622,
+        0.023192722667965574,
+        0.004334297572950804
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.029618950408719192,
+        0.0347890840019483,
+        0.006501446359426206
+      ],
+      "max_timing_jitter_s": 0.10277557373046875
+    },
+    {
+      "configuration": 1298,
+      "cases": [
+        "x32_381_s0",
+        "x32_381_s1",
+        "x32_381_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        0.15336626345161164,
+        0.1790747116884896
+      ],
+      "gas_peak_time_range_s": 2.0,
+      "seed_mean_startup_deficits": [
+        0.047489675557757544,
+        0.049622561254343195,
+        0.17205863932491117
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.07123451333663623,
+        0.07443384188151478,
+        0.25808795898736675
+      ],
+      "max_timing_jitter_s": 0.0568389892578125
+    },
+    {
+      "configuration": 1601,
+      "cases": [
+        "x32_282_s0",
+        "x32_282_s1",
+        "x32_282_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        0.9354835619628991,
+        0.9726902147545748
+      ],
+      "gas_peak_time_range_s": 2.0,
+      "seed_mean_startup_deficits": [
+        0.07455041556135959,
+        0.1233002490172924,
+        0.07509768163953122
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.11182562334203927,
+        0.18495037352593854,
+        0.11264652245929689
+      ],
+      "max_timing_jitter_s": 0.0561981201171875
+    },
+    {
+      "configuration": 1619,
+      "cases": [
+        "x32_285_s0",
+        "x32_285_s1",
+        "x32_285_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        3.899593722315843,
+        4.232989480453901
+      ],
+      "gas_peak_time_range_s": 0.0,
+      "seed_mean_startup_deficits": [
+        0.024539608702217955,
+        0.0608331109999445,
+        0.043466186109264844
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.03680941305332693,
+        0.0912496664999168,
+        0.06519927916389721
+      ],
+      "max_timing_jitter_s": 0.09970855712890625
+    },
+    {
+      "configuration": 1757,
+      "cases": [
+        "x32_386_s0",
+        "x32_386_s1",
+        "x32_386_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        0.13716162979013313,
+        0.20174974657266365
+      ],
+      "gas_peak_time_range_s": 0.0,
+      "seed_mean_startup_deficits": [
+        0.23015158551906242,
+        0.05129117291851794,
+        0.1699590084105156
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.3452273782785937,
+        0.07693675937777691,
+        0.2549385126157734
+      ],
+      "max_timing_jitter_s": 0.09612274169921875
+    },
+    {
+      "configuration": 1905,
+      "cases": [
+        "x32_388_s0",
+        "x32_388_s1",
+        "x32_388_s2"
+      ],
+      "replicas": 3,
+      "input_geometry_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_state_max_range": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gas_peak_min_max": [
+        0.2225676331701172,
+        0.22838912694204658
+      ],
+      "gas_peak_time_range_s": 0.0,
+      "seed_mean_startup_deficits": [
+        0.18088027551090527,
+        0.21589151098448392,
+        0.17090755820139278
+      ],
+      "leave_one_seed_out_startup_deficits": [
+        0.2713204132663579,
+        0.32383726647672584,
+        0.25636133730208915
+      ],
+      "max_timing_jitter_s": 0.05751800537109375
+    }
+  ],
+  "summary": {
+    "median_seed_mean_startup_deficit": 0.05824738523047391,
+    "median_leave_one_seed_out_startup_deficit": 0.08737107784571087,
+    "p90_leave_one_seed_out_startup_deficit": 0.2690838004663596,
+    "median_peak_time_range_s": 0.0
+  }
+}

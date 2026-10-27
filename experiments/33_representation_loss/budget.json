@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 78.0,
+  "reserved_usd": 78.75,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -2974,6 +2974,14 @@
       "reserved_unix": 1793123825.800791,
       "scope": "User-authorized fixed remaining rotations1..9, matched plain/gated, Flex-start sequential queue; per-pair15.2 gate, 24h allocation wait, no automatic retries",
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-flex-queue01/executions/3c947765-50a4-4677-81d1-996cae5d47e0"
+    },
+    "density36-exposure-pilot01": {
+      "state": "submitted",
+      "allowance_usd": 0.75,
+      "reserved_unix": 1793133952.522987,
+      "scope": "Authorized controlled gated exposure repair pilot, max0.75USD, private inputs, no tests, no automatic retries",
+      "workflow": "fds-gpu36-exposure01",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-exposure01/executions/1cb22600-a84f-4e9b-b722-5f3deb9857e1"
     }
   },
   "recycle_reservations": true,

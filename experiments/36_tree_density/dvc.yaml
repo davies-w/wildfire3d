@@ -1117,3 +1117,38 @@ stages:
     outs:
     - results/exposure-pilot-execution.json:
         persist: true
+  collect_exposure_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/collect_exposure_pilot.py
+    deps:
+    - model_evaluation/collect_exposure_pilot.py
+    - results/exposure-pilot-execution.json
+    outs:
+    - data/exposure-pilot01-results
+    metrics:
+    - results/exposure-pilot-collected.json:
+        cache: false
+  close_exposure_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/close_exposure_pilot.py
+    deps:
+    - model_evaluation/close_exposure_pilot.py
+    - results/exposure-pilot-collected.json
+    metrics:
+    - results/exposure-pilot-permission-removed.json:
+        cache: false
+  audit_replica_ambiguity:
+    cmd: ../../.venv/bin/python model_evaluation/audit_replica_ambiguity.py
+    deps:
+    - model_evaluation/audit_replica_ambiguity.py
+    - data/pair-sequence/rotation0/schema.json
+    - data/pair-sequence/rotation0/data/sequences.npz
+    metrics:
+    - results/replica-ambiguity-audit.json:
+        cache: false
+  screen_existing_checkpoints:
+    cmd: ../../.venv/bin/python model_evaluation/screen_existing_checkpoints.py
+    deps:
+    - model_evaluation/screen_existing_checkpoints.py
+    - data/pair-sequence-r0-results
+    metrics:
+    - results/exposure-existing-checkpoint-screen.json:
+        cache: false

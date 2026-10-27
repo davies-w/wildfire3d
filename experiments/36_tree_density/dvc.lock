@@ -2685,3 +2685,66 @@ stages:
       hash: md5
       md5: 1f086672f0c8e8467e32b810cc51e683
       size: 485
+  audit_replica_ambiguity:
+    cmd: ../../.venv/bin/python model_evaluation/audit_replica_ambiguity.py
+    deps:
+    - path: data/pair-sequence/rotation0/data/sequences.npz
+      hash: md5
+      md5: f280a76462ed8d586e7a4fc7eec09961
+      size: 5110534
+    - path: data/pair-sequence/rotation0/schema.json
+      hash: md5
+      md5: 72f1f49ef09731507728a13b8eff1997
+      size: 418638
+    - path: model_evaluation/audit_replica_ambiguity.py
+      hash: md5
+      md5: 02cca7e2b089bec3b6839ad4b907eb76
+      size: 2474
+    outs:
+    - path: results/replica-ambiguity-audit.json
+      hash: md5
+      md5: e8a1e62bb68dd63ec1a2fd12eac711e8
+      size: 13275
+  screen_existing_checkpoints:
+    cmd: ../../.venv/bin/python model_evaluation/screen_existing_checkpoints.py
+    deps:
+    - path: data/pair-sequence-r0-results
+      hash: md5
+      md5: baa96f8eb658f43d4a649aafc03d5044.dir
+      size: 175729098
+      nfiles: 828
+    - path: model_evaluation/screen_existing_checkpoints.py
+      hash: md5
+      md5: d7c5468b988cef000a0036c48241a044
+      size: 1523
+    outs:
+    - path: results/exposure-existing-checkpoint-screen.json
+      hash: md5
+      md5: 19b805a84e57df63e7931cb15089cac4
+      size: 72062
+  launch_exposure_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/launch_exposure_pilot.py 
+      --execute
+    deps:
+    - path: data/exposure-pilot01
+      hash: md5
+      md5: c6797043da21e100d66a766f1e660f2d.dir
+      size: 12370907
+      nfiles: 16
+    - path: model_evaluation/launch_exposure_pilot.py
+      hash: md5
+      md5: 066db86050ac8f55b2c9e2f373c82237
+      size: 5347
+    - path: results/exposure-pilot-offline-preflight.json
+      hash: md5
+      md5: 1f086672f0c8e8467e32b810cc51e683
+      size: 485
+    - path: results/exposure-pilot-prepared.json
+      hash: md5
+      md5: 4452a7e44eed5ed1bef8dd445b0da430
+      size: 1599
+    outs:
+    - path: results/exposure-pilot-execution.json
+      hash: md5
+      md5: 6eafa2bc4b4c331aa17e9573ae5a1800
+      size: 335
