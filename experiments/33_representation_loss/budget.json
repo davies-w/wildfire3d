@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 44.5,
+  "reserved_usd": 38.0,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -2672,7 +2672,7 @@
       "scope": "Campaign ancillary/storage"
     },
     "density36-learning": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 6.5,
       "reserved_unix": 1792991300.0215948,
       "scope": "Frozen ten-fold plain GRU; maximum8h VM, every-epoch checkpoints, no automatic retries",
@@ -2688,7 +2688,8 @@
           "fds-gpu36-training-9f9156ab-eb17-42820-group0-0-1pz0"
         ]
       },
-      "historical_allowance_usd": 6.5
+      "historical_allowance_usd": 6.5,
+      "terminal_evidence": "experiments/36_tree_density/results/model-training-status.json"
     },
     "density36-restore-build": {
       "state": "submitted",
