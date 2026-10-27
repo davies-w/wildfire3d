@@ -11,6 +11,7 @@ def main():
  with (R/'data/pair-sequence-collection.lock').open('w') as lock:
   fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
   execution_file='results/pair-rotation1-execution.json' if rotation==1 and (R/'results/pair-rotation1-execution.json').exists() else 'results/pair-sequence-execution.json'
+  if rotation==1 and (R/'results/pair-rotation1-capacity-a-execution.json').exists():execution_file='results/pair-rotation1-capacity-a-execution.json'
   e=read(execution_file)['name'].split('/')
   status=gc('workflows','executions','describe',e[-1],'--workflow='+e[-3],'--location=us-central1')
   save(f'results/{TAG}-terminal-status.json',status)
@@ -44,7 +45,8 @@ def main():
     for block in iter(lambda:f.read(1024*1024),b''):h.update(block);m.update(block);size+=len(block)
    assert size==int(meta['size']) and base64.b64encode(m.digest()).decode()==meta['md5Hash'],path
    if sha:assert h.hexdigest()==sha,path
-  fetch('job-status.json');job=json.loads((root/'job-status.json').read_text())
+  job_status='job-status-capacity-a.json' if 'capacity-a' in execution_file else 'job-status.json'
+  fetch(job_status);job=json.loads((root/job_status).read_text())
   assert job['status']['state']=='SUCCEEDED','Diagnose terminal failure; preserve checkpoint, never resubmit blindly'
   fetch('complete.json');complete=json.loads((root/'complete.json').read_text());assert complete['success'] and complete['folds']==2
   fetch('optimizer-resume-check.json');assert json.loads((root/'optimizer-resume-check.json').read_text())['passed']

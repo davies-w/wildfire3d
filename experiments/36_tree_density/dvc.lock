@@ -2324,3 +2324,42 @@ stages:
       hash: md5
       md5: 951bb729d7d148d71256c72190efdfe2
       size: 7829
+  continue_pair_rotation1_capacity_a:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/continue_pair_rotation1_capacity_a.py
+    deps:
+    - path: data/pair-sequence/rotation1
+      hash: md5
+      md5: 586096b0aef4da6a4bd4921486c65e40.dir
+      size: 11141393
+      nfiles: 12
+    - path: model_evaluation/continue_pair_rotation1_capacity_a.py
+      hash: md5
+      md5: 60937c9074a4b5bf3db4ddaaaf100115
+      size: 7292
+    - path: results/pair-rotation1-execution.json
+      hash: md5
+      md5: 2cf23c02781dcb430904ae32356b6225
+      size: 339
+    - path: results/pair-sequence-r0-collected.json
+      hash: md5
+      md5: 3cd952863625843addbc849d7da954b1
+      size: 342
+    outs:
+    - path: data/pair-rotation1-capacity-a
+      hash: md5
+      md5: acfcf4800ad27426f781392a48169fd8.dir
+      size: 10405
+      nfiles: 2
+    - path: results/pair-rotation1-capacity-a-execution.json
+      hash: md5
+      md5: 9a889186fe972116cab2e42d7588be0f
+      size: 339
+    - path: results/pair-rotation1-capacity-a-readiness.json
+      hash: md5
+      md5: f00babf8523e1230ae7e813b21bb8a08
+      size: 2249
+    - path: results/pair-rotation1-stockout.json
+      hash: md5
+      md5: 9ad30f483381362b6518f06acdb05c06
+      size: 6793

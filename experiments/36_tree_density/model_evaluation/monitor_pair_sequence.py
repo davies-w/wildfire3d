@@ -11,5 +11,6 @@ for rotation in (0,1):
  progress[str(rotation)]=dict(arms=arms,synthetic_resume_proof='optimizer-resume-check.json' in names,complete='complete.json' in names,error='bootstrap-error.txt' in names)
 continuation=None
 if (R/'results/pair-rotation1-execution.json').exists():
- y=read('results/pair-rotation1-execution.json')['name'].split('/');continuation=gc('workflows','executions','describe',y[-1],'--workflow='+y[-3],'--location=us-central1')['state']
+ continuation_file='results/pair-rotation1-capacity-a-execution.json' if (R/'results/pair-rotation1-capacity-a-execution.json').exists() else 'results/pair-rotation1-execution.json'
+ y=read(continuation_file)['name'].split('/');continuation=gc('workflows','executions','describe',y[-1],'--workflow='+y[-3],'--location=us-central1')['state']
 r=dict(rotation1_continuation_state=continuation,workflow_state=state['state'],execution=state['name'],rotations=progress,test_outcomes_not_read=True);save('results/pair-sequence-progress.json',r);print(json.dumps(r))

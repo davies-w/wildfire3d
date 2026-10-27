@@ -913,7 +913,7 @@ stages:
     cmd: ../../.venv/bin/python model_evaluation/collect_pair_sequence.py --rotation 1
     deps:
     - model_evaluation/collect_pair_sequence.py
-    - results/pair-rotation1-execution.json
+    - results/pair-rotation1-capacity-a-execution.json
     - data/pair-sequence/rotation1/schema.json
     outs:
     - data/pair-sequence-r1-results:
@@ -977,3 +977,17 @@ stages:
     - ../35_surrogate_diagnostics/attempt24/gallery.html
     outs:
     - results/pair-reporting-check.json
+
+  continue_pair_rotation1_capacity_a:
+    cmd: ../../.venv/bin/python model_evaluation/continue_pair_rotation1_capacity_a.py
+    deps:
+    - model_evaluation/continue_pair_rotation1_capacity_a.py
+    - data/pair-sequence/rotation1
+    - results/pair-rotation1-execution.json
+    - results/pair-sequence-r0-collected.json
+    outs:
+    - data/pair-rotation1-capacity-a:
+        persist: true
+    - results/pair-rotation1-stockout.json
+    - results/pair-rotation1-capacity-a-readiness.json
+    - results/pair-rotation1-capacity-a-execution.json
