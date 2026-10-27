@@ -744,3 +744,16 @@ stages:
     metrics:
     - results/report-publication.json:
         cache: false
+  prepare_overlap_candidate:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_overlap_candidate.py
+    deps:
+    - model_evaluation/prepare_overlap_candidate.py
+    - data/model-training
+    - data/grouped-folds.json
+    - results/report-publication.json
+    - results/model-training-runtime-plan03.json
+    outs:
+    - data/model-overlap-candidate
+    metrics:
+    - results/model-overlap-candidate.json:
+        cache: false

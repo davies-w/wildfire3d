@@ -1,0 +1,71 @@
+{
+  "prepared_only": true,
+  "launched": false,
+  "source_sha256": "50bedecf6fad0f9555be3c2b8fab4a1d6c0a5839779ae6b6dc4807b2c9234e38",
+  "candidate_sha256": "37d4d3d036ba9723f401ae475782471ac82a02dd98ee29bfc79add1adbf2106d",
+  "only_change": {
+    "before": "for j in range(0,90,h)",
+    "after": "for j in range(0,91-h)"
+  },
+  "curriculum_unchanged": [
+    1,
+    8,
+    16,
+    32
+  ],
+  "window_checks": {
+    "1": {
+      "full_windows_per_history": 90,
+      "first_origin": 0,
+      "last_origin": 89,
+      "short_tail_windows": 0
+    },
+    "8": {
+      "full_windows_per_history": 83,
+      "first_origin": 0,
+      "last_origin": 82,
+      "short_tail_windows": 0
+    },
+    "16": {
+      "full_windows_per_history": 75,
+      "first_origin": 0,
+      "last_origin": 74,
+      "short_tail_windows": 0
+    },
+    "32": {
+      "full_windows_per_history": 59,
+      "first_origin": 0,
+      "last_origin": 58,
+      "short_tail_windows": 0
+    }
+  },
+  "projections": {
+    "100": {
+      "updates_by_horizon": {
+        "1": 117060,
+        "8": 108000,
+        "16": 97600,
+        "32": 153600
+      },
+      "conservative_hours": 11.444704503889287,
+      "compute_ceiling_usd_at_0_80_hour": 9.15576360311143
+    },
+    "400": {
+      "updates_by_horizon": {
+        "1": 117060,
+        "8": 108000,
+        "16": 97600,
+        "32": 1305600
+      },
+      "conservative_hours": 62.70111066556719,
+      "compute_ceiling_usd_at_0_80_hour": 50.160888532453754
+    }
+  },
+  "limitations": [
+    "Timing reuses prior GPU batch measurements, not a full stride-one epoch measurement.",
+    "Overlapping full windows repeat interior transitions more often; no compensating loss reweighting is silently introduced. Existing active/quiet and replica weights remain unchanged.",
+    "No partial tail windows in the rerun.",
+    "All architecture, optimizer, learning rate, selection and fold choices remain frozen.",
+    "Worst-case estimate needs budget reconciliation and bounded continuation design; not launch approval."
+  ]
+}

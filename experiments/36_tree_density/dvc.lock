@@ -1833,3 +1833,37 @@ stages:
       hash: md5
       md5: 8512a7470871ea7cce5136ee19cfcccf
       size: 982
+  prepare_overlap_candidate:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_overlap_candidate.py
+    deps:
+    - path: data/grouped-folds.json
+      hash: md5
+      md5: 44be6c76cd7dd8870d4497612a66b4a0
+      size: 671656
+    - path: data/model-training
+      hash: md5
+      md5: 29bd1a1576a7bb386bcf1e2d91419252.dir
+      size: 7900232
+      nfiles: 9
+    - path: model_evaluation/prepare_overlap_candidate.py
+      hash: md5
+      md5: d5dc9ad2c0ea3dd003b088500857e602
+      size: 2534
+    - path: results/model-training-runtime-plan03.json
+      hash: md5
+      md5: b6eefcc6d49d0adb32c8f4a287103c75
+      size: 1377
+    - path: results/report-publication.json
+      hash: md5
+      md5: 8512a7470871ea7cce5136ee19cfcccf
+      size: 982
+    outs:
+    - path: data/model-overlap-candidate
+      hash: md5
+      md5: 70b8ec388738bcc23f4d890f3507267e.dir
+      size: 21559
+      nfiles: 2
+    - path: results/model-overlap-candidate.json
+      hash: md5
+      md5: 868fc61c845c05895f404eb2e4ae0b39
+      size: 2037
