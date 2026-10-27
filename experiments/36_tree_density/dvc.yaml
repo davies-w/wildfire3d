@@ -723,3 +723,14 @@ stages:
     metrics:
     - results/model-four-state-summary.json:
         cache: false
+  build_model_report:
+    cmd: ../../.venv/bin/python model_evaluation/build_report.py
+    deps:
+    - model_evaluation/build_report.py
+    - results/model-training-collected.json
+    - results/model-four-state-summary.json
+    - results/model-scenario-audit.json
+    - data/model-training-results
+    - ../35_surrogate_diagnostics/attempt25/results/learning-curve.json
+    outs:
+    - data/published-report
