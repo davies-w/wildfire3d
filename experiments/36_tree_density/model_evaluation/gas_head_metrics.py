@@ -1,0 +1,19 @@
+"""Frozen-output scoring in the same units and split as the GRU pilot."""
+import torch
+@torch.no_grad()
+def evaluate(gas,base,raw,times,config,labels,scales,std):
+ def groups(v,c=config):
+  _,inverse,counts=torch.unique(c,return_inverse=True,return_counts=True);w=counts[inverse].to(v.dtype).reciprocal();return (v*w.reshape((-1,)+(1,)*(v.ndim-1))).sum(0)/len(counts)
+ phys=base.clone();phys[:,:,2]=gas;truth=raw[:,1:];finite=bool(torch.isfinite(phys).all());assert finite
+ encoded=(torch.asinh(phys/scales)-torch.asinh(truth/scales))/std
+ error=(phys-truth).abs();curve=torch.cat([raw[:,:1],phys],1);dt=times[:,1:]-times[:,:-1];integral=(.5*(curve[:,1:,2]+curve[:,:-1,2])*dt).sum(1);actual=(.5*(raw[:,1:,2]+raw[:,:-1,2])*dt).sum(1);peak=curve[:,:,2].max(1);truepeak=raw[:,:,2].max(1);index=torch.arange(len(gas),device=gas.device)
+ startup=times[:,1:]<=32.2;den=truth[:,:,2].abs().amax(1);good=den>0;deficits=((truth[:,:,2]-gas).clamp_min(0)*startup).amax(1)/den.clamp_min(1e-30);overs=((gas-truth[:,:,2]).clamp_min(0)*startup).amax(1)/den.clamp_min(1e-30)
+ def p90(v):
+  vals=torch.stack([v[good][config[good]==c].mean() for c in torch.unique(config[good])]);return float(torch.quantile(vals,.9)) if len(vals) else None
+ quiet=labels==0;qd=quiet.sum(1);keep=qd>0;qmae=groups((error*quiet[:,:,None]).sum(1)[keep]/qd[keep,None],config[keep]).tolist() if bool(keep.any()) else None
+ change=curve[:,1:,:2]-curve[:,:-1,:2]
+ return dict(finite=finite,objective=float(groups(encoded[:,:,:3].square().mean((1,2)))),physical_MAE_by_feature=groups(error.mean(1)).tolist(),peak_release_MAE_kg_s=float(groups((peak.values-truepeak.values).abs())),peak_time_MAE_s=float(groups((times[index,peak.indices]-times[index,truepeak.indices]).abs())),released_fuel_integral_MAE_kg=float(groups((integral-actual).abs())),gas_dry_fuel_consistency_residual_kg=float(groups((integral/.75-(raw[:,0,1]-phys[:,-1,1])).abs())),startup_gas_p90_deficit=p90(deficits),startup_gas_p90_overprediction=p90(overs),zero_gas_peak_histories=int((~good).sum()),quiet_physical_MAE=qmae,minimum_by_feature=phys.amin((0,1)).tolist(),negative_fraction_by_feature=groups((phys<0).float().mean(1)).tolist(),negative_magnitude_mean_by_feature=groups((-phys).clamp_min(0).mean(1)).tolist(),mass_increase_fraction=groups((change>1e-6).float().mean(1)).tolist(),mass_increase_total_kg=groups(change.clamp_min(0).sum(1)).tolist())
+def acceptance(b,c,k,scales):
+ def improve(x,y,f):return x is not None and y is not None and x>0 and y<=x*(1-f)
+ def bounded(x,y,f):return x is not None and y is not None and y<=x*(1+f)
+ return dict(startup_gas=improve(b['startup_gas_p90_deficit'],c['startup_gas_p90_deficit'],k['startup_gas_p90_relative_reduction_at_least']),peak_amplitude=improve(b['peak_release_MAE_kg_s'],c['peak_release_MAE_kg_s'],k['gas_peak_amplitude_MAE_relative_reduction_at_least']),original_objective=bounded(b['objective'],c['objective'],k['original_validation_objective_relative_increase_at_most']),each_state_MAE=all(bounded(x,y,k['full_rollout_each_state_MAE_relative_increase_at_most']) for x,y in zip(b['physical_MAE_by_feature'],c['physical_MAE_by_feature'])),quiet_MAE=b['quiet_physical_MAE'] is not None and c['quiet_physical_MAE'] is not None and all((y-x)/s<=k['quiet_state_MAE_increase_at_most_physical_encoding_scale'] for x,y,s in zip(b['quiet_physical_MAE'],c['quiet_physical_MAE'],scales)),integral=bounded(b['released_fuel_integral_MAE_kg'],c['released_fuel_integral_MAE_kg'],k['released_gas_integral_MAE_relative_increase_at_most']),peak_time=bounded(b['peak_time_MAE_s'],c['peak_time_MAE_s'],k['peak_time_MAE_relative_increase_at_most']),consistency=bounded(b['gas_dry_fuel_consistency_residual_kg'],c['gas_dry_fuel_consistency_residual_kg'],k['gas_dry_fuel_consistency_residual_relative_increase_at_most']),finite=b['finite'] and c['finite'])
