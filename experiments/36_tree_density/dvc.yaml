@@ -583,3 +583,64 @@ stages:
     metrics:
     - results/model-timing02-permission-removed.json:
         cache: false
+  prepare_reporting_preflight03:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_reporting_preflight03.py
+    deps:
+    - model_evaluation/prepare_reporting_preflight03.py
+    - data/model-preflight
+    - data/model-timing
+    - data/model-report-candidate
+    - results/model-fast-reporting-check.json
+    - results/model-preflight-inputs.json
+    metrics:
+    - results/model-preflight03-inputs.json:
+        cache: false
+    - results/model-timing03-prepared.json:
+        cache: false
+    outs:
+    - data/model-preflight03
+    - data/model-timing03
+  launch_model_timing03:
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing03.py --execute
+    deps:
+    - model_evaluation/launch_timing03.py
+    - data/model-timing03
+    - results/model-timing03-prepared.json
+    - results/model-preflight03-inputs.json
+    frozen: true
+    metrics:
+    - results/model-timing03-execution.json:
+        cache: false
+  collect_model_timing03:
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing03.py
+    deps:
+    - model_evaluation/collect_timing03.py
+    - results/model-timing03-execution.json
+    metrics:
+    - results/model-timing03-collected.json:
+        cache: false
+    outs:
+    - data/model-timing03-results
+  close_model_timing03:
+    cmd: ../../.venv/bin/python model_evaluation/close_timing03.py
+    deps:
+    - model_evaluation/close_timing03.py
+    - results/model-timing03-collected.json
+    - results/model-timing03-cleanup.json
+    - results/model-timing03-read-condition.json
+    frozen: true
+    metrics:
+    - results/model-timing03-permission-removed.json:
+        cache: false
+  audit_failed_timing02:
+    cmd: ../../.venv/bin/python model_evaluation/audit_timing02_failure.py
+    frozen: true
+    deps:
+    - results/model-timing02-execution.json
+    - model_evaluation/collect_timing02.py
+    - model_evaluation/audit_timing02_failure.py
+    outs:
+    - data/model-timing02-failure
+    metrics:
+    - results/model-timing02-diagnosis.json:
+        cache: false

@@ -1,0 +1,16 @@
+{
+  "equivalence_passed": true,
+  "timing_passed": false,
+  "cause": "Reporting evaluate() sets eval mode; harness omitted model.train() before CUDA backward. Production training already calls model.train() each epoch.",
+  "cleanup_verified": true,
+  "exact_read_grant_removed": true,
+  "training_started": false,
+  "evidence": {
+    "report-equivalence.json": "50adca9996d65ccea9f8cb85017f6566a847d7ea98e66a6b9b4d0220b50a020c",
+    "bootstrap-error.txt": "380133826cf213bfa3a5a8902125803d46f658e1794789aed84872ffcc6393c6",
+    "evaluation-cloud-check.json": "f50d416a8108f658de8b14ba224560ba36d36ceb7468bd7f9e712c3ca878c908",
+    "cuda-check.json": "97595e6cdf0322f10398752c7e9ee1546a55515b4e180092c1bff7bd53a606a1",
+    "transport-cloud-check.json": "cc668a22997656ffb6b9ba6656602b732d00cd4e15b5bbf2c21a2c9d72f799bf",
+    "job-status.json": "5b3f6317999a8ce9f6b6a1a680b902f0ab68b1344280fa8e70e5567cc635cf9e"
+  }
+}

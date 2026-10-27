@@ -1433,3 +1433,103 @@ stages:
       hash: md5
       md5: a78de2cc735609de892b3f6538c39409
       size: 336
+  audit_failed_timing02:
+    cmd: ../../.venv/bin/python model_evaluation/audit_timing02_failure.py
+    deps:
+    - path: model_evaluation/audit_timing02_failure.py
+      hash: md5
+      md5: b8034930132d921adb0fa8732473531c
+      size: 850
+    - path: model_evaluation/collect_timing02.py
+      hash: md5
+      md5: 7c41bffca4a206217b456aedc397dd21
+      size: 1949
+    - path: results/model-timing02-execution.json
+      hash: md5
+      md5: a78de2cc735609de892b3f6538c39409
+      size: 336
+    outs:
+    - path: data/model-timing02-failure
+      hash: md5
+      md5: 43299bdca82952a4c608fd57646cc3c4.dir
+      size: 6465
+      nfiles: 6
+    - path: results/model-timing02-diagnosis.json
+      hash: md5
+      md5: 1342172289c1f5873a935fa9c12c2bea
+      size: 916
+  prepare_reporting_preflight03:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/prepare_reporting_preflight03.py
+    deps:
+    - path: data/model-preflight
+      hash: md5
+      md5: bdb16a53a55427a4397cd6c898e00da0.dir
+      size: 3955802
+      nfiles: 15
+    - path: data/model-report-candidate
+      hash: md5
+      md5: 5e4bdc58d1e6750e668ea96d5744611b.dir
+      size: 20233
+      nfiles: 1
+    - path: data/model-timing
+      hash: md5
+      md5: 2387a0fbb101e83c5281c23a2140c1f7.dir
+      size: 3973654
+      nfiles: 3
+    - path: model_evaluation/prepare_reporting_preflight03.py
+      hash: md5
+      md5: 5593c8d6f4b1bbe0e5fec95e193a2d3b
+      size: 4413
+    - path: results/model-fast-reporting-check.json
+      hash: md5
+      md5: ee7a51e03fe10f1d4cd9a38b3cce07a4
+      size: 808
+    - path: results/model-preflight-inputs.json
+      hash: md5
+      md5: c8e43f2dec86d7c97efc1c21e5facb6a
+      size: 1147
+    outs:
+    - path: data/model-preflight03
+      hash: md5
+      md5: d79916d09dce3decde76ae3ddf6823f5.dir
+      size: 3977295
+      nfiles: 16
+    - path: data/model-timing03
+      hash: md5
+      md5: fa7318c66d97a3ae7a58deb316451acb.dir
+      size: 3994134
+      nfiles: 3
+    - path: results/model-preflight03-inputs.json
+      hash: md5
+      md5: 8d8b390037204598f35aa2ff65181493
+      size: 1037
+    - path: results/model-timing03-prepared.json
+      hash: md5
+      md5: 34b1fa2b8ede46282e86752470bfd241
+      size: 650
+  launch_model_timing03:
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing03.py --execute
+    deps:
+    - path: data/model-timing03
+      hash: md5
+      md5: fa7318c66d97a3ae7a58deb316451acb.dir
+      size: 3994134
+      nfiles: 3
+    - path: model_evaluation/launch_timing03.py
+      hash: md5
+      md5: 7f3c2f0f7494e63b77484a0bf82c69b3
+      size: 5059
+    - path: results/model-preflight03-inputs.json
+      hash: md5
+      md5: 8d8b390037204598f35aa2ff65181493
+      size: 1037
+    - path: results/model-timing03-prepared.json
+      hash: md5
+      md5: 34b1fa2b8ede46282e86752470bfd241
+      size: 650
+    outs:
+    - path: results/model-timing03-execution.json
+      hash: md5
+      md5: fca1dd9129a652c333645f96404a459b
+      size: 336
