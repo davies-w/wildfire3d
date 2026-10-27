@@ -1137,3 +1137,99 @@ stages:
       hash: md5
       md5: e48838fe994b0cf9e9cf2ee6ff81ac5d
       size: 713
+  prepare_model_preflight:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_preflight.py && 
+      ../../.venv/bin/python data/model-preflight/validate.py && 
+      ../../.venv/bin/python data/model-preflight/validate_evaluation.py && 
+      ../../.venv/bin/python data/model-preflight/validate_transport.py
+    deps:
+    - path: ../35_surrogate_diagnostics/attempt25/coverage-plan.json
+      hash: md5
+      md5: 7c6d1af74b8d6ad29604435141554814
+      size: 2848
+    - path: ../35_surrogate_diagnostics/attempt25/runtime.py
+      hash: md5
+      md5: b3b4de3e6ecc9fbfa8893be4416e6add
+      size: 2199
+    - path: ../35_surrogate_diagnostics/attempt25/validate.py
+      hash: md5
+      md5: 3f97ff40bd353239f8e58c6970b7a120
+      size: 5220
+    - path: ../35_surrogate_diagnostics/attempt25/validate_evaluation.py
+      hash: md5
+      md5: 064dfd076dd2f4d791fb12ee5eff149b
+      size: 1199
+    - path: ../35_surrogate_diagnostics/attempt25/validate_transport.py
+      hash: md5
+      md5: 41eaa8a89bcce108f607a95cbf339e28
+      size: 1800
+    - path: data/learning
+      hash: md5
+      md5: 1a825007340d2f9d84a9744df853bd53.dir
+      size: 3238491
+      nfiles: 1
+    - path: data/model-runner
+      hash: md5
+      md5: 6b6cf13d18c23336cac2745c3e12e2f9.dir
+      size: 25344
+      nfiles: 3
+    - path: learning-schema.json
+      hash: md5
+      md5: 0dbee67e38424d53816fe78799442133
+      size: 672301
+    - path: model_evaluation/prepare_preflight.py
+      hash: md5
+      md5: 7936fedb4916f36843ec0df695ac453a
+      size: 3006
+    - path: model_evaluation/time_cloud.py
+      hash: md5
+      md5: 327f5a528ce90352fec10f5b24660e6a
+      size: 2431
+    - path: results/dataset-completeness.json
+      hash: md5
+      md5: bca407937c95345cc80604a5e12cddf6
+      size: 496
+    - path: results/model-data-preflight.json
+      hash: md5
+      md5: a9d9fdc1b97b21eb8acf6af9e8b03173
+      size: 1985
+    outs:
+    - path: data/model-preflight
+      hash: md5
+      md5: bdb16a53a55427a4397cd6c898e00da0.dir
+      size: 3955802
+      nfiles: 15
+    - path: results/model-preflight-inputs.json
+      hash: md5
+      md5: c8e43f2dec86d7c97efc1c21e5facb6a
+      size: 1147
+  prepare_model_timing:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_timing_workflow.py
+    deps:
+    - path: ../35_surrogate_diagnostics/attempt25/gpu-workflow.yaml
+      hash: md5
+      md5: f30d6064be78d5e721dfcfd9c1b74fa4
+      size: 9110
+    - path: data/model-preflight
+      hash: md5
+      md5: bdb16a53a55427a4397cd6c898e00da0.dir
+      size: 3955802
+      nfiles: 15
+    - path: model_evaluation/prepare_timing_workflow.py
+      hash: md5
+      md5: 7c7b8bf36580259f3b97da9679bffad3
+      size: 3224
+    - path: results/model-preflight-inputs.json
+      hash: md5
+      md5: c8e43f2dec86d7c97efc1c21e5facb6a
+      size: 1147
+    outs:
+    - path: data/model-timing
+      hash: md5
+      md5: 2387a0fbb101e83c5281c23a2140c1f7.dir
+      size: 3973654
+      nfiles: 3
+    - path: results/model-timing-prepared.json
+      hash: md5
+      md5: a12847111dd3558cb4d9d75367b5256f
+      size: 784

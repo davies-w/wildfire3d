@@ -446,3 +446,35 @@ stages:
     metrics:
     - results/cloud-campaign-closed.json:
         cache: false
+  prepare_model_preflight:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_preflight.py && ../../.venv/bin/python data/model-preflight/validate.py && ../../.venv/bin/python data/model-preflight/validate_evaluation.py && ../../.venv/bin/python data/model-preflight/validate_transport.py
+    deps:
+    - model_evaluation/prepare_preflight.py
+    - model_evaluation/time_cloud.py
+    - data/model-runner
+    - data/learning
+    - learning-schema.json
+    - results/model-data-preflight.json
+    - results/dataset-completeness.json
+    - ../35_surrogate_diagnostics/attempt25/coverage-plan.json
+    - ../35_surrogate_diagnostics/attempt25/runtime.py
+    - ../35_surrogate_diagnostics/attempt25/validate.py
+    - ../35_surrogate_diagnostics/attempt25/validate_evaluation.py
+    - ../35_surrogate_diagnostics/attempt25/validate_transport.py
+    outs:
+    - data/model-preflight
+    metrics:
+    - results/model-preflight-inputs.json:
+        cache: false
+  prepare_model_timing:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_timing_workflow.py
+    deps:
+    - model_evaluation/prepare_timing_workflow.py
+    - data/model-preflight
+    - results/model-preflight-inputs.json
+    - ../35_surrogate_diagnostics/attempt25/gpu-workflow.yaml
+    outs:
+    - data/model-timing
+    metrics:
+    - results/model-timing-prepared.json:
+        cache: false
