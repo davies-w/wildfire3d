@@ -386,3 +386,15 @@ stages:
     metrics:
     - results/x36-density-115-r1-execution.json:
         cache: false
+  audit_model_workload:
+    cmd: ../../.venv/bin/python model_evaluation/audit_workload.py
+    deps:
+    - model_evaluation/audit_workload.py
+    - data/grouped-folds.json
+    - ../35_surrogate_diagnostics/attempt25/schema.json
+    - ../35_surrogate_diagnostics/attempt25/coverage-plan.json
+    - ../35_surrogate_diagnostics/attempt25/worker.py
+    - ../35_surrogate_diagnostics/attempt25/model.py
+    metrics:
+    - results/model-workload-plan.json:
+        cache: false

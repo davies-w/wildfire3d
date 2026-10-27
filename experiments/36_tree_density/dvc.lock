@@ -877,3 +877,35 @@ stages:
       hash: md5
       md5: a63c9c50e05e8a5558bd9d53f991b4c1
       size: 686
+  audit_model_workload:
+    cmd: ../../.venv/bin/python model_evaluation/audit_workload.py
+    deps:
+    - path: ../35_surrogate_diagnostics/attempt25/coverage-plan.json
+      hash: md5
+      md5: 7c6d1af74b8d6ad29604435141554814
+      size: 2848
+    - path: ../35_surrogate_diagnostics/attempt25/model.py
+      hash: md5
+      md5: 1a9d2efd063ea6048094f191f2bf1efa
+      size: 1326
+    - path: ../35_surrogate_diagnostics/attempt25/schema.json
+      hash: md5
+      md5: 56ff79b2e21b73269f1bca4685991b61
+      size: 161199
+    - path: ../35_surrogate_diagnostics/attempt25/worker.py
+      hash: md5
+      md5: 0cd3397b7f2966d62d44e2d42cf5692f
+      size: 19878
+    - path: data/grouped-folds.json
+      hash: md5
+      md5: 44be6c76cd7dd8870d4497612a66b4a0
+      size: 671656
+    - path: model_evaluation/audit_workload.py
+      hash: md5
+      md5: 09db6d0b621a1c6a50014fdc48e7dcec
+      size: 3439
+    outs:
+    - path: results/model-workload-plan.json
+      hash: md5
+      md5: 5b74497dd112c25ce1457307a2b6c088
+      size: 3492
