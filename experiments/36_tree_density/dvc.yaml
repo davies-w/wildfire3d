@@ -811,3 +811,58 @@ stages:
     outs:
       - data/model-pair-timing
       - results/model-pair-timing-prepared.json
+  collect_pair_timing:
+    cmd: ../../.venv/bin/python model_evaluation/collect_pair_timing.py
+    deps:
+      - model_evaluation/collect_pair_timing.py
+      - results/model-pair-timing-execution.json
+    outs:
+      - data/model-pair-timing-results:
+          persist: true
+      - results/model-pair-timing-collected.json
+  close_pair_timing:
+    cmd: ../../.venv/bin/python model_evaluation/close_pair_timing.py
+    deps:
+      - model_evaluation/close_pair_timing.py
+      - results/model-pair-timing-collected.json
+    outs:
+      - results/model-pair-timing-permission-removed.json
+  prepare_pair_training:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_pair_training.py
+    deps:
+      - model_evaluation/prepare_pair_training.py
+      - model_evaluation/check_pair_resume_cloud.py
+      - data/model-pair
+      - data/model-pair-timing-results
+      - results/model-pair-timing-collected.json
+    outs:
+      - data/model-pair-training:
+          persist: true
+      - results/model-pair-runtime-plan.json
+      - results/model-pair-training-prepared.json
+  collect_pair_training:
+    cmd: ../../.venv/bin/python model_evaluation/collect_pair_training.py
+    deps:
+      - model_evaluation/collect_pair_training.py
+      - results/model-pair-training-execution.json
+    outs:
+      - data/model-pair-training-results:
+          persist: true
+      - results/model-pair-training-collected.json
+  close_pair_training:
+    cmd: ../../.venv/bin/python model_evaluation/close_pair_training.py
+    deps:
+      - model_evaluation/close_pair_training.py
+      - results/model-pair-training-collected.json
+    outs:
+      - results/model-pair-training-permission-removed.json
+  summarize_pair:
+    cmd: ../../.venv/bin/python model_evaluation/summarize_pair.py
+    deps:
+      - model_evaluation/summarize_pair.py
+      - results/model-pair-training-collected.json
+      - data/model-pair-training-results
+      - data/learning/sequences.npz
+    outs:
+      - results/model-pair-0-summary.json
+      - results/model-pair-1-summary.json
