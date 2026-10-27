@@ -409,3 +409,18 @@ stages:
     metrics:
     - results/model-runner-adaptation.json:
         cache: false
+  audit_complete_dataset:
+    cmd: ../../.venv/bin/python audit_complete_dataset.py
+    deps:
+    - audit_complete_dataset.py
+    - cases.json
+    - data/raw-inventory.json
+    - data/verified-material
+    - data/four-state
+    - data/recovery-collected
+    - results/four-state-extraction.json
+    - results/learning-data.json
+    - data/learning
+    metrics:
+    - results/dataset-completeness.json:
+        cache: false
