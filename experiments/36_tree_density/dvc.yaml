@@ -734,3 +734,13 @@ stages:
     - ../35_surrogate_diagnostics/attempt25/results/learning-curve.json
     outs:
     - data/published-report
+  publish_model_report:
+    cmd: ../../.venv/bin/python model_evaluation/publish_report.py
+    frozen: true
+    deps:
+    - model_evaluation/publish_report.py
+    - data/published-report
+    - results/model-training-collected.json
+    metrics:
+    - results/report-publication.json:
+        cache: false

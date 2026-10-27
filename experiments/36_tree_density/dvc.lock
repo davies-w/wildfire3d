@@ -1676,3 +1676,160 @@ stages:
       hash: md5
       md5: 47752a9afe9dfe7b4c38ffece547e9a6
       size: 335
+  collect_training:
+    cmd: ../../.venv/bin/python model_evaluation/collect_training.py
+    deps:
+    - path: data/model-training
+      hash: md5
+      md5: 29bd1a1576a7bb386bcf1e2d91419252.dir
+      size: 7900232
+      nfiles: 9
+    - path: model_evaluation/collect_training.py
+      hash: md5
+      md5: 7a615a8333a8356357b89dda61b9e19a
+      size: 5201
+    - path: results/model-training-execution.json
+      hash: md5
+      md5: 47752a9afe9dfe7b4c38ffece547e9a6
+      size: 335
+    outs:
+    - path: data/model-training-results
+      hash: md5
+      md5: 8e37ac7d16ec20263900692358f4bb82.dir
+      size: 1636087441
+      nfiles: 5863
+    - path: results/model-training-collected.json
+      hash: md5
+      md5: 6474c6f7c2c5e69c8d5aaa4cf172ead2
+      size: 244
+  close_training:
+    cmd: ../../.venv/bin/python model_evaluation/close_training.py
+    deps:
+    - path: model_evaluation/close_training.py
+      hash: md5
+      md5: cea96efa75bc424df8e43fbf12804741
+      size: 1036
+    - path: results/model-training-cleanup.json
+      hash: md5
+      md5: 9fce3b0329f161163703cb8f756d9e1f
+      size: 51
+    - path: results/model-training-collected.json
+      hash: md5
+      md5: 6474c6f7c2c5e69c8d5aaa4cf172ead2
+      size: 244
+    - path: results/model-training-read-condition.json
+      hash: md5
+      md5: dfa1c1d88a94b5f5d4aa2610696a3297
+      size: 312
+    outs:
+    - path: results/model-training-permission-removed.json
+      hash: md5
+      md5: 6aa9ccdd7ff78dbdaf3393e326114d4d
+      size: 407
+  analyze_model_scorecard:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_scorecard.py
+    deps:
+    - path: data/learning
+      hash: md5
+      md5: 1a825007340d2f9d84a9744df853bd53.dir
+      size: 3238491
+      nfiles: 1
+    - path: data/model-training-results
+      hash: md5
+      md5: 8e37ac7d16ec20263900692358f4bb82.dir
+      size: 1636087441
+      nfiles: 5863
+    - path: model_evaluation/analyze_scorecard.py
+      hash: md5
+      md5: 188ad2d62e26f7365bb750885b418833
+      size: 5087
+    - path: results/model-training-collected.json
+      hash: md5
+      md5: 6474c6f7c2c5e69c8d5aaa4cf172ead2
+      size: 244
+    outs:
+    - path: results/model-scenario-audit.json
+      hash: md5
+      md5: cb7c8974ae91d0c2b8fa2eb67ba33a1b
+      size: 14005515
+  summarize_model_forecasts:
+    cmd: ../../.venv/bin/python model_evaluation/summarize_forecasts.py
+    deps:
+    - path: data/learning
+      hash: md5
+      md5: 1a825007340d2f9d84a9744df853bd53.dir
+      size: 3238491
+      nfiles: 1
+    - path: data/model-training-results
+      hash: md5
+      md5: 8e37ac7d16ec20263900692358f4bb82.dir
+      size: 1636087441
+      nfiles: 5863
+    - path: model_evaluation/summarize_forecasts.py
+      hash: md5
+      md5: 11d561edf629cc81f5bea507bdc5c63d
+      size: 3895
+    - path: results/model-training-collected.json
+      hash: md5
+      md5: 6474c6f7c2c5e69c8d5aaa4cf172ead2
+      size: 244
+    outs:
+    - path: results/model-four-state-summary.json
+      hash: md5
+      md5: 9acf84830495aeb434ee1a09a6814e53
+      size: 28885
+  build_model_report:
+    cmd: ../../.venv/bin/python model_evaluation/build_report.py
+    deps:
+    - path: ../35_surrogate_diagnostics/attempt25/results/learning-curve.json
+      hash: md5
+      md5: 2ffc5ea68f3a71f15c9b5d4823d480f9
+      size: 355715
+    - path: data/model-training-results
+      hash: md5
+      md5: 8e37ac7d16ec20263900692358f4bb82.dir
+      size: 1636087441
+      nfiles: 5863
+    - path: model_evaluation/build_report.py
+      hash: md5
+      md5: c898763afe837d94724f37e2dae36af5
+      size: 8359
+    - path: results/model-four-state-summary.json
+      hash: md5
+      md5: 9acf84830495aeb434ee1a09a6814e53
+      size: 28885
+    - path: results/model-scenario-audit.json
+      hash: md5
+      md5: cb7c8974ae91d0c2b8fa2eb67ba33a1b
+      size: 14005515
+    - path: results/model-training-collected.json
+      hash: md5
+      md5: 6474c6f7c2c5e69c8d5aaa4cf172ead2
+      size: 244
+    outs:
+    - path: data/published-report
+      hash: md5
+      md5: 5dec9cd6370b35cfef097511a4d6f659.dir
+      size: 14090888
+      nfiles: 4
+  publish_model_report:
+    cmd: ../../.venv/bin/python model_evaluation/publish_report.py
+    deps:
+    - path: data/published-report
+      hash: md5
+      md5: 5dec9cd6370b35cfef097511a4d6f659.dir
+      size: 14090888
+      nfiles: 4
+    - path: model_evaluation/publish_report.py
+      hash: md5
+      md5: eb01b440a7feb39b4f97bdc278ecc824
+      size: 2035
+    - path: results/model-training-collected.json
+      hash: md5
+      md5: 6474c6f7c2c5e69c8d5aaa4cf172ead2
+      size: 244
+    outs:
+    - path: results/report-publication.json
+      hash: md5
+      md5: 8512a7470871ea7cce5136ee19cfcccf
+      size: 982
