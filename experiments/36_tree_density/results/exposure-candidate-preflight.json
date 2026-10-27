@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "source_worker_sha256": "035e8c943dfacd0fd5648305349f8573e519c6d03a32bb834dced35bda369228",
+  "candidate_worker_sha256": "7e081484aa67b0533e0e657991761259e0df88553bd032286690d90595b497ad",
+  "model_unchanged": true,
+  "only_change": "Train-derived inverse window multiplicity factors applied to the existing state+gate loss. Preserve total train coefficient mass at each horizon; no changes to model, data, optimizer, LR, windows, normalization, original selection, or report equations. This is an untrained candidate, not an accuracy result.",
+  "tests": [
+    {
+      "length": 8,
+      "horizon": 1,
+      "coefficient_and_gradient_cancellation": true,
+      "total_coefficient_preserved": true,
+      "heldout_perturbation_invariant": true
+    },
+    {
+      "length": 8,
+      "horizon": 8,
+      "coefficient_and_gradient_cancellation": true,
+      "total_coefficient_preserved": true,
+      "heldout_perturbation_invariant": true
+    },
+    {
+      "length": 90,
+      "horizon": 1,
+      "coefficient_and_gradient_cancellation": true,
+      "total_coefficient_preserved": true,
+      "heldout_perturbation_invariant": true
+    },
+    {
+      "length": 90,
+      "horizon": 8,
+      "coefficient_and_gradient_cancellation": true,
+      "total_coefficient_preserved": true,
+      "heldout_perturbation_invariant": true
+    },
+    {
+      "length": 90,
+      "horizon": 16,
+      "coefficient_and_gradient_cancellation": true,
+      "total_coefficient_preserved": true,
+      "heldout_perturbation_invariant": true
+    },
+    {
+      "length": 90,
+      "horizon": 32,
+      "coefficient_and_gradient_cancellation": true,
+      "total_coefficient_preserved": true,
+      "heldout_perturbation_invariant": true
+    },
+    {
+      "length": 90,
+      "horizon": 90,
+      "coefficient_and_gradient_cancellation": true,
+      "total_coefficient_preserved": true,
+      "heldout_perturbation_invariant": true
+    }
+  ],
+  "optimizer_updates": 0,
+  "cloud_launched": false,
+  "evaluation_plan": {
+    "comparison": "Original weighting vs corrected weighting, same gated checkpoint and optimizer/RNG state; train only, original validation selection plus separately reported startup/peak errors. Freeze candidate and criteria before any new comparison. Do not reuse old test outcomes for tuning.",
+    "acceptance": "Improve initial32s validation gas deficit and peak amplitude without worsening full-rollout four-state validation MAE or quiet drift materially; report all states and finite/negative/mass-increase checks. Thresholds and compute bounds must be frozen before launch. Previously inspected validation/test are development evidence, not pristine confirmation.",
+    "budget": "No launch until a carved reservation fits cumulative125USD and does not double-count the existing40USD Flex queue allowance. Existing queue is scheduled and has no VM as of last live read; never duplicate or cancel based only on stale metadata."
+  }
+}

@@ -1058,3 +1058,25 @@ stages:
         cache: false
     - results/undershoot-gallery-truth-checks.json:
         cache: false
+  audit_training_exposure:
+    cmd: ../../.venv/bin/python model_evaluation/audit_training_exposure.py
+    deps:
+    - model_evaluation/audit_training_exposure.py
+    - data/pair-sequence/rotation0/schema.json
+    - data/pair-sequence/rotation0/coverage-plan.json
+    - data/pair-sequence/rotation0/worker.py
+    - data/pair-sequence/rotation0/data/sequences.npz
+    metrics:
+    - results/training-exposure-audit.json:
+        cache: false
+  prepare_exposure_candidate:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_exposure_candidate.py
+    deps:
+    - model_evaluation/prepare_exposure_candidate.py
+    - data/pair-sequence/rotation0/worker.py
+    - data/pair-sequence/rotation0/model.py
+    outs:
+    - data/exposure-candidate
+    metrics:
+    - results/exposure-candidate-preflight.json:
+        cache: false

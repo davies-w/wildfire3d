@@ -1,0 +1,62 @@
+{
+  "status": "prepared_not_launched",
+  "purpose": "Controlled diagnostic repair of startup underexposure; not a claimed solution or pristine test",
+  "data": "Existing2080histories only; rotation0 train/validation identities unchanged. Previously inspected validation remains development data. No test metrics in pilot.",
+  "initial_checkpoint": "data/pair-sequence-r0-results/fold01-epoch183.pt",
+  "initial_checkpoint_sha256": "f496262454176fb66264acf5a7ca49ff253bbd52584ccc8ce722da7b028a8048",
+  "selected_epoch": 183,
+  "initial_weights_verified_exact_to_selected": true,
+  "arms": [
+    "original_weighting_gated",
+    "multiplicity_corrected_gated"
+  ],
+  "continuation_epochs_per_arm": 12,
+  "horizon_steps": 32,
+  "same_for_both": [
+    "initial model",
+    "optimizer moments",
+    "RNG state",
+    "epoch window orders",
+    "architecture",
+    "LR3e-4",
+    "AdamW weight_decay1e-4",
+    "batch256",
+    "gradient_clip1",
+    "train-derived normalization",
+    "original validation selection equation"
+  ],
+  "sole_treatment": "Inverse target window multiplicity, scalar normalized to preserve total TRAIN coefficient mass. Existing gate auxiliary loss multiplied consistently.",
+  "evaluation": "Evaluate original held-in TRAIN and validation before continuation and each epoch. Select each arm with original3state full-autonomous normalized validation MSE, freeze both selections before comparison. Baseline selected checkpoint is eligible. Do not evaluate test in this pilot.",
+  "acceptance_all_required": {
+    "startup_0_to32s_gas_p90_normalized_deficit_relative_reduction_at_least": 0.1,
+    "gas_peak_amplitude_MAE_relative_reduction_at_least": 0.05,
+    "original_validation_objective_relative_increase_at_most": 0.05,
+    "full_rollout_each_state_MAE_relative_increase_at_most": 0.05,
+    "quiet_state_MAE_absolute_increase_at_most_in_physical_encoding_scale_units": 0.001,
+    "finite_outputs": true,
+    "report_negative_states_and_mass_increases": true
+  },
+  "comparison_scope": "All metrics configuration-balanced, replica-averaged; startup deficit normalized per history by true gas peak. Report zero denominators explicitly. Candidate improvement only establishes a development-split effect, not universal accuracy or physical validation.",
+  "budget_plan": {
+    "maximum_new_reservation_usd": 0.75,
+    "not_yet_reserved": true,
+    "existing_estimate_usd": 46.045765631114016,
+    "existing_reserved_usd": 78,
+    "cap_usd": 125,
+    "projected_envelope_with_new_reservation_usd": 124.79576563111401,
+    "rate_bound_usd_per_hour": 0.8,
+    "vm_age_cap_s": 3300,
+    "task_cap_s": 3200,
+    "soft_training_s": 3000,
+    "queue_cap_s": 900,
+    "absolute_workflow_cap_s": 4500,
+    "measured_gated_full_epoch_s": 54.19,
+    "require_recheck_before_reserving_or_launching": true,
+    "require_gpu_quota_and_capacity_check": true,
+    "do_not_change_existing_queue": true,
+    "measured24epoch_compute_s": 1300.56,
+    "projection_2x_plus300s_s": 2901.12
+  },
+  "preservation": "Private immutable new prefix, each completed epoch model/optimizer/RNG/history uploaded, deadline checkpoint, nonempty optimizer replay before continuation, no automatic retry, sleep-independent watchdog and exact prefix IAM cleanup.",
+  "physics_scope": "Unchanged generic3m-wide4/6/8/10m crowns above2m,1600weightedparticles,0.5m24x16x16grid,1500C20signition,180s,no trunks/buildings/embers/physical validation. No FDS rerun."
+}

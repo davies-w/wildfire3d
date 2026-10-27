@@ -2560,3 +2560,56 @@ stages:
       hash: md5
       md5: 112f939bb91f47fd7ed27855841ca63e
       size: 7449
+  audit_training_exposure:
+    cmd: ../../.venv/bin/python model_evaluation/audit_training_exposure.py
+    deps:
+    - path: data/pair-sequence/rotation0/coverage-plan.json
+      hash: md5
+      md5: 3bc59c084128b9ebacb7fdd23ce247f2
+      size: 2227
+    - path: data/pair-sequence/rotation0/data/sequences.npz
+      hash: md5
+      md5: f280a76462ed8d586e7a4fc7eec09961
+      size: 5110534
+    - path: data/pair-sequence/rotation0/schema.json
+      hash: md5
+      md5: 72f1f49ef09731507728a13b8eff1997
+      size: 418638
+    - path: data/pair-sequence/rotation0/worker.py
+      hash: md5
+      md5: 0088c8081924de012be3f6d65aa18f29
+      size: 20689
+    - path: model_evaluation/audit_training_exposure.py
+      hash: md5
+      md5: a4e997308416ee0c0ee8f8c6303c877d
+      size: 2933
+    outs:
+    - path: results/training-exposure-audit.json
+      hash: md5
+      md5: cd67581cb4a4bbd88c5145e343802ac7
+      size: 11060
+  prepare_exposure_candidate:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_exposure_candidate.py
+    deps:
+    - path: data/pair-sequence/rotation0/model.py
+      hash: md5
+      md5: df85ba158f97d16d0a2448b7acb00f46
+      size: 227
+    - path: data/pair-sequence/rotation0/worker.py
+      hash: md5
+      md5: 0088c8081924de012be3f6d65aa18f29
+      size: 20689
+    - path: model_evaluation/prepare_exposure_candidate.py
+      hash: md5
+      md5: 0aa72128f5be24f496f038b3d2db5f23
+      size: 4717
+    outs:
+    - path: data/exposure-candidate
+      hash: md5
+      md5: 2afb58814992bd040e5358fdd1452c6d.dir
+      size: 21464
+      nfiles: 2
+    - path: results/exposure-candidate-preflight.json
+      hash: md5
+      md5: 3bc9852df520faf82fdb5a3ebd3fb332
+      size: 2961
