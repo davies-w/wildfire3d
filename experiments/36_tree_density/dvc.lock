@@ -3331,3 +3331,133 @@ stages:
       hash: md5
       md5: ba3d9af41c03d4fe096b35f2c4b4e853
       size: 334
+  collect_gas_head_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/collect_gas_head_pilot01.py
+    deps:
+    - path: model_evaluation/collect_gas_head_pilot01.py
+      hash: md5
+      md5: 63576476992414ec17eeb94aab459c4e
+      size: 5179
+    - path: results/gas-head-pilot01-execution.json
+      hash: md5
+      md5: ba3d9af41c03d4fe096b35f2c4b4e853
+      size: 334
+    outs:
+    - path: data/gas-head-pilot01-results
+      hash: md5
+      md5: cb4545f7bdc14bf2627ba86a64928691.dir
+      size: 28606331
+      nfiles: 672
+    - path: results/gas-head-pilot01-collected.json
+      hash: md5
+      md5: 63af33c65b0889e29a19f27520cc77a4
+      size: 558
+  close_gas_head_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/close_gas_head_pilot01.py
+    deps:
+    - path: model_evaluation/close_gas_head_pilot01.py
+      hash: md5
+      md5: b1cb4e9aa1dcb2da2e759a60413bab6c
+      size: 1701
+    - path: results/gas-head-pilot01-collected.json
+      hash: md5
+      md5: 63af33c65b0889e29a19f27520cc77a4
+      size: 558
+    outs:
+    - path: results/gas-head-pilot01-permission-removed.json
+      hash: md5
+      md5: d5b15faa919b31c68343e557600b0ff8
+      size: 455
+  analyze_gas_head_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_gas_head_pilot01.py
+    deps:
+    - path: data/gas-head-pilot01
+      hash: md5
+      md5: ec77708c7ed7171dea5316fb5f4828e1.dir
+      size: 53235421
+      nfiles: 14
+    - path: data/gas-head-pilot01-results
+      hash: md5
+      md5: cb4545f7bdc14bf2627ba86a64928691.dir
+      size: 28606331
+      nfiles: 672
+    - path: model_evaluation/analyze_gas_head_pilot01.py
+      hash: md5
+      md5: f90e9fe45bf2b732a3d81c56f0af2b6c
+      size: 4063
+    - path: results/gas-head-pilot01-collected.json
+      hash: md5
+      md5: 63af33c65b0889e29a19f27520cc77a4
+      size: 558
+    outs:
+    - path: results/gas-head-pilot01-analysis.json
+      hash: md5
+      md5: 687054c26d7f9318c11f306ddc88922d
+      size: 8877
+  reconcile_gas_head_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_gas_head_pilot01.py
+    deps:
+    - path: model_evaluation/reconcile_gas_head_pilot01.py
+      hash: md5
+      md5: c04d0659da05752a0b3d9654ab6aae4b
+      size: 1651
+    - path: results/gas-head-pilot01-collected.json
+      hash: md5
+      md5: 63af33c65b0889e29a19f27520cc77a4
+      size: 558
+    - path: results/gas-head-pilot01-permission-removed.json
+      hash: md5
+      md5: d5b15faa919b31c68343e557600b0ff8
+      size: 455
+    outs:
+    - path: results/gas-head-pilot01-cost-reconciled.json
+      hash: md5
+      md5: d774737ff671d38636b7f0adf4115450
+      size: 463
+  audit_gas_head_trajectory:
+    cmd: ../../.venv/bin/python model_evaluation/audit_gas_head_trajectory.py
+    deps:
+    - path: data/gas-head-pilot01
+      hash: md5
+      md5: ec77708c7ed7171dea5316fb5f4828e1.dir
+      size: 53235421
+      nfiles: 14
+    - path: data/gas-head-pilot01-results
+      hash: md5
+      md5: cb4545f7bdc14bf2627ba86a64928691.dir
+      size: 28606331
+      nfiles: 672
+    - path: model_evaluation/audit_gas_head_trajectory.py
+      hash: md5
+      md5: 4f7c05102ef1ab8254d45bd4f5045b67
+      size: 2343
+    - path: results/gas-head-pilot01-collected.json
+      hash: md5
+      md5: 63af33c65b0889e29a19f27520cc77a4
+      size: 558
+    outs:
+    - path: results/gas-head-trajectory-audit.json
+      hash: md5
+      md5: 52673ee44e67f9ea964b3de2285f320e
+      size: 240293
+  validate_gas_shape_head:
+    cmd: ../../.venv/bin/python model_evaluation/validate_gas_shape_head.py
+    deps:
+    - path: data/gas-head-candidate
+      hash: md5
+      md5: 1bae6163fbc3780981d71b7ec0c65e96.dir
+      size: 26581682
+      nfiles: 6
+    - path: model_evaluation/gas_shape_head.py
+      hash: md5
+      md5: 4701d490c44b774e887a7f2c9ef730f7
+      size: 1258
+    - path: model_evaluation/validate_gas_shape_head.py
+      hash: md5
+      md5: 3b09e0ad34a2f7dd1de71c6c0dabcf9d
+      size: 2974
+    outs:
+    - path: results/gas-shape-head-preflight.json
+      hash: md5
+      md5: 396672e54e3218d60a1f419ac81eb0aa
+      size: 917

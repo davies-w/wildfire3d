@@ -1411,3 +1411,22 @@ stages:
     metrics:
     - results/gas-head-pilot01-analysis.json:
         cache: false
+  audit_gas_head_trajectory:
+    cmd: ../../.venv/bin/python model_evaluation/audit_gas_head_trajectory.py
+    deps:
+    - model_evaluation/audit_gas_head_trajectory.py
+    - data/gas-head-pilot01
+    - data/gas-head-pilot01-results
+    - results/gas-head-pilot01-collected.json
+    metrics:
+    - results/gas-head-trajectory-audit.json:
+        cache: false
+  validate_gas_shape_head:
+    cmd: ../../.venv/bin/python model_evaluation/validate_gas_shape_head.py
+    deps:
+    - model_evaluation/validate_gas_shape_head.py
+    - model_evaluation/gas_shape_head.py
+    - data/gas-head-candidate
+    metrics:
+    - results/gas-shape-head-preflight.json:
+        cache: false

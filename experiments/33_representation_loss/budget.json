@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 78.4,
+  "reserved_usd": 78.0,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -3001,12 +3001,23 @@
       "terminal_evidence": "experiments/36_tree_density/results/exposure-pilot02-status.json"
     },
     "density36-gas-head-pilot01": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 0.4,
       "reserved_unix": 1793138204.169209,
       "scope": "Authorized controlled bounded gas-head repair pilot, max0.40USD, private inputs, no tests, no automatic retries",
       "workflow": "fds-gpu36-gashead01",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-gashead01/executions/0c89a72b-1e18-46d1-8e4d-9cef46084c9f"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-gashead01/executions/0c89a72b-1e18-46d1-8e4d-9cef46084c9f",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.0709977520590938,
+        "vm_hours": 0.1004449775,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-gpu36-gashead0-9855bd9e-6bf1-4f760-group0-0-t2pb"
+        ]
+      },
+      "historical_allowance_usd": 0.4,
+      "terminal_evidence": "experiments/36_tree_density/results/gas-head-pilot01-status.json"
     }
   },
   "recycle_reservations": true,
@@ -3016,17 +3027,18 @@
   "accounting": {
     "billing_export_status": "posted_costs_subject_to_adjustment",
     "posted_source": "BigQuery detailed export",
-    "as_of_utc": "2026-10-27T21:54:42.775443+00:00",
+    "as_of_utc": "2026-10-27T22:07:51.205296+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
     "project_posted_comparison_usd": 45.438776,
-    "project_compute_runtime_estimate_usd": 45.08678338519638,
+    "project_compute_runtime_estimate_usd": 45.15778113725547,
     "shared_cost_estimate_usd": 1.26,
-    "spend_estimate_usd": 46.346783385196375,
-    "unposted_compute_after_export_usd": 0.3010177540823568,
+    "spend_estimate_usd": 46.41778113725547,
+    "unposted_compute_after_export_usd": 0.3720155061414506,
     "unposted_resources": [
+      "fds-gpu36-gashead0-9855bd9e-6bf1-4f760-group0-0-t2pb",
       "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv"
     ],
-    "matched_vms": 348,
+    "matched_vms": 349,
     "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
     "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. Flex-start uses a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
     "rates_usd_per_vm_hour": {
@@ -3036,5 +3048,5 @@
       "c3-standard-4/SPOT": 0.07725118278354724
     }
   },
-  "estimated_spend_usd": 46.346783385196375
+  "estimated_spend_usd": 46.41778113725547
 }

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "train_only": true,
+  "histories": 1662,
+  "optimizer_instantiated": false,
+  "optimizer_updates": 0,
+  "initial_output_bitwise_equal": true,
+  "arbitrary_probe_factor_bounds_and_signs_preserved": true,
+  "positive_negative_integrals_preserved": true,
+  "max_integral_float32_residual_kg": {
+    "positive": 1.1444091796875e-05,
+    "negative": 9.313225746154785e-10
+  },
+  "synthetic_zero_positive_negative_mixed_cases_passed": true,
+  "isolated_gradient_finite_and_nonzero": true,
+  "scope": "Untrained architecture invariant checks only. Normalization uses each complete generated base forecast and known times, never future truth. This is a full-forecast output transform, not a causal one-step recurrent correction. It deliberately preserves the baseline total-release error and does not repair dry fuel/water/heating. No validation/test outcomes used, fit, improved accuracy or launch."
+}
