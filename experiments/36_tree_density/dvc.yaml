@@ -757,3 +757,24 @@ stages:
     metrics:
     - results/model-overlap-candidate.json:
         cache: false
+  build_denser:
+    cmd: ../../.venv/bin/python model_evaluation/build_denser.py
+    deps:
+    - model_evaluation/build_denser.py
+    - data/learning
+    - data/model-training-results
+    - learning-schema.json
+    - results/model-training-collected.json
+    - results/model-four-state-summary.json
+    - ../35_surrogate_diagnostics/attempt24/gallery.html
+    outs:
+    - data/denser
+  publish_denser:
+    cmd: ../../.venv/bin/python model_evaluation/publish_denser.py
+    frozen: true
+    deps:
+    - model_evaluation/publish_denser.py
+    - data/denser
+    metrics:
+    - results/denser-publication.json:
+        cache: false

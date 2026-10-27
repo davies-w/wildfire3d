@@ -1867,3 +1867,59 @@ stages:
       hash: md5
       md5: 868fc61c845c05895f404eb2e4ae0b39
       size: 2037
+  build_denser:
+    cmd: ../../.venv/bin/python model_evaluation/build_denser.py
+    deps:
+    - path: ../35_surrogate_diagnostics/attempt24/gallery.html
+      hash: md5
+      md5: c2d19aa984e878ec957108aa92c2a94e
+      size: 7706
+    - path: data/learning
+      hash: md5
+      md5: 1a825007340d2f9d84a9744df853bd53.dir
+      size: 3238491
+      nfiles: 1
+    - path: data/model-training-results
+      hash: md5
+      md5: 8e37ac7d16ec20263900692358f4bb82.dir
+      size: 1636087441
+      nfiles: 5863
+    - path: learning-schema.json
+      hash: md5
+      md5: 0dbee67e38424d53816fe78799442133
+      size: 672301
+    - path: model_evaluation/build_denser.py
+      hash: md5
+      md5: 5c06588b36b808f99c07b9a5d868efb7
+      size: 6579
+    - path: results/model-four-state-summary.json
+      hash: md5
+      md5: 9acf84830495aeb434ee1a09a6814e53
+      size: 28885
+    - path: results/model-training-collected.json
+      hash: md5
+      md5: 6474c6f7c2c5e69c8d5aaa4cf172ead2
+      size: 244
+    outs:
+    - path: data/denser
+      hash: md5
+      md5: 2eb419f1cde9eab019715ded6c6ae981.dir
+      size: 63252108
+      nfiles: 698
+  publish_denser:
+    cmd: ../../.venv/bin/python model_evaluation/publish_denser.py
+    deps:
+    - path: data/denser
+      hash: md5
+      md5: 2eb419f1cde9eab019715ded6c6ae981.dir
+      size: 63252108
+      nfiles: 698
+    - path: model_evaluation/publish_denser.py
+      hash: md5
+      md5: 6bc3453d12d82dc54ae3fb91a43492d5
+      size: 1835
+    outs:
+    - path: results/denser-publication.json
+      hash: md5
+      md5: 7f76210ec79c89cac92ef935d618a1aa
+      size: 113369
