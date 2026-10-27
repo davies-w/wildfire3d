@@ -778,3 +778,36 @@ stages:
     metrics:
     - results/denser-publication.json:
         cache: false
+
+  prepare_model_pair:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_pair.py
+    deps:
+      - model_evaluation/prepare_pair.py
+      - model_evaluation/time_pair.py
+      - data/learning/sequences.npz
+      - data/model-training/worker.py
+      - learning-schema.json
+      - ../35_surrogate_diagnostics/attempt24/model.py
+      - ../35_surrogate_diagnostics/attempt24/data/sequences.npz
+      - ../35_surrogate_diagnostics/attempt25/model.py
+    outs:
+      - data/model-pair:
+          persist: true
+      - results/model-pair-prepared.json
+  validate_model_pair:
+    cmd: ../../.venv/bin/python model_evaluation/validate_pair.py
+    deps:
+      - model_evaluation/validate_pair.py
+      - data/model-pair
+    outs:
+      - results/model-pair-validation.json
+  prepare_pair_timing:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_pair_timing.py
+    deps:
+      - model_evaluation/prepare_pair_timing.py
+      - model_evaluation/time_pair.py
+      - results/model-pair-validation.json
+      - data/model-pair
+    outs:
+      - data/model-pair-timing
+      - results/model-pair-timing-prepared.json

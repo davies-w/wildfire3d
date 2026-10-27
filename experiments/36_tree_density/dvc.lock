@@ -1923,3 +1923,95 @@ stages:
       hash: md5
       md5: 7f76210ec79c89cac92ef935d618a1aa
       size: 113369
+  prepare_model_pair:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_pair.py
+    deps:
+    - path: ../35_surrogate_diagnostics/attempt24/data/sequences.npz
+      hash: md5
+      md5: 19d4aefdea3e2d9246d66453112fe269
+      size: 1276042
+    - path: ../35_surrogate_diagnostics/attempt24/model.py
+      hash: md5
+      md5: 513f5de378861e54802f4a6217fe5958
+      size: 1937
+    - path: ../35_surrogate_diagnostics/attempt25/model.py
+      hash: md5
+      md5: 1a9d2efd063ea6048094f191f2bf1efa
+      size: 1326
+    - path: data/learning/sequences.npz
+      hash: md5
+      md5: 432e6904ee4c70cba22e2b72ae96809a
+      size: 3238491
+    - path: data/model-training/worker.py
+      hash: md5
+      md5: c3937010e77ed41ba3371b622322f84d
+      size: 20233
+    - path: learning-schema.json
+      hash: md5
+      md5: 0dbee67e38424d53816fe78799442133
+      size: 672301
+    - path: model_evaluation/prepare_pair.py
+      hash: md5
+      md5: 58476bc983d5c1ab0d33b65d7f5679d6
+      size: 5498
+    - path: model_evaluation/time_pair.py
+      hash: md5
+      md5: 2fff2b49fab5a2af542341d0acf573c6
+      size: 3051
+    outs:
+    - path: data/model-pair
+      hash: md5
+      md5: bfb4d083376e4e92b81f2e1b88396547.dir
+      size: 5570828
+      nfiles: 12
+    - path: results/model-pair-prepared.json
+      hash: md5
+      md5: c151f7b705824680c5dfc45230c90f19
+      size: 942
+  validate_model_pair:
+    cmd: ../../.venv/bin/python model_evaluation/validate_pair.py
+    deps:
+    - path: data/model-pair
+      hash: md5
+      md5: bfb4d083376e4e92b81f2e1b88396547.dir
+      size: 5570828
+      nfiles: 12
+    - path: model_evaluation/validate_pair.py
+      hash: md5
+      md5: 1e273758bc157a53a591c595e4f2d0c3
+      size: 2579
+    outs:
+    - path: results/model-pair-validation.json
+      hash: md5
+      md5: 8d47da9643ce9965f5f55b7140f61079
+      size: 1050
+  prepare_pair_timing:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_pair_timing.py
+    deps:
+    - path: data/model-pair
+      hash: md5
+      md5: bfb4d083376e4e92b81f2e1b88396547.dir
+      size: 5570828
+      nfiles: 12
+    - path: model_evaluation/prepare_pair_timing.py
+      hash: md5
+      md5: 6576f367c48e3531c86ce184585ab43e
+      size: 3291
+    - path: model_evaluation/time_pair.py
+      hash: md5
+      md5: 2fff2b49fab5a2af542341d0acf573c6
+      size: 3051
+    - path: results/model-pair-validation.json
+      hash: md5
+      md5: 8d47da9643ce9965f5f55b7140f61079
+      size: 1050
+    outs:
+    - path: data/model-pair-timing
+      hash: md5
+      md5: 6d7e070301e4740a47c088446f91f0ea.dir
+      size: 5581352
+      nfiles: 3
+    - path: results/model-pair-timing-prepared.json
+      hash: md5
+      md5: a4fe647c2677c1454b8b742bdcff52df
+      size: 1176
