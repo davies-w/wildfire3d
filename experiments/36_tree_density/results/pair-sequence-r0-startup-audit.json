@@ -1,0 +1,39 @@
+{
+  "proofs": {
+    "optimizer-resume-check.json": {
+      "sha256": "59fe0804ff1a402ba7f3f2459cae1664050ddf24c8a7aea6d07c4eda6b073631",
+      "generation": "1793086110933581",
+      "proof": {
+        "passed": true,
+        "synthetic_only": true,
+        "test_evaluated": false,
+        "checks": [
+          {
+            "kind": "control",
+            "nonempty_optimizer": true,
+            "next_update_bitwise_equal": true
+          },
+          {
+            "kind": "gated",
+            "nonempty_optimizer": true,
+            "next_update_bitwise_equal": true
+          }
+        ]
+      }
+    },
+    "fold00-checkpoint-replay.json": {
+      "sha256": "a067248a64aae64a788bc9e492e1bece3131c8af0c4aeabab8080ea35de2c972",
+      "generation": "1793086117724942",
+      "proof": {
+        "passed": true,
+        "epoch": 1,
+        "optimizer_nonempty": true
+      }
+    }
+  },
+  "bootstrap_error_present": false,
+  "test_outcomes_not_read": true,
+  "training_started": true,
+  "rotation": 0,
+  "source_prefix": "gs://tmrw-wildfire-20261015-trial/density36/pair-sequence01/rotation0/"
+}
