@@ -19,7 +19,8 @@ def main():
  (T/'data').mkdir(parents=True,exist_ok=True)
  shutil.copyfile(R/'model_evaluation/check_pair_resume_cloud.py',T/'check_resume.py')
  names=['check_resume.py','worker.py','model.py','plain_model.py','gated_model.py','runtime.py','schema.json','coverage-plan.json','data/sequences.npz']
- for n in names:shutil.copyfile(D/n,T/n)
+ for n in names:
+  if n!='check_resume.py':shutil.copyfile(D/n,T/n)
  (T/'runtime.py').write_text((T/'runtime.py').read_text().replace('model-pair-preflight01/','model-pair-training01/'))
  p=json.loads((T/'coverage-plan.json').read_text());p['budget']={'soft_seconds':soft,'maximum_allowance_usd':allowance};(T/'coverage-plan.json').write_text(json.dumps(p,indent=2)+'\n')
  hashes={n:hashlib.sha256((T/n).read_bytes()).hexdigest() for n in names}

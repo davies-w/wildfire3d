@@ -2015,3 +2015,79 @@ stages:
       hash: md5
       md5: a4fe647c2677c1454b8b742bdcff52df
       size: 1176
+  collect_pair_timing:
+    cmd: ../../.venv/bin/python model_evaluation/collect_pair_timing.py
+    deps:
+    - path: model_evaluation/collect_pair_timing.py
+      hash: md5
+      md5: 913dffa44ca10492ea9f056aa768ffe6
+      size: 1943
+    - path: results/model-pair-timing-execution.json
+      hash: md5
+      md5: 1f888fc7ecec92cecf318dadc8841227
+      size: 336
+    outs:
+    - path: data/model-pair-timing-results
+      hash: md5
+      md5: 100a84a8cfbad81b4ac5b4ce4977e615.dir
+      size: 6244
+      nfiles: 6
+    - path: results/model-pair-timing-collected.json
+      hash: md5
+      md5: 99a672b0f2f1c9e47c78eb976f4831e6
+      size: 1016
+  close_pair_timing:
+    cmd: ../../.venv/bin/python model_evaluation/close_pair_timing.py
+    deps:
+    - path: model_evaluation/close_pair_timing.py
+      hash: md5
+      md5: bcac855e1986553602fb13a892fb3288
+      size: 1065
+    - path: results/model-pair-timing-collected.json
+      hash: md5
+      md5: 99a672b0f2f1c9e47c78eb976f4831e6
+      size: 1016
+    outs:
+    - path: results/model-pair-timing-permission-removed.json
+      hash: md5
+      md5: 8434bd812e12d19c89f60f3e3a727966
+      size: 429
+  prepare_pair_training:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_pair_training.py
+    deps:
+    - path: data/model-pair
+      hash: md5
+      md5: bfb4d083376e4e92b81f2e1b88396547.dir
+      size: 5570828
+      nfiles: 12
+    - path: data/model-pair-timing-results
+      hash: md5
+      md5: 100a84a8cfbad81b4ac5b4ce4977e615.dir
+      size: 6244
+      nfiles: 6
+    - path: model_evaluation/check_pair_resume_cloud.py
+      hash: md5
+      md5: 0ef2e6e6d66d63006f824bd4f6ac91d3
+      size: 2098
+    - path: model_evaluation/prepare_pair_training.py
+      hash: md5
+      md5: 2fab595c9e9d111e7904deb9b0470e68
+      size: 6369
+    - path: results/model-pair-timing-collected.json
+      hash: md5
+      md5: 99a672b0f2f1c9e47c78eb976f4831e6
+      size: 1016
+    outs:
+    - path: data/model-pair-training
+      hash: md5
+      md5: c8396032a4cea5145b56c64ba1e565bb.dir
+      size: 11141412
+      nfiles: 12
+    - path: results/model-pair-runtime-plan.json
+      hash: md5
+      md5: 151aad2cb83a24c5e5454366117f7ddb
+      size: 1276
+    - path: results/model-pair-training-prepared.json
+      hash: md5
+      md5: 49a3d976c209e5412b88226ae7be1b24
+      size: 2317
