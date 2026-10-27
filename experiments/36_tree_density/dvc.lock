@@ -3084,3 +3084,96 @@ stages:
       hash: md5
       md5: 1a0d5885b4450639d2b093bb0593c889
       size: 10690
+  audit_gas_timing_amplitude:
+    cmd: ../../.venv/bin/python model_evaluation/audit_gas_timing_amplitude.py
+    deps:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: model_evaluation/audit_gas_timing_amplitude.py
+      hash: md5
+      md5: bb5590faf71c479392fc59f1a04d5970
+      size: 4177
+    outs:
+    - path: results/gas-timing-amplitude-audit.json
+      hash: md5
+      md5: ce60327f9f9651ed9f8be21855fecfe0
+      size: 1813034
+  prepare_gas_head_candidate:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_gas_head_candidate.py
+    deps:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: model_evaluation/gas_head.py
+      hash: md5
+      md5: 4fffc925b8e76bc38634ef209ca2037b
+      size: 663
+    - path: model_evaluation/prepare_gas_head_candidate.py
+      hash: md5
+      md5: 77d96e75fa98dc8ba7c1408a4260e2a6
+      size: 5404
+    outs:
+    - path: data/gas-head-candidate
+      hash: md5
+      md5: 1bae6163fbc3780981d71b7ec0c65e96.dir
+      size: 26581682
+      nfiles: 6
+    - path: results/gas-head-candidate-prepared.json
+      hash: md5
+      md5: 39eebf5eb887edc1ed4650a9102769f2
+      size: 965
+  validate_gas_head_candidate:
+    cmd: ../../.venv/bin/python model_evaluation/validate_gas_head_candidate.py
+    deps:
+    - path: data/exposure-pilot02/schema.json
+      hash: md5
+      md5: 72f1f49ef09731507728a13b8eff1997
+      size: 418638
+    - path: data/gas-head-candidate
+      hash: md5
+      md5: 1bae6163fbc3780981d71b7ec0c65e96.dir
+      size: 26581682
+      nfiles: 6
+    - path: model_evaluation/validate_gas_head_candidate.py
+      hash: md5
+      md5: 5f52fa182fadd522f89c859f3150ecd0
+      size: 3447
+    - path: results/exposure-pilot02-analysis.json
+      hash: md5
+      md5: 5c5a7df2eeb806525587011142747ee7
+      size: 34611
+    - path: results/gas-head-candidate-prepared.json
+      hash: md5
+      md5: 39eebf5eb887edc1ed4650a9102769f2
+      size: 965
+    outs:
+    - path: results/gas-head-candidate-preflight.json
+      hash: md5
+      md5: 9fa679c922aebf74699fd8427376bad7
+      size: 717
+  plan_gas_head_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/plan_gas_head_pilot.py
+    deps:
+    - path: data/gas-head-candidate
+      hash: md5
+      md5: 1bae6163fbc3780981d71b7ec0c65e96.dir
+      size: 26581682
+      nfiles: 6
+    - path: model_evaluation/plan_gas_head_pilot.py
+      hash: md5
+      md5: 4b44cdf67ef04b16748fc8fdc3c464b5
+      size: 4755
+    - path: results/gas-head-candidate-preflight.json
+      hash: md5
+      md5: 9fa679c922aebf74699fd8427376bad7
+      size: 717
+    outs:
+    - path: results/gas-head-pilot-plan.json
+      hash: md5
+      md5: 95a8e75be653976712b03df4a57302fa
+      size: 4626

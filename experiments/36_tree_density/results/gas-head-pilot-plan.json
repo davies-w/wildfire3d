@@ -1,0 +1,57 @@
+{
+  "status": "prepared_not_launched",
+  "candidate": "bounded_output_only_gas_head",
+  "primary_arm": "peak_aware",
+  "control_arm": "encoded_only",
+  "initial_head_sha256": "bdb07b4fae8d0507645043ef46f5c405fa46ea35b19c43dfed4d5a02a637fc7c",
+  "features_sha256": "e814d2791e932a0b3466139544a43eb3ee18bdb8ecf529711a1f054a3f5de78b",
+  "training": {
+    "device": "cloud CUDA only",
+    "base_GRU_frozen": true,
+    "corrected_gas_feedback": false,
+    "epochs_per_arm": 300,
+    "batch_histories": 128,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1,
+    "seed": 3617,
+    "matched_initial_weights_rng_and_history_permutation": true,
+    "normalization_frozen_train_only": true,
+    "encoded_loss": "Existing activity/quiet- and replica-balanced mean squared normalized asinh(gas/0.01) residual /3. Full frozen-trajectory endpoints, no overlapping rollout windows because base features are fixed.",
+    "peak_aware_extra": "Add0.25 times squared relative full-trajectory peak-amplitude error, plus0.1 times mean squared physical gas error over endpoint times<=32.2s, normalized per history by full true gas peak floored at0.01kg/s. Both penalties are symmetric in under/overprediction. Average histories inversely to TRAIN replica count.",
+    "control_extra": "None",
+    "optimizer_state": "Each arm starts with fresh independent AdamW state; initial optimizer is empty because this head is new. Replay must verify one real next update after nonempty-state checkpoint/restore on CUDA before training proceeds. Save optimizer/RNG/batch cursor/history/best at epoch and deadline boundaries.",
+    "selection": "Baseline epoch0 and every tenth completed epoch eligible; independently select each arm by original three-state full autonomous validation objective, freeze both selections before comparison. Primary acceptance is peak_aware versus unchanged GRU baseline. encoded_only is a matched diagnostic control, not an after-the-fact rescue. No test evaluation."
+  },
+  "acceptance_all_required": {
+    "startup_gas_p90_relative_reduction_at_least": 0.1,
+    "gas_peak_amplitude_MAE_relative_reduction_at_least": 0.05,
+    "original_validation_objective_relative_increase_at_most": 0.05,
+    "full_rollout_each_state_MAE_relative_increase_at_most": 0.05,
+    "quiet_state_MAE_increase_at_most_physical_encoding_scale": 0.001,
+    "released_gas_integral_MAE_relative_increase_at_most": 0.05,
+    "peak_time_MAE_relative_increase_at_most": 0.05,
+    "gas_dry_fuel_consistency_residual_relative_increase_at_most": 0.05,
+    "finite": true
+  },
+  "definitions": {
+    "startup": "Existing endpoint<=32.2s max positive gas deficit per history normalized by full true gas peak, zero denominators reported, configuration-balanced replica averages then p90. Exact existing diagnostic must be reused.",
+    "gas_dry_fuel_consistency": "Configuration-balanced absolute difference between trapezoidal signed gas integral/0.75 and predicted initial-minus-final unreacted dry-fuel mass. A consistency guard for derived measures, not conservation-law validation.",
+    "quiet": "Reuse the exact preexisting quiet-state diagnostic, not a new mask chosen from candidate outcomes.",
+    "additional_reporting": "Report gas overprediction tails, minimum/negative magnitudes and fractions, mass increases, selected epoch, all comparisons, and bound saturation; do not hide failures."
+  },
+  "budget_plan": {
+    "maximum_allowance_usd": 0.4,
+    "vm_creation_age_cap_s": 1800,
+    "task_cap_s": 1350,
+    "training_soft_cap_s": 1200,
+    "queue_cap_s": 900,
+    "workflow_cap_s": 3600,
+    "max_task_retries": 0,
+    "maximum_rate_bound_usd_per_hour": 0.8,
+    "expected_cost": "Not measured. Training frozen head is cheaper than recurrent backpropagation but must be timed on CUDA before relying on an estimate. Deadline may yield incomplete comparison, never automatic resubmission.",
+    "other_reservations": "Preserve the separate Flex queue and all other allowances. Reconcile live budget and inventory before upload or launch; prepared plan is not authorization to bypass those checks."
+  },
+  "scope": "Development comparison on already examined grouped rotation0 validation, not pristine confirmation. No test features exist in this candidate. Output gas calibration leaves all recurrent dynamics and three other predicted states unchanged. A successful gas-only repair cannot establish completion of the broader four-state prediction goal. No fitting, cloud submission, trained model, improved accuracy, HF deployment or physical validation exists at preparation time."
+}

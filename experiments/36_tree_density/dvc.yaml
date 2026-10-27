@@ -1279,3 +1279,42 @@ stages:
     metrics:
     - results/startup-gradient-audit.json:
         cache: false
+  audit_gas_timing_amplitude:
+    cmd: ../../.venv/bin/python model_evaluation/audit_gas_timing_amplitude.py
+    deps:
+    - model_evaluation/audit_gas_timing_amplitude.py
+    - data/exposure-pilot02
+    metrics:
+    - results/gas-timing-amplitude-audit.json:
+        cache: false
+  prepare_gas_head_candidate:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_gas_head_candidate.py
+    deps:
+    - model_evaluation/prepare_gas_head_candidate.py
+    - model_evaluation/gas_head.py
+    - data/exposure-pilot02
+    outs:
+    - data/gas-head-candidate
+    metrics:
+    - results/gas-head-candidate-prepared.json:
+        cache: false
+  validate_gas_head_candidate:
+    cmd: ../../.venv/bin/python model_evaluation/validate_gas_head_candidate.py
+    deps:
+    - model_evaluation/validate_gas_head_candidate.py
+    - data/gas-head-candidate
+    - results/gas-head-candidate-prepared.json
+    - results/exposure-pilot02-analysis.json
+    - data/exposure-pilot02/schema.json
+    metrics:
+    - results/gas-head-candidate-preflight.json:
+        cache: false
+  plan_gas_head_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/plan_gas_head_pilot.py
+    deps:
+    - model_evaluation/plan_gas_head_pilot.py
+    - results/gas-head-candidate-preflight.json
+    - data/gas-head-candidate
+    metrics:
+    - results/gas-head-pilot-plan.json:
+        cache: false
