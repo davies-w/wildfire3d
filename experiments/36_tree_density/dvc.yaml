@@ -913,7 +913,7 @@ stages:
     cmd: ../../.venv/bin/python model_evaluation/collect_pair_sequence.py --rotation 1
     deps:
     - model_evaluation/collect_pair_sequence.py
-    - results/pair-sequence-execution.json
+    - results/pair-rotation1-execution.json
     - data/pair-sequence/rotation1/schema.json
     outs:
     - data/pair-sequence-r1-results:
@@ -941,3 +941,39 @@ stages:
         persist: true
     - results/pair-rotation1-readiness.json
     - results/pair-rotation1-execution.json
+
+  summarize_pair_r1:
+    cmd: ../../.venv/bin/python model_evaluation/summarize_pair.py --rotation 1
+    deps:
+    - model_evaluation/summarize_pair.py
+    - results/pair-sequence-r1-collected.json
+    - data/pair-sequence-r1-results
+    - data/pair-sequence/rotation1/schema.json
+    - data/learning/sequences.npz
+    outs:
+    - results/model-pair-r1-0-summary.json
+    - results/model-pair-r1-1-summary.json
+  build_pair_gallery_r1:
+    cmd: ../../.venv/bin/python model_evaluation/build_pair_gallery.py --rotation 1
+    deps:
+    - model_evaluation/build_pair_gallery.py
+    - results/pair-sequence-r1-collected.json
+    - data/pair-sequence-r1-results
+    - data/pair-sequence/rotation1/schema.json
+    - data/learning/sequences.npz
+    - ../35_surrogate_diagnostics/attempt24/gallery.html
+    outs:
+    - data/pair-gallery-r1
+  check_pair_reporting:
+    cmd: ../../.venv/bin/python model_evaluation/check_pair_reporting.py
+    deps:
+    - model_evaluation/check_pair_reporting.py
+    - model_evaluation/summarize_pair.py
+    - model_evaluation/build_pair_gallery.py
+    - results/pair-sequence-r0-collected.json
+    - data/pair-sequence-r0-results
+    - data/pair-sequence/rotation0/schema.json
+    - data/learning/sequences.npz
+    - ../35_surrogate_diagnostics/attempt24/gallery.html
+    outs:
+    - results/pair-reporting-check.json

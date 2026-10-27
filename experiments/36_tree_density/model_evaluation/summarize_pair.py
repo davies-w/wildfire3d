@@ -1,12 +1,13 @@
 """Frozen four-state metrics pooled by configuration; no fitting or selection."""
 from pathlib import Path
-import hashlib,json,numpy as np
+import argparse,hashlib,json,numpy as np
 R=Path(__file__).resolve().parents[1]
-def summarize(index):
- assert json.loads((R/'results/pair-sequence-r0-collected.json').read_text())['passed']
- root=R/'data/pair-sequence-r0-results';a=np.load(R/'data/learning/sequences.npz');truth=a['state'];labels=a['activity_labels'];configs=a['configuration'];times=a['time']
+def summarize(index, rotation=0):
+ assert rotation in (0,1)
+ assert json.loads((R/f'results/pair-sequence-r{rotation}-collected.json').read_text())['passed']
+ root=R/f'data/pair-sequence-r{rotation}-results';a=np.load(R/'data/learning/sequences.npz');truth=a['state'];labels=a['activity_labels'];configs=a['configuration'];times=a['time']
  report=json.loads((root/'report.json').read_text());assert len(report['tests'])==2
- expected=json.loads((R/'data/pair-sequence/rotation0/schema.json').read_text())['rotations'][0]['test'];report['tests']=[report['tests'][index]];report['folds']=[report['folds'][index]]
+ expected=json.loads((R/f'data/pair-sequence/rotation{rotation}/schema.json').read_text())['rotations'][0]['test'];report['tests']=[report['tests'][index]];report['folds']=[report['folds'][index]]
  out={'features':['water_kg','dry_fuel_kg','fuel_gas_release_kg_s','surface_heating_index_K'],'headline_nominal_seconds':16,'horizons':{},'training':[]}
  for fold in report['folds']:
   out['training'].append({k:fold[k] for k in ['fold','rotation','epochs','selected_epoch','stop_reason']})
@@ -22,7 +23,7 @@ def summarize(index):
     n=mask.sum(1);keep=n>0;counts[phase]['histories']+=int(keep.sum());counts[phase]['forecast_origins']+=int(mask.sum())
     vals=[np.where(mask[:,:,None],x,0).sum(1)[keep]/n[keep,None] for x in [abs(pred-target),abs(base-target),abs(target)]]
     for c in np.unique(configs[ids[keep]]):rows[phase].append([x[configs[ids[keep]]==c].mean(0) for x in vals])
-  assert sorted(seen)==sorted(expected) and len(seen)==208,h
+  assert sorted(seen)==sorted(expected) and len(seen)==len(expected),h
   result={'steps':h,'nominal_seconds':2*h,'actual_duration_seconds':{'min':min(durations),'max':max(durations),'mean':float(np.mean(durations))},'nonfinite_prediction_elements':invalid,'phases':{}}
   for phase,rr in rows.items():
    info=dict(counts[phase],configurations=len(rr))
@@ -34,10 +35,11 @@ def summarize(index):
     else:info['reason']='Nonfinite predictions retained as invalid; no finite-only filtering'
    result['phases'][phase]=info
   out['horizons'][str(2*h)]=result
- out['scope']='Frozen ScorecardV1 masks; average eligible origins per history, then seed replicas within configuration, then equal weight per eligible configuration in the shared single test fold (204 configurations,208 histories); each model reported separately. Percentages are ratios of pooled grouped means, not averages of fold percentages. Zero denominators are undefined. No state clamps. Previously examined reshuffled simulations, not pristine or physical validation. Generic3m cones4/6/8/10m above2m,1600weightedparticles,0.5m grid,1500C20s imposed arc,180s; no trunks/buildings/embers. Gas is kg/s, not heat; heating index is K, not energy.'
- out['model_kind']=report['tests'][0]['kind'];out['rotation']=0;out['test_histories']=208;out['test_configurations']=204
+ out['scope']=f'Frozen ScorecardV1 masks; average eligible origins per history, then seed replicas within configuration, then equal weight per eligible configuration in the shared single test fold (204 configurations,{len(expected)} histories); each model reported separately. Percentages are ratios of pooled grouped means, not averages of fold percentages. Zero denominators are undefined. No state clamps. Previously examined reshuffled simulations, not pristine or physical validation. Generic3m cones4/6/8/10m above2m,1600weightedparticles,0.5m grid,1500C20s imposed arc,180s; no trunks/buildings/embers. Gas is kg/s, not heat; heating index is K, not energy.'
+ out['model_kind']=report['tests'][0]['kind'];out['rotation']=rotation;out['test_histories']=len(expected);out['test_configurations']=204
  out['report_sha256']=hashlib.sha256((root/'report.json').read_bytes()).hexdigest()
- (R/'results'/f'model-pair-{index}-summary.json').write_text(json.dumps(out,indent=2,allow_nan=False)+'\n')
+ (R/'results'/(f'model-pair-{index}-summary.json' if rotation==0 else f'model-pair-r1-{index}-summary.json')).write_text(json.dumps(out,indent=2,allow_nan=False)+'\n')
  print('Saved pooled four-state scorecard; no fitting or selection performed')
 if __name__=='__main__':
- for index in (0,1):summarize(index)
+ parser=argparse.ArgumentParser();parser.add_argument('--rotation',type=int,choices=(0,1),default=0);args=parser.parse_args()
+ for index in (0,1):summarize(index,args.rotation)

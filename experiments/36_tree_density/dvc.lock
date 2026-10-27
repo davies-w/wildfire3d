@@ -2186,8 +2186,8 @@ stages:
       nfiles: 828
     - path: model_evaluation/summarize_pair.py
       hash: md5
-      md5: 29ba98b4f1eb89449c7a097381cfc50d
-      size: 4337
+      md5: 866c08bb17c1b6d4ea4ba1f58f8accbe
+      size: 4654
     - path: results/pair-sequence-r0-collected.json
       hash: md5
       md5: 3cd952863625843addbc849d7da954b1
@@ -2219,8 +2219,8 @@ stages:
       nfiles: 828
     - path: model_evaluation/build_pair_gallery.py
       hash: md5
-      md5: d5cf80509da87492a934e127065961d7
-      size: 3568
+      md5: 763661792f93a46c06a280a16934255e
+      size: 3978
     - path: results/pair-sequence-r0-collected.json
       hash: md5
       md5: 3cd952863625843addbc849d7da954b1
@@ -2283,3 +2283,44 @@ stages:
       hash: md5
       md5: 9201bc23c26219e7a313609548c08d01
       size: 3190
+  check_pair_reporting:
+    cmd: ../../.venv/bin/python model_evaluation/check_pair_reporting.py
+    deps:
+    - path: ../35_surrogate_diagnostics/attempt24/gallery.html
+      hash: md5
+      md5: 45b6712093e6bd16cc10b8286638fc62
+      size: 7710
+    - path: data/learning/sequences.npz
+      hash: md5
+      md5: 432e6904ee4c70cba22e2b72ae96809a
+      size: 3238491
+    - path: data/pair-sequence-r0-results
+      hash: md5
+      md5: baa96f8eb658f43d4a649aafc03d5044.dir
+      size: 175729098
+      nfiles: 828
+    - path: data/pair-sequence/rotation0/schema.json
+      hash: md5
+      md5: 72f1f49ef09731507728a13b8eff1997
+      size: 418638
+    - path: model_evaluation/build_pair_gallery.py
+      hash: md5
+      md5: 763661792f93a46c06a280a16934255e
+      size: 3978
+    - path: model_evaluation/check_pair_reporting.py
+      hash: md5
+      md5: f10f06d9298ce05c4674a3ceddc0994b
+      size: 1551
+    - path: model_evaluation/summarize_pair.py
+      hash: md5
+      md5: 866c08bb17c1b6d4ea4ba1f58f8accbe
+      size: 4654
+    - path: results/pair-sequence-r0-collected.json
+      hash: md5
+      md5: 3cd952863625843addbc849d7da954b1
+      size: 342
+    outs:
+    - path: results/pair-reporting-check.json
+      hash: md5
+      md5: 951bb729d7d148d71256c72190efdfe2
+      size: 7829
