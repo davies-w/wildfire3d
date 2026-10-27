@@ -2420,3 +2420,32 @@ stages:
       hash: md5
       md5: b4df0fb129b86cc14e0a7fc8d82b0506
       size: 1551
+  launch_flex_queue:
+    cmd: ../../.venv/bin/python model_evaluation/launch_flex_queue.py
+    deps:
+    - path: data/flex-queue
+      hash: md5
+      md5: f28733adf871287322017148edf64dbe.dir
+      size: 100371436
+      nfiles: 106
+    - path: model_evaluation/launch_flex_queue.py
+      hash: md5
+      md5: 9686b1f845b36170b697baac3abb40a6
+      size: 2625
+    - path: results/flex-queue-checks.json
+      hash: md5
+      md5: 243633ce54309cadf9dcb69f6f636905
+      size: 2687
+    - path: results/flex-queue-prepared.json
+      hash: md5
+      md5: 6ae2c4eeed622e4e8b356c4330c0a153
+      size: 11324
+    - path: results/flex-watchdog-checks.json
+      hash: md5
+      md5: b4df0fb129b86cc14e0a7fc8d82b0506
+      size: 1551
+    outs:
+    - path: results/flex-queue-execution.json
+      hash: md5
+      md5: 28aaf5fa07fc85fcbe70ec0a7b7aba39
+      size: 337

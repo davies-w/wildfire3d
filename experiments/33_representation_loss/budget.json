@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 38.0,
+  "reserved_usd": 78.0,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -2967,6 +2967,13 @@
       },
       "terminal_evidence": "Both rotation1 allocation attempts zero runtime and empty cleanup; rotation0 collected PASS",
       "cost_already_in_project_estimate": true
+    },
+    "density36-flex-queue01": {
+      "state": "submitted",
+      "allowance_usd": 40,
+      "reserved_unix": 1793123825.800791,
+      "scope": "User-authorized fixed remaining rotations1..9, matched plain/gated, Flex-start sequential queue; per-pair15.2 gate, 24h allocation wait, no automatic retries",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-flex-queue01/executions/3c947765-50a4-4677-81d1-996cae5d47e0"
     }
   },
   "recycle_reservations": true,
