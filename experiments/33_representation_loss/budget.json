@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 38.5,
+  "reserved_usd": 53.7,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -3055,6 +3055,14 @@
       "reserved_unix": 1793084004.518566,
       "scope": "Authorized matched pair CUDA full-epoch timing;20min VM bound",
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-paircheck01/executions/ef09117c-5248-4aa1-aa63-869d5aaa3c8a"
+    },
+    "density36-pair-training01": {
+      "state": "submitted",
+      "allowance_usd": 15.2,
+      "reserved_unix": 1793084601.805815,
+      "scope": "Authorized single rotation0 plain/gated stride-one pair; cloud watchdog; no automatic retries",
+      "workflow": "fds-gpu36-pairtrain01",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-pairtrain01/executions/c74635a4-40f1-4b9c-9cd6-c3c0d9097e05"
     }
   },
   "recycle_reservations": true,

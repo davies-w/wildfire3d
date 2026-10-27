@@ -1,0 +1,5 @@
+{
+  "title": "density36-pair-training01-read",
+  "description": "Private matched single-split pair training inputs and checkpoint verification",
+  "expression": "request.time < timestamp('2026-10-28T04:03:24Z') && resource.name.startsWith('projects/_/buckets/tmrw-wildfire-20261015-trial/objects/density36/model-pair-training01/')"
+}
