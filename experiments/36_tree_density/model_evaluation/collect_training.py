@@ -45,7 +45,9 @@ def main():
   fetch('complete.json');complete=json.loads((root/'complete.json').read_text());assert complete['success'] and complete['folds']==10
   fetch('manifest.json');manifest=json.loads((root/'manifest.json').read_text())
   size=sum(int(objects[n]['size']) for n in manifest)
-  assert size<30*1024**3,'Review transfer/storage allowance before collection'
+  # The original $20 transfer reserve covers 160 GiB total, not 160 GiB per stage.
+  prior_bytes=148500758857+int(2.25*1024**3)  # raw plus prior backfill and small metadata cushion
+  assert prior_bytes+size<=160*1024**3,'Reconcile transfer allowance before additional reads'
   assert shutil.disk_usage(root).free>3*size+10*1024**3,'Insufficient archive/cache/mirror space'
   save('results/model-training-output-inventory.json',{'bytes':size,'objects':{n:objects[n] for n in manifest},'source_prefix':PREFIX})
   with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:

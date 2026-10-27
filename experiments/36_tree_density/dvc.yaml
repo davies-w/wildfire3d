@@ -703,3 +703,13 @@ stages:
     metrics:
     - results/model-training-permission-removed.json:
         cache: false
+  analyze_model_scorecard:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_scorecard.py
+    deps:
+    - model_evaluation/analyze_scorecard.py
+    - data/learning
+    - data/model-training-results
+    - results/model-training-collected.json
+    metrics:
+    - results/model-scenario-audit.json:
+        cache: false
