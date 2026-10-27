@@ -713,3 +713,13 @@ stages:
     metrics:
     - results/model-scenario-audit.json:
         cache: false
+  summarize_model_forecasts:
+    cmd: ../../.venv/bin/python model_evaluation/summarize_forecasts.py
+    deps:
+    - model_evaluation/summarize_forecasts.py
+    - data/model-training-results
+    - data/learning
+    - results/model-training-collected.json
+    metrics:
+    - results/model-four-state-summary.json:
+        cache: false
