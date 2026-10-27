@@ -1,0 +1,54 @@
+{
+  "train_only": true,
+  "histories": 1662,
+  "configurations": 1632,
+  "optimizer_updates": 0,
+  "scope": "Frozen checkpoint183 autonomous CPU inference only. Learned gates are internal multipliers, not calibrated ignition probabilities or temperatures. Forced gas gate1 is a mechanistic counterfactual; the rollout changes its subsequent history too, so it is not an isolated direct-effect estimate or a validated replacement. No checkpoint modified, no test outcomes or training.",
+  "results": {
+    "original": {
+      "finite": true,
+      "startup_gas_p90_normalized_deficit": 0.6278358101844788,
+      "gas_peak_amplitude_MAE_kg_s": 0.2525583803653717,
+      "full_rollout_state_MAE": [
+        0.28451210260391235,
+        1.6548231840133667,
+        0.02686341106891632,
+        2.3390238285064697
+      ],
+      "negative_state_fraction": [
+        0.052233115468409586,
+        0.0,
+        0.02802968409586084,
+        0.03666258169934642
+      ],
+      "quiet_gas_MAE_kg_s": 3.625584882437445e-06,
+      "learned_gas_gate_during_startup_true_above10percent_peak": {
+        "n_points": 18400,
+        "p10_median_p90": [
+          0.9983921110630035,
+          0.9998670816421509,
+          0.9999903440475464
+        ],
+        "fraction_below_half": 5.4347826086956524e-05
+      }
+    },
+    "gas_gate_forced_one": {
+      "finite": true,
+      "startup_gas_p90_normalized_deficit": 0.6380226612091064,
+      "gas_peak_amplitude_MAE_kg_s": 0.260168194770813,
+      "full_rollout_state_MAE": [
+        0.3331144452095032,
+        1.7681416273117065,
+        0.03798818960785866,
+        5.654192924499512
+      ],
+      "negative_state_fraction": [
+        0.05072848583877995,
+        0.0,
+        0.0516634894698622,
+        0.09002587145969505
+      ],
+      "quiet_gas_MAE_kg_s": 0.019766134068856578
+    }
+  }
+}

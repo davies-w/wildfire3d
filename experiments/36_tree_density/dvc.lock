@@ -2748,3 +2748,20 @@ stages:
       hash: md5
       md5: 6eafa2bc4b4c331aa17e9573ae5a1800
       size: 335
+  audit_startup_gates:
+    cmd: ../../.venv/bin/python model_evaluation/audit_startup_gates.py
+    deps:
+    - path: data/exposure-pilot01
+      hash: md5
+      md5: c6797043da21e100d66a766f1e660f2d.dir
+      size: 12370907
+      nfiles: 16
+    - path: model_evaluation/audit_startup_gates.py
+      hash: md5
+      md5: 3481d00b1c86daad3f9730729d0787e4
+      size: 3421
+    outs:
+    - path: results/startup-gate-audit.json
+      hash: md5
+      md5: 47865686b6a713a61f6323e5b212f506
+      size: 1833

@@ -1152,3 +1152,11 @@ stages:
     metrics:
     - results/exposure-existing-checkpoint-screen.json:
         cache: false
+  audit_startup_gates:
+    cmd: ../../.venv/bin/python model_evaluation/audit_startup_gates.py
+    deps:
+    - model_evaluation/audit_startup_gates.py
+    - data/exposure-pilot01
+    metrics:
+    - results/startup-gate-audit.json:
+        cache: false
