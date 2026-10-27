@@ -3641,3 +3641,50 @@ stages:
       hash: md5
       md5: 45e100ac73e039e15426d567a4d17ae2
       size: 733
+  launch_gas_shape_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/launch_gas_shape_pilot01.py 
+      --execute
+    deps:
+    - path: data/gas-shape-pilot01
+      hash: md5
+      md5: a8478e3f233d6edbb7032d4c0d0e619e.dir
+      size: 53229772
+      nfiles: 15
+    - path: model_evaluation/launch_gas_shape_pilot01.py
+      hash: md5
+      md5: 68706bc6f888c1ba7864eaf0ec428649
+      size: 5387
+    - path: results/gas-shape-pilot01-offline-preflight.json
+      hash: md5
+      md5: 45e100ac73e039e15426d567a4d17ae2
+      size: 733
+    - path: results/gas-shape-pilot01-prepared.json
+      hash: md5
+      md5: f759c4bf331128af62af1da1e982ee7e
+      size: 1429
+    outs:
+    - path: results/gas-shape-pilot01-execution.json
+      hash: md5
+      md5: d3ced3b3c97b160683a4e17e8d2b6af9
+      size: 335
+  audit_retained_cpu_reservations:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/audit_retained_cpu_reservations.py
+    deps:
+    - path: ../33_representation_loss/budget.json
+      hash: md5
+      md5: b48f754782629419f788aafadc85c972
+      size: 131341
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/audit_retained_cpu_reservations.py
+      hash: md5
+      md5: 469b4c3ec8a6d673ee0429f21a237aaf
+      size: 3226
+    outs:
+    - path: results/retained-cpu-reservation-audit.json
+      hash: md5
+      md5: 50138bdbfafa8b3c46aaf0f7673634a8
+      size: 14543

@@ -1540,3 +1540,12 @@ stages:
     metrics:
     - results/gas-shape-pilot01-analysis.json:
         cache: false
+  audit_retained_cpu_reservations:
+    cmd: ../../.venv/bin/python model_evaluation/audit_retained_cpu_reservations.py
+    deps:
+    - model_evaluation/audit_retained_cpu_reservations.py
+    - cloud.py
+    - ../33_representation_loss/budget.json
+    metrics:
+    - results/retained-cpu-reservation-audit.json:
+        cache: false
