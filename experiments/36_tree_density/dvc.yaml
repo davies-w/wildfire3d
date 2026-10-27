@@ -681,3 +681,25 @@ stages:
     metrics:
     - results/model-training-execution.json:
         cache: false
+  collect_training:
+    cmd: ../../.venv/bin/python model_evaluation/collect_training.py
+    deps:
+    - model_evaluation/collect_training.py
+    - results/model-training-execution.json
+    - data/model-training
+    outs:
+    - data/model-training-results
+    metrics:
+    - results/model-training-collected.json:
+        cache: false
+  close_training:
+    cmd: ../../.venv/bin/python model_evaluation/close_training.py
+    frozen: true
+    deps:
+    - model_evaluation/close_training.py
+    - results/model-training-collected.json
+    - results/model-training-cleanup.json
+    - results/model-training-read-condition.json
+    metrics:
+    - results/model-training-permission-removed.json:
+        cache: false
