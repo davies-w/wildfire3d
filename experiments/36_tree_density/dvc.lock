@@ -3033,3 +3033,54 @@ stages:
       hash: md5
       md5: 49644c43b09e69e73975fac730652973
       size: 8586
+  audit_condition_response:
+    cmd: ../../.venv/bin/python model_evaluation/audit_condition_response.py
+    deps:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: model_evaluation/audit_condition_response.py
+      hash: md5
+      md5: 3123fe9ca0aeb17279724bd4a807e1db
+      size: 4359
+    outs:
+    - path: results/condition-response-audit.json
+      hash: md5
+      md5: f153e957f3109200aa6ad75a1978e879
+      size: 827948
+  audit_gas_loss_allocation:
+    cmd: ../../.venv/bin/python model_evaluation/audit_gas_loss_allocation.py
+    deps:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: model_evaluation/audit_gas_loss_allocation.py
+      hash: md5
+      md5: 0b90183fbc91a9e84642352740953351
+      size: 3499
+    outs:
+    - path: results/gas-loss-allocation-audit.json
+      hash: md5
+      md5: 844ed177a87efaddcc58d89dad550a30
+      size: 2004
+  audit_startup_gradient:
+    cmd: ../../.venv/bin/python model_evaluation/audit_startup_gradient.py
+    deps:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: model_evaluation/audit_startup_gradient.py
+      hash: md5
+      md5: ccf725e131d5dcf7d087cccee5412f73
+      size: 6368
+    outs:
+    - path: results/startup-gradient-audit.json
+      hash: md5
+      md5: 1a0d5885b4450639d2b093bb0593c889
+      size: 10690

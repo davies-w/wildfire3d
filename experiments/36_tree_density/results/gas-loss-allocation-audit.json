@@ -1,0 +1,49 @@
+{
+  "train_only": true,
+  "optimizer_updates": 0,
+  "histories": 1662,
+  "checkpoint_epoch": 183,
+  "feature_loss_fractions": [
+    0.0067145307548344135,
+    0.007299208082258701,
+    0.8950878977775574,
+    0.09089836478233337
+  ],
+  "normalization_std": [
+    1.1070475578308105,
+    1.167660117149353,
+    1.640040636062622,
+    0.33207738399505615
+  ],
+  "regions": {
+    "startup32": {
+      "points": 26592,
+      "all_state_loss_fraction": 0.5963219404220581,
+      "gas_loss_fraction_of_all_states": 0.5207138657569885,
+      "physical_gas_MAE_kg_s": 0.10513943433761597,
+      "signed_gas_error_kg_s": -0.005822286009788513
+    },
+    "strong_startup_gas": {
+      "points": 8860,
+      "all_state_loss_fraction": 0.16084259748458862,
+      "gas_loss_fraction_of_all_states": 0.13184426724910736,
+      "physical_gas_MAE_kg_s": 0.18756181001663208,
+      "signed_gas_error_kg_s": -0.017720920965075493
+    },
+    "underpredicted_strong_startup_gas": {
+      "points": 5301,
+      "all_state_loss_fraction": 0.12618257105350494,
+      "gas_loss_fraction_of_all_states": 0.10851423442363739,
+      "physical_gas_MAE_kg_s": 0.17155300080776215,
+      "signed_gas_error_kg_s": -0.17155300080776215
+    },
+    "after32": {
+      "points": 122988,
+      "all_state_loss_fraction": 0.40367811918258667,
+      "gas_loss_fraction_of_all_states": 0.37437403202056885,
+      "physical_gas_MAE_kg_s": 0.0029162680730223656,
+      "signed_gas_error_kg_s": -0.0003512358234729618
+    }
+  },
+  "scope": "Observed-history one-step state-loss proxy with exact per-history activity/replica weights and h32 window multiplicity. Full training windows use autonomous predictions after their origins; this proxy is NOT their actual loss or parameter gradient. Excludes supervised gate BCE. Strong means truth gas>=50% of each full-history gas peak and endpoint<=32.2s. Physical errors pooled over histories/points within each mask; loss coefficients include replica balancing. No validation/test or optimization."
+}

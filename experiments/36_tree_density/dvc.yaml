@@ -1255,3 +1255,27 @@ stages:
     metrics:
     - results/gas-transform-bias-audit.json:
         cache: false
+  audit_condition_response:
+    cmd: ../../.venv/bin/python model_evaluation/audit_condition_response.py
+    deps:
+    - model_evaluation/audit_condition_response.py
+    - data/exposure-pilot02
+    metrics:
+    - results/condition-response-audit.json:
+        cache: false
+  audit_gas_loss_allocation:
+    cmd: ../../.venv/bin/python model_evaluation/audit_gas_loss_allocation.py
+    deps:
+    - model_evaluation/audit_gas_loss_allocation.py
+    - data/exposure-pilot02
+    metrics:
+    - results/gas-loss-allocation-audit.json:
+        cache: false
+  audit_startup_gradient:
+    cmd: ../../.venv/bin/python model_evaluation/audit_startup_gradient.py
+    deps:
+    - model_evaluation/audit_startup_gradient.py
+    - data/exposure-pilot02
+    metrics:
+    - results/startup-gradient-audit.json:
+        cache: false

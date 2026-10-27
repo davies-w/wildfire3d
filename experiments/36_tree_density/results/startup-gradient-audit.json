@@ -1,0 +1,258 @@
+{
+  "checkpoint_state_unchanged": true,
+  "all_gradients_finite": true,
+  "train_only": true,
+  "optimizer_instantiated": false,
+  "optimizer_updates": 0,
+  "batch_histories": 256,
+  "seeds": [
+    20261027,
+    20261028,
+    20261029
+  ],
+  "checkpoint_epoch": 183,
+  "horizon_steps": 32,
+  "replicates": [
+    {
+      "seed": 20261027,
+      "random_origins": {
+        "gas_encoded_parts": {
+          "over_startup": 0.0018513216637074947,
+          "under_startup": 0.0006495233392342925,
+          "after32": 0.002286146394908428,
+          "symmetric_relative_startup_gas": 0.0019894042052328587
+        },
+        "weighted_state_loss_by_feature": [
+          0.0009310906170867383,
+          0.001395504456013441,
+          0.004786991514265537,
+          0.0019214330241084099
+        ],
+        "weighted_gate_BCE": 0.0002706336381379515,
+        "startup_underprediction_surrogate": 0.0008990641217678785,
+        "gradient_norms": {
+          "original": 0.7253769040107727,
+          "gas_state": 0.3695792853832245,
+          "other_states": 0.38508039712905884,
+          "gate_BCE": 0.05524951219558716,
+          "startup_underprediction": 0.09246746450662613,
+          "over_startup": 0.27872219681739807,
+          "under_startup": 0.07307168841362,
+          "after32": 0.18215900659561157,
+          "symmetric_relative_startup_gas": 0.23708005249500275
+        },
+        "cosines_with_startup_underprediction": {
+          "original": -0.7807616591453552,
+          "gas_state": -0.8607605695724487,
+          "other_states": -0.532905638217926,
+          "gate_BCE": -0.7785711884498596,
+          "startup_underprediction": 1.0000004768371582,
+          "over_startup": -0.9099169373512268,
+          "under_startup": 0.9609115719795227,
+          "after32": -0.7395771145820618,
+          "symmetric_relative_startup_gas": -0.8471069931983948
+        }
+      },
+      "startup_origins": {
+        "gas_encoded_parts": {
+          "over_startup": 0.01371655985713005,
+          "under_startup": 0.008896855637431145,
+          "after32": 0.011254318989813328,
+          "symmetric_relative_startup_gas": 0.021312043070793152
+        },
+        "weighted_state_loss_by_feature": [
+          0.004176327493041754,
+          0.004279399290680885,
+          0.0338677354156971,
+          0.015119507908821106
+        ],
+        "weighted_gate_BCE": 0.002377394586801529,
+        "startup_underprediction_surrogate": 0.009286589920520782,
+        "gradient_norms": {
+          "original": 2.173499584197998,
+          "gas_state": 1.2121716737747192,
+          "other_states": 0.7873947024345398,
+          "gate_BCE": 0.23268908262252808,
+          "startup_underprediction": 1.0399842262268066,
+          "over_startup": 1.628687858581543,
+          "under_startup": 0.8820518255233765,
+          "after32": 0.49022018909454346,
+          "symmetric_relative_startup_gas": 1.4162259101867676
+        },
+        "cosines_with_startup_underprediction": {
+          "original": -0.9039337038993835,
+          "gas_state": -0.9202562570571899,
+          "other_states": -0.8104642033576965,
+          "gate_BCE": -0.9069455862045288,
+          "startup_underprediction": 1.0000007152557373,
+          "over_startup": -0.9773467779159546,
+          "under_startup": 0.9836878180503845,
+          "after32": -0.7983744144439697,
+          "symmetric_relative_startup_gas": -0.9531232118606567
+        }
+      },
+      "cosine_random_vs_startup_original_gradient": 0.8521111607551575
+    },
+    {
+      "seed": 20261028,
+      "random_origins": {
+        "gas_encoded_parts": {
+          "over_startup": 0.0009254856267943978,
+          "under_startup": 0.001255902461707592,
+          "after32": 0.0014882603427395225,
+          "symmetric_relative_startup_gas": 0.002471205545589328
+        },
+        "weighted_state_loss_by_feature": [
+          0.0009604424703866243,
+          0.0011178668355569243,
+          0.0036696484312415123,
+          0.0018144292989745736
+        ],
+        "weighted_gate_BCE": 0.00014466066204477102,
+        "startup_underprediction_surrogate": 0.0014340742491185665,
+        "gradient_norms": {
+          "original": 0.24976642429828644,
+          "gas_state": 0.06591084599494934,
+          "other_states": 0.2425023466348648,
+          "gate_BCE": 0.011585107073187828,
+          "startup_underprediction": 0.093573197722435,
+          "over_startup": 0.10645613819360733,
+          "under_startup": 0.09287100285291672,
+          "after32": 0.05709505081176758,
+          "symmetric_relative_startup_gas": 0.0691632553935051
+        },
+        "cosines_with_startup_underprediction": {
+          "original": -0.3157890737056732,
+          "gas_state": 0.2877221405506134,
+          "other_states": -0.37123119831085205,
+          "gate_BCE": -0.6744046211242676,
+          "startup_underprediction": 1.000000238418579,
+          "over_startup": -0.9464762210845947,
+          "under_startup": 0.9745475053787231,
+          "after32": 0.5116907358169556,
+          "symmetric_relative_startup_gas": -0.8293142318725586
+        }
+      },
+      "startup_origins": {
+        "gas_encoded_parts": {
+          "over_startup": 0.013903394341468811,
+          "under_startup": 0.009303861297667027,
+          "after32": 0.008860208094120026,
+          "symmetric_relative_startup_gas": 0.03821606934070587
+        },
+        "weighted_state_loss_by_feature": [
+          0.004025016911327839,
+          0.0041138301603496075,
+          0.03206746280193329,
+          0.01588040217757225
+        ],
+        "weighted_gate_BCE": 0.001964366529136896,
+        "startup_underprediction_surrogate": 0.010677604004740715,
+        "gradient_norms": {
+          "original": 1.1857892274856567,
+          "gas_state": 0.710414469242096,
+          "other_states": 0.789137065410614,
+          "gate_BCE": 0.07217984646558762,
+          "startup_underprediction": 1.0965300798416138,
+          "over_startup": 1.433046817779541,
+          "under_startup": 1.1017301082611084,
+          "after32": 0.8820160627365112,
+          "symmetric_relative_startup_gas": 3.2079944610595703
+        },
+        "cosines_with_startup_underprediction": {
+          "original": -0.17738310992717743,
+          "gas_state": 0.3871903121471405,
+          "other_states": -0.6135240793228149,
+          "gate_BCE": -0.01731906831264496,
+          "startup_underprediction": 1.000000238418579,
+          "over_startup": -0.9807786345481873,
+          "under_startup": 0.9793834686279297,
+          "after32": 0.682017982006073,
+          "symmetric_relative_startup_gas": -0.9445322155952454
+        }
+      },
+      "cosine_random_vs_startup_original_gradient": 0.24948623776435852
+    },
+    {
+      "seed": 20261029,
+      "random_origins": {
+        "gas_encoded_parts": {
+          "over_startup": 0.001393770333379507,
+          "under_startup": 0.001197693170979619,
+          "after32": 0.002878679893910885,
+          "symmetric_relative_startup_gas": 0.0025175607297569513
+        },
+        "weighted_state_loss_by_feature": [
+          0.0013975733891129494,
+          0.001658488530665636,
+          0.005470143165439367,
+          0.002842816524207592
+        ],
+        "weighted_gate_BCE": 0.000155423185788095,
+        "startup_underprediction_surrogate": 0.0017235232517123222,
+        "gradient_norms": {
+          "original": 0.6314789652824402,
+          "gas_state": 0.21564185619354248,
+          "other_states": 0.5110448598861694,
+          "gate_BCE": 0.010131805203855038,
+          "startup_underprediction": 0.1438198685646057,
+          "over_startup": 0.11138001829385757,
+          "under_startup": 0.11196213960647583,
+          "after32": 0.2064809799194336,
+          "symmetric_relative_startup_gas": 0.023398732766509056
+        },
+        "cosines_with_startup_underprediction": {
+          "original": -0.7486400008201599,
+          "gas_state": -0.7225961685180664,
+          "other_states": -0.6089692711830139,
+          "gate_BCE": -0.5643502473831177,
+          "startup_underprediction": 1.0000004768371582,
+          "over_startup": -0.9564090967178345,
+          "under_startup": 0.9718438386917114,
+          "after32": -0.7657211422920227,
+          "symmetric_relative_startup_gas": 0.47779563069343567
+        }
+      },
+      "startup_origins": {
+        "gas_encoded_parts": {
+          "over_startup": 0.01035875454545021,
+          "under_startup": 0.009896953590214252,
+          "after32": 0.013170802034437656,
+          "symmetric_relative_startup_gas": 0.016375090926885605
+        },
+        "weighted_state_loss_by_feature": [
+          0.004100718069821596,
+          0.004481578711420298,
+          0.03342650830745697,
+          0.014458977617323399
+        ],
+        "weighted_gate_BCE": 0.0022137986961752176,
+        "startup_underprediction_surrogate": 0.00981948059052229,
+        "gradient_norms": {
+          "original": 1.2210358381271362,
+          "gas_state": 0.8062002062797546,
+          "other_states": 0.5523977279663086,
+          "gate_BCE": 0.12494076043367386,
+          "startup_underprediction": 1.157708764076233,
+          "over_startup": 1.1540592908859253,
+          "under_startup": 1.159542441368103,
+          "after32": 0.7689323425292969,
+          "symmetric_relative_startup_gas": 0.3375818431377411
+        },
+        "cosines_with_startup_underprediction": {
+          "original": -0.6496350169181824,
+          "gas_state": -0.5825969576835632,
+          "other_states": -0.41698506474494934,
+          "gate_BCE": -0.7459263801574707,
+          "startup_underprediction": 1.0,
+          "over_startup": -0.9794445037841797,
+          "under_startup": 0.9867968559265137,
+          "after32": -0.6289048790931702,
+          "symmetric_relative_startup_gas": -0.7904298305511475
+        }
+      },
+      "cosine_random_vs_startup_original_gradient": 0.5808575749397278
+    }
+  ],
+  "scope": "Three deterministic samples of256training histories (may overlap), random h32 origins versus origin0 on the same histories. Exact existing state+supervised gate BCE objectives and prefix-memory logic; startup surrogate is positive gas deficit squared normalized by each true full-history gas peak (floor0.01kg/s), endpoint<=32.2s. Symmetric relative gas loss is an exploratory alternative measuring both under- and overprediction in physical peak units; no candidate is selected or trained here. Gradients are local parameter derivatives at frozen epoch183, not optimizer steps or evidence of finite-update improvement. No validation/test, optimizer creation, or fitting. No population confidence interval; overlapping batches/parameter norms do not establish a unique cause."
+}
