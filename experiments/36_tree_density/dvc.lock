@@ -804,3 +804,57 @@ stages:
       md5: 70f62685c7f11cb8db6d0358f93a25ec.dir
       size: 251598
       nfiles: 9
+  launch_recovery_088:
+    cmd: ../../.venv/bin/python repair/launch_partial.py --execute --proof 
+      data/late-recovery/x36-density-088-r1/proof.json
+    deps:
+    - path: data/late-recovery/x36-density-088-r1
+      hash: md5
+      md5: 6523f9be8f51418dad63c3b3d0430339.dir
+      size: 80506
+      nfiles: 3
+    - path: repair/launch_partial.py
+      hash: md5
+      md5: 6ec34a37be794f784afb03dd24f9499a
+      size: 5027
+    outs:
+    - path: results/x36-density-088-r1-execution.json
+      hash: md5
+      md5: 92d1de587f2c06179ecc2db9e45d9a96
+      size: 591
+  launch_recovery_093:
+    cmd: ../../.venv/bin/python repair/launch_partial.py --execute --proof 
+      data/late-recovery/x36-density-093-r1/proof.json
+    deps:
+    - path: data/late-recovery/x36-density-093-r1
+      hash: md5
+      md5: 4c1eb09185b60072c7648771ac616e72.dir
+      size: 77778
+      nfiles: 3
+    - path: repair/launch_partial.py
+      hash: md5
+      md5: 6ec34a37be794f784afb03dd24f9499a
+      size: 5027
+    outs:
+    - path: results/x36-density-093-r1-execution.json
+      hash: md5
+      md5: a2da2d9cec2b607c17b07f2b9b4ea787
+      size: 591
+  launch_recovery_115:
+    cmd: ../../.venv/bin/python repair/launch_partial.py --execute --proof 
+      data/late-recovery/x36-density-115-r1/proof.json
+    deps:
+    - path: data/late-recovery/x36-density-115-r1
+      hash: md5
+      md5: 97de6ad3bcf1c1421d9e52b677da86f9.dir
+      size: 93314
+      nfiles: 3
+    - path: repair/launch_partial.py
+      hash: md5
+      md5: 6ec34a37be794f784afb03dd24f9499a
+      size: 5027
+    outs:
+    - path: results/x36-density-115-r1-execution.json
+      hash: md5
+      md5: a63c9c50e05e8a5558bd9d53f991b4c1
+      size: 686
