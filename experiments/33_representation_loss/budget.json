@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 78.75,
+  "reserved_usd": 78.0,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -1282,7 +1282,7 @@
       "cloud_workflow": "fds-density36-parent",
       "cost": {
         "stage": "posted_billing_subject_to_adjustment",
-        "usd": 0.09934899999999999,
+        "usd": 0.099349,
         "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
         "resource_rows": 19
       },
@@ -1330,7 +1330,7 @@
       "cloud_workflow": "fds-density36-parent",
       "cost": {
         "stage": "posted_billing_subject_to_adjustment",
-        "usd": 0.09763699999999999,
+        "usd": 0.09763700000000002,
         "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
         "resource_rows": 17
       },
@@ -2565,13 +2565,10 @@
       "workflow": "fds-gpu36-training01",
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-training01/executions/094e3e50-834a-48dc-97f2-d26eaaab0ce7",
       "cost": {
-        "stage": "runtime_estimate",
-        "usd": 1.425693903926231,
-        "vm_hours": 2.0170186794444445,
-        "scope": "compute only; shared cost at project level",
-        "resources": [
-          "fds-gpu36-training-9f9156ab-eb17-42820-group0-0-1pz0"
-        ]
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 1.4419629999999999,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 25
       },
       "historical_allowance_usd": 6.5,
       "terminal_evidence": "experiments/36_tree_density/results/model-training-status.json"
@@ -2905,13 +2902,10 @@
       "scope": "CUDA timing only; carved from existing8 model allowance; max20min VM",
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-preflight03/executions/b71ffbcf-5c2a-4a08-b215-b5e804118228",
       "cost": {
-        "stage": "runtime_estimate",
-        "usd": 0.03603299786392342,
-        "vm_hours": 0.05097814444444444,
-        "scope": "compute only; shared cost at project level",
-        "resources": [
-          "fds-gpu36-prefligh-895515d3-99bc-41a40-group0-0-83jx"
-        ]
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.036577,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 18
       },
       "historical_allowance_usd": 0.5,
       "terminal_evidence": "experiments/36_tree_density/results/model-timing03-status.json"
@@ -2988,12 +2982,23 @@
       "cost_basis": "Verified zero successful GPU VM allocations; ancillary costs covered separately"
     },
     "density36-exposure-pilot02": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 0.75,
       "reserved_unix": 1793135180.80024,
       "scope": "Authorized controlled gated exposure repair pilot, max0.75USD, private inputs, no tests, no automatic retries",
       "workflow": "fds-gpu36-exposure02",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-exposure02/executions/84e8c175-e19d-4822-b918-248669b4b296"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-exposure02/executions/84e8c175-e19d-4822-b918-248669b4b296",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.3010177540823568,
+        "vm_hours": 0.4258687163888889,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv"
+        ]
+      },
+      "historical_allowance_usd": 0.75,
+      "terminal_evidence": "experiments/36_tree_density/results/exposure-pilot02-status.json"
     }
   },
   "recycle_reservations": true,
@@ -3003,22 +3008,25 @@
   "accounting": {
     "billing_export_status": "posted_costs_subject_to_adjustment",
     "posted_source": "BigQuery detailed export",
-    "as_of_utc": "2026-10-27T17:47:19.496931+00:00",
+    "as_of_utc": "2026-10-27T21:36:57.585509+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
-    "project_posted_comparison_usd": 43.934342,
-    "project_compute_runtime_estimate_usd": 44.78576563111402,
+    "project_posted_comparison_usd": 45.438776,
+    "project_compute_runtime_estimate_usd": 45.08678338519638,
     "shared_cost_estimate_usd": 1.26,
-    "spend_estimate_usd": 46.045765631114016,
-    "unposted_compute_after_export_usd": 0,
-    "unposted_resources": [],
-    "matched_vms": 347,
+    "spend_estimate_usd": 46.346783385196375,
+    "unposted_compute_after_export_usd": 0.3010177540823568,
+    "unposted_resources": [
+      "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv"
+    ],
+    "matched_vms": 348,
     "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
-    "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
+    "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. Flex-start uses a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
     "rates_usd_per_vm_hour": {
+      "g2-standard-4/FLEX_START": 0.8,
       "g2-standard-4/STANDARD": 0.706832276,
       "g2-standard-4/SPOT": 0.42409037468482524,
       "c3-standard-4/SPOT": 0.07725118278354724
     }
   },
-  "estimated_spend_usd": 46.045765631114016
+  "estimated_spend_usd": 46.346783385196375
 }

@@ -2908,3 +2908,128 @@ stages:
       hash: md5
       md5: 1cc4ab99f432a81cf0f630843d8c4dc1
       size: 335
+  collect_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/collect_exposure_pilot02.py
+    deps:
+    - path: model_evaluation/collect_exposure_pilot02.py
+      hash: md5
+      md5: 73e36df3e1e1702eb969ed49d53c3e1c
+      size: 5173
+    - path: results/exposure-pilot02-execution.json
+      hash: md5
+      md5: 1cc4ab99f432a81cf0f630843d8c4dc1
+      size: 335
+    outs:
+    - path: data/exposure-pilot02-results
+      hash: md5
+      md5: 449ceb820e5f1529576fa7a3fcdfa343.dir
+      size: 3691202
+      nfiles: 61
+    - path: results/exposure-pilot02-collected.json
+      hash: md5
+      md5: 648037c8a6bab8079b26f244a3701446
+      size: 486
+  close_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/close_exposure_pilot02.py
+    deps:
+    - path: model_evaluation/close_exposure_pilot02.py
+      hash: md5
+      md5: e7c64b6c151f1c3089f042a1fc3b6f8a
+      size: 1702
+    - path: results/exposure-pilot02-collected.json
+      hash: md5
+      md5: 648037c8a6bab8079b26f244a3701446
+      size: 486
+    outs:
+    - path: results/exposure-pilot02-permission-removed.json
+      hash: md5
+      md5: 770f2baa6c8d2834aa92365437305c6d
+      size: 458
+  analyze_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_exposure_pilot02.py
+    deps:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: data/exposure-pilot02-results
+      hash: md5
+      md5: 449ceb820e5f1529576fa7a3fcdfa343.dir
+      size: 3691202
+      nfiles: 61
+    - path: model_evaluation/analyze_exposure_pilot02.py
+      hash: md5
+      md5: 3ce612661540dc305b6bd7ea20c3c5f6
+      size: 5895
+    - path: results/exposure-pilot02-collected.json
+      hash: md5
+      md5: 648037c8a6bab8079b26f244a3701446
+      size: 486
+    outs:
+    - path: results/exposure-pilot02-analysis.json
+      hash: md5
+      md5: 5c5a7df2eeb806525587011142747ee7
+      size: 34611
+  reconcile_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_exposure_pilot02.py
+    deps:
+    - path: model_evaluation/reconcile_exposure_pilot02.py
+      hash: md5
+      md5: 9e4b3f25ad0f76c8ab1f26d39ec3769a
+      size: 1651
+    - path: results/exposure-pilot02-collected.json
+      hash: md5
+      md5: 648037c8a6bab8079b26f244a3701446
+      size: 486
+    - path: results/exposure-pilot02-permission-removed.json
+      hash: md5
+      md5: 770f2baa6c8d2834aa92365437305c6d
+      size: 458
+    outs:
+    - path: results/exposure-pilot02-cost-reconciled.json
+      hash: md5
+      md5: 3c9af5416c19a80b4b600164fd246a24
+      size: 470
+  audit_exposure_pilot02_trajectory:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/audit_exposure_pilot02_trajectory.py
+    deps:
+    - path: data/exposure-pilot02-results
+      hash: md5
+      md5: 449ceb820e5f1529576fa7a3fcdfa343.dir
+      size: 3691202
+      nfiles: 61
+    - path: model_evaluation/audit_exposure_pilot02_trajectory.py
+      hash: md5
+      md5: 7181708bcaf88f4f695655beedcd709f
+      size: 2230
+    - path: results/exposure-pilot02-collected.json
+      hash: md5
+      md5: 648037c8a6bab8079b26f244a3701446
+      size: 486
+    outs:
+    - path: results/exposure-pilot02-trajectory-audit.json
+      hash: md5
+      md5: 6f9ab4f9fc9b93010be78b060c4bf354
+      size: 8801
+  audit_gas_transform_bias:
+    cmd: ../../.venv/bin/python model_evaluation/audit_gas_transform_bias.py
+    deps:
+    - path: data/pair-sequence/rotation0/data/sequences.npz
+      hash: md5
+      md5: f280a76462ed8d586e7a4fc7eec09961
+      size: 5110534
+    - path: data/pair-sequence/rotation0/schema.json
+      hash: md5
+      md5: 72f1f49ef09731507728a13b8eff1997
+      size: 418638
+    - path: model_evaluation/audit_gas_transform_bias.py
+      hash: md5
+      md5: 3a7b52fabf2f1a928a23490e95131ab7
+      size: 2385
+    outs:
+    - path: results/gas-transform-bias-audit.json
+      hash: md5
+      md5: 49644c43b09e69e73975fac730652973
+      size: 8586

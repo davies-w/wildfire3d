@@ -1,0 +1,1033 @@
+{
+  "passed": true,
+  "comparison_acceptance_passed": false,
+  "checks": {
+    "startup_gas": false,
+    "peak_amplitude": false,
+    "original_objective": true,
+    "each_state_MAE": true,
+    "quiet_MAE": true,
+    "finite": true
+  },
+  "independent_acceptance_recomputed": true,
+  "all_selections_original_objective_argmin": true,
+  "test_evaluated": false,
+  "optimizer_updates": 0,
+  "scope": "Post-collection verification of frozen validation results only; CPU and CUDA inference may differ in reduction order and library version. Previously inspected validation is development evidence, not pristine confirmation. No selection or acceptance changes.",
+  "arms": [
+    {
+      "arm": "original",
+      "selected_epoch": 0,
+      "selected_state_hash_exact": true,
+      "selection_original_objective_argmin_verified": true,
+      "gpu_row": {
+        "epoch": 0,
+        "train": {
+          "one_step": {
+            "objective": 0.0056694853119552135,
+            "finite": true,
+            "physical_MAE_by_feature": [
+              0.0227363258600235,
+              0.09541507810354233,
+              0.02115779183804989,
+              0.7445200085639954
+            ],
+            "physical_MAE_by_window": {
+              "ignition": [
+                0.13949687778949738,
+                0.525850236415863,
+                0.09589876234531403,
+                3.325775146484375
+              ],
+              "post_source_to90": [
+                0.020537063479423523,
+                0.11004801839590073,
+                0.02974255010485649,
+                0.9673089981079102
+              ],
+              "after90": [
+                0.0015646984102204442,
+                6.249712168937549e-05,
+                2.0525883428490488e-06,
+                0.06995842605829239
+              ],
+              "active": [
+                0.023725375533103943,
+                0.10527407377958298,
+                0.024057799950242043,
+                0.8366152048110962
+              ],
+              "quiet": [
+                4.772928605234483e-06,
+                6.430224743780855e-07,
+                1.1844038283470582e-07,
+                0.04598269611597061
+              ]
+            },
+            "minimum_by_feature": [
+              -0.05511471629142761,
+              0.17351950705051422,
+              -0.0033997055143117905,
+              -0.6226624250411987
+            ],
+            "negative_fraction_by_feature": [
+              0.009211602620780468,
+              0.0,
+              0.026579521596431732,
+              0.026967592537403107
+            ],
+            "negative_magnitude_mean_by_feature": [
+              1.4399543943000026e-05,
+              0.0,
+              3.0658159175800392e-06,
+              0.0037238330114632845
+            ],
+            "mass_increase_fraction": [
+              0.09786674380302429,
+              0.2059095799922943
+            ],
+            "mass_increase_total_kg": [
+              0.5820030570030212,
+              2.0521535873413086
+            ],
+            "released_fuel_integral_MAE_kg": 1.4210999011993408,
+            "peak_release_MAE_kg_s": 0.1977727860212326,
+            "peak_time_MAE_s": 2.3563075065612793,
+            "release_activity_v1": {
+              "missed_active_fraction": 0.008827835321426392,
+              "false_active_fraction": 0.009315375238656998,
+              "scope": "Trailing10s integrated fuel-release threshold, true activity from frozen scorecard; smoothing lag applies."
+            }
+          },
+          "rollout": {
+            "objective": 0.022776637226343155,
+            "finite": true,
+            "physical_MAE_by_feature": [
+              0.284511923789978,
+              1.6548235416412354,
+              0.026863407343626022,
+              2.3390274047851562
+            ],
+            "physical_MAE_by_window": {
+              "ignition": [
+                0.24168507754802704,
+                1.1369683742523193,
+                0.1103808805346489,
+                7.457890033721924
+              ],
+              "post_source_to90": [
+                0.2908216118812561,
+                1.7354291677474976,
+                0.04068952053785324,
+                3.5758676528930664
+              ],
+              "after90": [
+                0.2880924642086029,
+                1.6948069334030151,
+                2.0648085410357453e-06,
+                0.39639565348625183
+              ],
+              "active": [
+                0.2862164378166199,
+                1.6728943586349487,
+                0.03090575337409973,
+                2.595858573913574
+              ],
+              "quiet": [
+                0.038707148283720016,
+                0.3234005272388458,
+                1.1736679539353645e-07,
+                0.28269946575164795
+              ]
+            },
+            "minimum_by_feature": [
+              -0.31272804737091064,
+              0.2512359619140625,
+              -0.0041808090172708035,
+              -2.3632819652557373
+            ],
+            "negative_fraction_by_feature": [
+              0.05223311856389046,
+              0.0,
+              0.028029685840010643,
+              0.03666258603334427
+            ],
+            "negative_magnitude_mean_by_feature": [
+              0.002207470592111349,
+              0.0,
+              2.693203896342311e-06,
+              0.012934154830873013
+            ],
+            "mass_increase_fraction": [
+              0.10964734107255936,
+              0.06128586083650589
+            ],
+            "mass_increase_total_kg": [
+              0.26406651735305786,
+              0.969153642654419
+            ],
+            "released_fuel_integral_MAE_kg": 1.9523106813430786,
+            "peak_release_MAE_kg_s": 0.2525583505630493,
+            "peak_time_MAE_s": 2.9449174404144287,
+            "release_activity_v1": {
+              "missed_active_fraction": 0.01681404374539852,
+              "false_active_fraction": 0.020092522725462914,
+              "scope": "Trailing10s integrated fuel-release threshold, true activity from frozen scorecard; smoothing lag applies."
+            }
+          }
+        },
+        "validation": {
+          "one_step": {
+            "objective": 0.006019712425768375,
+            "finite": true,
+            "physical_MAE_by_feature": [
+              0.02495129033923149,
+              0.10060732066631317,
+              0.02287624031305313,
+              0.7844679951667786
+            ],
+            "physical_MAE_by_window": {
+              "ignition": [
+                0.14892779290676117,
+                0.5401315093040466,
+                0.09936683624982834,
+                3.426694869995117
+              ],
+              "post_source_to90": [
+                0.023778198286890984,
+                0.11973616480827332,
+                0.033270254731178284,
+                1.04407799243927
+              ],
+              "after90": [
+                0.0015875906683504581,
+                5.889858948648907e-05,
+                2.1958062461635564e-06,
+                0.06998124718666077
+              ],
+              "active": [
+                0.02577538974583149,
+                0.10949407517910004,
+                0.02545030601322651,
+                0.8693559765815735
+              ],
+              "quiet": [
+                3.87700492865406e-06,
+                5.846381441187987e-07,
+                1.2695115003680257e-07,
+                0.04430408775806427
+              ]
+            },
+            "minimum_by_feature": [
+              -0.02387857809662819,
+              0.27893826365470886,
+              -0.0016844985075294971,
+              -0.5810040235519409
+            ],
+            "negative_fraction_by_feature": [
+              0.002505446784198284,
+              0.0,
+              0.027106033638119698,
+              0.02164125069975853
+            ],
+            "negative_magnitude_mean_by_feature": [
+              1.782024082785938e-05,
+              0.0,
+              2.880695546991774e-06,
+              0.002784594427794218
+            ],
+            "mass_increase_fraction": [
+              0.09985475987195969,
+              0.18976034224033356
+            ],
+            "mass_increase_total_kg": [
+              0.6466344594955444,
+              2.002281904220581
+            ],
+            "released_fuel_integral_MAE_kg": 1.6578279733657837,
+            "peak_release_MAE_kg_s": 0.1793796718120575,
+            "peak_time_MAE_s": 2.5086677074432373,
+            "release_activity_v1": {
+              "missed_active_fraction": 0.008193077519536018,
+              "false_active_fraction": 0.008920845575630665,
+              "scope": "Trailing10s integrated fuel-release threshold, true activity from frozen scorecard; smoothing lag applies."
+            }
+          },
+          "rollout": {
+            "objective": 0.027773117646574974,
+            "finite": true,
+            "physical_MAE_by_feature": [
+              0.3678971230983734,
+              1.9480609893798828,
+              0.030314872041344643,
+              2.5842578411102295
+            ],
+            "physical_MAE_by_window": {
+              "ignition": [
+                0.2629050612449646,
+                1.2301526069641113,
+                0.11334089934825897,
+                8.393658638000488
+              ],
+              "post_source_to90": [
+                0.37477150559425354,
+                2.048720121383667,
+                0.04880482330918312,
+                3.952138900756836
+              ],
+              "after90": [
+                0.3832084834575653,
+                2.011932849884033,
+                2.205921191489324e-06,
+                0.40685707330703735
+              ],
+              "active": [
+                0.36933907866477966,
+                1.963640809059143,
+                0.033813707530498505,
+                2.8137688636779785
+              ],
+              "quiet": [
+                0.034964513033628464,
+                0.3127495348453522,
+                1.2561015694245725e-07,
+                0.31004348397254944
+              ]
+            },
+            "minimum_by_feature": [
+              -0.21417748928070068,
+              0.5392850041389465,
+              -0.004222760908305645,
+              -2.288879632949829
+            ],
+            "negative_fraction_by_feature": [
+              0.047657955437898636,
+              0.0,
+              0.030228763818740845,
+              0.030773425474762917
+            ],
+            "negative_magnitude_mean_by_feature": [
+              0.0021972935646772385,
+              0.0,
+              2.8547317469929112e-06,
+              0.011207561008632183
+            ],
+            "mass_increase_fraction": [
+              0.11929921805858612,
+              0.062781423330307
+            ],
+            "mass_increase_total_kg": [
+              0.3040473163127899,
+              0.9060437679290771
+            ],
+            "released_fuel_integral_MAE_kg": 2.2493603229522705,
+            "peak_release_MAE_kg_s": 0.26653173565864563,
+            "peak_time_MAE_s": 3.053849220275879,
+            "release_activity_v1": {
+              "missed_active_fraction": 0.0183402169495821,
+              "false_active_fraction": 0.019805116578936577,
+              "scope": "Trailing10s integrated fuel-release threshold, true activity from frozen scorecard; smoothing lag applies."
+            }
+          }
+        },
+        "diagnostics": {
+          "finite": true,
+          "startup_gas_p90_deficit": 0.6047728061676025,
+          "startup_gas_median_deficit": 0.2680090069770813,
+          "zero_gas_peak_histories": 0,
+          "startup_gas_eligible_configurations": 204,
+          "quiet_physical_MAE": [
+            0.10455936193466187,
+            1.0270661115646362,
+            3.7500565213122172e-06,
+            0.3228801488876343
+          ],
+          "quiet_eligible_histories": 94
+        }
+      },
+      "cpu_validation_replay": {
+        "one_step": {
+          "objective": 0.006019711960107088,
+          "finite": true,
+          "physical_MAE_by_feature": [
+            0.02495129592716694,
+            0.10060735046863556,
+            0.02287624217569828,
+            0.7844680547714233
+          ],
+          "physical_MAE_by_window": {
+            "ignition": [
+              0.14892780780792236,
+              0.5401312112808228,
+              0.09936685115098953,
+              3.4266953468322754
+            ],
+            "post_source_to90": [
+              0.023778200149536133,
+              0.11973623931407928,
+              0.033270254731178284,
+              1.0440778732299805
+            ],
+            "after90": [
+              0.0015875971876084805,
+              5.895375579711981e-05,
+              2.1958067009109072e-06,
+              0.06998126953840256
+            ],
+            "active": [
+              0.025775395333766937,
+              0.10949409753084183,
+              0.02545030415058136,
+              0.8693560361862183
+            ],
+            "quiet": [
+              3.876851678796811e-06,
+              5.82480538469099e-07,
+              1.2695115003680257e-07,
+              0.04430413246154785
+            ]
+          },
+          "minimum_by_feature": [
+            -0.02387857809662819,
+            0.27893826365470886,
+            -0.0016844990896061063,
+            -0.5810055136680603
+          ],
+          "negative_fraction_by_feature": [
+            0.002505446784198284,
+            0.0,
+            0.02710602805018425,
+            0.02164124883711338
+          ],
+          "negative_magnitude_mean_by_feature": [
+            1.782024628482759e-05,
+            0.0,
+            2.8806960017391248e-06,
+            0.0027845927979797125
+          ],
+          "mass_increase_fraction": [
+            0.09985475987195969,
+            0.18925198912620544
+          ],
+          "mass_increase_total_kg": [
+            0.6466348767280579,
+            2.002281904220581
+          ],
+          "released_fuel_integral_MAE_kg": 1.6578283309936523,
+          "peak_release_MAE_kg_s": 0.1793796718120575,
+          "peak_time_MAE_s": 2.5086679458618164,
+          "release_activity_v1": {
+            "missed_active_fraction": 0.008193078450858593,
+            "false_active_fraction": 0.008920845575630665,
+            "scope": "Trailing10s integrated fuel-release threshold, true activity from frozen scorecard; smoothing lag applies."
+          }
+        },
+        "rollout": {
+          "objective": 0.027773123234510422,
+          "finite": true,
+          "physical_MAE_by_feature": [
+            0.36789748072624207,
+            1.948061466217041,
+            0.03031487576663494,
+            2.5842583179473877
+          ],
+          "physical_MAE_by_window": {
+            "ignition": [
+              0.2629051208496094,
+              1.2301520109176636,
+              0.11334088444709778,
+              8.393659591674805
+            ],
+            "post_source_to90": [
+              0.3747718334197998,
+              2.048720598220825,
+              0.048804838210344315,
+              3.952138900756836
+            ],
+            "after90": [
+              0.3832089900970459,
+              2.0119335651397705,
+              2.205921646236675e-06,
+              0.40685731172561646
+            ],
+            "active": [
+              0.3693394660949707,
+              1.9636414051055908,
+              0.0338137112557888,
+              2.813769578933716
+            ],
+            "quiet": [
+              0.03496454656124115,
+              0.31274959444999695,
+              1.2561014273160254e-07,
+              0.310043603181839
+            ]
+          },
+          "minimum_by_feature": [
+            -0.21417772769927979,
+            0.5392847657203674,
+            -0.004222758114337921,
+            -2.288879632949829
+          ],
+          "negative_fraction_by_feature": [
+            0.04765795171260834,
+            0.0,
+            0.030228758230805397,
+            0.03077341988682747
+          ],
+          "negative_magnitude_mean_by_feature": [
+            0.0021972977556288242,
+            0.0,
+            2.854729018508806e-06,
+            0.011207551695406437
+          ],
+          "mass_increase_fraction": [
+            0.11913581192493439,
+            0.0627632588148117
+          ],
+          "mass_increase_total_kg": [
+            0.30404719710350037,
+            0.9060426354408264
+          ],
+          "released_fuel_integral_MAE_kg": 2.2493631839752197,
+          "peak_release_MAE_kg_s": 0.26653167605400085,
+          "peak_time_MAE_s": 3.053849220275879,
+          "release_activity_v1": {
+            "missed_active_fraction": 0.01834021881222725,
+            "false_active_fraction": 0.019805118441581726,
+            "scope": "Trailing10s integrated fuel-release threshold, true activity from frozen scorecard; smoothing lag applies."
+          }
+        }
+      },
+      "cpu_diagnostics": {
+        "finite": true,
+        "startup_gas_p90_deficit": 0.6047728657722473,
+        "startup_gas_median_deficit": 0.2680090069770813,
+        "zero_gas_peak_histories": 0,
+        "startup_gas_eligible_configurations": 204,
+        "quiet_physical_MAE": [
+          0.10455946624279022,
+          1.0270664691925049,
+          3.7500562939385418e-06,
+          0.3228808343410492
+        ],
+        "quiet_eligible_histories": 94
+      },
+      "cpu_vs_gpu_normalized_MAE_difference": [
+        3.5762786865234375e-07,
+        4.76837158203125e-07,
+        3.725290381728643e-07,
+        4.76837158203125e-09
+      ],
+      "cpu_vs_gpu_startup_p90_difference": 5.960464477539063e-08,
+      "cpu_replay_close": true
+    },
+    {
+      "arm": "corrected",
+      "selected_epoch": 0,
+      "selected_state_hash_exact": true,
+      "selection_original_objective_argmin_verified": true,
+      "gpu_row": {
+        "epoch": 0,
+        "train": {
+          "one_step": {
+            "objective": 0.0056694853119552135,
+            "finite": true,
+            "physical_MAE_by_feature": [
+              0.0227363258600235,
+              0.09541507810354233,
+              0.02115779183804989,
+              0.7445200085639954
+            ],
+            "physical_MAE_by_window": {
+              "ignition": [
+                0.13949687778949738,
+                0.525850236415863,
+                0.09589876234531403,
+                3.325775146484375
+              ],
+              "post_source_to90": [
+                0.020537063479423523,
+                0.11004801839590073,
+                0.02974255010485649,
+                0.9673089981079102
+              ],
+              "after90": [
+                0.0015646984102204442,
+                6.249712168937549e-05,
+                2.0525883428490488e-06,
+                0.06995842605829239
+              ],
+              "active": [
+                0.023725375533103943,
+                0.10527407377958298,
+                0.024057799950242043,
+                0.8366152048110962
+              ],
+              "quiet": [
+                4.772928605234483e-06,
+                6.430224743780855e-07,
+                1.1844038283470582e-07,
+                0.04598269611597061
+              ]
+            },
+            "minimum_by_feature": [
+              -0.05511471629142761,
+              0.17351950705051422,
+              -0.0033997055143117905,
+              -0.6226624250411987
+            ],
+            "negative_fraction_by_feature": [
+              0.009211602620780468,
+              0.0,
+              0.026579521596431732,
+              0.026967592537403107
+            ],
+            "negative_magnitude_mean_by_feature": [
+              1.4399543943000026e-05,
+              0.0,
+              3.0658159175800392e-06,
+              0.0037238330114632845
+            ],
+            "mass_increase_fraction": [
+              0.09786674380302429,
+              0.2059095799922943
+            ],
+            "mass_increase_total_kg": [
+              0.5820030570030212,
+              2.0521535873413086
+            ],
+            "released_fuel_integral_MAE_kg": 1.4210999011993408,
+            "peak_release_MAE_kg_s": 0.1977727860212326,
+            "peak_time_MAE_s": 2.3563075065612793,
+            "release_activity_v1": {
+              "missed_active_fraction": 0.008827835321426392,
+              "false_active_fraction": 0.009315375238656998,
+              "scope": "Trailing10s integrated fuel-release threshold, true activity from frozen scorecard; smoothing lag applies."
+            }
+          },
+          "rollout": {
+            "objective": 0.022776637226343155,
+            "finite": true,
+            "physical_MAE_by_feature": [
+              0.284511923789978,
+              1.6548235416412354,
+              0.026863407343626022,
+              2.3390274047851562
+            ],
+            "physical_MAE_by_window": {
+              "ignition": [
+                0.24168507754802704,
+                1.1369683742523193,
+                0.1103808805346489,
+                7.457890033721924
+              ],
+              "post_source_to90": [
+                0.2908216118812561,
+                1.7354291677474976,
+                0.04068952053785324,
+                3.5758676528930664
+              ],
+              "after90": [
+                0.2880924642086029,
+                1.6948069334030151,
+                2.0648085410357453e-06,
+                0.39639565348625183
+              ],
+              "active": [
+                0.2862164378166199,
+                1.6728943586349487,
+                0.03090575337409973,
+                2.595858573913574
+              ],
+              "quiet": [
+                0.038707148283720016,
+                0.3234005272388458,
+                1.1736679539353645e-07,
+                0.28269946575164795
+              ]
+            },
+            "minimum_by_feature": [
+              -0.31272804737091064,
+              0.2512359619140625,
+              -0.0041808090172708035,
+              -2.3632819652557373
+            ],
+            "negative_fraction_by_feature": [
+              0.05223311856389046,
+              0.0,
+              0.028029685840010643,
+              0.03666258603334427
+            ],
+            "negative_magnitude_mean_by_feature": [
+              0.002207470592111349,
+              0.0,
+              2.693203896342311e-06,
+              0.012934154830873013
+            ],
+            "mass_increase_fraction": [
+              0.10964734107255936,
+              0.06128586083650589
+            ],
+            "mass_increase_total_kg": [
+              0.26406651735305786,
+              0.969153642654419
+            ],
+            "released_fuel_integral_MAE_kg": 1.9523106813430786,
+            "peak_release_MAE_kg_s": 0.2525583505630493,
+            "peak_time_MAE_s": 2.9449174404144287,
+            "release_activity_v1": {
+              "missed_active_fraction": 0.01681404374539852,
+              "false_active_fraction": 0.020092522725462914,
+              "scope": "Trailing10s integrated fuel-release threshold, true activity from frozen scorecard; smoothing lag applies."
+            }
+          }
+        },
+        "validation": {
+          "one_step": {
+            "objective": 0.006019712425768375,
+            "finite": true,
+            "physical_MAE_by_feature": [
+              0.02495129033923149,
+              0.10060732066631317,
+              0.02287624031305313,
+              0.7844679951667786
+            ],
+            "physical_MAE_by_window": {
+              "ignition": [
+                0.14892779290676117,
+                0.5401315093040466,
+                0.09936683624982834,
+                3.426694869995117
+              ],
+              "post_source_to90": [
+                0.023778198286890984,
+                0.11973616480827332,
+                0.033270254731178284,
+                1.04407799243927
+              ],
+              "after90": [
+                0.0015875906683504581,
+                5.889858948648907e-05,
+                2.1958062461635564e-06,
+                0.06998124718666077
+              ],
+              "active": [
+                0.02577538974583149,
+                0.10949407517910004,
+                0.02545030601322651,
+                0.8693559765815735
+              ],
+              "quiet": [
+                3.87700492865406e-06,
+                5.846381441187987e-07,
+                1.2695115003680257e-07,
+                0.04430408775806427
+              ]
+            },
+            "minimum_by_feature": [
+              -0.02387857809662819,
+              0.27893826365470886,
+              -0.0016844985075294971,
+              -0.5810040235519409
+            ],
+            "negative_fraction_by_feature": [
+              0.002505446784198284,
+              0.0,
+              0.027106033638119698,
+              0.02164125069975853
+            ],
+            "negative_magnitude_mean_by_feature": [
+              1.782024082785938e-05,
+              0.0,
+              2.880695546991774e-06,
+              0.002784594427794218
+            ],
+            "mass_increase_fraction": [
+              0.09985475987195969,
+              0.18976034224033356
+            ],
+            "mass_increase_total_kg": [
+              0.6466344594955444,
+              2.002281904220581
+            ],
+            "released_fuel_integral_MAE_kg": 1.6578279733657837,
+            "peak_release_MAE_kg_s": 0.1793796718120575,
+            "peak_time_MAE_s": 2.5086677074432373,
+            "release_activity_v1": {
+              "missed_active_fraction": 0.008193077519536018,
+              "false_active_fraction": 0.008920845575630665,
+              "scope": "Trailing10s integrated fuel-release threshold, true activity from frozen scorecard; smoothing lag applies."
+            }
+          },
+          "rollout": {
+            "objective": 0.027773117646574974,
+            "finite": true,
+            "physical_MAE_by_feature": [
+              0.3678971230983734,
+              1.9480609893798828,
+              0.030314872041344643,
+              2.5842578411102295
+            ],
+            "physical_MAE_by_window": {
+              "ignition": [
+                0.2629050612449646,
+                1.2301526069641113,
+                0.11334089934825897,
+                8.393658638000488
+              ],
+              "post_source_to90": [
+                0.37477150559425354,
+                2.048720121383667,
+                0.04880482330918312,
+                3.952138900756836
+              ],
+              "after90": [
+                0.3832084834575653,
+                2.011932849884033,
+                2.205921191489324e-06,
+                0.40685707330703735
+              ],
+              "active": [
+                0.36933907866477966,
+                1.963640809059143,
+                0.033813707530498505,
+                2.8137688636779785
+              ],
+              "quiet": [
+                0.034964513033628464,
+                0.3127495348453522,
+                1.2561015694245725e-07,
+                0.31004348397254944
+              ]
+            },
+            "minimum_by_feature": [
+              -0.21417748928070068,
+              0.5392850041389465,
+              -0.004222760908305645,
+              -2.288879632949829
+            ],
+            "negative_fraction_by_feature": [
+              0.047657955437898636,
+              0.0,
+              0.030228763818740845,
+              0.030773425474762917
+            ],
+            "negative_magnitude_mean_by_feature": [
+              0.0021972935646772385,
+              0.0,
+              2.8547317469929112e-06,
+              0.011207561008632183
+            ],
+            "mass_increase_fraction": [
+              0.11929921805858612,
+              0.062781423330307
+            ],
+            "mass_increase_total_kg": [
+              0.3040473163127899,
+              0.9060437679290771
+            ],
+            "released_fuel_integral_MAE_kg": 2.2493603229522705,
+            "peak_release_MAE_kg_s": 0.26653173565864563,
+            "peak_time_MAE_s": 3.053849220275879,
+            "release_activity_v1": {
+              "missed_active_fraction": 0.0183402169495821,
+              "false_active_fraction": 0.019805116578936577,
+              "scope": "Trailing10s integrated fuel-release threshold, true activity from frozen scorecard; smoothing lag applies."
+            }
+          }
+        },
+        "diagnostics": {
+          "finite": true,
+          "startup_gas_p90_deficit": 0.6047728061676025,
+          "startup_gas_median_deficit": 0.2680090069770813,
+          "zero_gas_peak_histories": 0,
+          "startup_gas_eligible_configurations": 204,
+          "quiet_physical_MAE": [
+            0.10455936193466187,
+            1.0270661115646362,
+            3.7500565213122172e-06,
+            0.3228801488876343
+          ],
+          "quiet_eligible_histories": 94
+        }
+      },
+      "cpu_validation_replay": {
+        "one_step": {
+          "objective": 0.006019711960107088,
+          "finite": true,
+          "physical_MAE_by_feature": [
+            0.02495129592716694,
+            0.10060735046863556,
+            0.02287624217569828,
+            0.7844680547714233
+          ],
+          "physical_MAE_by_window": {
+            "ignition": [
+              0.14892780780792236,
+              0.5401312112808228,
+              0.09936685115098953,
+              3.4266953468322754
+            ],
+            "post_source_to90": [
+              0.023778200149536133,
+              0.11973623931407928,
+              0.033270254731178284,
+              1.0440778732299805
+            ],
+            "after90": [
+              0.0015875971876084805,
+              5.895375579711981e-05,
+              2.1958067009109072e-06,
+              0.06998126953840256
+            ],
+            "active": [
+              0.025775395333766937,
+              0.10949409753084183,
+              0.02545030415058136,
+              0.8693560361862183
+            ],
+            "quiet": [
+              3.876851678796811e-06,
+              5.82480538469099e-07,
+              1.2695115003680257e-07,
+              0.04430413246154785
+            ]
+          },
+          "minimum_by_feature": [
+            -0.02387857809662819,
+            0.27893826365470886,
+            -0.0016844990896061063,
+            -0.5810055136680603
+          ],
+          "negative_fraction_by_feature": [
+            0.002505446784198284,
+            0.0,
+            0.02710602805018425,
+            0.02164124883711338
+          ],
+          "negative_magnitude_mean_by_feature": [
+            1.782024628482759e-05,
+            0.0,
+            2.8806960017391248e-06,
+            0.0027845927979797125
+          ],
+          "mass_increase_fraction": [
+            0.09985475987195969,
+            0.18925198912620544
+          ],
+          "mass_increase_total_kg": [
+            0.6466348767280579,
+            2.002281904220581
+          ],
+          "released_fuel_integral_MAE_kg": 1.6578283309936523,
+          "peak_release_MAE_kg_s": 0.1793796718120575,
+          "peak_time_MAE_s": 2.5086679458618164,
+          "release_activity_v1": {
+            "missed_active_fraction": 0.008193078450858593,
+            "false_active_fraction": 0.008920845575630665,
+            "scope": "Trailing10s integrated fuel-release threshold, true activity from frozen scorecard; smoothing lag applies."
+          }
+        },
+        "rollout": {
+          "objective": 0.027773123234510422,
+          "finite": true,
+          "physical_MAE_by_feature": [
+            0.36789748072624207,
+            1.948061466217041,
+            0.03031487576663494,
+            2.5842583179473877
+          ],
+          "physical_MAE_by_window": {
+            "ignition": [
+              0.2629051208496094,
+              1.2301520109176636,
+              0.11334088444709778,
+              8.393659591674805
+            ],
+            "post_source_to90": [
+              0.3747718334197998,
+              2.048720598220825,
+              0.048804838210344315,
+              3.952138900756836
+            ],
+            "after90": [
+              0.3832089900970459,
+              2.0119335651397705,
+              2.205921646236675e-06,
+              0.40685731172561646
+            ],
+            "active": [
+              0.3693394660949707,
+              1.9636414051055908,
+              0.0338137112557888,
+              2.813769578933716
+            ],
+            "quiet": [
+              0.03496454656124115,
+              0.31274959444999695,
+              1.2561014273160254e-07,
+              0.310043603181839
+            ]
+          },
+          "minimum_by_feature": [
+            -0.21417772769927979,
+            0.5392847657203674,
+            -0.004222758114337921,
+            -2.288879632949829
+          ],
+          "negative_fraction_by_feature": [
+            0.04765795171260834,
+            0.0,
+            0.030228758230805397,
+            0.03077341988682747
+          ],
+          "negative_magnitude_mean_by_feature": [
+            0.0021972977556288242,
+            0.0,
+            2.854729018508806e-06,
+            0.011207551695406437
+          ],
+          "mass_increase_fraction": [
+            0.11913581192493439,
+            0.0627632588148117
+          ],
+          "mass_increase_total_kg": [
+            0.30404719710350037,
+            0.9060426354408264
+          ],
+          "released_fuel_integral_MAE_kg": 2.2493631839752197,
+          "peak_release_MAE_kg_s": 0.26653167605400085,
+          "peak_time_MAE_s": 3.053849220275879,
+          "release_activity_v1": {
+            "missed_active_fraction": 0.01834021881222725,
+            "false_active_fraction": 0.019805118441581726,
+            "scope": "Trailing10s integrated fuel-release threshold, true activity from frozen scorecard; smoothing lag applies."
+          }
+        }
+      },
+      "cpu_diagnostics": {
+        "finite": true,
+        "startup_gas_p90_deficit": 0.6047728657722473,
+        "startup_gas_median_deficit": 0.2680090069770813,
+        "zero_gas_peak_histories": 0,
+        "startup_gas_eligible_configurations": 204,
+        "quiet_physical_MAE": [
+          0.10455946624279022,
+          1.0270664691925049,
+          3.7500562939385418e-06,
+          0.3228808343410492
+        ],
+        "quiet_eligible_histories": 94
+      },
+      "cpu_vs_gpu_normalized_MAE_difference": [
+        3.5762786865234375e-07,
+        4.76837158203125e-07,
+        3.725290381728643e-07,
+        4.76837158203125e-09
+      ],
+      "cpu_vs_gpu_startup_p90_difference": 5.960464477539063e-08,
+      "cpu_replay_close": true
+    }
+  ]
+}

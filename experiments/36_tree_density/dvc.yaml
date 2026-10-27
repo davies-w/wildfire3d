@@ -1217,3 +1217,41 @@ stages:
     metrics:
     - results/exposure-pilot02-permission-removed.json:
         cache: false
+  analyze_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_exposure_pilot02.py
+    deps:
+    - model_evaluation/analyze_exposure_pilot02.py
+    - results/exposure-pilot02-collected.json
+    - data/exposure-pilot02
+    - data/exposure-pilot02-results
+    metrics:
+    - results/exposure-pilot02-analysis.json:
+        cache: false
+  reconcile_exposure_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_exposure_pilot02.py
+    frozen: true
+    deps:
+    - model_evaluation/reconcile_exposure_pilot02.py
+    - results/exposure-pilot02-collected.json
+    - results/exposure-pilot02-permission-removed.json
+    metrics:
+    - results/exposure-pilot02-cost-reconciled.json:
+        cache: false
+  audit_exposure_pilot02_trajectory:
+    cmd: ../../.venv/bin/python model_evaluation/audit_exposure_pilot02_trajectory.py
+    deps:
+    - model_evaluation/audit_exposure_pilot02_trajectory.py
+    - results/exposure-pilot02-collected.json
+    - data/exposure-pilot02-results
+    metrics:
+    - results/exposure-pilot02-trajectory-audit.json:
+        cache: false
+  audit_gas_transform_bias:
+    cmd: ../../.venv/bin/python model_evaluation/audit_gas_transform_bias.py
+    deps:
+    - model_evaluation/audit_gas_transform_bias.py
+    - data/pair-sequence/rotation0/schema.json
+    - data/pair-sequence/rotation0/data/sequences.npz
+    metrics:
+    - results/gas-transform-bias-audit.json:
+        cache: false

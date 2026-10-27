@@ -1,0 +1,310 @@
+{
+  "train_only": true,
+  "optimizer_updates": 0,
+  "replicated_configurations": 15,
+  "histories": 45,
+  "gas_encoding_scale_kg_s": 0.01,
+  "physical_mean": {
+    "median": 0.08737107784571087,
+    "p90": 0.2690838004663596,
+    "maximum": 0.4840462763470862
+  },
+  "encoded_mean": {
+    "median": 0.08737112893040144,
+    "p90": 0.2741508819090942,
+    "maximum": 0.4909055767878096
+  },
+  "extra_suppression": {
+    "median": 0.0037772374796226243,
+    "p90": 0.040116435949487265,
+    "maximum": 0.07036373495997043
+  },
+  "scope": "Leave-one-replica-out averages of other TRAIN seeds at matched nominal2s times, interpolated from actual timestamps. Encoded mean minimizes sample asinh-space squared error, physical mean minimizes sample physical squared error. Affine normalization cancels in the mean. Not a model forecast, causal isolation of actual training, irreducible error floor, or evidence about unreplicated configurations; only15 replicated training configurations. No validation/test use.",
+  "cases": [
+    {
+      "configuration": 167,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.08098712401699126,
+        0.07040589985348934,
+        0.10987883219481874
+      ],
+      "encoded_mean_startup_deficit": [
+        0.08101098384159984,
+        0.0725573648126013,
+        0.10987954050568752
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.0017873588775511177,
+        0.0021514649591119614,
+        0.002528371618653215
+      ]
+    },
+    {
+      "configuration": 263,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.12614843507447618,
+        0.13714348998741324,
+        0.12358269103754867
+      ],
+      "encoded_mean_startup_deficit": [
+        0.1270179277759993,
+        0.15139220645556925,
+        0.1389895913090247
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.0008968734847311833,
+        0.014248716468156016,
+        0.015406900271476032
+      ]
+    },
+    {
+      "configuration": 427,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.004734719787620941,
+        0.0109288497574191,
+        0.018005869255973497
+      ],
+      "encoded_mean_startup_deficit": [
+        0.004734738194469402,
+        0.010928885397496355,
+        0.01803973889197687
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.00012541391154233703,
+        0.00029098644787562176,
+        5.859219702507522e-05
+      ]
+    },
+    {
+      "configuration": 481,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.08202488826957392,
+        0.1659628368959387,
+        0.031035417387069553
+      ],
+      "encoded_mean_startup_deficit": [
+        0.08219258457133424,
+        0.16943468683893995,
+        0.039397630118815224
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.0010352093580580622,
+        0.003471849943001279,
+        0.008362212731745674
+      ]
+    },
+    {
+      "configuration": 534,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.07430861363483586,
+        0.02810425356226112,
+        0.021488383610888406
+      ],
+      "encoded_mean_startup_deficit": [
+        0.07432350386220068,
+        0.029338387695016083,
+        0.02150131387099821
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.0010359440844832628,
+        0.001234134132754964,
+        0.0011081894535654438
+      ]
+    },
+    {
+      "configuration": 716,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.3494888904522837,
+        0.1099027035751117,
+        0.4840462763470862
+      ],
+      "encoded_mean_startup_deficit": [
+        0.3764469001051169,
+        0.10990272506386586,
+        0.4909055767878096
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.07036373495997043,
+        0.04372488913237645,
+        0.04212138341106984
+      ]
+    },
+    {
+      "configuration": 829,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.022161166830944157,
+        0.037792137704510176,
+        0.08737107784571087
+      ],
+      "encoded_mean_startup_deficit": [
+        0.02230766518567807,
+        0.038340688879187144,
+        0.08737112893040144
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.0037447922997863787,
+        0.0037772374796226243,
+        8.031492502404425e-05
+      ]
+    },
+    {
+      "configuration": 863,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.19220519537820932,
+        0.06809416947593208,
+        0.1087391580059056
+      ],
+      "encoded_mean_startup_deficit": [
+        0.19228885209377955,
+        0.07017579873958993,
+        0.11562637360253512
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.0007397996426355168,
+        0.012201901315979403,
+        0.010059009974652014
+      ]
+    },
+    {
+      "configuration": 1112,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.08234031036195676,
+        0.15071964946334532,
+        0.2657288812663621
+      ],
+      "encoded_mean_startup_deficit": [
+        0.08640664201578252,
+        0.15105952955362256,
+        0.26976623512934234
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.007326501396765629,
+        0.021747926870820982,
+        0.004257094573724519
+      ]
+    },
+    {
+      "configuration": 1222,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.029618950408719192,
+        0.0347890840019483,
+        0.006501446359426206
+      ],
+      "encoded_mean_startup_deficit": [
+        0.029642956555254965,
+        0.0347953752399242,
+        0.006725008974607069
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.00019273470670069906,
+        0.00040467366216001706,
+        0.0004226449777347405
+      ]
+    },
+    {
+      "configuration": 1298,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.07123451333663623,
+        0.07443384188151478,
+        0.25808795898736675
+      ],
+      "encoded_mean_startup_deficit": [
+        0.07279550271059262,
+        0.07718637898381754,
+        0.2582296141450834
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.012367545474042884,
+        0.009864863585439814,
+        0.0007455823971206822
+      ]
+    },
+    {
+      "configuration": 1601,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.11182562334203927,
+        0.18495037352593854,
+        0.11264652245929689
+      ],
+      "encoded_mean_startup_deficit": [
+        0.11187225254303496,
+        0.18673067984003341,
+        0.1129614671789499
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.03357084576055062,
+        0.011291804982456188,
+        0.00887821008938715
+      ]
+    },
+    {
+      "configuration": 1619,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.03680941305332693,
+        0.0912496664999168,
+        0.06519927916389721
+      ],
+      "encoded_mean_startup_deficit": [
+        0.03761778089778408,
+        0.09206780368270846,
+        0.06567964958639182
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.0034339682651693816,
+        0.0013868350109079617,
+        0.0009295633166459939
+      ]
+    },
+    {
+      "configuration": 1757,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.3452273782785937,
+        0.07693675937777691,
+        0.2549385126157734
+      ],
+      "encoded_mean_startup_deficit": [
+        0.34899825903211934,
+        0.0769370079022312,
+        0.25778420138021685
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.00731077213313819,
+        0.037109014757113375,
+        0.015062956683780309
+      ]
+    },
+    {
+      "configuration": 1905,
+      "replicas": 3,
+      "physical_mean_startup_deficit": [
+        0.2713204132663579,
+        0.32383726647672584,
+        0.25636133730208915
+      ],
+      "encoded_mean_startup_deficit": [
+        0.27707397976226206,
+        0.3251210099426906,
+        0.2630980943202284
+      ],
+      "max_extra_startup_amplitude_suppression_fraction_of_true_peak": [
+        0.049033240015283766,
+        0.02494592164650377,
+        0.05564742811930935
+      ]
+    }
+  ]
+}
