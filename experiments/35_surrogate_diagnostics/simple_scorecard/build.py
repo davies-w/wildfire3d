@@ -75,6 +75,9 @@ for name in ['index.html','values.json','sources.json']:
 for folder in ['learning-curve','detailed-scorecard','architecture-comparison']:
  shutil.copytree(src/folder,out/folder,dirs_exist_ok=True)
 cards=[
+ ('denser/index.html','Denser simple scorecard','Denser data','Plain four-state GRU on 2,080 histories. Active and quiet errors, with exact values and the completed baseline scope.'),
+ ('denser/gallery/index.html','Denser prediction gallery','Explore denser scenarios','All 2,080 held-out histories: simulation, no change, extrapolation and recursive predictions across all four states.'),
+ ('density36-baseline/index.html','Denser detailed report','Supporting report','Ten-fold results, all forecast horizons, scenario variation and a qualified comparison with the earlier dataset.'),
  ('scorecard/index.html','Simple scorecard','Start here','Active and quiet periods together. Three-state MLP, plain four-state GRU and gated four-state GRU. 16-second forecasts across ten test folds.'),
  ('https://huggingface.co/spaces/wdavies/fire-prediction-gallery','Prediction gallery','Explore scenarios','Simulation, no-change, linear extrapolation and recursive gated-GRU predictions. Water, dry fuel, gas release and heating across 520 held-out histories.'),
  ('learning-curve/report.html','Does more training data help?','Learning curve','One fixed validation/test split, with one through eight training folds. Plain four-state GRU; this is one learning curve, not ten-fold uncertainty.'),
