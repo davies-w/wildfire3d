@@ -1,0 +1,40 @@
+{
+  "source_worker_sha256": "1d626e4db22a5c9c7effb52712d945e96f087e5f8aa372002cc0e368daa99ba6",
+  "adapted_worker_sha256": "a846afdddc68ddaad89a6282f857230c8f74cac89e6b39c5b1b59ddaa433d4d4",
+  "model_sha256": "f921f3f08d6b9880b849e3dd458aa865d20f64c08e6fab7dd5b4fa94c2e71875",
+  "model_byte_identical": true,
+  "reversible_only_listed_changes": true,
+  "patches": [
+    {
+      "before": "assert external.shape==(520,90,9)",
+      "after": "assert external.shape==(2080,90,9)\nassert len(meta['rotations'])==10\nassert all(len(set(meta['cases'][i]['fold'] for i in rot['train']))==8 for rot in meta['rotations'])"
+    },
+    {
+      "before": "weights=torch.zeros(520,90,device=device)",
+      "after": "weights=torch.zeros(2080,90,device=device)"
+    },
+    {
+      "before": "rotation['training_fold_count']",
+      "after": "8"
+    },
+    {
+      "before": "rot['training_fold_count']",
+      "after": "8"
+    },
+    {
+      "before": "assert len(reports)==8",
+      "after": "assert len(reports)==10"
+    },
+    {
+      "before": "Plain four-state GRU learning curve: eight nested training sizes, fixed validation/test; scorecard-v1; one split, previously examined data.",
+      "after": "Plain four-state GRU on2080 histories: ten grouped8/1/1 rotations; frozen scorecard-v1; previously examined reshuffled data, not pristine. More histories change optimizer updates per epoch; not compute-matched."
+    },
+    {
+      "before": "folds=8))",
+      "after": "folds=10))"
+    }
+  ],
+  "training_launched": false,
+  "launch_ready": false,
+  "remaining": "Full1560 data audit and2080 merge, leakage/report/normalization checks, private transport and measured runtime/budget plan required. No coverage-plan or launch supplied by this stage."
+}

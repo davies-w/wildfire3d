@@ -398,3 +398,14 @@ stages:
     metrics:
     - results/model-workload-plan.json:
         cache: false
+  prepare_model_runner:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_runner.py
+    deps:
+    - model_evaluation/prepare_runner.py
+    - ../35_surrogate_diagnostics/attempt25/worker.py
+    - ../35_surrogate_diagnostics/attempt25/model.py
+    outs:
+    - data/model-runner
+    metrics:
+    - results/model-runner-adaptation.json:
+        cache: false

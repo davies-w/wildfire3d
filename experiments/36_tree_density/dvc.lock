@@ -909,3 +909,28 @@ stages:
       hash: md5
       md5: 5b74497dd112c25ce1457307a2b6c088
       size: 3492
+  prepare_model_runner:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_runner.py
+    deps:
+    - path: ../35_surrogate_diagnostics/attempt25/model.py
+      hash: md5
+      md5: 1a9d2efd063ea6048094f191f2bf1efa
+      size: 1326
+    - path: ../35_surrogate_diagnostics/attempt25/worker.py
+      hash: md5
+      md5: 0cd3397b7f2966d62d44e2d42cf5692f
+      size: 19878
+    - path: model_evaluation/prepare_runner.py
+      hash: md5
+      md5: 54c2d90141382c768bd320942465d68b
+      size: 2794
+    outs:
+    - path: data/model-runner
+      hash: md5
+      md5: 29b630b543996305a093b8e5f4822d45.dir
+      size: 21359
+      nfiles: 2
+    - path: results/model-runner-adaptation.json
+      hash: md5
+      md5: 804d2500d74a7ad7386743ab50873439
+      size: 1744
