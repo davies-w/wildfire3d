@@ -45,9 +45,9 @@
     "cap_usd": 125,
     "projected_envelope_with_new_reservation_usd": 124.79576563111401,
     "rate_bound_usd_per_hour": 0.8,
-    "vm_age_cap_s": 3300,
-    "task_cap_s": 3200,
-    "soft_training_s": 3000,
+    "vm_age_cap_s": 3000,
+    "task_cap_s": 2850,
+    "soft_training_s": 2700,
     "queue_cap_s": 900,
     "absolute_workflow_cap_s": 4500,
     "measured_gated_full_epoch_s": 54.19,
@@ -55,7 +55,10 @@
     "require_gpu_quota_and_capacity_check": true,
     "do_not_change_existing_queue": true,
     "measured24epoch_compute_s": 1300.56,
-    "projection_2x_plus300s_s": 2901.12
+    "projection_2x_plus300s_s": 2901.12,
+    "cleanup_margin_s": 300,
+    "maximum_vm_plus_cleanup_cost_at_rate_ceiling_usd": 0.7333333333333333,
+    "deadline_limit": "2x projected compute plus300s reaches2901s, within VM cap but beyond soft training2700s; if uploads/compute consume margin, retain a partial checkpoint and make no comparison claim. No automatic extension."
   },
   "preservation": "Private immutable new prefix, each completed epoch model/optimizer/RNG/history uploaded, deadline checkpoint, nonempty optimizer replay before continuation, no automatic retry, sleep-independent watchdog and exact prefix IAM cleanup.",
   "physics_scope": "Unchanged generic3m-wide4/6/8/10m crowns above2m,1600weightedparticles,0.5m24x16x16grid,1500C20signition,180s,no trunks/buildings/embers/physical validation. No FDS rerun."

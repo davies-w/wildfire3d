@@ -2613,3 +2613,75 @@ stages:
       hash: md5
       md5: 3bc9852df520faf82fdb5a3ebd3fb332
       size: 2961
+  prepare_exposure_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_exposure_pilot.py
+    deps:
+    - path: data/exposure-candidate
+      hash: md5
+      md5: 2afb58814992bd040e5358fdd1452c6d.dir
+      size: 21464
+      nfiles: 2
+    - path: data/model-pair-training/bootstrap.py
+      hash: md5
+      md5: 54eb2a21d34ab57cf56a81bc033a849d
+      size: 1706
+    - path: data/model-pair-training/workflow.yaml
+      hash: md5
+      md5: 0834010f2b624d766e2f556724747011
+      size: 9222
+    - path: data/pair-sequence-r0-results/fold01-epoch183.pt
+      hash: md5
+      md5: 3b850ca9f3ffd9199b8df576ba638287
+      size: 606543
+    - path: data/pair-sequence/rotation0
+      hash: md5
+      md5: ecf579c6875641d20609a12ffb1c961b.dir
+      size: 11141393
+      nfiles: 12
+    - path: model_evaluation/exposure_pilot_body.py
+      hash: md5
+      md5: ce72981a51bb9665bc151f7e5f04c2dd
+      size: 10011
+    - path: model_evaluation/prepare_exposure_pilot.py
+      hash: md5
+      md5: a011c5fd1267b3e16e0a22e880d72ab3
+      size: 4155
+    - path: results/exposure-candidate-preflight.json
+      hash: md5
+      md5: 3bc9852df520faf82fdb5a3ebd3fb332
+      size: 2961
+    - path: results/exposure-pilot-plan.json
+      hash: md5
+      md5: 92674595ca9f8b1c16a8c8cc1bcb01a2
+      size: 3776
+    outs:
+    - path: data/exposure-pilot01
+      hash: md5
+      md5: c6797043da21e100d66a766f1e660f2d.dir
+      size: 12370907
+      nfiles: 16
+    - path: results/exposure-pilot-prepared.json
+      hash: md5
+      md5: 4452a7e44eed5ed1bef8dd445b0da430
+      size: 1599
+  validate_exposure_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/validate_exposure_pilot.py
+    deps:
+    - path: data/exposure-pilot01
+      hash: md5
+      md5: c6797043da21e100d66a766f1e660f2d.dir
+      size: 12370907
+      nfiles: 16
+    - path: model_evaluation/validate_exposure_pilot.py
+      hash: md5
+      md5: 14a1ffac62fc688555bb92049b3131f1
+      size: 4335
+    - path: results/exposure-pilot-prepared.json
+      hash: md5
+      md5: 4452a7e44eed5ed1bef8dd445b0da430
+      size: 1599
+    outs:
+    - path: results/exposure-pilot-offline-preflight.json
+      hash: md5
+      md5: 1f086672f0c8e8467e32b810cc51e683
+      size: 485

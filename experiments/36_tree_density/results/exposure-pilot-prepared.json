@@ -1,0 +1,27 @@
+{
+  "prepared": true,
+  "submitted": false,
+  "input_sha256": "58c05862bd8e4b5beaccd9ebe511ee75d2ffa6c3e507d25d4e1860a4ce44fc49",
+  "input_bytes": 6184960,
+  "workflow_sha256": "84e086ba90af8d7878730026d07b3d7ba4eb931cf492abc26056ea07104bd7b4",
+  "files": {
+    "worker.py": "0488d46d4cb238b04da78b552073e9ea3b145598b36c2306594aab4e11f7f173",
+    "model.py": "34a98de73a065d8da6414792e7e993c8b099e2880b84ad6eaa5379e4ae7bcf81",
+    "plain_model.py": "f921f3f08d6b9880b849e3dd458aa865d20f64c08e6fab7dd5b4fa94c2e71875",
+    "gated_model.py": "30490719530337f20299e9696bcef3627de2b5f3d1039c0aa49d781824864038",
+    "runtime.py": "b8ca04f59d9b87f181ae030d6e2eccffcf63f0c9aca49fc3327dd84ee026c0bd",
+    "schema.json": "0efece4cd5227a93ee228aeec9239b1f1cfaf6b47d01e67f86af9f7807043f02",
+    "coverage-plan.json": "05636b12a85f4c9c19cb88a0afc8a565ca52e45cb11061af5b3d8c661ba2307e",
+    "pilot-plan.json": "8628fa6dd9341ca24b5c550d1d73a46d6c729a1b538fa03ada425fb7057f478b",
+    "data/sequences.npz": "a2768dbaeae247c63780e13de59726fde7f0f5818a93294dafaf3f777b54484f",
+    "data/initial.pt": "f496262454176fb66264acf5a7ca49ff253bbd52584ccc8ce722da7b028a8048"
+  },
+  "maximum_allowance_usd": 0.75,
+  "prefix": "density36/exposure-pilot01/",
+  "label": "gpu36-exposure01",
+  "same_checkpoint_and_optimizer": true,
+  "epochs_per_arm": 12,
+  "test_evaluated": false,
+  "normalization": "Frozen train-only values independently checked before continuation",
+  "resume_policy": "Batch cursor/model/optimizer/RNG/history/best in each checkpoint; subsequent diagnosed continuation requires fresh prefix and budget."
+}

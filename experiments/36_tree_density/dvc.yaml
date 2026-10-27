@@ -1080,3 +1080,40 @@ stages:
     metrics:
     - results/exposure-candidate-preflight.json:
         cache: false
+  prepare_exposure_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_exposure_pilot.py
+    deps:
+    - model_evaluation/prepare_exposure_pilot.py
+    - model_evaluation/exposure_pilot_body.py
+    - results/exposure-pilot-plan.json
+    - results/exposure-candidate-preflight.json
+    - data/exposure-candidate
+    - data/pair-sequence/rotation0
+    - data/pair-sequence-r0-results/fold01-epoch183.pt
+    - data/model-pair-training/bootstrap.py
+    - data/model-pair-training/workflow.yaml
+    outs:
+    - data/exposure-pilot01
+    metrics:
+    - results/exposure-pilot-prepared.json:
+        cache: false
+  validate_exposure_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/validate_exposure_pilot.py
+    deps:
+    - model_evaluation/validate_exposure_pilot.py
+    - data/exposure-pilot01
+    - results/exposure-pilot-prepared.json
+    metrics:
+    - results/exposure-pilot-offline-preflight.json:
+        cache: false
+  launch_exposure_pilot:
+    cmd: ../../.venv/bin/python model_evaluation/launch_exposure_pilot.py --execute
+    frozen: true
+    deps:
+    - model_evaluation/launch_exposure_pilot.py
+    - results/exposure-pilot-offline-preflight.json
+    - results/exposure-pilot-prepared.json
+    - data/exposure-pilot01
+    outs:
+    - results/exposure-pilot-execution.json:
+        persist: true
