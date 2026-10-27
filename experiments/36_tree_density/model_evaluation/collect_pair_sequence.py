@@ -10,9 +10,10 @@ TAG=f'pair-sequence-r{rotation}'
 def main():
  with (R/'data/pair-sequence-collection.lock').open('w') as lock:
   fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-  e=read('results/pair-sequence-execution.json')['name'].split('/')
+  execution_file='results/pair-rotation1-execution.json' if rotation==1 and (R/'results/pair-rotation1-execution.json').exists() else 'results/pair-sequence-execution.json'
+  e=read(execution_file)['name'].split('/')
   status=gc('workflows','executions','describe',e[-1],'--workflow='+e[-3],'--location=us-central1')
-  save('results/pair-sequence-terminal-status.json',status)
+  save(f'results/{TAG}-terminal-status.json',status)
   if status['state']=='ACTIVE':print('TRAINING_ACTIVE; no collection');return
   inv={k:gc(*v,'--filter=labels.trial_id~gpu36-seq01-r') for k,v in {'jobs':('batch','jobs','list','--location=us-central1'),'instances':('compute','instances','list'),'disks':('compute','disks','list')}.items()}
   save(f'results/{TAG}-cleanup.json',inv);assert not any(inv.values()),inv

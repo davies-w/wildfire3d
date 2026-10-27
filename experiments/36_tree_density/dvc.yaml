@@ -929,3 +929,15 @@ stages:
     - ../35_surrogate_diagnostics/simple_scorecard/data
     outs:
     - results/pair-publication.json
+
+  continue_pair_rotation1:
+    cmd: ../../.venv/bin/python model_evaluation/continue_pair_rotation1.py
+    deps:
+    - model_evaluation/continue_pair_rotation1.py
+    - data/pair-sequence/rotation1
+    - results/pair-sequence-r0-collected.json
+    outs:
+    - data/pair-rotation1-continuation:
+        persist: true
+    - results/pair-rotation1-readiness.json
+    - results/pair-rotation1-execution.json

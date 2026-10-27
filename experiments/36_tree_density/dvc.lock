@@ -2253,3 +2253,33 @@ stages:
       hash: md5
       md5: 3caf5a95e02d63167913e82803b18076
       size: 8531
+  continue_pair_rotation1:
+    cmd: ../../.venv/bin/python model_evaluation/continue_pair_rotation1.py
+    deps:
+    - path: data/pair-sequence/rotation1
+      hash: md5
+      md5: 586096b0aef4da6a4bd4921486c65e40.dir
+      size: 11141393
+      nfiles: 12
+    - path: model_evaluation/continue_pair_rotation1.py
+      hash: md5
+      md5: cc738316eb9ee79c16a461eedce34f59
+      size: 6104
+    - path: results/pair-sequence-r0-collected.json
+      hash: md5
+      md5: 3cd952863625843addbc849d7da954b1
+      size: 342
+    outs:
+    - path: data/pair-rotation1-continuation
+      hash: md5
+      md5: c6fd4be215222860333a752f6ba66f92.dir
+      size: 10397
+      nfiles: 2
+    - path: results/pair-rotation1-execution.json
+      hash: md5
+      md5: 2cf23c02781dcb430904ae32356b6225
+      size: 339
+    - path: results/pair-rotation1-readiness.json
+      hash: md5
+      md5: 9201bc23c26219e7a313609548c08d01
+      size: 3190

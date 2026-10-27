@@ -9,4 +9,7 @@ for rotation in (0,1):
  for i,kind in enumerate(('control','gated')):
   prefix=f'fold{i:02}-epoch';epochs=[int(n[len(prefix):len(prefix)+3]) for n in names if n.startswith(prefix) and n.endswith('.pt')];arms[kind]=dict(checkpoint_epoch=max(epochs,default=0),selected=f'fold{i:02}-selected.pt' in names,replay_proof=f'fold{i:02}-checkpoint-replay.json' in names)
  progress[str(rotation)]=dict(arms=arms,synthetic_resume_proof='optimizer-resume-check.json' in names,complete='complete.json' in names,error='bootstrap-error.txt' in names)
-r=dict(workflow_state=state['state'],execution=state['name'],rotations=progress,test_outcomes_not_read=True);save('results/pair-sequence-progress.json',r);print(json.dumps(r))
+continuation=None
+if (R/'results/pair-rotation1-execution.json').exists():
+ y=read('results/pair-rotation1-execution.json')['name'].split('/');continuation=gc('workflows','executions','describe',y[-1],'--workflow='+y[-3],'--location=us-central1')['state']
+r=dict(rotation1_continuation_state=continuation,workflow_state=state['state'],execution=state['name'],rotations=progress,test_outcomes_not_read=True);save('results/pair-sequence-progress.json',r);print(json.dumps(r))
