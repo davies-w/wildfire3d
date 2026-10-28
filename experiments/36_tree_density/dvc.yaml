@@ -4462,3 +4462,25 @@ stages:
     metrics:
     - results/canonical-pilot03-trajectory-audit.json:
         cache: false
+  build_full_sequence:
+    cmd: ../../.venv/bin/python model_evaluation/build_full_sequence.py
+    deps:
+    - model_evaluation/build_full_sequence.py
+    - data/model-training-results
+    - data/pair-sequence-r0-results
+    - data/learning/sequences.npz
+    - ../35_surrogate_diagnostics/attempt18/data/collected
+    - ../35_surrogate_diagnostics/attempt18/data/sequences.npz
+    - ../35_surrogate_diagnostics/attempt24/data/collected
+    - ../35_surrogate_diagnostics/attempt24/data/sequences.npz
+    - ../35_surrogate_diagnostics/attempt22/data/activity_audit/labels.npz
+    - ../35_surrogate_diagnostics/simple_scorecard/data/scorecard/values.json
+    outs:
+    - data/full-sequence
+  render_full_sequence_public:
+    cmd: ../../.venv/bin/python model_evaluation/render_full_sequence_public.py
+    deps:
+    - model_evaluation/render_full_sequence_public.py
+    - data/full-sequence
+    outs:
+    - data/full-sequence-public

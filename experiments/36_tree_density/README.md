@@ -726,3 +726,24 @@ permitted from the old4.07USDheadroom. Actual spend estimate itself remains belo
 The separate40USDFlex reservation is untouched. Next work is fit-only diagnosis
 of remaining gradient/representation trade-offs and evidence-based reconciliation
 of existing reservations; no thresholds have been weakened.
+
+### Full-sequence comparison added October 28, 2026
+
+New reports at `https://wdavies-fire-reports.static.hf.space/full-sequence/index.html`
+and galleries at `https://wdavies-fire-reports.static.hf.space/full-sequence/gallery.html`
+leave all earlier cards and report paths unchanged. Seven archived model variants
+use their saved `normalized_rollout` arrays: one initial state, then 90 recursive
+steps without later truth resets. Known forcing, geometry and time intervals remain
+inputs. The new scores and charts use the same trajectories. Original 16-second
+scores are retained separately in `historical-scores.json`; they are a different
+protocol and must not be treated as these full-sequence scores.
+
+The new aggregation averages eligible target transitions per history, replicas
+within configuration, then configurations equally. Phase masks apply at each
+transition, not to sliding forecast windows. Hold-initial-state is the baseline.
+The earlier models use 520 histories, dense uses 2080, and stride-one models use
+208 shared histories on one split. These population differences prevent a matched
+causal comparison. No retraining or new inference was performed. All 52 forecast
+files matched original cloud manifests; serialized gallery data reproduce the
+all-period MAE. Public assets contain rendered SVG figures and aggregate summaries;
+trajectory JSON is preserved only locally/private DVC mirror.
