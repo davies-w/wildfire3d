@@ -4237,3 +4237,38 @@ stages:
       hash: md5
       md5: 26bd79b234d6c6313eb5021c4dc69e0f
       size: 332
+  validate_joint_predictor:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_predictor.py
+    deps:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: data/joint-decoder-candidate
+      hash: md5
+      md5: 48af269b9ab3475ed72ea0f7913caa40.dir
+      size: 26593773
+      nfiles: 5
+    - path: data/joint-rolling-features
+      hash: md5
+      md5: 0b3fd914ec0913529749e026d7f68988.dir
+      size: 449281821
+      nfiles: 3
+    - path: model_evaluation/joint_decoder.py
+      hash: md5
+      md5: 83072d248c4aaa00a56ddb8e5bf6e528
+      size: 4106
+    - path: model_evaluation/joint_predictor.py
+      hash: md5
+      md5: 407173f80253cd0116bbd263687fdcc1
+      size: 2458
+    - path: model_evaluation/validate_joint_predictor.py
+      hash: md5
+      md5: 13ab321e27307c7a74485c404069773c
+      size: 3145
+    outs:
+    - path: results/joint-predictor-preflight.json
+      hash: md5
+      md5: 1cbbd5ea9cd8fddd4e524169dc0c9440
+      size: 1220

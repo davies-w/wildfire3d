@@ -1763,3 +1763,15 @@ stages:
     metrics:
     - results/joint-decoder-pilot01-cost-reconciled.json:
         cache: false
+  validate_joint_predictor:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_predictor.py
+    deps:
+    - model_evaluation/validate_joint_predictor.py
+    - model_evaluation/joint_predictor.py
+    - model_evaluation/joint_decoder.py
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    - data/exposure-pilot02
+    metrics:
+    - results/joint-predictor-preflight.json:
+        cache: false

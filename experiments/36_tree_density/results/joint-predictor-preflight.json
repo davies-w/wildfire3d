@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "optimizer_updates": 0,
+  "fit_histories_only": true,
+  "forecast_inputs": "Observed prefix only, seven geometry parameters, known time grid and imposed20second ignition command. No future target state argument.",
+  "cached_full_and_rolling_features_replayed": [
+    {
+      "origin": 0,
+      "steps": 90,
+      "max_feature_absolute_error": 3.0025839805603027e-06,
+      "max_state_absolute_error": 9.1552734375e-05
+    },
+    {
+      "origin": 0,
+      "steps": 16,
+      "max_feature_absolute_error": 1.1771917343139648e-06,
+      "max_state_absolute_error": 9.1552734375e-05
+    },
+    {
+      "origin": 16,
+      "steps": 16,
+      "max_feature_absolute_error": 1.5348196029663086e-06,
+      "max_state_absolute_error": 1.52587890625e-05
+    },
+    {
+      "origin": 74,
+      "steps": 16,
+      "max_feature_absolute_error": 5.364418029785156e-07,
+      "max_state_absolute_error": 8.940696716308594e-06
+    }
+  ],
+  "both_untrained_decoder_modes_replayed": true,
+  "base_state_unchanged": true,
+  "source_sha256": "61251fe4fdf1b9a8a0c0203c7d51abb3826f89d3ac3e1e4e0cfbdd7ddcd3f6e6",
+  "scope": "Inference implementation verification only; no trained-decoder accuracy claim or deployment."
+}
