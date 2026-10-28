@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 71.6,
+  "reserved_usd": 72.6,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -3284,6 +3284,14 @@
       },
       "historical_allowance_usd": 1.0,
       "terminal_evidence": "experiments/36_tree_density/results/timing-decoder-pilot06-status.json"
+    },
+    "density36-guard-matched-pilot01": {
+      "state": "submitted",
+      "allowance_usd": 1.0,
+      "reserved_unix": 1793168112.733143,
+      "scope": "Authorized bounded four-output decoder repair, max1.00USD, no automatic retries",
+      "workflow": "fds-gpu36-guardmatch01",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-guardmatch01/executions/0770ed89-ad8c-4fb2-9c44-469b0c4bf391"
     }
   },
   "recycle_reservations": true,
@@ -3293,19 +3301,16 @@
   "accounting": {
     "billing_export_status": "posted_costs_subject_to_adjustment",
     "posted_source": "BigQuery detailed export",
-    "as_of_utc": "2026-10-28T05:37:57.469042+00:00",
+    "as_of_utc": "2026-10-28T06:09:55.617595+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
-    "project_posted_comparison_usd": 47.918472,
+    "project_posted_comparison_usd": 48.606104,
     "project_compute_runtime_estimate_usd": 45.73778140648972,
     "shared_cost_estimate_usd": 1.26,
-    "spend_estimate_usd": 48.42727110085958,
-    "unposted_compute_after_export_usd": 0.5087991008595777,
+    "spend_estimate_usd": 48.88383241366667,
+    "unposted_compute_after_export_usd": 0.2777284136666667,
     "unposted_resources": [
       "fds-gpu36-timing06-ea4ddc3f-fd43-469d0-group0-0-cjft",
-      "fds-gpu36-timing05-b969e7da-1db3-400e0-group0-0-7nmv",
-      "fds-gpu36-context0-b82a73da-5ff8-4a130-group0-0-mns2",
-      "fds-gpu36-joint02-aca5fd21-e444-43f8-0-group0-0-zqsb",
-      "fds-gpu36-joint01-52981f30-2a21-49fa-0-group0-0-4wm8"
+      "fds-gpu36-timing05-b969e7da-1db3-400e0-group0-0-7nmv"
     ],
     "matched_vms": 355,
     "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
@@ -3319,5 +3324,5 @@
       "g2-standard-4/STANDARD/us-east4": 1.2
     }
   },
-  "estimated_spend_usd": 48.42727110085958
+  "estimated_spend_usd": 48.88383241366667
 }
