@@ -14,6 +14,13 @@ def budgeted_gpu_type(machine,req):
  assert req.get('scheduling',{}).get('provisioningModel','STANDARD')=='STANDARD'
  return 'nvidia-tesla-t4'
 
+def runtime_rate(machine,provision,resource):
+ if machine=='g2-standard-4' and provision=='STANDARD':
+  zone=resource.split('/zones/')[1].split('/')[0]
+  if zone.startswith('us-east4-'):return 1.2
+  assert zone.startswith('us-central1-'), 'Unverified regional G2 rate'
+ return rates[machine,provision]
+
 def reconcile():
  query='resource.type="gce_instance" AND (protoPayload.methodName="v1.compute.instances.insert" OR protoPayload.methodName="v1.compute.instances.delete") AND timestamp>="2026-10-15T00:00:00Z"'
  events=json.loads(subprocess.check_output([G,'logging','read',query,'--project=tmrw-wildfire-20261015','--limit=5000','--format=json(timestamp,protoPayload.methodName,protoPayload.resourceName,protoPayload.request.machineType,protoPayload.request.guestAccelerators,protoPayload.request.scheduling,protoPayload.request.labels,protoPayload.status,operation)'],text=True));assert len(events)<5000,'Inventory may be truncated'
@@ -31,9 +38,10 @@ def reconcile():
    if not dels:continue
    deletion=min(dels,key=stamp);starts=[e for e in es if e.get('operation',{}).get('id')==deletion['operation']['id']];end=min(starts,key=stamp);hours=(stamp(end)-stamp(endinsert)).total_seconds()/3600
    assert hours>=0 and key in rates,(name,key,hours)
+   rate=runtime_rate(machine,provision,name)
    labels=req.get('labels',{})
    if isinstance(labels,list):labels={x['key']:x.get('value') for x in labels}
-   records.append(dict(vm=name.split('/')[-1],trial_id=labels.get('trial_id'),machine=machine,provisioning=provision,gpu_type=gpu_type,hours=hours,start=endinsert['timestamp'],end=end['timestamp'],estimated_compute_usd=hours*rates[key]))
+   records.append(dict(vm=name.split('/')[-1],trial_id=labels.get('trial_id'),machine=machine,provisioning=provision,gpu_type=gpu_type,hours=hours,start=endinsert['timestamp'],end=end['timestamp'],estimated_compute_usd=hours*rate))
  assert records
  D.mkdir(exist_ok=True);(D/'vm-runtime.json').write_text(json.dumps(records,indent=2)+'\n')
  # Export has not yet backfilled; these are the independently observed project report totals.
@@ -50,7 +58,7 @@ def reconcile():
  pending=[r for r in records if cutoff is not None and utc(r['start'])>=cutoff]
  unposted=sum(r['estimated_compute_usd'] for r in pending)
 
- result=dict(billing_export_status=export['status'],posted_source='BigQuery detailed export' if billed else 'Previously captured Billing Reports; Oct1–23;16.55USD',as_of_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),status='runtime_estimate_pending_per_resource_billing',project_posted_comparison_usd=posted,project_compute_runtime_estimate_usd=compute,shared_cost_estimate_usd=shared,spend_estimate_usd=max(posted+unposted,compute+shared),unposted_compute_after_export_usd=unposted,unposted_resources=[r['vm'] for r in pending],matched_vms=len(records),scope='Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign',limitations='VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. N1 with exactly one T4 and Flex-start use a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.',rates_usd_per_vm_hour={'/'.join(k):v for k,v in rates.items()})
+ result=dict(billing_export_status=export['status'],posted_source='BigQuery detailed export' if billed else 'Previously captured Billing Reports; Oct1–23;16.55USD',as_of_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),status='runtime_estimate_pending_per_resource_billing',project_posted_comparison_usd=posted,project_compute_runtime_estimate_usd=compute,shared_cost_estimate_usd=shared,spend_estimate_usd=max(posted+unposted,compute+shared),unposted_compute_after_export_usd=unposted,unposted_resources=[r['vm'] for r in pending],matched_vms=len(records),scope='Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign',limitations='VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. East4 G2 uses a conservative1.20USD/VM-hour bound. N1 with exactly one T4 and Flex-start use a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.',rates_usd_per_vm_hour={**{'/'.join(k):v for k,v in rates.items()},'g2-standard-4/STANDARD/us-east4':1.2})
  with (B.parent/'data/budget.lock').open('w') as f:
   fcntl.flock(f,fcntl.LOCK_EX);b=json.loads(B.read_text());b.setdefault('historical_allowances_usd',b['reserved_usd']);b['accounting_policy']='Expected estimate -> measured-runtime cost estimate -> posted charge, preserving history. Historical maximum allowances are not spend. Supersedes retained-allowance accounting by explicit user instruction.';b['recycle_reservations']=True;b['accounting']=result
   for key,res in b['reservations'].items():
