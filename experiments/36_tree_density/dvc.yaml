@@ -2317,3 +2317,116 @@ stages:
     metrics:
     - results/flex-reserved-execution-observation.json:
         cache: false
+  prepare_timing_trial02:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_timing_trial02.py
+    deps:
+    - model_evaluation/prepare_timing_trial02.py
+    - model_evaluation/timing_worker.py
+    - model_evaluation/timing_decoder.py
+    - model_evaluation/context_data.py
+    - model_evaluation/context_objective.py
+    - model_evaluation/joint_decoder_v2.py
+    - model_evaluation/joint_objective_v2.py
+    - model_evaluation/joint_data.py
+    - model_evaluation/joint_metrics.py
+    - model_evaluation/gas_head_metrics.py
+    - data/timing-candidate
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    - data/gas-shape-pilot01
+    - results/timing-decoder-trial-plan.json
+    - results/context-objective-preflight.json
+    - results/context-decoder-preflight.json
+    - results/joint-pipeline-v2-preflight.json
+    outs:
+    - data/timing-decoder-pilot02
+    metrics:
+    - results/timing-decoder-pilot02-prepared.json:
+        cache: false
+  validate_timing_trial02:
+    cmd: ../../.venv/bin/python model_evaluation/validate_timing_trial02.py
+    deps:
+    - model_evaluation/validate_timing_trial02.py
+    - model_evaluation/launch_timing_decoder_pilot02.py
+    - model_evaluation/collect_timing_decoder_pilot02.py
+    - model_evaluation/close_timing_decoder_pilot02.py
+    - model_evaluation/monitor_timing_decoder_pilot02.py
+    - model_evaluation/reconcile_timing_decoder_pilot02.py
+    - model_evaluation/analyze_timing_decoder_pilot02.py
+    - data/timing-decoder-pilot02
+    - results/timing-decoder-pilot02-prepared.json
+    - results/context-objective-preflight.json
+    - results/joint-pipeline-v2-preflight.json
+    metrics:
+    - results/timing-decoder-pilot02-offline-preflight.json:
+        cache: false
+  launch_timing_decoder_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing_decoder_pilot02.py
+      --execute
+    frozen: true
+    deps:
+    - model_evaluation/launch_timing_decoder_pilot02.py
+    - cloud.py
+    - data/timing-decoder-pilot02
+    - results/timing-decoder-pilot02-offline-preflight.json
+    metrics:
+    - results/timing-decoder-pilot02-execution.json:
+        cache: false
+  collect_timing_decoder_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing_decoder_pilot02.py
+    frozen: true
+    deps:
+    - model_evaluation/collect_timing_decoder_pilot02.py
+    - cloud.py
+    - results/timing-decoder-pilot02-execution.json
+    outs:
+    - data/timing-decoder-pilot02-results
+    metrics:
+    - results/timing-decoder-pilot02-collected.json:
+        cache: false
+  close_timing_decoder_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/close_timing_decoder_pilot02.py
+    frozen: true
+    deps:
+    - model_evaluation/close_timing_decoder_pilot02.py
+    - cloud.py
+    - results/timing-decoder-pilot02-collected.json
+    - results/timing-decoder-pilot02-read-condition.json
+    metrics:
+    - results/timing-decoder-pilot02-permission-removed.json:
+        cache: false
+  analyze_timing_decoder_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_timing_decoder_pilot02.py
+    frozen: true
+    deps:
+    - model_evaluation/analyze_timing_decoder_pilot02.py
+    - cloud.py
+    - data/timing-decoder-pilot02
+    - data/timing-decoder-pilot02-results
+    - results/timing-decoder-pilot02-collected.json
+    - results/timing-decoder-pilot02-permission-removed.json
+    metrics:
+    - results/timing-decoder-pilot02-analysis.json:
+        cache: false
+  reconcile_timing_decoder_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_timing_decoder_pilot02.py
+    frozen: true
+    deps:
+    - model_evaluation/reconcile_timing_decoder_pilot02.py
+    - cloud.py
+    - results/timing-decoder-pilot02-collected.json
+    - results/timing-decoder-pilot02-permission-removed.json
+    metrics:
+    - results/timing-decoder-pilot02-cost-reconciled.json:
+        cache: false
+  reconcile_unallocated_timing01:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_timing01.py
+    frozen: true
+    deps:
+    - model_evaluation/reconcile_unallocated_timing01.py
+    - cloud.py
+    - results/timing-decoder-pilot01-collected.json
+    - results/timing-decoder-pilot01-permission-removed.json
+    metrics:
+    - results/timing-decoder-pilot01-no-allocation-proof.json:
+        cache: false
