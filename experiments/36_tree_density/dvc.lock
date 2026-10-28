@@ -7986,8 +7986,8 @@ stages:
       nfiles: 682
     - path: model_evaluation/audit_guard_matched_fit.py
       hash: md5
-      md5: 2c15a1b537955aa423137ed7a72b011b
-      size: 5907
+      md5: 54e47658033626eb4c0724f8a216a192
+      size: 5962
     - path: results/guard-matched-pilot01-analysis.json
       hash: md5
       md5: 09c8b0f157bc1c7e67869c4c48661899
@@ -7995,8 +7995,8 @@ stages:
     outs:
     - path: results/guard-matched-fit-audit.json
       hash: md5
-      md5: e0a2c2e3061fd430b85238c765a14ea7
-      size: 19460
+      md5: 03efccb340a212ae2a266bd9f35cedfd
+      size: 19457
   audit_guard_matched_trajectory:
     cmd: ../../.venv/bin/python 
       model_evaluation/audit_guard_matched_trajectory.py
@@ -8285,3 +8285,25 @@ stages:
       hash: md5
       md5: 47f65ee352e8213eab00a10fc116dd87
       size: 337
+  observe_guard_matched_infrastructure02:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/observe_guard_matched_infrastructure02.py --batch-region 
+      us-east4
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/observe_guard_matched_infrastructure02.py
+      hash: md5
+      md5: 257475bd34d68f3d04bafe665a1214cd
+      size: 2216
+    - path: results/guard-matched-pilot02-execution.json
+      hash: md5
+      md5: 47f65ee352e8213eab00a10fc116dd87
+      size: 337
+    outs:
+    - path: results/guard-matched-pilot02-infrastructure-observation.json
+      hash: md5
+      md5: 25d922893f8908a2660a6f48531e7ae0
+      size: 32239

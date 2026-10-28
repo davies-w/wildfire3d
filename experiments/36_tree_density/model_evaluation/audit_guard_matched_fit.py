@@ -16,7 +16,7 @@ with torch.inference_mode():
   quiet_diagnostics[name]=dict(aggregate_MAE_delta_by_state=avg(gap),fraction_points_worse_by_more_than_slack=avg((gap>tau).float()),mean_pointwise_log_excess_by_state=avg(torch.log1p((gap-tau).clamp_min(0)/tau)),physical_slack=tau.tolist(),eligible_fit_histories=int(keep.sum()))
 ratios={name:[y/x for x,y in zip(baseline[name]['physical_MAE_by_feature'],candidate[name]['physical_MAE_by_feature'])] for name in ['autonomous','display']};gradients=[]
 for seed in [3640,3641,3642]:
- generator=torch.Generator().manual_seed(seed);batch=ids[torch.randperm(len(ids),generator=generator)[:128]];origins=torch.where(torch.arange(128)%2==0,torch.full((128,),-1),torch.randint(0,75,(128,),generator=generator));args=d.training_batch(m,batch,origins);loss,parts=objective(*args[:4],d.scales,d.std,*args[4:],**d.objective_metadata(batch,origins),normalization=normalization);vectors={}
+ generator=torch.Generator().manual_seed(seed);batch=ids[torch.randperm(len(ids),generator=generator)[:128]];origins=torch.where(torch.arange(128)%2==0,torch.full((128,),-1),torch.randint(0,75,(128,),generator=generator));args=d.training_batch(m,batch,origins);loss,parts=objective(*args[:4],d.scales,d.std,*args[4:],**d.objective_metadata(batch,origins),normalization=normalization);loss=loss+.2*parts['under_tail']+.1*parts['over_tail'];vectors={}
  for name,term in parts.items():
   g=torch.autograd.grad(term,parameters,retain_graph=True,allow_unused=True);vectors[name]={head:torch.cat([(torch.zeros_like(p) if value is None else value)[head].flatten() for p,value in zip(parameters,g)]) for head in [2,3]}
  def cosine(a,b):

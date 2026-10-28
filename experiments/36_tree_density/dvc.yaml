@@ -3369,3 +3369,13 @@ stages:
     metrics:
     - results/guard-matched-pilot02-prefix-replay.json:
         cache: false
+  observe_guard_matched_infrastructure02:
+    cmd: ../../.venv/bin/python model_evaluation/observe_guard_matched_infrastructure02.py --batch-region us-east4
+    frozen: true
+    deps:
+    - model_evaluation/observe_guard_matched_infrastructure02.py
+    - cloud.py
+    - results/guard-matched-pilot02-execution.json
+    metrics:
+    - results/guard-matched-pilot02-infrastructure-observation.json:
+        cache: false
