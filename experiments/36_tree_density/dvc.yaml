@@ -3721,15 +3721,19 @@ stages:
     - results/guard-matched-pilot04-analysis.json:
         cache: false
   reconcile_guard_matched_pilot04:
-    cmd: ../../.venv/bin/python model_evaluation/reconcile_guard_matched_pilot04.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_guard_matched04.py
     frozen: true
     deps:
-    - model_evaluation/reconcile_guard_matched_pilot04.py
+    - model_evaluation/reconcile_unallocated_guard_matched04.py
     - cloud.py
+    - data/guard-matched-pilot04-results
     - results/guard-matched-pilot04-collected.json
     - results/guard-matched-pilot04-permission-removed.json
+    - results/guard-matched-pilot04-early-scope-stop.json
     metrics:
     - results/guard-matched-pilot04-cost-reconciled.json:
+        cache: false
+    - results/guard-matched-pilot04-no-allocation-proof.json:
         cache: false
   monitor_guard_matched_pilot04:
     cmd: ../../.venv/bin/python model_evaluation/monitor_guard_matched_pilot04.py
@@ -3769,4 +3773,114 @@ stages:
     - results/guard-matched-pilot04-analysis.json
     metrics:
     - results/guard-matched-pilot04-selected-predictor-preflight.json:
+        cache: false
+  audit_guard_matched_fit_horizons:
+    cmd: ../../.venv/bin/python model_evaluation/audit_guard_matched_fit_horizons.py
+    deps:
+    - model_evaluation/audit_guard_matched_fit_horizons.py
+    - model_evaluation/joint_predictor.py
+    - model_evaluation/joint_scorecard.py
+    - model_evaluation/timing_decoder.py
+    - data/exposure-pilot02
+    - data/joint-decoder-candidate
+    - data/guard-matched-pilot01
+    - data/guard-matched-pilot01-results
+    - results/guard-matched-pilot01-analysis.json
+    outs:
+    - data/guard-matched-fit-horizons
+    metrics:
+    - results/guard-matched-fit-horizons.json:
+        cache: false
+  prepare_canonical_feature_cache:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_canonical_feature_cache.py
+    deps:
+    - model_evaluation/prepare_canonical_feature_cache.py
+    - model_evaluation/joint_predictor.py
+    - model_evaluation/joint_metrics.py
+    - data/exposure-pilot02
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    - results/canonical-cache-replay-diagnosis.json
+    outs:
+    - data/canonical-feature-cache
+    metrics:
+    - results/canonical-feature-cache-prepared.json:
+        cache: false
+  stop_guard_matched_scope04:
+    cmd: ../../.venv/bin/python model_evaluation/stop_guard_matched_scope04.py
+    frozen: true
+    deps:
+    - model_evaluation/stop_guard_matched_scope04.py
+    - cloud.py
+    - results/guard-matched-pilot04-execution.json
+    - results/guard-matched-fit-horizons.json
+    metrics:
+    - results/guard-matched-pilot04-early-scope-stop.json:
+        cache: false
+  diagnose_canonical_cache_replay:
+    cmd: ../../.venv/bin/python model_evaluation/diagnose_canonical_cache_replay.py
+    deps:
+    - model_evaluation/diagnose_canonical_cache_replay.py
+    - model_evaluation/joint_predictor.py
+    - data/exposure-pilot02
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    metrics:
+    - results/canonical-cache-replay-diagnosis.json:
+        cache: false
+  archive_failed_canonical_cache:
+    cmd: ../../.venv/bin/python model_evaluation/archive_failed_canonical_cache.py
+    frozen: true
+    deps:
+    - model_evaluation/archive_failed_canonical_cache.py
+    - results/canonical-cache-replay-diagnosis.json
+    outs:
+    - data/canonical-feature-cache-attempt01
+    metrics:
+    - results/canonical-cache-attempt01-preserved.json:
+        cache: false
+  validate_canonical_feature_cache:
+    cmd: ../../.venv/bin/python model_evaluation/validate_canonical_feature_cache.py
+    deps:
+    - model_evaluation/validate_canonical_feature_cache.py
+    - model_evaluation/joint_predictor.py
+    - data/canonical-feature-cache
+    - data/exposure-pilot02
+    - data/joint-decoder-candidate
+    - results/canonical-feature-cache-prepared.json
+    - results/guard-matched-fit-horizons.json
+    metrics:
+    - results/canonical-feature-cache-preflight.json:
+        cache: false
+  validate_canonical_data:
+    cmd: ../../.venv/bin/python model_evaluation/validate_canonical_data.py
+    deps:
+    - model_evaluation/validate_canonical_data.py
+    - model_evaluation/canonical_data.py
+    - model_evaluation/guard_matched_data.py
+    - model_evaluation/context_data.py
+    - model_evaluation/joint_data.py
+    - model_evaluation/timing_decoder.py
+    - data/canonical-feature-cache
+    - data/guard-matched-pilot01
+    - results/canonical-feature-cache-preflight.json
+    metrics:
+    - results/canonical-data-preflight.json:
+        cache: false
+  validate_canonical_metrics:
+    cmd: ../../.venv/bin/python model_evaluation/validate_canonical_metrics.py
+    deps:
+    - model_evaluation/validate_canonical_metrics.py
+    - model_evaluation/canonical_data.py
+    - model_evaluation/canonical_metrics.py
+    - model_evaluation/joint_metrics.py
+    - model_evaluation/joint_predictor.py
+    - model_evaluation/joint_scorecard.py
+    - data/canonical-feature-cache
+    - data/guard-matched-pilot01
+    - data/guard-matched-pilot01-results
+    - data/exposure-pilot02
+    - results/canonical-feature-cache-preflight.json
+    metrics:
+    - results/canonical-metrics-preflight.json:
         cache: false

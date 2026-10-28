@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "fit_histories": 16,
+  "optimizer_updates": 0,
+  "all_origins_all_five_horizons_match_independent_prefix_interface": true,
+  "all_phase_counts_and_MAE_match": true,
+  "original_acceptance_checks_preserved_exactly": true,
+  "all20_single_state_horizon_regressions_rejected": true,
+  "raw_fallback_preserved": true,
+  "parameters_unchanged": true,
+  "confirmation_and_test_not_evaluated": true,
+  "agreement": {
+    "1": {
+      "cached_MAE": [
+        0.00528687285259366,
+        0.05393487960100174,
+        0.015878887847065926,
+        1.5606333017349243
+      ],
+      "independent_MAE": [
+        0.005286872386932373,
+        0.05393487215042114,
+        0.015878885984420776,
+        1.5606334209442139
+      ]
+    },
+    "4": {
+      "cached_MAE": [
+        0.011140257120132446,
+        0.1181059330701828,
+        0.019012881442904472,
+        3.3671021461486816
+      ],
+      "independent_MAE": [
+        0.011140258051455021,
+        0.118105947971344,
+        0.019012879580259323,
+        3.3671016693115234
+      ]
+    },
+    "8": {
+      "cached_MAE": [
+        0.011447034776210785,
+        0.15700559318065643,
+        0.01228172704577446,
+        1.6490216255187988
+      ],
+      "independent_MAE": [
+        0.011447036638855934,
+        0.15700557827949524,
+        0.012281732633709908,
+        1.6490211486816406
+      ]
+    },
+    "16": {
+      "cached_MAE": [
+        0.008829399943351746,
+        0.15150374174118042,
+        0.001209599431604147,
+        0.5708960890769958
+      ],
+      "independent_MAE": [
+        0.008829399943351746,
+        0.15150374174118042,
+        0.0012095996644347906,
+        0.5708957314491272
+      ]
+    },
+    "45": {
+      "cached_MAE": [
+        0.022218596190214157,
+        0.2531861960887909,
+        1.4641630059486488e-06,
+        0.5642666220664978
+      ],
+      "independent_MAE": [
+        0.02221858873963356,
+        0.2531861662864685,
+        1.4641630059486488e-06,
+        0.5642659664154053
+      ]
+    }
+  },
+  "source_sha256": {
+    "canonical_data.py": "f4d376c63bedb90e52afe461858383877fdaf0384c9048965abe48ebf3493991",
+    "canonical_metrics.py": "e24d2d42cbc05df1814097d6e41b1e8a1dd178505e3b15ad9759e4a4ec395090",
+    "validate_canonical_metrics.py": "b2fe8e1211d6477e860af92c0a6bda5be35b0afda440ead6f854ea58ee8c6660"
+  },
+  "scope": "Scorer and selection-fixture validation only, not new fitted performance or independent generalization. Explicit prospective canonical guard5percent overall state MAE at every horizon; phase tables retained separately. Original10percent gallery/startup and all other gates unchanged."
+}

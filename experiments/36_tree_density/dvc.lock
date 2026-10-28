@@ -9061,3 +9061,410 @@ stages:
       hash: md5
       md5: d8beca0e72b5c84413521d604e6398e8
       size: 337
+  audit_guard_matched_fit_horizons:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/audit_guard_matched_fit_horizons.py
+    deps:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: data/guard-matched-pilot01
+      hash: md5
+      md5: 808afed87c4ef8ad96d201fb62250b03.dir
+      size: 952113294
+      nfiles: 39
+    - path: data/guard-matched-pilot01-results
+      hash: md5
+      md5: 35202beb02170f9996a470f95bfb6e0c.dir
+      size: 165678507
+      nfiles: 682
+    - path: data/joint-decoder-candidate
+      hash: md5
+      md5: 48af269b9ab3475ed72ea0f7913caa40.dir
+      size: 26593773
+      nfiles: 5
+    - path: model_evaluation/audit_guard_matched_fit_horizons.py
+      hash: md5
+      md5: 21db056a9fce01769bf8f400c97bb55c
+      size: 5363
+    - path: model_evaluation/joint_predictor.py
+      hash: md5
+      md5: 407173f80253cd0116bbd263687fdcc1
+      size: 2458
+    - path: model_evaluation/joint_scorecard.py
+      hash: md5
+      md5: 24b8a6b2e1bdb9170d3595439bb7d950
+      size: 1974
+    - path: model_evaluation/timing_decoder.py
+      hash: md5
+      md5: eca9ecea56ed526eb1d9eb7da1ac8a02
+      size: 6395
+    - path: results/guard-matched-pilot01-analysis.json
+      hash: md5
+      md5: 09c8b0f157bc1c7e67869c4c48661899
+      size: 27516
+    outs:
+    - path: data/guard-matched-fit-horizons
+      hash: md5
+      md5: 15f37b267558ffd261d756028a2f90eb.dir
+      size: 17635970
+      nfiles: 1
+    - path: results/guard-matched-fit-horizons.json
+      hash: md5
+      md5: 59426143a70bcf71a45ffc256277b1f2
+      size: 50962
+  collect_guard_matched_pilot04:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/collect_guard_matched_pilot04.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/collect_guard_matched_pilot04.py
+      hash: md5
+      md5: d10779573370ab852c2db654d4d77d43
+      size: 5947
+    - path: results/guard-matched-pilot04-execution.json
+      hash: md5
+      md5: d8beca0e72b5c84413521d604e6398e8
+      size: 337
+    outs:
+    - path: data/guard-matched-pilot04-results
+      hash: md5
+      md5: 92895d524d3d9205eba1be9516f77999.dir
+      size: 5676
+      nfiles: 1
+    - path: results/guard-matched-pilot04-collected.json
+      hash: md5
+      md5: 6ca64f572121391010a3bb9344cc15ad
+      size: 189
+  close_guard_matched_pilot04:
+    cmd: ../../.venv/bin/python model_evaluation/close_guard_matched_pilot04.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/close_guard_matched_pilot04.py
+      hash: md5
+      md5: e492ada3d0a162dfa5a61e7cf5fa0137
+      size: 1751
+    - path: results/guard-matched-pilot04-collected.json
+      hash: md5
+      md5: 6ca64f572121391010a3bb9344cc15ad
+      size: 189
+    - path: results/guard-matched-pilot04-read-condition.json
+      hash: md5
+      md5: fd7f3a5a191e2321a98768d984f9bf0d
+      size: 362
+    outs:
+    - path: results/guard-matched-pilot04-permission-removed.json
+      hash: md5
+      md5: 5b84116c55d8f30b33f5c30ceaf3775a
+      size: 476
+  reconcile_guard_matched_pilot04:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/reconcile_unallocated_guard_matched04.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: data/guard-matched-pilot04-results
+      hash: md5
+      md5: 92895d524d3d9205eba1be9516f77999.dir
+      size: 5676
+      nfiles: 1
+    - path: model_evaluation/reconcile_unallocated_guard_matched04.py
+      hash: md5
+      md5: 0b20f4d4dabf3a1eeb8e0a6e570b4dd2
+      size: 3935
+    - path: results/guard-matched-pilot04-collected.json
+      hash: md5
+      md5: 6ca64f572121391010a3bb9344cc15ad
+      size: 189
+    - path: results/guard-matched-pilot04-early-scope-stop.json
+      hash: md5
+      md5: 5cc5a8fa482aacb77fc77f21c5ad9f49
+      size: 6748
+    - path: results/guard-matched-pilot04-permission-removed.json
+      hash: md5
+      md5: 5b84116c55d8f30b33f5c30ceaf3775a
+      size: 476
+    outs:
+    - path: results/guard-matched-pilot04-cost-reconciled.json
+      hash: md5
+      md5: 5b0f6214b8f3fc60ee3d5586d5fcfe02
+      size: 67466
+    - path: results/guard-matched-pilot04-no-allocation-proof.json
+      hash: md5
+      md5: 5b0f6214b8f3fc60ee3d5586d5fcfe02
+      size: 67466
+  stop_guard_matched_scope04:
+    cmd: ../../.venv/bin/python model_evaluation/stop_guard_matched_scope04.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/stop_guard_matched_scope04.py
+      hash: md5
+      md5: 113f0fef9141b6f190046526aa934a8c
+      size: 3052
+    - path: results/guard-matched-fit-horizons.json
+      hash: md5
+      md5: 59426143a70bcf71a45ffc256277b1f2
+      size: 50962
+    - path: results/guard-matched-pilot04-execution.json
+      hash: md5
+      md5: d8beca0e72b5c84413521d604e6398e8
+      size: 337
+    outs:
+    - path: results/guard-matched-pilot04-early-scope-stop.json
+      hash: md5
+      md5: 5cc5a8fa482aacb77fc77f21c5ad9f49
+      size: 6748
+  diagnose_canonical_cache_replay:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/diagnose_canonical_cache_replay.py
+    deps:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: data/joint-decoder-candidate
+      hash: md5
+      md5: 48af269b9ab3475ed72ea0f7913caa40.dir
+      size: 26593773
+      nfiles: 5
+    - path: data/joint-rolling-features
+      hash: md5
+      md5: 0b3fd914ec0913529749e026d7f68988.dir
+      size: 449281821
+      nfiles: 3
+    - path: model_evaluation/diagnose_canonical_cache_replay.py
+      hash: md5
+      md5: 1e74ca12024c15491186cab1dbffaacd
+      size: 3735
+    - path: model_evaluation/joint_predictor.py
+      hash: md5
+      md5: 407173f80253cd0116bbd263687fdcc1
+      size: 2458
+    outs:
+    - path: results/canonical-cache-replay-diagnosis.json
+      hash: md5
+      md5: b3319fda641646bbb3008e47e31835d0
+      size: 2236
+  archive_failed_canonical_cache:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/archive_failed_canonical_cache.py
+    deps:
+    - path: model_evaluation/archive_failed_canonical_cache.py
+      hash: md5
+      md5: 4b7429088f0f198c1c4a8cb13225fc12
+      size: 1457
+    - path: results/canonical-cache-replay-diagnosis.json
+      hash: md5
+      md5: b3319fda641646bbb3008e47e31835d0
+      size: 2236
+    outs:
+    - path: data/canonical-feature-cache-attempt01
+      hash: md5
+      md5: 488276afc857bb51ea282cb2501f3079.dir
+      size: 1145671961
+      nfiles: 5
+    - path: results/canonical-cache-attempt01-preserved.json
+      hash: md5
+      md5: e391ba76dfc0573f233e2a0af079d2b3
+      size: 455
+  prepare_canonical_feature_cache:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/prepare_canonical_feature_cache.py
+    deps:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: data/joint-decoder-candidate
+      hash: md5
+      md5: 48af269b9ab3475ed72ea0f7913caa40.dir
+      size: 26593773
+      nfiles: 5
+    - path: data/joint-rolling-features
+      hash: md5
+      md5: 0b3fd914ec0913529749e026d7f68988.dir
+      size: 449281821
+      nfiles: 3
+    - path: model_evaluation/joint_metrics.py
+      hash: md5
+      md5: b81c41dbaa625a353dd0e7730c8baacb
+      size: 5534
+    - path: model_evaluation/joint_predictor.py
+      hash: md5
+      md5: 407173f80253cd0116bbd263687fdcc1
+      size: 2458
+    - path: model_evaluation/prepare_canonical_feature_cache.py
+      hash: md5
+      md5: c356489a95004d958b18719eb8112854
+      size: 8537
+    - path: results/canonical-cache-replay-diagnosis.json
+      hash: md5
+      md5: b3319fda641646bbb3008e47e31835d0
+      size: 2236
+    outs:
+    - path: data/canonical-feature-cache
+      hash: md5
+      md5: a186d811a5625a38562da384f47ad448.dir
+      size: 1145718933
+      nfiles: 8
+    - path: results/canonical-feature-cache-prepared.json
+      hash: md5
+      md5: 10cb582d0f9acfc0704ec03a1477ccca
+      size: 3668
+  validate_canonical_feature_cache:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/validate_canonical_feature_cache.py
+    deps:
+    - path: data/canonical-feature-cache
+      hash: md5
+      md5: a186d811a5625a38562da384f47ad448.dir
+      size: 1145718933
+      nfiles: 8
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: data/joint-decoder-candidate
+      hash: md5
+      md5: 48af269b9ab3475ed72ea0f7913caa40.dir
+      size: 26593773
+      nfiles: 5
+    - path: model_evaluation/joint_predictor.py
+      hash: md5
+      md5: 407173f80253cd0116bbd263687fdcc1
+      size: 2458
+    - path: model_evaluation/validate_canonical_feature_cache.py
+      hash: md5
+      md5: ceb60de53b1067c18139747311ac0eb9
+      size: 4426
+    - path: results/canonical-feature-cache-prepared.json
+      hash: md5
+      md5: 10cb582d0f9acfc0704ec03a1477ccca
+      size: 3668
+    - path: results/guard-matched-fit-horizons.json
+      hash: md5
+      md5: 59426143a70bcf71a45ffc256277b1f2
+      size: 50962
+    outs:
+    - path: results/canonical-feature-cache-preflight.json
+      hash: md5
+      md5: ba99fd19f43a688c790a49b965e0a790
+      size: 6710
+  validate_canonical_data:
+    cmd: ../../.venv/bin/python model_evaluation/validate_canonical_data.py
+    deps:
+    - path: data/canonical-feature-cache
+      hash: md5
+      md5: a186d811a5625a38562da384f47ad448.dir
+      size: 1145718933
+      nfiles: 8
+    - path: data/guard-matched-pilot01
+      hash: md5
+      md5: 808afed87c4ef8ad96d201fb62250b03.dir
+      size: 952113294
+      nfiles: 39
+    - path: model_evaluation/canonical_data.py
+      hash: md5
+      md5: 6b9e752842cb681946fa9889f611f3ff
+      size: 4841
+    - path: model_evaluation/context_data.py
+      hash: md5
+      md5: 8ce74789ced18b580f382cfea7fa49cb
+      size: 1019
+    - path: model_evaluation/guard_matched_data.py
+      hash: md5
+      md5: 41f299a94cc8bb434751b30d39162ee4
+      size: 1370
+    - path: model_evaluation/joint_data.py
+      hash: md5
+      md5: 53a76769c3541324d4baafa483a4be02
+      size: 6229
+    - path: model_evaluation/timing_decoder.py
+      hash: md5
+      md5: eca9ecea56ed526eb1d9eb7da1ac8a02
+      size: 6395
+    - path: model_evaluation/validate_canonical_data.py
+      hash: md5
+      md5: 90c8456c649c8c92ed08c126e8a41ca4
+      size: 3147
+    - path: results/canonical-feature-cache-preflight.json
+      hash: md5
+      md5: ba99fd19f43a688c790a49b965e0a790
+      size: 6710
+    outs:
+    - path: results/canonical-data-preflight.json
+      hash: md5
+      md5: fc2cc28f495fb0ddfe9803a2c1ce4013
+      size: 870
+  validate_canonical_metrics:
+    cmd: ../../.venv/bin/python model_evaluation/validate_canonical_metrics.py
+    deps:
+    - path: data/canonical-feature-cache
+      hash: md5
+      md5: a186d811a5625a38562da384f47ad448.dir
+      size: 1145718933
+      nfiles: 8
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: data/guard-matched-pilot01
+      hash: md5
+      md5: 808afed87c4ef8ad96d201fb62250b03.dir
+      size: 952113294
+      nfiles: 39
+    - path: data/guard-matched-pilot01-results
+      hash: md5
+      md5: 35202beb02170f9996a470f95bfb6e0c.dir
+      size: 165678507
+      nfiles: 682
+    - path: model_evaluation/canonical_data.py
+      hash: md5
+      md5: 6b9e752842cb681946fa9889f611f3ff
+      size: 4841
+    - path: model_evaluation/canonical_metrics.py
+      hash: md5
+      md5: e518b24cd9f981a404d98f8bd7045deb
+      size: 2474
+    - path: model_evaluation/joint_metrics.py
+      hash: md5
+      md5: b81c41dbaa625a353dd0e7730c8baacb
+      size: 5534
+    - path: model_evaluation/joint_predictor.py
+      hash: md5
+      md5: 407173f80253cd0116bbd263687fdcc1
+      size: 2458
+    - path: model_evaluation/joint_scorecard.py
+      hash: md5
+      md5: 24b8a6b2e1bdb9170d3595439bb7d950
+      size: 1974
+    - path: model_evaluation/validate_canonical_metrics.py
+      hash: md5
+      md5: 85f4a534a87bc42dbac2d104466d612d
+      size: 5291
+    - path: results/canonical-feature-cache-preflight.json
+      hash: md5
+      md5: ba99fd19f43a688c790a49b965e0a790
+      size: 6710
+    outs:
+    - path: results/canonical-metrics-preflight.json
+      hash: md5
+      md5: e3bdc58e0ca32d8f89f688589875b490
+      size: 2633

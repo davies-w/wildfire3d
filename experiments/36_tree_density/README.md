@@ -492,3 +492,76 @@ or reservation. Supported hardware is not guaranteed available capacity.
 Previous checkpoints/selection rules, unchanged acceptance thresholds, development
 confirmation limitations, simplified FDS assumptions and no-auto-retry policy remain.
 No prediction improvement is established by these infrastructure-only attempts.
+
+### Full stride-one fit audit exposes missing horizon coverage
+
+All1332 decoder-fit histories/1306 configurations were evaluated at every valid
+origin for windows1,4,8,16,45steps (nominal2,8,16,32,90s). Actual durations and all
+four ScorecardV1 phase counts/errors are retained in guard-matched-fit-horizons.json.
+No confirmation or original-test score was used. Original GRU, frozen context230
+plus zero timing residual, and selected unaccepted balanced-tail290 were compared
+through the actual observed-prefix inference interface, with no optimizer updates.
+
+Relative to raw GRU, selected heating MAE ratios are1.50374,1.27470,0.98183,0.85676,
+1.24857 across those five horizons. At45steps water is1.19041 and gas1.08948.
+The initial context correction already has heating ratio1.11491 at1step, but its
+45step water ratio0.68773 becomes1.19041 after residual fitting. Thus the fitted
+correction helps some trained regimes but regresses on other fit horizons. This
+is evidence of a coverage/selection blind spot, not proof that longer training
+would inevitably fail or of a unique causal mechanism. Existing pilot checks
+covered full origin0 and exact stitched rolling16 display, not these all-origin
+canonical horizons. Passing that narrower pilot could not establish the full goal.
+
+Pilot04 was therefore cancelled while still SCHEDULED with0s runtime and no VMs.
+All available job metadata is preserved; jobs/VMs/disks and its exact temporary
+grant are removed. Full insert audit found no successful allocation, so its unused
+compute reservation was released; shared charges remain project-level. No new
+model result is attributed to this stopped run.
+
+Next work adds training coverage and explicit checkpoint guards for every canonical
+horizon at stride1, while retaining all existing gallery improvement/safety gates.
+The prepared canonical cache is frozen-GRU inference, not fitted head output;
+only1872 fit/selection/development-confirmation histories are included and original
+208test histories are excluded. No future target states enter the forecast, and
+normalization uses decoder-fit only. Same simplified crown/mesh/ignition/no-embers
+FDS scope and signed-heating/sampled-gas/derived-mass interpretations apply.
+
+### Canonical training inputs and additive selection guards implemented, not fitted
+
+Canonical features cover all1872 development-role histories,90possible origins
+and3060real stored steps per history. Windows1/4/8/16/45steps have90/87/83/75/46
+valid stride1 starts. Original208test histories are absent. Fit normalization
+uses only1332 histories/1306 configurations and matches the independently computed
+all-origin baseline at every horizon. Fresh first/middle/last origin replays pass,
+including late origins75..89 missing from the oldrolling16cache.
+
+The first cache attempt stopped because19 feature values in9histories at origin1
+exceeded the old3e-6absolute tolerance. It is preserved with exact source/partial
+arrays. Independent frozen-worker prefix functions match the small-batch forecast
+exactly; the oldcache itself differs by up to3.59e-5feature units on those cases.
+All75 common origins were then checked under explicit numerical bounds: maximum
+feature difference1.7256e-5, state differences[2.29e-5kg,7.63e-5kg,7.63e-6kg/s,
+1.526e-4heating-index]. Worst configuration-weighted fit mean difference across
+origins/states is2.974e-5of baselineMAE, about0.003%. These are cache-comparison
+bounds, not relaxed model acceptance requirements. No optimizer ran.
+
+New canonical training batches decode each actual requested length, with no fake
+padding; origins must be valid and onlyfit IDs may create derivatives. Uniform
+fit-history/horizon/valid-origin draws, inverse configuration replica weights and
+Nfit/Nconfiguration scaling estimate equal-configuration/equal-horizon normalized
+endpoint MAE. Window/target/boundary and finite derivative checks pass without
+parameter updates. Selection/confirmation gradient access is blocked.
+
+Canonical metrics retain all four phase tables and match independent observed-
+prefix evaluation at every valid origin on16fit histories. Prospective selection
+adds a5%overall MAE nonharm guard for every state at every canonical horizon,
+plus finite predictions. All original10%gallery/state/startup improvements and
+other acceptance checks/ranking are retained exactly. Synthetic fixtures show
+each of20single-state/horizon violations rejects an otherwise passing row and
+keeps raw fallback. Phase tables are reported, not silently treated as empty passes.
+No new fitted model, independent test result, or deployable repair exists yet.
+
+Normalization distinction: only the new canonical loss normalization is decoder-fit
+only. Frozen GRU/state/feature normalization retains the older TRAIN-based values,
+which include decoder-selection histories. This remains development head selection,
+not an independent complete-pipeline holdout. The original test is still excluded.

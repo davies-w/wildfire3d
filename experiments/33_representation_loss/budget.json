@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 72.6,
+  "reserved_usd": 71.6,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -3317,12 +3317,19 @@
       }
     },
     "density36-guard-matched-pilot04": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 1.0,
       "reserved_unix": 1793204768.1023622,
       "scope": "Authorized bounded four-output decoder repair, max1.00USD, no automatic retries",
       "workflow": "fds-gpu36-guardmatch04",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-guardmatch04/executions/d7a3f292-4087-4fe9-b057-2e60337334b6"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-guardmatch04/executions/d7a3f292-4087-4fe9-b057-2e60337334b6",
+      "historical_allowance_usd": 1.0,
+      "terminal_evidence": "experiments/36_tree_density/results/guard-matched-pilot04-cost-reconciled.json",
+      "cost": {
+        "stage": "verified_no_vm_allocation",
+        "usd": 0,
+        "scope": "Zero VM compute allocated; shared workflow/storage charges remain project-level. Not a zero invoice claim."
+      }
     }
   },
   "recycle_reservations": true,

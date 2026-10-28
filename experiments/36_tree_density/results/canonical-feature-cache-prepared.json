@@ -1,0 +1,80 @@
+{
+  "prepared": true,
+  "optimizer_updates": 0,
+  "base_parameters_unchanged": true,
+  "histories": 1872,
+  "fit_histories": 1332,
+  "original_test_excluded": true,
+  "max_steps_per_origin": 45,
+  "origins": 90,
+  "stored_steps_per_history": 3060,
+  "horizons_steps": [
+    1,
+    4,
+    8,
+    16,
+    45
+  ],
+  "valid_stride_one_origins": {
+    "1": 90,
+    "4": 87,
+    "8": 83,
+    "16": 75,
+    "45": 46
+  },
+  "role_plan_sha256": "cd6692268c5aa99a02b06524b5c9602983413469512b05676137799d25fb6734",
+  "source_sha256": {
+    "data/exposure-pilot02/data/initial.pt": "f496262454176fb66264acf5a7ca49ff253bbd52584ccc8ce722da7b028a8048",
+    "data/exposure-pilot02/data/sequences.npz": "a2768dbaeae247c63780e13de59726fde7f0f5818a93294dafaf3f777b54484f",
+    "data/joint-decoder-candidate/candidate-plan.json": "cd6692268c5aa99a02b06524b5c9602983413469512b05676137799d25fb6734",
+    "data/joint-decoder-candidate/features.npz": "e814d2791e932a0b3466139544a43eb3ee18bdb8ecf529711a1f054a3f5de78b",
+    "model_evaluation/joint_predictor.py": "61251fe4fdf1b9a8a0c0203c7d51abb3826f89d3ac3e1e4e0cfbdd7ddcd3f6e6",
+    "model_evaluation/prepare_canonical_feature_cache.py": "ea0cecd334945c24c730dac45bd214157fd30709dbe5df940dcdc06ad11ae55e",
+    "results/canonical-cache-replay-diagnosis.json": "d97f0aad50c8a1de40cdd78059f45d7f3784f7cf6154d794cf5d1dd840448e4b"
+  },
+  "files": {
+    "features.npy": {
+      "sha256": "d3a69aaf3aa52f47790216225eaa8be1ce7e238c9e056332fbe7541c92f9592e",
+      "bytes": 1054011008
+    },
+    "base-states.npy": {
+      "sha256": "a9c8cee322f2daed02223f38f12874142f3cede936e65dbc5dd668314d3f0859",
+      "bytes": 91653248
+    },
+    "offsets.npy": {
+      "sha256": "ca85a712cf9cdace87271fd0e5645012a3bf131791aefe3037a4d2c2715f1fc2",
+      "bytes": 856
+    },
+    "lengths.npy": {
+      "sha256": "8741238828f36aa7e14f19024d562767dc7df07039521ebb41d5bd446ba8d17f",
+      "bytes": 848
+    },
+    "source-ids.npy": {
+      "sha256": "07fb855bbb24b0176bfe6f6552ecb8d54742ba46887504cc732b0d5ef2e099c6",
+      "bytes": 15104
+    },
+    "fit-normalization.json": {
+      "sha256": "b577fa6ad6a32276bf8504f306effc2ca3f695ae8c417fd778f741c03cf9590b",
+      "bytes": 1200
+    }
+  },
+  "prior_rolling_cache_agreement": {
+    "all1872_histories_all75_origins_checked": true,
+    "max_feature_absolute_error": 1.7255544662475586e-05,
+    "max_state_absolute_error": [
+      2.288818359375e-05,
+      7.62939453125e-05,
+      7.62939453125e-06,
+      0.000152587890625
+    ],
+    "maximum_fit_mean_difference_relative_to_fit16_MAE": [
+      5.6641229093656875e-06,
+      6.253383617149666e-06,
+      2.9731003451161087e-05,
+      1.1238913430133834e-05
+    ],
+    "comparison_policy": "Feature rtol/atol1e-4; state rtol1e-4 with per-state absolute limits1e-4kg/2e-4kg/2e-5kg_s/1e-3heating_index. Every origin configuration-weighted fit mean state difference must be<=0.1percent of fit16baselineMAE. Based on independent prefix/batch-layout diagnosis; no model acceptance gate changed."
+  },
+  "normalization_fit_only": true,
+  "scope": "Frozen original GRU observed-prefix forecasts only. Canonical windows1/4/8/16/45steps include every valid stride-one origin, with no artificial padding passed to the predictor. Fit/selection/development-confirmation roles unchanged; original208test histories absent. Preparing confirmation features is not confirmation scoring. Saved time grid/geometry/imposed20second ignition are known simulation inputs; no future target states enter forecast features. Same generic conical-crown FDS simplifications and derived-mass/sampled-release/signed-heating interpretations apply. No new fitting, accuracy claim or deployment."
+}

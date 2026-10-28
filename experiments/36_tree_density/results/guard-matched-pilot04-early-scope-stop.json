@@ -1,0 +1,131 @@
+{
+  "checked_utc": "2026-10-28T16:32:34.379974+00:00",
+  "execution_before": {
+    "argument": "null",
+    "createTime": "2026-10-28T16:27:27.769319442Z",
+    "name": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-guardmatch04/executions/d7a3f292-4087-4fe9-b057-2e60337334b6",
+    "startTime": "2026-10-28T16:27:27.769319442Z",
+    "state": "ACTIVE",
+    "status": {
+      "currentSteps": [
+        {
+          "routine": "main",
+          "step": "wait"
+        }
+      ]
+    },
+    "workflowRevisionId": "000001-d47"
+  },
+  "job_before_deletion": {
+    "allocationPolicy": {
+      "instances": [
+        {
+          "installGpuDrivers": true,
+          "policy": {
+            "bootDisk": {
+              "sizeGb": "60",
+              "type": "pd-balanced"
+            },
+            "machineType": "g2-standard-4",
+            "provisioningModel": "STANDARD"
+          }
+        }
+      ],
+      "labels": {
+        "batch-job-id": "fds-gpu36-guardmatch04",
+        "trial_id": "gpu36-guardmatch04"
+      },
+      "location": {
+        "allowedLocations": [
+          "regions/us-east4",
+          "zones/us-east4-c"
+        ]
+      },
+      "network": {
+        "networkInterfaces": [
+          {
+            "network": "projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+            "subnetwork": "projects/tmrw-wildfire-20261015/regions/us-east4/subnetworks/fds-timing-east4"
+          }
+        ]
+      },
+      "serviceAccount": {
+        "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com"
+      }
+    },
+    "createTime": "2026-10-28T16:27:28.228476175Z",
+    "labels": {
+      "trial_id": "gpu36-guardmatch04"
+    },
+    "logsPolicy": {
+      "destination": "CLOUD_LOGGING"
+    },
+    "name": "projects/tmrw-wildfire-20261015/locations/us-east4/jobs/fds-gpu36-guardmatch04",
+    "status": {
+      "runDuration": "0s",
+      "state": "SCHEDULED",
+      "statusEvents": [
+        {
+          "description": "Job state is set from QUEUED to SCHEDULED for job projects/587909259768/locations/us-east4/jobs/fds-gpu36-guardmatch04.",
+          "eventTime": "2026-10-28T16:27:31.762341995Z",
+          "type": "STATUS_CHANGED"
+        },
+        {
+          "description": "VM in Managed Instance Group meets error: Batch Error: code - CODE_GCE_ZONE_RESOURCE_POOL_EXHAUSTED, description - error count is 4, latest message example: Instance 'fds-gpu36-guardmat-439ff672-7563-433b0-group0-0-vv1t' creation failed: The zone 'projects/tmrw-wildfire-20261015/zones/us-east4-c' does not have enough resources available to fulfill the request.  'NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)'.",
+          "eventTime": "2026-10-28T16:32:05.630Z",
+          "type": "OPERATIONAL_INFO"
+        }
+      ],
+      "taskGroups": {
+        "group0": {
+          "counts": {
+            "PENDING": "1"
+          },
+          "instances": [
+            {
+              "bootDisk": {
+                "image": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261016-00-p00",
+                "sizeGb": "60",
+                "type": "pd-balanced"
+              },
+              "machineType": "g2-standard-4",
+              "provisioningModel": "STANDARD",
+              "taskPack": "1"
+            }
+          ]
+        }
+      }
+    },
+    "taskGroups": [
+      {
+        "name": "projects/587909259768/locations/us-east4/jobs/fds-gpu36-guardmatch04/taskGroups/group0",
+        "parallelism": "1",
+        "taskCount": "1",
+        "taskCountPerNode": "1",
+        "taskSpec": {
+          "computeResource": {
+            "cpuMilli": "4000",
+            "memoryMib": "12000"
+          },
+          "maxRunDuration": "1680s",
+          "runnables": [
+            {
+              "container": {
+                "commands": [
+                  "-c",
+                  "import base64;exec(compile(base64.b64decode('aW1wb3J0IHBhdGhsaWIsc3lzLHJ1bnB5LHVybGxpYi5yZXF1ZXN0LHVybGxpYi5wYXJzZSxqc29uLHRhcmZpbGUsc2h1dGlsLGhhc2hsaWIKcD1wYXRobGliLlBhdGgoJy90bXAvc3R1ZHknKTtwLm1rZGlyKGV4aXN0X29rPVRydWUpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pO3Rva2VuPWpzb24ubG9hZCh1cmxsaWIucmVxdWVzdC51cmxvcGVuKHIsdGltZW91dD0yMCkpWydhY2Nlc3NfdG9rZW4nXQp1PSdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vc3RvcmFnZS92MS9iL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvby8nK3VybGxpYi5wYXJzZS5xdW90ZSgnZGVuc2l0eTM2L2d1YXJkLW1hdGNoZWQtcGlsb3QwNC9pbnB1dHMudGFyJyxzYWZlPScnKSsnP2FsdD1tZWRpYScKd2l0aCB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QodSxoZWFkZXJzPXsnQXV0aG9yaXphdGlvbic6J0JlYXJlciAnK3Rva2VufSksdGltZW91dD0xODApIGFzIHNyYywocC8ndHJhbnNmZXIudGFyJykub3Blbignd2InKSBhcyBkc3Q6c2h1dGlsLmNvcHlmaWxlb2JqKHNyYyxkc3QpCndpdGggdGFyZmlsZS5vcGVuKHAvJ3RyYW5zZmVyLnRhcicpIGFzIHRhcjoKIGZvciBtIGluIHRhci5nZXRtZW1iZXJzKCk6YXNzZXJ0IG5vdCBtLm5hbWUuc3RhcnRzd2l0aCgnLycpIGFuZCAnLi4nIG5vdCBpbiBwYXRobGliLlBhdGgobS5uYW1lKS5wYXJ0cyBhbmQgbm90IG0uaXNzeW0oKSBhbmQgbm90IG0uaXNsbmsoKQogdGFyLmV4dHJhY3RhbGwocCkKZm9yIG4saCBpbiBqc29uLmxvYWRzKChwLydoYXNoZXMuanNvbicpLnJlYWRfdGV4dCgpKS5pdGVtcygpOmFzc2VydCBoYXNobGliLnNoYTI1NigocC9uKS5yZWFkX2J5dGVzKCkpLmhleGRpZ2VzdCgpPT1oCihwLydyZXN1bHRzJykubWtkaXIoZXhpc3Rfb2s9VHJ1ZSk7c3lzLnBhdGguaW5zZXJ0KDAsc3RyKHApKTsKdHJ5OgogZnJvbSBydW50aW1lIGltcG9ydCB1cGxvYWQsb2JqZWN0X21ldGFkYXRhLG1hdGNoZXMKIHByb2JlPWInZGVuc2l0eTM2LXByZWZsaWdodC11cGxvYWQtdmVyaWZpY2F0aW9uLXByb2JlJzt1cGxvYWQoJ3VwbG9hZC1wcm9iZS5iaW4nLHByb2JlKTthc3NlcnQgbWF0Y2hlcyhvYmplY3RfbWV0YWRhdGEoJ3VwbG9hZC1wcm9iZS5iaW4nKSxwcm9iZSk7dXBsb2FkKCd1cGxvYWQtcHJvYmUuYmluJyxwcm9iZSkKIHVwbG9hZCgndHJhbnNwb3J0LWNsb3VkLWNoZWNrLmpzb24nLGpzb24uZHVtcHMoeydwYXNzZWQnOlRydWUsJ3ZlcmlmaWVkX21ldGFkYXRhJzpUcnVlLCdpZGVtcG90ZW50X3JlcGxheSc6VHJ1ZX0pLmVuY29kZSgpKQogcnVucHkucnVuX3BhdGgoc3RyKHAvJ3dvcmtlci5weScpLHJ1bl9uYW1lPSdfX21haW5fXycpCmV4Y2VwdCBCYXNlRXhjZXB0aW9uOgogaW1wb3J0IHRyYWNlYmFjawogZnJvbSBydW50aW1lIGltcG9ydCB1cGxvYWQKIHVwbG9hZCgnYm9vdHN0cmFwLWVycm9yLnR4dCcsdHJhY2ViYWNrLmZvcm1hdF9leGMoKS5lbmNvZGUoKSk7cmFpc2UK'),'bootstrap','exec'))"
+                ],
+                "entrypoint": "python",
+                "imageUri": "pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime",
+                "options": "--shm-size=1g"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "uid": "fds-gpu36-guardmat-439ff672-7563-433b0",
+    "updateTime": "2026-10-28T16:32:05.630Z"
+  },
+  "reason": "Fit-only all-origin canonical audit exposes substantial short/long horizon regressions under this unchanged objective. Stop the pending longer fit so training/selection can cover the full requested forecast scope. This is not a claim about untrained600epoch outcomes."
+}
