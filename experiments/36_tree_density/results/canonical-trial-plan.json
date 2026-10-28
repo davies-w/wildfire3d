@@ -1,0 +1,168 @@
+{
+  "fit_gas_peak_summary_kg_s": {
+    "minimum": 0.03217140585184097,
+    "p10": 0.1990148425102234,
+    "median": 1.074454665184021,
+    "zero_histories": 0,
+    "below_001_histories": 0
+  },
+  "status": "protocol_prepared_not_launched",
+  "implementation_status": "Combined canonical loss/scorer validated locally without optimizer updates; actual CUDA restore/fitting still pending.",
+  "trial_identity": {
+    "workflow": "fds-gpu36-canonical01",
+    "label": "gpu36-canonical01",
+    "prefix": "density36/canonical-pilot01/",
+    "reservation_key": "density36-canonical-pilot01"
+  },
+  "candidate": "frozen_gated_GRU_plus_four_independent_output_heads",
+  "arms": [
+    "canonical_half",
+    "canonical_full"
+  ],
+  "parameters_per_arm": 10628,
+  "seed": 3640,
+  "base_checkpoint_sha256": "f496262454176fb66264acf5a7ca49ff253bbd52584ccc8ce722da7b028a8048",
+  "initial_decoder_sha256": "ccc91468ccddcd8c49a7e226da78f178664c1015bac7a871b6c346f9d76c3e74",
+  "rolling_manifest_sha256": "bddfca962e8d2a1c6c55afbf719920a31420eb350709f724cba53da3d69fe851",
+  "source_hashes": {
+    "timing_decoder.py": "2c5116a92d276007232934bb42de03cef5ecdd4e2b276f56cb0268f25a8658be",
+    "context_data.py": "ba6edfc910f8b0652ea4589390d909c099d488241d4ed3204413b1c3cff959a4",
+    "context_objective.py": "02107e980f76fb8ba47e354fd6e561b772e9c9e33f80ad6227ba6ff361380f8a",
+    "guard_matched_data.py": "94f6ee23efd2ae27138a0e72f24d9cd98a855a755670564568d8a3c070bc7863",
+    "guard_matched_objective.py": "e952b6ec20453c3e03723cf00baa447a0feefe3a3e0cf9da593a8ca6be6ef39d",
+    "canonical_worker.py": "ca53d54d68369c747c336a6ac46477cd47f05872986ce316d349cbbbec620102",
+    "canonical_data.py": "f4d376c63bedb90e52afe461858383877fdaf0384c9048965abe48ebf3493991",
+    "canonical_metrics.py": "e24d2d42cbc05df1814097d6e41b1e8a1dd178505e3b15ad9759e4a4ec395090",
+    "canonical_objective.py": "342bfd2fade72c57bd6c3e465ab543220e27a9856426c62c0cf1af89cc677719"
+  },
+  "partitions": {
+    "fit": {
+      "histories": 1332,
+      "configurations": 1306
+    },
+    "selection": {
+      "histories": 330,
+      "configurations": 326
+    },
+    "confirmation": {
+      "histories": 210,
+      "configurations": 204
+    }
+  },
+  "partition_limitation": "Frozen GRU was previously trained on both decoder-fit and decoder-selection, and fixed feature/state normalization uses former TRAIN. Selection is therefore head-level transfer selection, not an end-to-end independent GRU holdout. Confirmation excludes GRU/head training and current head checkpoint selection, but its outcomes were examined in earlier development experiments and are not pristine. The base GRU checkpoint was itself selected on this former validation set; this is not an untouched complete-pipeline holdout.",
+  "training": {
+    "device": "Cloud CUDA only; no local optimizer",
+    "epochs_per_arm": 600,
+    "batch_histories": 128,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1,
+    "case_order": "Matched deterministic fit-history permutations and origin choices, seed3640+epoch, identical to timing06; inverse configuration replica weights and fixed role grouping retained.",
+    "origin_mix": "For each fit history each epoch, deterministic independent50%choice of full-origin0trajectory90steps or rolling16trajectory with origin uniform0..74. Same choices/permutation across arms. Decode each real forecast length before concatenating/padding prediction tensors for the joint loss; never evaluate a decoder on artificial feature padding. Use strict valid masks and length normalization; padded values must not affect loss.",
+    "state_loss": "Same four-state physical MAE25percent autonomous/75percent exact display and pointwise encoded nonharm; replace only quiet pointwise penalty with a configuration-weighted aggregate-delta estimator.",
+    "extras": "Both arms retain matched aggregate quiet training, balanced under/over0.3/0.15, peak0.05, sampling0.1 and encoded nonharm0.25. Add canonical normalized physical endpoint MAE with weight0.5 or1.0; model architecture/initialization unchanged.",
+    "sampling_residual": "Compare predicted minus TRUE trajectory residual: trapezoid(endpoint gas)/0.75 minus predicted dry-mass loss. Normalize by initial dry mass. Target residual is not forced zero because endpoint samples and cumulative labels differ.",
+    "initial_states": "Both arms share seed3640fresh timing residual10628trainable parameters over frozen context01physical_primary230weights3396parameters. New zero residual initially reproduces that guarded but unaccepted model, not rawGRU. Include rawGRU epoch-1 fallback separately. Fresh AdamW for new parameters only; this is not restoration of the old optimizer.",
+    "resume": "Actual CUDA serialized CPU-mapped restore must reproduce the next combined update with nonempty Adam moments. Every epoch/partial checkpoint retains model, optimizer, full RNG, epoch/cursor, permutation, original origin choices AND canonical horizon/origin choices, metric history and selection state. No automatic retry.",
+    "selection_evaluation_every_epochs": 10,
+    "canonical_draws": "For every fit history/update draw a canonical horizon uniformly from1/4/8/16/45steps and origin uniformly over0..90-h; matched across arms. Every10epochs score all valid origins at all five horizons. Decode true lengths without fake padding. Fit-only physical error normalizers; inverse configuration replica weights timesNfit/Nconfig make the linear canonical estimator unbiased."
+  },
+  "evaluation": {
+    "comparators": [
+      "raw_GRU",
+      "each_arm_initial_context230_plus_zero_timing_residual",
+      "origin_state_no_change"
+    ],
+    "phase_reporting": "Use existing ScorecardV1 phase definitions and report numerators/denominators for evaluated forecasts, including weak/transition cases. Primary rolling16steps is approximately32seconds, not the canonical16-second headline. Full canonical scorecard/all-horizon replay is still required after an accepted candidate. No-change is a diagnostic comparator in both regimes.",
+    "regimes": [
+      "full_autonomous_origin0_90steps",
+      "exact_gallery_first15autonomous_then_rolling16_origins0to74"
+    ],
+    "head_selection": "Use only326configuration/330history decoder-selection role for checkpoint/winner selection. GRU was trained on that role, so this is head-level development selection. Never inspect confirmation metrics mid-run.",
+    "eligible": "All original eligibility checks PLUS finite canonical forecasts and<=5percent overall MAE increase for each state at every canonical horizon. Raw fallback remains explicit. Initial context can fail the new guard.",
+    "checkpoint_rule": "Use selection only. Require all original acceptance gates plus additive canonical checks, retaining original display-first rank and earlier-epoch tie. If none passes, best jointly guarded exploratory row or raw fallback; never call fallback accepted.",
+    "winner_rule": "Only jointly selection-accepted arms eligible; same original rank with stable canonical_half-before-canonical_full tie. Freeze both selections/winner before previously examined development confirmation; do not switch using confirmation.",
+    "confirmation": "Only after selection-freeze artifact is saved, evaluate raw baseline, both untrained arms and both selected arms on210histories/204configurations from former validation. Judge only the already frozen winner; do not switch winner using confirmation results. This set influenced older experiments and base checkpoint selection, so report development confirmation, not pristine independent generalization.",
+    "test": "Original test features/evaluation excluded from this trial. If confirmation passes, a separately frozen inference/gallery replay is still required before declaring the known displayed prediction problem repaired."
+  },
+  "acceptance": {
+    "display_each_state_MAE_relative_reduction_at_least": 0.1,
+    "display_startup_gas_p90_relative_reduction_at_least": 0.1,
+    "display_gas_peak_amplitude_MAE_relative_reduction_at_least": 0.05,
+    "display_original_objective_relative_increase_at_most": 0.05,
+    "full_autonomous_startup_gas_p90_relative_reduction_at_least": 0.1,
+    "full_autonomous_peak_amplitude_MAE_relative_reduction_at_least": 0.05,
+    "full_autonomous_original_objective_relative_increase_at_most": 0.05,
+    "full_autonomous_each_state_MAE_relative_increase_at_most": 0.05,
+    "quiet_state_increase_at_most_in_physical_encoding_scale": 0.001,
+    "full_autonomous_integral_peak_time_consistency_overprediction_tail_relative_increase_at_most": 0.05,
+    "finite": true,
+    "invalid_state_reporting": "Report negatives, initial-mass exceedances and increases within each individual forecast. Stitched display jumps are forecast revisions. Tiny negative observed water is explicitly projected only in interval decoding. Heating index stays signed."
+  },
+  "budget_plan": {
+    "maximum_allowance_usd": 1.3,
+    "maximum_rate_bound_usd_per_hour": 1.2,
+    "vm_creation_age_cap_s": 2850,
+    "shutdown_margin_s": 300,
+    "task_cap_s": 2730,
+    "training_soft_cap_s": 2610,
+    "queue_cap_s": 900,
+    "workflow_cap_s": 3600,
+    "max_task_retries": 0,
+    "scope": "One concurrent standard L4 under global GPUquota1. Whole3600second workflow plus300second cleanup at1.20USD/hour is1.30USD; shared charges retained project-level. No automatic task retry. All prior reservations including Flex40USD untouched."
+  },
+  "scope": "Development comparison of canonical endpoint-loss weights0.5/1.0 on the same frozen GRU/context and timing residual. Existing full/autonomous/exact-gallery requirements retained, with every valid stride-one origin at1/4/8/16/45steps covered by training draws and selection/confirmation scoring. All original acceptance gates unchanged; additive5percent canonical state nonharm/finite guards. Both arms use balanced startup risk weights0.3/0.15. New loss normalization is fit-only; frozen older TRAIN-based base/feature normalization includes decoder-selection, so this is development transfer selection. Confirmation was previously examined and original test remains excluded. Same generic3m-diameter conical crowns4/6/8/10m high above2m base,1600weighted particles,0.5m mesh24x16x16m, imposed1500C contact ignition20s,180s histories near2s. No trunks/buildings/embers, convergence or real-material validation. Masses derived, gas sampled release not HRR, heating signed index not energy. Corrected outputs do not feed back to GRU. No fitted accuracy/deployment claim.",
+  "prior_attempt": {
+    "workflow": "fds-gpu36-guardmatch04",
+    "result": "Cancelled pending with no VM allocation after full-fit stride-one audit exposed short/long horizon regressions. Canonical training and selection coverage added; not a placement-only retry."
+  },
+  "frozen_context_parameters": 3396,
+  "warm_checkpoint_sha256": "a61f0202c7ad4ae4ea90b2fa0c613ead67a29b15c0c3085e23711644673d78f7",
+  "risk_coefficients": {
+    "canonical_half": {
+      "under_tail": 0.3,
+      "over_tail": 0.15
+    },
+    "canonical_full": {
+      "under_tail": 0.3,
+      "over_tail": 0.15
+    }
+  },
+  "quiet_objective": {
+    "Q": "Number of label0 target points over the fit history90targets; fit targets only, never a predictor input.",
+    "w": "Inverse number of quiet-eligible fit replicas of the configuration;0 if Q=0.",
+    "normalization": "N_fit / N_quiet_configurations; use batch mean of weighted contributions.",
+    "delta": "absolute(candidate-truth) minus absolute(raw-baseline-truth), per state.",
+    "autonomous_contribution": "full branch:2 * sum_quiet_90(delta)/Q; rolling branch:0.",
+    "display_contribution": "full branch:2 * sum_quiet_first15(delta)/Q; rolling branch:150 * delta_at_endpoint16 * is_quiet(endpoint16)/Q.",
+    "expectation": "50percent full /50percent uniformly sampled rolling origins0..74 gives exact configuration-weighted autonomous/display quiet MAE deltas before the nonlinear penalty.",
+    "penalty": "Mean across states of the average of log1p(relu(estimated_delta -0.001*physical_scale)/(0.001*physical_scale)) for autonomous and display.",
+    "limitation": "Minibatch estimates are unbiased before the nonlinear hinge/log, not an unbiased penalty or a guarantee. Hard prospective quiet/other acceptance checks remain unchanged."
+  },
+  "extension_evidence_sha256": "22f60cacda05720134e70a0b46cb89cb8e09b73ef46e3d9c807992560bf3e5fa",
+  "placement": {
+    "region": "us-east4",
+    "zone": "us-east4-c",
+    "change": "Placement only; all600epoch scientific settings and deadlines unchanged. G2-standard-4/L4 support verified from live catalog; launch must re-describe exact machine type. Capacity still not guaranteed."
+  },
+  "placement_support_sha256": "91692fc9ed1ddb393d2e9573762f0b480af1bb0344d10bf64c0d6af862f3e014",
+  "canonical_loss_coefficients": {
+    "canonical_half": 0.5,
+    "canonical_full": 1.0
+  },
+  "canonical_acceptance": {
+    "overall_each_state_relative_increase_at_most": 0.05,
+    "horizons_steps": [
+      1,
+      4,
+      8,
+      16,
+      45
+    ],
+    "origins": "All valid stride-one origins90/87/83/75/46",
+    "finite": true,
+    "phase_reporting": "Report all four ScorecardV1 phase tables and actual durations; phase-specific changes require review, not hidden empty passes."
+  },
+  "canonical_cache_manifest_sha256": "afe4e33a8db2a106543e5f82d007f6d8cfc716eac8bbde939df985fcd8c683d0"
+}

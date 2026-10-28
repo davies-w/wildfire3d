@@ -3884,3 +3884,168 @@ stages:
     metrics:
     - results/canonical-metrics-preflight.json:
         cache: false
+  prepare_canonical_trial_plan:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_canonical_trial_plan.py
+    deps:
+    - model_evaluation/prepare_canonical_trial_plan.py
+    - model_evaluation/canonical_worker.py
+    - model_evaluation/canonical_data.py
+    - model_evaluation/canonical_metrics.py
+    - model_evaluation/canonical_objective.py
+    - data/guard-matched-pilot04
+    - results/guard-matched-pilot04-no-allocation-proof.json
+    - results/canonical-feature-cache-prepared.json
+    - results/canonical-feature-cache-preflight.json
+    - results/canonical-data-preflight.json
+    - results/canonical-metrics-preflight.json
+    metrics:
+    - results/canonical-trial-plan.json:
+        cache: false
+  prepare_canonical_trial:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_canonical_trial.py
+    deps:
+    - model_evaluation/prepare_canonical_trial.py
+    - model_evaluation/guard_matched_worker.py
+    - model_evaluation/timing_decoder.py
+    - model_evaluation/context_data.py
+    - model_evaluation/context_objective.py
+    - model_evaluation/joint_decoder_v2.py
+    - model_evaluation/joint_objective_v2.py
+    - model_evaluation/joint_data.py
+    - model_evaluation/joint_metrics.py
+    - model_evaluation/gas_head_metrics.py
+    - data/timing-candidate
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    - data/gas-shape-pilot01
+    - results/canonical-trial-plan.json
+    - results/context-objective-preflight.json
+    - results/context-decoder-preflight.json
+    - results/joint-pipeline-v2-preflight.json
+    - model_evaluation/guard_matched_data.py
+    - model_evaluation/guard_matched_objective.py
+    - results/guard-matched-objective-preflight.json
+    - model_evaluation/canonical_worker.py
+    - model_evaluation/canonical_data.py
+    - model_evaluation/canonical_metrics.py
+    - model_evaluation/canonical_objective.py
+    - data/canonical-feature-cache
+    - results/canonical-feature-cache-prepared.json
+    - results/canonical-feature-cache-preflight.json
+    outs:
+    - data/canonical-pilot01
+    metrics:
+    - results/canonical-pilot01-prepared.json:
+        cache: false
+  verify_canonical_price_bound:
+    cmd: ../../.venv/bin/python model_evaluation/verify_canonical_price_bound.py
+    frozen: true
+    deps:
+    - model_evaluation/verify_canonical_price_bound.py
+    - results/canonical-trial-plan.json
+    metrics:
+    - results/canonical-pilot01-price-bound.json:
+        cache: false
+  validate_canonical_trial:
+    cmd: ../../.venv/bin/python model_evaluation/validate_canonical_trial.py
+    deps:
+    - model_evaluation/validate_canonical_trial.py
+    - model_evaluation/launch_canonical_pilot01.py
+    - model_evaluation/collect_canonical_pilot01.py
+    - model_evaluation/close_canonical_pilot01.py
+    - model_evaluation/monitor_canonical_pilot01.py
+    - model_evaluation/reconcile_canonical_pilot01.py
+    - model_evaluation/analyze_canonical_pilot01.py
+    - data/canonical-pilot01
+    - results/canonical-pilot01-prepared.json
+    - results/context-objective-preflight.json
+    - results/joint-pipeline-v2-preflight.json
+    - model_evaluation/timing_worker_v2.py
+    - results/guard-matched-objective-preflight.json
+    - model_evaluation/canonical_objective.py
+    - results/canonical-data-preflight.json
+    - results/canonical-metrics-preflight.json
+    metrics:
+    - results/canonical-pilot01-offline-preflight.json:
+        cache: false
+  launch_canonical_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/launch_canonical_pilot01.py --execute
+    frozen: true
+    deps:
+    - model_evaluation/launch_canonical_pilot01.py
+    - results/timing-cost-bounds-preflight.json
+    - results/canonical-pilot01-price-bound.json
+    - cloud.py
+    - data/canonical-pilot01
+    - results/canonical-pilot01-offline-preflight.json
+    - results/timing-decoder-pilot06-cost-reconciled.json
+    - results/timing-decoder-pilot06-permission-removed.json
+    - results/timing-regional-network-prepared.json
+    - results/guard-matched-objective-preflight.json
+    - model_evaluation/canonical_transfer_guard.py
+    - results/canonical-pilot01-price-bound.json
+    - results/guard-matched-pilot04-no-allocation-proof.json
+    metrics:
+    - results/canonical-pilot01-execution.json:
+        cache: false
+  collect_canonical_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/collect_canonical_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/collect_canonical_pilot01.py
+    - cloud.py
+    - results/canonical-pilot01-execution.json
+    - model_evaluation/canonical_transfer_guard.py
+    - results/canonical-pilot01-prepared.json
+    outs:
+    - data/canonical-pilot01-results
+    metrics:
+    - results/canonical-pilot01-collected.json:
+        cache: false
+  close_canonical_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/close_canonical_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/close_canonical_pilot01.py
+    - cloud.py
+    - results/canonical-pilot01-collected.json
+    - results/canonical-pilot01-read-condition.json
+    metrics:
+    - results/canonical-pilot01-permission-removed.json:
+        cache: false
+  analyze_canonical_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_canonical_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/analyze_canonical_pilot01.py
+    - cloud.py
+    - data/canonical-pilot01
+    - data/canonical-pilot01-results
+    - results/canonical-pilot01-collected.json
+    - results/canonical-pilot01-permission-removed.json
+    metrics:
+    - results/canonical-pilot01-analysis.json:
+        cache: false
+  reconcile_canonical_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_canonical_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/reconcile_canonical_pilot01.py
+    - cloud.py
+    - results/canonical-pilot01-collected.json
+    - results/canonical-pilot01-permission-removed.json
+    metrics:
+    - results/canonical-pilot01-cost-reconciled.json:
+        cache: false
+  monitor_canonical_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/monitor_canonical_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/monitor_canonical_pilot01.py
+    - cloud.py
+    - results/canonical-pilot01-execution.json
+    metrics:
+    - results/canonical-pilot01-progress.json:
+        cache: false
+    - results/canonical-pilot01-optimizer-replay.json:
+        cache: false

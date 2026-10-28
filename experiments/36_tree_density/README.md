@@ -565,3 +565,33 @@ Normalization distinction: only the new canonical loss normalization is decoder-
 only. Frozen GRU/state/feature normalization retains the older TRAIN-based values,
 which include decoder-selection histories. This remains development head selection,
 not an independent complete-pipeline holdout. The original test is still excluded.
+
+### Canonical pilot01 prepared: full stride-one coverage, not yet a trained result
+
+Two matched600epoch arms retain the exact frozen GRU/context,10628trainable timing
+residual parameters, initial weights/seed, original regimes and balanced startup
+weights0.3/0.15. Both add canonical loss, with coefficient0.5 or1.0. Uniform
+horizon1/4/8/16/45 and uniform valid-origin draws are matched across arms and
+saved explicitly in every epoch/deadline checkpoint with model/optimizer/RNG/
+permutation/cursor/metric history/best selection state. The combined objective is
+a shared module exercised by exact-package local derivative checks; no CPU
+optimizer ran. CUDA restore tests must exercise all five windows before fitting.
+
+Every10epochs, selection scores every valid stride1 origin at all five windows,
+retaining phase tables and actual durations. Original acceptance thresholds and
+display-first rank are unchanged; canonical5%per-state nonharm and finite guards
+are additive. Both selections/winner freeze before previously examined development
+confirmation. Original test remains excluded; a pilot pass cannot substitute for
+actual inference/gallery/test verification or validation of the other rotations.
+
+Inputs are1,621,708,800bytes. Conservative transfer projection164,959,761,403bytes
+(including deliberately overlapping historical allowance plus recorded model
+objects and2GiB prospective output) is below160GiB. All inputs backed up to the
+local DVC mirror only. Whole workflow3600s plus300s cleanup at1.20USD/hour with
+GPUquota1 is1.30USD; prior reservations including Flex40USD retained. VM age2850s,
+task2730s, worker soft2610s, queue900s; no task retries. Rough fitting expectation
+is20–35minutes after allocation, with extra uncertainty from canonical evaluation
+and checkpoint IO. Deadline may stop either arm early; checkpoints/evidence are
+preserved and require diagnosis before any manual continuation. This is not a
+completion guarantee or accuracy claim. Same simplified FDS and normalization/
+development-role limitations above apply.
