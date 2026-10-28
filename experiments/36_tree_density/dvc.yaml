@@ -4411,3 +4411,15 @@ stages:
         cache: false
     - results/canonical-pilot03-optimizer-replay.json:
         cache: false
+  observe_canonical_startup:
+    cmd: ../../.venv/bin/python model_evaluation/observe_canonical_startup.py
+    frozen: true
+    deps:
+    - model_evaluation/observe_canonical_startup.py
+    - cloud.py
+    - results/canonical-pilot03-execution.json
+    outs:
+    - data/canonical-startup03
+    metrics:
+    - results/canonical-pilot03-startup-observation.json:
+        cache: false

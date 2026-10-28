@@ -1,0 +1,82 @@
+{
+  "checked_utc": "2026-10-28T18:42:59.988013+00:00",
+  "execution_name": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-canonical03/executions/ff3e1d32-cce1-46d5-8c75-50fac50117eb",
+  "workflow_state": "ACTIVE",
+  "job_statuses": [
+    {
+      "runDuration": "97.506888308s",
+      "state": "RUNNING",
+      "statusEvents": [
+        {
+          "description": "Job state is set from QUEUED to SCHEDULED for job projects/587909259768/locations/us-west4/jobs/fds-gpu36-canonical03.",
+          "eventTime": "2026-10-28T18:38:21.536579816Z",
+          "type": "STATUS_CHANGED"
+        },
+        {
+          "description": "Job state is set from SCHEDULED to RUNNING for job projects/587909259768/locations/us-west4/jobs/fds-gpu36-canonical03.",
+          "eventTime": "2026-10-28T18:41:23.116245809Z",
+          "type": "STATUS_CHANGED"
+        }
+      ],
+      "taskGroups": {
+        "group0": {
+          "counts": {
+            "RUNNING": "1"
+          },
+          "instances": [
+            {
+              "bootDisk": {
+                "image": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261016-00-p00",
+                "sizeGb": "60",
+                "type": "pd-balanced"
+              },
+              "machineType": "g2-standard-4",
+              "provisioningModel": "STANDARD",
+              "taskPack": "1"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "instances": [
+    {
+      "name": "fds-gpu36-canonica-86b105c5-a1f9-40600-group0-0-lpxf",
+      "zone": "us-west4-c",
+      "status": "RUNNING",
+      "machine": "g2-standard-4",
+      "created": "2026-10-28T11:38:40.674-07:00",
+      "serial_sha256": "b5fef460a7dbf1803bee398af727e1bbb6cf2bef2818bf5c98cba26ae9d9520d",
+      "serial_boot_events": [
+        "[    6.872893] google_metadata_script_runner_adapt[1138]: startup-script: [Batch Startup] Google Cloud Batch service VM agent log file is ready.",
+        "[    7.669138] cloud-init[1235]: 2026-10-28 18:38:59,436 - log_util.py[WARNING]: Getting data from <class 'cloudinit.sources.DataSourceGCE.DataSourceGCELocal'> failed",
+        "[    8.288142] cloud-init[1276]: ci-info: | docker0 | False |        172.17.0.1        |   255.255.0.0   | global | 02:42:13:ad:57:f7 |",
+        "[    8.346203] cloud-init[1276]: ci-info: |   3   |    172.17.0.0   |  0.0.0.0  |   255.255.0.0   |  docker0  |   U   |",
+        "[  123.948768] LoadPin: kernel-module pinning-excluded obj=\"/root/lib/modules/6.6.158+/kernel/drivers/gpu/drm/drm_panel_orientation_quirks.ko\" pid=1451 cmdline=\"insmod /root/lib/modules/6.6.158+/kernel/drivers/gpu/drm/drm_panel_orientation_quirks.ko\"",
+        "[  123.977216] LoadPin: kernel-module pinning-excluded obj=\"/root/lib/modules/6.6.158+/kernel/drivers/i2c/i2c-core.ko\" pid=1452 cmdline=\"insmod /root/lib/modules/6.6.158+/kernel/drivers/i2c/i2c-core.ko\"",
+        "[  124.006993] LoadPin: kernel-module pinning-excluded obj=\"/root/lib/modules/6.6.158+/kernel/drivers/gpu/drm/drm.ko\" pid=1456 cmdline=\"insmod /root/lib/modules/6.6.158+/kernel/drivers/gpu/drm/drm.ko\"",
+        "[  124.066807] LoadPin: kernel-module pinning-excluded obj=\"/usr/local/nvidia/drivers/nvidia.ko\" pid=1458 cmdline=\"insmod /usr/local/nvidia/drivers/nvidia.ko\"",
+        "[  125.071158] nvidia-nvlink: Nvlink Core is being initialized, major device number 243",
+        "[  125.097973] NVRM: loading NVIDIA UNIX Open Kernel Module for x86_64  580.178.04  Release Build  (builder@466d2b7c99b5)  Sun Oct 11 10:32:08 UTC 2026",
+        "[  125.119601] LoadPin: kernel-module pinning-excluded obj=\"/usr/local/nvidia/drivers/nvidia-uvm.ko\" pid=1465 cmdline=\"insmod /usr/local/nvidia/drivers/nvidia-uvm.ko\"",
+        "[  125.378916] LoadPin: kernel-module pinning-excluded obj=\"/usr/local/nvidia/drivers/nvidia-modeset.ko\" pid=1471 cmdline=\"insmod /usr/local/nvidia/drivers/nvidia-modeset.ko\"",
+        "[  125.507781] nvidia-modeset: Loading NVIDIA UNIX Open Kernel Mode Setting Driver for x86_64  580.178.04  Release Build  (builder@466d2b7c99b5)  Sun Oct 11 10:30:44 UTC 2026",
+        "[  125.538568] LoadPin: kernel-module pinning-excluded obj=\"/root/lib/modules/6.6.158+/kernel/drivers/gpu/drm/drm_kms_helper.ko\" pid=1479 cmdline=\"insmod /root/lib/modules/6.6.158+/kernel/drivers/gpu/drm/drm_kms_helper.ko\"",
+        "[  125.570398] LoadPin: kernel-module pinning-excluded obj=\"/usr/local/nvidia/drivers/nvidia-drm.ko\" pid=1480 cmdline=\"insmod /usr/local/nvidia/drivers/nvidia-drm.ko\"",
+        "[  125.605030] [drm] [nvidia-drm] [GPU ID 0x00000003] Loading driver",
+        "[  125.611452] [drm] Initialized nvidia-drm 0.0.0 20160202 for 0000:00:03.0 on minor 0",
+        "[  138.124556] LoadPin: firmware pinning-excluded obj=\"/var/lib/nvidia/firmware/nvidia/580.178.04/gsp_ga10x.bin\" pid=1461 cmdline=\"\"",
+        "[  149.470923] LoadPin: firmware pinning-excluded obj=\"/var/lib/nvidia/firmware/nvidia/580.178.04/gsp_ga10x.bin\" pid=1586 cmdline=\"/var/lib/nvidia/bin/nvidia-persistenced\"",
+        "[  151.357468] LoadPin: kernel-module pinning-excluded obj=\"/lib/modules/6.6.158+/kernel/drivers/net/veth.ko\" pid=1614 cmdline=\"/sbin/modprobe -q -- rtnl-link-veth\"",
+        "[  151.377178] docker0: port 1(veth2f837e5) entered blocking state",
+        "[  151.383268] docker0: port 1(veth2f837e5) entered disabled state",
+        "[  151.542064] docker0: port 1(veth2f837e5) entered blocking state",
+        "[  151.548115] docker0: port 1(veth2f837e5) entered forwarding state",
+        "[  151.589621] systemd-networkd[255]: docker0: Gained carrier",
+        "[  153.439178] systemd-networkd[255]: docker0: Gained IPv6LL"
+      ]
+    }
+  ],
+  "source_sha256": "8660031d4ef2d1ba0e6731f581de2956ab76494520f3e735d2af605570aaf808",
+  "scope": "Infrastructure/boot snapshot only. RUNNING VM and loaded driver are not evidence that model fitting started, finished or improved accuracy. No model-selection output read; no mutation or resubmission."
+}

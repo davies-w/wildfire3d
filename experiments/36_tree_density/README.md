@@ -671,3 +671,13 @@ before fitted results. Transfer projection168,203,188,416bytes is below160GiB.
 All earlier normalization, development confirmation and simplified-FDS limitations
 still apply. No repair has passed; expected fitting20–35minutes starts only after
 allocation, and final independent verification takes additional time.
+
+
+Canonical03 obtained an L4 in us-west4. The actual CUDA serialized optimizer
+restore test passed for both arms, with all five canonical windows exercised,
+bitwise-identical next updates and CPU scalar-step/CUDA optimizer-moment placement
+preserved. Training has started and periodic epoch checkpoints are present.
+These are operational proofs, not accuracy or completion results. Both arm
+selections and the winner must still freeze before development confirmation;
+original test remains excluded. Boot/agent evidence is preserved separately in
+DVC, without reading model-selection results mid-run.

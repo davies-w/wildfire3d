@@ -10608,3 +10608,52 @@ stages:
       hash: md5
       md5: 4329d5d32ed155dc303236c68dd93033
       size: 336
+  observe_canonical_startup:
+    cmd: ../../.venv/bin/python model_evaluation/observe_canonical_startup.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/observe_canonical_startup.py
+      hash: md5
+      md5: c4ee38c5dd8b7f855ac072f06e28924e
+      size: 2111
+    - path: results/canonical-pilot03-execution.json
+      hash: md5
+      md5: 4329d5d32ed155dc303236c68dd93033
+      size: 336
+    outs:
+    - path: data/canonical-startup03
+      hash: md5
+      md5: 82b1deb2ce7955470abc22f99042db8d.dir
+      size: 20785
+      nfiles: 3
+    - path: results/canonical-pilot03-startup-observation.json
+      hash: md5
+      md5: cd864ba700aa2eef829d702802562f77
+      size: 5975
+  monitor_canonical_pilot03:
+    cmd: ../../.venv/bin/python model_evaluation/monitor_canonical_pilot03.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/monitor_canonical_pilot03.py
+      hash: md5
+      md5: c571920ff4d22399ed411d8147224420
+      size: 2938
+    - path: results/canonical-pilot03-execution.json
+      hash: md5
+      md5: 4329d5d32ed155dc303236c68dd93033
+      size: 336
+    outs:
+    - path: results/canonical-pilot03-optimizer-replay.json
+      hash: md5
+      md5: cde683b816e9f8571c6387569e2ceb5e
+      size: 1168
+    - path: results/canonical-pilot03-progress.json
+      hash: md5
+      md5: d4cd08e6884d26aafedf2d864d9df192
+      size: 2487
