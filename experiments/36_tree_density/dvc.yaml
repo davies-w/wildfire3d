@@ -1912,3 +1912,16 @@ stages:
     metrics:
     - results/joint-decoder-pilot02-cost-reconciled.json:
         cache: false
+  validate_joint_scorecard:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_scorecard.py
+    deps:
+    - model_evaluation/validate_joint_scorecard.py
+    - model_evaluation/joint_scorecard.py
+    - model_evaluation/joint_predictor.py
+    - model_evaluation/joint_metrics.py
+    - data/exposure-pilot02
+    - data/joint-decoder-candidate
+    - data/pair-sequence/rotation0/worker.py
+    metrics:
+    - results/joint-scorecard-preflight.json:
+        cache: false

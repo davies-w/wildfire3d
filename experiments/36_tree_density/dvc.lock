@@ -4598,3 +4598,41 @@ stages:
       hash: md5
       md5: 34445741d1750c869abbdc54d4d9e187
       size: 332
+  validate_joint_scorecard:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_scorecard.py
+    deps:
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: data/joint-decoder-candidate
+      hash: md5
+      md5: 48af269b9ab3475ed72ea0f7913caa40.dir
+      size: 26593773
+      nfiles: 5
+    - path: data/pair-sequence/rotation0/worker.py
+      hash: md5
+      md5: 0088c8081924de012be3f6d65aa18f29
+      size: 20689
+    - path: model_evaluation/joint_metrics.py
+      hash: md5
+      md5: b81c41dbaa625a353dd0e7730c8baacb
+      size: 5534
+    - path: model_evaluation/joint_predictor.py
+      hash: md5
+      md5: 407173f80253cd0116bbd263687fdcc1
+      size: 2458
+    - path: model_evaluation/joint_scorecard.py
+      hash: md5
+      md5: 24b8a6b2e1bdb9170d3595439bb7d950
+      size: 1974
+    - path: model_evaluation/validate_joint_scorecard.py
+      hash: md5
+      md5: f3ad110157389027156450b4e804a009
+      size: 3300
+    outs:
+    - path: results/joint-scorecard-preflight.json
+      hash: md5
+      md5: 578a129b6948ec80665ba5b459c49e26
+      size: 602
