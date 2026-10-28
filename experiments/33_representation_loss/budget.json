@@ -3212,12 +3212,27 @@
       }
     },
     "density36-timing-decoder-pilot03": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 0.3,
       "reserved_unix": 1793161276.605839,
       "scope": "Authorized bounded four-output decoder repair, max0.30USD, no automatic retries",
       "workflow": "fds-gpu36-timing03",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-timing03/executions/cb4576bc-5f0f-4ed7-ad6c-8c257212855c"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-timing03/executions/cb4576bc-5f0f-4ed7-ad6c-8c257212855c",
+      "historical_allowance_usd": 0.3,
+      "terminal_evidence": "experiments/36_tree_density/results/timing-decoder-pilot03-cost-reconciled.json",
+      "cost": {
+        "stage": "verified_no_vm_allocation",
+        "usd": 0,
+        "scope": "Zero VM compute allocated; shared workflow/storage charges remain project-level. Not a zero invoice claim."
+      }
+    },
+    "density36-timing-decoder-pilot04": {
+      "state": "submitted",
+      "allowance_usd": 0.3,
+      "reserved_unix": 1793161913.25718,
+      "scope": "Authorized bounded four-output decoder repair, max0.30USD, no automatic retries",
+      "workflow": "fds-gpu36-timing04",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-timing04/executions/5b51fc8d-558e-4201-9b23-b1ff80985dc2"
     }
   },
   "recycle_reservations": true,
@@ -3227,7 +3242,7 @@
   "accounting": {
     "billing_export_status": "posted_costs_subject_to_adjustment",
     "posted_source": "BigQuery detailed export",
-    "as_of_utc": "2026-10-28T04:11:46.042654+00:00",
+    "as_of_utc": "2026-10-28T04:29:30.046562+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
     "project_posted_comparison_usd": 47.918472,
     "project_compute_runtime_estimate_usd": 45.46005299282305,
@@ -3241,8 +3256,9 @@
     ],
     "matched_vms": 353,
     "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
-    "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. Flex-start uses a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
+    "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. N1 with exactly one T4 and Flex-start use a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
     "rates_usd_per_vm_hour": {
+      "n1-standard-4/STANDARD": 0.8,
       "g2-standard-4/FLEX_START": 0.8,
       "g2-standard-4/STANDARD": 0.706832276,
       "g2-standard-4/SPOT": 0.42409037468482524,

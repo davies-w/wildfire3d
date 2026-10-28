@@ -6,10 +6,17 @@ from pathlib import Path
 import datetime,json,subprocess,fcntl,sys
 R=Path(__file__).resolve().parents[1];D=R/'docs/billing-audit-2026-10-23';B=R/'experiments/33_representation_loss/budget.json'
 G=str(Path.home()/'.local/google-cloud-sdk/bin/gcloud')
-rates={('g2-standard-4','FLEX_START'):.8,('g2-standard-4','STANDARD'):.706832276,('g2-standard-4','SPOT'):(1.14/3.41+4*.21/13.81+16*.10/55.26),('c3-standard-4','SPOT'):(4*5.45/410.6+16*2.48/1642.51)}
+rates={('n1-standard-4','STANDARD'):.8,('g2-standard-4','FLEX_START'):.8,('g2-standard-4','STANDARD'):.706832276,('g2-standard-4','SPOT'):(1.14/3.41+4*.21/13.81+16*.10/55.26),('c3-standard-4','SPOT'):(4*5.45/410.6+16*2.48/1642.51)}
+def budgeted_gpu_type(machine,req):
+ if machine!='n1-standard-4':return None
+ cards=req.get('guestAccelerators',[]);assert len(cards)==1, 'N1 cost bound supports exactly one T4'
+ card=cards[0];assert card['acceleratorType'].split('/')[-1]=='nvidia-tesla-t4' and int(card['acceleratorCount'])==1, 'Unbudgeted N1 GPU configuration'
+ assert req.get('scheduling',{}).get('provisioningModel','STANDARD')=='STANDARD'
+ return 'nvidia-tesla-t4'
+
 def reconcile():
  query='resource.type="gce_instance" AND (protoPayload.methodName="v1.compute.instances.insert" OR protoPayload.methodName="v1.compute.instances.delete") AND timestamp>="2026-10-15T00:00:00Z"'
- events=json.loads(subprocess.check_output([G,'logging','read',query,'--project=tmrw-wildfire-20261015','--limit=5000','--format=json(timestamp,protoPayload.methodName,protoPayload.resourceName,protoPayload.request.machineType,protoPayload.request.scheduling,protoPayload.request.labels,protoPayload.status,operation)'],text=True));assert len(events)<5000,'Inventory may be truncated'
+ events=json.loads(subprocess.check_output([G,'logging','read',query,'--project=tmrw-wildfire-20261015','--limit=5000','--format=json(timestamp,protoPayload.methodName,protoPayload.resourceName,protoPayload.request.machineType,protoPayload.request.guestAccelerators,protoPayload.request.scheduling,protoPayload.request.labels,protoPayload.status,operation)'],text=True));assert len(events)<5000,'Inventory may be truncated'
  groups={}
  for e in events:groups.setdefault(e['protoPayload']['resourceName'],[]).append(e)
  records=[]
@@ -19,14 +26,14 @@ def reconcile():
   for endinsert in inserts:
    ins=[e for e in es if e.get('operation',{}).get('id')==endinsert['operation']['id'] and e['protoPayload'].get('request',{}).get('machineType')]
    if not ins:continue
-   req=ins[0]['protoPayload']['request'];machine=req['machineType'].split('/')[-1];provision=req.get('scheduling',{}).get('provisioningModel','STANDARD');key=(machine,provision)
+   req=ins[0]['protoPayload']['request'];machine=req['machineType'].split('/')[-1];provision=req.get('scheduling',{}).get('provisioningModel','STANDARD');key=(machine,provision);gpu_type=budgeted_gpu_type(machine,req)
    dels=[e for e in es if e['protoPayload']['methodName'].endswith('.delete') and e.get('operation',{}).get('last') and not e['protoPayload'].get('status',{}).get('code') and stamp(e)>=stamp(endinsert)]
    if not dels:continue
    deletion=min(dels,key=stamp);starts=[e for e in es if e.get('operation',{}).get('id')==deletion['operation']['id']];end=min(starts,key=stamp);hours=(stamp(end)-stamp(endinsert)).total_seconds()/3600
    assert hours>=0 and key in rates,(name,key,hours)
    labels=req.get('labels',{})
    if isinstance(labels,list):labels={x['key']:x.get('value') for x in labels}
-   records.append(dict(vm=name.split('/')[-1],trial_id=labels.get('trial_id'),machine=machine,provisioning=provision,hours=hours,start=endinsert['timestamp'],end=end['timestamp'],estimated_compute_usd=hours*rates[key]))
+   records.append(dict(vm=name.split('/')[-1],trial_id=labels.get('trial_id'),machine=machine,provisioning=provision,gpu_type=gpu_type,hours=hours,start=endinsert['timestamp'],end=end['timestamp'],estimated_compute_usd=hours*rates[key]))
  assert records
  D.mkdir(exist_ok=True);(D/'vm-runtime.json').write_text(json.dumps(records,indent=2)+'\n')
  # Export has not yet backfilled; these are the independently observed project report totals.
@@ -43,7 +50,7 @@ def reconcile():
  pending=[r for r in records if cutoff is not None and utc(r['start'])>=cutoff]
  unposted=sum(r['estimated_compute_usd'] for r in pending)
 
- result=dict(billing_export_status=export['status'],posted_source='BigQuery detailed export' if billed else 'Previously captured Billing Reports; Oct1–23;16.55USD',as_of_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),status='runtime_estimate_pending_per_resource_billing',project_posted_comparison_usd=posted,project_compute_runtime_estimate_usd=compute,shared_cost_estimate_usd=shared,spend_estimate_usd=max(posted+unposted,compute+shared),unposted_compute_after_export_usd=unposted,unposted_resources=[r['vm'] for r in pending],matched_vms=len(records),scope='Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign',limitations='VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. Flex-start uses a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.',rates_usd_per_vm_hour={'/'.join(k):v for k,v in rates.items()})
+ result=dict(billing_export_status=export['status'],posted_source='BigQuery detailed export' if billed else 'Previously captured Billing Reports; Oct1–23;16.55USD',as_of_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),status='runtime_estimate_pending_per_resource_billing',project_posted_comparison_usd=posted,project_compute_runtime_estimate_usd=compute,shared_cost_estimate_usd=shared,spend_estimate_usd=max(posted+unposted,compute+shared),unposted_compute_after_export_usd=unposted,unposted_resources=[r['vm'] for r in pending],matched_vms=len(records),scope='Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign',limitations='VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. N1 with exactly one T4 and Flex-start use a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.',rates_usd_per_vm_hour={'/'.join(k):v for k,v in rates.items()})
  with (B.parent/'data/budget.lock').open('w') as f:
   fcntl.flock(f,fcntl.LOCK_EX);b=json.loads(B.read_text());b.setdefault('historical_allowances_usd',b['reserved_usd']);b['accounting_policy']='Expected estimate -> measured-runtime cost estimate -> posted charge, preserving history. Historical maximum allowances are not spend. Supersedes retained-allowance accounting by explicit user instruction.';b['recycle_reservations']=True;b['accounting']=result
   for key,res in b['reservations'].items():
@@ -61,7 +68,7 @@ def reconcile():
      return value.replace(tzinfo=datetime.timezone.utc) if value.tzinfo is None else value.astimezone(datetime.timezone.utc)
     for vm in match:
      rows=[r for r in actual if vm['vm'] in (r.get('resource_name') or '') and r['service']=='Compute Engine']
-     kinds=['Core','Ram']+(['GPU'] if vm['machine'].startswith('g2') else [])
+     kinds=['Core','Ram']+(['GPU'] if vm['machine'].startswith('g2') or vm.get('gpu_type') else [])
      for kind in kinds:
       rr=[r for r in rows if kind.lower() in r['sku'].lower()]
       covered=covered and bool(rr) and min(ts(r['first_usage_start']) for r in rr)<=ts(vm['start']) and max(ts(r['last_usage_end']) for r in rr)>=ts(vm['end'])
