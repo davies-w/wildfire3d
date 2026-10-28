@@ -388,3 +388,40 @@ The~476MB exact archive is SHA256 a4159c93b32a0d88a7c1eaed0761b1fdf4f76d05d66e02
 Same simplified FDS histories: generic3m-diameter conical crowns4/6/8/10m high above2m base,1600weighted particles,0.5m mesh in24x16x16m domain,1500C imposed contact ignition20s and180s histories. No trunks/buildings/embers, mesh convergence or material/real-wildfire validation. Remaining masses are derived estimates; sampled gas is not combustion HRR; heating is a signed index, not energy. Previously examined confirmation is development evidence, not pristine generalization. Original test stays excluded until a separately frozen accepted candidate is verified end-to-end/canonically.
 
 Submitted guard-matched comparison once as `fds-gpu36-guardmatch01`, orchestration execution `0770ed89-ad8c-4fb2-9c44-469b0c4bf391`; Batch/VM placement us-east4/us-east4-a. Readiness includes completed unaccepted timing06with CPU replay, resource/grant/cost closure, exact fixture/archive source matching, unchanged acceptance gates, tested restore scope, price/subnet/global-quota checks and guarded ledger reservation. Latest ledger before launch estimated$48.8838spent and$71.60reserved; new$1reservation remains under$125. These are estimates, not invoices. No guard-matched accuracy evidence exists at submission; actual CUDA replay and both300epoch arms remain to verify.
+
+### Guard-matched pilot01: completed, not accepted
+
+Both arms completed300 CUDA epochs;682 output objects and all600 epoch checkpoints
+were verified. Independent CPU inference reconstructed selection and confirmed the
+saved results. Neither arm passed the unchanged selection requirements; the raw
+baseline remains the winner and no candidate was published.
+
+Balanced-tail epoch290 reduced previously examined development-confirmation display
+MAE by34.70% water,22.04% dry fuel,11.11% gas release and8.50% heating index.
+Its startup p90 deficit improved10.29% there, but no evaluated checkpoint reached
+10% startup improvement on selection (best posthoc5.74%); no checkpoint reached
+10% heating improvement there either (best posthoc6.94%). These minima are diagnostic,
+not a new selection. Confirmation was examined in earlier experiments and the base
+GRU checkpoint was selected on it; it is not an untouched pipeline holdout.
+Original test remains excluded.
+
+The selected balanced-tail fit-only audit also falls short on heating: display
+improvement9.37%, autonomous8.21%. In three fixed128-history gradient batches,
+quiet-loss heating gradients were zero while physical heating gradients remained
+nonzero. This supports investigating optimization/representation next; it does not
+prove convergence, a capacity limit, or absence of quiet pressure in other batches.
+No parameters were updated by the audit.
+
+Compute resources and the exact temporary grant were removed. Runtime compute
+estimate$0.227645 is already covered by project estimated spend$49.330514; it was
+not added a second time. After releasing this run's allowance, retained reservations
+are$71.60 and unallocated headroom$4.069486 under$125. Billing remains subject to
+adjustment; the separate$40 Flex reservation remains untouched.
+
+Scope remains simplified FDS generic3m-diameter conical crowns, heights4/6/8/10m
+above2m base,1600 weighted particles,0.5m mesh in24x16x16m, imposed1500C contact
+ignition for20s and180s histories sampled near2s. No trunks, buildings, embers,
+mesh convergence or real-material validation. Remaining masses are derived;
+gas is sampled release rather than combustion HRR, and heating is a signed
+mass-weighted index rather than energy. Stitched gallery forecasts are revisions,
+not one continuous predicted physical trajectory.

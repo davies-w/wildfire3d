@@ -1,0 +1,875 @@
+{
+  "passed": true,
+  "repair_acceptance_passed": false,
+  "winner": "raw_baseline",
+  "checks": {
+    "display_each_state": false,
+    "display_startup": false,
+    "display_peak": false,
+    "display_objective": true,
+    "autonomous_startup": false,
+    "autonomous_peak": false,
+    "autonomous_objective": true,
+    "autonomous_each_state": true,
+    "finite": true,
+    "autonomous_integral": true,
+    "autonomous_time": true,
+    "autonomous_consistency": true,
+    "autonomous_overprediction": true,
+    "autonomous_quiet": true,
+    "display_quiet": true
+  },
+  "arms": [
+    {
+      "arm": "aggregate_control",
+      "epoch": 250,
+      "apply_decoder": true,
+      "selected_hash_exact": true,
+      "selection_reconstructed": true,
+      "cpu_replay_close": {
+        "autonomous": true,
+        "display": true
+      },
+      "cpu_metrics": {
+        "autonomous": {
+          "finite": true,
+          "objective": 0.025591030716896057,
+          "physical_MAE_by_feature": [
+            0.28099218010902405,
+            1.6307181119918823,
+            0.027450069785118103,
+            2.4057157039642334
+          ],
+          "peak_release_MAE_kg_s": 0.21694959700107574,
+          "peak_time_MAE_s": 2.9756314754486084,
+          "released_fuel_integral_MAE_kg": 1.8233485221862793,
+          "gas_dry_fuel_consistency_residual_kg": 1.978878140449524,
+          "startup_gas_p90_deficit": 0.5577994585037231,
+          "startup_gas_p90_overprediction": 0.4577403962612152,
+          "zero_gas_peak_histories": 0,
+          "quiet_physical_MAE": [
+            0.09102974086999893,
+            1.0017098188400269,
+            3.832734819297912e-06,
+            0.25164368748664856
+          ],
+          "minimum_by_feature": [
+            2.1012658635299886e-07,
+            0.49915212392807007,
+            0.0,
+            -0.9796433448791504
+          ],
+          "negative_fraction_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.033042848110198975
+          ],
+          "negative_magnitude_mean_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.0067188916727900505
+          ],
+          "mass_increase_fraction": [
+            0.0,
+            0.0
+          ],
+          "mass_increase_total_kg": [
+            0.0,
+            0.0
+          ],
+          "histories": 210,
+          "configurations": 204,
+          "forecast_window_phases": {
+            "active": {
+              "points": 6741,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.26516902446746826,
+                1.537546157836914,
+                0.07803202420473099,
+                6.171779155731201
+              ]
+            },
+            "quiet": {
+              "points": 0,
+              "eligible_histories": 0,
+              "eligible_configurations": 0,
+              "physical_MAE": null
+            },
+            "weak": {
+              "points": 0,
+              "eligible_histories": 0,
+              "eligible_configurations": 0,
+              "physical_MAE": null
+            },
+            "transition": {
+              "points": 12159,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.29351991415023804,
+                1.713734745979309,
+                3.2335043215425685e-05,
+                0.36367592215538025
+              ]
+            }
+          },
+          "mass_above_origin_mean_kg": [
+            0.0,
+            0.0
+          ],
+          "trajectory_interpretation": "One uninterrupted forecast from initial state."
+        },
+        "display": {
+          "finite": true,
+          "objective": 0.016916843131184578,
+          "physical_MAE_by_feature": [
+            0.08258182555437088,
+            0.4671323299407959,
+            0.02747204713523388,
+            2.329710006713867
+          ],
+          "peak_release_MAE_kg_s": 0.2135518342256546,
+          "peak_time_MAE_s": 3.142457962036133,
+          "released_fuel_integral_MAE_kg": 1.8349034786224365,
+          "gas_dry_fuel_consistency_residual_kg": 2.3272204399108887,
+          "startup_gas_p90_deficit": 0.5577994585037231,
+          "startup_gas_p90_overprediction": 0.4577403962612152,
+          "zero_gas_peak_histories": 0,
+          "quiet_physical_MAE": [
+            0.0009005196625366807,
+            0.00251693744212389,
+            3.7423319554363843e-06,
+            0.21998585760593414
+          ],
+          "minimum_by_feature": [
+            2.1865000920939792e-09,
+            0.18489430844783783,
+            0.0,
+            -0.7526014447212219
+          ],
+          "negative_fraction_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.03033769316971302
+          ],
+          "negative_magnitude_mean_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.005388291552662849
+          ],
+          "mass_increase_fraction": [
+            0.19094043970108032,
+            0.10702615976333618
+          ],
+          "mass_increase_total_kg": [
+            0.7232374548912048,
+            3.9023282527923584
+          ],
+          "histories": 210,
+          "configurations": 204,
+          "forecast_window_phases": {
+            "active": {
+              "points": 6741,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.20371034741401672,
+                1.2155925035476685,
+                0.07807620614767075,
+                6.090039253234863
+              ]
+            },
+            "quiet": {
+              "points": 2725,
+              "eligible_histories": 90,
+              "eligible_configurations": 88,
+              "physical_MAE": [
+                0.00038408327964134514,
+                8.47502305987291e-05,
+                2.4937588705142844e-07,
+                0.1861502230167389
+              ]
+            },
+            "weak": {
+              "points": 5147,
+              "eligible_histories": 162,
+              "eligible_configurations": 156,
+              "physical_MAE": [
+                0.004869234748184681,
+                0.0015837063547223806,
+                2.0954535102646332e-06,
+                0.26693060994148254
+              ]
+            },
+            "transition": {
+              "points": 4287,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.01088032778352499,
+                0.058401454240083694,
+                7.183555862866342e-05,
+                0.40367260575294495
+              ]
+            }
+          },
+          "mass_above_origin_mean_kg": [
+            0.0,
+            0.0
+          ],
+          "trajectory_interpretation": "Stitched forecast revisions; increases are not a single physical trajectory."
+        },
+        "individual_forecasts": {
+          "rolling_mean_mass_increase_from_raw_origin_kg": [
+            0.0,
+            0.0
+          ],
+          "rolling_mean_mass_increase_from_projected_origin_kg": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "gpu_metrics": {
+        "autonomous": {
+          "finite": true,
+          "objective": 0.025591032579541206,
+          "physical_MAE_by_feature": [
+            0.28099220991134644,
+            1.6307181119918823,
+            0.027450066059827805,
+            2.4057157039642334
+          ],
+          "peak_release_MAE_kg_s": 0.21694959700107574,
+          "peak_time_MAE_s": 2.9756314754486084,
+          "released_fuel_integral_MAE_kg": 1.8233486413955688,
+          "gas_dry_fuel_consistency_residual_kg": 1.978878140449524,
+          "startup_gas_p90_deficit": 0.5577995777130127,
+          "startup_gas_p90_overprediction": 0.4577406942844391,
+          "zero_gas_peak_histories": 0,
+          "quiet_physical_MAE": [
+            0.09102972596883774,
+            1.0017098188400269,
+            3.832734819297912e-06,
+            0.25164371728897095
+          ],
+          "minimum_by_feature": [
+            2.1012678530496487e-07,
+            0.49915164709091187,
+            0.0,
+            -0.9796433448791504
+          ],
+          "negative_fraction_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.033042848110198975
+          ],
+          "negative_magnitude_mean_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.006718893069773912
+          ],
+          "mass_increase_fraction": [
+            0.0,
+            0.0
+          ],
+          "mass_increase_total_kg": [
+            0.0,
+            0.0
+          ],
+          "histories": 210,
+          "configurations": 204,
+          "forecast_window_phases": {
+            "active": {
+              "points": 6741,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.2651689946651459,
+                1.5375462770462036,
+                0.07803203165531158,
+                6.171779632568359
+              ]
+            },
+            "quiet": {
+              "points": 0,
+              "eligible_histories": 0,
+              "eligible_configurations": 0,
+              "physical_MAE": null
+            },
+            "weak": {
+              "points": 0,
+              "eligible_histories": 0,
+              "eligible_configurations": 0,
+              "physical_MAE": null
+            },
+            "transition": {
+              "points": 12159,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.29351988434791565,
+                1.713734745979309,
+                3.2335043215425685e-05,
+                0.363675981760025
+              ]
+            }
+          },
+          "mass_above_origin_mean_kg": [
+            0.0,
+            0.0
+          ],
+          "trajectory_interpretation": "One uninterrupted forecast from initial state."
+        },
+        "display": {
+          "finite": true,
+          "objective": 0.016916843131184578,
+          "physical_MAE_by_feature": [
+            0.08258184045553207,
+            0.46713244915008545,
+            0.027472050860524178,
+            2.3297102451324463
+          ],
+          "peak_release_MAE_kg_s": 0.2135518491268158,
+          "peak_time_MAE_s": 3.142457962036133,
+          "released_fuel_integral_MAE_kg": 1.834903597831726,
+          "gas_dry_fuel_consistency_residual_kg": 2.327220916748047,
+          "startup_gas_p90_deficit": 0.5577995777130127,
+          "startup_gas_p90_overprediction": 0.4577406942844391,
+          "zero_gas_peak_histories": 0,
+          "quiet_physical_MAE": [
+            0.0009005204192362726,
+            0.0025169379077851772,
+            3.7423315006890334e-06,
+            0.21998585760593414
+          ],
+          "minimum_by_feature": [
+            2.1865000920939792e-09,
+            0.18489430844783783,
+            0.0,
+            -0.7526016235351562
+          ],
+          "negative_fraction_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.03033769316971302
+          ],
+          "negative_magnitude_mean_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.005388292949646711
+          ],
+          "mass_increase_fraction": [
+            0.19094045460224152,
+            0.10702616721391678
+          ],
+          "mass_increase_total_kg": [
+            0.7232376933097839,
+            3.902327537536621
+          ],
+          "histories": 210,
+          "configurations": 204,
+          "forecast_window_phases": {
+            "active": {
+              "points": 6741,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.20371033251285553,
+                1.215592384338379,
+                0.07807619869709015,
+                6.09004020690918
+              ]
+            },
+            "quiet": {
+              "points": 2725,
+              "eligible_histories": 90,
+              "eligible_configurations": 88,
+              "physical_MAE": [
+                0.00038408441469073296,
+                8.47501287353225e-05,
+                2.49375858629719e-07,
+                0.18615023791790009
+              ]
+            },
+            "weak": {
+              "points": 5147,
+              "eligible_histories": 162,
+              "eligible_configurations": 156,
+              "physical_MAE": [
+                0.004869238939136267,
+                0.0015837072860449553,
+                2.0954535102646332e-06,
+                0.26693060994148254
+              ]
+            },
+            "transition": {
+              "points": 4287,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.01088034175336361,
+                0.058401454240083694,
+                7.183555862866342e-05,
+                0.40367263555526733
+              ]
+            }
+          },
+          "mass_above_origin_mean_kg": [
+            0.0,
+            0.0
+          ],
+          "trajectory_interpretation": "Stitched forecast revisions; increases are not a single physical trajectory."
+        },
+        "individual_forecasts": {
+          "rolling_mean_mass_increase_from_raw_origin_kg": [
+            0.0,
+            0.0
+          ],
+          "rolling_mean_mass_increase_from_projected_origin_kg": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "arm": "balanced_tail",
+      "epoch": 290,
+      "apply_decoder": true,
+      "selected_hash_exact": true,
+      "selection_reconstructed": true,
+      "cpu_replay_close": {
+        "autonomous": true,
+        "display": true
+      },
+      "cpu_metrics": {
+        "autonomous": {
+          "finite": true,
+          "objective": 0.02556518092751503,
+          "physical_MAE_by_feature": [
+            0.2832948863506317,
+            1.5916237831115723,
+            0.026935085654258728,
+            2.392136812210083
+          ],
+          "peak_release_MAE_kg_s": 0.2412903606891632,
+          "peak_time_MAE_s": 2.94085431098938,
+          "released_fuel_integral_MAE_kg": 1.8988357782363892,
+          "gas_dry_fuel_consistency_residual_kg": 2.1388068199157715,
+          "startup_gas_p90_deficit": 0.5425359010696411,
+          "startup_gas_p90_overprediction": 0.43929460644721985,
+          "zero_gas_peak_histories": 0,
+          "quiet_physical_MAE": [
+            0.09319080412387848,
+            0.9965816736221313,
+            3.7989834709151182e-06,
+            0.2544250190258026
+          ],
+          "minimum_by_feature": [
+            2.793213695895247e-07,
+            0.522297203540802,
+            0.0,
+            -0.9953845739364624
+          ],
+          "negative_fraction_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.026724766939878464
+          ],
+          "negative_magnitude_mean_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.005012743640691042
+          ],
+          "mass_increase_fraction": [
+            0.0,
+            0.0
+          ],
+          "mass_increase_total_kg": [
+            0.0,
+            0.0
+          ],
+          "histories": 210,
+          "configurations": 204,
+          "forecast_window_phases": {
+            "active": {
+              "points": 6741,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.26912468671798706,
+                1.5058798789978027,
+                0.07655183970928192,
+                6.144717216491699
+              ]
+            },
+            "quiet": {
+              "points": 0,
+              "eligible_histories": 0,
+              "eligible_configurations": 0,
+              "physical_MAE": null
+            },
+            "weak": {
+              "points": 0,
+              "eligible_histories": 0,
+              "eligible_configurations": 0,
+              "physical_MAE": null
+            },
+            "transition": {
+              "points": 12159,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.2954431474208832,
+                1.6693626642227173,
+                3.179559644195251e-05,
+                0.3545045256614685
+              ]
+            }
+          },
+          "mass_above_origin_mean_kg": [
+            0.0,
+            0.0
+          ],
+          "trajectory_interpretation": "One uninterrupted forecast from initial state."
+        },
+        "display": {
+          "finite": true,
+          "objective": 0.016909455880522728,
+          "physical_MAE_by_feature": [
+            0.08181450515985489,
+            0.46004632115364075,
+            0.02698160707950592,
+            2.3133881092071533
+          ],
+          "peak_release_MAE_kg_s": 0.23866133391857147,
+          "peak_time_MAE_s": 3.1171886920928955,
+          "released_fuel_integral_MAE_kg": 1.900813341140747,
+          "gas_dry_fuel_consistency_residual_kg": 2.461643934249878,
+          "startup_gas_p90_deficit": 0.5425359010696411,
+          "startup_gas_p90_overprediction": 0.43929460644721985,
+          "zero_gas_peak_histories": 0,
+          "quiet_physical_MAE": [
+            0.0007440659101121128,
+            0.00253488146699965,
+            3.763469521800289e-06,
+            0.2223406434059143
+          ],
+          "minimum_by_feature": [
+            2.1176185249771606e-09,
+            0.18575942516326904,
+            0.0,
+            -0.7514125108718872
+          ],
+          "negative_fraction_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.03275236114859581
+          ],
+          "negative_magnitude_mean_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.006029223091900349
+          ],
+          "mass_increase_fraction": [
+            0.1948620229959488,
+            0.10196079313755035
+          ],
+          "mass_increase_total_kg": [
+            0.7271705865859985,
+            3.849454879760742
+          ],
+          "histories": 210,
+          "configurations": 204,
+          "forecast_window_phases": {
+            "active": {
+              "points": 6741,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.20472939312458038,
+                1.196765422821045,
+                0.07667134702205658,
+                6.054335117340088
+              ]
+            },
+            "quiet": {
+              "points": 2725,
+              "eligible_histories": 90,
+              "eligible_configurations": 88,
+              "physical_MAE": [
+                0.00017862186359707266,
+                8.688028174219653e-05,
+                2.4937588705142844e-07,
+                0.19586946070194244
+              ]
+            },
+            "weak": {
+              "points": 5147,
+              "eligible_histories": 162,
+              "eligible_configurations": 156,
+              "physical_MAE": [
+                0.003151187440380454,
+                0.0015807346208021045,
+                2.0954535102646332e-06,
+                0.26010560989379883
+              ]
+            },
+            "transition": {
+              "points": 4287,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.008417217992246151,
+                0.05810994654893875,
+                7.232041389215738e-05,
+                0.3879322111606598
+              ]
+            }
+          },
+          "mass_above_origin_mean_kg": [
+            0.0,
+            0.0
+          ],
+          "trajectory_interpretation": "Stitched forecast revisions; increases are not a single physical trajectory."
+        },
+        "individual_forecasts": {
+          "rolling_mean_mass_increase_from_raw_origin_kg": [
+            0.0,
+            0.0
+          ],
+          "rolling_mean_mass_increase_from_projected_origin_kg": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "gpu_metrics": {
+        "autonomous": {
+          "finite": true,
+          "objective": 0.02556518092751503,
+          "physical_MAE_by_feature": [
+            0.2832949161529541,
+            1.5916236639022827,
+            0.026935085654258728,
+            2.392136812210083
+          ],
+          "peak_release_MAE_kg_s": 0.24129034578800201,
+          "peak_time_MAE_s": 2.940854549407959,
+          "released_fuel_integral_MAE_kg": 1.8988356590270996,
+          "gas_dry_fuel_consistency_residual_kg": 2.1388065814971924,
+          "startup_gas_p90_deficit": 0.5425359010696411,
+          "startup_gas_p90_overprediction": 0.4392946660518646,
+          "zero_gas_peak_histories": 0,
+          "quiet_physical_MAE": [
+            0.09319079667329788,
+            0.9965815544128418,
+            3.798983243541443e-06,
+            0.2544250190258026
+          ],
+          "minimum_by_feature": [
+            2.793213695895247e-07,
+            0.522297203540802,
+            0.0,
+            -0.9953842163085938
+          ],
+          "negative_fraction_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.026724766939878464
+          ],
+          "negative_magnitude_mean_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.005012745037674904
+          ],
+          "mass_increase_fraction": [
+            0.0,
+            0.0
+          ],
+          "mass_increase_total_kg": [
+            0.0,
+            0.0
+          ],
+          "histories": 210,
+          "configurations": 204,
+          "forecast_window_phases": {
+            "active": {
+              "points": 6741,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.26912471652030945,
+                1.5058798789978027,
+                0.07655184715986252,
+                6.144716739654541
+              ]
+            },
+            "quiet": {
+              "points": 0,
+              "eligible_histories": 0,
+              "eligible_configurations": 0,
+              "physical_MAE": null
+            },
+            "weak": {
+              "points": 0,
+              "eligible_histories": 0,
+              "eligible_configurations": 0,
+              "physical_MAE": null
+            },
+            "transition": {
+              "points": 12159,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.2954431474208832,
+                1.6693625450134277,
+                3.1795592803973705e-05,
+                0.3545044958591461
+              ]
+            }
+          },
+          "mass_above_origin_mean_kg": [
+            0.0,
+            0.0
+          ],
+          "trajectory_interpretation": "One uninterrupted forecast from initial state."
+        },
+        "display": {
+          "finite": true,
+          "objective": 0.016909457743167877,
+          "physical_MAE_by_feature": [
+            0.08181452006101608,
+            0.4600463807582855,
+            0.02698160707950592,
+            2.3133881092071533
+          ],
+          "peak_release_MAE_kg_s": 0.23866131901741028,
+          "peak_time_MAE_s": 3.1171886920928955,
+          "released_fuel_integral_MAE_kg": 1.9008129835128784,
+          "gas_dry_fuel_consistency_residual_kg": 2.4616434574127197,
+          "startup_gas_p90_deficit": 0.5425359010696411,
+          "startup_gas_p90_overprediction": 0.4392946660518646,
+          "zero_gas_peak_histories": 0,
+          "quiet_physical_MAE": [
+            0.0007440656772814691,
+            0.0025348826311528683,
+            3.7634688396792626e-06,
+            0.2223406434059143
+          ],
+          "minimum_by_feature": [
+            2.1176185249771606e-09,
+            0.18575941026210785,
+            0.0,
+            -0.7514125108718872
+          ],
+          "negative_fraction_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.03275236487388611
+          ],
+          "negative_magnitude_mean_by_feature": [
+            0.0,
+            0.0,
+            0.0,
+            0.006029223091900349
+          ],
+          "mass_increase_fraction": [
+            0.1948620229959488,
+            0.10196080058813095
+          ],
+          "mass_increase_total_kg": [
+            0.7271707653999329,
+            3.849453926086426
+          ],
+          "histories": 210,
+          "configurations": 204,
+          "forecast_window_phases": {
+            "active": {
+              "points": 6741,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.20472940802574158,
+                1.1967653036117554,
+                0.07667134702205658,
+                6.05433464050293
+              ]
+            },
+            "quiet": {
+              "points": 2725,
+              "eligible_histories": 90,
+              "eligible_configurations": 88,
+              "physical_MAE": [
+                0.00017862225649878383,
+                8.688018715474755e-05,
+                2.49375858629719e-07,
+                0.19586947560310364
+              ]
+            },
+            "weak": {
+              "points": 5147,
+              "eligible_histories": 162,
+              "eligible_configurations": 156,
+              "physical_MAE": [
+                0.003151200944557786,
+                0.001580735668540001,
+                2.0954535102646332e-06,
+                0.26010560989379883
+              ]
+            },
+            "transition": {
+              "points": 4287,
+              "eligible_histories": 210,
+              "eligible_configurations": 204,
+              "physical_MAE": [
+                0.008417217060923576,
+                0.05810995399951935,
+                7.232041389215738e-05,
+                0.3879321813583374
+              ]
+            }
+          },
+          "mass_above_origin_mean_kg": [
+            0.0,
+            0.0
+          ],
+          "trajectory_interpretation": "Stitched forecast revisions; increases are not a single physical trajectory."
+        },
+        "individual_forecasts": {
+          "rolling_mean_mass_increase_from_raw_origin_kg": [
+            0.0,
+            0.0
+          ],
+          "rolling_mean_mass_increase_from_projected_origin_kg": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  ],
+  "selection_and_winner_independently_reconstructed": true,
+  "optimizer_updates": 0,
+  "test_evaluated": false,
+  "scope": "Frozen GRU was previously trained on both decoder-fit and decoder-selection, and fixed feature/state normalization uses former TRAIN. Selection is therefore head-level transfer selection, not an end-to-end independent GRU holdout. Confirmation excludes GRU/head training and current head checkpoint selection, but its outcomes were examined in earlier development experiments and are not pristine. The base GRU checkpoint was itself selected on this former validation set; this is not an untouched complete-pipeline holdout.",
+  "cpu_cuda_tolerance": "0.2% relative for state MAE/objective; startup p90 absolute0.002. Discrete near-tied peak timing can differ."
+}
