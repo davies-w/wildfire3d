@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 72.05,
+  "reserved_usd": 71.6,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -3242,12 +3242,48 @@
       }
     },
     "density36-timing-decoder-pilot05": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 0.45,
       "reserved_unix": 1793162806.11855,
       "scope": "Authorized bounded four-output decoder repair, max0.45USD, no automatic retries",
       "workflow": "fds-gpu36-timing05",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-timing05/executions/d0e67e82-2adf-4dc2-9e1c-29c552dfa14d"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-timing05/executions/d0e67e82-2adf-4dc2-9e1c-29c552dfa14d",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.05855663666666666,
+        "vm_hours": 0.04879719722222222,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-gpu36-timing05-b969e7da-1db3-400e0-group0-0-7nmv"
+        ]
+      },
+      "historical_allowance_usd": 0.45,
+      "terminal_evidence": "experiments/36_tree_density/results/timing-decoder-pilot05-status.json"
+    },
+    "density36-timing-decoder-pilot06": {
+      "state": "completed_reconciled",
+      "allowance_usd": 1.0,
+      "reserved_unix": 1793163629.9321558,
+      "scope": "Authorized bounded four-output decoder repair, max0.45USD, no automatic retries",
+      "workflow": "fds-gpu36-timing06",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-timing06/executions/1175ae40-b1b5-4906-987a-62f8ea57fdce",
+      "original_single_vm_allowance_usd": 0.45,
+      "operational_allowance_amendment": {
+        "reason": "Original0.45 bound covered one VM, not infrastructure replacements before task execution. Reserve whole2700s workflow plus300s cleanup at conservative1.20USD/hour. Task retry count remains0; no new task/VM/job submitted.",
+        "maximum_concurrent_standard_gpus": 1,
+        "full_workflow_allowance_usd": 1.0
+      },
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.21917177699999998,
+        "vm_hours": 0.1826431475,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-gpu36-timing06-ea4ddc3f-fd43-469d0-group0-0-cjft"
+        ]
+      },
+      "historical_allowance_usd": 1.0,
+      "terminal_evidence": "experiments/36_tree_density/results/timing-decoder-pilot06-status.json"
     }
   },
   "recycle_reservations": true,
@@ -3257,19 +3293,21 @@
   "accounting": {
     "billing_export_status": "posted_costs_subject_to_adjustment",
     "posted_source": "BigQuery detailed export",
-    "as_of_utc": "2026-10-28T04:43:51.669153+00:00",
+    "as_of_utc": "2026-10-28T05:37:57.469042+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
     "project_posted_comparison_usd": 47.918472,
-    "project_compute_runtime_estimate_usd": 45.46005299282305,
+    "project_compute_runtime_estimate_usd": 45.73778140648972,
     "shared_cost_estimate_usd": 1.26,
-    "spend_estimate_usd": 48.14954268719291,
-    "unposted_compute_after_export_usd": 0.23107068719291105,
+    "spend_estimate_usd": 48.42727110085958,
+    "unposted_compute_after_export_usd": 0.5087991008595777,
     "unposted_resources": [
+      "fds-gpu36-timing06-ea4ddc3f-fd43-469d0-group0-0-cjft",
+      "fds-gpu36-timing05-b969e7da-1db3-400e0-group0-0-7nmv",
       "fds-gpu36-context0-b82a73da-5ff8-4a130-group0-0-mns2",
       "fds-gpu36-joint02-aca5fd21-e444-43f8-0-group0-0-zqsb",
       "fds-gpu36-joint01-52981f30-2a21-49fa-0-group0-0-4wm8"
     ],
-    "matched_vms": 353,
+    "matched_vms": 355,
     "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
     "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. East4 G2 uses a conservative1.20USD/VM-hour bound. N1 with exactly one T4 and Flex-start use a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
     "rates_usd_per_vm_hour": {
@@ -3281,5 +3319,5 @@
       "g2-standard-4/STANDARD/us-east4": 1.2
     }
   },
-  "estimated_spend_usd": 48.14954268719291
+  "estimated_spend_usd": 48.42727110085958
 }

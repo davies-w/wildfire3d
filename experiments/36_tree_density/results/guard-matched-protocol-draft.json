@@ -1,0 +1,147 @@
+{
+  "status": "draft_requires_implementation_and_validation_not_launched",
+  "hypothesis": "Pointwise quiet nonharm penalizes compensating changes even when the aggregate guard improves; align training with the unchanged aggregate guard. Balance startup under/over-tail pressure rather than repeat one-sided underweighting.",
+  "evidence": {
+    "fit_audit_sha256": "69cc22bf36fbe18652603ba2804d69778e95dc44092ed2ccb26a627ea281913e",
+    "fit_heating_MAE_ratio": 0.9641721997817672,
+    "heating_physical_vs_quiet_gradient_cosines": [
+      -0.726963996887207,
+      -0.7926356196403503,
+      -0.47074639797210693
+    ],
+    "strong_tail_selection_failures": {
+      "display_each_state": 30,
+      "display_startup": 1,
+      "display_peak": 1,
+      "display_objective": 29,
+      "autonomous_startup": 1,
+      "autonomous_peak": 1,
+      "autonomous_objective": 13,
+      "autonomous_each_state": 0,
+      "finite": 0,
+      "autonomous_integral": 1,
+      "autonomous_time": 0,
+      "autonomous_consistency": 0,
+      "autonomous_overprediction": 29,
+      "autonomous_quiet": 11,
+      "display_quiet": 0
+    }
+  },
+  "initial_checkpoint": "data/timing-candidate/initial-timing.pt",
+  "initial_checkpoint_sha256": "ccc91468ccddcd8c49a7e226da78f178664c1015bac7a871b6c346f9d76c3e74",
+  "initialization": "Same frozen context230 plus zero timing residual as timing06; not control150 warm-start. Same seed3640, initial tensors, role split, training draws and architecture for a clean quiet-objective comparison.",
+  "seed": 3640,
+  "training": {
+    "device": "Cloud CUDA only; no local optimizer",
+    "epochs_per_arm": 300,
+    "batch_histories": 128,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1,
+    "case_order": "Matched deterministic permutations of decoder-fit histories only, seed3620+epoch. Keep per-configuration replica weights; all replicas stay in one role.",
+    "origin_mix": "For each fit history each epoch, deterministic independent50%choice of full-origin0trajectory90steps or rolling16trajectory with origin uniform0..74. Same choices/permutation across arms. Decode each real forecast length before concatenating/padding prediction tensors for the joint loss; never evaluate a decoder on artificial feature padding. Use strict valid masks and length normalization; padded values must not affect loss.",
+    "state_loss": "Both arms use context01 physical-primary objective, same fixed fit-only raw-baseline normalization,25%full/75%exact-display surrogate and pointwise nonharm terms. All four outputs remain targets.",
+    "extras": "Control under-tail coefficient0.1, tail_priority0.5. Both retain over-tail0.05, peak0.05, sampling-residual0.1 and all other physical/quiet/encoded nonharm terms unchanged. Frozen context parameters must receive no gradients and remain exact after every optimizer update.",
+    "sampling_residual": "Compare predicted minus TRUE trajectory residual: trapezoid(endpoint gas)/0.75 minus predicted dry-mass loss. Normalize by initial dry mass. Target residual is not forced zero because endpoint samples and cumulative labels differ.",
+    "initial_states": "Both arms share seed3640fresh timing residual10628trainable parameters over frozen context01physical_primary230weights3396parameters. New zero residual initially reproduces that guarded but unaccepted model, not rawGRU. Include rawGRU epoch-1 fallback separately. Fresh AdamW for new parameters only; this is not restoration of the old optimizer.",
+    "resume": "Fresh optimizer for new residual only. Before fitting each arm, serialize a nonempty CUDA model/optimizer/RNG snapshot through torch.save/load, restore it and require the next update to match exactly. Epoch and batch-boundary deadline checkpoints preserve model, optimizer, RNG, case permutation, origin choices, epoch/cursor, history and selected state. No automatic retry or continuation.",
+    "selection_evaluation_every_epochs": 10
+  },
+  "arms": [
+    {
+      "name": "aggregate_control",
+      "under_tail_coefficient": 0.1,
+      "over_tail_coefficient": 0.05
+    },
+    {
+      "name": "balanced_tail",
+      "under_tail_coefficient": 0.3,
+      "over_tail_coefficient": 0.15
+    }
+  ],
+  "acceptance": {
+    "display_each_state_MAE_relative_reduction_at_least": 0.1,
+    "display_startup_gas_p90_relative_reduction_at_least": 0.1,
+    "display_gas_peak_amplitude_MAE_relative_reduction_at_least": 0.05,
+    "display_original_objective_relative_increase_at_most": 0.05,
+    "full_autonomous_startup_gas_p90_relative_reduction_at_least": 0.1,
+    "full_autonomous_peak_amplitude_MAE_relative_reduction_at_least": 0.05,
+    "full_autonomous_original_objective_relative_increase_at_most": 0.05,
+    "full_autonomous_each_state_MAE_relative_increase_at_most": 0.05,
+    "quiet_state_increase_at_most_in_physical_encoding_scale": 0.001,
+    "full_autonomous_integral_peak_time_consistency_overprediction_tail_relative_increase_at_most": 0.05,
+    "finite": true,
+    "invalid_state_reporting": "Report negatives, initial-mass exceedances and increases within each individual forecast. Stitched display jumps are forecast revisions. Tiny negative observed water is explicitly projected only in interval decoding. Heating index stays signed."
+  },
+  "selection_rule": {
+    "comparators": [
+      "raw_GRU",
+      "untrained_direct",
+      "untrained_interval",
+      "origin_state_no_change"
+    ],
+    "phase_reporting": "Use existing ScorecardV1 phase definitions and report numerators/denominators for evaluated forecasts, including weak/transition cases. Primary rolling16steps is approximately32seconds, not the canonical16-second headline. Full canonical scorecard/all-horizon replay is still required after an accepted candidate. No-change is a diagnostic comparator in both regimes.",
+    "regimes": [
+      "full_autonomous_origin0_90steps",
+      "exact_gallery_first15autonomous_then_rolling16_origins0to74"
+    ],
+    "head_selection": "Use only326configuration/330history decoder-selection role for checkpoint/winner selection. GRU was trained on that role, so this is head-level development selection. Never inspect confirmation metrics mid-run.",
+    "eligible": "Original raw GRU fallback, each untrained arm epoch0, and every10completed epochs. A candidate is guarded if original objective/state MAEs/integral/peak-time/sampling-consistency/overprediction tail are within5%baseline on full autonomous forecasts, quiet increases<=0.001physical encoding scales in both regimes, and display objective/state MAEs within5%. No requirement for a stitched display curve to obey a single physical trajectory.",
+    "checkpoint_rule": "Prefer checkpoints passing ALL acceptance checks on selection data; among those minimize maximum of four DISPLAY state-MAE ratios to raw GRU, then mean ratio, then startup deficit, then original autonomous objective, then earlier epoch. If none passes, retain the best guarded exploratory checkpoint by the same key or raw fallback. Store accepted_on_selection separately; a fallback is not an improvement.",
+    "winner_rule": "Only arms passing all unchanged joint02acceptance checks are eligible; same rank with stable physical_control-before-tail_priority final tie. Freeze both selected states and winner before confirmation. Arms share architecture, initialization, case order and origins; comparison to context01 also changes capacity/time representation and does not isolate a unique causal feature.",
+    "confirmation": "Only after selection-freeze artifact is saved, evaluate raw baseline, both untrained arms and both selected arms on210histories/204configurations from former validation. Judge only the already frozen winner; do not switch winner using confirmation results. This set influenced older experiments and base checkpoint selection, so report development confirmation, not pristine independent generalization.",
+    "test": "Original test features/evaluation excluded from this trial. If confirmation passes, a separately frozen inference/gallery replay is still required before declaring the known displayed prediction problem repaired."
+  },
+  "partition_limitation": "Frozen GRU was previously trained on both decoder-fit and decoder-selection, and fixed feature/state normalization uses former TRAIN. Selection is therefore head-level transfer selection, not an end-to-end independent GRU holdout. Confirmation excludes GRU/head training and current head checkpoint selection, but its outcomes were examined in earlier development experiments and are not pristine. The base GRU checkpoint was itself selected on this former validation set; this is not an untouched complete-pipeline holdout.",
+  "fit_histories": 1332,
+  "quiet_eligible_fit_histories": 518,
+  "quiet_eligible_fit_configurations": 510,
+  "quiet_objective": {
+    "Q": "Number of label0 target points over the fit history90targets; fit targets only, never a predictor input.",
+    "w": "Inverse number of quiet-eligible fit replicas of the configuration;0 if Q=0.",
+    "normalization": "N_fit / N_quiet_configurations; use batch mean of weighted contributions.",
+    "delta": "absolute(candidate-truth) minus absolute(raw-baseline-truth), per state.",
+    "autonomous_contribution": "full branch:2 * sum_quiet_90(delta)/Q; rolling branch:0.",
+    "display_contribution": "full branch:2 * sum_quiet_first15(delta)/Q; rolling branch:150 * delta_at_endpoint16 * is_quiet(endpoint16)/Q.",
+    "expectation": "50percent full /50percent uniformly sampled rolling origins0..74 gives exact configuration-weighted autonomous/display quiet MAE deltas before the nonlinear penalty.",
+    "penalty": "Mean across states of the average of log1p(relu(estimated_delta -0.001*physical_scale)/(0.001*physical_scale)) for autonomous and display.",
+    "limitation": "Minibatch estimates are unbiased before the nonlinear hinge/log, not an unbiased penalty or a guarantee. Hard prospective quiet/other acceptance checks remain unchanged."
+  },
+  "other_terms": "Original physical MAE25percent autonomous/75percent exact display, encoded nonharm0.25, peak0.05, sampling discrepancy0.1 unchanged. Only quiet aggregation is common to both arms; balanced_tail changes under/over coefficients jointly with original2:1 ratio.",
+  "budget": {
+    "authorized_total_usd": 125,
+    "maximum_compute_workflow_allowance_usd": 1.0,
+    "conservative_rate_usd_per_hour": 1.2,
+    "maximum_concurrent_standard_gpus": 1,
+    "workflow_cap_s": 2700,
+    "cleanup_margin_s": 300,
+    "vm_age_cap_s": 1125,
+    "task_cap_s": 1005,
+    "worker_soft_deadline_s": 885,
+    "queue_cap_s": 900,
+    "max_task_retries": 0,
+    "automatic_retry": false,
+    "shared_costs": "Retain all existing reservations and project-level accounting; refresh before launch."
+  },
+  "required_before_launch": [
+    "Implement loss-only fit metadata and exact aggregate-quiet estimator.",
+    "Enumerate full/75rolling origin choices in weighted duplicate/empty-quiet fixtures; compare linear estimates with exact displayed/whole-history quiet deltas.",
+    "Verify padding invariance, compensating-improvement gradient example, finite derivatives and unchanged model inputs/parameters; no CPU optimizer.",
+    "Freeze all source/archive hashes and all unchanged acceptance gates.",
+    "Preserve tested CPU-mapped serialized CUDA optimizer replay, device/key/dtype/value checks and full checkpoints.",
+    "Readiness, exact scoped grant/cleanup, one execution handle and whole-workflow ledger guard."
+  ],
+  "required_after_run": [
+    "Finish both300epoch arms and preserve every checkpoint.",
+    "Freeze selections/winner before development confirmation.",
+    "Independent CPU decision reconstruction and actual forecast replay.",
+    "Only if accepted, verify selected end-to-end prefix/gallery predictions and canonical all-origin horizons before any broader replacement; no claim of untested rotations."
+  ],
+  "scientific_scope": "Development continuation with an untrained time-conditioned residual over a frozen guarded context correction. Gaussian functions of known absolute/elapsed time add representational flexibility, not simulation resolution or true future phase. FrozenGRU and corrected-output feedback policy unchanged. Same fit/selection/development-confirmation roles and scientific acceptance gates. Earlier confirmation outcomes informed development, so this is not pristine validation. Original test excluded. Generic3m-diameter conical crowns,0.5m mesh, imposed1500C20s contact ignition,no trunks/buildings/embers or physical validation. No new fitted accuracy evidence or deployment.",
+  "future_sources": [
+    "guard_matched_objective.py",
+    "guard_matched_data.py",
+    "guard_matched_worker.py"
+  ]
+}

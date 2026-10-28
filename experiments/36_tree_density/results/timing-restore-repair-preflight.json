@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "failed_execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-timing05/executions/d0e67e82-2adf-4dc2-9e1c-29c552dfa14d",
+  "failed_task_seconds": 16.024699982,
+  "failure_stage": "First arm discarded serialized optimizer preflight, before fitted epoch loop",
+  "old_source_sha256": "1969e0e404fb453fc1009d1fc516d7eb3d0ed4a455b9840f1c40fa6c3e5c556a",
+  "new_source_sha256": "07dd20ec6851ed8b7a5c690afe10507861ac98b3b0d6cdd70e574fdb52a21529",
+  "trace_sha256": "9a815e01d2029492d874bfb327b782355ad9921306ebed278e9235b721380051",
+  "model_next_update_assertion_preceded_failure": true,
+  "fit_epochs": 0,
+  "preflight_updates_per_arm_unchanged": 3,
+  "all_fit_loss_sampling_selection_checkpoint_confirmation_code_identical": true,
+  "strict_optimizer_keys_groups_device_dtype_values_enforced": true,
+  "restore_map_location": "cpu",
+  "actual_cuda_replay_passed": false,
+  "optimizer_updates_on_local_cpu": 0,
+  "limitations": "Source-scope verification and actual failure diagnosis only. CPU loading lets PyTorch place model parameters and optimizer moments while retaining CPU scalar step counters. Both-arm serialized replay/device/value checks still must pass on actual CUDA; no model accuracy evidence."
+}

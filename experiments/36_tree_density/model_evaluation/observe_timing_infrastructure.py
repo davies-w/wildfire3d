@@ -1,0 +1,11 @@
+"""Read exact execution/job/allocation state; never inspect model-selection outputs."""
+from pathlib import Path
+import argparse,datetime,sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from cloud import gc,read,save
+ap=argparse.ArgumentParser();ap.add_argument('--pilot',choices=['01','02','03','04','05','06'],required=True);ap.add_argument('--batch-region',choices=['us-central1','us-east4'],required=True);a=ap.parse_args();stem='timing-decoder-pilot'+a.pilot;label='gpu36-timing'+a.pilot;x=read('results/'+stem+'-execution.json')['name'].split('/');execution=gc('workflows','executions','describe',x[-1],'--workflow='+x[-3],'--location=us-central1');jobs=gc('batch','jobs','list','--location='+a.batch_region,'--filter=labels.trial_id='+label);vms=gc('compute','instances','list','--filter=labels.trial_id='+label);events=[]
+for job in jobs:
+ query='protoPayload.methodName="v1.compute.instances.insert" AND protoPayload.resourceName:"'+job['uid']+'" AND timestamp>="'+execution['startTime']+'"';part=gc('logging','read',query,'--limit=1000');assert len(part)<1000;events.extend(part)
+completed=[e for e in events if e.get('operation',{}).get('last')];successful=[e for e in completed if not e['protoPayload'].get('status',{}).get('code')]
+proof=dict(checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),execution=execution,jobs=[dict(name=j['name'],uid=j['uid'],status=j['status']) for j in jobs],instances=[dict(name=v['name'],state=v['status'],created=v.get('creationTimestamp'),last_stopped=v.get('lastStopTimestamp')) for v in vms],allocation_events=events,successful_insert_completions_observed=len(successful),failed_insert_completions_observed=len(completed)-len(successful),scope='Point-in-time infrastructure metadata only. A stopping resource object is not by itself proof of a successful GPU allocation. This is not terminal zero-cost proof, final billing or accuracy evidence. No resource or model state changed.')
+save('results/'+stem+'-infrastructure-observation.json',proof);print(dict(checked_utc=proof['checked_utc'],workflow_state=execution['state'],job_states=[j['status']['state'] for j in jobs],instances=proof['instances'],successful_insert_completions_observed=len(successful),failed_insert_completions_observed=len(completed)-len(successful)))

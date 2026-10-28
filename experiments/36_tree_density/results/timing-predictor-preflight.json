@@ -1,0 +1,131 @@
+{
+  "passed": true,
+  "optimizer_updates": 0,
+  "fit_histories": 8,
+  "canonical_fit_histories": 3,
+  "observed_prefix_only": true,
+  "known_future_inputs": "Saved simulation time grid, seven geometry parameters and imposed20second ignition command; no future target states. This is a simulation forecasting assumption.",
+  "initial_checkpoint": "Frozen trained context230 plus zero new timing residual; not a wholly untrained forecast.",
+  "cached_full_and_rolling_replays": [
+    {
+      "origin": 0,
+      "steps": 90,
+      "observed_prefix_frames": 1,
+      "max_feature_absolute_error": 3.0025839805603027e-06,
+      "max_raw_state_absolute_error_by_state": [
+        5.066394805908203e-07,
+        1.52587890625e-05,
+        1.6689300537109375e-06,
+        9.1552734375e-05
+      ],
+      "max_corrected_state_absolute_error_by_state": [
+        4.470348358154297e-07,
+        1.52587890625e-05,
+        1.9073486328125e-06,
+        9.1552734375e-05
+      ]
+    },
+    {
+      "origin": 0,
+      "steps": 16,
+      "observed_prefix_frames": 1,
+      "max_feature_absolute_error": 1.1771917343139648e-06,
+      "max_raw_state_absolute_error_by_state": [
+        3.650784492492676e-07,
+        1.52587890625e-05,
+        1.6689300537109375e-06,
+        9.1552734375e-05
+      ],
+      "max_corrected_state_absolute_error_by_state": [
+        3.5762786865234375e-07,
+        1.52587890625e-05,
+        1.9073486328125e-06,
+        9.1552734375e-05
+      ]
+    },
+    {
+      "origin": 16,
+      "steps": 16,
+      "observed_prefix_frames": 17,
+      "max_feature_absolute_error": 1.5348196029663086e-06,
+      "max_raw_state_absolute_error_by_state": [
+        2.5331974029541016e-07,
+        2.86102294921875e-06,
+        2.9802322387695312e-08,
+        1.52587890625e-05
+      ],
+      "max_corrected_state_absolute_error_by_state": [
+        2.384185791015625e-07,
+        3.814697265625e-06,
+        3.725290298461914e-08,
+        1.52587890625e-05
+      ]
+    },
+    {
+      "origin": 74,
+      "steps": 16,
+      "observed_prefix_frames": 75,
+      "max_feature_absolute_error": 5.364418029785156e-07,
+      "max_raw_state_absolute_error_by_state": [
+        0.0,
+        0.0,
+        0.0,
+        8.940696716308594e-06
+      ],
+      "max_corrected_state_absolute_error_by_state": [
+        0.0,
+        0.0,
+        0.0,
+        8.881092071533203e-06
+      ]
+    }
+  ],
+  "canonical_horizons": [
+    {
+      "steps": 1,
+      "nominal_seconds": 2,
+      "actual_duration_min_s": 1.8590927124023438,
+      "actual_duration_max_s": 2.1953964233398438,
+      "finite": true
+    },
+    {
+      "steps": 4,
+      "nominal_seconds": 8,
+      "actual_duration_min_s": 7.8568267822265625,
+      "actual_duration_max_s": 8.182830810546875,
+      "finite": true
+    },
+    {
+      "steps": 8,
+      "nominal_seconds": 16,
+      "actual_duration_min_s": 15.84527587890625,
+      "actual_duration_max_s": 16.16607666015625,
+      "finite": true
+    },
+    {
+      "steps": 16,
+      "nominal_seconds": 32,
+      "actual_duration_min_s": 31.84227752685547,
+      "actual_duration_max_s": 32.18797302246094,
+      "finite": true
+    },
+    {
+      "steps": 45,
+      "nominal_seconds": 90,
+      "actual_duration_min_s": 89.88471221923828,
+      "actual_duration_max_s": 90.18128204345703,
+      "finite": true
+    }
+  ],
+  "coherent_forecast_mass_constraints": true,
+  "gas_nonnegative": true,
+  "heating_sign_unconstrained": true,
+  "base_and_decoder_states_unchanged": true,
+  "source_sha256": {
+    "validate_timing_predictor.py": "01aa6fb1b670095c19e48e2bbcdcf1c2848ca0a1ce7a85e52d260b8afc9ab6f7",
+    "joint_predictor.py": "61251fe4fdf1b9a8a0c0203c7d51abb3826f89d3ac3e1e4e0cfbdd7ddcd3f6e6",
+    "joint_scorecard.py": "d7c6937e705ded88b7a1c2282f1fb037f15a6f9933d3a2a9230d33b47af13c51",
+    "timing_decoder.py": "2c5116a92d276007232934bb42de03cef5ecdd4e2b276f56cb0268f25a8658be"
+  },
+  "scope": "Inference/wiring only. No selected timing model, confirmation/test evaluation, accuracy improvement or deployment claim. Nominal16seconds is8steps; gallery rolling16steps is about32seconds. Stitched gallery revisions are not a single monotone physical trajectory."
+}

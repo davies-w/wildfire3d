@@ -2819,3 +2819,220 @@ stages:
     metrics:
     - results/timing-cost-bounds-preflight.json:
         cache: false
+  prepare_timing_trial06:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_timing_trial06.py
+    deps:
+    - model_evaluation/prepare_timing_trial06.py
+    - model_evaluation/timing_worker_v2.py
+    - model_evaluation/timing_decoder.py
+    - model_evaluation/context_data.py
+    - model_evaluation/context_objective.py
+    - model_evaluation/joint_decoder_v2.py
+    - model_evaluation/joint_objective_v2.py
+    - model_evaluation/joint_data.py
+    - model_evaluation/joint_metrics.py
+    - model_evaluation/gas_head_metrics.py
+    - data/timing-candidate
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    - data/gas-shape-pilot01
+    - results/timing-decoder-trial-plan06.json
+    - results/context-objective-preflight.json
+    - results/context-decoder-preflight.json
+    - results/joint-pipeline-v2-preflight.json
+    outs:
+    - data/timing-decoder-pilot06
+    metrics:
+    - results/timing-decoder-pilot06-prepared.json:
+        cache: false
+  validate_timing_trial06:
+    cmd: ../../.venv/bin/python model_evaluation/validate_timing_trial06.py
+    deps:
+    - model_evaluation/validate_timing_trial06.py
+    - model_evaluation/launch_timing_decoder_pilot06.py
+    - model_evaluation/collect_timing_decoder_pilot06.py
+    - model_evaluation/close_timing_decoder_pilot06.py
+    - model_evaluation/monitor_timing_decoder_pilot06.py
+    - model_evaluation/reconcile_timing_decoder_pilot06.py
+    - model_evaluation/analyze_timing_decoder_pilot06.py
+    - data/timing-decoder-pilot06
+    - results/timing-decoder-pilot06-prepared.json
+    - results/context-objective-preflight.json
+    - results/joint-pipeline-v2-preflight.json
+    metrics:
+    - results/timing-decoder-pilot06-offline-preflight.json:
+        cache: false
+  launch_timing_decoder_pilot06:
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing_decoder_pilot06.py
+      --execute
+    frozen: true
+    deps:
+    - model_evaluation/launch_timing_decoder_pilot06.py
+    - results/timing-cost-bounds-preflight.json
+    - results/timing-decoder-pilot06-price-bound.json
+    - cloud.py
+    - data/timing-decoder-pilot06
+    - results/timing-decoder-pilot06-offline-preflight.json
+    - results/timing-decoder-pilot06-capacity-equivalence.json
+    - results/timing-decoder-pilot05-cost-reconciled.json
+    - results/timing-decoder-pilot05-permission-removed.json
+    - results/timing-regional-network-prepared.json
+    - results/timing-restore-repair-preflight.json
+    metrics:
+    - results/timing-decoder-pilot06-execution.json:
+        cache: false
+  collect_timing_decoder_pilot06:
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing_decoder_pilot06.py
+    frozen: true
+    deps:
+    - model_evaluation/collect_timing_decoder_pilot06.py
+    - cloud.py
+    - results/timing-decoder-pilot06-execution.json
+    outs:
+    - data/timing-decoder-pilot06-results
+    metrics:
+    - results/timing-decoder-pilot06-collected.json:
+        cache: false
+  close_timing_decoder_pilot06:
+    cmd: ../../.venv/bin/python model_evaluation/close_timing_decoder_pilot06.py
+    frozen: true
+    deps:
+    - model_evaluation/close_timing_decoder_pilot06.py
+    - cloud.py
+    - results/timing-decoder-pilot06-collected.json
+    - results/timing-decoder-pilot06-read-condition.json
+    metrics:
+    - results/timing-decoder-pilot06-permission-removed.json:
+        cache: false
+  analyze_timing_decoder_pilot06:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_timing_decoder_pilot06.py
+    frozen: true
+    deps:
+    - model_evaluation/analyze_timing_decoder_pilot06.py
+    - cloud.py
+    - data/timing-decoder-pilot06
+    - data/timing-decoder-pilot06-results
+    - results/timing-decoder-pilot06-collected.json
+    - results/timing-decoder-pilot06-permission-removed.json
+    metrics:
+    - results/timing-decoder-pilot06-analysis.json:
+        cache: false
+  reconcile_timing_decoder_pilot06:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_timing_decoder_pilot06.py
+    frozen: true
+    deps:
+    - model_evaluation/reconcile_timing_decoder_pilot06.py
+    - cloud.py
+    - results/timing-decoder-pilot06-collected.json
+    - results/timing-decoder-pilot06-permission-removed.json
+    metrics:
+    - results/timing-decoder-pilot06-cost-reconciled.json:
+        cache: false
+  validate_timing_restore_repair:
+    cmd: ../../.venv/bin/python model_evaluation/validate_timing_restore_repair.py
+    deps:
+    - model_evaluation/validate_timing_restore_repair.py
+    - model_evaluation/timing_worker.py
+    - model_evaluation/timing_worker_v2.py
+    - data/timing-decoder-pilot05
+    - data/timing-decoder-pilot05-results
+    - results/timing-decoder-pilot05-execution.json
+    - results/timing-decoder-pilot05-collected.json
+    metrics:
+    - results/timing-restore-repair-preflight.json:
+        cache: false
+  verify_timing_regional_price_bound06:
+    cmd: ../../.venv/bin/python model_evaluation/verify_timing_regional_price_bound.py
+      --pilot 06
+    frozen: true
+    deps:
+    - model_evaluation/verify_timing_regional_price_bound.py
+    - results/timing-decoder-trial-plan06.json
+    metrics:
+    - results/timing-decoder-pilot06-price-bound.json:
+        cache: false
+  verify_timing_capacity_equivalence06:
+    cmd: ../../.venv/bin/python model_evaluation/verify_timing_capacity_equivalence.py
+      --pilot 06 --zone us-east4-a --batch-region us-east4 --subnet fds-timing-east4
+      --worker-repair
+    deps:
+    - model_evaluation/verify_timing_capacity_equivalence.py
+    - data/timing-decoder-pilot01
+    - data/timing-decoder-pilot06
+    - results/timing-decoder-pilot01-prepared.json
+    - results/timing-decoder-pilot06-prepared.json
+    - results/timing-restore-repair-preflight.json
+    metrics:
+    - results/timing-decoder-pilot06-capacity-equivalence.json:
+        cache: false
+  validate_timing_predictor:
+    cmd: ../../.venv/bin/python model_evaluation/validate_timing_predictor.py
+    deps:
+    - model_evaluation/validate_timing_predictor.py
+    - model_evaluation/joint_predictor.py
+    - model_evaluation/joint_scorecard.py
+    - model_evaluation/joint_metrics.py
+    - model_evaluation/gas_head_metrics.py
+    - model_evaluation/timing_decoder.py
+    - data/exposure-pilot02
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    - data/timing-candidate
+    metrics:
+    - results/timing-predictor-preflight.json:
+        cache: false
+  amend_timing06_infrastructure_allowance:
+    cmd: ../../.venv/bin/python model_evaluation/amend_timing06_infrastructure_allowance.py
+    frozen: true
+    deps:
+    - model_evaluation/amend_timing06_infrastructure_allowance.py
+    - cloud.py
+    - data/timing-decoder-pilot06
+    - results/timing-decoder-pilot06-execution.json
+    metrics:
+    - results/timing-decoder-pilot06-infrastructure-allowance.json:
+        cache: false
+  monitor_timing_decoder_pilot06:
+    cmd: ../../.venv/bin/python model_evaluation/monitor_timing_decoder_pilot06.py
+    frozen: true
+    deps:
+    - model_evaluation/monitor_timing_decoder_pilot06.py
+    - cloud.py
+    - results/timing-decoder-pilot06-execution.json
+    metrics:
+    - results/timing-decoder-pilot06-progress.json:
+        cache: false
+    - results/timing-decoder-pilot06-optimizer-replay.json:
+        cache: false
+  observe_timing_infrastructure06:
+    cmd: ../../.venv/bin/python model_evaluation/observe_timing_infrastructure.py
+      --pilot 06 --batch-region us-east4
+    frozen: true
+    deps:
+    - model_evaluation/observe_timing_infrastructure.py
+    - cloud.py
+    - results/timing-decoder-pilot06-execution.json
+    metrics:
+    - results/timing-decoder-pilot06-infrastructure-observation.json:
+        cache: false
+  audit_timing_fit:
+    cmd: ../../.venv/bin/python model_evaluation/audit_timing_fit.py
+    deps:
+    - model_evaluation/audit_timing_fit.py
+    - data/timing-decoder-pilot06
+    - data/timing-decoder-pilot06-results
+    - results/timing-decoder-pilot06-analysis.json
+    metrics:
+    - results/timing-fit-audit.json:
+        cache: false
+  prepare_guard_matched_protocol:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_guard_matched_protocol.py
+    deps:
+    - model_evaluation/prepare_guard_matched_protocol.py
+    - data/timing-decoder-pilot06
+    - data/timing-candidate
+    - results/timing-fit-audit.json
+    - results/timing-decoder-pilot06-analysis.json
+    metrics:
+    - results/guard-matched-protocol-draft.json:
+        cache: false

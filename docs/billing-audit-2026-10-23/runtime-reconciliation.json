@@ -1,19 +1,21 @@
 {
   "billing_export_status": "posted_costs_subject_to_adjustment",
   "posted_source": "BigQuery detailed export",
-  "as_of_utc": "2026-10-28T04:43:51.669153+00:00",
+  "as_of_utc": "2026-10-28T05:37:57.469042+00:00",
   "status": "runtime_estimate_pending_per_resource_billing",
   "project_posted_comparison_usd": 47.918472,
-  "project_compute_runtime_estimate_usd": 45.46005299282305,
+  "project_compute_runtime_estimate_usd": 45.73778140648972,
   "shared_cost_estimate_usd": 1.26,
-  "spend_estimate_usd": 48.14954268719291,
-  "unposted_compute_after_export_usd": 0.23107068719291105,
+  "spend_estimate_usd": 48.42727110085958,
+  "unposted_compute_after_export_usd": 0.5087991008595777,
   "unposted_resources": [
+    "fds-gpu36-timing06-ea4ddc3f-fd43-469d0-group0-0-cjft",
+    "fds-gpu36-timing05-b969e7da-1db3-400e0-group0-0-7nmv",
     "fds-gpu36-context0-b82a73da-5ff8-4a130-group0-0-mns2",
     "fds-gpu36-joint02-aca5fd21-e444-43f8-0-group0-0-zqsb",
     "fds-gpu36-joint01-52981f30-2a21-49fa-0-group0-0-4wm8"
   ],
-  "matched_vms": 353,
+  "matched_vms": 355,
   "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
   "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. East4 G2 uses a conservative1.20USD/VM-hour bound. N1 with exactly one T4 and Flex-start use a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
   "rates_usd_per_vm_hour": {
