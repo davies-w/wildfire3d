@@ -650,3 +650,24 @@ uploaded package and a prospective2GiB output allowance. The original test and
 scientific acceptance are unchanged. The prospective final inference method now
 pins pilot02's identical scientific files, before any fitted pilot02 outcome;
 its old pilot01 version remains in Git history. No final test scoring occurred.
+
+
+### Canonical pilot02 closed; pilot03 prepared in a different US region
+
+Pilot02 reached its15minute queue limit after us-east4-a reported L4 stockout.
+No optimizer replay, epoch checkpoint or scientific result was produced. Full-UID
+allocation audit proves zero successful VM insertions; jobs/VMs/disks/read grant
+are gone. The1.30USD reservation is released; shared workflow/storage charges
+remain project-level. Workflow success denotes cleanup, not a trained model.
+
+Current US quota/catalog inventory identifies exact g2-standard-4/one-L4 support
+and quota in us-west4-a/c. Pilot03 changes placement to those zones and uses an
+isolated private-access subnet in the existing network. Scientific files remain
+byte-identical to pilot01, except runtime output prefix. Both-zone cleanup,
+original3600s whole-workflow/300s shutdown allowance,1.30USD cap,900s queue and
+no automatic retries remain. Quota/catalog/subnet checks are not stock evidence.
+The original test remains untouched, and its prospective method now pins pilot03
+before fitted results. Transfer projection168,203,188,416bytes is below160GiB.
+All earlier normalization, development confirmation and simplified-FDS limitations
+still apply. No repair has passed; expected fitting20–35minutes starts only after
+allocation, and final independent verification takes additional time.

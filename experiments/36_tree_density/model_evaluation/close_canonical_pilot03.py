@@ -1,0 +1,15 @@
+"""Remove only the terminal joint decoder pilot's exact temporary read grant."""
+import subprocess,sys
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from cloud import R,G,BUCKET,PROJECT,gc,read,save
+terminal=read('results/canonical-pilot03-status.json');assert terminal['state']!='ACTIVE'
+proof=read('results/canonical-pilot03-collected.json') if (R/'results/canonical-pilot03-collected.json').exists() else read('results/canonical-pilot03-incomplete.json');assert proof['cleanup_verified']
+assert read('results/canonical-pilot03-cleanup.json')=={'jobs':[],'instances':[],'disks':[]}
+for cmd in [('batch','jobs','list','--location=us-west4'),('compute','instances','list'),('compute','disks','list')]:assert not gc(*cmd,'--filter=labels.trial_id=gpu36-canonical03')
+c=read('results/canonical-pilot03-read-condition.json');assert c['title']=='density36-canonical-pilot03-read'
+policy=gc('storage','buckets','get-iam-policy','gs://'+BUCKET)
+if any(b.get('condition')==c and 'serviceAccount:fds-worker@'+PROJECT+'.iam.gserviceaccount.com' in b.get('members',[]) for b in policy['bindings']):
+ subprocess.run([G,'storage','buckets','remove-iam-policy-binding','gs://'+BUCKET,'--member=serviceAccount:fds-worker@'+PROJECT+'.iam.gserviceaccount.com','--role=roles/storage.objectViewer','--condition-from-file='+str(R/'results/canonical-pilot03-read-condition.json')],check=True,capture_output=True)
+policy=gc('storage','buckets','get-iam-policy','gs://'+BUCKET);assert not any(b.get('condition')==c for b in policy['bindings'])
+save('results/canonical-pilot03-permission-removed.json',{'exact_grant_removed':True,'condition':c,'all_inputs_outputs_and_checkpoints_preserved':True})
