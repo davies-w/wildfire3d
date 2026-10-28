@@ -1,0 +1,44 @@
+{
+  "checked_utc": "2026-10-28T04:37:08.960363+00:00",
+  "quota": [
+    {
+      "limit": 200.0,
+      "metric": "CPUS",
+      "usage": 0.0
+    },
+    {
+      "limit": 8.0,
+      "metric": "IN_USE_ADDRESSES",
+      "usage": 0.0
+    },
+    {
+      "limit": 500.0,
+      "metric": "SSD_TOTAL_GB",
+      "usage": 0.0
+    },
+    {
+      "limit": 1.0,
+      "metric": "NVIDIA_T4_GPUS",
+      "usage": 0.0
+    },
+    {
+      "limit": 1.0,
+      "metric": "NVIDIA_L4_GPUS",
+      "usage": 0.0
+    }
+  ],
+  "fds_trial_subnets": [
+    "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial"
+  ],
+  "existing_default_subnet": {
+    "name": "default",
+    "network": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/global/networks/default",
+    "region": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/regions/us-east4",
+    "ipCidrRange": "10.150.0.0/20"
+  },
+  "g2_zones": [
+    "us-east4-a",
+    "us-east4-c"
+  ],
+  "limitations": "Quota and supported hardware are not live capacity. Existing active timing04 must close with verified resources/grant/cost before a different region is submitted. Regional pricing/network policy/egress and lifecycle cleanup must be checked first. No region-changing or paid action performed."
+}
