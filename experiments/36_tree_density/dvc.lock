@@ -8631,3 +8631,53 @@ stages:
       hash: md5
       md5: 9e998267b26d5b2c460c38f3fdcf9dda
       size: 628
+  launch_guard_matched_pilot03:
+    cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot03.py
+      --execute
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: data/guard-matched-pilot03
+      hash: md5
+      md5: 12dc55c5cbc4b8bc01ef361b1f607351.dir
+      size: 952113675
+      nfiles: 39
+    - path: model_evaluation/launch_guard_matched_pilot03.py
+      hash: md5
+      md5: cf6a6ba4c81740446245da8202c0c56c
+      size: 7858
+    - path: results/guard-matched-objective-preflight.json
+      hash: md5
+      md5: f8c6b9d194f221936bc66591e0ea814f
+      size: 1319
+    - path: results/guard-matched-pilot03-offline-preflight.json
+      hash: md5
+      md5: 9e998267b26d5b2c460c38f3fdcf9dda
+      size: 628
+    - path: results/guard-matched-pilot03-price-bound.json
+      hash: md5
+      md5: a548358ffc7140dcbff40a516f3fee9c
+      size: 14487
+    - path: results/timing-cost-bounds-preflight.json
+      hash: md5
+      md5: b5b3ad9e0c900fc762b0e49d158a87ef
+      size: 560
+    - path: results/timing-decoder-pilot06-cost-reconciled.json
+      hash: md5
+      md5: 85ab9bbc752a839d26ae22797cfeaf5e
+      size: 463
+    - path: results/timing-decoder-pilot06-permission-removed.json
+      hash: md5
+      md5: 6f9ca976df894445a30612e7a0e22d9d
+      size: 478
+    - path: results/timing-regional-network-prepared.json
+      hash: md5
+      md5: 5a6d504044648f3980912a1850b74993
+      size: 1082
+    outs:
+    - path: results/guard-matched-pilot03-execution.json
+      hash: md5
+      md5: 631f073025c1636fa2c7e365e8e3c6d1
+      size: 337
