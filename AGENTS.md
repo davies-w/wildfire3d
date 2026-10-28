@@ -111,3 +111,12 @@ A user request for an update or status is a checkpoint, not a stop instruction. 
 ## Long-running simulation recovery
 
 Following the user's explicit request to avoid losing completed computation, future long runs must checkpoint periodically, preserve and upload the final usable checkpoint when interrupted, and support a tested resume path. Do not delete restart files from incomplete runs. Report the runtime estimate, deadline, checkpoint policy and extension limitations before launch. Existing runs without this capability must be described honestly; partial scientific outputs are not a resumable checkpoint.
+
+## Standing authorization: repository uploads and budgeted cloud work
+
+The user explicitly authorized uploads and Git pushes to repositories they control,
+and cloud work within the existing $125 ledger allowance, without asking again
+(2026-10-28). Account for existing spend, reservations and the proposed allowance
+before launching work. This authorization does not increase the budget or authorize
+publishing to unrelated destinations. Continue authorized work while reporting
+material results and limitations.
