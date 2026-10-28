@@ -1,0 +1,114 @@
+{
+  "fit_gas_peak_summary_kg_s": {
+    "minimum": 0.03217140585184097,
+    "p10": 0.1990148425102234,
+    "median": 1.074454665184021,
+    "zero_histories": 0,
+    "below_001_histories": 0
+  },
+  "status": "protocol_prepared_not_launched",
+  "implementation_status": "Corrected floating-prefix implementation; CPU checks only. Real CUDA timing/next-update replay required before fitting. No scientific outcome yet.",
+  "trial_identity": {
+    "workflow": "fds-gpu36-joint02",
+    "label": "gpu36-joint02",
+    "prefix": "density36/joint-decoder-pilot02/",
+    "reservation_key": "density36-joint-decoder-pilot02"
+  },
+  "candidate": "frozen_gated_GRU_plus_four_independent_output_heads",
+  "arms": [
+    "direct",
+    "interval"
+  ],
+  "parameters_per_arm": 3076,
+  "seed": 3620,
+  "base_checkpoint_sha256": "f496262454176fb66264acf5a7ca49ff253bbd52584ccc8ce722da7b028a8048",
+  "initial_decoder_sha256": "2f063d3d725f978e865a6408f319d519ece39f23db490a8fc1d857f575fc8150",
+  "rolling_manifest_sha256": "bddfca962e8d2a1c6c55afbf719920a31420eb350709f724cba53da3d69fe851",
+  "source_hashes": {
+    "joint_decoder_v2.py": "1c9032ecdb4c61658e24f2eabd99f4c058e75a51ffd121b8028ca2ed7bf19620",
+    "joint_objective_v2.py": "9502e6103f22a88d08fa29e72b980df859a3f580199617b2a105ea5d903c214a"
+  },
+  "partitions": {
+    "fit": {
+      "histories": 1332,
+      "configurations": 1306
+    },
+    "selection": {
+      "histories": 330,
+      "configurations": 326
+    },
+    "confirmation": {
+      "histories": 210,
+      "configurations": 204
+    }
+  },
+  "partition_limitation": "Frozen GRU was previously trained on both decoder-fit and decoder-selection, and fixed feature/state normalization uses former TRAIN. Selection is therefore head-level transfer selection, not an end-to-end independent GRU holdout. Confirmation excludes GRU/head training and current head checkpoint selection, but its outcomes were examined in earlier development experiments and are not pristine. The base GRU checkpoint was itself selected on this former validation set; this is not an untouched complete-pipeline holdout.",
+  "training": {
+    "device": "Cloud CUDA only; no local optimizer",
+    "epochs_per_arm": 300,
+    "batch_histories": 128,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1,
+    "case_order": "Matched deterministic permutations of decoder-fit histories only, seed3620+epoch. Keep per-configuration replica weights; all replicas stay in one role.",
+    "origin_mix": "For each fit history each epoch, deterministic independent50%choice of full-origin0trajectory90steps or rolling16trajectory with origin uniform0..74. Same choices/permutation across arms. Decode each real forecast length before concatenating/padding prediction tensors for the joint loss; never evaluate a decoder on artificial feature padding. Use strict valid masks and length normalization; padded values must not affect loss.",
+    "state_loss": "Mean four-state normalized asinh squared error. Loss-activity is true endpoint gas>1e-6kg/s OR max absolute true water/dry-mass change>1e-5kg; balance nonempty active/quiet groups within each valid forecast, normalize by valid length and weight by inverse fit replica count. Reported ScorecardV1 phase labels are separate and unchanged. Same frozen state scales/std as base model.",
+    "extras": "0.1*weighted CVaR of squared startup positive gas deficit +0.05*CVaR of squared startup overprediction +0.05*relative segment-peak squared error +0.1*sampling-residual squared error. CVaR uses20%replica-weight mass within eligible startup minibatch examples. Use full-history true gas peak for TRAIN loss normalization (floor1e-6 if positive,0.01 if zero); it is never a decoder input.",
+    "sampling_residual": "Compare predicted minus TRUE trajectory residual: trapezoid(endpoint gas)/0.75 minus predicted dry-mass loss. Normalize by initial dry mass. Target residual is not forced zero because endpoint samples and cumulative labels differ.",
+    "initial_states": "Both arms use identical untrained parameter bytes. Direct epoch0 reproduces raw GRU. Interval epoch0 is a distinct untrained projection, not raw baseline. Report both epoch0outcomes. Original-GRU fallback bypasses decoder, represented separately as epoch-1.",
+    "resume": "Fresh independent AdamW state for each new head. Before fitting each arm, CUDA next-update replay must be bitwise after a nonempty optimizer/RNG snapshot/restore. Checkpoint every epoch and batch-boundary deadline with model, optimizer, RNG, current case permutation, origin choices, epoch/batch cursor, history and selected state.",
+    "selection_evaluation_every_epochs": 10
+  },
+  "evaluation": {
+    "comparators": [
+      "raw_GRU",
+      "untrained_direct",
+      "untrained_interval",
+      "origin_state_no_change"
+    ],
+    "phase_reporting": "Use existing ScorecardV1 phase definitions and report numerators/denominators for evaluated forecasts, including weak/transition cases. Primary rolling16steps is approximately32seconds, not the canonical16-second headline. Full canonical scorecard/all-horizon replay is still required after an accepted candidate. No-change is a diagnostic comparator in both regimes.",
+    "regimes": [
+      "full_autonomous_origin0_90steps",
+      "exact_gallery_first15autonomous_then_rolling16_origins0to74"
+    ],
+    "head_selection": "Use only326configuration/330history decoder-selection role for checkpoint/winner selection. GRU was trained on that role, so this is head-level development selection. Never inspect confirmation metrics mid-run.",
+    "eligible": "Original raw GRU fallback, each untrained arm epoch0, and every10completed epochs. A candidate is guarded if original objective/state MAEs/integral/peak-time/sampling-consistency/overprediction tail are within5%baseline on full autonomous forecasts, quiet increases<=0.001physical encoding scales in both regimes, and display objective/state MAEs within5%. No requirement for a stitched display curve to obey a single physical trajectory.",
+    "checkpoint_rule": "Prefer checkpoints passing ALL acceptance checks on selection data; among those minimize maximum of four DISPLAY state-MAE ratios to raw GRU, then mean ratio, then startup deficit, then original autonomous objective, then earlier epoch. If none passes, retain the best guarded exploratory checkpoint by the same key or raw fallback. Store accepted_on_selection separately; a fallback is not an improvement.",
+    "winner_rule": "Choose between independently selected direct/interval arms only if selection acceptance passes, using the same ranking and deterministic direct-before-interval final tie. Otherwise winner=raw_baseline. Freeze both checkpoints and winner before any confirmation score. This is a search for a repair, not an isolated causal attribution.",
+    "confirmation": "Only after selection-freeze artifact is saved, evaluate raw baseline, both untrained arms and both selected arms on210histories/204configurations from former validation. Judge only the already frozen winner; do not switch winner using confirmation results. This set influenced older experiments and base checkpoint selection, so report development confirmation, not pristine independent generalization.",
+    "test": "Original test features/evaluation excluded from this trial. If confirmation passes, a separately frozen inference/gallery replay is still required before declaring the known displayed prediction problem repaired."
+  },
+  "acceptance": {
+    "display_each_state_MAE_relative_reduction_at_least": 0.1,
+    "display_startup_gas_p90_relative_reduction_at_least": 0.1,
+    "display_gas_peak_amplitude_MAE_relative_reduction_at_least": 0.05,
+    "display_original_objective_relative_increase_at_most": 0.05,
+    "full_autonomous_startup_gas_p90_relative_reduction_at_least": 0.1,
+    "full_autonomous_peak_amplitude_MAE_relative_reduction_at_least": 0.05,
+    "full_autonomous_original_objective_relative_increase_at_most": 0.05,
+    "full_autonomous_each_state_MAE_relative_increase_at_most": 0.05,
+    "quiet_state_increase_at_most_in_physical_encoding_scale": 0.001,
+    "full_autonomous_integral_peak_time_consistency_overprediction_tail_relative_increase_at_most": 0.05,
+    "finite": true,
+    "invalid_state_reporting": "Report negatives, initial-mass exceedances and increases within each individual forecast. Stitched display jumps are forecast revisions. Tiny negative observed water is explicitly projected only in interval decoding. Heating index stays signed."
+  },
+  "budget_plan": {
+    "maximum_allowance_usd": 0.23,
+    "maximum_rate_bound_usd_per_hour": 0.8,
+    "vm_creation_age_cap_s": 810,
+    "shutdown_margin_s": 225,
+    "task_cap_s": 690,
+    "training_soft_cap_s": 570,
+    "queue_cap_s": 900,
+    "workflow_cap_s": 2700,
+    "max_task_retries": 0,
+    "scope": "No reservation or launch yet. Live spending, all reservations, inventory, quota, package/worker checks and measured CUDA timing required. Existing Flex queue and other obligations unchanged. Deadline may produce resumable incomplete comparison; never call partial training a completed accepted repair."
+  },
+  "scope": "Prospective corrected four-output decoder trial with identical data roles, training and accuracy acceptance rules to joint01; explicit ordered floating additions replace unsupported CUDA cumsum. Reduced time/budget cap. No fitted accuracy evidence or deployment. UNTRAINED all-four-output decoder proposal and fixed data roles. No new accuracy evidence, optimizer update, CUDA run or deployment at preparation. Corrections are output-only and do not change recurrent feedback. Output priors are not physical validation; simplified crown/ignition/mesh/no-embers limits remain in candidate-plan.",
+  "prior_attempt": {
+    "workflow": "fds-gpu36-joint01",
+    "execution": "3607282b-8696-430d-9189-cf4d93164feb",
+    "result": "Task failed before first optimizer update: deterministic floating cumsum unsupported. Closed, evidence preserved, grant removed, cost reconciled. This is a separately bounded corrected trial, not an automatic retry."
+  }
+}

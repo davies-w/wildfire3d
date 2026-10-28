@@ -1804,3 +1804,111 @@ stages:
     metrics:
     - results/joint-objective-v2-preflight.json:
         cache: false
+  validate_joint_pipeline_v2:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_pipeline_v2.py
+    deps:
+    - model_evaluation/validate_joint_pipeline_v2.py
+    - model_evaluation/joint_data.py
+    - model_evaluation/joint_metrics.py
+    - model_evaluation/joint_decoder_v2.py
+    - model_evaluation/joint_objective_v2.py
+    - model_evaluation/gas_head_metrics.py
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    metrics:
+    - results/joint-pipeline-v2-preflight.json:
+        cache: false
+  prepare_joint_trial02:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_joint_trial02.py
+    deps:
+    - model_evaluation/prepare_joint_trial02.py
+    - model_evaluation/joint_worker.py
+    - model_evaluation/joint_data.py
+    - model_evaluation/joint_metrics.py
+    - model_evaluation/joint_decoder_v2.py
+    - model_evaluation/joint_objective_v2.py
+    - model_evaluation/gas_head_metrics.py
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    - results/joint-decoder-trial02-plan.json
+    - results/joint-pipeline-v2-preflight.json
+    - data/gas-shape-pilot01
+    metrics:
+    - results/joint-decoder-pilot02-prepared.json:
+        cache: false
+    outs:
+    - data/joint-decoder-pilot02
+  validate_joint_trial02:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_trial02.py
+    deps:
+    - model_evaluation/validate_joint_trial02.py
+    - model_evaluation/launch_joint_decoder_pilot02.py
+    - model_evaluation/collect_joint_decoder_pilot02.py
+    - model_evaluation/close_joint_decoder_pilot02.py
+    - model_evaluation/monitor_joint_decoder_pilot02.py
+    - model_evaluation/reconcile_joint_decoder_pilot02.py
+    - model_evaluation/analyze_joint_decoder_pilot02.py
+    - data/joint-decoder-pilot02
+    - results/joint-decoder-pilot02-prepared.json
+    - results/joint-pipeline-v2-preflight.json
+    metrics:
+    - results/joint-decoder-pilot02-offline-preflight.json:
+        cache: false
+  launch_joint_decoder_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/launch_joint_decoder_pilot02.py --execute
+    frozen: true
+    deps:
+    - model_evaluation/launch_joint_decoder_pilot02.py
+    - cloud.py
+    - data/joint-decoder-pilot02
+    - results/joint-decoder-pilot02-offline-preflight.json
+    metrics:
+    - results/joint-decoder-pilot02-execution.json:
+        cache: false
+  collect_joint_decoder_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/collect_joint_decoder_pilot02.py
+    frozen: true
+    deps:
+    - model_evaluation/collect_joint_decoder_pilot02.py
+    - cloud.py
+    - results/joint-decoder-pilot02-execution.json
+    outs:
+    - data/joint-decoder-pilot02-results
+    metrics:
+    - results/joint-decoder-pilot02-collected.json:
+        cache: false
+  close_joint_decoder_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/close_joint_decoder_pilot02.py
+    frozen: true
+    deps:
+    - model_evaluation/close_joint_decoder_pilot02.py
+    - cloud.py
+    - results/joint-decoder-pilot02-collected.json
+    - results/joint-decoder-pilot02-read-condition.json
+    metrics:
+    - results/joint-decoder-pilot02-permission-removed.json:
+        cache: false
+  analyze_joint_decoder_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_joint_decoder_pilot02.py
+    frozen: true
+    deps:
+    - model_evaluation/analyze_joint_decoder_pilot02.py
+    - cloud.py
+    - data/joint-decoder-pilot02
+    - data/joint-decoder-pilot02-results
+    - results/joint-decoder-pilot02-collected.json
+    - results/joint-decoder-pilot02-permission-removed.json
+    metrics:
+    - results/joint-decoder-pilot02-analysis.json:
+        cache: false
+  reconcile_joint_decoder_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_joint_decoder_pilot02.py
+    frozen: true
+    deps:
+    - model_evaluation/reconcile_joint_decoder_pilot02.py
+    - cloud.py
+    - results/joint-decoder-pilot02-collected.json
+    - results/joint-decoder-pilot02-permission-removed.json
+    metrics:
+    - results/joint-decoder-pilot02-cost-reconciled.json:
+        cache: false
