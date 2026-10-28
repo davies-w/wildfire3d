@@ -1,0 +1,394 @@
+{
+  "reason": "Unallocated zone-b stockout; latest GCE error suggests zone C",
+  "job_before_deletion": {
+    "allocationPolicy": {
+      "instances": [
+        {
+          "installGpuDrivers": true,
+          "policy": {
+            "bootDisk": {
+              "sizeGb": "60",
+              "type": "pd-balanced"
+            },
+            "machineType": "g2-standard-4",
+            "provisioningModel": "STANDARD"
+          }
+        }
+      ],
+      "labels": {
+        "batch-job-id": "fds-gpu36-timing02",
+        "trial_id": "gpu36-timing02"
+      },
+      "location": {
+        "allowedLocations": [
+          "regions/us-central1",
+          "zones/us-central1-b"
+        ]
+      },
+      "network": {
+        "networkInterfaces": [
+          {
+            "network": "projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+            "subnetwork": "projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial"
+          }
+        ]
+      },
+      "serviceAccount": {
+        "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com"
+      }
+    },
+    "createTime": "2026-10-28T04:15:22.068972806Z",
+    "labels": {
+      "trial_id": "gpu36-timing02"
+    },
+    "logsPolicy": {
+      "destination": "CLOUD_LOGGING"
+    },
+    "name": "projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-gpu36-timing02",
+    "status": {
+      "runDuration": "0s",
+      "state": "SCHEDULED",
+      "statusEvents": [
+        {
+          "description": "Job state is set from QUEUED to SCHEDULED for job projects/587909259768/locations/us-central1/jobs/fds-gpu36-timing02.",
+          "eventTime": "2026-10-28T04:15:30.214777034Z",
+          "type": "STATUS_CHANGED"
+        }
+      ],
+      "taskGroups": {
+        "group0": {
+          "counts": {
+            "PENDING": "1"
+          },
+          "instances": [
+            {
+              "bootDisk": {
+                "image": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261016-00-p00",
+                "sizeGb": "60",
+                "type": "pd-balanced"
+              },
+              "machineType": "g2-standard-4",
+              "provisioningModel": "STANDARD",
+              "taskPack": "1"
+            }
+          ]
+        }
+      }
+    },
+    "taskGroups": [
+      {
+        "name": "projects/587909259768/locations/us-central1/jobs/fds-gpu36-timing02/taskGroups/group0",
+        "parallelism": "1",
+        "taskCount": "1",
+        "taskCountPerNode": "1",
+        "taskSpec": {
+          "computeResource": {
+            "cpuMilli": "4000",
+            "memoryMib": "12000"
+          },
+          "maxRunDuration": "1005s",
+          "runnables": [
+            {
+              "container": {
+                "commands": [
+                  "-c",
+                  "import base64;exec(compile(base64.b64decode('aW1wb3J0IHBhdGhsaWIsc3lzLHJ1bnB5LHVybGxpYi5yZXF1ZXN0LHVybGxpYi5wYXJzZSxqc29uLHRhcmZpbGUsc2h1dGlsLGhhc2hsaWIKcD1wYXRobGliLlBhdGgoJy90bXAvc3R1ZHknKTtwLm1rZGlyKGV4aXN0X29rPVRydWUpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pO3Rva2VuPWpzb24ubG9hZCh1cmxsaWIucmVxdWVzdC51cmxvcGVuKHIsdGltZW91dD0yMCkpWydhY2Nlc3NfdG9rZW4nXQp1PSdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vc3RvcmFnZS92MS9iL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvby8nK3VybGxpYi5wYXJzZS5xdW90ZSgnZGVuc2l0eTM2L3RpbWluZy1kZWNvZGVyLXBpbG90MDIvaW5wdXRzLnRhcicsc2FmZT0nJykrJz9hbHQ9bWVkaWEnCndpdGggdXJsbGliLnJlcXVlc3QudXJsb3Blbih1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KHUsaGVhZGVycz17J0F1dGhvcml6YXRpb24nOidCZWFyZXIgJyt0b2tlbn0pLHRpbWVvdXQ9MTgwKSBhcyBzcmMsKHAvJ3RyYW5zZmVyLnRhcicpLm9wZW4oJ3diJykgYXMgZHN0OnNodXRpbC5jb3B5ZmlsZW9iaihzcmMsZHN0KQp3aXRoIHRhcmZpbGUub3BlbihwLyd0cmFuc2Zlci50YXInKSBhcyB0YXI6CiBmb3IgbSBpbiB0YXIuZ2V0bWVtYmVycygpOmFzc2VydCBub3QgbS5uYW1lLnN0YXJ0c3dpdGgoJy8nKSBhbmQgJy4uJyBub3QgaW4gcGF0aGxpYi5QYXRoKG0ubmFtZSkucGFydHMgYW5kIG5vdCBtLmlzc3ltKCkgYW5kIG5vdCBtLmlzbG5rKCkKIHRhci5leHRyYWN0YWxsKHApCmZvciBuLGggaW4ganNvbi5sb2FkcygocC8naGFzaGVzLmpzb24nKS5yZWFkX3RleHQoKSkuaXRlbXMoKTphc3NlcnQgaGFzaGxpYi5zaGEyNTYoKHAvbikucmVhZF9ieXRlcygpKS5oZXhkaWdlc3QoKT09aAoocC8ncmVzdWx0cycpLm1rZGlyKGV4aXN0X29rPVRydWUpO3N5cy5wYXRoLmluc2VydCgwLHN0cihwKSk7CnRyeToKIGZyb20gcnVudGltZSBpbXBvcnQgdXBsb2FkLG9iamVjdF9tZXRhZGF0YSxtYXRjaGVzCiBwcm9iZT1iJ2RlbnNpdHkzNi1wcmVmbGlnaHQtdXBsb2FkLXZlcmlmaWNhdGlvbi1wcm9iZSc7dXBsb2FkKCd1cGxvYWQtcHJvYmUuYmluJyxwcm9iZSk7YXNzZXJ0IG1hdGNoZXMob2JqZWN0X21ldGFkYXRhKCd1cGxvYWQtcHJvYmUuYmluJykscHJvYmUpO3VwbG9hZCgndXBsb2FkLXByb2JlLmJpbicscHJvYmUpCiB1cGxvYWQoJ3RyYW5zcG9ydC1jbG91ZC1jaGVjay5qc29uJyxqc29uLmR1bXBzKHsncGFzc2VkJzpUcnVlLCd2ZXJpZmllZF9tZXRhZGF0YSc6VHJ1ZSwnaWRlbXBvdGVudF9yZXBsYXknOlRydWV9KS5lbmNvZGUoKSkKIHJ1bnB5LnJ1bl9wYXRoKHN0cihwLyd3b3JrZXIucHknKSxydW5fbmFtZT0nX19tYWluX18nKQpleGNlcHQgQmFzZUV4Y2VwdGlvbjoKIGltcG9ydCB0cmFjZWJhY2sKIGZyb20gcnVudGltZSBpbXBvcnQgdXBsb2FkCiB1cGxvYWQoJ2Jvb3RzdHJhcC1lcnJvci50eHQnLHRyYWNlYmFjay5mb3JtYXRfZXhjKCkuZW5jb2RlKCkpO3JhaXNlCg=='),'bootstrap','exec'))"
+                ],
+                "entrypoint": "python",
+                "imageUri": "pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime",
+                "options": "--shm-size=1g"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "uid": "fds-gpu36-timing02-29bd676f-cf03-44100",
+    "updateTime": "2026-10-28T04:15:30.214777034Z"
+  },
+  "allocation_events": [
+    {
+      "insertId": "-7frojucsw8",
+      "labels": {
+        "compute.googleapis.com/root_trigger_id": "10add946-3f1e-4fc1-94b2-7073f47d657c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "id": "operation-1793161065160-65eded8506104-07eca07a-39137f5e",
+        "last": true,
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert"
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {}
+        },
+        "resourceName": "projects/587909259768/zones/us-central1-b/instances/fds-gpu36-timing02-29bd676f-cf03-44100-group0-0-f1f0",
+        "serviceName": "compute.googleapis.com",
+        "status": {
+          "code": 8,
+          "details": [
+            {
+              "@type": "type.googleapis.com/google.protobuf.Struct",
+              "value": {
+                "errorInfo": [
+                  {
+                    "domain": "compute.googleapis.com",
+                    "metadata": {
+                      "attachment": "nvidia-l4:1",
+                      "vmType": "g2-standard-4",
+                      "zone": "us-central1-b",
+                      "zonesAvailable": "us-central1-a"
+                    },
+                    "reason": "resource_availability"
+                  }
+                ],
+                "help": [
+                  {
+                    "links": [
+                      {
+                        "description": "Troubleshooting documentation",
+                        "url": "https://cloud.google.com/compute/docs/resource-error"
+                      }
+                    ]
+                  }
+                ],
+                "localizedMessage": [
+                  {
+                    "locale": "en-US",
+                    "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-central1-b zone. Consider trying your request in the us-central1-a zone(s), which currently has capacity to accommodate your request. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                  }
+                ],
+                "zoneResourcePoolExhaustedWithDetails": {
+                  "details": "NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)",
+                  "zoneResource": {
+                    "project": {
+                      "canonicalProjectId": "587909259768"
+                    },
+                    "resourceName": "us-central1-b",
+                    "resourceType": "ZONE",
+                    "scope": {
+                      "scopeName": "global",
+                      "scopeType": "GLOBAL"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "message": "ZONE_RESOURCE_POOL_EXHAUSTED"
+        }
+      },
+      "receiveTimestamp": "2026-10-28T04:17:51.711966566Z",
+      "resource": {
+        "labels": {
+          "instance_id": "3254673847102523782",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-central1-b"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "ERROR",
+      "timestamp": "2026-10-28T04:17:50.944364Z"
+    },
+    {
+      "insertId": "audd7ucovk",
+      "labels": {
+        "compute.googleapis.com/root_trigger_id": "10add946-3f1e-4fc1-94b2-7073f47d657c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "id": "operation-1793160964788-65eded254d2f2-d70270c2-6ba1f4e2",
+        "last": true,
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert"
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {}
+        },
+        "resourceName": "projects/587909259768/zones/us-central1-b/instances/fds-gpu36-timing02-29bd676f-cf03-44100-group0-0-f1f0",
+        "serviceName": "compute.googleapis.com",
+        "status": {
+          "code": 8,
+          "details": [
+            {
+              "@type": "type.googleapis.com/google.protobuf.Struct",
+              "value": {
+                "errorInfo": [
+                  {
+                    "domain": "compute.googleapis.com",
+                    "metadata": {
+                      "attachment": "nvidia-l4:1",
+                      "vmType": "g2-standard-4",
+                      "zone": "us-central1-b",
+                      "zonesAvailable": "us-central1-c"
+                    },
+                    "reason": "resource_availability"
+                  }
+                ],
+                "help": [
+                  {
+                    "links": [
+                      {
+                        "description": "Troubleshooting documentation",
+                        "url": "https://cloud.google.com/compute/docs/resource-error"
+                      }
+                    ]
+                  }
+                ],
+                "localizedMessage": [
+                  {
+                    "locale": "en-US",
+                    "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-central1-b zone. Consider trying your request in the us-central1-c zone(s), which currently has capacity to accommodate your request. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                  }
+                ],
+                "zoneResourcePoolExhaustedWithDetails": {
+                  "details": "NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)",
+                  "zoneResource": {
+                    "project": {
+                      "canonicalProjectId": "587909259768"
+                    },
+                    "resourceName": "us-central1-b",
+                    "resourceType": "ZONE",
+                    "scope": {
+                      "scopeName": "global",
+                      "scopeType": "GLOBAL"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "message": "ZONE_RESOURCE_POOL_EXHAUSTED"
+        }
+      },
+      "receiveTimestamp": "2026-10-28T04:16:13.838807164Z",
+      "resource": {
+        "labels": {
+          "instance_id": "2046397120357648874",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-central1-b"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "ERROR",
+      "timestamp": "2026-10-28T04:16:12.891312Z"
+    },
+    {
+      "insertId": "-x8gqpxclbe",
+      "labels": {
+        "compute.googleapis.com/root_trigger_id": "10add946-3f1e-4fc1-94b2-7073f47d657c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "id": "operation-1793160945246-65eded12aa10c-b13f061b-7bd2e27b",
+        "last": true,
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert"
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {}
+        },
+        "resourceName": "projects/587909259768/zones/us-central1-b/instances/fds-gpu36-timing02-29bd676f-cf03-44100-group0-0-f1f0",
+        "serviceName": "compute.googleapis.com",
+        "status": {
+          "code": 8,
+          "details": [
+            {
+              "@type": "type.googleapis.com/google.protobuf.Struct",
+              "value": {
+                "errorInfo": [
+                  {
+                    "domain": "compute.googleapis.com",
+                    "metadata": {
+                      "attachment": "nvidia-l4:1",
+                      "vmType": "g2-standard-4",
+                      "zone": "us-central1-b",
+                      "zonesAvailable": "us-central1-a"
+                    },
+                    "reason": "resource_availability"
+                  }
+                ],
+                "help": [
+                  {
+                    "links": [
+                      {
+                        "description": "Troubleshooting documentation",
+                        "url": "https://cloud.google.com/compute/docs/resource-error"
+                      }
+                    ]
+                  }
+                ],
+                "localizedMessage": [
+                  {
+                    "locale": "en-US",
+                    "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-central1-b zone. Consider trying your request in the us-central1-a zone(s), which currently has capacity to accommodate your request. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                  }
+                ],
+                "zoneResourcePoolExhaustedWithDetails": {
+                  "details": "NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)",
+                  "zoneResource": {
+                    "project": {
+                      "canonicalProjectId": "587909259768"
+                    },
+                    "resourceName": "us-central1-b",
+                    "resourceType": "ZONE",
+                    "scope": {
+                      "scopeName": "global",
+                      "scopeType": "GLOBAL"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "message": "ZONE_RESOURCE_POOL_EXHAUSTED"
+        }
+      },
+      "receiveTimestamp": "2026-10-28T04:15:51.372607679Z",
+      "resource": {
+        "labels": {
+          "instance_id": "8696386171205109790",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-central1-b"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "ERROR",
+      "timestamp": "2026-10-28T04:15:50.707920Z"
+    }
+  ],
+  "no_successful_vm_allocation_so_far": true
+}

@@ -3197,12 +3197,27 @@
       }
     },
     "density36-timing-decoder-pilot02": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 0.3,
       "reserved_unix": 1793160897.680523,
       "scope": "Authorized bounded four-output decoder repair, max0.30USD, no automatic retries",
       "workflow": "fds-gpu36-timing02",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-timing02/executions/5584e77a-ef7c-4ed0-931a-4b49d6b41528"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-timing02/executions/5584e77a-ef7c-4ed0-931a-4b49d6b41528",
+      "historical_allowance_usd": 0.3,
+      "terminal_evidence": "experiments/36_tree_density/results/timing-decoder-pilot02-cost-reconciled.json",
+      "cost": {
+        "stage": "verified_no_vm_allocation",
+        "usd": 0,
+        "scope": "Zero VM compute allocated; shared workflow/storage charges remain project-level. Not a zero invoice claim."
+      }
+    },
+    "density36-timing-decoder-pilot03": {
+      "state": "submitted",
+      "allowance_usd": 0.3,
+      "reserved_unix": 1793161276.605839,
+      "scope": "Authorized bounded four-output decoder repair, max0.30USD, no automatic retries",
+      "workflow": "fds-gpu36-timing03",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-timing03/executions/cb4576bc-5f0f-4ed7-ad6c-8c257212855c"
     }
   },
   "recycle_reservations": true,
