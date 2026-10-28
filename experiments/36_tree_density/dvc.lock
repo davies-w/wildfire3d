@@ -5345,3 +5345,171 @@ stages:
       hash: md5
       md5: 745905f66b5682b8a6bd6abf1f0e8c4b
       size: 334
+  collect_context_decoder_pilot01:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/collect_context_decoder_pilot01.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/collect_context_decoder_pilot01.py
+      hash: md5
+      md5: a8b2ad626b177c836d364e83ce727025
+      size: 5800
+    - path: results/context-decoder-pilot01-execution.json
+      hash: md5
+      md5: 745905f66b5682b8a6bd6abf1f0e8c4b
+      size: 334
+    outs:
+    - path: data/context-decoder-pilot01-results
+      hash: md5
+      md5: ad04431e9b39b17d618f193b8fe32378.dir
+      size: 78340264
+      nfiles: 682
+    - path: results/context-decoder-pilot01-collected.json
+      hash: md5
+      md5: c7ec5c7de956002eefbbc82b8315190c
+      size: 797
+  close_context_decoder_pilot01:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/close_context_decoder_pilot01.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/close_context_decoder_pilot01.py
+      hash: md5
+      md5: 819b5cb4ad41eaf7fdd3fd1198de11fa
+      size: 1769
+    - path: results/context-decoder-pilot01-collected.json
+      hash: md5
+      md5: c7ec5c7de956002eefbbc82b8315190c
+      size: 797
+    - path: results/context-decoder-pilot01-read-condition.json
+      hash: md5
+      md5: d109b1002ad57d6ddd1dc43039ebf087
+      size: 366
+    outs:
+    - path: results/context-decoder-pilot01-permission-removed.json
+      hash: md5
+      md5: ba4f490b480776ac61eaa01c38544615
+      size: 480
+  analyze_context_decoder_pilot01:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/analyze_context_decoder_pilot01.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: data/context-decoder-pilot01
+      hash: md5
+      md5: e009034facbf99b6296ea37c32805597.dir
+      size: 951999358
+      nfiles: 35
+    - path: data/context-decoder-pilot01-results
+      hash: md5
+      md5: ad04431e9b39b17d618f193b8fe32378.dir
+      size: 78340264
+      nfiles: 682
+    - path: model_evaluation/analyze_context_decoder_pilot01.py
+      hash: md5
+      md5: 90687f7c7fdbc440b0615fffa00fef13
+      size: 4201
+    - path: results/context-decoder-pilot01-collected.json
+      hash: md5
+      md5: c7ec5c7de956002eefbbc82b8315190c
+      size: 797
+    - path: results/context-decoder-pilot01-permission-removed.json
+      hash: md5
+      md5: ba4f490b480776ac61eaa01c38544615
+      size: 480
+    outs:
+    - path: results/context-decoder-pilot01-analysis.json
+      hash: md5
+      md5: 9d316fff38645466624814fc173985b5
+      size: 28208
+  reconcile_context_decoder_pilot01:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/reconcile_context_decoder_pilot01.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/reconcile_context_decoder_pilot01.py
+      hash: md5
+      md5: e9a6060017237478132f0f88d2ef3e72
+      size: 1700
+    - path: results/context-decoder-pilot01-collected.json
+      hash: md5
+      md5: c7ec5c7de956002eefbbc82b8315190c
+      size: 797
+    - path: results/context-decoder-pilot01-permission-removed.json
+      hash: md5
+      md5: ba4f490b480776ac61eaa01c38544615
+      size: 480
+    outs:
+    - path: results/context-decoder-pilot01-cost-reconciled.json
+      hash: md5
+      md5: 850027a68a7ffa1066ce6b5743369f1e
+      size: 470
+  audit_context_decoder_pilot01:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/audit_context_decoder_pilot01.py
+    deps:
+    - path: data/context-decoder-pilot01
+      hash: md5
+      md5: e009034facbf99b6296ea37c32805597.dir
+      size: 951999358
+      nfiles: 35
+    - path: data/context-decoder-pilot01-results
+      hash: md5
+      md5: ad04431e9b39b17d618f193b8fe32378.dir
+      size: 78340264
+      nfiles: 682
+    - path: model_evaluation/audit_context_decoder_pilot01.py
+      hash: md5
+      md5: a24321011f9996fcc18e271463a7a59a
+      size: 4618
+    - path: results/context-decoder-pilot01-analysis.json
+      hash: md5
+      md5: 9d316fff38645466624814fc173985b5
+      size: 28208
+    - path: results/context-decoder-pilot01-permission-removed.json
+      hash: md5
+      md5: ba4f490b480776ac61eaa01c38544615
+      size: 480
+    outs:
+    - path: results/context-decoder-pilot01-failure-audit.json
+      hash: md5
+      md5: d0e02fc29b8c47513d39bc1a5f6d7f29
+      size: 19664
+  audit_context_fit:
+    cmd: ../../.venv/bin/python model_evaluation/audit_context_fit.py
+    deps:
+    - path: data/context-decoder-pilot01
+      hash: md5
+      md5: e009034facbf99b6296ea37c32805597.dir
+      size: 951999358
+      nfiles: 35
+    - path: data/context-decoder-pilot01-results
+      hash: md5
+      md5: ad04431e9b39b17d618f193b8fe32378.dir
+      size: 78340264
+      nfiles: 682
+    - path: model_evaluation/audit_context_fit.py
+      hash: md5
+      md5: effe264c325afddf1f78df24cb14233a
+      size: 3376
+    - path: results/context-decoder-pilot01-analysis.json
+      hash: md5
+      md5: 9d316fff38645466624814fc173985b5
+      size: 28208
+    outs:
+    - path: results/context-fit-audit.json
+      hash: md5
+      md5: 94d4384e3784d8c7ecadd13774db6f16
+      size: 14838

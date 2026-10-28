@@ -2158,3 +2158,24 @@ stages:
     metrics:
     - results/context-decoder-pilot01-cost-reconciled.json:
         cache: false
+  audit_context_decoder_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/audit_context_decoder_pilot01.py
+    deps:
+    - model_evaluation/audit_context_decoder_pilot01.py
+    - data/context-decoder-pilot01
+    - data/context-decoder-pilot01-results
+    - results/context-decoder-pilot01-analysis.json
+    - results/context-decoder-pilot01-permission-removed.json
+    metrics:
+    - results/context-decoder-pilot01-failure-audit.json:
+        cache: false
+  audit_context_fit:
+    cmd: ../../.venv/bin/python model_evaluation/audit_context_fit.py
+    deps:
+    - model_evaluation/audit_context_fit.py
+    - data/context-decoder-pilot01
+    - data/context-decoder-pilot01-results
+    - results/context-decoder-pilot01-analysis.json
+    metrics:
+    - results/context-fit-audit.json:
+        cache: false
