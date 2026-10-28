@@ -5319,3 +5319,29 @@ stages:
       hash: md5
       md5: a3077987f88cc67dd5b12eedaec573f5
       size: 545
+  launch_context_decoder_pilot01:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/launch_context_decoder_pilot01.py --execute
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: data/context-decoder-pilot01
+      hash: md5
+      md5: e009034facbf99b6296ea37c32805597.dir
+      size: 951999358
+      nfiles: 35
+    - path: model_evaluation/launch_context_decoder_pilot01.py
+      hash: md5
+      md5: 221cdef53c7ca9b994303262ef64ea06
+      size: 5939
+    - path: results/context-decoder-pilot01-offline-preflight.json
+      hash: md5
+      md5: a3077987f88cc67dd5b12eedaec573f5
+      size: 545
+    outs:
+    - path: results/context-decoder-pilot01-execution.json
+      hash: md5
+      md5: 745905f66b5682b8a6bd6abf1f0e8c4b
+      size: 334
