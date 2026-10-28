@@ -4090,9 +4090,9 @@ stages:
     - model_evaluation/canonical_metrics.py
     - model_evaluation/timing_decoder.py
     - data/exposure-pilot02
-    - data/canonical-pilot01
+    - data/canonical-pilot02
     - results/canonical-trial-plan.json
-    - results/canonical-pilot01-prepared.json
+    - results/canonical-pilot02-prepared.json
     - results/canonical-feature-cache-prepared.json
     - results/inference-verification-preflight.json
     - results/accepted-model-guard-preflight.json
@@ -4110,11 +4110,11 @@ stages:
     - model_evaluation/canonical_metrics.py
     - model_evaluation/timing_decoder.py
     - data/exposure-pilot02
-    - data/canonical-pilot01
-    - data/canonical-pilot01-results
-    - results/canonical-pilot01-analysis.json
-    - results/canonical-pilot01-collected.json
-    - results/canonical-pilot01-permission-removed.json
+    - data/canonical-pilot02
+    - data/canonical-pilot02-results
+    - results/canonical-pilot02-analysis.json
+    - results/canonical-pilot02-collected.json
+    - results/canonical-pilot02-permission-removed.json
     - results/canonical-final-inference-protocol.json
     outs:
     - data/canonical-final-inference
@@ -4122,4 +4122,134 @@ stages:
     - results/canonical-final-model-freeze.json:
         cache: false
     - results/canonical-final-inference.json:
+        cache: false
+  prepare_canonical_pool02:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_canonical_pool02.py
+    deps:
+    - model_evaluation/prepare_canonical_pool02.py
+    - data/canonical-pilot01
+    - results/canonical-pilot01-prepared.json
+    - results/canonical-pilot01-no-allocation-proof.json
+    - results/canonical-pilot01-permission-removed.json
+    outs:
+    - data/canonical-pilot02
+    metrics:
+    - results/canonical-pilot02-prepared.json:
+        cache: false
+  verify_canonical_price_bound02:
+    cmd: ../../.venv/bin/python model_evaluation/verify_canonical_price_bound02.py
+    deps:
+    - model_evaluation/verify_canonical_price_bound02.py
+    - results/canonical-trial-plan.json
+    frozen: true
+    metrics:
+    - results/canonical-pilot02-price-bound.json:
+        cache: false
+  validate_canonical_pool02:
+    cmd: ../../.venv/bin/python model_evaluation/validate_canonical_pool02.py
+    deps:
+    - model_evaluation/validate_canonical_pool02.py
+    - model_evaluation/launch_canonical_pilot02.py
+    - model_evaluation/collect_canonical_pilot02.py
+    - model_evaluation/close_canonical_pilot02.py
+    - model_evaluation/monitor_canonical_pilot02.py
+    - model_evaluation/reconcile_canonical_pilot02.py
+    - model_evaluation/analyze_canonical_pilot02.py
+    - data/canonical-pilot02
+    - results/canonical-pilot02-prepared.json
+    - results/context-objective-preflight.json
+    - results/joint-pipeline-v2-preflight.json
+    - model_evaluation/timing_worker_v2.py
+    - results/guard-matched-objective-preflight.json
+    - model_evaluation/canonical_objective.py
+    - results/canonical-data-preflight.json
+    - results/canonical-metrics-preflight.json
+    - results/canonical-pilot01-prepared.json
+    - data/canonical-pilot01
+    metrics:
+    - results/canonical-pilot02-offline-preflight.json:
+        cache: false
+  launch_canonical_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/launch_canonical_pilot02.py --execute
+    deps:
+    - model_evaluation/launch_canonical_pilot02.py
+    - results/timing-cost-bounds-preflight.json
+    - results/canonical-pilot02-price-bound.json
+    - cloud.py
+    - data/canonical-pilot02
+    - results/canonical-pilot02-offline-preflight.json
+    - results/timing-decoder-pilot06-cost-reconciled.json
+    - results/timing-decoder-pilot06-permission-removed.json
+    - results/timing-regional-network-prepared.json
+    - results/guard-matched-objective-preflight.json
+    - model_evaluation/canonical_transfer_guard02.py
+    - results/canonical-pilot02-price-bound.json
+    - results/guard-matched-pilot04-no-allocation-proof.json
+    - results/canonical-pilot01-no-allocation-proof.json
+    - results/canonical-pilot01-permission-removed.json
+    - results/canonical-pilot01-cleanup.json
+    frozen: true
+    metrics:
+    - results/canonical-pilot02-execution.json:
+        cache: false
+  collect_canonical_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/collect_canonical_pilot02.py
+    deps:
+    - model_evaluation/collect_canonical_pilot02.py
+    - cloud.py
+    - results/canonical-pilot02-execution.json
+    - model_evaluation/canonical_transfer_guard02.py
+    - results/canonical-pilot02-prepared.json
+    frozen: true
+    metrics:
+    - results/canonical-pilot02-collected.json:
+        cache: false
+    outs:
+    - data/canonical-pilot02-results
+  close_canonical_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/close_canonical_pilot02.py
+    deps:
+    - model_evaluation/close_canonical_pilot02.py
+    - cloud.py
+    - results/canonical-pilot02-collected.json
+    - results/canonical-pilot02-read-condition.json
+    frozen: true
+    metrics:
+    - results/canonical-pilot02-permission-removed.json:
+        cache: false
+  analyze_canonical_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_canonical_pilot02.py
+    deps:
+    - model_evaluation/analyze_canonical_pilot02.py
+    - cloud.py
+    - data/canonical-pilot02
+    - data/canonical-pilot02-results
+    - results/canonical-pilot02-collected.json
+    - results/canonical-pilot02-permission-removed.json
+    frozen: true
+    metrics:
+    - results/canonical-pilot02-analysis.json:
+        cache: false
+  reconcile_canonical_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_canonical_pilot02.py
+    frozen: true
+    deps:
+    - model_evaluation/reconcile_canonical_pilot02.py
+    - cloud.py
+    - results/canonical-pilot02-collected.json
+    - results/canonical-pilot02-permission-removed.json
+    metrics:
+    - results/canonical-pilot02-cost-reconciled.json:
+        cache: false
+  monitor_canonical_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/monitor_canonical_pilot02.py
+    deps:
+    - model_evaluation/monitor_canonical_pilot02.py
+    - cloud.py
+    - results/canonical-pilot02-execution.json
+    frozen: true
+    metrics:
+    - results/canonical-pilot02-progress.json:
+        cache: false
+    - results/canonical-pilot02-optimizer-replay.json:
         cache: false

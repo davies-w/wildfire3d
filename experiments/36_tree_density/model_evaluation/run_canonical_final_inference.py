@@ -8,13 +8,13 @@ from inference_verification import evaluate_prefix_pair
 from joint_predictor import FrozenJointPredictor
 from canonical_metrics import checks
 from timing_decoder import JointDecoder
-R=Path(__file__).resolve().parents[1];S=R/'data/exposure-pilot02';D=R/'data/canonical-pilot01';load=lambda p:json.loads(p.read_text())
+R=Path(__file__).resolve().parents[1];S=R/'data/exposure-pilot02';D=R/'data/canonical-pilot02';load=lambda p:json.loads(p.read_text())
 def main():
     with (R/'data/canonical-final-inference.lock').open('w') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         assert not (R/'results/canonical-final-inference.json').exists(),'Existing test result; never rerun to select a model'
-        accepted=require_accepted_model(R) # No test targets may be loaded before this succeeds.
-        protocol=load(R/'results/canonical-final-inference-protocol.json')
+        accepted=require_accepted_model(R,trial='canonical-pilot02') # No test targets may be loaded before this succeeds.
+        protocol=load(R/'results/canonical-final-inference-protocol.json');assert protocol['trial']==accepted['trial']
         for name,digest in protocol['source_sha256'].items():assert hashlib.sha256((R/name).read_bytes()).hexdigest()==digest,name
         identity={k:v for k,v in accepted.items() if k!='snapshot'};identity['protocol_sha256']=hashlib.sha256((R/'results/canonical-final-inference-protocol.json').read_bytes()).hexdigest();identity['test_source_ids_sha256']=protocol['test_source_ids_sha256'];freeze=R/'results/canonical-final-model-freeze.json'
         if freeze.exists():assert load(freeze)==identity,'Frozen model/protocol cannot change after test work begins'

@@ -633,3 +633,20 @@ and project-level shared workflow/storage charges still separate. The workflow
 SUCCEEDED status denotes cleanup completion, not experiment/model success.
 No new checkpoint or test score was produced. The next capacity configuration
 will allow both machine-supported zones, without changing model/data/acceptance.
+
+
+### Canonical pilot02: identical scientific comparison, pooled supported zones
+
+After pilot01's audited no-allocation stockout, pilot02 allows us-east4-a and
+us-east4-c with one g2-standard-4/L4 task and global standard GPU quota1. Every
+model/data/objective/selection file is byte-identical to pilot01; only runtime
+upload prefix changes inside the archive. Monitoring, VM-age limits, straggler
+deletion and final verification inspect both zones. Whole-workflow3600s plus
+300s cleanup at1.20USD/hour remains1.30USD, queue900s, task2730s and worker
+soft2610s, no task retries or automatic resubmission. Expected fitting remains
+20–35minutes after allocation; capacity and completion are not guaranteed.
+Transfer projection166,581,474,900bytes remains below160GiB, including the earlier
+uploaded package and a prospective2GiB output allowance. The original test and
+scientific acceptance are unchanged. The prospective final inference method now
+pins pilot02's identical scientific files, before any fitted pilot02 outcome;
+its old pilot01 version remains in Git history. No final test scoring occurred.
