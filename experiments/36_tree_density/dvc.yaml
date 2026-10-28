@@ -2308,3 +2308,12 @@ stages:
     metrics:
     - results/timing-decoder-pilot01-cost-reconciled.json:
         cache: false
+  observe_reserved_flex:
+    cmd: ../../.venv/bin/python model_evaluation/observe_reserved_flex.py
+    frozen: true
+    deps:
+    - model_evaluation/observe_reserved_flex.py
+    - cloud.py
+    metrics:
+    - results/flex-reserved-execution-observation.json:
+        cache: false

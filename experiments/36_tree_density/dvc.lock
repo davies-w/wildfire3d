@@ -5732,3 +5732,19 @@ stages:
       hash: md5
       md5: ae02e1fa0f4b45ffe05103bd4e1860d3
       size: 544
+  observe_reserved_flex:
+    cmd: ../../.venv/bin/python model_evaluation/observe_reserved_flex.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/observe_reserved_flex.py
+      hash: md5
+      md5: 33237283b385198b7cea4085c48fdfb2
+      size: 1441
+    outs:
+    - path: results/flex-reserved-execution-observation.json
+      hash: md5
+      md5: b34ab1d87ae8f9432cd74f100800d3ad
+      size: 1531
