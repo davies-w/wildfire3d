@@ -4211,3 +4211,29 @@ stages:
       hash: md5
       md5: b50a326f43e1c7516696e3f240ddefa8
       size: 484
+  launch_joint_decoder_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/launch_joint_decoder_pilot01.py
+      --execute
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: data/joint-decoder-pilot01
+      hash: md5
+      md5: be9cbbb7b36495597d262a7016e0d5fd.dir
+      size: 951937148
+      nfiles: 25
+    - path: model_evaluation/launch_joint_decoder_pilot01.py
+      hash: md5
+      md5: 6afd3d69d8686b51cd833359dd56202c
+      size: 5905
+    - path: results/joint-decoder-pilot01-offline-preflight.json
+      hash: md5
+      md5: b50a326f43e1c7516696e3f240ddefa8
+      size: 484
+    outs:
+    - path: results/joint-decoder-pilot01-execution.json
+      hash: md5
+      md5: 26bd79b234d6c6313eb5021c4dc69e0f
+      size: 332
