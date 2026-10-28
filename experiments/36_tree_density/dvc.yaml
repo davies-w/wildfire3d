@@ -1946,3 +1946,215 @@ stages:
     metrics:
     - results/joint-forecast-regime-audit.json:
         cache: false
+  reconcile_unallocated_cpu:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_cpu.py
+    frozen: true
+    deps:
+    - model_evaluation/reconcile_unallocated_cpu.py
+    - cloud.py
+    - jobs/x36-density-009/status.json
+    - jobs/x36-density-009/recorded-job-status.json
+    - jobs/x36-density-009/terminal-no-results.json
+    - jobs/x36-density-009/cleanup.json
+    - jobs/x36-density-009/read-condition.json
+    - jobs/x36-density-010/status.json
+    - jobs/x36-density-010/recorded-job-status.json
+    - jobs/x36-density-010/terminal-no-results.json
+    - jobs/x36-density-010/cleanup.json
+    - jobs/x36-density-010/read-condition.json
+    - jobs/x36-density-011/status.json
+    - jobs/x36-density-011/recorded-job-status.json
+    - jobs/x36-density-011/terminal-no-results.json
+    - jobs/x36-density-011/cleanup.json
+    - jobs/x36-density-011/read-condition.json
+    - jobs/x36-density-012/status.json
+    - jobs/x36-density-012/recorded-job-status.json
+    - jobs/x36-density-012/terminal-no-results.json
+    - jobs/x36-density-012/cleanup.json
+    - jobs/x36-density-012/read-condition.json
+    - jobs/x36-density-013/status.json
+    - jobs/x36-density-013/recorded-job-status.json
+    - jobs/x36-density-013/terminal-no-results.json
+    - jobs/x36-density-013/cleanup.json
+    - jobs/x36-density-013/read-condition.json
+    - jobs/x36-density-014/status.json
+    - jobs/x36-density-014/recorded-job-status.json
+    - jobs/x36-density-014/terminal-no-results.json
+    - jobs/x36-density-014/cleanup.json
+    - jobs/x36-density-014/read-condition.json
+    - jobs/x36-density-015/status.json
+    - jobs/x36-density-015/recorded-job-status.json
+    - jobs/x36-density-015/terminal-no-results.json
+    - jobs/x36-density-015/cleanup.json
+    - jobs/x36-density-015/read-condition.json
+    - jobs/x36-density-016/status.json
+    - jobs/x36-density-016/recorded-job-status.json
+    - jobs/x36-density-016/terminal-no-results.json
+    - jobs/x36-density-016/cleanup.json
+    - jobs/x36-density-016/read-condition.json
+    - jobs/x36-density-017/status.json
+    - jobs/x36-density-017/recorded-job-status.json
+    - jobs/x36-density-017/terminal-no-results.json
+    - jobs/x36-density-017/cleanup.json
+    - jobs/x36-density-017/read-condition.json
+    - jobs/x36-density-018/status.json
+    - jobs/x36-density-018/recorded-job-status.json
+    - jobs/x36-density-018/terminal-no-results.json
+    - jobs/x36-density-018/cleanup.json
+    - jobs/x36-density-018/read-condition.json
+    - jobs/x36-density-019/status.json
+    - jobs/x36-density-019/recorded-job-status.json
+    - jobs/x36-density-019/terminal-no-results.json
+    - jobs/x36-density-019/cleanup.json
+    - jobs/x36-density-019/read-condition.json
+    - jobs/x36-density-020/status.json
+    - jobs/x36-density-020/recorded-job-status.json
+    - jobs/x36-density-020/terminal-no-results.json
+    - jobs/x36-density-020/cleanup.json
+    - jobs/x36-density-020/read-condition.json
+    metrics:
+    - results/unallocated-cpu-reconciliation.json:
+        cache: false
+  validate_context_decoder:
+    cmd: ../../.venv/bin/python model_evaluation/validate_context_decoder.py
+    deps:
+    - model_evaluation/validate_context_decoder.py
+    - model_evaluation/context_decoder.py
+    - data/gas-head-candidate
+    metrics:
+    - results/context-decoder-preflight.json:
+        cache: false
+  prepare_context_candidate:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_context_candidate.py
+    deps:
+    - model_evaluation/prepare_context_candidate.py
+    - model_evaluation/context_decoder.py
+    - model_evaluation/context_data.py
+    - model_evaluation/context_objective.py
+    - model_evaluation/joint_data.py
+    - model_evaluation/joint_metrics.py
+    - results/context-decoder-preflight.json
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    outs:
+    - data/context-candidate
+    metrics:
+    - results/context-candidate-prepared.json:
+        cache: false
+  validate_context_objective:
+    cmd: ../../.venv/bin/python model_evaluation/validate_context_objective.py
+    deps:
+    - model_evaluation/validate_context_objective.py
+    - model_evaluation/context_decoder.py
+    - model_evaluation/context_data.py
+    - model_evaluation/context_objective.py
+    - model_evaluation/joint_objective_v2.py
+    - model_evaluation/joint_decoder_v2.py
+    - data/context-candidate
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    metrics:
+    - results/context-objective-preflight.json:
+        cache: false
+  prepare_context_trial:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_context_trial.py
+    deps:
+    - model_evaluation/prepare_context_trial.py
+    - model_evaluation/context_worker.py
+    - model_evaluation/context_decoder.py
+    - model_evaluation/context_data.py
+    - model_evaluation/context_objective.py
+    - model_evaluation/joint_decoder_v2.py
+    - model_evaluation/joint_objective_v2.py
+    - model_evaluation/joint_data.py
+    - model_evaluation/joint_metrics.py
+    - model_evaluation/gas_head_metrics.py
+    - data/context-candidate
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    - data/gas-shape-pilot01
+    - results/context-decoder-trial-plan.json
+    - results/context-objective-preflight.json
+    - results/context-decoder-preflight.json
+    - results/joint-pipeline-v2-preflight.json
+    outs:
+    - data/context-decoder-pilot01
+    metrics:
+    - results/context-decoder-pilot01-prepared.json:
+        cache: false
+  validate_context_trial:
+    cmd: ../../.venv/bin/python model_evaluation/validate_context_trial.py
+    deps:
+    - model_evaluation/validate_context_trial.py
+    - model_evaluation/launch_context_decoder_pilot01.py
+    - model_evaluation/collect_context_decoder_pilot01.py
+    - model_evaluation/close_context_decoder_pilot01.py
+    - model_evaluation/monitor_context_decoder_pilot01.py
+    - model_evaluation/reconcile_context_decoder_pilot01.py
+    - model_evaluation/analyze_context_decoder_pilot01.py
+    - data/context-decoder-pilot01
+    - results/context-decoder-pilot01-prepared.json
+    - results/context-objective-preflight.json
+    - results/joint-pipeline-v2-preflight.json
+    metrics:
+    - results/context-decoder-pilot01-offline-preflight.json:
+        cache: false
+  launch_context_decoder_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/launch_context_decoder_pilot01.py
+      --execute
+    frozen: true
+    deps:
+    - model_evaluation/launch_context_decoder_pilot01.py
+    - cloud.py
+    - data/context-decoder-pilot01
+    - results/context-decoder-pilot01-offline-preflight.json
+    metrics:
+    - results/context-decoder-pilot01-execution.json:
+        cache: false
+  collect_context_decoder_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/collect_context_decoder_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/collect_context_decoder_pilot01.py
+    - cloud.py
+    - results/context-decoder-pilot01-execution.json
+    outs:
+    - data/context-decoder-pilot01-results
+    metrics:
+    - results/context-decoder-pilot01-collected.json:
+        cache: false
+  close_context_decoder_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/close_context_decoder_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/close_context_decoder_pilot01.py
+    - cloud.py
+    - results/context-decoder-pilot01-collected.json
+    - results/context-decoder-pilot01-read-condition.json
+    metrics:
+    - results/context-decoder-pilot01-permission-removed.json:
+        cache: false
+  analyze_context_decoder_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_context_decoder_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/analyze_context_decoder_pilot01.py
+    - cloud.py
+    - data/context-decoder-pilot01
+    - data/context-decoder-pilot01-results
+    - results/context-decoder-pilot01-collected.json
+    - results/context-decoder-pilot01-permission-removed.json
+    metrics:
+    - results/context-decoder-pilot01-analysis.json:
+        cache: false
+  reconcile_context_decoder_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_context_decoder_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/reconcile_context_decoder_pilot01.py
+    - cloud.py
+    - results/context-decoder-pilot01-collected.json
+    - results/context-decoder-pilot01-permission-removed.json
+    metrics:
+    - results/context-decoder-pilot01-cost-reconciled.json:
+        cache: false

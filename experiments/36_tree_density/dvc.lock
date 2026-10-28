@@ -4802,3 +4802,520 @@ stages:
       hash: md5
       md5: 52c754fca01bc7d321dbe69cdca0adec
       size: 3367
+  reconcile_unallocated_cpu:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_cpu.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: jobs/x36-density-009/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: jobs/x36-density-009/read-condition.json
+      hash: md5
+      md5: 807026c8746978fc4eaabb9d604d5249
+      size: 303
+    - path: jobs/x36-density-009/recorded-job-status.json
+      hash: md5
+      md5: c578e7eec46bd32cb5be5575a7b6d8b4
+      size: 3241
+    - path: jobs/x36-density-009/status.json
+      hash: md5
+      md5: aa05b1b5a1d01da1db74958116443cac
+      size: 662
+    - path: jobs/x36-density-009/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-010/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: jobs/x36-density-010/read-condition.json
+      hash: md5
+      md5: 8c6551ee5d140e7be1f278a16ce1665d
+      size: 303
+    - path: jobs/x36-density-010/recorded-job-status.json
+      hash: md5
+      md5: 0e20ee43f08adceb32102ee91d450367
+      size: 3241
+    - path: jobs/x36-density-010/status.json
+      hash: md5
+      md5: d22885abf11149fcb6f9ddf28f31e16d
+      size: 662
+    - path: jobs/x36-density-010/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-011/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: jobs/x36-density-011/read-condition.json
+      hash: md5
+      md5: b28cf6662af081b07c29f6150b7b7077
+      size: 303
+    - path: jobs/x36-density-011/recorded-job-status.json
+      hash: md5
+      md5: 06edc08e7539f63d514f26deda1e723a
+      size: 3618
+    - path: jobs/x36-density-011/status.json
+      hash: md5
+      md5: e4b46631f957dd513dafe38f6c702eef
+      size: 662
+    - path: jobs/x36-density-011/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-012/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: jobs/x36-density-012/read-condition.json
+      hash: md5
+      md5: 5780dad793a58702358f34934e81a378
+      size: 303
+    - path: jobs/x36-density-012/recorded-job-status.json
+      hash: md5
+      md5: 3ae59d417b9ee13b046f6d863129af16
+      size: 3241
+    - path: jobs/x36-density-012/status.json
+      hash: md5
+      md5: 8b00727a8bc8d5b3f1d012f706288a39
+      size: 662
+    - path: jobs/x36-density-012/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-013/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: jobs/x36-density-013/read-condition.json
+      hash: md5
+      md5: 8b353908d324f69d17700d1b9064b1c8
+      size: 303
+    - path: jobs/x36-density-013/recorded-job-status.json
+      hash: md5
+      md5: 2d1006c4fd258b0503b3148d14ad8c86
+      size: 3241
+    - path: jobs/x36-density-013/status.json
+      hash: md5
+      md5: 2e5029820593cabbfd5e81022666264c
+      size: 662
+    - path: jobs/x36-density-013/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-014/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: jobs/x36-density-014/read-condition.json
+      hash: md5
+      md5: 1cde5a335a347a8e45a3d639aefb5ff3
+      size: 303
+    - path: jobs/x36-density-014/recorded-job-status.json
+      hash: md5
+      md5: 1ecd1ae4d01d1c7f65f1aafb19bce361
+      size: 3556
+    - path: jobs/x36-density-014/status.json
+      hash: md5
+      md5: 88a8bd806d12300879da425c519c1566
+      size: 659
+    - path: jobs/x36-density-014/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-015/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: jobs/x36-density-015/read-condition.json
+      hash: md5
+      md5: f657fe865c69a7825974e7ddc5c3a4ce
+      size: 303
+    - path: jobs/x36-density-015/recorded-job-status.json
+      hash: md5
+      md5: f25683b333a3407781fde48fd0b0bfe8
+      size: 3241
+    - path: jobs/x36-density-015/status.json
+      hash: md5
+      md5: 9d7454c302ebc715771a909eb94041f3
+      size: 662
+    - path: jobs/x36-density-015/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-016/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: jobs/x36-density-016/read-condition.json
+      hash: md5
+      md5: bbc36d88cca35e86d2d90e8f94673a9b
+      size: 303
+    - path: jobs/x36-density-016/recorded-job-status.json
+      hash: md5
+      md5: 33a89d505e966238b6cdb7a4deacdc06
+      size: 3241
+    - path: jobs/x36-density-016/status.json
+      hash: md5
+      md5: ca36d0724f2bc36b19cbf1def99a452e
+      size: 662
+    - path: jobs/x36-density-016/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-017/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: jobs/x36-density-017/read-condition.json
+      hash: md5
+      md5: dc64fc9576585cee79653898c4befbd0
+      size: 303
+    - path: jobs/x36-density-017/recorded-job-status.json
+      hash: md5
+      md5: 29eade0ee63356bcf85bdc1fecfcaa2b
+      size: 3241
+    - path: jobs/x36-density-017/status.json
+      hash: md5
+      md5: 3b2cd46d1718c714c7e68fa6808b2785
+      size: 662
+    - path: jobs/x36-density-017/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-018/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: jobs/x36-density-018/read-condition.json
+      hash: md5
+      md5: a2f01149f53c4489e50e5d7943b77e67
+      size: 303
+    - path: jobs/x36-density-018/recorded-job-status.json
+      hash: md5
+      md5: b604899f036c63072eb963babd5b06db
+      size: 3241
+    - path: jobs/x36-density-018/status.json
+      hash: md5
+      md5: 460925e13ad4ec5ad176923cc46ce5f0
+      size: 662
+    - path: jobs/x36-density-018/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-019/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: jobs/x36-density-019/read-condition.json
+      hash: md5
+      md5: eca98d93464ba01ae84f9065947774dc
+      size: 303
+    - path: jobs/x36-density-019/recorded-job-status.json
+      hash: md5
+      md5: 2f6e850b3ec8627b300b70674491c3ef
+      size: 3241
+    - path: jobs/x36-density-019/status.json
+      hash: md5
+      md5: 5a705fd894d440fd4e04f30da28ca397
+      size: 662
+    - path: jobs/x36-density-019/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: jobs/x36-density-020/cleanup.json
+      hash: md5
+      md5: 940d164cd19628968e29eec9b835472f
+      size: 51
+    - path: jobs/x36-density-020/read-condition.json
+      hash: md5
+      md5: 2bdb37298f6ee6994382fb973098007a
+      size: 303
+    - path: jobs/x36-density-020/recorded-job-status.json
+      hash: md5
+      md5: b662b16bc7d824c17d066b78164f0bc6
+      size: 3241
+    - path: jobs/x36-density-020/status.json
+      hash: md5
+      md5: 21d8a5354043ff651b2977050d4d54a2
+      size: 662
+    - path: jobs/x36-density-020/terminal-no-results.json
+      hash: md5
+      md5: d8ed5421231ae7315885326200a1ea54
+      size: 161
+    - path: model_evaluation/reconcile_unallocated_cpu.py
+      hash: md5
+      md5: f92c0e54be495be2880ed1b8286fc7f5
+      size: 4694
+    outs:
+    - path: results/unallocated-cpu-reconciliation.json
+      hash: md5
+      md5: 20c6cec77e933e1c453dc91f89f23b35
+      size: 1340869
+  validate_context_decoder:
+    cmd: ../../.venv/bin/python model_evaluation/validate_context_decoder.py
+    deps:
+    - path: data/gas-head-candidate
+      hash: md5
+      md5: 1bae6163fbc3780981d71b7ec0c65e96.dir
+      size: 26581682
+      nfiles: 6
+    - path: model_evaluation/context_decoder.py
+      hash: md5
+      md5: e1181132922f0d237567562628a5a2f1
+      size: 5025
+    - path: model_evaluation/validate_context_decoder.py
+      hash: md5
+      md5: e158c736b53cae1e85605147038363b8
+      size: 5943
+    outs:
+    - path: results/context-decoder-preflight.json
+      hash: md5
+      md5: 8c8363bcaa117929cdf0ea89e0533ba0
+      size: 2208
+  prepare_context_candidate:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_context_candidate.py
+    deps:
+    - path: data/joint-decoder-candidate
+      hash: md5
+      md5: 48af269b9ab3475ed72ea0f7913caa40.dir
+      size: 26593773
+      nfiles: 5
+    - path: data/joint-rolling-features
+      hash: md5
+      md5: 0b3fd914ec0913529749e026d7f68988.dir
+      size: 449281821
+      nfiles: 3
+    - path: model_evaluation/context_data.py
+      hash: md5
+      md5: 8ce74789ced18b580f382cfea7fa49cb
+      size: 1019
+    - path: model_evaluation/context_decoder.py
+      hash: md5
+      md5: e1181132922f0d237567562628a5a2f1
+      size: 5025
+    - path: model_evaluation/context_objective.py
+      hash: md5
+      md5: cf80a49ff86d1485a1f87089569986d6
+      size: 2707
+    - path: model_evaluation/joint_data.py
+      hash: md5
+      md5: 53a76769c3541324d4baafa483a4be02
+      size: 6229
+    - path: model_evaluation/joint_metrics.py
+      hash: md5
+      md5: b81c41dbaa625a353dd0e7730c8baacb
+      size: 5534
+    - path: model_evaluation/prepare_context_candidate.py
+      hash: md5
+      md5: b9f3f0be036a15143e416a87c2d4f9b7
+      size: 3421
+    - path: results/context-decoder-preflight.json
+      hash: md5
+      md5: 8c8363bcaa117929cdf0ea89e0533ba0
+      size: 2208
+    outs:
+    - path: data/context-candidate
+      hash: md5
+      md5: eff02f6a6e826482c79ebe99cd559397.dir
+      size: 21559
+      nfiles: 3
+    - path: results/context-candidate-prepared.json
+      hash: md5
+      md5: b67d3959b262c84625976cc1539f256c
+      size: 2893
+  validate_context_objective:
+    cmd: ../../.venv/bin/python model_evaluation/validate_context_objective.py
+    deps:
+    - path: data/context-candidate
+      hash: md5
+      md5: eff02f6a6e826482c79ebe99cd559397.dir
+      size: 21559
+      nfiles: 3
+    - path: data/joint-decoder-candidate
+      hash: md5
+      md5: 48af269b9ab3475ed72ea0f7913caa40.dir
+      size: 26593773
+      nfiles: 5
+    - path: data/joint-rolling-features
+      hash: md5
+      md5: 0b3fd914ec0913529749e026d7f68988.dir
+      size: 449281821
+      nfiles: 3
+    - path: model_evaluation/context_data.py
+      hash: md5
+      md5: 8ce74789ced18b580f382cfea7fa49cb
+      size: 1019
+    - path: model_evaluation/context_decoder.py
+      hash: md5
+      md5: e1181132922f0d237567562628a5a2f1
+      size: 5025
+    - path: model_evaluation/context_objective.py
+      hash: md5
+      md5: cf80a49ff86d1485a1f87089569986d6
+      size: 2707
+    - path: model_evaluation/joint_decoder_v2.py
+      hash: md5
+      md5: 2f15f174798f9536a5a1989d31a64adc
+      size: 4693
+    - path: model_evaluation/joint_objective_v2.py
+      hash: md5
+      md5: fdf5c704686a2d0c28d6c5cac767745b
+      size: 2838
+    - path: model_evaluation/validate_context_objective.py
+      hash: md5
+      md5: 8518176d685dd403de6df3ddac510b47
+      size: 5020
+    outs:
+    - path: results/context-objective-preflight.json
+      hash: md5
+      md5: acbeedd759f4eb7ccc07c82f526dc678
+      size: 2716
+  prepare_context_trial:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_context_trial.py
+    deps:
+    - path: data/context-candidate
+      hash: md5
+      md5: eff02f6a6e826482c79ebe99cd559397.dir
+      size: 21559
+      nfiles: 3
+    - path: data/gas-shape-pilot01
+      hash: md5
+      md5: 0f9ef245d41f905943c52ad059eac1c1.dir
+      size: 53242573
+      nfiles: 17
+    - path: data/joint-decoder-candidate
+      hash: md5
+      md5: 48af269b9ab3475ed72ea0f7913caa40.dir
+      size: 26593773
+      nfiles: 5
+    - path: data/joint-rolling-features
+      hash: md5
+      md5: 0b3fd914ec0913529749e026d7f68988.dir
+      size: 449281821
+      nfiles: 3
+    - path: model_evaluation/context_data.py
+      hash: md5
+      md5: 8ce74789ced18b580f382cfea7fa49cb
+      size: 1019
+    - path: model_evaluation/context_decoder.py
+      hash: md5
+      md5: e1181132922f0d237567562628a5a2f1
+      size: 5025
+    - path: model_evaluation/context_objective.py
+      hash: md5
+      md5: cf80a49ff86d1485a1f87089569986d6
+      size: 2707
+    - path: model_evaluation/context_worker.py
+      hash: md5
+      md5: 7674df959b6d91ee4d71ccdc76c4e1d5
+      size: 9160
+    - path: model_evaluation/gas_head_metrics.py
+      hash: md5
+      md5: 1b092dc20edf7bac2340dbc376fd4a53
+      size: 3824
+    - path: model_evaluation/joint_data.py
+      hash: md5
+      md5: 53a76769c3541324d4baafa483a4be02
+      size: 6229
+    - path: model_evaluation/joint_decoder_v2.py
+      hash: md5
+      md5: 2f15f174798f9536a5a1989d31a64adc
+      size: 4693
+    - path: model_evaluation/joint_metrics.py
+      hash: md5
+      md5: b81c41dbaa625a353dd0e7730c8baacb
+      size: 5534
+    - path: model_evaluation/joint_objective_v2.py
+      hash: md5
+      md5: fdf5c704686a2d0c28d6c5cac767745b
+      size: 2838
+    - path: model_evaluation/prepare_context_trial.py
+      hash: md5
+      md5: a4cbf80022718fb1e24ad0cfa6466597
+      size: 5274
+    - path: results/context-decoder-preflight.json
+      hash: md5
+      md5: 8c8363bcaa117929cdf0ea89e0533ba0
+      size: 2208
+    - path: results/context-decoder-trial-plan.json
+      hash: md5
+      md5: 240131eb31f537cea99434f8d201d3a8
+      size: 10423
+    - path: results/context-objective-preflight.json
+      hash: md5
+      md5: acbeedd759f4eb7ccc07c82f526dc678
+      size: 2716
+    - path: results/joint-pipeline-v2-preflight.json
+      hash: md5
+      md5: 8048edb72e5e9905809a93051ee30be2
+      size: 1113
+    outs:
+    - path: data/context-decoder-pilot01
+      hash: md5
+      md5: e009034facbf99b6296ea37c32805597.dir
+      size: 951999358
+      nfiles: 35
+    - path: results/context-decoder-pilot01-prepared.json
+      hash: md5
+      md5: c118aed9fba2e97a036508586b18a6b4
+      size: 2434
+  validate_context_trial:
+    cmd: ../../.venv/bin/python model_evaluation/validate_context_trial.py
+    deps:
+    - path: data/context-decoder-pilot01
+      hash: md5
+      md5: e009034facbf99b6296ea37c32805597.dir
+      size: 951999358
+      nfiles: 35
+    - path: model_evaluation/analyze_context_decoder_pilot01.py
+      hash: md5
+      md5: 90687f7c7fdbc440b0615fffa00fef13
+      size: 4201
+    - path: model_evaluation/close_context_decoder_pilot01.py
+      hash: md5
+      md5: 819b5cb4ad41eaf7fdd3fd1198de11fa
+      size: 1769
+    - path: model_evaluation/collect_context_decoder_pilot01.py
+      hash: md5
+      md5: a8b2ad626b177c836d364e83ce727025
+      size: 5800
+    - path: model_evaluation/launch_context_decoder_pilot01.py
+      hash: md5
+      md5: 221cdef53c7ca9b994303262ef64ea06
+      size: 5939
+    - path: model_evaluation/monitor_context_decoder_pilot01.py
+      hash: md5
+      md5: 3e6f8932d409ef9a5098922041a60fee
+      size: 2272
+    - path: model_evaluation/reconcile_context_decoder_pilot01.py
+      hash: md5
+      md5: e9a6060017237478132f0f88d2ef3e72
+      size: 1700
+    - path: model_evaluation/validate_context_trial.py
+      hash: md5
+      md5: 03e6aabebea634955424c78563f84e7f
+      size: 3824
+    - path: results/context-decoder-pilot01-prepared.json
+      hash: md5
+      md5: c118aed9fba2e97a036508586b18a6b4
+      size: 2434
+    - path: results/context-objective-preflight.json
+      hash: md5
+      md5: acbeedd759f4eb7ccc07c82f526dc678
+      size: 2716
+    - path: results/joint-pipeline-v2-preflight.json
+      hash: md5
+      md5: 8048edb72e5e9905809a93051ee30be2
+      size: 1113
+    outs:
+    - path: results/context-decoder-pilot01-offline-preflight.json
+      hash: md5
+      md5: a3077987f88cc67dd5b12eedaec573f5
+      size: 545

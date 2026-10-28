@@ -1,0 +1,5 @@
+{
+  "title": "x36-density-015-read",
+  "description": "Read only this immutable output prefix for upload verification",
+  "expression": "request.time < timestamp('2026-10-27T06:33:20Z') && resource.name.startsWith('projects/_/buckets/tmrw-wildfire-20261015-trial/objects/density36/x36-density-015/')"
+}

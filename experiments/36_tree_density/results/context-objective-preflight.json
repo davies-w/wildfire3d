@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "optimizer_updates": 0,
+  "parameters_unchanged_during_derivative_checks": true,
+  "fit_only": true,
+  "confirmation_closed": true,
+  "explicit_lead_and_observed_origin_influence_probe": true,
+  "prefix_invariant": true,
+  "physical_sampling_weights_sum_to_one": true,
+  "cases": [
+    {
+      "origins": [
+        -1,
+        0,
+        -1,
+        16,
+        -1,
+        74,
+        -1,
+        8
+      ],
+      "loss": 1.0137587785720825,
+      "parts": {
+        "physical": 0.9643742442131042,
+        "quiet_nonharm": 0.0,
+        "encoded_nonharm": 0.02136685885488987,
+        "under_tail": 0.28973743319511414,
+        "over_tail": 0.20580105483531952,
+        "peak_error": 0.07365061342716217,
+        "sampling_residual_error": 0.010964930057525635
+      },
+      "all_four_head_gradients_nonzero": true,
+      "padding_invariant": true
+    },
+    {
+      "origins": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "loss": 1.5385489463806152,
+      "parts": {
+        "physical": 1.4890981912612915,
+        "quiet_nonharm": 0.0,
+        "encoded_nonharm": 0.015443620271980762,
+        "under_tail": 0.28119957447052,
+        "over_tail": 0.23012752830982208,
+        "peak_error": 0.09236791729927063,
+        "sampling_residual_error": 0.013452058658003807
+      },
+      "all_four_head_gradients_nonzero": true,
+      "padding_invariant": true
+    },
+    {
+      "origins": [
+        74,
+        74,
+        74,
+        74,
+        74,
+        74,
+        74,
+        74
+      ],
+      "loss": 0.09299465268850327,
+      "parts": {
+        "physical": 0.09299465268850327,
+        "quiet_nonharm": 0.0,
+        "encoded_nonharm": 5.7574507661417584e-11,
+        "under_tail": 0.0,
+        "over_tail": 0.0,
+        "peak_error": 8.986244605531741e-21,
+        "sampling_residual_error": 2.921245884079937e-11
+      },
+      "all_four_head_gradients_nonzero": true,
+      "padding_invariant": true
+    }
+  ],
+  "source_hashes": {
+    "context_decoder.py": "5f529ca2c8e347d813cf3829964abcc58cb06af13c29379c84a35cb0e9c23b40",
+    "context_data.py": "ba6edfc910f8b0652ea4589390d909c099d488241d4ed3204413b1c3cff959a4",
+    "context_objective.py": "02107e980f76fb8ba47e354fd6e561b772e9c9e33f80ad6227ba6ff361380f8a",
+    "validate_context_objective.py": "a8c2bbcba982c91521e2be0b72af6b200c478602e61648133e7304cf0fde905f"
+  },
+  "scope": "Untrained CPU checks and isolated derivatives only. Nonzero probes are random parameters, not optimizer updates or accuracy evidence. Quiet penalty is pointwise/soft and does not prove aggregate guards. CUDA restoration/timing and complete scientific evaluation remain required."
+}

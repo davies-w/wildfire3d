@@ -1,0 +1,49 @@
+{
+  "prepared": true,
+  "seed": 3630,
+  "parameters": 3396,
+  "head_inputs": "46frozen features +4observed-origin normalized asinh states +1known forecast lead/180 =51. Existing feature/state normalization retained; GRU remains frozen and corrected outputs do not feed back.",
+  "data_roles": {
+    "fit": {
+      "histories": 1332,
+      "configurations": 1306
+    },
+    "selection": {
+      "histories": 330,
+      "configurations": 326
+    },
+    "confirmation": {
+      "histories": 210,
+      "configurations": 204
+    }
+  },
+  "partition_limitation": "Frozen GRU was previously trained on both decoder-fit and decoder-selection, and fixed feature/state normalization uses former TRAIN. Selection is therefore head-level transfer selection, not an end-to-end independent GRU holdout. Confirmation excludes GRU/head training and current head checkpoint selection, but its outcomes were examined in earlier development experiments and are not pristine. The base GRU checkpoint was itself selected on this former validation set; this is not an untouched complete-pipeline holdout.",
+  "loss_normalization": "Only frozen decoder-fit histories1332; no selection or confirmation scoring. Baseline full and exact-display physical MAEs and original encoded objectives.",
+  "planned_arms": [
+    "encoded_control",
+    "physical_primary"
+  ],
+  "planned_architecture": "Both use identical context-aware interval decoder initialization; objectives differ. Comparison to older joint02 also changes architecture/initialization, so does not isolate a causal effect of lead alone.",
+  "objective_scope": "Primary uses25%full-autonomous/75%display physical MAE surrogate with50%full/50%rolling case sampling. Display combines first15full points and rolling16endpoint. Adds pointwise quiet and encoded-error deterioration soft penalties plus previous startup/peak/sampling-residual terms. Pointwise quiet nonharm is stronger than the aggregate acceptance guard; no guarantee that penalties enforce guards.",
+  "frozen_acceptance": "Keep the all-four-output and all existing joint02 acceptance rules; no accuracy result or deployment.",
+  "sources": {
+    "context_decoder.py": "5f529ca2c8e347d813cf3829964abcc58cb06af13c29379c84a35cb0e9c23b40",
+    "context_data.py": "ba6edfc910f8b0652ea4589390d909c099d488241d4ed3204413b1c3cff959a4",
+    "context_objective.py": "02107e980f76fb8ba47e354fd6e561b772e9c9e33f80ad6227ba6ff361380f8a"
+  },
+  "optimizer_updates": 0,
+  "files": {
+    "initial-context.pt": {
+      "sha256": "186de9c6522a0f405cf9d4de0ec853526cb1cf1a42a79d78f0c7a9c01af77145",
+      "bytes": 18767
+    },
+    "loss-normalization.json": {
+      "sha256": "92c76a27d7eb84fce50cbf9c27748ea3caef7dc49142675b87ece6ceeeb1afd9",
+      "bytes": 339
+    },
+    "candidate-plan.json": {
+      "sha256": "7ff09bdf28c79f3b88fb58a441dc970d759cac0521fdbbea1b8ada9f1373956c",
+      "bytes": 2453
+    }
+  }
+}

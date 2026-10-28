@@ -1,0 +1,59 @@
+{
+  "decoder_sha256": "5f529ca2c8e347d813cf3829964abcc58cb06af13c29379c84a35cb0e9c23b40",
+  "validator_sha256": "8781f4eca32915fe3ef0ba6ff56bc84b1b65589b3c9ef52a00900ea27944a440",
+  "flat_base_new_loss_gradient_nonzero": true,
+  "negative_base_new_gas_gradient_nonzero": true,
+  "prefix_invariant": true,
+  "negative_estimated_initial_water_projection_checked": true,
+  "passed": true,
+  "train_only": true,
+  "histories": 1662,
+  "optimizer_instantiated": false,
+  "optimizer_updates": 0,
+  "matched_initial_parameter_bytes": true,
+  "modes": {
+    "direct": {
+      "parameters": 3396,
+      "initial_max_physical_change_from_GRU": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "isolated_last_layer_gradient_norm_per_head": [
+        0.008950935676693916,
+        0.02483363263309002,
+        0.009479977190494537,
+        0.00952756404876709
+      ],
+      "state_unchanged": true
+    },
+    "interval": {
+      "parameters": 3396,
+      "initial_max_physical_change_from_GRU": [
+        2.192392349243164,
+        20.9896240234375,
+        0.004180806688964367,
+        0.0
+      ],
+      "isolated_last_layer_gradient_norm_per_head": [
+        0.03129386156797409,
+        0.11496368795633316,
+        0.009634630754590034,
+        0.00952756404876709
+      ],
+      "state_unchanged": true
+    }
+  },
+  "oracle_interval_mass_representation": {
+    "mean_absolute_error_kg": [
+      2.520009969258869e-06,
+      4.135189613142682e-15
+    ],
+    "maximum_error_kg": [
+      0.0008199704781882465,
+      7.105427357601002e-14
+    ]
+  },
+  "scope": "Untrained decoder checks only. Direct head initially reproduces baseline exactly; interval head initially projects mass trajectories and clips negative gas, so it is NOT baseline-identical. Nonnegative nonincreasing mass is a modeling prior; tiny negative water labels are not exactly representable. Heating index negatives are preserved. Separate interval mass-loss rates and endpoint gas samples are not forced equal. Oracle uses truth and is not a usable forecast, learned improvement, attainable model error bound or physical validation. Frozen GRU dynamics/features remain unchanged; no validation/test outcomes or optimizer."
+}
