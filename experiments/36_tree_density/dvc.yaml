@@ -3379,3 +3379,19 @@ stages:
     metrics:
     - results/guard-matched-pilot02-infrastructure-observation.json:
         cache: false
+  validate_guard_matched_selected_predictor02:
+    cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_selected_predictor.py --trial guard-matched-pilot02
+    deps:
+    - model_evaluation/validate_guard_matched_selected_predictor.py
+    - model_evaluation/joint_predictor.py
+    - model_evaluation/joint_scorecard.py
+    - model_evaluation/timing_decoder.py
+    - data/exposure-pilot02
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    - data/guard-matched-pilot02
+    - data/guard-matched-pilot02-results
+    - results/guard-matched-pilot02-analysis.json
+    metrics:
+    - results/guard-matched-pilot02-selected-predictor-preflight.json:
+        cache: false
