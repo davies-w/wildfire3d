@@ -596,7 +596,7 @@ preserved and require diagnosis before any manual continuation. This is not a
 completion guarantee or accuracy claim. Same simplified FDS and normalization/
 development-role limitations above apply.
 
-### Final actual-prefix evaluation prepared while cloud approval is pending
+### Final actual-prefix evaluation prepared before cloud training
 
 The paired inference evaluator covers382coherent forecasts per history: full90
 from origin0 plus all90/87/83/75/46valid starts for1/4/8/16/45steps, reusing
@@ -624,6 +624,12 @@ Only metadata/method for the existing208history rotation0test split is frozen no
 no test forecast/result exists. That split is not new external validation, and
 other rotations remain unverified. A future test pass explicitly does not set
 full_goal_complete or deploy a gallery; broader case/phase review and remaining
-rotation coverage are still required. Cloud launch remains unexecuted after
-automatic approval review required explicit authorization for the1.62GBprivate
-upload, temporary prefix-limited access and workflow/compute changes.
+rotation coverage are still required. Canonical pilot01 was explicitly authorized, submitted and then closed after its
+15minute queue limit: us-east4-c reported L4 stockout, with no training. The
+full-UID insertion audit proves zero successful VM allocations; jobs, VMs, disks
+and the exact temporary grant are gone. Inputs and job evidence are retained in
+DVC/the local mirror. Its1.30USD reservation is released, with zero VM compute
+and project-level shared workflow/storage charges still separate. The workflow
+SUCCEEDED status denotes cleanup completion, not experiment/model success.
+No new checkpoint or test score was produced. The next capacity configuration
+will allow both machine-supported zones, without changing model/data/acceptance.

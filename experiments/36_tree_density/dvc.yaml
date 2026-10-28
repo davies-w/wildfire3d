@@ -4027,15 +4027,18 @@ stages:
     - results/canonical-pilot01-analysis.json:
         cache: false
   reconcile_canonical_pilot01:
-    cmd: ../../.venv/bin/python model_evaluation/reconcile_canonical_pilot01.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_canonical01.py
     frozen: true
     deps:
-    - model_evaluation/reconcile_canonical_pilot01.py
+    - model_evaluation/reconcile_unallocated_canonical01.py
     - cloud.py
+    - data/canonical-pilot01-results
     - results/canonical-pilot01-collected.json
     - results/canonical-pilot01-permission-removed.json
     metrics:
     - results/canonical-pilot01-cost-reconciled.json:
+        cache: false
+    - results/canonical-pilot01-no-allocation-proof.json:
         cache: false
   monitor_canonical_pilot01:
     cmd: ../../.venv/bin/python model_evaluation/monitor_canonical_pilot01.py

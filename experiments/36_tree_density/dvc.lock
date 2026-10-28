@@ -9951,3 +9951,94 @@ stages:
       hash: md5
       md5: 854afe2a0e1fc83cbb08e1ca6d7dbd76
       size: 336
+  collect_canonical_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/collect_canonical_pilot01.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/canonical_transfer_guard.py
+      hash: md5
+      md5: f966232feadfeaa53a1958985cf6b0ae
+      size: 2495
+    - path: model_evaluation/collect_canonical_pilot01.py
+      hash: md5
+      md5: 6e35008d909c9c04b0457c0b486be853
+      size: 6036
+    - path: results/canonical-pilot01-execution.json
+      hash: md5
+      md5: 854afe2a0e1fc83cbb08e1ca6d7dbd76
+      size: 336
+    - path: results/canonical-pilot01-prepared.json
+      hash: md5
+      md5: 9194908c375ca6f46a7f0349ec1334dd
+      size: 3517
+    outs:
+    - path: data/canonical-pilot01-results
+      hash: md5
+      md5: c97994ce75349e8ab1c92dc7aadcbf47.dir
+      size: 4697
+      nfiles: 1
+    - path: results/canonical-pilot01-collected.json
+      hash: md5
+      md5: 9bf65b79eaa5dddc5010a1647e9adc88
+      size: 189
+  close_canonical_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/close_canonical_pilot01.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/close_canonical_pilot01.py
+      hash: md5
+      md5: 64f076f998e87c8d20780f3a2e42f0c5
+      size: 1714
+    - path: results/canonical-pilot01-collected.json
+      hash: md5
+      md5: 9bf65b79eaa5dddc5010a1647e9adc88
+      size: 189
+    - path: results/canonical-pilot01-read-condition.json
+      hash: md5
+      md5: 10d93bd17a8adbd42ac7e5db12e51d7b
+      size: 354
+    outs:
+    - path: results/canonical-pilot01-permission-removed.json
+      hash: md5
+      md5: 30f1d47dd4bc3d44e3889637962bd168
+      size: 468
+  reconcile_canonical_pilot01:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/reconcile_unallocated_canonical01.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: data/canonical-pilot01-results
+      hash: md5
+      md5: c97994ce75349e8ab1c92dc7aadcbf47.dir
+      size: 4697
+      nfiles: 1
+    - path: model_evaluation/reconcile_unallocated_canonical01.py
+      hash: md5
+      md5: a8f8960ccf98fcdbe6f5cc67b15a7a7d
+      size: 3895
+    - path: results/canonical-pilot01-collected.json
+      hash: md5
+      md5: 9bf65b79eaa5dddc5010a1647e9adc88
+      size: 189
+    - path: results/canonical-pilot01-permission-removed.json
+      hash: md5
+      md5: 30f1d47dd4bc3d44e3889637962bd168
+      size: 468
+    outs:
+    - path: results/canonical-pilot01-cost-reconciled.json
+      hash: md5
+      md5: 9ecd6f4cdcfb8572c83dc3d60d03edae
+      size: 97784
+    - path: results/canonical-pilot01-no-allocation-proof.json
+      hash: md5
+      md5: 9ecd6f4cdcfb8572c83dc3d60d03edae
+      size: 97784
