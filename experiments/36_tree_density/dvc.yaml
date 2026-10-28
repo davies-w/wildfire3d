@@ -1775,3 +1775,32 @@ stages:
     metrics:
     - results/joint-predictor-preflight.json:
         cache: false
+  validate_joint_prefix_sum:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_prefix_sum.py
+    deps:
+    - model_evaluation/validate_joint_prefix_sum.py
+    - model_evaluation/joint_decoder_v2.py
+    - model_evaluation/joint_objective_v2.py
+    metrics:
+    - results/joint-prefix-sum-preflight.json:
+        cache: false
+  validate_joint_decoder_v2:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_decoder_v2.py
+    deps:
+    - model_evaluation/validate_joint_decoder_v2.py
+    - model_evaluation/joint_decoder_v2.py
+    - model_evaluation/joint_objective_v2.py
+    - data/gas-head-candidate
+    metrics:
+    - results/joint-decoder-v2-preflight.json:
+        cache: false
+  validate_joint_objective_v2:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_objective_v2.py
+    deps:
+    - model_evaluation/validate_joint_objective_v2.py
+    - model_evaluation/joint_decoder_v2.py
+    - model_evaluation/joint_objective_v2.py
+    - data/joint-decoder-candidate
+    metrics:
+    - results/joint-objective-v2-preflight.json:
+        cache: false

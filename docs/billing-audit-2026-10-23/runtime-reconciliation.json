@@ -1,19 +1,20 @@
 {
   "billing_export_status": "posted_costs_subject_to_adjustment",
   "posted_source": "BigQuery detailed export",
-  "as_of_utc": "2026-10-28T00:07:31.427056+00:00",
+  "as_of_utc": "2026-10-28T00:16:56.558147+00:00",
   "status": "runtime_estimate_pending_per_resource_billing",
   "project_posted_comparison_usd": 47.878887,
-  "project_compute_runtime_estimate_usd": 45.22898230563014,
+  "project_compute_runtime_estimate_usd": 45.26487060962592,
   "shared_cost_estimate_usd": 1.26,
-  "spend_estimate_usd": 48.32210367451612,
-  "unposted_compute_after_export_usd": 0.44321667451611996,
+  "spend_estimate_usd": 48.357991978511905,
+  "unposted_compute_after_export_usd": 0.4791049785119041,
   "unposted_resources": [
+    "fds-gpu36-joint01-52981f30-2a21-49fa-0-group0-0-4wm8",
     "fds-gpu36-gasshape-382881e7-b71c-41830-group0-0-77z0",
     "fds-gpu36-gashead0-9855bd9e-6bf1-4f760-group0-0-t2pb",
     "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv"
   ],
-  "matched_vms": 350,
+  "matched_vms": 351,
   "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
   "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. Flex-start uses a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
   "rates_usd_per_vm_hour": {

@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "optimizer_updates": 0,
+  "cpu_prefix_values_and_derivatives_match": true,
+  "cases": [
+    {
+      "shape": [
+        128
+      ],
+      "dim": 0,
+      "max_value_error": 5.7220458984375e-06,
+      "max_gradient_error": 1.9073486328125e-06
+    },
+    {
+      "shape": [
+        128,
+        90
+      ],
+      "dim": 1,
+      "max_value_error": 9.5367431640625e-06,
+      "max_gradient_error": 7.62939453125e-06
+    },
+    {
+      "shape": [
+        128,
+        90,
+        2
+      ],
+      "dim": 1,
+      "max_value_error": 7.62939453125e-06,
+      "max_gradient_error": 1.1444091796875e-05
+    },
+    {
+      "shape": [
+        128,
+        16,
+        2
+      ],
+      "dim": 1,
+      "max_value_error": 1.9073486328125e-06,
+      "max_gradient_error": 1.9073486328125e-06
+    }
+  ],
+  "source_hashes": {
+    "joint_decoder_v2.py": "1c9032ecdb4c61658e24f2eabd99f4c058e75a51ffd121b8028ca2ed7bf19620",
+    "joint_objective_v2.py": "9502e6103f22a88d08fa29e72b980df859a3f580199617b2a105ea5d903c214a"
+  },
+  "cuda_tested": false,
+  "scope": "Fix proposal for joint01 deterministic floating cumsum startup failure. CPU equivalence is not proof of CUDA execution, complete training, accuracy or acceptance. Original joint01 archive/source remains preserved."
+}

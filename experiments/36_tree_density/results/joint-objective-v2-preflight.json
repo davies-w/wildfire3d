@@ -1,0 +1,51 @@
+{
+  "padding_future_values_invariant": true,
+  "source_hashes": {
+    "joint_decoder_v2.py": "1c9032ecdb4c61658e24f2eabd99f4c058e75a51ffd121b8028ca2ed7bf19620",
+    "joint_objective_v2.py": "9502e6103f22a88d08fa29e72b980df859a3f580199617b2a105ea5d903c214a",
+    "validate_joint_objective_v2.py": "b31a0a94a42ada83ded1bededef2654a0f4452514c50fc7126fcf9d6c9756985"
+  },
+  "passed": true,
+  "fit_partition_only": true,
+  "synthetic_weighted_tail_and_gradient_checks": true,
+  "replica_weight_split_invariance": true,
+  "optimizer_instantiated": false,
+  "optimizer_updates": 0,
+  "modes": {
+    "direct": {
+      "loss": 0.10006768256425858,
+      "components": {
+        "state": 0.027377262711524963,
+        "under_tail": 0.44849470257759094,
+        "over_tail": 0.4549499452114105,
+        "peak_error": 0.08348587155342102,
+        "sampling_residual_error": 0.009191538207232952
+      },
+      "last_layer_gradient_norm_per_head": [
+        0.013113263063132763,
+        0.02082148753106594,
+        0.0870475172996521,
+        0.011015335097908974
+      ],
+      "parameters_unchanged": true
+    },
+    "interval": {
+      "loss": 0.10122960060834885,
+      "components": {
+        "state": 0.028402380645275116,
+        "under_tail": 0.44849470257759094,
+        "over_tail": 0.4549499452114105,
+        "peak_error": 0.08348587155342102,
+        "sampling_residual_error": 0.01055962685495615
+      },
+      "last_layer_gradient_norm_per_head": [
+        0.05982423946261406,
+        0.12070285528898239,
+        0.0861205980181694,
+        0.011015335097908974
+      ],
+      "parameters_unchanged": true
+    }
+  },
+  "scope": "Isolated initialization derivatives only; no parameter update, fitted score or selection/confirmation outcome. Tail risk is replica-balanced minibatch CVaR over20%weight mass, not exact configuration-mean p90. State loss balances active/quiet within each sampled forecast. Auxiliary gas/fuel residual matches the TRUE sampling discrepancy instead of forcing it to zero."
+}
