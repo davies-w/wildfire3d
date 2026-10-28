@@ -432,3 +432,24 @@ Startup fit improvement rises from5.20% at50 to9.80% at300. This motivates testi
 a longer unchanged fit budget before a new architecture, but does not establish
 convergence or predict selection/confirmation success. No further run is represented
 as executed by this diagnostic. All acceptance requirements remain unchanged.
+
+### Guard-matched pilot02: longer fit comparison
+
+Fit-only trajectory motivates600 rather than300 epochs per arm. This is a fresh
+run from identical context230 plus zero time-residual weights, not a selected-model
+warm start. Worker, decoder, loss, data roles, seed3640, learning rate and all
+acceptance thresholds remain byte-for-byte unchanged where applicable. Both arms
+retain their original risk weights. Checkpoint selection has twice as many
+opportunities and remains development selection; confirmation is previously examined,
+not an untouched holdout. Original test remains excluded. No success is presumed.
+
+Expected fitting is roughly17minutes from the previous506-second two-arm run;
+startup/scoring can add time. Whole workflow2700s plus300s cleanup is covered by
+a$1 compute allowance at the conservative$1.20/hour bound with global GPU quota1.
+VM age cap1800s, task1680s and worker soft1560s are increased to accommodate the
+longer fit. Every epoch preserves model/optimizer/RNG/order/origins/cursor, with a
+full partial checkpoint at the soft deadline and actual CUDA next-update restore
+checks before fitting. No automatic task retry or resubmission. Retained prior
+reservations, especially Flex$40, remain intact. A deadline does not guarantee
+completion; partial evidence is preserved for diagnosis before any continuation.
+The same simplified FDS scope and interpretation limitations above apply.

@@ -8024,3 +8024,264 @@ stages:
       hash: md5
       md5: 053c6057570b242798155ea3170b5a6c
       size: 3245
+  prepare_guard_matched_extended_plan:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/prepare_guard_matched_extended_plan.py
+    deps:
+    - path: data/guard-matched-pilot01
+      hash: md5
+      md5: 808afed87c4ef8ad96d201fb62250b03.dir
+      size: 952113294
+      nfiles: 39
+    - path: model_evaluation/prepare_guard_matched_extended_plan.py
+      hash: md5
+      md5: e14edf7735864b7f5243f421057c3624
+      size: 2509
+    - path: results/guard-matched-fit-trajectory.json
+      hash: md5
+      md5: 053c6057570b242798155ea3170b5a6c
+      size: 3245
+    - path: results/guard-matched-pilot01-analysis.json
+      hash: md5
+      md5: 09c8b0f157bc1c7e67869c4c48661899
+      size: 27516
+    - path: results/guard-matched-pilot01-collected.json
+      hash: md5
+      md5: 741120c516b164312299310848ae77ae
+      size: 798
+    outs:
+    - path: results/guard-matched-extended-trial-plan.json
+      hash: md5
+      md5: 3c3df02e6370f6eef735b3b1d3848e7d
+      size: 12203
+  verify_guard_matched_price_bound02:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/verify_guard_matched_price_bound02.py
+    deps:
+    - path: model_evaluation/verify_guard_matched_price_bound02.py
+      hash: md5
+      md5: f7b953c2f4234e3b314e8af3061e1342
+      size: 1862
+    - path: results/guard-matched-extended-trial-plan.json
+      hash: md5
+      md5: 3c3df02e6370f6eef735b3b1d3848e7d
+      size: 12203
+    outs:
+    - path: results/guard-matched-pilot02-price-bound.json
+      hash: md5
+      md5: eea1269deaa9cc1d4b4ddbf9b9ea4062
+      size: 14487
+  prepare_guard_matched_trial02:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/prepare_guard_matched_trial02.py
+    deps:
+    - path: data/gas-shape-pilot01
+      hash: md5
+      md5: 0f9ef245d41f905943c52ad059eac1c1.dir
+      size: 53242573
+      nfiles: 17
+    - path: data/joint-decoder-candidate
+      hash: md5
+      md5: 48af269b9ab3475ed72ea0f7913caa40.dir
+      size: 26593773
+      nfiles: 5
+    - path: data/joint-rolling-features
+      hash: md5
+      md5: 0b3fd914ec0913529749e026d7f68988.dir
+      size: 449281821
+      nfiles: 3
+    - path: data/timing-candidate
+      hash: md5
+      md5: af75d85c237b85962d5d3a036bbc0e2a.dir
+      size: 65035
+      nfiles: 3
+    - path: model_evaluation/context_data.py
+      hash: md5
+      md5: 8ce74789ced18b580f382cfea7fa49cb
+      size: 1019
+    - path: model_evaluation/context_objective.py
+      hash: md5
+      md5: cf80a49ff86d1485a1f87089569986d6
+      size: 2707
+    - path: model_evaluation/gas_head_metrics.py
+      hash: md5
+      md5: 1b092dc20edf7bac2340dbc376fd4a53
+      size: 3824
+    - path: model_evaluation/guard_matched_data.py
+      hash: md5
+      md5: 41f299a94cc8bb434751b30d39162ee4
+      size: 1370
+    - path: model_evaluation/guard_matched_objective.py
+      hash: md5
+      md5: 747bd78601c2f01bed9d84c9d926de51
+      size: 2159
+    - path: model_evaluation/guard_matched_worker.py
+      hash: md5
+      md5: 3562066808c32675d0546e6f0ecc27d0
+      size: 10147
+    - path: model_evaluation/joint_data.py
+      hash: md5
+      md5: 53a76769c3541324d4baafa483a4be02
+      size: 6229
+    - path: model_evaluation/joint_decoder_v2.py
+      hash: md5
+      md5: 2f15f174798f9536a5a1989d31a64adc
+      size: 4693
+    - path: model_evaluation/joint_metrics.py
+      hash: md5
+      md5: b81c41dbaa625a353dd0e7730c8baacb
+      size: 5534
+    - path: model_evaluation/joint_objective_v2.py
+      hash: md5
+      md5: fdf5c704686a2d0c28d6c5cac767745b
+      size: 2838
+    - path: model_evaluation/prepare_guard_matched_trial02.py
+      hash: md5
+      md5: cca2bd2224dcbde4f8e6338102fc919b
+      size: 5755
+    - path: model_evaluation/timing_decoder.py
+      hash: md5
+      md5: eca9ecea56ed526eb1d9eb7da1ac8a02
+      size: 6395
+    - path: results/context-decoder-preflight.json
+      hash: md5
+      md5: 8c8363bcaa117929cdf0ea89e0533ba0
+      size: 2208
+    - path: results/context-objective-preflight.json
+      hash: md5
+      md5: acbeedd759f4eb7ccc07c82f526dc678
+      size: 2716
+    - path: results/guard-matched-extended-trial-plan.json
+      hash: md5
+      md5: 3c3df02e6370f6eef735b3b1d3848e7d
+      size: 12203
+    - path: results/guard-matched-objective-preflight.json
+      hash: md5
+      md5: f8c6b9d194f221936bc66591e0ea814f
+      size: 1319
+    - path: results/joint-pipeline-v2-preflight.json
+      hash: md5
+      md5: 8048edb72e5e9905809a93051ee30be2
+      size: 1113
+    outs:
+    - path: data/guard-matched-pilot02
+      hash: md5
+      md5: 90ff0a4796ef7d6defc7179a0c7309b5.dir
+      size: 952113444
+      nfiles: 39
+    - path: results/guard-matched-pilot02-prepared.json
+      hash: md5
+      md5: 319d2f57be7894235938e4bc3d53949e
+      size: 2633
+  validate_guard_matched_trial02:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/validate_guard_matched_trial02.py
+    deps:
+    - path: data/guard-matched-pilot02
+      hash: md5
+      md5: 90ff0a4796ef7d6defc7179a0c7309b5.dir
+      size: 952113444
+      nfiles: 39
+    - path: model_evaluation/analyze_guard_matched_pilot02.py
+      hash: md5
+      md5: 08c520e28582ba67850de413b6d24414
+      size: 4191
+    - path: model_evaluation/close_guard_matched_pilot02.py
+      hash: md5
+      md5: 13d3171cab0e4d82172b4ecf9885dadf
+      size: 1751
+    - path: model_evaluation/collect_guard_matched_pilot02.py
+      hash: md5
+      md5: ea8fcb80d852ffa4096b5105e7af54a4
+      size: 5947
+    - path: model_evaluation/launch_guard_matched_pilot02.py
+      hash: md5
+      md5: 8a111eabac8e123c0657f15c4278b345
+      size: 7931
+    - path: model_evaluation/monitor_guard_matched_pilot02.py
+      hash: md5
+      md5: a54c19abab8c0d9f413d365396f1e9ef
+      size: 2912
+    - path: model_evaluation/reconcile_guard_matched_pilot02.py
+      hash: md5
+      md5: 2ba9ead4b0f6bab1ff43dee6e9c064e0
+      size: 1686
+    - path: model_evaluation/timing_worker_v2.py
+      hash: md5
+      md5: 606c7d368a25b75ef92ae71ff95fce9b
+      size: 10108
+    - path: model_evaluation/validate_guard_matched_trial02.py
+      hash: md5
+      md5: d6e96eb8c27d04b640f4d73f02d2cc55
+      size: 4686
+    - path: results/context-objective-preflight.json
+      hash: md5
+      md5: acbeedd759f4eb7ccc07c82f526dc678
+      size: 2716
+    - path: results/guard-matched-objective-preflight.json
+      hash: md5
+      md5: f8c6b9d194f221936bc66591e0ea814f
+      size: 1319
+    - path: results/guard-matched-pilot02-prepared.json
+      hash: md5
+      md5: 319d2f57be7894235938e4bc3d53949e
+      size: 2633
+    - path: results/joint-pipeline-v2-preflight.json
+      hash: md5
+      md5: 8048edb72e5e9905809a93051ee30be2
+      size: 1113
+    outs:
+    - path: results/guard-matched-pilot02-offline-preflight.json
+      hash: md5
+      md5: 9e65f99c8630811eb650db954ae6ee39
+      size: 628
+  launch_guard_matched_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot02.py
+      --execute
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: data/guard-matched-pilot02
+      hash: md5
+      md5: 90ff0a4796ef7d6defc7179a0c7309b5.dir
+      size: 952113444
+      nfiles: 39
+    - path: model_evaluation/launch_guard_matched_pilot02.py
+      hash: md5
+      md5: 8a111eabac8e123c0657f15c4278b345
+      size: 7931
+    - path: results/guard-matched-objective-preflight.json
+      hash: md5
+      md5: f8c6b9d194f221936bc66591e0ea814f
+      size: 1319
+    - path: results/guard-matched-pilot02-offline-preflight.json
+      hash: md5
+      md5: 9e65f99c8630811eb650db954ae6ee39
+      size: 628
+    - path: results/guard-matched-pilot02-price-bound.json
+      hash: md5
+      md5: eea1269deaa9cc1d4b4ddbf9b9ea4062
+      size: 14487
+    - path: results/timing-cost-bounds-preflight.json
+      hash: md5
+      md5: b5b3ad9e0c900fc762b0e49d158a87ef
+      size: 560
+    - path: results/timing-decoder-pilot06-cost-reconciled.json
+      hash: md5
+      md5: 85ab9bbc752a839d26ae22797cfeaf5e
+      size: 463
+    - path: results/timing-decoder-pilot06-permission-removed.json
+      hash: md5
+      md5: 6f9ca976df894445a30612e7a0e22d9d
+      size: 478
+    - path: results/timing-regional-network-prepared.json
+      hash: md5
+      md5: 5a6d504044648f3980912a1850b74993
+      size: 1082
+    outs:
+    - path: results/guard-matched-pilot02-execution.json
+      hash: md5
+      md5: 47f65ee352e8213eab00a10fc116dd87
+      size: 337
