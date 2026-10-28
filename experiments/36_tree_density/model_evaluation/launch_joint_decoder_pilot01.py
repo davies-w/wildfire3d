@@ -6,7 +6,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from cloud import R,G,B,PROJECT,BUCKET,gc,read,save
 KEY='density36-joint-decoder-pilot01';WF='fds-gpu36-joint01';LABEL='gpu36-joint01'
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--execute',action='store_true');args=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('--execute',action='store_true');ap.add_argument('--resume-verified-upload',action='store_true');args=ap.parse_args();assert not args.resume_verified_upload or args.execute
  with (R/'data/joint-decoder-pilot01-launch.lock').open('w') as own:
   fcntl.flock(own,fcntl.LOCK_EX|fcntl.LOCK_NB)
   p=read('results/joint-decoder-pilot01-prepared.json');folder=R/'data/joint-decoder-pilot01'
@@ -28,13 +28,19 @@ def main():
   save('results/joint-decoder-pilot01-readiness.json',dict(passed=True,inventory=inventory,regional_available=regional,global_available=globalq))
   if not args.execute:print('READINESS PASSED; no submission');return
   with (B.parent/'data/budget.lock').open('w') as lock:
-   fcntl.flock(lock,fcntl.LOCK_EX);b=json.loads(B.read_text());assert KEY not in b['reservations']
-   allowance=p['maximum_allowance_usd'];assert b['estimated_spend_usd']+b['reserved_usd']+allowance<=b['authorized_usd']
-   b['reserved_usd']+=allowance;b['reservations'][KEY]=dict(state='reserved_before_upload',allowance_usd=allowance,reserved_unix=time.time(),scope='Authorized controlled bounded four-output decoder repair pilot, max0.25USD, private inputs, no tests, no automatic retries',workflow=WF)
-   B.write_text(json.dumps(b,indent=2)+'\n')
+   fcntl.flock(lock,fcntl.LOCK_EX);b=json.loads(B.read_text());allowance=p['maximum_allowance_usd']
+   if args.resume_verified_upload:
+    r=b['reservations'][KEY];assert r['state']=='reserved_before_upload' and r['workflow']==WF and r['allowance_usd']==allowance
+    assert b['estimated_spend_usd']+b['reserved_usd']<=b['authorized_usd']
+   else:
+    assert KEY not in b['reservations'];assert b['estimated_spend_usd']+b['reserved_usd']+allowance<=b['authorized_usd']
+    b['reserved_usd']+=allowance;b['reservations'][KEY]=dict(state='reserved_before_upload',allowance_usd=allowance,reserved_unix=time.time(),scope='Authorized bounded four-output decoder repair, max0.25USD, no automatic retries',workflow=WF)
+    B.write_text(json.dumps(b,indent=2)+'\n')
   uri='gs://'+BUCKET+'/density36/joint-decoder-pilot01/inputs.tar'
-  subprocess.run([G,'storage','cp','--if-generation-match=0',str(folder/'inputs.tar'),uri],check=True,capture_output=True)
-  meta=gc('storage','objects','describe',uri);assert int(meta['size'])==p['input_bytes'] and meta['md5_hash']==base64.b64encode(hashlib.md5((folder/'inputs.tar').read_bytes()).digest()).decode()
+  if not args.resume_verified_upload:subprocess.run([G,'storage','cp','--if-generation-match=0',str(folder/'inputs.tar'),uri],check=True,capture_output=True)
+  meta=gc('storage','objects','describe',uri);local=gc('storage','hash',str(folder/'inputs.tar'))[0]
+  assert int(meta['size'])==p['input_bytes'] and meta['crc32c_hash']==local['crc32c_hash']
+  if 'md5_hash' in meta:assert meta['md5_hash']==local['md5_hash']
   save('results/joint-decoder-pilot01-upload.json',meta)
   expiry=(datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(seconds=11700)).strftime('%Y-%m-%dT%H:%M:%SZ')
   condition=dict(title='density36-joint-decoder-pilot01-read',description='Private train/validation-only bounded four-output decoder repair inputs and checkpoint verification',expression="request.time < timestamp('"+expiry+"') && resource.name.startsWith('projects/_/buckets/"+BUCKET+"/objects/density36/joint-decoder-pilot01/')")

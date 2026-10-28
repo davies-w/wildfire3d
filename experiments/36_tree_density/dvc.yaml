@@ -1705,3 +1705,61 @@ stages:
     metrics:
     - results/joint-decoder-pilot01-offline-preflight.json:
         cache: false
+  launch_joint_decoder_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/launch_joint_decoder_pilot01.py --execute
+    frozen: true
+    deps:
+    - model_evaluation/launch_joint_decoder_pilot01.py
+    - cloud.py
+    - data/joint-decoder-pilot01
+    - results/joint-decoder-pilot01-offline-preflight.json
+    metrics:
+    - results/joint-decoder-pilot01-execution.json:
+        cache: false
+  collect_joint_decoder_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/collect_joint_decoder_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/collect_joint_decoder_pilot01.py
+    - cloud.py
+    - results/joint-decoder-pilot01-execution.json
+    outs:
+    - data/joint-decoder-pilot01-results
+    metrics:
+    - results/joint-decoder-pilot01-collected.json:
+        cache: false
+  close_joint_decoder_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/close_joint_decoder_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/close_joint_decoder_pilot01.py
+    - cloud.py
+    - results/joint-decoder-pilot01-collected.json
+    - results/joint-decoder-pilot01-read-condition.json
+    metrics:
+    - results/joint-decoder-pilot01-permission-removed.json:
+        cache: false
+  analyze_joint_decoder_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_joint_decoder_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/analyze_joint_decoder_pilot01.py
+    - cloud.py
+    - data/joint-decoder-pilot01
+    - data/joint-decoder-pilot01-results
+    - results/joint-decoder-pilot01-collected.json
+    - results/joint-decoder-pilot01-permission-removed.json
+    metrics:
+    - results/joint-decoder-pilot01-analysis.json:
+        cache: false
+  reconcile_joint_decoder_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_joint_decoder_pilot01.py
+    frozen: true
+    deps:
+    - model_evaluation/reconcile_joint_decoder_pilot01.py
+    - cloud.py
+    - results/joint-decoder-pilot01-collected.json
+    - results/joint-decoder-pilot01-permission-removed.json
+    metrics:
+    - results/joint-decoder-pilot01-cost-reconciled.json:
+        cache: false
