@@ -3182,12 +3182,27 @@
       "terminal_evidence": "experiments/36_tree_density/results/context-decoder-pilot01-status.json"
     },
     "density36-timing-decoder-pilot01": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 0.3,
       "reserved_unix": 1793159839.025089,
       "scope": "Authorized bounded four-output decoder repair, max0.30USD, no automatic retries",
       "workflow": "fds-gpu36-timing01",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-timing01/executions/e001fbe0-a1a6-47fe-a09d-d876a91122ea"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-timing01/executions/e001fbe0-a1a6-47fe-a09d-d876a91122ea",
+      "historical_allowance_usd": 0.3,
+      "terminal_evidence": "experiments/36_tree_density/results/timing-decoder-pilot01-cost-reconciled.json",
+      "cost": {
+        "stage": "verified_no_vm_allocation",
+        "usd": 0,
+        "scope": "Zero VM compute allocated; shared workflow/storage charges remain project-level. Not a zero invoice claim."
+      }
+    },
+    "density36-timing-decoder-pilot02": {
+      "state": "submitted",
+      "allowance_usd": 0.3,
+      "reserved_unix": 1793160897.680523,
+      "scope": "Authorized bounded four-output decoder repair, max0.30USD, no automatic retries",
+      "workflow": "fds-gpu36-timing02",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-timing02/executions/5584e77a-ef7c-4ed0-931a-4b49d6b41528"
     }
   },
   "recycle_reservations": true,
@@ -3197,20 +3212,17 @@
   "accounting": {
     "billing_export_status": "posted_costs_subject_to_adjustment",
     "posted_source": "BigQuery detailed export",
-    "as_of_utc": "2026-10-28T02:15:37.420931+00:00",
+    "as_of_utc": "2026-10-28T04:11:46.042654+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
-    "project_posted_comparison_usd": 47.898167,
+    "project_posted_comparison_usd": 47.918472,
     "project_compute_runtime_estimate_usd": 45.46005299282305,
     "shared_cost_estimate_usd": 1.26,
-    "spend_estimate_usd": 48.572454361709035,
-    "unposted_compute_after_export_usd": 0.674287361709031,
+    "spend_estimate_usd": 48.14954268719291,
+    "unposted_compute_after_export_usd": 0.23107068719291105,
     "unposted_resources": [
       "fds-gpu36-context0-b82a73da-5ff8-4a130-group0-0-mns2",
       "fds-gpu36-joint02-aca5fd21-e444-43f8-0-group0-0-zqsb",
-      "fds-gpu36-joint01-52981f30-2a21-49fa-0-group0-0-4wm8",
-      "fds-gpu36-gasshape-382881e7-b71c-41830-group0-0-77z0",
-      "fds-gpu36-gashead0-9855bd9e-6bf1-4f760-group0-0-t2pb",
-      "fds-gpu36-exposure-30c2a56a-3806-40bf0-group0-0-1gsv"
+      "fds-gpu36-joint01-52981f30-2a21-49fa-0-group0-0-4wm8"
     ],
     "matched_vms": 353,
     "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
@@ -3222,5 +3234,5 @@
       "c3-standard-4/SPOT": 0.07725118278354724
     }
   },
-  "estimated_spend_usd": 48.572454361709035
+  "estimated_spend_usd": 48.14954268719291
 }

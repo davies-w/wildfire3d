@@ -5916,3 +5916,104 @@ stages:
       hash: md5
       md5: b5ad1de9ddbf42de6bd4d4c484bd4135
       size: 544
+  collect_timing_decoder_pilot01:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/collect_timing_decoder_pilot01.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/collect_timing_decoder_pilot01.py
+      hash: md5
+      md5: 93f639e011c53c5d8e52266f855cc5db
+      size: 5784
+    - path: results/timing-decoder-pilot01-execution.json
+      hash: md5
+      md5: 0ea43036245742c7e5837a6fbd5fa3a5
+      size: 333
+    outs:
+    - path: data/timing-decoder-pilot01-results
+      hash: md5
+      md5: 5b2ec915d54776b48a41d7355c97caf9.dir
+      size: 4701
+      nfiles: 1
+    - path: results/timing-decoder-pilot01-collected.json
+      hash: md5
+      md5: 9bf65b79eaa5dddc5010a1647e9adc88
+      size: 189
+  close_timing_decoder_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/close_timing_decoder_pilot01.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/close_timing_decoder_pilot01.py
+      hash: md5
+      md5: 1b958505566a918e1b051d733dc7c08e
+      size: 1759
+    - path: results/timing-decoder-pilot01-collected.json
+      hash: md5
+      md5: 9bf65b79eaa5dddc5010a1647e9adc88
+      size: 189
+    - path: results/timing-decoder-pilot01-read-condition.json
+      hash: md5
+      md5: beea585d9d936b0bc779065559de2692
+      size: 364
+    outs:
+    - path: results/timing-decoder-pilot01-permission-removed.json
+      hash: md5
+      md5: 499f162d188787eac0e45661dfcf25a2
+      size: 478
+  reconcile_unallocated_timing01:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/reconcile_unallocated_timing01.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/reconcile_unallocated_timing01.py
+      hash: md5
+      md5: 5a5d4d2f8cc6a476461b2b3116369dca
+      size: 3472
+    - path: results/timing-decoder-pilot01-collected.json
+      hash: md5
+      md5: 9bf65b79eaa5dddc5010a1647e9adc88
+      size: 189
+    - path: results/timing-decoder-pilot01-permission-removed.json
+      hash: md5
+      md5: 499f162d188787eac0e45661dfcf25a2
+      size: 478
+    outs:
+    - path: results/timing-decoder-pilot01-no-allocation-proof.json
+      hash: md5
+      md5: b1bf5f7d9dff6757acf6b2c6a9512949
+      size: 98100
+  launch_timing_decoder_pilot02:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/launch_timing_decoder_pilot02.py --execute
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: data/timing-decoder-pilot02
+      hash: md5
+      md5: 22092288f5ab8804e38973f22537671b.dir
+      size: 952099561
+      nfiles: 35
+    - path: model_evaluation/launch_timing_decoder_pilot02.py
+      hash: md5
+      md5: 5efdc6d6f77226f5892ce778f56005bc
+      size: 6582
+    - path: results/timing-decoder-pilot02-offline-preflight.json
+      hash: md5
+      md5: b5ad1de9ddbf42de6bd4d4c484bd4135
+      size: 544
+    outs:
+    - path: results/timing-decoder-pilot02-execution.json
+      hash: md5
+      md5: e7161b4b3b428c369a59bfea2a607700
+      size: 333

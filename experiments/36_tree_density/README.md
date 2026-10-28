@@ -311,7 +311,7 @@ The VM/job/disk and exact temporary read grant are removed. Estimated compute $0
 
 The terminal result directory is also backed up to the verified local DVC mirror at `/Users/wdavies/pi/wildfire3d/FDS/hf_dvc_mirror`; the guarded transfer verified the filesystem was local and restricted cached output to this run. The public hfhttp remote was not used.
 
-### Timing-residual continuation (submitted; capacity pending)
+### Timing-residual continuation (zone A closed; zone B submitted)
 
 The next candidate freezes guarded context01physical_primary230and adds10628trainable parameters in four81input32hidden residual banks. Inputs include the prior51context values and15Gaussian bases each for known absolute/elapsed forecast time. Early centres0..32s use3s widths; later centres48/64/90/120/150/180use12/16/24/30/30/30s. These are chosen model features over retained approximately2s observations, not extra solver resolution or true future phases. Frozen context weights3396and frozenGRU5895stay unchanged. Corrected outputs still do not feed recurrent dynamics. Zero new residual preserves old guarded predictions exactly on128fit histories at full90and rolling16origins0/16/74. Initial model is already partly trained, not rawGRU.
 
@@ -324,3 +324,7 @@ The user explicitly approved the $0.30 cloud test and subsequently authorized ex
 A separately identified timing02 capacity fallback is prepared for us-central1-b, not submitted. All archive members except the output namespace in runtime.py are byte-identical. Workflow/bootstrap differences are verified to be execution names, output prefix and zone only. It has the same $0.30 bound and no task retries, and can launch only after timing01 terminal collection, cleanup, exact grant removal and positive zero-VM-allocation proof. DVC preserves its package in the verified local mirror. A preparation pass is not GPU execution or an accuracy result.
 
 A read-only status observation finds the exact Flex execution referenced by the40USDreservation (`3c947765-50a4-4677-81d1-996cae5d47e0`) CANCELLED, ending2026-10-27T21:28:07Z. Only that cancelled execution is listed for the same workflow. Cancellation actor/cause and any differently named replacement workflow are unproven. No Flex execution, job, grant or reservation was changed or restarted by this observation;40USDremains reserved.
+
+Timing01 closed after its bounded queue deadline with zero task runtime. Its sole output job-status.json is preserved; full exact-UID insertion audit confirms resource-pool failures and no successful VM allocation. Job/VM/disk inventories and the exact temporary grant are empty. Its $0.30 compute allowance is released; shared charges are not zeroed. No accuracy or optimizer replay result exists for timing01.
+
+Timing02 submitted once in us-central1-b as execution `5584e77a-ef7c-4ed0-931a-4b49d6b41528`, after all capacity-only closure guards passed. Its $0.30 reservation fits the $125 ledger including all prior reservations. Training and CUDA replay are still unverified at submission; this is no claim of a prediction repair.
