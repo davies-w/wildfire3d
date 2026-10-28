@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "fit_histories": 8,
+  "optimizer_updates": 0,
+  "all382_coherent_forecasts_per_history_evaluated": true,
+  "actual_prefix_gallery_and_canonical_scores_match_cached_reference": true,
+  "raw_and_no_change_comparators_verified": true,
+  "coherent_forecast_constraints": {
+    "finite": true,
+    "mass_nonnegative": true,
+    "gas_nonnegative": true,
+    "coherent_mass_nonincreasing": true,
+    "max_mass_increase_kg": 0.0,
+    "coherent_forecasts": 3056,
+    "forecasts_with_negative_observed_water_boundary": 0
+  },
+  "parameters_unchanged": true,
+  "confirmation_and_test_not_evaluated": true,
+  "source_sha256": {
+    "inference_verification.py": "c58c233beb1a7576d5656d868d0064041bde6bdbf116def2e8d0e99c6d8d1c0c",
+    "validate_inference_verification.py": "b62d9f9ebfe901542fd88495e0c7cf7ba39f83e082ef9f2bc720dffd2fda9cf5"
+  },
+  "scope": "Final evaluator validation using an unaccepted prior checkpoint on fit histories only. This does not accept that model, inspect test outcomes, or prove a repair."
+}

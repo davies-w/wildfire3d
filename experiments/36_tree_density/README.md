@@ -595,3 +595,35 @@ and checkpoint IO. Deadline may stop either arm early; checkpoints/evidence are
 preserved and require diagnosis before any manual continuation. This is not a
 completion guarantee or accuracy claim. Same simplified FDS and normalization/
 development-role limitations above apply.
+
+### Final actual-prefix evaluation prepared while cloud approval is pending
+
+The paired inference evaluator covers382coherent forecasts per history: full90
+from origin0 plus all90/87/83/75/46valid starts for1/4/8/16/45steps, reusing
+rolling16for the exact stitched gallery recipe. It reports raw/candidate/no-change,
+all canonical phases/durations, and constraints on each coherent trajectory.
+Stitched revisions are not asserted monotone; negative observed water boundaries
+are projected explicitly, and the count is forecast occurrences rather than unique
+origins. Heating stays signed and gas remains sampled release, not HRR/energy.
+
+On8fit histories, actual-prefix scores match independently cached gallery and
+canonical evaluation; all3056coherent candidate forecasts are finite/nonnegative
+in mass/gas and nonincreasing in mass, with no parameter update. This validates
+the evaluator using an unaccepted old checkpoint, not that model's accuracy.
+
+A separate guard requires completed collection/cleanup, removed exact read grant,
+selection/confirmation acceptance and independent CPU replay before test targets
+can be loaded. Nine synthetic rejection cases pass, including changed checkpoint
+weights, rejected selection, prior test use and incomplete cleanup. No scientific
+model is accepted by these fixtures. Final winner/checkpoint/protocol/test-ID
+identity freezes before any test forecast; test cannot select a checkpoint or
+switch an arm. The method is pinned to the exact base/decoder/normalization and
+source used by the prepared package and canonical cache.
+
+Only metadata/method for the existing208history rotation0test split is frozen now;
+no test forecast/result exists. That split is not new external validation, and
+other rotations remain unverified. A future test pass explicitly does not set
+full_goal_complete or deploy a gallery; broader case/phase review and remaining
+rotation coverage are still required. Cloud launch remains unexecuted after
+automatic approval review required explicit authorization for the1.62GBprivate
+upload, temporary prefix-limited access and workflow/compute changes.

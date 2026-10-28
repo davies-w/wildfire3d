@@ -4049,3 +4049,74 @@ stages:
         cache: false
     - results/canonical-pilot01-optimizer-replay.json:
         cache: false
+  validate_inference_verification:
+    cmd: ../../.venv/bin/python model_evaluation/validate_inference_verification.py
+    deps:
+    - model_evaluation/validate_inference_verification.py
+    - model_evaluation/inference_verification.py
+    - model_evaluation/canonical_data.py
+    - model_evaluation/canonical_metrics.py
+    - model_evaluation/joint_predictor.py
+    - model_evaluation/joint_metrics.py
+    - model_evaluation/timing_decoder.py
+    - data/exposure-pilot02
+    - data/guard-matched-pilot01
+    - data/guard-matched-pilot01-results
+    - data/canonical-feature-cache
+    metrics:
+    - results/inference-verification-preflight.json:
+        cache: false
+  validate_accepted_model_guard:
+    cmd: ../../.venv/bin/python model_evaluation/validate_accepted_model_guard.py
+    deps:
+    - model_evaluation/validate_accepted_model_guard.py
+    - model_evaluation/accepted_model_guard.py
+    - model_evaluation/run_canonical_final_inference.py
+    metrics:
+    - results/accepted-model-guard-preflight.json:
+        cache: false
+  prepare_final_inference_protocol:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_final_inference_protocol.py
+    deps:
+    - model_evaluation/prepare_final_inference_protocol.py
+    - model_evaluation/accepted_model_guard.py
+    - model_evaluation/inference_verification.py
+    - model_evaluation/run_canonical_final_inference.py
+    - model_evaluation/joint_predictor.py
+    - model_evaluation/joint_metrics.py
+    - model_evaluation/canonical_metrics.py
+    - model_evaluation/timing_decoder.py
+    - data/exposure-pilot02
+    - data/canonical-pilot01
+    - results/canonical-trial-plan.json
+    - results/canonical-pilot01-prepared.json
+    - results/canonical-feature-cache-prepared.json
+    - results/inference-verification-preflight.json
+    - results/accepted-model-guard-preflight.json
+    metrics:
+    - results/canonical-final-inference-protocol.json:
+        cache: false
+  run_canonical_final_inference:
+    cmd: ../../.venv/bin/python model_evaluation/run_canonical_final_inference.py
+    frozen: true
+    deps:
+    - model_evaluation/run_canonical_final_inference.py
+    - model_evaluation/accepted_model_guard.py
+    - model_evaluation/inference_verification.py
+    - model_evaluation/joint_predictor.py
+    - model_evaluation/canonical_metrics.py
+    - model_evaluation/timing_decoder.py
+    - data/exposure-pilot02
+    - data/canonical-pilot01
+    - data/canonical-pilot01-results
+    - results/canonical-pilot01-analysis.json
+    - results/canonical-pilot01-collected.json
+    - results/canonical-pilot01-permission-removed.json
+    - results/canonical-final-inference-protocol.json
+    outs:
+    - data/canonical-final-inference
+    metrics:
+    - results/canonical-final-model-freeze.json:
+        cache: false
+    - results/canonical-final-inference.json:
+        cache: false

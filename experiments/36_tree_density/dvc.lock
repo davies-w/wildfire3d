@@ -9740,3 +9740,152 @@ stages:
       hash: md5
       md5: b5745c05f11a403129822c13c0ccef77
       size: 743
+  validate_inference_verification:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/validate_inference_verification.py
+    deps:
+    - path: data/canonical-feature-cache
+      hash: md5
+      md5: a186d811a5625a38562da384f47ad448.dir
+      size: 1145718933
+      nfiles: 8
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: data/guard-matched-pilot01
+      hash: md5
+      md5: 808afed87c4ef8ad96d201fb62250b03.dir
+      size: 952113294
+      nfiles: 39
+    - path: data/guard-matched-pilot01-results
+      hash: md5
+      md5: 35202beb02170f9996a470f95bfb6e0c.dir
+      size: 165678507
+      nfiles: 682
+    - path: model_evaluation/canonical_data.py
+      hash: md5
+      md5: 6b9e752842cb681946fa9889f611f3ff
+      size: 4841
+    - path: model_evaluation/canonical_metrics.py
+      hash: md5
+      md5: e518b24cd9f981a404d98f8bd7045deb
+      size: 2474
+    - path: model_evaluation/inference_verification.py
+      hash: md5
+      md5: c64506065856a6830ba7267c03d45bd9
+      size: 3500
+    - path: model_evaluation/joint_metrics.py
+      hash: md5
+      md5: b81c41dbaa625a353dd0e7730c8baacb
+      size: 5534
+    - path: model_evaluation/joint_predictor.py
+      hash: md5
+      md5: 407173f80253cd0116bbd263687fdcc1
+      size: 2458
+    - path: model_evaluation/timing_decoder.py
+      hash: md5
+      md5: eca9ecea56ed526eb1d9eb7da1ac8a02
+      size: 6395
+    - path: model_evaluation/validate_inference_verification.py
+      hash: md5
+      md5: 11eec3c44c54d110c83501e0ddf0546d
+      size: 3555
+    outs:
+    - path: results/inference-verification-preflight.json
+      hash: md5
+      md5: d8f937126c8682555287e61ba4f7061f
+      size: 1030
+  validate_accepted_model_guard:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/validate_accepted_model_guard.py
+    deps:
+    - path: model_evaluation/accepted_model_guard.py
+      hash: md5
+      md5: a6909d62f18e63898e49d0d38449ddcc
+      size: 2050
+    - path: model_evaluation/run_canonical_final_inference.py
+      hash: md5
+      md5: b6623fc908765e214d8ee38424c6f98c
+      size: 4856
+    - path: model_evaluation/validate_accepted_model_guard.py
+      hash: md5
+      md5: 7772ba6d0030e25c020a21c4026a627f
+      size: 4071
+    outs:
+    - path: results/accepted-model-guard-preflight.json
+      hash: md5
+      md5: 3f1e1904a3901419c00d254e520d9da4
+      size: 754
+  prepare_final_inference_protocol:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/prepare_final_inference_protocol.py
+    deps:
+    - path: data/canonical-pilot01
+      hash: md5
+      md5: 93dbf7750fb48c7c37041941e6359756.dir
+      size: 3243527215
+      nfiles: 51
+    - path: data/exposure-pilot02
+      hash: md5
+      md5: 75e99af9af1918e4c238fe15656dfe26.dir
+      size: 12371161
+      nfiles: 16
+    - path: model_evaluation/accepted_model_guard.py
+      hash: md5
+      md5: a6909d62f18e63898e49d0d38449ddcc
+      size: 2050
+    - path: model_evaluation/canonical_metrics.py
+      hash: md5
+      md5: e518b24cd9f981a404d98f8bd7045deb
+      size: 2474
+    - path: model_evaluation/inference_verification.py
+      hash: md5
+      md5: c64506065856a6830ba7267c03d45bd9
+      size: 3500
+    - path: model_evaluation/joint_metrics.py
+      hash: md5
+      md5: b81c41dbaa625a353dd0e7730c8baacb
+      size: 5534
+    - path: model_evaluation/joint_predictor.py
+      hash: md5
+      md5: 407173f80253cd0116bbd263687fdcc1
+      size: 2458
+    - path: model_evaluation/prepare_final_inference_protocol.py
+      hash: md5
+      md5: aebbff3f6cb94610b27f3d1687a3710a
+      size: 3676
+    - path: model_evaluation/run_canonical_final_inference.py
+      hash: md5
+      md5: b6623fc908765e214d8ee38424c6f98c
+      size: 4856
+    - path: model_evaluation/timing_decoder.py
+      hash: md5
+      md5: eca9ecea56ed526eb1d9eb7da1ac8a02
+      size: 6395
+    - path: results/accepted-model-guard-preflight.json
+      hash: md5
+      md5: 3f1e1904a3901419c00d254e520d9da4
+      size: 754
+    - path: results/canonical-feature-cache-prepared.json
+      hash: md5
+      md5: 10cb582d0f9acfc0704ec03a1477ccca
+      size: 3668
+    - path: results/canonical-pilot01-prepared.json
+      hash: md5
+      md5: 9194908c375ca6f46a7f0349ec1334dd
+      size: 3517
+    - path: results/canonical-trial-plan.json
+      hash: md5
+      md5: 88723f0283510fa80e265883090ad393
+      size: 13454
+    - path: results/inference-verification-preflight.json
+      hash: md5
+      md5: d8f937126c8682555287e61ba4f7061f
+      size: 1030
+    outs:
+    - path: results/canonical-final-inference-protocol.json
+      hash: md5
+      md5: c092ca820f58a7dbae0db28996487278
+      size: 10721
