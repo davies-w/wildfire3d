@@ -6732,12 +6732,16 @@ stages:
     deps:
     - path: ../../scripts/reconcile_runtime_costs.py
       hash: md5
-      md5: 80284c1b74890f0633bca0ed00f353af
-      size: 9467
+      md5: 41c1ef8d553d0a7a42f69bdee2fc2353
+      size: 9528
     - path: model_evaluation/validate_timing_cost_bounds.py
       hash: md5
-      md5: 07d3b460782f4df2248d1a17fa1b58f0
-      size: 2411
+      md5: 62e93756ab187a7bdab2c8b94d1e80f7
+      size: 2867
+    - path: results/canonical-pilot03-price-bound.json
+      hash: md5
+      md5: 77bb87563331738103e9744a182c709e
+      size: 14487
     - path: results/timing-decoder-pilot05-price-bound.json
       hash: md5
       md5: 399f42be713d563db059cb6485e53a9c
@@ -6749,8 +6753,8 @@ stages:
     outs:
     - path: results/timing-cost-bounds-preflight.json
       hash: md5
-      md5: b5b3ad9e0c900fc762b0e49d158a87ef
-      size: 560
+      md5: 769f2360c6d2fe4f16829e4692f17317
+      size: 702
   collect_timing_decoder_pilot04:
     cmd: ../../.venv/bin/python
       model_evaluation/collect_timing_decoder_pilot04.py
@@ -10655,8 +10659,8 @@ stages:
       size: 1168
     - path: results/canonical-pilot03-progress.json
       hash: md5
-      md5: d4cd08e6884d26aafedf2d864d9df192
-      size: 2487
+      md5: 49e2795a6dab0007a0d8417fadc78e56
+      size: 41100
   validate_canonical_case_review:
     cmd: ../../.venv/bin/python
       model_evaluation/validate_canonical_case_review.py
@@ -10678,3 +10682,144 @@ stages:
       hash: md5
       md5: 74d409749431968b12e087d36ac94fc0
       size: 570
+  collect_canonical_pilot03:
+    cmd: ../../.venv/bin/python model_evaluation/collect_canonical_pilot03.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/canonical_transfer_guard03.py
+      hash: md5
+      md5: c19b5a77371ef9fa4b508b2f7d6af111
+      size: 2495
+    - path: model_evaluation/collect_canonical_pilot03.py
+      hash: md5
+      md5: 24d274f96fa0efbd7a90240a794b3f05
+      size: 6038
+    - path: results/canonical-pilot03-execution.json
+      hash: md5
+      md5: 4329d5d32ed155dc303236c68dd93033
+      size: 336
+    - path: results/canonical-pilot03-prepared.json
+      hash: md5
+      md5: a443bfba67181287661ffabad07b0e2d
+      size: 3665
+    outs:
+    - path: data/canonical-pilot03-results
+      hash: md5
+      md5: dd02d62c96b4e4f823e1db694e7bba4a.dir
+      size: 567668879
+      nfiles: 1342
+    - path: results/canonical-pilot03-collected.json
+      hash: md5
+      md5: 70252935fdadd66f2cffdc2b9ae9659c
+      size: 1634
+  close_canonical_pilot03:
+    cmd: ../../.venv/bin/python model_evaluation/close_canonical_pilot03.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/close_canonical_pilot03.py
+      hash: md5
+      md5: c37e9472a5fa65f81e0fbbcfe16322e3
+      size: 1714
+    - path: results/canonical-pilot03-collected.json
+      hash: md5
+      md5: 70252935fdadd66f2cffdc2b9ae9659c
+      size: 1634
+    - path: results/canonical-pilot03-read-condition.json
+      hash: md5
+      md5: ab12f2ba17c629b21ade81a4da9476d0
+      size: 354
+    outs:
+    - path: results/canonical-pilot03-permission-removed.json
+      hash: md5
+      md5: a6785a4308cd7e2e682727d64c04b1d5
+      size: 468
+  analyze_canonical_pilot03:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_canonical_pilot03.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: data/canonical-pilot03
+      hash: md5
+      md5: c36e2159183c6c5de67154d29330a732.dir
+      size: 3243529351
+      nfiles: 51
+    - path: data/canonical-pilot03-results
+      hash: md5
+      md5: dd02d62c96b4e4f823e1db694e7bba4a.dir
+      size: 567668879
+      nfiles: 1342
+    - path: model_evaluation/analyze_canonical_pilot03.py
+      hash: md5
+      md5: 43d0b44ee939815d47780ccbf1cb46a8
+      size: 4803
+    - path: results/canonical-pilot03-collected.json
+      hash: md5
+      md5: 70252935fdadd66f2cffdc2b9ae9659c
+      size: 1634
+    - path: results/canonical-pilot03-permission-removed.json
+      hash: md5
+      md5: a6785a4308cd7e2e682727d64c04b1d5
+      size: 468
+    outs:
+    - path: results/canonical-pilot03-analysis.json
+      hash: md5
+      md5: bbb081c7a5a79c1621f393f4f20b1daf
+      size: 106530
+  reconcile_canonical_pilot03:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_canonical_pilot03.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/reconcile_canonical_pilot03.py
+      hash: md5
+      md5: ce633ad96cef11cb73106d02bec0c5ee
+      size: 1658
+    - path: results/canonical-pilot03-collected.json
+      hash: md5
+      md5: 70252935fdadd66f2cffdc2b9ae9659c
+      size: 1634
+    - path: results/canonical-pilot03-permission-removed.json
+      hash: md5
+      md5: a6785a4308cd7e2e682727d64c04b1d5
+      size: 468
+    outs:
+    - path: results/canonical-pilot03-cost-reconciled.json
+      hash: md5
+      md5: ffd6da2676e1376a611477f7e7a7de43
+      size: 470
+  audit_canonical_trajectory03:
+    cmd: ../../.venv/bin/python model_evaluation/audit_canonical_trajectory03.py
+    deps:
+    - path: data/canonical-pilot03
+      hash: md5
+      md5: c36e2159183c6c5de67154d29330a732.dir
+      size: 3243529351
+      nfiles: 51
+    - path: data/canonical-pilot03-results
+      hash: md5
+      md5: dd02d62c96b4e4f823e1db694e7bba4a.dir
+      size: 567668879
+      nfiles: 1342
+    - path: model_evaluation/audit_canonical_trajectory03.py
+      hash: md5
+      md5: e68e7b652b079b733f5b727b9960d97d
+      size: 3440
+    - path: results/canonical-pilot03-analysis.json
+      hash: md5
+      md5: bbb081c7a5a79c1621f393f4f20b1daf
+      size: 106530
+    outs:
+    - path: results/canonical-pilot03-trajectory-audit.json
+      hash: md5
+      md5: df0c54feebb68ec4ac5240bc6f7ed6bd
+      size: 437623

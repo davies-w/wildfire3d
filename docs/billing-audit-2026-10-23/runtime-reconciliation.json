@@ -1,23 +1,26 @@
 {
   "billing_export_status": "posted_costs_subject_to_adjustment",
   "posted_source": "BigQuery detailed export",
-  "as_of_utc": "2026-10-28T15:55:17.378643+00:00",
+  "as_of_utc": "2026-10-28T19:38:45.575214+00:00",
   "status": "runtime_estimate_pending_per_resource_billing",
-  "project_posted_comparison_usd": 49.330514,
-  "project_compute_runtime_estimate_usd": 45.96542685882305,
+  "project_posted_comparison_usd": 65.669873,
+  "project_compute_runtime_estimate_usd": 46.624480200489714,
   "shared_cost_estimate_usd": 1.26,
-  "spend_estimate_usd": 49.330514,
-  "unposted_compute_after_export_usd": 0,
-  "unposted_resources": [],
-  "matched_vms": 356,
+  "spend_estimate_usd": 66.32892634166666,
+  "unposted_compute_after_export_usd": 0.6590533416666666,
+  "unposted_resources": [
+    "fds-gpu36-canonica-86b105c5-a1f9-40600-group0-0-lpxf"
+  ],
+  "matched_vms": 357,
   "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
-  "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. East4 G2 uses a conservative1.20USD/VM-hour bound. N1 with exactly one T4 and Flex-start use a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
+  "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. East4 and West4 G2 use a conservative1.20USD/VM-hour bound. N1 with exactly one T4 and Flex-start use a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
   "rates_usd_per_vm_hour": {
     "n1-standard-4/STANDARD": 0.8,
     "g2-standard-4/FLEX_START": 0.8,
     "g2-standard-4/STANDARD": 0.706832276,
     "g2-standard-4/SPOT": 0.42409037468482524,
     "c3-standard-4/SPOT": 0.07725118278354724,
-    "g2-standard-4/STANDARD/us-east4": 1.2
+    "g2-standard-4/STANDARD/us-east4": 1.2,
+    "g2-standard-4/STANDARD/us-west4": 1.2
   }
 }

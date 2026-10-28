@@ -693,3 +693,36 @@ accepted candidate plus its existing final-inference artifact. It cross-checks
 all pooled phase means against that artifact and cannot select another checkpoint
 or introduce a test-driven acceptance threshold. No candidate case-review result
 exists yet, and pooled improvement will not be described as universal improvement.
+
+
+### Canonical03 complete, independently verified and rejected
+
+Both600epoch arms completed;1342objects/567,668,879bytes and all1200epoch
+checkpoints were verified and retained. Both selections/winner froze before
+previously examined development confirmation. Independent CPU replay matches
+CUDA on original regimes and all five canonical windows/phase tables. Winner is
+raw baseline: no accepted correction and no original-test scoring or publication.
+Both arms' guarded exploratory checkpoints are epoch60, explicitly unaccepted.
+
+On development selection, half-weight epoch60 reduces display MAE by30.36%water,
+23.06%dry fuel,9.69%gas and3.67%heating; startup p90 deficit improves0.50%.
+Full-weight epoch60 improves28.99/22.04/9.73/3.44%, with startup worsening0.66%.
+All60evaluated checkpoints in each arm fail the10%each-display-state requirement
+and startup10%requirement. Shortest-window heating nonharm holds at only3/60half
+and5/60full checkpoints. Larger horizon coverage reduced some earlier trade-offs
+but did not solve startup/heating; more epochs did not establish a repair.
+Best joint startup posthoc is half epoch550 at9.07%reduction, still below10%;
+its other failures cannot be ignored or combined with a different checkpoint.
+Previously examined confirmation is development evidence, not pristine validation.
+Same simplified FDS, frozen normalization and data-role limitations above apply.
+
+GPU/resources and exact temporary grant are gone. Audited runtime estimate is
+0.659053USDcompute; reservation released only after cost entered the project
+estimate. Delayed billing refresh now estimates66.328926USDproject spend, versus
+older49.330514USD. Retained reservations total71.6USD, so combined envelope exceeds
+125USDuntil their remaining obligations are audited; no further paid launch is
+permitted from the old4.07USDheadroom. Actual spend estimate itself remains below
+125USD, with posted/unposted/shared-cost limitations retained in accounting proof.
+The separate40USDFlex reservation is untouched. Next work is fit-only diagnosis
+of remaining gradient/representation trade-offs and evidence-based reconciliation
+of existing reservations; no thresholds have been weakened.

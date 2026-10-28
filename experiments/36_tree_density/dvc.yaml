@@ -2816,6 +2816,7 @@ stages:
     - ../../scripts/reconcile_runtime_costs.py
     - results/timing-decoder-trial-plan05.json
     - results/timing-decoder-pilot05-price-bound.json
+    - results/canonical-pilot03-price-bound.json
     metrics:
     - results/timing-cost-bounds-preflight.json:
         cache: false
@@ -4449,4 +4450,15 @@ stages:
     - results/canonical-pilot03-permission-removed.json
     metrics:
     - results/canonical-final-case-review.json:
+        cache: false
+  audit_canonical_trajectory03:
+    cmd: ../../.venv/bin/python model_evaluation/audit_canonical_trajectory03.py
+    frozen: true
+    deps:
+    - model_evaluation/audit_canonical_trajectory03.py
+    - data/canonical-pilot03
+    - data/canonical-pilot03-results
+    - results/canonical-pilot03-analysis.json
+    metrics:
+    - results/canonical-pilot03-trajectory-audit.json:
         cache: false
