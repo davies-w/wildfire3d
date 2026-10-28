@@ -1,5 +1,6 @@
 """Read-only collection of one bounded pilot; no automatic retries or submissions."""
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
 import sys,json,base64,hashlib,shutil,subprocess,urllib.request,urllib.parse,fcntl,datetime
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from cloud import R,G,BUCKET,gc,read,save
@@ -37,7 +38,7 @@ def main():
    b=p.read_bytes();assert len(b)==int(m['size']) and base64.b64encode(hashlib.md5(b).digest()).decode()==m['md5Hash'],p
    if sha:assert hashlib.sha256(b).hexdigest()==sha,p
   # Preserve all available evidence even if the task failed or reached its deadline.
-  for n in output_names:fetch(n)
+  with ThreadPoolExecutor(max_workers=4) as pool:list(pool.map(fetch,output_names))
   save('results/joint-decoder-pilot02-output-inventory.json',{'prefix':PREFIX,'bytes':size,'objects':{n:objects[n] for n in output_names}})
   if 'complete.json' not in objects:
    proof=dict(passed=False,experiment_complete=False,terminal=status['state'],cleanup_verified=True,preserved_outputs=output_names,automatic_retry=False)

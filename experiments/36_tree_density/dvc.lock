@@ -4636,3 +4636,169 @@ stages:
       hash: md5
       md5: 578a129b6948ec80665ba5b459c49e26
       size: 602
+  collect_joint_decoder_pilot02:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/collect_joint_decoder_pilot02.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/collect_joint_decoder_pilot02.py
+      hash: md5
+      md5: ecf4beea3b26d8538bdcb453eabf04e6
+      size: 5742
+    - path: results/joint-decoder-pilot02-execution.json
+      hash: md5
+      md5: 34445741d1750c869abbdc54d4d9e187
+      size: 332
+    outs:
+    - path: data/joint-decoder-pilot02-results
+      hash: md5
+      md5: 4a154ea967958c8bb7445bdcd9bfa9b9.dir
+      size: 75431113
+      nfiles: 682
+    - path: results/joint-decoder-pilot02-collected.json
+      hash: md5
+      md5: 397630832f984e3aa8d1a91fb983acfc
+      size: 797
+  close_joint_decoder_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/close_joint_decoder_pilot02.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/close_joint_decoder_pilot02.py
+      hash: md5
+      md5: b8040d5995af9bd22a80e089013d876f
+      size: 1749
+    - path: results/joint-decoder-pilot02-collected.json
+      hash: md5
+      md5: 397630832f984e3aa8d1a91fb983acfc
+      size: 797
+    - path: results/joint-decoder-pilot02-read-condition.json
+      hash: md5
+      md5: 78c6715367aa184cc56819a8dbf1aab3
+      size: 362
+    outs:
+    - path: results/joint-decoder-pilot02-permission-removed.json
+      hash: md5
+      md5: 9dd142de576dc967cbd6efff8bcaf87e
+      size: 476
+  analyze_joint_decoder_pilot02:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/analyze_joint_decoder_pilot02.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: data/joint-decoder-pilot02
+      hash: md5
+      md5: 5c28c7dc6214ee7ad3e29653f389bca5.dir
+      size: 951962241
+      nfiles: 27
+    - path: data/joint-decoder-pilot02-results
+      hash: md5
+      md5: 4a154ea967958c8bb7445bdcd9bfa9b9.dir
+      size: 75431113
+      nfiles: 682
+    - path: model_evaluation/analyze_joint_decoder_pilot02.py
+      hash: md5
+      md5: d786351e746702e97b7d45466a5991c9
+      size: 4162
+    - path: results/joint-decoder-pilot02-collected.json
+      hash: md5
+      md5: 397630832f984e3aa8d1a91fb983acfc
+      size: 797
+    - path: results/joint-decoder-pilot02-permission-removed.json
+      hash: md5
+      md5: 9dd142de576dc967cbd6efff8bcaf87e
+      size: 476
+    outs:
+    - path: results/joint-decoder-pilot02-analysis.json
+      hash: md5
+      md5: 9ecdf23b304deb740ccbffe30f7523b0
+      size: 28929
+  reconcile_joint_decoder_pilot02:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/reconcile_joint_decoder_pilot02.py
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: model_evaluation/reconcile_joint_decoder_pilot02.py
+      hash: md5
+      md5: df5e5ab836ea32ca0a86bf84a8d49ed5
+      size: 1686
+    - path: results/joint-decoder-pilot02-collected.json
+      hash: md5
+      md5: 397630832f984e3aa8d1a91fb983acfc
+      size: 797
+    - path: results/joint-decoder-pilot02-permission-removed.json
+      hash: md5
+      md5: 9dd142de576dc967cbd6efff8bcaf87e
+      size: 476
+    outs:
+    - path: results/joint-decoder-pilot02-cost-reconciled.json
+      hash: md5
+      md5: 72e3c19807b9ebae2ede3e62498f49af
+      size: 473
+  audit_joint_decoder_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/audit_joint_decoder_pilot02.py
+    deps:
+    - path: data/joint-decoder-pilot02
+      hash: md5
+      md5: 5c28c7dc6214ee7ad3e29653f389bca5.dir
+      size: 951962241
+      nfiles: 27
+    - path: data/joint-decoder-pilot02-results
+      hash: md5
+      md5: 4a154ea967958c8bb7445bdcd9bfa9b9.dir
+      size: 75431113
+      nfiles: 682
+    - path: model_evaluation/audit_joint_decoder_pilot02.py
+      hash: md5
+      md5: 0dc619f865ba1b1ed54c35f389ec13bc
+      size: 4515
+    - path: results/joint-decoder-pilot02-analysis.json
+      hash: md5
+      md5: 9ecdf23b304deb740ccbffe30f7523b0
+      size: 28929
+    - path: results/joint-decoder-pilot02-permission-removed.json
+      hash: md5
+      md5: 9dd142de576dc967cbd6efff8bcaf87e
+      size: 476
+    outs:
+    - path: results/joint-decoder-pilot02-failure-audit.json
+      hash: md5
+      md5: 4c0297a6ddc6e5ace8649a5dfa894988
+      size: 20156
+  audit_joint_forecast_regimes:
+    cmd: ../../.venv/bin/python model_evaluation/audit_joint_forecast_regimes.py
+    deps:
+    - path: data/joint-decoder-pilot02
+      hash: md5
+      md5: 5c28c7dc6214ee7ad3e29653f389bca5.dir
+      size: 951962241
+      nfiles: 27
+    - path: data/joint-decoder-pilot02-results
+      hash: md5
+      md5: 4a154ea967958c8bb7445bdcd9bfa9b9.dir
+      size: 75431113
+      nfiles: 682
+    - path: model_evaluation/audit_joint_forecast_regimes.py
+      hash: md5
+      md5: d503094fa9c8f61ed4ea4e8bc3712ecd
+      size: 3897
+    - path: results/joint-decoder-pilot02-failure-audit.json
+      hash: md5
+      md5: 4c0297a6ddc6e5ace8649a5dfa894988
+      size: 20156
+    outs:
+    - path: results/joint-forecast-regime-audit.json
+      hash: md5
+      md5: 52c754fca01bc7d321dbe69cdca0adec
+      size: 3367

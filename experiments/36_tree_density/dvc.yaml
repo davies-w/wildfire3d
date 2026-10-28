@@ -1925,3 +1925,24 @@ stages:
     metrics:
     - results/joint-scorecard-preflight.json:
         cache: false
+  audit_joint_decoder_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/audit_joint_decoder_pilot02.py
+    deps:
+    - model_evaluation/audit_joint_decoder_pilot02.py
+    - data/joint-decoder-pilot02
+    - data/joint-decoder-pilot02-results
+    - results/joint-decoder-pilot02-analysis.json
+    - results/joint-decoder-pilot02-permission-removed.json
+    metrics:
+    - results/joint-decoder-pilot02-failure-audit.json:
+        cache: false
+  audit_joint_forecast_regimes:
+    cmd: ../../.venv/bin/python model_evaluation/audit_joint_forecast_regimes.py
+    deps:
+    - model_evaluation/audit_joint_forecast_regimes.py
+    - data/joint-decoder-pilot02
+    - data/joint-decoder-pilot02-results
+    - results/joint-decoder-pilot02-failure-audit.json
+    metrics:
+    - results/joint-forecast-regime-audit.json:
+        cache: false

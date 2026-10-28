@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "optimizer_updates": 0,
+  "fit_histories_in_regime_subset": 128,
+  "sample": "First128frozen fit-role histories, descriptive mechanistic subset; not a population confidence interval or independent model evaluation.",
+  "same_target_times_exact": true,
+  "targets_compared": "Identical target points16..90: full-origin0lead16..90 versus rolling16origins0..74.",
+  "head_feature_definition": "46inputs: four encoded base outputs,32hidden values,nine known external values,absolute target time/180. No explicit lead, origin time or observed origin state enters the head banks. Interval output transform separately uses observed initial masses and local time increments.",
+  "quiet_alignment": {
+    "fit_histories": 1332,
+    "quiet_label_points": 23604,
+    "quiet_points_counted_active_by_loss": 16686,
+    "fraction_quiet_counted_active_by_loss": 0.7069140672683716
+  },
+  "arms": [
+    {
+      "arm": "direct",
+      "posthoc_epoch": 190,
+      "required_correction_MAE_full": [
+        0.269466757774353,
+        1.8915481567382812,
+        0.0031590573489665985,
+        1.149336814880371
+      ],
+      "required_correction_MAE_rolling16": [
+        0.061440467834472656,
+        0.3014235198497772,
+        0.0030435381922870874,
+        0.9818790555000305
+      ],
+      "actual_correction_mean_abs_full": [
+        0.05566287040710449,
+        0.23019404709339142,
+        0.0014827619306743145,
+        0.42994052171707153
+      ],
+      "actual_correction_mean_abs_rolling16": [
+        0.06080739572644234,
+        0.2465391457080841,
+        0.0015438662376254797,
+        0.4390421211719513
+      ],
+      "resulting_MAE_full": [
+        0.24182850122451782,
+        1.7646725177764893,
+        0.003630927763879299,
+        1.087569236755371
+      ],
+      "resulting_MAE_rolling16": [
+        0.07715195417404175,
+        0.4149976372718811,
+        0.0035781264305114746,
+        0.9029909372329712
+      ]
+    },
+    {
+      "arm": "interval",
+      "posthoc_epoch": 150,
+      "required_correction_MAE_full": [
+        0.269466757774353,
+        1.8915481567382812,
+        0.0031590573489665985,
+        1.149336814880371
+      ],
+      "required_correction_MAE_rolling16": [
+        0.061440467834472656,
+        0.3014235198497772,
+        0.0030435381922870874,
+        0.9818790555000305
+      ],
+      "actual_correction_mean_abs_full": [
+        0.19241416454315186,
+        1.130584478378296,
+        0.0009447845513932407,
+        0.4184112846851349
+      ],
+      "actual_correction_mean_abs_rolling16": [
+        0.05071934685111046,
+        0.19898751378059387,
+        0.0009783500572666526,
+        0.42373985052108765
+      ],
+      "resulting_MAE_full": [
+        0.2040475457906723,
+        1.2687528133392334,
+        0.0031896792352199554,
+        1.123299241065979
+      ],
+      "resulting_MAE_rolling16": [
+        0.04222256690263748,
+        0.21883702278137207,
+        0.003061099676415324,
+        0.9455907344818115
+      ]
+    }
+  ],
+  "source_sha256": "91d669ab8228d0b13f0dd14694a5ebf121c95419fb84fe1f391f29a058a90eb5",
+  "scope": "Descriptive fit-only evidence of forecast-regime and loss/metric differences. Hidden states may encode origin information implicitly; missing explicit lead is not proof of a unique cause. No confirmation/test, gradient, fitting, new selected model or deployment."
+}
