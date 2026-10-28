@@ -267,6 +267,8 @@ Joint01 closed without a fitted model: the task failed in its first loss evaluat
 
 A separately versioned v2 implementation replaces floating cumsum with explicit ordered additions. A triangular-matrix alternative was rejected locally because rounding caused slight mass increases; ordered additions pass the existing nonincreasing-mass checks. CPU prefix values/derivatives, all1662TRAIN representation checks and fit-only objective derivatives pass without any parameter update. CUDA compatibility and next-update restoration remain untested for v2. Original joint01 source/package remains unchanged, and no corrected run is submitted. No accuracy improvement or gallery change is claimed.
 
-### Corrected joint02 trial (prepared, not submitted)
+### Corrected joint02 trial (submitted, results pending)
 
 The corrected package uses ordered additions for floating prefix sums while retaining strict CUDA determinism. The same two arms, data roles,300epochs per arm and all-output acceptance rules apply. GPU next-update restoration must pass before fitting. This separately bounded trial proposes at most $0.23: VM creation age810s plus225s shutdown margin at the conservative $0.80/hour bound; task690s and worker soft deadline570s. No automatic retries. Deadline-limited work remains incomplete, with checkpoints retained. The separate Flex reservation is unchanged. This is implementation repair after joint01 failed before an optimizer update, not evidence that the prediction problem is solved. Physical and development-confirmation limitations above still apply.
+
+Joint02 submitted once: execution `bee1fc84-1ac3-478b-bebe-63c5b8db4033`. No accuracy result is available at submission.

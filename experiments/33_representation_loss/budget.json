@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 76.4,
+  "reserved_usd": 76.63000000000001,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -3058,6 +3058,14 @@
       },
       "historical_allowance_usd": 0.25,
       "terminal_evidence": "experiments/36_tree_density/results/joint-decoder-pilot01-status.json"
+    },
+    "density36-joint-decoder-pilot02": {
+      "state": "submitted",
+      "allowance_usd": 0.23,
+      "reserved_unix": 1793146838.5988648,
+      "scope": "Authorized bounded four-output decoder repair, max0.23USD, no automatic retries",
+      "workflow": "fds-gpu36-joint02",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-joint02/executions/bee1fc84-1ac3-478b-bebe-63c5b8db4033"
     }
   },
   "recycle_reservations": true,
