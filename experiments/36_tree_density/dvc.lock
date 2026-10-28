@@ -5748,3 +5748,29 @@ stages:
       hash: md5
       md5: b34ab1d87ae8f9432cd74f100800d3ad
       size: 1531
+  launch_timing_decoder_pilot01:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/launch_timing_decoder_pilot01.py --execute
+    deps:
+    - path: cloud.py
+      hash: md5
+      md5: 8cb6180f4ecd52961db12ed6ce621862
+      size: 11926
+    - path: data/timing-decoder-pilot01
+      hash: md5
+      md5: 238cb7eee7fe4c222e28ecb2c8774c9c.dir
+      size: 952099561
+      nfiles: 35
+    - path: model_evaluation/launch_timing_decoder_pilot01.py
+      hash: md5
+      md5: fa87c5a742d6c56adf7c4b6e4966d981
+      size: 5922
+    - path: results/timing-decoder-pilot01-offline-preflight.json
+      hash: md5
+      md5: ae02e1fa0f4b45ffe05103bd4e1860d3
+      size: 544
+    outs:
+    - path: results/timing-decoder-pilot01-execution.json
+      hash: md5
+      md5: 0ea43036245742c7e5837a6fbd5fa3a5
+      size: 333
