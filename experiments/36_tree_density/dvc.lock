@@ -7997,3 +7997,30 @@ stages:
       hash: md5
       md5: e0a2c2e3061fd430b85238c765a14ea7
       size: 19460
+  audit_guard_matched_trajectory:
+    cmd: ../../.venv/bin/python 
+      model_evaluation/audit_guard_matched_trajectory.py
+    deps:
+    - path: data/guard-matched-pilot01
+      hash: md5
+      md5: 808afed87c4ef8ad96d201fb62250b03.dir
+      size: 952113294
+      nfiles: 39
+    - path: data/guard-matched-pilot01-results
+      hash: md5
+      md5: 35202beb02170f9996a470f95bfb6e0c.dir
+      size: 165678507
+      nfiles: 682
+    - path: model_evaluation/audit_guard_matched_trajectory.py
+      hash: md5
+      md5: ad7d094ddad5e8febfc3ca0e1d43bd40
+      size: 2220
+    - path: results/guard-matched-pilot01-analysis.json
+      hash: md5
+      md5: 09c8b0f157bc1c7e67869c4c48661899
+      size: 27516
+    outs:
+    - path: results/guard-matched-fit-trajectory.json
+      hash: md5
+      md5: 053c6057570b242798155ea3170b5a6c
+      size: 3245

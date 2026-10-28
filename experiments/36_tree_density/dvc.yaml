@@ -3205,3 +3205,13 @@ stages:
     metrics:
     - results/guard-matched-fit-audit.json:
         cache: false
+  audit_guard_matched_trajectory:
+    cmd: ../../.venv/bin/python model_evaluation/audit_guard_matched_trajectory.py
+    deps:
+    - model_evaluation/audit_guard_matched_trajectory.py
+    - data/guard-matched-pilot01
+    - data/guard-matched-pilot01-results
+    - results/guard-matched-pilot01-analysis.json
+    metrics:
+    - results/guard-matched-fit-trajectory.json:
+        cache: false

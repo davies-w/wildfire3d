@@ -425,3 +425,10 @@ mesh convergence or real-material validation. Remaining masses are derived;
 gas is sampled release rather than combustion HRR, and heating is a signed
 mass-weighted index rather than energy. Stitched gallery forecasts are revisions,
 not one continuous predicted physical trajectory.
+
+Fit-only checkpoint trajectory (`guard-matched-fit-trajectory.json`) shows heating
+display improvement4.09%,4.96%,5.86%,7.67%,8.74%,9.14% at epochs50/100/150/200/250/300.
+Startup fit improvement rises from5.20% at50 to9.80% at300. This motivates testing
+a longer unchanged fit budget before a new architecture, but does not establish
+convergence or predict selection/confirmation success. No further run is represented
+as executed by this diagnostic. All acceptance requirements remain unchanged.
