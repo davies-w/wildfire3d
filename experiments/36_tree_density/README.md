@@ -740,7 +740,9 @@ protocol and must not be treated as these full-sequence scores.
 
 The new aggregation averages eligible target transitions per history, replicas
 within configuration, then configurations equally. Phase masks apply at each
-transition, not to sliding forecast windows. Hold-initial-state is the baseline.
+transition, not to sliding forecast windows. The baseline uses the actual simulation
+state from the preceding saved time at every target time. It receives fresh truth;
+model rollouts remain continuous. Corrected October 28 after user clarification.
 The earlier models use 520 histories, dense uses 2080, and stride-one models use
 208 shared histories on one split. These population differences prevent a matched
 causal comparison. No retraining or new inference was performed. All 52 forecast

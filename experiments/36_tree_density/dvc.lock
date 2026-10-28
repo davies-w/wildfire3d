@@ -10869,29 +10869,29 @@ stages:
       nfiles: 828
     - path: model_evaluation/build_full_sequence.py
       hash: md5
-      md5: 06641ffaec57f0648fa80267b3103483
-      size: 10631
+      md5: 5dc60a69bbca42ee678f5d361bd77792
+      size: 13380
     outs:
     - path: data/full-sequence
       hash: md5
-      md5: ecccf4ac98037e80fcc46157ed417115.dir
-      size: 96017985
+      md5: 498a25e2cfd7a6892274d9e236857008.dir
+      size: 102237035
       nfiles: 11
   render_full_sequence_public:
     cmd: ../../.venv/bin/python model_evaluation/render_full_sequence_public.py
     deps:
     - path: data/full-sequence
       hash: md5
-      md5: ecccf4ac98037e80fcc46157ed417115.dir
-      size: 96017985
+      md5: 498a25e2cfd7a6892274d9e236857008.dir
+      size: 102237035
       nfiles: 11
     - path: model_evaluation/render_full_sequence_public.py
       hash: md5
-      md5: 44d255aeee7994c97aa03845fb5b20b4
-      size: 3883
+      md5: 467e406da52f04e8e87cedabfcac4ed0
+      size: 3998
     outs:
     - path: data/full-sequence-public
       hash: md5
-      md5: da0464ac1ba197cec03b0dd773a3766e.dir
-      size: 115297808
+      md5: 211ba81ee05d42397c487af1f0cc1607.dir
+      size: 115923016
       nfiles: 11
