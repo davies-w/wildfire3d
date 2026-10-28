@@ -3287,12 +3287,26 @@
       "terminal_evidence": "experiments/36_tree_density/results/guard-matched-pilot01-status.json"
     },
     "density36-guard-matched-pilot02": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 1.0,
       "reserved_unix": 1793203243.360424,
       "scope": "Authorized bounded four-output decoder repair, max1.00USD, no automatic retries",
       "workflow": "fds-gpu36-guardmatch02",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-guardmatch02/executions/b86adc1a-b3dc-4601-8685-611a6f0271bb"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-guardmatch02/executions/b86adc1a-b3dc-4601-8685-611a6f0271bb",
+      "historical_allowance_usd": 1.0,
+      "terminal_evidence": "experiments/36_tree_density/results/guard-matched-pilot02-cost-reconciled.json",
+      "cost": {
+        "stage": "verified_no_vm_allocation",
+        "usd": 0,
+        "scope": "Zero VM compute allocated; shared workflow/storage charges remain project-level. Not a zero invoice claim."
+      }
+    },
+    "density36-guard-matched-pilot03": {
+      "state": "reserved_before_upload",
+      "allowance_usd": 1.0,
+      "reserved_unix": 1793204284.7661078,
+      "scope": "Authorized bounded four-output decoder repair, max1.00USD, no automatic retries",
+      "workflow": "fds-gpu36-guardmatch03"
     }
   },
   "recycle_reservations": true,

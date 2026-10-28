@@ -453,3 +453,22 @@ checks before fitting. No automatic task retry or resubmission. Retained prior
 reservations, especially Flex$40, remain intact. A deadline does not guarantee
 completion; partial evidence is preserved for diagnosis before any continuation.
 The same simplified FDS scope and interpretation limitations above apply.
+
+### Guard-matched pilot02 capacity closure and pilot03 placement follow-up
+
+Pilot02 executionb86adc1a-b3dc-4601-8685-611a6f0271bb was cancelled while
+SCHEDULED after five exact-UID L4 allocation failures inus-east4-a. Full audit
+records show every observed insert operation terminated with an error and no
+successful allocation. Task runtime0s; no fitted model or accuracy result.
+The job, VMs and disks are absent; the exact temporary grant was removed. Its
+job snapshot is preserved privately and in DVC. Zero VM-compute reservation
+was released after this proof; shared workflow/storage costs remain in project
+accounting, so this is not a zero-invoice claim.
+
+Pilot03 changes placement tous-east4-b, keeping600epochs per arm and the exact
+worker, initial weights, model, loss, seed, data, checkpoint selection, deadlines
+and acceptance gates frompilot02. Package checks assert these equalities. It
+retains the$1 whole-workflow compute bound and no automatic task retries.
+Expected fitting remains roughly17minutes after allocation, plus startup/scoring;
+capacity is not guaranteed. All prior scientific simplifications and development
+confirmation limitations apply. No accuracy improvement is claimed by changing zones.

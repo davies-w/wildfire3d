@@ -1,7 +1,7 @@
 """Verify an accepted selected decoder through real observed-prefix inference on fit rows only."""
 from pathlib import Path
 import argparse,hashlib,json,sys
-ap=argparse.ArgumentParser();ap.add_argument("--trial",required=True,choices=["guard-matched-pilot02"]);trial=ap.parse_args().trial
+ap=argparse.ArgumentParser();ap.add_argument("--trial",required=True,choices=["guard-matched-pilot02","guard-matched-pilot03"]);trial=ap.parse_args().trial
 import numpy as np
 import torch
 from joint_predictor import FrozenJointPredictor
