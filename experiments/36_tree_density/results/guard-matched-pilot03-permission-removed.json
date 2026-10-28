@@ -1,0 +1,9 @@
+{
+  "exact_grant_removed": true,
+  "condition": {
+    "title": "density36-guard-matched-pilot03-read",
+    "description": "Private train/validation-only bounded four-output decoder repair inputs and checkpoint verification",
+    "expression": "request.time < timestamp('2026-10-28T19:34:20Z') && resource.name.startsWith('projects/_/buckets/tmrw-wildfire-20261015-trial/objects/density36/guard-matched-pilot03/')"
+  },
+  "all_inputs_outputs_and_checkpoints_preserved": true
+}

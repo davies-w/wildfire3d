@@ -1,0 +1,16 @@
+"""Reconcile exact scheduler rejection before any VM allocation; retain shared costs."""
+from pathlib import Path
+import datetime,fcntl,json,sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from cloud import R,B,gc,read,save
+stem='guard-matched-pilot03';key='density36-'+stem;label='gpu36-guardmatch03';proof=read('results/'+stem+'-collected.json');assert not proof['experiment_complete'] and proof['cleanup_verified']
+assert read('results/'+stem+'-permission-removed.json')['exact_grant_removed'];assert read('results/'+stem+'-cleanup.json')==dict(jobs=[],instances=[],disks=[])
+x=read('results/'+stem+'-execution.json')['name'].split('/');execution=gc('workflows','executions','describe',x[-1],'--workflow='+x[-3],'--location=us-central1');assert execution['state']=='SUCCEEDED';result=json.loads(execution['result']);assert result['final_state']=='FAILED'
+job=json.loads((R/'data'/f'{stem}-results'/'job-status.json').read_text());assert job['uid']==result['job_uid'];status=job['status'];assert status['state']=='FAILED' and status['runDuration']=='0s'
+descriptions=[e.get('description','') for e in status['statusEvents']];assert any('CODE_MACHINE_TYPE_NOT_FOUND' in t for t in descriptions);assert not any(' to RUNNING ' in t or ' to SCHEDULED ' in t for t in descriptions)
+for cmd in [('batch','jobs','list','--location=us-east4'),('compute','instances','list'),('compute','disks','list')]:assert not gc(*cmd,'--filter=labels.trial_id='+label)
+query='protoPayload.methodName="v1.compute.instances.insert" AND protoPayload.resourceName:"'+job['uid']+'" AND timestamp>="'+execution['startTime']+'"';events=gc('logging','read',query,'--limit=5000');assert not events,'Unexpected allocation event; do not assume zero compute'
+with (B.parent/'data/budget.lock').open('w') as lock:
+ fcntl.flock(lock,fcntl.LOCK_EX);b=json.loads(B.read_text());r=b['reservations'][key];assert r['execution']==execution['name'] and r['state'] in ['submitted','completed_reconciled'];r.update(state='completed_reconciled',historical_allowance_usd=r['allowance_usd'],terminal_evidence='experiments/36_tree_density/results/'+stem+'-cost-reconciled.json',cost=dict(stage='verified_no_vm_allocation',usd=0,scope='Machine type rejected by Batch before scheduling; no insert requests, task runtime or VM compute. Shared workflow/storage costs retained; not a zero invoice claim.'));b['reserved_usd']=sum(v['allowance_usd'] for v in b['reservations'].values() if v['state'] in ['reserved_before_upload','submission_pending','submitted','delegated_to_cloud_queue']);assert b['estimated_spend_usd']+b['reserved_usd']<=b['authorized_usd'];B.write_text(json.dumps(b,indent=2)+'\n')
+out=dict(passed=True,checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),execution=execution,recorded_job_status=job,query=query,allocation_events=events,successful_vm_allocations=0,pilot_compute_cost=r['cost'],estimated_spend_usd=b['estimated_spend_usd'],reserved_usd=b['reserved_usd'],headroom_usd=b['authorized_usd']-b['estimated_spend_usd']-b['reserved_usd'])
+save('results/'+stem+'-no-allocation-proof.json',out);save('results/'+stem+'-cost-reconciled.json',out);print(json.dumps({k:out[k] for k in ['passed','pilot_compute_cost','reserved_usd','headroom_usd']}))

@@ -1,0 +1,126 @@
+{
+  "passed": true,
+  "checked_utc": "2026-10-28T16:23:09.767261+00:00",
+  "execution": {
+    "argument": "null",
+    "createTime": "2026-10-28T16:19:29.740037859Z",
+    "duration": "94.009252575s",
+    "endTime": "2026-10-28T16:21:03.749290434Z",
+    "name": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-guardmatch03/executions/b1a2ac7b-c66e-40ab-b9ff-f7e6ad906795",
+    "result": "{\"final_state\":\"FAILED\",\"job_uid\":\"fds-gpu36-guardmat-f1b495e9-15e1-46e00\",\"mode\":\"domain17\",\"workers_remaining\":0}",
+    "startTime": "2026-10-28T16:19:29.740037859Z",
+    "state": "SUCCEEDED",
+    "status": {
+      "currentSteps": [
+        {
+          "routine": "main",
+          "step": "done"
+        }
+      ]
+    },
+    "workflowRevisionId": "000001-2ab"
+  },
+  "recorded_job_status": {
+    "allocationPolicy": {
+      "instances": [
+        {
+          "installGpuDrivers": true,
+          "policy": {
+            "bootDisk": {
+              "sizeGb": "60",
+              "type": "pd-balanced"
+            },
+            "machineType": "g2-standard-4",
+            "provisioningModel": "STANDARD"
+          }
+        }
+      ],
+      "labels": {
+        "batch-job-id": "fds-gpu36-guardmatch03",
+        "trial_id": "gpu36-guardmatch03"
+      },
+      "location": {
+        "allowedLocations": [
+          "regions/us-east4",
+          "zones/us-east4-b"
+        ]
+      },
+      "network": {
+        "networkInterfaces": [
+          {
+            "network": "projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+            "subnetwork": "projects/tmrw-wildfire-20261015/regions/us-east4/subnetworks/fds-timing-east4"
+          }
+        ]
+      },
+      "serviceAccount": {
+        "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com"
+      }
+    },
+    "createTime": "2026-10-28T16:19:30.199666923Z",
+    "labels": {
+      "trial_id": "gpu36-guardmatch03"
+    },
+    "logsPolicy": {
+      "destination": "CLOUD_LOGGING"
+    },
+    "name": "projects/tmrw-wildfire-20261015/locations/us-east4/jobs/fds-gpu36-guardmatch03",
+    "status": {
+      "runDuration": "0s",
+      "state": "FAILED",
+      "statusEvents": [
+        {
+          "description": "Job state is set from QUEUED to FAILED for job projects/587909259768/locations/us-east4/jobs/fds-gpu36-guardmatch03.",
+          "eventTime": "2026-10-28T16:19:35.474559521Z",
+          "type": "STATUS_CHANGED"
+        },
+        {
+          "description": "Job failed when Batch tries to schedule it: Batch Error: code - CODE_MACHINE_TYPE_NOT_FOUND, description - machine type g2-standard-4 for job fds-gpu36-guardmat-f1b495e9-15e1-46e00, project 587909259768, region us-east4, zones (if any) us-east4-b is not available.",
+          "eventTime": "2026-10-28T16:19:35.491818755Z",
+          "type": "OPERATIONAL_INFO"
+        }
+      ]
+    },
+    "taskGroups": [
+      {
+        "name": "projects/587909259768/locations/us-east4/jobs/fds-gpu36-guardmatch03/taskGroups/group0",
+        "parallelism": "1",
+        "taskCount": "1",
+        "taskCountPerNode": "1",
+        "taskSpec": {
+          "computeResource": {
+            "cpuMilli": "4000",
+            "memoryMib": "12000"
+          },
+          "maxRunDuration": "1680s",
+          "runnables": [
+            {
+              "container": {
+                "commands": [
+                  "-c",
+                  "import base64;exec(compile(base64.b64decode('aW1wb3J0IHBhdGhsaWIsc3lzLHJ1bnB5LHVybGxpYi5yZXF1ZXN0LHVybGxpYi5wYXJzZSxqc29uLHRhcmZpbGUsc2h1dGlsLGhhc2hsaWIKcD1wYXRobGliLlBhdGgoJy90bXAvc3R1ZHknKTtwLm1rZGlyKGV4aXN0X29rPVRydWUpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pO3Rva2VuPWpzb24ubG9hZCh1cmxsaWIucmVxdWVzdC51cmxvcGVuKHIsdGltZW91dD0yMCkpWydhY2Nlc3NfdG9rZW4nXQp1PSdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vc3RvcmFnZS92MS9iL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvby8nK3VybGxpYi5wYXJzZS5xdW90ZSgnZGVuc2l0eTM2L2d1YXJkLW1hdGNoZWQtcGlsb3QwMy9pbnB1dHMudGFyJyxzYWZlPScnKSsnP2FsdD1tZWRpYScKd2l0aCB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QodSxoZWFkZXJzPXsnQXV0aG9yaXphdGlvbic6J0JlYXJlciAnK3Rva2VufSksdGltZW91dD0xODApIGFzIHNyYywocC8ndHJhbnNmZXIudGFyJykub3Blbignd2InKSBhcyBkc3Q6c2h1dGlsLmNvcHlmaWxlb2JqKHNyYyxkc3QpCndpdGggdGFyZmlsZS5vcGVuKHAvJ3RyYW5zZmVyLnRhcicpIGFzIHRhcjoKIGZvciBtIGluIHRhci5nZXRtZW1iZXJzKCk6YXNzZXJ0IG5vdCBtLm5hbWUuc3RhcnRzd2l0aCgnLycpIGFuZCAnLi4nIG5vdCBpbiBwYXRobGliLlBhdGgobS5uYW1lKS5wYXJ0cyBhbmQgbm90IG0uaXNzeW0oKSBhbmQgbm90IG0uaXNsbmsoKQogdGFyLmV4dHJhY3RhbGwocCkKZm9yIG4saCBpbiBqc29uLmxvYWRzKChwLydoYXNoZXMuanNvbicpLnJlYWRfdGV4dCgpKS5pdGVtcygpOmFzc2VydCBoYXNobGliLnNoYTI1NigocC9uKS5yZWFkX2J5dGVzKCkpLmhleGRpZ2VzdCgpPT1oCihwLydyZXN1bHRzJykubWtkaXIoZXhpc3Rfb2s9VHJ1ZSk7c3lzLnBhdGguaW5zZXJ0KDAsc3RyKHApKTsKdHJ5OgogZnJvbSBydW50aW1lIGltcG9ydCB1cGxvYWQsb2JqZWN0X21ldGFkYXRhLG1hdGNoZXMKIHByb2JlPWInZGVuc2l0eTM2LXByZWZsaWdodC11cGxvYWQtdmVyaWZpY2F0aW9uLXByb2JlJzt1cGxvYWQoJ3VwbG9hZC1wcm9iZS5iaW4nLHByb2JlKTthc3NlcnQgbWF0Y2hlcyhvYmplY3RfbWV0YWRhdGEoJ3VwbG9hZC1wcm9iZS5iaW4nKSxwcm9iZSk7dXBsb2FkKCd1cGxvYWQtcHJvYmUuYmluJyxwcm9iZSkKIHVwbG9hZCgndHJhbnNwb3J0LWNsb3VkLWNoZWNrLmpzb24nLGpzb24uZHVtcHMoeydwYXNzZWQnOlRydWUsJ3ZlcmlmaWVkX21ldGFkYXRhJzpUcnVlLCdpZGVtcG90ZW50X3JlcGxheSc6VHJ1ZX0pLmVuY29kZSgpKQogcnVucHkucnVuX3BhdGgoc3RyKHAvJ3dvcmtlci5weScpLHJ1bl9uYW1lPSdfX21haW5fXycpCmV4Y2VwdCBCYXNlRXhjZXB0aW9uOgogaW1wb3J0IHRyYWNlYmFjawogZnJvbSBydW50aW1lIGltcG9ydCB1cGxvYWQKIHVwbG9hZCgnYm9vdHN0cmFwLWVycm9yLnR4dCcsdHJhY2ViYWNrLmZvcm1hdF9leGMoKS5lbmNvZGUoKSk7cmFpc2UK'),'bootstrap','exec'))"
+                ],
+                "entrypoint": "python",
+                "imageUri": "pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime",
+                "options": "--shm-size=1g"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "uid": "fds-gpu36-guardmat-f1b495e9-15e1-46e00",
+    "updateTime": "2026-10-28T16:19:35.491818755Z"
+  },
+  "query": "protoPayload.methodName=\"v1.compute.instances.insert\" AND protoPayload.resourceName:\"fds-gpu36-guardmat-f1b495e9-15e1-46e00\" AND timestamp>=\"2026-10-28T16:19:29.740037859Z\"",
+  "allocation_events": [],
+  "successful_vm_allocations": 0,
+  "pilot_compute_cost": {
+    "stage": "verified_no_vm_allocation",
+    "usd": 0,
+    "scope": "Machine type rejected by Batch before scheduling; no insert requests, task runtime or VM compute. Shared workflow/storage costs retained; not a zero invoice claim."
+  },
+  "estimated_spend_usd": 49.330514,
+  "reserved_usd": 71.6,
+  "headroom_usd": 4.069486000000012
+}

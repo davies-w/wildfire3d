@@ -3521,15 +3521,18 @@ stages:
     - results/guard-matched-pilot03-analysis.json:
         cache: false
   reconcile_guard_matched_pilot03:
-    cmd: ../../.venv/bin/python model_evaluation/reconcile_guard_matched_pilot03.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_guard_matched03.py
     frozen: true
     deps:
-    - model_evaluation/reconcile_guard_matched_pilot03.py
+    - model_evaluation/reconcile_unallocated_guard_matched03.py
     - cloud.py
+    - data/guard-matched-pilot03-results
     - results/guard-matched-pilot03-collected.json
     - results/guard-matched-pilot03-permission-removed.json
     metrics:
     - results/guard-matched-pilot03-cost-reconciled.json:
+        cache: false
+    - results/guard-matched-pilot03-no-allocation-proof.json:
         cache: false
   monitor_guard_matched_pilot03:
     cmd: ../../.venv/bin/python model_evaluation/monitor_guard_matched_pilot03.py
@@ -3580,4 +3583,190 @@ stages:
     - results/guard-matched-pilot03-analysis.json
     metrics:
     - results/guard-matched-pilot03-selected-predictor-preflight.json:
+        cache: false
+  observe_guard_matched_infrastructure03:
+    cmd: ../../.venv/bin/python model_evaluation/observe_guard_matched_infrastructure03.py
+      --batch-region us-east4
+    frozen: true
+    deps:
+    - model_evaluation/observe_guard_matched_infrastructure03.py
+    - cloud.py
+    - results/guard-matched-pilot03-execution.json
+    metrics:
+    - results/guard-matched-pilot03-infrastructure-observation.json:
+        cache: false
+    - results/guard-matched-east4-machine-support.json:
+        cache: false
+  prepare_guard_matched_placement04_plan:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_guard_matched_placement04_plan.py
+    deps:
+    - model_evaluation/prepare_guard_matched_placement04_plan.py
+    - data/guard-matched-pilot02
+    - data/guard-matched-pilot03
+    - results/guard-matched-pilot03-no-allocation-proof.json
+    - results/guard-matched-pilot03-permission-removed.json
+    - results/guard-matched-pilot03-cleanup.json
+    - results/guard-matched-east4-machine-support.json
+    metrics:
+    - results/guard-matched-placement04-trial-plan.json:
+        cache: false
+  verify_guard_matched_price_bound04:
+    cmd: ../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound04.py
+    frozen: true
+    deps:
+    - model_evaluation/verify_guard_matched_price_bound04.py
+    - results/guard-matched-placement04-trial-plan.json
+    metrics:
+    - results/guard-matched-pilot04-price-bound.json:
+        cache: false
+  prepare_guard_matched_trial04:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_guard_matched_trial04.py
+    deps:
+    - model_evaluation/prepare_guard_matched_trial04.py
+    - model_evaluation/guard_matched_worker.py
+    - model_evaluation/timing_decoder.py
+    - model_evaluation/context_data.py
+    - model_evaluation/context_objective.py
+    - model_evaluation/joint_decoder_v2.py
+    - model_evaluation/joint_objective_v2.py
+    - model_evaluation/joint_data.py
+    - model_evaluation/joint_metrics.py
+    - model_evaluation/gas_head_metrics.py
+    - data/timing-candidate
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    - data/gas-shape-pilot01
+    - results/guard-matched-placement04-trial-plan.json
+    - results/context-objective-preflight.json
+    - results/context-decoder-preflight.json
+    - results/joint-pipeline-v2-preflight.json
+    - model_evaluation/guard_matched_data.py
+    - model_evaluation/guard_matched_objective.py
+    - results/guard-matched-objective-preflight.json
+    outs:
+    - data/guard-matched-pilot04
+    metrics:
+    - results/guard-matched-pilot04-prepared.json:
+        cache: false
+  validate_guard_matched_trial04:
+    cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_trial04.py
+    deps:
+    - model_evaluation/validate_guard_matched_trial04.py
+    - model_evaluation/launch_guard_matched_pilot04.py
+    - model_evaluation/collect_guard_matched_pilot04.py
+    - model_evaluation/close_guard_matched_pilot04.py
+    - model_evaluation/monitor_guard_matched_pilot04.py
+    - model_evaluation/reconcile_guard_matched_pilot04.py
+    - model_evaluation/analyze_guard_matched_pilot04.py
+    - data/guard-matched-pilot04
+    - results/guard-matched-pilot04-prepared.json
+    - results/context-objective-preflight.json
+    - results/joint-pipeline-v2-preflight.json
+    - model_evaluation/timing_worker_v2.py
+    - results/guard-matched-objective-preflight.json
+    metrics:
+    - results/guard-matched-pilot04-offline-preflight.json:
+        cache: false
+  launch_guard_matched_pilot04:
+    cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot04.py --execute
+    frozen: true
+    deps:
+    - model_evaluation/launch_guard_matched_pilot04.py
+    - results/timing-cost-bounds-preflight.json
+    - results/guard-matched-pilot04-price-bound.json
+    - cloud.py
+    - data/guard-matched-pilot04
+    - results/guard-matched-pilot04-offline-preflight.json
+    - results/timing-decoder-pilot06-cost-reconciled.json
+    - results/timing-decoder-pilot06-permission-removed.json
+    - results/timing-regional-network-prepared.json
+    - results/guard-matched-objective-preflight.json
+    metrics:
+    - results/guard-matched-pilot04-execution.json:
+        cache: false
+  collect_guard_matched_pilot04:
+    cmd: ../../.venv/bin/python model_evaluation/collect_guard_matched_pilot04.py
+    frozen: true
+    deps:
+    - model_evaluation/collect_guard_matched_pilot04.py
+    - cloud.py
+    - results/guard-matched-pilot04-execution.json
+    outs:
+    - data/guard-matched-pilot04-results
+    metrics:
+    - results/guard-matched-pilot04-collected.json:
+        cache: false
+  close_guard_matched_pilot04:
+    cmd: ../../.venv/bin/python model_evaluation/close_guard_matched_pilot04.py
+    frozen: true
+    deps:
+    - model_evaluation/close_guard_matched_pilot04.py
+    - cloud.py
+    - results/guard-matched-pilot04-collected.json
+    - results/guard-matched-pilot04-read-condition.json
+    metrics:
+    - results/guard-matched-pilot04-permission-removed.json:
+        cache: false
+  analyze_guard_matched_pilot04:
+    cmd: ../../.venv/bin/python model_evaluation/analyze_guard_matched_pilot04.py
+    frozen: true
+    deps:
+    - model_evaluation/analyze_guard_matched_pilot04.py
+    - cloud.py
+    - data/guard-matched-pilot04
+    - data/guard-matched-pilot04-results
+    - results/guard-matched-pilot04-collected.json
+    - results/guard-matched-pilot04-permission-removed.json
+    metrics:
+    - results/guard-matched-pilot04-analysis.json:
+        cache: false
+  reconcile_guard_matched_pilot04:
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_guard_matched_pilot04.py
+    frozen: true
+    deps:
+    - model_evaluation/reconcile_guard_matched_pilot04.py
+    - cloud.py
+    - results/guard-matched-pilot04-collected.json
+    - results/guard-matched-pilot04-permission-removed.json
+    metrics:
+    - results/guard-matched-pilot04-cost-reconciled.json:
+        cache: false
+  monitor_guard_matched_pilot04:
+    cmd: ../../.venv/bin/python model_evaluation/monitor_guard_matched_pilot04.py
+    frozen: true
+    deps:
+    - model_evaluation/monitor_guard_matched_pilot04.py
+    - cloud.py
+    - results/guard-matched-pilot04-execution.json
+    metrics:
+    - results/guard-matched-pilot04-progress.json:
+        cache: false
+    - results/guard-matched-pilot04-optimizer-replay.json:
+        cache: false
+  verify_guard_matched_extension_prefix04:
+    cmd: ../../.venv/bin/python model_evaluation/verify_guard_matched_extension_prefix04.py
+    deps:
+    - model_evaluation/verify_guard_matched_extension_prefix04.py
+    - data/guard-matched-pilot01-results
+    - data/guard-matched-pilot04-results
+    - results/guard-matched-pilot04-collected.json
+    metrics:
+    - results/guard-matched-pilot04-prefix-replay.json:
+        cache: false
+  validate_guard_matched_selected_predictor04:
+    cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_selected_predictor.py
+      --trial guard-matched-pilot04
+    deps:
+    - model_evaluation/validate_guard_matched_selected_predictor.py
+    - model_evaluation/joint_predictor.py
+    - model_evaluation/joint_scorecard.py
+    - model_evaluation/timing_decoder.py
+    - data/exposure-pilot02
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    - data/guard-matched-pilot04
+    - data/guard-matched-pilot04-results
+    - results/guard-matched-pilot04-analysis.json
+    metrics:
+    - results/guard-matched-pilot04-selected-predictor-preflight.json:
         cache: false

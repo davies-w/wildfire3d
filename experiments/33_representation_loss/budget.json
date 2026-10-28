@@ -3302,12 +3302,26 @@
       }
     },
     "density36-guard-matched-pilot03": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 1.0,
       "reserved_unix": 1793204284.7661078,
       "scope": "Authorized bounded four-output decoder repair, max1.00USD, no automatic retries",
       "workflow": "fds-gpu36-guardmatch03",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-guardmatch03/executions/b1a2ac7b-c66e-40ab-b9ff-f7e6ad906795"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-guardmatch03/executions/b1a2ac7b-c66e-40ab-b9ff-f7e6ad906795",
+      "historical_allowance_usd": 1.0,
+      "terminal_evidence": "experiments/36_tree_density/results/guard-matched-pilot03-cost-reconciled.json",
+      "cost": {
+        "stage": "verified_no_vm_allocation",
+        "usd": 0,
+        "scope": "Machine type rejected by Batch before scheduling; no insert requests, task runtime or VM compute. Shared workflow/storage costs retained; not a zero invoice claim."
+      }
+    },
+    "density36-guard-matched-pilot04": {
+      "state": "reserved_before_upload",
+      "allowance_usd": 1.0,
+      "reserved_unix": 1793204768.1023622,
+      "scope": "Authorized bounded four-output decoder repair, max1.00USD, no automatic retries",
+      "workflow": "fds-gpu36-guardmatch04"
     }
   },
   "recycle_reservations": true,

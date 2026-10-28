@@ -472,3 +472,23 @@ retains the$1 whole-workflow compute bound and no automatic task retries.
 Expected fitting remains roughly17minutes after allocation, plus startup/scoring;
 capacity is not guaranteed. All prior scientific simplifications and development
 confirmation limitations apply. No accuracy improvement is claimed by changing zones.
+
+### Pilot03 unsupported placement: closed before scheduling; pilot04 support check
+
+Pilot03 workflow completed its cleanup, but the inner Batch job FAILED with
+CODE_MACHINE_TYPE_NOT_FOUND:us-east4-b does not offerg2-standard-4. Choosingb
+without checking the machine catalog was a placement preflight omission.
+The job went directly QUEUED-to-FAILED with0s task runtime, no VM insert requests,
+and no fitted output. Job/VM/disk inventories are empty and the exact read grant
+is removed. Zero VM-compute reservation was released only after terminal audit;
+shared costs remain project-level. Workflow SUCCEEDED here means cleanup finished,
+not that training succeeded.
+
+Live catalog lists G2-standard-4 with one L4 inus-east4-a andus-east4-c. Pilot04
+changes placement toc, retaining the identical600epoch scientific protocol and
+$1 whole-workflow allowance. Its launcher now requires a live exact-machine
+description confirmingc,4CPUs,at least12GB RAM and exactlyoneL4 before upload
+or reservation. Supported hardware is not guaranteed available capacity.
+Previous checkpoints/selection rules, unchanged acceptance thresholds, development
+confirmation limitations, simplified FDS assumptions and no-auto-retry policy remain.
+No prediction improvement is established by these infrastructure-only attempts.
