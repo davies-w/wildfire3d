@@ -1,0 +1,32 @@
+{
+  "prepared": true,
+  "optimizer_updates": 0,
+  "trainable_parameters": 10628,
+  "frozen_context_parameters": 3396,
+  "seed": 3640,
+  "warm_checkpoint_sha256": "a61f0202c7ad4ae4ea90b2fa0c613ead67a29b15c0c3085e23711644673d78f7",
+  "warm_checkpoint": "Guarded but unaccepted context01 physical_primary epoch230. Prior selection and development confirmation were examined; this is a development continuation, not pristine generalization.",
+  "initialization": "New residual zero outputs exactly preserve the older guarded model; this is not rawGRU or an entirely untrained model. Fresh AdamW will apply only to the new residual, not resume old optimizer.",
+  "time_basis": "Known absolute target and forecast-elapsed seconds. Gaussian centres0,4,8,12,16,20,24,28,32,48,64,90,120,150,180; early width3s, later12/16/24/30/30/30s. These are architecture choices over retained approximately2s samples, not higher simulator resolution or true-phase inputs.",
+  "architecture": "Existing51input16hidden context banks frozen3396parameters. Add four81input32hidden residual banks10628parameters;81=51context+15absolute+15elapsed time bases. Add residual before the same interval-mass/gas/signed-heating transforms. FrozenGRU unchanged, no corrected recurrent feedback.",
+  "planned_arms": [
+    "physical_control",
+    "tail_priority"
+  ],
+  "objective": "Both retain context01 physical objective and fit-only raw-baseline normalization. Control under-tail coefficient0.1; tail_priority0.5. All other objective terms and existing scientific acceptance rules unchanged. Same architecture/initialization/origin draws between arms. Comparing with context01 also changes capacity/time representation and is not an isolated causal test of time bases.",
+  "source_sha256": "2c5116a92d276007232934bb42de03cef5ecdd4e2b276f56cb0268f25a8658be",
+  "files": {
+    "loss-normalization.json": {
+      "sha256": "92c76a27d7eb84fce50cbf9c27748ea3caef7dc49142675b87ece6ceeeb1afd9",
+      "bytes": 339
+    },
+    "candidate-plan.json": {
+      "sha256": "410f48d91a7499fd76924a97a75d8428b5ca4bbdf480bafd57376864eb0ba65a",
+      "bytes": 1827
+    },
+    "initial-timing.pt": {
+      "sha256": "ccc91468ccddcd8c49a7e226da78f178664c1015bac7a871b6c346f9d76c3e74",
+      "bytes": 62869
+    }
+  }
+}

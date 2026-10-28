@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "optimizer_updates": 0,
+  "fit_histories": 128,
+  "confirmation_not_evaluated": true,
+  "test_not_evaluated": true,
+  "trainable_parameters": 10628,
+  "frozen_context_parameters": 3396,
+  "checks": [
+    {
+      "origin": 0,
+      "steps": 90,
+      "old_guarded_prediction_bitwise_preserved": true
+    },
+    {
+      "origin": 0,
+      "steps": 16,
+      "old_guarded_prediction_bitwise_preserved": true
+    },
+    {
+      "origin": 16,
+      "steps": 16,
+      "old_guarded_prediction_bitwise_preserved": true
+    },
+    {
+      "origin": 74,
+      "steps": 16,
+      "old_guarded_prediction_bitwise_preserved": true
+    }
+  ],
+  "all_four_residual_head_gradients_nonzero": true,
+  "frozen_context_gradients_absent": true,
+  "parameters_unchanged_during_derivative_check": true,
+  "nonzero_probe_prefix_invariant": true,
+  "source_sha256": "2c5116a92d276007232934bb42de03cef5ecdd4e2b276f56cb0268f25a8658be",
+  "scope": "New residual is untrained; its zero initialization exactly reproduces guarded but unaccepted context01primary230, not rawGRU. Time bases use only known absolute/elapsed forecast seconds, not future target states or true phases. Fixed3s early widths are a model design, not extra simulator resolution. No optimizer, improved accuracy, capacity bound or physical validation."
+}

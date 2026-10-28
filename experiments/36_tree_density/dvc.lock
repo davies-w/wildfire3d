@@ -5513,3 +5513,222 @@ stages:
       hash: md5
       md5: 94d4384e3784d8c7ecadd13774db6f16
       size: 14838
+  validate_timing_decoder:
+    cmd: ../../.venv/bin/python model_evaluation/validate_timing_decoder.py
+    deps:
+    - path: data/context-decoder-pilot01
+      hash: md5
+      md5: e009034facbf99b6296ea37c32805597.dir
+      size: 951999358
+      nfiles: 35
+    - path: data/context-decoder-pilot01-results
+      hash: md5
+      md5: ad04431e9b39b17d618f193b8fe32378.dir
+      size: 78340264
+      nfiles: 682
+    - path: model_evaluation/context_data.py
+      hash: md5
+      md5: 8ce74789ced18b580f382cfea7fa49cb
+      size: 1019
+    - path: model_evaluation/context_decoder.py
+      hash: md5
+      md5: e1181132922f0d237567562628a5a2f1
+      size: 5025
+    - path: model_evaluation/context_objective.py
+      hash: md5
+      md5: cf80a49ff86d1485a1f87089569986d6
+      size: 2707
+    - path: model_evaluation/timing_decoder.py
+      hash: md5
+      md5: eca9ecea56ed526eb1d9eb7da1ac8a02
+      size: 6395
+    - path: model_evaluation/validate_timing_decoder.py
+      hash: md5
+      md5: fb120d14c2033454b257efd93c271f9f
+      size: 4067
+    - path: results/context-decoder-pilot01-analysis.json
+      hash: md5
+      md5: 9d316fff38645466624814fc173985b5
+      size: 28208
+    outs:
+    - path: results/timing-decoder-preflight.json
+      hash: md5
+      md5: b0f8673b10457899f12d8d4ad6d51833
+      size: 1320
+  prepare_timing_candidate:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_timing_candidate.py
+    deps:
+    - path: data/context-decoder-pilot01
+      hash: md5
+      md5: e009034facbf99b6296ea37c32805597.dir
+      size: 951999358
+      nfiles: 35
+    - path: data/context-decoder-pilot01-results
+      hash: md5
+      md5: ad04431e9b39b17d618f193b8fe32378.dir
+      size: 78340264
+      nfiles: 682
+    - path: model_evaluation/prepare_timing_candidate.py
+      hash: md5
+      md5: af68b06b9b1b9891fd199764d74ca114
+      size: 3788
+    - path: model_evaluation/timing_decoder.py
+      hash: md5
+      md5: eca9ecea56ed526eb1d9eb7da1ac8a02
+      size: 6395
+    - path: results/timing-decoder-preflight.json
+      hash: md5
+      md5: b0f8673b10457899f12d8d4ad6d51833
+      size: 1320
+    outs:
+    - path: data/timing-candidate
+      hash: md5
+      md5: af75d85c237b85962d5d3a036bbc0e2a.dir
+      size: 65035
+      nfiles: 3
+    - path: results/timing-candidate-prepared.json
+      hash: md5
+      md5: a6a50f36f62e85f5f1911fc696c8e225
+      size: 2266
+  prepare_timing_trial:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_timing_trial.py
+    deps:
+    - path: data/gas-shape-pilot01
+      hash: md5
+      md5: 0f9ef245d41f905943c52ad059eac1c1.dir
+      size: 53242573
+      nfiles: 17
+    - path: data/joint-decoder-candidate
+      hash: md5
+      md5: 48af269b9ab3475ed72ea0f7913caa40.dir
+      size: 26593773
+      nfiles: 5
+    - path: data/joint-rolling-features
+      hash: md5
+      md5: 0b3fd914ec0913529749e026d7f68988.dir
+      size: 449281821
+      nfiles: 3
+    - path: data/timing-candidate
+      hash: md5
+      md5: af75d85c237b85962d5d3a036bbc0e2a.dir
+      size: 65035
+      nfiles: 3
+    - path: model_evaluation/context_data.py
+      hash: md5
+      md5: 8ce74789ced18b580f382cfea7fa49cb
+      size: 1019
+    - path: model_evaluation/context_objective.py
+      hash: md5
+      md5: cf80a49ff86d1485a1f87089569986d6
+      size: 2707
+    - path: model_evaluation/gas_head_metrics.py
+      hash: md5
+      md5: 1b092dc20edf7bac2340dbc376fd4a53
+      size: 3824
+    - path: model_evaluation/joint_data.py
+      hash: md5
+      md5: 53a76769c3541324d4baafa483a4be02
+      size: 6229
+    - path: model_evaluation/joint_decoder_v2.py
+      hash: md5
+      md5: 2f15f174798f9536a5a1989d31a64adc
+      size: 4693
+    - path: model_evaluation/joint_metrics.py
+      hash: md5
+      md5: b81c41dbaa625a353dd0e7730c8baacb
+      size: 5534
+    - path: model_evaluation/joint_objective_v2.py
+      hash: md5
+      md5: fdf5c704686a2d0c28d6c5cac767745b
+      size: 2838
+    - path: model_evaluation/prepare_timing_trial.py
+      hash: md5
+      md5: db2490767a32f0707b69160aed4c19d6
+      size: 5352
+    - path: model_evaluation/timing_decoder.py
+      hash: md5
+      md5: eca9ecea56ed526eb1d9eb7da1ac8a02
+      size: 6395
+    - path: model_evaluation/timing_worker.py
+      hash: md5
+      md5: 6f22ffa9dfc344d99336cc730b5ffb81
+      size: 9465
+    - path: results/context-decoder-preflight.json
+      hash: md5
+      md5: 8c8363bcaa117929cdf0ea89e0533ba0
+      size: 2208
+    - path: results/context-objective-preflight.json
+      hash: md5
+      md5: acbeedd759f4eb7ccc07c82f526dc678
+      size: 2716
+    - path: results/joint-pipeline-v2-preflight.json
+      hash: md5
+      md5: 8048edb72e5e9905809a93051ee30be2
+      size: 1113
+    - path: results/timing-decoder-trial-plan.json
+      hash: md5
+      md5: 5bdced21a82cc627ad7b8c1d5eed04f4
+      size: 10390
+    outs:
+    - path: data/timing-decoder-pilot01
+      hash: md5
+      md5: 238cb7eee7fe4c222e28ecb2c8774c9c.dir
+      size: 952099561
+      nfiles: 35
+    - path: results/timing-decoder-pilot01-prepared.json
+      hash: md5
+      md5: daa4ef489a39e8e8d02c27389d882883
+      size: 2431
+  validate_timing_trial:
+    cmd: ../../.venv/bin/python model_evaluation/validate_timing_trial.py
+    deps:
+    - path: data/timing-decoder-pilot01
+      hash: md5
+      md5: 238cb7eee7fe4c222e28ecb2c8774c9c.dir
+      size: 952099561
+      nfiles: 35
+    - path: model_evaluation/analyze_timing_decoder_pilot01.py
+      hash: md5
+      md5: e56948863f1eb93db7a0764b0f568076
+      size: 4196
+    - path: model_evaluation/close_timing_decoder_pilot01.py
+      hash: md5
+      md5: 1b958505566a918e1b051d733dc7c08e
+      size: 1759
+    - path: model_evaluation/collect_timing_decoder_pilot01.py
+      hash: md5
+      md5: 93f639e011c53c5d8e52266f855cc5db
+      size: 5784
+    - path: model_evaluation/launch_timing_decoder_pilot01.py
+      hash: md5
+      md5: fa87c5a742d6c56adf7c4b6e4966d981
+      size: 5922
+    - path: model_evaluation/monitor_timing_decoder_pilot01.py
+      hash: md5
+      md5: 5b243080fe05fd83ded3a373958683f0
+      size: 2262
+    - path: model_evaluation/reconcile_timing_decoder_pilot01.py
+      hash: md5
+      md5: 82bb023e73860d567cb23b9f0d70b078
+      size: 1693
+    - path: model_evaluation/validate_timing_trial.py
+      hash: md5
+      md5: 01772f7d610d3d20a1bf1d68c88f1446
+      size: 3885
+    - path: results/context-objective-preflight.json
+      hash: md5
+      md5: acbeedd759f4eb7ccc07c82f526dc678
+      size: 2716
+    - path: results/joint-pipeline-v2-preflight.json
+      hash: md5
+      md5: 8048edb72e5e9905809a93051ee30be2
+      size: 1113
+    - path: results/timing-decoder-pilot01-prepared.json
+      hash: md5
+      md5: daa4ef489a39e8e8d02c27389d882883
+      size: 2431
+    outs:
+    - path: results/timing-decoder-pilot01-offline-preflight.json
+      hash: md5
+      md5: ae02e1fa0f4b45ffe05103bd4e1860d3
+      size: 544
