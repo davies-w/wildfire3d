@@ -4056,3 +4056,158 @@ stages:
       hash: md5
       md5: 1d3666361eb267b7b3f3fd79bc129d22
       size: 9511
+  validate_joint_pipeline:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_pipeline.py
+    deps:
+    - path: data/joint-decoder-candidate
+      hash: md5
+      md5: 48af269b9ab3475ed72ea0f7913caa40.dir
+      size: 26593773
+      nfiles: 5
+    - path: data/joint-rolling-features
+      hash: md5
+      md5: 0b3fd914ec0913529749e026d7f68988.dir
+      size: 449281821
+      nfiles: 3
+    - path: model_evaluation/gas_head_metrics.py
+      hash: md5
+      md5: 1b092dc20edf7bac2340dbc376fd4a53
+      size: 3824
+    - path: model_evaluation/joint_data.py
+      hash: md5
+      md5: 53a76769c3541324d4baafa483a4be02
+      size: 6229
+    - path: model_evaluation/joint_decoder.py
+      hash: md5
+      md5: 83072d248c4aaa00a56ddb8e5bf6e528
+      size: 4106
+    - path: model_evaluation/joint_metrics.py
+      hash: md5
+      md5: b81c41dbaa625a353dd0e7730c8baacb
+      size: 5534
+    - path: model_evaluation/joint_objective.py
+      hash: md5
+      md5: 8f36ac3c265f3f7880acbb802d49e770
+      size: 2754
+    - path: model_evaluation/validate_joint_pipeline.py
+      hash: md5
+      md5: f7dff2452e4f9e812f9a3bd03b518dd0
+      size: 6042
+    outs:
+    - path: results/joint-pipeline-preflight.json
+      hash: md5
+      md5: 373522d643b4c3baa62ddc1caf48e17c
+      size: 1104
+  prepare_joint_trial:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_joint_trial.py
+    deps:
+    - path: data/gas-shape-pilot01
+      hash: md5
+      md5: 0f9ef245d41f905943c52ad059eac1c1.dir
+      size: 53242573
+      nfiles: 17
+    - path: data/joint-decoder-candidate
+      hash: md5
+      md5: 48af269b9ab3475ed72ea0f7913caa40.dir
+      size: 26593773
+      nfiles: 5
+    - path: data/joint-rolling-features
+      hash: md5
+      md5: 0b3fd914ec0913529749e026d7f68988.dir
+      size: 449281821
+      nfiles: 3
+    - path: model_evaluation/gas_head_metrics.py
+      hash: md5
+      md5: 1b092dc20edf7bac2340dbc376fd4a53
+      size: 3824
+    - path: model_evaluation/joint_data.py
+      hash: md5
+      md5: 53a76769c3541324d4baafa483a4be02
+      size: 6229
+    - path: model_evaluation/joint_decoder.py
+      hash: md5
+      md5: 83072d248c4aaa00a56ddb8e5bf6e528
+      size: 4106
+    - path: model_evaluation/joint_metrics.py
+      hash: md5
+      md5: b81c41dbaa625a353dd0e7730c8baacb
+      size: 5534
+    - path: model_evaluation/joint_objective.py
+      hash: md5
+      md5: 8f36ac3c265f3f7880acbb802d49e770
+      size: 2754
+    - path: model_evaluation/joint_worker.py
+      hash: md5
+      md5: f0e0cc5c8c441a81923696ac32ba6a94
+      size: 8781
+    - path: model_evaluation/prepare_joint_trial.py
+      hash: md5
+      md5: 3fa77232afef6b37d368d3aa11daae9f
+      size: 4426
+    - path: results/joint-decoder-trial-plan.json
+      hash: md5
+      md5: 1d3666361eb267b7b3f3fd79bc129d22
+      size: 9511
+    - path: results/joint-pipeline-preflight.json
+      hash: md5
+      md5: 373522d643b4c3baa62ddc1caf48e17c
+      size: 1104
+    outs:
+    - path: data/joint-decoder-pilot01
+      hash: md5
+      md5: be9cbbb7b36495597d262a7016e0d5fd.dir
+      size: 951937148
+      nfiles: 25
+    - path: results/joint-decoder-pilot01-prepared.json
+      hash: md5
+      md5: 2b610be27c4a0ba6cc7e274e9b8441e1
+      size: 1859
+  validate_joint_trial:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_trial.py
+    deps:
+    - path: data/joint-decoder-pilot01
+      hash: md5
+      md5: be9cbbb7b36495597d262a7016e0d5fd.dir
+      size: 951937148
+      nfiles: 25
+    - path: model_evaluation/analyze_joint_decoder_pilot01.py
+      hash: md5
+      md5: d96338b7dc4cb727cf3e8221a4d0289b
+      size: 4162
+    - path: model_evaluation/close_joint_decoder_pilot01.py
+      hash: md5
+      md5: bde114fbf1310243bf3ec9cebfe77ad0
+      size: 1749
+    - path: model_evaluation/collect_joint_decoder_pilot01.py
+      hash: md5
+      md5: 48f59467c426b6e89225371c94ee8fe6
+      size: 5641
+    - path: model_evaluation/launch_joint_decoder_pilot01.py
+      hash: md5
+      md5: d74508799a92b0c1d3b629049fc988fd
+      size: 5479
+    - path: model_evaluation/monitor_joint_decoder_pilot01.py
+      hash: md5
+      md5: 098f2828147ed9e9d0237eb4195257e5
+      size: 2239
+    - path: model_evaluation/reconcile_joint_decoder_pilot01.py
+      hash: md5
+      md5: 1b6a6ff5ce1d2bcfa5005af5937d036e
+      size: 1686
+    - path: model_evaluation/validate_joint_trial.py
+      hash: md5
+      md5: 3f6637f0b8bc44a046df9f9dfcebfa5e
+      size: 2381
+    - path: results/joint-decoder-pilot01-prepared.json
+      hash: md5
+      md5: 2b610be27c4a0ba6cc7e274e9b8441e1
+      size: 1859
+    - path: results/joint-pipeline-preflight.json
+      hash: md5
+      md5: 373522d643b4c3baa62ddc1caf48e17c
+      size: 1104
+    outs:
+    - path: results/joint-decoder-pilot01-offline-preflight.json
+      hash: md5
+      md5: b50a326f43e1c7516696e3f240ddefa8
+      size: 484

@@ -1655,3 +1655,53 @@ stages:
     metrics:
     - results/joint-decoder-trial-plan.json:
         cache: false
+  validate_joint_pipeline:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_pipeline.py
+    deps:
+    - model_evaluation/validate_joint_pipeline.py
+    - model_evaluation/joint_data.py
+    - model_evaluation/joint_metrics.py
+    - model_evaluation/joint_decoder.py
+    - model_evaluation/joint_objective.py
+    - model_evaluation/gas_head_metrics.py
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    metrics:
+    - results/joint-pipeline-preflight.json:
+        cache: false
+  prepare_joint_trial:
+    cmd: ../../.venv/bin/python model_evaluation/prepare_joint_trial.py
+    deps:
+    - model_evaluation/prepare_joint_trial.py
+    - model_evaluation/joint_worker.py
+    - model_evaluation/joint_data.py
+    - model_evaluation/joint_metrics.py
+    - model_evaluation/joint_decoder.py
+    - model_evaluation/joint_objective.py
+    - model_evaluation/gas_head_metrics.py
+    - data/joint-decoder-candidate
+    - data/joint-rolling-features
+    - results/joint-decoder-trial-plan.json
+    - results/joint-pipeline-preflight.json
+    - data/gas-shape-pilot01
+    metrics:
+    - results/joint-decoder-pilot01-prepared.json:
+        cache: false
+    outs:
+    - data/joint-decoder-pilot01
+  validate_joint_trial:
+    cmd: ../../.venv/bin/python model_evaluation/validate_joint_trial.py
+    deps:
+    - model_evaluation/validate_joint_trial.py
+    - model_evaluation/launch_joint_decoder_pilot01.py
+    - model_evaluation/collect_joint_decoder_pilot01.py
+    - model_evaluation/close_joint_decoder_pilot01.py
+    - model_evaluation/monitor_joint_decoder_pilot01.py
+    - model_evaluation/reconcile_joint_decoder_pilot01.py
+    - model_evaluation/analyze_joint_decoder_pilot01.py
+    - data/joint-decoder-pilot01
+    - results/joint-decoder-pilot01-prepared.json
+    - results/joint-pipeline-preflight.json
+    metrics:
+    - results/joint-decoder-pilot01-offline-preflight.json:
+        cache: false
