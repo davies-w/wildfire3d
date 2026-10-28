@@ -4423,3 +4423,30 @@ stages:
     metrics:
     - results/canonical-pilot03-startup-observation.json:
         cache: false
+  validate_canonical_case_review:
+    cmd: ../../.venv/bin/python model_evaluation/validate_canonical_case_review.py
+    deps:
+    - model_evaluation/canonical_case_review.py
+    - model_evaluation/review_canonical_final_cases.py
+    - model_evaluation/validate_canonical_case_review.py
+    metrics:
+    - results/canonical-case-review-preflight.json:
+        cache: false
+  review_canonical_final_cases:
+    cmd: ../../.venv/bin/python model_evaluation/review_canonical_final_cases.py
+    frozen: true
+    deps:
+    - model_evaluation/canonical_case_review.py
+    - model_evaluation/review_canonical_final_cases.py
+    - model_evaluation/accepted_model_guard.py
+    - results/canonical-final-inference-protocol.json
+    - results/canonical-final-inference.json
+    - data/canonical-final-inference
+    - data/exposure-pilot02
+    - data/canonical-pilot03-results
+    - results/canonical-pilot03-analysis.json
+    - results/canonical-pilot03-collected.json
+    - results/canonical-pilot03-permission-removed.json
+    metrics:
+    - results/canonical-final-case-review.json:
+        cache: false

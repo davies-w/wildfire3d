@@ -681,3 +681,15 @@ These are operational proofs, not accuracy or completion results. Both arm
 selections and the winner must still freeze before development confirmation;
 original test remains excluded. Boot/agent evidence is preserved separately in
 DVC, without reading model-selection results mid-run.
+
+
+A descriptive final-case review is prepared for each of the five horizons and
+all quiet/weak/active/transition windows. It retains configuration-level candidate,
+raw and no-change MAEs, truth denominators, explicit empty-phase eligibility and
+undefined zero-baseline ratios, change counts and largest absolute worsening.
+Unequal-replica and phase/zero-denominator synthetic fixtures pass; no scientific
+test targets were loaded. Actual review requires the sole previously frozen and
+accepted candidate plus its existing final-inference artifact. It cross-checks
+all pooled phase means against that artifact and cannot select another checkpoint
+or introduce a test-driven acceptance threshold. No candidate case-review result
+exists yet, and pooled improvement will not be described as universal improvement.

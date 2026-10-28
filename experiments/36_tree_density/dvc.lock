@@ -10657,3 +10657,24 @@ stages:
       hash: md5
       md5: d4cd08e6884d26aafedf2d864d9df192
       size: 2487
+  validate_canonical_case_review:
+    cmd: ../../.venv/bin/python
+      model_evaluation/validate_canonical_case_review.py
+    deps:
+    - path: model_evaluation/canonical_case_review.py
+      hash: md5
+      md5: 85c2be4117ece904aba42767a53c51a4
+      size: 2456
+    - path: model_evaluation/review_canonical_final_cases.py
+      hash: md5
+      md5: f4aad5ccee4292b1e9aead9f6e07bccc
+      size: 3497
+    - path: model_evaluation/validate_canonical_case_review.py
+      hash: md5
+      md5: 5261080a939854c179f595a6cb3f3f43
+      size: 1721
+    outs:
+    - path: results/canonical-case-review-preflight.json
+      hash: md5
+      md5: 74d409749431968b12e087d36ac94fc0
+      size: 570
