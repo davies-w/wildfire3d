@@ -155,3 +155,45 @@ stages:
     - preserve04.py
     outs:
     - data/provenance04
+  prepare05:
+    cmd: python prepare05.py
+    deps:
+    - prepare05.py
+    - cloud_check02.py
+    - data/training03
+    - ../36_tree_density/data/model-training/schema.json
+    outs:
+    - data/training05:
+        persist: true
+  validate05:
+    cmd: python validate05.py
+    deps:
+    - validate05.py
+    - data/training05
+    outs:
+    - results05/offline-check.json
+  audit_startup05:
+    cmd: python audit_startup05.py
+    deps:
+    - audit_startup05.py
+    outs:
+    - data/startup-audit05
+  collect05:
+    cmd: python collect05.py
+    deps:
+    - collect05.py
+    outs:
+    - data/training05-results:
+        persist: true
+  scorecard_layout:
+    cmd: python reorganize_scorecard.py
+    deps:
+    - reorganize_scorecard.py
+    outs:
+    - data/scorecard-layout
+  preserve05:
+    cmd: python preserve05.py
+    deps:
+    - preserve05.py
+    outs:
+    - data/provenance05

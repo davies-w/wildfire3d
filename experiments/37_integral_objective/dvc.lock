@@ -378,3 +378,72 @@ stages:
       md5: 6acff1b849bf7db8dbab57aac7061041.dir
       size: 562541
       nfiles: 21
+  prepare05:
+    cmd: python prepare05.py
+    deps:
+    - path: ../36_tree_density/data/model-training/schema.json
+      hash: md5
+      md5: 0dbee67e38424d53816fe78799442133
+      size: 672301
+    - path: cloud_check02.py
+      hash: md5
+      md5: 08744f886d6d2ee841e798c41b649680
+      size: 3772
+    - path: data/training03
+      hash: md5
+      md5: dbc3a8fd34710503831881fbc7511bbd.dir
+      size: 11168047
+      nfiles: 14
+    - path: prepare05.py
+      hash: md5
+      md5: e009cc86f612bc9d319ba108a5d506a3
+      size: 3867
+    outs:
+    - path: data/training05
+      hash: md5
+      md5: ea2fa23ecff0dfb6f60932033107e568.dir
+      size: 11168094
+      nfiles: 14
+  validate05:
+    cmd: python validate05.py
+    deps:
+    - path: data/training05
+      hash: md5
+      md5: ea2fa23ecff0dfb6f60932033107e568.dir
+      size: 11168094
+      nfiles: 14
+    - path: validate05.py
+      hash: md5
+      md5: 1eb18f423745e2cba7198e9a77fcd454
+      size: 2966
+    outs:
+    - path: results05/offline-check.json
+      hash: md5
+      md5: 51c356ee81d1259492d9d87f16a104cd
+      size: 197
+  scorecard_layout:
+    cmd: python reorganize_scorecard.py
+    deps:
+    - path: reorganize_scorecard.py
+      hash: md5
+      md5: e9fa8a66e971857c762f59558104f90c
+      size: 3533
+    outs:
+    - path: data/scorecard-layout
+      hash: md5
+      md5: b0a1f21490f38272bd2070c6d2bd9f2f.dir
+      size: 64739
+      nfiles: 2
+  preserve05:
+    cmd: python preserve05.py
+    deps:
+    - path: preserve05.py
+      hash: md5
+      md5: 4dbeee671b6396182af02be41f3df511
+      size: 394
+    outs:
+    - path: data/provenance05
+      hash: md5
+      md5: a4cc03c56a549cb46f580ef679e2baaa.dir
+      size: 182989
+      nfiles: 12
