@@ -290,3 +290,16 @@ stages:
       hash: md5
       md5: 51c356ee81d1259492d9d87f16a104cd
       size: 197
+  audit_startup04:
+    cmd: python audit_startup04.py
+    deps:
+    - path: audit_startup04.py
+      hash: md5
+      md5: fcfa8e548a9cedbb9a219dc8da3e4c95
+      size: 1493
+    outs:
+    - path: data/startup-audit04
+      hash: md5
+      md5: f5247b594b3568a836495c5adb149fc1.dir
+      size: 1179
+      nfiles: 6
