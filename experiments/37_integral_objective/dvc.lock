@@ -220,3 +220,30 @@ stages:
       md5: c977fcd3793ed6d48d5de1b9aa313710.dir
       size: 12670795
       nfiles: 6
+  add_prior_curve:
+    cmd: python add_prior_curve.py
+    deps:
+    - path: ../36_tree_density/data/full-sequence/stridegated.json
+      hash: md5
+      md5: 0405381e9ec47926d810521e9a341089
+      size: 4883922
+    - path: add_prior_curve.py
+      hash: md5
+      md5: 6aadd63b62b9738c79a64b3e585720b6
+      size: 3483
+    - path: data/analysis
+      hash: md5
+      md5: 78ab952380a6877b65e71de629c1758b.dir
+      size: 6029970
+      nfiles: 1
+    - path: data/scorecard-addition
+      hash: md5
+      md5: c977fcd3793ed6d48d5de1b9aa313710.dir
+      size: 12670795
+      nfiles: 6
+    outs:
+    - path: data/prior-overlay
+      hash: md5
+      md5: bbad179b98129f4b990420e390ffd93c.dir
+      size: 8047109
+      nfiles: 1

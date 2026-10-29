@@ -93,3 +93,12 @@ stages:
     outs:
     - data/scorecard-addition:
         persist: true
+  add_prior_curve:
+    cmd: python add_prior_curve.py
+    deps:
+    - add_prior_curve.py
+    - data/scorecard-addition
+    - data/analysis
+    - ../36_tree_density/data/full-sequence/stridegated.json
+    outs:
+    - data/prior-overlay
