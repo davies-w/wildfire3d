@@ -4481,6 +4481,8 @@ stages:
     cmd: ../../.venv/bin/python model_evaluation/render_full_sequence_public.py
     deps:
     - model_evaluation/render_full_sequence_public.py
+    - data/pair-gallery/index.html
+    - data/pair-sequence/rotation0/schema.json
     - data/full-sequence
     outs:
     - data/full-sequence-public

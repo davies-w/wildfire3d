@@ -1,22 +1,44 @@
-"""Render report-only SVG figures; private trajectory JSON stays local/mirror."""
+"""Use the original gallery shell and controls with full-sequence rendered figures."""
 from pathlib import Path
-import json,html,shutil
-R=Path(__file__).resolve().parents[1];D=R/'data/full-sequence';P=R/'data/full-sequence-public';P.mkdir(exist_ok=True);s=json.loads((D/'scores.json').read_text());features=['Water (kg)','Dry fuel (kg)','Gas release (kg/s)','Heating index (K)'];style='<style>body{font:16px/1.5 system-ui;background:#f4f6f8;color:#182637}main{max-width:1800px;margin:auto;padding:20px}svg{width:100%;background:white}select,button{padding:8px}a{color:#165aa5}.plots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.case{display:none;border-top:1px solid #d5dce5;margin-top:18px}h2{font-size:18px;margin:10px 0}h3{font-size:15px;margin:4px 0}.plots section{min-width:0}.missing{padding:40px 10px;text-align:center;color:#667}svg{display:block}</style>'
-intro='<p><b>One initialization at t=0; all subsequent states are model-fed. No later simulation-state resets.</b> Known forcing, geometry and time intervals remain supplied. Linear axes, straight segments through all saved samples; no chart smoothing or clipping. Blue: derived simulation reference. Orange: model. Gray: simulation’s actual state at the preceding saved time (refreshed each step). This baseline receives fresh truth; the model does not.</p>'
-links=' · '.join('<a href="'+m['slug']+'.html">'+html.escape(m['name'])+'</a>' for m in s['models'])
+import json,html,math,re,shutil
+R=Path(__file__).resolve().parents[1];D=R/'data/full-sequence';P=R/'data/full-sequence-public'
+s=json.loads((D/'scores.json').read_text());meta=json.loads((R/'data/pair-sequence/rotation0/schema.json').read_text())['cases']
+original=(R/'data/pair-gallery/index.html').read_text()
+info=original[original.index('function info(d)'):original.index('function chart(d,f)')]
+colors=['#159447','#9854bc','#1878c8'];titles=['Water · kg','Dry fuel · kg','Fuel gas · kg/s','Heating index · K']
 for m in s['models']:
- rows=json.loads((D/(m['slug']+'.json')).read_text())['records'];parts=['<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+m['name']+' full sequence</title>'+style+'<main><h1>'+m['name']+' · full sequence</h1>'+intro+'<p><a href="index.html">Matching scorecard</a></p><p>'+links+'</p><button onclick="step(-1)">Previous</button> <select id="pick" onchange="show(+this.value)">'+''.join(f'<option value="{i//3}">Page {i//3+1} · histories {q["id"]}–{rows[min(i+2,len(rows)-1)]["id"]}</option>' for i,q in enumerate(rows) if i%3==0)+'</select> <button onclick="step(1)">Next</button>']
- for i,q in enumerate(rows):
-  parts.append(f'<div class="case" id="c{i}"><h2>History {q["id"]} · {i+1} / {len(rows)} · 0–{q["time"][-1]:.3f} seconds</h2><div class="plots">')
-  for f in range(len(q['truth'][0])):
-   arrays=[q[k] for k in ['truth','prediction','baseline']];values=[v[f] for a in arrays for v in a];lo=min(values);hi=max(values);pad=(hi-lo or 1)*.06;lo-=pad;hi+=pad
-   parts.append(f'<section><h3>{features[f]}</h3><svg viewBox="0 0 540 240" role="img" aria-label="{features[f]} full continuous trajectory"><text x="3" y="30">{hi:.3g}</text><text x="3" y="195">{lo:.3g}</text><text x="70" y="225">0 s</text><text x="465" y="225">180 s</text>')
-   for a,color in zip(arrays,['#1766b5','#d66610','#888']):
-    path=' '.join(('M' if j==0 else 'L')+f'{70+440*q["time"][j]/q["time"][-1]:.6f},{195-165*(v[f]-lo)/(hi-lo):.6f}' for j,v in enumerate(a));parts.append(f'<path d="{path}" stroke="{color}" fill="none" stroke-width="1.4"/>')
-   parts.append('</svg></section>')
-  for f in range(len(q['truth'][0]),4):parts.append('<section><h3>'+features[f]+'</h3><p class="missing">Not predicted by this 3-state model</p></section>')
-  parts.append('</div></div>')
- parts.append('<p>Simulation values are derived/resampled FDS quantities, not physical validation. Different models can have different test populations; see scorecard. Heating is an index in K, not energy. Gas is fuel-gas release, not heat release.</p></main><script>let current=0;const total='+str(len(rows))+';const pages=Math.ceil(total/3);function show(i){for(let j=current*3;j<Math.min(current*3+3,total);j++)document.getElementById("c"+j).style.display="none";current=i;for(let j=current*3;j<Math.min(current*3+3,total);j++)document.getElementById("c"+j).style.display="block";document.getElementById("pick").value=current}function step(d){show((current+d+pages)%pages)}show(0)</script>');(P/(m['slug']+'.html')).write_text(''.join(parts))
-(P/'gallery.html').write_text('<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Full-sequence galleries</title>'+style+'<main><h1>Full-sequence visual comparisons</h1>'+intro+'<p><a href="index.html">Matching simplified scorecard</a></p>'+''.join('<p><a href="'+m['slug']+'.html">'+html.escape(m['name'])+'</a> — '+str(m['histories'])+' held-out histories</p>' for m in s['models'])+'</main>')
-for name in ['index.html','scores.json','historical-scores.json']:shutil.copyfile(D/name,P/name)
-print('Rendered figures only:',len(list(P.iterdir())),'files; trajectory data excluded')
+ records=json.loads((D/(m['slug']+'.json')).read_text())['records'];pages=[]
+ for start in range(0,len(records),3):
+  rows=[]
+  for q in records[start:start+3]:
+   case=meta[q['id']];k=case['physical_key'];n=len(q['truth'][0]);data=dict(index=q['id'],case=case['case'],fold=(0 if m['slug'].startswith('stride') else q['fold'] if m['slug']=='dense' else q['fold']//2),height=k[0],loading=k[2],wind=k[3],angle=k[4],water=q['truth'][0][0],fuel=q['truth'][0][1]);charts=[]
+   for f in range(4):
+    if f>=n:charts.append('<div class="chart"><h3>'+titles[f]+'</h3><p>Not predicted</p></div>');continue
+    threshold=[.001,.01,.00001,.1][f]
+    def T(v):return math.copysign(math.log10(1+abs(v)/threshold),v)
+    arrays=[q['truth'],q['baseline'],q['prediction']];allv=[T(v[f]) for a in arrays for v in a];lo=min(allv);hi=max(allv);pad=(hi-lo or 1)*.08;lo-=pad;hi+=pad
+    out='<div class="chart"><h3>'+titles[f]+'</h3><svg viewBox="0 0 280 175">'
+    for j in range(5):
+     z=lo+(hi-lo)*j/4;v=math.copysign(threshold*(10**abs(z)-1),z);out+=f'<text x="47" y="{142-j*30}" text-anchor="end" font-size="8" fill="#627082">{v:.3g}</text>'
+    for t in [0,60,120,180]:out+=f'<text x="{51+t/180*220}" y="154" text-anchor="middle" font-size="9" fill="#627082">{t}</text>'
+    out+='<text x="161" y="169" text-anchor="middle" font-size="9" fill="#627082">Target time (s)</text>'
+    for series,a in enumerate(arrays):
+     path=' '.join(('M' if j==0 else 'L')+f'{51+q["time"][j]/180*220:.6f},{139-(T(v[f])-lo)/(hi-lo)*120:.6f}' for j,v in enumerate(a));out+=f'<path data-series="{series}" d="{path}" fill="none" stroke="{colors[series]}" stroke-width=".9"/>'
+    charts.append(out+'</svg></div>')
+   rows.append(dict(info=data,charts=''.join(charts)))
+  pages.append(rows)
+ shell=original[:original.index('<script>')]
+ shell=shell.replace('Stride-one · plain and gated',html.escape(m['name'])+' · full sequence')
+ shell=re.sub(r'<p class="desc">.*?</p>','<p class="desc">Continuous full-sequence predictions initialized once at t=0; no later truth resets. No change uses the preceding actual simulation state. Symmetric-log axes retain zero and negatives. Click a legend to toggle its line; axes remain fixed.</p>',shell)
+ shell=re.sub(r'<div id="legend">.*?</div>', '<div id="legend">'+''.join(f'<button data-series="{i}" aria-pressed="{str(i!=1).lower()}" style="color:{colors[i]}">{label}</button>' for i,label in enumerate(['Simulation','No change',html.escape(m['name'])]))+'</div>',shell)
+ script='const total='+str(len(records))+',pages=Math.ceil(total/3),visible=[true,false,true],content='+json.dumps(pages,separators=(',',':'))+';let page=Math.max(0,Math.min(pages-1,Number(location.hash.slice(1))||0));const fmt=x=>Number(x.toPrecision(3)).toString();'+info+'''
+function apply(){document.querySelectorAll('path[data-series]').forEach(p=>p.style.display=visible[+p.dataset.series]?'':'none')}
+function render(){document.getElementById('count').textContent=`${page*3+1}–${Math.min(page*3+3,total)} of ${total}`;document.getElementById('back').disabled=page===0;document.getElementById('next').disabled=page===pages-1;document.getElementById('rows').innerHTML=content[page].map(d=>'<section class="row"><aside class="info">'+info(d.info)+'</aside>'+d.charts+'</section>').join('');apply()}
+function load(n){page=Math.max(0,Math.min(pages-1,n));history.replaceState(null,'','#'+page);render()}
+document.getElementById('back').onclick=()=>load(page-1);document.getElementById('next').onclick=()=>load(page+1);document.querySelectorAll('#legend button').forEach(b=>b.onclick=()=>{let k=+b.dataset.series;visible[k]=!visible[k];b.setAttribute('aria-pressed',String(visible[k]));apply()});load(page);
+'''
+ shell=shell.replace('Single split, not ten-fold aggregate.','Model-specific held-out population; see full-sequence scorecard.')
+ (P/(m['slug']+'.html')).write_text(shell+'<script>'+script+'</script></body></html>')
+print('Restored original gallery shell, rubric, symlog axes, legends and pagination for seven models')
+
+for name in ["index.html","scores.json","historical-scores.json"]:shutil.copyfile(D/name,P/name)
