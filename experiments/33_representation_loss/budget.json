@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 15.584692000000002,
+  "reserved_usd": 36.384692,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -3425,6 +3425,14 @@
       },
       "historical_allowance_usd": 20.8,
       "terminal_evidence": "experiments/37_integral_objective/data/training03-results/job-status.json"
+    },
+    "integral37-training04": {
+      "state": "submitted",
+      "allowance_usd": 20.8,
+      "reserved_unix": 1793294570.995987,
+      "scope": "Single gated integral-objective rotation1, same8 training folds,16.5h VM max at1.20/h plus0.40 margin, no automatic retries",
+      "workflow": "fds-gpu37-integral04",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu37-integral04/executions/c31a8025-a713-4d5a-ba92-6b2d45639bb7"
     }
   },
   "recycle_reservations": true,
@@ -3434,7 +3442,7 @@
   "accounting": {
     "billing_export_status": "posted_costs_subject_to_adjustment",
     "posted_source": "BigQuery detailed export",
-    "as_of_utc": "2026-10-29T15:51:51.031740+00:00",
+    "as_of_utc": "2026-10-29T17:21:23.469396+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
     "project_posted_comparison_usd": 66.263688,
     "project_compute_runtime_estimate_usd": 50.812997045489716,

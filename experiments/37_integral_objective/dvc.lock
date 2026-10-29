@@ -247,3 +247,46 @@ stages:
       md5: bbad179b98129f4b990420e390ffd93c.dir
       size: 8047109
       nfiles: 1
+  prepare04:
+    cmd: python prepare04.py
+    deps:
+    - path: ../36_tree_density/data/model-training/schema.json
+      hash: md5
+      md5: 0dbee67e38424d53816fe78799442133
+      size: 672301
+    - path: cloud_check02.py
+      hash: md5
+      md5: 08744f886d6d2ee841e798c41b649680
+      size: 3772
+    - path: data/training03
+      hash: md5
+      md5: dbc3a8fd34710503831881fbc7511bbd.dir
+      size: 11168047
+      nfiles: 14
+    - path: prepare04.py
+      hash: md5
+      md5: c75072f6836eb39b6d2537b473b9e716
+      size: 3469
+    outs:
+    - path: data/training04
+      hash: md5
+      md5: 0b88037ea71bbb89f6d7faba855a89d2.dir
+      size: 11167810
+      nfiles: 14
+  validate04:
+    cmd: python validate04.py
+    deps:
+    - path: data/training04
+      hash: md5
+      md5: 0b88037ea71bbb89f6d7faba855a89d2.dir
+      size: 11167810
+      nfiles: 14
+    - path: validate04.py
+      hash: md5
+      md5: 5142f04e0206d6ecf1b8357ed85540f3
+      size: 2519
+    outs:
+    - path: results04/offline-check.json
+      hash: md5
+      md5: 51c356ee81d1259492d9d87f16a104cd
+      size: 197

@@ -102,3 +102,33 @@ stages:
     - ../36_tree_density/data/full-sequence/stridegated.json
     outs:
     - data/prior-overlay
+  prepare04:
+    cmd: python prepare04.py
+    deps:
+    - prepare04.py
+    - cloud_check02.py
+    - data/training03
+    - ../36_tree_density/data/model-training/schema.json
+    outs:
+    - data/training04:
+        persist: true
+  validate04:
+    cmd: python validate04.py
+    deps:
+    - validate04.py
+    - data/training04
+    outs:
+    - results04/offline-check.json
+  audit_startup04:
+    cmd: python audit_startup04.py
+    deps:
+    - audit_startup04.py
+    outs:
+    - data/startup-audit04
+  collect04:
+    cmd: python collect04.py
+    deps:
+    - collect04.py
+    outs:
+    - data/training04-results:
+        persist: true
