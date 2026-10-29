@@ -1,0 +1,18 @@
+stages:
+  prepare:
+    cmd: python prepare.py && python package.py
+    deps:
+    - prepare.py
+    - objective.py
+    - package.py
+    - cloud_check.py
+    outs:
+    - data/training01:
+        persist: true
+  validate:
+    cmd: python validate.py
+    deps:
+    - validate.py
+    - data/training01
+    outs:
+    - results/offline-check.json

@@ -1,0 +1,44 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python prepare.py && python package.py
+    deps:
+    - path: cloud_check.py
+      hash: md5
+      md5: f325483c7bf3f1a2b5bac50a796f94d5
+      size: 3772
+    - path: objective.py
+      hash: md5
+      md5: e5db8f2b56171e8fed946f5634139041
+      size: 698
+    - path: package.py
+      hash: md5
+      md5: 3d37cbdfe9c08ad158388007bd648d9c
+      size: 2216
+    - path: prepare.py
+      hash: md5
+      md5: 97c14f7834fe5092f070cc818f24bc2a
+      size: 5248
+    outs:
+    - path: data/training01
+      hash: md5
+      md5: a896db6e8fd514f9e6b408d2e49ac4a5.dir
+      size: 11168079
+      nfiles: 14
+  validate:
+    cmd: python validate.py
+    deps:
+    - path: data/training01
+      hash: md5
+      md5: a896db6e8fd514f9e6b408d2e49ac4a5.dir
+      size: 11168079
+      nfiles: 14
+    - path: validate.py
+      hash: md5
+      md5: b8c4557b6798140aa8caa3b1f65b51a6
+      size: 1887
+    outs:
+    - path: results/offline-check.json
+      hash: md5
+      md5: 51c356ee81d1259492d9d87f16a104cd
+      size: 197

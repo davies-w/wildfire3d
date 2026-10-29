@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 71.6,
+  "reserved_usd": 31.584692000000004,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -2888,10 +2888,14 @@
     },
     "density36-raw-verification-transfer": {
       "state": "reserved_before_upload",
-      "allowance_usd": 20,
+      "allowance_usd": 3.984692000000003,
       "reserved_unix": 1793047096.648633,
-      "scope": "At most160GiB total external archive reads at0.12USD/GiB plus0.80 operations cushion; 2GiB allowance inside byte cap for prior duplicate timestamp reads",
-      "source": "https://cloud.google.com/storage/pricing#network-pricing"
+      "scope": "Remaining part of original20USD maximum for total campaign bucket downloads/operations within160GiB. Already-posted exact bucket Download Worldwide SKU rows wholly after reservation start consume the envelope; mixed first-day row and operation charges are not deducted. Bucket/time accounting, not per-object billing attribution.",
+      "source": "https://cloud.google.com/storage/pricing#network-pricing",
+      "original_allowance_usd": 20.0,
+      "posted_download_overlap_usd": 16.015307999999997,
+      "accounting_stage": "remaining_envelope_after_already_posted_downloads",
+      "posted_snapshot_sha256": "2730f847b8d02583b29a6b99bc290c504bde657af416ab68d27a24331a566b4c"
     },
     "x36-density-032-r1": {
       "state": "completed_reconciled",
@@ -3049,11 +3053,13 @@
       "cost_already_in_project_estimate": true
     },
     "density36-flex-queue01": {
-      "state": "submitted",
+      "state": "cancelled_reconciled",
       "allowance_usd": 40,
       "reserved_unix": 1793123825.800791,
       "scope": "User-authorized fixed remaining rotations1..9, matched plain/gated, Flex-start sequential queue; per-pair15.2 gate, 24h allocation wait, no automatic retries",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-flex-queue01/executions/3c947765-50a4-4677-81d1-996cae5d47e0"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-flex-queue01/executions/3c947765-50a4-4677-81d1-996cae5d47e0",
+      "release_evidence": "experiments/37_integral_objective/results/flex-reservation-release.json",
+      "released_utc": "2026-10-29T04:47:19.999465+00:00"
     },
     "density36-exposure-pilot01": {
       "state": "terminal_no_compute_allocation",
@@ -3370,6 +3376,14 @@
       },
       "historical_allowance_usd": 1.3,
       "terminal_evidence": "experiments/36_tree_density/results/canonical-pilot03-status.json"
+    },
+    "integral37-training01": {
+      "state": "submitted",
+      "allowance_usd": 16,
+      "reserved_unix": 1793250567.066721,
+      "scope": "Single gated integral-objective rotation0, same8 training folds,13h VM max at1.20/h plus0.40 margin, no automatic retries",
+      "workflow": "fds-gpu37-integral01",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu37-integral01/executions/f851278d-ea30-4b26-8ddf-c417259b8a95"
     }
   },
   "recycle_reservations": true,
@@ -3379,16 +3393,14 @@
   "accounting": {
     "billing_export_status": "posted_costs_subject_to_adjustment",
     "posted_source": "BigQuery detailed export",
-    "as_of_utc": "2026-10-28T19:38:45.575214+00:00",
+    "as_of_utc": "2026-10-29T04:43:39.763590+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
-    "project_posted_comparison_usd": 65.669873,
+    "project_posted_comparison_usd": 65.72543,
     "project_compute_runtime_estimate_usd": 46.624480200489714,
     "shared_cost_estimate_usd": 1.26,
-    "spend_estimate_usd": 66.32892634166666,
-    "unposted_compute_after_export_usd": 0.6590533416666666,
-    "unposted_resources": [
-      "fds-gpu36-canonica-86b105c5-a1f9-40600-group0-0-lpxf"
-    ],
+    "spend_estimate_usd": 65.72543,
+    "unposted_compute_after_export_usd": 0,
+    "unposted_resources": [],
     "matched_vms": 357,
     "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
     "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. East4 and West4 G2 use a conservative1.20USD/VM-hour bound. N1 with exactly one T4 and Flex-start use a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
@@ -3402,5 +3414,5 @@
       "g2-standard-4/STANDARD/us-west4": 1.2
     }
   },
-  "estimated_spend_usd": 66.32892634166666
+  "estimated_spend_usd": 65.72543
 }

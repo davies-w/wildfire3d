@@ -1,0 +1,13 @@
+# Experiment 37: integral-objective gated GRU
+
+Train the unchanged 5,895-parameter stride-one gated GRU on rotation0: eight training folds (1,662 histories), one validation fold (210), one test fold (208). The four-sample input history and 32-number recurrent memory are unchanged. Curriculum predicts 1/8/16/32 future steps at epochs1/21/41/61; all valid stride-one windows. AdamW LR0.0003, weight decay0.0001, clipping1, batch256, minimum100 maximum400 epochs, patience30 remain unchanged.
+
+The new state loss averages four physical-space absolute error integrals, each divided by the simulation's full-sequence max-minus-min range and window duration. Integrals use actual time intervals and exact piecewise-linear zero crossings. All ranges are positive; no silent denominator floor. Configuration replicas receive inverse-count weighting. Old active/quiet reweighting is removed. Gate BCE supervision remains with coefficient0.1 and is time-weighted within each window. Its relative influence changes with the new state-loss scale; startup records both components, without tuning on test results.
+
+Training windows start with actual simulation history and detached actual-prefix recurrent memory, then feed predictions back for up to32 steps. This is not full180s backpropagation. Validation selection now minimizes the mean of all four full-sequence range-normalized absolute integrals. The selected checkpoint freezes before test evaluation. Previously examined test data is reused for a matched exploratory comparison, not pristine confirmation.
+
+The existing published models and pages are preserved. No new simulation or local optimizer execution. Dataset is the same simplified FDS study; this experiment does not establish physical validity. Gas is mass-release rate, heating is an index, not heat energy.
+
+Cloud execution: fds-gpu37-integral01, one g2-standard-4 L4, us-west4-a/c, private integral37/training01 inputs. Startup checks actual-loss backward timing and nonempty optimizer/RNG next-update replay; those probe weights are discarded. Worst-case timing must fit before actual fitting starts. Every epoch preserves model, optimizer, RNG, history and selection state. Soft training deadline12.5h, task12.75h, VM13h, totalworkflow13.5h, allocationwait15min; zero automatic retries. Deadline checkpoint retained for diagnosed bounded continuation only. Maximum reservation$16 based on conservative$1.20/VM-hour plus$0.40 margin. No immediate capacity guarantee.
+
+Run order: prepare.py, package.py, validate.py, launch.py (one-time guarded submission). See results/execution.json for actual submission identity. A submitted workflow is not a successful training result. DVC archive uses private mirror only.
