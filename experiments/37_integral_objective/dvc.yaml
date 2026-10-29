@@ -77,3 +77,11 @@ stages:
     - results/training03-collected.json
     outs:
     - data/analysis
+  build_public:
+    cmd: python build_public.py
+    deps:
+    - build_public.py
+    - data/analysis
+    outs:
+    - data/public:
+        persist: true

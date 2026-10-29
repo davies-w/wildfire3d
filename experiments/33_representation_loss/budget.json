@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 52.384692,
+  "reserved_usd": 15.584692000000002,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -3366,24 +3366,32 @@
       "workflow": "fds-gpu36-canonical03",
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu36-canonical03/executions/ff3e1d32-cce1-46d5-8c75-50fac50117eb",
       "cost": {
-        "stage": "runtime_estimate",
-        "usd": 0.6590533416666666,
-        "vm_hours": 0.5492111180555556,
-        "scope": "compute only; shared cost at project level",
-        "resources": [
-          "fds-gpu36-canonica-86b105c5-a1f9-40600-group0-0-lpxf"
-        ]
+        "stage": "posted_billing_subject_to_adjustment",
+        "usd": 0.44250200000000006,
+        "scope": "matched detailed-export resource rows; shared/unattributed costs separate",
+        "resource_rows": 24
       },
       "historical_allowance_usd": 1.3,
       "terminal_evidence": "experiments/36_tree_density/results/canonical-pilot03-status.json"
     },
     "integral37-training01": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 16,
       "reserved_unix": 1793250567.066721,
       "scope": "Single gated integral-objective rotation0, same8 training folds,13h VM max at1.20/h plus0.40 margin, no automatic retries",
       "workflow": "fds-gpu37-integral01",
-      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu37-integral01/executions/f851278d-ea30-4b26-8ddf-c417259b8a95"
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu37-integral01/executions/f851278d-ea30-4b26-8ddf-c417259b8a95",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 0.059231381,
+        "vm_hours": 0.04935948416666667,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-gpu37-integral-0d947e6a-68d7-42ba0-group0-0-m5ch"
+        ]
+      },
+      "historical_allowance_usd": 16,
+      "terminal_evidence": "experiments/37_integral_objective/results/terminal-job-status.json"
     },
     "integral37-training02": {
       "state": "cancelled_reassigned",
@@ -3399,13 +3407,24 @@
       }
     },
     "integral37-training03": {
-      "state": "submitted",
+      "state": "completed_reconciled",
       "allowance_usd": 20.8,
       "reserved_unix": 1793255410.2365382,
       "scope": "Single gated integral-objective rotation0, same8 training folds,16.5h VM max at1.20/h plus0.40 margin, no automatic retries",
       "workflow": "fds-gpu37-integral03",
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu37-integral03/executions/ae913ca2-3ed0-41a8-86bb-94131eef11f5",
-      "supervisor_execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu37-integral03-wait/executions/9cb6f076-0cd2-48f7-96f1-18ca035a54ec"
+      "supervisor_execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu37-integral03-wait/executions/9cb6f076-0cd2-48f7-96f1-18ca035a54ec",
+      "cost": {
+        "stage": "runtime_estimate",
+        "usd": 4.129285464,
+        "vm_hours": 3.44107122,
+        "scope": "compute only; shared cost at project level",
+        "resources": [
+          "fds-gpu37-integral-fb574bb5-9d63-4e740-group0-0-hvgj"
+        ]
+      },
+      "historical_allowance_usd": 20.8,
+      "terminal_evidence": "experiments/37_integral_objective/data/training03-results/job-status.json"
     }
   },
   "recycle_reservations": true,
@@ -3415,15 +3434,15 @@
   "accounting": {
     "billing_export_status": "posted_costs_subject_to_adjustment",
     "posted_source": "BigQuery detailed export",
-    "as_of_utc": "2026-10-29T04:43:39.763590+00:00",
+    "as_of_utc": "2026-10-29T15:51:51.031740+00:00",
     "status": "runtime_estimate_pending_per_resource_billing",
-    "project_posted_comparison_usd": 65.72543,
-    "project_compute_runtime_estimate_usd": 46.624480200489714,
+    "project_posted_comparison_usd": 66.263688,
+    "project_compute_runtime_estimate_usd": 50.812997045489716,
     "shared_cost_estimate_usd": 1.26,
-    "spend_estimate_usd": 65.72543,
+    "spend_estimate_usd": 66.263688,
     "unposted_compute_after_export_usd": 0,
     "unposted_resources": [],
-    "matched_vms": 357,
+    "matched_vms": 359,
     "scope": "Entire wildfire project since Oct15, including experiments predating32; conservative broader scope than campaign",
     "limitations": "VM successful-insert completion to delete request is approximate allocation time; preemption/startup accounting differs. East4 and West4 G2 use a conservative1.20USD/VM-hour bound. N1 with exactly one T4 and Flex-start use a conservative0.80USD/VM-hour upper estimate until exact SKU/posted resource charges are reconciled; no discount is assumed. Spot rates estimated from rounded posted SKU amounts. Shared costs use currently posted disk/IP/workflow totals. Not invoice or per-job actual charges. Compare full runtime/shared estimate against posted plus only entirely post-cutoff VM allocations; never add overlapping totals. Unposted shared costs and partial-period billing remain uncertain.",
     "rates_usd_per_vm_hour": {
@@ -3436,5 +3455,5 @@
       "g2-standard-4/STANDARD/us-west4": 1.2
     }
   },
-  "estimated_spend_usd": 65.72543
+  "estimated_spend_usd": 66.263688
 }

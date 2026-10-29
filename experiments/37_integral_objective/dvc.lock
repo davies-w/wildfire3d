@@ -149,3 +149,56 @@ stages:
       md5: 287959a9d9d9f5749f3b8aed4ddc4886.dir
       size: 1179
       nfiles: 6
+  collect:
+    cmd: python collect.py
+    deps:
+    - path: collect.py
+      hash: md5
+      md5: 46e4a027ccf567f0d80c5c73c7b74f21
+      size: 6213
+    outs:
+    - path: data/training03-results
+      hash: md5
+      md5: b6a610ee4a4bccc5f4ca40d160dbc1a0.dir
+      size: 104280511
+      nfiles: 447
+  analyze:
+    cmd: python analyze.py
+    deps:
+    - path: analyze.py
+      hash: md5
+      md5: 40848277bbb5cf5faf7270423ef63646
+      size: 3200
+    - path: data/training03-results
+      hash: md5
+      md5: b6a610ee4a4bccc5f4ca40d160dbc1a0.dir
+      size: 104280511
+      nfiles: 447
+    - path: results/training03-collected.json
+      hash: md5
+      md5: 41ca66620ce5362c145550b062d0a17c
+      size: 328
+    outs:
+    - path: data/analysis
+      hash: md5
+      md5: 78ab952380a6877b65e71de629c1758b.dir
+      size: 6029970
+      nfiles: 1
+  build_public:
+    cmd: python build_public.py
+    deps:
+    - path: build_public.py
+      hash: md5
+      md5: 2bf31344931d61625462525a545ffa0d
+      size: 6537
+    - path: data/analysis
+      hash: md5
+      md5: 78ab952380a6877b65e71de629c1758b.dir
+      size: 6029970
+      nfiles: 1
+    outs:
+    - path: data/public
+      hash: md5
+      md5: c944c3e79b6557852606f521e5670e2e.dir
+      size: 12378151
+      nfiles: 5

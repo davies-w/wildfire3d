@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "cleanup": {
+    "jobs": [],
+    "instances": [],
+    "disks": []
+  },
+  "removed_exact_conditions": [
+    {
+      "title": "integral37-training01-read",
+      "description": "Private integral objective training inputs and checkpoint verification",
+      "expression": "request.time < timestamp('2026-10-29T21:09:30Z') && resource.name.startsWith('projects/_/buckets/tmrw-wildfire-20261015-trial/objects/integral37/training01/')"
+    },
+    {
+      "title": "integral37-training02-read",
+      "description": "Private integral objective training inputs and checkpoint verification",
+      "expression": "request.time < timestamp('2026-10-30T01:30:38Z') && resource.name.startsWith('projects/_/buckets/tmrw-wildfire-20261015-trial/objects/integral37/training02/')"
+    },
+    {
+      "title": "integral37-training03-read",
+      "description": "Private integral objective training inputs and checkpoint verification",
+      "expression": "request.time < timestamp('2026-10-30T02:30:14Z') && resource.name.startsWith('projects/_/buckets/tmrw-wildfire-20261015-trial/objects/integral37/training03/')"
+    },
+    {
+      "title": "integral37-training03-wait-read",
+      "description": "User authorized wait-until-capacity; exact private experiment prefix only; remove after terminal collection",
+      "expression": "resource.name.startsWith('projects/_/buckets/tmrw-wildfire-20261015-trial/objects/integral37/training03/')"
+    }
+  ],
+  "raw_and_checkpoints_preserved": true,
+  "estimated_spend_usd": 66.263688,
+  "reserved_usd": 15.584692000000002,
+  "headroom_usd": 43.151619999999994,
+  "costs": {
+    "integral37-training01": {
+      "stage": "runtime_estimate",
+      "usd": 0.059231381,
+      "vm_hours": 0.04935948416666667,
+      "scope": "compute only; shared cost at project level",
+      "resources": [
+        "fds-gpu37-integral-0d947e6a-68d7-42ba0-group0-0-m5ch"
+      ]
+    },
+    "integral37-training03": {
+      "stage": "runtime_estimate",
+      "usd": 4.129285464,
+      "vm_hours": 3.44107122,
+      "scope": "compute only; shared cost at project level",
+      "resources": [
+        "fds-gpu37-integral-fb574bb5-9d63-4e740-group0-0-hvgj"
+      ]
+    }
+  }
+}
