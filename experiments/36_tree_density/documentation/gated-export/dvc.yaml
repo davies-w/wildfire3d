@@ -1,0 +1,9 @@
+stages:
+  export:
+    cmd: ../../.venv/bin/python model_evaluation/export_gated_explanation.py
+    deps:
+    - documentation/gated-gru-explanation.md
+    - model_evaluation/export_gated_explanation.py
+    outs:
+    - data/gated-gru-explanation
+    wdir: ../..

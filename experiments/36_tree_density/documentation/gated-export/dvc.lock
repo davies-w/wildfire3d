@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  export:
+    cmd: ../../.venv/bin/python model_evaluation/export_gated_explanation.py
+    deps:
+    - path: documentation/gated-gru-explanation.md
+      hash: md5
+      md5: 0c2fd757551906b2599ea44ba02a4345
+      size: 20107
+    - path: model_evaluation/export_gated_explanation.py
+      hash: md5
+      md5: 88307f9a6a7a64baabac7b8cb6f4d7c0
+      size: 5448
+    outs:
+    - path: data/gated-gru-explanation
+      hash: md5
+      md5: 296b2ef6dd62bd8897339b13cd1fa63f.dir
+      size: 27872
+      nfiles: 1
