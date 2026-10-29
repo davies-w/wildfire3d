@@ -1,0 +1,7 @@
+from pathlib import Path
+import shutil
+R=Path(__file__).resolve().parent
+out=R/'data/provenance04';out.mkdir(exist_ok=True)
+for p in (R/'results04').glob('*.json'):shutil.copy2(p,out/p.name)
+for p in (R/'results').glob('training04-*.json'):shutil.copy2(p,out/p.name)
+shutil.copy2(R.parent/'33_representation_loss/budget.json',out/'budget.json')

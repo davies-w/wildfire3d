@@ -303,3 +303,78 @@ stages:
       md5: f5247b594b3568a836495c5adb149fc1.dir
       size: 1179
       nfiles: 6
+  collect04:
+    cmd: python collect04.py
+    deps:
+    - path: collect04.py
+      hash: md5
+      md5: 8f1d692da8817ea7ccdc8a5645d08828
+      size: 6312
+    outs:
+    - path: data/training04-results
+      hash: md5
+      md5: b074f5f38b5e5c1c3ac20a6a2dd8340a.dir
+      size: 69630927
+      nfiles: 347
+  analyze04:
+    cmd: python analyze04.py
+    deps:
+    - path: analyze04.py
+      hash: md5
+      md5: 4d0b963345e0418ad0316f3777abbc79
+      size: 2788
+    - path: data/training04-results
+      hash: md5
+      md5: b074f5f38b5e5c1c3ac20a6a2dd8340a.dir
+      size: 69630927
+      nfiles: 347
+    - path: data/training04/schema.json
+      hash: md5
+      md5: 380ee350d7855a4cd24427414cd38398
+      size: 418638
+    outs:
+    - path: data/analysis04
+      hash: md5
+      md5: cc803fa62407e5c842596dc4d6591f1b.dir
+      size: 6051062
+      nfiles: 1
+  build_public04:
+    cmd: python build_public04.py && python add_to_full_sequence04.py
+    deps:
+    - path: add_to_full_sequence04.py
+      hash: md5
+      md5: fda608d05455bdc34d68a5f404a1b9e2
+      size: 3329
+    - path: build_public04.py
+      hash: md5
+      md5: 6b5eb04b648a4c16309a55ffdabebcf4
+      size: 6961
+    - path: data/analysis04
+      hash: md5
+      md5: cc803fa62407e5c842596dc4d6591f1b.dir
+      size: 6051062
+      nfiles: 1
+    outs:
+    - path: data/public04
+      hash: md5
+      md5: 7ea673d157f761507394d4ab9016af8d.dir
+      size: 12447910
+      nfiles: 3
+    - path: data/scorecard-addition04
+      hash: md5
+      md5: ccb6ff2ebec81a51054617265055fd9e.dir
+      size: 6435825
+      nfiles: 5
+  preserve04:
+    cmd: python preserve04.py
+    deps:
+    - path: preserve04.py
+      hash: md5
+      md5: 1531acafd423048e5e209aae62650cd7
+      size: 345
+    outs:
+    - path: data/provenance04
+      hash: md5
+      md5: 6acff1b849bf7db8dbab57aac7061041.dir
+      size: 562541
+      nfiles: 21

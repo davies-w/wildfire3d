@@ -132,3 +132,26 @@ stages:
     outs:
     - data/training04-results:
         persist: true
+  analyze04:
+    cmd: python analyze04.py
+    deps:
+    - analyze04.py
+    - data/training04-results
+    - data/training04/schema.json
+    outs:
+    - data/analysis04
+  build_public04:
+    cmd: python build_public04.py && python add_to_full_sequence04.py
+    deps:
+    - build_public04.py
+    - add_to_full_sequence04.py
+    - data/analysis04
+    outs:
+    - data/public04
+    - data/scorecard-addition04
+  preserve04:
+    cmd: python preserve04.py
+    deps:
+    - preserve04.py
+    outs:
+    - data/provenance04
