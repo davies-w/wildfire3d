@@ -1,0 +1,12 @@
+stages:
+  annotate:
+    wdir: ../..
+    cmd: ../../.venv/bin/python model_evaluation/add_stride_integral.py
+    deps:
+      - model_evaluation/add_stride_integral.py
+      - data/full-sequence/stridegated.json
+      - data/full-sequence-public/stridegated.html
+      - data/full-sequence-public/index.html
+      - data/learning/sequences.npz
+    outs:
+      - data/stride-integral

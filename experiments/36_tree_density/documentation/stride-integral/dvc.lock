@@ -1,0 +1,31 @@
+schema: '2.0'
+stages:
+  annotate:
+    cmd: ../../.venv/bin/python model_evaluation/add_stride_integral.py
+    deps:
+    - path: data/full-sequence-public/index.html
+      hash: md5
+      md5: 8e674e9a2861afa4b25059e1f5af9917
+      size: 25634
+    - path: data/full-sequence-public/stridegated.html
+      hash: md5
+      md5: 61530c280d60d4087056a88b63f947e2
+      size: 6188228
+    - path: data/full-sequence/stridegated.json
+      hash: md5
+      md5: 0405381e9ec47926d810521e9a341089
+      size: 4883922
+    - path: data/learning/sequences.npz
+      hash: md5
+      md5: 432e6904ee4c70cba22e2b72ae96809a
+      size: 3238491
+    - path: model_evaluation/add_stride_integral.py
+      hash: md5
+      md5: 754fcf6c4b4e5777a49b069f380637a7
+      size: 5794
+    outs:
+    - path: data/stride-integral
+      hash: md5
+      md5: 44eb5a6edaed7f13fa5ee54770ecadd1.dir
+      size: 6445676
+      nfiles: 3
