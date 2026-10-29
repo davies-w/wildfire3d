@@ -56,3 +56,16 @@ stages:
     outs:
     - data/wait-supervisor:
         persist: true
+  audit_startup:
+    cmd: python audit_startup.py
+    deps:
+    - audit_startup.py
+    outs:
+    - data/startup-audit
+  collect:
+    cmd: python collect.py
+    deps:
+    - collect.py
+    outs:
+    - data/training03-results:
+        persist: true
