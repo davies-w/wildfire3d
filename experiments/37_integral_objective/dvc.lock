@@ -202,3 +202,21 @@ stages:
       md5: c944c3e79b6557852606f521e5670e2e.dir
       size: 12378151
       nfiles: 5
+  add_full_sequence:
+    cmd: python add_to_full_sequence.py
+    deps:
+    - path: add_to_full_sequence.py
+      hash: md5
+      md5: da69147d63bfe931d4a05c518fa83a46
+      size: 3275
+    - path: data/public
+      hash: md5
+      md5: c944c3e79b6557852606f521e5670e2e.dir
+      size: 12378151
+      nfiles: 5
+    outs:
+    - path: data/scorecard-addition
+      hash: md5
+      md5: c977fcd3793ed6d48d5de1b9aa313710.dir
+      size: 12670795
+      nfiles: 6

@@ -85,3 +85,11 @@ stages:
     outs:
     - data/public:
         persist: true
+  add_full_sequence:
+    cmd: python add_to_full_sequence.py
+    deps:
+    - add_to_full_sequence.py
+    - data/public
+    outs:
+    - data/scorecard-addition:
+        persist: true
