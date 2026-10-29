@@ -69,3 +69,11 @@ stages:
     outs:
     - data/training03-results:
         persist: true
+  analyze:
+    cmd: python analyze.py
+    deps:
+    - analyze.py
+    - data/training03-results
+    - results/training03-collected.json
+    outs:
+    - data/analysis
