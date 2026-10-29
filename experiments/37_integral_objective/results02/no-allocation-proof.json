@@ -1,0 +1,2168 @@
+{
+  "passed": true,
+  "insert_operations": 6,
+  "all_terminal_stockout": true,
+  "successful_allocations": 0,
+  "source_events": [
+    {
+      "insertId": "jghl6ad16js",
+      "labels": {
+        "compute.googleapis.com/root_trigger_id": "50278d62-b9b2-4387-a76d-060b20f4cc8c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "id": "operation-1793252645200-65ef42ae8e154-3de52e9d-a1c7c58e",
+        "last": true,
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert"
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {}
+        },
+        "resourceName": "projects/587909259768/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+        "serviceName": "compute.googleapis.com",
+        "status": {
+          "code": 8,
+          "details": [
+            {
+              "@type": "type.googleapis.com/google.protobuf.Struct",
+              "value": {
+                "errorInfo": [
+                  {
+                    "domain": "compute.googleapis.com",
+                    "metadata": {
+                      "attachment": "nvidia-l4:1",
+                      "vmType": "g2-standard-4",
+                      "zone": "us-west4-a",
+                      "zonesAvailable": ""
+                    },
+                    "reason": "resource_availability"
+                  }
+                ],
+                "help": [
+                  {
+                    "links": [
+                      {
+                        "description": "Troubleshooting documentation",
+                        "url": "https://cloud.google.com/compute/docs/resource-error"
+                      }
+                    ]
+                  }
+                ],
+                "localizedMessage": [
+                  {
+                    "locale": "en-US",
+                    "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-west4-a zone. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                  }
+                ],
+                "zoneResourcePoolExhaustedWithDetails": {
+                  "details": "NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)",
+                  "zoneResource": {
+                    "project": {
+                      "canonicalProjectId": "587909259768"
+                    },
+                    "resourceName": "us-west4-a",
+                    "resourceType": "ZONE",
+                    "scope": {
+                      "scopeName": "global",
+                      "scopeType": "GLOBAL"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "message": "ZONE_RESOURCE_POOL_EXHAUSTED"
+        }
+      },
+      "receiveTimestamp": "2026-10-29T05:44:15.493169080Z",
+      "resource": {
+        "labels": {
+          "instance_id": "9183245161160729546",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-west4-a"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "ERROR",
+      "timestamp": "2026-10-29T05:44:15.183721Z"
+    },
+    {
+      "insertId": "-i9rq7jdge7m",
+      "labels": {
+        "compute.googleapis.com/instance_group_manager/name": "fds-gpu37-integral-685a6458-9bc4-493e0-group0-0",
+        "compute.googleapis.com/instance_group_manager/region": "us-west4",
+        "compute.googleapis.com/root_trigger_id": "50278d62-b9b2-4387-a76d-060b20f4cc8c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "first": true,
+        "id": "operation-1793252645200-65ef42ae8e154-3de52e9d-a1c7c58e",
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "authorizationInfo": [
+          {
+            "granted": true,
+            "permission": "compute.instances.create",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.disks.create",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.disks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.disks.setLabels",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.disks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.subnetworks.use",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+              "service": "compute",
+              "type": "compute.subnetworks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.subnetworks.useExternalIp",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+              "service": "compute",
+              "type": "compute.subnetworks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setMetadata",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setLabels",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setServiceAccount",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          }
+        ],
+        "metadata": {
+          "usedResources": {
+            "attachedDisks": [
+              {
+                "isBootDisk": true,
+                "sourceImage": "https://www.googleapis.com/compute/v1/projects/898310590178/global/images/batch-cos-stable-official-20261016-00-p00",
+                "sourceImageId": "6583276198744835888"
+              }
+            ]
+          }
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert",
+          "disks": [
+            {
+              "autoDelete": true,
+              "boot": true,
+              "deviceName": "boot",
+              "initializeParams": {
+                "diskSizeGb": "60",
+                "diskType": "projects/587909259768/zones/us-west4-a/diskTypes/pd-balanced",
+                "labels": [
+                  {
+                    "key": "batch-job-id",
+                    "value": "fds-gpu37-integral02"
+                  },
+                  {
+                    "key": "batch-job-uid",
+                    "value": "fds-gpu37-integral-685a6458-9bc4-493e0"
+                  },
+                  {
+                    "key": "batch-node",
+                    "value": ""
+                  },
+                  {
+                    "key": "goog-batch-node",
+                    "value": ""
+                  },
+                  {
+                    "key": "trial_id",
+                    "value": "gpu37-integral02"
+                  }
+                ],
+                "onUpdateAction": "RECREATE_DISK_IF_SOURCE_CHANGED",
+                "sourceImage": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261016-00-p00"
+              },
+              "interface": "SCSI",
+              "mode": "READ_WRITE",
+              "type": "PERSISTENT"
+            }
+          ],
+          "guestAccelerators": [
+            {
+              "acceleratorCount": "1",
+              "acceleratorType": "projects/587909259768/zones/us-west4-a/acceleratorTypes/nvidia-l4"
+            }
+          ],
+          "labels": [
+            {
+              "key": "batch-job-id",
+              "value": "fds-gpu37-integral02"
+            },
+            {
+              "key": "batch-job-uid",
+              "value": "fds-gpu37-integral-685a6458-9bc4-493e0"
+            },
+            {
+              "key": "batch-node",
+              "value": ""
+            },
+            {
+              "key": "goog-batch-node",
+              "value": ""
+            },
+            {
+              "key": "trial_id",
+              "value": "gpu37-integral02"
+            }
+          ],
+          "machineType": "projects/587909259768/zones/us-west4-a/machineTypes/g2-standard-4",
+          "name": "fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+          "networkInterfaces": [
+            {
+              "accessConfigs": [
+                {
+                  "networkTier": "PREMIUM",
+                  "type": "ONE_TO_ONE_NAT"
+                }
+              ],
+              "name": "nic0",
+              "network": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+              "subnetwork": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4"
+            }
+          ],
+          "requestId": "dd6475ad-fd4f-39b6-81dc-8a3bb9008f53",
+          "scheduling": {
+            "automaticRestart": false,
+            "onHostMaintenance": "TERMINATE",
+            "preemptible": false,
+            "provisioningModel": "STANDARD"
+          },
+          "serviceAccounts": [
+            {
+              "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            }
+          ]
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {
+            "auth": {},
+            "time": "2026-10-29T05:44:05.873838Z"
+          }
+        },
+        "resourceLocation": {
+          "currentLocations": [
+            "us-west4-a"
+          ]
+        },
+        "resourceName": "projects/587909259768/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+        "response": {
+          "@type": "type.googleapis.com/operation",
+          "clientOperationId": "dd6475ad-fd4f-39b6-81dc-8a3bb9008f53",
+          "id": "3426562325234017226",
+          "insertTime": "2026-10-28T22:44:05.739-07:00",
+          "name": "operation-1793252645200-65ef42ae8e154-3de52e9d-a1c7c58e",
+          "operationType": "insert",
+          "progress": "0",
+          "selfLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/operations/operation-1793252645200-65ef42ae8e154-3de52e9d-a1c7c58e",
+          "selfLinkWithId": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/operations/3426562325234017226",
+          "startTime": "2026-10-28T22:44:05.825-07:00",
+          "status": "RUNNING",
+          "targetId": "9183245161160729546",
+          "targetLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+          "user": "587909259768@cloudservices.gserviceaccount.com",
+          "zone": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a"
+        },
+        "serviceName": "compute.googleapis.com",
+        "status": {}
+      },
+      "receiveTimestamp": "2026-10-29T05:44:05.898850931Z",
+      "resource": {
+        "labels": {
+          "instance_id": "9183245161160729546",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-west4-a"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "NOTICE",
+      "timestamp": "2026-10-29T05:44:04.967879Z"
+    },
+    {
+      "insertId": "-e3z9dgd2a84",
+      "labels": {
+        "compute.googleapis.com/root_trigger_id": "50278d62-b9b2-4387-a76d-060b20f4cc8c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "id": "operation-1793252334077-65ef4185d8554-cb34cdc4-2ebd0ae4",
+        "last": true,
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert"
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {}
+        },
+        "resourceName": "projects/587909259768/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+        "serviceName": "compute.googleapis.com",
+        "status": {
+          "code": 8,
+          "details": [
+            {
+              "@type": "type.googleapis.com/google.protobuf.Struct",
+              "value": {
+                "errorInfo": [
+                  {
+                    "domain": "compute.googleapis.com",
+                    "metadata": {
+                      "attachment": "nvidia-l4:1",
+                      "vmType": "g2-standard-4",
+                      "zone": "us-west4-a",
+                      "zonesAvailable": ""
+                    },
+                    "reason": "resource_availability"
+                  }
+                ],
+                "help": [
+                  {
+                    "links": [
+                      {
+                        "description": "Troubleshooting documentation",
+                        "url": "https://cloud.google.com/compute/docs/resource-error"
+                      }
+                    ]
+                  }
+                ],
+                "localizedMessage": [
+                  {
+                    "locale": "en-US",
+                    "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-west4-a zone. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                  }
+                ],
+                "zoneResourcePoolExhaustedWithDetails": {
+                  "details": "NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)",
+                  "zoneResource": {
+                    "project": {
+                      "canonicalProjectId": "587909259768"
+                    },
+                    "resourceName": "us-west4-a",
+                    "resourceType": "ZONE",
+                    "scope": {
+                      "scopeName": "global",
+                      "scopeType": "GLOBAL"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "message": "ZONE_RESOURCE_POOL_EXHAUSTED"
+        }
+      },
+      "receiveTimestamp": "2026-10-29T05:39:00.836358534Z",
+      "resource": {
+        "labels": {
+          "instance_id": "5117059528794268929",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-west4-a"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "ERROR",
+      "timestamp": "2026-10-29T05:38:59.816370Z"
+    },
+    {
+      "insertId": "qeaonfdn5w0",
+      "labels": {
+        "compute.googleapis.com/instance_group_manager/name": "fds-gpu37-integral-685a6458-9bc4-493e0-group0-0",
+        "compute.googleapis.com/instance_group_manager/region": "us-west4",
+        "compute.googleapis.com/root_trigger_id": "50278d62-b9b2-4387-a76d-060b20f4cc8c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "first": true,
+        "id": "operation-1793252334077-65ef4185d8554-cb34cdc4-2ebd0ae4",
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "authorizationInfo": [
+          {
+            "granted": true,
+            "permission": "compute.instances.create",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.disks.create",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.disks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.disks.setLabels",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.disks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.subnetworks.use",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+              "service": "compute",
+              "type": "compute.subnetworks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.subnetworks.useExternalIp",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+              "service": "compute",
+              "type": "compute.subnetworks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setMetadata",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setLabels",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setServiceAccount",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          }
+        ],
+        "metadata": {
+          "usedResources": {
+            "attachedDisks": [
+              {
+                "isBootDisk": true,
+                "sourceImage": "https://www.googleapis.com/compute/v1/projects/898310590178/global/images/batch-cos-stable-official-20261016-00-p00",
+                "sourceImageId": "6583276198744835888"
+              }
+            ]
+          }
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert",
+          "disks": [
+            {
+              "autoDelete": true,
+              "boot": true,
+              "deviceName": "boot",
+              "initializeParams": {
+                "diskSizeGb": "60",
+                "diskType": "projects/587909259768/zones/us-west4-a/diskTypes/pd-balanced",
+                "labels": [
+                  {
+                    "key": "batch-job-id",
+                    "value": "fds-gpu37-integral02"
+                  },
+                  {
+                    "key": "batch-job-uid",
+                    "value": "fds-gpu37-integral-685a6458-9bc4-493e0"
+                  },
+                  {
+                    "key": "batch-node",
+                    "value": ""
+                  },
+                  {
+                    "key": "goog-batch-node",
+                    "value": ""
+                  },
+                  {
+                    "key": "trial_id",
+                    "value": "gpu37-integral02"
+                  }
+                ],
+                "onUpdateAction": "RECREATE_DISK_IF_SOURCE_CHANGED",
+                "sourceImage": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261016-00-p00"
+              },
+              "interface": "SCSI",
+              "mode": "READ_WRITE",
+              "type": "PERSISTENT"
+            }
+          ],
+          "guestAccelerators": [
+            {
+              "acceleratorCount": "1",
+              "acceleratorType": "projects/587909259768/zones/us-west4-a/acceleratorTypes/nvidia-l4"
+            }
+          ],
+          "labels": [
+            {
+              "key": "batch-job-id",
+              "value": "fds-gpu37-integral02"
+            },
+            {
+              "key": "batch-job-uid",
+              "value": "fds-gpu37-integral-685a6458-9bc4-493e0"
+            },
+            {
+              "key": "batch-node",
+              "value": ""
+            },
+            {
+              "key": "goog-batch-node",
+              "value": ""
+            },
+            {
+              "key": "trial_id",
+              "value": "gpu37-integral02"
+            }
+          ],
+          "machineType": "projects/587909259768/zones/us-west4-a/machineTypes/g2-standard-4",
+          "name": "fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+          "networkInterfaces": [
+            {
+              "accessConfigs": [
+                {
+                  "networkTier": "PREMIUM",
+                  "type": "ONE_TO_ONE_NAT"
+                }
+              ],
+              "name": "nic0",
+              "network": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+              "subnetwork": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4"
+            }
+          ],
+          "requestId": "aa0c31f0-c7b3-30af-98c1-d7176b29756d",
+          "scheduling": {
+            "automaticRestart": false,
+            "onHostMaintenance": "TERMINATE",
+            "preemptible": false,
+            "provisioningModel": "STANDARD"
+          },
+          "serviceAccounts": [
+            {
+              "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            }
+          ]
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {
+            "auth": {},
+            "time": "2026-10-29T05:38:54.554064Z"
+          }
+        },
+        "resourceLocation": {
+          "currentLocations": [
+            "us-west4-a"
+          ]
+        },
+        "resourceName": "projects/587909259768/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+        "response": {
+          "@type": "type.googleapis.com/operation",
+          "clientOperationId": "aa0c31f0-c7b3-30af-98c1-d7176b29756d",
+          "id": "2248288354528355585",
+          "insertTime": "2026-10-28T22:38:54.460-07:00",
+          "name": "operation-1793252334077-65ef4185d8554-cb34cdc4-2ebd0ae4",
+          "operationType": "insert",
+          "progress": "0",
+          "selfLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/operations/operation-1793252334077-65ef4185d8554-cb34cdc4-2ebd0ae4",
+          "selfLinkWithId": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/operations/2248288354528355585",
+          "startTime": "2026-10-28T22:38:54.516-07:00",
+          "status": "RUNNING",
+          "targetId": "5117059528794268929",
+          "targetLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+          "user": "587909259768@cloudservices.gserviceaccount.com",
+          "zone": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a"
+        },
+        "serviceName": "compute.googleapis.com",
+        "status": {}
+      },
+      "receiveTimestamp": "2026-10-29T05:38:55.545464890Z",
+      "resource": {
+        "labels": {
+          "instance_id": "5117059528794268929",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-west4-a"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "NOTICE",
+      "timestamp": "2026-10-29T05:38:53.838017Z"
+    },
+    {
+      "insertId": "gxc52fd2d7g",
+      "labels": {
+        "compute.googleapis.com/root_trigger_id": "50278d62-b9b2-4387-a76d-060b20f4cc8c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "id": "operation-1793252124190-65ef40bdae706-8ab4eec4-0f420939",
+        "last": true,
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert"
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {}
+        },
+        "resourceName": "projects/587909259768/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+        "serviceName": "compute.googleapis.com",
+        "status": {
+          "code": 8,
+          "details": [
+            {
+              "@type": "type.googleapis.com/google.protobuf.Struct",
+              "value": {
+                "errorInfo": [
+                  {
+                    "domain": "compute.googleapis.com",
+                    "metadata": {
+                      "attachment": "nvidia-l4:1",
+                      "vmType": "g2-standard-4",
+                      "zone": "us-west4-a",
+                      "zonesAvailable": ""
+                    },
+                    "reason": "resource_availability"
+                  }
+                ],
+                "help": [
+                  {
+                    "links": [
+                      {
+                        "description": "Troubleshooting documentation",
+                        "url": "https://cloud.google.com/compute/docs/resource-error"
+                      }
+                    ]
+                  }
+                ],
+                "localizedMessage": [
+                  {
+                    "locale": "en-US",
+                    "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-west4-a zone. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                  }
+                ],
+                "zoneResourcePoolExhaustedWithDetails": {
+                  "details": "NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)",
+                  "zoneResource": {
+                    "project": {
+                      "canonicalProjectId": "587909259768"
+                    },
+                    "resourceName": "us-west4-a",
+                    "resourceType": "ZONE",
+                    "scope": {
+                      "scopeName": "global",
+                      "scopeType": "GLOBAL"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "message": "ZONE_RESOURCE_POOL_EXHAUSTED"
+        }
+      },
+      "receiveTimestamp": "2026-10-29T05:35:31.251132479Z",
+      "resource": {
+        "labels": {
+          "instance_id": "2078322673125910003",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-west4-a"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "ERROR",
+      "timestamp": "2026-10-29T05:35:30.228527Z"
+    },
+    {
+      "insertId": "nl5f3sdpvqc",
+      "labels": {
+        "compute.googleapis.com/instance_group_manager/name": "fds-gpu37-integral-685a6458-9bc4-493e0-group0-0",
+        "compute.googleapis.com/instance_group_manager/region": "us-west4",
+        "compute.googleapis.com/root_trigger_id": "50278d62-b9b2-4387-a76d-060b20f4cc8c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "first": true,
+        "id": "operation-1793252124190-65ef40bdae706-8ab4eec4-0f420939",
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "authorizationInfo": [
+          {
+            "granted": true,
+            "permission": "compute.instances.create",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.disks.create",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.disks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.disks.setLabels",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.disks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.subnetworks.use",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+              "service": "compute",
+              "type": "compute.subnetworks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.subnetworks.useExternalIp",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+              "service": "compute",
+              "type": "compute.subnetworks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setMetadata",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setLabels",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setServiceAccount",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          }
+        ],
+        "metadata": {
+          "usedResources": {
+            "attachedDisks": [
+              {
+                "isBootDisk": true,
+                "sourceImage": "https://www.googleapis.com/compute/v1/projects/898310590178/global/images/batch-cos-stable-official-20261016-00-p00",
+                "sourceImageId": "6583276198744835888"
+              }
+            ]
+          }
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert",
+          "disks": [
+            {
+              "autoDelete": true,
+              "boot": true,
+              "deviceName": "boot",
+              "initializeParams": {
+                "diskSizeGb": "60",
+                "diskType": "projects/587909259768/zones/us-west4-a/diskTypes/pd-balanced",
+                "labels": [
+                  {
+                    "key": "batch-job-id",
+                    "value": "fds-gpu37-integral02"
+                  },
+                  {
+                    "key": "batch-job-uid",
+                    "value": "fds-gpu37-integral-685a6458-9bc4-493e0"
+                  },
+                  {
+                    "key": "batch-node",
+                    "value": ""
+                  },
+                  {
+                    "key": "goog-batch-node",
+                    "value": ""
+                  },
+                  {
+                    "key": "trial_id",
+                    "value": "gpu37-integral02"
+                  }
+                ],
+                "onUpdateAction": "RECREATE_DISK_IF_SOURCE_CHANGED",
+                "sourceImage": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261016-00-p00"
+              },
+              "interface": "SCSI",
+              "mode": "READ_WRITE",
+              "type": "PERSISTENT"
+            }
+          ],
+          "guestAccelerators": [
+            {
+              "acceleratorCount": "1",
+              "acceleratorType": "projects/587909259768/zones/us-west4-a/acceleratorTypes/nvidia-l4"
+            }
+          ],
+          "labels": [
+            {
+              "key": "batch-job-id",
+              "value": "fds-gpu37-integral02"
+            },
+            {
+              "key": "batch-job-uid",
+              "value": "fds-gpu37-integral-685a6458-9bc4-493e0"
+            },
+            {
+              "key": "batch-node",
+              "value": ""
+            },
+            {
+              "key": "goog-batch-node",
+              "value": ""
+            },
+            {
+              "key": "trial_id",
+              "value": "gpu37-integral02"
+            }
+          ],
+          "machineType": "projects/587909259768/zones/us-west4-a/machineTypes/g2-standard-4",
+          "name": "fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+          "networkInterfaces": [
+            {
+              "accessConfigs": [
+                {
+                  "networkTier": "PREMIUM",
+                  "type": "ONE_TO_ONE_NAT"
+                }
+              ],
+              "name": "nic0",
+              "network": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+              "subnetwork": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4"
+            }
+          ],
+          "requestId": "4d664503-cbdb-3a74-a5b9-8dbe4292a923",
+          "scheduling": {
+            "automaticRestart": false,
+            "onHostMaintenance": "TERMINATE",
+            "preemptible": false,
+            "provisioningModel": "STANDARD"
+          },
+          "serviceAccounts": [
+            {
+              "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            }
+          ]
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {
+            "auth": {},
+            "time": "2026-10-29T05:35:24.676640Z"
+          }
+        },
+        "resourceLocation": {
+          "currentLocations": [
+            "us-west4-a"
+          ]
+        },
+        "resourceName": "projects/587909259768/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+        "response": {
+          "@type": "type.googleapis.com/operation",
+          "clientOperationId": "4d664503-cbdb-3a74-a5b9-8dbe4292a923",
+          "id": "2633396781807789555",
+          "insertTime": "2026-10-28T22:35:24.542-07:00",
+          "name": "operation-1793252124190-65ef40bdae706-8ab4eec4-0f420939",
+          "operationType": "insert",
+          "progress": "0",
+          "selfLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/operations/operation-1793252124190-65ef40bdae706-8ab4eec4-0f420939",
+          "selfLinkWithId": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/operations/2633396781807789555",
+          "startTime": "2026-10-28T22:35:24.627-07:00",
+          "status": "RUNNING",
+          "targetId": "2078322673125910003",
+          "targetLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+          "user": "587909259768@cloudservices.gserviceaccount.com",
+          "zone": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a"
+        },
+        "serviceName": "compute.googleapis.com",
+        "status": {}
+      },
+      "receiveTimestamp": "2026-10-29T05:35:25.571470872Z",
+      "resource": {
+        "labels": {
+          "instance_id": "2078322673125910003",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-west4-a"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "NOTICE",
+      "timestamp": "2026-10-29T05:35:23.945317Z"
+    },
+    {
+      "insertId": "ncfdp7d159k",
+      "labels": {
+        "compute.googleapis.com/root_trigger_id": "50278d62-b9b2-4387-a76d-060b20f4cc8c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "id": "operation-1793251981399-65ef40358173a-2ad0d15a-77e65d2e",
+        "last": true,
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert"
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {}
+        },
+        "resourceName": "projects/587909259768/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+        "serviceName": "compute.googleapis.com",
+        "status": {
+          "code": 8,
+          "details": [
+            {
+              "@type": "type.googleapis.com/google.protobuf.Struct",
+              "value": {
+                "errorInfo": [
+                  {
+                    "domain": "compute.googleapis.com",
+                    "metadata": {
+                      "attachment": "nvidia-l4:1",
+                      "vmType": "g2-standard-4",
+                      "zone": "us-west4-a",
+                      "zonesAvailable": ""
+                    },
+                    "reason": "resource_availability"
+                  }
+                ],
+                "help": [
+                  {
+                    "links": [
+                      {
+                        "description": "Troubleshooting documentation",
+                        "url": "https://cloud.google.com/compute/docs/resource-error"
+                      }
+                    ]
+                  }
+                ],
+                "localizedMessage": [
+                  {
+                    "locale": "en-US",
+                    "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-west4-a zone. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                  }
+                ],
+                "zoneResourcePoolExhaustedWithDetails": {
+                  "details": "NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)",
+                  "zoneResource": {
+                    "project": {
+                      "canonicalProjectId": "587909259768"
+                    },
+                    "resourceName": "us-west4-a",
+                    "resourceType": "ZONE",
+                    "scope": {
+                      "scopeName": "global",
+                      "scopeType": "GLOBAL"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "message": "ZONE_RESOURCE_POOL_EXHAUSTED"
+        }
+      },
+      "receiveTimestamp": "2026-10-29T05:33:08.060214766Z",
+      "resource": {
+        "labels": {
+          "instance_id": "7499313506602148962",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-west4-a"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "ERROR",
+      "timestamp": "2026-10-29T05:33:07.101974Z"
+    },
+    {
+      "insertId": "kay4szdtq9w",
+      "labels": {
+        "compute.googleapis.com/instance_group_manager/name": "fds-gpu37-integral-685a6458-9bc4-493e0-group0-0",
+        "compute.googleapis.com/instance_group_manager/region": "us-west4",
+        "compute.googleapis.com/root_trigger_id": "50278d62-b9b2-4387-a76d-060b20f4cc8c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "first": true,
+        "id": "operation-1793251981399-65ef40358173a-2ad0d15a-77e65d2e",
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "authorizationInfo": [
+          {
+            "granted": true,
+            "permission": "compute.instances.create",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.disks.create",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.disks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.disks.setLabels",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.disks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.subnetworks.use",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+              "service": "compute",
+              "type": "compute.subnetworks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.subnetworks.useExternalIp",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+              "service": "compute",
+              "type": "compute.subnetworks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setMetadata",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setLabels",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setServiceAccount",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          }
+        ],
+        "metadata": {
+          "usedResources": {
+            "attachedDisks": [
+              {
+                "isBootDisk": true,
+                "sourceImage": "https://www.googleapis.com/compute/v1/projects/898310590178/global/images/batch-cos-stable-official-20261016-00-p00",
+                "sourceImageId": "6583276198744835888"
+              }
+            ]
+          }
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert",
+          "disks": [
+            {
+              "autoDelete": true,
+              "boot": true,
+              "deviceName": "boot",
+              "initializeParams": {
+                "diskSizeGb": "60",
+                "diskType": "projects/587909259768/zones/us-west4-a/diskTypes/pd-balanced",
+                "labels": [
+                  {
+                    "key": "batch-job-id",
+                    "value": "fds-gpu37-integral02"
+                  },
+                  {
+                    "key": "batch-job-uid",
+                    "value": "fds-gpu37-integral-685a6458-9bc4-493e0"
+                  },
+                  {
+                    "key": "batch-node",
+                    "value": ""
+                  },
+                  {
+                    "key": "goog-batch-node",
+                    "value": ""
+                  },
+                  {
+                    "key": "trial_id",
+                    "value": "gpu37-integral02"
+                  }
+                ],
+                "onUpdateAction": "RECREATE_DISK_IF_SOURCE_CHANGED",
+                "sourceImage": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261016-00-p00"
+              },
+              "interface": "SCSI",
+              "mode": "READ_WRITE",
+              "type": "PERSISTENT"
+            }
+          ],
+          "guestAccelerators": [
+            {
+              "acceleratorCount": "1",
+              "acceleratorType": "projects/587909259768/zones/us-west4-a/acceleratorTypes/nvidia-l4"
+            }
+          ],
+          "labels": [
+            {
+              "key": "batch-job-id",
+              "value": "fds-gpu37-integral02"
+            },
+            {
+              "key": "batch-job-uid",
+              "value": "fds-gpu37-integral-685a6458-9bc4-493e0"
+            },
+            {
+              "key": "batch-node",
+              "value": ""
+            },
+            {
+              "key": "goog-batch-node",
+              "value": ""
+            },
+            {
+              "key": "trial_id",
+              "value": "gpu37-integral02"
+            }
+          ],
+          "machineType": "projects/587909259768/zones/us-west4-a/machineTypes/g2-standard-4",
+          "name": "fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+          "networkInterfaces": [
+            {
+              "accessConfigs": [
+                {
+                  "networkTier": "PREMIUM",
+                  "type": "ONE_TO_ONE_NAT"
+                }
+              ],
+              "name": "nic0",
+              "network": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+              "subnetwork": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4"
+            }
+          ],
+          "requestId": "36af1d93-eef6-3e43-9c52-d49b32fdfbe3",
+          "scheduling": {
+            "automaticRestart": false,
+            "onHostMaintenance": "TERMINATE",
+            "preemptible": false,
+            "provisioningModel": "STANDARD"
+          },
+          "serviceAccounts": [
+            {
+              "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            }
+          ]
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {
+            "auth": {},
+            "time": "2026-10-29T05:33:01.868443Z"
+          }
+        },
+        "resourceLocation": {
+          "currentLocations": [
+            "us-west4-a"
+          ]
+        },
+        "resourceName": "projects/587909259768/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+        "response": {
+          "@type": "type.googleapis.com/operation",
+          "clientOperationId": "36af1d93-eef6-3e43-9c52-d49b32fdfbe3",
+          "id": "3295879028901110882",
+          "insertTime": "2026-10-28T22:33:01.780-07:00",
+          "name": "operation-1793251981399-65ef40358173a-2ad0d15a-77e65d2e",
+          "operationType": "insert",
+          "progress": "0",
+          "selfLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/operations/operation-1793251981399-65ef40358173a-2ad0d15a-77e65d2e",
+          "selfLinkWithId": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/operations/3295879028901110882",
+          "startTime": "2026-10-28T22:33:01.826-07:00",
+          "status": "RUNNING",
+          "targetId": "7499313506602148962",
+          "targetLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+          "user": "587909259768@cloudservices.gserviceaccount.com",
+          "zone": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a"
+        },
+        "serviceName": "compute.googleapis.com",
+        "status": {}
+      },
+      "receiveTimestamp": "2026-10-29T05:33:02.487010464Z",
+      "resource": {
+        "labels": {
+          "instance_id": "7499313506602148962",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-west4-a"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "NOTICE",
+      "timestamp": "2026-10-29T05:33:01.194454Z"
+    },
+    {
+      "insertId": "-enswgkd1nqq",
+      "labels": {
+        "compute.googleapis.com/root_trigger_id": "50278d62-b9b2-4387-a76d-060b20f4cc8c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "id": "operation-1793251883498-65ef3fd823a36-8781a011-bee3ff1c",
+        "last": true,
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert"
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {}
+        },
+        "resourceName": "projects/587909259768/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+        "serviceName": "compute.googleapis.com",
+        "status": {
+          "code": 8,
+          "details": [
+            {
+              "@type": "type.googleapis.com/google.protobuf.Struct",
+              "value": {
+                "errorInfo": [
+                  {
+                    "domain": "compute.googleapis.com",
+                    "metadata": {
+                      "attachment": "nvidia-l4:1",
+                      "vmType": "g2-standard-4",
+                      "zone": "us-west4-a",
+                      "zonesAvailable": ""
+                    },
+                    "reason": "resource_availability"
+                  }
+                ],
+                "help": [
+                  {
+                    "links": [
+                      {
+                        "description": "Troubleshooting documentation",
+                        "url": "https://cloud.google.com/compute/docs/resource-error"
+                      }
+                    ]
+                  }
+                ],
+                "localizedMessage": [
+                  {
+                    "locale": "en-US",
+                    "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-west4-a zone. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                  }
+                ],
+                "zoneResourcePoolExhaustedWithDetails": {
+                  "details": "NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)",
+                  "zoneResource": {
+                    "project": {
+                      "canonicalProjectId": "587909259768"
+                    },
+                    "resourceName": "us-west4-a",
+                    "resourceType": "ZONE",
+                    "scope": {
+                      "scopeName": "global",
+                      "scopeType": "GLOBAL"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "message": "ZONE_RESOURCE_POOL_EXHAUSTED"
+        }
+      },
+      "receiveTimestamp": "2026-10-29T05:31:30.115965532Z",
+      "resource": {
+        "labels": {
+          "instance_id": "3992885326926275780",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-west4-a"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "ERROR",
+      "timestamp": "2026-10-29T05:31:29.502006Z"
+    },
+    {
+      "insertId": "-omsq4pdpgf6",
+      "labels": {
+        "compute.googleapis.com/instance_group_manager/name": "fds-gpu37-integral-685a6458-9bc4-493e0-group0-0",
+        "compute.googleapis.com/instance_group_manager/region": "us-west4",
+        "compute.googleapis.com/root_trigger_id": "50278d62-b9b2-4387-a76d-060b20f4cc8c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "first": true,
+        "id": "operation-1793251883498-65ef3fd823a36-8781a011-bee3ff1c",
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "authorizationInfo": [
+          {
+            "granted": true,
+            "permission": "compute.instances.create",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.disks.create",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.disks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.disks.setLabels",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.disks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.subnetworks.use",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+              "service": "compute",
+              "type": "compute.subnetworks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.subnetworks.useExternalIp",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+              "service": "compute",
+              "type": "compute.subnetworks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setMetadata",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setLabels",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setServiceAccount",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          }
+        ],
+        "metadata": {
+          "usedResources": {
+            "attachedDisks": [
+              {
+                "isBootDisk": true,
+                "sourceImage": "https://www.googleapis.com/compute/v1/projects/898310590178/global/images/batch-cos-stable-official-20261016-00-p00",
+                "sourceImageId": "6583276198744835888"
+              }
+            ]
+          }
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert",
+          "disks": [
+            {
+              "autoDelete": true,
+              "boot": true,
+              "deviceName": "boot",
+              "initializeParams": {
+                "diskSizeGb": "60",
+                "diskType": "projects/587909259768/zones/us-west4-a/diskTypes/pd-balanced",
+                "labels": [
+                  {
+                    "key": "batch-job-id",
+                    "value": "fds-gpu37-integral02"
+                  },
+                  {
+                    "key": "batch-job-uid",
+                    "value": "fds-gpu37-integral-685a6458-9bc4-493e0"
+                  },
+                  {
+                    "key": "batch-node",
+                    "value": ""
+                  },
+                  {
+                    "key": "goog-batch-node",
+                    "value": ""
+                  },
+                  {
+                    "key": "trial_id",
+                    "value": "gpu37-integral02"
+                  }
+                ],
+                "onUpdateAction": "RECREATE_DISK_IF_SOURCE_CHANGED",
+                "sourceImage": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261016-00-p00"
+              },
+              "interface": "SCSI",
+              "mode": "READ_WRITE",
+              "type": "PERSISTENT"
+            }
+          ],
+          "guestAccelerators": [
+            {
+              "acceleratorCount": "1",
+              "acceleratorType": "projects/587909259768/zones/us-west4-a/acceleratorTypes/nvidia-l4"
+            }
+          ],
+          "labels": [
+            {
+              "key": "batch-job-id",
+              "value": "fds-gpu37-integral02"
+            },
+            {
+              "key": "batch-job-uid",
+              "value": "fds-gpu37-integral-685a6458-9bc4-493e0"
+            },
+            {
+              "key": "batch-node",
+              "value": ""
+            },
+            {
+              "key": "goog-batch-node",
+              "value": ""
+            },
+            {
+              "key": "trial_id",
+              "value": "gpu37-integral02"
+            }
+          ],
+          "machineType": "projects/587909259768/zones/us-west4-a/machineTypes/g2-standard-4",
+          "name": "fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+          "networkInterfaces": [
+            {
+              "accessConfigs": [
+                {
+                  "networkTier": "PREMIUM",
+                  "type": "ONE_TO_ONE_NAT"
+                }
+              ],
+              "name": "nic0",
+              "network": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+              "subnetwork": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4"
+            }
+          ],
+          "requestId": "adcfa564-8f1e-310b-930d-4c7937339802",
+          "scheduling": {
+            "automaticRestart": false,
+            "onHostMaintenance": "TERMINATE",
+            "preemptible": false,
+            "provisioningModel": "STANDARD"
+          },
+          "serviceAccounts": [
+            {
+              "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            }
+          ]
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {
+            "auth": {},
+            "time": "2026-10-29T05:31:24.179380Z"
+          }
+        },
+        "resourceLocation": {
+          "currentLocations": [
+            "us-west4-a"
+          ]
+        },
+        "resourceName": "projects/587909259768/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+        "response": {
+          "@type": "type.googleapis.com/operation",
+          "clientOperationId": "adcfa564-8f1e-310b-930d-4c7937339802",
+          "id": "7794497585129940164",
+          "insertTime": "2026-10-28T22:31:24.028-07:00",
+          "name": "operation-1793251883498-65ef3fd823a36-8781a011-bee3ff1c",
+          "operationType": "insert",
+          "progress": "0",
+          "selfLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/operations/operation-1793251883498-65ef3fd823a36-8781a011-bee3ff1c",
+          "selfLinkWithId": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/operations/7794497585129940164",
+          "startTime": "2026-10-28T22:31:24.119-07:00",
+          "status": "RUNNING",
+          "targetId": "3992885326926275780",
+          "targetLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+          "user": "587909259768@cloudservices.gserviceaccount.com",
+          "zone": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a"
+        },
+        "serviceName": "compute.googleapis.com",
+        "status": {}
+      },
+      "receiveTimestamp": "2026-10-29T05:31:24.306010331Z",
+      "resource": {
+        "labels": {
+          "instance_id": "3992885326926275780",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-west4-a"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "NOTICE",
+      "timestamp": "2026-10-29T05:31:23.253672Z"
+    },
+    {
+      "insertId": "-u7hymkd47iy",
+      "labels": {
+        "compute.googleapis.com/root_trigger_id": "50278d62-b9b2-4387-a76d-060b20f4cc8c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "id": "operation-1793251871095-65ef3fcc4fb63-9b46df88-05b949fe",
+        "last": true,
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert"
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {}
+        },
+        "resourceName": "projects/587909259768/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+        "serviceName": "compute.googleapis.com",
+        "status": {
+          "code": 8,
+          "details": [
+            {
+              "@type": "type.googleapis.com/google.protobuf.Struct",
+              "value": {
+                "errorInfo": [
+                  {
+                    "domain": "compute.googleapis.com",
+                    "metadata": {
+                      "attachment": "nvidia-l4:1",
+                      "vmType": "g2-standard-4",
+                      "zone": "us-west4-a",
+                      "zonesAvailable": ""
+                    },
+                    "reason": "resource_availability"
+                  }
+                ],
+                "help": [
+                  {
+                    "links": [
+                      {
+                        "description": "Troubleshooting documentation",
+                        "url": "https://cloud.google.com/compute/docs/resource-error"
+                      }
+                    ]
+                  }
+                ],
+                "localizedMessage": [
+                  {
+                    "locale": "en-US",
+                    "message": "A g2-standard-4 VM instance with 1 nvidia-l4 accelerator(s) is currently unavailable in the us-west4-a zone. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation."
+                  }
+                ],
+                "zoneResourcePoolExhaustedWithDetails": {
+                  "details": "NULL:0/NULL:0/NULL:0 (state:STOCKOUT, sub-state:STOCKOUT, resource type:compute)",
+                  "zoneResource": {
+                    "project": {
+                      "canonicalProjectId": "587909259768"
+                    },
+                    "resourceName": "us-west4-a",
+                    "resourceType": "ZONE",
+                    "scope": {
+                      "scopeName": "global",
+                      "scopeType": "GLOBAL"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "message": "ZONE_RESOURCE_POOL_EXHAUSTED"
+        }
+      },
+      "receiveTimestamp": "2026-10-29T05:31:18.703463199Z",
+      "resource": {
+        "labels": {
+          "instance_id": "3569738800962692336",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-west4-a"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "ERROR",
+      "timestamp": "2026-10-29T05:31:17.781823Z"
+    },
+    {
+      "insertId": "p9zlxodok5e",
+      "labels": {
+        "compute.googleapis.com/instance_group_manager/name": "fds-gpu37-integral-685a6458-9bc4-493e0-group0-0",
+        "compute.googleapis.com/instance_group_manager/region": "us-west4",
+        "compute.googleapis.com/root_trigger_id": "50278d62-b9b2-4387-a76d-060b20f4cc8c"
+      },
+      "logName": "projects/tmrw-wildfire-20261015/logs/cloudaudit.googleapis.com%2Factivity",
+      "operation": {
+        "first": true,
+        "id": "operation-1793251871095-65ef3fcc4fb63-9b46df88-05b949fe",
+        "producer": "compute.googleapis.com"
+      },
+      "protoPayload": {
+        "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+        "authenticationInfo": {
+          "principalEmail": "587909259768@cloudservices.gserviceaccount.com",
+          "principalSubject": "serviceAccount:587909259768@cloudservices.gserviceaccount.com"
+        },
+        "authorizationInfo": [
+          {
+            "granted": true,
+            "permission": "compute.instances.create",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.disks.create",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.disks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.disks.setLabels",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/disks/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.disks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.subnetworks.use",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+              "service": "compute",
+              "type": "compute.subnetworks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.subnetworks.useExternalIp",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4",
+              "service": "compute",
+              "type": "compute.subnetworks"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setMetadata",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setLabels",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          },
+          {
+            "granted": true,
+            "permission": "compute.instances.setServiceAccount",
+            "permissionType": "ADMIN_WRITE",
+            "resource": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+            "resourceAttributes": {
+              "name": "projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+              "service": "compute",
+              "type": "compute.instances"
+            }
+          }
+        ],
+        "metadata": {
+          "usedResources": {
+            "attachedDisks": [
+              {
+                "isBootDisk": true,
+                "sourceImage": "https://www.googleapis.com/compute/v1/projects/898310590178/global/images/batch-cos-stable-official-20261016-00-p00",
+                "sourceImageId": "6583276198744835888"
+              }
+            ]
+          }
+        },
+        "methodName": "v1.compute.instances.insert",
+        "request": {
+          "@type": "type.googleapis.com/compute.instances.insert",
+          "disks": [
+            {
+              "autoDelete": true,
+              "boot": true,
+              "deviceName": "boot",
+              "initializeParams": {
+                "diskSizeGb": "60",
+                "diskType": "projects/587909259768/zones/us-west4-a/diskTypes/pd-balanced",
+                "labels": [
+                  {
+                    "key": "batch-job-id",
+                    "value": "fds-gpu37-integral02"
+                  },
+                  {
+                    "key": "batch-job-uid",
+                    "value": "fds-gpu37-integral-685a6458-9bc4-493e0"
+                  },
+                  {
+                    "key": "batch-node",
+                    "value": ""
+                  },
+                  {
+                    "key": "goog-batch-node",
+                    "value": ""
+                  },
+                  {
+                    "key": "trial_id",
+                    "value": "gpu37-integral02"
+                  }
+                ],
+                "onUpdateAction": "RECREATE_DISK_IF_SOURCE_CHANGED",
+                "sourceImage": "projects/batch-custom-image/global/images/batch-cos-stable-official-20261016-00-p00"
+              },
+              "interface": "SCSI",
+              "mode": "READ_WRITE",
+              "type": "PERSISTENT"
+            }
+          ],
+          "guestAccelerators": [
+            {
+              "acceleratorCount": "1",
+              "acceleratorType": "projects/587909259768/zones/us-west4-a/acceleratorTypes/nvidia-l4"
+            }
+          ],
+          "labels": [
+            {
+              "key": "batch-job-id",
+              "value": "fds-gpu37-integral02"
+            },
+            {
+              "key": "batch-job-uid",
+              "value": "fds-gpu37-integral-685a6458-9bc4-493e0"
+            },
+            {
+              "key": "batch-node",
+              "value": ""
+            },
+            {
+              "key": "goog-batch-node",
+              "value": ""
+            },
+            {
+              "key": "trial_id",
+              "value": "gpu37-integral02"
+            }
+          ],
+          "machineType": "projects/587909259768/zones/us-west4-a/machineTypes/g2-standard-4",
+          "name": "fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+          "networkInterfaces": [
+            {
+              "accessConfigs": [
+                {
+                  "networkTier": "PREMIUM",
+                  "type": "ONE_TO_ONE_NAT"
+                }
+              ],
+              "name": "nic0",
+              "network": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/global/networks/fds-trial",
+              "subnetwork": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/regions/us-west4/subnetworks/fds-timing-west4"
+            }
+          ],
+          "requestId": "c27dd132-ae46-36aa-92c1-f58fd5c0c8a6",
+          "scheduling": {
+            "automaticRestart": false,
+            "onHostMaintenance": "TERMINATE",
+            "preemptible": false,
+            "provisioningModel": "STANDARD"
+          },
+          "serviceAccounts": [
+            {
+              "email": "fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            }
+          ]
+        },
+        "requestMetadata": {
+          "callerSuppliedUserAgent": "GCE Managed Instance Group for Cloud Batch",
+          "destinationAttributes": {},
+          "requestAttributes": {
+            "auth": {},
+            "time": "2026-10-29T05:31:11.557875Z"
+          }
+        },
+        "resourceLocation": {
+          "currentLocations": [
+            "us-west4-a"
+          ]
+        },
+        "resourceName": "projects/587909259768/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+        "response": {
+          "@type": "type.googleapis.com/operation",
+          "clientOperationId": "c27dd132-ae46-36aa-92c1-f58fd5c0c8a6",
+          "id": "4637429484194063600",
+          "insertTime": "2026-10-28T22:31:11.465-07:00",
+          "name": "operation-1793251871095-65ef3fcc4fb63-9b46df88-05b949fe",
+          "operationType": "insert",
+          "progress": "0",
+          "selfLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/operations/operation-1793251871095-65ef3fcc4fb63-9b46df88-05b949fe",
+          "selfLinkWithId": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/operations/4637429484194063600",
+          "startTime": "2026-10-28T22:31:11.509-07:00",
+          "status": "RUNNING",
+          "targetId": "3569738800962692336",
+          "targetLink": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a/instances/fds-gpu37-integral-685a6458-9bc4-493e0-group0-0-d34h",
+          "user": "587909259768@cloudservices.gserviceaccount.com",
+          "zone": "https://www.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/us-west4-a"
+        },
+        "serviceName": "compute.googleapis.com",
+        "status": {}
+      },
+      "receiveTimestamp": "2026-10-29T05:31:11.946944249Z",
+      "resource": {
+        "labels": {
+          "instance_id": "3569738800962692336",
+          "project_id": "tmrw-wildfire-20261015",
+          "zone": "us-west4-a"
+        },
+        "type": "gce_instance"
+      },
+      "severity": "NOTICE",
+      "timestamp": "2026-10-29T05:31:10.829146Z"
+    }
+  ]
+}

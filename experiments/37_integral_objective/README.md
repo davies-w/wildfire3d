@@ -15,3 +15,7 @@ Run order: prepare.py, package.py, validate.py, launch.py (one-time guarded subm
 ## Diagnosed deadline repair (training02)
 
 training01 obtained an L4, then failed the timing gate before fitting: measured conservative400-epoch projection51,650.73s (14.35h) exceeded44,000s. Supervisor cleaned the VM. No training checkpoints were produced. training02 preserves the worker and model bytes; only private runtime prefix, timing admission threshold and time/budget bounds change. Soft16h/task16.25h/VM16.5h/absolute17h, same15min queue limit; reserve$20.80. The original$16 reservation is retained until its measured startup/preflight cost is reconciled. No automatic paid retries. Use monitor02.py for the corrected submission.
+
+## Diagnosed capacity repair (training03)
+
+training02 exhausted its15min queue window with zero runtime. Audit logs show six attempted VM creations, all terminal resource-stockout failures, no allocation. After terminal supervisor completion and empty jobs/VM/disks verification, its$20.80 reservation is reassigned to training03. This attempt uses only us-west4-c, waits at most1h for allocation, and has an18h absolute supervisor limit. Fitting/task/VM bounds remain16/16.25/16.5h; model, loss, data and worker bytes unchanged. No concurrent duplicate execution. Use monitor03.py.
