@@ -1,7 +1,7 @@
 {
   "authorized_usd": 125,
   "authorization": "User explicitly approved $125 cumulative cap for 360-configuration time-conditioned HOT/NOT U-Net experiment; retain all previous reservations.",
-  "reserved_usd": 31.584692000000004,
+  "reserved_usd": 52.384692,
   "prior_ledger": "../32_tree_expansion/budget.json",
   "reservations": {
     "experiment32_retained": {
@@ -3384,6 +3384,14 @@
       "scope": "Single gated integral-objective rotation0, same8 training folds,13h VM max at1.20/h plus0.40 margin, no automatic retries",
       "workflow": "fds-gpu37-integral01",
       "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu37-integral01/executions/f851278d-ea30-4b26-8ddf-c417259b8a95"
+    },
+    "integral37-training02": {
+      "state": "submitted",
+      "allowance_usd": 20.8,
+      "reserved_unix": 1793251834.873461,
+      "scope": "Single gated integral-objective rotation0, same8 training folds,16.5h VM max at1.20/h plus0.40 margin, no automatic retries",
+      "workflow": "fds-gpu37-integral02",
+      "execution": "projects/587909259768/locations/us-central1/workflows/fds-gpu37-integral02/executions/850fcd8e-0b50-460d-8d84-ae19ecddc7c1"
     }
   },
   "recycle_reservations": true,

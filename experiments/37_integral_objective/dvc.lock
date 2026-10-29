@@ -42,3 +42,37 @@ stages:
       hash: md5
       md5: 51c356ee81d1259492d9d87f16a104cd
       size: 197
+  package02:
+    cmd: python package02.py
+    deps:
+    - path: cloud_check02.py
+      hash: md5
+      md5: 08744f886d6d2ee841e798c41b649680
+      size: 3772
+    - path: package02.py
+      hash: md5
+      md5: 512a80330df91b139daabf6339dbad38
+      size: 2222
+    outs:
+    - path: data/training02
+      hash: md5
+      md5: 667015924dd3157aaa6d4d5db36077a6.dir
+      size: 11168165
+      nfiles: 14
+  validate02:
+    cmd: python validate02.py
+    deps:
+    - path: data/training02
+      hash: md5
+      md5: 667015924dd3157aaa6d4d5db36077a6.dir
+      size: 11168165
+      nfiles: 14
+    - path: validate02.py
+      hash: md5
+      md5: 828920dbf68f096a720bc52e3813c109
+      size: 1889
+    outs:
+    - path: results02/offline-check.json
+      hash: md5
+      md5: 51c356ee81d1259492d9d87f16a104cd
+      size: 197

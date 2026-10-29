@@ -16,3 +16,18 @@ stages:
     - data/training01
     outs:
     - results/offline-check.json
+  package02:
+    cmd: python package02.py
+    deps:
+    - package02.py
+    - cloud_check02.py
+    outs:
+    - data/training02:
+        persist: true
+  validate02:
+    cmd: python validate02.py
+    deps:
+    - validate02.py
+    - data/training02
+    outs:
+    - results02/offline-check.json
