@@ -3,8 +3,10 @@ from pathlib import Path
 import sys,json,datetime
 R=Path(__file__).resolve().parent;sys.path.insert(0,str(R.parent/'36_tree_density'))
 from cloud import gc
-execution=json.loads((R/'results03/execution.json').read_text())['name']
-s=gc('workflows','executions','describe',execution.rsplit('/',1)[1],'--workflow=fds-gpu37-integral03','--location=us-central1')
+source=R/'results03/wait-execution.json'
+if not source.exists():source=R/'results03/execution.json'
+execution=json.loads(source.read_text())['name']
+s=gc('workflows','executions','describe',execution.rsplit('/',1)[1],'--workflow='+execution.split('/workflows/')[1].split('/')[0],'--location=us-central1')
 result=dict(checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),execution=s,instances=gc('compute','instances','list','--filter=labels.trial_id=gpu37-integral03'))
 try:result['job']=gc('batch','jobs','describe','fds-gpu37-integral03','--location=us-west4')
 except RuntimeError as e:result['job_lookup_error']=str(e)

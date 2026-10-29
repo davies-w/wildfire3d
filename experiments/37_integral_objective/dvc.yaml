@@ -48,3 +48,11 @@ stages:
     - data/training03
     outs:
     - results03/offline-check.json
+  adopt_wait:
+    cmd: python adopt_wait.py
+    deps:
+    - adopt_wait.py
+    - data/training03/workflow.yaml
+    outs:
+    - data/wait-supervisor:
+        persist: true

@@ -119,3 +119,20 @@ stages:
       hash: md5
       md5: 51c356ee81d1259492d9d87f16a104cd
       size: 197
+  adopt_wait:
+    cmd: python adopt_wait.py
+    deps:
+    - path: adopt_wait.py
+      hash: md5
+      md5: 45b4e7d3a7f2f24abc610084bd2bf0d8
+      size: 4566
+    - path: data/training03/workflow.yaml
+      hash: md5
+      md5: a27b80c60ddad82f530e15adf9349ec1
+      size: 11500
+    outs:
+    - path: data/wait-supervisor
+      hash: md5
+      md5: c8c4842390d17d2c3d04aa4236d516c0.dir
+      size: 7328
+      nfiles: 1

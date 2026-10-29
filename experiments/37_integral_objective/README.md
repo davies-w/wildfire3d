@@ -19,3 +19,9 @@ training01 obtained an L4, then failed the timing gate before fitting: measured 
 ## Diagnosed capacity repair (training03)
 
 training02 exhausted its15min queue window with zero runtime. Audit logs show six attempted VM creations, all terminal resource-stockout failures, no allocation. After terminal supervisor completion and empty jobs/VM/disks verification, its$20.80 reservation is reassigned to training03. This attempt uses only us-west4-c, waits at most1h for allocation, and has an18h absolute supervisor limit. Fitting/task/VM bounds remain16/16.25/16.5h; model, loss, data and worker bytes unchanged. No concurrent duplicate execution. Use monitor03.py.
+
+## User correction: wait until capacity or cancellation
+
+The user rejected arbitrary allocation timeouts. adopt_wait.py deploys a supervisor with no allocation timeout, verifies the existing Batch job UID, cancels only the prior supervisor, and adopts that SAME Batch job using GET (no new Batch creation). The16.5h VM limit and task/training limits remain. Polling is5min while no VM exists,30s while allocated. Workflows platform execution limits still apply; this is not a promise that a cloud service can execute literally forever. The exact-prefix worker read permission lasts until terminal collection/cleanup, avoiding an input permission expiring during an extended queue wait. Remove wait-read-condition.json binding after terminal collection. Small orchestration costs remain part of the cumulative cap.
+
+Checkpoints upload at completed epoch boundaries, retaining model/optimizer/RNG/history/selected state. A mid-epoch failure loses the unfinished epoch. No training checkpoint exists before epoch1 completes. Cloud synthetic actual-loss replay must pass before fitting; its success must be verified from the artifact, not inferred from submission.
