@@ -1,0 +1,8 @@
+# Runs inside prepare01 before immutable hashing.
+p=D/'gated_model.py';v=p.read_text().replace('nn.GRU(25,32','nn.GRU(41,64').replace('nn.Linear(32,4)','nn.Linear(64,4)').replace('nn.Linear(32,3)','nn.Linear(64,3)')
+v=v.replace('self.gate_head=nn.Linear(64,3)','self.gate_head=nn.Linear(64,3);self.shared=nn.Sequential(nn.Linear(64,64),nn.SiLU())')
+v=v.replace('memory=hidden[0];delta=self.head(memory)','memory=hidden[0];features=self.shared(memory);delta=self.head(features)').replace('self.gate_head(memory)','self.gate_head(features)');p.write_text(v)
+p=D/'plain_model.py';p.write_text(p.read_text().replace('nn.GRU(25,32','nn.GRU(41,64').replace('nn.Linear(32,4)','nn.Linear(64,4)'))
+p=D/'worker.py';v=p.read_text().replace('torch.arange(-3,1','torch.arange(-7,1').replace('torch.zeros(len(ids),32','torch.zeros(len(ids),64').replace('length,25)','length,41)').replace('torch.zeros(4,4,4','torch.zeros(4,8,4').replace('torch.randn(4,12,25','torch.randn(4,12,41');p.write_text(v.replace('Integral-loss gated GRU on','History8 GRU64 shared64 SiLU integral-loss gated model on'))
+p=D/'coverage-plan.json';plan=json.loads(p.read_text());plan.update(experiment='38 history8 GRU64 shared64 SiLU rotation0',history_steps=8,input_features=41,history='Eight state samples ending at current time; repeat initial state for missing history, never future truth',architecture='GRU41->64; shared Linear64->64 + SiLU; four-delta and three-sigmoid-gate heads;25159 parameters');plan['budget']['maximum_allowance_usd']=19.2;p.write_text(json.dumps(plan,indent=2)+'\n')
+meta['architecture_identity']='history8-gru64-shared64-silu-v1';(D/'schema.json').write_text(json.dumps(meta,indent=2)+'\n')

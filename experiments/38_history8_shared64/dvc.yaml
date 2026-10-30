@@ -1,0 +1,39 @@
+stages:
+  prepare01:
+    cmd: python prepare01.py
+    deps:
+    - prepare01.py
+    - adapt_architecture.py
+    - cloud_check01.py
+    - ../37_integral_objective/data/training03
+    - ../37_integral_objective/results03/package.json
+    - ../36_tree_density/data/model-training/schema.json
+    outs:
+    - data/training01:
+        persist: true
+  validate01:
+    cmd: python validate01.py
+    deps:
+    - validate01.py
+    - data/training01
+    outs:
+    - results01/offline-check.json
+  audit_startup01:
+    cmd: python audit_startup01.py
+    deps:
+    - audit_startup01.py
+    outs:
+    - data/startup-audit01
+  collect01:
+    cmd: python collect01.py
+    deps:
+    - collect01.py
+    outs:
+    - data/training01-results:
+        persist: true
+  preserve01:
+    cmd: python preserve01.py
+    deps:
+    - preserve01.py
+    outs:
+    - data/provenance01

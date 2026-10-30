@@ -1,0 +1,66 @@
+schema: '2.0'
+stages:
+  prepare01:
+    cmd: python prepare01.py
+    deps:
+    - path: ../36_tree_density/data/model-training/schema.json
+      hash: md5
+      md5: 0dbee67e38424d53816fe78799442133
+      size: 672301
+    - path: ../37_integral_objective/data/training03
+      hash: md5
+      md5: dbc3a8fd34710503831881fbc7511bbd.dir
+      size: 11168047
+      nfiles: 14
+    - path: ../37_integral_objective/results03/package.json
+      hash: md5
+      md5: 94ac6e22871bcf4ff57457e3f4945dda
+      size: 1269
+    - path: adapt_architecture.py
+      hash: md5
+      md5: 173b70c2f8d45fbdffaeae31e6af5a60
+      size: 1681
+    - path: cloud_check01.py
+      hash: md5
+      md5: f8efca14bf11b8126528a26751637eb7
+      size: 3926
+    - path: prepare01.py
+      hash: md5
+      md5: 939823c8ff5dcecccd6d4bd64f3bcd14
+      size: 4221
+    outs:
+    - path: data/training01
+      hash: md5
+      md5: 43570e41bb60b0fd8f1290587ccd660b.dir
+      size: 11180250
+      nfiles: 18
+  validate01:
+    cmd: python validate01.py
+    deps:
+    - path: data/training01
+      hash: md5
+      md5: 43570e41bb60b0fd8f1290587ccd660b.dir
+      size: 11180250
+      nfiles: 18
+    - path: validate01.py
+      hash: md5
+      md5: 7120f6e5be72251caf9da82e37bf1b9a
+      size: 4879
+    outs:
+    - path: results01/offline-check.json
+      hash: md5
+      md5: 2022fb483c53c956f5ce8f4d1eb4d8aa
+      size: 463
+  preserve01:
+    cmd: python preserve01.py
+    deps:
+    - path: preserve01.py
+      hash: md5
+      md5: 8419f4ee7cdd29bcf5a4174e95a02bae
+      size: 394
+    outs:
+    - path: data/provenance01
+      hash: md5
+      md5: 43efeec197de792cde3bb285623ebd71.dir
+      size: 160955
+      nfiles: 4
