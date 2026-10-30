@@ -39,9 +39,9 @@ stages:
     deps:
     - path: data/training01
       hash: md5
-      md5: 43570e41bb60b0fd8f1290587ccd660b.dir
-      size: 11180250
-      nfiles: 18
+      md5: d274034f6fd84f47cb68ab615d184db3.dir
+      size: 11181230
+      nfiles: 19
     - path: validate01.py
       hash: md5
       md5: 7120f6e5be72251caf9da82e37bf1b9a
@@ -61,9 +61,9 @@ stages:
     outs:
     - path: data/provenance01
       hash: md5
-      md5: 9b51b40614ab032448d875eff20a7bb8.dir
-      size: 3199792
-      nfiles: 133
+      md5: 4dde2ef84e22206e93d492d463dd7db3.dir
+      size: 3200785
+      nfiles: 135
   archive_preemption01:
     cmd: python archive_preemption01.py
     deps:
@@ -109,9 +109,9 @@ stages:
     deps:
     - path: data/training02
       hash: md5
-      md5: 114a0d5d19877762abb1ebe36268117d.dir
-      size: 38645370
-      nfiles: 75
+      md5: 3f579571ed8366d0d88f79f047b3159f.dir
+      size: 38646350
+      nfiles: 76
     - path: validate02.py
       hash: md5
       md5: 6ec7b41bd60cc6cb9eaded11ace63329
@@ -166,9 +166,9 @@ stages:
     deps:
     - path: data/training03
       hash: md5
-      md5: 466a56867459a24bdecc6b30de3693bd.dir
-      size: 38645336
-      nfiles: 75
+      md5: 5dc45fe37add2c0744a0c5403c97560e.dir
+      size: 38646316
+      nfiles: 76
     - path: validate03.py
       hash: md5
       md5: 0d63687da6431142f4a75d8ba427d537
@@ -222,8 +222,8 @@ stages:
     deps:
     - path: fetch_progress.py
       hash: md5
-      md5: 91143797ce202633c4f1e4c7ce0cd171
-      size: 2186
+      md5: f607135f75abfdf31228f84ec81f45e3
+      size: 2201
     outs:
     - path: data/progress04
       hash: md5
@@ -328,8 +328,8 @@ stages:
     deps:
     - path: fetch_progress.py
       hash: md5
-      md5: 5edc4833deb6240b08b4f12f5d90dbd4
-      size: 2196
+      md5: f607135f75abfdf31228f84ec81f45e3
+      size: 2201
     outs:
     - path: data/progress06
       hash: md5
@@ -520,3 +520,105 @@ stages:
       md5: 4b759bb05fa750fdc39e5a93d0c72a85.dir
       size: 6381722
       nfiles: 5
+  audit_startup02:
+    cmd: python audit_startup02.py
+    deps:
+    - path: audit_startup02.py
+      hash: md5
+      md5: 88b19786b6b101cc00bcda7d34a229ff
+      size: 1525
+    outs:
+    - path: data/startup-audit02
+      hash: md5
+      md5: 3ca72c1244c0e862d9d5c364ffef54b6.dir
+      size: 1464
+      nfiles: 7
+  audit_startup05:
+    cmd: python audit_startup05.py
+    deps:
+    - path: audit_startup05.py
+      hash: md5
+      md5: 7fb95b24cb80da0da7ee94d8f4f7052a
+      size: 1566
+    outs:
+    - path: data/startup-audit05
+      hash: md5
+      md5: d751713988987e9331980363e24189ce.dir
+      size: 0
+      nfiles: 0
+  progress05:
+    cmd: python fetch_progress.py 05
+    deps:
+    - path: fetch_progress.py
+      hash: md5
+      md5: f607135f75abfdf31228f84ec81f45e3
+      size: 2201
+    outs:
+    - path: data/progress05
+      hash: md5
+      md5: d751713988987e9331980363e24189ce.dir
+      size: 0
+      nfiles: 0
+  build_document:
+    cmd: python build_document.py
+    deps:
+    - path: build_document.py
+      hash: md5
+      md5: 40313c3005959202199235ddb5eb0f95
+      size: 9213
+    - path: data/analysis08
+      hash: md5
+      md5: 945823c5d0b5cd07bace56ea111a5d4b.dir
+      size: 6004404
+      nfiles: 1
+    - path: data/training08-results
+      hash: md5
+      md5: be2784e6ac4fd887f0a2d64a7fa9b90f.dir
+      size: 99300138
+      nfiles: 299
+    - path: plot_learning_curve.py
+      hash: md5
+      md5: 1d59eabba1dd0e0ff119b4c44e1d7db0
+      size: 2258
+    outs:
+    - path: data/document
+      hash: md5
+      md5: abe13d1fdc076bbbd1fa3b509ed239c0.dir
+      size: 159894
+      nfiles: 2
+  archive_failure01:
+    cmd: python archive_failure01.py
+    deps:
+    - path: archive_failure01.py
+      hash: md5
+      md5: 9b337ec3a88c3061ff9ff08b7e943bbb
+      size: 368
+    - path: data/preempted01
+      hash: md5
+      md5: ccc89b027ca0eef549ed511ceec3cea9.dir
+      size: 18757127
+      nfiles: 64
+    outs:
+    - path: data/failure01
+      hash: md5
+      md5: 9cf8493148a590751b1bb6800ecaa252.dir
+      size: 6131
+      nfiles: 3
+  prepare_document_index:
+    cmd: python prepare_document_index.py
+    deps:
+    - path: data/document
+      hash: md5
+      md5: abe13d1fdc076bbbd1fa3b509ed239c0.dir
+      size: 159894
+      nfiles: 2
+    - path: prepare_document_index.py
+      hash: md5
+      md5: acbf9a9b58ea31f8995839187f39f61c
+      size: 1046
+    outs:
+    - path: data/document-index
+      hash: md5
+      md5: 74f6bf9677ce80e0b709700df1f0e30a.dir
+      size: 13779
+      nfiles: 3

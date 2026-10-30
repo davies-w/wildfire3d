@@ -315,3 +315,26 @@ stages:
     outs:
     - data/scorecard-addition08:
         persist: true
+  build_document:
+    cmd: python build_document.py
+    deps:
+    - build_document.py
+    - plot_learning_curve.py
+    - data/analysis08
+    - data/training08-results
+    outs:
+    - data/document
+  archive_failure01:
+    cmd: python archive_failure01.py
+    deps:
+    - archive_failure01.py
+    - data/preempted01
+    outs:
+    - data/failure01
+  prepare_document_index:
+    cmd: python prepare_document_index.py
+    deps:
+    - prepare_document_index.py
+    - data/document
+    outs:
+    - data/document-index
