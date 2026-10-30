@@ -56,14 +56,14 @@ stages:
     deps:
     - path: preserve01.py
       hash: md5
-      md5: 3a21aabb4674bd2608bd91a8dc54cc9d
-      size: 633
+      md5: 89b0e5fead770a54ef8333c324af077d
+      size: 645
     outs:
     - path: data/provenance01
       hash: md5
-      md5: c9d774e53282f57ec0b1e37dd68d50b1.dir
-      size: 1988969
-      nfiles: 104
+      md5: b08793bf46d3643efd7aa0d600249416.dir
+      size: 2523135
+      nfiles: 118
   archive_preemption01:
     cmd: python archive_preemption01.py
     deps:
@@ -376,3 +376,69 @@ stages:
       md5: 5d088966d0d6a3fe9abcc1372998e80d.dir
       size: 120902336
       nfiles: 204
+  archive_preemption07:
+    cmd: python archive_preemption07.py
+    deps:
+    - path: archive_preemption07.py
+      hash: md5
+      md5: f0eb351866a02288ed50ebef3c99b700
+      size: 2977
+    outs:
+    - path: data/preempted07
+      hash: md5
+      md5: 60dfcf7de02910d50a4c5c9819ea6985.dir
+      size: 114601692
+      nfiles: 197
+  prepare08:
+    cmd: python prepare08.py
+    deps:
+    - path: cloud_check08.py
+      hash: md5
+      md5: 677f7d2f62c58d548b81bebbdb2cb12c
+      size: 6134
+    - path: data/preempted07
+      hash: md5
+      md5: 60dfcf7de02910d50a4c5c9819ea6985.dir
+      size: 114601692
+      nfiles: 197
+    - path: data/training01
+      hash: md5
+      md5: d274034f6fd84f47cb68ab615d184db3.dir
+      size: 11181230
+      nfiles: 19
+    - path: prepare08.py
+      hash: md5
+      md5: bc7d85a0f8cc2dbbd4efe02924460bb4
+      size: 4568
+    outs:
+    - path: data/training08
+      hash: md5
+      md5: cc5c3086805d592a15b548075e2e650c.dir
+      size: 120902337
+      nfiles: 204
+  progress07:
+    cmd: python fetch_progress.py 07
+    deps:
+    - path: fetch_progress.py
+      hash: md5
+      md5: f607135f75abfdf31228f84ec81f45e3
+      size: 2201
+    outs:
+    - path: data/progress07
+      hash: md5
+      md5: 8e632166a0d46bfdadffb7ff5b35128f.dir
+      size: 651343
+      nfiles: 93
+  audit_startup07:
+    cmd: python audit_startup07.py
+    deps:
+    - path: audit_startup07.py
+      hash: md5
+      md5: 1f8b050b9303a843915ad58f05a57803
+      size: 1566
+    outs:
+    - path: data/startup-audit07
+      hash: md5
+      md5: df41fd67e6838c0dd836b68202182d4b.dir
+      size: 1463
+      nfiles: 7
