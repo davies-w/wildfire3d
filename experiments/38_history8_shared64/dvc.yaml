@@ -74,3 +74,40 @@ stages:
     outs:
     - data/training02-results:
         persist: true
+  archive_preemption02:
+    cmd: python archive_preemption02.py
+    deps:
+    - archive_preemption02.py
+    outs:
+    - data/preempted02:
+        persist: true
+  prepare03:
+    cmd: python prepare03.py
+    deps:
+    - prepare03.py
+    - cloud_check03.py
+    - data/training01
+    - data/preempted02
+    outs:
+    - data/training03:
+        persist: true
+  validate03:
+    cmd: python validate03.py
+    deps:
+    - validate03.py
+    - data/training03
+    outs:
+    - results03/offline-check.json
+  audit_startup03:
+    cmd: python audit_startup03.py
+    deps:
+    - audit_startup03.py
+    outs:
+    - data/startup-audit03
+  collect03:
+    cmd: python collect03.py
+    deps:
+    - collect03.py
+    outs:
+    - data/training03-results:
+        persist: true

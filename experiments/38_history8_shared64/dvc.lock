@@ -56,14 +56,14 @@ stages:
     deps:
     - path: preserve01.py
       hash: md5
-      md5: 58c058622ed87e2fc553a5cd8e3252fb
-      size: 573
+      md5: 1383a5bbeb58effd0e7a778161013203
+      size: 585
     outs:
     - path: data/provenance01
       hash: md5
-      md5: 056aa14814315d09fcc001ec3bc6b9ad.dir
-      size: 424959
-      nfiles: 35
+      md5: 58fe5a348480d0bfbd28abbea812092f.dir
+      size: 506309
+      nfiles: 40
   archive_preemption01:
     cmd: python archive_preemption01.py
     deps:
@@ -118,6 +118,63 @@ stages:
       size: 4879
     outs:
     - path: results02/offline-check.json
+      hash: md5
+      md5: 2022fb483c53c956f5ce8f4d1eb4d8aa
+      size: 463
+  archive_preemption02:
+    cmd: python archive_preemption02.py
+    deps:
+    - path: archive_preemption02.py
+      hash: md5
+      md5: b64815175681e4496e23e8e0a9c05ce1
+      size: 2946
+    outs:
+    - path: data/preempted02
+      hash: md5
+      md5: 871fb157e15f0ae6f974682a905bb716.dir
+      size: 32540364
+      nfiles: 65
+  prepare03:
+    cmd: python prepare03.py
+    deps:
+    - path: cloud_check03.py
+      hash: md5
+      md5: 36264f74d210118a7a69e9fb8f996ec2
+      size: 6134
+    - path: data/preempted02
+      hash: md5
+      md5: 871fb157e15f0ae6f974682a905bb716.dir
+      size: 32540364
+      nfiles: 65
+    - path: data/training01
+      hash: md5
+      md5: d274034f6fd84f47cb68ab615d184db3.dir
+      size: 11181230
+      nfiles: 19
+    - path: prepare03.py
+      hash: md5
+      md5: a655115ea7aa4ce1436c1e76b34c3ca9
+      size: 3667
+    outs:
+    - path: data/training03
+      hash: md5
+      md5: 466a56867459a24bdecc6b30de3693bd.dir
+      size: 38645336
+      nfiles: 75
+  validate03:
+    cmd: python validate03.py
+    deps:
+    - path: data/training03
+      hash: md5
+      md5: 466a56867459a24bdecc6b30de3693bd.dir
+      size: 38645336
+      nfiles: 75
+    - path: validate03.py
+      hash: md5
+      md5: 0d63687da6431142f4a75d8ba427d537
+      size: 4860
+    outs:
+    - path: results03/offline-check.json
       hash: md5
       md5: 2022fb483c53c956f5ce8f4d1eb4d8aa
       size: 463
