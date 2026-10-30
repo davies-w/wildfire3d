@@ -61,9 +61,9 @@ stages:
     outs:
     - path: data/provenance01
       hash: md5
-      md5: 4f08ce82dba63fad4b5b9bd434c46d47.dir
-      size: 595962
-      nfiles: 62
+      md5: 06335ed87ab1d8cb5667039593298943.dir
+      size: 680914
+      nfiles: 63
   archive_preemption01:
     cmd: python archive_preemption01.py
     deps:
@@ -204,3 +204,29 @@ stages:
       md5: ac02ba12a0cfda4e9450da33ed1ceeff.dir
       size: 38650249
       nfiles: 72
+  audit_startup04:
+    cmd: python audit_startup04.py
+    deps:
+    - path: audit_startup04.py
+      hash: md5
+      md5: 4335b5b56d3474db548570ecf2e970f3
+      size: 1566
+    outs:
+    - path: data/startup-audit04
+      hash: md5
+      md5: f210b0d8515c0c1210f8abf220bf89c5.dir
+      size: 1465
+      nfiles: 7
+  progress04:
+    cmd: python fetch_progress.py 04
+    deps:
+    - path: fetch_progress.py
+      hash: md5
+      md5: a199e40fd4a40933f6ae4a74e2d63072
+      size: 2181
+    outs:
+    - path: data/progress04
+      hash: md5
+      md5: c853d0cede22984a22f40c47a9d51a19.dir
+      size: 215826
+      nfiles: 31

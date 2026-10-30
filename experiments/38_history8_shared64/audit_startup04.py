@@ -15,4 +15,4 @@ for name in ['resumed-checkpoint-replay.json','timing-check.json','optimizer-res
  obj=json.loads(blob);assert obj['passed'];(D/name).write_bytes(blob)
  proof[name]=dict(metadata=meta,sha256=hashlib.sha256(blob).hexdigest(),value=obj)
 (R/'results04/startup-audit.json').write_text(json.dumps(dict(passed=True,source_prefix=PREFIX,proofs=proof),indent=2)+'\n')
-print('Verified six startup proofs; no test outcomes read')
+print('Verified seven startup proofs (original first-epoch proof is copied); no test outcomes read')
