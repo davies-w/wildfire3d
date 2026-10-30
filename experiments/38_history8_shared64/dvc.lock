@@ -56,14 +56,14 @@ stages:
     deps:
     - path: preserve01.py
       hash: md5
-      md5: 89b0e5fead770a54ef8333c324af077d
-      size: 645
+      md5: 330665fbb59cdb40e5ffadb0bcef800a
+      size: 629
     outs:
     - path: data/provenance01
       hash: md5
-      md5: cf059b44f9574274856d31c6a2ea560d.dir
-      size: 2794684
-      nfiles: 121
+      md5: 63fd0a6019c08d2b906165fe4a045257.dir
+      size: 3199095
+      nfiles: 132
   archive_preemption01:
     cmd: python archive_preemption01.py
     deps:
@@ -465,6 +465,58 @@ stages:
     outs:
     - path: data/progress08
       hash: md5
-      md5: 7e0b73a6ab4dc741d0597ed8a8b01d3a.dir
-      size: 686399
-      nfiles: 98
+      md5: b5b0c207009c950c6fab568b1b605c1f.dir
+      size: 974184
+      nfiles: 139
+  collect08:
+    cmd: python collect08.py
+    deps:
+    - path: collect08.py
+      hash: md5
+      md5: d1256e1d616ad0ece93e02a0a26bf503
+      size: 8906
+    outs:
+    - path: data/training08-results
+      hash: md5
+      md5: be2784e6ac4fd887f0a2d64a7fa9b90f.dir
+      size: 99300138
+      nfiles: 299
+  analyze08:
+    cmd: python analyze08.py
+    deps:
+    - path: analyze08.py
+      hash: md5
+      md5: e95a738229731a55ab5bb8594366028d
+      size: 3374
+    outs:
+    - path: data/analysis08
+      hash: md5
+      md5: 945823c5d0b5cd07bace56ea111a5d4b.dir
+      size: 6004404
+      nfiles: 1
+  build_public08:
+    cmd: python build_public08.py
+    deps:
+    - path: build_public08.py
+      hash: md5
+      md5: b01cfa872a67c844663d198de4901dc5
+      size: 3625
+    outs:
+    - path: data/public08
+      hash: md5
+      md5: 1c4cd94ff1f4836106e095db48a91e50.dir
+      size: 6314867
+      nfiles: 1
+  add_to_full_sequence08:
+    cmd: python add_to_full_sequence08.py
+    deps:
+    - path: add_to_full_sequence08.py
+      hash: md5
+      md5: 5678f13da3b2c16ec880070c9c7edcda
+      size: 4047
+    outs:
+    - path: data/scorecard-addition08
+      hash: md5
+      md5: 4b759bb05fa750fdc39e5a93d0c72a85.dir
+      size: 6381722
+      nfiles: 5

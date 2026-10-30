@@ -294,3 +294,24 @@ stages:
     outs:
     - data/progress08:
         persist: true
+  analyze08:
+    cmd: python analyze08.py
+    deps:
+    - analyze08.py
+    outs:
+    - data/analysis08:
+        persist: true
+  build_public08:
+    cmd: python build_public08.py
+    deps:
+    - build_public08.py
+    outs:
+    - data/public08:
+        persist: true
+  add_to_full_sequence08:
+    cmd: python add_to_full_sequence08.py
+    deps:
+    - add_to_full_sequence08.py
+    outs:
+    - data/scorecard-addition08:
+        persist: true

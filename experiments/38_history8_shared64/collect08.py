@@ -72,7 +72,19 @@ def main():
   prior_output+=sum(int(v['metadata']['size']) for k,v in json.loads((R/'results06/preemption-audit.json').read_text())['objects'].items() if k!='inputs.tar')
   extra_inputs+=json.loads((R/'results07/package.json').read_text())['input_bytes']
   prior_output+=sum(int(v['metadata']['size']) for k,v in json.loads((R/'results07/preemption-audit.json').read_text())['objects'].items() if k!='inputs.tar')
-  prior_output+=2*1024**3 # Bound any not-yet-collected Oregon competitor output.
+  # Oregon03 is terminal/closed: replace speculative allowance with measured immutable inventory.
+  assert read('results03/race-closed.json')['passed']
+  assert read('results03/race-cancellation-audit.json')['passed']
+  prior03=[];cursor=None
+  while True:
+   query={'prefix':'history38/training03/','maxResults':1000}
+   if cursor:query['pageToken']=cursor
+   with get(base+'?'+urllib.parse.urlencode(query)) as response:page03=json.load(response)
+   prior03.extend(page03.get('items',[]));cursor=page03.get('nextPageToken')
+   if not cursor:break
+  assert not any('fold00-epoch' in o['name'] for o in prior03)
+  prior_output+=sum(int(o['size']) for o in prior03 if not o['name'].endswith('/inputs.tar'))
+  save('results08/oregon03-terminal-inventory.json',{'objects':prior03,'terminal_closed':True})
   transfer=check_transfer_bound(package['input_bytes']+extra_inputs,size+prior_output,current_prefix=PREFIX)
   save('results/training08-transfer-bound.json',transfer)
   assert shutil.disk_usage(root).free>3*size+10*1024**3,'Insufficient archive/cache/mirror space'
