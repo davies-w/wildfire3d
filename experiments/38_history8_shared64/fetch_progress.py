@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse,json,sys,subprocess,urllib.request,urllib.parse,hashlib,base64,re
 R=Path(__file__).resolve().parent;sys.path.insert(0,str(R.parent/'36_tree_density'))
 from cloud import G,BUCKET
-p=argparse.ArgumentParser();p.add_argument('attempt',choices=['03','04','05']);a=p.parse_args();prefix='history38/training'+a.attempt+'/'
+p=argparse.ArgumentParser();p.add_argument('attempt',choices=['03','04','05','06']);a=p.parse_args();prefix='history38/training'+a.attempt+'/'
 dest=R/('data/progress'+a.attempt);dest.mkdir(exist_ok=True)
 token=subprocess.run([G,'auth','print-access-token'],capture_output=True,text=True,check=True).stdout.strip()
 def get(u):return urllib.request.urlopen(urllib.request.Request(u,headers={'Authorization':'Bearer '+token}),timeout=90)
