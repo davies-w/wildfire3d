@@ -111,3 +111,27 @@ stages:
     outs:
     - data/training03-results:
         persist: true
+  prepare_race04:
+    cmd: python prepare_race04.py
+    deps:
+    - prepare_race04.py
+    - data/training03
+    - results03/package.json
+    - results03/execution.json
+    outs:
+    - data/training04:
+        persist: true
+  audit_startup04:
+    cmd: python audit_startup04.py
+    deps:
+    - audit_startup04.py
+    outs:
+    - data/startup-audit04:
+        persist: true
+  collect04:
+    cmd: python collect04.py
+    deps:
+    - collect04.py
+    outs:
+    - data/training04-results:
+        persist: true

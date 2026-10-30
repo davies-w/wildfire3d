@@ -56,14 +56,14 @@ stages:
     deps:
     - path: preserve01.py
       hash: md5
-      md5: 1383a5bbeb58effd0e7a778161013203
-      size: 585
+      md5: 4f3a48e9775f96def80722b9092007a8
+      size: 597
     outs:
     - path: data/provenance01
       hash: md5
-      md5: 2631e0cb7fe628e2a372423816bc4dbe.dir
-      size: 529432
-      nfiles: 48
+      md5: 4f08ce82dba63fad4b5b9bd434c46d47.dir
+      size: 595962
+      nfiles: 62
   archive_preemption01:
     cmd: python archive_preemption01.py
     deps:
@@ -178,3 +178,29 @@ stages:
       hash: md5
       md5: 2022fb483c53c956f5ce8f4d1eb4d8aa
       size: 463
+  prepare_race04:
+    cmd: python prepare_race04.py
+    deps:
+    - path: data/training03
+      hash: md5
+      md5: 5dc45fe37add2c0744a0c5403c97560e.dir
+      size: 38646316
+      nfiles: 76
+    - path: prepare_race04.py
+      hash: md5
+      md5: f52e753db88215e39451974e715b7bec
+      size: 9640
+    - path: results03/execution.json
+      hash: md5
+      md5: 96c61953bc44d99e558c443c8d963cf2
+      size: 334
+    - path: results03/package.json
+      hash: md5
+      md5: 5a0323fdbeef5cff0c2e88e8a1ce7ddb
+      size: 8040
+    outs:
+    - path: data/training04
+      hash: md5
+      md5: ac02ba12a0cfda4e9450da33ed1ceeff.dir
+      size: 38650249
+      nfiles: 72
