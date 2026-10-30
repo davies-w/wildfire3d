@@ -56,14 +56,14 @@ stages:
     deps:
     - path: preserve01.py
       hash: md5
-      md5: 4f3a48e9775f96def80722b9092007a8
-      size: 597
+      md5: be9b3abff626f4b3807d605004268785
+      size: 609
     outs:
     - path: data/provenance01
       hash: md5
-      md5: 2c44882ad317671ad663fc58002b351a.dir
-      size: 1053695
-      nfiles: 65
+      md5: 12c25fbf4e6a2ba72f4827417d53c89f.dir
+      size: 1394823
+      nfiles: 76
   archive_preemption01:
     cmd: python archive_preemption01.py
     deps:
@@ -222,11 +222,51 @@ stages:
     deps:
     - path: fetch_progress.py
       hash: md5
-      md5: a199e40fd4a40933f6ae4a74e2d63072
-      size: 2181
+      md5: 91143797ce202633c4f1e4c7ce0cd171
+      size: 2186
     outs:
     - path: data/progress04
       hash: md5
-      md5: 2a31aff2938466e46d726051df8ce244.dir
-      size: 377353
-      nfiles: 54
+      md5: 83e7e201ccb3d1e088db73b679400b92.dir
+      size: 616224
+      nfiles: 88
+  archive_preemption04:
+    cmd: python archive_preemption04.py
+    deps:
+    - path: archive_preemption04.py
+      hash: md5
+      md5: 2bbd65c5eb6c6d8677ab54a41e3ab4ac
+      size: 2977
+    outs:
+    - path: data/preempted04
+      hash: md5
+      md5: 871babd60223e163ff34afed255bf619.dir
+      size: 69828505
+      nfiles: 189
+  prepare05:
+    cmd: python prepare05.py
+    deps:
+    - path: cloud_check05.py
+      hash: md5
+      md5: 3233e9bb0900f800175beafa1ad507e6
+      size: 6134
+    - path: data/preempted04
+      hash: md5
+      md5: 871babd60223e163ff34afed255bf619.dir
+      size: 69828505
+      nfiles: 189
+    - path: data/training01
+      hash: md5
+      md5: d274034f6fd84f47cb68ab615d184db3.dir
+      size: 11181230
+      nfiles: 19
+    - path: prepare05.py
+      hash: md5
+      md5: cca58e12311274fb67de5fd2e018908e
+      size: 4547
+    outs:
+    - path: data/training05
+      hash: md5
+      md5: 72143e24b6f7263eaa099237efdf0e1e.dir
+      size: 113775430
+      nfiles: 194
