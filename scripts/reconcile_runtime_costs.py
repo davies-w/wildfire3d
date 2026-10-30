@@ -6,12 +6,12 @@ from pathlib import Path
 import datetime,json,subprocess,fcntl,sys
 R=Path(__file__).resolve().parents[1];D=R/'docs/billing-audit-2026-10-23';B=R/'experiments/33_representation_loss/budget.json'
 G=str(Path.home()/'.local/google-cloud-sdk/bin/gcloud')
-rates={('n1-standard-4','STANDARD'):.8,('g2-standard-4','FLEX_START'):.8,('g2-standard-4','STANDARD'):.706832276,('g2-standard-4','SPOT'):(1.14/3.41+4*.21/13.81+16*.10/55.26),('c3-standard-4','SPOT'):(4*5.45/410.6+16*2.48/1642.51)}
+rates={('n1-standard-4','SPOT'):.75,('n1-standard-4','STANDARD'):.8,('g2-standard-4','FLEX_START'):.8,('g2-standard-4','STANDARD'):.706832276,('g2-standard-4','SPOT'):(1.14/3.41+4*.21/13.81+16*.10/55.26),('c3-standard-4','SPOT'):(4*5.45/410.6+16*2.48/1642.51)}
 def budgeted_gpu_type(machine,req):
  if machine!='n1-standard-4':return None
  cards=req.get('guestAccelerators',[]);assert len(cards)==1, 'N1 cost bound supports exactly one T4'
  card=cards[0];assert card['acceleratorType'].split('/')[-1]=='nvidia-tesla-t4' and int(card['acceleratorCount'])==1, 'Unbudgeted N1 GPU configuration'
- assert req.get('scheduling',{}).get('provisioningModel','STANDARD')=='STANDARD'
+ assert req.get('scheduling',{}).get('provisioningModel','STANDARD')in ['STANDARD','SPOT']
  return 'nvidia-tesla-t4'
 
 def runtime_rate(machine,provision,resource):

@@ -197,3 +197,39 @@ stages:
     - preserve05.py
     outs:
     - data/provenance05
+  prepare06:
+    cmd: python prepare06.py
+    deps:
+    - prepare06.py
+    - cloud_check06.py
+    - data/training03
+    - ../36_tree_density/data/model-training/schema.json
+    outs:
+    - data/training06:
+        persist: true
+  validate06:
+    cmd: python validate06.py
+    deps:
+    - validate06.py
+    - data/training06
+    outs:
+    - results06/offline-check.json
+  audit_startup06:
+    cmd: python audit_startup06.py
+    deps:
+    - audit_startup06.py
+    outs:
+    - data/startup-audit06
+  collect06:
+    cmd: python collect06.py
+    deps:
+    - collect06.py
+    outs:
+    - data/training06-results:
+        persist: true
+  preserve06:
+    cmd: python preserve06.py
+    deps:
+    - preserve06.py
+    outs:
+    - data/provenance06

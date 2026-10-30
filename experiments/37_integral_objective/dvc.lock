@@ -447,3 +447,42 @@ stages:
       md5: a4cc03c56a549cb46f580ef679e2baaa.dir
       size: 182989
       nfiles: 12
+  prepare06:
+    cmd: python prepare06.py
+    deps:
+    - path: ../36_tree_density/data/model-training/schema.json
+      hash: md5
+      md5: 0dbee67e38424d53816fe78799442133
+      size: 672301
+    - path: cloud_check06.py
+      hash: md5
+      md5: f8efca14bf11b8126528a26751637eb7
+      size: 3926
+    - path: data/training03
+      hash: md5
+      md5: dbc3a8fd34710503831881fbc7511bbd.dir
+      size: 11168047
+      nfiles: 14
+    - path: prepare06.py
+      hash: md5
+      md5: 67a05ecfb8357da05a762b8eb5d6d8ad
+      size: 3988
+    outs:
+    - path: data/training06
+      hash: md5
+      md5: a1597d7e38a800bd320c7adcb571ea29.dir
+      size: 11169156
+      nfiles: 15
+  preserve06:
+    cmd: python preserve06.py
+    deps:
+    - path: preserve06.py
+      hash: md5
+      md5: fcb87a252aa5d8348997b71daf545a69
+      size: 394
+    outs:
+    - path: data/provenance06
+      hash: md5
+      md5: b1e1907513cc15b879e4443b2eef060a.dir
+      size: 190670
+      nfiles: 16
