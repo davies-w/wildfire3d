@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 R=Path(__file__).resolve().parent
 p=argparse.ArgumentParser();p.add_argument('--output',required=True);args=p.parse_args()
 rows={}
-for folder in ['preempted01','preempted02','training03-results','progress03','training04-results','progress04','preempted04','progress05','training05-results','progress06','training06-results']:
+for folder in ['preempted01','preempted02','training03-results','progress03','training04-results','progress04','preempted04','progress05','training05-results','progress06','training06-results','preempted06','progress07','training07-results']:
  for f in sorted((R/'data'/folder).glob('fold00-epoch*.json')):
   d=json.loads(f.read_text());e=d['epoch']
   if e in rows:assert rows[e]==d,'Conflicting saved epoch'

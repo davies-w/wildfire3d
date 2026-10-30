@@ -218,3 +218,41 @@ stages:
     outs:
     - data/progress06:
         persist: true
+  archive_preemption06:
+    cmd: python archive_preemption06.py
+    deps:
+    - archive_preemption06.py
+    outs:
+    - data/preempted06:
+        persist: true
+  prepare07:
+    cmd: python prepare07.py
+    deps:
+    - prepare07.py
+    - cloud_check07.py
+    - data/training01
+    - data/preempted06
+    outs:
+    - data/training07:
+        persist: true
+  audit_startup07:
+    cmd: python audit_startup07.py
+    deps:
+    - audit_startup07.py
+    outs:
+    - data/startup-audit07:
+        persist: true
+  collect07:
+    cmd: python collect07.py
+    deps:
+    - collect07.py
+    outs:
+    - data/training07-results:
+        persist: true
+  progress07:
+    cmd: python fetch_progress.py 07
+    deps:
+    - fetch_progress.py
+    outs:
+    - data/progress07:
+        persist: true
