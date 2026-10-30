@@ -483,6 +483,86 @@ stages:
     outs:
     - path: data/provenance06
       hash: md5
-      md5: b1e1907513cc15b879e4443b2eef060a.dir
-      size: 190670
-      nfiles: 16
+      md5: de09e17820908b5709033fc14c7ba00b.dir
+      size: 198150
+      nfiles: 22
+  collect06:
+    cmd: python collect06.py
+    deps:
+    - path: collect06.py
+      hash: md5
+      md5: e34035b8da2a6eee3c2884086eb59280
+      size: 6646
+    outs:
+    - path: data/training06-results
+      hash: md5
+      md5: def6d7953ebc23da9af61081249455c9.dir
+      size: 116808951
+      nfiles: 479
+  analyze06:
+    cmd: python analyze06.py
+    deps:
+    - path: analyze06.py
+      hash: md5
+      md5: 166fed0c53abe9967a23b738a588307f
+      size: 2788
+    - path: data/training06-results
+      hash: md5
+      md5: def6d7953ebc23da9af61081249455c9.dir
+      size: 116808951
+      nfiles: 479
+    outs:
+    - path: data/analysis06
+      hash: md5
+      md5: 2864bbcc98b8b544db38959209bc33a8.dir
+      size: 5998006
+      nfiles: 1
+  build_public06:
+    cmd: python build_public06.py
+    deps:
+    - path: build_public06.py
+      hash: md5
+      md5: c58a81636e21a2fbffd34e533845a375
+      size: 3261
+    - path: data/analysis06
+      hash: md5
+      md5: 2864bbcc98b8b544db38959209bc33a8.dir
+      size: 5998006
+      nfiles: 1
+    outs:
+    - path: data/public06
+      hash: md5
+      md5: dca3a0e60fade500be288d72c42680d4.dir
+      size: 6309162
+      nfiles: 1
+  add_full_sequence06:
+    cmd: python add_to_full_sequence06.py
+    deps:
+    - path: add_to_full_sequence06.py
+      hash: md5
+      md5: b39e2363d1b9cbac2f89d6449926a176
+      size: 3313
+    - path: data/public06
+      hash: md5
+      md5: dca3a0e60fade500be288d72c42680d4.dir
+      size: 6309162
+      nfiles: 1
+    outs:
+    - path: data/scorecard-addition06
+      hash: md5
+      md5: 1e8eb8e53b684df91385be49c8b15cd8.dir
+      size: 6373799
+      nfiles: 5
+  audit_startup06:
+    cmd: python audit_startup06.py
+    deps:
+    - path: audit_startup06.py
+      hash: md5
+      md5: 6332ea9eaeebcce81f7258e99e83c0a9
+      size: 1493
+    outs:
+    - path: data/startup-audit06
+      hash: md5
+      md5: bdf85c2a32b391b812b35d37d8fecdb9.dir
+      size: 1266
+      nfiles: 6

@@ -233,3 +233,24 @@ stages:
     - preserve06.py
     outs:
     - data/provenance06
+  analyze06:
+    cmd: python analyze06.py
+    deps:
+    - analyze06.py
+    - data/training06-results
+    outs:
+    - data/analysis06
+  build_public06:
+    cmd: python build_public06.py
+    deps:
+    - build_public06.py
+    - data/analysis06
+    outs:
+    - data/public06
+  add_full_sequence06:
+    cmd: python add_to_full_sequence06.py
+    deps:
+    - add_to_full_sequence06.py
+    - data/public06
+    outs:
+    - data/scorecard-addition06

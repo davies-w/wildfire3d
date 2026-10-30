@@ -60,7 +60,7 @@ def main():
   prior_output=sum(read('results/'+tag+'-collected.json')['bytes'] for tag in ['training03','training04'])
   if (R/'results06/package.json').exists():extra_inputs+=read('results06/package.json')['input_bytes']
   if (R/'results/training06-collected.json').exists():prior_output+=read('results/training06-collected.json')['bytes']
-  elif (R/'results06/execution.json').exists():prior_output+=2*1024**3 # reserve transfer room for concurrent rotation3
+  elif (R/'results06/execution.json').exists():prior_output+=512*1024**2 # reserve transfer room (400 small-model checkpoints below512MiB) for concurrent rotation3
   transfer=check_transfer_bound(package['input_bytes']+extra_inputs,size+prior_output,current_prefix=PREFIX)
   save('results/training05-transfer-bound.json',transfer)
   assert shutil.disk_usage(root).free>3*size+10*1024**3,'Insufficient archive/cache/mirror space'
