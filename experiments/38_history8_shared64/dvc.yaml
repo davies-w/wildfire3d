@@ -37,3 +37,40 @@ stages:
     - preserve01.py
     outs:
     - data/provenance01
+  archive_preemption01:
+    cmd: python archive_preemption01.py
+    deps:
+    - archive_preemption01.py
+    outs:
+    - data/preempted01:
+        persist: true
+  prepare02:
+    cmd: python prepare02.py
+    deps:
+    - prepare02.py
+    - cloud_check02.py
+    - data/training01
+    - data/preempted01
+    outs:
+    - data/training02:
+        persist: true
+  validate02:
+    cmd: python validate02.py
+    deps:
+    - validate02.py
+    - data/training02
+    outs:
+    - results02/offline-check.json
+  audit_startup02:
+    cmd: python audit_startup02.py
+    deps:
+    - audit_startup02.py
+    outs:
+    - data/startup-audit02
+  collect02:
+    cmd: python collect02.py
+    deps:
+    - collect02.py
+    outs:
+    - data/training02-results:
+        persist: true
