@@ -42,9 +42,9 @@ stages:
     outs:
     - path: data/provenance
       hash: md5
-      md5: 64341c00a7188d2ca066cdf4b9281f5f.dir
-      size: 74672110
-      nfiles: 221
+      md5: 6d33709ed8a188967c3959829dafd942.dir
+      size: 75381206
+      nfiles: 232
   prepare_pool02:
     cmd: ../../.venv/bin/python repair_pool02.py
     deps:
@@ -97,6 +97,19 @@ stages:
     outs:
     - path: data/progress-public
       hash: md5
-      md5: 285052a3fb1f4977521fca403c5f03eb.dir
-      size: 1446804
-      nfiles: 184
+      md5: 4aec0d6c6b2151ec2f2a943b7ce099eb.dir
+      size: 1505220
+      nfiles: 192
+  collect:
+    cmd: ../../.venv/bin/python collect.py
+    deps:
+    - path: collect.py
+      hash: md5
+      md5: 213fd60724497d27a224be6af141e60f
+      size: 5426
+    outs:
+    - path: data/pool02-results
+      hash: md5
+      md5: 2d93eccc8cc02ffe6e232bda53dc0f8b.dir
+      size: 146201538
+      nfiles: 397

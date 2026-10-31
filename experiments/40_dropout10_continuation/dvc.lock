@@ -1,0 +1,68 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py && ../../.venv/bin/python 
+      build_pool.py
+    deps:
+    - path: ../38_history8_shared64/data/training08/bootstrap.py
+      hash: md5
+      md5: 79d3e249871bd62bd9c4631d86552af7
+      size: 1868
+    - path: ../38_history8_shared64/data/training08/workflow.yaml
+      hash: md5
+      md5: b29ccb57f497851b34638241f220cfa9
+      size: 11373
+    - path: ../39_long_window_continuation/data/pool02-results
+      hash: md5
+      md5: 2d93eccc8cc02ffe6e232bda53dc0f8b.dir
+      size: 146201538
+      nfiles: 397
+    - path: ../39_long_window_continuation/data/training02
+      hash: md5
+      md5: c0b2aa37c60e9f08dbf6b558e0d44023.dir
+      size: 144684561
+      nfiles: 235
+    - path: build_pool.py
+      hash: md5
+      md5: bcb659fc006860cdce2c831cf68aeeee
+      size: 11085
+    - path: prepare.py
+      hash: md5
+      md5: b01bc07584688164faed0384b44b7e96
+      size: 3664
+    outs:
+    - path: data/training
+      hash: md5
+      md5: 044d76eaecc8a5f8b0c788e5bb3aa319.dir
+      size: 228634591
+      nfiles: 335
+  progress:
+    cmd: ../../.venv/bin/python snapshot_progress.py
+    deps:
+    - path: plot_learning_curve.py
+      hash: md5
+      md5: 14ced22b71fd0df5d050dfcfc04b1552
+      size: 2148
+    - path: snapshot_progress.py
+      hash: md5
+      md5: 9d249fa8fbb2330f412aa1b0d0092e89
+      size: 1284
+    outs:
+    - path: data/progress-public
+      hash: md5
+      md5: 050c017184814e2727cd02503266df9f.dir
+      size: 158710
+      nfiles: 2
+  preserve:
+    cmd: ../../.venv/bin/python preserve.py
+    deps:
+    - path: preserve.py
+      hash: md5
+      md5: ea171ed172a9652ae7cc9c54ed17db72
+      size: 684
+    outs:
+    - path: data/provenance
+      hash: md5
+      md5: 5f8158792f6470f66f96957317b489b0.dir
+      size: 235102
+      nfiles: 10

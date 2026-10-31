@@ -1,0 +1,526 @@
+main:
+  steps:
+  - initialize:
+      assign:
+      - candidates:
+        - id: or
+          region: us-west1
+          zones:
+          - us-west1-a
+          - us-west1-b
+          label: gpu40-pool01-or
+          job_id: fds-gpu40-pool01-or
+          job:
+            taskGroups:
+            - taskCount: '1'
+              parallelism: '1'
+              taskCountPerNode: '1'
+              taskSpec:
+                computeResource:
+                  cpuMilli: 4000
+                  memoryMib: 12000
+                maxRunDuration: 49500s
+                maxRetryCount: 0
+                runnables:
+                - container:
+                    imageUri: pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime
+                    entrypoint: python
+                    commands:
+                    - -c
+                    - import base64;exec(compile(base64.b64decode('aW1wb3J0IHBhdGhsaWIsc3lzLHJ1bnB5LHVybGxpYi5yZXF1ZXN0LHVybGxpYi5wYXJzZSxqc29uLHRhcmZpbGUsc2h1dGlsLGhhc2hsaWIKaW1wb3J0IG9zLHRpbWUsdXJsbGliLmVycm9yCmZvciBhdHRlbXB0IGluIHJhbmdlKDM2MCk6CiByZXE9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pCiB0b2s9anNvbi5sb2FkKHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLHRpbWVvdXQ9MjApKVsnYWNjZXNzX3Rva2VuJ10KIHVybD0naHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3N0b3JhZ2UvdjEvYi90bXJ3LXdpbGRmaXJlLTIwMjYxMDE1LXRyaWFsL28vZHJvcG91dDQwJTJGcG9vbDAxJTJGcmFjZS13aW5uZXIuanNvbj9hbHQ9bWVkaWEnCiB0cnk6CiAgZGVjaXNpb249anNvbi5sb2FkKHVybGxpYi5yZXF1ZXN0LnVybG9wZW4odXJsbGliLnJlcXVlc3QuUmVxdWVzdCh1cmwsaGVhZGVycz17J0F1dGhvcml6YXRpb24nOidCZWFyZXIgJyt0b2t9KSx0aW1lb3V0PTMwKSkKICBhc3NlcnQgZGVjaXNpb25bJ3dpbm5lciddPT1vcy5lbnZpcm9uWydDQU5ESURBVEVfSUQnXSBhbmQgZGVjaXNpb25bJ2xvc2Vyc19jbGVhbnVwX3ZlcmlmaWVkJ10KICBicmVhawogZXhjZXB0IHVybGxpYi5lcnJvci5IVFRQRXJyb3IgYXMgZToKICBpZiBlLmNvZGUhPTQwNDpyYWlzZQogdGltZS5zbGVlcCg1KQplbHNlOnJhaXNlIFJ1bnRpbWVFcnJvcignTm8gb3duZXJzaGlwIGdyYW50IHdpdGhpbiAzMCBtaW51dGVzOyBubyBvcHRpbWl6ZXIgd29yayBwZXJtaXR0ZWQnKQoKcD1wYXRobGliLlBhdGgoJy90bXAvc3R1ZHknKTtwLm1rZGlyKGV4aXN0X29rPVRydWUpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pO3Rva2VuPWpzb24ubG9hZCh1cmxsaWIucmVxdWVzdC51cmxvcGVuKHIsdGltZW91dD0yMCkpWydhY2Nlc3NfdG9rZW4nXQp1PSdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vc3RvcmFnZS92MS9iL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvby8nK3VybGxpYi5wYXJzZS5xdW90ZSgnZHJvcG91dDQwL3Bvb2wwMS9pbnB1dHMudGFyJyxzYWZlPScnKSsnP2FsdD1tZWRpYScKd2l0aCB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QodSxoZWFkZXJzPXsnQXV0aG9yaXphdGlvbic6J0JlYXJlciAnK3Rva2VufSksdGltZW91dD0xODApIGFzIHNyYywocC8ndHJhbnNmZXIudGFyJykub3Blbignd2InKSBhcyBkc3Q6c2h1dGlsLmNvcHlmaWxlb2JqKHNyYyxkc3QpCmFzc2VydCBoYXNobGliLnNoYTI1NigocC8ndHJhbnNmZXIudGFyJykucmVhZF9ieXRlcygpKS5oZXhkaWdlc3QoKT09JzkyMDk5YmUxYjZkZmM1ZDRhOTNmYzZhOThkNTQ0ODlkYzBmMGU3M2I1YzZhYjEwOWQzY2RhZDE0Y2NjMTg1YjInCndpdGggdGFyZmlsZS5vcGVuKHAvJ3RyYW5zZmVyLnRhcicpIGFzIHRhcjoKIGZvciBtIGluIHRhci5nZXRtZW1iZXJzKCk6YXNzZXJ0IG5vdCBtLm5hbWUuc3RhcnRzd2l0aCgnLycpIGFuZCAnLi4nIG5vdCBpbiBwYXRobGliLlBhdGgobS5uYW1lKS5wYXJ0cyBhbmQgbm90IG0uaXNzeW0oKSBhbmQgbm90IG0uaXNsbmsoKQogdGFyLmV4dHJhY3RhbGwocCkKZm9yIG4saCBpbiBqc29uLmxvYWRzKChwLydoYXNoZXMuanNvbicpLnJlYWRfdGV4dCgpKS5pdGVtcygpOmFzc2VydCBoYXNobGliLnNoYTI1NigocC9uKS5yZWFkX2J5dGVzKCkpLmhleGRpZ2VzdCgpPT1oCihwLydyZXN1bHRzJykubWtkaXIoZXhpc3Rfb2s9VHJ1ZSk7c3lzLnBhdGguaW5zZXJ0KDAsc3RyKHApKTsKdHJ5OgogZnJvbSBydW50aW1lIGltcG9ydCB1cGxvYWQsb2JqZWN0X21ldGFkYXRhLG1hdGNoZXMKIHByb2JlPWInZGVuc2l0eTM2LXByZWZsaWdodC11cGxvYWQtdmVyaWZpY2F0aW9uLXByb2JlJzt1cGxvYWQoJ3VwbG9hZC1wcm9iZS5iaW4nLHByb2JlKTthc3NlcnQgbWF0Y2hlcyhvYmplY3RfbWV0YWRhdGEoJ3VwbG9hZC1wcm9iZS5iaW4nKSxwcm9iZSk7dXBsb2FkKCd1cGxvYWQtcHJvYmUuYmluJyxwcm9iZSkKIHVwbG9hZCgndHJhbnNwb3J0LWNsb3VkLWNoZWNrLmpzb24nLGpzb24uZHVtcHMoeydwYXNzZWQnOlRydWUsJ3ZlcmlmaWVkX21ldGFkYXRhJzpUcnVlLCdpZGVtcG90ZW50X3JlcGxheSc6VHJ1ZX0pLmVuY29kZSgpKQogaW1wb3J0IHN1YnByb2Nlc3MKIHN1YnByb2Nlc3MucnVuKFtzeXMuZXhlY3V0YWJsZSxzdHIocC8nY2xvdWRfY2hlY2sucHknKV0sY2hlY2s9VHJ1ZSx0aW1lb3V0PTkwMCkKIHJ1bnB5LnJ1bl9wYXRoKHN0cihwLyd3b3JrZXIucHknKSxydW5fbmFtZT0nX19tYWluX18nKQpleGNlcHQgQmFzZUV4Y2VwdGlvbjoKIGltcG9ydCB0cmFjZWJhY2sKIGZyb20gcnVudGltZSBpbXBvcnQgdXBsb2FkCiB1cGxvYWQoJ2Jvb3RzdHJhcC1lcnJvci50eHQnLHRyYWNlYmFjay5mb3JtYXRfZXhjKCkuZW5jb2RlKCkpO3JhaXNlCg=='),'bootstrap','exec'))
+                    options: --shm-size=1g
+                environment:
+                  variables:
+                    TRAINING_SOFT_SECONDS: '48600'
+                    OUTPUT_PREFIX: dropout40/pool01/or/
+                    CANDIDATE_ID: or
+            allocationPolicy:
+              instances:
+              - policy:
+                  machineType: n1-standard-4
+                  provisioningModel: SPOT
+                  bootDisk:
+                    sizeGb: '60'
+                    type: pd-balanced
+                  accelerators:
+                  - type: nvidia-tesla-t4
+                    count: 1
+                installGpuDrivers: true
+              location:
+                allowedLocations:
+                - zones/us-west1-a
+                - zones/us-west1-b
+              serviceAccount:
+                email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+              labels:
+                trial_id: gpu40-pool01-or
+              network:
+                networkInterfaces:
+                - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                  subnetwork: projects/tmrw-wildfire-20261015/regions/us-west1/subnetworks/fds-timing-west1
+            labels:
+              trial_id: gpu40-pool01-or
+            logsPolicy:
+              destination: CLOUD_LOGGING
+        - id: ia
+          region: us-central1
+          zones:
+          - us-central1-a
+          - us-central1-b
+          - us-central1-c
+          - us-central1-f
+          label: gpu40-pool01-ia
+          job_id: fds-gpu40-pool01-ia
+          job:
+            taskGroups:
+            - taskCount: '1'
+              parallelism: '1'
+              taskCountPerNode: '1'
+              taskSpec:
+                computeResource:
+                  cpuMilli: 4000
+                  memoryMib: 12000
+                maxRunDuration: 49500s
+                maxRetryCount: 0
+                runnables:
+                - container:
+                    imageUri: pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime
+                    entrypoint: python
+                    commands:
+                    - -c
+                    - import base64;exec(compile(base64.b64decode('aW1wb3J0IHBhdGhsaWIsc3lzLHJ1bnB5LHVybGxpYi5yZXF1ZXN0LHVybGxpYi5wYXJzZSxqc29uLHRhcmZpbGUsc2h1dGlsLGhhc2hsaWIKaW1wb3J0IG9zLHRpbWUsdXJsbGliLmVycm9yCmZvciBhdHRlbXB0IGluIHJhbmdlKDM2MCk6CiByZXE9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pCiB0b2s9anNvbi5sb2FkKHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLHRpbWVvdXQ9MjApKVsnYWNjZXNzX3Rva2VuJ10KIHVybD0naHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3N0b3JhZ2UvdjEvYi90bXJ3LXdpbGRmaXJlLTIwMjYxMDE1LXRyaWFsL28vZHJvcG91dDQwJTJGcG9vbDAxJTJGcmFjZS13aW5uZXIuanNvbj9hbHQ9bWVkaWEnCiB0cnk6CiAgZGVjaXNpb249anNvbi5sb2FkKHVybGxpYi5yZXF1ZXN0LnVybG9wZW4odXJsbGliLnJlcXVlc3QuUmVxdWVzdCh1cmwsaGVhZGVycz17J0F1dGhvcml6YXRpb24nOidCZWFyZXIgJyt0b2t9KSx0aW1lb3V0PTMwKSkKICBhc3NlcnQgZGVjaXNpb25bJ3dpbm5lciddPT1vcy5lbnZpcm9uWydDQU5ESURBVEVfSUQnXSBhbmQgZGVjaXNpb25bJ2xvc2Vyc19jbGVhbnVwX3ZlcmlmaWVkJ10KICBicmVhawogZXhjZXB0IHVybGxpYi5lcnJvci5IVFRQRXJyb3IgYXMgZToKICBpZiBlLmNvZGUhPTQwNDpyYWlzZQogdGltZS5zbGVlcCg1KQplbHNlOnJhaXNlIFJ1bnRpbWVFcnJvcignTm8gb3duZXJzaGlwIGdyYW50IHdpdGhpbiAzMCBtaW51dGVzOyBubyBvcHRpbWl6ZXIgd29yayBwZXJtaXR0ZWQnKQoKcD1wYXRobGliLlBhdGgoJy90bXAvc3R1ZHknKTtwLm1rZGlyKGV4aXN0X29rPVRydWUpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pO3Rva2VuPWpzb24ubG9hZCh1cmxsaWIucmVxdWVzdC51cmxvcGVuKHIsdGltZW91dD0yMCkpWydhY2Nlc3NfdG9rZW4nXQp1PSdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vc3RvcmFnZS92MS9iL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvby8nK3VybGxpYi5wYXJzZS5xdW90ZSgnZHJvcG91dDQwL3Bvb2wwMS9pbnB1dHMudGFyJyxzYWZlPScnKSsnP2FsdD1tZWRpYScKd2l0aCB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QodSxoZWFkZXJzPXsnQXV0aG9yaXphdGlvbic6J0JlYXJlciAnK3Rva2VufSksdGltZW91dD0xODApIGFzIHNyYywocC8ndHJhbnNmZXIudGFyJykub3Blbignd2InKSBhcyBkc3Q6c2h1dGlsLmNvcHlmaWxlb2JqKHNyYyxkc3QpCmFzc2VydCBoYXNobGliLnNoYTI1NigocC8ndHJhbnNmZXIudGFyJykucmVhZF9ieXRlcygpKS5oZXhkaWdlc3QoKT09JzkyMDk5YmUxYjZkZmM1ZDRhOTNmYzZhOThkNTQ0ODlkYzBmMGU3M2I1YzZhYjEwOWQzY2RhZDE0Y2NjMTg1YjInCndpdGggdGFyZmlsZS5vcGVuKHAvJ3RyYW5zZmVyLnRhcicpIGFzIHRhcjoKIGZvciBtIGluIHRhci5nZXRtZW1iZXJzKCk6YXNzZXJ0IG5vdCBtLm5hbWUuc3RhcnRzd2l0aCgnLycpIGFuZCAnLi4nIG5vdCBpbiBwYXRobGliLlBhdGgobS5uYW1lKS5wYXJ0cyBhbmQgbm90IG0uaXNzeW0oKSBhbmQgbm90IG0uaXNsbmsoKQogdGFyLmV4dHJhY3RhbGwocCkKZm9yIG4saCBpbiBqc29uLmxvYWRzKChwLydoYXNoZXMuanNvbicpLnJlYWRfdGV4dCgpKS5pdGVtcygpOmFzc2VydCBoYXNobGliLnNoYTI1NigocC9uKS5yZWFkX2J5dGVzKCkpLmhleGRpZ2VzdCgpPT1oCihwLydyZXN1bHRzJykubWtkaXIoZXhpc3Rfb2s9VHJ1ZSk7c3lzLnBhdGguaW5zZXJ0KDAsc3RyKHApKTsKdHJ5OgogZnJvbSBydW50aW1lIGltcG9ydCB1cGxvYWQsb2JqZWN0X21ldGFkYXRhLG1hdGNoZXMKIHByb2JlPWInZGVuc2l0eTM2LXByZWZsaWdodC11cGxvYWQtdmVyaWZpY2F0aW9uLXByb2JlJzt1cGxvYWQoJ3VwbG9hZC1wcm9iZS5iaW4nLHByb2JlKTthc3NlcnQgbWF0Y2hlcyhvYmplY3RfbWV0YWRhdGEoJ3VwbG9hZC1wcm9iZS5iaW4nKSxwcm9iZSk7dXBsb2FkKCd1cGxvYWQtcHJvYmUuYmluJyxwcm9iZSkKIHVwbG9hZCgndHJhbnNwb3J0LWNsb3VkLWNoZWNrLmpzb24nLGpzb24uZHVtcHMoeydwYXNzZWQnOlRydWUsJ3ZlcmlmaWVkX21ldGFkYXRhJzpUcnVlLCdpZGVtcG90ZW50X3JlcGxheSc6VHJ1ZX0pLmVuY29kZSgpKQogaW1wb3J0IHN1YnByb2Nlc3MKIHN1YnByb2Nlc3MucnVuKFtzeXMuZXhlY3V0YWJsZSxzdHIocC8nY2xvdWRfY2hlY2sucHknKV0sY2hlY2s9VHJ1ZSx0aW1lb3V0PTkwMCkKIHJ1bnB5LnJ1bl9wYXRoKHN0cihwLyd3b3JrZXIucHknKSxydW5fbmFtZT0nX19tYWluX18nKQpleGNlcHQgQmFzZUV4Y2VwdGlvbjoKIGltcG9ydCB0cmFjZWJhY2sKIGZyb20gcnVudGltZSBpbXBvcnQgdXBsb2FkCiB1cGxvYWQoJ2Jvb3RzdHJhcC1lcnJvci50eHQnLHRyYWNlYmFjay5mb3JtYXRfZXhjKCkuZW5jb2RlKCkpO3JhaXNlCg=='),'bootstrap','exec'))
+                    options: --shm-size=1g
+                environment:
+                  variables:
+                    TRAINING_SOFT_SECONDS: '48600'
+                    OUTPUT_PREFIX: dropout40/pool01/ia/
+                    CANDIDATE_ID: ia
+            allocationPolicy:
+              instances:
+              - policy:
+                  machineType: n1-standard-4
+                  provisioningModel: SPOT
+                  bootDisk:
+                    sizeGb: '60'
+                    type: pd-balanced
+                  accelerators:
+                  - type: nvidia-tesla-t4
+                    count: 1
+                installGpuDrivers: true
+              location:
+                allowedLocations:
+                - zones/us-central1-a
+                - zones/us-central1-b
+                - zones/us-central1-c
+                - zones/us-central1-f
+              serviceAccount:
+                email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+              labels:
+                trial_id: gpu40-pool01-ia
+              network:
+                networkInterfaces:
+                - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                  subnetwork: projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial
+            labels:
+              trial_id: gpu40-pool01-ia
+            logsPolicy:
+              destination: CLOUD_LOGGING
+        - id: sc
+          region: us-east1
+          zones:
+          - us-east1-b
+          - us-east1-c
+          - us-east1-d
+          label: gpu40-pool01-sc
+          job_id: fds-gpu40-pool01-sc
+          job:
+            taskGroups:
+            - taskCount: '1'
+              parallelism: '1'
+              taskCountPerNode: '1'
+              taskSpec:
+                computeResource:
+                  cpuMilli: 4000
+                  memoryMib: 12000
+                maxRunDuration: 49500s
+                maxRetryCount: 0
+                runnables:
+                - container:
+                    imageUri: pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime
+                    entrypoint: python
+                    commands:
+                    - -c
+                    - import base64;exec(compile(base64.b64decode('aW1wb3J0IHBhdGhsaWIsc3lzLHJ1bnB5LHVybGxpYi5yZXF1ZXN0LHVybGxpYi5wYXJzZSxqc29uLHRhcmZpbGUsc2h1dGlsLGhhc2hsaWIKaW1wb3J0IG9zLHRpbWUsdXJsbGliLmVycm9yCmZvciBhdHRlbXB0IGluIHJhbmdlKDM2MCk6CiByZXE9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pCiB0b2s9anNvbi5sb2FkKHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLHRpbWVvdXQ9MjApKVsnYWNjZXNzX3Rva2VuJ10KIHVybD0naHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3N0b3JhZ2UvdjEvYi90bXJ3LXdpbGRmaXJlLTIwMjYxMDE1LXRyaWFsL28vZHJvcG91dDQwJTJGcG9vbDAxJTJGcmFjZS13aW5uZXIuanNvbj9hbHQ9bWVkaWEnCiB0cnk6CiAgZGVjaXNpb249anNvbi5sb2FkKHVybGxpYi5yZXF1ZXN0LnVybG9wZW4odXJsbGliLnJlcXVlc3QuUmVxdWVzdCh1cmwsaGVhZGVycz17J0F1dGhvcml6YXRpb24nOidCZWFyZXIgJyt0b2t9KSx0aW1lb3V0PTMwKSkKICBhc3NlcnQgZGVjaXNpb25bJ3dpbm5lciddPT1vcy5lbnZpcm9uWydDQU5ESURBVEVfSUQnXSBhbmQgZGVjaXNpb25bJ2xvc2Vyc19jbGVhbnVwX3ZlcmlmaWVkJ10KICBicmVhawogZXhjZXB0IHVybGxpYi5lcnJvci5IVFRQRXJyb3IgYXMgZToKICBpZiBlLmNvZGUhPTQwNDpyYWlzZQogdGltZS5zbGVlcCg1KQplbHNlOnJhaXNlIFJ1bnRpbWVFcnJvcignTm8gb3duZXJzaGlwIGdyYW50IHdpdGhpbiAzMCBtaW51dGVzOyBubyBvcHRpbWl6ZXIgd29yayBwZXJtaXR0ZWQnKQoKcD1wYXRobGliLlBhdGgoJy90bXAvc3R1ZHknKTtwLm1rZGlyKGV4aXN0X29rPVRydWUpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pO3Rva2VuPWpzb24ubG9hZCh1cmxsaWIucmVxdWVzdC51cmxvcGVuKHIsdGltZW91dD0yMCkpWydhY2Nlc3NfdG9rZW4nXQp1PSdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vc3RvcmFnZS92MS9iL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvby8nK3VybGxpYi5wYXJzZS5xdW90ZSgnZHJvcG91dDQwL3Bvb2wwMS9pbnB1dHMudGFyJyxzYWZlPScnKSsnP2FsdD1tZWRpYScKd2l0aCB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QodSxoZWFkZXJzPXsnQXV0aG9yaXphdGlvbic6J0JlYXJlciAnK3Rva2VufSksdGltZW91dD0xODApIGFzIHNyYywocC8ndHJhbnNmZXIudGFyJykub3Blbignd2InKSBhcyBkc3Q6c2h1dGlsLmNvcHlmaWxlb2JqKHNyYyxkc3QpCmFzc2VydCBoYXNobGliLnNoYTI1NigocC8ndHJhbnNmZXIudGFyJykucmVhZF9ieXRlcygpKS5oZXhkaWdlc3QoKT09JzkyMDk5YmUxYjZkZmM1ZDRhOTNmYzZhOThkNTQ0ODlkYzBmMGU3M2I1YzZhYjEwOWQzY2RhZDE0Y2NjMTg1YjInCndpdGggdGFyZmlsZS5vcGVuKHAvJ3RyYW5zZmVyLnRhcicpIGFzIHRhcjoKIGZvciBtIGluIHRhci5nZXRtZW1iZXJzKCk6YXNzZXJ0IG5vdCBtLm5hbWUuc3RhcnRzd2l0aCgnLycpIGFuZCAnLi4nIG5vdCBpbiBwYXRobGliLlBhdGgobS5uYW1lKS5wYXJ0cyBhbmQgbm90IG0uaXNzeW0oKSBhbmQgbm90IG0uaXNsbmsoKQogdGFyLmV4dHJhY3RhbGwocCkKZm9yIG4saCBpbiBqc29uLmxvYWRzKChwLydoYXNoZXMuanNvbicpLnJlYWRfdGV4dCgpKS5pdGVtcygpOmFzc2VydCBoYXNobGliLnNoYTI1NigocC9uKS5yZWFkX2J5dGVzKCkpLmhleGRpZ2VzdCgpPT1oCihwLydyZXN1bHRzJykubWtkaXIoZXhpc3Rfb2s9VHJ1ZSk7c3lzLnBhdGguaW5zZXJ0KDAsc3RyKHApKTsKdHJ5OgogZnJvbSBydW50aW1lIGltcG9ydCB1cGxvYWQsb2JqZWN0X21ldGFkYXRhLG1hdGNoZXMKIHByb2JlPWInZGVuc2l0eTM2LXByZWZsaWdodC11cGxvYWQtdmVyaWZpY2F0aW9uLXByb2JlJzt1cGxvYWQoJ3VwbG9hZC1wcm9iZS5iaW4nLHByb2JlKTthc3NlcnQgbWF0Y2hlcyhvYmplY3RfbWV0YWRhdGEoJ3VwbG9hZC1wcm9iZS5iaW4nKSxwcm9iZSk7dXBsb2FkKCd1cGxvYWQtcHJvYmUuYmluJyxwcm9iZSkKIHVwbG9hZCgndHJhbnNwb3J0LWNsb3VkLWNoZWNrLmpzb24nLGpzb24uZHVtcHMoeydwYXNzZWQnOlRydWUsJ3ZlcmlmaWVkX21ldGFkYXRhJzpUcnVlLCdpZGVtcG90ZW50X3JlcGxheSc6VHJ1ZX0pLmVuY29kZSgpKQogaW1wb3J0IHN1YnByb2Nlc3MKIHN1YnByb2Nlc3MucnVuKFtzeXMuZXhlY3V0YWJsZSxzdHIocC8nY2xvdWRfY2hlY2sucHknKV0sY2hlY2s9VHJ1ZSx0aW1lb3V0PTkwMCkKIHJ1bnB5LnJ1bl9wYXRoKHN0cihwLyd3b3JrZXIucHknKSxydW5fbmFtZT0nX19tYWluX18nKQpleGNlcHQgQmFzZUV4Y2VwdGlvbjoKIGltcG9ydCB0cmFjZWJhY2sKIGZyb20gcnVudGltZSBpbXBvcnQgdXBsb2FkCiB1cGxvYWQoJ2Jvb3RzdHJhcC1lcnJvci50eHQnLHRyYWNlYmFjay5mb3JtYXRfZXhjKCkuZW5jb2RlKCkpO3JhaXNlCg=='),'bootstrap','exec'))
+                    options: --shm-size=1g
+                environment:
+                  variables:
+                    TRAINING_SOFT_SECONDS: '48600'
+                    OUTPUT_PREFIX: dropout40/pool01/sc/
+                    CANDIDATE_ID: sc
+            allocationPolicy:
+              instances:
+              - policy:
+                  machineType: n1-standard-4
+                  provisioningModel: SPOT
+                  bootDisk:
+                    sizeGb: '60'
+                    type: pd-balanced
+                  accelerators:
+                  - type: nvidia-tesla-t4
+                    count: 1
+                installGpuDrivers: true
+              location:
+                allowedLocations:
+                - zones/us-east1-b
+                - zones/us-east1-c
+                - zones/us-east1-d
+              serviceAccount:
+                email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+              labels:
+                trial_id: gpu40-pool01-sc
+              network:
+                networkInterfaces:
+                - network: projects/tmrw-wildfire-20261015/global/networks/default
+                  subnetwork: projects/tmrw-wildfire-20261015/regions/us-east1/subnetworks/default
+            labels:
+              trial_id: gpu40-pool01-sc
+            logsPolicy:
+              destination: CLOUD_LOGGING
+      - winner: null
+      - final_state: UNKNOWN
+  - race:
+      try:
+        steps:
+        - create_jobs:
+            for:
+              value: c
+              in: ${candidates}
+              steps:
+              - create:
+                  call: http.post
+                  args:
+                    url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+                      + c.region + "/jobs"}
+                    auth:
+                      type: OAuth2
+                    query:
+                      jobId: ${c.job_id}
+                    body: ${c.job}
+                  result: created
+        - reset:
+            assign:
+            - viable: 0
+        - scan:
+            for:
+              value: c
+              in: ${candidates}
+              steps:
+              - get:
+                  call: http.get
+                  args:
+                    url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+                      + c.region + "/jobs/" + c.job_id}
+                    auth:
+                      type: OAuth2
+                  result: state
+              - save_status:
+                  call: http.post
+                  args:
+                    url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+                    auth:
+                      type: OAuth2
+                    query:
+                      uploadType: media
+                      name: ${"dropout40/pool01/" + c.id + "/job-status.json" + "."
+                        + string(sys.now())}
+                    headers:
+                      Content-Type: application/json
+                    body: ${state.body}
+              - inv:
+                  call: inventory
+                  args:
+                    c: ${c}
+                  result: inv
+              - eligible:
+                  switch:
+                  - condition: ${state.body.status.state != "FAILED" and state.body.status.state
+                      != "SUCCEEDED"}
+                    steps:
+                    - increment:
+                        assign:
+                        - viable: ${viable+1}
+                    - choose:
+                        switch:
+                        - condition: ${winner == null and len(inv.vms) > 0 and inv.vms[0].status
+                            == "RUNNING"}
+                          assign:
+                          - winner: ${c}
+        - selected:
+            switch:
+            - condition: ${winner != null}
+              next: remove_losers
+            - condition: ${viable == 0}
+              raise: All regional jobs failed before ownership grant
+        - queue_wait:
+            call: sys.sleep
+            args:
+              seconds: 30
+            next: reset
+        - remove_losers:
+            for:
+              value: c
+              in: ${candidates}
+              steps:
+              - loser:
+                  switch:
+                  - condition: ${c.id != winner.id}
+                    steps:
+                    - clean:
+                        call: cleanup
+                        args:
+                          c: ${c}
+        - grant:
+            call: http.post
+            args:
+              url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+              auth:
+                type: OAuth2
+              query:
+                uploadType: media
+                name: dropout40/pool01/race-winner.json
+                ifGenerationMatch: 0
+              headers:
+                Content-Type: application/json
+              body:
+                winner: ${winner.id}
+                losers_cleanup_verified: true
+                selected_at: ${time.format(sys.now())}
+        - set_current:
+            assign:
+            - current: ${winner}
+        - running:
+            call: http.get
+            args:
+              url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+                + current.region + "/jobs/" + current.job_id}
+              auth:
+                type: OAuth2
+            result: state
+        - save_winner_status:
+            call: http.post
+            args:
+              url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+              auth:
+                type: OAuth2
+              query:
+                uploadType: media
+                name: ${"dropout40/pool01/" + current.id + "/job-status.json" + "."
+                  + string(sys.now())}
+              headers:
+                Content-Type: application/json
+              body: ${state.body}
+        - terminal:
+            switch:
+            - condition: ${state.body.status.state == "SUCCEEDED" or state.body.status.state
+                == "FAILED"}
+              next: finished
+        - allocated:
+            call: inventory
+            args:
+              c: ${current}
+            result: inv
+        - age_check:
+            for:
+              value: vm
+              in: ${inv.vms}
+              steps:
+              - overdue:
+                  switch:
+                  - condition: ${sys.now() >= time.parse(vm.creationTimestamp) + 50400}
+                    raise: VM lifetime limit reached; preserve completed checkpoints
+        - training_wait:
+            call: sys.sleep
+            args:
+              seconds: 30
+            next: running
+        - finished:
+            assign:
+            - final_state: ${state.body.status.state}
+      except:
+        as: failure
+        steps:
+        - save_failure:
+            call: http.post
+            args:
+              url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+              auth:
+                type: OAuth2
+              query:
+                uploadType: media
+                name: dropout40/pool01/controller-error.json
+              headers:
+                Content-Type: application/json
+              body: ${failure}
+        - cleanup_failed:
+            for:
+              value: c
+              in: ${candidates}
+              steps:
+              - clean_failed:
+                  call: cleanup
+                  args:
+                    c: ${c}
+        - rethrow:
+            raise: ${failure}
+  - cleanup_terminal:
+      for:
+        value: c
+        in: ${candidates}
+        steps:
+        - clean_terminal:
+            call: cleanup
+            args:
+              c: ${c}
+  - done:
+      return:
+        winner: ${winner.id}
+        batch_state: ${final_state}
+        cleanup_verified: true
+inventory:
+  params:
+  - c
+  steps:
+  - init:
+      assign:
+      - vms: []
+      - disks: []
+  - zones:
+      for:
+        value: z
+        in: ${c.zones}
+        steps:
+        - get_vms:
+            call: http.get
+            args:
+              url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                + z + "/instances"}
+              auth:
+                type: OAuth2
+              query:
+                filter: ${"labels.trial_id = " + c.label}
+            result: v
+        - append_vms:
+            for:
+              value: vm
+              in: ${default(map.get(v.body,"items"),[])}
+              steps:
+              - add_vm:
+                  assign:
+                  - vms: ${list.concat(vms,vm)}
+        - get_disks:
+            call: http.get
+            args:
+              url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                + z + "/disks"}
+              auth:
+                type: OAuth2
+              query:
+                filter: ${"labels.trial_id = " + c.label}
+            result: d
+        - append_disks:
+            for:
+              value: disk
+              in: ${default(map.get(d.body,"items"),[])}
+              steps:
+              - add_disk:
+                  assign:
+                  - disks: ${list.concat(disks,disk)}
+  - done:
+      return:
+        vms: ${vms}
+        disks: ${disks}
+cleanup:
+  params:
+  - c
+  steps:
+  - delete_job:
+      try:
+        call: http.delete
+        args:
+          url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+            + c.region + "/jobs/" + c.job_id}
+          auth:
+            type: OAuth2
+      except:
+        as: err
+        steps:
+        - unexpected_1:
+            switch:
+            - condition: ${map.get(err,"code") != 404}
+              raise: ${err}
+  - inventory:
+      call: inventory
+      args:
+        c: ${c}
+      result: inv
+  - delete_vms:
+      for:
+        value: vm
+        in: ${inv.vms}
+        steps:
+        - delete_vm:
+            try:
+              call: http.delete
+              args:
+                url: ${vm.selfLink}
+                auth:
+                  type: OAuth2
+            except:
+              as: err
+              steps:
+              - unexpected_2:
+                  switch:
+                  - condition: ${map.get(err,"code") != 404}
+                    raise: ${err}
+  - wait:
+      call: sys.sleep
+      args:
+        seconds: 15
+  - verify:
+      call: inventory
+      args:
+        c: ${c}
+      result: left
+  - empty:
+      switch:
+      - condition: ${len(left.vms) > 0 or len(left.disks) > 0}
+        next: wait
+  - job_present:
+      assign:
+      - present: true
+  - verify_job:
+      try:
+        call: http.get
+        args:
+          url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+            + c.region + "/jobs/" + c.job_id}
+          auth:
+            type: OAuth2
+        result: remaining
+      except:
+        as: e
+        steps:
+        - gone:
+            switch:
+            - condition: ${map.get(e,"code") == 404}
+              assign:
+              - present: false
+            - condition: ${true}
+              raise: ${e}
+  - job_wait:
+      switch:
+      - condition: ${present}
+        next: wait
+  - done:
+      return:
+        empty: true

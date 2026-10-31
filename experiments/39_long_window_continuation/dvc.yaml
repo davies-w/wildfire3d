@@ -38,3 +38,10 @@ stages:
     outs:
     - data/progress-public:
         persist: true
+  collect:
+    cmd: ../../.venv/bin/python collect.py
+    deps:
+    - collect.py
+    outs:
+    - data/pool02-results:
+        persist: true

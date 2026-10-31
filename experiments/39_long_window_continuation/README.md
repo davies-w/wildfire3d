@@ -96,3 +96,12 @@ with local check time and last verified epoch. The plotted errors exclude gate
 BCE and smoothing. A failed check must be labelled unverified, not inferred.
 
 At the2026-10-31 00:16 PDT check, South Carolina us-east1-c Batch and VM were RUNNING, all seven startup proofs passed and epoch118 plus checkpoint metadata was verified. Epoch118 full-rollout train/validation integral errors were4.89418%/9.90530%; these are progress scores, not final test results or an improvement claim. The original epoch1 proof is inherited; the epoch110 exact optimizer/RNG update replay is new. The public `progress` DVC stage preserves verified epoch JSONs, startup proof values and the unsmoothed learning curve; `push_artifacts.py --stage progress` publishes only this scientific output.
+
+## Verified completion
+
+Pool02 completed189 epochs and selected epoch159 by validation. All189 complete
+checkpoints, exact208 test histories/204 configurations, selection-before-tests
+and terminal empty resources were verified by collect.py. The selected full
+checkpoint supplies experiment40's independent dropout branch; epochs160–189
+remain here and must not appear in the dropout branch curve. Exact input read
+grant and all three terminal reservations were closed after allocation/cost audit.
