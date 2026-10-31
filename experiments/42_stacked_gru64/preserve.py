@@ -12,3 +12,6 @@ print('Private evidence preserved; do not include this output in public artifact
 
 shutil.copytree(R/'results02',D/'results02',dirs_exist_ok=True)
 shutil.copytree(R/'data/failed-pool01',D/'failed-pool01',dirs_exist_ok=True)
+
+shutil.copytree(R/'results03',D/'results03',dirs_exist_ok=True)
+shutil.copytree(R/'data/preempted02',D/'preempted02',dirs_exist_ok=True)

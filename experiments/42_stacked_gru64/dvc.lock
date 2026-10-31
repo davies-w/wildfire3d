@@ -52,27 +52,27 @@ stages:
       size: 2351
     - path: snapshot_progress.py
       hash: md5
-      md5: df2c6c28402be6d670ad72ac899e6252
+      md5: faeee131f22aeec8914cfc32960dc21d
       size: 1288
     outs:
     - path: data/progress-public
       hash: md5
-      md5: f73a797d0be263be711403be34e00035.dir
-      size: 62302
-      nfiles: 2
+      md5: cd466724db8387c13fbb71797e379204.dir
+      size: 338634
+      nfiles: 33
   preserve:
     cmd: ../../.venv/bin/python preserve.py
     deps:
     - path: preserve.py
       hash: md5
-      md5: b967c8aa374b268958bb20d143f76c04
-      size: 766
+      md5: 8230de7c00ed12e693ebba6af46d0048
+      size: 904
     outs:
     - path: data/provenance
       hash: md5
-      md5: b14b5c6233a348ef7ec2993ced15042a.dir
-      size: 6029807
-      nfiles: 42
+      md5: b93d0d76bb78983bb2142f34af3b7865.dir
+      size: 39284812
+      nfiles: 201
   prepare_pool02:
     cmd: ../../.venv/bin/python prepare_pool02.py
     deps:
@@ -103,3 +103,29 @@ stages:
       md5: 9a7ca6cca726517dd002f4fb59304c1f.dir
       size: 11160953
       nfiles: 13
+  prepare_pool03:
+    cmd: ../../.venv/bin/python prepare_pool03.py
+    deps:
+    - path: build_pool03.py
+      hash: md5
+      md5: c63d1b48b7316c8013aca20cf4ec5095
+      size: 10794
+    - path: cloud_check03.py
+      hash: md5
+      md5: 50bc94732dab5b40fa333bf21304330b
+      size: 6184
+    - path: data/training02
+      hash: md5
+      md5: 9a7ca6cca726517dd002f4fb59304c1f.dir
+      size: 11160953
+      nfiles: 13
+    - path: prepare_pool03.py
+      hash: md5
+      md5: 73f7a6cc61aa3268a26638c5d1d56da9
+      size: 1905
+    outs:
+    - path: data/training03
+      hash: md5
+      md5: bb2f7cd5b2209d7c4d9a20ab1972c058.dir
+      size: 66896924
+      nfiles: 76

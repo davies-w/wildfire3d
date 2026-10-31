@@ -33,7 +33,7 @@ stages:
     deps:
     - collect.py
     outs:
-    - data/pool02-results:
+    - data/pool03-results:
         persist: true
   prepare_pool02:
     cmd: ../../.venv/bin/python prepare_pool02.py
@@ -45,4 +45,14 @@ stages:
     - data/training
     outs:
     - data/training02:
+        persist: true
+  prepare_pool03:
+    cmd: ../../.venv/bin/python prepare_pool03.py
+    deps:
+    - prepare_pool03.py
+    - build_pool03.py
+    - cloud_check03.py
+    - data/training02
+    outs:
+    - data/training03:
         persist: true

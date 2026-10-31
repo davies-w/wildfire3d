@@ -1,9 +1,9 @@
-"""Collect terminal pool02 scientific artifacts with pinned hashes and test barrier."""
+"""Collect terminal pool03 scientific artifacts with pinned hashes and test barrier."""
 from pathlib import Path
 import sys,json,subprocess,urllib.request,urllib.parse,hashlib,base64,shutil,concurrent.futures
 R=Path(__file__).resolve().parent;sys.path.insert(0,str(R.parent/'36_tree_density'))
 from cloud import gc,G,BUCKET
-O=R/'results02';D=R/'data/pool02-results';D.mkdir(exist_ok=True)
+O=R/'results03';D=R/'data/pool03-results';D.mkdir(exist_ok=True)
 p=json.loads((O/'package.json').read_text());e=json.loads((O/'execution.json').read_text())['name'];state=gc('workflows','executions','describe',e.rsplit('/',1)[-1],'--workflow='+p['workflow'],'--location=us-central1')
 assert state['state']=='SUCCEEDED';result=json.loads(state['result']);assert result['batch_state']=='SUCCEEDED' and result['cleanup_verified'];winner=result['winner'];prefix=p['prefix']+winner+'/'
 cleanup={}
@@ -50,7 +50,7 @@ barrier=objects['selection-freeze.json']['timeCreated'];assert objects['fold00-s
 assert all(objects[n]['timeCreated']>=barrier for n in manifest if '-test' in n or '-horizon' in n)
 for epoch in range(1,fold['epochs']+1):assert f'fold00-epoch{epoch:03}.pt' in manifest
 import numpy as np,torch
-schema=json.loads((R/'data/training02/schema.json').read_text());ids=schema['rotations'][0]['test'];pred=np.load(D/'fold00-test-predictions.npz');assert pred['case_indices'].tolist()==ids and len(ids)==len(set(ids))==208 and len({tuple(schema['cases'][i]['physical_key']) for i in ids})==204
-ck=torch.load(D/f"fold00-epoch{fold['selected_epoch']:03}.pt",map_location='cpu',weights_only=False);assert ck['epoch']==fold['selected_epoch'] and ck['optimizer']['state'] and ck['rng'];assert ck['schema_hash']==hashlib.sha256((R/'data/training02/schema.json').read_bytes()).hexdigest()
+schema=json.loads((R/'data/training03/schema.json').read_text());ids=schema['rotations'][0]['test'];pred=np.load(D/'fold00-test-predictions.npz');assert pred['case_indices'].tolist()==ids and len(ids)==len(set(ids))==208 and len({tuple(schema['cases'][i]['physical_key']) for i in ids})==204
+ck=torch.load(D/f"fold00-epoch{fold['selected_epoch']:03}.pt",map_location='cpu',weights_only=False);assert ck['epoch']==fold['selected_epoch'] and ck['optimizer']['state'] and ck['rng'];assert ck['schema_hash']==hashlib.sha256((R/'data/training03/schema.json').read_bytes()).hexdigest()
 audit=dict(passed=True,winner=winner,controller=state,cleanup=cleanup,objects=proof,bytes=size,transfer=transfer,epochs=fold['epochs'],selected_epoch=fold['selected_epoch'],test_histories=208,test_configurations=204,selection_before_tests=True,all_checkpoints_preserved=True)
 (O/'collected.json').write_text(json.dumps(audit,indent=2)+'\n');print(json.dumps({k:v for k,v in audit.items() if k not in ['controller','cleanup','objects','transfer']}))

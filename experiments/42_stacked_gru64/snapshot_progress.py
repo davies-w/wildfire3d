@@ -3,7 +3,7 @@ from pathlib import Path
 import json,hashlib,shutil,subprocess,sys
 R=Path(__file__).resolve().parent;D=R/'data/progress-public';D.mkdir(exist_ok=True)
 for candidate in ['or','ia','sc']:
- proof=R/'results02'/('progress-'+candidate+'-verified.json')
+ proof=R/'results03'/('progress-'+candidate+'-verified.json')
  if not proof.exists():continue
  entries=json.loads(proof.read_text())['scores']
  for name,entry in entries.items():
@@ -11,7 +11,7 @@ for candidate in ['or','ia','sc']:
   dst=D/'epochs'/name;dst.parent.mkdir(exist_ok=True)
   if dst.exists():assert dst.read_bytes()==b,'Conflicting branch epochs'
   else:dst.write_bytes(b)
- audit=R/'results02'/('startup-audit-'+candidate+'.json')
+ audit=R/'results03'/('startup-audit-'+candidate+'.json')
  if audit.exists():
   a=json.loads(audit.read_text());assert a['passed']
   (D/('startup-'+candidate+'.json')).write_text(json.dumps({k:v['value'] for k,v in a['proofs'].items()},indent=2)+'\n')
