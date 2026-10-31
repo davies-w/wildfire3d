@@ -1,0 +1,47 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py && ../../.venv/bin/python 
+      build_pool.py
+    deps:
+    - path: ../38_history8_shared64/cloud_check08.py
+      hash: md5
+      md5: 677f7d2f62c58d548b81bebbdb2cb12c
+      size: 6134
+    - path: ../38_history8_shared64/data/training08
+      hash: md5
+      md5: cc5c3086805d592a15b548075e2e650c.dir
+      size: 120902337
+      nfiles: 204
+    - path: ../38_history8_shared64/data/training08-results
+      hash: md5
+      md5: be2784e6ac4fd887f0a2d64a7fa9b90f.dir
+      size: 99300138
+      nfiles: 299
+    - path: build_pool.py
+      hash: md5
+      md5: 05cb5784bcc220ed17f2f275a0d955a0
+      size: 11015
+    - path: prepare.py
+      hash: md5
+      md5: 3840fab08bdc293f7e03a79768fb4b5d
+      size: 3060
+    outs:
+    - path: data/training
+      hash: md5
+      md5: bd266eab5145ae794954070173b8572f.dir
+      size: 144678781
+      nfiles: 234
+  preserve:
+    cmd: ../../.venv/bin/python preserve.py
+    deps:
+    - path: preserve.py
+      hash: md5
+      md5: b54215a97cfcbc1540653ce787338ee2
+      size: 435
+    outs:
+    - path: data/provenance
+      hash: md5
+      md5: 5bc3d5584294142746b640ac495ee889.dir
+      size: 267241
+      nfiles: 10

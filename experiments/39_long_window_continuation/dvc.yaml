@@ -1,0 +1,19 @@
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py && ../../.venv/bin/python build_pool.py
+    deps:
+    - prepare.py
+    - build_pool.py
+    - ../38_history8_shared64/cloud_check08.py
+    - ../38_history8_shared64/data/training08
+    - ../38_history8_shared64/data/training08-results
+    outs:
+    - data/training:
+        persist: true
+  preserve:
+    cmd: ../../.venv/bin/python preserve.py
+    deps:
+    - preserve.py
+    outs:
+    - data/provenance:
+        persist: true
