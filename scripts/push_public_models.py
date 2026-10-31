@@ -1,7 +1,7 @@
 """Upload only the reviewed public-model DVC output, never the whole mirror."""
 from pathlib import Path
-import hashlib,json,os,subprocess,tempfile,yaml
-ROOT=Path(__file__).resolve().parents[1];subprocess.run([str(ROOT/'.venv/bin/python'),str(ROOT/'scripts/verify_public_models.py')],check=True);E=ROOT/'experiments/38_history8_shared64';mirror=ROOT/'FDS/hf_dvc_mirror/files/md5'
+import hashlib,json,os,subprocess,tempfile,yaml,fcntl
+ROOT=Path(__file__).resolve().parents[1];guard=(ROOT/'experiments/38_history8_shared64/data/public-upload.lock').open('a');fcntl.flock(guard,fcntl.LOCK_EX|fcntl.LOCK_NB);subprocess.run([str(ROOT/'.venv/bin/python'),str(ROOT/'scripts/verify_public_models.py')],check=True);E=ROOT/'experiments/38_history8_shared64';mirror=ROOT/'FDS/hf_dvc_mirror/files/md5'
 lock=yaml.safe_load((E/'dvc.lock').read_text());h=lock['stages']['export_public_models']['outs'][0]['md5'];seen=set();staging=Path(tempfile.mkdtemp(prefix='fire-public-model-dvc-'))
 def add(h):
  if h in seen:return
