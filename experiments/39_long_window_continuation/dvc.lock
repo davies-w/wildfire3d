@@ -37,11 +37,49 @@ stages:
     deps:
     - path: preserve.py
       hash: md5
-      md5: b54215a97cfcbc1540653ce787338ee2
-      size: 435
+      md5: 249a9de2dd25caf6954b5262a70cf6c9
+      size: 576
     outs:
     - path: data/provenance
       hash: md5
-      md5: 5bc3d5584294142746b640ac495ee889.dir
-      size: 267241
-      nfiles: 10
+      md5: 0bdb4fcb92972f7685a540fb98c8816b.dir
+      size: 72996660
+      nfiles: 31
+  prepare_pool02:
+    cmd: ../../.venv/bin/python repair_pool02.py
+    deps:
+    - path: ../38_history8_shared64/cloud_check08.py
+      hash: md5
+      md5: 677f7d2f62c58d548b81bebbdb2cb12c
+      size: 6134
+    - path: ../38_history8_shared64/data/training08/bootstrap.py
+      hash: md5
+      md5: 79d3e249871bd62bd9c4631d86552af7
+      size: 1868
+    - path: ../38_history8_shared64/data/training08/workflow.yaml
+      hash: md5
+      md5: b29ccb57f497851b34638241f220cfa9
+      size: 11373
+    - path: build_pool.py
+      hash: md5
+      md5: 05cb5784bcc220ed17f2f275a0d955a0
+      size: 11015
+    - path: data/training
+      hash: md5
+      md5: bd266eab5145ae794954070173b8572f.dir
+      size: 144678781
+      nfiles: 234
+    - path: launch.py
+      hash: md5
+      md5: 221372f8394135f5e9a609b4ea26a719
+      size: 4178
+    - path: repair_pool02.py
+      hash: md5
+      md5: 0f23695caa8b722ed5500ca4af0e649b
+      size: 1767
+    outs:
+    - path: data/training02
+      hash: md5
+      md5: a21592848657f20162b483658bc9daac.dir
+      size: 144678781
+      nfiles: 234

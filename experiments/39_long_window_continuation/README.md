@@ -72,3 +72,25 @@ Scientific input objects are publicly DVC mirrored with per-object Xet hash
 verification and anonymous directory readback recorded in
 `public-artifact-verification.json`. Private controller/budget evidence goes to
 the separate `preserve` stage and must never be included in the public sync.
+
+## Diagnosed pool01 failure and repaired pool02
+
+Pool01 failed before ownership or training: the controller attempted to overwrite
+a status snapshot with a create-only storage role. All five cloud objects were
+archived with generation, MD5 and SHA verification; all jobs/VMs/disks are gone,
+and its exact input read grant was removed. No new epoch exists. A cost-audit
+repair canonicalizes numeric/named project identifiers so insert/delete events
+for the same VM are matched. Financial evidence remains in private provenance.
+
+Pool02 uses distinct IDs, immutable timestamped status snapshots, and a no-GPU
+preflight that performs two snapshot writes before any paid submission. It waits
+for a RUNNING VM before choosing a winner, avoiding transient quota/provisioning
+placeholders. It still verifies losing-resource cleanup before granting ownership.
+No broader storage permissions were added. `launch02.py` is one-time guarded;
+never rerun it after submission intent. Current monitor/audit/fetch tools read
+pool02. If this pool is evicted, prepare another unique pool from the latest
+verified completed checkpoint after diagnosis, archival and cost reconciliation.
+
+Every scheduled check must show status and the learning curve even when unchanged,
+with local check time and last verified epoch. The plotted errors exclude gate
+BCE and smoothing. A failed check must be labelled unverified, not inferred.

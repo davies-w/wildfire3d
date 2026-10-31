@@ -21,7 +21,7 @@ ax.plot(es,train,label='Training — full rollout',color='#2563eb',lw=2,marker='
 ax.plot(es,val,label='Validation — full rollout',color='#ea580c',lw=2,marker='.',ms=4)
 for e,label in [(21,'8-step training windows'),(41,'16-step training windows'),(61,'32-step training windows'),(110,'64-step training windows'),(130,'90-step full sequences')]:
  if e<=max(es):ax.axvline(e,color='#94a3b8',ls='--',lw=1);ax.text(e+.2,ax.get_ylim()[1]*.92,label,rotation=90,fontsize=8,va='top',color='#475569')
-ax.set(title=f'Experiment 39 · rotation 0 · {max(es)} completed epochs',xlabel='Completed epoch',ylabel='Mean full-sequence integral error (%)')
+ax.set(title=f'Experiment 39 · inherited epochs 1–109 · latest epoch {max(es)}',xlabel='Completed epoch',ylabel='Mean full-sequence integral error (%)')
 ax.grid(alpha=.18);ax.legend(frameon=False);ax.spines[['top','right']].set_visible(False)
 fig.text(.08,.025,'Mean of four range-normalized integral errors, equal configuration weighting. Lower is better.\nSaved epoch values; straight connecting lines, no smoothing. Gate BCE is not included in these curves.',fontsize=8,color='#475569')
 fig.tight_layout(rect=[0,.09,1,1]);out=Path(args.output);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out)

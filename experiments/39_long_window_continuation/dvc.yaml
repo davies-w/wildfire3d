@@ -17,3 +17,16 @@ stages:
     outs:
     - data/provenance:
         persist: true
+  prepare_pool02:
+    cmd: ../../.venv/bin/python repair_pool02.py
+    deps:
+    - repair_pool02.py
+    - build_pool.py
+    - launch.py
+    - data/training
+    - ../38_history8_shared64/cloud_check08.py
+    - ../38_history8_shared64/data/training08/bootstrap.py
+    - ../38_history8_shared64/data/training08/workflow.yaml
+    outs:
+    - data/training02:
+        persist: true

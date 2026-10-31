@@ -25,7 +25,11 @@ def reconcile():
  query='resource.type="gce_instance" AND (protoPayload.methodName="v1.compute.instances.insert" OR protoPayload.methodName="v1.compute.instances.delete") AND timestamp>="2026-10-15T00:00:00Z"'
  events=json.loads(subprocess.check_output([G,'logging','read',query,'--project=tmrw-wildfire-20261015','--limit=5000','--format=json(timestamp,protoPayload.methodName,protoPayload.resourceName,protoPayload.request.machineType,protoPayload.request.guestAccelerators,protoPayload.request.scheduling,protoPayload.request.labels,protoPayload.status,operation)'],text=True));assert len(events)<5000,'Inventory may be truncated'
  groups={}
- for e in events:groups.setdefault(e['protoPayload']['resourceName'],[]).append(e)
+ # Audit logs use both numeric project IDs and project names for the same VM.
+ # Canonicalize before matching inserts and deletes, or allocated spend is omitted.
+ for e in events:
+  name=e['protoPayload']['resourceName'].replace('projects/587909259768/','projects/tmrw-wildfire-20261015/')
+  groups.setdefault(name,[]).append(e)
  records=[]
  def stamp(e):return datetime.datetime.fromisoformat(e['timestamp'].replace('Z','+00:00'))
  for name,es in groups.items():
