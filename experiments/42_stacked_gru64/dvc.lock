@@ -57,9 +57,9 @@ stages:
     outs:
     - path: data/progress-public
       hash: md5
-      md5: dd2531b6761bca399e539210ed62cdd3.dir
-      size: 1037538
-      nfiles: 128
+      md5: f6f209c6b370e7ea138455dd3480d5ee.dir
+      size: 1838411
+      nfiles: 240
   preserve:
     cmd: ../../.venv/bin/python preserve.py
     deps:
@@ -70,9 +70,9 @@ stages:
     outs:
     - path: data/provenance
       hash: md5
-      md5: 427988c939dcada0697a28c0005deafa.dir
-      size: 40446236
-      nfiles: 334
+      md5: a8ebfde0fd818a2f5f9e64c67946e95a.dir
+      size: 41498640
+      nfiles: 446
   prepare_pool02:
     cmd: ../../.venv/bin/python prepare_pool02.py
     deps:
