@@ -1,0 +1,71 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py && ../../.venv/bin/python
+      build_pool.py
+    deps:
+    - path: ../38_history8_shared64/data/training08/bootstrap.py
+      hash: md5
+      md5: 79d3e249871bd62bd9c4631d86552af7
+      size: 1868
+    - path: ../38_history8_shared64/data/training08/workflow.yaml
+      hash: md5
+      md5: b29ccb57f497851b34638241f220cfa9
+      size: 11373
+    - path: ../40_dropout10_continuation/data/training02
+      hash: md5
+      md5: e6dd26a073d873cdfe22a9a9ae7a3ce1.dir
+      size: 228634770
+      nfiles: 335
+    - path: build_pool.py
+      hash: md5
+      md5: 4c0919cfbe2405e346584b2b566bb11c
+      size: 10726
+    - path: cloud_check.py
+      hash: md5
+      md5: 7febe8594de6aaf6344432c1528b117f
+      size: 5680
+    - path: prepare.py
+      hash: md5
+      md5: e179c074efacdd7085a0b055ab74175d
+      size: 1213
+    - path: worker.py
+      hash: md5
+      md5: f7d41d49e2286411a953d125cd6cd0be
+      size: 21961
+    outs:
+    - path: data/training
+      hash: md5
+      md5: 278597bc8fda03055bf03d7dfd9d24d3.dir
+      size: 11166234
+      nfiles: 14
+  progress:
+    cmd: ../../.venv/bin/python snapshot_progress.py
+    deps:
+    - path: plot_learning_curve.py
+      hash: md5
+      md5: 0a37a62b95f46d967ba1536c93a354c8
+      size: 2291
+    - path: snapshot_progress.py
+      hash: md5
+      md5: 9d249fa8fbb2330f412aa1b0d0092e89
+      size: 1284
+    outs:
+    - path: data/progress-public
+      hash: md5
+      md5: a68d69fe977a8ad979971f85808a71f5.dir
+      size: 62363
+      nfiles: 2
+  preserve:
+    cmd: ../../.venv/bin/python preserve.py
+    deps:
+    - path: preserve.py
+      hash: md5
+      md5: 927da57012b32663c341d7fe9b6b1996
+      size: 624
+    outs:
+    - path: data/provenance
+      hash: md5
+      md5: 12296714abfc2e0f96edc00f4164ed62.dir
+      size: 203803
+      nfiles: 10

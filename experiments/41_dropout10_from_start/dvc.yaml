@@ -1,0 +1,36 @@
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py && ../../.venv/bin/python build_pool.py
+    deps:
+    - prepare.py
+    - build_pool.py
+    - worker.py
+    - cloud_check.py
+    - ../40_dropout10_continuation/data/training02
+    - ../38_history8_shared64/data/training08/bootstrap.py
+    - ../38_history8_shared64/data/training08/workflow.yaml
+    outs:
+    - data/training:
+        persist: true
+  progress:
+    cmd: ../../.venv/bin/python snapshot_progress.py
+    deps:
+    - snapshot_progress.py
+    - plot_learning_curve.py
+    outs:
+    - data/progress-public:
+        persist: true
+  preserve:
+    cmd: ../../.venv/bin/python preserve.py
+    deps:
+    - preserve.py
+    outs:
+    - data/provenance:
+        persist: true
+  collect:
+    cmd: ../../.venv/bin/python collect.py
+    deps:
+    - collect.py
+    outs:
+    - data/pool01-results:
+        persist: true
