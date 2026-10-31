@@ -37,14 +37,14 @@ stages:
     deps:
     - path: preserve.py
       hash: md5
-      md5: 249a9de2dd25caf6954b5262a70cf6c9
-      size: 576
+      md5: f8f58f05685e657791a2ae9bdd3d85b2
+      size: 765
     outs:
     - path: data/provenance
       hash: md5
-      md5: 4d9b33179a062b86d7b73352aaf28387.dir
-      size: 72973337
-      nfiles: 32
+      md5: 9604064756b49025144f8beeb12e65d1.dir
+      size: 74079201
+      nfiles: 158
   prepare_pool02:
     cmd: ../../.venv/bin/python repair_pool02.py
     deps:
@@ -83,3 +83,20 @@ stages:
       md5: a21592848657f20162b483658bc9daac.dir
       size: 144678781
       nfiles: 234
+  progress:
+    cmd: ../../.venv/bin/python snapshot_progress.py
+    deps:
+    - path: plot_learning_curve.py
+      hash: md5
+      md5: 5bab996faa597df59bbd1cfb09ba25d4
+      size: 2131
+    - path: snapshot_progress.py
+      hash: md5
+      md5: df2c6c28402be6d670ad72ac899e6252
+      size: 1288
+    outs:
+    - path: data/progress-public
+      hash: md5
+      md5: 53ab626471d5ac35930830a0bc6b5b29.dir
+      size: 993682
+      nfiles: 121

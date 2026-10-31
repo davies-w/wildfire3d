@@ -30,3 +30,11 @@ stages:
     outs:
     - data/training02:
         persist: true
+  progress:
+    cmd: ../../.venv/bin/python snapshot_progress.py
+    deps:
+    - snapshot_progress.py
+    - plot_learning_curve.py
+    outs:
+    - data/progress-public:
+        persist: true
