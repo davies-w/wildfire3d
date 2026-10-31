@@ -105,3 +105,8 @@ and terminal empty resources were verified by collect.py. The selected full
 checkpoint supplies experiment40's independent dropout branch; epochs160–189
 remain here and must not appear in the dropout branch curve. Exact input read
 grant and all three terminal reservations were closed after allocation/cost audit.
+
+Matched test whole-sequence integral errors for selected159: water5.914812%,
+fuel9.135131%, gas2.068997%, heating2.025393%. The completion document and
+gallery were published alongside experiment40 with additive root-index cards;
+previous report cells and pages were preserved.

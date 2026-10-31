@@ -44,3 +44,33 @@ stages:
     outs:
     - data/training02:
         persist: true
+  analysis:
+    cmd: ../../.venv/bin/python analyze.py
+    deps:
+    - analyze.py
+    - data/pool02-results
+    - data/training02/data/sequences.npz
+    - data/training02/schema.json
+    outs:
+    - data/analysis:
+        persist: true
+  public:
+    cmd: ../../.venv/bin/python build_public.py
+    deps:
+    - build_public.py
+    - data/analysis
+    - data/training02/schema.json
+    outs:
+    - data/public:
+        persist: true
+  reports:
+    cmd: ../../.venv/bin/python build_reports.py
+    deps:
+    - build_reports.py
+    - data/analysis
+    - data/public
+    - ../39_long_window_continuation/data/analysis
+    - ../39_long_window_continuation/data/public
+    outs:
+    - data/report-public:
+        persist: true

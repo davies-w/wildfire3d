@@ -62,3 +62,21 @@ objective, data, checkpoint or optimizer recipe changed. The new pool has unique
 IDs and retains the three-region ownership race. Its soft/task/VM limits are
 12.5/12.75/13hours, within the remaining allowance. Never resubmit pool01.
 Current monitor/audit/fetch/collection scripts target pool02 and results02.
+
+## Verified completion and negative dropout result
+
+Pool02 succeeded through epoch228 and selected the inherited parent epoch159.
+All69 new dropout epochs160–228 are preserved, but none beat the parent’s
+validation score. Selected test predictions exactly equal experiment39’s parent
+model; identical test values do not demonstrate a dropout improvement. All seven
+startup proofs passed, including actual dropout optimizer/RNG next-update replay.
+All228 full checkpoints,208 exact test IDs/204 configurations, manifest hashes
+and selection-before-tests were verified. Jobs/VMs/disks are empty; exact read
+grant and reservations closed after runtime cost reconciliation.
+
+Selected whole-sequence integral errors: water5.914812%, fuel9.135131%,
+gas2.068997%, heating2.025393%. Final epoch228 train6.356822%, validation8.214358%;
+selected epoch159 train4.204650%, validation5.448502%. Curves exclude gate BCE.
+New root-index cards link the experiment39 and40 completion documents, with
+matched37/38/39/40 results and preserved-style galleries. Previous cards/cells
+and lower scorecard sections are unchanged.

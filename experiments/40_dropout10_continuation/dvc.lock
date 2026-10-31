@@ -45,14 +45,14 @@ stages:
       size: 2148
     - path: snapshot_progress.py
       hash: md5
-      md5: 9d249fa8fbb2330f412aa1b0d0092e89
-      size: 1284
+      md5: df2c6c28402be6d670ad72ac899e6252
+      size: 1288
     outs:
     - path: data/progress-public
       hash: md5
-      md5: 050c017184814e2727cd02503266df9f.dir
-      size: 158710
-      nfiles: 2
+      md5: 269c57875eec579388f0a18b03da85b8.dir
+      size: 1782437
+      nfiles: 231
   preserve:
     cmd: ../../.venv/bin/python preserve.py
     deps:
@@ -63,9 +63,9 @@ stages:
     outs:
     - path: data/provenance
       hash: md5
-      md5: 08e0ecd70d38ff490db75e17c51b839d.dir
-      size: 115730507
-      nfiles: 47
+      md5: 7b16e121ebbd1e56a82ef5338bbf0c52.dir
+      size: 119034156
+      nfiles: 292
   prepare_pool02:
     cmd: ../../.venv/bin/python repair_pool02.py
     deps:
@@ -96,3 +96,97 @@ stages:
       md5: e6dd26a073d873cdfe22a9a9ae7a3ce1.dir
       size: 228634770
       nfiles: 335
+  collect:
+    cmd: ../../.venv/bin/python collect.py
+    deps:
+    - path: collect.py
+      hash: md5
+      md5: ef9a298aece0dc304fa293e9aee77fde
+      size: 5439
+    outs:
+    - path: data/pool02-results
+      hash: md5
+      md5: a9a26e3d6992e24cacb002c6ce0b8140.dir
+      size: 187874682
+      nfiles: 475
+  analysis:
+    cmd: ../../.venv/bin/python analyze.py
+    deps:
+    - path: analyze.py
+      hash: md5
+      md5: bffc0de012841fa5fceb4c330d28e5a1
+      size: 3510
+    - path: data/pool02-results
+      hash: md5
+      md5: a9a26e3d6992e24cacb002c6ce0b8140.dir
+      size: 187874682
+      nfiles: 475
+    - path: data/training02/data/sequences.npz
+      hash: md5
+      md5: f280a76462ed8d586e7a4fc7eec09961
+      size: 5110534
+    - path: data/training02/schema.json
+      hash: md5
+      md5: 2b3705717475bebb268c65f14c547515
+      size: 418700
+    outs:
+    - path: data/analysis
+      hash: md5
+      md5: 4467776fa3427685b72027ea8d6d5574.dir
+      size: 5988431
+      nfiles: 1
+  public:
+    cmd: ../../.venv/bin/python build_public.py
+    deps:
+    - path: build_public.py
+      hash: md5
+      md5: 2071d87c991ca11d845499a6da98aed1
+      size: 3991
+    - path: data/analysis
+      hash: md5
+      md5: 4467776fa3427685b72027ea8d6d5574.dir
+      size: 5988431
+      nfiles: 1
+    - path: data/training02/schema.json
+      hash: md5
+      md5: 2b3705717475bebb268c65f14c547515
+      size: 418700
+    outs:
+    - path: data/public
+      hash: md5
+      md5: ab025e7f4758e37dc23258b4fc8773d2.dir
+      size: 6313488
+      nfiles: 1
+  reports:
+    cmd: ../../.venv/bin/python build_reports.py
+    deps:
+    - path: ../39_long_window_continuation/data/analysis
+      hash: md5
+      md5: e83ec50365581191ccbd2b32c0484a86.dir
+      size: 5988397
+      nfiles: 1
+    - path: ../39_long_window_continuation/data/public
+      hash: md5
+      md5: 9fe731a4d0e2df081783b31e7cb7b802.dir
+      size: 6313274
+      nfiles: 1
+    - path: build_reports.py
+      hash: md5
+      md5: 89a6797a00db8e54da74c360effd1da4
+      size: 12784
+    - path: data/analysis
+      hash: md5
+      md5: 4467776fa3427685b72027ea8d6d5574.dir
+      size: 5988431
+      nfiles: 1
+    - path: data/public
+      hash: md5
+      md5: ab025e7f4758e37dc23258b4fc8773d2.dir
+      size: 6313488
+      nfiles: 1
+    outs:
+    - path: data/report-public
+      hash: md5
+      md5: 82a5219563093d0d22734353ce236b9c.dir
+      size: 25017958
+      nfiles: 14

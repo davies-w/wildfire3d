@@ -4,7 +4,7 @@ import hashlib,json,os,subprocess,tempfile,yaml,argparse
 from huggingface_hub import HfApi
 import hf_xet,requests
 R=Path(__file__).resolve().parent;ROOT=R.parents[1];mirror=ROOT/'FDS/hf_dvc_mirror/files/md5'
-parser=argparse.ArgumentParser();parser.add_argument('--stage',choices=['prepare_pool02','progress','collect'],default='prepare_pool02');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--stage',choices=['prepare_pool02','progress','collect','analysis','public','reports'],default='prepare_pool02');args=parser.parse_args()
 lock=yaml.safe_load((R/'dvc.lock').read_text());h=lock['stages'][args.stage]['outs'][0]['md5'];stage=Path(tempfile.mkdtemp(prefix='longwindow39-public-'));objects={}
 def add(digest):
  if digest in objects:return

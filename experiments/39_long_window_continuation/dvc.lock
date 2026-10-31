@@ -1,7 +1,7 @@
 schema: '2.0'
 stages:
   prepare:
-    cmd: ../../.venv/bin/python prepare.py && ../../.venv/bin/python 
+    cmd: ../../.venv/bin/python prepare.py && ../../.venv/bin/python
       build_pool.py
     deps:
     - path: ../38_history8_shared64/cloud_check08.py
@@ -42,9 +42,9 @@ stages:
     outs:
     - path: data/provenance
       hash: md5
-      md5: 6d33709ed8a188967c3959829dafd942.dir
-      size: 75381206
-      nfiles: 232
+      md5: 9086bccc1111ebf4bb606d240470a017.dir
+      size: 75385428
+      nfiles: 233
   prepare_pool02:
     cmd: ../../.venv/bin/python repair_pool02.py
     deps:
@@ -113,3 +113,51 @@ stages:
       md5: 2d93eccc8cc02ffe6e232bda53dc0f8b.dir
       size: 146201538
       nfiles: 397
+  analysis:
+    cmd: ../../.venv/bin/python analyze.py
+    deps:
+    - path: analyze.py
+      hash: md5
+      md5: ea5ce73dba3a1905523cf40819eed778
+      size: 3479
+    - path: data/pool02-results
+      hash: md5
+      md5: 2d93eccc8cc02ffe6e232bda53dc0f8b.dir
+      size: 146201538
+      nfiles: 397
+    - path: data/training02/data/sequences.npz
+      hash: md5
+      md5: f280a76462ed8d586e7a4fc7eec09961
+      size: 5110534
+    - path: data/training02/schema.json
+      hash: md5
+      md5: 2b3705717475bebb268c65f14c547515
+      size: 418700
+    outs:
+    - path: data/analysis
+      hash: md5
+      md5: e83ec50365581191ccbd2b32c0484a86.dir
+      size: 5988397
+      nfiles: 1
+  public:
+    cmd: ../../.venv/bin/python build_public.py
+    deps:
+    - path: build_public.py
+      hash: md5
+      md5: 80aecf1f01a7874c89cd99e9cc2ed8ff
+      size: 3781
+    - path: data/analysis
+      hash: md5
+      md5: e83ec50365581191ccbd2b32c0484a86.dir
+      size: 5988397
+      nfiles: 1
+    - path: data/training02/schema.json
+      hash: md5
+      md5: 2b3705717475bebb268c65f14c547515
+      size: 418700
+    outs:
+    - path: data/public
+      hash: md5
+      md5: 9fe731a4d0e2df081783b31e7cb7b802.dir
+      size: 6313274
+      nfiles: 1
