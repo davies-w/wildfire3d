@@ -1,0 +1,105 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py && ../../.venv/bin/python
+      build_pool.py
+    deps:
+    - path: ../38_history8_shared64/data/training08/bootstrap.py
+      hash: md5
+      md5: 79d3e249871bd62bd9c4631d86552af7
+      size: 1868
+    - path: ../38_history8_shared64/data/training08/workflow.yaml
+      hash: md5
+      md5: b29ccb57f497851b34638241f220cfa9
+      size: 11373
+    - path: ../41_dropout10_from_start/data/training
+      hash: md5
+      md5: 278597bc8fda03055bf03d7dfd9d24d3.dir
+      size: 11166234
+      nfiles: 14
+    - path: build_pool.py
+      hash: md5
+      md5: d2b581e30facd9f0468f215c42c9b487
+      size: 10726
+    - path: cloud_check.py
+      hash: md5
+      md5: 86b31fdd706bc788e9e90ca389cdcbe4
+      size: 5698
+    - path: gated_model.py
+      hash: md5
+      md5: 330627d0467410eb6783aa2900322da4
+      size: 2513
+    - path: prepare.py
+      hash: md5
+      md5: 7967343dbe070aeaa131e55b302b358f
+      size: 1328
+    - path: worker.py
+      hash: md5
+      md5: 4191882dce46347fb3e83723bc9e6531
+      size: 22134
+    outs:
+    - path: data/training
+      hash: md5
+      md5: 4d185908eb74a39e8b9c628a116fdb64.dir
+      size: 11160927
+      nfiles: 13
+  progress:
+    cmd: ../../.venv/bin/python snapshot_progress.py
+    deps:
+    - path: plot_learning_curve.py
+      hash: md5
+      md5: 2f0242546fe4ef6b95baa53144f9aa29
+      size: 2351
+    - path: snapshot_progress.py
+      hash: md5
+      md5: df2c6c28402be6d670ad72ac899e6252
+      size: 1288
+    outs:
+    - path: data/progress-public
+      hash: md5
+      md5: f73a797d0be263be711403be34e00035.dir
+      size: 62302
+      nfiles: 2
+  preserve:
+    cmd: ../../.venv/bin/python preserve.py
+    deps:
+    - path: preserve.py
+      hash: md5
+      md5: b967c8aa374b268958bb20d143f76c04
+      size: 766
+    outs:
+    - path: data/provenance
+      hash: md5
+      md5: 5cf77caa19ecb6b296fcbc7485264662.dir
+      size: 6017966
+      nfiles: 41
+  prepare_pool02:
+    cmd: ../../.venv/bin/python prepare_pool02.py
+    deps:
+    - path: build_pool02.py
+      hash: md5
+      md5: 92d964a43a14be3f3585c1dcae0c25f9
+      size: 10754
+    - path: cloud_check.py
+      hash: md5
+      md5: 86b31fdd706bc788e9e90ca389cdcbe4
+      size: 5698
+    - path: data/training
+      hash: md5
+      md5: 4d185908eb74a39e8b9c628a116fdb64.dir
+      size: 11160927
+      nfiles: 13
+    - path: gated_model02.py
+      hash: md5
+      md5: 2970c30408e137fd54e4b7f0b790a292
+      size: 2539
+    - path: prepare_pool02.py
+      hash: md5
+      md5: 7a144bca9c9aeaa88a77adfbe4cacb17
+      size: 719
+    outs:
+    - path: data/training02
+      hash: md5
+      md5: 9a7ca6cca726517dd002f4fb59304c1f.dir
+      size: 11160953
+      nfiles: 13

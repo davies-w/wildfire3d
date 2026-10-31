@@ -1,0 +1,15 @@
+# Experiment 42: two recurrent GRU64 layers, fresh rotation 0
+
+User-selected fresh seed3516 weights and empty AdamW; no inherited checkpoint or epochs. Eight four-state history samples plus nine external inputs enter GRU41->64, then GRU64->64. Both layers carry their own recurrent state. Shared Linear64->64 + SiLU feeds the unchanged four-delta and three-sigmoid-gate heads. No dropout anywhere.50119 parameters (one-layer predecessor25159).
+
+Same frozen1662 train/210 validation/208 test histories and204 test configurations; train-only normalization, integral objective plus gate BCE0.1, AdamW LR3e-4 weight decay1e-4 clip1 batch256. Curriculum1/8/16/32/64/full90 at epochs1/21/41/61/110/130. Minimum160 maximum400 patience30. Both teacher-prefix memories are detached; no future truth enters a window. Full90 has one origin/history and7 updates/epoch, compared with176 at64. Validation selection precedes test evaluation.
+
+This tests the deeper recurrent recipe on a historically examined dataset. It is exploratory, not pristine validation. Comparison with experiment39 includes fresh training versus checkpoint continuation and different optimization exposure; gains cannot automatically be attributed solely to the second layer. The shared dense layer has no recurrent memory.
+
+Three ownership-gated Spot T4 queues in Oregon/Iowa/South Carolina; one controller verifies losing jobs/VMs/disks gone before granting ownership. No allocation deadline.11.5h training soft limit,11.75h task limit,12h VM limit for corrected pool02. Runtime uncertain; cloud timing advisory. All six horizon losses/backward and fresh/nonempty optimizer-RNG replay must pass before training. Probe weights discarded. Every completed epoch saves both recurrent layers, optimizer, RNG, history and best selection; unfinished epochs can be lost. Continuations require a verified checkpoint and remaining authorized budget. No local training.
+
+Use monitor.py, fetch_progress.py or|ia|sc, audit_startup.py, snapshot_progress.py. Every scheduled check reports status and the fresh learning curve. Never rerun launch after submission intent. Scientific inputs/models/progress go to scoped public Hugging Face DVC storage; budgets and private provenance remain private. No performance result yet.
+
+Pool01 failed during the actual GPU startup loss probe before epoch1: cuDNN rejected a non-contiguous hidden-state view. All objects archived with hashes and generations; all resources empty and its exact input grant removed after runtime accounting. Pool02 preserves seed, architecture and optimization recipe, and makes each recurrent hidden-state input contiguous. Forward-only regression validation now checks the layout at both GRU boundaries as well as both-state prefix equivalence. No completed training epochs are inherited. Never restart pool01.
+
+Corrected pool02 submitted once at 2026-10-31T18:17:47.213610968Z: `fds-gpu42-pool02`, execution `bb491ea0-a292-4f5b-b229-9aa51e039a15`. Never rerun launch02/deploy02/prepare_pool02/build_pool02 after intent. Current monitoring targets results02. At18:17:54UTC all three queues were scheduled, with no VM and no completed epoch.
