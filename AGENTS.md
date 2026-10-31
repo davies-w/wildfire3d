@@ -120,3 +120,28 @@ and cloud work within the existing $125 ledger allowance, without asking again
 before launching work. This authorization does not increase the budget or authorize
 publishing to unrelated destinations. Continue authorized work while reporting
 material results and limitations.
+
+## Standing instruction: commit, push and preserve artifacts
+
+Always Git commit and Git push task-related code, configuration, documentation,
+and DVC pointers and lockfiles before declaring work complete. Always ensure
+created or updated data artifacts, including models, checkpoints and training
+datasets, are DVC controlled and DVC pushed. Preserve resumable checkpoints.
+Stage only relevant changes; do not sweep unrelated work into a commit.
+
+For this repository, pushing to the local DVC `mirror` is staging, not completion
+of an off-machine upload. Sync the authorized artifact objects to the configured
+public Hugging Face bucket using the scoped export/upload workflow documented in
+`docs/storage.md`, and verify remote objects and readback. The user's public
+model and training-data authorization covers the whole project (2026-10-30).
+Never blindly sync the entire local mirror: it also contains private evidence.
+
+Never publish budgets, financial metadata, private keys or credentials. Keep
+private originals in private storage and use sanitized public exports where
+necessary. These exclusions apply to Git as well as artifact uploads.
+
+Verify that the intended Git commit reached the remote and that the intended
+DVC artifacts reached their authorized destination. Report any failed or blocked
+commit, push or verification explicitly; do not describe a local-only mirror
+copy as a completed remote push. Do not request redundant approval for uploads
+already authorized by the user.
