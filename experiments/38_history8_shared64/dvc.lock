@@ -622,3 +622,16 @@ stages:
       md5: 74f6bf9677ce80e0b709700df1f0e30a.dir
       size: 13779
       nfiles: 3
+  export_public_models:
+    cmd: ../../.venv/bin/python ../../scripts/export_public_models.py
+    deps:
+    - path: ../../scripts/export_public_models.py
+      hash: md5
+      md5: 95bc75f00989582f62d25c9629430564
+      size: 3717
+    outs:
+    - path: data/project-model-archive
+      hash: md5
+      md5: 1e1931073229bc1e8230998115671c95.dir
+      size: 98324315858
+      nfiles: 103719

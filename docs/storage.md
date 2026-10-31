@@ -65,3 +65,20 @@ HF buckets *are* S3-compatible at `https://s3.hf.co/<namespace>`, so DVC's `s3`
 remote would work — but the S3 key pair is generated from a separate
 "Generate S3 credentials" action in the web UI, and that action was not present.
 It does not matter: the CLI plus anonymous HTTPS needs no S3 keys at all.
+
+## Model and training-data public archive (2026-10-30)
+
+The user authorized public bucket storage of all project model weights,
+checkpoints and training datasets, excluding budgets and private keys.
+`scripts/export_public_models.py` creates the DVC output
+`experiments/38_history8_shared64/data/project-model-archive`, including nested
+training attempts across the project. Numeric arrays and binary checkpoints
+remain byte-identical. Financial JSON fields/commentary are removed; budget
+files, private provenance bundles and original tar launch packages are omitted.
+The export's manifest records every included file and its SHA-256.
+
+Push this output to the local mirror first, then use
+`scripts/push_public_models.py`. This uploads only the objects reachable from
+that public output's DVC hash to `wdavies/dvc_storage/wildfire3d`, without
+remote deletions. **Do not sync the entire local mirror:** it also contains
+private budgets and cloud provenance. Original complete metadata stays local.

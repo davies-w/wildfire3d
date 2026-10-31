@@ -338,3 +338,10 @@ stages:
     - data/document
     outs:
     - data/document-index
+  export_public_models:
+    cmd: ../../.venv/bin/python ../../scripts/export_public_models.py
+    deps:
+    - ../../scripts/export_public_models.py
+    outs:
+    - data/project-model-archive:
+        persist: true
