@@ -56,3 +56,32 @@ stages:
     outs:
     - data/training03:
         persist: true
+  analysis:
+    cmd: ../../.venv/bin/python analyze.py
+    deps:
+    - analyze.py
+    - data/pool03-results
+    - data/training03
+    outs:
+    - data/analysis:
+        persist: true
+  public:
+    cmd: ../../.venv/bin/python build_public.py
+    deps:
+    - build_public.py
+    - data/analysis
+    - data/training03
+    outs:
+    - data/public:
+        persist: true
+  reports:
+    cmd: ../../.venv/bin/python build_reports.py
+    deps:
+    - build_reports.py
+    - plot_learning_curve.py
+    - data/analysis
+    - data/public
+    - data/progress-public
+    outs:
+    - data/report-public:
+        persist: true
