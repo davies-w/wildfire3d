@@ -31,5 +31,16 @@ stages:
     deps:
     - collect.py
     outs:
-    - data/pool01-results:
+    - data/pool02-results:
+        persist: true
+  prepare_pool02:
+    cmd: ../../.venv/bin/python repair_pool02.py
+    deps:
+    - repair_pool02.py
+    - build_pool.py
+    - launch.py
+    - deploy.py
+    - data/training
+    outs:
+    - data/training02:
         persist: true

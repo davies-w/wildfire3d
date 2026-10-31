@@ -5,7 +5,7 @@ R=Path(__file__).resolve().parent;sys.path.insert(0,str(R.parent/'36_tree_densit
 from cloud import G,BUCKET
 import argparse
 p=argparse.ArgumentParser();p.add_argument('candidate',choices=['or','ia','sc']);a=p.parse_args()
-PREFIX='dropout40/pool01/'+a.candidate+'/';D=R/('data/startup-audit-'+a.candidate);D.mkdir(exist_ok=True)
+PREFIX='dropout40/pool02/'+a.candidate+'/';D=R/('data/startup-audit-'+a.candidate);D.mkdir(exist_ok=True)
 token=subprocess.run([G,'auth','print-access-token'],check=True,capture_output=True,text=True).stdout.strip()
 def get(url):return urllib.request.urlopen(urllib.request.Request(url,headers={'Authorization':'Bearer '+token}),timeout=60)
 proof={}
@@ -16,5 +16,5 @@ for name in ['resumed-checkpoint-replay.json','timing-check.json','optimizer-res
  assert len(blob)==int(meta['size']) and base64.b64encode(hashlib.md5(blob).digest()).decode()==meta['md5Hash']
  obj=json.loads(blob);assert obj['passed'];(D/name).write_bytes(blob)
  proof[name]=dict(metadata=meta,sha256=hashlib.sha256(blob).hexdigest(),value=obj)
-(R/'results'/('startup-audit-'+a.candidate+'.json')).write_text(json.dumps(dict(passed=True,source_prefix=PREFIX,proofs=proof),indent=2)+'\n')
+(R/'results02'/('startup-audit-'+a.candidate+'.json')).write_text(json.dumps(dict(passed=True,source_prefix=PREFIX,proofs=proof),indent=2)+'\n')
 print('Verified seven startup proofs (original first-epoch proof is copied); no test outcomes read')

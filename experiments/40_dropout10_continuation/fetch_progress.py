@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse,json,sys,subprocess,urllib.request,urllib.parse,hashlib,base64,re
 R=Path(__file__).resolve().parent;sys.path.insert(0,str(R.parent/'36_tree_density'))
 from cloud import G,BUCKET
-p=argparse.ArgumentParser();p.add_argument('attempt',choices=['or','ia','sc']);a=p.parse_args();prefix='dropout40/pool01/'+a.attempt+'/'
+p=argparse.ArgumentParser();p.add_argument('attempt',choices=['or','ia','sc']);a=p.parse_args();prefix='dropout40/pool02/'+a.attempt+'/'
 dest=R/('data/progress'+a.attempt);dest.mkdir(exist_ok=True)
 token=subprocess.run([G,'auth','print-access-token'],capture_output=True,text=True,check=True).stdout.strip()
 def get(u):return urllib.request.urlopen(urllib.request.Request(u,headers={'Authorization':'Bearer '+token}),timeout=90)
@@ -28,5 +28,5 @@ for name,meta in sorted(items.items()):
  v=json.loads(blob);assert v['epoch']==int(re.search(r'epoch(\d+)',name)[1]);assert 'train'in v and 'validation'in v
  if not path.exists():path.write_bytes(blob)
  proof[name]={'metadata':meta,'sha256':hashlib.sha256(blob).hexdigest(),'checkpoint_metadata':items[checkpoint]}
-(R/'results'/('progress-'+a.attempt+'-verified.json')).write_text(json.dumps({'source_prefix':prefix,'scores':proof,'test_outcomes_read':False},indent=2)+'\n')
+(R/'results02'/('progress-'+a.attempt+'-verified.json')).write_text(json.dumps({'source_prefix':prefix,'scores':proof,'test_outcomes_read':False},indent=2)+'\n')
 print(json.dumps({'attempt':a.attempt,'verified_epochs':len(proof),'latest_epoch':max([json.loads((dest/n).read_text())['epoch'] for n in proof],default=None)}))

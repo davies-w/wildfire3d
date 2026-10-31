@@ -45,3 +45,20 @@ follow this pool. Every check includes its learning curve; inherited epoch159
 train/validation integral errors are4.204650%/5.448502%. Public input and progress
 objects were uploaded with hash and anonymous readback verification; private
 launch/budget evidence is kept in the separate provenance DVC stage.
+
+## Diagnosed startup-check failure and pool02 repair
+
+Pool01 failed before epoch160, not from eviction or a training loss failure.
+Its actual90-step dropout loss/backward, synthetic optimizer replay and exact
+epoch160 restored optimizer/RNG replay passed. A subsequent deterministic probe
+incorrectly used GRU evaluation mode for backward, which cuDNN rejects. All
+cloud objects were archived with generation/MD5/SHA checks; checkpoint159 is
+unchanged. All resources and its exact read grant are removed after cost audit.
+
+Pool02 leaves the GRU in training mode and disables only the shared Dropout
+module for that deterministic serialization/gradient probe. Actual loss probes
+and training still use10% dropout; validation/test still disable it. No model,
+objective, data, checkpoint or optimizer recipe changed. The new pool has unique
+IDs and retains the three-region ownership race. Its soft/task/VM limits are
+12.5/12.75/13hours, within the remaining allowance. Never resubmit pool01.
+Current monitor/audit/fetch/collection scripts target pool02 and results02.

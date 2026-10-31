@@ -58,11 +58,41 @@ stages:
     deps:
     - path: preserve.py
       hash: md5
-      md5: ea171ed172a9652ae7cc9c54ed17db72
-      size: 684
+      md5: f8f58f05685e657791a2ae9bdd3d85b2
+      size: 765
     outs:
     - path: data/provenance
       hash: md5
-      md5: 21091470635a42bffcf519d12f9016ed.dir
-      size: 245865
-      nfiles: 12
+      md5: 08e0ecd70d38ff490db75e17c51b839d.dir
+      size: 115730507
+      nfiles: 47
+  prepare_pool02:
+    cmd: ../../.venv/bin/python repair_pool02.py
+    deps:
+    - path: build_pool.py
+      hash: md5
+      md5: bcb659fc006860cdce2c831cf68aeeee
+      size: 11085
+    - path: data/training
+      hash: md5
+      md5: 044d76eaecc8a5f8b0c788e5bb3aa319.dir
+      size: 228634591
+      nfiles: 335
+    - path: deploy.py
+      hash: md5
+      md5: a3aa28617a1e5b932967656c1bbd3ad2
+      size: 733
+    - path: launch.py
+      hash: md5
+      md5: 8744e319a44d0febc6cc19e8c9c71694
+      size: 4215
+    - path: repair_pool02.py
+      hash: md5
+      md5: ad505ceec5b5fa4b78e3bb737d9a4cf5
+      size: 4020
+    outs:
+    - path: data/training02
+      hash: md5
+      md5: e6dd26a073d873cdfe22a9a9ae7a3ce1.dir
+      size: 228634770
+      nfiles: 335
