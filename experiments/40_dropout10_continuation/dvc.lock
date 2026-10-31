@@ -1,7 +1,7 @@
 schema: '2.0'
 stages:
   prepare:
-    cmd: ../../.venv/bin/python prepare.py && ../../.venv/bin/python 
+    cmd: ../../.venv/bin/python prepare.py && ../../.venv/bin/python
       build_pool.py
     deps:
     - path: ../38_history8_shared64/data/training08/bootstrap.py
