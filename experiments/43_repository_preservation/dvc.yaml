@@ -1,0 +1,8 @@
+stages:
+  snapshot:
+    cmd: ../../.venv/bin/python audit.py
+    deps:
+    - audit.py
+    outs:
+    - data/public:
+        persist: true
