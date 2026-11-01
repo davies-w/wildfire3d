@@ -1,0 +1,37 @@
+schema: '2.0'
+stages:
+  snapshot:
+    cmd: ../../.venv/bin/python audit.py && ../../.venv/bin/python finalize.py 
+      && ../../.venv/bin/python repair_metadata.py
+    deps:
+    - path: audit.py
+      hash: md5
+      md5: 90c8b65591eeb8f4e6b3551061c3227c
+      size: 8040
+    - path: finalize.py
+      hash: md5
+      md5: ae973d2ef1b32f56dd7d399f285a0b74
+      size: 5265
+    - path: repair_metadata.py
+      hash: md5
+      md5: b9e06a3707de77d16fb1eb4510e74801
+      size: 2497
+    outs:
+    - path: data/public
+      hash: md5
+      md5: c2fb3bc7d23d56c2ef82aa027f61d6a6.dir
+      size: 249721740748
+      nfiles: 157680
+  private:
+    cmd: ../../.venv/bin/python preserve_private.py
+    deps:
+    - path: preserve_private.py
+      hash: md5
+      md5: 927994711c89f9970c68bb1dd68e2735
+      size: 1340
+    outs:
+    - path: data/private
+      hash: md5
+      md5: 6bd9a81c04f08586ba6bce2b6d0b5757.dir
+      size: 9979865
+      nfiles: 943
