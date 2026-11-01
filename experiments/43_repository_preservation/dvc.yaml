@@ -1,9 +1,10 @@
 stages:
   snapshot:
-    cmd: ../../.venv/bin/python audit.py && ../../.venv/bin/python finalize.py
+    cmd: ../../.venv/bin/python audit.py && ../../.venv/bin/python finalize.py && ../../.venv/bin/python repair_metadata.py
     deps:
     - audit.py
     - finalize.py
+    - repair_metadata.py
     outs:
     - data/public:
         persist: true

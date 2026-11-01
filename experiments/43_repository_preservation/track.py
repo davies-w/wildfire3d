@@ -7,7 +7,7 @@ assert (R/'results/snapshot-complete.json').exists()
 assert (R/'results/privacy-reviewed.json').exists()
 out='data/public' if args.stage=='snapshot' else 'data/private';assert (R/out).is_dir()
 dest.mkdir(parents=True,exist_ok=True)
-for name in ['audit.py','finalize.py','preserve_private.py','dvc.yaml']:shutil.copy2(R/name,dest/name)
+for name in ['audit.py','finalize.py','repair_metadata.py','preserve_private.py','dvc.yaml']:shutil.copy2(R/name,dest/name)
 # Only replace this isolated staging output; originals and shared cache remain.
 if (dest/out).exists():shutil.rmtree(dest/out)
 shutil.copytree(R/out,dest/out,copy_function=os.link)
