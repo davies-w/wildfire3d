@@ -7,3 +7,10 @@ stages:
     outs:
     - data/public:
         persist: true
+  private:
+    cmd: ../../.venv/bin/python preserve_private.py
+    deps:
+    - preserve_private.py
+    outs:
+    - data/private:
+        persist: true

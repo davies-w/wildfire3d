@@ -28,3 +28,9 @@ content-addressed graph to the public Hugging Face bucket and checks every
 remote object's size and Xet hash, plus anonymous directory readback. It never
 syncs the entire private mirror. `public-verification.json`, when present,
 records successful verification; its absence means publication is incomplete.
+
+The separate `private` DVC stage retains excluded original spending records and
+unredacted legacy metadata in the local mirror only. The public uploader is
+explicitly limited to the `snapshot` stage; it cannot select the private stage.
+Previously committed ledgers remain in older Git history: removing current
+tracking prevents future updates but does not rewrite published history.
