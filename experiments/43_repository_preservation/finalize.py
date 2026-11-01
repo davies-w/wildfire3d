@@ -16,14 +16,23 @@ for base in [ROOT/'FDS/cases',ROOT/'FDS/runs']:
 for name in ['FDS/nofront.c','FDS/nofront.dylib','FDS/arm64_build.log']:
  if (ROOT/name).is_file() and name not in known:ns['process'](ROOT/name,name);extra+=1
 manifest['engine_working_area_files']=extra
-secret=ns['SECRET'];ledger=re.compile(r'(?:^|[-_])(?:budget|billing|invoice|spending)(?:[-_.]|$)',re.I)
+class FastSecret:
+ def search(self,b):
+  # Every regex alternative requires one of these literal prefixes. This
+  # fast C-level prefilter preserves exactly the original matching rules.
+  if not any(marker in b for marker in (b'-----BEGIN ',b'hf_',b'AIza',b'AKIA')):return None
+  return ns['SECRET'].search(b)
+secret=FastSecret();ledger=re.compile(r'(?:^|[-_])(?:budget|billing|invoice|spending)(?:[-_.]|$)',re.I)
 for row in rows:
  p=D/row['path'];name=Path(row['path']).name;reason=None
  if name in {'cost.json','cost-reservations.json','job-reservation.json','cost-summary.json','cost-proxy.json','cost-console.txt'}:reason='spending record excluded in final review'
  if ledger.search(name) and 'energy' not in name.lower() and p.suffix in ['.json','.lock','.csv']:reason='spending record excluded in final review'
- elif p.stat().st_size<=2*1024*1024 and secret.search(p.read_bytes()):reason='credential excluded in final review'
  if reason:
-  p.unlink();excluded.append(dict(path=row['path'],reason=reason));continue
+  if p.exists():p.unlink()
+  excluded.append(dict(path=row['path'],reason=reason));continue
+ assert p.exists(), 'Unexpected missing snapshot artifact: '+row['path']
+ if p.stat().st_size<=2*1024*1024 and secret.search(p.read_bytes()):
+  p.unlink();excluded.append(dict(path=row['path'],reason='credential excluded in final review'));continue
  if p.suffix.lower() in ['.tar','.tgz','.gz'] and tarfile.is_tarfile(p):
   with tarfile.open(p,'r:*') as tf:
    for m in tf:
