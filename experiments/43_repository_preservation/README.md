@@ -41,3 +41,10 @@ The snapshot preserves their bytes as `.dvcignore.preserved`; each manifest row
 records the original `source` name for restoration. Original Git files are unchanged.
 Scientific file-hash references are retained even when names contain words such
 as `energy_budget`; this does not expose the referenced file's private contents.
+
+Verified publication: the snapshot contains 157,680 files including its manifest,
+with 132,145 content-addressed objects. Every remote object passed size and Xet
+hash verification, and the directory passed anonymous readback on
+2026-10-31 (America/Los_Angeles). See `public-verification.json`. Local MD5 and
+SHA-256 checks also passed. The private local mirror was independently checked
+for all 833 objects representing 943 files.
