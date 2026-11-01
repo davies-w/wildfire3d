@@ -1002,3 +1002,7 @@ experiments/23_mesh_domain_pilot/results/collector.pid
 
 # Disposable repository-local upload/isolated-DVC workspace
 /.artifact-staging/
+
+# DVC metadata remains visible while engine artifacts stay ignored.
+!FDS/historical-files.dvc
+!FDS/.gitignore
