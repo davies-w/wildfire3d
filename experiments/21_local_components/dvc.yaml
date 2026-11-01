@@ -36,7 +36,15 @@ stages:
     - control.py
     - budget.json
     outs:
-    - data/cloud
+    - data/cloud/a21_bare
+    - data/cloud/a21_corner
+    - data/cloud/a21_corner_expanded
+    - data/cloud/a21_double
+    - data/cloud/a21_double_expanded
+    - data/cloud/a21_double_fine
+    - data/cloud/a21_single
+    - data/cloud/a21_single_expanded
+    - data/cloud/a21_single_upstream
     - data/downloads
     - results/cleanup.json:
         cache: false
@@ -48,7 +56,13 @@ stages:
     - data/cloud
     - comparison-pairs.json
     outs:
-    - data/boundary
+    - data/boundary/a21_bare
+    - data/boundary/a21_corner
+    - data/boundary/a21_corner_expanded
+    - data/boundary/a21_double
+    - data/boundary/a21_double_expanded
+    - data/boundary/a21_single
+    - data/boundary/a21_single_expanded
     - results/stage-a.json:
         cache: false
   component_images:
@@ -340,24 +354,21 @@ stages:
     - jobs/overnight21_stronger/runner.py
     - ../20_composition_iterative/workflow_template.json
     outs:
-    - jobs/overnight21_grid_coarse/workflow.yaml:
-        cache: false
+    - jobs/overnight21_grid_coarse/workflow.yaml: {}
     - jobs/overnight21_grid_coarse/worker.py:
         cache: false
     - jobs/overnight21_grid_coarse/runner.py:
         cache: false
     - jobs/overnight21_grid_coarse/case.json:
         cache: false
-    - jobs/overnight21_grid_fine/workflow.yaml:
-        cache: false
+    - jobs/overnight21_grid_fine/workflow.yaml: {}
     - jobs/overnight21_grid_fine/worker.py:
         cache: false
     - jobs/overnight21_grid_fine/runner.py:
         cache: false
     - jobs/overnight21_grid_fine/case.json:
         cache: false
-    - jobs/overnight21_grid_fine_bare/workflow.yaml:
-        cache: false
+    - jobs/overnight21_grid_fine_bare/workflow.yaml: {}
     - jobs/overnight21_grid_fine_bare/worker.py:
         cache: false
     - jobs/overnight21_grid_fine_bare/runner.py:

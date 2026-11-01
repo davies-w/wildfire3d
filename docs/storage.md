@@ -1,3 +1,95 @@
+## Direct uploads without a persistent cache (2026-11-01)
+
+The project command for **DVC push** is now:
+
+```sh
+.venv/bin/python scripts/dvc_hf.py push
+```
+
+It uses the reviewed plan from the preceding metadata operation, stored locally
+in `experiments/43_repository_preservation/results/direct-hf/plan.json`.
+The plan is private bookkeeping, not a portable substitute for Git-tracked DVC
+metadata. Push it before starting another metadata operation, or save it and
+pass `push --plan PATH` explicitly.
+
+For a pipeline stage whose outputs already exist:
+
+```sh
+.venv/bin/python scripts/dvc_hf.py commit experiments/NAME/dvc.yaml:STAGE
+.venv/bin/python scripts/dvc_hf.py push
+```
+
+This updates output hashes in `dvc.lock`, without executing the stage. It does
+not certify that dependencies reproduce those bytes, and does not update
+recorded dependency hashes. For a real rerun, execute and validate the pipeline
+first. Outputs marked `cache: false` are omitted from this upload command.
+
+To reconstruct an upload plan from existing pointers/locks on another checkout:
+
+```sh
+.venv/bin/python scripts/dvc_hf.py plan experiments/NAME/historical-files.dvc
+# Or: scripts/dvc_hf.py plan experiments/NAME/dvc.yaml:STAGE
+.venv/bin/python scripts/dvc_hf.py push
+```
+
+This checks local bytes against the recorded hashes and fails on changes; it
+never silently redefines an existing artifact. Multiple records are accepted.
+
+For historical artifacts or external/source inputs:
+
+```sh
+.venv/bin/python scripts/dvc_hf.py track path/to/input
+.venv/bin/python scripts/dvc_hf.py push
+```
+
+This writes a standard `.dvc` pointer. Do not use it inside an existing output:
+update the owning pipeline instead. The repository-wide adoption uses grouped
+`historical-files.dvc` pointers at original paths, not a second exported copy.
+`adopt-audit` is the one-time migration of the recorded audit, not a substitute
+for refreshing a future audit.
+
+Ordinary `dvc add` normally populates DVC's cache; it does more than write a hash.
+This wrapper instead computes the MD5 and standard sorted `.dir` records from
+original files and sends those files directly with Hugging Face's bucket API.
+Each remote object is checked against the local size and Xet hash; every new
+directory record is anonymously downloaded and MD5 checked. The metadata format
+is checked against installed DVC. No persistent DVC cache or local mirror is
+needed for this upload path. DVC's normal **pull** still uses a local cache.
+
+Financial records, credentials, tool internals and private recovery material are
+excluded. A rejected file is not silently redacted or replaced. Inspect the
+local plan's `excluded` list. Never describe exclusions or unverified older
+records as fully backed up. These checks verify the scoped plan, not every
+historical Git revision or every pre-existing DVC object.
+
+Commit and push source, `.gitignore`, `.dvcignore`, `.dvc` pointers and changed
+pipeline/lock files after verification. The historical experiment 36 cycle has now been repaired with the user's
+explicit approval: six dependency links were removed and the 57 stages in the
+cyclic component were frozen. Original definitions and lock records are retained
+in `docs/historical-dvc-dependencies.json`. `dvc dag` loads successfully. These
+stages are historical snapshots; removing links reduces DVC's ability to detect
+changed inputs, and freezing disables automatic reruns. Scientific outputs and
+stage commands were not changed.
+
+Normal DVC pull is supported by the metadata. For a scoped independent restore
+check, use an **empty directory below this repository**:
+
+```sh
+.venv/bin/python scripts/dvc_hf.py restore \
+  --destination .artifact-staging/restore-example \
+  experiments/42_stacked_gru64/historical-files.dvc
+```
+
+This uses unmodified `dvc pull` in an isolated no-SCM checkout, then independently
+checks every restored file's MD5. It refuses a nonempty destination. It does not
+claim to restore missing external symlink targets, private records or every
+old Git revision. Normal DVC pull creates a cache; the scoped test uses hardlinks
+where supported to avoid a second physical copy.
+
+The remaining sections record older
+storage workflows; their local-mirror and export-copy instructions are
+historical and must not be used for new pushes.
+
 # Storage: raw FDS output, DVC, and Hugging Face buckets
 
 ## Current local-storage policy (2026-10-31)

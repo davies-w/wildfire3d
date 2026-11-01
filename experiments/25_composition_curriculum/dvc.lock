@@ -12,14 +12,14 @@ stages:
       md5: 549e4abd41495faa73d95530baedd1ad
       size: 75838
     outs:
-    - path: data/audit.json
-      hash: md5
-      md5: 4965f323a742bbfcc4938f4b02a67289
-      size: 707
     - path: data/catalogue.json
       hash: md5
       md5: 9dcb90021b989708dfd87557f9cef9cb
       size: 68872
+    - path: data/audit.json
+      hash: md5
+      md5: 4965f323a742bbfcc4938f4b02a67289
+      size: 707
   preview:
     cmd: ../../.venv/bin/python preview.py
     deps:

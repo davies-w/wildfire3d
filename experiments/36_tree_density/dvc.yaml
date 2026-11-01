@@ -778,127 +778,126 @@ stages:
     metrics:
     - results/denser-publication.json:
         cache: false
-
   prepare_model_pair:
     cmd: ../../.venv/bin/python model_evaluation/prepare_pair.py
     deps:
-      - model_evaluation/prepare_pair.py
-      - model_evaluation/time_pair.py
-      - data/learning/sequences.npz
-      - data/model-training/worker.py
-      - learning-schema.json
-      - ../35_surrogate_diagnostics/attempt24/model.py
-      - ../35_surrogate_diagnostics/attempt24/data/sequences.npz
-      - ../35_surrogate_diagnostics/attempt25/model.py
+    - model_evaluation/prepare_pair.py
+    - model_evaluation/time_pair.py
+    - data/learning/sequences.npz
+    - data/model-training/worker.py
+    - learning-schema.json
+    - ../35_surrogate_diagnostics/attempt24/model.py
+    - ../35_surrogate_diagnostics/attempt24/data/sequences.npz
+    - ../35_surrogate_diagnostics/attempt25/model.py
     outs:
-      - data/model-pair:
-          persist: true
-      - results/model-pair-prepared.json
+    - data/model-pair:
+        persist: true
+    - results/model-pair-prepared.json
   validate_model_pair:
     cmd: ../../.venv/bin/python model_evaluation/validate_pair.py
     deps:
-      - model_evaluation/validate_pair.py
-      - data/model-pair
+    - model_evaluation/validate_pair.py
+    - data/model-pair
     outs:
-      - results/model-pair-validation.json
+    - results/model-pair-validation.json
   prepare_pair_timing:
     cmd: ../../.venv/bin/python model_evaluation/prepare_pair_timing.py
     deps:
-      - model_evaluation/prepare_pair_timing.py
-      - model_evaluation/time_pair.py
-      - results/model-pair-validation.json
-      - data/model-pair
+    - model_evaluation/prepare_pair_timing.py
+    - model_evaluation/time_pair.py
+    - results/model-pair-validation.json
+    - data/model-pair
     outs:
-      - data/model-pair-timing
-      - results/model-pair-timing-prepared.json
+    - data/model-pair-timing
+    - results/model-pair-timing-prepared.json
   collect_pair_timing:
     cmd: ../../.venv/bin/python model_evaluation/collect_pair_timing.py
     deps:
-      - model_evaluation/collect_pair_timing.py
-      - results/model-pair-timing-execution.json
+    - model_evaluation/collect_pair_timing.py
+    - results/model-pair-timing-execution.json
     outs:
-      - data/model-pair-timing-results:
-          persist: true
-      - results/model-pair-timing-collected.json
+    - data/model-pair-timing-results:
+        persist: true
+    - results/model-pair-timing-collected.json
   close_pair_timing:
     cmd: ../../.venv/bin/python model_evaluation/close_pair_timing.py
     deps:
-      - model_evaluation/close_pair_timing.py
-      - results/model-pair-timing-collected.json
+    - model_evaluation/close_pair_timing.py
+    - results/model-pair-timing-collected.json
     outs:
-      - results/model-pair-timing-permission-removed.json
+    - results/model-pair-timing-permission-removed.json
   prepare_pair_training:
     cmd: ../../.venv/bin/python model_evaluation/prepare_pair_training.py
     deps:
-      - model_evaluation/prepare_pair_training.py
-      - model_evaluation/check_pair_resume_cloud.py
-      - data/model-pair
-      - data/model-pair-timing-results
-      - results/model-pair-timing-collected.json
+    - model_evaluation/prepare_pair_training.py
+    - model_evaluation/check_pair_resume_cloud.py
+    - data/model-pair
+    - data/model-pair-timing-results
+    - results/model-pair-timing-collected.json
     outs:
-      - data/model-pair-training:
-          persist: true
-      - results/model-pair-runtime-plan.json
-      - results/model-pair-training-prepared.json
+    - data/model-pair-training:
+        persist: true
+    - results/model-pair-runtime-plan.json
+    - results/model-pair-training-prepared.json
   collect_pair_training:
     cmd: ../../.venv/bin/python model_evaluation/collect_pair_training.py
     deps:
-      - model_evaluation/collect_pair_training.py
-      - results/model-pair-training-execution.json
+    - model_evaluation/collect_pair_training.py
+    - results/model-pair-training-execution.json
     outs:
-      - data/model-pair-training-results:
-          persist: true
-      - results/model-pair-training-collected.json
+    - data/model-pair-training-results:
+        persist: true
+    - results/model-pair-training-collected.json
   close_pair_training:
     cmd: ../../.venv/bin/python model_evaluation/close_pair_training.py
     deps:
-      - model_evaluation/close_pair_training.py
-      - results/model-pair-training-collected.json
+    - model_evaluation/close_pair_training.py
+    - results/model-pair-training-collected.json
     outs:
-      - results/model-pair-training-permission-removed.json
+    - results/model-pair-training-permission-removed.json
   summarize_pair:
     cmd: ../../.venv/bin/python model_evaluation/summarize_pair.py
     deps:
-      - model_evaluation/summarize_pair.py
-      - results/pair-sequence-r0-collected.json
-      - data/pair-sequence-r0-results
-      - data/learning/sequences.npz
+    - model_evaluation/summarize_pair.py
+    - results/pair-sequence-r0-collected.json
+    - data/pair-sequence-r0-results
+    - data/learning/sequences.npz
     outs:
-      - results/model-pair-0-summary.json
-      - results/model-pair-1-summary.json
+    - results/model-pair-0-summary.json
+    - results/model-pair-1-summary.json
   build_pair_gallery:
     cmd: ../../.venv/bin/python model_evaluation/build_pair_gallery.py
     deps:
-      - model_evaluation/build_pair_gallery.py
-      - results/pair-sequence-r0-collected.json
-      - data/pair-sequence-r0-results
-      - data/learning/sequences.npz
-      - ../35_surrogate_diagnostics/attempt24/gallery.html
+    - model_evaluation/build_pair_gallery.py
+    - results/pair-sequence-r0-collected.json
+    - data/pair-sequence-r0-results
+    - data/learning/sequences.npz
+    - ../35_surrogate_diagnostics/attempt24/gallery.html
     outs:
-      - data/pair-gallery
+    - data/pair-gallery
   audit_pair_failure:
     cmd: ../../.venv/bin/python model_evaluation/audit_pair_failure.py
     deps:
-      - model_evaluation/audit_pair_failure.py
-      - results/model-pair-training-execution.json
+    - model_evaluation/audit_pair_failure.py
+    - results/model-pair-training-execution.json
     outs:
-      - data/model-pair-failure:
-          persist: true
-      - results/model-pair-training-failure.json
+    - data/model-pair-failure:
+        persist: true
+    - results/model-pair-training-failure.json
   prepare_pair_sequence:
     cmd: ../../.venv/bin/python model_evaluation/prepare_pair_sequence.py
     deps:
-      - model_evaluation/prepare_pair_sequence.py
-      - data/model-pair-training
-      - learning-schema.json
-      - results/model-pair-training-failure.json
+    - model_evaluation/prepare_pair_sequence.py
+    - data/model-pair-training
+    - learning-schema.json
+    - results/model-pair-training-failure.json
     outs:
-      - data/pair-sequence:
-          persist: true
-      - results/pair-sequence-prepared.json
-
+    - data/pair-sequence:
+        persist: true
+    - results/pair-sequence-prepared.json
   collect_pair_sequence_r0:
-    cmd: ../../.venv/bin/python model_evaluation/collect_pair_sequence.py --rotation 0
+    cmd: ../../.venv/bin/python model_evaluation/collect_pair_sequence.py --rotation
+      0
     deps:
     - model_evaluation/collect_pair_sequence.py
     - results/pair-sequence-execution.json
@@ -908,9 +907,9 @@ stages:
         persist: true
     - results/pair-sequence-r0-collected.json
     - results/pair-sequence-r0-output-inventory.json
-
   collect_pair_sequence_r1:
-    cmd: ../../.venv/bin/python model_evaluation/collect_pair_sequence.py --rotation 1
+    cmd: ../../.venv/bin/python model_evaluation/collect_pair_sequence.py --rotation
+      1
     deps:
     - model_evaluation/collect_pair_sequence.py
     - results/pair-rotation1-capacity-a-execution.json
@@ -920,7 +919,6 @@ stages:
         persist: true
     - results/pair-sequence-r1-collected.json
     - results/pair-sequence-r1-output-inventory.json
-
   publish_pair:
     cmd: ../../.venv/bin/python model_evaluation/publish_pair.py
     deps:
@@ -929,7 +927,6 @@ stages:
     - ../35_surrogate_diagnostics/simple_scorecard/data
     outs:
     - results/pair-publication.json
-
   continue_pair_rotation1:
     cmd: ../../.venv/bin/python model_evaluation/continue_pair_rotation1.py
     deps:
@@ -941,7 +938,6 @@ stages:
         persist: true
     - results/pair-rotation1-readiness.json
     - results/pair-rotation1-execution.json
-
   summarize_pair_r1:
     cmd: ../../.venv/bin/python model_evaluation/summarize_pair.py --rotation 1
     deps:
@@ -954,7 +950,8 @@ stages:
     - results/model-pair-r1-0-summary.json
     - results/model-pair-r1-1-summary.json
   build_pair_gallery_r1:
-    cmd: ../../.venv/bin/python model_evaluation/build_pair_gallery.py --rotation 1
+    cmd: ../../.venv/bin/python model_evaluation/build_pair_gallery.py --rotation
+      1
     deps:
     - model_evaluation/build_pair_gallery.py
     - results/pair-sequence-r1-collected.json
@@ -977,7 +974,6 @@ stages:
     - ../35_surrogate_diagnostics/attempt24/gallery.html
     outs:
     - results/pair-reporting-check.json
-
   continue_pair_rotation1_capacity_a:
     cmd: ../../.venv/bin/python model_evaluation/continue_pair_rotation1_capacity_a.py
     deps:
@@ -991,9 +987,10 @@ stages:
     - results/pair-rotation1-stockout.json
     - results/pair-rotation1-capacity-a-readiness.json
     - results/pair-rotation1-capacity-a-execution.json
-
   prepare_flex_queue:
-    cmd: ../../.venv/bin/python model_evaluation/prepare_flex_queue.py && ../../.venv/bin/python model_evaluation/setup_flex_queue.py && ../../.venv/bin/python model_evaluation/check_flex_queue.py && ../../.venv/bin/python model_evaluation/check_flex_watchdog.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_flex_queue.py && ../../.venv/bin/python
+      model_evaluation/setup_flex_queue.py && ../../.venv/bin/python model_evaluation/check_flex_queue.py
+      && ../../.venv/bin/python model_evaluation/check_flex_watchdog.py
     frozen: true
     deps:
     - model_evaluation/prepare_flex_queue.py
@@ -1039,7 +1036,8 @@ stages:
     - results/undershoot-diagnosis.json:
         cache: false
   summarize_undershoots:
-    cmd: ../../.venv/bin/python model_evaluation/summarize_undershoots.py && ../../.venv/bin/python model_evaluation/audit_gallery_undershoots.py && ../../.venv/bin/python model_evaluation/plot_gallery_diagnosis.py
+    cmd: ../../.venv/bin/python model_evaluation/summarize_undershoots.py && ../../.venv/bin/python
+      model_evaluation/audit_gallery_undershoots.py && ../../.venv/bin/python model_evaluation/plot_gallery_diagnosis.py
     deps:
     - model_evaluation/diagnose_undershoots.py
     - model_evaluation/summarize_undershoots.py
@@ -1125,16 +1123,14 @@ stages:
     outs:
     - data/exposure-pilot01-results
     metrics:
-    - results/exposure-pilot-collected.json:
-        cache: false
+    - results/exposure-pilot-collected.json: {}
   close_exposure_pilot:
     cmd: ../../.venv/bin/python model_evaluation/close_exposure_pilot.py
     deps:
     - model_evaluation/close_exposure_pilot.py
     - results/exposure-pilot-collected.json
     metrics:
-    - results/exposure-pilot-permission-removed.json:
-        cache: false
+    - results/exposure-pilot-permission-removed.json: {}
   audit_replica_ambiguity:
     cmd: ../../.venv/bin/python model_evaluation/audit_replica_ambiguity.py
     deps:
@@ -1560,7 +1556,8 @@ stages:
     - results/gas-shape-trajectory-audit.json:
         cache: false
   snapshot_billing_shape_close:
-    cmd: ../../.venv/bin/python ../../scripts/read_billing_export.py --end 2026-10-28 --output data/billing-export-shape-close.json
+    cmd: ../../.venv/bin/python ../../scripts/read_billing_export.py --end 2026-10-28
+      --output data/billing-export-shape-close.json
     frozen: true
     deps:
     - ../../scripts/read_billing_export.py
@@ -2709,7 +2706,6 @@ stages:
     frozen: true
     deps:
     - model_evaluation/launch_timing_decoder_pilot05.py
-    - results/timing-cost-bounds-preflight.json
     - results/timing-decoder-pilot05-price-bound.json
     - cloud.py
     - data/timing-decoder-pilot05
@@ -2816,10 +2812,10 @@ stages:
     - ../../scripts/reconcile_runtime_costs.py
     - results/timing-decoder-trial-plan05.json
     - results/timing-decoder-pilot05-price-bound.json
-    - results/canonical-pilot03-price-bound.json
     metrics:
     - results/timing-cost-bounds-preflight.json:
         cache: false
+    frozen: true
   prepare_timing_trial06:
     cmd: ../../.venv/bin/python model_evaluation/prepare_timing_trial06.py
     deps:
@@ -2874,11 +2870,9 @@ stages:
     - cloud.py
     - data/timing-decoder-pilot06
     - results/timing-decoder-pilot06-offline-preflight.json
-    - results/timing-decoder-pilot06-capacity-equivalence.json
     - results/timing-decoder-pilot05-cost-reconciled.json
     - results/timing-decoder-pilot05-permission-removed.json
     - results/timing-regional-network-prepared.json
-    - results/timing-restore-repair-preflight.json
     metrics:
     - results/timing-decoder-pilot06-execution.json:
         cache: false
@@ -2942,6 +2936,7 @@ stages:
     metrics:
     - results/timing-restore-repair-preflight.json:
         cache: false
+    frozen: true
   verify_timing_regional_price_bound06:
     cmd: ../../.venv/bin/python model_evaluation/verify_timing_regional_price_bound.py
       --pilot 06
@@ -2966,6 +2961,7 @@ stages:
     metrics:
     - results/timing-decoder-pilot06-capacity-equivalence.json:
         cache: false
+    frozen: true
   validate_timing_predictor:
     cmd: ../../.venv/bin/python model_evaluation/validate_timing_predictor.py
     deps:
@@ -3026,6 +3022,7 @@ stages:
     metrics:
     - results/timing-fit-audit.json:
         cache: false
+    frozen: true
   prepare_guard_matched_protocol:
     cmd: ../../.venv/bin/python model_evaluation/prepare_guard_matched_protocol.py
     deps:
@@ -3037,6 +3034,7 @@ stages:
     metrics:
     - results/guard-matched-protocol-draft.json:
         cache: false
+    frozen: true
   validate_guard_matched_objective:
     cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_objective.py
     deps:
@@ -3063,6 +3061,7 @@ stages:
     metrics:
     - results/guard-matched-trial-plan.json:
         cache: false
+    frozen: true
   verify_guard_matched_price_bound:
     cmd: ../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound.py
     frozen: true
@@ -3101,6 +3100,7 @@ stages:
     metrics:
     - results/guard-matched-pilot01-prepared.json:
         cache: false
+    frozen: true
   validate_guard_matched_trial:
     cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_trial.py
     deps:
@@ -3120,6 +3120,7 @@ stages:
     metrics:
     - results/guard-matched-pilot01-offline-preflight.json:
         cache: false
+    frozen: true
   launch_guard_matched_pilot01:
     cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot01.py --execute
     frozen: true
@@ -3216,6 +3217,7 @@ stages:
     metrics:
     - results/guard-matched-fit-trajectory.json:
         cache: false
+    frozen: true
   prepare_guard_matched_extended_plan:
     cmd: ../../.venv/bin/python model_evaluation/prepare_guard_matched_extended_plan.py
     deps:
@@ -3227,6 +3229,7 @@ stages:
     metrics:
     - results/guard-matched-extended-trial-plan.json:
         cache: false
+    frozen: true
   verify_guard_matched_price_bound02:
     cmd: ../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound02.py
     frozen: true
@@ -3265,6 +3268,7 @@ stages:
     metrics:
     - results/guard-matched-pilot02-prepared.json:
         cache: false
+    frozen: true
   validate_guard_matched_trial02:
     cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_trial02.py
     deps:
@@ -3284,6 +3288,7 @@ stages:
     metrics:
     - results/guard-matched-pilot02-offline-preflight.json:
         cache: false
+    frozen: true
   launch_guard_matched_pilot02:
     cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot02.py --execute
     frozen: true
@@ -3346,7 +3351,6 @@ stages:
     - data/guard-matched-pilot02-results
     - results/guard-matched-pilot02-collected.json
     - results/guard-matched-pilot02-permission-removed.json
-    - results/guard-matched-pilot02-early-capacity-stop.json
     metrics:
     - results/guard-matched-pilot02-cost-reconciled.json:
         cache: false
@@ -3375,7 +3379,8 @@ stages:
     - results/guard-matched-pilot02-prefix-replay.json:
         cache: false
   observe_guard_matched_infrastructure02:
-    cmd: ../../.venv/bin/python model_evaluation/observe_guard_matched_infrastructure02.py --batch-region us-east4
+    cmd: ../../.venv/bin/python model_evaluation/observe_guard_matched_infrastructure02.py
+      --batch-region us-east4
     frozen: true
     deps:
     - model_evaluation/observe_guard_matched_infrastructure02.py
@@ -3385,7 +3390,8 @@ stages:
     - results/guard-matched-pilot02-infrastructure-observation.json:
         cache: false
   validate_guard_matched_selected_predictor02:
-    cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_selected_predictor.py --trial guard-matched-pilot02
+    cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_selected_predictor.py
+      --trial guard-matched-pilot02
     deps:
     - model_evaluation/validate_guard_matched_selected_predictor.py
     - model_evaluation/joint_predictor.py
@@ -3411,6 +3417,7 @@ stages:
     metrics:
     - results/guard-matched-placement03-trial-plan.json:
         cache: false
+    frozen: true
   verify_guard_matched_price_bound03:
     cmd: ../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound03.py
     frozen: true
@@ -3449,6 +3456,7 @@ stages:
     metrics:
     - results/guard-matched-pilot03-prepared.json:
         cache: false
+    frozen: true
   validate_guard_matched_trial03:
     cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_trial03.py
     deps:
@@ -3468,6 +3476,7 @@ stages:
     metrics:
     - results/guard-matched-pilot03-offline-preflight.json:
         cache: false
+    frozen: true
   launch_guard_matched_pilot03:
     cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot03.py --execute
     frozen: true
@@ -3611,6 +3620,7 @@ stages:
     metrics:
     - results/guard-matched-placement04-trial-plan.json:
         cache: false
+    frozen: true
   verify_guard_matched_price_bound04:
     cmd: ../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound04.py
     frozen: true
@@ -3649,6 +3659,7 @@ stages:
     metrics:
     - results/guard-matched-pilot04-prepared.json:
         cache: false
+    frozen: true
   validate_guard_matched_trial04:
     cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_trial04.py
     deps:
@@ -3668,6 +3679,7 @@ stages:
     metrics:
     - results/guard-matched-pilot04-offline-preflight.json:
         cache: false
+    frozen: true
   launch_guard_matched_pilot04:
     cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot04.py --execute
     frozen: true
@@ -3730,7 +3742,6 @@ stages:
     - data/guard-matched-pilot04-results
     - results/guard-matched-pilot04-collected.json
     - results/guard-matched-pilot04-permission-removed.json
-    - results/guard-matched-pilot04-early-scope-stop.json
     metrics:
     - results/guard-matched-pilot04-cost-reconciled.json:
         cache: false
@@ -3792,6 +3803,7 @@ stages:
     metrics:
     - results/guard-matched-fit-horizons.json:
         cache: false
+    frozen: true
   prepare_canonical_feature_cache:
     cmd: ../../.venv/bin/python model_evaluation/prepare_canonical_feature_cache.py
     deps:
@@ -3853,6 +3865,7 @@ stages:
     metrics:
     - results/canonical-feature-cache-preflight.json:
         cache: false
+    frozen: true
   validate_canonical_data:
     cmd: ../../.venv/bin/python model_evaluation/validate_canonical_data.py
     deps:
@@ -3868,6 +3881,7 @@ stages:
     metrics:
     - results/canonical-data-preflight.json:
         cache: false
+    frozen: true
   validate_canonical_metrics:
     cmd: ../../.venv/bin/python model_evaluation/validate_canonical_metrics.py
     deps:
@@ -3885,6 +3899,7 @@ stages:
     metrics:
     - results/canonical-metrics-preflight.json:
         cache: false
+    frozen: true
   prepare_canonical_trial_plan:
     cmd: ../../.venv/bin/python model_evaluation/prepare_canonical_trial_plan.py
     deps:
@@ -3902,6 +3917,7 @@ stages:
     metrics:
     - results/canonical-trial-plan.json:
         cache: false
+    frozen: true
   prepare_canonical_trial:
     cmd: ../../.venv/bin/python model_evaluation/prepare_canonical_trial.py
     deps:
@@ -4049,8 +4065,7 @@ stages:
     - cloud.py
     - results/canonical-pilot01-execution.json
     metrics:
-    - results/canonical-pilot01-progress.json:
-        cache: false
+    - results/canonical-pilot01-progress.json: {}
     - results/canonical-pilot01-optimizer-replay.json:
         cache: false
   validate_inference_verification:
@@ -4253,8 +4268,7 @@ stages:
     - results/canonical-pilot02-execution.json
     frozen: true
     metrics:
-    - results/canonical-pilot02-progress.json:
-        cache: false
+    - results/canonical-pilot02-progress.json: {}
     - results/canonical-pilot02-optimizer-replay.json:
         cache: false
   observe_canonical_capacity:

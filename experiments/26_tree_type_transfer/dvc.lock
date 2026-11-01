@@ -24,15 +24,15 @@ stages:
       hash: md5
       md5: 5b851ec2ce572088b53ba1d13878ef0c
       size: 1638658
-    - path: decks
-      hash: md5
-      md5: 739c28da4767e68bf28b3f89c2e33551.dir
-      size: 17494411
-      nfiles: 32
     - path: results/input-freeze.json
       hash: md5
       md5: f12052b8479f08e332c98d4eea04630f
       size: 3515
+    - path: decks
+      hash: md5
+      md5: 41b765008934de061f40536655b4260b.dir
+      size: 17493325
+      nfiles: 32
   preflight:
     cmd: ../../.venv/bin/python preflight.py
     deps:
@@ -212,9 +212,8 @@ stages:
       md5: f655ba67dbe84e067916412a7f63ccbd
       size: 17752
   model_assumption_audit:
-    cmd: ../../.venv/bin/python audit_model_assumptions.py && 
-      ../../.venv/bin/python audit_target_conventions.py && 
-      ../../.venv/bin/python probe_shared_rom.py
+    cmd: ../../.venv/bin/python audit_model_assumptions.py && ../../.venv/bin/python
+      audit_target_conventions.py && ../../.venv/bin/python probe_shared_rom.py
     deps:
     - path: audit_model_assumptions.py
       hash: md5
@@ -299,8 +298,7 @@ stages:
       md5: a2c389cc1dddd42d3030708df23eb826
       size: 50814
   single_dynamics_extended:
-    cmd: ../../.venv/bin/python compare_single_dynamics.py --epochs 2000 --tag 
-      extended
+    cmd: ../../.venv/bin/python compare_single_dynamics.py --epochs 2000 --tag extended
     deps:
     - path: cases.json
       hash: md5

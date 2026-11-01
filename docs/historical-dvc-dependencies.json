@@ -1,0 +1,4906 @@
+{
+  "reason": "User-authorized historical snapshots; cycles removed and affected stages frozen. This is not a claim of replayable historical optimization.",
+  "originals": {
+    "experiments/36_tree_density/dvc.yaml:launch_timing_decoder_pilot05": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/launch_timing_decoder_pilot05.py --execute",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/launch_timing_decoder_pilot05.py",
+          "results/timing-cost-bounds-preflight.json",
+          "results/timing-decoder-pilot05-price-bound.json",
+          "cloud.py",
+          "data/timing-decoder-pilot05",
+          "results/timing-decoder-pilot05-offline-preflight.json",
+          "results/timing-decoder-pilot05-capacity-equivalence.json",
+          "results/timing-decoder-pilot04-cost-reconciled.json",
+          "results/timing-decoder-pilot04-permission-removed.json",
+          "results/timing-regional-network-prepared.json"
+        ],
+        "metrics": [
+          {
+            "results/timing-decoder-pilot05-execution.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/launch_timing_decoder_pilot05.py --execute",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "data/timing-decoder-pilot05",
+            "hash": "md5",
+            "md5": "53b6857efcf246f78efee29210ab6499.dir",
+            "size": 952099542,
+            "nfiles": 35
+          },
+          {
+            "path": "model_evaluation/launch_timing_decoder_pilot05.py",
+            "hash": "md5",
+            "md5": "8b80f57a5d5b3638e3c3663e625fbed1",
+            "size": 7495
+          },
+          {
+            "path": "results/timing-cost-bounds-preflight.json",
+            "hash": "md5",
+            "md5": "b5b3ad9e0c900fc762b0e49d158a87ef",
+            "size": 560
+          },
+          {
+            "path": "results/timing-decoder-pilot04-cost-reconciled.json",
+            "hash": "md5",
+            "md5": "b204e0861a15d4292692be00c209c3cf",
+            "size": 82794
+          },
+          {
+            "path": "results/timing-decoder-pilot04-permission-removed.json",
+            "hash": "md5",
+            "md5": "782e198f50922b0adfd73107f61bfde1",
+            "size": 478
+          },
+          {
+            "path": "results/timing-decoder-pilot05-capacity-equivalence.json",
+            "hash": "md5",
+            "md5": "064ee9d9ccc5ae31d9b670ee87b8fc7b",
+            "size": 815
+          },
+          {
+            "path": "results/timing-decoder-pilot05-offline-preflight.json",
+            "hash": "md5",
+            "md5": "23c7e3ef6c8a5d39e63017e23cf8267e",
+            "size": 545
+          },
+          {
+            "path": "results/timing-decoder-pilot05-price-bound.json",
+            "hash": "md5",
+            "md5": "399f42be713d563db059cb6485e53a9c",
+            "size": 14488
+          },
+          {
+            "path": "results/timing-regional-network-prepared.json",
+            "hash": "md5",
+            "md5": "5a6d504044648f3980912a1850b74993",
+            "size": 1082
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/timing-decoder-pilot05-execution.json",
+            "hash": "md5",
+            "md5": "fdfa33ba64f08b9c5fd8b5e4e4c1651f",
+            "size": 333
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:collect_timing_decoder_pilot05": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/collect_timing_decoder_pilot05.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/collect_timing_decoder_pilot05.py",
+          "cloud.py",
+          "results/timing-decoder-pilot05-execution.json"
+        ],
+        "outs": [
+          "data/timing-decoder-pilot05-results"
+        ],
+        "metrics": [
+          {
+            "results/timing-decoder-pilot05-collected.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/collect_timing_decoder_pilot05.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/collect_timing_decoder_pilot05.py",
+            "hash": "md5",
+            "md5": "83526c5c1b286c508ad3513bafe7ecc6",
+            "size": 5829
+          },
+          {
+            "path": "results/timing-decoder-pilot05-execution.json",
+            "hash": "md5",
+            "md5": "fdfa33ba64f08b9c5fd8b5e4e4c1651f",
+            "size": 333
+          }
+        ],
+        "outs": [
+          {
+            "path": "data/timing-decoder-pilot05-results",
+            "hash": "md5",
+            "md5": "f82ec9b7ed5b8a6c8109343ca4e475d3.dir",
+            "size": 5605,
+            "nfiles": 4
+          },
+          {
+            "path": "results/timing-decoder-pilot05-collected.json",
+            "hash": "md5",
+            "md5": "ab26c5ac6b956c633ef021787b5c81b5",
+            "size": 274
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:close_timing_decoder_pilot05": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/close_timing_decoder_pilot05.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/close_timing_decoder_pilot05.py",
+          "cloud.py",
+          "results/timing-decoder-pilot05-collected.json",
+          "results/timing-decoder-pilot05-read-condition.json"
+        ],
+        "metrics": [
+          {
+            "results/timing-decoder-pilot05-permission-removed.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/close_timing_decoder_pilot05.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/close_timing_decoder_pilot05.py",
+            "hash": "md5",
+            "md5": "cd20b4b8536d83a4e02325c9bbbbf5f3",
+            "size": 1756
+          },
+          {
+            "path": "results/timing-decoder-pilot05-collected.json",
+            "hash": "md5",
+            "md5": "ab26c5ac6b956c633ef021787b5c81b5",
+            "size": 274
+          },
+          {
+            "path": "results/timing-decoder-pilot05-read-condition.json",
+            "hash": "md5",
+            "md5": "b281c1aff8b94d65e275e5dd185bedb3",
+            "size": 364
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/timing-decoder-pilot05-permission-removed.json",
+            "hash": "md5",
+            "md5": "dc4bee854373c590b71cf2e7c07048db",
+            "size": 478
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:reconcile_timing_decoder_pilot05": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/reconcile_timing_decoder_pilot05.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/reconcile_timing_decoder_pilot05.py",
+          "cloud.py",
+          "results/timing-decoder-pilot05-collected.json",
+          "results/timing-decoder-pilot05-permission-removed.json"
+        ],
+        "metrics": [
+          {
+            "results/timing-decoder-pilot05-cost-reconciled.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/reconcile_timing_decoder_pilot05.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/reconcile_timing_decoder_pilot05.py",
+            "hash": "md5",
+            "md5": "24b69b4ea24582840c30dc417f308e70",
+            "size": 1693
+          },
+          {
+            "path": "results/timing-decoder-pilot05-collected.json",
+            "hash": "md5",
+            "md5": "ab26c5ac6b956c633ef021787b5c81b5",
+            "size": 274
+          },
+          {
+            "path": "results/timing-decoder-pilot05-permission-removed.json",
+            "hash": "md5",
+            "md5": "dc4bee854373c590b71cf2e7c07048db",
+            "size": 478
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/timing-decoder-pilot05-cost-reconciled.json",
+            "hash": "md5",
+            "md5": "8454f41f5fca5c7c284ec656411ab5fb",
+            "size": 471
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:validate_timing_cost_bounds": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_timing_cost_bounds.py",
+        "deps": [
+          "model_evaluation/validate_timing_cost_bounds.py",
+          "../../scripts/reconcile_runtime_costs.py",
+          "results/timing-decoder-trial-plan05.json",
+          "results/timing-decoder-pilot05-price-bound.json",
+          "results/canonical-pilot03-price-bound.json"
+        ],
+        "metrics": [
+          {
+            "results/timing-cost-bounds-preflight.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_timing_cost_bounds.py",
+        "deps": [
+          {
+            "path": "../../scripts/reconcile_runtime_costs.py",
+            "hash": "md5",
+            "md5": "41c1ef8d553d0a7a42f69bdee2fc2353",
+            "size": 9528
+          },
+          {
+            "path": "model_evaluation/validate_timing_cost_bounds.py",
+            "hash": "md5",
+            "md5": "62e93756ab187a7bdab2c8b94d1e80f7",
+            "size": 2867
+          },
+          {
+            "path": "results/canonical-pilot03-price-bound.json",
+            "hash": "md5",
+            "md5": "77bb87563331738103e9744a182c709e",
+            "size": 14487
+          },
+          {
+            "path": "results/timing-decoder-pilot05-price-bound.json",
+            "hash": "md5",
+            "md5": "399f42be713d563db059cb6485e53a9c",
+            "size": 14488
+          },
+          {
+            "path": "results/timing-decoder-trial-plan05.json",
+            "hash": "md5",
+            "md5": "542991511317db11f66511b68ed0275d",
+            "size": 10391
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/timing-cost-bounds-preflight.json",
+            "hash": "md5",
+            "md5": "769f2360c6d2fe4f16829e4692f17317",
+            "size": 702
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:launch_timing_decoder_pilot06": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/launch_timing_decoder_pilot06.py --execute",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/launch_timing_decoder_pilot06.py",
+          "results/timing-cost-bounds-preflight.json",
+          "results/timing-decoder-pilot06-price-bound.json",
+          "cloud.py",
+          "data/timing-decoder-pilot06",
+          "results/timing-decoder-pilot06-offline-preflight.json",
+          "results/timing-decoder-pilot06-capacity-equivalence.json",
+          "results/timing-decoder-pilot05-cost-reconciled.json",
+          "results/timing-decoder-pilot05-permission-removed.json",
+          "results/timing-regional-network-prepared.json",
+          "results/timing-restore-repair-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/timing-decoder-pilot06-execution.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/launch_timing_decoder_pilot06.py --execute",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "data/timing-decoder-pilot06",
+            "hash": "md5",
+            "md5": "4328c17806466ef10aca9f576aba05ec.dir",
+            "size": 952101291,
+            "nfiles": 35
+          },
+          {
+            "path": "model_evaluation/launch_timing_decoder_pilot06.py",
+            "hash": "md5",
+            "md5": "08795f2bb65de2688dfb1b3e4505d96a",
+            "size": 7748
+          },
+          {
+            "path": "results/timing-cost-bounds-preflight.json",
+            "hash": "md5",
+            "md5": "b5b3ad9e0c900fc762b0e49d158a87ef",
+            "size": 560
+          },
+          {
+            "path": "results/timing-decoder-pilot05-cost-reconciled.json",
+            "hash": "md5",
+            "md5": "8454f41f5fca5c7c284ec656411ab5fb",
+            "size": 471
+          },
+          {
+            "path": "results/timing-decoder-pilot05-permission-removed.json",
+            "hash": "md5",
+            "md5": "dc4bee854373c590b71cf2e7c07048db",
+            "size": 478
+          },
+          {
+            "path": "results/timing-decoder-pilot06-capacity-equivalence.json",
+            "hash": "md5",
+            "md5": "8c551b0584e6e3c6e8aefc210e7b6d48",
+            "size": 916
+          },
+          {
+            "path": "results/timing-decoder-pilot06-offline-preflight.json",
+            "hash": "md5",
+            "md5": "167518fe00ab2e9c5e1429d56e5e9e21",
+            "size": 545
+          },
+          {
+            "path": "results/timing-decoder-pilot06-price-bound.json",
+            "hash": "md5",
+            "md5": "68711818ca0f9d771a4b31d7499d7f32",
+            "size": 14488
+          },
+          {
+            "path": "results/timing-regional-network-prepared.json",
+            "hash": "md5",
+            "md5": "5a6d504044648f3980912a1850b74993",
+            "size": 1082
+          },
+          {
+            "path": "results/timing-restore-repair-preflight.json",
+            "hash": "md5",
+            "md5": "f26b923811a6c54af545cf2c1bf2b6ba",
+            "size": 1253
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/timing-decoder-pilot06-execution.json",
+            "hash": "md5",
+            "md5": "1fb9004720ab5526c945b5007cfa6a04",
+            "size": 333
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:collect_timing_decoder_pilot06": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/collect_timing_decoder_pilot06.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/collect_timing_decoder_pilot06.py",
+          "cloud.py",
+          "results/timing-decoder-pilot06-execution.json"
+        ],
+        "outs": [
+          "data/timing-decoder-pilot06-results"
+        ],
+        "metrics": [
+          {
+            "results/timing-decoder-pilot06-collected.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/collect_timing_decoder_pilot06.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/collect_timing_decoder_pilot06.py",
+            "hash": "md5",
+            "md5": "38db5ed185abe42b49225bb0e3673e25",
+            "size": 5952
+          },
+          {
+            "path": "results/timing-decoder-pilot06-execution.json",
+            "hash": "md5",
+            "md5": "1fb9004720ab5526c945b5007cfa6a04",
+            "size": 333
+          }
+        ],
+        "outs": [
+          {
+            "path": "data/timing-decoder-pilot06-results",
+            "hash": "md5",
+            "md5": "c08fa29da628ab4e89924a65f1377921.dir",
+            "size": 166219727,
+            "nfiles": 682
+          },
+          {
+            "path": "results/timing-decoder-pilot06-collected.json",
+            "hash": "md5",
+            "md5": "f74fc12557c9bd268778a08b8b983b8e",
+            "size": 798
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:close_timing_decoder_pilot06": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/close_timing_decoder_pilot06.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/close_timing_decoder_pilot06.py",
+          "cloud.py",
+          "results/timing-decoder-pilot06-collected.json",
+          "results/timing-decoder-pilot06-read-condition.json"
+        ],
+        "metrics": [
+          {
+            "results/timing-decoder-pilot06-permission-removed.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/close_timing_decoder_pilot06.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/close_timing_decoder_pilot06.py",
+            "hash": "md5",
+            "md5": "ea8bb253391609ab2707fb6f2bb399fd",
+            "size": 1756
+          },
+          {
+            "path": "results/timing-decoder-pilot06-collected.json",
+            "hash": "md5",
+            "md5": "f74fc12557c9bd268778a08b8b983b8e",
+            "size": 798
+          },
+          {
+            "path": "results/timing-decoder-pilot06-read-condition.json",
+            "hash": "md5",
+            "md5": "8d3b2a5b09461e5890d96e228f5b4cc8",
+            "size": 364
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/timing-decoder-pilot06-permission-removed.json",
+            "hash": "md5",
+            "md5": "6f9ca976df894445a30612e7a0e22d9d",
+            "size": 478
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:analyze_timing_decoder_pilot06": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/analyze_timing_decoder_pilot06.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/analyze_timing_decoder_pilot06.py",
+          "cloud.py",
+          "data/timing-decoder-pilot06",
+          "data/timing-decoder-pilot06-results",
+          "results/timing-decoder-pilot06-collected.json",
+          "results/timing-decoder-pilot06-permission-removed.json"
+        ],
+        "metrics": [
+          {
+            "results/timing-decoder-pilot06-analysis.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/analyze_timing_decoder_pilot06.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "data/timing-decoder-pilot06",
+            "hash": "md5",
+            "md5": "4328c17806466ef10aca9f576aba05ec.dir",
+            "size": 952101291,
+            "nfiles": 35
+          },
+          {
+            "path": "data/timing-decoder-pilot06-results",
+            "hash": "md5",
+            "md5": "c08fa29da628ab4e89924a65f1377921.dir",
+            "size": 166219727,
+            "nfiles": 682
+          },
+          {
+            "path": "model_evaluation/analyze_timing_decoder_pilot06.py",
+            "hash": "md5",
+            "md5": "ca0470b8cc21559f140a17358fbf38f6",
+            "size": 4196
+          },
+          {
+            "path": "results/timing-decoder-pilot06-collected.json",
+            "hash": "md5",
+            "md5": "f74fc12557c9bd268778a08b8b983b8e",
+            "size": 798
+          },
+          {
+            "path": "results/timing-decoder-pilot06-permission-removed.json",
+            "hash": "md5",
+            "md5": "6f9ca976df894445a30612e7a0e22d9d",
+            "size": 478
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/timing-decoder-pilot06-analysis.json",
+            "hash": "md5",
+            "md5": "33b9a5e3d9f118361182b931067de350",
+            "size": 27467
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:reconcile_timing_decoder_pilot06": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/reconcile_timing_decoder_pilot06.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/reconcile_timing_decoder_pilot06.py",
+          "cloud.py",
+          "results/timing-decoder-pilot06-collected.json",
+          "results/timing-decoder-pilot06-permission-removed.json"
+        ],
+        "metrics": [
+          {
+            "results/timing-decoder-pilot06-cost-reconciled.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/reconcile_timing_decoder_pilot06.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/reconcile_timing_decoder_pilot06.py",
+            "hash": "md5",
+            "md5": "18bb9372438db5a41b2c7880b29642eb",
+            "size": 1693
+          },
+          {
+            "path": "results/timing-decoder-pilot06-collected.json",
+            "hash": "md5",
+            "md5": "f74fc12557c9bd268778a08b8b983b8e",
+            "size": 798
+          },
+          {
+            "path": "results/timing-decoder-pilot06-permission-removed.json",
+            "hash": "md5",
+            "md5": "6f9ca976df894445a30612e7a0e22d9d",
+            "size": 478
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/timing-decoder-pilot06-cost-reconciled.json",
+            "hash": "md5",
+            "md5": "85ab9bbc752a839d26ae22797cfeaf5e",
+            "size": 463
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:validate_timing_restore_repair": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_timing_restore_repair.py",
+        "deps": [
+          "model_evaluation/validate_timing_restore_repair.py",
+          "model_evaluation/timing_worker.py",
+          "model_evaluation/timing_worker_v2.py",
+          "data/timing-decoder-pilot05",
+          "data/timing-decoder-pilot05-results",
+          "results/timing-decoder-pilot05-execution.json",
+          "results/timing-decoder-pilot05-collected.json"
+        ],
+        "metrics": [
+          {
+            "results/timing-restore-repair-preflight.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_timing_restore_repair.py",
+        "deps": [
+          {
+            "path": "data/timing-decoder-pilot05",
+            "hash": "md5",
+            "md5": "53b6857efcf246f78efee29210ab6499.dir",
+            "size": 952099542,
+            "nfiles": 35
+          },
+          {
+            "path": "data/timing-decoder-pilot05-results",
+            "hash": "md5",
+            "md5": "f82ec9b7ed5b8a6c8109343ca4e475d3.dir",
+            "size": 5605,
+            "nfiles": 4
+          },
+          {
+            "path": "model_evaluation/timing_worker.py",
+            "hash": "md5",
+            "md5": "6f22ffa9dfc344d99336cc730b5ffb81",
+            "size": 9465
+          },
+          {
+            "path": "model_evaluation/timing_worker_v2.py",
+            "hash": "md5",
+            "md5": "606c7d368a25b75ef92ae71ff95fce9b",
+            "size": 10108
+          },
+          {
+            "path": "model_evaluation/validate_timing_restore_repair.py",
+            "hash": "md5",
+            "md5": "09c576167ab5c11d7d301885c32100a5",
+            "size": 3281
+          },
+          {
+            "path": "results/timing-decoder-pilot05-collected.json",
+            "hash": "md5",
+            "md5": "ab26c5ac6b956c633ef021787b5c81b5",
+            "size": 274
+          },
+          {
+            "path": "results/timing-decoder-pilot05-execution.json",
+            "hash": "md5",
+            "md5": "fdfa33ba64f08b9c5fd8b5e4e4c1651f",
+            "size": 333
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/timing-restore-repair-preflight.json",
+            "hash": "md5",
+            "md5": "f26b923811a6c54af545cf2c1bf2b6ba",
+            "size": 1253
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:verify_timing_capacity_equivalence06": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/verify_timing_capacity_equivalence.py --pilot 06 --zone us-east4-a --batch-region us-east4 --subnet fds-timing-east4 --worker-repair",
+        "deps": [
+          "model_evaluation/verify_timing_capacity_equivalence.py",
+          "data/timing-decoder-pilot01",
+          "data/timing-decoder-pilot06",
+          "results/timing-decoder-pilot01-prepared.json",
+          "results/timing-decoder-pilot06-prepared.json",
+          "results/timing-restore-repair-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/timing-decoder-pilot06-capacity-equivalence.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/verify_timing_capacity_equivalence.py --pilot 06 --zone us-east4-a --batch-region us-east4 --subnet fds-timing-east4 --worker-repair",
+        "deps": [
+          {
+            "path": "data/timing-decoder-pilot01",
+            "hash": "md5",
+            "md5": "238cb7eee7fe4c222e28ecb2c8774c9c.dir",
+            "size": 952099561,
+            "nfiles": 35
+          },
+          {
+            "path": "data/timing-decoder-pilot06",
+            "hash": "md5",
+            "md5": "4328c17806466ef10aca9f576aba05ec.dir",
+            "size": 952101291,
+            "nfiles": 35
+          },
+          {
+            "path": "model_evaluation/verify_timing_capacity_equivalence.py",
+            "hash": "md5",
+            "md5": "612300033e121e20bd9a1ac21a5bae98",
+            "size": 4628
+          },
+          {
+            "path": "results/timing-decoder-pilot01-prepared.json",
+            "hash": "md5",
+            "md5": "daa4ef489a39e8e8d02c27389d882883",
+            "size": 2431
+          },
+          {
+            "path": "results/timing-decoder-pilot06-prepared.json",
+            "hash": "md5",
+            "md5": "303d9e300485cc9ad2c88fd36e9e3c9b",
+            "size": 2432
+          },
+          {
+            "path": "results/timing-restore-repair-preflight.json",
+            "hash": "md5",
+            "md5": "f26b923811a6c54af545cf2c1bf2b6ba",
+            "size": 1253
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/timing-decoder-pilot06-capacity-equivalence.json",
+            "hash": "md5",
+            "md5": "8c551b0584e6e3c6e8aefc210e7b6d48",
+            "size": 916
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:audit_timing_fit": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/audit_timing_fit.py",
+        "deps": [
+          "model_evaluation/audit_timing_fit.py",
+          "data/timing-decoder-pilot06",
+          "data/timing-decoder-pilot06-results",
+          "results/timing-decoder-pilot06-analysis.json"
+        ],
+        "metrics": [
+          {
+            "results/timing-fit-audit.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/audit_timing_fit.py",
+        "deps": [
+          {
+            "path": "data/timing-decoder-pilot06",
+            "hash": "md5",
+            "md5": "4328c17806466ef10aca9f576aba05ec.dir",
+            "size": 952101291,
+            "nfiles": 35
+          },
+          {
+            "path": "data/timing-decoder-pilot06-results",
+            "hash": "md5",
+            "md5": "c08fa29da628ab4e89924a65f1377921.dir",
+            "size": 166219727,
+            "nfiles": 682
+          },
+          {
+            "path": "model_evaluation/audit_timing_fit.py",
+            "hash": "md5",
+            "md5": "aa411bc6e96a870abfa56fe14f1abea2",
+            "size": 5758
+          },
+          {
+            "path": "results/timing-decoder-pilot06-analysis.json",
+            "hash": "md5",
+            "md5": "33b9a5e3d9f118361182b931067de350",
+            "size": 27467
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/timing-fit-audit.json",
+            "hash": "md5",
+            "md5": "501804d13b0a28dc980c2245dbbe33b5",
+            "size": 19434
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:prepare_guard_matched_protocol": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_protocol.py",
+        "deps": [
+          "model_evaluation/prepare_guard_matched_protocol.py",
+          "data/timing-decoder-pilot06",
+          "data/timing-candidate",
+          "results/timing-fit-audit.json",
+          "results/timing-decoder-pilot06-analysis.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-protocol-draft.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_protocol.py",
+        "deps": [
+          {
+            "path": "data/timing-candidate",
+            "hash": "md5",
+            "md5": "af75d85c237b85962d5d3a036bbc0e2a.dir",
+            "size": 65035,
+            "nfiles": 3
+          },
+          {
+            "path": "data/timing-decoder-pilot06",
+            "hash": "md5",
+            "md5": "4328c17806466ef10aca9f576aba05ec.dir",
+            "size": 952101291,
+            "nfiles": 35
+          },
+          {
+            "path": "model_evaluation/prepare_guard_matched_protocol.py",
+            "hash": "md5",
+            "md5": "3677506673fadebc0d7177278ed07aca",
+            "size": 5666
+          },
+          {
+            "path": "results/timing-decoder-pilot06-analysis.json",
+            "hash": "md5",
+            "md5": "33b9a5e3d9f118361182b931067de350",
+            "size": 27467
+          },
+          {
+            "path": "results/timing-fit-audit.json",
+            "hash": "md5",
+            "md5": "501804d13b0a28dc980c2245dbbe33b5",
+            "size": 19434
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-protocol-draft.json",
+            "hash": "md5",
+            "md5": "65af27d972679476d329ccd5fc1a843c",
+            "size": 12763
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:prepare_guard_matched_plan": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_plan.py",
+        "deps": [
+          "model_evaluation/prepare_guard_matched_plan.py",
+          "model_evaluation/guard_matched_worker.py",
+          "model_evaluation/guard_matched_data.py",
+          "model_evaluation/guard_matched_objective.py",
+          "data/timing-decoder-pilot06",
+          "results/guard-matched-protocol-draft.json",
+          "results/guard-matched-objective-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-trial-plan.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_plan.py",
+        "deps": [
+          {
+            "path": "data/timing-decoder-pilot06",
+            "hash": "md5",
+            "md5": "4328c17806466ef10aca9f576aba05ec.dir",
+            "size": 952101291,
+            "nfiles": 35
+          },
+          {
+            "path": "model_evaluation/guard_matched_data.py",
+            "hash": "md5",
+            "md5": "41f299a94cc8bb434751b30d39162ee4",
+            "size": 1370
+          },
+          {
+            "path": "model_evaluation/guard_matched_objective.py",
+            "hash": "md5",
+            "md5": "747bd78601c2f01bed9d84c9d926de51",
+            "size": 2159
+          },
+          {
+            "path": "model_evaluation/guard_matched_worker.py",
+            "hash": "md5",
+            "md5": "3562066808c32675d0546e6f0ecc27d0",
+            "size": 10147
+          },
+          {
+            "path": "model_evaluation/prepare_guard_matched_plan.py",
+            "hash": "md5",
+            "md5": "0ba275db35c9dd451d3033d1c5c7e18e",
+            "size": 4280
+          },
+          {
+            "path": "results/guard-matched-objective-preflight.json",
+            "hash": "md5",
+            "md5": "f8c6b9d194f221936bc66591e0ea814f",
+            "size": 1319
+          },
+          {
+            "path": "results/guard-matched-protocol-draft.json",
+            "hash": "md5",
+            "md5": "65af27d972679476d329ccd5fc1a843c",
+            "size": 12763
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-trial-plan.json",
+            "hash": "md5",
+            "md5": "81de64705354d484ddfbd1b80d6cd977",
+            "size": 12053
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:verify_guard_matched_price_bound": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/verify_guard_matched_price_bound.py",
+          "results/guard-matched-trial-plan.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot01-price-bound.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound.py",
+        "deps": [
+          {
+            "path": "model_evaluation/verify_guard_matched_price_bound.py",
+            "hash": "md5",
+            "md5": "562a8943eab182d475b12053a1e8baf4",
+            "size": 1853
+          },
+          {
+            "path": "results/guard-matched-trial-plan.json",
+            "hash": "md5",
+            "md5": "81de64705354d484ddfbd1b80d6cd977",
+            "size": 12053
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot01-price-bound.json",
+            "hash": "md5",
+            "md5": "2afaf1f272d05a9499f84755656cea63",
+            "size": 14487
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:prepare_guard_matched_trial": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_trial.py",
+        "deps": [
+          "model_evaluation/prepare_guard_matched_trial.py",
+          "model_evaluation/guard_matched_worker.py",
+          "model_evaluation/timing_decoder.py",
+          "model_evaluation/context_data.py",
+          "model_evaluation/context_objective.py",
+          "model_evaluation/joint_decoder_v2.py",
+          "model_evaluation/joint_objective_v2.py",
+          "model_evaluation/joint_data.py",
+          "model_evaluation/joint_metrics.py",
+          "model_evaluation/gas_head_metrics.py",
+          "data/timing-candidate",
+          "data/joint-decoder-candidate",
+          "data/joint-rolling-features",
+          "data/gas-shape-pilot01",
+          "results/guard-matched-trial-plan.json",
+          "results/context-objective-preflight.json",
+          "results/context-decoder-preflight.json",
+          "results/joint-pipeline-v2-preflight.json",
+          "model_evaluation/guard_matched_data.py",
+          "model_evaluation/guard_matched_objective.py",
+          "results/guard-matched-objective-preflight.json"
+        ],
+        "outs": [
+          "data/guard-matched-pilot01"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot01-prepared.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_trial.py",
+        "deps": [
+          {
+            "path": "data/gas-shape-pilot01",
+            "hash": "md5",
+            "md5": "0f9ef245d41f905943c52ad059eac1c1.dir",
+            "size": 53242573,
+            "nfiles": 17
+          },
+          {
+            "path": "data/joint-decoder-candidate",
+            "hash": "md5",
+            "md5": "48af269b9ab3475ed72ea0f7913caa40.dir",
+            "size": 26593773,
+            "nfiles": 5
+          },
+          {
+            "path": "data/joint-rolling-features",
+            "hash": "md5",
+            "md5": "0b3fd914ec0913529749e026d7f68988.dir",
+            "size": 449281821,
+            "nfiles": 3
+          },
+          {
+            "path": "data/timing-candidate",
+            "hash": "md5",
+            "md5": "af75d85c237b85962d5d3a036bbc0e2a.dir",
+            "size": 65035,
+            "nfiles": 3
+          },
+          {
+            "path": "model_evaluation/context_data.py",
+            "hash": "md5",
+            "md5": "8ce74789ced18b580f382cfea7fa49cb",
+            "size": 1019
+          },
+          {
+            "path": "model_evaluation/context_objective.py",
+            "hash": "md5",
+            "md5": "cf80a49ff86d1485a1f87089569986d6",
+            "size": 2707
+          },
+          {
+            "path": "model_evaluation/gas_head_metrics.py",
+            "hash": "md5",
+            "md5": "1b092dc20edf7bac2340dbc376fd4a53",
+            "size": 3824
+          },
+          {
+            "path": "model_evaluation/guard_matched_data.py",
+            "hash": "md5",
+            "md5": "41f299a94cc8bb434751b30d39162ee4",
+            "size": 1370
+          },
+          {
+            "path": "model_evaluation/guard_matched_objective.py",
+            "hash": "md5",
+            "md5": "747bd78601c2f01bed9d84c9d926de51",
+            "size": 2159
+          },
+          {
+            "path": "model_evaluation/guard_matched_worker.py",
+            "hash": "md5",
+            "md5": "3562066808c32675d0546e6f0ecc27d0",
+            "size": 10147
+          },
+          {
+            "path": "model_evaluation/joint_data.py",
+            "hash": "md5",
+            "md5": "53a76769c3541324d4baafa483a4be02",
+            "size": 6229
+          },
+          {
+            "path": "model_evaluation/joint_decoder_v2.py",
+            "hash": "md5",
+            "md5": "2f15f174798f9536a5a1989d31a64adc",
+            "size": 4693
+          },
+          {
+            "path": "model_evaluation/joint_metrics.py",
+            "hash": "md5",
+            "md5": "b81c41dbaa625a353dd0e7730c8baacb",
+            "size": 5534
+          },
+          {
+            "path": "model_evaluation/joint_objective_v2.py",
+            "hash": "md5",
+            "md5": "fdf5c704686a2d0c28d6c5cac767745b",
+            "size": 2838
+          },
+          {
+            "path": "model_evaluation/prepare_guard_matched_trial.py",
+            "hash": "md5",
+            "md5": "73fd16e1028398520825096dab1582da",
+            "size": 5746
+          },
+          {
+            "path": "model_evaluation/timing_decoder.py",
+            "hash": "md5",
+            "md5": "eca9ecea56ed526eb1d9eb7da1ac8a02",
+            "size": 6395
+          },
+          {
+            "path": "results/context-decoder-preflight.json",
+            "hash": "md5",
+            "md5": "8c8363bcaa117929cdf0ea89e0533ba0",
+            "size": 2208
+          },
+          {
+            "path": "results/context-objective-preflight.json",
+            "hash": "md5",
+            "md5": "acbeedd759f4eb7ccc07c82f526dc678",
+            "size": 2716
+          },
+          {
+            "path": "results/guard-matched-objective-preflight.json",
+            "hash": "md5",
+            "md5": "f8c6b9d194f221936bc66591e0ea814f",
+            "size": 1319
+          },
+          {
+            "path": "results/guard-matched-trial-plan.json",
+            "hash": "md5",
+            "md5": "81de64705354d484ddfbd1b80d6cd977",
+            "size": 12053
+          },
+          {
+            "path": "results/joint-pipeline-v2-preflight.json",
+            "hash": "md5",
+            "md5": "8048edb72e5e9905809a93051ee30be2",
+            "size": 1113
+          }
+        ],
+        "outs": [
+          {
+            "path": "data/guard-matched-pilot01",
+            "hash": "md5",
+            "md5": "808afed87c4ef8ad96d201fb62250b03.dir",
+            "size": 952113294,
+            "nfiles": 39
+          },
+          {
+            "path": "results/guard-matched-pilot01-prepared.json",
+            "hash": "md5",
+            "md5": "7e3aef3377a9e162fbc872a33e008bfd",
+            "size": 2633
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:validate_guard_matched_trial": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_guard_matched_trial.py",
+        "deps": [
+          "model_evaluation/validate_guard_matched_trial.py",
+          "model_evaluation/launch_guard_matched_pilot01.py",
+          "model_evaluation/collect_guard_matched_pilot01.py",
+          "model_evaluation/close_guard_matched_pilot01.py",
+          "model_evaluation/monitor_guard_matched_pilot01.py",
+          "model_evaluation/reconcile_guard_matched_pilot01.py",
+          "model_evaluation/analyze_guard_matched_pilot01.py",
+          "data/guard-matched-pilot01",
+          "results/guard-matched-pilot01-prepared.json",
+          "results/context-objective-preflight.json",
+          "results/joint-pipeline-v2-preflight.json",
+          "model_evaluation/timing_worker_v2.py",
+          "results/guard-matched-objective-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot01-offline-preflight.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_guard_matched_trial.py",
+        "deps": [
+          {
+            "path": "data/guard-matched-pilot01",
+            "hash": "md5",
+            "md5": "808afed87c4ef8ad96d201fb62250b03.dir",
+            "size": 952113294,
+            "nfiles": 39
+          },
+          {
+            "path": "model_evaluation/analyze_guard_matched_pilot01.py",
+            "hash": "md5",
+            "md5": "015e9c53e0804927373af08fb05ccbf5",
+            "size": 4191
+          },
+          {
+            "path": "model_evaluation/close_guard_matched_pilot01.py",
+            "hash": "md5",
+            "md5": "cd6ccea3a48de122863ed6ea03b148eb",
+            "size": 1751
+          },
+          {
+            "path": "model_evaluation/collect_guard_matched_pilot01.py",
+            "hash": "md5",
+            "md5": "c1930ee64f48e0df591733ee2b96f6ee",
+            "size": 5947
+          },
+          {
+            "path": "model_evaluation/launch_guard_matched_pilot01.py",
+            "hash": "md5",
+            "md5": "b8e3b717ac614e52998d0024b9be0798",
+            "size": 7939
+          },
+          {
+            "path": "model_evaluation/monitor_guard_matched_pilot01.py",
+            "hash": "md5",
+            "md5": "1632a2e6a9db7591dcfd91d9b6d31846",
+            "size": 2912
+          },
+          {
+            "path": "model_evaluation/reconcile_guard_matched_pilot01.py",
+            "hash": "md5",
+            "md5": "b0fbf43c8278620f0f4015975d5c8c55",
+            "size": 1686
+          },
+          {
+            "path": "model_evaluation/timing_worker_v2.py",
+            "hash": "md5",
+            "md5": "606c7d368a25b75ef92ae71ff95fce9b",
+            "size": 10108
+          },
+          {
+            "path": "model_evaluation/validate_guard_matched_trial.py",
+            "hash": "md5",
+            "md5": "64b919cd88e87bb623df25bdb1ba3166",
+            "size": 4328
+          },
+          {
+            "path": "results/context-objective-preflight.json",
+            "hash": "md5",
+            "md5": "acbeedd759f4eb7ccc07c82f526dc678",
+            "size": 2716
+          },
+          {
+            "path": "results/guard-matched-objective-preflight.json",
+            "hash": "md5",
+            "md5": "f8c6b9d194f221936bc66591e0ea814f",
+            "size": 1319
+          },
+          {
+            "path": "results/guard-matched-pilot01-prepared.json",
+            "hash": "md5",
+            "md5": "7e3aef3377a9e162fbc872a33e008bfd",
+            "size": 2633
+          },
+          {
+            "path": "results/joint-pipeline-v2-preflight.json",
+            "hash": "md5",
+            "md5": "8048edb72e5e9905809a93051ee30be2",
+            "size": 1113
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot01-offline-preflight.json",
+            "hash": "md5",
+            "md5": "6254f2146f3174b763e3272bdaeab128",
+            "size": 628
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:launch_guard_matched_pilot01": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/launch_guard_matched_pilot01.py --execute",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/launch_guard_matched_pilot01.py",
+          "results/timing-cost-bounds-preflight.json",
+          "results/guard-matched-pilot01-price-bound.json",
+          "cloud.py",
+          "data/guard-matched-pilot01",
+          "results/guard-matched-pilot01-offline-preflight.json",
+          "results/timing-decoder-pilot06-cost-reconciled.json",
+          "results/timing-decoder-pilot06-permission-removed.json",
+          "results/timing-regional-network-prepared.json",
+          "results/guard-matched-objective-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot01-execution.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/launch_guard_matched_pilot01.py --execute",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "data/guard-matched-pilot01",
+            "hash": "md5",
+            "md5": "808afed87c4ef8ad96d201fb62250b03.dir",
+            "size": 952113294,
+            "nfiles": 39
+          },
+          {
+            "path": "model_evaluation/launch_guard_matched_pilot01.py",
+            "hash": "md5",
+            "md5": "b8e3b717ac614e52998d0024b9be0798",
+            "size": 7939
+          },
+          {
+            "path": "results/guard-matched-objective-preflight.json",
+            "hash": "md5",
+            "md5": "f8c6b9d194f221936bc66591e0ea814f",
+            "size": 1319
+          },
+          {
+            "path": "results/guard-matched-pilot01-offline-preflight.json",
+            "hash": "md5",
+            "md5": "6254f2146f3174b763e3272bdaeab128",
+            "size": 628
+          },
+          {
+            "path": "results/guard-matched-pilot01-price-bound.json",
+            "hash": "md5",
+            "md5": "2afaf1f272d05a9499f84755656cea63",
+            "size": 14487
+          },
+          {
+            "path": "results/timing-cost-bounds-preflight.json",
+            "hash": "md5",
+            "md5": "b5b3ad9e0c900fc762b0e49d158a87ef",
+            "size": 560
+          },
+          {
+            "path": "results/timing-decoder-pilot06-cost-reconciled.json",
+            "hash": "md5",
+            "md5": "85ab9bbc752a839d26ae22797cfeaf5e",
+            "size": 463
+          },
+          {
+            "path": "results/timing-decoder-pilot06-permission-removed.json",
+            "hash": "md5",
+            "md5": "6f9ca976df894445a30612e7a0e22d9d",
+            "size": 478
+          },
+          {
+            "path": "results/timing-regional-network-prepared.json",
+            "hash": "md5",
+            "md5": "5a6d504044648f3980912a1850b74993",
+            "size": 1082
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot01-execution.json",
+            "hash": "md5",
+            "md5": "125f54c17fcff9c942232cff59ec441e",
+            "size": 337
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:collect_guard_matched_pilot01": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/collect_guard_matched_pilot01.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/collect_guard_matched_pilot01.py",
+          "cloud.py",
+          "results/guard-matched-pilot01-execution.json"
+        ],
+        "outs": [
+          "data/guard-matched-pilot01-results"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot01-collected.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/collect_guard_matched_pilot01.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/collect_guard_matched_pilot01.py",
+            "hash": "md5",
+            "md5": "c1930ee64f48e0df591733ee2b96f6ee",
+            "size": 5947
+          },
+          {
+            "path": "results/guard-matched-pilot01-execution.json",
+            "hash": "md5",
+            "md5": "125f54c17fcff9c942232cff59ec441e",
+            "size": 337
+          }
+        ],
+        "outs": [
+          {
+            "path": "data/guard-matched-pilot01-results",
+            "hash": "md5",
+            "md5": "35202beb02170f9996a470f95bfb6e0c.dir",
+            "size": 165678507,
+            "nfiles": 682
+          },
+          {
+            "path": "results/guard-matched-pilot01-collected.json",
+            "hash": "md5",
+            "md5": "741120c516b164312299310848ae77ae",
+            "size": 798
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:close_guard_matched_pilot01": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/close_guard_matched_pilot01.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/close_guard_matched_pilot01.py",
+          "cloud.py",
+          "results/guard-matched-pilot01-collected.json",
+          "results/guard-matched-pilot01-read-condition.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot01-permission-removed.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/close_guard_matched_pilot01.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/close_guard_matched_pilot01.py",
+            "hash": "md5",
+            "md5": "cd6ccea3a48de122863ed6ea03b148eb",
+            "size": 1751
+          },
+          {
+            "path": "results/guard-matched-pilot01-collected.json",
+            "hash": "md5",
+            "md5": "741120c516b164312299310848ae77ae",
+            "size": 798
+          },
+          {
+            "path": "results/guard-matched-pilot01-read-condition.json",
+            "hash": "md5",
+            "md5": "a28a3dfdfe982704c6e015375e4a222a",
+            "size": 362
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot01-permission-removed.json",
+            "hash": "md5",
+            "md5": "4b44e46759aa43fa9b1acc98a1beb8b0",
+            "size": 476
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:analyze_guard_matched_pilot01": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/analyze_guard_matched_pilot01.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/analyze_guard_matched_pilot01.py",
+          "cloud.py",
+          "data/guard-matched-pilot01",
+          "data/guard-matched-pilot01-results",
+          "results/guard-matched-pilot01-collected.json",
+          "results/guard-matched-pilot01-permission-removed.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot01-analysis.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/analyze_guard_matched_pilot01.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "data/guard-matched-pilot01",
+            "hash": "md5",
+            "md5": "808afed87c4ef8ad96d201fb62250b03.dir",
+            "size": 952113294,
+            "nfiles": 39
+          },
+          {
+            "path": "data/guard-matched-pilot01-results",
+            "hash": "md5",
+            "md5": "35202beb02170f9996a470f95bfb6e0c.dir",
+            "size": 165678507,
+            "nfiles": 682
+          },
+          {
+            "path": "model_evaluation/analyze_guard_matched_pilot01.py",
+            "hash": "md5",
+            "md5": "015e9c53e0804927373af08fb05ccbf5",
+            "size": 4191
+          },
+          {
+            "path": "results/guard-matched-pilot01-collected.json",
+            "hash": "md5",
+            "md5": "741120c516b164312299310848ae77ae",
+            "size": 798
+          },
+          {
+            "path": "results/guard-matched-pilot01-permission-removed.json",
+            "hash": "md5",
+            "md5": "4b44e46759aa43fa9b1acc98a1beb8b0",
+            "size": 476
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot01-analysis.json",
+            "hash": "md5",
+            "md5": "09c8b0f157bc1c7e67869c4c48661899",
+            "size": 27516
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:audit_guard_matched_trajectory": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/audit_guard_matched_trajectory.py",
+        "deps": [
+          "model_evaluation/audit_guard_matched_trajectory.py",
+          "data/guard-matched-pilot01",
+          "data/guard-matched-pilot01-results",
+          "results/guard-matched-pilot01-analysis.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-fit-trajectory.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/audit_guard_matched_trajectory.py",
+        "deps": [
+          {
+            "path": "data/guard-matched-pilot01",
+            "hash": "md5",
+            "md5": "808afed87c4ef8ad96d201fb62250b03.dir",
+            "size": 952113294,
+            "nfiles": 39
+          },
+          {
+            "path": "data/guard-matched-pilot01-results",
+            "hash": "md5",
+            "md5": "35202beb02170f9996a470f95bfb6e0c.dir",
+            "size": 165678507,
+            "nfiles": 682
+          },
+          {
+            "path": "model_evaluation/audit_guard_matched_trajectory.py",
+            "hash": "md5",
+            "md5": "ad7d094ddad5e8febfc3ca0e1d43bd40",
+            "size": 2220
+          },
+          {
+            "path": "results/guard-matched-pilot01-analysis.json",
+            "hash": "md5",
+            "md5": "09c8b0f157bc1c7e67869c4c48661899",
+            "size": 27516
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-fit-trajectory.json",
+            "hash": "md5",
+            "md5": "053c6057570b242798155ea3170b5a6c",
+            "size": 3245
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:prepare_guard_matched_extended_plan": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_extended_plan.py",
+        "deps": [
+          "model_evaluation/prepare_guard_matched_extended_plan.py",
+          "data/guard-matched-pilot01",
+          "results/guard-matched-fit-trajectory.json",
+          "results/guard-matched-pilot01-analysis.json",
+          "results/guard-matched-pilot01-collected.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-extended-trial-plan.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_extended_plan.py",
+        "deps": [
+          {
+            "path": "data/guard-matched-pilot01",
+            "hash": "md5",
+            "md5": "808afed87c4ef8ad96d201fb62250b03.dir",
+            "size": 952113294,
+            "nfiles": 39
+          },
+          {
+            "path": "model_evaluation/prepare_guard_matched_extended_plan.py",
+            "hash": "md5",
+            "md5": "e14edf7735864b7f5243f421057c3624",
+            "size": 2509
+          },
+          {
+            "path": "results/guard-matched-fit-trajectory.json",
+            "hash": "md5",
+            "md5": "053c6057570b242798155ea3170b5a6c",
+            "size": 3245
+          },
+          {
+            "path": "results/guard-matched-pilot01-analysis.json",
+            "hash": "md5",
+            "md5": "09c8b0f157bc1c7e67869c4c48661899",
+            "size": 27516
+          },
+          {
+            "path": "results/guard-matched-pilot01-collected.json",
+            "hash": "md5",
+            "md5": "741120c516b164312299310848ae77ae",
+            "size": 798
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-extended-trial-plan.json",
+            "hash": "md5",
+            "md5": "3c3df02e6370f6eef735b3b1d3848e7d",
+            "size": 12203
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:verify_guard_matched_price_bound02": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound02.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/verify_guard_matched_price_bound02.py",
+          "results/guard-matched-extended-trial-plan.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot02-price-bound.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound02.py",
+        "deps": [
+          {
+            "path": "model_evaluation/verify_guard_matched_price_bound02.py",
+            "hash": "md5",
+            "md5": "f7b953c2f4234e3b314e8af3061e1342",
+            "size": 1862
+          },
+          {
+            "path": "results/guard-matched-extended-trial-plan.json",
+            "hash": "md5",
+            "md5": "3c3df02e6370f6eef735b3b1d3848e7d",
+            "size": 12203
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot02-price-bound.json",
+            "hash": "md5",
+            "md5": "eea1269deaa9cc1d4b4ddbf9b9ea4062",
+            "size": 14487
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:prepare_guard_matched_trial02": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_trial02.py",
+        "deps": [
+          "model_evaluation/prepare_guard_matched_trial02.py",
+          "model_evaluation/guard_matched_worker.py",
+          "model_evaluation/timing_decoder.py",
+          "model_evaluation/context_data.py",
+          "model_evaluation/context_objective.py",
+          "model_evaluation/joint_decoder_v2.py",
+          "model_evaluation/joint_objective_v2.py",
+          "model_evaluation/joint_data.py",
+          "model_evaluation/joint_metrics.py",
+          "model_evaluation/gas_head_metrics.py",
+          "data/timing-candidate",
+          "data/joint-decoder-candidate",
+          "data/joint-rolling-features",
+          "data/gas-shape-pilot01",
+          "results/guard-matched-extended-trial-plan.json",
+          "results/context-objective-preflight.json",
+          "results/context-decoder-preflight.json",
+          "results/joint-pipeline-v2-preflight.json",
+          "model_evaluation/guard_matched_data.py",
+          "model_evaluation/guard_matched_objective.py",
+          "results/guard-matched-objective-preflight.json"
+        ],
+        "outs": [
+          "data/guard-matched-pilot02"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot02-prepared.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_trial02.py",
+        "deps": [
+          {
+            "path": "data/gas-shape-pilot01",
+            "hash": "md5",
+            "md5": "0f9ef245d41f905943c52ad059eac1c1.dir",
+            "size": 53242573,
+            "nfiles": 17
+          },
+          {
+            "path": "data/joint-decoder-candidate",
+            "hash": "md5",
+            "md5": "48af269b9ab3475ed72ea0f7913caa40.dir",
+            "size": 26593773,
+            "nfiles": 5
+          },
+          {
+            "path": "data/joint-rolling-features",
+            "hash": "md5",
+            "md5": "0b3fd914ec0913529749e026d7f68988.dir",
+            "size": 449281821,
+            "nfiles": 3
+          },
+          {
+            "path": "data/timing-candidate",
+            "hash": "md5",
+            "md5": "af75d85c237b85962d5d3a036bbc0e2a.dir",
+            "size": 65035,
+            "nfiles": 3
+          },
+          {
+            "path": "model_evaluation/context_data.py",
+            "hash": "md5",
+            "md5": "8ce74789ced18b580f382cfea7fa49cb",
+            "size": 1019
+          },
+          {
+            "path": "model_evaluation/context_objective.py",
+            "hash": "md5",
+            "md5": "cf80a49ff86d1485a1f87089569986d6",
+            "size": 2707
+          },
+          {
+            "path": "model_evaluation/gas_head_metrics.py",
+            "hash": "md5",
+            "md5": "1b092dc20edf7bac2340dbc376fd4a53",
+            "size": 3824
+          },
+          {
+            "path": "model_evaluation/guard_matched_data.py",
+            "hash": "md5",
+            "md5": "41f299a94cc8bb434751b30d39162ee4",
+            "size": 1370
+          },
+          {
+            "path": "model_evaluation/guard_matched_objective.py",
+            "hash": "md5",
+            "md5": "747bd78601c2f01bed9d84c9d926de51",
+            "size": 2159
+          },
+          {
+            "path": "model_evaluation/guard_matched_worker.py",
+            "hash": "md5",
+            "md5": "3562066808c32675d0546e6f0ecc27d0",
+            "size": 10147
+          },
+          {
+            "path": "model_evaluation/joint_data.py",
+            "hash": "md5",
+            "md5": "53a76769c3541324d4baafa483a4be02",
+            "size": 6229
+          },
+          {
+            "path": "model_evaluation/joint_decoder_v2.py",
+            "hash": "md5",
+            "md5": "2f15f174798f9536a5a1989d31a64adc",
+            "size": 4693
+          },
+          {
+            "path": "model_evaluation/joint_metrics.py",
+            "hash": "md5",
+            "md5": "b81c41dbaa625a353dd0e7730c8baacb",
+            "size": 5534
+          },
+          {
+            "path": "model_evaluation/joint_objective_v2.py",
+            "hash": "md5",
+            "md5": "fdf5c704686a2d0c28d6c5cac767745b",
+            "size": 2838
+          },
+          {
+            "path": "model_evaluation/prepare_guard_matched_trial02.py",
+            "hash": "md5",
+            "md5": "cca2bd2224dcbde4f8e6338102fc919b",
+            "size": 5755
+          },
+          {
+            "path": "model_evaluation/timing_decoder.py",
+            "hash": "md5",
+            "md5": "eca9ecea56ed526eb1d9eb7da1ac8a02",
+            "size": 6395
+          },
+          {
+            "path": "results/context-decoder-preflight.json",
+            "hash": "md5",
+            "md5": "8c8363bcaa117929cdf0ea89e0533ba0",
+            "size": 2208
+          },
+          {
+            "path": "results/context-objective-preflight.json",
+            "hash": "md5",
+            "md5": "acbeedd759f4eb7ccc07c82f526dc678",
+            "size": 2716
+          },
+          {
+            "path": "results/guard-matched-extended-trial-plan.json",
+            "hash": "md5",
+            "md5": "3c3df02e6370f6eef735b3b1d3848e7d",
+            "size": 12203
+          },
+          {
+            "path": "results/guard-matched-objective-preflight.json",
+            "hash": "md5",
+            "md5": "f8c6b9d194f221936bc66591e0ea814f",
+            "size": 1319
+          },
+          {
+            "path": "results/joint-pipeline-v2-preflight.json",
+            "hash": "md5",
+            "md5": "8048edb72e5e9905809a93051ee30be2",
+            "size": 1113
+          }
+        ],
+        "outs": [
+          {
+            "path": "data/guard-matched-pilot02",
+            "hash": "md5",
+            "md5": "90ff0a4796ef7d6defc7179a0c7309b5.dir",
+            "size": 952113444,
+            "nfiles": 39
+          },
+          {
+            "path": "results/guard-matched-pilot02-prepared.json",
+            "hash": "md5",
+            "md5": "319d2f57be7894235938e4bc3d53949e",
+            "size": 2633
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:validate_guard_matched_trial02": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_guard_matched_trial02.py",
+        "deps": [
+          "model_evaluation/validate_guard_matched_trial02.py",
+          "model_evaluation/launch_guard_matched_pilot02.py",
+          "model_evaluation/collect_guard_matched_pilot02.py",
+          "model_evaluation/close_guard_matched_pilot02.py",
+          "model_evaluation/monitor_guard_matched_pilot02.py",
+          "model_evaluation/reconcile_guard_matched_pilot02.py",
+          "model_evaluation/analyze_guard_matched_pilot02.py",
+          "data/guard-matched-pilot02",
+          "results/guard-matched-pilot02-prepared.json",
+          "results/context-objective-preflight.json",
+          "results/joint-pipeline-v2-preflight.json",
+          "model_evaluation/timing_worker_v2.py",
+          "results/guard-matched-objective-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot02-offline-preflight.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_guard_matched_trial02.py",
+        "deps": [
+          {
+            "path": "data/guard-matched-pilot02",
+            "hash": "md5",
+            "md5": "90ff0a4796ef7d6defc7179a0c7309b5.dir",
+            "size": 952113444,
+            "nfiles": 39
+          },
+          {
+            "path": "model_evaluation/analyze_guard_matched_pilot02.py",
+            "hash": "md5",
+            "md5": "08c520e28582ba67850de413b6d24414",
+            "size": 4191
+          },
+          {
+            "path": "model_evaluation/close_guard_matched_pilot02.py",
+            "hash": "md5",
+            "md5": "13d3171cab0e4d82172b4ecf9885dadf",
+            "size": 1751
+          },
+          {
+            "path": "model_evaluation/collect_guard_matched_pilot02.py",
+            "hash": "md5",
+            "md5": "ea8fcb80d852ffa4096b5105e7af54a4",
+            "size": 5947
+          },
+          {
+            "path": "model_evaluation/launch_guard_matched_pilot02.py",
+            "hash": "md5",
+            "md5": "8a111eabac8e123c0657f15c4278b345",
+            "size": 7931
+          },
+          {
+            "path": "model_evaluation/monitor_guard_matched_pilot02.py",
+            "hash": "md5",
+            "md5": "a54c19abab8c0d9f413d365396f1e9ef",
+            "size": 2912
+          },
+          {
+            "path": "model_evaluation/reconcile_guard_matched_pilot02.py",
+            "hash": "md5",
+            "md5": "2ba9ead4b0f6bab1ff43dee6e9c064e0",
+            "size": 1686
+          },
+          {
+            "path": "model_evaluation/timing_worker_v2.py",
+            "hash": "md5",
+            "md5": "606c7d368a25b75ef92ae71ff95fce9b",
+            "size": 10108
+          },
+          {
+            "path": "model_evaluation/validate_guard_matched_trial02.py",
+            "hash": "md5",
+            "md5": "d6e96eb8c27d04b640f4d73f02d2cc55",
+            "size": 4686
+          },
+          {
+            "path": "results/context-objective-preflight.json",
+            "hash": "md5",
+            "md5": "acbeedd759f4eb7ccc07c82f526dc678",
+            "size": 2716
+          },
+          {
+            "path": "results/guard-matched-objective-preflight.json",
+            "hash": "md5",
+            "md5": "f8c6b9d194f221936bc66591e0ea814f",
+            "size": 1319
+          },
+          {
+            "path": "results/guard-matched-pilot02-prepared.json",
+            "hash": "md5",
+            "md5": "319d2f57be7894235938e4bc3d53949e",
+            "size": 2633
+          },
+          {
+            "path": "results/joint-pipeline-v2-preflight.json",
+            "hash": "md5",
+            "md5": "8048edb72e5e9905809a93051ee30be2",
+            "size": 1113
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot02-offline-preflight.json",
+            "hash": "md5",
+            "md5": "9e65f99c8630811eb650db954ae6ee39",
+            "size": 628
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:launch_guard_matched_pilot02": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/launch_guard_matched_pilot02.py --execute",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/launch_guard_matched_pilot02.py",
+          "results/timing-cost-bounds-preflight.json",
+          "results/guard-matched-pilot02-price-bound.json",
+          "cloud.py",
+          "data/guard-matched-pilot02",
+          "results/guard-matched-pilot02-offline-preflight.json",
+          "results/timing-decoder-pilot06-cost-reconciled.json",
+          "results/timing-decoder-pilot06-permission-removed.json",
+          "results/timing-regional-network-prepared.json",
+          "results/guard-matched-objective-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot02-execution.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/launch_guard_matched_pilot02.py --execute",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "data/guard-matched-pilot02",
+            "hash": "md5",
+            "md5": "90ff0a4796ef7d6defc7179a0c7309b5.dir",
+            "size": 952113444,
+            "nfiles": 39
+          },
+          {
+            "path": "model_evaluation/launch_guard_matched_pilot02.py",
+            "hash": "md5",
+            "md5": "8a111eabac8e123c0657f15c4278b345",
+            "size": 7931
+          },
+          {
+            "path": "results/guard-matched-objective-preflight.json",
+            "hash": "md5",
+            "md5": "f8c6b9d194f221936bc66591e0ea814f",
+            "size": 1319
+          },
+          {
+            "path": "results/guard-matched-pilot02-offline-preflight.json",
+            "hash": "md5",
+            "md5": "9e65f99c8630811eb650db954ae6ee39",
+            "size": 628
+          },
+          {
+            "path": "results/guard-matched-pilot02-price-bound.json",
+            "hash": "md5",
+            "md5": "eea1269deaa9cc1d4b4ddbf9b9ea4062",
+            "size": 14487
+          },
+          {
+            "path": "results/timing-cost-bounds-preflight.json",
+            "hash": "md5",
+            "md5": "b5b3ad9e0c900fc762b0e49d158a87ef",
+            "size": 560
+          },
+          {
+            "path": "results/timing-decoder-pilot06-cost-reconciled.json",
+            "hash": "md5",
+            "md5": "85ab9bbc752a839d26ae22797cfeaf5e",
+            "size": 463
+          },
+          {
+            "path": "results/timing-decoder-pilot06-permission-removed.json",
+            "hash": "md5",
+            "md5": "6f9ca976df894445a30612e7a0e22d9d",
+            "size": 478
+          },
+          {
+            "path": "results/timing-regional-network-prepared.json",
+            "hash": "md5",
+            "md5": "5a6d504044648f3980912a1850b74993",
+            "size": 1082
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot02-execution.json",
+            "hash": "md5",
+            "md5": "47f65ee352e8213eab00a10fc116dd87",
+            "size": 337
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:collect_guard_matched_pilot02": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/collect_guard_matched_pilot02.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/collect_guard_matched_pilot02.py",
+          "cloud.py",
+          "results/guard-matched-pilot02-execution.json"
+        ],
+        "outs": [
+          "data/guard-matched-pilot02-results"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot02-collected.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/collect_guard_matched_pilot02.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/collect_guard_matched_pilot02.py",
+            "hash": "md5",
+            "md5": "ea8fcb80d852ffa4096b5105e7af54a4",
+            "size": 5947
+          },
+          {
+            "path": "results/guard-matched-pilot02-execution.json",
+            "hash": "md5",
+            "md5": "47f65ee352e8213eab00a10fc116dd87",
+            "size": 337
+          }
+        ],
+        "outs": [
+          {
+            "path": "data/guard-matched-pilot02-results",
+            "hash": "md5",
+            "md5": "e5c8d0ee72ec71485b16b55b1bb4de74.dir",
+            "size": 5676,
+            "nfiles": 1
+          },
+          {
+            "path": "results/guard-matched-pilot02-collected.json",
+            "hash": "md5",
+            "md5": "6ca64f572121391010a3bb9344cc15ad",
+            "size": 189
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:close_guard_matched_pilot02": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/close_guard_matched_pilot02.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/close_guard_matched_pilot02.py",
+          "cloud.py",
+          "results/guard-matched-pilot02-collected.json",
+          "results/guard-matched-pilot02-read-condition.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot02-permission-removed.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/close_guard_matched_pilot02.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/close_guard_matched_pilot02.py",
+            "hash": "md5",
+            "md5": "13d3171cab0e4d82172b4ecf9885dadf",
+            "size": 1751
+          },
+          {
+            "path": "results/guard-matched-pilot02-collected.json",
+            "hash": "md5",
+            "md5": "6ca64f572121391010a3bb9344cc15ad",
+            "size": 189
+          },
+          {
+            "path": "results/guard-matched-pilot02-read-condition.json",
+            "hash": "md5",
+            "md5": "6e9c6ceb029220c41763835e399c9480",
+            "size": 362
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot02-permission-removed.json",
+            "hash": "md5",
+            "md5": "d8d45c7e82e926e136a20ee266105aa3",
+            "size": 476
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:reconcile_guard_matched_pilot02": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/reconcile_unallocated_guard_matched02.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/reconcile_unallocated_guard_matched02.py",
+          "cloud.py",
+          "data/guard-matched-pilot02-results",
+          "results/guard-matched-pilot02-collected.json",
+          "results/guard-matched-pilot02-permission-removed.json",
+          "results/guard-matched-pilot02-early-capacity-stop.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot02-cost-reconciled.json": {
+              "cache": false
+            }
+          },
+          {
+            "results/guard-matched-pilot02-no-allocation-proof.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/reconcile_unallocated_guard_matched02.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "data/guard-matched-pilot02-results",
+            "hash": "md5",
+            "md5": "e5c8d0ee72ec71485b16b55b1bb4de74.dir",
+            "size": 5676,
+            "nfiles": 1
+          },
+          {
+            "path": "model_evaluation/reconcile_unallocated_guard_matched02.py",
+            "hash": "md5",
+            "md5": "5f80f92784aed7e99fdad3ec78c614e3",
+            "size": 3954
+          },
+          {
+            "path": "results/guard-matched-pilot02-collected.json",
+            "hash": "md5",
+            "md5": "6ca64f572121391010a3bb9344cc15ad",
+            "size": 189
+          },
+          {
+            "path": "results/guard-matched-pilot02-early-capacity-stop.json",
+            "hash": "md5",
+            "md5": "89ba55eb110be61b44e38a3e61c92644",
+            "size": 6646
+          },
+          {
+            "path": "results/guard-matched-pilot02-permission-removed.json",
+            "hash": "md5",
+            "md5": "d8d45c7e82e926e136a20ee266105aa3",
+            "size": 476
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot02-cost-reconciled.json",
+            "hash": "md5",
+            "md5": "17cc5f9369309e179fbc093c363033a7",
+            "size": 82544
+          },
+          {
+            "path": "results/guard-matched-pilot02-no-allocation-proof.json",
+            "hash": "md5",
+            "md5": "17cc5f9369309e179fbc093c363033a7",
+            "size": 82544
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:observe_guard_matched_infrastructure02": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/observe_guard_matched_infrastructure02.py --batch-region us-east4",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/observe_guard_matched_infrastructure02.py",
+          "cloud.py",
+          "results/guard-matched-pilot02-execution.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot02-infrastructure-observation.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/observe_guard_matched_infrastructure02.py --batch-region us-east4",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/observe_guard_matched_infrastructure02.py",
+            "hash": "md5",
+            "md5": "257475bd34d68f3d04bafe665a1214cd",
+            "size": 2216
+          },
+          {
+            "path": "results/guard-matched-pilot02-execution.json",
+            "hash": "md5",
+            "md5": "47f65ee352e8213eab00a10fc116dd87",
+            "size": 337
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot02-infrastructure-observation.json",
+            "hash": "md5",
+            "md5": "df256419cf42664eba98d9171d9ad755",
+            "size": 78086
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:prepare_guard_matched_placement03_plan": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_placement03_plan.py",
+        "deps": [
+          "model_evaluation/prepare_guard_matched_placement03_plan.py",
+          "data/guard-matched-pilot02",
+          "results/guard-matched-pilot02-no-allocation-proof.json",
+          "results/guard-matched-pilot02-permission-removed.json",
+          "results/guard-matched-pilot02-cleanup.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-placement03-trial-plan.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_placement03_plan.py",
+        "deps": [
+          {
+            "path": "data/guard-matched-pilot02",
+            "hash": "md5",
+            "md5": "90ff0a4796ef7d6defc7179a0c7309b5.dir",
+            "size": 952113444,
+            "nfiles": 39
+          },
+          {
+            "path": "model_evaluation/prepare_guard_matched_placement03_plan.py",
+            "hash": "md5",
+            "md5": "4defe182ae220afebf290ecac7d9a8cd",
+            "size": 1596
+          },
+          {
+            "path": "results/guard-matched-pilot02-cleanup.json",
+            "hash": "md5",
+            "md5": "9fce3b0329f161163703cb8f756d9e1f",
+            "size": 51
+          },
+          {
+            "path": "results/guard-matched-pilot02-no-allocation-proof.json",
+            "hash": "md5",
+            "md5": "17cc5f9369309e179fbc093c363033a7",
+            "size": 82544
+          },
+          {
+            "path": "results/guard-matched-pilot02-permission-removed.json",
+            "hash": "md5",
+            "md5": "d8d45c7e82e926e136a20ee266105aa3",
+            "size": 476
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-placement03-trial-plan.json",
+            "hash": "md5",
+            "md5": "9f280f23b25ee30b6f563a5340f643a1",
+            "size": 12434
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:verify_guard_matched_price_bound03": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound03.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/verify_guard_matched_price_bound03.py",
+          "results/guard-matched-placement03-trial-plan.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot03-price-bound.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound03.py",
+        "deps": [
+          {
+            "path": "model_evaluation/verify_guard_matched_price_bound03.py",
+            "hash": "md5",
+            "md5": "6973730f5bca2faa35173f92fba76935",
+            "size": 1865
+          },
+          {
+            "path": "results/guard-matched-placement03-trial-plan.json",
+            "hash": "md5",
+            "md5": "9f280f23b25ee30b6f563a5340f643a1",
+            "size": 12434
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot03-price-bound.json",
+            "hash": "md5",
+            "md5": "a548358ffc7140dcbff40a516f3fee9c",
+            "size": 14487
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:prepare_guard_matched_trial03": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_trial03.py",
+        "deps": [
+          "model_evaluation/prepare_guard_matched_trial03.py",
+          "model_evaluation/guard_matched_worker.py",
+          "model_evaluation/timing_decoder.py",
+          "model_evaluation/context_data.py",
+          "model_evaluation/context_objective.py",
+          "model_evaluation/joint_decoder_v2.py",
+          "model_evaluation/joint_objective_v2.py",
+          "model_evaluation/joint_data.py",
+          "model_evaluation/joint_metrics.py",
+          "model_evaluation/gas_head_metrics.py",
+          "data/timing-candidate",
+          "data/joint-decoder-candidate",
+          "data/joint-rolling-features",
+          "data/gas-shape-pilot01",
+          "results/guard-matched-placement03-trial-plan.json",
+          "results/context-objective-preflight.json",
+          "results/context-decoder-preflight.json",
+          "results/joint-pipeline-v2-preflight.json",
+          "model_evaluation/guard_matched_data.py",
+          "model_evaluation/guard_matched_objective.py",
+          "results/guard-matched-objective-preflight.json"
+        ],
+        "outs": [
+          "data/guard-matched-pilot03"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot03-prepared.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_trial03.py",
+        "deps": [
+          {
+            "path": "data/gas-shape-pilot01",
+            "hash": "md5",
+            "md5": "0f9ef245d41f905943c52ad059eac1c1.dir",
+            "size": 53242573,
+            "nfiles": 17
+          },
+          {
+            "path": "data/joint-decoder-candidate",
+            "hash": "md5",
+            "md5": "48af269b9ab3475ed72ea0f7913caa40.dir",
+            "size": 26593773,
+            "nfiles": 5
+          },
+          {
+            "path": "data/joint-rolling-features",
+            "hash": "md5",
+            "md5": "0b3fd914ec0913529749e026d7f68988.dir",
+            "size": 449281821,
+            "nfiles": 3
+          },
+          {
+            "path": "data/timing-candidate",
+            "hash": "md5",
+            "md5": "af75d85c237b85962d5d3a036bbc0e2a.dir",
+            "size": 65035,
+            "nfiles": 3
+          },
+          {
+            "path": "model_evaluation/context_data.py",
+            "hash": "md5",
+            "md5": "8ce74789ced18b580f382cfea7fa49cb",
+            "size": 1019
+          },
+          {
+            "path": "model_evaluation/context_objective.py",
+            "hash": "md5",
+            "md5": "cf80a49ff86d1485a1f87089569986d6",
+            "size": 2707
+          },
+          {
+            "path": "model_evaluation/gas_head_metrics.py",
+            "hash": "md5",
+            "md5": "1b092dc20edf7bac2340dbc376fd4a53",
+            "size": 3824
+          },
+          {
+            "path": "model_evaluation/guard_matched_data.py",
+            "hash": "md5",
+            "md5": "41f299a94cc8bb434751b30d39162ee4",
+            "size": 1370
+          },
+          {
+            "path": "model_evaluation/guard_matched_objective.py",
+            "hash": "md5",
+            "md5": "747bd78601c2f01bed9d84c9d926de51",
+            "size": 2159
+          },
+          {
+            "path": "model_evaluation/guard_matched_worker.py",
+            "hash": "md5",
+            "md5": "3562066808c32675d0546e6f0ecc27d0",
+            "size": 10147
+          },
+          {
+            "path": "model_evaluation/joint_data.py",
+            "hash": "md5",
+            "md5": "53a76769c3541324d4baafa483a4be02",
+            "size": 6229
+          },
+          {
+            "path": "model_evaluation/joint_decoder_v2.py",
+            "hash": "md5",
+            "md5": "2f15f174798f9536a5a1989d31a64adc",
+            "size": 4693
+          },
+          {
+            "path": "model_evaluation/joint_metrics.py",
+            "hash": "md5",
+            "md5": "b81c41dbaa625a353dd0e7730c8baacb",
+            "size": 5534
+          },
+          {
+            "path": "model_evaluation/joint_objective_v2.py",
+            "hash": "md5",
+            "md5": "fdf5c704686a2d0c28d6c5cac767745b",
+            "size": 2838
+          },
+          {
+            "path": "model_evaluation/prepare_guard_matched_trial03.py",
+            "hash": "md5",
+            "md5": "404a11b4817fd7e846660012f66a45a2",
+            "size": 5758
+          },
+          {
+            "path": "model_evaluation/timing_decoder.py",
+            "hash": "md5",
+            "md5": "eca9ecea56ed526eb1d9eb7da1ac8a02",
+            "size": 6395
+          },
+          {
+            "path": "results/context-decoder-preflight.json",
+            "hash": "md5",
+            "md5": "8c8363bcaa117929cdf0ea89e0533ba0",
+            "size": 2208
+          },
+          {
+            "path": "results/context-objective-preflight.json",
+            "hash": "md5",
+            "md5": "acbeedd759f4eb7ccc07c82f526dc678",
+            "size": 2716
+          },
+          {
+            "path": "results/guard-matched-objective-preflight.json",
+            "hash": "md5",
+            "md5": "f8c6b9d194f221936bc66591e0ea814f",
+            "size": 1319
+          },
+          {
+            "path": "results/guard-matched-placement03-trial-plan.json",
+            "hash": "md5",
+            "md5": "9f280f23b25ee30b6f563a5340f643a1",
+            "size": 12434
+          },
+          {
+            "path": "results/joint-pipeline-v2-preflight.json",
+            "hash": "md5",
+            "md5": "8048edb72e5e9905809a93051ee30be2",
+            "size": 1113
+          }
+        ],
+        "outs": [
+          {
+            "path": "data/guard-matched-pilot03",
+            "hash": "md5",
+            "md5": "12dc55c5cbc4b8bc01ef361b1f607351.dir",
+            "size": 952113675,
+            "nfiles": 39
+          },
+          {
+            "path": "results/guard-matched-pilot03-prepared.json",
+            "hash": "md5",
+            "md5": "cb41f3e14e46fedcee3cb5976bc4f0dd",
+            "size": 2633
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:validate_guard_matched_trial03": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_guard_matched_trial03.py",
+        "deps": [
+          "model_evaluation/validate_guard_matched_trial03.py",
+          "model_evaluation/launch_guard_matched_pilot03.py",
+          "model_evaluation/collect_guard_matched_pilot03.py",
+          "model_evaluation/close_guard_matched_pilot03.py",
+          "model_evaluation/monitor_guard_matched_pilot03.py",
+          "model_evaluation/reconcile_guard_matched_pilot03.py",
+          "model_evaluation/analyze_guard_matched_pilot03.py",
+          "data/guard-matched-pilot03",
+          "results/guard-matched-pilot03-prepared.json",
+          "results/context-objective-preflight.json",
+          "results/joint-pipeline-v2-preflight.json",
+          "model_evaluation/timing_worker_v2.py",
+          "results/guard-matched-objective-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot03-offline-preflight.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_guard_matched_trial03.py",
+        "deps": [
+          {
+            "path": "data/guard-matched-pilot03",
+            "hash": "md5",
+            "md5": "12dc55c5cbc4b8bc01ef361b1f607351.dir",
+            "size": 952113675,
+            "nfiles": 39
+          },
+          {
+            "path": "model_evaluation/analyze_guard_matched_pilot03.py",
+            "hash": "md5",
+            "md5": "97ef5b9812ab54bd8617b6c971a45b19",
+            "size": 4191
+          },
+          {
+            "path": "model_evaluation/close_guard_matched_pilot03.py",
+            "hash": "md5",
+            "md5": "27a7a14b28bab2106693b01e96d70cad",
+            "size": 1751
+          },
+          {
+            "path": "model_evaluation/collect_guard_matched_pilot03.py",
+            "hash": "md5",
+            "md5": "77225ad6ab987c030007bda5ea8b6022",
+            "size": 5947
+          },
+          {
+            "path": "model_evaluation/launch_guard_matched_pilot03.py",
+            "hash": "md5",
+            "md5": "cf6a6ba4c81740446245da8202c0c56c",
+            "size": 7858
+          },
+          {
+            "path": "model_evaluation/monitor_guard_matched_pilot03.py",
+            "hash": "md5",
+            "md5": "f3c2781b33626a178e343f95cb0c8497",
+            "size": 2912
+          },
+          {
+            "path": "model_evaluation/reconcile_guard_matched_pilot03.py",
+            "hash": "md5",
+            "md5": "9d4928e0f3e9c239de1696bcae8be373",
+            "size": 1686
+          },
+          {
+            "path": "model_evaluation/timing_worker_v2.py",
+            "hash": "md5",
+            "md5": "606c7d368a25b75ef92ae71ff95fce9b",
+            "size": 10108
+          },
+          {
+            "path": "model_evaluation/validate_guard_matched_trial03.py",
+            "hash": "md5",
+            "md5": "40b87d5f5cb9f53bb014a63436cedf8e",
+            "size": 4912
+          },
+          {
+            "path": "results/context-objective-preflight.json",
+            "hash": "md5",
+            "md5": "acbeedd759f4eb7ccc07c82f526dc678",
+            "size": 2716
+          },
+          {
+            "path": "results/guard-matched-objective-preflight.json",
+            "hash": "md5",
+            "md5": "f8c6b9d194f221936bc66591e0ea814f",
+            "size": 1319
+          },
+          {
+            "path": "results/guard-matched-pilot03-prepared.json",
+            "hash": "md5",
+            "md5": "cb41f3e14e46fedcee3cb5976bc4f0dd",
+            "size": 2633
+          },
+          {
+            "path": "results/joint-pipeline-v2-preflight.json",
+            "hash": "md5",
+            "md5": "8048edb72e5e9905809a93051ee30be2",
+            "size": 1113
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot03-offline-preflight.json",
+            "hash": "md5",
+            "md5": "9e998267b26d5b2c460c38f3fdcf9dda",
+            "size": 628
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:launch_guard_matched_pilot03": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/launch_guard_matched_pilot03.py --execute",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/launch_guard_matched_pilot03.py",
+          "results/timing-cost-bounds-preflight.json",
+          "results/guard-matched-pilot03-price-bound.json",
+          "cloud.py",
+          "data/guard-matched-pilot03",
+          "results/guard-matched-pilot03-offline-preflight.json",
+          "results/timing-decoder-pilot06-cost-reconciled.json",
+          "results/timing-decoder-pilot06-permission-removed.json",
+          "results/timing-regional-network-prepared.json",
+          "results/guard-matched-objective-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot03-execution.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/launch_guard_matched_pilot03.py --execute",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "data/guard-matched-pilot03",
+            "hash": "md5",
+            "md5": "12dc55c5cbc4b8bc01ef361b1f607351.dir",
+            "size": 952113675,
+            "nfiles": 39
+          },
+          {
+            "path": "model_evaluation/launch_guard_matched_pilot03.py",
+            "hash": "md5",
+            "md5": "cf6a6ba4c81740446245da8202c0c56c",
+            "size": 7858
+          },
+          {
+            "path": "results/guard-matched-objective-preflight.json",
+            "hash": "md5",
+            "md5": "f8c6b9d194f221936bc66591e0ea814f",
+            "size": 1319
+          },
+          {
+            "path": "results/guard-matched-pilot03-offline-preflight.json",
+            "hash": "md5",
+            "md5": "9e998267b26d5b2c460c38f3fdcf9dda",
+            "size": 628
+          },
+          {
+            "path": "results/guard-matched-pilot03-price-bound.json",
+            "hash": "md5",
+            "md5": "a548358ffc7140dcbff40a516f3fee9c",
+            "size": 14487
+          },
+          {
+            "path": "results/timing-cost-bounds-preflight.json",
+            "hash": "md5",
+            "md5": "b5b3ad9e0c900fc762b0e49d158a87ef",
+            "size": 560
+          },
+          {
+            "path": "results/timing-decoder-pilot06-cost-reconciled.json",
+            "hash": "md5",
+            "md5": "85ab9bbc752a839d26ae22797cfeaf5e",
+            "size": 463
+          },
+          {
+            "path": "results/timing-decoder-pilot06-permission-removed.json",
+            "hash": "md5",
+            "md5": "6f9ca976df894445a30612e7a0e22d9d",
+            "size": 478
+          },
+          {
+            "path": "results/timing-regional-network-prepared.json",
+            "hash": "md5",
+            "md5": "5a6d504044648f3980912a1850b74993",
+            "size": 1082
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot03-execution.json",
+            "hash": "md5",
+            "md5": "631f073025c1636fa2c7e365e8e3c6d1",
+            "size": 337
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:collect_guard_matched_pilot03": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/collect_guard_matched_pilot03.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/collect_guard_matched_pilot03.py",
+          "cloud.py",
+          "results/guard-matched-pilot03-execution.json"
+        ],
+        "outs": [
+          "data/guard-matched-pilot03-results"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot03-collected.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/collect_guard_matched_pilot03.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/collect_guard_matched_pilot03.py",
+            "hash": "md5",
+            "md5": "77225ad6ab987c030007bda5ea8b6022",
+            "size": 5947
+          },
+          {
+            "path": "results/guard-matched-pilot03-execution.json",
+            "hash": "md5",
+            "md5": "631f073025c1636fa2c7e365e8e3c6d1",
+            "size": 337
+          }
+        ],
+        "outs": [
+          {
+            "path": "data/guard-matched-pilot03-results",
+            "hash": "md5",
+            "md5": "76aaa8968063b746d3a24cceeb324aae.dir",
+            "size": 4245,
+            "nfiles": 1
+          },
+          {
+            "path": "results/guard-matched-pilot03-collected.json",
+            "hash": "md5",
+            "md5": "9bf65b79eaa5dddc5010a1647e9adc88",
+            "size": 189
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:close_guard_matched_pilot03": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/close_guard_matched_pilot03.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/close_guard_matched_pilot03.py",
+          "cloud.py",
+          "results/guard-matched-pilot03-collected.json",
+          "results/guard-matched-pilot03-read-condition.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot03-permission-removed.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/close_guard_matched_pilot03.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/close_guard_matched_pilot03.py",
+            "hash": "md5",
+            "md5": "27a7a14b28bab2106693b01e96d70cad",
+            "size": 1751
+          },
+          {
+            "path": "results/guard-matched-pilot03-collected.json",
+            "hash": "md5",
+            "md5": "9bf65b79eaa5dddc5010a1647e9adc88",
+            "size": 189
+          },
+          {
+            "path": "results/guard-matched-pilot03-read-condition.json",
+            "hash": "md5",
+            "md5": "3af10fb621a733ce6e8d09cefb4c17af",
+            "size": 362
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot03-permission-removed.json",
+            "hash": "md5",
+            "md5": "dfe86763800ec8d561cdf32450e565f1",
+            "size": 476
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:reconcile_guard_matched_pilot03": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/reconcile_unallocated_guard_matched03.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/reconcile_unallocated_guard_matched03.py",
+          "cloud.py",
+          "data/guard-matched-pilot03-results",
+          "results/guard-matched-pilot03-collected.json",
+          "results/guard-matched-pilot03-permission-removed.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot03-cost-reconciled.json": {
+              "cache": false
+            }
+          },
+          {
+            "results/guard-matched-pilot03-no-allocation-proof.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/reconcile_unallocated_guard_matched03.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "data/guard-matched-pilot03-results",
+            "hash": "md5",
+            "md5": "76aaa8968063b746d3a24cceeb324aae.dir",
+            "size": 4245,
+            "nfiles": 1
+          },
+          {
+            "path": "model_evaluation/reconcile_unallocated_guard_matched03.py",
+            "hash": "md5",
+            "md5": "a0c3b448669ebb90ddb780e8eb1151f2",
+            "size": 3253
+          },
+          {
+            "path": "results/guard-matched-pilot03-collected.json",
+            "hash": "md5",
+            "md5": "9bf65b79eaa5dddc5010a1647e9adc88",
+            "size": 189
+          },
+          {
+            "path": "results/guard-matched-pilot03-permission-removed.json",
+            "hash": "md5",
+            "md5": "dfe86763800ec8d561cdf32450e565f1",
+            "size": 476
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot03-cost-reconciled.json",
+            "hash": "md5",
+            "md5": "91b39c816611efa1d17b7d4dd428f2ed",
+            "size": 6610
+          },
+          {
+            "path": "results/guard-matched-pilot03-no-allocation-proof.json",
+            "hash": "md5",
+            "md5": "91b39c816611efa1d17b7d4dd428f2ed",
+            "size": 6610
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:stop_guard_matched_capacity02": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/stop_guard_matched_capacity02.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/stop_guard_matched_capacity02.py",
+          "cloud.py",
+          "results/guard-matched-pilot02-execution.json",
+          "results/guard-matched-pilot02-infrastructure-observation.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot02-early-capacity-stop.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/stop_guard_matched_capacity02.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/stop_guard_matched_capacity02.py",
+            "hash": "md5",
+            "md5": "b12ec395d4f14037f9c41c12b867c62a",
+            "size": 2825
+          },
+          {
+            "path": "results/guard-matched-pilot02-execution.json",
+            "hash": "md5",
+            "md5": "47f65ee352e8213eab00a10fc116dd87",
+            "size": 337
+          },
+          {
+            "path": "results/guard-matched-pilot02-infrastructure-observation.json",
+            "hash": "md5",
+            "md5": "df256419cf42664eba98d9171d9ad755",
+            "size": 78086
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot02-early-capacity-stop.json",
+            "hash": "md5",
+            "md5": "89ba55eb110be61b44e38a3e61c92644",
+            "size": 6646
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:observe_guard_matched_infrastructure03": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/observe_guard_matched_infrastructure03.py --batch-region us-east4",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/observe_guard_matched_infrastructure03.py",
+          "cloud.py",
+          "results/guard-matched-pilot03-execution.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot03-infrastructure-observation.json": {
+              "cache": false
+            }
+          },
+          {
+            "results/guard-matched-east4-machine-support.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/observe_guard_matched_infrastructure03.py --batch-region us-east4",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/observe_guard_matched_infrastructure03.py",
+            "hash": "md5",
+            "md5": "33530d7bbdd2875cd2bf7dd88c632b38",
+            "size": 2374
+          },
+          {
+            "path": "results/guard-matched-pilot03-execution.json",
+            "hash": "md5",
+            "md5": "631f073025c1636fa2c7e365e8e3c6d1",
+            "size": 337
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-east4-machine-support.json",
+            "hash": "md5",
+            "md5": "5afe001ab69275107fc0510854b63b05",
+            "size": 1433
+          },
+          {
+            "path": "results/guard-matched-pilot03-infrastructure-observation.json",
+            "hash": "md5",
+            "md5": "378e49f69b6c080d2e0f5f28a8f1f80d",
+            "size": 1168
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:prepare_guard_matched_placement04_plan": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_placement04_plan.py",
+        "deps": [
+          "model_evaluation/prepare_guard_matched_placement04_plan.py",
+          "data/guard-matched-pilot02",
+          "data/guard-matched-pilot03",
+          "results/guard-matched-pilot03-no-allocation-proof.json",
+          "results/guard-matched-pilot03-permission-removed.json",
+          "results/guard-matched-pilot03-cleanup.json",
+          "results/guard-matched-east4-machine-support.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-placement04-trial-plan.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_placement04_plan.py",
+        "deps": [
+          {
+            "path": "data/guard-matched-pilot02",
+            "hash": "md5",
+            "md5": "90ff0a4796ef7d6defc7179a0c7309b5.dir",
+            "size": 952113444,
+            "nfiles": 39
+          },
+          {
+            "path": "data/guard-matched-pilot03",
+            "hash": "md5",
+            "md5": "12dc55c5cbc4b8bc01ef361b1f607351.dir",
+            "size": 952113675,
+            "nfiles": 39
+          },
+          {
+            "path": "model_evaluation/prepare_guard_matched_placement04_plan.py",
+            "hash": "md5",
+            "md5": "c0f53b15db1406d5766be24e5bb26d91",
+            "size": 2194
+          },
+          {
+            "path": "results/guard-matched-east4-machine-support.json",
+            "hash": "md5",
+            "md5": "5afe001ab69275107fc0510854b63b05",
+            "size": 1433
+          },
+          {
+            "path": "results/guard-matched-pilot03-cleanup.json",
+            "hash": "md5",
+            "md5": "9fce3b0329f161163703cb8f756d9e1f",
+            "size": 51
+          },
+          {
+            "path": "results/guard-matched-pilot03-no-allocation-proof.json",
+            "hash": "md5",
+            "md5": "91b39c816611efa1d17b7d4dd428f2ed",
+            "size": 6610
+          },
+          {
+            "path": "results/guard-matched-pilot03-permission-removed.json",
+            "hash": "md5",
+            "md5": "dfe86763800ec8d561cdf32450e565f1",
+            "size": 476
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-placement04-trial-plan.json",
+            "hash": "md5",
+            "md5": "dbb28c1fc44d1a2cab80b4b491a933f5",
+            "size": 12649
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:verify_guard_matched_price_bound04": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound04.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/verify_guard_matched_price_bound04.py",
+          "results/guard-matched-placement04-trial-plan.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot04-price-bound.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound04.py",
+        "deps": [
+          {
+            "path": "model_evaluation/verify_guard_matched_price_bound04.py",
+            "hash": "md5",
+            "md5": "83bdf5a1f42b3b49bfdd87f0168caf94",
+            "size": 1865
+          },
+          {
+            "path": "results/guard-matched-placement04-trial-plan.json",
+            "hash": "md5",
+            "md5": "dbb28c1fc44d1a2cab80b4b491a933f5",
+            "size": 12649
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot04-price-bound.json",
+            "hash": "md5",
+            "md5": "a72fd737befba4957291d867615179ac",
+            "size": 14487
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:prepare_guard_matched_trial04": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_trial04.py",
+        "deps": [
+          "model_evaluation/prepare_guard_matched_trial04.py",
+          "model_evaluation/guard_matched_worker.py",
+          "model_evaluation/timing_decoder.py",
+          "model_evaluation/context_data.py",
+          "model_evaluation/context_objective.py",
+          "model_evaluation/joint_decoder_v2.py",
+          "model_evaluation/joint_objective_v2.py",
+          "model_evaluation/joint_data.py",
+          "model_evaluation/joint_metrics.py",
+          "model_evaluation/gas_head_metrics.py",
+          "data/timing-candidate",
+          "data/joint-decoder-candidate",
+          "data/joint-rolling-features",
+          "data/gas-shape-pilot01",
+          "results/guard-matched-placement04-trial-plan.json",
+          "results/context-objective-preflight.json",
+          "results/context-decoder-preflight.json",
+          "results/joint-pipeline-v2-preflight.json",
+          "model_evaluation/guard_matched_data.py",
+          "model_evaluation/guard_matched_objective.py",
+          "results/guard-matched-objective-preflight.json"
+        ],
+        "outs": [
+          "data/guard-matched-pilot04"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot04-prepared.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_guard_matched_trial04.py",
+        "deps": [
+          {
+            "path": "data/gas-shape-pilot01",
+            "hash": "md5",
+            "md5": "0f9ef245d41f905943c52ad059eac1c1.dir",
+            "size": 53242573,
+            "nfiles": 17
+          },
+          {
+            "path": "data/joint-decoder-candidate",
+            "hash": "md5",
+            "md5": "48af269b9ab3475ed72ea0f7913caa40.dir",
+            "size": 26593773,
+            "nfiles": 5
+          },
+          {
+            "path": "data/joint-rolling-features",
+            "hash": "md5",
+            "md5": "0b3fd914ec0913529749e026d7f68988.dir",
+            "size": 449281821,
+            "nfiles": 3
+          },
+          {
+            "path": "data/timing-candidate",
+            "hash": "md5",
+            "md5": "af75d85c237b85962d5d3a036bbc0e2a.dir",
+            "size": 65035,
+            "nfiles": 3
+          },
+          {
+            "path": "model_evaluation/context_data.py",
+            "hash": "md5",
+            "md5": "8ce74789ced18b580f382cfea7fa49cb",
+            "size": 1019
+          },
+          {
+            "path": "model_evaluation/context_objective.py",
+            "hash": "md5",
+            "md5": "cf80a49ff86d1485a1f87089569986d6",
+            "size": 2707
+          },
+          {
+            "path": "model_evaluation/gas_head_metrics.py",
+            "hash": "md5",
+            "md5": "1b092dc20edf7bac2340dbc376fd4a53",
+            "size": 3824
+          },
+          {
+            "path": "model_evaluation/guard_matched_data.py",
+            "hash": "md5",
+            "md5": "41f299a94cc8bb434751b30d39162ee4",
+            "size": 1370
+          },
+          {
+            "path": "model_evaluation/guard_matched_objective.py",
+            "hash": "md5",
+            "md5": "747bd78601c2f01bed9d84c9d926de51",
+            "size": 2159
+          },
+          {
+            "path": "model_evaluation/guard_matched_worker.py",
+            "hash": "md5",
+            "md5": "3562066808c32675d0546e6f0ecc27d0",
+            "size": 10147
+          },
+          {
+            "path": "model_evaluation/joint_data.py",
+            "hash": "md5",
+            "md5": "53a76769c3541324d4baafa483a4be02",
+            "size": 6229
+          },
+          {
+            "path": "model_evaluation/joint_decoder_v2.py",
+            "hash": "md5",
+            "md5": "2f15f174798f9536a5a1989d31a64adc",
+            "size": 4693
+          },
+          {
+            "path": "model_evaluation/joint_metrics.py",
+            "hash": "md5",
+            "md5": "b81c41dbaa625a353dd0e7730c8baacb",
+            "size": 5534
+          },
+          {
+            "path": "model_evaluation/joint_objective_v2.py",
+            "hash": "md5",
+            "md5": "fdf5c704686a2d0c28d6c5cac767745b",
+            "size": 2838
+          },
+          {
+            "path": "model_evaluation/prepare_guard_matched_trial04.py",
+            "hash": "md5",
+            "md5": "6fcd20c2bd1897e5ddb4111dcbac8d92",
+            "size": 5758
+          },
+          {
+            "path": "model_evaluation/timing_decoder.py",
+            "hash": "md5",
+            "md5": "eca9ecea56ed526eb1d9eb7da1ac8a02",
+            "size": 6395
+          },
+          {
+            "path": "results/context-decoder-preflight.json",
+            "hash": "md5",
+            "md5": "8c8363bcaa117929cdf0ea89e0533ba0",
+            "size": 2208
+          },
+          {
+            "path": "results/context-objective-preflight.json",
+            "hash": "md5",
+            "md5": "acbeedd759f4eb7ccc07c82f526dc678",
+            "size": 2716
+          },
+          {
+            "path": "results/guard-matched-objective-preflight.json",
+            "hash": "md5",
+            "md5": "f8c6b9d194f221936bc66591e0ea814f",
+            "size": 1319
+          },
+          {
+            "path": "results/guard-matched-placement04-trial-plan.json",
+            "hash": "md5",
+            "md5": "dbb28c1fc44d1a2cab80b4b491a933f5",
+            "size": 12649
+          },
+          {
+            "path": "results/joint-pipeline-v2-preflight.json",
+            "hash": "md5",
+            "md5": "8048edb72e5e9905809a93051ee30be2",
+            "size": 1113
+          }
+        ],
+        "outs": [
+          {
+            "path": "data/guard-matched-pilot04",
+            "hash": "md5",
+            "md5": "7515d49f95d5cc586e057f5513a627e9.dir",
+            "size": 952113890,
+            "nfiles": 39
+          },
+          {
+            "path": "results/guard-matched-pilot04-prepared.json",
+            "hash": "md5",
+            "md5": "0f3e4738a2a17580de027454ce8e6c58",
+            "size": 2633
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:validate_guard_matched_trial04": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_guard_matched_trial04.py",
+        "deps": [
+          "model_evaluation/validate_guard_matched_trial04.py",
+          "model_evaluation/launch_guard_matched_pilot04.py",
+          "model_evaluation/collect_guard_matched_pilot04.py",
+          "model_evaluation/close_guard_matched_pilot04.py",
+          "model_evaluation/monitor_guard_matched_pilot04.py",
+          "model_evaluation/reconcile_guard_matched_pilot04.py",
+          "model_evaluation/analyze_guard_matched_pilot04.py",
+          "data/guard-matched-pilot04",
+          "results/guard-matched-pilot04-prepared.json",
+          "results/context-objective-preflight.json",
+          "results/joint-pipeline-v2-preflight.json",
+          "model_evaluation/timing_worker_v2.py",
+          "results/guard-matched-objective-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot04-offline-preflight.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_guard_matched_trial04.py",
+        "deps": [
+          {
+            "path": "data/guard-matched-pilot04",
+            "hash": "md5",
+            "md5": "7515d49f95d5cc586e057f5513a627e9.dir",
+            "size": 952113890,
+            "nfiles": 39
+          },
+          {
+            "path": "model_evaluation/analyze_guard_matched_pilot04.py",
+            "hash": "md5",
+            "md5": "1440bb89ebc2d570bb17b8296f78dee4",
+            "size": 4191
+          },
+          {
+            "path": "model_evaluation/close_guard_matched_pilot04.py",
+            "hash": "md5",
+            "md5": "e492ada3d0a162dfa5a61e7cf5fa0137",
+            "size": 1751
+          },
+          {
+            "path": "model_evaluation/collect_guard_matched_pilot04.py",
+            "hash": "md5",
+            "md5": "d10779573370ab852c2db654d4d77d43",
+            "size": 5947
+          },
+          {
+            "path": "model_evaluation/launch_guard_matched_pilot04.py",
+            "hash": "md5",
+            "md5": "77adc29a015de7655abefc49b783f133",
+            "size": 8211
+          },
+          {
+            "path": "model_evaluation/monitor_guard_matched_pilot04.py",
+            "hash": "md5",
+            "md5": "29481f0c2e853bec115451be1e328dcb",
+            "size": 2912
+          },
+          {
+            "path": "model_evaluation/reconcile_guard_matched_pilot04.py",
+            "hash": "md5",
+            "md5": "be9a42cc475994207fb2728fe457f923",
+            "size": 1686
+          },
+          {
+            "path": "model_evaluation/timing_worker_v2.py",
+            "hash": "md5",
+            "md5": "606c7d368a25b75ef92ae71ff95fce9b",
+            "size": 10108
+          },
+          {
+            "path": "model_evaluation/validate_guard_matched_trial04.py",
+            "hash": "md5",
+            "md5": "56a4495f302d30bb7108a3b05730e9ca",
+            "size": 4912
+          },
+          {
+            "path": "results/context-objective-preflight.json",
+            "hash": "md5",
+            "md5": "acbeedd759f4eb7ccc07c82f526dc678",
+            "size": 2716
+          },
+          {
+            "path": "results/guard-matched-objective-preflight.json",
+            "hash": "md5",
+            "md5": "f8c6b9d194f221936bc66591e0ea814f",
+            "size": 1319
+          },
+          {
+            "path": "results/guard-matched-pilot04-prepared.json",
+            "hash": "md5",
+            "md5": "0f3e4738a2a17580de027454ce8e6c58",
+            "size": 2633
+          },
+          {
+            "path": "results/joint-pipeline-v2-preflight.json",
+            "hash": "md5",
+            "md5": "8048edb72e5e9905809a93051ee30be2",
+            "size": 1113
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot04-offline-preflight.json",
+            "hash": "md5",
+            "md5": "891e53758796ff72aa3bf97e0c65034f",
+            "size": 628
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:launch_guard_matched_pilot04": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/launch_guard_matched_pilot04.py --execute",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/launch_guard_matched_pilot04.py",
+          "results/timing-cost-bounds-preflight.json",
+          "results/guard-matched-pilot04-price-bound.json",
+          "cloud.py",
+          "data/guard-matched-pilot04",
+          "results/guard-matched-pilot04-offline-preflight.json",
+          "results/timing-decoder-pilot06-cost-reconciled.json",
+          "results/timing-decoder-pilot06-permission-removed.json",
+          "results/timing-regional-network-prepared.json",
+          "results/guard-matched-objective-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot04-execution.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/launch_guard_matched_pilot04.py --execute",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "data/guard-matched-pilot04",
+            "hash": "md5",
+            "md5": "7515d49f95d5cc586e057f5513a627e9.dir",
+            "size": 952113890,
+            "nfiles": 39
+          },
+          {
+            "path": "model_evaluation/launch_guard_matched_pilot04.py",
+            "hash": "md5",
+            "md5": "77adc29a015de7655abefc49b783f133",
+            "size": 8211
+          },
+          {
+            "path": "results/guard-matched-objective-preflight.json",
+            "hash": "md5",
+            "md5": "f8c6b9d194f221936bc66591e0ea814f",
+            "size": 1319
+          },
+          {
+            "path": "results/guard-matched-pilot04-offline-preflight.json",
+            "hash": "md5",
+            "md5": "891e53758796ff72aa3bf97e0c65034f",
+            "size": 628
+          },
+          {
+            "path": "results/guard-matched-pilot04-price-bound.json",
+            "hash": "md5",
+            "md5": "a72fd737befba4957291d867615179ac",
+            "size": 14487
+          },
+          {
+            "path": "results/timing-cost-bounds-preflight.json",
+            "hash": "md5",
+            "md5": "b5b3ad9e0c900fc762b0e49d158a87ef",
+            "size": 560
+          },
+          {
+            "path": "results/timing-decoder-pilot06-cost-reconciled.json",
+            "hash": "md5",
+            "md5": "85ab9bbc752a839d26ae22797cfeaf5e",
+            "size": 463
+          },
+          {
+            "path": "results/timing-decoder-pilot06-permission-removed.json",
+            "hash": "md5",
+            "md5": "6f9ca976df894445a30612e7a0e22d9d",
+            "size": 478
+          },
+          {
+            "path": "results/timing-regional-network-prepared.json",
+            "hash": "md5",
+            "md5": "5a6d504044648f3980912a1850b74993",
+            "size": 1082
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot04-execution.json",
+            "hash": "md5",
+            "md5": "d8beca0e72b5c84413521d604e6398e8",
+            "size": 337
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:collect_guard_matched_pilot04": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/collect_guard_matched_pilot04.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/collect_guard_matched_pilot04.py",
+          "cloud.py",
+          "results/guard-matched-pilot04-execution.json"
+        ],
+        "outs": [
+          "data/guard-matched-pilot04-results"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot04-collected.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/collect_guard_matched_pilot04.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/collect_guard_matched_pilot04.py",
+            "hash": "md5",
+            "md5": "d10779573370ab852c2db654d4d77d43",
+            "size": 5947
+          },
+          {
+            "path": "results/guard-matched-pilot04-execution.json",
+            "hash": "md5",
+            "md5": "d8beca0e72b5c84413521d604e6398e8",
+            "size": 337
+          }
+        ],
+        "outs": [
+          {
+            "path": "data/guard-matched-pilot04-results",
+            "hash": "md5",
+            "md5": "92895d524d3d9205eba1be9516f77999.dir",
+            "size": 5676,
+            "nfiles": 1
+          },
+          {
+            "path": "results/guard-matched-pilot04-collected.json",
+            "hash": "md5",
+            "md5": "6ca64f572121391010a3bb9344cc15ad",
+            "size": 189
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:close_guard_matched_pilot04": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/close_guard_matched_pilot04.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/close_guard_matched_pilot04.py",
+          "cloud.py",
+          "results/guard-matched-pilot04-collected.json",
+          "results/guard-matched-pilot04-read-condition.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot04-permission-removed.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/close_guard_matched_pilot04.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/close_guard_matched_pilot04.py",
+            "hash": "md5",
+            "md5": "e492ada3d0a162dfa5a61e7cf5fa0137",
+            "size": 1751
+          },
+          {
+            "path": "results/guard-matched-pilot04-collected.json",
+            "hash": "md5",
+            "md5": "6ca64f572121391010a3bb9344cc15ad",
+            "size": 189
+          },
+          {
+            "path": "results/guard-matched-pilot04-read-condition.json",
+            "hash": "md5",
+            "md5": "fd7f3a5a191e2321a98768d984f9bf0d",
+            "size": 362
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot04-permission-removed.json",
+            "hash": "md5",
+            "md5": "5b84116c55d8f30b33f5c30ceaf3775a",
+            "size": 476
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:reconcile_guard_matched_pilot04": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/reconcile_unallocated_guard_matched04.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/reconcile_unallocated_guard_matched04.py",
+          "cloud.py",
+          "data/guard-matched-pilot04-results",
+          "results/guard-matched-pilot04-collected.json",
+          "results/guard-matched-pilot04-permission-removed.json",
+          "results/guard-matched-pilot04-early-scope-stop.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot04-cost-reconciled.json": {
+              "cache": false
+            }
+          },
+          {
+            "results/guard-matched-pilot04-no-allocation-proof.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/reconcile_unallocated_guard_matched04.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "data/guard-matched-pilot04-results",
+            "hash": "md5",
+            "md5": "92895d524d3d9205eba1be9516f77999.dir",
+            "size": 5676,
+            "nfiles": 1
+          },
+          {
+            "path": "model_evaluation/reconcile_unallocated_guard_matched04.py",
+            "hash": "md5",
+            "md5": "0b20f4d4dabf3a1eeb8e0a6e570b4dd2",
+            "size": 3935
+          },
+          {
+            "path": "results/guard-matched-pilot04-collected.json",
+            "hash": "md5",
+            "md5": "6ca64f572121391010a3bb9344cc15ad",
+            "size": 189
+          },
+          {
+            "path": "results/guard-matched-pilot04-early-scope-stop.json",
+            "hash": "md5",
+            "md5": "5cc5a8fa482aacb77fc77f21c5ad9f49",
+            "size": 6748
+          },
+          {
+            "path": "results/guard-matched-pilot04-permission-removed.json",
+            "hash": "md5",
+            "md5": "5b84116c55d8f30b33f5c30ceaf3775a",
+            "size": 476
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot04-cost-reconciled.json",
+            "hash": "md5",
+            "md5": "5b0f6214b8f3fc60ee3d5586d5fcfe02",
+            "size": 67466
+          },
+          {
+            "path": "results/guard-matched-pilot04-no-allocation-proof.json",
+            "hash": "md5",
+            "md5": "5b0f6214b8f3fc60ee3d5586d5fcfe02",
+            "size": 67466
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:audit_guard_matched_fit_horizons": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/audit_guard_matched_fit_horizons.py",
+        "deps": [
+          "model_evaluation/audit_guard_matched_fit_horizons.py",
+          "model_evaluation/joint_predictor.py",
+          "model_evaluation/joint_scorecard.py",
+          "model_evaluation/timing_decoder.py",
+          "data/exposure-pilot02",
+          "data/joint-decoder-candidate",
+          "data/guard-matched-pilot01",
+          "data/guard-matched-pilot01-results",
+          "results/guard-matched-pilot01-analysis.json"
+        ],
+        "outs": [
+          "data/guard-matched-fit-horizons"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-fit-horizons.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/audit_guard_matched_fit_horizons.py",
+        "deps": [
+          {
+            "path": "data/exposure-pilot02",
+            "hash": "md5",
+            "md5": "75e99af9af1918e4c238fe15656dfe26.dir",
+            "size": 12371161,
+            "nfiles": 16
+          },
+          {
+            "path": "data/guard-matched-pilot01",
+            "hash": "md5",
+            "md5": "808afed87c4ef8ad96d201fb62250b03.dir",
+            "size": 952113294,
+            "nfiles": 39
+          },
+          {
+            "path": "data/guard-matched-pilot01-results",
+            "hash": "md5",
+            "md5": "35202beb02170f9996a470f95bfb6e0c.dir",
+            "size": 165678507,
+            "nfiles": 682
+          },
+          {
+            "path": "data/joint-decoder-candidate",
+            "hash": "md5",
+            "md5": "48af269b9ab3475ed72ea0f7913caa40.dir",
+            "size": 26593773,
+            "nfiles": 5
+          },
+          {
+            "path": "model_evaluation/audit_guard_matched_fit_horizons.py",
+            "hash": "md5",
+            "md5": "21db056a9fce01769bf8f400c97bb55c",
+            "size": 5363
+          },
+          {
+            "path": "model_evaluation/joint_predictor.py",
+            "hash": "md5",
+            "md5": "407173f80253cd0116bbd263687fdcc1",
+            "size": 2458
+          },
+          {
+            "path": "model_evaluation/joint_scorecard.py",
+            "hash": "md5",
+            "md5": "24b8a6b2e1bdb9170d3595439bb7d950",
+            "size": 1974
+          },
+          {
+            "path": "model_evaluation/timing_decoder.py",
+            "hash": "md5",
+            "md5": "eca9ecea56ed526eb1d9eb7da1ac8a02",
+            "size": 6395
+          },
+          {
+            "path": "results/guard-matched-pilot01-analysis.json",
+            "hash": "md5",
+            "md5": "09c8b0f157bc1c7e67869c4c48661899",
+            "size": 27516
+          }
+        ],
+        "outs": [
+          {
+            "path": "data/guard-matched-fit-horizons",
+            "hash": "md5",
+            "md5": "15f37b267558ffd261d756028a2f90eb.dir",
+            "size": 17635970,
+            "nfiles": 1
+          },
+          {
+            "path": "results/guard-matched-fit-horizons.json",
+            "hash": "md5",
+            "md5": "59426143a70bcf71a45ffc256277b1f2",
+            "size": 50962
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:stop_guard_matched_scope04": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/stop_guard_matched_scope04.py",
+        "frozen": true,
+        "deps": [
+          "model_evaluation/stop_guard_matched_scope04.py",
+          "cloud.py",
+          "results/guard-matched-pilot04-execution.json",
+          "results/guard-matched-fit-horizons.json"
+        ],
+        "metrics": [
+          {
+            "results/guard-matched-pilot04-early-scope-stop.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/stop_guard_matched_scope04.py",
+        "deps": [
+          {
+            "path": "cloud.py",
+            "hash": "md5",
+            "md5": "8cb6180f4ecd52961db12ed6ce621862",
+            "size": 11926
+          },
+          {
+            "path": "model_evaluation/stop_guard_matched_scope04.py",
+            "hash": "md5",
+            "md5": "113f0fef9141b6f190046526aa934a8c",
+            "size": 3052
+          },
+          {
+            "path": "results/guard-matched-fit-horizons.json",
+            "hash": "md5",
+            "md5": "59426143a70bcf71a45ffc256277b1f2",
+            "size": 50962
+          },
+          {
+            "path": "results/guard-matched-pilot04-execution.json",
+            "hash": "md5",
+            "md5": "d8beca0e72b5c84413521d604e6398e8",
+            "size": 337
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/guard-matched-pilot04-early-scope-stop.json",
+            "hash": "md5",
+            "md5": "5cc5a8fa482aacb77fc77f21c5ad9f49",
+            "size": 6748
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:validate_canonical_feature_cache": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_canonical_feature_cache.py",
+        "deps": [
+          "model_evaluation/validate_canonical_feature_cache.py",
+          "model_evaluation/joint_predictor.py",
+          "data/canonical-feature-cache",
+          "data/exposure-pilot02",
+          "data/joint-decoder-candidate",
+          "results/canonical-feature-cache-prepared.json",
+          "results/guard-matched-fit-horizons.json"
+        ],
+        "metrics": [
+          {
+            "results/canonical-feature-cache-preflight.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_canonical_feature_cache.py",
+        "deps": [
+          {
+            "path": "data/canonical-feature-cache",
+            "hash": "md5",
+            "md5": "a186d811a5625a38562da384f47ad448.dir",
+            "size": 1145718933,
+            "nfiles": 8
+          },
+          {
+            "path": "data/exposure-pilot02",
+            "hash": "md5",
+            "md5": "75e99af9af1918e4c238fe15656dfe26.dir",
+            "size": 12371161,
+            "nfiles": 16
+          },
+          {
+            "path": "data/joint-decoder-candidate",
+            "hash": "md5",
+            "md5": "48af269b9ab3475ed72ea0f7913caa40.dir",
+            "size": 26593773,
+            "nfiles": 5
+          },
+          {
+            "path": "model_evaluation/joint_predictor.py",
+            "hash": "md5",
+            "md5": "407173f80253cd0116bbd263687fdcc1",
+            "size": 2458
+          },
+          {
+            "path": "model_evaluation/validate_canonical_feature_cache.py",
+            "hash": "md5",
+            "md5": "ceb60de53b1067c18139747311ac0eb9",
+            "size": 4426
+          },
+          {
+            "path": "results/canonical-feature-cache-prepared.json",
+            "hash": "md5",
+            "md5": "10cb582d0f9acfc0704ec03a1477ccca",
+            "size": 3668
+          },
+          {
+            "path": "results/guard-matched-fit-horizons.json",
+            "hash": "md5",
+            "md5": "59426143a70bcf71a45ffc256277b1f2",
+            "size": 50962
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/canonical-feature-cache-preflight.json",
+            "hash": "md5",
+            "md5": "ba99fd19f43a688c790a49b965e0a790",
+            "size": 6710
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:validate_canonical_data": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_canonical_data.py",
+        "deps": [
+          "model_evaluation/validate_canonical_data.py",
+          "model_evaluation/canonical_data.py",
+          "model_evaluation/guard_matched_data.py",
+          "model_evaluation/context_data.py",
+          "model_evaluation/joint_data.py",
+          "model_evaluation/timing_decoder.py",
+          "data/canonical-feature-cache",
+          "data/guard-matched-pilot01",
+          "results/canonical-feature-cache-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/canonical-data-preflight.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_canonical_data.py",
+        "deps": [
+          {
+            "path": "data/canonical-feature-cache",
+            "hash": "md5",
+            "md5": "a186d811a5625a38562da384f47ad448.dir",
+            "size": 1145718933,
+            "nfiles": 8
+          },
+          {
+            "path": "data/guard-matched-pilot01",
+            "hash": "md5",
+            "md5": "808afed87c4ef8ad96d201fb62250b03.dir",
+            "size": 952113294,
+            "nfiles": 39
+          },
+          {
+            "path": "model_evaluation/canonical_data.py",
+            "hash": "md5",
+            "md5": "6b9e752842cb681946fa9889f611f3ff",
+            "size": 4841
+          },
+          {
+            "path": "model_evaluation/context_data.py",
+            "hash": "md5",
+            "md5": "8ce74789ced18b580f382cfea7fa49cb",
+            "size": 1019
+          },
+          {
+            "path": "model_evaluation/guard_matched_data.py",
+            "hash": "md5",
+            "md5": "41f299a94cc8bb434751b30d39162ee4",
+            "size": 1370
+          },
+          {
+            "path": "model_evaluation/joint_data.py",
+            "hash": "md5",
+            "md5": "53a76769c3541324d4baafa483a4be02",
+            "size": 6229
+          },
+          {
+            "path": "model_evaluation/timing_decoder.py",
+            "hash": "md5",
+            "md5": "eca9ecea56ed526eb1d9eb7da1ac8a02",
+            "size": 6395
+          },
+          {
+            "path": "model_evaluation/validate_canonical_data.py",
+            "hash": "md5",
+            "md5": "90c8456c649c8c92ed08c126e8a41ca4",
+            "size": 3147
+          },
+          {
+            "path": "results/canonical-feature-cache-preflight.json",
+            "hash": "md5",
+            "md5": "ba99fd19f43a688c790a49b965e0a790",
+            "size": 6710
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/canonical-data-preflight.json",
+            "hash": "md5",
+            "md5": "fc2cc28f495fb0ddfe9803a2c1ce4013",
+            "size": 870
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:validate_canonical_metrics": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_canonical_metrics.py",
+        "deps": [
+          "model_evaluation/validate_canonical_metrics.py",
+          "model_evaluation/canonical_data.py",
+          "model_evaluation/canonical_metrics.py",
+          "model_evaluation/joint_metrics.py",
+          "model_evaluation/joint_predictor.py",
+          "model_evaluation/joint_scorecard.py",
+          "data/canonical-feature-cache",
+          "data/guard-matched-pilot01",
+          "data/guard-matched-pilot01-results",
+          "data/exposure-pilot02",
+          "results/canonical-feature-cache-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/canonical-metrics-preflight.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/validate_canonical_metrics.py",
+        "deps": [
+          {
+            "path": "data/canonical-feature-cache",
+            "hash": "md5",
+            "md5": "a186d811a5625a38562da384f47ad448.dir",
+            "size": 1145718933,
+            "nfiles": 8
+          },
+          {
+            "path": "data/exposure-pilot02",
+            "hash": "md5",
+            "md5": "75e99af9af1918e4c238fe15656dfe26.dir",
+            "size": 12371161,
+            "nfiles": 16
+          },
+          {
+            "path": "data/guard-matched-pilot01",
+            "hash": "md5",
+            "md5": "808afed87c4ef8ad96d201fb62250b03.dir",
+            "size": 952113294,
+            "nfiles": 39
+          },
+          {
+            "path": "data/guard-matched-pilot01-results",
+            "hash": "md5",
+            "md5": "35202beb02170f9996a470f95bfb6e0c.dir",
+            "size": 165678507,
+            "nfiles": 682
+          },
+          {
+            "path": "model_evaluation/canonical_data.py",
+            "hash": "md5",
+            "md5": "6b9e752842cb681946fa9889f611f3ff",
+            "size": 4841
+          },
+          {
+            "path": "model_evaluation/canonical_metrics.py",
+            "hash": "md5",
+            "md5": "e518b24cd9f981a404d98f8bd7045deb",
+            "size": 2474
+          },
+          {
+            "path": "model_evaluation/joint_metrics.py",
+            "hash": "md5",
+            "md5": "b81c41dbaa625a353dd0e7730c8baacb",
+            "size": 5534
+          },
+          {
+            "path": "model_evaluation/joint_predictor.py",
+            "hash": "md5",
+            "md5": "407173f80253cd0116bbd263687fdcc1",
+            "size": 2458
+          },
+          {
+            "path": "model_evaluation/joint_scorecard.py",
+            "hash": "md5",
+            "md5": "24b8a6b2e1bdb9170d3595439bb7d950",
+            "size": 1974
+          },
+          {
+            "path": "model_evaluation/validate_canonical_metrics.py",
+            "hash": "md5",
+            "md5": "85f4a534a87bc42dbac2d104466d612d",
+            "size": 5291
+          },
+          {
+            "path": "results/canonical-feature-cache-preflight.json",
+            "hash": "md5",
+            "md5": "ba99fd19f43a688c790a49b965e0a790",
+            "size": 6710
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/canonical-metrics-preflight.json",
+            "hash": "md5",
+            "md5": "e3bdc58e0ca32d8f89f688589875b490",
+            "size": 2633
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:prepare_canonical_trial_plan": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_canonical_trial_plan.py",
+        "deps": [
+          "model_evaluation/prepare_canonical_trial_plan.py",
+          "model_evaluation/canonical_worker.py",
+          "model_evaluation/canonical_data.py",
+          "model_evaluation/canonical_metrics.py",
+          "model_evaluation/canonical_objective.py",
+          "data/guard-matched-pilot04",
+          "results/guard-matched-pilot04-no-allocation-proof.json",
+          "results/canonical-feature-cache-prepared.json",
+          "results/canonical-feature-cache-preflight.json",
+          "results/canonical-data-preflight.json",
+          "results/canonical-metrics-preflight.json"
+        ],
+        "metrics": [
+          {
+            "results/canonical-trial-plan.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/prepare_canonical_trial_plan.py",
+        "deps": [
+          {
+            "path": "data/guard-matched-pilot04",
+            "hash": "md5",
+            "md5": "7515d49f95d5cc586e057f5513a627e9.dir",
+            "size": 952113890,
+            "nfiles": 39
+          },
+          {
+            "path": "model_evaluation/canonical_data.py",
+            "hash": "md5",
+            "md5": "6b9e752842cb681946fa9889f611f3ff",
+            "size": 4841
+          },
+          {
+            "path": "model_evaluation/canonical_metrics.py",
+            "hash": "md5",
+            "md5": "e518b24cd9f981a404d98f8bd7045deb",
+            "size": 2474
+          },
+          {
+            "path": "model_evaluation/canonical_objective.py",
+            "hash": "md5",
+            "md5": "ae490dde5150a441958c7621b6c2b8a7",
+            "size": 886
+          },
+          {
+            "path": "model_evaluation/canonical_worker.py",
+            "hash": "md5",
+            "md5": "c1aee0f6ff10118396a11e0ecaf49d18",
+            "size": 11128
+          },
+          {
+            "path": "model_evaluation/prepare_canonical_trial_plan.py",
+            "hash": "md5",
+            "md5": "1773b181534b13ce7d28380f8dda3d1a",
+            "size": 5992
+          },
+          {
+            "path": "results/canonical-data-preflight.json",
+            "hash": "md5",
+            "md5": "fc2cc28f495fb0ddfe9803a2c1ce4013",
+            "size": 870
+          },
+          {
+            "path": "results/canonical-feature-cache-preflight.json",
+            "hash": "md5",
+            "md5": "ba99fd19f43a688c790a49b965e0a790",
+            "size": 6710
+          },
+          {
+            "path": "results/canonical-feature-cache-prepared.json",
+            "hash": "md5",
+            "md5": "10cb582d0f9acfc0704ec03a1477ccca",
+            "size": 3668
+          },
+          {
+            "path": "results/canonical-metrics-preflight.json",
+            "hash": "md5",
+            "md5": "e3bdc58e0ca32d8f89f688589875b490",
+            "size": 2633
+          },
+          {
+            "path": "results/guard-matched-pilot04-no-allocation-proof.json",
+            "hash": "md5",
+            "md5": "5b0f6214b8f3fc60ee3d5586d5fcfe02",
+            "size": 67466
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/canonical-trial-plan.json",
+            "hash": "md5",
+            "md5": "88723f0283510fa80e265883090ad393",
+            "size": 13454
+          }
+        ]
+      }
+    },
+    "experiments/36_tree_density/dvc.yaml:verify_canonical_price_bound03": {
+      "definition": {
+        "cmd": "../../.venv/bin/python model_evaluation/verify_canonical_price_bound03.py",
+        "deps": [
+          "model_evaluation/verify_canonical_price_bound03.py",
+          "results/canonical-trial-plan.json"
+        ],
+        "frozen": true,
+        "metrics": [
+          {
+            "results/canonical-pilot03-price-bound.json": {
+              "cache": false
+            }
+          }
+        ]
+      },
+      "lock": {
+        "cmd": "../../.venv/bin/python model_evaluation/verify_canonical_price_bound03.py",
+        "deps": [
+          {
+            "path": "model_evaluation/verify_canonical_price_bound03.py",
+            "hash": "md5",
+            "md5": "6637dd2b88ad95560d400f25c952b2ac",
+            "size": 1845
+          },
+          {
+            "path": "results/canonical-trial-plan.json",
+            "hash": "md5",
+            "md5": "88723f0283510fa80e265883090ad393",
+            "size": 13454
+          }
+        ],
+        "outs": [
+          {
+            "path": "results/canonical-pilot03-price-bound.json",
+            "hash": "md5",
+            "md5": "77bb87563331738103e9744a182c709e",
+            "size": 14487
+          }
+        ]
+      }
+    }
+  },
+  "changes": [
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "launch_timing_decoder_pilot05",
+      "removed_dependencies": [
+        "results/timing-cost-bounds-preflight.json"
+      ]
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "collect_timing_decoder_pilot05",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "close_timing_decoder_pilot05",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "reconcile_timing_decoder_pilot05",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "validate_timing_cost_bounds",
+      "removed_dependencies": [
+        "results/canonical-pilot03-price-bound.json"
+      ]
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "launch_timing_decoder_pilot06",
+      "removed_dependencies": [
+        "results/timing-decoder-pilot06-capacity-equivalence.json",
+        "results/timing-restore-repair-preflight.json"
+      ]
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "collect_timing_decoder_pilot06",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "close_timing_decoder_pilot06",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "analyze_timing_decoder_pilot06",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "reconcile_timing_decoder_pilot06",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "validate_timing_restore_repair",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "verify_timing_capacity_equivalence06",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "audit_timing_fit",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "prepare_guard_matched_protocol",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "prepare_guard_matched_plan",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "verify_guard_matched_price_bound",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "prepare_guard_matched_trial",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "validate_guard_matched_trial",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "launch_guard_matched_pilot01",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "collect_guard_matched_pilot01",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "close_guard_matched_pilot01",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "analyze_guard_matched_pilot01",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "audit_guard_matched_trajectory",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "prepare_guard_matched_extended_plan",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "verify_guard_matched_price_bound02",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "prepare_guard_matched_trial02",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "validate_guard_matched_trial02",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "launch_guard_matched_pilot02",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "collect_guard_matched_pilot02",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "close_guard_matched_pilot02",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "reconcile_guard_matched_pilot02",
+      "removed_dependencies": [
+        "results/guard-matched-pilot02-early-capacity-stop.json"
+      ]
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "observe_guard_matched_infrastructure02",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "prepare_guard_matched_placement03_plan",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "verify_guard_matched_price_bound03",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "prepare_guard_matched_trial03",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "validate_guard_matched_trial03",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "launch_guard_matched_pilot03",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "collect_guard_matched_pilot03",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "close_guard_matched_pilot03",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "reconcile_guard_matched_pilot03",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "stop_guard_matched_capacity02",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "observe_guard_matched_infrastructure03",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "prepare_guard_matched_placement04_plan",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "verify_guard_matched_price_bound04",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "prepare_guard_matched_trial04",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "validate_guard_matched_trial04",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "launch_guard_matched_pilot04",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "collect_guard_matched_pilot04",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "close_guard_matched_pilot04",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "reconcile_guard_matched_pilot04",
+      "removed_dependencies": [
+        "results/guard-matched-pilot04-early-scope-stop.json"
+      ]
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "audit_guard_matched_fit_horizons",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "stop_guard_matched_scope04",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "validate_canonical_feature_cache",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "validate_canonical_data",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "validate_canonical_metrics",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "prepare_canonical_trial_plan",
+      "removed_dependencies": []
+    },
+    {
+      "pipeline": "experiments/36_tree_density/dvc.yaml",
+      "stage": "verify_canonical_price_bound03",
+      "removed_dependencies": []
+    }
+  ]
+}

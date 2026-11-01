@@ -566,3 +566,10 @@ stages:
       md5: bdf85c2a32b391b812b35d37d8fecdb9.dir
       size: 1266
       nfiles: 6
+  validate06:
+    cmd: python validate06.py
+    outs:
+    - path: results06/offline-check.json
+      hash: md5
+      md5: 51c356ee81d1259492d9d87f16a104cd
+      size: 197

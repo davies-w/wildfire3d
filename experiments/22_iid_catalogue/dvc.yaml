@@ -6,8 +6,7 @@ stages:
     outs:
     - data/catalogue.json
     - data/splits.json
-    - data/input-audit.json:
-        cache: false
+    - data/input-audit.json: {}
   preview:
     cmd: ../../.venv/bin/python build_preview.py
     deps:

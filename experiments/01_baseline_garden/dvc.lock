@@ -1,10 +1,9 @@
 schema: '2.0'
 stages:
   solve:
-    cmd: .venv/bin/python scripts/run_fds.py 
-      experiments/01_baseline_garden/01_baseline_garden.fds:experiments/01_baseline_garden/data
-      --threads 4 && .venv/bin/python scripts/strip_terrain.py 
-      experiments/01_baseline_garden/data 01_baseline_garden
+    cmd: .venv/bin/python scripts/run_fds.py experiments/01_baseline_garden/01_baseline_garden.fds:experiments/01_baseline_garden/data
+      --threads 4 && .venv/bin/python scripts/strip_terrain.py experiments/01_baseline_garden/data
+      01_baseline_garden
     deps:
     - path: experiments/01_baseline_garden/01_baseline_garden.fds
       hash: md5
@@ -31,10 +30,6 @@ stages:
       hash: md5
       md5: 11087d22fff5dd1373886ce1cc24261b
       size: 542866
-    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.s3d
-      hash: md5
-      md5: 4f0c902831993ba139400f243e782e6b
-      size: 4488254
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.sf
       hash: md5
       md5: b0603f7216c875930b18ed345f1a2e67
@@ -43,21 +38,24 @@ stages:
       hash: md5
       md5: 3f4ba8f3247928ddb0cf449257c3cc5c
       size: 542866
-    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.s3d
-      hash: md5
-      md5: eac3a1411b052f550032dd85abe20792
-      size: 1183513
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.sf
       hash: md5
       md5: a96fb05f5bd2d4586e51242a7d319678
       size: 131418
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.s3d
+      hash: md5
+      md5: 4f0c902831993ba139400f243e782e6b
+      size: 4488254
+    - path: experiments/01_baseline_garden/data/01_baseline_garden_1_2.s3d
+      hash: md5
+      md5: eac3a1411b052f550032dd85abe20792
+      size: 1183513
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_3.s3d
       hash: md5
       md5: 57c9645aca33eaa59288d6352580509b
       size: 3019801
   boundary:
-    cmd: .venv/bin/python scripts/surface_temp.py 
-      experiments/01_baseline_garden/render.json
+    cmd: .venv/bin/python scripts/surface_temp.py experiments/01_baseline_garden/render.json
     deps:
     - path: experiments/01_baseline_garden/data/01_baseline_garden_1_1.bf
       hash: md5
@@ -85,8 +83,7 @@ stages:
       md5: 4cb7a24b8632010ae0e5ae9dee88d642
       size: 631
   render:
-    cmd: .venv/bin/python scripts/render_animation.py 
-      experiments/01_baseline_garden/render.json
+    cmd: .venv/bin/python scripts/render_animation.py experiments/01_baseline_garden/render.json
     deps:
     - path: experiments/01_baseline_garden/data/01_baseline_garden.smv
       hash: md5

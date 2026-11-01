@@ -112,8 +112,7 @@ stages:
       md5: daae2db58ea6f7521f2ef9db4df22326
       size: 335
   template:
-    cmd: ../../.venv/bin/python -c "import shutil;
-      shutil.copyfile('../32_tree_expansion/data/tree-templates.json',
+    cmd: ../../.venv/bin/python -c "import shutil; shutil.copyfile('../32_tree_expansion/data/tree-templates.json',
       'data/tree-templates.json')"
     deps:
     - path: ../32_tree_expansion/data/tree-templates.json
@@ -332,8 +331,8 @@ stages:
       md5: eccb06a2e36abc141e8aed75f5ec9389
       size: 323
   cloud_queue_prepare:
-    cmd: ../../.venv/bin/python orchestration/prepare.py &&
-      ../../.venv/bin/python orchestration/inline.py
+    cmd: ../../.venv/bin/python orchestration/prepare.py && ../../.venv/bin/python
+      orchestration/inline.py
     deps:
     - path: active-groups.json
       hash: md5
@@ -576,18 +575,15 @@ stages:
   validate_state_replay:
     cmd: ../../.venv/bin/python validate_state_replay.py
     deps:
-    - path:
-        ../32_tree_expansion/data/cloud_archive/x32-coverage-00-r1/x32_000_s0.tar.gz
+    - path: ../32_tree_expansion/data/cloud_archive/x32-coverage-00-r1/x32_000_s0.tar.gz
       hash: md5
       md5: 85bfc6f71b17ae4ab546664ad2a57aa8
       size: 94367130
-    - path:
-        ../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_094_s0.tar.gz
+    - path: ../32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_094_s0.tar.gz
       hash: md5
       md5: 0f059ba7e8a0379e3cee7f9fd5d297c9
       size: 96019416
-    - path:
-        ../32_tree_expansion/data/cloud_archive/x32-development-33/x32_376_s0.tar.gz
+    - path: ../32_tree_expansion/data/cloud_archive/x32-development-33/x32_376_s0.tar.gz
       hash: md5
       md5: aecdc74b9bcb9bf4829493263e815406
       size: 96014031
@@ -698,13 +694,10 @@ stages:
       md5: 44be6c76cd7dd8870d4497612a66b4a0
       size: 671656
   collect_partial_recovery:
-    cmd: ../../.venv/bin/python repair/collect_partial.py &&
-      ../../.venv/bin/python repair/collect_partial.py --proof
-      data/late-recovery/x36-density-088-r1/proof.json && ../../.venv/bin/python
-      repair/collect_partial.py --proof
-      data/late-recovery/x36-density-093-r1/proof.json && ../../.venv/bin/python
-      repair/collect_partial.py --proof
-      data/late-recovery/x36-density-115-r1/proof.json
+    cmd: ../../.venv/bin/python repair/collect_partial.py && ../../.venv/bin/python
+      repair/collect_partial.py --proof data/late-recovery/x36-density-088-r1/proof.json
+      && ../../.venv/bin/python repair/collect_partial.py --proof data/late-recovery/x36-density-093-r1/proof.json
+      && ../../.venv/bin/python repair/collect_partial.py --proof data/late-recovery/x36-density-115-r1/proof.json
     deps:
     - path: data/late-recovery/x36-density-088-r1/proof.json
       hash: md5
@@ -866,8 +859,7 @@ stages:
       size: 251598
       nfiles: 9
   launch_recovery_088:
-    cmd: ../../.venv/bin/python repair/launch_partial.py --execute --proof
-      data/late-recovery/x36-density-088-r1/proof.json
+    cmd: ../../.venv/bin/python repair/launch_partial.py --execute --proof data/late-recovery/x36-density-088-r1/proof.json
     deps:
     - path: data/late-recovery/x36-density-088-r1
       hash: md5
@@ -884,8 +876,7 @@ stages:
       md5: 92d1de587f2c06179ecc2db9e45d9a96
       size: 591
   launch_recovery_093:
-    cmd: ../../.venv/bin/python repair/launch_partial.py --execute --proof
-      data/late-recovery/x36-density-093-r1/proof.json
+    cmd: ../../.venv/bin/python repair/launch_partial.py --execute --proof data/late-recovery/x36-density-093-r1/proof.json
     deps:
     - path: data/late-recovery/x36-density-093-r1
       hash: md5
@@ -902,8 +893,7 @@ stages:
       md5: a2da2d9cec2b607c17b07f2b9b4ea787
       size: 591
   launch_recovery_115:
-    cmd: ../../.venv/bin/python repair/launch_partial.py --execute --proof
-      data/late-recovery/x36-density-115-r1/proof.json
+    cmd: ../../.venv/bin/python repair/launch_partial.py --execute --proof data/late-recovery/x36-density-115-r1/proof.json
     deps:
     - path: data/late-recovery/x36-density-115-r1
       hash: md5
@@ -1138,10 +1128,9 @@ stages:
       md5: e48838fe994b0cf9e9cf2ee6ff81ac5d
       size: 713
   prepare_model_preflight:
-    cmd: ../../.venv/bin/python model_evaluation/prepare_preflight.py &&
-      ../../.venv/bin/python data/model-preflight/validate.py &&
-      ../../.venv/bin/python data/model-preflight/validate_evaluation.py &&
-      ../../.venv/bin/python data/model-preflight/validate_transport.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_preflight.py && ../../.venv/bin/python
+      data/model-preflight/validate.py && ../../.venv/bin/python data/model-preflight/validate_evaluation.py
+      && ../../.venv/bin/python data/model-preflight/validate_transport.py
     deps:
     - path: ../35_surrogate_diagnostics/attempt25/coverage-plan.json
       hash: md5
@@ -1459,8 +1448,7 @@ stages:
       md5: 1342172289c1f5873a935fa9c12c2bea
       size: 916
   prepare_reporting_preflight03:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_reporting_preflight03.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_reporting_preflight03.py
     deps:
     - path: data/model-preflight
       hash: md5
@@ -2143,8 +2131,8 @@ stages:
       md5: 12a5a836a1d9d1c05c2d4e7d9f0722ef
       size: 2916
   collect_pair_sequence_r0:
-    cmd: ../../.venv/bin/python model_evaluation/collect_pair_sequence.py
-      --rotation 0
+    cmd: ../../.venv/bin/python model_evaluation/collect_pair_sequence.py --rotation
+      0
     deps:
     - path: data/pair-sequence/rotation0/schema.json
       hash: md5
@@ -2325,8 +2313,7 @@ stages:
       md5: 951bb729d7d148d71256c72190efdfe2
       size: 7829
   continue_pair_rotation1_capacity_a:
-    cmd: ../../.venv/bin/python
-      model_evaluation/continue_pair_rotation1_capacity_a.py
+    cmd: ../../.venv/bin/python model_evaluation/continue_pair_rotation1_capacity_a.py
     deps:
     - path: data/pair-sequence/rotation1
       hash: md5
@@ -2364,10 +2351,9 @@ stages:
       md5: 9ad30f483381362b6518f06acdb05c06
       size: 6793
   prepare_flex_queue:
-    cmd: ../../.venv/bin/python model_evaluation/prepare_flex_queue.py &&
-      ../../.venv/bin/python model_evaluation/setup_flex_queue.py &&
-      ../../.venv/bin/python model_evaluation/check_flex_queue.py &&
-      ../../.venv/bin/python model_evaluation/check_flex_watchdog.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_flex_queue.py && ../../.venv/bin/python
+      model_evaluation/setup_flex_queue.py && ../../.venv/bin/python model_evaluation/check_flex_queue.py
+      && ../../.venv/bin/python model_evaluation/check_flex_watchdog.py
     deps:
     - path: data/pair-sequence/rotation1
       hash: md5
@@ -2503,9 +2489,8 @@ stages:
       md5: e278f8654efca943b483402ffb295aed
       size: 1074481
   summarize_undershoots:
-    cmd: ../../.venv/bin/python model_evaluation/summarize_undershoots.py &&
-      ../../.venv/bin/python model_evaluation/audit_gallery_undershoots.py &&
-      ../../.venv/bin/python model_evaluation/plot_gallery_diagnosis.py
+    cmd: ../../.venv/bin/python model_evaluation/summarize_undershoots.py && ../../.venv/bin/python
+      model_evaluation/audit_gallery_undershoots.py && ../../.venv/bin/python model_evaluation/plot_gallery_diagnosis.py
     deps:
     - path: ../35_surrogate_diagnostics/attempt24/data/scenario_gallery
       hash: md5
@@ -2723,8 +2708,7 @@ stages:
       md5: 19b805a84e57df63e7931cb15089cac4
       size: 72062
   launch_exposure_pilot:
-    cmd: ../../.venv/bin/python model_evaluation/launch_exposure_pilot.py
-      --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_exposure_pilot.py --execute
     deps:
     - path: data/exposure-pilot01
       hash: md5
@@ -2883,8 +2867,7 @@ stages:
       md5: 1f086672f0c8e8467e32b810cc51e683
       size: 485
   launch_exposure_pilot02:
-    cmd: ../../.venv/bin/python model_evaluation/launch_exposure_pilot02.py
-      --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_exposure_pilot02.py --execute
     deps:
     - path: data/exposure-pilot02
       hash: md5
@@ -2992,8 +2975,7 @@ stages:
       md5: 3c9af5416c19a80b4b600164fd246a24
       size: 470
   audit_exposure_pilot02_trajectory:
-    cmd: ../../.venv/bin/python
-      model_evaluation/audit_exposure_pilot02_trajectory.py
+    cmd: ../../.venv/bin/python model_evaluation/audit_exposure_pilot02_trajectory.py
     deps:
     - path: data/exposure-pilot02-results
       hash: md5
@@ -3306,8 +3288,7 @@ stages:
       md5: 27d33f5b27a760eb70ce55c35cc7fed9
       size: 615
   launch_gas_head_pilot01:
-    cmd: ../../.venv/bin/python model_evaluation/launch_gas_head_pilot01.py
-      --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_gas_head_pilot01.py --execute
     deps:
     - path: data/gas-head-pilot01
       hash: md5
@@ -3642,8 +3623,7 @@ stages:
       md5: 45e100ac73e039e15426d567a4d17ae2
       size: 733
   launch_gas_shape_pilot01:
-    cmd: ../../.venv/bin/python model_evaluation/launch_gas_shape_pilot01.py
-      --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_gas_shape_pilot01.py --execute
     deps:
     - path: data/gas-shape-pilot01
       hash: md5
@@ -3668,8 +3648,7 @@ stages:
       md5: d3ced3b3c97b160683a4e17e8d2b6af9
       size: 335
   audit_retained_cpu_reservations:
-    cmd: ../../.venv/bin/python
-      model_evaluation/audit_retained_cpu_reservations.py
+    cmd: ../../.venv/bin/python model_evaluation/audit_retained_cpu_reservations.py
     deps:
     - path: ../33_representation_loss/budget.json
       hash: md5
@@ -3798,8 +3777,8 @@ stages:
       md5: b2d338d2302354139f2bff339c356fde
       size: 242391
   snapshot_billing_shape_close:
-    cmd: ../../.venv/bin/python ../../scripts/read_billing_export.py --end
-      2026-10-28 --output data/billing-export-shape-close.json
+    cmd: ../../.venv/bin/python ../../scripts/read_billing_export.py --end 2026-10-28
+      --output data/billing-export-shape-close.json
     deps:
     - path: ../../scripts/read_billing_export.py
       hash: md5
@@ -3811,8 +3790,7 @@ stages:
       md5: 6bb3a94ab1ca48d79f0f2410d9237c6a
       size: 3787591
   reconcile_closed_preempted_cpu:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_closed_preempted_cpu.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_closed_preempted_cpu.py
     deps:
     - path: active-groups.json
       hash: md5
@@ -3931,8 +3909,7 @@ stages:
       md5: fd2c7d411fff9b459ca6766ed6a3eb16
       size: 2208
   prepare_joint_decoder_candidate:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_joint_decoder_candidate.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_joint_decoder_candidate.py
     deps:
     - path: data/gas-head-candidate
       hash: md5
@@ -3962,8 +3939,7 @@ stages:
       md5: ca279c3e95337c3bbc9aa509b0769671
       size: 1497
   prepare_joint_rolling_features:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_joint_rolling_features.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_joint_rolling_features.py
     deps:
     - path: data/exposure-pilot02
       hash: md5
@@ -4212,8 +4188,7 @@ stages:
       md5: b50a326f43e1c7516696e3f240ddefa8
       size: 484
   launch_joint_decoder_pilot01:
-    cmd: ../../.venv/bin/python model_evaluation/launch_joint_decoder_pilot01.py
-      --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_joint_decoder_pilot01.py --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -4273,8 +4248,7 @@ stages:
       md5: 1cbbd5ea9cd8fddd4e524169dc0c9440
       size: 1220
   collect_joint_decoder_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/collect_joint_decoder_pilot01.py
+    cmd: ../../.venv/bin/python model_evaluation/collect_joint_decoder_pilot01.py
     deps:
     - path: cloud.py
       hash: md5
@@ -4323,8 +4297,7 @@ stages:
       md5: 6a781fbb3611d183d21b61365a7407dd
       size: 476
   reconcile_joint_decoder_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_joint_decoder_pilot01.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_joint_decoder_pilot01.py
     deps:
     - path: cloud.py
       hash: md5
@@ -4573,8 +4546,7 @@ stages:
       md5: 7a55b7e81c16972e068f4c103e74643e
       size: 484
   launch_joint_decoder_pilot02:
-    cmd: ../../.venv/bin/python model_evaluation/launch_joint_decoder_pilot02.py
-      --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_joint_decoder_pilot02.py --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -4637,8 +4609,7 @@ stages:
       md5: 578a129b6948ec80665ba5b459c49e26
       size: 602
   collect_joint_decoder_pilot02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/collect_joint_decoder_pilot02.py
+    cmd: ../../.venv/bin/python model_evaluation/collect_joint_decoder_pilot02.py
     deps:
     - path: cloud.py
       hash: md5
@@ -4687,8 +4658,7 @@ stages:
       md5: 9dd142de576dc967cbd6efff8bcaf87e
       size: 476
   analyze_joint_decoder_pilot02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/analyze_joint_decoder_pilot02.py
+    cmd: ../../.venv/bin/python model_evaluation/analyze_joint_decoder_pilot02.py
     deps:
     - path: cloud.py
       hash: md5
@@ -4722,8 +4692,7 @@ stages:
       md5: 9ecdf23b304deb740ccbffe30f7523b0
       size: 28929
   reconcile_joint_decoder_pilot02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_joint_decoder_pilot02.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_joint_decoder_pilot02.py
     deps:
     - path: cloud.py
       hash: md5
@@ -5320,8 +5289,8 @@ stages:
       md5: a3077987f88cc67dd5b12eedaec573f5
       size: 545
   launch_context_decoder_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/launch_context_decoder_pilot01.py --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_context_decoder_pilot01.py
+      --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -5346,8 +5315,7 @@ stages:
       md5: 745905f66b5682b8a6bd6abf1f0e8c4b
       size: 334
   collect_context_decoder_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/collect_context_decoder_pilot01.py
+    cmd: ../../.venv/bin/python model_evaluation/collect_context_decoder_pilot01.py
     deps:
     - path: cloud.py
       hash: md5
@@ -5372,8 +5340,7 @@ stages:
       md5: c7ec5c7de956002eefbbc82b8315190c
       size: 797
   close_context_decoder_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/close_context_decoder_pilot01.py
+    cmd: ../../.venv/bin/python model_evaluation/close_context_decoder_pilot01.py
     deps:
     - path: cloud.py
       hash: md5
@@ -5397,8 +5364,7 @@ stages:
       md5: ba4f490b480776ac61eaa01c38544615
       size: 480
   analyze_context_decoder_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/analyze_context_decoder_pilot01.py
+    cmd: ../../.venv/bin/python model_evaluation/analyze_context_decoder_pilot01.py
     deps:
     - path: cloud.py
       hash: md5
@@ -5432,8 +5398,7 @@ stages:
       md5: 9d316fff38645466624814fc173985b5
       size: 28208
   reconcile_context_decoder_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_context_decoder_pilot01.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_context_decoder_pilot01.py
     deps:
     - path: cloud.py
       hash: md5
@@ -5457,8 +5422,7 @@ stages:
       md5: 850027a68a7ffa1066ce6b5743369f1e
       size: 470
   audit_context_decoder_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/audit_context_decoder_pilot01.py
+    cmd: ../../.venv/bin/python model_evaluation/audit_context_decoder_pilot01.py
     deps:
     - path: data/context-decoder-pilot01
       hash: md5
@@ -5749,8 +5713,8 @@ stages:
       md5: b34ab1d87ae8f9432cd74f100800d3ad
       size: 1531
   launch_timing_decoder_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/launch_timing_decoder_pilot01.py --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing_decoder_pilot01.py
+      --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -5917,8 +5881,7 @@ stages:
       md5: b5ad1de9ddbf42de6bd4d4c484bd4135
       size: 544
   collect_timing_decoder_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/collect_timing_decoder_pilot01.py
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing_decoder_pilot01.py
     deps:
     - path: cloud.py
       hash: md5
@@ -5967,8 +5930,7 @@ stages:
       md5: 499f162d188787eac0e45661dfcf25a2
       size: 478
   reconcile_unallocated_timing01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_unallocated_timing01.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_timing01.py
     deps:
     - path: cloud.py
       hash: md5
@@ -5992,8 +5954,8 @@ stages:
       md5: b1bf5f7d9dff6757acf6b2c6a9512949
       size: 98100
   launch_timing_decoder_pilot02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/launch_timing_decoder_pilot02.py --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing_decoder_pilot02.py
+      --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -6160,8 +6122,7 @@ stages:
       md5: cbcb67995386db82e9f50ee1e7646016
       size: 544
   collect_timing_decoder_pilot02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/collect_timing_decoder_pilot02.py
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing_decoder_pilot02.py
     deps:
     - path: cloud.py
       hash: md5
@@ -6210,8 +6171,7 @@ stages:
       md5: def71a0f9ff5891223169b7cebe06bbf
       size: 478
   reconcile_unallocated_timing02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_unallocated_timing02.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_timing02.py
     deps:
     - path: cloud.py
       hash: md5
@@ -6235,8 +6195,8 @@ stages:
       md5: 3e372e9993f0846eb7c761214c353a5e
       size: 52768
   launch_timing_decoder_pilot03:
-    cmd: ../../.venv/bin/python
-      model_evaluation/launch_timing_decoder_pilot03.py --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing_decoder_pilot03.py
+      --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -6403,8 +6363,7 @@ stages:
       md5: a28b13c0bbb965841c457af360c20043
       size: 544
   collect_timing_decoder_pilot03:
-    cmd: ../../.venv/bin/python
-      model_evaluation/collect_timing_decoder_pilot03.py
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing_decoder_pilot03.py
     deps:
     - path: cloud.py
       hash: md5
@@ -6453,8 +6412,7 @@ stages:
       md5: 4566f4ef59f8725d21e03a4862e4ada7
       size: 478
   reconcile_unallocated_timing03:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_unallocated_timing03.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_timing03.py
     deps:
     - path: cloud.py
       hash: md5
@@ -6478,8 +6436,8 @@ stages:
       md5: 69fab69cfee1ea64af51fa0e6e92098e
       size: 68102
   launch_timing_decoder_pilot04:
-    cmd: ../../.venv/bin/python
-      model_evaluation/launch_timing_decoder_pilot04.py --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing_decoder_pilot04.py
+      --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -6662,9 +6620,8 @@ stages:
       md5: 23c7e3ef6c8a5d39e63017e23cf8267e
       size: 545
   verify_timing_capacity_equivalence05:
-    cmd: ../../.venv/bin/python
-      model_evaluation/verify_timing_capacity_equivalence.py --pilot 05 --zone
-      us-east4-a --batch-region us-east4 --subnet fds-timing-east4
+    cmd: ../../.venv/bin/python model_evaluation/verify_timing_capacity_equivalence.py
+      --pilot 05 --zone us-east4-a --batch-region us-east4 --subnet fds-timing-east4
     deps:
     - path: data/timing-decoder-pilot01
       hash: md5
@@ -6694,8 +6651,7 @@ stages:
       md5: 064ee9d9ccc5ae31d9b670ee87b8fc7b
       size: 815
   verify_timing_regional_price_bound:
-    cmd: ../../.venv/bin/python
-      model_evaluation/verify_timing_regional_price_bound.py
+    cmd: ../../.venv/bin/python model_evaluation/verify_timing_regional_price_bound.py
     deps:
     - path: model_evaluation/verify_timing_regional_price_bound.py
       hash: md5
@@ -6711,8 +6667,7 @@ stages:
       md5: 399f42be713d563db059cb6485e53a9c
       size: 14488
   prepare_timing_regional_network:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_timing_regional_network.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_timing_regional_network.py
     deps:
     - path: cloud.py
       hash: md5
@@ -6738,10 +6693,6 @@ stages:
       hash: md5
       md5: 62e93756ab187a7bdab2c8b94d1e80f7
       size: 2867
-    - path: results/canonical-pilot03-price-bound.json
-      hash: md5
-      md5: 77bb87563331738103e9744a182c709e
-      size: 14487
     - path: results/timing-decoder-pilot05-price-bound.json
       hash: md5
       md5: 399f42be713d563db059cb6485e53a9c
@@ -6756,8 +6707,7 @@ stages:
       md5: 769f2360c6d2fe4f16829e4692f17317
       size: 702
   collect_timing_decoder_pilot04:
-    cmd: ../../.venv/bin/python
-      model_evaluation/collect_timing_decoder_pilot04.py
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing_decoder_pilot04.py
     deps:
     - path: cloud.py
       hash: md5
@@ -6806,8 +6756,7 @@ stages:
       md5: 782e198f50922b0adfd73107f61bfde1
       size: 478
   reconcile_unallocated_timing04:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_unallocated_timing04.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_timing04.py
     deps:
     - path: cloud.py
       hash: md5
@@ -6831,8 +6780,8 @@ stages:
       md5: b204e0861a15d4292692be00c209c3cf
       size: 82794
   launch_timing_decoder_pilot05:
-    cmd: ../../.venv/bin/python
-      model_evaluation/launch_timing_decoder_pilot05.py --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing_decoder_pilot05.py
+      --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -6847,10 +6796,6 @@ stages:
       hash: md5
       md5: 8b80f57a5d5b3638e3c3663e625fbed1
       size: 7495
-    - path: results/timing-cost-bounds-preflight.json
-      hash: md5
-      md5: b5b3ad9e0c900fc762b0e49d158a87ef
-      size: 560
     - path: results/timing-decoder-pilot04-cost-reconciled.json
       hash: md5
       md5: b204e0861a15d4292692be00c209c3cf
@@ -6881,8 +6826,7 @@ stages:
       md5: fdfa33ba64f08b9c5fd8b5e4e4c1651f
       size: 333
   collect_timing_decoder_pilot05:
-    cmd: ../../.venv/bin/python
-      model_evaluation/collect_timing_decoder_pilot05.py
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing_decoder_pilot05.py
     deps:
     - path: cloud.py
       hash: md5
@@ -6931,8 +6875,7 @@ stages:
       md5: dc4bee854373c590b71cf2e7c07048db
       size: 478
   reconcile_timing_decoder_pilot05:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_timing_decoder_pilot05.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_timing_decoder_pilot05.py
     deps:
     - path: cloud.py
       hash: md5
@@ -6956,8 +6899,7 @@ stages:
       md5: 8454f41f5fca5c7c284ec656411ab5fb
       size: 471
   validate_timing_restore_repair:
-    cmd: ../../.venv/bin/python
-      model_evaluation/validate_timing_restore_repair.py
+    cmd: ../../.venv/bin/python model_evaluation/validate_timing_restore_repair.py
     deps:
     - path: data/timing-decoder-pilot05
       hash: md5
@@ -7137,8 +7079,8 @@ stages:
       md5: 167518fe00ab2e9c5e1429d56e5e9e21
       size: 545
   verify_timing_regional_price_bound06:
-    cmd: ../../.venv/bin/python
-      model_evaluation/verify_timing_regional_price_bound.py --pilot 06
+    cmd: ../../.venv/bin/python model_evaluation/verify_timing_regional_price_bound.py
+      --pilot 06
     deps:
     - path: model_evaluation/verify_timing_regional_price_bound.py
       hash: md5
@@ -7154,9 +7096,8 @@ stages:
       md5: 68711818ca0f9d771a4b31d7499d7f32
       size: 14488
   verify_timing_capacity_equivalence06:
-    cmd: ../../.venv/bin/python
-      model_evaluation/verify_timing_capacity_equivalence.py --pilot 06 --zone
-      us-east4-a --batch-region us-east4 --subnet fds-timing-east4
+    cmd: ../../.venv/bin/python model_evaluation/verify_timing_capacity_equivalence.py
+      --pilot 06 --zone us-east4-a --batch-region us-east4 --subnet fds-timing-east4
       --worker-repair
     deps:
     - path: data/timing-decoder-pilot01
@@ -7191,8 +7132,8 @@ stages:
       md5: 8c551b0584e6e3c6e8aefc210e7b6d48
       size: 916
   launch_timing_decoder_pilot06:
-    cmd: ../../.venv/bin/python
-      model_evaluation/launch_timing_decoder_pilot06.py --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_timing_decoder_pilot06.py
+      --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -7219,10 +7160,6 @@ stages:
       hash: md5
       md5: dc4bee854373c590b71cf2e7c07048db
       size: 478
-    - path: results/timing-decoder-pilot06-capacity-equivalence.json
-      hash: md5
-      md5: 8c551b0584e6e3c6e8aefc210e7b6d48
-      size: 916
     - path: results/timing-decoder-pilot06-offline-preflight.json
       hash: md5
       md5: 167518fe00ab2e9c5e1429d56e5e9e21
@@ -7235,10 +7172,6 @@ stages:
       hash: md5
       md5: 5a6d504044648f3980912a1850b74993
       size: 1082
-    - path: results/timing-restore-repair-preflight.json
-      hash: md5
-      md5: f26b923811a6c54af545cf2c1bf2b6ba
-      size: 1253
     outs:
     - path: results/timing-decoder-pilot06-execution.json
       hash: md5
@@ -7297,8 +7230,7 @@ stages:
       md5: 79fcf946caa592fe5fa8c366a1572bd6
       size: 4165
   amend_timing06_infrastructure_allowance:
-    cmd: ../../.venv/bin/python
-      model_evaluation/amend_timing06_infrastructure_allowance.py
+    cmd: ../../.venv/bin/python model_evaluation/amend_timing06_infrastructure_allowance.py
     deps:
     - path: cloud.py
       hash: md5
@@ -7323,8 +7255,7 @@ stages:
       md5: 1f4def627686d088d2c57483e3a3ebac
       size: 1323
   monitor_timing_decoder_pilot06:
-    cmd: ../../.venv/bin/python
-      model_evaluation/monitor_timing_decoder_pilot06.py
+    cmd: ../../.venv/bin/python model_evaluation/monitor_timing_decoder_pilot06.py
     deps:
     - path: cloud.py
       hash: md5
@@ -7348,9 +7279,8 @@ stages:
       md5: 986de2d8e2e0e2f61692e76238ab219d
       size: 21000
   observe_timing_infrastructure06:
-    cmd: ../../.venv/bin/python
-      model_evaluation/observe_timing_infrastructure.py --pilot 06
-      --batch-region us-east4
+    cmd: ../../.venv/bin/python model_evaluation/observe_timing_infrastructure.py
+      --pilot 06 --batch-region us-east4
     deps:
     - path: cloud.py
       hash: md5
@@ -7370,8 +7300,7 @@ stages:
       md5: 8cfceb4cc0965102c752093a92d9a2d3
       size: 76418
   collect_timing_decoder_pilot06:
-    cmd: ../../.venv/bin/python
-      model_evaluation/collect_timing_decoder_pilot06.py
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing_decoder_pilot06.py
     deps:
     - path: cloud.py
       hash: md5
@@ -7420,8 +7349,7 @@ stages:
       md5: 6f9ca976df894445a30612e7a0e22d9d
       size: 478
   analyze_timing_decoder_pilot06:
-    cmd: ../../.venv/bin/python
-      model_evaluation/analyze_timing_decoder_pilot06.py
+    cmd: ../../.venv/bin/python model_evaluation/analyze_timing_decoder_pilot06.py
     deps:
     - path: cloud.py
       hash: md5
@@ -7455,8 +7383,7 @@ stages:
       md5: 33b9a5e3d9f118361182b931067de350
       size: 27467
   reconcile_timing_decoder_pilot06:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_timing_decoder_pilot06.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_timing_decoder_pilot06.py
     deps:
     - path: cloud.py
       hash: md5
@@ -7506,8 +7433,7 @@ stages:
       md5: 501804d13b0a28dc980c2245dbbe33b5
       size: 19434
   prepare_guard_matched_protocol:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_guard_matched_protocol.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_guard_matched_protocol.py
     deps:
     - path: data/timing-candidate
       hash: md5
@@ -7537,8 +7463,7 @@ stages:
       md5: 65af27d972679476d329ccd5fc1a843c
       size: 12763
   validate_guard_matched_objective:
-    cmd: ../../.venv/bin/python
-      model_evaluation/validate_guard_matched_objective.py
+    cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_objective.py
     deps:
     - path: data/timing-decoder-pilot06
       hash: md5
@@ -7774,8 +7699,7 @@ stages:
       md5: 6254f2146f3174b763e3272bdaeab128
       size: 628
   verify_guard_matched_price_bound:
-    cmd: ../../.venv/bin/python
-      model_evaluation/verify_guard_matched_price_bound.py
+    cmd: ../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound.py
     deps:
     - path: model_evaluation/verify_guard_matched_price_bound.py
       hash: md5
@@ -7791,8 +7715,7 @@ stages:
       md5: 2afaf1f272d05a9499f84755656cea63
       size: 14487
   launch_guard_matched_pilot01:
-    cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot01.py
-      --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot01.py --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -7841,8 +7764,7 @@ stages:
       md5: 125f54c17fcff9c942232cff59ec441e
       size: 337
   collect_guard_matched_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/collect_guard_matched_pilot01.py
+    cmd: ../../.venv/bin/python model_evaluation/collect_guard_matched_pilot01.py
     deps:
     - path: cloud.py
       hash: md5
@@ -7891,8 +7813,7 @@ stages:
       md5: 4b44e46759aa43fa9b1acc98a1beb8b0
       size: 476
   analyze_guard_matched_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/analyze_guard_matched_pilot01.py
+    cmd: ../../.venv/bin/python model_evaluation/analyze_guard_matched_pilot01.py
     deps:
     - path: cloud.py
       hash: md5
@@ -7926,8 +7847,7 @@ stages:
       md5: 09c8b0f157bc1c7e67869c4c48661899
       size: 27516
   reconcile_guard_matched_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_guard_matched_pilot01.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_guard_matched_pilot01.py
     deps:
     - path: cloud.py
       hash: md5
@@ -7951,8 +7871,7 @@ stages:
       md5: d45191482d332ec211f02e67ae9d3b70
       size: 461
   monitor_guard_matched_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/monitor_guard_matched_pilot01.py
+    cmd: ../../.venv/bin/python model_evaluation/monitor_guard_matched_pilot01.py
     deps:
     - path: cloud.py
       hash: md5
@@ -8002,8 +7921,7 @@ stages:
       md5: 03efccb340a212ae2a266bd9f35cedfd
       size: 19457
   audit_guard_matched_trajectory:
-    cmd: ../../.venv/bin/python
-      model_evaluation/audit_guard_matched_trajectory.py
+    cmd: ../../.venv/bin/python model_evaluation/audit_guard_matched_trajectory.py
     deps:
     - path: data/guard-matched-pilot01
       hash: md5
@@ -8029,8 +7947,7 @@ stages:
       md5: 053c6057570b242798155ea3170b5a6c
       size: 3245
   prepare_guard_matched_extended_plan:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_guard_matched_extended_plan.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_guard_matched_extended_plan.py
     deps:
     - path: data/guard-matched-pilot01
       hash: md5
@@ -8059,8 +7976,7 @@ stages:
       md5: 3c3df02e6370f6eef735b3b1d3848e7d
       size: 12203
   verify_guard_matched_price_bound02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/verify_guard_matched_price_bound02.py
+    cmd: ../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound02.py
     deps:
     - path: model_evaluation/verify_guard_matched_price_bound02.py
       hash: md5
@@ -8076,8 +7992,7 @@ stages:
       md5: eea1269deaa9cc1d4b4ddbf9b9ea4062
       size: 14487
   prepare_guard_matched_trial02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_guard_matched_trial02.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_guard_matched_trial02.py
     deps:
     - path: data/gas-shape-pilot01
       hash: md5
@@ -8178,8 +8093,7 @@ stages:
       md5: 319d2f57be7894235938e4bc3d53949e
       size: 2633
   validate_guard_matched_trial02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/validate_guard_matched_trial02.py
+    cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_trial02.py
     deps:
     - path: data/guard-matched-pilot02
       hash: md5
@@ -8240,8 +8154,7 @@ stages:
       md5: 9e65f99c8630811eb650db954ae6ee39
       size: 628
   launch_guard_matched_pilot02:
-    cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot02.py
-      --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot02.py --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -8290,9 +8203,8 @@ stages:
       md5: 47f65ee352e8213eab00a10fc116dd87
       size: 337
   observe_guard_matched_infrastructure02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/observe_guard_matched_infrastructure02.py --batch-region
-      us-east4
+    cmd: ../../.venv/bin/python model_evaluation/observe_guard_matched_infrastructure02.py
+      --batch-region us-east4
     deps:
     - path: cloud.py
       hash: md5
@@ -8312,8 +8224,7 @@ stages:
       md5: df256419cf42664eba98d9171d9ad755
       size: 78086
   collect_guard_matched_pilot02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/collect_guard_matched_pilot02.py
+    cmd: ../../.venv/bin/python model_evaluation/collect_guard_matched_pilot02.py
     deps:
     - path: cloud.py
       hash: md5
@@ -8362,8 +8273,7 @@ stages:
       md5: d8d45c7e82e926e136a20ee266105aa3
       size: 476
   reconcile_guard_matched_pilot02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_unallocated_guard_matched02.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_guard_matched02.py
     deps:
     - path: cloud.py
       hash: md5
@@ -8382,10 +8292,6 @@ stages:
       hash: md5
       md5: 6ca64f572121391010a3bb9344cc15ad
       size: 189
-    - path: results/guard-matched-pilot02-early-capacity-stop.json
-      hash: md5
-      md5: 89ba55eb110be61b44e38a3e61c92644
-      size: 6646
     - path: results/guard-matched-pilot02-permission-removed.json
       hash: md5
       md5: d8d45c7e82e926e136a20ee266105aa3
@@ -8400,8 +8306,7 @@ stages:
       md5: 17cc5f9369309e179fbc093c363033a7
       size: 82544
   stop_guard_matched_capacity02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/stop_guard_matched_capacity02.py
+    cmd: ../../.venv/bin/python model_evaluation/stop_guard_matched_capacity02.py
     deps:
     - path: cloud.py
       hash: md5
@@ -8425,8 +8330,7 @@ stages:
       md5: 89ba55eb110be61b44e38a3e61c92644
       size: 6646
   prepare_guard_matched_placement03_plan:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_guard_matched_placement03_plan.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_guard_matched_placement03_plan.py
     deps:
     - path: data/guard-matched-pilot02
       hash: md5
@@ -8455,8 +8359,7 @@ stages:
       md5: 9f280f23b25ee30b6f563a5340f643a1
       size: 12434
   verify_guard_matched_price_bound03:
-    cmd: ../../.venv/bin/python
-      model_evaluation/verify_guard_matched_price_bound03.py
+    cmd: ../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound03.py
     deps:
     - path: model_evaluation/verify_guard_matched_price_bound03.py
       hash: md5
@@ -8472,8 +8375,7 @@ stages:
       md5: a548358ffc7140dcbff40a516f3fee9c
       size: 14487
   prepare_guard_matched_trial03:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_guard_matched_trial03.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_guard_matched_trial03.py
     deps:
     - path: data/gas-shape-pilot01
       hash: md5
@@ -8574,8 +8476,7 @@ stages:
       md5: cb41f3e14e46fedcee3cb5976bc4f0dd
       size: 2633
   validate_guard_matched_trial03:
-    cmd: ../../.venv/bin/python
-      model_evaluation/validate_guard_matched_trial03.py
+    cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_trial03.py
     deps:
     - path: data/guard-matched-pilot03
       hash: md5
@@ -8636,8 +8537,7 @@ stages:
       md5: 9e998267b26d5b2c460c38f3fdcf9dda
       size: 628
   launch_guard_matched_pilot03:
-    cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot03.py
-      --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot03.py --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -8686,8 +8586,7 @@ stages:
       md5: 631f073025c1636fa2c7e365e8e3c6d1
       size: 337
   collect_guard_matched_pilot03:
-    cmd: ../../.venv/bin/python
-      model_evaluation/collect_guard_matched_pilot03.py
+    cmd: ../../.venv/bin/python model_evaluation/collect_guard_matched_pilot03.py
     deps:
     - path: cloud.py
       hash: md5
@@ -8736,8 +8635,7 @@ stages:
       md5: dfe86763800ec8d561cdf32450e565f1
       size: 476
   reconcile_guard_matched_pilot03:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_unallocated_guard_matched03.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_guard_matched03.py
     deps:
     - path: cloud.py
       hash: md5
@@ -8770,9 +8668,8 @@ stages:
       md5: 91b39c816611efa1d17b7d4dd428f2ed
       size: 6610
   observe_guard_matched_infrastructure03:
-    cmd: ../../.venv/bin/python
-      model_evaluation/observe_guard_matched_infrastructure03.py --batch-region
-      us-east4
+    cmd: ../../.venv/bin/python model_evaluation/observe_guard_matched_infrastructure03.py
+      --batch-region us-east4
     deps:
     - path: cloud.py
       hash: md5
@@ -8796,8 +8693,7 @@ stages:
       md5: 378e49f69b6c080d2e0f5f28a8f1f80d
       size: 1168
   prepare_guard_matched_placement04_plan:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_guard_matched_placement04_plan.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_guard_matched_placement04_plan.py
     deps:
     - path: data/guard-matched-pilot02
       hash: md5
@@ -8835,8 +8731,7 @@ stages:
       md5: dbb28c1fc44d1a2cab80b4b491a933f5
       size: 12649
   verify_guard_matched_price_bound04:
-    cmd: ../../.venv/bin/python
-      model_evaluation/verify_guard_matched_price_bound04.py
+    cmd: ../../.venv/bin/python model_evaluation/verify_guard_matched_price_bound04.py
     deps:
     - path: model_evaluation/verify_guard_matched_price_bound04.py
       hash: md5
@@ -8852,8 +8747,7 @@ stages:
       md5: a72fd737befba4957291d867615179ac
       size: 14487
   prepare_guard_matched_trial04:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_guard_matched_trial04.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_guard_matched_trial04.py
     deps:
     - path: data/gas-shape-pilot01
       hash: md5
@@ -8954,8 +8848,7 @@ stages:
       md5: 0f3e4738a2a17580de027454ce8e6c58
       size: 2633
   validate_guard_matched_trial04:
-    cmd: ../../.venv/bin/python
-      model_evaluation/validate_guard_matched_trial04.py
+    cmd: ../../.venv/bin/python model_evaluation/validate_guard_matched_trial04.py
     deps:
     - path: data/guard-matched-pilot04
       hash: md5
@@ -9016,8 +8909,7 @@ stages:
       md5: 891e53758796ff72aa3bf97e0c65034f
       size: 628
   launch_guard_matched_pilot04:
-    cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot04.py
-      --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_guard_matched_pilot04.py --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -9066,8 +8958,7 @@ stages:
       md5: d8beca0e72b5c84413521d604e6398e8
       size: 337
   audit_guard_matched_fit_horizons:
-    cmd: ../../.venv/bin/python
-      model_evaluation/audit_guard_matched_fit_horizons.py
+    cmd: ../../.venv/bin/python model_evaluation/audit_guard_matched_fit_horizons.py
     deps:
     - path: data/exposure-pilot02
       hash: md5
@@ -9120,8 +9011,7 @@ stages:
       md5: 59426143a70bcf71a45ffc256277b1f2
       size: 50962
   collect_guard_matched_pilot04:
-    cmd: ../../.venv/bin/python
-      model_evaluation/collect_guard_matched_pilot04.py
+    cmd: ../../.venv/bin/python model_evaluation/collect_guard_matched_pilot04.py
     deps:
     - path: cloud.py
       hash: md5
@@ -9170,8 +9060,7 @@ stages:
       md5: 5b84116c55d8f30b33f5c30ceaf3775a
       size: 476
   reconcile_guard_matched_pilot04:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_unallocated_guard_matched04.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_guard_matched04.py
     deps:
     - path: cloud.py
       hash: md5
@@ -9190,10 +9079,6 @@ stages:
       hash: md5
       md5: 6ca64f572121391010a3bb9344cc15ad
       size: 189
-    - path: results/guard-matched-pilot04-early-scope-stop.json
-      hash: md5
-      md5: 5cc5a8fa482aacb77fc77f21c5ad9f49
-      size: 6748
     - path: results/guard-matched-pilot04-permission-removed.json
       hash: md5
       md5: 5b84116c55d8f30b33f5c30ceaf3775a
@@ -9232,8 +9117,7 @@ stages:
       md5: 5cc5a8fa482aacb77fc77f21c5ad9f49
       size: 6748
   diagnose_canonical_cache_replay:
-    cmd: ../../.venv/bin/python
-      model_evaluation/diagnose_canonical_cache_replay.py
+    cmd: ../../.venv/bin/python model_evaluation/diagnose_canonical_cache_replay.py
     deps:
     - path: data/exposure-pilot02
       hash: md5
@@ -9264,8 +9148,7 @@ stages:
       md5: b3319fda641646bbb3008e47e31835d0
       size: 2236
   archive_failed_canonical_cache:
-    cmd: ../../.venv/bin/python
-      model_evaluation/archive_failed_canonical_cache.py
+    cmd: ../../.venv/bin/python model_evaluation/archive_failed_canonical_cache.py
     deps:
     - path: model_evaluation/archive_failed_canonical_cache.py
       hash: md5
@@ -9286,8 +9169,7 @@ stages:
       md5: e391ba76dfc0573f233e2a0af079d2b3
       size: 455
   prepare_canonical_feature_cache:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_canonical_feature_cache.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_canonical_feature_cache.py
     deps:
     - path: data/exposure-pilot02
       hash: md5
@@ -9331,8 +9213,7 @@ stages:
       md5: 10cb582d0f9acfc0704ec03a1477ccca
       size: 3668
   validate_canonical_feature_cache:
-    cmd: ../../.venv/bin/python
-      model_evaluation/validate_canonical_feature_cache.py
+    cmd: ../../.venv/bin/python model_evaluation/validate_canonical_feature_cache.py
     deps:
     - path: data/canonical-feature-cache
       hash: md5
@@ -9745,8 +9626,7 @@ stages:
       md5: b5745c05f11a403129822c13c0ccef77
       size: 743
   validate_inference_verification:
-    cmd: ../../.venv/bin/python
-      model_evaluation/validate_inference_verification.py
+    cmd: ../../.venv/bin/python model_evaluation/validate_inference_verification.py
     deps:
     - path: data/canonical-feature-cache
       hash: md5
@@ -9802,8 +9682,7 @@ stages:
       md5: d8f937126c8682555287e61ba4f7061f
       size: 1030
   validate_accepted_model_guard:
-    cmd: ../../.venv/bin/python
-      model_evaluation/validate_accepted_model_guard.py
+    cmd: ../../.venv/bin/python model_evaluation/validate_accepted_model_guard.py
     deps:
     - path: model_evaluation/accepted_model_guard.py
       hash: md5
@@ -9823,8 +9702,7 @@ stages:
       md5: 3e0315df21f3326017d703ea7a8699f6
       size: 754
   prepare_final_inference_protocol:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_final_inference_protocol.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_final_inference_protocol.py
     deps:
     - path: data/canonical-pilot03
       hash: md5
@@ -9894,8 +9772,7 @@ stages:
       md5: a897b9514120f08c74f58177a727acbf
       size: 10721
   launch_canonical_pilot01:
-    cmd: ../../.venv/bin/python model_evaluation/launch_canonical_pilot01.py
-      --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_canonical_pilot01.py --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -10013,8 +9890,7 @@ stages:
       md5: 30f1d47dd4bc3d44e3889637962bd168
       size: 468
   reconcile_canonical_pilot01:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_unallocated_canonical01.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_canonical01.py
     deps:
     - path: cloud.py
       hash: md5
@@ -10081,8 +9957,7 @@ stages:
       md5: 8cf5263e12c4cecd14caef88bc83e03c
       size: 3665
   verify_canonical_price_bound02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/verify_canonical_price_bound02.py
+    cmd: ../../.venv/bin/python model_evaluation/verify_canonical_price_bound02.py
     deps:
     - path: model_evaluation/verify_canonical_price_bound02.py
       hash: md5
@@ -10180,8 +10055,7 @@ stages:
       md5: 80ce34711ce66c7a329bbcc015a1fbea
       size: 829
   launch_canonical_pilot02:
-    cmd: ../../.venv/bin/python model_evaluation/launch_canonical_pilot02.py
-      --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_canonical_pilot02.py --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -10311,8 +10185,7 @@ stages:
       md5: f9cf4a15f12bc5bf43c7fc319d58553e
       size: 468
   reconcile_canonical_pilot02:
-    cmd: ../../.venv/bin/python
-      model_evaluation/reconcile_unallocated_canonical02.py
+    cmd: ../../.venv/bin/python model_evaluation/reconcile_unallocated_canonical02.py
     deps:
     - path: cloud.py
       hash: md5
@@ -10361,8 +10234,7 @@ stages:
       md5: 565c0c52e1c3ae7c2492e71f6bf662af
       size: 6108
   prepare_canonical_west4_network:
-    cmd: ../../.venv/bin/python
-      model_evaluation/prepare_canonical_west4_network.py
+    cmd: ../../.venv/bin/python model_evaluation/prepare_canonical_west4_network.py
     deps:
     - path: cloud.py
       hash: md5
@@ -10428,8 +10300,7 @@ stages:
       md5: a443bfba67181287661ffabad07b0e2d
       size: 3665
   verify_canonical_price_bound03:
-    cmd: ../../.venv/bin/python
-      model_evaluation/verify_canonical_price_bound03.py
+    cmd: ../../.venv/bin/python model_evaluation/verify_canonical_price_bound03.py
     deps:
     - path: model_evaluation/verify_canonical_price_bound03.py
       hash: md5
@@ -10527,8 +10398,7 @@ stages:
       md5: c4f69ff8cdb12747039d790f960e1140
       size: 829
   launch_canonical_pilot03:
-    cmd: ../../.venv/bin/python model_evaluation/launch_canonical_pilot03.py
-      --execute
+    cmd: ../../.venv/bin/python model_evaluation/launch_canonical_pilot03.py --execute
     deps:
     - path: cloud.py
       hash: md5
@@ -10662,8 +10532,7 @@ stages:
       md5: 49e2795a6dab0007a0d8417fadc78e56
       size: 41100
   validate_canonical_case_review:
-    cmd: ../../.venv/bin/python
-      model_evaluation/validate_canonical_case_review.py
+    cmd: ../../.venv/bin/python model_evaluation/validate_canonical_case_review.py
     deps:
     - path: model_evaluation/canonical_case_review.py
       hash: md5
@@ -10848,8 +10717,7 @@ stages:
       hash: md5
       md5: 19d4aefdea3e2d9246d66453112fe269
       size: 1276042
-    - path:
-        ../35_surrogate_diagnostics/simple_scorecard/data/scorecard/values.json
+    - path: ../35_surrogate_diagnostics/simple_scorecard/data/scorecard/values.json
       hash: md5
       md5: c1516a190c7af1e1477d53d6731f48bc
       size: 9792
@@ -10903,3 +10771,33 @@ stages:
       md5: e743baefc5b432126101794d7d0a34b8.dir
       size: 128182521
       nfiles: 11
+  collect_model_timing02:
+    cmd: ../../.venv/bin/python model_evaluation/collect_timing02.py
+    outs:
+    - path: data/model-timing02-results
+      hash: md5
+      md5: f5bf9091e78a7c7c0c352b56adf1ea53.dir
+      size: 5878
+      nfiles: 2
+  cloud_dispatch:
+    cmd: ../../.venv/bin/python dispatch.py
+    outs:
+    - path: data/summaries
+      hash: md5
+      md5: d9182b1fb92056e0a5569f3f8f1dcae7.dir
+      size: 3298299
+      nfiles: 343
+  monitor_canonical_pilot01:
+    cmd: ../../.venv/bin/python model_evaluation/monitor_canonical_pilot01.py
+    outs:
+    - path: results/canonical-pilot01-progress.json
+      hash: md5
+      md5: b7d086f03515e08c7dd41c14b6c5d153
+      size: 119
+  monitor_canonical_pilot02:
+    cmd: ../../.venv/bin/python model_evaluation/monitor_canonical_pilot02.py
+    outs:
+    - path: results/canonical-pilot02-progress.json
+      hash: md5
+      md5: e80f82e0af2e41d204c0a54c68dc3f40
+      size: 301

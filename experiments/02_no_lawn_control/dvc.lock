@@ -1,10 +1,9 @@
 schema: '2.0'
 stages:
   solve:
-    cmd: .venv/bin/python scripts/run_fds.py 
-      experiments/02_no_lawn_control/02_no_lawn_control.fds:experiments/02_no_lawn_control/data
-      --threads 4 && .venv/bin/python scripts/strip_terrain.py 
-      experiments/02_no_lawn_control/data 02_no_lawn_control
+    cmd: .venv/bin/python scripts/run_fds.py experiments/02_no_lawn_control/02_no_lawn_control.fds:experiments/02_no_lawn_control/data
+      --threads 4 && .venv/bin/python scripts/strip_terrain.py experiments/02_no_lawn_control/data
+      02_no_lawn_control
     deps:
     - path: experiments/02_no_lawn_control/02_no_lawn_control.fds
       hash: md5
@@ -31,10 +30,6 @@ stages:
       hash: md5
       md5: 3a82669281d40f826c65e284aea103e8
       size: 643746
-    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.s3d
-      hash: md5
-      md5: 76153c4708ae126b54b3f0146aeff934
-      size: 5529216
     - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.sf
       hash: md5
       md5: 06b784781e91f90635c2f4b81cec156f
@@ -43,21 +38,24 @@ stages:
       hash: md5
       md5: f97eed24c6b67315dd6c1aea344644fb
       size: 643746
-    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_2.s3d
-      hash: md5
-      md5: b3c9fc1d1686e856e39db44db34780bd
-      size: 1401517
     - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_2.sf
       hash: md5
       md5: a4ffbc92b793bf308779559b8b7ff868
       size: 131418
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.s3d
+      hash: md5
+      md5: 76153c4708ae126b54b3f0146aeff934
+      size: 5529216
+    - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_2.s3d
+      hash: md5
+      md5: b3c9fc1d1686e856e39db44db34780bd
+      size: 1401517
     - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_3.s3d
       hash: md5
       md5: 9579197953d54cefb98eaf188e7a5e24
       size: 3791147
   boundary:
-    cmd: .venv/bin/python scripts/surface_temp.py 
-      experiments/02_no_lawn_control/render.json
+    cmd: .venv/bin/python scripts/surface_temp.py experiments/02_no_lawn_control/render.json
     deps:
     - path: experiments/02_no_lawn_control/data/02_no_lawn_control_1_1.bf
       hash: md5
@@ -85,8 +83,7 @@ stages:
       md5: 42a442410b4c27b87d8807a4f2ff1139
       size: 952
   render:
-    cmd: .venv/bin/python scripts/render_animation.py 
-      experiments/02_no_lawn_control/render.json
+    cmd: .venv/bin/python scripts/render_animation.py experiments/02_no_lawn_control/render.json
     deps:
     - path: experiments/02_no_lawn_control/data/02_no_lawn_control.smv
       hash: md5

@@ -129,12 +129,22 @@ created or updated data artifacts, including models, checkpoints and training
 datasets, are DVC controlled and DVC pushed. Preserve resumable checkpoints.
 Stage only relevant changes; do not sweep unrelated work into a commit.
 
-For this repository, pushing to the local DVC `mirror` is staging, not completion
-of an off-machine upload. Sync the authorized artifact objects to the configured
-public Hugging Face bucket using the scoped export/upload workflow documented in
-`docs/storage.md`, and verify remote objects and readback. The user's public
-model and training-data authorization covers the whole project (2026-10-30).
-Never blindly sync the entire local mirror: it also contains private evidence.
+For this repository, when the user says **“DVC push”**, use
+`python scripts/dvc_hf.py push` with the reviewed artifact plan. It uploads the
+original files directly to their DVC MD5 object paths in the configured public
+Hugging Face bucket, verifies every remote size and Xet hash, and anonymously
+reads back directory manifests. A local mirror copy is not a push.
+
+Prefer `dvc.yaml` → `dvc.lock` for pipeline outputs. Use
+`python scripts/dvc_hf.py commit path/to/dvc.yaml:stage` to adopt existing output
+bytes without running the stage or making a persistent cache copy. Historical
+artifacts and external/source inputs may use `.dvc` pointers through
+`python scripts/dvc_hf.py track PATH...`, per the user's explicit authorization
+(2026-11-01). Then push the generated plan and commit/push the metadata.
+Do not run ordinary `dvc push` against the HTTP remote or recreate a local
+mirror. Do not upload whole directories without a reviewed hash/object plan.
+The user's public scientific-artifact authorization covers the whole project.
+See `docs/storage.md` for limits and restoration checks.
 
 Never publish budgets, financial metadata, private keys or credentials. Keep
 private originals in private storage and use sanitized public exports where

@@ -6,8 +6,7 @@ stages:
     - source-catalogue.json
     outs:
     - data/catalogue.json
-    - data/audit.json:
-        cache: false
+    - data/audit.json: {}
   preview:
     cmd: ../../.venv/bin/python preview.py
     deps:

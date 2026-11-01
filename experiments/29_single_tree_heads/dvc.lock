@@ -124,8 +124,7 @@ stages:
       md5: 80f4d9e981ec546853cc4025312c3fdd
       size: 1447
   checks:
-    cmd: ../../.venv/bin/python checks.py && ../../.venv/bin/python
-      check_strength.py
+    cmd: ../../.venv/bin/python checks.py && ../../.venv/bin/python check_strength.py
     deps:
     - path: check_strength.py
       hash: md5
@@ -165,11 +164,10 @@ stages:
       md5: d43c38cc8d3422b14046bd2f588f3aa2
       size: 312
   evaluate:
-    cmd: ../../.venv/bin/python evaluate.py previous && ../../.venv/bin/python
-      evaluate.py bound_only && ../../.venv/bin/python evaluate.py bounded &&
-      ../../.venv/bin/python evaluate.py heads && ../../.venv/bin/python
-      evaluate.py interpolation && ../../.venv/bin/python evaluate.py
-      strength_only
+    cmd: ../../.venv/bin/python evaluate.py previous && ../../.venv/bin/python evaluate.py
+      bound_only && ../../.venv/bin/python evaluate.py bounded && ../../.venv/bin/python
+      evaluate.py heads && ../../.venv/bin/python evaluate.py interpolation && ../../.venv/bin/python
+      evaluate.py strength_only
     deps:
     - path: cases.json
       hash: md5
@@ -234,3 +232,10 @@ stages:
       hash: md5
       md5: 263830b0ed99012970988899b7abfe55
       size: 569994
+  heads:
+    cmd: ../../.venv/bin/python train.py heads --steps 3200
+    outs:
+    - path: data/models/heads.pt
+      hash: md5
+      md5: c6f736b12e16a8b865e54dea15fc0f47
+      size: 731226
