@@ -18,7 +18,8 @@ flags such as `stopped_by_budget` are retained; they are not spending ledgers.
 Installed dependencies, caches, transient process files and prior duplicate
 exports are not independent project artifacts and are omitted. Distinct older
 model or numerical dataset versions are retained under `historical-model-archive`. Git-tracked
-engine-area source is included. All originals remain in place. The snapshot is
+engine-area source, local case outputs under `FDS/cases`, ad-hoc `FDS/runs`,
+and the custom no-front helper are included. All originals remain in place. The snapshot is
 an additional preservation record, not a replacement for experiment pipelines.
 
 `audit.py` creates the inventory and sanitized snapshot. `track.py` adopts it in

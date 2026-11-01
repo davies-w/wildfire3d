@@ -5,6 +5,17 @@ R=Path(__file__).resolve().parent;ROOT=R.parents[1]
 # Reuse only definitions, never rerun the full scan on import.
 ns={'__file__':str(R/'audit.py')};exec((R/'audit.py').read_text().split('paths=[]')[0],ns)
 D=R/'data/public';manifest=json.loads((D/'manifest.json').read_text());rows=manifest['files'];excluded=manifest['excluded'];kept=[]
+# Installed engine/dependency trees are excluded, but project case outputs
+# and ad-hoc scientific runs in the engine working area are artifacts too.
+ns['rows']=rows;ns['exclusions']=excluded;known={v['path'] for v in rows};extra=0
+for base in [ROOT/'FDS/cases',ROOT/'FDS/runs']:
+ for source in sorted(base.rglob('*')):
+  if source.is_file():
+   name=str(source.relative_to(ROOT))
+   if name not in known:ns['process'](source,name);known.add(name);extra+=1
+for name in ['FDS/nofront.c','FDS/nofront.dylib','FDS/arm64_build.log']:
+ if (ROOT/name).is_file() and name not in known:ns['process'](ROOT/name,name);extra+=1
+manifest['engine_working_area_files']=extra
 secret=ns['SECRET'];ledger=re.compile(r'(?:^|[-_])(?:budget|billing|invoice|spending)(?:[-_.]|$)',re.I)
 for row in rows:
  p=D/row['path'];name=Path(row['path']).name;reason=None
