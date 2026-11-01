@@ -35,3 +35,9 @@ unredacted legacy metadata in the local mirror only. The public uploader is
 explicitly limited to the `snapshot` stage; it cannot select the private stage.
 Previously committed ledgers remain in older Git history: removing current
 tracking prevents future updates but does not rewrite published history.
+
+DVC control files named `.dvcignore` cannot occur literally inside a DVC output.
+The snapshot preserves their bytes as `.dvcignore.preserved`; each manifest row
+records the original `source` name for restoration. Original Git files are unchanged.
+Scientific file-hash references are retained even when names contain words such
+as `energy_budget`; this does not expose the referenced file's private contents.

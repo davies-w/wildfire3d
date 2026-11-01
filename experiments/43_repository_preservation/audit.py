@@ -18,7 +18,7 @@ TEXT={'.py','.sh','.md','.html','.js','.css','.txt','.yaml','.yml','.toml','.cfg
 rows=[];exclusions=[];memo={};cache=ROOT/'.dvc/cache/files/md5';mirror=ROOT/'FDS/hf_dvc_mirror/files/md5'
 tracked=set(subprocess.check_output(['git','ls-files'],cwd=ROOT,text=True).splitlines())
 def redact(x):
- if isinstance(x,dict):return {k:redact(v) for k,v in x.items() if (k in {'stopped_by_budget','energy_budget','energy_budget_error'} or '/' in k or Path(k).suffix.lower() in {'.py','.json','.npz','.npy','.pt','.pth','.fds','.yaml','.yml'} or not FINANCE.search(k)) and k.lower() not in KEYS}
+ if isinstance(x,dict):return {k:redact(v) for k,v in x.items() if (k in {'stopped_by_budget','energy_budget','energy_budget_error'} or (Path(k).suffix.lower() in {'.py','.json','.npz','.npy','.pt','.pth','.fds','.yaml','.yml'} and isinstance(v,str) and re.fullmatch(r'(?:[0-9a-fA-F]{32}|[0-9a-fA-F]{40}|[0-9a-fA-F]{64})',v)) or not FINANCE.search(k)) and k.lower() not in KEYS}
  if isinstance(x,list):return [redact(v) for v in x]
  if isinstance(x,str) and (re.search(r'\$\s*\d|\d\s*USD|estimated.{0,30}(?:cost|spend)|(?:cost|spend|allowance).{0,30}\d',x,re.I)):return '[financial details omitted]'
  return x
