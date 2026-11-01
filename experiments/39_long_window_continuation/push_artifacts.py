@@ -1,14 +1,15 @@
 """Sync only this reviewed scientific input output; budgets/results excluded."""
+import shutil
 from pathlib import Path
 import hashlib,json,os,subprocess,tempfile,yaml,argparse
 from huggingface_hub import HfApi
 import hf_xet,requests
-R=Path(__file__).resolve().parent;ROOT=R.parents[1];mirror=ROOT/'FDS/hf_dvc_mirror/files/md5'
+R=Path(__file__).resolve().parent;ROOT=R.parents[1];cache=ROOT/'.dvc/cache/files/md5'
 parser=argparse.ArgumentParser();parser.add_argument('--stage',choices=['prepare_pool02','progress','collect','analysis','public','reports'],default='prepare_pool02');args=parser.parse_args()
-lock=yaml.safe_load((R/'dvc.lock').read_text());h=lock['stages'][args.stage]['outs'][0]['md5'];stage=Path(tempfile.mkdtemp(prefix='longwindow39-public-'));objects={}
+lock=yaml.safe_load((R/'dvc.lock').read_text());h=lock['stages'][args.stage]['outs'][0]['md5'];(ROOT/'.artifact-staging').mkdir(exist_ok=True);stage=Path(tempfile.mkdtemp(prefix='longwindow39-public-',dir=ROOT/'.artifact-staging'));objects={}
 def add(digest):
  if digest in objects:return
- p=mirror/digest[:2]/digest[2:];b=p.read_bytes();assert hashlib.md5(b).hexdigest()==digest.removesuffix('.dir')
+ p=cache/digest[:2]/digest[2:];b=p.read_bytes();assert hashlib.md5(b).hexdigest()==digest.removesuffix('.dir')
  dest=stage/'files/md5'/digest[:2]/digest[2:];dest.parent.mkdir(parents=True,exist_ok=True);os.link(p,dest);objects[digest]=dest
  if digest.endswith('.dir'):
   for e in json.loads(b):add(e['md5'])
@@ -24,3 +25,6 @@ url='https://huggingface.co/buckets/wdavies/dvc_storage/resolve/wildfire3d/files
 r=requests.get(url,timeout=90);r.raise_for_status();assert hashlib.md5(r.content).hexdigest()==h.removesuffix('.dir')
 proof=dict(passed=True,directory_md5=h,objects=len(objects),remote_hashes_verified=True,anonymous_directory_readback=True)
 (R/('public-artifact-verification02.json' if args.stage=='prepare_pool02' else 'public-'+args.stage+'-verification.json')).write_text(json.dumps(proof,indent=2)+'\n');print(proof)
+
+assert ROOT.resolve() in stage.resolve().parents
+shutil.rmtree(stage)

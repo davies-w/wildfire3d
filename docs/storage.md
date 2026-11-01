@@ -1,5 +1,35 @@
 # Storage: raw FDS output, DVC, and Hugging Face buckets
 
+## Current local-storage policy (2026-10-31)
+
+Keep original experiment data, simulation outputs, datasets, and recent models
+and checkpoints locally. The public Hugging Face archive remains the off-machine
+copy; budgets/financial records and credentials must never be uploaded there.
+
+The former persistent local `mirror` remote and redundant project-wide export
+folders have been removed after preservation checks. Current scoped upload
+helpers for experiments 39–43 and `scripts/push_public_models.py` read selected
+objects directly from `.dvc/cache/files/md5`. They create temporary hardlink
+staging under `.artifact-staging/` inside this repository and remove that staging
+only after a successful upload (and verification where implemented). Failed
+staging remains for diagnosis. Never upload the whole cache: it may contain
+private objects.
+
+The cache is disposable only after verifying remote preservation and retaining
+original workspace files without dependent symlinks. DVC recreates it as needed;
+`dvc commit`/`dvc fetch` may be required before subsequent uploads. Do not run old
+mirror-based tracking scripts unchanged: those document historical workflows.
+Experiment43's `track.py` now uses a temporary repository-local isolated checkout
+and adopts outputs without training or creating a persistent mirror.
+
+Experiment43's `data/private/storage-cleanup` retains manifests and historical or
+private cache objects not covered by the verified public snapshot. These remain
+local and are not public upload targets. Original simulation data and recent
+models were not removed. Hardlinks, APFS clones, and other retained references
+mean `du` totals do not predict actual disk space reclaimed.
+
+The remainder describes the historical storage setup and prior decisions.
+
 Simulation output is large, and it is **not** reproducible. FDS LES is chaotic:
 the same input at different thread counts diverges exponentially, ~2% by t=15–29 s.
 A re-run is a *different* run. So raw output has archival value — and a price.

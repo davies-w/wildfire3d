@@ -48,3 +48,20 @@ hash verification, and the directory passed anonymous readback on
 2026-10-31 (America/Los_Angeles). See `public-verification.json`. Local MD5 and
 SHA-256 checks also passed. The private local mirror was independently checked
 for all 833 objects representing 943 files.
+
+Local cleanup (2026-10-31): `data/public`, the older experiment38
+`project-model-archive`, `.dvc/cache`, and `FDS/hf_dvc_mirror` were selected for
+removal. All 180,150 retained files passed size, modification-time and inode
+checks before and after deletion; no retained symlink targeted those directories.
+The public manifest and older model-archive manifest remain under
+`data/private/storage-cleanup`. The cleanup retained 5,168 objects (26,476,787,978
+bytes) not covered by the verified public export, plus legacy run-cache metadata,
+rather than deleting potentially unique historical/private records. These are
+local-only. The cache temporarily re-created to record their DVC hashes is removed
+after tracking. No deletion is permitted outside this repository.
+
+The snapshot lock and remote verification record still address the uploaded
+public export; the missing local export is intentional. `track.py` now adopts
+outputs directly into cache without a mirror. Scoped public upload helpers use
+repository-local disposable staging. Older descriptions above record the
+preservation workflow that was used before cleanup.

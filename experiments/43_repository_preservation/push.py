@@ -1,4 +1,5 @@
 """Publish only the audited snapshot graph; verify every remote object."""
+import shutil
 from pathlib import Path
 import os,json,hashlib,tempfile,subprocess,yaml,requests
 from huggingface_hub import HfApi
@@ -15,7 +16,7 @@ for e in entries:
  objects[e['md5']]=cache/e['md5'][:2]/e['md5'][2:]
  if e['relpath']!='manifest.json':assert objects[e['md5']].stat().st_size==recorded[e['relpath']]['bytes']
 expected_sha={v['md5']:v['sha256'] for v in manifest['files']}
-stage=Path(tempfile.mkdtemp(prefix='repo43-public-'));api=HfApi();items=list(objects.items());verified=0;expected_remote={}
+(ROOT/'.artifact-staging').mkdir(exist_ok=True);stage=Path(tempfile.mkdtemp(prefix='repo43-public-',dir=ROOT/'.artifact-staging'));api=HfApi();items=list(objects.items());verified=0;expected_remote={}
 for start in range(0,len(items),250):
  batch=items[start:start+250];paths=['wildfire3d/files/md5/'+d[:2]+'/'+d[2:] for d,p in batch]
  remote={v.path:v for v in api.get_bucket_paths_info('wdavies/dvc_storage',paths,token=False)}
@@ -43,3 +44,6 @@ for start in range(0,len(items),250):
 response=requests.get('https://huggingface.co/buckets/wdavies/dvc_storage/resolve/wildfire3d/files/md5/'+h[:2]+'/'+h[2:],timeout=120);response.raise_for_status();assert hashlib.md5(response.content).hexdigest()==h.removesuffix('.dir')
 proof=dict(passed=True,checked_at_utc=datetime.now(timezone.utc).isoformat(),local_md5_and_sha256_verified=True,directory_md5=h,objects=len(items),files=len(entries),every_remote_hash_verified=True,anonymous_directory_readback=True)
 (R/'public-verification.json').write_text(json.dumps(proof,indent=2)+'\n');print(proof)
+
+assert ROOT.resolve() in stage.resolve().parents
+shutil.rmtree(stage)

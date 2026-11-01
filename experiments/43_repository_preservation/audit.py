@@ -13,7 +13,7 @@ PRIVATE=R/'results';PRIVATE.mkdir(exist_ok=True)
 SECRET=re.compile(rb'-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----|(?<![A-Za-z0-9])hf_[A-Za-z0-9]{25,}|AIza[A-Za-z0-9_-]{30,}|AKIA[A-Z0-9]{16}')
 FINANCE=re.compile(r'budget|billing|invoice|estimated_spend|estimated_compute|cost|allowance|reservation|reserved_usd|price|pricing|\busd\b',re.I)
 KEYS={'private_key','privatekey','client_secret','secret_access_key','aws_secret_access_key','access_token','refresh_token','password','api_key','authorization'}
-SKIP_DIRS={'.git','.dvc','.venv','venv','node_modules','__pycache__','.pytest_cache','.mypy_cache','hf_dvc_mirror','project-model-archive','public-data-export'}
+SKIP_DIRS={'.artifact-staging','.git','.dvc','.venv','venv','node_modules','__pycache__','.pytest_cache','.mypy_cache','hf_dvc_mirror','project-model-archive','public-data-export'}
 TEXT={'.py','.sh','.md','.html','.js','.css','.txt','.yaml','.yml','.toml','.cfg','.ini','.out','.log','.xml','.csv','.fds','.smv','.jsonl','.pem','.key'}
 rows=[];exclusions=[];memo={};cache=ROOT/'.dvc/cache/files/md5';mirror=ROOT/'FDS/hf_dvc_mirror/files/md5'
 tracked=set(subprocess.check_output(['git','ls-files'],cwd=ROOT,text=True).splitlines())
@@ -51,7 +51,7 @@ def store(f,rel,mode='byte-identical',original=None):
   libc=ctypes.CDLL(None,use_errno=True);clone=libc.clonefile
   clone.argtypes=[ctypes.c_char_p,ctypes.c_char_p,ctypes.c_int];clone.restype=ctypes.c_int
   if clone(os.fsencode(f),os.fsencode(dest),0)!=0:raise OSError(ctypes.get_errno(),str(dest))
- for base in [cache,mirror]:
+ for base in [cache]:
   obj=base/md[:2]/md[2:];obj.parent.mkdir(parents=True,exist_ok=True)
   if not obj.exists():os.link(dest,obj)
  rows.append(dict(path=rel,bytes=size,md5=md,sha256=sha,mode=mode,**({'source':original} if original else {})))

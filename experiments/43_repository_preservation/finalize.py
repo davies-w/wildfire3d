@@ -70,7 +70,7 @@ for i,row in enumerate(ns['rows']):
  p=D/row['path'];detach(p);digest=row['md5']
  if digest not in seen:
   c=ns['cache']/digest[:2]/digest[2:];detach(c)
-  m=ns['mirror']/digest[:2]/digest[2:];m.unlink();os.link(c,m);seen.add(digest)
+  seen.add(digest)
  if i%10000==0:print('Isolated snapshot files',i,flush=True)
 rows=ns['rows'];assert len({v['path'] for v in rows})==len(rows)
 allowed={v['path'] for v in rows}|{'manifest.json'}
