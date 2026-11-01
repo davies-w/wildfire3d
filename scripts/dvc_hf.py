@@ -256,6 +256,36 @@ def plan_records(specs):
  (STATE/'plan.json').write_text(json.dumps(dict(objects=objects,records=specs),indent=2)+'\n')
  print('Planned verified local objects:',len(objects))
 
+def restore_hf_objects(checkout,targets,hashes):
+ """Fetch exact DVC objects through HF's batch API, then standard DVC checkout."""
+ from contextlib import chdir
+ from dvc.repo import Repo
+ os.environ['HF_XET_CHUNK_CACHE_SIZE_BYTES']='0'
+ os.environ['HF_XET_CACHE']=str(checkout/'.hf-xet')
+ from huggingface_hub import HfApi
+ api=HfApi();cache=checkout/'.dvc/cache/files/md5'
+ pending=set(hashes);done=set()
+ while pending:
+  batch=sorted(pending)[:4096];pending.difference_update(batch)
+  if any(not re.fullmatch(r'[0-9a-f]{32}(?:\.dir)?',md) for md in batch):raise ValueError('Invalid DVC object hash')
+  paths={f'wildfire3d/files/md5/{md[:2]}/{md[2:]}':md for md in batch}
+  remote=list(api.get_bucket_paths_info('wdavies/dvc_storage',paths))
+  assert {x.path for x in remote}==set(paths),'Missing HF objects'
+  downloads=[]
+  for obj in remote:
+   md=paths[obj.path];dest=cache/md[:2]/md[2:];dest.parent.mkdir(parents=True,exist_ok=True)
+   if not dest.exists() or digest(dest)[0]!=md.removesuffix('.dir'):downloads.append((obj,dest))
+  if downloads:api.download_bucket_files('wdavies/dvc_storage',downloads,raise_on_missing_files=True)
+  for md in batch:
+   dest=cache/md[:2]/md[2:];assert digest(dest)[0]==md.removesuffix('.dir'),md
+   done.add(md)
+   if md.endswith('.dir'):pending.update(x['md5'] for x in json.loads(dest.read_bytes()) if x['md5'] not in done)
+  pending.difference_update(done)
+  print('HF objects downloaded and MD5 verified:',len(done),'remaining:',len(pending),flush=True)
+ with chdir(checkout):
+  with Repo(str(checkout)) as repo:repo.checkout(targets=targets)
+ return len(done)
+
 def restore_records(records,destination):
  """Use standard DVC pull on scoped pointers without loading unrelated pipelines."""
  import shutil
@@ -276,7 +306,7 @@ def restore_records(records,destination):
  shutil.copyfile(ROOT/'.dvc/config',destination/'.dvc/config')
  subprocess.run([dvc,'config','cache.type','hardlink,copy'],cwd=destination,check=True)
  (destination/'restoration.dvc').write_text(yaml.safe_dump({'outs':outputs},sort_keys=False))
- subprocess.run([dvc,'pull','restoration.dvc','-j','8'],cwd=destination,check=True)
+ restore_hf_objects(destination,['restoration.dvc'],[x['md5'] for x in outputs])
  checked=0
  for output in outputs:
   p=destination/output['path'];expected=output['md5']
@@ -285,7 +315,7 @@ def restore_records(records,destination):
    assert hashlib.md5(manifest.read_bytes()).hexdigest()==expected[:-4]
    for entry in json.loads(manifest.read_bytes()):assert digest(p/entry['relpath'])[0]==entry['md5'];checked+=1
   else:assert digest(p)[0]==expected;checked+=1
- proof=dict(passed=True,restored_files=checked,records=records,method='Unmodified installed DVC pull with independent MD5 checks',destination=str(destination))
+ proof=dict(passed=True,restored_files=checked,records=records,method='HF batch download followed by standard DVC checkout and independent MD5 checks',destination=str(destination))
  (STATE/'restore-verification.json').write_text(json.dumps(proof,indent=2)+'\n');print(json.dumps(proof,indent=2))
 
 if __name__=='__main__':

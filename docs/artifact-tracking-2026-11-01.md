@@ -27,11 +27,23 @@ original definitions and lock records remain in
 `dvc dag` now succeeds. The frozen stages are historical snapshots, not a claim
 that their original in-place workflows can be replayed from today's files.
 
+The independent [coverage check](artifact-coverage-verification.json) accounts
+for all 31,401 original audit candidates: 30,780 exact DVC matches, 261 exact Git
+matches, and the 360 explicit exclusions above. No candidate is unaccounted for.
+The [upload receipt](artifact-upload-verification.json) records remote verification.
 The uploader's confidentiality and standard DVC directory-format tests pass.
-A fresh-checkout restore test is pending; remote verification alone does not
-establish that every old repository artifact or historical Git revision can be
-restored. This repair covers the audited gaps, not a new audit of all old remote
-objects.
+The [fresh-checkout restore test](artifact-restore-verification.json) passed:
+31,698 files across 99 targets were restored from HF objects and independently
+MD5 checked. Git metadata came from GitHub commit `87c79e8`. HF batch download
+was followed by standard DVC checkout using isolated exact output records.
+Plain HTTP `dvc pull` hit HF resolver rate limits, and whole-stage checkout
+included uncached sibling status outputs and raised `StorageKeyError`; neither
+is claimed to have passed. The scoped restore mechanism avoids those problems.
+The disposable test checkout and cache were removed afterward.
+
+This repair covers the audited gaps and their scoped pipeline objects. It does
+not establish preservation of every earlier Git/DVC revision, absent external
+symlink target, or excluded private record.
 
 See [storage.md](storage.md) for the repeatable metadata-only tracking and direct
 HF upload commands. “DVC push” means that verified project script.

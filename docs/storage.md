@@ -71,7 +71,9 @@ stages are historical snapshots; removing links reduces DVC's ability to detect
 changed inputs, and freezing disables automatic reruns. Scientific outputs and
 stage commands were not changed.
 
-Normal DVC pull is supported by the metadata. For a scoped independent restore
+Plain whole-pipeline HTTP pull is not the verified restoration route: HF resolver
+limits and uncached sibling stage outputs caused failures in the full test.
+Use exact output records for a scoped independent restore
 check, use an **empty directory below this repository**:
 
 ```sh
@@ -80,11 +82,17 @@ check, use an **empty directory below this repository**:
   experiments/42_stacked_gru64/historical-files.dvc
 ```
 
-This uses unmodified `dvc pull` in an isolated no-SCM checkout, then independently
-checks every restored file's MD5. It refuses a nonempty destination. It does not
-claim to restore missing external symlink targets, private records or every
-old Git revision. Normal DVC pull creates a cache; the scoped test uses hardlinks
-where supported to avoid a second physical copy.
+This downloads the exact hashed objects through HF's batch API, verifies their
+MD5 hashes, runs standard DVC checkout in an isolated no-SCM repository, and
+independently checks every restored file. It refuses a nonempty destination.
+Existing HF authentication is used by the library; no token is written to Git
+or DVC configuration. Large HTTP `dvc pull` operations can exceed HF resolver
+rate limits; the batch API avoids those per-file resolver requests.
+
+Restoration uses a temporary DVC cache and hardlinks where supported, so this is
+not a cache-free download path. Delete the disposable restore directory only
+after checking its results. It does not restore missing external symlink targets,
+private records or every old Git revision.
 
 The remaining sections record older
 storage workflows; their local-mirror and export-copy instructions are
