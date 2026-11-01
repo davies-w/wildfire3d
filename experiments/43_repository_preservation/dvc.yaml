@@ -1,8 +1,9 @@
 stages:
   snapshot:
-    cmd: ../../.venv/bin/python audit.py
+    cmd: ../../.venv/bin/python audit.py && ../../.venv/bin/python finalize.py
     deps:
     - audit.py
+    - finalize.py
     outs:
     - data/public:
         persist: true

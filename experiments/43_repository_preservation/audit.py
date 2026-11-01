@@ -2,8 +2,8 @@
 
 Original files remain unchanged. Financial records and credentials are excluded;
 JSON metadata is exported with financial/credential fields removed. Archives are
-inspected recursively; archives requiring redaction are represented by their
-sanitized members. Content hashes and every disposition are recorded.
+inspected; archives requiring redaction are repacked with sanitized metadata
+and unchanged scientific member bytes. Content hashes and every disposition are recorded.
 """
 from pathlib import Path
 import os,sys,json,re,hashlib,subprocess,tarfile,zipfile,gzip,io,shutil,collections,ctypes

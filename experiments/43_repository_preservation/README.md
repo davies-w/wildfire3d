@@ -9,12 +9,15 @@ The public DVC snapshot is `data/public`. `manifest.json` records each exported
 path, byte size, MD5, SHA-256 and whether JSON metadata was sanitized. Model and
 numerical artifact bytes are retained unchanged. Spending ledgers, financial
 records and credentials are excluded. Financial or credential fields inside
-otherwise useful JSON records are removed in the public copy. An archive that
-contains excluded metadata is represented by its sanitized individual members;
-its original package is retained locally, not uploaded as a whole.
+otherwise useful JSON records are removed in the public copy. An archive containing excluded metadata is repacked with that metadata removed;
+scientific member bytes remain unchanged. The public container therefore has a
+new digest, recorded in the snapshot manifest, and does not match its original
+cloud package digest. The original package remains local. Scientific runtime
+flags such as `stopped_by_budget` are retained; they are not spending ledgers.
 
 Installed dependencies, caches, transient process files and prior duplicate
-exports are not independent project artifacts and are omitted. Git-tracked
+exports are not independent project artifacts and are omitted. Distinct older
+model or numerical dataset versions are retained under `historical-model-archive`. Git-tracked
 engine-area source is included. All originals remain in place. The snapshot is
 an additional preservation record, not a replacement for experiment pipelines.
 

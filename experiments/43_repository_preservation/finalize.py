@@ -23,6 +23,19 @@ for row in rows:
 refresh=['.gitignore','experiments/37_integral_objective/README.md','experiments/38_history8_shared64/README.md']
 kept=[v for v in kept if v['path'] not in refresh];ns['rows']=kept;ns['exclusions']=excluded
 for name in refresh:ns['process'](ROOT/name,name)
+# Keep genuinely different historical model/data versions from the previous
+# public archive, while avoiding another copy of identical exports.
+archive=ROOT/'experiments/38_history8_shared64/data/project-model-archive'
+previous=json.loads((archive/'manifest.json').read_text())
+current={v['path']:v for v in ns['rows']};historical=0
+for row in previous['files']:
+ if Path(row['path']).suffix.lower() not in {'.pt','.pth','.npz','.npy','.safetensors'}:continue
+ now=current.get('experiments/'+row['path'])
+ if now and now['sha256']==row['sha256']:continue
+ source=archive/row['path'];assert source.is_file()
+ assert ns['hashes'](source)[1]==row['sha256']
+ ns['process'](source,'historical-model-archive/'+row['path']);historical+=1
+manifest['distinct_historical_model_data_versions']=historical
 # Make immutable-by-identity CoW copies: never leave the public snapshot/cache
 # hardlinked to mutable source files. APFS clones do not duplicate file data.
 libc=ctypes.CDLL(None,use_errno=True);clone=libc.clonefile
