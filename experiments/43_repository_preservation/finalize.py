@@ -34,7 +34,7 @@ def detach(p):
 # The root ignore file was updated after scan; recover its old Git bytes if
 # the earlier direct hardlink changed that now-obsolete cache entry.
 old=next(v for v in manifest['files'] if v['path']=='.gitignore')
-b=subprocess.check_output(['git','show','HEAD:.gitignore'],cwd=ROOT)
+b=subprocess.check_output(['git','show','eb62558c64d62bb006bafca9d6c2c8fa810b2500:.gitignore'],cwd=ROOT)
 if hashlib.md5(b).hexdigest()==old['md5']:
  for base in [ns['cache'],ns['mirror']]:
   p=base/old['md5'][:2]/old['md5'][2:]
