@@ -6,7 +6,7 @@ inspected recursively; archives requiring redaction are represented by their
 sanitized members. Content hashes and every disposition are recorded.
 """
 from pathlib import Path
-import os,sys,json,re,hashlib,subprocess,tarfile,zipfile,gzip,io,shutil,collections
+import os,sys,json,re,hashlib,subprocess,tarfile,zipfile,gzip,io,shutil,collections,ctypes
 ROOT=Path(__file__).resolve().parents[2];R=Path(__file__).resolve().parent
 D=R/'data/public';D.mkdir(parents=True,exist_ok=True)
 PRIVATE=R/'results';PRIVATE.mkdir(exist_ok=True)
@@ -14,11 +14,11 @@ SECRET=re.compile(rb'-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----|(?<!
 FINANCE=re.compile(r'budget|billing|invoice|estimated_spend|estimated_compute|cost|allowance|reservation|reserved_usd|price|pricing|\busd\b',re.I)
 KEYS={'private_key','privatekey','client_secret','secret_access_key','aws_secret_access_key','access_token','refresh_token','password','api_key','authorization'}
 SKIP_DIRS={'.git','.dvc','.venv','venv','node_modules','__pycache__','.pytest_cache','.mypy_cache','hf_dvc_mirror','project-model-archive','public-data-export'}
-TEXT={'.py','.sh','.md','.html','.js','.css','.txt','.yaml','.yml','.toml','.cfg','.ini','.out','.log','.xml','.csv','.fds','.smv','.jsonl'}
+TEXT={'.py','.sh','.md','.html','.js','.css','.txt','.yaml','.yml','.toml','.cfg','.ini','.out','.log','.xml','.csv','.fds','.smv','.jsonl','.pem','.key'}
 rows=[];exclusions=[];memo={};cache=ROOT/'.dvc/cache/files/md5';mirror=ROOT/'FDS/hf_dvc_mirror/files/md5'
 tracked=set(subprocess.check_output(['git','ls-files'],cwd=ROOT,text=True).splitlines())
 def redact(x):
- if isinstance(x,dict):return {k:redact(v) for k,v in x.items() if not FINANCE.search(k) and k.lower() not in KEYS}
+ if isinstance(x,dict):return {k:redact(v) for k,v in x.items() if (k in {'stopped_by_budget','energy_budget','energy_budget_error'} or not FINANCE.search(k)) and k.lower() not in KEYS}
  if isinstance(x,list):return [redact(v) for v in x]
  if isinstance(x,str) and (re.search(r'\$\s*\d|\d\s*USD|estimated.{0,30}(?:cost|spend)|(?:cost|spend|allowance).{0,30}\d',x,re.I)):return '[financial details omitted]'
  return x
@@ -43,11 +43,14 @@ def hashes(f):
  memo[key]=(md.hexdigest(),sha.hexdigest(),st.st_size);return memo[key]
 
 def store(f,rel,mode='byte-identical',original=None):
+ md,sha,size=hashes(f)
  dest=D/rel;dest.parent.mkdir(parents=True,exist_ok=True)
  if dest.exists():
   if dest.stat().st_ino!=f.stat().st_ino and hashes(dest)!=hashes(f):dest.unlink()
- if not dest.exists():os.link(f,dest)
- md,sha,size=hashes(dest)
+ if not dest.exists():
+  libc=ctypes.CDLL(None,use_errno=True);clone=libc.clonefile
+  clone.argtypes=[ctypes.c_char_p,ctypes.c_char_p,ctypes.c_int];clone.restype=ctypes.c_int
+  if clone(os.fsencode(f),os.fsencode(dest),0)!=0:raise OSError(ctypes.get_errno(),str(dest))
  for base in [cache,mirror]:
   obj=base/md[:2]/md[2:];obj.parent.mkdir(parents=True,exist_ok=True)
   if not obj.exists():os.link(dest,obj)
@@ -70,16 +73,23 @@ def process(f,rel):
      b=tf.extractfile(m).read();clean,mode=cleanse(m.name,b)
      if clean!=b:changed=True;break
   if changed:
-   # Keep all non-sensitive members; physical package bytes may contain ledger data.
-   with tarfile.open(f,'r:*') as tf:
+   # Repack only metadata; retain scientific member bytes without expanding
+   # large solver arrays to disk. Runtime/physical budget flags are not ledgers.
+   dest=D/rel;dest.parent.mkdir(parents=True,exist_ok=True)
+   temp=dest.with_name(dest.name+'.sanitizing')
+   with tarfile.open(f,'r:*') as tf,tarfile.open(temp,'w:gz') as out:
     for m in tf:
-     if not m.isfile():continue
-     target=R/'data/archive-work'/hashlib.sha256((rel+'::'+m.name).encode()).hexdigest()
-     target.parent.mkdir(parents=True,exist_ok=True)
-     if not target.exists():
-      with tf.extractfile(m) as inp,target.open('wb') as out:shutil.copyfileobj(inp,out)
-     process(target,rel+'.members/'+m.name)
-   exclusions.append(dict(path=rel,reason='original archive contains excluded fields; sanitized members preserved'));return
+     if not m.isfile():
+      if m.isdir():out.addfile(m)
+      continue
+     if re.search(r'(^|/)(budget[^/]*|credentials[^/]*|id_rsa|id_ed25519)(/|$)',m.name,re.I):continue
+     inp=tf.extractfile(m)
+     if Path(m.name).suffix.lower() in TEXT|{'.json','.pem','.key'}:
+      clean,mode=cleanse(m.name,inp.read())
+      if clean is None:continue
+      m.size=len(clean);out.addfile(m,io.BytesIO(clean))
+     else:out.addfile(m,inp)
+   os.replace(temp,dest);store(dest,rel,'archive metadata sanitized; scientific member bytes retained');return
  if suffix in TEXT|{'.json'}:
   b=f.read_bytes();clean,mode=cleanse(rel,b)
   if clean is None:exclusions.append(dict(path=rel,reason=mode));return
