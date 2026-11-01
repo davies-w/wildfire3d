@@ -8,6 +8,7 @@ D=R/'data/public';manifest=json.loads((D/'manifest.json').read_text());rows=mani
 secret=ns['SECRET'];ledger=re.compile(r'(?:^|[-_])(?:budget|billing|invoice|spending)(?:[-_.]|$)',re.I)
 for row in rows:
  p=D/row['path'];name=Path(row['path']).name;reason=None
+ if name in {'cost.json','cost-reservations.json','job-reservation.json','cost-summary.json','cost-proxy.json'}:reason='spending record excluded in final review'
  if ledger.search(name) and 'energy' not in name.lower() and p.suffix in ['.json','.lock','.csv']:reason='spending record excluded in final review'
  elif p.stat().st_size<=2*1024*1024 and secret.search(p.read_bytes()):reason='credential excluded in final review'
  if reason:
