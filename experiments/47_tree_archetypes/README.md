@@ -4,11 +4,11 @@ Geometry concepts requested by the user, not a fire experiment or species-calibr
 
 | Type | Total height | Maximum x width | Crown base |
 |---|---:|---:|---:|
-| Tall conifer | 20 m | 7 m | 6 m |
-| Broad oak | 10 m | 12 m | 3 m |
-| Tall open crown | 24 m | 11 m | 12 m |
-| Dense narrow evergreen | 12 m | 3 m | 0.8 m |
-| Low multi-stem | 5 m | 6 m | 0.8 m |
+| Ponderosa pine | 20 m | 7 m | 6 m |
+| Coast live oak | 10 m | 12 m | 3 m |
+| Blue gum eucalyptus | 24 m | 11 m | 12 m |
+| Italian cypress | 12 m | 3 m | 0.8 m |
+| Manzanita | 5 m | 6 m | 0.8 m |
 
 Conifer uses three overlapping cones; other crowns use ellipsoids. Crowns are unions: overlap must not multiply eventual fuel loading. Brown cylinders show proposed stems; inclusion in a future FDS thermal/fuel model is not yet specified. Eucalyptus-like form uses separated crown clumps; it does not model bark shedding. No fuel density, moisture, species chemistry, ignition, mesh or embers are assigned. Green shades distinguish forms only, with transparency for geometry inspection. These are proposed sample dimensions, not measurements or species averages.
 

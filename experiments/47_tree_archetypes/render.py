@@ -8,11 +8,11 @@ import matplotlib.pyplot as plt
 R=Path(__file__).resolve().parent;D=R/'data';D.mkdir(exist_ok=True)
 # Ellipsoids: centre and semi-axes. Cones: centre x/y, base, top, radius.
 trees=[
- dict(name='Tall conifer',hint='Pine / Douglas-fir-like',color='#247b69',cones=[[0,0,6,14,3.5],[0,0,10,18,2.8],[0,0,14,20,1.8]],ellipsoids=[],stems=[[[0,0,0],[0,0,19],.22]]),
- dict(name='Broad oak',hint='Low, spreading crown',color='#6b8f36',cones=[],ellipsoids=[[0,0,6.5,4.4,4.2,3.5],[-3,0,5.5,3,3.2,2.5],[3,.4,6,3,3,2.7]],stems=[[[0,0,0],[0,0,4],.35],[[0,0,3],[-3,0,6],.20],[[0,0,3],[3,.4,6.5],.20]]),
- dict(name='Tall open crown',hint='Eucalyptus-like; separated clumps',color='#58a69c',cones=[],ellipsoids=[[-3,0,15,2.5,2.2,3],[3,.7,17,2.5,2.2,3],[.2,-.7,21,2.7,2.3,3]],stems=[[[0,0,0],[.2,-.7,22],.28],[[0,0,10],[-3,0,15],.16],[[0,0,12],[3,.7,17],.16]]),
- dict(name='Dense narrow evergreen',hint='Cypress / screening-tree-like',color='#326642',cones=[],ellipsoids=[[0,0,6.4,1.5,1.5,5.6]],stems=[[[0,0,0],[0,0,11],.16]]),
- dict(name='Low multi-stem',hint='Toyon / large-manzanita-like',color='#929744',cones=[],ellipsoids=[[-1.2,0,2.8,1.8,2,2],[1.2,.4,3,1.8,1.8,2],[0,-1.1,2.4,1.7,1.5,1.6]],stems=[[[0,0,0],[-1.2,0,3],.12],[[.2,.1,0],[1.2,.4,3.4],.12],[[-.2,0,0],[0,-1.1,2.8],.10]])]
+ dict(name='Ponderosa pine',hint='Pine / Douglas-fir-like',color='#247b69',cones=[[0,0,6,14,3.5],[0,0,10,18,2.8],[0,0,14,20,1.8]],ellipsoids=[],stems=[[[0,0,0],[0,0,19],.22]]),
+ dict(name='Coast live oak',hint='Low, spreading crown',color='#6b8f36',cones=[],ellipsoids=[[0,0,6.5,4.4,4.2,3.5],[-3,0,5.5,3,3.2,2.5],[3,.4,6,3,3,2.7]],stems=[[[0,0,0],[0,0,4],.35],[[0,0,3],[-3,0,6],.20],[[0,0,3],[3,.4,6.5],.20]]),
+ dict(name='Blue gum eucalyptus',hint='Eucalyptus-like; separated clumps',color='#58a69c',cones=[],ellipsoids=[[-3,0,15,2.5,2.2,3],[3,.7,17,2.5,2.2,3],[.2,-.7,21,2.7,2.3,3]],stems=[[[0,0,0],[.2,-.7,22],.28],[[0,0,10],[-3,0,15],.16],[[0,0,12],[3,.7,17],.16]]),
+ dict(name='Italian cypress',hint='Cypress / screening-tree-like',color='#326642',cones=[],ellipsoids=[[0,0,6.4,1.5,1.5,5.6]],stems=[[[0,0,0],[0,0,11],.16]]),
+ dict(name='Manzanita',hint='Toyon / large-manzanita-like',color='#929744',cones=[],ellipsoids=[[-1.2,0,2.8,1.8,2,2],[1.2,.4,3,1.8,1.8,2],[0,-1.1,2.4,1.7,1.5,1.6]],stems=[[[0,0,0],[-1.2,0,3],.12],[[.2,.1,0],[1.2,.4,3.4],.12],[[-.2,0,0],[0,-1.1,2.8],.10]])]
 u=np.linspace(0,2*np.pi,45);v=np.linspace(0,np.pi,27)
 def bounds(t):
  boxes=[]
