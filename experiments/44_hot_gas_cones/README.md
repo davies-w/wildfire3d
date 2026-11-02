@@ -28,7 +28,7 @@ Generic conical vegetation crowns3m wide,4/6/8/10m tall, above2m;0.5m grid in24�
 
 ## Inspect and reproduce
 
-Open `data/report.html`: all48 storyboards plus every frame's five values and comparison metrics. White triangle = cone side projection; magenta = original2σ oval; colours = maximum gas temperature through y, clipped at1000°C. Numeric scores are3D, not measured from those projections.
+[Open the published comparison](https://wdavies-fire-state-storyboards.static.hf.space/cones44/index.html), or open `data/report.html`: all48 storyboards plus every frame's five values and comparison metrics. White triangle = cone side projection; magenta = original2σ oval; colours = maximum gas temperature through y, clipped at1000°C. Numeric scores are3D, not measured from those projections.
 
 From this directory:
 
