@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation,PillowWriter
 from matplotlib.colors import TwoSlopeNorm
 from PIL import Image
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 R=Path(__file__).resolve().parent;D=R/'data/animations';D.mkdir(exist_ok=True)
 sys.path.insert(0,str(R.parent/'44_hot_gas_cones'));from extract_training import source_frames,xyz
 assert json.loads((R/'results03/collected.json').read_text())['passed']
@@ -38,9 +39,12 @@ for idx in chosen:
  manifest['cases'].append(dict(case=name,index=idx,source_sha256=src['source_sha256'],source_path=src['source_path'],frames=len(frames),crown_height_m=cond['crown_height_m'],wind_m_s=cond['wind_speed']))
  # Fixed 3-D views, matched metre axes and actual cell-centre temperatures.
  fig=plt.figure(figsize=(11,5.6),dpi=90);axes=[fig.add_subplot(121,projection='3d'),fig.add_subplot(122,projection='3d')];cmap=plt.get_cmap('inferno');norm=TwoSlopeNorm(vmin=color_low,vcenter=color_mean,vmax=color_high)
- def cone(ax,p,color):
+ def cone(ax,p,color,filled=False):
   if p is None:return
   h,tilt,length,radius,peak=p;a=np.deg2rad(tilt);u=np.array([np.sin(a),0,np.cos(a)]);v=np.array([np.cos(a),0,-np.sin(a)]);w=np.array([0,1,0]);apex=np.array([8,8,h]);th=np.linspace(0,2*np.pi,49);rim=apex+length*u+radius*(np.cos(th)[:,None]*v+np.sin(th)[:,None]*w)
+  if filled:
+   faces=[[apex,rim[k],rim[k+1]] for k in range(48)]+[rim[:-1]]
+   ax.add_collection3d(Poly3DCollection(faces,facecolors=color,edgecolors='none',alpha=.28))
   ax.plot(*rim.T,color=color,lw=1.1)
   for k in range(0,48,6):ax.plot(*np.stack([apex,rim[k]]).T,color=color,lw=.8,alpha=.8)
  def draw(j):
@@ -49,14 +53,13 @@ for idx in chosen:
    ax.clear();ax.set(xlim=(0,24),ylim=(0,16),zlim=(0,16),xlabel='Downwind x (m)',ylabel='y (m)',zlabel='Height (m)');ax.set_box_aspect((24,16,16));ax.view_init(elev=22,azim=-62)
    th=np.linspace(0,2*np.pi,33);base=np.c_[8+1.5*np.cos(th),8+1.5*np.sin(th),np.full_like(th,2)];top=np.array([8,8,2+cond['crown_height_m']]);ax.plot(*base.T,color='#238351',alpha=.65)
    for k in range(0,32,4):ax.plot(*np.stack([base[k],top]).T,color='#238351',alpha=.65)
-   pts=np.array(f['points'])
-   if len(pts):ax.scatter(pts[:,0],pts[:,1],pts[:,2],c=np.clip(pts[:,3],color_low,color_high),cmap=cmap,norm=norm,s=7,alpha=.58,depthshade=False)
-   cone(ax,f[kind],color);ax.quiver(2,2,.5,4,0,0,color='#4775ba',arrow_length_ratio=.2)
+   cone_color=cmap(norm(np.clip(f[kind][4],color_low,color_high))) if f[kind] is not None else color
+   cone(ax,f[kind],cone_color,filled=True);ax.quiver(2,2,.5,4,0,0,color='#4775ba',arrow_length_ratio=.2)
    p=f[kind];ax.set_title(title+'\n'+('Absent / no prediction at t=0' if p is None else f'Length {p[2]:.2f}m · peak {p[4]:.0f}°C'),fontsize=10)
   fig.suptitle(f'{name} · {f["t"]:.1f}s · wind {cond["wind_speed"]:g}m/s → +x · igniter '+('ON' if f['t']<20 else 'OFF'),fontsize=12)
   return []
- fig.subplots_adjust(left=.02,right=.88,bottom=.17,top=.83,wspace=.02);cb=fig.add_axes([.91,.28,.015,.4]);fig.colorbar(plt.cm.ScalarMappable(norm=norm,cmap=cmap),cax=cb,label='Gas temperature (°C) · clipped',ticks=[color_low,color_mean,color_high],format='%.1f')
- fig.text(.02,.035,'Same simulated hot cells in both views (>50°C, up to600 points/frame). Wire cones are envelopes, not flames.\nGreen wire crown: 3m wide, 8m tall above2m; no trunk. No predicted temperature field. GIF playback ≈16× real time.',fontsize=8)
+ fig.subplots_adjust(left=.02,right=.88,bottom=.17,top=.83,wspace=.02);cb=fig.add_axes([.91,.28,.015,.4]);fig.colorbar(plt.cm.ScalarMappable(norm=norm,cmap=cmap),cax=cb,label='Temperature (°C) · clipped',ticks=[color_low,color_mean,color_high],format='%.1f')
+ fig.text(.02,.035,'Transparent cone volumes: simulation-derived PEAK temperature (left), model-predicted PEAK (right).\nGreen wire crown: 3m wide, 8m tall above2m; no trunk. Fill encodes one peak value, not a spatial temperature field. GIF playback ≈16× real time.',fontsize=8)
  draw(10);fig.canvas.draw();fig.savefig(D/(name+'-preview.png'))
  # One fixed palette for every frame prevents GIF quantization from changing the legend.
  palette=Image.fromarray(np.asarray(fig.canvas.buffer_rgba())[:,:,:3].copy()).quantize(colors=256)
@@ -74,5 +77,5 @@ for idx in chosen:
  plt.close(fig)
  print('Rendered',name,flush=True)
 manifest['color_scale']=color_policy
-manifest['display']={'temperature':'Actual saved simulation gas temperature, not heat flux; identical field in both panels','threshold_C':50,'maximum_displayed_cells_per_frame':600,'sampling':'Evenly spaced hot-cell indices, plus hottest cell; display-only subsampling','saved_frames':91,'gif_fps':8,'cone_probability_display_threshold':.5,'geometry':'Crown diameter3m, base2m, crown height8m; no trunk; not a species model','source':'1500C imposed igniter for first20s included; no buildings or embers; 0.5m cells; observed24x16x16m crop','cone':'Ground-constrained fit may extend outside crop; broad95%-hot-cell envelope, not physical flame boundary'}
+manifest['display']={'temperature':'Both transparent cone volumes encode their own peak temperature: simulation-derived left, model-predicted right. No particles displayed; fill does not assert uniform temperature or a spatial field.','threshold_C':50,'maximum_displayed_cells_per_frame':0,'sampling':'Evenly spaced hot-cell indices, plus hottest cell; display-only subsampling','saved_frames':91,'gif_fps':8,'cone_probability_display_threshold':.5,'geometry':'Crown diameter3m, base2m, crown height8m; no trunk; not a species model','source':'1500C imposed igniter for first20s included; no buildings or embers; 0.5m cells; observed24x16x16m crop','cone':'Ground-constrained fit may extend outside crop; broad95%-hot-cell envelope, not physical flame boundary'}
 (D/'selection.json').write_text(json.dumps(manifest,indent=2)+'\n')
