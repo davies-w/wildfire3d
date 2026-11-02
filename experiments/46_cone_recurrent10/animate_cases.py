@@ -15,14 +15,17 @@ assert json.loads((R/'results03/collected.json').read_text())['passed']
 schema=json.loads((R/'data/training03/schema.json').read_text());pred=np.load(R/'data/pool03-results/fold00-test-predictions.npz');labels=np.load(R/'data/training03/data/cones.npz')
 sources={x['case_index']:x for x in json.loads((R.parent/'45_cone_multitask/data/labels/schema.json').read_text())['source_records']};conditions={x['case']:x for x in json.loads((R.parent/'36_tree_density/cases.json').read_text())}
 chosen=np.random.default_rng(20261102).choice(schema['rotations'][0]['test'],2,replace=False).tolist();assert chosen==[1498,1598]
-# Fixed mean over ALL >50C cell observations in both histories, before display subsampling.
-all_hot=[]
+# Pool the peaks of visible cones, equally weighting each panel/frame observation.
+peaks=[]
 for idx in chosen:
- c=schema['cases'][idx];src=sources[idx];cond=conditions[c['case']]
- item=dict(case=c['case'],path=src['source_path'],sha256=src['source_sha256'],source_kind='verified_temperature_slice',origin_m=[-4,-4,0] if cond.get('expanded') else [0,0,0])
- for _,temp in source_frames(item):all_hot.append(temp[temp>50])
-all_hot=np.concatenate(all_hot);color_mean=float(all_hot.mean());color_low,color_high=map(float,np.quantile(all_hot,[.05,.95]))
-color_policy=dict(mean_C=color_mean,lower_C=color_low,upper_C=color_high,scope='All above50C cell observations across both full histories, before display subsampling',rule='Pooled5th/95th percentiles of above50C samples; mean at colour midpoint via two-slope normalization; fixed across both cases and every frame; colour clipping only',below_fraction=float((all_hot<color_low).mean()),above_fraction=float((all_hot>color_high).mean()),fixed_palette=True,legend_pixel_identical_all_frames=True)
+ pi=int(np.flatnonzero(pred['case_indices']==idx)[0])
+ peaks.extend(labels['parameters'][idx,labels['active'][idx].astype(bool),4].astype(float).tolist())
+ visible=pred['cone_presence_probability'][pi]>=.5
+ peaks.extend(pred['cone_parameters'][pi,visible,4].astype(float).tolist())
+peaks=np.asarray(peaks);assert len(peaks)>0 and np.isfinite(peaks).all()
+color_mean=float(peaks.mean());color_low,color_high=map(float,np.quantile(peaks,[.05,.95]))
+assert color_low<color_mean<color_high
+color_policy=dict(mean_C=color_mean,lower_C=color_low,upper_C=color_high,sample_count=len(peaks),scope='Visible reference and predicted cone peaks across both full histories; one equally weighted observation per visible panel/frame',rule='Pooled5th/95th percentiles of cone peaks; mean at colour midpoint via two-slope normalization; fixed across both cases and every frame; colour clipping only',below_fraction=float((peaks<color_low).mean()),above_fraction=float((peaks>color_high).mean()),fixed_palette=True,legend_pixel_identical_all_frames=True)
 manifest={'seed':20261102,'selection':'Uniform random draw without replacement from all208 frozen test histories; no performance filtering','selected_epoch':134,'indices':chosen,'cases':[]}
 for idx in chosen:
  c=schema['cases'][idx];name=c['case'];cond=conditions[name];src=sources[idx]
