@@ -1,0 +1,1817 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py && ../../.venv/bin/python validate.py &&
+      ../../.venv/bin/python build_pool.py
+    outs:
+    - path: data/training
+      hash: md5
+      md5: 904f9a36ca5876fa98c557900fd8ea45.dir
+      size: 13900200
+      nfiles: 14
+    deps:
+    - path: prepare.py
+      hash: md5
+      md5: dc75dd791f16dcdcacd747be17dc9fb3
+      size: 1516
+    - path: validate.py
+      hash: md5
+      md5: 907177789afd7faecff13a60305663d6
+      size: 2203
+    - path: build_pool.py
+      hash: md5
+      md5: 94b5fe69903747badb2efa0b7d1f1c83
+      size: 10770
+    - path: model.py
+      hash: md5
+      md5: 48c2f328e833b9faa44a1b3314cc28d6
+      size: 49
+    - path: gated_model.py
+      hash: md5
+      md5: 1532660e64eb35434c04d875921790ee
+      size: 2507
+    - path: worker.py
+      hash: md5
+      md5: 952a4436d58c448e7b72fd35cadc183f
+      size: 24860
+    - path: joint_objective.py
+      hash: md5
+      md5: 3aab854d4bd41439c820302a7fb6daef
+      size: 819
+    - path: cloud_check.py
+      hash: md5
+      md5: 3c83672112c939f9556bb97f73298c25
+      size: 5852
+    - path: data/labels
+      hash: md5
+      md5: 76c092bdf129b56039429681d3737c25.dir
+      size: 2151379
+      nfiles: 2
+    - path: ../41_dropout10_from_start/data/training/objective.py
+      hash: md5
+      md5: e5db8f2b56171e8fed946f5634139041
+      size: 698
+    - path: ../41_dropout10_from_start/data/training/runtime.py
+      hash: md5
+      md5: 8c0f4e4dbeedf526208922dc0607491d
+      size: 2210
+    - path: ../41_dropout10_from_start/data/training/schema.json
+      hash: md5
+      md5: 2b3705717475bebb268c65f14c547515
+      size: 418700
+    - path: ../41_dropout10_from_start/data/training/data/sequences.npz
+      hash: md5
+      md5: f280a76462ed8d586e7a4fc7eec09961
+      size: 5110534
+    - path: ../41_dropout10_from_start/data/training/coverage-plan.json
+      hash: md5
+      md5: bccc9048802f5ded72c2a5f6d404bcdc
+      size: 2388
+    - path: ../38_history8_shared64/data/training08/bootstrap.py
+      hash: md5
+      md5: 79d3e249871bd62bd9c4631d86552af7
+      size: 1868
+    - path: ../38_history8_shared64/data/training08/workflow.yaml
+      hash: md5
+      md5: b29ccb57f497851b34638241f220cfa9
+      size: 11373
+  labels:
+    cmd: ../../.venv/bin/python prepare_labels.py
+    outs:
+    - path: data/labels
+      hash: md5
+      md5: 76c092bdf129b56039429681d3737c25.dir
+      size: 2151379
+      nfiles: 2
+    - path: data/heldout-cones
+      hash: md5
+      md5: e990481506cb357d689e454a83ee71b5.dir
+      size: 20945818
+      nfiles: 418
+    deps:
+    - path: prepare_labels.py
+      hash: md5
+      md5: 9d1b9f96333d02e9b0d3cae9f5aac7f0
+      size: 3890
+    - path: ../44_hot_gas_cones/cones.py
+      hash: md5
+      md5: fdf689be16f99104b8d7e983fe5b3f47
+      size: 2347
+    - path: ../44_hot_gas_cones/extract_training.py
+      hash: md5
+      md5: 06a1afd1249ff01021178956dfb404a8
+      size: 5674
+    - path: ../44_hot_gas_cones/data/training-plan.json
+      hash: md5
+      md5: 51246ddf099a3a8824c6152a24b934ae
+      size: 1072017
+    - path: ../44_hot_gas_cones/data/training-histories
+      hash: md5
+      md5: 285b452633dcaa3daffead9f865be2e7.dir
+      size: 82255913
+      nfiles: 1662
+    - path: ../36_tree_density/learning-schema.json
+      hash: md5
+      md5: 0dbee67e38424d53816fe78799442133
+      size: 672301
+    - path: ../36_tree_density/data/learning/sequences.npz
+      hash: md5
+      md5: 432e6904ee4c70cba22e2b72ae96809a
+      size: 3238491
+    - path: ../36_tree_density/cases.json
+      hash: md5
+      md5: a0cd6895e2b2cfa892d7b1fcb6dd2bdd
+      size: 1259971
+    - path: ../35_surrogate_diagnostics/attempt12/inventory.json
+      hash: md5
+      md5: 415e701a05241aa417d609a44b20748d
+      size: 564764
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-01/x32_011_s0.tar.gz
+      hash: md5
+      md5: 25252b815bcf7b7ee87c14576c63599f
+      size: 95837682
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-02/x32_021_s0.tar.gz
+      hash: md5
+      md5: 79964966abf90bf88472ce82987e8fb0
+      size: 95692779
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-03/x32_026_s0.tar.gz
+      hash: md5
+      md5: e4d374bcebbf8bb26c641a6f441aab91
+      size: 96232909
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-03/x32_029_s0.tar.gz
+      hash: md5
+      md5: 7ac2ba214e2d46f310f71053042f93fc
+      size: 94957767
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-03/x32_035_s0.tar.gz
+      hash: md5
+      md5: 3caf823583d2f028ebe52ff8d7d12f91
+      size: 93464978
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-05/x32_054_s0.tar.gz
+      hash: md5
+      md5: 9b432a20544c39a5c6b07ec00873cd1a
+      size: 92026781
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-06/x32_064_s0.tar.gz
+      hash: md5
+      md5: 0c7a255061038e2149f4ffa2cee36a33
+      size: 93453157
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-06/x32_074_s0.tar.gz
+      hash: md5
+      md5: f46ee59d0429924de3ac44b306610179
+      size: 93100807
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-07/x32_075_s0.tar.gz
+      hash: md5
+      md5: acc192befeb9c97374c3747020ac3b61
+      size: 91447497
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-07/x32_079_s0.tar.gz
+      hash: md5
+      md5: e40a45d7a568fda92ab6b26549db0152
+      size: 94027809
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_089_s0.tar.gz
+      hash: md5
+      md5: 6cae68b98b4b641a6fc4d5dc86ecf911
+      size: 93463216
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-09/x32_100_s0.tar.gz
+      hash: md5
+      md5: c5fe158f45b8321d08d404caea90e1d9
+      size: 96718599
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-09/x32_101_s0.tar.gz
+      hash: md5
+      md5: bfcdd6ab2c1699115fbdb275272de5dd
+      size: 96499197
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-10/x32_109_s0.tar.gz
+      hash: md5
+      md5: 87b8b315316813cc1eb7bf0fa5b4c3a2
+      size: 95055360
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-10/x32_109_s1.tar.gz
+      hash: md5
+      md5: 17d4d22c550cb0f822ad264b67111c6f
+      size: 95020343
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-10/x32_109_s2.tar.gz
+      hash: md5
+      md5: 8333051cf6c7a1f56e24a78919f6140b
+      size: 95067127
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-12/x32_135_s0.tar.gz
+      hash: md5
+      md5: 447dc65676afba73528f4c6b7affa7ae
+      size: 92020053
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-15/x32_167_s0.tar.gz
+      hash: md5
+      md5: 2bb80ea220ce5d181e57158a63b29806
+      size: 91499182
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-16/x32_171_s0.tar.gz
+      hash: md5
+      md5: 42702beb0c8e8d1d2a2fff9c65df6f09
+      size: 92027891
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-17/x32_186_s0.tar.gz
+      hash: md5
+      md5: 6e164b3594e834b6aad972b7473a5cc8
+      size: 91763475
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-17/x32_187_s0.tar.gz
+      hash: md5
+      md5: 3982b035586bb3b5eefb3a5a4f4c7159
+      size: 91997357
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-18/x32_202_s0.tar.gz
+      hash: md5
+      md5: 14adb17ee3b87e96716d09568025fc70
+      size: 96489884
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-19/x32_207_s0.tar.gz
+      hash: md5
+      md5: 0995670a6943347afe8c2ad19404a9bd
+      size: 97672706
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-20/x32_217_s0.tar.gz
+      hash: md5
+      md5: da2e8eba0cb25f19db3a9525ec73d8be
+      size: 95922113
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-20/x32_218_s0.tar.gz
+      hash: md5
+      md5: dbdeb9d4a0b0f8f662642ca996853a85
+      size: 91930715
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-21/x32_228_s0.tar.gz
+      hash: md5
+      md5: f78f02572fd0f55a6af04e124567473c
+      size: 96731125
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-22/x32_240_s0.tar.gz
+      hash: md5
+      md5: 18e819ef6343e6d3c3895f04ace2b13b
+      size: 96898896
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-22/x32_243_s0.tar.gz
+      hash: md5
+      md5: a6d6a128c69589f7218b7b639328f29c
+      size: 94904246
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-22/x32_243_s1.tar.gz
+      hash: md5
+      md5: f724404366ce9f7c6ab88a9292feb98d
+      size: 95467879
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-22/x32_243_s2.tar.gz
+      hash: md5
+      md5: 72fe02c742b30d20059934838a5dd5e8
+      size: 94872207
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-22/x32_247_s0.tar.gz
+      hash: md5
+      md5: eb9c0faae7155049d678d63e5ac5255d
+      size: 97891159
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_252_s0.tar.gz
+      hash: md5
+      md5: e46c2eee4cfcc20a6f6c398705c6f31e
+      size: 94263700
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_270_s0.tar.gz
+      hash: md5
+      md5: 47e20885a5ecc5e06f5228b77346bbc7
+      size: 96155283
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-24-r1/x32_272_s0.tar.gz
+      hash: md5
+      md5: f6c05f9b447143fe0b7093cc26ccd865
+      size: 95722870
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-25/x32_273_s0.tar.gz
+      hash: md5
+      md5: b5a208212f04bb33c9ededd10a9ea711
+      size: 95594898
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-25/x32_277_s0.tar.gz
+      hash: md5
+      md5: 8ae8417625bc3d86ba1574d882845bbb
+      size: 91138042
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-26/x32_288_s0.tar.gz
+      hash: md5
+      md5: dc9b04cdaf39968a6b33ed0428f4c1c4
+      size: 97002967
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-27/x32_303_s0.tar.gz
+      hash: md5
+      md5: aaa6a08fcdb2836339b513195dc8ec1f
+      size: 97934592
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-28/x32_312_s0.tar.gz
+      hash: md5
+      md5: e7e3145b4497aed483a731cc0928fa87
+      size: 94219871
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-29/x32_323_s0.tar.gz
+      hash: md5
+      md5: 5fd759d184f4bc1c191960fc9daff7af
+      size: 98013498
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-29/x32_324_s0.tar.gz
+      hash: md5
+      md5: ef817f1329e03603eb50196d50a89dd3
+      size: 97611525
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-31/x32_345_s0.tar.gz
+      hash: md5
+      md5: 73e94c5183a0d1a21b37b550e74c3fdf
+      size: 94792415
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-32/x32_359_s0.tar.gz
+      hash: md5
+      md5: 6dbf5139c25ed6637f22cbe5e72f24e5
+      size: 91659975
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-32/x32_364_s0.tar.gz
+      hash: md5
+      md5: 504c1871bdcc752f7dd93aba80e79060
+      size: 93751362
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-33/x32_375_s0.tar.gz
+      hash: md5
+      md5: 1b90b0b1cbf1f11514a7e5eeaea7c94a
+      size: 95663514
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-35/x32_387_s0.tar.gz
+      hash: md5
+      md5: d2555802c8a31de2b4b2bac8ba8ed89a
+      size: 91031853
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-36/x32_397_s0.tar.gz
+      hash: md5
+      md5: fbaf9fdaaeffdbd062b5c2ea35dc17de
+      size: 90465328
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-37/x32_406_s0.tar.gz
+      hash: md5
+      md5: 8f6d3be323e92dbbd407f57f44b10ba2
+      size: 95912016
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-37/x32_407_s0.tar.gz
+      hash: md5
+      md5: e02eaac5d83cf17221a59aed6b051e54
+      size: 92052415
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-39/x32_425_s0.tar.gz
+      hash: md5
+      md5: 7d6e59175da7804455c339946613dc35
+      size: 98334920
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-39/x32_431_s0.tar.gz
+      hash: md5
+      md5: e267f19bae88f9608b30f33e27a15bb2
+      size: 91241025
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-39/x32_431_s1.tar.gz
+      hash: md5
+      md5: cd5b49e4c7ec89a89d5e980c040e16d5
+      size: 91193702
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-39/x32_431_s2.tar.gz
+      hash: md5
+      md5: c1f059239ebac8f0310a06eac43059a8
+      size: 91222846
+    - path: ../../experiments/27_single_tree_cnn/data/downloads/s27_train_1.tar.gz
+      hash: md5
+      md5: e358f2665fb5a4b68589a8b1d92dc02d
+      size: 95044774
+    - path: ../../experiments/27_single_tree_cnn/data/downloads/s27_train_4.tar.gz
+      hash: md5
+      md5: 58954fbb64f24bfc2449338a615fa53d
+      size: 97149874
+    - path: ../../experiments/27_single_tree_cnn/data/downloads/s27_train_7.tar.gz
+      hash: md5
+      md5: 60c4a3d874c94e7abdd27ed53ff9026e
+      size: 96494395
+    - path: ../../experiments/27_single_tree_cnn/data/downloads/s27_train_8.tar.gz
+      hash: md5
+      md5: 3984268325a25f320132acf7bc8904c5
+      size: 96676760
+    - path: ../../experiments/27_single_tree_cnn/data/downloads/s27_train_21.tar.gz
+      hash: md5
+      md5: 95ed8039deacbc46ce251eab925ae269
+      size: 95955638
+    - path: ../../experiments/27_single_tree_cnn/data/downloads/s27_train_27.tar.gz
+      hash: md5
+      md5: dcef22579970a825014eff9c5de63810
+      size: 96033390
+    - path: ../../experiments/31_tree_variations/data/downloads/v31_05.tar.gz
+      hash: md5
+      md5: 0fb77892880baf04221a481115099411
+      size: 94989751
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0002_s0/x36_0002_s0_1_1.sf
+      hash: md5
+      md5: e493941cf849f119e6c95d57d9820df4
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0004_s0/x36_0004_s0_1_1.sf
+      hash: md5
+      md5: 2245b043f14fcb7774b2119b3e47cf42
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0018_s0/x36_0018_s0_1_1.sf
+      hash: md5
+      md5: 9901019f9287225b2aa2bfcc7ef0f153
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0023_s0/x36_0023_s0_1_1.sf
+      hash: md5
+      md5: 6bca955fbe755c9cdaf4bc11fd261434
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0041_s0/x36_0041_s0_1_1.sf
+      hash: md5
+      md5: e70efc73cbb3a1c04b5ed6cc37a4b92e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0098_s0/x36_0098_s0_1_1.sf
+      hash: md5
+      md5: 256be43b77af690318dee414856cc6ae
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0130_s0/x36_0130_s0_1_1.sf
+      hash: md5
+      md5: ab56cf4f199ea8cef33eb0411d9c6620
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0143_s0/x36_0143_s0_1_1.sf
+      hash: md5
+      md5: 138a622e99d3f68568004bc5d17ef79e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0156_s0/x36_0156_s0_1_1.sf
+      hash: md5
+      md5: a8ad13665d59c899e147c32032b00a96
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0158_s0/x36_0158_s0_1_1.sf
+      hash: md5
+      md5: 70948fab0ee38546126025809604d123
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0171_s0/x36_0171_s0_1_1.sf
+      hash: md5
+      md5: 9a23954ef2d6541de99fb8659ca528be
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0176_s0/x36_0176_s0_1_1.sf
+      hash: md5
+      md5: 3e888336684db804d11ca4771cb586ae
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0188_s0/x36_0188_s0_1_1.sf
+      hash: md5
+      md5: 3f320b21e883c9ff2ac3faebf9f0c551
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0206_s0/x36_0206_s0_1_1.sf
+      hash: md5
+      md5: 65a6619a5e8078fd7464c2333ab55732
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0228_s0/x36_0228_s0_1_1.sf
+      hash: md5
+      md5: 20e86db1a1642165ba1008e95f335948
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0230_s0/x36_0230_s0_1_1.sf
+      hash: md5
+      md5: 9ae92a09e98357a9df87bdf638c9e211
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0235_s0/x36_0235_s0_1_1.sf
+      hash: md5
+      md5: 961845c067fd7b75a89a24ce13cbfc9d
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0258_s0/x36_0258_s0_1_1.sf
+      hash: md5
+      md5: e484b1c84e0ca73cadaf33207357a531
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0280_s0/x36_0280_s0_1_1.sf
+      hash: md5
+      md5: f95257b18e5a4056f54e40f81f68a595
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0281_s0/x36_0281_s0_1_1.sf
+      hash: md5
+      md5: 37fd0d1534c78c99398cb4143ec80afe
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0291_s0/x36_0291_s0_1_1.sf
+      hash: md5
+      md5: 0c56d86a4257c865109a6feeb1891776
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0295_s0/x36_0295_s0_1_1.sf
+      hash: md5
+      md5: c22e0ffc7c5525dabb502b1a5876ff6c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0302_s0/x36_0302_s0_1_1.sf
+      hash: md5
+      md5: 7d72bd9208bd7b9da3fedfe73277d9d5
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0307_s0/x36_0307_s0_1_1.sf
+      hash: md5
+      md5: 89c9697de0a5ef8c2baac12f10b81118
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0309_s0/x36_0309_s0_1_1.sf
+      hash: md5
+      md5: bdf9a207850e688231846118527f49f6
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0310_s0/x36_0310_s0_1_1.sf
+      hash: md5
+      md5: 4c85878a3364642957c1e54ee146f8dd
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0346_s0/x36_0346_s0_1_1.sf
+      hash: md5
+      md5: 6a6ad9e5389f7c065d01c8659028bf93
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0347_s0/x36_0347_s0_1_1.sf
+      hash: md5
+      md5: 6ae734f73a0d3989ad06aced58bf8897
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0360_s0/x36_0360_s0_1_1.sf
+      hash: md5
+      md5: cab424f51cddc4ef725c0c21d0f16df4
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0365_s0/x36_0365_s0_1_1.sf
+      hash: md5
+      md5: b2e8218e5861b995d7b143dc847aa737
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0387_s0/x36_0387_s0_1_1.sf
+      hash: md5
+      md5: fe5ca374b0f6eb9fede9eccee4d8cd9e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0391_s0/x36_0391_s0_1_1.sf
+      hash: md5
+      md5: 10cff03c6b0a4f73c8297a244022803f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0398_s0/x36_0398_s0_1_1.sf
+      hash: md5
+      md5: e818b85799a14a6af0bf4dee337daf2d
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0402_s0/x36_0402_s0_1_1.sf
+      hash: md5
+      md5: f23fb172cce30e9bfdb692c3de3e3440
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0411_s0/x36_0411_s0_1_1.sf
+      hash: md5
+      md5: 70ec02320b9d6f2685b09e393b1cb47c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0415_s0/x36_0415_s0_1_1.sf
+      hash: md5
+      md5: 649a03d31e811a2a0a26c9ab5a21c6cf
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0423_s0/x36_0423_s0_1_1.sf
+      hash: md5
+      md5: 090390f5f68e0bce510d8e46489723e9
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0431_s0/x36_0431_s0_1_1.sf
+      hash: md5
+      md5: 99fdaba8e1850eb3e588bddb7145207c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0455_s0/x36_0455_s0_1_1.sf
+      hash: md5
+      md5: 0d8eafe72c80b2d51a8ff64f0fc7b04b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0458_s0/x36_0458_s0_1_1.sf
+      hash: md5
+      md5: 7d1ce08b642b027aa8250debf7a1a058
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0461_s0/x36_0461_s0_1_1.sf
+      hash: md5
+      md5: b907dc5d3170c657afc747e9641d5a9a
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0466_s0/x36_0466_s0_1_1.sf
+      hash: md5
+      md5: 8eec78c500757440b5358dce91a27fed
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0469_s0/x36_0469_s0_1_1.sf
+      hash: md5
+      md5: 6d50ee34863a226eb562dd3fe30a7b7a
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0486_s0/x36_0486_s0_1_1.sf
+      hash: md5
+      md5: d3852a225840807d776cc4725936bf19
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0502_s0/x36_0502_s0_1_1.sf
+      hash: md5
+      md5: fbbbe6531cbb1ec41983fe3a714e7d1e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0504_s0/x36_0504_s0_1_1.sf
+      hash: md5
+      md5: a5740b9273deb14ed902774278068cce
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0515_s0/x36_0515_s0_1_1.sf
+      hash: md5
+      md5: c4039c9e81f0ad340521d7addb4df8e3
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0538_s0/x36_0538_s0_1_1.sf
+      hash: md5
+      md5: 9026782191624a4d1de288c4d133f964
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0541_s0/x36_0541_s0_1_1.sf
+      hash: md5
+      md5: 035e12bbe6f82b9e6edb774aa952b6da
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0554_s0/x36_0554_s0_1_1.sf
+      hash: md5
+      md5: bee9bee69832c43dd1355173da6bbf76
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0565_s0/x36_0565_s0_1_1.sf
+      hash: md5
+      md5: 7986f82c4fa620416c42ecac7570cc1a
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0566_s0/x36_0566_s0_1_1.sf
+      hash: md5
+      md5: aef6e6b13c1fd153fa6a7044f9e86bb7
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0578_s0/x36_0578_s0_1_1.sf
+      hash: md5
+      md5: e6a46f7f7aad140c6f41b30852bd364b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0584_s0/x36_0584_s0_1_1.sf
+      hash: md5
+      md5: 16e1ef03f4ea16910bd6c685d2cf8506
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0588_s0/x36_0588_s0_1_1.sf
+      hash: md5
+      md5: 51c0909337beca03344d38cb42bf49fe
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0600_s0/x36_0600_s0_1_1.sf
+      hash: md5
+      md5: d896e27d8515837915b5b181acba436b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0601_s0/x36_0601_s0_1_1.sf
+      hash: md5
+      md5: 1f34a932ba709dd8da9e6c787b58c9ea
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0615_s0/x36_0615_s0_1_1.sf
+      hash: md5
+      md5: 9fad1ec8d75d62663b8d456bd2a06619
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0621_s0/x36_0621_s0_1_1.sf
+      hash: md5
+      md5: e639f96b1708d11fb4a14b90715671da
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0631_s0/x36_0631_s0_1_1.sf
+      hash: md5
+      md5: 7edc46ad49502cb6e0a7198463794ef6
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0639_s0/x36_0639_s0_1_1.sf
+      hash: md5
+      md5: df6636709412c6cab6f39a4a0c4d8172
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0644_s0/x36_0644_s0_1_1.sf
+      hash: md5
+      md5: c9b42e3041d5ce9e13f5ef4fe626398a
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0646_s0/x36_0646_s0_1_1.sf
+      hash: md5
+      md5: c6696765c9842633112ff9f2004ff311
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0650_s0/x36_0650_s0_1_1.sf
+      hash: md5
+      md5: 9cfd6f0bcba8bd906dca8c21d58a40b1
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0659_s0/x36_0659_s0_1_1.sf
+      hash: md5
+      md5: 990b58c672850bc0ccab59f53da19e2e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0681_s0/x36_0681_s0_1_1.sf
+      hash: md5
+      md5: 950c03b022b32f16684b34abc3b3f3d7
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0688_s0/x36_0688_s0_1_1.sf
+      hash: md5
+      md5: f32d33b0fa1852db814a9ec88e508857
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0695_s0/x36_0695_s0_1_1.sf
+      hash: md5
+      md5: cd20f9f12d04efd99c23fcead4b3f998
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0709_s0/x36_0709_s0_1_1.sf
+      hash: md5
+      md5: 0b47c16380334b6fdcde47cc20a0c8e0
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0728_s0/x36_0728_s0_1_1.sf
+      hash: md5
+      md5: b4c44f68a38d67c828f2f2d4e93643ae
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0745_s0/x36_0745_s0_1_1.sf
+      hash: md5
+      md5: 678caf1911bff2363794eb34be862441
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0765_s0/x36_0765_s0_1_1.sf
+      hash: md5
+      md5: fcb97a24a6fa510f8e9ce4bd7faa47bc
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0777_s0/x36_0777_s0_1_1.sf
+      hash: md5
+      md5: 76a87d3653216d310e161a4af3241000
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0792_s0/x36_0792_s0_1_1.sf
+      hash: md5
+      md5: f73997cee503b007ed089bc57193370b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0798_s0/x36_0798_s0_1_1.sf
+      hash: md5
+      md5: 386061c2e29e5694b9a2db017a86567b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0816_s0/x36_0816_s0_1_1.sf
+      hash: md5
+      md5: 9379bcd6f1d70b123934b1531a398e42
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0822_s0/x36_0822_s0_1_1.sf
+      hash: md5
+      md5: e8c6f9081d021b9cf31978fcb36fa03c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0841_s0/x36_0841_s0_1_1.sf
+      hash: md5
+      md5: d614ee10c4d98938fa65e3e2d3840070
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0842_s0/x36_0842_s0_1_1.sf
+      hash: md5
+      md5: db402c48288f9b16e09b0ac30bf6d5d8
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0849_s0/x36_0849_s0_1_1.sf
+      hash: md5
+      md5: 099f738489cca910bf6a2b86d91acb8e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0856_s0/x36_0856_s0_1_1.sf
+      hash: md5
+      md5: a50059c09eb139ae8dbcce6fb5874395
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0864_s0/x36_0864_s0_1_1.sf
+      hash: md5
+      md5: 24706a5ce04447e219035034f0ebc353
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0872_s0/x36_0872_s0_1_1.sf
+      hash: md5
+      md5: dbc03f772085f89737eca66d99e1b212
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0897_s0/x36_0897_s0_1_1.sf
+      hash: md5
+      md5: 843e2c3312303e7f6abc1b223416a032
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0898_s0/x36_0898_s0_1_1.sf
+      hash: md5
+      md5: 30170b6c84639cc8c37a03abf318780f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0904_s0/x36_0904_s0_1_1.sf
+      hash: md5
+      md5: 5de82cf852ed4aa971be9b6369d35a84
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0909_s0/x36_0909_s0_1_1.sf
+      hash: md5
+      md5: e81976a1d58da8ea790cd555ec5b449a
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0924_s0/x36_0924_s0_1_1.sf
+      hash: md5
+      md5: 3ee831e7c0dc2b78d7bdbb0866c319e7
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0925_s0/x36_0925_s0_1_1.sf
+      hash: md5
+      md5: b09e36cf37852084e7262c793632795b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0938_s0/x36_0938_s0_1_1.sf
+      hash: md5
+      md5: 614a32ddcdbdcec0e327f37a7eb4df30
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0943_s0/x36_0943_s0_1_1.sf
+      hash: md5
+      md5: 278e30a447c52aa1c0573e6ec8930924
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0952_s0/x36_0952_s0_1_1.sf
+      hash: md5
+      md5: ee14fcee387eefc8ef77c0f057551368
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0964_s0/x36_0964_s0_1_1.sf
+      hash: md5
+      md5: bfb2a2d1b8b8706fd7b7b73e4d4c92bd
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0967_s0/x36_0967_s0_1_1.sf
+      hash: md5
+      md5: 3a8fb7157bb325a193d78a22578a4489
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0968_s0/x36_0968_s0_1_1.sf
+      hash: md5
+      md5: 419a15de15b5996122ead56f434bd462
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0972_s0/x36_0972_s0_1_1.sf
+      hash: md5
+      md5: 0accfa2a2cfb61dcb5d466f065b62fe0
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0973_s0/x36_0973_s0_1_1.sf
+      hash: md5
+      md5: dbaa4d9016a4915c489adba0be6234ff
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0975_s0/x36_0975_s0_1_1.sf
+      hash: md5
+      md5: 3280471bedc035d771360a8c19f656d0
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1007_s0/x36_1007_s0_1_1.sf
+      hash: md5
+      md5: 70eea4c474735c1d6739eaa5741bb279
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1019_s0/x36_1019_s0_1_1.sf
+      hash: md5
+      md5: f98828ec26b0d16dc2d96a828d3952e0
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1020_s0/x36_1020_s0_1_1.sf
+      hash: md5
+      md5: ea4dba69e96f5149fb84340217be5719
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1028_s0/x36_1028_s0_1_1.sf
+      hash: md5
+      md5: 758c1e7a664dab855ba23ee610d2aabd
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1033_s0/x36_1033_s0_1_1.sf
+      hash: md5
+      md5: 9e2bcec660e7ce63efee4982f9996f32
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1042_s0/x36_1042_s0_1_1.sf
+      hash: md5
+      md5: 42dbadcbf5387ecf740e17a8ec4c4e5b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1043_s0/x36_1043_s0_1_1.sf
+      hash: md5
+      md5: f53ef28c569f61255c12d9a37e2898ed
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1066_s0/x36_1066_s0_1_1.sf
+      hash: md5
+      md5: 790a044b5cdd50b4f87d10f939119266
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1067_s0/x36_1067_s0_1_1.sf
+      hash: md5
+      md5: 650f18b025d969d03cbe368ac0674e4d
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1075_s0/x36_1075_s0_1_1.sf
+      hash: md5
+      md5: dd6858f408e1e695f249ffb866b86e14
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1077_s0/x36_1077_s0_1_1.sf
+      hash: md5
+      md5: 22228d5b3ffc31ef4cdaa385136f2a46
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1090_s0/x36_1090_s0_1_1.sf
+      hash: md5
+      md5: 445b85d6a6feb6618a98b39bc7f9adb8
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1112_s0/x36_1112_s0_1_1.sf
+      hash: md5
+      md5: 3fb7433cfc563a3bbb632dab01728a3a
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1158_s0/x36_1158_s0_1_1.sf
+      hash: md5
+      md5: 111ec9c472f8eabfc565182118a383ef
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1162_s0/x36_1162_s0_1_1.sf
+      hash: md5
+      md5: 0644943af2edba09d029e1b9ca2dd794
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1168_s0/x36_1168_s0_1_1.sf
+      hash: md5
+      md5: 6a526258c01c5fa36da1b1852e95ee7e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1197_s0/x36_1197_s0_1_1.sf
+      hash: md5
+      md5: 9ae19a2a482b6b6ba906000b98a246b1
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1207_s0/x36_1207_s0_1_1.sf
+      hash: md5
+      md5: fb58c867ae67b05d34a1bce1b9f77201
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1212_s0/x36_1212_s0_1_1.sf
+      hash: md5
+      md5: e19b2322c541148d5e93d4525d1c48ce
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1223_s0/x36_1223_s0_1_1.sf
+      hash: md5
+      md5: 32fef030a8b4d3f91a46318a445ce891
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1233_s0/x36_1233_s0_1_1.sf
+      hash: md5
+      md5: fe783dfc459f74d20ceb7f97b33d21dc
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1238_s0/x36_1238_s0_1_1.sf
+      hash: md5
+      md5: ca2b5f44dbfe9d0ace36db6606e9da20
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1251_s0/x36_1251_s0_1_1.sf
+      hash: md5
+      md5: 71fe484005d97f3262f7a275ad70e2dd
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1272_s0/x36_1272_s0_1_1.sf
+      hash: md5
+      md5: a3607df9a845f31597ac19c42e9f6dd7
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1292_s0/x36_1292_s0_1_1.sf
+      hash: md5
+      md5: 04b9d9f72c26e560bb1f00330c4f313c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1300_s0/x36_1300_s0_1_1.sf
+      hash: md5
+      md5: 6a7fbe3060ac5a1974f697683aee161b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1306_s0/x36_1306_s0_1_1.sf
+      hash: md5
+      md5: 368296e0ccc5ae86c99db854e041f31f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1335_s0/x36_1335_s0_1_1.sf
+      hash: md5
+      md5: a566daff28dd9c537f19d808132a4653
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1345_s0/x36_1345_s0_1_1.sf
+      hash: md5
+      md5: d2ffa0e4591f39196658cea6b9640f77
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1354_s0/x36_1354_s0_1_1.sf
+      hash: md5
+      md5: dd4df5800107eeadc2aaf38a85b276fd
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1370_s0/x36_1370_s0_1_1.sf
+      hash: md5
+      md5: 17ef186a844d2f2b6419d6233d03de28
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1371_s0/x36_1371_s0_1_1.sf
+      hash: md5
+      md5: fd63961eaa60cf33fc9918bc3e3df7a1
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1388_s0/x36_1388_s0_1_1.sf
+      hash: md5
+      md5: 2364827cf16c567135746d34098d1364
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1392_s0/x36_1392_s0_1_1.sf
+      hash: md5
+      md5: 8719363d2b2c9831bed5a4ff2f1a0ee8
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1397_s0/x36_1397_s0_1_1.sf
+      hash: md5
+      md5: 2cd8323538953f08170a12e2094a887d
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1401_s0/x36_1401_s0_1_1.sf
+      hash: md5
+      md5: 082eaa6adaf2818485ca2a3aee68f06a
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1416_s0/x36_1416_s0_1_1.sf
+      hash: md5
+      md5: c4c2e90ca66892d87866c4d29c5a9972
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1434_s0/x36_1434_s0_1_1.sf
+      hash: md5
+      md5: dbfad3fedb1452fe9312b56af102c1c2
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1437_s0/x36_1437_s0_1_1.sf
+      hash: md5
+      md5: 26bd15748c67da77ccfd60bf45b7bf31
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1442_s0/x36_1442_s0_1_1.sf
+      hash: md5
+      md5: 40e05ccce380671bc254ae8c502935fc
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1460_s0/x36_1460_s0_1_1.sf
+      hash: md5
+      md5: eb0d88120e0e8a9b8168292882b10002
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1470_s0/x36_1470_s0_1_1.sf
+      hash: md5
+      md5: e819fef271738fbf91718b02eb753a05
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1473_s0/x36_1473_s0_1_1.sf
+      hash: md5
+      md5: 21888175010385cde34fb7f6f3695949
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1496_s0/x36_1496_s0_1_1.sf
+      hash: md5
+      md5: c3b3fd7a27abfcceae53eb8ce292bee1
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1515_s0/x36_1515_s0_1_1.sf
+      hash: md5
+      md5: 8c9fbe0e9eb5de66acdcfa522f425ea2
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1525_s0/x36_1525_s0_1_1.sf
+      hash: md5
+      md5: 57474a33cb725918d7890a3e5c455510
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1527_s0/x36_1527_s0_1_1.sf
+      hash: md5
+      md5: 7f9b4639ecb4b232778dde1515298a6f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1528_s0/x36_1528_s0_1_1.sf
+      hash: md5
+      md5: 9cef1594be9d4c156fa7e9dd5f05c17c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1529_s0/x36_1529_s0_1_1.sf
+      hash: md5
+      md5: 6a923ba254437b53aacb12e805a9b7d4
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1531_s0/x36_1531_s0_1_1.sf
+      hash: md5
+      md5: 6acf302638ad563d37525d5eaee481d4
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1538_s0/x36_1538_s0_1_1.sf
+      hash: md5
+      md5: db41f08e7521a51afd9317969529c480
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1550_s0/x36_1550_s0_1_1.sf
+      hash: md5
+      md5: e0404e87f12e6fa673390f13085f311c
+      size: 19425370
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-01/x32_005_s0.tar.gz
+      hash: md5
+      md5: dbefe40631ea54ea84b1b6151ec780dd
+      size: 94986097
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-01/x32_006_s0.tar.gz
+      hash: md5
+      md5: bb041c409874b57f3468632d270ba16f
+      size: 94737253
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-02/x32_020_s0.tar.gz
+      hash: md5
+      md5: c04c41b0ae38f350967e699a85f46874
+      size: 91775904
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-02/x32_025_s0.tar.gz
+      hash: md5
+      md5: dcddcba5e65aa7063149d9b51e3fb0dd
+      size: 93928736
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-03/x32_027_s0.tar.gz
+      hash: md5
+      md5: 86fcb6eb3f136ed279bffd44b4031aea
+      size: 95951436
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-03/x32_033_s0.tar.gz
+      hash: md5
+      md5: 582ede47da887e5ca10dfd6ab05ed9b8
+      size: 92860679
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-03/x32_034_s0.tar.gz
+      hash: md5
+      md5: 2cdb503faf8782e2acda329c52283098
+      size: 93163987
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-04/x32_042_s0.tar.gz
+      hash: md5
+      md5: 2e417b296d1e8a450bc09d8ccb77f29f
+      size: 94204581
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-04/x32_048_s0.tar.gz
+      hash: md5
+      md5: 01aa92518c8ac334205e48af2c806965
+      size: 95605472
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-07/x32_083_s0.tar.gz
+      hash: md5
+      md5: c47045bbcec1cc59b5541fa54a15c799
+      size: 90557451
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-07/x32_084_s0.tar.gz
+      hash: md5
+      md5: eaacf6dbf180159cd3fd390edcf0945a
+      size: 96023671
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_084_s1.tar.gz
+      hash: md5
+      md5: ef96b5f64f6cd6ab3a30a29a9fb686c7
+      size: 96167696
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-08-r1/x32_084_s2.tar.gz
+      hash: md5
+      md5: 297515f4550057c8d9eb9a167b0a28a5
+      size: 96217908
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-09/x32_103_s0.tar.gz
+      hash: md5
+      md5: 3d0834a0885c0779db8a761aa4b573f5
+      size: 96474226
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-12/x32_133_s0.tar.gz
+      hash: md5
+      md5: 07acd48dfd8ed9e27e2cdd198a7f587e
+      size: 96420585
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-13/x32_140_s0.tar.gz
+      hash: md5
+      md5: 5df0998d28567fd4f018c18aa1c206a5
+      size: 96970159
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-13/x32_141_s0.tar.gz
+      hash: md5
+      md5: 5fe04ace4dd3ec6bc981a6dd4ae8cf1f
+      size: 96636018
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-13/x32_145_s0.tar.gz
+      hash: md5
+      md5: cf9b8a32f7c3315ce76547bb56def284
+      size: 91776027
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-13/x32_148_s0.tar.gz
+      hash: md5
+      md5: 32ff9b39120aed43b6ac4187ed394593
+      size: 96200635
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-14/x32_151_s0.tar.gz
+      hash: md5
+      md5: 1e7eb089906397ff8ff2454b0fdb0f77
+      size: 95667538
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-14/x32_156_s0.tar.gz
+      hash: md5
+      md5: 0e3e38b8d1e130e01039e3fd168cbbd1
+      size: 92240722
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-15/x32_166_s0.tar.gz
+      hash: md5
+      md5: 0bc2e060d9764df10d596d962b54b3ff
+      size: 93754206
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-16/x32_182_s0.tar.gz
+      hash: md5
+      md5: 9fbc2eb89ea35f3ae6b31af12a040d2d
+      size: 95121737
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-17/x32_191_s0.tar.gz
+      hash: md5
+      md5: 6c058326bb71eaa21f23fccb59c38db8
+      size: 95991887
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-18/x32_197_s0.tar.gz
+      hash: md5
+      md5: 99a691665cf04a7dd822b15d9b2adba6
+      size: 95794576
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-19/x32_210_s0.tar.gz
+      hash: md5
+      md5: 22ee147ddce7e42e84184cd4d6ef3a22
+      size: 96931218
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-23-r1/x32_256_s0.tar.gz
+      hash: md5
+      md5: a83b0bc58ad003bdcf5fdaba0c94b2ac
+      size: 92650347
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-25/x32_274_s0.tar.gz
+      hash: md5
+      md5: b2c760f4b244d8901580b51be15db469
+      size: 95666516
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-27/x32_304_s0.tar.gz
+      hash: md5
+      md5: 37b25357c407801f9bcc24f4acd09ccf
+      size: 97454139
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-30/x32_332_s0.tar.gz
+      hash: md5
+      md5: f032eb1e157830e474712e1d1bf3f1dc
+      size: 94831005
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-31/x32_348_s0.tar.gz
+      hash: md5
+      md5: aa2453a66e6ee71e25d2624f31882f8c
+      size: 92651672
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-32/x32_357_s0.tar.gz
+      hash: md5
+      md5: aa0b3551c08cd42054cc5ab4ef5b1304
+      size: 92553042
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-33/x32_370_s0.tar.gz
+      hash: md5
+      md5: 63c747974bc99c7e9baf473c10cf9716
+      size: 96006175
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-33/x32_373_s0.tar.gz
+      hash: md5
+      md5: 4a898a26adc0a6e2f524f9bac20ec15a
+      size: 92492837
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-33/x32_377_s0.tar.gz
+      hash: md5
+      md5: bb279d569d89e3b7276b087a7faacb51
+      size: 96790778
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-34/x32_377_s1.tar.gz
+      hash: md5
+      md5: 01e390c45e123799129a986184d4fa37
+      size: 96790828
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-34/x32_377_s2.tar.gz
+      hash: md5
+      md5: 682b63dd82598cdf1ab9b974bbb60015
+      size: 96885146
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-34/x32_379_s0.tar.gz
+      hash: md5
+      md5: 36df7cb1300ccd0a8e5a46dbcfd1e12a
+      size: 94481173
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-34/x32_380_s0.tar.gz
+      hash: md5
+      md5: 1f16c8ff56e4c9b1295ce0b4deb4e916
+      size: 96560639
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-34/x32_385_s0.tar.gz
+      hash: md5
+      md5: ac7247d9a3c6787141c3161399ede1ed
+      size: 95569206
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-development-35/x32_391_s0.tar.gz
+      hash: md5
+      md5: 498bbcd1ceb8e496a12271f2ede51f04
+      size: 97581110
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-36/x32_392_s0.tar.gz
+      hash: md5
+      md5: 725be36ef4d07255e08760d4f2da13a4
+      size: 93270165
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-36/x32_393_s0.tar.gz
+      hash: md5
+      md5: 5c53e18117fdc63fa4a1106caaf2d9af
+      size: 94213700
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-38/x32_411_s0.tar.gz
+      hash: md5
+      md5: 962fb1e63db7c92761aa9b697368d03b
+      size: 92199649
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-38/x32_413_s0.tar.gz
+      hash: md5
+      md5: ea4e4a458cbafa80e56a713eb13f1a43
+      size: 95501888
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-38/x32_415_s0.tar.gz
+      hash: md5
+      md5: 95a13479945c9b592c7b36df0f98c26a
+      size: 95835875
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-38/x32_419_s0.tar.gz
+      hash: md5
+      md5: 2ed80b33e254930f3ed4cd972f612307
+      size: 97039417
+    - path: ../../experiments/32_tree_expansion/data/cloud_archive/x32-test-39/x32_427_s0.tar.gz
+      hash: md5
+      md5: f77f151828a0e9491b9728a6cf87025f
+      size: 97805522
+    - path: ../../experiments/27_single_tree_cnn/data/downloads/s27_train_15.tar.gz
+      hash: md5
+      md5: ac2b7d8fe8079035c594212fe12ae674
+      size: 96438561
+    - path: ../../experiments/27_single_tree_cnn/data/downloads/s27_train_16.tar.gz
+      hash: md5
+      md5: 17df3997788e28414048aeac9013c102
+      size: 97112591
+    - path: ../../experiments/27_single_tree_cnn/data/downloads/s27_train_23.tar.gz
+      hash: md5
+      md5: 5f6895ffc9863a245183d138193894cf
+      size: 96234548
+    - path: ../../experiments/27_single_tree_cnn/data/downloads/s27_train_26.tar.gz
+      hash: md5
+      md5: 78932df30a60ca8ed0e1275c9b94de53
+      size: 95701138
+    - path: ../../experiments/27_single_tree_cnn/data/downloads/s27_validation_1.tar.gz
+      hash: md5
+      md5: fed0d1bb2865a2677dbfd13f98e20faf
+      size: 96029294
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0010_s0/x36_0010_s0_1_1.sf
+      hash: md5
+      md5: 6cffdf777f69f295b55f2eca488ca45b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0021_s0/x36_0021_s0_1_1.sf
+      hash: md5
+      md5: 7b76084ccafd32e3ab759364c20b61ef
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0028_s0/x36_0028_s0_1_1.sf
+      hash: md5
+      md5: 8444fd4edb9cd374898e04887e62ef7c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0043_s0/x36_0043_s0_1_1.sf
+      hash: md5
+      md5: 417ba8cba8cb64220226403bc6005218
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0052_s0/x36_0052_s0_1_1.sf
+      hash: md5
+      md5: 1657b162e247e230de9b412945be68ba
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0056_s0/x36_0056_s0_1_1.sf
+      hash: md5
+      md5: 15e2c1cde4e0eab1912e91dc42cdcad7
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0060_s0/x36_0060_s0_1_1.sf
+      hash: md5
+      md5: 95050720226f3e45e3bcbc83757c4e1d
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0071_s0/x36_0071_s0_1_1.sf
+      hash: md5
+      md5: 1091b6a83a1e26c1666c3b1d553f5cc4
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0073_s0/x36_0073_s0_1_1.sf
+      hash: md5
+      md5: 53b22a27c4fcfee2c7c5e4a76a4da1d4
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0078_s0/x36_0078_s0_1_1.sf
+      hash: md5
+      md5: 4b8dbccfcb6d88c3aff8a4a631468f99
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0080_s0/x36_0080_s0_1_1.sf
+      hash: md5
+      md5: a485f1d979fdffdda70f132cb9cf2997
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0083_s0/x36_0083_s0_1_1.sf
+      hash: md5
+      md5: 45bff76b6770212303ae41055518df53
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0085_s0/x36_0085_s0_1_1.sf
+      hash: md5
+      md5: e9daa2917a3bc37ebc750bfb31a440a1
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0105_s0/x36_0105_s0_1_1.sf
+      hash: md5
+      md5: ef1aad3bd452f747d3d1ada63479529c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0124_s0/x36_0124_s0_1_1.sf
+      hash: md5
+      md5: fcf49ddbce87c91dcf0e4ef577fb3d61
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0128_s0/x36_0128_s0_1_1.sf
+      hash: md5
+      md5: 0302e2fd621994a1f96599c437bf6a10
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0166_s0/x36_0166_s0_1_1.sf
+      hash: md5
+      md5: 8c1974f6433707675d2cc6eeb3b15554
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0172_s0/x36_0172_s0_1_1.sf
+      hash: md5
+      md5: 90365b5bc34cde2e17c7302ecb0cba2f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0217_s0/x36_0217_s0_1_1.sf
+      hash: md5
+      md5: 67e82f74a4f485105750e9a5f298252e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0218_s0/x36_0218_s0_1_1.sf
+      hash: md5
+      md5: c252d27e5e371ad8f9f12a93e3ebeec5
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0237_s0/x36_0237_s0_1_1.sf
+      hash: md5
+      md5: de3c5ae33053a6957194f64fa70faa12
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0238_s0/x36_0238_s0_1_1.sf
+      hash: md5
+      md5: 109a8e47e968c9631ac600a43a610ff6
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0247_s0/x36_0247_s0_1_1.sf
+      hash: md5
+      md5: 40627a0f66577443ccc0813e25edc09c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0269_s0/x36_0269_s0_1_1.sf
+      hash: md5
+      md5: ddc17bfb322ac620a143dead0fbbc601
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0275_s0/x36_0275_s0_1_1.sf
+      hash: md5
+      md5: f6814122564c8a191df9b4262f7c2e02
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0277_s0/x36_0277_s0_1_1.sf
+      hash: md5
+      md5: 2978bfd39fbbb8389ea7104f0f88895a
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0278_s0/x36_0278_s0_1_1.sf
+      hash: md5
+      md5: d36419fb50e0671aed11f6e25674b082
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0301_s0/x36_0301_s0_1_1.sf
+      hash: md5
+      md5: ace25df01cedb2b77761a5581c2ee9c2
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0339_s0/x36_0339_s0_1_1.sf
+      hash: md5
+      md5: 26c6084b9d8eec0c9af9fe6dbcb220b5
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0350_s0/x36_0350_s0_1_1.sf
+      hash: md5
+      md5: e57b235c10a32431b4b6b2fdb3fd881d
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0353_s0/x36_0353_s0_1_1.sf
+      hash: md5
+      md5: d3bb1bf9c3a127d9d7460c0da6b28d58
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0359_s0/x36_0359_s0_1_1.sf
+      hash: md5
+      md5: cda7bf29fd8fed8e569660f0a694734c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0362_s0/x36_0362_s0_1_1.sf
+      hash: md5
+      md5: f10db940f782d23f49a4a904cb9e5152
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0376_s0/x36_0376_s0_1_1.sf
+      hash: md5
+      md5: 7d85387185ae560ed44eb723b5351fab
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0383_s0/x36_0383_s0_1_1.sf
+      hash: md5
+      md5: 90e50eb2b1447777160b0500a41917af
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0388_s0/x36_0388_s0_1_1.sf
+      hash: md5
+      md5: f0d3f22fecbe8ffc71e99711e231f0fd
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0389_s0/x36_0389_s0_1_1.sf
+      hash: md5
+      md5: 432d919cd05a38c2f88827a6fc1212e4
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0395_s0/x36_0395_s0_1_1.sf
+      hash: md5
+      md5: f24b97d36316a028fbb0ab99f2e24c4f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0400_s0/x36_0400_s0_1_1.sf
+      hash: md5
+      md5: afa07d113d878e7545fca6d78aa48636
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0418_s0/x36_0418_s0_1_1.sf
+      hash: md5
+      md5: 5575f874787fc9fa16e1a16de57b7fef
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0426_s0/x36_0426_s0_1_1.sf
+      hash: md5
+      md5: 6abf751339676dc6d3c8dbae54f3cf8e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0427_s0/x36_0427_s0_1_1.sf
+      hash: md5
+      md5: d77770899a24b61d1cec709a6957a48d
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0439_s0/x36_0439_s0_1_1.sf
+      hash: md5
+      md5: 64978bbb1f53d832870c02f40ee2d770
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0450_s0/x36_0450_s0_1_1.sf
+      hash: md5
+      md5: b0a4144dc447ad6095ba5db8a1c17bff
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0452_s0/x36_0452_s0_1_1.sf
+      hash: md5
+      md5: dc0a1508fa647434ab088f5dc9c2d683
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0454_s0/x36_0454_s0_1_1.sf
+      hash: md5
+      md5: c18b0d0e8e6d74ffeda69373526fdf25
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0480_s0/x36_0480_s0_1_1.sf
+      hash: md5
+      md5: 2fe4183c43cbcd41de1edaf3a940230c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0487_s0/x36_0487_s0_1_1.sf
+      hash: md5
+      md5: 5011fbf450434df6201b0cf9b0527588
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0509_s0/x36_0509_s0_1_1.sf
+      hash: md5
+      md5: bb5a2e02dda58ebed572bec9722731e9
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0521_s0/x36_0521_s0_1_1.sf
+      hash: md5
+      md5: 3740f79568f73edf616e7585c8c220b1
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0527_s0/x36_0527_s0_1_1.sf
+      hash: md5
+      md5: 5da4e2864883382295fbba84036d2718
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0531_s0/x36_0531_s0_1_1.sf
+      hash: md5
+      md5: f04c80c64fd5be68a5827dbeedd5db28
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0535_s0/x36_0535_s0_1_1.sf
+      hash: md5
+      md5: cfbfdac23655bf16a44a4c88e36f4e75
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0551_s0/x36_0551_s0_1_1.sf
+      hash: md5
+      md5: cb5a52ed1881d32ee51cea2ba634415e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0555_s0/x36_0555_s0_1_1.sf
+      hash: md5
+      md5: 4863ffdc2bccc6411d09c816edc1c4f4
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0558_s0/x36_0558_s0_1_1.sf
+      hash: md5
+      md5: 29688dcf262592e550837941c740f246
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0587_s0/x36_0587_s0_1_1.sf
+      hash: md5
+      md5: f21dfa58fc0570e347c660f89f120276
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0590_s0/x36_0590_s0_1_1.sf
+      hash: md5
+      md5: fc8d56006713fe69131de2c357de79ba
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0592_s0/x36_0592_s0_1_1.sf
+      hash: md5
+      md5: 91c2bde690e2612d83eb5ad23e1e7532
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0604_s0/x36_0604_s0_1_1.sf
+      hash: md5
+      md5: c52db96311728ab74ae7d89d7deca210
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0649_s0/x36_0649_s0_1_1.sf
+      hash: md5
+      md5: 11568dacfa5c1a05f674bf098024391e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0657_s0/x36_0657_s0_1_1.sf
+      hash: md5
+      md5: cf2a2168f22e1391bc70a76ead7dc60a
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0674_s0/x36_0674_s0_1_1.sf
+      hash: md5
+      md5: 3728d40c576944cb076694e5b39c21fa
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0677_s0/x36_0677_s0_1_1.sf
+      hash: md5
+      md5: 823334f5ba5adeb1b1d85f2f4ed1350f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0680_s0/x36_0680_s0_1_1.sf
+      hash: md5
+      md5: ef6be3a0f20cf6ea4122b95b6d401ee1
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0702_s0/x36_0702_s0_1_1.sf
+      hash: md5
+      md5: b762e1dce0ffe6623e9676bbcc95edf5
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0703_s0/x36_0703_s0_1_1.sf
+      hash: md5
+      md5: 130c09e76b8ff4ec9e1ada48a736f40e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0710_s0/x36_0710_s0_1_1.sf
+      hash: md5
+      md5: 9e1d07e13ee0c9d7c086ef80e8cc2059
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0711_s0/x36_0711_s0_1_1.sf
+      hash: md5
+      md5: fd1ac8952cf9f0cd272c8048fb730212
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0713_s0/x36_0713_s0_1_1.sf
+      hash: md5
+      md5: fcd9c64a07fd0388c5bc3e5fdcf16c9c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0719_s0/x36_0719_s0_1_1.sf
+      hash: md5
+      md5: e0a140e909e1cc369397013208ea671c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0732_s0/x36_0732_s0_1_1.sf
+      hash: md5
+      md5: 5d6fa1be8401aa1ed443aebb7d09da3e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0738_s0/x36_0738_s0_1_1.sf
+      hash: md5
+      md5: fb0a8d51e19bb85e2cb4c619617ce7ba
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0757_s0/x36_0757_s0_1_1.sf
+      hash: md5
+      md5: d0624c301a94cbe64e2b2243aedf1cd9
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0771_s0/x36_0771_s0_1_1.sf
+      hash: md5
+      md5: 1a6059d22ba301d28c7dfd51551711b9
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0796_s0/x36_0796_s0_1_1.sf
+      hash: md5
+      md5: 1f957ea4bc9581dae97fa7abeb9c6fe4
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0806_s0/x36_0806_s0_1_1.sf
+      hash: md5
+      md5: 4f385731b75e3cbc6d97f9e47dee469d
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0807_s0/x36_0807_s0_1_1.sf
+      hash: md5
+      md5: 4111d500110e2da33852e7b727eb933f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0813_s0/x36_0813_s0_1_1.sf
+      hash: md5
+      md5: e0d6ab8e03d60d203db7887c374cd00e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0843_s0/x36_0843_s0_1_1.sf
+      hash: md5
+      md5: 8bb048f639e1de88687e7fa43a81959b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0844_s0/x36_0844_s0_1_1.sf
+      hash: md5
+      md5: 5629f85c0d6e4446f32f9b886857500e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0858_s0/x36_0858_s0_1_1.sf
+      hash: md5
+      md5: ba44f81f896369a96cdcb22d8ceeb624
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0891_s0/x36_0891_s0_1_1.sf
+      hash: md5
+      md5: 95536a91b80e7e55abd60d067a2eb6f3
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0893_s0/x36_0893_s0_1_1.sf
+      hash: md5
+      md5: ede33f691a0e613445664a33f4e4d993
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0921_s0/x36_0921_s0_1_1.sf
+      hash: md5
+      md5: fe4ecfeaaf7c78cc1546ac3f1fb565c2
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0922_s0/x36_0922_s0_1_1.sf
+      hash: md5
+      md5: dce7366be3b4c2d33df277288f402f14
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0951_s0/x36_0951_s0_1_1.sf
+      hash: md5
+      md5: 5df34be9ace520795747dd6478bf940b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0970_s0/x36_0970_s0_1_1.sf
+      hash: md5
+      md5: c65f45fc8874b7a3149cd42d94b7e406
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0978_s0/x36_0978_s0_1_1.sf
+      hash: md5
+      md5: d98ba47811f6bf3714949a9bf0174a0f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0987_s0/x36_0987_s0_1_1.sf
+      hash: md5
+      md5: a253d7262a9189fed91b667548c1ff55
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_0990_s0/x36_0990_s0_1_1.sf
+      hash: md5
+      md5: 579857b845925d169ee46fd788ce45a4
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1011_s0/x36_1011_s0_1_1.sf
+      hash: md5
+      md5: 486712512b9c1f30e6e9b20551b295f7
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1012_s0/x36_1012_s0_1_1.sf
+      hash: md5
+      md5: 8455d6e5851c689f1fa877109091a5a2
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1014_s0/x36_1014_s0_1_1.sf
+      hash: md5
+      md5: db9931b7620f29f795891bd3ceba4cc3
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1017_s0/x36_1017_s0_1_1.sf
+      hash: md5
+      md5: 82f345812c32693937712d191f3aef9f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1023_s0/x36_1023_s0_1_1.sf
+      hash: md5
+      md5: b42e523352a6898d61b1a78c3b369be6
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1031_s0/x36_1031_s0_1_1.sf
+      hash: md5
+      md5: f8b636b89db147f01663e7f9a9c9c9b1
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1039_s0/x36_1039_s0_1_1.sf
+      hash: md5
+      md5: edaab1eee6d0a705ab122378a553a0c5
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1051_s0/x36_1051_s0_1_1.sf
+      hash: md5
+      md5: af31fb74b5a954d58dcb0234a3cc8c9a
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1074_s0/x36_1074_s0_1_1.sf
+      hash: md5
+      md5: 0684cee3b30541cb5d82a70f6e3b9c90
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1078_s0/x36_1078_s0_1_1.sf
+      hash: md5
+      md5: fe7cb8a26f089833a88492fca7fc18fd
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1084_s0/x36_1084_s0_1_1.sf
+      hash: md5
+      md5: 3769d387d949d8848204c9bfcb4f353e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1102_s0/x36_1102_s0_1_1.sf
+      hash: md5
+      md5: fb0089878b3ec5d0c03264c0d0a0a176
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1129_s0/x36_1129_s0_1_1.sf
+      hash: md5
+      md5: 9590000d407dc1e735337891a30787d9
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1132_s0/x36_1132_s0_1_1.sf
+      hash: md5
+      md5: f4d39e25431745cd9251141191b29d16
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1139_s0/x36_1139_s0_1_1.sf
+      hash: md5
+      md5: d03702854185bf825ba07415e6142c03
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1146_s0/x36_1146_s0_1_1.sf
+      hash: md5
+      md5: c3648268b7ece9ed2690335d32c678a7
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1160_s0/x36_1160_s0_1_1.sf
+      hash: md5
+      md5: d0fb816f59983b70d13f13699dd963d8
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1164_s0/x36_1164_s0_1_1.sf
+      hash: md5
+      md5: 5e4562f6574867a91784eca8b94c231f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1165_s0/x36_1165_s0_1_1.sf
+      hash: md5
+      md5: 1c9099de7704f8b6589d062bbcfdc5ff
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1180_s0/x36_1180_s0_1_1.sf
+      hash: md5
+      md5: fb5a831afa550bff87828a8eb6c24082
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1188_s0/x36_1188_s0_1_1.sf
+      hash: md5
+      md5: 3976e183e79731bf06fa7d01f139f38b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1193_s0/x36_1193_s0_1_1.sf
+      hash: md5
+      md5: b9c0aed0688116c3357baecb69f81f9c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1234_s0/x36_1234_s0_1_1.sf
+      hash: md5
+      md5: 697ff9ca426d9bd1b1c39cb308d9be5f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1243_s0/x36_1243_s0_1_1.sf
+      hash: md5
+      md5: 97fbee0c9aa54780fc751c86dbf8aef5
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1250_s0/x36_1250_s0_1_1.sf
+      hash: md5
+      md5: f7b514bb6c67c1c63066e61f19007b9d
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1254_s0/x36_1254_s0_1_1.sf
+      hash: md5
+      md5: f002f32feb8ec5182fae13889858f985
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1255_s0/x36_1255_s0_1_1.sf
+      hash: md5
+      md5: ae02ac0b513d324c7c98fcae51b275ef
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1266_s0/x36_1266_s0_1_1.sf
+      hash: md5
+      md5: d94e0d564c7a4f3c2260bf2afea946c8
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1273_s0/x36_1273_s0_1_1.sf
+      hash: md5
+      md5: cf185f46f392f5436addfcdfada7bf67
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1277_s0/x36_1277_s0_1_1.sf
+      hash: md5
+      md5: df057191273e67514ee56137386eff6e
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1279_s0/x36_1279_s0_1_1.sf
+      hash: md5
+      md5: 1a00b00967a20f14db789c648279e00f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1307_s0/x36_1307_s0_1_1.sf
+      hash: md5
+      md5: 6b1a90653cbbe6d071631eef0197a481
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1309_s0/x36_1309_s0_1_1.sf
+      hash: md5
+      md5: f4bc6266a40b35ba7e9ee4e01ec9e2d2
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1314_s0/x36_1314_s0_1_1.sf
+      hash: md5
+      md5: cffd9c4e32278f0fb1e9788ac548d6f6
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1316_s0/x36_1316_s0_1_1.sf
+      hash: md5
+      md5: f125f9ad9db3775793a81aad94f3c8ad
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1326_s0/x36_1326_s0_1_1.sf
+      hash: md5
+      md5: 5d777b4970b6bb88e9975e39e6aca59f
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1332_s0/x36_1332_s0_1_1.sf
+      hash: md5
+      md5: 2f6f315bb337c91e8d9b43d21c8f5b92
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1338_s0/x36_1338_s0_1_1.sf
+      hash: md5
+      md5: 90a117f0d26054752c1ebbd862c7f59a
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1341_s0/x36_1341_s0_1_1.sf
+      hash: md5
+      md5: 944897a99928a8f451fea7da72bd43fe
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1343_s0/x36_1343_s0_1_1.sf
+      hash: md5
+      md5: e0863c900717d8294a17beedbe5f1797
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1357_s0/x36_1357_s0_1_1.sf
+      hash: md5
+      md5: e3c316dd25966028200c0b1dded82027
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1366_s0/x36_1366_s0_1_1.sf
+      hash: md5
+      md5: 2b49226522ea71fa697f2ec2d18cc34c
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1369_s0/x36_1369_s0_1_1.sf
+      hash: md5
+      md5: 46b9c66425ae223ad5070f3a42d94a47
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1384_s0/x36_1384_s0_1_1.sf
+      hash: md5
+      md5: 75e6a92d10c09474462de680804da57b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1395_s0/x36_1395_s0_1_1.sf
+      hash: md5
+      md5: 7f434bb02573704fb2e667ce9e9f634b
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1402_s0/x36_1402_s0_1_1.sf
+      hash: md5
+      md5: 8c40c06f6cd4e7ca411926d66fff0edd
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1407_s0/x36_1407_s0_1_1.sf
+      hash: md5
+      md5: 93dc960827b2b6cd8a1972dac066829d
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1412_s0/x36_1412_s0_1_1.sf
+      hash: md5
+      md5: fefdab8fa4b90714f2feee653dea9d32
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1428_s0/x36_1428_s0_1_1.sf
+      hash: md5
+      md5: d817f43644532038161bd9cb91a5b14d
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1429_s0/x36_1429_s0_1_1.sf
+      hash: md5
+      md5: aa4eb7d3dafc819d1b26610bff2921b5
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1435_s0/x36_1435_s0_1_1.sf
+      hash: md5
+      md5: 106c062581fcff3db23b99744112d5da
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1455_s0/x36_1455_s0_1_1.sf
+      hash: md5
+      md5: 3b91d4ac339536d2696fa4e0c07176e6
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1468_s0/x36_1468_s0_1_1.sf
+      hash: md5
+      md5: b841ba5bd7d575d451fd71f8df437682
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1488_s0/x36_1488_s0_1_1.sf
+      hash: md5
+      md5: df05ba6649cc97e6a189c39bff3af6bd
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1495_s0/x36_1495_s0_1_1.sf
+      hash: md5
+      md5: 4b2851f4bc0a6b5bdf6c5c85c3ed7c96
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1502_s0/x36_1502_s0_1_1.sf
+      hash: md5
+      md5: fa3dd15bbd897ab6e98b2af10fb70764
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1509_s0/x36_1509_s0_1_1.sf
+      hash: md5
+      md5: 731a5aeecc7c89a37377632dc2ad1ada
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1519_s0/x36_1519_s0_1_1.sf
+      hash: md5
+      md5: 8e3c58d265d655d715ba3db2df2a9776
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1521_s0/x36_1521_s0_1_1.sf
+      hash: md5
+      md5: 5f051ab95f878b919cb5777e31912b8a
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1522_s0/x36_1522_s0_1_1.sf
+      hash: md5
+      md5: 048993c9217d6bea6ebd629d2999d0ee
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1524_s0/x36_1524_s0_1_1.sf
+      hash: md5
+      md5: c423cc9c345383e2036fed93c78181ce
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1535_s0/x36_1535_s0_1_1.sf
+      hash: md5
+      md5: eeff9ead2c0f9796a20dc7a307966c07
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1539_s0/x36_1539_s0_1_1.sf
+      hash: md5
+      md5: 8b0459585cf99e9f03641a0d2d425a01
+      size: 19425370
+    - path: ../../experiments/36_tree_density/data/verified-material/x36_1553_s0/x36_1553_s0_1_1.sf
+      hash: md5
+      md5: a2fb1c1fc7d4bc9d28c01eb7504b64c4
+      size: 19425370
+  progress:
+    cmd: ../../.venv/bin/python snapshot_progress.py
+    outs:
+    - path: data/progress-public
+      hash: md5
+      md5: e63211b159852e3d063a8c702abcd9aa.dir
+      size: 90182
+      nfiles: 2
+    deps:
+    - path: snapshot_progress.py
+      hash: md5
+      md5: 9d249fa8fbb2330f412aa1b0d0092e89
+      size: 1284
+    - path: plot_learning_curve.py
+      hash: md5
+      md5: 4cbce2abfd868a02e353ee4fe2235e75
+      size: 1411
