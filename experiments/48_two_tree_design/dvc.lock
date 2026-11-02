@@ -23,3 +23,16 @@ stages:
       md5: adcdf398cfc9bdd33d1d294a54c0d2fd.dir
       size: 39412880
       nfiles: 26
+  cloud_inputs:
+    cmd: ../../.venv/bin/python package_cloud.py
+    outs:
+    - path: data/cloud
+      hash: md5
+      md5: c6ef44c24d6166b7598784e99e5a1e5d.dir
+      size: 601027
+      nfiles: 3
+    - path: data/cloud-context
+      hash: md5
+      md5: ef44988d19e4bc45f87e4ff96927b28b.dir
+      size: 17123213
+      nfiles: 2

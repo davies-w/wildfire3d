@@ -1,6 +1,6 @@
 # Two-tree sampled simulation design
 
-Prepared design and pilot input decks; no cloud jobs or reservations. The user approved replacing the 180,000-case Cartesian product with 2,000 sampled examples on 2026-11-02.
+Prepared 24-case pilot with cloud launch authorized on 2026-11-02. See `launch-record.json` for the frozen inputs and controller; private execution records contain the actual submission state. The user approved replacing the 180,000-case Cartesian product with 2,000 sampled examples on 2026-11-02.
 
 - Type1 Ponderosa pine: total height18–22m and crown radius1.5–5.5m, both at1m increments; crown base fixed6m.
 - Type3 Blue gum eucalyptus: total height22–26m and crown radius3.5–7.5m, both at1m increments; crown base fixed12m.
@@ -28,6 +28,14 @@ Ignition uses 1,600 imposed heating particles in a constant 0.4 × 0.4 m tangent
 
 Offline checks pass for all 24 decks: geometry membership, ignition contact, boundaries, input structure, and independent fuel-mass accounting. They do NOT establish FDS parser acceptance, correct runtime mass, restart behaviour, successful ignition or sufficient resolution/domain/time horizon.
 
-`pilot_worker.py` is a draft cloud-only runner for parser/mass/restart probes and a full solve with a two-hour wall limit. It is not a deployed launch package. It archives evidence on handled exit, but abrupt Spot loss can lose the current case; no remote periodic restart preservation is claimed. No local solver was run.
+## Cloud execution
 
-**Before launch:** rebuild/verify the solver image (the former solver36 digest was absent from the registry at preparation), package immutable input transport, verify cloud-only parser/mass/restart probes, and configure resource cleanup and the spending cap. Review pilot runtime, post-source burning, boundary effects, fine-grid differences and output storage before the 2,000-case campaign. Taller-tree cone-label scales and model mass normalization also require adjustment before model training. Cost estimates and the spending ledger remain private.
+`pilot_worker.py` runs four OpenMP threads per solve on Spot C3 machines. Four nominal-geometry cases (both species × both ignition families) run first on c3-standard-4. Only if all four finish successfully does the controller release the remaining 20 cases in parallel, on c3-highmem-4 for 32 GB RAM per worker. The larger-memory machine retains four threads and does not change the numerical inputs. The regional Spot quota was increased to 80 vCPUs for this launch.
+
+Each case first runs cloud-only parser, initial wet-mass (1% tolerance), and portable restart checks through 0.15 seconds. These probe states are discarded. The full 180-second solve has a two-hour wall allowance, including snapshot overhead, within a three-hour Batch task limit. The controller enforces an approximately 3.1-hour VM lifetime, a four-hour queue/run deadline per wave, and cleanup of jobs/VMs/disks. Zero automatic Batch retries. Two waves could take several hours; no measured runtime for the new geometries is yet available.
+
+Roughly every five minutes of solver wall time, the runner requests a graceful stop and uploads the stopped output/restart directory in hash-verified immutable chunks before resuming. A complete manifest is the commit marker; interrupted uploads are not usable snapshots. Abrupt Spot loss before the first snapshot can still lose that initial work. Recovery after eviction requires inspection and a unique continuation submission; it is not an automatic restart. Wall limits cannot be extended in place. Completed and incomplete outputs are retained, including restart files.
+
+The restored image includes the same verified FDS binary as experiment 36. The build required restoring narrowly scoped source-read permission; rejected requests did not start builds or simulations. Input transport and the controller use unique `tree48/pilot01/` paths. Read-only readiness runs the same inventory checks as cleanup. A separate quota gate prevents bulk submission below 80 available Spot vCPUs.
+
+Review post-source burning, mesh/domain comparisons, runtime and storage before bulk data generation. The finer runs test gas-grid resolution only; vegetation discretization is unchanged. Taller-tree cone-label scales and model mass normalization still require adjustment before model training. Financial records and raw operational status remain private. No neural training is part of this pilot.

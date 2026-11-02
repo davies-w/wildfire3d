@@ -17,3 +17,9 @@ stages:
     - ../36_tree_density/base-input.fds
     outs:
     - data/pilot
+  cloud_inputs:
+    cmd: ../../.venv/bin/python package_cloud.py
+    frozen: true
+    outs:
+    - data/cloud
+    - data/cloud-context

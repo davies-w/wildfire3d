@@ -1,8 +1,6 @@
-"""Cloud-only per-case runner. Produces immutable chunked archives through transport.py.
-The caller must provide a unique prefix, verified input hashes and VM lifetime limits.
-"""
+"""Cloud-only FDS runner: startup proof, bounded solve, remote stopped-state snapshots."""
 from pathlib import Path
-import os,json,time,hashlib,subprocess,signal,csv,re,tarfile,urllib.request,platform,traceback
+import os,json,time,hashlib,subprocess,signal,csv,re,tarfile,urllib.request,platform,traceback,shutil
 ROOT=Path('/study');BINARY=Path('/usr/local/bin/fds');ACTIVE=None;STOP=False
 EXPECTED_BINARY='70d829ede0c06ef0fe652c5878c1263e5ade8e6a0ec58f3c62f2169af592d692'
 def sha(p):
@@ -17,10 +15,10 @@ def halt(signum,frame):
  if ACTIVE:(ACTIVE[1]/(ACTIVE[2]+'.stop')).touch()
 def run(deck,folder,seconds,name):
  global ACTIVE
- folder.mkdir(parents=True,exist_ok=True);(folder/'input.fds').write_text(deck)
+ folder.mkdir(parents=True,exist_ok=True);(folder/(name+'.stop')).unlink(missing_ok=True);(folder/'input.fds').write_text(deck)
  env=dict(os.environ,OMP_NUM_THREADS='4',OMP_WAIT_POLICY='PASSIVE',GOMP_SPINCOUNT='0',OMPI_ALLOW_RUN_AS_ROOT='1',OMPI_ALLOW_RUN_AS_ROOT_CONFIRM='1')
- start=time.monotonic();requested=None
- with (folder/f'run-{int(time.time_ns())}.log').open('w') as log:
+ start=time.monotonic();requested=None;logpath=folder/f'run-{time.time_ns()}.log'
+ with logpath.open('w') as log:
   p=subprocess.Popen([str(BINARY),'input.fds'],cwd=folder,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True);ACTIVE=(p,folder,name)
   while p.poll() is None:
    if (STOP or time.monotonic()-start>seconds) and requested is None:(folder/(name+'.stop')).touch();requested=time.monotonic()
@@ -30,17 +28,16 @@ def run(deck,folder,seconds,name):
     except subprocess.TimeoutExpired:os.killpg(p.pid,signal.SIGKILL);p.wait()
    time.sleep(.25)
  ACTIVE=None
- return dict(returncode=p.returncode,wall_seconds=time.monotonic()-start,stopped=requested is not None)
+ return dict(returncode=p.returncode,wall_seconds=time.monotonic()-start,stopped=requested is not None,log=logpath.name)
 def devices(folder,name):
  with (folder/(name+'_devc.csv')).open() as f:
   r=csv.reader(f);next(r);keys=[x.strip().strip('"') for x in next(r)];return [dict(zip(keys,map(float,row))) for row in r if row]
 def archive(root,upload):
- # Bound memory with256MiB immutable chunks; the ordered manifest reconstructs tar.gz.
  class Sink:
   def __init__(self):self.buf=bytearray();self.parts=[];self.total=0
   def write(self,b):
    self.buf.extend(b);self.total+=len(b)
-   while len(self.buf)>=256*1024**2:self.flush_part(256*1024**2)
+   while len(self.buf)>=64*1024**2:self.flush_part(64*1024**2)
    return len(b)
   def flush_part(self,n):
    b=bytes(self.buf[:n]);del self.buf[:n];name=f'archive-{len(self.parts):05d}.tar.gz.part';upload(name,b);self.parts.append(dict(name=name,bytes=len(b),sha256=hashlib.sha256(b).hexdigest()))
@@ -48,34 +45,52 @@ def archive(root,upload):
  sink=Sink()
  with tarfile.open(fileobj=sink,mode='w|gz') as t:t.add(root,arcname='evidence')
  if sink.buf:sink.flush_part(len(sink.buf))
- upload('archive-manifest.json',json.dumps(dict(parts=sink.parts,bytes=sink.total,complete=True)).encode())
+ manifest=dict(parts=sink.parts,bytes=sink.total,complete=True)
+ upload('archive-manifest.json',json.dumps(manifest).encode());return manifest
+
 def main():
  assert platform.system()=='Linux' and ROOT.is_dir(),'Cloud-only worker'
  req=urllib.request.Request('http://metadata.google.internal/computeMetadata/v1/instance/id',headers={'Metadata-Flavor':'Google'})
- instance=urllib.request.urlopen(req,timeout=3).read().decode();assert instance.isdigit()
- assert sha(BINARY)==EXPECTED_BINARY
- from transport import upload
+ instance=urllib.request.urlopen(req,timeout=3).read().decode();assert instance.isdigit();assert sha(BINARY)==EXPECTED_BINARY
+ from transport import upload,object_metadata,matches
  config=json.loads((ROOT/'task.json').read_text());c=config['case'];name=c['pilot_case'];deckpath=ROOT/'decks'/(name+'.fds');assert sha(deckpath)==c['deck_sha256']
+ probe_bytes=b'tree48-immutable-transport';upload('transport.bin',probe_bytes);assert matches(object_metadata('transport.bin'),probe_bytes);upload('transport.bin',probe_bytes)
  source=deckpath.read_text();root=ROOT/'evidence';root.mkdir();signal.signal(signal.SIGTERM,halt);signal.signal(signal.SIGINT,halt)
- save(root/'input.json',config);(root/'original.fds').write_text(source);success=False
+ Path('/fds/Build/ompi_gnu_linux').mkdir(parents=True,exist_ok=True)
+ save(root/'input.json',config);(root/'original.fds').write_text(source);success=False;start=time.monotonic()
  try:
   probe=root/'probe';initial=source.replace('T_END=180','T_END=.1').replace('DT_RESTART=30.','DT_RESTART=.05').replace('DT_DEVC=1.','DT_DEVC=.01')
-  a=run(initial,probe,600,name);assert a['returncode']==0 and not a['stopped']
+  a=run(initial,probe,600,name);assert a['returncode']==0 and not a['stopped'],a
   da=devices(probe,name);assert da[-1]['Time']>=.1-1e-6 and list(probe.glob('*.restart'))
-  # Initial mass must match the independently calculated dry mass plus specified water.
   first=da[0];errors={k:abs(first[k+' mass']-v)/v for k,v in c['expected_wet_mass_kg'].items()};assert max(errors.values())<.01,errors
-  (probe/'initial.out').write_bytes((probe/(name+'.out')).read_bytes())
+  # Resume from a separate copy, proving that state is portable across worker folders.
+  restored=root/'restored-probe';shutil.copytree(probe,restored)
   resumed=initial.replace('T_END=.1','T_END=.15').replace('&MISC ','&MISC RESTART=T, ',1)
-  b=run(resumed,probe,600,name);assert b['returncode']==0 and not b['stopped'];db=devices(probe,name);assert db[-1]['Time']>=.15-1e-6
-  firstout=(probe/'initial.out').read_text();lastout=(probe/(name+'.out')).read_text();assert 'restart' in lastout.lower()
-  save(root/'startup.json',dict(passed=True,initial=a,resumed=b,mass_relative_error=errors,original_binary_sha256=EXPECTED_BINARY,scope='Cloud parse, initial mass and continuation to0.15s; probes are separate from full solve'))
-  assert not STOP
-  result=run(source,root/'solve',7200,name);ds=devices(root/'solve',name);out=(root/'solve'/(name+'.out')).read_text();success=result['returncode']==0 and not result['stopped'] and ds[-1]['Time']>=180-1e-5 and 'completed successfully' in out.lower()
-  save(root/'result.json',dict(result,passed=success,physical_time=ds[-1]['Time'],instance_id=instance))
-  assert success,'Incomplete solve; preserve and stop; never automatic retry'
+  b=run(resumed,restored,600,name);assert b['returncode']==0 and not b['stopped'];db=devices(restored,name);assert db[-1]['Time']>=.15-1e-6
+  pattern=r'Time Step:\s+(\d+), Simulation Time:\s+([\d.]+)'
+  steps1=re.findall(pattern,(probe/a['log']).read_text());steps2=re.findall(pattern,(restored/b['log']).read_text())
+  assert steps1 and steps2 and int(steps2[0][0])>int(steps1[-1][0]) and float(steps2[0][1])>float(steps1[-1][1]),(steps1,steps2)
+  proof=dict(passed=True,initial=a,resumed=b,mass_relative_error=errors,binary_sha256=EXPECTED_BINARY,portable_restart=True,deck_sha256=c['deck_sha256'])
+  save(root/'startup.json',proof);upload('startup.json',json.dumps(proof).encode());assert not STOP
+  folder=root/'solve';solve_start=time.monotonic();segments=[];deck=source
+  for index in range(30):
+   remaining=min(7200-(time.monotonic()-solve_start),8400-(time.monotonic()-start));assert remaining>0,'Wall limit reached; last remote checkpoint retained'
+   result=run(deck,folder,min(300,remaining),name);segments.append(result);ds=devices(folder,name);out=(folder/(name+'.out')).read_text()
+   success=result['returncode']==0 and ds[-1]['Time']>=180-1e-5 and 'completed successfully' in out.lower()
+   save(root/'result.json',dict(passed=success,segments=segments,physical_time=ds[-1]['Time'],instance_id=instance,wall_seconds=time.monotonic()-start))
+   if success:break
+   assert result['returncode']==0 and result['stopped'] and list(folder.glob('*.restart')),'Unexpected solver failure'
+   checkpoint=dict(index=index,deck_sha256=c['deck_sha256'],binary_sha256=EXPECTED_BINARY,files=[dict(name=p.name,bytes=p.stat().st_size,sha256=sha(p)) for p in folder.iterdir() if p.is_file()])
+   save(folder/'checkpoint.json',checkpoint)
+   archive(folder,lambda n,data:upload(f'checkpoints/{index:03d}/'+n,data))
+   upload(f'checkpoints/{index:03d}/verified.json',json.dumps(checkpoint).encode())
+   assert not STOP,'Termination requested; checkpoint archived'
+   deck=source.replace('&MISC ','&MISC RESTART=T, ',1)
+  assert success,'Incomplete solve; last remote checkpoint retained; no automatic retry'
  except BaseException:
   (root/'failure.txt').write_text(traceback.format_exc());raise
  finally:
   files=[dict(path=p.relative_to(root).as_posix(),bytes=p.stat().st_size,sha256=sha(p)) for p in root.rglob('*') if p.is_file()]
-  save(root/'files.json',dict(files=files,passed=success));archive(root,upload)
+  save(root/'files.json',dict(files=files,passed=success));manifest=archive(root,upload)
+  upload('completion.json',json.dumps(dict(passed=success,case=name,archive=manifest,deck_sha256=c['deck_sha256'])).encode())
 if __name__=='__main__':main()
