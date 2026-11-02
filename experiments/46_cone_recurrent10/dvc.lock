@@ -1,0 +1,94 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py && ../../.venv/bin/python validate.py &&
+      ../../.venv/bin/python build_pool.py
+    outs:
+    - path: data/training
+      hash: md5
+      md5: 0056d9c4c8305fea3a80955dc0670ded.dir
+      size: 13902173
+      nfiles: 14
+    deps:
+    - path: prepare.py
+      hash: md5
+      md5: a0b558957af5b39c20767fb098222041
+      size: 1703
+    - path: validate.py
+      hash: md5
+      md5: 9ea675d9d4d8096d1345e6f9825fdf6f
+      size: 4886
+    - path: build_pool.py
+      hash: md5
+      md5: d98333671d2a0b71f129116af7e9e7d6
+      size: 11313
+    - path: model.py
+      hash: md5
+      md5: 48c2f328e833b9faa44a1b3314cc28d6
+      size: 49
+    - path: gated_model.py
+      hash: md5
+      md5: e981f829ac918f7bc4e06cf12d86dc32
+      size: 2720
+    - path: worker.py
+      hash: md5
+      md5: 9a163f7008c2dd3376889ff279fd4685
+      size: 25227
+    - path: cloud_check.py
+      hash: md5
+      md5: b3b628b3e8abd30b44ccd09770956d0f
+      size: 7083
+    - path: joint_objective.py
+      hash: md5
+      md5: 3aab854d4bd41439c820302a7fb6daef
+      size: 819
+    - path: ../45_cone_multitask/data/labels
+      hash: md5
+      md5: 76c092bdf129b56039429681d3737c25.dir
+      size: 2151379
+      nfiles: 2
+    - path: ../41_dropout10_from_start/data/training/objective.py
+      hash: md5
+      md5: e5db8f2b56171e8fed946f5634139041
+      size: 698
+    - path: ../41_dropout10_from_start/data/training/runtime.py
+      hash: md5
+      md5: 8c0f4e4dbeedf526208922dc0607491d
+      size: 2210
+    - path: ../41_dropout10_from_start/data/training/schema.json
+      hash: md5
+      md5: 2b3705717475bebb268c65f14c547515
+      size: 418700
+    - path: ../41_dropout10_from_start/data/training/data/sequences.npz
+      hash: md5
+      md5: f280a76462ed8d586e7a4fc7eec09961
+      size: 5110534
+    - path: ../41_dropout10_from_start/data/training/coverage-plan.json
+      hash: md5
+      md5: bccc9048802f5ded72c2a5f6d404bcdc
+      size: 2388
+    - path: ../38_history8_shared64/data/training08/bootstrap.py
+      hash: md5
+      md5: 79d3e249871bd62bd9c4631d86552af7
+      size: 1868
+    - path: ../38_history8_shared64/data/training08/workflow.yaml
+      hash: md5
+      md5: b29ccb57f497851b34638241f220cfa9
+      size: 11373
+  progress:
+    cmd: ../../.venv/bin/python snapshot_progress.py
+    outs:
+    - path: data/progress-public
+      hash: md5
+      md5: 4feb105dc7e756df3369e1c0fda1df31.dir
+      size: 91976
+      nfiles: 2
+    deps:
+    - path: snapshot_progress.py
+      hash: md5
+      md5: 9d249fa8fbb2330f412aa1b0d0092e89
+      size: 1284
+    - path: plot_learning_curve.py
+      hash: md5
+      md5: 3ae2e5e360071eec4e4e986d79a13f2c
+      size: 1431

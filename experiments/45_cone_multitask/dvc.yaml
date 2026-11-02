@@ -475,3 +475,9 @@ stages:
     - data/training
     outs:
     - data/training02
+  stopped_training:
+    cmd: ../../.venv/bin/python archive_stopped02.py
+    deps:
+    - archive_stopped02.py
+    outs:
+    - data/stopped-training

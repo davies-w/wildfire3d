@@ -1837,3 +1837,16 @@ stages:
       md5: 904f9a36ca5876fa98c557900fd8ea45.dir
       size: 13900200
       nfiles: 14
+  stopped_training:
+    cmd: ../../.venv/bin/python archive_stopped02.py
+    outs:
+    - path: data/stopped-training
+      hash: md5
+      md5: e8e27703fa817ab427d5bb11c2c84e03.dir
+      size: 69999992
+      nfiles: 218
+    deps:
+    - path: archive_stopped02.py
+      hash: md5
+      md5: a58c1006e3c8e1c33d3960ce420cc80e
+      size: 3017

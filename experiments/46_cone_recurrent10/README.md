@@ -1,0 +1,27 @@
+# Eight historical timesteps, ten recurrent state values
+
+This corrects the design error in experiment45, which treated the cone values as output-only. The user stopped that run. Experiment46 starts from fresh seed3516 weights and an empty optimizer; no model, checkpoint or epochs from45 are reused.
+
+Each of eight history entries contains ten values: water, fuel, gas, heating, cone-presence probability, pivot height, tilt from vertical, axial length, end radius, and peak temperature inside the cone. The GRU receives the flattened8×10 history plus nine external inputs: **89 inputs, one64-unit recurrent layer**, sharedLinear64+SiLU, no dropout, four physical deltas/three internal gates and six cone outputs. Total34,765 parameters. ALL TEN predicted values are appended to history during autonomous training and evaluation. Cone truth is used only in observed history through the forecast origin; never after it. The detached teacher-prefix memory follows that same restriction.
+
+The original four states keep their train-only asinh normalization. Cone presence is0/1 in reference history and a soft probability in predicted history. The five cone values use fixed scales12m/90°/24m/16m/1500°C. Inactive reference geometry is zero (undefined geometry convention); predicted geometry remains available alongside predicted presence, without thresholding or silently replacing it with truth. Presence loss teaches absence. The model has no receiver/target inputs.
+
+## Unchanged curriculum and loss
+
+Windows1→8→16→32→64→90 begin at epochs1/21/41/61/110/130. Minimum160, maximum400, patience30 after the final stage. Full90 is approximately180seconds, not90seconds; seven updates/epoch versus176 at64, so epoch counts do not measure equal optimizer exposure. Frozen rotation0:1662train/210validation/208test histories,204test configurations. AdamW LR3e-4, weight decay1e-4, clip1, batch256.
+
+Training loss = four-state range-normalized absolute integral +0.1 original gateBCE +0.1 cone-presenceBCE +1.0 cone-parameter loss. The cone term is the mean of five normalized SmoothL1(beta0.1) errors, weighted by elapsed time and normalized by reference-active duration. All-inactive windows contribute zero; the reference mask, never predicted presence, controls regression. Presence is scored at all endpoints. These are initial experimental weights. Cone errors compare saved endpoints, not exact between-frame geometric integrals. Validation selection is state integral +0.1 presenceBCE +cone term; old gateBCE excluded, all blocks reported separately. Test evaluation occurs only after selection freezes.
+
+## Evidence and limitations
+
+Forward-only validation checks all48 additional cone history fields affect memory, ten-value feedback at every autonomous step, observed-only prefix, serialization, disjoint configurations and actual loss at all six horizons. No local optimizer/backward/training is run. On the winning T4, mandatory checks repeat actual six-horizon backward, gradients in all cone-history inputs and cone outputs, exact fresh first-batch optimizer/RNG replay, nonempty optimizer replay, and actual epoch1 checkpoint replay. Zero-initialized readout weights initially block gradients to the GRU, so the gradient-path probe uses temporary nonzero cone readout weights; the exact fresh first-batch replay still uses the actual zero-head initialization. Probe weights are discarded. Every completed epoch uploads a full model/optimizer/RNG/history checkpoint; an unfinished epoch can be lost.
+
+Labels are the same2080 verified histories extracted in45. They describe broad95%-recall envelopes of >50°C gas cell centres, not physical flame boundaries or ignition. Training median cone purity is about20.5%;86.8% use a ground apex and2.71% have sub-0.5m lengths. The fixed+x/downwind plane and sampled apex/angle grid constrain fits. Saved peak temperatures approximately2s apart are instantaneous, not interval peaks, heat flux or heat dose. Generic4–10m crowns,0.5m mesh,24×16×16m observed crop; imposed1500°C ignition source for20s is included; no buildings, trunks or embers. Historical dataset, not pristine validation. The fifth results chart shows length and peak temperature; it does not capture pivot/tilt/radius errors.
+
+## Execution and preservation
+
+One Google Cloud controller races three SpotT4 candidates in Oregon/Iowa/South Carolina. Only the ownership-granted winner may run optimizer probes, after verified loser cleanup. No allocation deadline; zero automatic Batch retries; soft10.5h/task10.75h/VM11h limits. GET/DELETE use bounded retries, creationPOST does not. Private cumulative spending ledger is checked before any launch. Never rerun prepare/build/deploy/launch after submission intent. No old queues are restarted.
+
+`prepare.py`, forward-only `validate.py`, `build_pool.py`, `deploy.py`, then guarded `launch.py` exactly once. `monitor.py`, `fetch_progress.py`, `audit_startup.py` and `verify_ownership.py` only inspect evidence. `collect.py` requires actual Batch success and complete verified artifacts; `close.py` additionally requires measured allocation reconciliation before grant/reservation removal.
+
+DVC preservation uses direct `scripts/dvc_hf.py` with hashes/readback, without local cache or mirror. Only models, datasets, training results and reviewed source are public; spending records, credentials and raw operational archives remain private. Git source/docs/DVC hashes are committed and pushed. Old experiment45 checkpoints are preserved separately and never used as initialization.

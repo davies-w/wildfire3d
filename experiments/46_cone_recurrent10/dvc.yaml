@@ -1,0 +1,36 @@
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py && ../../.venv/bin/python validate.py &&
+      ../../.venv/bin/python build_pool.py
+    deps:
+    - prepare.py
+    - validate.py
+    - build_pool.py
+    - model.py
+    - gated_model.py
+    - worker.py
+    - cloud_check.py
+    - joint_objective.py
+    - ../45_cone_multitask/data/labels
+    - ../41_dropout10_from_start/data/training/objective.py
+    - ../41_dropout10_from_start/data/training/runtime.py
+    - ../41_dropout10_from_start/data/training/schema.json
+    - ../41_dropout10_from_start/data/training/data/sequences.npz
+    - ../41_dropout10_from_start/data/training/coverage-plan.json
+    - ../38_history8_shared64/data/training08/bootstrap.py
+    - ../38_history8_shared64/data/training08/workflow.yaml
+    outs:
+    - data/training
+  progress:
+    cmd: ../../.venv/bin/python snapshot_progress.py
+    deps:
+    - snapshot_progress.py
+    - plot_learning_curve.py
+    outs:
+    - data/progress-public
+  collect:
+    cmd: ../../.venv/bin/python collect.py
+    deps:
+    - collect.py
+    outs:
+    - data/pool01-results
