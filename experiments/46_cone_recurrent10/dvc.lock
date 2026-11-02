@@ -101,3 +101,28 @@ stages:
       size: 93914359
       nfiles: 234
     deps: []
+  prepare02:
+    cmd: ../../.venv/bin/python prepare02.py
+    outs:
+    - path: data/training02
+      hash: md5
+      md5: bedcfa099403e7ffa7f21bded3b50b71.dir
+      size: 204221082
+      nfiles: 249
+    deps:
+    - path: prepare02.py
+      hash: md5
+      md5: b9207ecdbbbd7445ab6f461f746ab625
+      size: 2578
+    - path: worker02.py
+      hash: md5
+      md5: f0b0fba9f1e56603b8679b25e24a0a6d
+      size: 25221
+    - path: cloud_check02.py
+      hash: md5
+      md5: 3af66c8749397b332f6eb2588ce18def
+      size: 7414
+    - path: build_pool02.py
+      hash: md5
+      md5: 1d5242d81aa8de3049cebe080854cf3e
+      size: 11339
