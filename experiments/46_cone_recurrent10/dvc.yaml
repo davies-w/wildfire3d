@@ -56,3 +56,15 @@ stages:
     - cloud_check03.py
     outs:
     - data/training03
+  report:
+    cmd: ../../.venv/bin/python analyze.py && ../../.venv/bin/python build_public.py
+      && ../../.venv/bin/python build_reports.py
+    deps:
+    - analyze.py
+    - build_public.py
+    - build_reports.py
+    - plot_case.py
+    outs:
+    - data/analysis
+    - data/public
+    - data/report-public

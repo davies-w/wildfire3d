@@ -33,3 +33,12 @@ Google Cloud preempted the winning Iowa Spot VM after epoch116. All116 completed
 ## Pool02 pre-training eviction and pool03
 
 Pool02 was preempted before its worker started (Batch exit50001), with no new epochs. All15 cloud objects are privately archived and hashed; jobs/VMs/disks are empty, and its exact read grant and reservations are closed after runtime audit. Pool03 uses byte-identical model/data/checkpoint files and was submitted once at 2026-11-02T16:43:09.566840803Z (execution d2ae05ca-7096-411b-b95c-c5a3384721f0). It resumes epoch117 from116; the original curriculum and optimizer/RNG/selection history are unchanged. Actual resumed training remains unverified until a completed117 checkpoint and the cloud startup proofs are checked.
+
+## Completed result
+
+Batch succeeded after164 epochs; validation selected134 before test evaluation. All164 model/optimizer/RNG checkpoints and the exact208 test histories/204 configurations were collected with SHA/MD5/generation verification. Pool03 jobs/VMs/disks are empty; its exact read grant and reservations were closed after allocation-runtime reconciliation.
+
+Selected four-state test integral error is5.0073%, versus4.7861% for experiment39. Water is worse; fuel/gas/heating slightly better. The cone active-reference MAEs are0.319m pivot,6.871degrees tilt,1.466m length,0.759m radius and86.531°C peak temperature. Presence accuracy97.31%, missed-active3.67%, false-active2.16%. These compare to broad fitted hot-gas envelopes, not physical flame boundaries or heat received. The comparison is exploratory on historically examined data and differs in fresh/continued optimization and selection objective.
+
+Report: https://wdavies-fire-reports.static.hf.space/cone46/index.html
+Gallery: https://wdavies-fire-reports.static.hf.space/full-sequence/cone46-r0.html

@@ -1,0 +1,103 @@
+{
+  "epochs": 164,
+  "selected_epoch": 134,
+  "stop_reason": "validation_patience",
+  "test": {
+    "objective": 0.050073448568582535,
+    "finite": true,
+    "cone_parameters_loss": 0.029107877984642982,
+    "cone_presence_bce": 0.06646306812763214,
+    "joint_selection_objective": 0.08582763336598873,
+    "cone_active_MAE_by_parameter": [
+      0.3187934458255768,
+      6.8714399337768555,
+      1.4656621217727661,
+      0.7585644721984863,
+      86.53123474121094
+    ],
+    "cone_presence_accuracy": 0.9730756282806396,
+    "cone_missed_active_fraction": 0.03670598939061165,
+    "cone_false_active_fraction": 0.02157578431069851,
+    "integral_error_percent_by_feature": [
+      6.987989902496338,
+      9.017087936401367,
+      2.048624038696289,
+      1.9756784439086914
+    ],
+    "legacy_three_state_normalized_mse": 0.030292974784970284,
+    "physical_MAE_by_feature": [
+      0.26395076513290405,
+      1.3202623128890991,
+      0.027434783056378365,
+      2.594294548034668
+    ],
+    "physical_MAE_by_window": {
+      "ignition": [
+        0.10973110049962997,
+        0.5046085119247437,
+        0.11039452254772186,
+        8.145398139953613
+      ],
+      "post_source_to90": [
+        0.2784208059310913,
+        1.4204424619674683,
+        0.04215601459145546,
+        3.891798973083496
+      ],
+      "after90": [
+        0.28311431407928467,
+        1.4036225080490112,
+        2.5873746380966622e-06,
+        0.5209773778915405
+      ],
+      "active": [
+        0.2657196521759033,
+        1.337898850440979,
+        0.032343726605176926,
+        2.9181435108184814
+      ],
+      "quiet": [
+        0.022442368790507317,
+        0.310617595911026,
+        1.4816673399309366e-07,
+        0.6035506129264832
+      ]
+    },
+    "minimum_by_feature": [
+      -0.057006314396858215,
+      0.19212651252746582,
+      -0.008027111180126667,
+      -0.05954355746507645
+    ],
+    "negative_fraction_by_feature": [
+      0.04547930881381035,
+      0.0,
+      0.1460784375667572,
+      0.0008169935317710042
+    ],
+    "negative_magnitude_mean_by_feature": [
+      0.0008459773962385952,
+      0.0,
+      1.4956152881495655e-05,
+      2.0722840417874977e-05
+    ],
+    "mass_increase_fraction": [
+      0.0658678412437439,
+      0.029411770403385162
+    ],
+    "mass_increase_total_kg": [
+      0.009714100509881973,
+      0.016819538548588753
+    ],
+    "released_fuel_integral_MAE_kg": 1.7989307641983032,
+    "peak_release_MAE_kg_s": 0.23588630557060242,
+    "peak_time_MAE_s": 3.0060067176818848,
+    "release_activity_v1": {
+      "missed_active_fraction": 0.018401768058538437,
+      "false_active_fraction": 0.03955155983567238,
+      "scope": "Trailing10s integrated fuel-release threshold, true activity from frozen scorecard; smoothing lag applies."
+    }
+  },
+  "all_checkpoints_verified": true,
+  "selection_before_test": true
+}
