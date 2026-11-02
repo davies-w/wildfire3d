@@ -196,3 +196,56 @@ stages:
       hash: md5
       md5: aa64b643bb3febdb3dd4f4c9dcef932d
       size: 2144
+  animations:
+    cmd: ../../.venv/bin/python animate_cases.py
+    outs:
+    - path: data/animations
+      hash: md5
+      md5: 216120df227ae67214c61dbdf1287f84.dir
+      size: 5453009
+      nfiles: 8
+    deps:
+    - path: animate_cases.py
+      hash: md5
+      md5: b2d015a34aedcbecff0aaa50cc468fe9
+      size: 5947
+    - path: publish_animations.py
+      hash: md5
+      md5: 64fc2d4fe5181ee5846df95aeffb1b08
+      size: 4586
+    - path: data/pool03-results/fold00-test-predictions.npz
+      hash: md5
+      md5: 4ba55d4ed6dfede1e46f8febf8381313
+      size: 671574
+    - path: data/training03/data/cones.npz
+      hash: md5
+      md5: 0b64b8394f8997745e3f21f4844d9ed2
+      size: 1364474
+    - path: data/training03/schema.json
+      hash: md5
+      md5: 2b3705717475bebb268c65f14c547515
+      size: 418700
+    - path: ../44_hot_gas_cones/extract_training.py
+      hash: md5
+      md5: 06a1afd1249ff01021178956dfb404a8
+      size: 5674
+    - path: ../44_hot_gas_cones/cones.py
+      hash: md5
+      md5: fdf689be16f99104b8d7e983fe5b3f47
+      size: 2347
+    - path: ../45_cone_multitask/data/labels/schema.json
+      hash: md5
+      md5: bacdb1083936bd5b5a731ac740d46a12
+      size: 786905
+    - path: ../36_tree_density/cases.json
+      hash: md5
+      md5: a0cd6895e2b2cfa892d7b1fcb6dd2bdd
+      size: 1259971
+    - path: ../36_tree_density/data/verified-material/x36_0978_s0/x36_0978_s0_1_1.sf
+      hash: md5
+      md5: d98ba47811f6bf3714949a9bf0174a0f
+      size: 19425370
+    - path: ../36_tree_density/data/verified-material/x36_1078_s0/x36_1078_s0_1_1.sf
+      hash: md5
+      md5: fe7cb8a26f089833a88492fca7fc18fd
+      size: 19425370

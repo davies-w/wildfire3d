@@ -42,3 +42,7 @@ Selected four-state test integral error is5.0073%, versus4.7861% for experiment3
 
 Report: https://wdavies-fire-reports.static.hf.space/cone46/index.html
 Gallery: https://wdavies-fire-reports.static.hf.space/full-sequence/cone46-r0.html
+
+## Random held-out 3D animations
+
+[Watch two random test histories](https://wdavies-fire-reports.static.hf.space/cone46/animations/index.html). Uniform NumPy seed20261102 draw without replacement selected IDs1498 and1598 (x36_0978_s0 and x36_1078_s0), with no error/appearance filtering. Both have8m crowns above2m,3m diameter; winds4 and3m/s. Each GIF includes all91 saved frames over approximately180s at8fps (about16x playback). Actual >50°C gas cell-centre temperatures appear in both panels, display-subsampled to at most600 cells including the hottest. Only the cone in the right panel is predicted; no predicted full temperature field or heat flux is invented. Cyan/magenta are reference/predicted wire envelopes; green is fixed crown geometry, not a fuel-state estimate. Imposed ignition during0–20s is included. No new simulation or neural training was run.

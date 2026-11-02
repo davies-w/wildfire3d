@@ -11,7 +11,7 @@ def record(path):
  fs=sorted(x for x in p.rglob('*') if x.is_file());entries=[dict(md5=md5(x),relpath=x.relative_to(p).as_posix()) for x in fs]
  return dict(path=path,hash='md5',md5=hashlib.md5(json.dumps(entries,sort_keys=True).encode()).hexdigest()+'.dir',size=sum(x.stat().st_size for x in fs),nfiles=len(fs))
 def main():
- stage=sys.argv[1];assert stage in ['prepare','progress','collect','interrupted','prepare02','prepare03','report'];env=dict(os.environ,HF_HUB_DISABLE_PROGRESS_BARS='1')
+ stage=sys.argv[1];assert stage in ['prepare','progress','collect','interrupted','prepare02','prepare03','report','animations'];env=dict(os.environ,HF_HUB_DISABLE_PROGRESS_BARS='1')
  subprocess.run([sys.executable,'scripts/dvc_hf.py','commit',f'experiments/46_cone_recurrent10/dvc.yaml:{stage}'],cwd=repo,check=True,env=env)
  subprocess.run([sys.executable,'scripts/dvc_hf.py','push'],cwd=repo,check=True,env=env)
  proof=json.loads((repo/'experiments/43_repository_preservation/results/direct-hf/upload-verification.json').read_text());assert proof['passed']

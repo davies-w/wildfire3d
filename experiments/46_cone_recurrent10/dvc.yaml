@@ -68,3 +68,19 @@ stages:
     - data/analysis
     - data/public
     - data/report-public
+  animations:
+    cmd: ../../.venv/bin/python animate_cases.py
+    deps:
+    - animate_cases.py
+    - publish_animations.py
+    - data/pool03-results/fold00-test-predictions.npz
+    - data/training03/data/cones.npz
+    - data/training03/schema.json
+    - ../44_hot_gas_cones/extract_training.py
+    - ../44_hot_gas_cones/cones.py
+    - ../45_cone_multitask/data/labels/schema.json
+    - ../36_tree_density/cases.json
+    - ../36_tree_density/data/verified-material/x36_0978_s0/x36_0978_s0_1_1.sf
+    - ../36_tree_density/data/verified-material/x36_1078_s0/x36_1078_s0_1_1.sf
+    outs:
+    - data/animations
