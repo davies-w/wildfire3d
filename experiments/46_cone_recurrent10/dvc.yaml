@@ -84,3 +84,12 @@ stages:
     - ../36_tree_density/data/verified-material/x36_1078_s0/x36_1078_s0_1_1.sf
     outs:
     - data/animations
+  pivot_analysis:
+    cmd: ../../.venv/bin/python analyze_pivot.py
+    deps:
+    - analyze_pivot.py
+    - data/training03/schema.json
+    - data/training03/data/cones.npz
+    - data/training03/data/sequences.npz
+    outs:
+    - data/pivot-analysis

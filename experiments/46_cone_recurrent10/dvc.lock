@@ -249,3 +249,28 @@ stages:
       hash: md5
       md5: fe7cb8a26f089833a88492fca7fc18fd
       size: 19425370
+  pivot_analysis:
+    cmd: ../../.venv/bin/python analyze_pivot.py
+    outs:
+    - path: data/pivot-analysis
+      hash: md5
+      md5: 6ac47ac340d99c16489104f7a54613b4.dir
+      size: 190603
+      nfiles: 2
+    deps:
+    - path: analyze_pivot.py
+      hash: md5
+      md5: f1334c92f1a1e54b03145fa95cf47fb0
+      size: 3451
+    - path: data/training03/schema.json
+      hash: md5
+      md5: 2b3705717475bebb268c65f14c547515
+      size: 418700
+    - path: data/training03/data/cones.npz
+      hash: md5
+      md5: 0b64b8394f8997745e3f21f4844d9ed2
+      size: 1364474
+    - path: data/training03/data/sequences.npz
+      hash: md5
+      md5: f280a76462ed8d586e7a4fc7eec09961
+      size: 5110534
