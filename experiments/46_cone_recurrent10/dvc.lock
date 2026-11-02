@@ -126,3 +126,24 @@ stages:
       hash: md5
       md5: 1d5242d81aa8de3049cebe080854cf3e
       size: 11339
+  prepare03:
+    cmd: ../../.venv/bin/python prepare03.py
+    outs:
+    - path: data/training03
+      hash: md5
+      md5: 667d8eaec8a4a7c4a84132d248fcaa80.dir
+      size: 204221082
+      nfiles: 249
+    deps:
+    - path: prepare03.py
+      hash: md5
+      md5: 82ddd7f04115766fec41aa61e496a0ed
+      size: 1093
+    - path: build_pool03.py
+      hash: md5
+      md5: c06edf8ced2d9aa2b67a3f4481efed06
+      size: 11339
+    - path: cloud_check03.py
+      hash: md5
+      md5: 3af66c8749397b332f6eb2588ce18def
+      size: 7414

@@ -29,3 +29,7 @@ DVC preservation uses direct `scripts/dvc_hf.py` with hashes/readback, without l
 ## Pool01 interruption
 
 Google Cloud preempted the winning Iowa Spot VM after epoch116. All116 completed checkpoints, including optimizer/RNG/history, are preserved and uploaded with verified hashes. All three candidate resource inventories are empty; the exact read grant and reservations were closed after runtime reconciliation. Recovery must resume epoch117 with64-step windows from checkpoint116; Pool02 was submitted once at2026-11-02T16:27:02Z, execution75f2fc9f-2401-48eb-9be9-a1fac640a5d0. It resumes epoch117 with64-step windows, with the unchanged130 full90 transition and selection/patience history. Actual resumed training requires epoch117 plus its checkpoint and seven cloud startup proofs.
+
+## Pool02 pre-training eviction and pool03
+
+Pool02 was preempted before its worker started (Batch exit50001), with no new epochs. All15 cloud objects are privately archived and hashed; jobs/VMs/disks are empty, and its exact read grant and reservations are closed after runtime audit. Pool03 uses byte-identical model/data/checkpoint files and was submitted once at 2026-11-02T16:43:09.566840803Z (execution d2ae05ca-7096-411b-b95c-c5a3384721f0). It resumes epoch117 from116; the original curriculum and optimizer/RNG/selection history are unchanged. Actual resumed training remains unverified until a completed117 checkpoint and the cloud startup proofs are checked.

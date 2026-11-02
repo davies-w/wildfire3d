@@ -33,7 +33,7 @@ stages:
     deps:
     - collect.py
     outs:
-    - data/pool02-results
+    - data/pool03-results
   interrupted:
     cmd: ../../.venv/bin/python archive_failed01.py
     frozen: true
@@ -48,3 +48,11 @@ stages:
     - build_pool02.py
     outs:
     - data/training02
+  prepare03:
+    cmd: ../../.venv/bin/python prepare03.py
+    deps:
+    - prepare03.py
+    - build_pool03.py
+    - cloud_check03.py
+    outs:
+    - data/training03
