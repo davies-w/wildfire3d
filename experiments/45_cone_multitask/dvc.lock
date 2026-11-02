@@ -1809,9 +1809,31 @@ stages:
     deps:
     - path: snapshot_progress.py
       hash: md5
-      md5: 9d249fa8fbb2330f412aa1b0d0092e89
-      size: 1284
+      md5: df2c6c28402be6d670ad72ac899e6252
+      size: 1288
     - path: plot_learning_curve.py
       hash: md5
       md5: 4cbce2abfd868a02e353ee4fe2235e75
       size: 1411
+  prepare_pool02:
+    cmd: ../../.venv/bin/python prepare02.py && ../../.venv/bin/python build_pool02.py
+    outs:
+    - path: data/training02
+      hash: md5
+      md5: 84db1086f4c4e3b9432b5b1f22fef842.dir
+      size: 13900200
+      nfiles: 14
+    deps:
+    - path: prepare02.py
+      hash: md5
+      md5: d16647508e87b3fc76b0798a1c125d47
+      size: 1116
+    - path: build_pool02.py
+      hash: md5
+      md5: ae047407e7d636bf10efabe42ee7da36
+      size: 11317
+    - path: data/training
+      hash: md5
+      md5: 904f9a36ca5876fa98c557900fd8ea45.dir
+      size: 13900200
+      nfiles: 14

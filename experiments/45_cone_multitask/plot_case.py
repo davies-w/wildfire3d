@@ -7,8 +7,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 R=Path(__file__).resolve().parent
 p=argparse.ArgumentParser();p.add_argument('--case-index',type=int,required=True);p.add_argument('--output',required=True);args=p.parse_args()
-assert json.loads((R/'results/collected.json').read_text())['passed']
-a=np.load(R/'data/training/data/sequences.npz');cones=np.load(R/'data/training/data/cones.npz');pr=np.load(R/'data/pool01-results/fold00-test-predictions.npz');ids=pr['case_indices'];where=np.flatnonzero(ids==args.case_index);assert len(where)==1;i=int(where[0]);n=args.case_index
+assert json.loads((R/'results02/collected.json').read_text())['passed']
+a=np.load(R/'data/training02/data/sequences.npz');cones=np.load(R/'data/training02/data/cones.npz');pr=np.load(R/'data/pool02-results/fold00-test-predictions.npz');ids=pr['case_indices'];where=np.flatnonzero(ids==args.case_index);assert len(where)==1;i=int(where[0]);n=args.case_index
 pred=np.sinh(pr['normalized_rollout'][i]*pr['std']+pr['mean'])*pr['physical_scales'];t=a['time'][n];fig,axes=plt.subplots(1,5,figsize=(24,4.5))
 for j,(ax,label) in enumerate(zip(axes[:4],['Water (kg)','Fuel (kg)','Gas (kg/s)','Heating index (K)'])):
  ax.plot(t,a['state'][n,:,j],color='#334155',label='Simulation');ax.plot(t[1:],pred[:,j],color='#2563eb',ls='--',label='Prediction');ax.set(title=label,xlabel='Time (s)');ax.grid(alpha=.2);ax.legend(fontsize=8)

@@ -466,4 +466,12 @@ stages:
     deps:
     - collect.py
     outs:
-    - data/pool01-results
+    - data/pool02-results
+  prepare_pool02:
+    cmd: ../../.venv/bin/python prepare02.py && ../../.venv/bin/python build_pool02.py
+    deps:
+    - prepare02.py
+    - build_pool02.py
+    - data/training
+    outs:
+    - data/training02
