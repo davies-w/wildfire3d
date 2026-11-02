@@ -40,3 +40,44 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 ../../.venv/bin/python prepare.py
 ```
 
 `dvc.yaml` declares these local stages; source files are hash-recorded and outputs use `dvc.lock`. Use the repository's `scripts/dvc_hf.py` for direct HF artifact pushes. Original simulation fields, checkpoints and previous reports are unchanged.
+
+
+## All rotation-0 training data
+
+The subsequent full extraction covers **all 1,662 frozen rotation-0 training histories / 151,242 saved frames**, from 1,632 physical configurations. This is separate from the 48-history pilot above: no validation or test histories enter the new training dataset. It uses 1,255 retained local temperature slices and 407 existing local archives. Entire source files are SHA-256 checked; all 91 timestamps per history match the frozen learning sequences. A reference archive decode was also compared cell-for-cell against the earlier decoder (91 frames, exact equality). No source data were changed, no new simulations or neural training were run, and no second full-field copy was retained.
+
+[Inspect the complete training extraction and download its arrays](https://wdavies-fire-state-storyboards.static.hf.space/cones44/training/index.html).
+
+There are **57,059 active frames and 94,183 inactive frames**. Every history has at least one active frame, including the imposed ignition period. Active-frame medians:
+
+| Shape | Hot-cell capture | Purity | IoU |
+|---|---:|---:|---:|
+| Five-parameter cone |95.16%|20.47%|20.30%|
+| Original 2σ ovoid |64.23%|75.74%|49.83%|
+| Ovoid expanded to 95% coverage |95.11%|36.73%|36.10%|
+
+After the 20 s imposed ignition period, median cone purity is 23.13%, versus 39.53% for the equal-coverage ovoid. Ground-level apex is selected in 86.81% of active frames. The cone misses the domain peak in 6,222 active frames; 21,397 active frames have hot gas on an observed-domain boundary. The cone is a broad hot-gas envelope, not an identified physical flame pivot. All active cones pass the 95% cell-count capture check. The ovoid has additional geometric freedom, so this is not a matched-complexity comparison.
+
+`data/training-summary/targets.npz` contains case indices, timestamps, five parameters, an active mask, and cone/ovoid overlap metrics. Parameters have shape `(1662, 91, 5)` in the order recorded in `parameter-schema.json`. Inactive targets are NaN and must be masked, not treated as zero-valued cones. `histories.json` records exact source and output hashes; `validation.json` proves case coverage, split isolation and timestamp checks. Saved intervals span 1.801–2.195 s; temperatures remain instantaneous, not interval maxima. The original pilot artifacts are unchanged.
+
+### Loss considerations after extraction
+
+No loss has been selected, implemented or tested. The extracted data suggest a candidate baseline with two parts: predict active/inactive, then compare the five values only on active frames. Normalize each parameter separately using training-only scales; raw squared error would let degrees and especially °C dominate metre-valued geometry merely because of their units. A normalized Huber penalty is worth testing because unusually large discrepancies need not dominate as strongly as squared error. Its scales, transition point and activity weight still require a deliberate experiment.
+
+Parameter matching alone is insufficient evidence of a good envelope. Adjacent active-frame angle changes have a 99th percentile of 70°, and pivot changes 3.33 m; these can reflect switching among coarse geometric candidates, not physical jumps. Compare predicted spatial capture and over-coverage as well as parameter errors, retain inactive-frame accuracy, and report sequence/configuration-weighted scores. Do not impose temporal smoothing without testing whether it erases real changes. There are 1,545 active frames (2.71%) with fitted axial length below one 0.5 m cell, down to 0.00020 m. These are degenerate geometric fits to cell centres, not physically resolved flame dimensions; retain and flag them rather than silently treating them as precise labels. The low purity is already a representation limitation; changing a neural loss cannot make the fitted target cones physically precise. Maximum temperature still does not determine receiver heat flux or heat dose.
+
+### Repeat the training-only extraction
+
+From the repository root:
+
+```sh
+.venv/bin/python experiments/44_hot_gas_cones/prepare_training.py
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python experiments/44_hot_gas_cones/extract_training.py
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 .venv/bin/python experiments/44_hot_gas_cones/summarize_training.py
+.venv/bin/python experiments/44_hot_gas_cones/report_training.py
+.venv/bin/python experiments/44_hot_gas_cones/preserve_training.py
+.venv/bin/python experiments/44_hot_gas_cones/publish_training.py
+.venv/bin/python experiments/44_hot_gas_cones/verify_training_publication.py
+```
+
+Extraction resumes only identical-source/identical-recipe completed histories. The preservation script records output and dependency hashes in `dvc.lock`, uploads original derived files directly to the HF DVC bucket, and saves per-stage remote verification receipts. It creates no persistent cache or local mirror. Publication adds the complete training page and a link from the existing cone comparison without removing older pages.
