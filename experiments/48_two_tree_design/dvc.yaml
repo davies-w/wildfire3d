@@ -1,0 +1,8 @@
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py
+    deps:
+    - prepare.py
+    - ../47_tree_archetypes/data/geometry.json
+    outs:
+    - data
