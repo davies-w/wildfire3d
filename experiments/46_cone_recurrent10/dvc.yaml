@@ -34,3 +34,8 @@ stages:
     - collect.py
     outs:
     - data/pool01-results
+  interrupted:
+    cmd: ../../.venv/bin/python archive_failed01.py
+    frozen: true
+    outs:
+    - data/interrupted-training

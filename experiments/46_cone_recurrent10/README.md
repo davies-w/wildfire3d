@@ -25,3 +25,7 @@ One Google Cloud controller races three SpotT4 candidates in Oregon/Iowa/South C
 `prepare.py`, forward-only `validate.py`, `build_pool.py`, `deploy.py`, then guarded `launch.py` exactly once. `monitor.py`, `fetch_progress.py`, `audit_startup.py` and `verify_ownership.py` only inspect evidence. `collect.py` requires actual Batch success and complete verified artifacts; `close.py` additionally requires measured allocation reconciliation before grant/reservation removal.
 
 DVC preservation uses direct `scripts/dvc_hf.py` with hashes/readback, without local cache or mirror. Only models, datasets, training results and reviewed source are public; spending records, credentials and raw operational archives remain private. Git source/docs/DVC hashes are committed and pushed. Old experiment45 checkpoints are preserved separately and never used as initialization.
+
+## Pool01 interruption
+
+Google Cloud preempted the winning Iowa Spot VM after epoch116. All116 completed checkpoints, including optimizer/RNG/history, are preserved and uploaded with verified hashes. All three candidate resource inventories are empty; the exact read grant and reservations were closed after runtime reconciliation. Recovery must resume epoch117 with64-step windows from checkpoint116; no new pool has been submitted yet.

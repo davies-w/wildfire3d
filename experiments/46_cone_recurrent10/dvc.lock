@@ -92,3 +92,12 @@ stages:
       hash: md5
       md5: 3ae2e5e360071eec4e4e986d79a13f2c
       size: 1431
+  interrupted:
+    cmd: ../../.venv/bin/python archive_failed01.py
+    outs:
+    - path: data/interrupted-training
+      hash: md5
+      md5: 61c6062750300b005b45df75fbb867a3.dir
+      size: 93914359
+      nfiles: 234
+    deps: []
