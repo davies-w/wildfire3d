@@ -6,7 +6,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation,PillowWriter
-from matplotlib.colors import Normalize
+from matplotlib.colors import TwoSlopeNorm
 from PIL import Image
 R=Path(__file__).resolve().parent;D=R/'data/animations';D.mkdir(exist_ok=True)
 sys.path.insert(0,str(R.parent/'44_hot_gas_cones'));from extract_training import source_frames,xyz
@@ -20,8 +20,8 @@ for idx in chosen:
  c=schema['cases'][idx];src=sources[idx];cond=conditions[c['case']]
  item=dict(case=c['case'],path=src['source_path'],sha256=src['source_sha256'],source_kind='verified_temperature_slice',origin_m=[-4,-4,0] if cond.get('expanded') else [0,0,0])
  for _,temp in source_frames(item):all_hot.append(temp[temp>50])
-all_hot=np.concatenate(all_hot);color_mean=float(all_hot.mean());color_low=.95*color_mean;color_high=1.05*color_mean
-color_policy=dict(mean_C=color_mean,lower_C=color_low,upper_C=color_high,scope='All above50C cell observations across both full histories, before display subsampling',rule='Mean plus/minus5percent of mean in degreesC; fixed across both cases and every frame; colour clipping only',below_fraction=float((all_hot<color_low).mean()),above_fraction=float((all_hot>color_high).mean()),fixed_palette=True,legend_pixel_identical_all_frames=True)
+all_hot=np.concatenate(all_hot);color_mean=float(all_hot.mean());color_low,color_high=map(float,np.quantile(all_hot,[.05,.95]))
+color_policy=dict(mean_C=color_mean,lower_C=color_low,upper_C=color_high,scope='All above50C cell observations across both full histories, before display subsampling',rule='Pooled5th/95th percentiles of above50C samples; mean at colour midpoint via two-slope normalization; fixed across both cases and every frame; colour clipping only',below_fraction=float((all_hot<color_low).mean()),above_fraction=float((all_hot>color_high).mean()),fixed_palette=True,legend_pixel_identical_all_frames=True)
 manifest={'seed':20261102,'selection':'Uniform random draw without replacement from all208 frozen test histories; no performance filtering','selected_epoch':134,'indices':chosen,'cases':[]}
 for idx in chosen:
  c=schema['cases'][idx];name=c['case'];cond=conditions[name];src=sources[idx]
@@ -37,7 +37,7 @@ for idx in chosen:
  (D/(name+'.json')).write_text(json.dumps(data,separators=(',',':'))+'\n')
  manifest['cases'].append(dict(case=name,index=idx,source_sha256=src['source_sha256'],source_path=src['source_path'],frames=len(frames),crown_height_m=cond['crown_height_m'],wind_m_s=cond['wind_speed']))
  # Fixed 3-D views, matched metre axes and actual cell-centre temperatures.
- fig=plt.figure(figsize=(11,5.6),dpi=90);axes=[fig.add_subplot(121,projection='3d'),fig.add_subplot(122,projection='3d')];cmap=plt.get_cmap('inferno');norm=Normalize(color_low,color_high,clip=True)
+ fig=plt.figure(figsize=(11,5.6),dpi=90);axes=[fig.add_subplot(121,projection='3d'),fig.add_subplot(122,projection='3d')];cmap=plt.get_cmap('inferno');norm=TwoSlopeNorm(vmin=color_low,vcenter=color_mean,vmax=color_high)
  def cone(ax,p,color):
   if p is None:return
   h,tilt,length,radius,peak=p;a=np.deg2rad(tilt);u=np.array([np.sin(a),0,np.cos(a)]);v=np.array([np.cos(a),0,-np.sin(a)]);w=np.array([0,1,0]);apex=np.array([8,8,h]);th=np.linspace(0,2*np.pi,49);rim=apex+length*u+radius*(np.cos(th)[:,None]*v+np.sin(th)[:,None]*w)
@@ -50,7 +50,7 @@ for idx in chosen:
    th=np.linspace(0,2*np.pi,33);base=np.c_[8+1.5*np.cos(th),8+1.5*np.sin(th),np.full_like(th,2)];top=np.array([8,8,2+cond['crown_height_m']]);ax.plot(*base.T,color='#238351',alpha=.65)
    for k in range(0,32,4):ax.plot(*np.stack([base[k],top]).T,color='#238351',alpha=.65)
    pts=np.array(f['points'])
-   if len(pts):ax.scatter(pts[:,0],pts[:,1],pts[:,2],c=pts[:,3],cmap=cmap,norm=norm,s=7,alpha=.58,depthshade=False)
+   if len(pts):ax.scatter(pts[:,0],pts[:,1],pts[:,2],c=np.clip(pts[:,3],color_low,color_high),cmap=cmap,norm=norm,s=7,alpha=.58,depthshade=False)
    cone(ax,f[kind],color);ax.quiver(2,2,.5,4,0,0,color='#4775ba',arrow_length_ratio=.2)
    p=f[kind];ax.set_title(title+'\n'+('Absent / no prediction at t=0' if p is None else f'Length {p[2]:.2f}m · peak {p[4]:.0f}°C'),fontsize=10)
   fig.suptitle(f'{name} · {f["t"]:.1f}s · wind {cond["wind_speed"]:g}m/s → +x · igniter '+('ON' if f['t']<20 else 'OFF'),fontsize=12)
