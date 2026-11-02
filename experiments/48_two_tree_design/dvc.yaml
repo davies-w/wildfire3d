@@ -5,4 +5,15 @@ stages:
     - prepare.py
     - ../47_tree_archetypes/data/geometry.json
     outs:
-    - data
+    - data/cases.jsonl.gz
+    - data/geometries.json
+    - data/design.json
+  pilot:
+    cmd: ../../.venv/bin/python prepare_pilot.py
+    deps:
+    - prepare_pilot.py
+    - data/cases.jsonl.gz
+    - data/geometries.json
+    - ../36_tree_density/base-input.fds
+    outs:
+    - data/pilot
