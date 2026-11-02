@@ -1,0 +1,29 @@
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py
+    deps:
+    - prepare.py
+    - cones.py
+    - ../35_surrogate_diagnostics/attempt10/cases.json
+    - ../35_surrogate_diagnostics/attempt10/data/fields
+    outs:
+    - data/histories
+    - data/plots
+    - data/summary.json
+    - data/index.json
+  report:
+    cmd: ../../.venv/bin/python report.py
+    deps:
+    - report.py
+    - data/index.json
+    - data/summary.json
+    outs:
+    - data/report.html
+  validate:
+    cmd: ../../.venv/bin/python validate.py
+    deps:
+    - validate.py
+    - cones.py
+    - data/index.json
+    outs:
+    - data/validation.json

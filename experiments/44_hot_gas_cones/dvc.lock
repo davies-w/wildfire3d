@@ -1,0 +1,81 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py
+    outs:
+    - path: data/histories
+      hash: md5
+      md5: 55e12be13abd701e3e538a7dba3ca579.dir
+      size: 2949312
+      nfiles: 48
+    - path: data/plots
+      hash: md5
+      md5: bea573f990b9af2a730f46c54a8db223.dir
+      size: 4533879
+      nfiles: 48
+    - path: data/summary.json
+      hash: md5
+      md5: 2113164493075c129bd1f3a6d6f67aa4
+      size: 2015
+    - path: data/index.json
+      hash: md5
+      md5: b742e004d1698e89477e4da739705dff
+      size: 2268505
+    deps:
+    - path: prepare.py
+      hash: md5
+      md5: ff62a168eb025486753aa0b5ca262327
+      size: 7256
+    - path: cones.py
+      hash: md5
+      md5: fdf689be16f99104b8d7e983fe5b3f47
+      size: 2347
+    - path: ../35_surrogate_diagnostics/attempt10/cases.json
+      hash: md5
+      md5: f1f753c640584e2fd7776b1d990c181e
+      size: 39976
+    - path: ../35_surrogate_diagnostics/attempt10/data/fields
+      hash: md5
+      md5: 83135d054441d9a802015b0887b354a3.dir
+      size: 5152777727
+      nfiles: 144
+  report:
+    cmd: ../../.venv/bin/python report.py
+    deps:
+    - path: report.py
+      hash: md5
+      md5: babe03ada0480ef29f7509b2342d78ab
+      size: 6440
+    - path: data/index.json
+      hash: md5
+      md5: b742e004d1698e89477e4da739705dff
+      size: 2268505
+    - path: data/summary.json
+      hash: md5
+      md5: 2113164493075c129bd1f3a6d6f67aa4
+      size: 2015
+    outs:
+    - path: data/report.html
+      hash: md5
+      md5: 2bc53a31de6f29996ee5770f9849cbeb
+      size: 2274252
+  validate:
+    cmd: ../../.venv/bin/python validate.py
+    deps:
+    - path: validate.py
+      hash: md5
+      md5: b74558a052c5b87cce53ae8230d0a5f3
+      size: 1413
+    - path: cones.py
+      hash: md5
+      md5: fdf689be16f99104b8d7e983fe5b3f47
+      size: 2347
+    - path: data/index.json
+      hash: md5
+      md5: b742e004d1698e89477e4da739705dff
+      size: 2268505
+    outs:
+    - path: data/validation.json
+      hash: md5
+      md5: 86cd4ae98713c59b020479202fcfa0ac
+      size: 268

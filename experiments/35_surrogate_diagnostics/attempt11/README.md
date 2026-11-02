@@ -15,3 +15,12 @@ Reproduce local pipeline with dvc repro dvc.yaml. data/report.html displays ever
 Public report: https://wdavies-fire-state-storyboards.static.hf.space/
 
 Publish with `../../../.venv/bin/python publish_space.py` from this directory. Only prepared HTML, storyboards and compact state JSON are uploaded; no compute is provisioned. Publication commit and file hashes are in results/space-publication.json.
+
+## Five-parameter cone follow-up
+
+[Experiment44](../../44_hot_gas_cones/README.md) fits the same saved development
+fields with a downwind cone (height, tilt, length, radius, peak temperature) and
+checks3D hot-cell coverage against the original ovoid and an equal-coverage
+ovoid. It preserves the original summaries. The pointed cone captures95% of hot
+cells by construction but is loose: median purity20.3%, versus38.8% for the
+expanded ovoid. Saved-frame temperatures are not maxima between frames.
