@@ -1,0 +1,290 @@
+main:
+  steps:
+  - init:
+      assign:
+      - candidates:
+        - id: bulk
+          job_id: fds-tree48-pilot05-bulk
+          label: tree48-pilot05-bulk
+          region: us-central1
+          zones:
+          - us-central1-a
+          - us-central1-b
+          - us-central1-c
+  - campaign:
+      try:
+        steps:
+        - waves:
+            for:
+              value: c
+              in: ${candidates}
+              steps:
+              - set_deadline:
+                  assign:
+                  - deadline: 1793698928.855742
+              - get:
+                  try:
+                    call: http.get
+                    args:
+                      url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+                        + c.region + "/jobs/" + c.job_id}
+                      auth:
+                        type: OAuth2
+                      query:
+                        fields: name,status(state,taskGroups,runDuration)
+                    result: state
+                  retry: ${http.default_retry}
+              - record_state:
+                  call: http.post
+                  args:
+                    url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+                    auth:
+                      type: OAuth2
+                    query:
+                      uploadType: media
+                      name: ${"tree48/pilot05/"+c.id+"/job-status.json" + "." + string(sys.now())}
+                      ifGenerationMatch: 0
+                    headers:
+                      Content-Type: application/json
+                    body: ${state.body}
+              - terminal:
+                  switch:
+                  - condition: ${state.body.status.state == "SUCCEEDED"}
+                    next: clean_success
+                  - condition: ${state.body.status.state == "FAILED"}
+                    raise: Pilot worker failed; bulk wave is blocked
+              - inv:
+                  call: inventory
+                  args:
+                    c: ${c}
+                  result: inv
+              - check_age:
+                  for:
+                    value: vm
+                    in: ${inv.vms}
+                    steps:
+                    - limit:
+                        switch:
+                        - condition: ${sys.now() > time.parse(vm.creationTimestamp)+11100}
+                          raise: Worker VM lifetime exceeded
+              - controller_limit:
+                  switch:
+                  - condition: ${sys.now()>deadline}
+                    raise: Queue/run deadline exceeded
+              - wait:
+                  call: sys.sleep
+                  args:
+                    seconds: 30
+                  next: get
+              - clean_success:
+                  call: cleanup
+                  args:
+                    c: ${c}
+      except:
+        as: failure
+        steps:
+        - cleanup_all:
+            for:
+              value: c
+              in: ${candidates}
+              steps:
+              - clean_failed:
+                  call: cleanup
+                  args:
+                    c: ${c}
+        - record_failure:
+            call: http.post
+            args:
+              url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+              auth:
+                type: OAuth2
+              query:
+                uploadType: media
+                name: ${"tree48/pilot05/controller-error.json." + string(sys.now())}
+                ifGenerationMatch: 0
+              headers:
+                Content-Type: application/json
+              body: ${failure}
+        - raise_failure:
+            raise: ${failure}
+  - done:
+      return:
+        passed: true
+        cases: 20
+        cleanup_verified: true
+inventory:
+  params:
+  - c
+  steps:
+  - init:
+      assign:
+      - vms: []
+      - disks: []
+  - zones:
+      for:
+        value: z
+        in: ${c.zones}
+        steps:
+        - get_vms:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/instances"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: ${"labels.trial_id = " + c.label}
+                  fields: items(name,selfLink,creationTimestamp,status),nextPageToken
+                  maxResults: 500
+              result: v
+            retry: ${http.default_retry}
+        - page_guard_v:
+            switch:
+            - condition: ${map.get(v.body,"nextPageToken") != null}
+              raise: Unexpected inventory pagination; refuse partial inventory
+        - append_vms:
+            for:
+              value: vm
+              in: ${default(map.get(v.body,"items"),[])}
+              steps:
+              - add_vm:
+                  assign:
+                  - vms: ${list.concat(vms,vm)}
+        - get_disks:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/disks"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: name eq fds-tree48-pilot05-.*
+                  fields: items(name,selfLink,users),nextPageToken
+                  maxResults: 500
+              result: d
+            retry: ${http.default_retry}
+        - page_guard_d:
+            switch:
+            - condition: ${map.get(d.body,"nextPageToken") != null}
+              raise: Unexpected inventory pagination; refuse partial inventory
+        - append_disks:
+            for:
+              value: disk
+              in: ${default(map.get(d.body,"items"),[])}
+              steps:
+              - add_disk:
+                  assign:
+                  - disks: ${list.concat(disks,disk)}
+  - done:
+      return:
+        vms: ${vms}
+        disks: ${disks}
+cleanup:
+  params:
+  - c
+  steps:
+  - delete_job:
+      try:
+        call: http.delete
+        args:
+          url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+            + c.region + "/jobs/" + c.job_id}
+          auth:
+            type: OAuth2
+      retry: ${http.default_retry}
+      except:
+        as: err
+        steps:
+        - unexpected_1:
+            switch:
+            - condition: ${map.get(err,"code") != 404}
+              raise: ${err}
+  - inventory:
+      call: inventory
+      args:
+        c: ${c}
+      result: inv
+  - delete_vms:
+      for:
+        value: vm
+        in: ${inv.vms}
+        steps:
+        - delete_vm:
+            try:
+              call: http.delete
+              args:
+                url: ${vm.selfLink}
+                auth:
+                  type: OAuth2
+            retry: ${http.default_retry}
+            except:
+              as: err
+              steps:
+              - unexpected_2:
+                  switch:
+                  - condition: ${map.get(err,"code") != 404}
+                    raise: ${err}
+  - wait:
+      call: sys.sleep
+      args:
+        seconds: 15
+  - verify:
+      call: inventory
+      args:
+        c: ${c}
+      result: left
+  - orphan_disks:
+      for:
+        value: disk
+        in: ${left.disks}
+        steps:
+        - unused:
+            switch:
+            - condition: ${len(default(map.get(disk,"users"),[])) == 0}
+              steps:
+              - delete_disk:
+                  try:
+                    call: http.delete
+                    args:
+                      url: ${disk.selfLink}
+                      auth:
+                        type: OAuth2
+                  retry: ${http.default_retry}
+  - empty:
+      switch:
+      - condition: ${len(left.vms) > 0 or len(left.disks) > 0}
+        next: wait
+  - job_present:
+      assign:
+      - present: true
+  - verify_job:
+      try:
+        call: http.get
+        args:
+          url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+            + c.region + "/jobs/" + c.job_id}
+          auth:
+            type: OAuth2
+          query:
+            fields: name,status(state,taskGroups,runDuration)
+        result: remaining
+      retry: ${http.default_retry}
+      except:
+        as: e
+        steps:
+        - gone:
+            switch:
+            - condition: ${map.get(e,"code") == 404}
+              assign:
+              - present: false
+            - condition: ${true}
+              raise: ${e}
+  - job_wait:
+      switch:
+      - condition: ${present}
+        next: wait
+  - done:
+      return:
+        empty: true

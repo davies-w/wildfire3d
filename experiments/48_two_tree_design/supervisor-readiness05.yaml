@@ -1,0 +1,89 @@
+main:
+  steps:
+  - init:
+      assign:
+      - c:
+          id: bulk
+          job_id: fds-tree48-pilot05-bulk
+          label: tree48-pilot05-bulk
+          region: us-central1
+          zones:
+          - us-central1-a
+          - us-central1-b
+          - us-central1-c
+  - inspect:
+      call: inventory
+      args:
+        c: ${c}
+      result: inv
+  - done:
+      return: ${inv}
+inventory:
+  params:
+  - c
+  steps:
+  - init:
+      assign:
+      - vms: []
+      - disks: []
+  - zones:
+      for:
+        value: z
+        in: ${c.zones}
+        steps:
+        - get_vms:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/instances"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: ${"labels.trial_id = " + c.label}
+                  fields: items(name,selfLink,creationTimestamp,status),nextPageToken
+                  maxResults: 500
+              result: v
+            retry: ${http.default_retry}
+        - page_guard_v:
+            switch:
+            - condition: ${map.get(v.body,"nextPageToken") != null}
+              raise: Unexpected inventory pagination; refuse partial inventory
+        - append_vms:
+            for:
+              value: vm
+              in: ${default(map.get(v.body,"items"),[])}
+              steps:
+              - add_vm:
+                  assign:
+                  - vms: ${list.concat(vms,vm)}
+        - get_disks:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/disks"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: name eq fds-tree48-pilot05-.*
+                  fields: items(name,selfLink,users),nextPageToken
+                  maxResults: 500
+              result: d
+            retry: ${http.default_retry}
+        - page_guard_d:
+            switch:
+            - condition: ${map.get(d.body,"nextPageToken") != null}
+              raise: Unexpected inventory pagination; refuse partial inventory
+        - append_disks:
+            for:
+              value: disk
+              in: ${default(map.get(d.body,"items"),[])}
+              steps:
+              - add_disk:
+                  assign:
+                  - disks: ${list.concat(disks,disk)}
+  - done:
+      return:
+        vms: ${vms}
+        disks: ${disks}
