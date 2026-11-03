@@ -53,3 +53,8 @@ stages:
     frozen: true
     outs:
     - data/canaries04
+  stopcheck01:
+    cmd: ../../.venv/bin/python prepare_stopcheck01.py
+    frozen: true
+    outs:
+    - data/stopcheck01

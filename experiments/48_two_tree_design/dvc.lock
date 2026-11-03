@@ -84,3 +84,11 @@ stages:
       md5: 49fd13d0d982c8fdc029873209fec4f1.dir
       size: 1485590948
       nfiles: 53
+  stopcheck01:
+    cmd: ../../.venv/bin/python prepare_stopcheck01.py
+    outs:
+    - path: data/stopcheck01
+      hash: md5
+      md5: 245c4b21c83c75396839418d3d4e6efe.dir
+      size: 55213
+      nfiles: 3
