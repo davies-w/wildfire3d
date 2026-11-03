@@ -23,3 +23,8 @@ stages:
     outs:
     - data/cloud
     - data/cloud-context
+  cloud_inputs02:
+    cmd: ../../.venv/bin/python package_cloud02.py
+    frozen: true
+    outs:
+    - data/cloud02

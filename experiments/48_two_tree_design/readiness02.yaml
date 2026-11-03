@@ -1,0 +1,239 @@
+main:
+  steps:
+  - init:
+      assign:
+      - candidates:
+        - id: canary
+          job_id: fds-tree48-pilot02-canary
+          label: tree48-pilot02-canary
+          region: us-central1
+          zones:
+          - us-central1-a
+          - us-central1-b
+          - us-central1-c
+          job:
+            taskGroups:
+            - taskCount: '4'
+              parallelism: '4'
+              taskCountPerNode: '1'
+              taskSpec:
+                computeResource:
+                  cpuMilli: 4000
+                  memoryMib: 12000
+                maxRunDuration: 10800s
+                maxRetryCount: 0
+                environment:
+                  variables:
+                    PILOT_GROUP: canary
+                runnables:
+                - container:
+                    imageUri: us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver48@sha256:2f27d44c854922f94f96a0c4137e1b092931022cf4294e1f89f888a56fd76443
+                    entrypoint: python3
+                    commands:
+                    - -c
+                    - "import os,json,lzma,pathlib,urllib.request,hashlib,sys,runpy\n\
+                      r=urllib.request.Request('http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token',headers={'Metadata-Flavor':'Google'})\n\
+                      tok=json.load(urllib.request.urlopen(r,timeout=20))['access_token']\n\
+                      r=urllib.request.Request('https://storage.googleapis.com/tmrw-wildfire-20261015-trial/tree48/pilot02/input.xz',headers={'Authorization':'Bearer\
+                      \ '+tok})\nblob=urllib.request.urlopen(r,timeout=120).read();assert\
+                      \ hashlib.sha256(blob).hexdigest()=='d9c939bce5359f39542823f97f4c82a229ae1735adbae9e564ada59b630aa4a9'\n\
+                      payload=json.loads(lzma.decompress(blob));root=pathlib.Path('/study');root.mkdir(exist_ok=True)\n\
+                      for n,v in payload.items():\n p=root/n;assert p.is_relative_to(root)\
+                      \ and '..' not in pathlib.Path(n).parts;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(v)\n\
+                      group=os.environ['PILOT_GROUP'];index=int(os.environ['BATCH_TASK_INDEX']);case=json.loads(payload['groups.json'])[group][index]\n\
+                      (root/'task.json').write_text(json.dumps({'case':case,'output_prefix':'tree48/pilot02/'+group+'/'+case['pilot_case']+'/'}))\n\
+                      sys.path.insert(0,str(root));runpy.run_path(str(root/'worker.py'),run_name='__main__')\n"
+                    options: --cpus=4 --memory=12000m --pids-limit=256
+            allocationPolicy:
+              instances:
+              - policy:
+                  machineType: c3-standard-4
+                  provisioningModel: SPOT
+                  bootDisk:
+                    sizeGb: '30'
+                    type: pd-balanced
+              location:
+                allowedLocations:
+                - zones/us-central1-a
+                - zones/us-central1-b
+                - zones/us-central1-c
+              serviceAccount:
+                email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+              labels:
+                trial_id: tree48-pilot02-canary
+              network:
+                networkInterfaces:
+                - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                  subnetwork: projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial
+            labels:
+              trial_id: tree48-pilot02-canary
+            logsPolicy:
+              destination: CLOUD_LOGGING
+        - id: bulk
+          job_id: fds-tree48-pilot02-bulk
+          label: tree48-pilot02-bulk
+          region: us-central1
+          zones:
+          - us-central1-a
+          - us-central1-b
+          - us-central1-c
+          job:
+            taskGroups:
+            - taskCount: '20'
+              parallelism: '20'
+              taskCountPerNode: '1'
+              taskSpec:
+                computeResource:
+                  cpuMilli: 4000
+                  memoryMib: 28000
+                maxRunDuration: 10800s
+                maxRetryCount: 0
+                environment:
+                  variables:
+                    PILOT_GROUP: bulk
+                runnables:
+                - container:
+                    imageUri: us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver48@sha256:2f27d44c854922f94f96a0c4137e1b092931022cf4294e1f89f888a56fd76443
+                    entrypoint: python3
+                    commands:
+                    - -c
+                    - "import os,json,lzma,pathlib,urllib.request,hashlib,sys,runpy\n\
+                      r=urllib.request.Request('http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token',headers={'Metadata-Flavor':'Google'})\n\
+                      tok=json.load(urllib.request.urlopen(r,timeout=20))['access_token']\n\
+                      r=urllib.request.Request('https://storage.googleapis.com/tmrw-wildfire-20261015-trial/tree48/pilot02/input.xz',headers={'Authorization':'Bearer\
+                      \ '+tok})\nblob=urllib.request.urlopen(r,timeout=120).read();assert\
+                      \ hashlib.sha256(blob).hexdigest()=='d9c939bce5359f39542823f97f4c82a229ae1735adbae9e564ada59b630aa4a9'\n\
+                      payload=json.loads(lzma.decompress(blob));root=pathlib.Path('/study');root.mkdir(exist_ok=True)\n\
+                      for n,v in payload.items():\n p=root/n;assert p.is_relative_to(root)\
+                      \ and '..' not in pathlib.Path(n).parts;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(v)\n\
+                      group=os.environ['PILOT_GROUP'];index=int(os.environ['BATCH_TASK_INDEX']);case=json.loads(payload['groups.json'])[group][index]\n\
+                      (root/'task.json').write_text(json.dumps({'case':case,'output_prefix':'tree48/pilot02/'+group+'/'+case['pilot_case']+'/'}))\n\
+                      sys.path.insert(0,str(root));runpy.run_path(str(root/'worker.py'),run_name='__main__')\n"
+                    options: --cpus=4 --memory=28000m --pids-limit=256
+            allocationPolicy:
+              instances:
+              - policy:
+                  machineType: c3-highmem-4
+                  provisioningModel: SPOT
+                  bootDisk:
+                    sizeGb: '30'
+                    type: pd-balanced
+              location:
+                allowedLocations:
+                - zones/us-central1-a
+                - zones/us-central1-b
+                - zones/us-central1-c
+              serviceAccount:
+                email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+              labels:
+                trial_id: tree48-pilot02-bulk
+              network:
+                networkInterfaces:
+                - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                  subnetwork: projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial
+            labels:
+              trial_id: tree48-pilot02-bulk
+            logsPolicy:
+              destination: CLOUD_LOGGING
+  - write_probe1:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: ${"tree48/pilot02/readiness-status." + string(sys.now())}
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body:
+          passed: true
+  - write_probe2:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: ${"tree48/pilot02/readiness-status." + string(sys.now())}
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body:
+          passed: true
+  - check:
+      for:
+        value: c
+        in: ${candidates}
+        steps:
+        - inspect:
+            call: inventory
+            args:
+              c: ${c}
+            result: inv
+        - empty:
+            switch:
+            - condition: ${len(inv.vms)>0 or len(inv.disks)>0}
+              raise: Existing pilot resources
+  - done:
+      return:
+        passed: true
+inventory:
+  params:
+  - c
+  steps:
+  - init:
+      assign:
+      - vms: []
+      - disks: []
+  - zones:
+      for:
+        value: z
+        in: ${c.zones}
+        steps:
+        - get_vms:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/instances"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: ${"labels.trial_id = " + c.label}
+              result: v
+            retry: ${http.default_retry}
+        - append_vms:
+            for:
+              value: vm
+              in: ${default(map.get(v.body,"items"),[])}
+              steps:
+              - add_vm:
+                  assign:
+                  - vms: ${list.concat(vms,vm)}
+        - get_disks:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/disks"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: name eq fds-tree48-pilot02-.*
+              result: d
+            retry: ${http.default_retry}
+        - append_disks:
+            for:
+              value: disk
+              in: ${default(map.get(d.body,"items"),[])}
+              steps:
+              - add_disk:
+                  assign:
+                  - disks: ${list.concat(disks,disk)}
+  - done:
+      return:
+        vms: ${vms}
+        disks: ${disks}
