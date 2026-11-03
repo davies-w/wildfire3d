@@ -88,3 +88,6 @@ Recovery06 ended after five successful continuations when Google Spot-preempted 
 
 
 Pilot06 terminal audit verified all 570 objects and empty jobs, VMs and disks; its exact read condition was removed and allocation costs reconciled. The five completed continuation exports passed HF verification for all 72 scientific objects. A unique pilot07 package is prepared offline for only baseline 000997, restoring checkpoint 026 at step 5805 / 94.67241 s. It retains the 180 s target, four threads, bounded checkpoint shutdown and the existing four-hour continuation limit. Cloud readiness and submission have not yet occurred.
+
+
+Pilot07 continuation startup is verified: restored files passed hashes, its first reported new step was 5900 at 97.05965 s (beyond saved step 5805 / 94.67241 s), and two completed checkpoint manifests advance to 105.61014 s. Batch is running; the 180 s target is not yet complete. Final collection and strict 22-case analysis are prepared to include completed07 only after successful output verification.

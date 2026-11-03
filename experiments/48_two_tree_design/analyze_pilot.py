@@ -18,7 +18,7 @@ def integral(rows,start):
   y=a['HRR']+(b['HRR']-a['HRR'])*(lo-a['Time'])/dt;total+=(y+b['HRR'])*(hi-lo)/2
  return total
 cases={}
-for group in ['canaries04','completed05','completed06']:
+for group in ['canaries04','completed05','completed06','completed07']:
  root=R/'data'/group
  if not (root/'proof.json').exists():continue
  proof=json.loads((root/'proof.json').read_text());assert proof['passed']

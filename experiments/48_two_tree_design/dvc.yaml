@@ -84,6 +84,7 @@ stages:
     - data/canaries04
     - data/completed05
     - data/completed06
+    - data/completed07
     outs:
     - data/analysis
 
@@ -92,3 +93,9 @@ stages:
     frozen: true
     outs:
     - data/cloud07
+
+  completed07:
+    cmd: ../../.venv/bin/python collect_completed07.py
+    frozen: true
+    outs:
+    - data/completed07
