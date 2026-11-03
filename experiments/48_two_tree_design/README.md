@@ -1,5 +1,15 @@
 # Two-tree sampled simulation design
 
+## Completed pilot — 2026-11-03
+
+All **22 retained cases** (20 baseline and two expanded-domain controls) completed 180 simulated seconds. Two fine-grid cases were cancelled at the user's request, so **grid convergence is not established**. Actual final Batch success, startup/restoration proofs, final device time, and archive hashes are verified. Pilot07 completed the last interrupted baseline by restoring saved state; no successful case was repeated. All pilot compute jobs, VMs and disks are empty, and the final exact worker read grant was removed after allocation audit. Remaining original funds are retained only for pending shared/storage/transfer accounting; this is not authorization for more solver jobs.
+
+The paired expanded domains changed integrated combustion energy by −1.95% and −2.22%. These two checks do not establish local-field convergence or the smallest adequate domain. Across the 22 cases, combustion energy was 2.46–14,833.24 MJ, and final HRR was 0.205–1.499 kW at 180 s. Tracked wet-mass loss includes drying and pyrolysis; no validated binary ignition criterion or exact-extinction claim is made.
+
+Saved output histories averaged approximately **85.5 minutes** (median 73.4), including shorter checkpoint pauses but excluding recovery gaps of 30 minutes or more, provisioning, final uploads and work lost to eviction. The final case accumulated 218.9 minutes in its retained histories across attempts. The original 32 single-crown training solves averaged 6.23 minutes, with one tenth as many gas cells; this is not a controlled hardware comparison. Scientific exports total 9.24 GB. Full operational archives and checkpoint generations remain private.
+
+See [the full scientific report](data/analysis/report.md), [metrics](data/analysis/summary.json), and [runtime/storage methodology](data/analysis/runtime-storage.json). Reproduce these summaries with `analyze_pilot.py` followed by `report_pilot.py`; no solver or model training is invoked. These are generic fuel, species-inspired geometries with imposed 0.4 m / 1500 °C / 20 s heating, no grass, bark layers or embers. The 2,000-case production catalogue has not been launched. The historical preparation and execution notes below retain the progression of the pilot.
+
 Prepared 24-case pilot with cloud launch authorized on 2026-11-02. See `launch-record.json` for the frozen inputs and controller; private execution records contain the actual submission state. The user approved replacing the 180,000-case Cartesian product with 2,000 sampled examples on 2026-11-02.
 
 - Type1 Ponderosa pine: total height18–22m and crown radius1.5–5.5m, both at1m increments; crown base fixed6m.

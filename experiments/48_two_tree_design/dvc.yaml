@@ -78,9 +78,10 @@ stages:
     - data/completed06
 
   analysis:
-    cmd: ../../.venv/bin/python analyze_pilot.py
+    cmd: ../../.venv/bin/python analyze_pilot.py && ../../.venv/bin/python report_pilot.py
     deps:
     - analyze_pilot.py
+    - report_pilot.py
     - data/canaries04
     - data/completed05
     - data/completed06

@@ -124,3 +124,19 @@ stages:
       md5: 22b85b3ff25a96ad6ebfdf674d4afc71.dir
       size: 64975
       nfiles: 3
+  completed07:
+    cmd: ../../.venv/bin/python collect_completed07.py
+    outs:
+    - path: data/completed07
+      hash: md5
+      md5: a8532cff34ed5ceb34d56a400bdf901e.dir
+      size: 427248914
+      nfiles: 15
+  analysis:
+    cmd: ../../.venv/bin/python analyze_pilot.py && ../../.venv/bin/python report_pilot.py
+    outs:
+    - path: data/analysis
+      hash: md5
+      md5: d9bf27e507624d04ee9823fee6d85f25.dir
+      size: 26424
+      nfiles: 3
