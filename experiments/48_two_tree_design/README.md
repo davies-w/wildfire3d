@@ -85,3 +85,6 @@ The twelve completed pilot05 scientific exports are now DVC-recorded and uploade
 
 
 Recovery06 ended after five successful continuations when Google Spot-preempted the remaining 000997 baseline VM (explicit `compute.instances.preempted` audit event at 2026-11-03 20:15:24 UTC). This was not a solver error. The latest completed checkpoint record is at 94.67241 simulated seconds; its archive is undergoing the terminal generation/MD5/SHA audit before further continuation. The completed count remains 21 of 22 retained non-fine cases. No paid retry was submitted at diagnosis.
+
+
+Pilot06 terminal audit verified all 570 objects and empty jobs, VMs and disks; its exact read condition was removed and allocation costs reconciled. The five completed continuation exports passed HF verification for all 72 scientific objects. A unique pilot07 package is prepared offline for only baseline 000997, restoring checkpoint 026 at step 5805 / 94.67241 s. It retains the 180 s target, four threads, bounded checkpoint shutdown and the existing four-hour continuation limit. Cloud readiness and submission have not yet occurred.
