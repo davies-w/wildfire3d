@@ -76,3 +76,13 @@ stages:
     frozen: true
     outs:
     - data/completed06
+
+  analysis:
+    cmd: ../../.venv/bin/python analyze_pilot.py
+    deps:
+    - analyze_pilot.py
+    - data/canaries04
+    - data/completed05
+    - data/completed06
+    outs:
+    - data/analysis
