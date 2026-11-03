@@ -82,3 +82,6 @@ Recovery06 first cloud evidence: all six restore/startup records passed, confirm
 
 
 The twelve completed pilot05 scientific exports are now DVC-recorded and uploaded: all 170 scoped objects passed remote size/Xet checks and anonymous directory-manifest readback, without cache or mirror use. Raw operational archives remain private. Recovery06 subsequently reached three passing completions (000181 baseline, 001186 baseline and 000830 expanded-domain); three cases remained running at that check. `collect_completed06.py` collects only completed continuation outputs and leaves active workers untouched; its current output set is partial until all remaining cases resolve.
+
+
+Recovery06 ended after five successful continuations when Google Spot-preempted the remaining 000997 baseline VM (explicit `compute.instances.preempted` audit event at 2026-11-03 20:15:24 UTC). This was not a solver error. The latest completed checkpoint record is at 94.67241 simulated seconds; its archive is undergoing the terminal generation/MD5/SHA audit before further continuation. The completed count remains 21 of 22 retained non-fine cases. No paid retry was submitted at diagnosis.
