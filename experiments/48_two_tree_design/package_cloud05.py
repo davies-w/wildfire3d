@@ -68,7 +68,7 @@ w['await_quota']={'params':['c'],'steps':[
 w=retry(w);(R/'pilot05.yaml').write_text(yaml.safe_dump(w,sort_keys=False))
 ready={'main':{'steps':[{'init':{'assign':[{'candidates':candidates}]}},{'check':{'for':{'value':'c','in':'${candidates}','steps':[{'inspect':{'call':'inventory','args':{'c':'${c}'},'result':'inv'}},{'empty':{'switch':[{'condition':'${len(inv.vms)>0 or len(inv.disks)>0}','raise':'Existing pilot resources'}]}}]}}},{'done':{'return':{'passed':True}}}]},'inventory':inventory}
 ready['await_quota']=w['await_quota']
-ready['main']['steps'].insert(1,{'quota_probe':{'call':'await_quota','args':{'c':candidates[0]}}})
+ready['main']['steps'].insert(1,{'quota_probe':{'call':'await_quota','args':{'c':copy.deepcopy(candidates[0])}}})
 ready['main']['steps'].insert(1,{'write_probe1':record(PREFIX+'readiness-status',{'passed':True})})
 ready['main']['steps'].insert(2,{'write_probe2':record(PREFIX+'readiness-status',{'passed':True})})
 (R/'readiness05.yaml').write_text(yaml.safe_dump(ready,sort_keys=False))

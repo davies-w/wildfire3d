@@ -3,8 +3,7 @@ main:
   - init:
       assign:
       - candidates:
-        - &id001
-          id: bulk
+        - id: bulk
           job_id: fds-tree48-pilot05-bulk
           label: tree48-pilot05-bulk
           region: us-central1
@@ -90,7 +89,62 @@ main:
   - quota_probe:
       call: await_quota
       args:
-        c: *id001
+        c:
+          id: bulk
+          job_id: fds-tree48-pilot05-bulk
+          label: tree48-pilot05-bulk
+          region: us-central1
+          zones:
+          - us-central1-a
+          - us-central1-b
+          - us-central1-c
+          job:
+            taskGroups:
+            - taskCount: '20'
+              parallelism: '20'
+              taskCountPerNode: '1'
+              taskSpec:
+                computeResource:
+                  cpuMilli: 4000
+                  memoryMib: 28000
+                maxRunDuration: 10800s
+                maxRetryCount: 0
+                environment:
+                  variables:
+                    PILOT_GROUP: bulk
+                runnables:
+                - container:
+                    imageUri: us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver48@sha256:2f27d44c854922f94f96a0c4137e1b092931022cf4294e1f89f888a56fd76443
+                    entrypoint: python3
+                    commands:
+                    - -c
+                    - import base64;exec(compile(base64.b64decode('aW1wb3J0IG9zLGpzb24sbHptYSxwYXRobGliLHVybGxpYi5yZXF1ZXN0LGhhc2hsaWIsc3lzLHJ1bnB5CnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pCnRvaz1qc29uLmxvYWQodXJsbGliLnJlcXVlc3QudXJsb3BlbihyLHRpbWVvdXQ9MjApKVsnYWNjZXNzX3Rva2VuJ10Kcj11cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vdG1ydy13aWxkZmlyZS0yMDI2MTAxNS10cmlhbC90cmVlNDgvcGlsb3QwNS9pbnB1dC54eicsaGVhZGVycz17J0F1dGhvcml6YXRpb24nOidCZWFyZXIgJyt0b2t9KQpibG9iPXVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocix0aW1lb3V0PTEyMCkucmVhZCgpO2Fzc2VydCBoYXNobGliLnNoYTI1NihibG9iKS5oZXhkaWdlc3QoKT09JzNhM2M2M2NjMmVjZTNmNDkwZTZhZmZlYmY3ZDRjYzk3NTA3ODBhZGE1NzNlOTAxNGQxNWU5YzMzMjBhNjQzNzUnCnBheWxvYWQ9anNvbi5sb2Fkcyhsem1hLmRlY29tcHJlc3MoYmxvYikpO3Jvb3Q9cGF0aGxpYi5QYXRoKCcvc3R1ZHknKTtyb290Lm1rZGlyKGV4aXN0X29rPVRydWUpCmZvciBuLHYgaW4gcGF5bG9hZC5pdGVtcygpOgogcD1yb290L247YXNzZXJ0IHAuaXNfcmVsYXRpdmVfdG8ocm9vdCkgYW5kICcuLicgbm90IGluIHBhdGhsaWIuUGF0aChuKS5wYXJ0cztwLnBhcmVudC5ta2RpcihwYXJlbnRzPVRydWUsZXhpc3Rfb2s9VHJ1ZSk7cC53cml0ZV90ZXh0KHYpCmdyb3VwPW9zLmVudmlyb25bJ1BJTE9UX0dST1VQJ107aW5kZXg9aW50KG9zLmVudmlyb25bJ0JBVENIX1RBU0tfSU5ERVgnXSk7Y2FzZT1qc29uLmxvYWRzKHBheWxvYWRbJ2dyb3Vwcy5qc29uJ10pW2dyb3VwXVtpbmRleF0KKHJvb3QvJ3Rhc2suanNvbicpLndyaXRlX3RleHQoanNvbi5kdW1wcyh7J2Nhc2UnOmNhc2UsJ291dHB1dF9wcmVmaXgnOid0cmVlNDgvcGlsb3QwNS8nK2dyb3VwKycvJytjYXNlWydwaWxvdF9jYXNlJ10rJy8nfSkpCnN5cy5wYXRoLmluc2VydCgwLHN0cihyb290KSk7cnVucHkucnVuX3BhdGgoc3RyKHJvb3QvJ3dvcmtlci5weScpLHJ1bl9uYW1lPSdfX21haW5fXycpCg=='),'bootstrap','exec'))
+                    options: --cpus=4 --memory=28000m --pids-limit=256
+            allocationPolicy:
+              instances:
+              - policy:
+                  machineType: c3-highmem-4
+                  provisioningModel: SPOT
+                  bootDisk:
+                    sizeGb: '30'
+                    type: pd-balanced
+              location:
+                allowedLocations:
+                - zones/us-central1-a
+                - zones/us-central1-b
+                - zones/us-central1-c
+              serviceAccount:
+                email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+              labels:
+                trial_id: tree48-pilot05-bulk
+              network:
+                networkInterfaces:
+                - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                  subnetwork: projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial
+            labels:
+              trial_id: tree48-pilot05-bulk
+            logsPolicy:
+              destination: CLOUD_LOGGING
   - check:
       for:
         value: c
