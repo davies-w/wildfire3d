@@ -4,6 +4,15 @@ from pathlib import Path
 import pilot_worker06 as w
 from transport import upload,token
 
+def restore_archive(stream,folder,files):
+ with tarfile.open(fileobj=stream,mode='r|gz') as archive:
+  for m in archive:
+   parts=Path(m.name).parts;assert parts and parts[0]=='evidence' and '..' not in parts and not m.issym() and not m.islnk()
+   if m.isfile():
+    dest=folder/Path(*parts[1:]);dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(archive.extractfile(m).read())
+ while stream.read(1024*1024):pass
+ assert all((folder/x['name']).stat().st_size==x['bytes'] and w.sha(folder/x['name'])==x['sha256'] for x in files if x['name']!='checkpoint.json')
+
 def main():
  root=Path('/study');cfg=json.loads((root/'task.json').read_text());c=cfg['case'];name=c['pilot_case'];plan=json.loads((root/'recovery.json').read_text())[name]
  assert '_fine' not in name and w.sha(w.BINARY)==w.EXPECTED_BINARY
@@ -22,18 +31,12 @@ def main():
     url='https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/'+urllib.parse.quote(p['name'],safe='')+'?alt=media&generation='+p['generation']
     b=urllib.request.urlopen(urllib.request.Request(url,headers={'Authorization':'Bearer '+token()}),timeout=180).read();assert len(b)==p['bytes'] and hashlib.sha256(b).hexdigest()==p['sha256'];self.current=io.BytesIO(b)
  stream=io.BufferedReader(Parts())
- with tarfile.open(fileobj=stream,mode='r|gz') as archive:
-  for m in archive:
-   parts=Path(m.name).parts;assert parts and parts[0]=='evidence' and '..' not in parts and not m.issym() and not m.islnk()
-   if m.isfile():
-    dest=folder/Path(*parts[1:]);dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(archive.extractfile(m).read())
- while stream.read(1024*1024):pass
- assert all((folder/x['name']).stat().st_size==x['bytes'] and w.sha(folder/x['name'])==x['sha256'] for x in plan['checkpoint_files'] if x['name']!='checkpoint.json')
+ restore_archive(stream,folder,plan['checkpoint_files'])
  upload('restore.json',json.dumps(dict(passed=True,case=name,saved_step=plan['saved_step'],saved_time_s=plan['saved_time_s'],all_files_hash_verified=True)).encode())
  Path('/fds/Build/ompi_gnu_linux').mkdir(parents=True,exist_ok=True)
  start=time.monotonic();deadline=start+14400;previous=(plan['saved_step'],plan['saved_time_s']);segments=[];success=False
  try:
-  for index in range(40):
+  for index in range(60):
    assert time.monotonic()<deadline-930,'Continuation deadline reached; saved checkpoint retained'
    result=w.run(source.replace('&MISC ','&MISC RESTART=T, ',1),folder,300,name,hard_deadline=deadline);segments.append(result)
    log=(folder/result['log']).read_text();steps=re.findall(r'Time Step:\s+(\d+), Simulation Time:\s+([\d.Ee+-]+)\s+s',log);assert steps,'No new invocation progress'
