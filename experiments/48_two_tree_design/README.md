@@ -79,3 +79,6 @@ Recovery06 is prepared for exactly six unfinished non-fine cases, with the same 
 
 
 Recovery06 first cloud evidence: all six restore/startup records passed, confirming new solver steps beyond their saved checkpoints. The 000181 baseline continuation has a passing completion record and Batch reports one succeeded task, with five still running at the first check. Original completed cases are being collected by `collect_completed05.py`, which streams verified final archives and exports only scientific solve files, checks successful startup and full 180 s in both result and device output, and retains operational logs privately.
+
+
+The twelve completed pilot05 scientific exports are now DVC-recorded and uploaded: all 170 scoped objects passed remote size/Xet checks and anonymous directory-manifest readback, without cache or mirror use. Raw operational archives remain private. Recovery06 subsequently reached three passing completions (000181 baseline, 001186 baseline and 000830 expanded-domain); three cases remained running at that check. `collect_completed06.py` collects only completed continuation outputs and leaves active workers untouched; its current output set is partial until all remaining cases resolve.
