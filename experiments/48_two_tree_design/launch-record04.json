@@ -1,0 +1,37 @@
+{
+  "input_sha256": "7f18fb1bbda24dae568632f1cecc30893c9423b3436e943fd973d2103fcce7f0",
+  "image_uri": "us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver48@sha256:2f27d44c854922f94f96a0c4137e1b092931022cf4294e1f89f888a56fd76443",
+  "candidates": [
+    {
+      "id": "canary",
+      "job_id": "fds-tree48-pilot04-canary",
+      "label": "tree48-pilot04-canary",
+      "region": "us-central1",
+      "zones": [
+        "us-central1-a",
+        "us-central1-b",
+        "us-central1-c"
+      ]
+    },
+    {
+      "id": "bulk",
+      "job_id": "fds-tree48-pilot04-bulk",
+      "label": "tree48-pilot04-bulk",
+      "region": "us-central1",
+      "zones": [
+        "us-central1-a",
+        "us-central1-b",
+        "us-central1-c"
+      ]
+    }
+  ],
+  "workflow_sha256": "703df87294776281737b0943699cafa32883b540ee9273d4276ea6e89f594903",
+  "cases": 24,
+  "canary_cases": [
+    "tree48_000481_baseline",
+    "tree48_000500_baseline",
+    "tree48_001487_baseline",
+    "tree48_001500_baseline"
+  ],
+  "zero_retries": true
+}

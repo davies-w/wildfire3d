@@ -33,3 +33,13 @@ stages:
     frozen: true
     outs:
     - data/cloud03
+  cloud_inputs04:
+    cmd: ../../.venv/bin/python package_cloud04.py
+    frozen: true
+    outs:
+    - data/cloud04
+  startup03_audit:
+    cmd: ../../.venv/bin/python verify_mass03.py
+    frozen: true
+    outs:
+    - data/startup03

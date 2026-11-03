@@ -1,0 +1,5 @@
+{
+  "reason": "Mass validation incorrectly used the time-zero row, before particles initialize. All fuel classes at 0.1s match independently expected wet masses with relative error below 5e-8.",
+  "completed_simulations": 0,
+  "correction": "Check first strictly positive-time row no later than 0.1s, retaining 1% tolerance. Regression uses actual saved CSVs from all four cloud probes."
+}

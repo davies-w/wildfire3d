@@ -52,3 +52,19 @@ stages:
       md5: a3be2e2c0d2ec648d6a53744c85d843a.dir
       size: 601027
       nfiles: 3
+  cloud_inputs04:
+    cmd: ../../.venv/bin/python package_cloud04.py
+    outs:
+    - path: data/cloud04
+      hash: md5
+      md5: 250847adbad23e8a1a2a131bbbc1b88e.dir
+      size: 597807
+      nfiles: 3
+  startup03_audit:
+    cmd: ../../.venv/bin/python verify_mass03.py
+    outs:
+    - path: data/startup03
+      hash: md5
+      md5: 36e57bcf59ccc0f1350023b55d1a154e.dir
+      size: 1324652897
+      nfiles: 45
