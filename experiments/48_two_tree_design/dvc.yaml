@@ -43,3 +43,13 @@ stages:
     frozen: true
     outs:
     - data/startup03
+  cloud_inputs05:
+    cmd: ../../.venv/bin/python package_cloud05.py
+    frozen: true
+    outs:
+    - data/cloud05
+  canaries04:
+    cmd: ../../.venv/bin/python verify_canaries04.py
+    frozen: true
+    outs:
+    - data/canaries04
