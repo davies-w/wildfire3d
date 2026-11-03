@@ -35,6 +35,17 @@ def run(deck,folder,seconds,name,grace_seconds=900,hard_deadline=None):
    time.sleep(.25)
  ACTIVE=None
  return dict(returncode=p.returncode,wall_seconds=time.monotonic()-start,stopped=requested is not None,forced_termination=forced,stop_wait_seconds=None if requested is None else time.monotonic()-requested,log=logpath.name)
+def stopped_log_progress(logpath,previous=None):
+ """Read only this invocation's captured stdout, never an inherited .out file."""
+ text=Path(logpath).read_text()
+ pairs=list(re.finditer(r'Time Step:\s+(\d+), Simulation Time:\s+([\d.Ee+-]+)\s+s',text))
+ assert pairs,'No simulation progress in invocation log'
+ values=[(int(m[1]),float(m[2])) for m in pairs]
+ assert all(b[0]>a[0] and b[1]>a[1] for a,b in zip(values,values[1:])), 'Non-increasing invocation progress'
+ assert 'STOP: FDS stopped by user' in text[pairs[-1].end():], 'No clean-stop marker after progress'
+ if previous is not None:
+  assert values[0][0]>previous[0] and values[0][1]>previous[1], 'Resumed log contains old or non-advancing progress'
+ return values[-1]
 def devices(folder,name):
  with (folder/(name+'_devc.csv')).open() as f:
   r=csv.reader(f);next(r);keys=[x.strip().strip('"') for x in next(r)];return [dict(zip(keys,map(float,row))) for row in r if row]
