@@ -76,3 +76,11 @@ stages:
       md5: 121d8d77be655b59bab92747f305990f.dir
       size: 595701
       nfiles: 3
+  canaries04:
+    cmd: ../../.venv/bin/python verify_canaries04.py
+    outs:
+    - path: data/canaries04
+      hash: md5
+      md5: 49fd13d0d982c8fdc029873209fec4f1.dir
+      size: 1485590948
+      nfiles: 53
