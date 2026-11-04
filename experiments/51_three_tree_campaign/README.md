@@ -18,7 +18,11 @@ The workflow publishes immutable reduction markers in its unique cloud prefix. R
 
 ## Execution state
 
-The production workflow was submitted once after actual cloud readiness and exact deployed-bootstrap validation. All six initial canaries have passed actual startup mass and portable-restart checks; full180s completion is still pending. Frozen inputs are preserved with remote hash and anonymous directory-manifest readback checks. The source and DVC locks are pushed and remotely verified. No local FDS or training ran. The earlier full-campaign affordability assessment remains preserved privately; the user subsequently authorized the bounded launch described below.
+As of 2026-11-04 23:47:48 UTC, campaign04 is terminal after a confirmed Spot preemption in wave011 task2 (case000187). Recovery000136 and 53 fresh cases passed, giving54 successes in this continuation and224 operationally passing cases cumulatively. The original000088 terminal-review case remains excluded. There are1,774 never-started cases and one interrupted case000187; no automatic retry has been submitted.
+
+All606 private campaign04 objects passed generation/MD5/SHA stream verification. All55 VM allocation pairs and four immutable terminal Batch snapshots were audited. Jobs, VMs and disks are independently empty; four exact temporary grants were removed with policy readback verification. All54 successful scientific exports are DVC/HF hash/readback verified. The evicted case has only startup/transport records and **no uploaded restart checkpoint or final archive**; it cannot be represented as resumable saved work. The original failed Batch status remains unchanged.
+
+The rolling fallback has16 offline tests, but no cloud compilation or deployment: automatic approval review rejected deployment as contrary to the prior undeployed-fallback interpretation. An explicit approval question is pending. No new reservation, budget transfer, workflow deployment or solver launch has occurred; allocation reconciliation is prepared privately and the existing reservation remains held. The following sections retain historical launch and failure details.
 
 ## Bounded launch authorization
 
@@ -64,6 +68,6 @@ contains an undeployed replacement for the wave barrier. It admits one case per
 free slot, at most 18, after per-case cleanup; a long case does not delay other
 slots. Sixteen offline tests exercise the generated scheduler, including
 long-tail refill, bounded epoch handoffs, budget exhaustion, duplicate protection
-and Spot policy accounting. The active campaign04 remains unchanged. Google's
+and Spot policy accounting. Campaign04 is now terminal; this fallback is still undeployed. Google's
 compiler/readiness and a real isolated-cleanup canary are still required at a
 future audited cutover; no new solver launch or allowance was created.
