@@ -3,6 +3,8 @@ Packaging must inject frozen job candidates and a reviewed budget gate before de
 """
 from pathlib import Path
 import copy,json,yaml
+class NoAlias(yaml.SafeDumper):
+ def ignore_aliases(self,data):return True
 R=Path(__file__).resolve().parent
 RUN='fds-tree51-campaign01';PREFIX='tree51/campaign01/';BUCKET='tmrw-wildfire-20261015-trial'
 def policy_steps():
@@ -44,6 +46,6 @@ def build():
  # Intended packaging inserts this initialization inside cleanup-protected campaign.
  w['initialize_checkpoint_control']={'steps':[{'publish_initial':{'call':'http.post','args':{'url':f'https://storage.googleapis.com/upload/storage/v1/b/{BUCKET}/o','auth':{'type':'OAuth2'},'query':{'uploadType':'media','name':PREFIX+'control/480.json','ifGenerationMatch':0},'headers':{'Content-Type':'application/json'},'body':{'run_id':RUN,'checkpoint_seconds':480}}}},{'done':{'return':True}}]}
  w['main']['steps'][2]['campaign']['try']['steps'].insert(0,{'initialize_policy':{'call':'initialize_checkpoint_control'}})
- (R/'controller-template.yaml').write_text(yaml.safe_dump(w,sort_keys=False))
+ (R/'controller-template.yaml').write_text(yaml.dump(w,Dumper=NoAlias,sort_keys=False))
  return w
 if __name__=='__main__':build()

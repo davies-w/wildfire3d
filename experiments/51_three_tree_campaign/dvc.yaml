@@ -52,3 +52,15 @@ stages:
     outs:
     - controller-template.yaml:
         cache: false
+  cloud:
+    cmd: ../../.venv/bin/python package.py && ../../.venv/bin/python prepare_readiness.py
+    frozen: true
+    deps:
+    - package.py
+    - prepare_readiness.py
+    - worker.py
+    - transport.py
+    - checkpoint_control.py
+    - data/decks/cases.json
+    outs:
+    - data/cloud

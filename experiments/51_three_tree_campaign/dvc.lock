@@ -26,3 +26,11 @@ stages:
   controller:
     cmd: ../../.venv/bin/python build_controller.py
     outs: []
+  cloud:
+    cmd: ../../.venv/bin/python package.py && ../../.venv/bin/python prepare_readiness.py
+    outs:
+    - path: data/cloud
+      hash: md5
+      md5: 6d160540728f5d157093cbfa9e8b7bab.dir
+      size: 35510622
+      nfiles: 113
