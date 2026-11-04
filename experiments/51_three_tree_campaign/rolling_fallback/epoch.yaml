@@ -131,6 +131,9 @@ main:
             - condition: ${outcome.passed}
               assign:
               - s.completed: ${s.completed+1}
+            - condition: ${outcome.spot}
+              assign:
+              - s.interrupted: ${s.interrupted+1}
             - condition: ${true}
               assign:
               - s.stopped: true

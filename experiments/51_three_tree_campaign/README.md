@@ -62,7 +62,7 @@ Continuation04 submitted ONCE at 2026-11-04T22:45:24.949914310Z, parent executio
 At the user's request, [rolling_fallback/README.md](rolling_fallback/README.md)
 contains an undeployed replacement for the wave barrier. It admits one case per
 free slot, at most 18, after per-case cleanup; a long case does not delay other
-slots. Fifteen offline tests exercise the generated scheduler, including
+slots. Sixteen offline tests exercise the generated scheduler, including
 long-tail refill, bounded epoch handoffs, budget exhaustion, duplicate protection
 and Spot policy accounting. The active campaign04 remains unchanged. Google's
 compiler/readiness and a real isolated-cleanup canary are still required at a

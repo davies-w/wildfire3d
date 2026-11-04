@@ -59,5 +59,5 @@ class Pool:
             self.checkpoint_seconds = min(self.checkpoint_seconds, 180)
         elif self.evictions >= 2 and self.evictions * 20 >= self.started:
             self.checkpoint_seconds = min(self.checkpoint_seconds, 300)
-        if not passed:
+        if not passed and not spot:
             self.stopped = True  # drain running cases; no automatic retry

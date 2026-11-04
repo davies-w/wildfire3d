@@ -32,8 +32,10 @@ an audit; it never triggers a retry. Controller, epoch and case claims use
 cannot submit another job or delete the original owner's job. All execution and
 Batch POSTs are non-retrying; Batch task retries remain zero.
 
-On a known case failure, new admission stops and already running cases drain.
-The failed case is not automatically retried. An unexpected child failure returns
+A confirmed Spot50001 failure records an interrupted case and releases its slot
+only after cleanup; other never-started cases continue. Its outcome/checkpoint
+remains preserved and the interrupted case is not automatically retried. An
+ordinary solver/worker failure stops new admission and drains running cases. An unexpected child failure returns
 an audit-required state with outstanding reservations rather than claiming that
 resources are gone. Scientific acceptance still needs startup/completion, full
 180-second devices, exact deck and archive hashes and actual Batch evidence;
@@ -72,10 +74,10 @@ From the repository root:
 .venv/bin/python experiments/51_three_tree_campaign/rolling_fallback/test_pool.py
 ```
 
-Fifteen offline tests pass. A test interpreter executes the **generated epoch**
+Sixteen offline tests pass. A test interpreter executes the **generated epoch**
 against simulated APIs. It checks long-tail refill, 2,000 synthetic cases,
 bounded epoch handoff without duplicate submission, allowance exhaustion,
-known-failure draining and policy reduction, and a lost POST acknowledgement.
+ordinary-failure draining, Spot continuation and policy reduction, and a lost POST acknowledgement.
 Additional checks cover claims, isolated cleanup, expression length, exact deck
 preservation, bootstrap namespace rewriting, duplicate settlement and refusal to
 fresh-start checkpoint recovery. This is an orchestration simulation: no local

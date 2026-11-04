@@ -53,6 +53,7 @@ main:
           evicted: 0
           policy: ${index.body.checkpoint_seconds}
           completed: ${index.body.prior_completed}
+          interrupted: 0
           stopped: false
           audit_required: false
       - polls: 0

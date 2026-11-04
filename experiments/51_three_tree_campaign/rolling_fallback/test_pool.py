@@ -32,8 +32,8 @@ class Jump(Exception): pass
 class Done(Exception): pass
 
 class Cloud:
-    def __init__(self, durations, allowance=100000000, failures=()):
-        self.durations=durations; self.limit=allowance; self.failures=set(failures)
+    def __init__(self, durations, allowance=100000000, failures=(), ordinary=()):
+        self.durations=durations; self.limit=allowance; self.failures=set(failures); self.ordinary=set(ordinary)
         self.now=0; self.jobs={}; self.objects={}; self.submissions=[]; self.peak=0
         self.ambiguous=False
     def call(self,name,args):
@@ -54,7 +54,7 @@ class Cloud:
         if 'workflowexecutions' in url:
             j=self.jobs[url.split('/v1/')[1]]; i=j['i']
             if self.now<j['end']: return {'body':{'state':'ACTIVE'}}
-            return {'body':{'state':'SUCCEEDED','result':json.dumps({'passed':i not in self.failures,'count':1,'wave':'wave-'+str(i),'cleanup_verified':True,'compute_charge_upper_usd':.01,'spot':i in self.failures,'started':True})}}
+            return {'body':{'state':'SUCCEEDED','result':json.dumps({'passed':i not in self.failures,'count':1,'wave':'wave-'+str(i),'cleanup_verified':True,'compute_charge_upper_usd':.01,'spot':i in self.failures and i not in self.ordinary,'started':True})}}
         path=unquote(url.split('/o/')[1])
         if path.endswith('admission-v4.json'): body={'passed':True,'compute_limit_usd':self.limit/1000000}
         elif '/inputs/items/' in path:
@@ -125,7 +125,7 @@ class Engine:
         raise AssertionError('missing return')
 
 def state(n,limit=100000000):
-    return dict(epoch=0,cursor=0,total=n,active={},spent=0,limit=limit,reserve=525000,started=0,evicted=0,policy=480,completed=0,stopped=False,audit_required=False)
+    return dict(epoch=0,cursor=0,total=n,active={},spent=0,limit=limit,reserve=525000,started=0,evicted=0,policy=480,completed=0,interrupted=0,stopped=False,audit_required=False)
 
 class GeneratedControllerTests(unittest.TestCase):
     def test_fast_cases_refill_while_first_case_still_running(self):
@@ -168,11 +168,16 @@ class GeneratedControllerTests(unittest.TestCase):
         self.assertEqual(len(c.submissions),1)
         with self.assertRaisesRegex(RuntimeError,'claim conflict'): Engine(c,s).run()
         self.assertEqual(len(c.submissions),1)
-    def test_confirmed_failure_drains_and_adapts_without_retry(self):
+    def test_spot_failure_preserved_and_other_cases_continue_without_retry(self):
         c=Cloud([30]*40,failures=(0,1,2,3)); s=Engine(c,state(40)).run()
+        self.assertFalse(s.stopped); self.assertFalse(s.active)
+        self.assertEqual(len(c.submissions),40)
+        self.assertEqual(s.completed,36); self.assertEqual(s.interrupted,4); self.assertEqual(s.policy,180)
+    def test_ordinary_failure_stops_admission_and_drains(self):
+        c=Cloud([30]*40,failures=(0,),ordinary=(0,)); s=Engine(c,state(40)).run()
         self.assertTrue(s.stopped); self.assertFalse(s.active)
-        self.assertEqual(len(c.submissions),18)
-        self.assertEqual(s.completed,14); self.assertEqual(s.policy,180)
+        self.assertEqual(len(c.submissions),18); self.assertEqual(s.completed,17)
+        self.assertEqual(s.policy,480); self.assertEqual(s.interrupted,0)
     def test_generated_files_equal_builder_and_expression_bounds(self):
         for filename,doc in build().items():
             self.assertEqual(yaml.safe_load((Path(__file__).parent/filename).read_text()),doc)

@@ -7,12 +7,25 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 assert shutil.disk_usage(R).free>8*1024**3
 objects={x['name']:dict(name=x['name'],generation=x['generation'],bytes=int(x['size']),md5=x['md5Hash']) for x in json.loads((P/'objects.json').read_text())}
+all_expected=dict(expected)
+if wave=='wave-011':
+ task_response=json.loads((P/'wave011-task-events.json').read_text());assert not task_response.get('nextPageToken');tasks=task_response['tasks'];assert len(tasks)==18
+ failed=[x for x in tasks if x['status']['state']=='FAILED'];assert len(failed)==1 and failed[0]['name'].endswith('/tasks/2')
+ assert any(e.get('taskExecution',{}).get('exitCode')==50001 for e in failed[0]['status']['statusEvents'])
+ assert list(expected)[2]=='tree51_000187_baseline';expected.pop('tree51_000187_baseline')
 completed=[x for x in json.loads((P/'worker-proofs.json').read_text()) if x['name'].startswith(PREFIX+wave+'/') and x['name'].endswith('/completion.json') and x['proof']['passed']];assert len(completed)==len(expected) and {x['name'].split('/')[-2] for x in completed}==set(expected)
 assert sum(x['proof']['archive']['bytes'] for x in completed)<2*10**9,'Bounded collection only; assess transfer allowance before larger wave'
 s=requests.Session();s.mount('https://',HTTPAdapter(max_retries=Retry(total=3,backoff_factor=1,allowed_methods=['GET'],status_forcelist=[429,500,502,503,504])))
 s.headers['Authorization']='Bearer '+subprocess.check_output([G,'auth','print-access-token'],text=True).strip()
 statuses=[x for x in objects.values() if x['name'].startswith(PREFIX+wave+'/job-status.json.')];v=max(statuses,key=lambda x:float(x['name'].split('job-status.json.')[1]));resp=s.get('https://storage.googleapis.com/storage/v1/b/'+BUCKET+'/o/'+requests.utils.quote(v['name'],safe=''),params={'alt':'media','generation':v['generation']},timeout=60);resp.raise_for_status();assert base64.b64encode(hashlib.md5(resp.content).digest()).decode()==v['md5'];job=resp.json();counts=job['status']['taskGroups']['group0']['counts']
-assert job['status']['state']=='SUCCEEDED' and int(counts['SUCCEEDED'])==len(expected)
+if wave=='wave-011':
+ # Fixed18 tasks, zero retries, task2 permanently FAILED: final17 successes
+ # establish success for each other exact task ID. Preserve original FAILED state.
+ assert job['name'].endswith('/fds-tree51-campaign04-wave-011')
+ assert job['status']['state']=='FAILED' and int(counts['SUCCEEDED'])==17 and int(counts['FAILED'])==1
+ assert sum(int(v) for v in counts.values())==18 and len(all_expected)==18 and len(expected)==17
+else:
+ assert job['status']['state']=='SUCCEEDED' and int(counts['SUCCEEDED'])==len(expected)
 save('collection-batch-'+wave+'.json',dict(passed=True,generation=v['generation'],sha256=hashlib.sha256(resp.content).hexdigest(),proof=job))
 out=R/'data/completed04'/wave;out.mkdir(parents=True,exist_ok=True);proofs=[]
 for record in completed:
