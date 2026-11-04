@@ -7,7 +7,7 @@ assert json.loads((P/'reservation.json').read_text())['passed']
 assert sha(R/'wave02.yaml')==pkg['wave_sha256']
 a=json.loads((P/'authorization.json').read_text())
 admission=dict(passed=True,mode='bounded_campaign_may_stop_before2000',compute_limit_usd=a['compute_limit_usd'],rate_usd_per_vm_hour=a['rate_usd_per_vm_hour'],reserve_seconds_per_vm=a['reserve_seconds_per_vm'],manifest_sha256=pkg['manifest_sha256'],workflow_sha256=pkg['workflow_sha256'])
-save('controller-admission-v2.json',admission)
+save('controller-admission-v4.json',admission)
 condition=dict(title='tree51-campaign02-read',expression="resource.name.startsWith('projects/_/buckets/"+BUCKET+"/objects/"+PREFIX+"') && request.time < timestamp('"+(datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(hours=96)).strftime('%Y-%m-%dT%H:%M:%SZ')+"')")
 if not (P/'read-condition.json').exists():save('read-condition.json',condition)
 gc('storage','buckets','add-iam-policy-binding','gs://'+BUCKET,'--member=serviceAccount:fds-worker@'+PROJECT+'.iam.gserviceaccount.com','--role=roles/storage.objectViewer','--condition-from-file='+str(P/'read-condition.json'))
@@ -21,7 +21,7 @@ def put(pair):
  gc('storage','cp',str(path),'gs://'+BUCKET+'/'+PREFIX+name,'--if-generation-match=0')
  meta=gc('storage','objects','describe','gs://'+BUCKET+'/'+PREFIX+name)
  assert meta['md5_hash']==base64.b64encode(hashlib.md5(path.read_bytes()).digest()).decode();receipt.write_text(json.dumps(meta,indent=2)+'\n');return meta
-files=[(f,'inputs/'+f.name) for f in sorted((R/'data/cloud02').glob('wave-*.xz'))]+[(R/'data/cloud02/manifest.json','inputs/manifest.json'),(P/'controller-admission-v2.json','control/admission-v2.json')]
+files=[(f,'inputs/'+f.name) for f in sorted((R/'data/cloud02').glob('wave-*.xz'))]+[(R/'data/cloud02/manifest.json','inputs/manifest.json'),(P/'controller-admission-v4.json','control/admission-v4.json')]
 with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:results=list(pool.map(put,files))
 save('input-uploads.json',results)
 sa=gc('workflows','describe','fds-domain17','--location=us-central1')['serviceAccount']

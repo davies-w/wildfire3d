@@ -42,3 +42,11 @@ stages:
       md5: c9939e056d3388055ff40ad44c322749.dir
       size: 35032354
       nfiles: 108
+  completed01:
+    cmd: ../../.venv/bin/python collect_completed01.py
+    outs:
+    - path: data/completed01
+      hash: md5
+      md5: c3245dc86b8d8e3d7d73fe759fc9aefc.dir
+      size: 6954718933
+      nfiles: 1093

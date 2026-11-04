@@ -7,6 +7,7 @@ for source,target in [('deploy.py','deploy_campaign02.py'),('launch.py','launch_
  if source in ['deploy.py','launch.py']:
   s=s.replace("R/'workflow.yaml'","R/'workflow02.yaml'")
  if source=='deploy.py':
+  s=s.replace('admission-v2.json','admission-v4.json')
   s=s.replace("R/'data/cloud'","R/'data/cloud02'").replace("R/'data/cloud/manifest.json'","R/'data/cloud02/manifest.json'")
   s=s.replace("[(WF,'workflow.yaml'),(WF+'-check','readiness.yaml')]","[(WF+'-wave','wave02.yaml'),(WF,'workflow02.yaml'),(WF+'-check','readiness02.yaml')]")
   s=s.replace("a=json.loads", "assert sha(R/'wave02.yaml')==pkg['wave_sha256']\na=json.loads")

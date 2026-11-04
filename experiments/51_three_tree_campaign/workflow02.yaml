@@ -29,7 +29,7 @@ main:
   - read_admission:
       call: http.get
       args:
-        url: https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/tree51%2Fcampaign02%2Fcontrol%2Fadmission-v2.json
+        url: https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/tree51%2Fcampaign02%2Fcontrol%2Fadmission-v4.json
         query:
           alt: media
         auth:
@@ -63,6 +63,12 @@ main:
                 completed_case_count: ${completed_cases}
             - condition: ${sys.now()-campaign_started > 259200}
               raise: Campaign deadline reached
+        - child_arguments:
+            assign:
+            - child_args:
+                wave_id: ${wave.id}
+                spent: ${spent}
+                checkpoint_seconds: ${checkpoint_seconds}
         - start_child:
             call: http.post
             args:
@@ -70,7 +76,7 @@ main:
               auth:
                 type: OAuth2
               body:
-                argument: ${json.encode_to_string({"wave_id":wave.id,"spent":spent,"checkpoint_seconds":checkpoint_seconds})}
+                argument: ${json.encode_to_string(child_args)}
             result: child
         - save_child:
             call: http.post

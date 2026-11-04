@@ -72,10 +72,11 @@ inv=w['inventory']['steps'][1]['zones']['for']['steps']
 for key,result in [('page_guard_v','v'),('page_guard_d','d')]:
  s=next(s[key] for s in inv if key in s);s['switch'].append({'condition':'${len(default(map.get('+result+'.body,"items"),[])) > 18}','raise':'Unexpected resource count; audit required'})
 except_steps=copy.deepcopy(w['main']['steps'][5]['campaign']['except'])
+except_steps['steps'][0]={'cleanup_all':{'switch':[{'condition':'${len(candidates)>0}','steps':[{'clean_failed':{'call':'cleanup','args':{'c':'${candidates[0]}'}}}]}]}}
 child={k:v for k,v in w.items() if k not in ['main','initialize_checkpoint_control']}
 child['main']={'params':['args'],'steps':[
  {'init':{'assign':[{'template':base},{'candidates':[]},{'checkpoint_seconds':'${args.checkpoint_seconds}'},{'wave_started':'${sys.now()}'},{'wave':None}]}},
- {'read_admission':get('control/admission-v2.json','admission')},{'read_manifest':get('inputs/manifest.json','manifest')},
+ {'read_admission':get('control/admission-v4.json','admission')},{'read_manifest':get('inputs/manifest.json','manifest')},
  {'select_wave':{'for':{'value':'item','in':'${manifest.body}','steps':[{'match':{'switch':[{'condition':'${item.id == args.wave_id}','assign':[{'wave':'${item}'}]}]}}]}}},
  {'validate':{'switch':[{'condition':'${wave == null or admission.body.passed != true or not (checkpoint_seconds == 480 or checkpoint_seconds == 300 or checkpoint_seconds == 180)}','raise':'Invalid frozen wave request'}, {'condition':'${args.spent + wave.count*admission.body.reserve_seconds_per_vm*admission.body.rate_usd_per_vm_hour/3600 > admission.body.compute_limit_usd}','raise':'Wave exceeds remaining compute allowance'}]}},
  {'dry_run':{'switch':[{'condition':'${default(map.get(args,"dry_run"),false)}','return':{'passed':True,'dry_run':True,'wave':'${wave.id}'}}]}},
@@ -88,11 +89,12 @@ endpoint='https://workflowexecutions.googleapis.com/v1/projects/'+PROJECT+'/loca
 parent={'initialize_checkpoint_control':w['initialize_checkpoint_control']}
 parent['main']={'steps':[
  {'init':{'assign':[{'checkpoint_seconds':480},{'spent':0},{'completed_cases':100},{'campaign_started':'${sys.now()}'},{'parent_polls':0}]}},
- {'read_admission':get('control/admission-v2.json','admission')},{'read_manifest':get('inputs/manifest.json','manifest')},
+ {'read_admission':get('control/admission-v4.json','admission')},{'read_manifest':get('inputs/manifest.json','manifest')},
  {'initialize_policy':{'call':'initialize_checkpoint_control'}},
  {'waves':{'for':{'value':'wave','in':'${manifest.body}','steps':[
  copy.deepcopy(by['budget_admission']),
- {'start_child':{'call':'http.post','args':{'url':endpoint,'auth':{'type':'OAuth2'},'body':{'argument':'${json.encode_to_string({"wave_id":wave.id,"spent":spent,"checkpoint_seconds":checkpoint_seconds})}'}},'result':'child'}},
+ {'child_arguments':{'assign':[{'child_args':{'wave_id':'${wave.id}','spent':'${spent}','checkpoint_seconds':'${checkpoint_seconds}'}}]}},
+ {'start_child':{'call':'http.post','args':{'url':endpoint,'auth':{'type':'OAuth2'},'body':{'argument':'${json.encode_to_string(child_args)}'}},'result':'child'}},
  {'save_child':put('${"'+PREFIX+'children/"+wave.id+".json"}','${child.body}')},
  {'get_child':{'try':{'call':'http.get','args':{'url':'${"https://workflowexecutions.googleapis.com/v1/"+child.body.name}','auth':{'type':'OAuth2'}},'result':'child_state'},'retry':'${http.default_retry}'}},
  {'child_terminal':{'switch':[{'condition':'${child_state.body.state == "SUCCEEDED"}','next':'read_result'},{'condition':'${child_state.body.state != "ACTIVE" and child_state.body.state != "QUEUED"}','raise':'Child failed; no automatic paid retry; audit child and resources'}]}},
@@ -106,7 +108,7 @@ parent['main']={'steps':[
  ]}}},
  {'done':{'return':{'passed':True,'completed_case_count':'${completed_cases}','compute_charge_upper_usd':'${spent}','checkpoint_seconds':'${checkpoint_seconds}'}}}]}
 dump('workflow02.yaml',parent)
-ready=clone(yaml.safe_load((R/'readiness.yaml').read_text()))
+ready=clone(yaml.safe_load((R/'readiness.yaml').read_text().replace('admission-v2.json','admission-v4.json')))
 ready['await_quota']=copy.deepcopy(child['await_quota']);ready['inventory']=copy.deepcopy(child['inventory'])
 for s in ready['main']['steps']:
  if 'manifest_shape' in s:s['manifest_shape']['switch'][0]['condition']='${len(manifest.body) != 106 or manifest.body[0].count != 18}'
