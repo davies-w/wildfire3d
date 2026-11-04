@@ -1,0 +1,40 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py
+    outs:
+    - path: data/cases.jsonl.gz
+      hash: md5
+      md5: f783e0d2a14cbe543d8f1d5b06aa8a99
+      size: 10411
+    - path: data/geometries.json
+      hash: md5
+      md5: ada3432c04e98357a51f6eb3f6a7b989
+      size: 270200
+    - path: data/design.json
+      hash: md5
+      md5: 706979453fe45251f40210eb65ff35eb
+      size: 2923
+  pilot:
+    cmd: ../../.venv/bin/python prepare_pilot.py
+    outs:
+    - path: data/pilot
+      hash: md5
+      md5: c79a0bdb1385baeefc6970b6fcf15849.dir
+      size: 22230610
+      nfiles: 12
+  cloud:
+    cmd: ../../.venv/bin/python package.py
+    outs:
+    - path: data/cloud
+      hash: md5
+      md5: b7956e2727e0b9bbe95abb846bb90f06.dir
+      size: 415289
+      nfiles: 3
+  clearance:
+    cmd: ../../.venv/bin/python check_clearance.py
+    outs:
+    - path: data/clearance.json
+      hash: md5
+      md5: bd5cc01848947e9ba7d433c1f9831266
+      size: 13634

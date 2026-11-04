@@ -1,0 +1,32 @@
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py
+    deps:
+    - prepare.py
+    - ../47_tree_archetypes/data/geometry.json
+    outs:
+    - data/cases.jsonl.gz
+    - data/geometries.json
+    - data/design.json
+  pilot:
+    cmd: ../../.venv/bin/python prepare_pilot.py
+    deps:
+    - prepare_pilot.py
+    - data/cases.jsonl.gz
+    - data/geometries.json
+    - ../36_tree_density/base-input.fds
+    outs:
+    - data/pilot
+  cloud:
+    cmd: ../../.venv/bin/python package.py
+    frozen: true
+    outs:
+    - data/cloud
+  clearance:
+    cmd: ../../.venv/bin/python check_clearance.py
+    deps:
+    - check_clearance.py
+    - data/geometries.json
+    - ../48_two_tree_design/data/geometries.json
+    outs:
+    - data/clearance.json
