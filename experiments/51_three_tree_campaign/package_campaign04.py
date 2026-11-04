@@ -31,6 +31,13 @@ if '--workflows-only' not in sys.argv:
  assert set(finished)=={x['name'].split('/')[-2] for x in proofs if x['name'].endswith('/completion.json')}|{'tree51_000136_baseline'}
  assert sum(not x['proof']['passed'] for x in proofs if x['name'].endswith('/completion.json'))==1
  assert __import__('json').loads((R/'private02/terminal-scientific-review.json').read_text())['evidence_verified']
+ # First wave restores only the interrupted case; all other waves are never-started.
+ recovery=json.loads((P/'recovery-plan.json').read_text())['cases'][0];c=recovery['case'];assert c['pilot_case']=='tree51_000136_baseline'
+ original=json.loads(lzma.decompress((R/'data/cloud03/wave-008.xz').read_bytes()))
+ payload={n:original[n].replace('campaign03','campaign04') for n in ['transport.py','checkpoint_control.py']}
+ payload.update({'worker.py':(R/'recovery_worker04.py').read_text(),'worker_base04.py':(R/'worker03.py').read_text().replace('campaign01','campaign04'),'completion_check03.py':(R/'completion_check03.py').read_text(),'groups.json':json.dumps({'wave':[c]}),'recovery.json':json.dumps({c['pilot_case']:recovery}),'decks/'+c['pilot_case']+'.fds':original['decks/'+c['pilot_case']+'.fds']})
+ blob=lzma.compress(json.dumps(payload).encode(),preset=1);(D/'wave-008.xz').write_bytes(blob);manifest.insert(0,dict(id='wave-008',count=1,sha256=hashlib.sha256(blob).hexdigest()))
+ assert len(manifest)==103 and sum(x['count'] for x in manifest)==1829
  (P/'excluded-completed-cases.json').write_text(json.dumps(finished,indent=2)+'\n')
  (D/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
  boot=(R/'data/cloud/bootstrap.py').read_text().replace('campaign01','campaign04');(D/'bootstrap.py').write_text(boot);ast.parse(boot)
@@ -111,17 +118,17 @@ parent['main']={'steps':[
  {'save_result':put('${"'+PREFIX+'wave-results/"+wave.id+".json"}','${outcome}')},
  {'account':{'assign':[{'spent':'${spent+outcome.compute_charge_upper_usd}'},{'checkpoint_seconds':'${outcome.checkpoint_seconds}'},{'completed_cases':'${completed_cases+wave.count}'}]}}
  ]}}},
- {'done':{'return':{'passed':True,'target_complete':False,'pending_terminal_review':1,'pending_checkpoint_recovery':1,'completed_case_count':'${completed_cases}','compute_charge_upper_usd':'${spent}','checkpoint_seconds':'${checkpoint_seconds}'}}}]}
+ {'done':{'return':{'passed':True,'target_complete':False,'pending_terminal_review':1,'completed_case_count':'${completed_cases}','compute_charge_upper_usd':'${spent}','checkpoint_seconds':'${checkpoint_seconds}'}}}]}
 dump('workflow04.yaml',parent)
 ready=clone(yaml.safe_load((R/'readiness.yaml').read_text().replace('admission-v2.json','admission-v4.json')))
 ready['await_quota']=copy.deepcopy(child['await_quota']);ready['inventory']=copy.deepcopy(child['inventory'])
 for s in ready['main']['steps']:
- if 'manifest_shape' in s:s['manifest_shape']['switch'][0]['condition']='${len(manifest.body) != 102 or manifest.body[0].count != 18}'
+ if 'manifest_shape' in s:s['manifest_shape']['switch'][0]['condition']='${len(manifest.body) != 103 or manifest.body[0].count != 1}'
 ready['main']['steps'][0]['init']['assign'][0]['candidates'][0]['job']['taskGroups'][0]['taskCount']='18'
 next(s['quota_probe']['args']['c'] for s in ready['main']['steps'] if 'quota_probe' in s)['job']['taskGroups'][0]['taskCount']='18'
 # Probe child invocation permissions and argument/manifest/budget validation WITHOUT creating a Batch job.
-ready['main']['steps'].insert(-1,{'child_permission_probe':{'call':'http.post','args':{'url':endpoint,'auth':{'type':'OAuth2'},'body':{'argument':json.dumps(dict(wave_id='wave-009',spent=0,checkpoint_seconds=480,dry_run=True))}},'result':'probe_child'}})
+ready['main']['steps'].insert(-1,{'child_permission_probe':{'call':'http.post','args':{'url':endpoint,'auth':{'type':'OAuth2'},'body':{'argument':json.dumps(dict(wave_id='wave-008',spent=0,checkpoint_seconds=480,dry_run=True))}},'result':'probe_child'}})
 ready['main']['steps'][-1]['done']['return']['child_execution']='${probe_child.body.name}'
 dump('readiness04.yaml',ready)
-pkg=dict(cases=2000,new_cases=1828,reused=170,pending_terminal_review=1,pending_checkpoint_recovery=1,waves=102,manifest_sha256=hashlib.sha256((D/'manifest.json').read_bytes()).hexdigest(),workflow_sha256=hashlib.sha256((R/'workflow04.yaml').read_bytes()).hexdigest(),wave_sha256=hashlib.sha256((R/'wave04.yaml').read_bytes()).hexdigest(),image_uri=base['job']['taskGroups'][0]['taskSpec']['runnables'][0]['container']['imageUri'],max_parallel_cpus=72,checkpoint_seconds=[480,300,180],zero_retries=True)
+pkg=dict(cases=2000,new_cases=1829,fresh_cases=1828,recovery_cases=1,reused=170,pending_terminal_review=1,waves=103,manifest_sha256=hashlib.sha256((D/'manifest.json').read_bytes()).hexdigest(),workflow_sha256=hashlib.sha256((R/'workflow04.yaml').read_bytes()).hexdigest(),wave_sha256=hashlib.sha256((R/'wave04.yaml').read_bytes()).hexdigest(),image_uri=base['job']['taskGroups'][0]['taskSpec']['runnables'][0]['container']['imageUri'],max_parallel_cpus=72,checkpoint_seconds=[480,300,180],zero_retries=True)
 (P/'package.json').write_text(json.dumps(pkg,indent=2)+'\n');(R/'launch-record04.json').write_text(json.dumps(pkg,indent=2)+'\n');print(pkg)
