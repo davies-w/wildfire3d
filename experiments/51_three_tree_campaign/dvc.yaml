@@ -107,3 +107,13 @@ stages:
     frozen: true
     outs:
     - data/completed03/wave-008
+  cloud04:
+    cmd: ../../.venv/bin/python package_campaign04.py
+    frozen: true
+    deps:
+    - package_campaign04.py
+    - recovery_worker04.py
+    - worker03.py
+    - completion_check03.py
+    outs:
+    - data/cloud04

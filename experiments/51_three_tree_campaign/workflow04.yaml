@@ -1,0 +1,155 @@
+initialize_checkpoint_control:
+  steps:
+  - publish_initial:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: tree51/campaign04/control/480.json
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body:
+          run_id: fds-tree51-campaign04
+          checkpoint_seconds: 480
+  - done:
+      return: true
+main:
+  steps:
+  - init:
+      assign:
+      - checkpoint_seconds: 480
+      - spent: 0
+      - completed_cases: 170
+      - campaign_started: ${sys.now()}
+      - parent_polls: 0
+  - read_admission:
+      call: http.get
+      args:
+        url: https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/tree51%2Fcampaign04%2Fcontrol%2Fadmission-v4.json
+        query:
+          alt: media
+        auth:
+          type: OAuth2
+      result: admission
+  - read_manifest:
+      call: http.get
+      args:
+        url: https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/tree51%2Fcampaign04%2Finputs%2Fmanifest.json
+        query:
+          alt: media
+        auth:
+          type: OAuth2
+      result: manifest
+  - initialize_policy:
+      call: initialize_checkpoint_control
+  - waves:
+      for:
+        value: wave
+        in: ${manifest.body}
+        steps:
+        - budget_admission:
+            switch:
+            - condition: ${spent + wave.count * admission.body.reserve_seconds_per_vm
+                * admission.body.rate_usd_per_vm_hour / 3600 > admission.body.compute_limit_usd}
+              return:
+                passed: false
+                reason: BUDGET_STOP
+                compute_charge_upper_usd: ${spent}
+                next_wave: ${wave.id}
+                completed_case_count: ${completed_cases}
+            - condition: ${sys.now()-campaign_started > 259200}
+              raise: Campaign deadline reached
+        - child_arguments:
+            assign:
+            - child_args:
+                wave_id: ${wave.id}
+                spent: ${spent}
+                checkpoint_seconds: ${checkpoint_seconds}
+        - start_child:
+            call: http.post
+            args:
+              url: https://workflowexecutions.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/workflows/fds-tree51-campaign04-wave/executions
+              auth:
+                type: OAuth2
+              body:
+                argument: ${json.encode_to_string(child_args)}
+            result: child
+        - save_child:
+            call: http.post
+            args:
+              url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+              auth:
+                type: OAuth2
+              query:
+                uploadType: media
+                name: ${"tree51/campaign04/children/"+wave.id+".json"}
+                ifGenerationMatch: 0
+              headers:
+                Content-Type: application/json
+              body: ${child.body}
+        - get_child:
+            try:
+              call: http.get
+              args:
+                url: ${"https://workflowexecutions.googleapis.com/v1/"+child.body.name}
+                auth:
+                  type: OAuth2
+              result: child_state
+            retry: ${http.default_retry}
+        - child_terminal:
+            switch:
+            - condition: ${child_state.body.state == "SUCCEEDED"}
+              next: read_result
+            - condition: ${child_state.body.state != "ACTIVE" and child_state.body.state
+                != "QUEUED"}
+              raise: Child failed; no automatic paid retry; audit child and resources
+        - parent_bound:
+            assign:
+            - parent_polls: ${parent_polls+1}
+        - parent_limit:
+            switch:
+            - condition: ${parent_polls > 4400 or sys.now()-campaign_started > 259200}
+              raise: Parent deadline; inspect current child before any continuation
+        - wait_child:
+            call: sys.sleep
+            args:
+              seconds: 60
+            next: get_child
+        - read_result:
+            assign:
+            - outcome: ${json.decode(child_state.body.result)}
+        - require_success:
+            switch:
+            - condition: ${outcome.passed != true or outcome.cleanup_verified != true
+                or outcome.wave != wave.id or outcome.count != wave.count}
+              raise: Child outcome failed validation
+        - save_result:
+            call: http.post
+            args:
+              url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+              auth:
+                type: OAuth2
+              query:
+                uploadType: media
+                name: ${"tree51/campaign04/wave-results/"+wave.id+".json"}
+                ifGenerationMatch: 0
+              headers:
+                Content-Type: application/json
+              body: ${outcome}
+        - account:
+            assign:
+            - spent: ${spent+outcome.compute_charge_upper_usd}
+            - checkpoint_seconds: ${outcome.checkpoint_seconds}
+            - completed_cases: ${completed_cases+wave.count}
+  - done:
+      return:
+        passed: true
+        target_complete: false
+        pending_terminal_review: 1
+        completed_case_count: ${completed_cases}
+        compute_charge_upper_usd: ${spent}
+        checkpoint_seconds: ${checkpoint_seconds}
