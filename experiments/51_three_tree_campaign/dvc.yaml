@@ -92,3 +92,8 @@ stages:
     - data/cloud/manifest.json
     outs:
     - data/cloud03
+  completed03_wave006:
+    cmd: ../../.venv/bin/python collect_completed03.py --wave wave-006
+    frozen: true
+    outs:
+    - data/completed03/wave-006
