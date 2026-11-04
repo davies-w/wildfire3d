@@ -56,3 +56,14 @@ After explicit user approval, campaign03 closure completed: all573 private objec
 Continuation04 starts with one checkpoint-only recovery of000136 fromstep1800/time121.56627s, then1,828 never-started cases in102 waves. The recovery must hash-verify restored files and demonstrate a strictly advancing first step/time before startup acceptance. It uses the same terminal completion checker, dynamic480/300/180-second remote checkpoint policy,900-second stop grace, four threads, exact deck and binary. No local FDS ran. Four restore tests and eight completion regressions pass; the full1,829-input check preserves original decks and excludes completed cases. A successful run would yield1,999 operationally passing cases plus000088 still separately reviewed. The original remaining allowance and protected training funds still bound admission.
 
 Continuation04 submitted ONCE at 2026-11-04T22:45:24.949914310Z, parent execution8d1e96b4-44b1-4a7f-b1f9-0a1c240ceaa0. Actual readiness and child dry run succeeded, all1,829 input decks validated, all106 input objects remotely hash/readback verified, and deployed-source/Git/budget checks passed before submission. First wave008 is checkpoint-only recovery; remaining102 waves contain never-started cases. No further preparation, packaging, deployment or launch may run after this intent.
+
+### Prepared rolling fallback (2026-11-04)
+
+At the user's request, [rolling_fallback/README.md](rolling_fallback/README.md)
+contains an undeployed replacement for the wave barrier. It admits one case per
+free slot, at most 18, after per-case cleanup; a long case does not delay other
+slots. Fifteen offline tests exercise the generated scheduler, including
+long-tail refill, bounded epoch handoffs, budget exhaustion, duplicate protection
+and Spot policy accounting. The active campaign04 remains unchanged. Google's
+compiler/readiness and a real isolated-cleanup canary are still required at a
+future audited cutover; no new solver launch or allowance was created.
