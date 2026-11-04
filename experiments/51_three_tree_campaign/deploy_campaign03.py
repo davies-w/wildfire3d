@@ -16,6 +16,18 @@ gc('storage','buckets','add-iam-policy-binding','gs://'+BUCKET,'--member=service
 controller_condition=dict(json.loads((P/'read-condition.json').read_text()),title='tree51-campaign03-controller-read')
 save('controller-read-condition.json',controller_condition)
 gc('storage','buckets','add-iam-policy-binding','gs://'+BUCKET,'--member=serviceAccount:fds-watchdog@'+PROJECT+'.iam.gserviceaccount.com','--role=roles/storage.objectViewer','--condition-from-file='+str(P/'controller-read-condition.json'))
+expiry=condition['expression'].split(" && ")[-1]
+save('task-read-condition.json',dict(title='tree51-task-read03',expression=expiry))
+gc('projects','add-iam-policy-binding',PROJECT,'--member=serviceAccount:fds-watchdog@'+PROJECT+'.iam.gserviceaccount.com','--role=projects/'+PROJECT+'/roles/fdsTree51TaskReader','--condition-from-file='+str(P/'task-read-condition.json'))
+# User-approved project-scoped execution create/get only, expiring with campaign.
+resource='projects/'+PROJECT+'/locations/us-central1/workflows/'+WF+'-wave'
+save('wave-run-condition.json',dict(title='tree51-campaign03-wave-run',expression=expiry))
+role='fdsTree51WaveRunner'
+roles=gc('iam','roles','list','--filter=name:roles/'+role)
+if not roles:gc('iam','roles','create',role,'--title=Tree51 child execution create and get','--permissions=workflows.executions.create,workflows.executions.get','--stage=GA')
+actual=gc('iam','roles','describe',role);assert set(actual['includedPermissions'])=={'workflows.executions.create','workflows.executions.get'}
+gc('projects','add-iam-policy-binding',PROJECT,'--member=serviceAccount:fds-watchdog@'+PROJECT+'.iam.gserviceaccount.com','--role=projects/'+PROJECT+'/roles/'+role,'--condition-from-file='+str(P/'wave-run-condition.json'))
+
 def put(pair):
  path,name=pair;receipt=P/('upload-'+path.name+'.json')
  if receipt.exists():
@@ -30,16 +42,5 @@ sa=gc('workflows','describe','fds-domain17','--location=us-central1')['serviceAc
 for name,file in [(WF+'-wave','wave03.yaml'),(WF,'workflow03.yaml'),(WF+'-check','readiness03.yaml')]:
  gc('workflows','deploy',name,'--location=us-central1','--source='+str(R/file),'--service-account='+sa)
  actual=gc('workflows','describe',name,'--location=us-central1');assert yaml.safe_load(actual['sourceContents'])==yaml.safe_load((R/file).read_text())
-expiry=condition['expression'].split(" && ")[-1]
-save('task-read-condition.json',dict(title='tree51-task-read03',expression=expiry))
-gc('projects','add-iam-policy-binding',PROJECT,'--member=serviceAccount:fds-watchdog@'+PROJECT+'.iam.gserviceaccount.com','--role=projects/'+PROJECT+'/roles/fdsTree51TaskReader','--condition-from-file='+str(P/'task-read-condition.json'))
-# User-approved project-scoped execution create/get only, expiring with campaign.
-resource='projects/'+PROJECT+'/locations/us-central1/workflows/'+WF+'-wave'
-save('wave-run-condition.json',dict(title='tree51-campaign03-wave-run',expression=expiry))
-role='fdsTree51WaveRunner'
-roles=gc('iam','roles','list','--filter=name:roles/'+role)
-if not roles:gc('iam','roles','create',role,'--title=Tree51 child execution create and get','--permissions=workflows.executions.create,workflows.executions.get','--stage=GA')
-actual=gc('iam','roles','describe',role);assert set(actual['includedPermissions'])=={'workflows.executions.create','workflows.executions.get'}
-gc('projects','add-iam-policy-binding',PROJECT,'--member=serviceAccount:fds-watchdog@'+PROJECT+'.iam.gserviceaccount.com','--role=projects/'+PROJECT+'/roles/'+role,'--condition-from-file='+str(P/'wave-run-condition.json'))
 if not (P/'readiness-execution.json').exists():save('readiness-execution.json',gc('workflows','execute',WF+'-check','--location=us-central1'))
 print('Deployed frozen workflows; read-only readiness submitted; no simulation jobs launched')
