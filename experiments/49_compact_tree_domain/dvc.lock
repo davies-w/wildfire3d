@@ -48,3 +48,11 @@ stages:
       md5: f95315cf41612785843fe0f017b9d5c0.dir
       size: 14870
       nfiles: 1
+  report:
+    cmd: ../../.venv/bin/python report.py
+    outs:
+    - path: data/report
+      hash: md5
+      md5: 6e1de366c307eda6ee30e0fb0dc2f30b.dir
+      size: 9571
+      nfiles: 2

@@ -40,3 +40,12 @@ stages:
     - data/completed
     outs:
     - data/field-verification
+  report:
+    cmd: ../../.venv/bin/python report.py
+    deps:
+    - report.py
+    - data/comparison
+    - data/completed
+    - data/field-verification
+    outs:
+    - data/report
