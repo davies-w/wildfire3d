@@ -32,3 +32,11 @@ stages:
     - ../48_two_tree_design/data/completed07
     outs:
     - data/comparison
+  field_verification:
+    cmd: ../../.venv/bin/python verify_fields.py
+    deps:
+    - verify_fields.py
+    - compare.py
+    - data/completed
+    outs:
+    - data/field-verification

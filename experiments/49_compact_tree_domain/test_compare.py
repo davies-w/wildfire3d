@@ -18,7 +18,7 @@ class FieldTests(unittest.TestCase):
   with FortranFile(path,'w') as f:
    for text in ['TEMPERATURE','temp','C']:f.write_record(np.frombuffer(text.encode().ljust(30),dtype='u1'))
    f.write_record(np.array([0,shape[0]-1,0,shape[1]-1,0,shape[2]-1],dtype='i4'))
-   for t in (range(0,181,2) if old else range(1,180,2)):
+   for t in (range(0,181,2) if old else [0,*range(1,180,2),180]):
     i,j,k=np.indices(shape);a=(100+i+10*(j-(2 if old else 0))+k+t+delta).astype('f4')
     f.write_record(np.array([t],dtype='f4'));f.write_record(a.flatten(order='F'))
  def test_translated_and_interpolated_field(self):

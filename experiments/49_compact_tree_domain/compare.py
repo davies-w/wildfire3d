@@ -30,7 +30,7 @@ def frames(path,indices):
 def field_compare(op,npth,c):
  nx,ny,nz=[round(d/.5) for d in c['domain']];offset=round((c['original_domain'][1]/2-8)/.5)
  oi=[np.arange(1,nx+1),np.arange(1,ny+1)+offset,np.arange(1,nz+1)];ni=[np.arange(1,n+1) for n in [nx,ny,nz]]
- old=iter(frames(op,oi));lo=next(old);hi=next(old);hoterr=0.;hotcount=0;peaks=[];count=0
+ old=iter(frames(op,oi));lo=next(old);hi=next(old);hoterr=0.;hotcount=0;peaks=[];count=0;sample_times=[]
  for t,a in frames(npth,ni):
   while hi[0]<t-1e-5:
    lo=hi
@@ -38,9 +38,10 @@ def field_compare(op,npth,c):
    except StopIteration:assert abs(lo[0]-t)<.1;hi=lo;break
   assert lo[0]<=t+.1 and hi[0]>=t-.1
   alpha=0 if hi[0]==lo[0] else min(1,max(0,(t-lo[0])/(hi[0]-lo[0])));b=lo[1]*(1-alpha)+hi[1]*alpha
-  mask=(a>=50)|(b>=50);hoterr+=float(np.abs(a-b)[mask].sum(dtype='f8'));hotcount+=int(mask.sum());peaks.append(abs(float(a.max())-float(b.max())));count+=1
- assert count>=80
- return dict(common_region_hot_temperature_mae_C=hoterr/max(1,hotcount),peak_temperature_history_mae_C=float(np.mean(peaks)),frames=count,alignment='Same0.5m cell centers after transverse translation; old frames linearly interpolated to new times. Hot union >=50C; average over sampled hot cells and times, not volume-wide cold background.')
+  mask=(a>=50)|(b>=50);hoterr+=float(np.abs(a-b)[mask].sum(dtype='f8'));hotcount+=int(mask.sum());peaks.append(abs(float(a.max())-float(b.max())));count+=1;sample_times.append(t)
+ assert count>=6 and abs(sample_times[0])<.01 and abs(sample_times[-1]-180)<.01
+ assert max(np.diff(sample_times))<=37
+ return dict(common_region_hot_temperature_mae_C=hoterr/max(1,hotcount),peak_temperature_history_mae_C=float(np.mean(peaks)),frames=count,sample_times_s=sample_times,temporal_limitation='Sparse approximately36s 3D snapshots; transient differences between frames untested.',alignment='Same0.5m cell centers after transverse translation; old frames linearly interpolated to new times. Hot union >=50C; average over sampled hot cells and times, not volume-wide cold background.')
 def main():
  cases=json.loads((R/'data/cases.json').read_text());proof=json.loads((R/'data/completed/proof.json').read_text());assert proof['passed'] and len(proof['cases'])==22
  originals={}
