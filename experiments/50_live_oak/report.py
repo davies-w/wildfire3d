@@ -1,0 +1,21 @@
+"""Scientific oak pilot summary; no solver execution or species-validation claim."""
+from pathlib import Path
+import json,csv,datetime,statistics,numpy as np
+R=Path(__file__).resolve().parent;proof=json.loads((R/'data/completed/proof.json').read_text());assert proof['passed'] and len(proof['cases'])==10
+objects=json.loads((R/'private/objects.json').read_text());cases=json.loads((R/'data/pilot/cases.json').read_text());rows=[]
+def read(p):
+ with p.open() as f:
+  r=csv.reader(f);next(r);keys=[x.strip().strip('"') for x in next(r)];a=np.array(list(r),float);return {k:a[:,i] for i,k in enumerate(keys)}
+for c in cases:
+ name=c['pilot_case'];folder=R/'data/completed'/name/'solve';h=read(folder/(name+'_hrr.csv'));d=read(folder/(name+'_devc.csv'));assert h['Time'][-1]>=180-1e-5 and d['Time'][-1]>=180-1e-5
+ def energy(start):
+  t=np.unique(np.r_[start,h['Time'][(h['Time']>start)&(h['Time']<180)],180.]);return float(np.trapezoid(np.interp(t,h['Time'],h['HRR']),t))
+ records={k:next(x for x in objects if x['name'].endswith('/'+name+'/'+k+'.json')) for k in ['startup','completion']};stamp=lambda k:datetime.datetime.fromisoformat(records[k]['timeCreated'].replace('Z','+00:00'))
+ initial=sum(c['expected_wet_mass_kg'].values());final=sum(v[-1] for k,v in d.items() if k.endswith(' mass'))
+ rows.append(dict(case=name,total_energy_kj=energy(0),post20_energy_kj=energy(20),peak_hrr_kw=float(max(h['HRR'])),tracked_wet_mass_loss_percent=100*(1-final/initial),startup_to_completion_minutes=(stamp('completion')-stamp('startup')).total_seconds()/60))
+mins=[x['startup_to_completion_minutes'] for x in rows];size=sum(f['bytes'] for c in proof['cases'] for f in c['files']);out=R/'data/report';out.mkdir(exist_ok=True)
+summary=dict(complete=True,cases=rows,mean_minutes=statistics.mean(mins),median_minutes=statistics.median(mins),min_minutes=min(mins),max_minutes=max(mins),scientific_bytes=size,timing_definition='Cloud startup proof to completion proof; includes full solve/checkpoint transfers/final archive; excludes provisioning and initial probes',limitations='Generic chemistry and shape only; no live-oak validation, bark or embers; sparse36s 3D temperature snapshots; no extra-height experiment.')
+(out/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+lines=['# Coast-live-oak-inspired pilot','', '**All10 cases completed180 simulated seconds and passed startup, mass, portable-restart and final archive checks. This establishes execution success, not live-oak physical validation.**','', 'One tree per simulation, nominal10m tall with12m crown width and3m crown base. Selected variants cover8–12m height and4–8m crown radius. The29×20m footprint matches or exceeds corresponding pine/eucalyptus per-wall geometric clearances; Z16–18m,0.5m cells. No extra-height control was run. Boundary adequacy and grid convergence are not established.','', 'Generic weighted vegetation and static woody thermal particles; no species-calibrated chemistry, protective bark, embers, grass or resolved solid-trunk obstruction. Heating is an imposed0.4×0.4m1500°C patch for20s. Wet-mass loss includes drying and pyrolysis, not combustion alone.3D temperature snapshots are36s apart, so brief temperature changes may be missed.','',f"Mean startup-to-completion time was {summary['mean_minutes']:.2f}min; median {summary['median_minutes']:.2f}min; range {min(mins):.2f}–{max(mins):.2f}min. Includes checkpoint transfers and final archive upload, excludes provisioning/probes. Scientific solve files total {size/1e9:.3f}GB.",'', '|Case|Total energy kJ|Post20 energy kJ|Peak HRR kW|Wet mass loss %|Minutes|','|---|---:|---:|---:|---:|---:|']
+for x in rows:lines.append(f"|{x['case']}|{x['total_energy_kj']:.2f}|{x['post20_energy_kj']:.2f}|{x['peak_hrr_kw']:.2f}|{x['tracked_wet_mass_loss_percent']:.3f}|{x['startup_to_completion_minutes']:.2f}|")
+lines+=['','The full design remains3,000 planned cases:1,000 per type. These10 oak runs are a stratified pilot subset, not1,000 completed oak cases. The combined simulation-and-training campaign still needs a cost-constrained execution plan; no full batch or training was launched.',''];(out/'report.md').write_text('\n'.join(lines));print(summary['mean_minutes'],size)

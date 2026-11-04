@@ -35,3 +35,11 @@ stages:
     frozen: true
     outs:
     - data/completed
+  report:
+    cmd: ../../.venv/bin/python report.py
+    deps:
+    - report.py
+    - data/completed
+    - data/pilot/cases.json
+    outs:
+    - data/report
