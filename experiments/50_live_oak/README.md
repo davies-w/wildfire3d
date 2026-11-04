@@ -8,7 +8,7 @@ Use29×20m X/Y,0.5m gas cells, and Z=max(16m, tree height+6m). No extra-height e
 
 Retain generic vegetation/wood chemistry, weighted crown particles, static thermal woody particles, and imposed0.4×0.4m1500°C heating for20s. No species-calibrated live-oak combustion, protective bark, embers, grass or resolved solid trunk obstruction.180s physical horizon, four threads when run; no local FDS/training.3D temperature snapshots explicitly36s, matching the previous actual cadence;2D slice cadence2s. No dense-temperature-history claim.
 
-Status: offline design/input preparation only. No cloud job, budget reservation or training started. Actual cloud parser, first-positive mass and portable restart checks must pass before any full solve. Future pilot uses bounded stop/checkpoint/resume policy and budget accounting before launch. Existing48/49 decks and results remain unchanged.
+Status: the10-case cloud pilot was submitted once after readiness, quota and exact-bootstrap verification, with preserved input hashes. Two canaries must pass180s before the eight remaining cases. No training or full1,000-case oak batch has started. Each task must pass actual cloud parser, first-positive mass and portable restart checks before its full solve. The pilot uses2h solver/3h task/11100s VM limits,300s checkpoint windows,900s bounded stop grace and zero automatic retries. Existing48/49 decks and results remain unchanged.
 
 The combined planned dataset is3,000 unique cases:1,000 pine,1,000 eucalyptus and1,000 coast-live-oak-inspired. Pilot subsets are not additional design cases. This is a planned count, not a claim that3,000 simulations have run.
 
