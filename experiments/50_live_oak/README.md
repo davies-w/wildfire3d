@@ -13,3 +13,9 @@ Status: the10-case cloud pilot was submitted once after readiness, quota and exa
 The combined planned dataset is3,000 unique cases:1,000 pine,1,000 eucalyptus and1,000 coast-live-oak-inspired. Pilot subsets are not additional design cases. This is a planned count, not a claim that3,000 simulations have run.
 
 User approved the same variations and a small10-case cloud pilot, with no additional height experiment. The combined simulation-and-training ceiling is tracked privately. Pilot measurements must inform the3,000-case campaign plan and leave room for training rather than assuming every planned run is already funded.
+
+## Completed pilot
+
+All10 pilot cases completed180s and passed startup, device-time and archive-hash checks. Both Batch waves succeeded; independent terminal inventory found no jobs, VMs or disks. The scoped read grant is removed. Mean startup-proof-to-completion time was14.28minutes, including checkpoint and final archive transfers but excluding provisioning and initial probes. Scientific solve files total1.594GB. See data/report/report.md for all ten measurements and limitations. These are execution checks, not species validation.
+
+The full campaign has not launched. assess_campaign.py writes a private budget scenario from audited VM allocation times and the live ledger; it does not reserve funds. A training allowance still needs to be measured, and pending charges reconciled before claiming the full campaign fits.

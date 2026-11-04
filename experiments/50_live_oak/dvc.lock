@@ -38,3 +38,19 @@ stages:
       hash: md5
       md5: bd5cc01848947e9ba7d433c1f9831266
       size: 13634
+  completed:
+    cmd: ../../.venv/bin/python collect.py
+    outs:
+    - path: data/completed
+      hash: md5
+      md5: fa27bdcea8f363acdff3a67d537567fc.dir
+      size: 1593795058
+      nfiles: 141
+  report:
+    cmd: ../../.venv/bin/python report.py
+    outs:
+    - path: data/report
+      hash: md5
+      md5: 0704109d689274d2b091541b6f7e54cc.dir
+      size: 5582
+      nfiles: 2
