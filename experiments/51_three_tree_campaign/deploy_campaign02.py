@@ -31,9 +31,9 @@ for name,file in [(WF+'-wave','wave02.yaml'),(WF,'workflow02.yaml'),(WF+'-check'
 expiry=condition['expression'].split(" && ")[-1]
 save('task-read-condition.json',dict(title='tree51-task-read02',expression=expiry))
 gc('projects','add-iam-policy-binding',PROJECT,'--member=serviceAccount:fds-watchdog@'+PROJECT+'.iam.gserviceaccount.com','--role=projects/'+PROJECT+'/roles/fdsTree51TaskReader','--condition-from-file='+str(P/'task-read-condition.json'))
-# Only execution creation/read on this one child workflow, expiring with the campaign.
+# User-approved project-scoped execution create/get only, expiring with campaign.
 resource='projects/'+PROJECT+'/locations/us-central1/workflows/'+WF+'-wave'
-save('wave-run-condition.json',dict(title='tree51-campaign02-wave-run',expression="resource.name.startsWith('"+resource+"') && "+expiry))
+save('wave-run-condition.json',dict(title='tree51-campaign02-wave-run',expression=expiry))
 role='fdsTree51WaveRunner'
 roles=gc('iam','roles','list','--filter=name:roles/'+role)
 if not roles:gc('iam','roles','create',role,'--title=Tree51 child execution create and get','--permissions=workflows.executions.create,workflows.executions.get','--stage=GA')
