@@ -24,3 +24,27 @@ stages:
       md5: 0b2ca6540532b3fe9f16c252e4a14038.dir
       size: 542457
       nfiles: 3
+  completed:
+    cmd: ../../.venv/bin/python collect.py
+    outs:
+    - path: data/completed
+      hash: md5
+      md5: e77eaacc022ca6ab0f8278cd331b814e.dir
+      size: 3082044775
+      nfiles: 309
+  comparison:
+    cmd: ../../.venv/bin/python compare.py
+    outs:
+    - path: data/comparison
+      hash: md5
+      md5: 60cd60e69877e871f292f336395bd0eb.dir
+      size: 36124
+      nfiles: 1
+  field_verification:
+    cmd: ../../.venv/bin/python verify_fields.py
+    outs:
+    - path: data/field-verification
+      hash: md5
+      md5: f95315cf41612785843fe0f017b9d5c0.dir
+      size: 14870
+      nfiles: 1
