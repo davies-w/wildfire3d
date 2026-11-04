@@ -53,5 +53,16 @@ def main():
   f=field_compare(o/(on+'_1_1.sf'),n/(nn+'_1_1.sf'),c)
   flags=m['major_metric_flags']+[k for k in ['common_region_hot_temperature_mae_C','peak_temperature_history_mae_C'] if f[k]>100]
   rows.append(dict(case=nn,original_case=on,metrics=m,temperature=f,major_discrepancy_flags=flags));print(nn,flags,flush=True)
- out=R/'data/comparison';out.mkdir(exist_ok=True);(out/'summary.json').write_text(json.dumps(dict(complete=True,cases=rows,all_pass_screening=all(not x['major_discrepancy_flags'] for x in rows),limitations='Engineering screening only, not statistical equivalence or physical/grid validation; global integration volume changes; no uncertainty ensemble.'),indent=2)+'\n')
+ controls=[]
+ for c in cases:
+  if c['comparison_variant']!='height_control':continue
+  name=c['pilot_case'];base=name.replace('_expanded','_baseline');bc=next(x for x in cases if x['pilot_case']==base)
+  a=R/'data/completed'/base/'solve';b=R/'data/completed'/name/'solve'
+  m=scalar_compare(csv_rows(a/(base+'_hrr.csv')),csv_rows(b/(name+'_hrr.csv')),csv_rows(a/(base+'_devc.csv')),csv_rows(b/(name+'_devc.csv')),sum(c['expected_wet_mass_kg'].values()))
+  region={'domain':bc['domain'],'original_domain':bc['domain']}
+  f=field_compare(a/(base+'_1_1.sf'),b/(name+'_1_1.sf'),region)
+  flags=m['major_metric_flags']+[k for k in ['common_region_hot_temperature_mae_C','peak_temperature_history_mae_C'] if f[k]>100]
+  controls.append(dict(baseline=base,height_control=name,common_region_m=bc['domain'],metrics=m,temperature=f,major_discrepancy_flags=flags))
+ assert len(controls)==2
+ out=R/'data/comparison';out.mkdir(exist_ok=True);(out/'summary.json').write_text(json.dumps(dict(complete=True,cases=rows,vertical_controls=controls,vertical_controls_pass_screening=all(not x['major_discrepancy_flags'] for x in controls),all_pass_screening=all(not x['major_discrepancy_flags'] for x in rows),limitations='Engineering screening only, not statistical equivalence or physical/grid validation; global integration volume changes; no uncertainty ensemble.'),indent=2)+'\n')
 if __name__=='__main__':main()
