@@ -48,4 +48,4 @@ if '--deployed' in sys.argv:
  for name,file in [(WF,'workflow04.yaml'),(WF+'-wave','wave04.yaml'),(WF+'-check','readiness04.yaml')]:
   actual=gc('workflows','describe',name,'--location=us-central1');assert yaml.safe_load(actual['sourceContents'])==yaml.safe_load((R/file).read_text())
  save('deployed-bootstrap-proof.json',dict(passed=True,workflow_sha256=pkg['workflow_sha256'],wave_sha256=pkg['wave_sha256'],manifest_sha256=pkg['manifest_sha256'],single_line_bootstrap=True))
-print('PASS:1829 unchanged unfinished decks,96 excluded prior attempts (95 passing,1 reviewed terminal failure), unique claim, bounded polls and zero POST retries')
+print('PASS:1828 unchanged fresh decks plus one pinned checkpoint recovery;150 prior attempts excluded from fresh work; unique claims, bounded polls and zero POST retries')
