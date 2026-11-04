@@ -1,0 +1,321 @@
+main:
+  steps:
+  - init:
+      assign:
+      - candidates:
+        - id: wave-000
+          job_id: fds-tree51-campaign02-wave-000
+          label: tree51-campaign02-wave-000
+          region: us-central1
+          zones:
+          - us-central1-a
+          - us-central1-b
+          - us-central1-c
+          job:
+            taskGroups:
+            - taskCount: '18'
+              parallelism: '2'
+              taskCountPerNode: '1'
+              taskSpec:
+                computeResource:
+                  cpuMilli: 4000
+                  memoryMib: 28000
+                maxRunDuration: 10800s
+                maxRetryCount: 0
+                environment:
+                  variables: {}
+                runnables:
+                - container:
+                    imageUri: us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver48@sha256:2f27d44c854922f94f96a0c4137e1b092931022cf4294e1f89f888a56fd76443
+                    entrypoint: python3
+                    commands:
+                    - -c
+                    - import base64;exec(compile(base64.b64decode('aW1wb3J0IG9zLGpzb24sbHptYSxwYXRobGliLHVybGxpYi5yZXF1ZXN0LGhhc2hsaWIsc3lzLHJ1bnB5CnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pCnRvaz1qc29uLmxvYWQodXJsbGliLnJlcXVlc3QudXJsb3BlbihyLHRpbWVvdXQ9MjApKVsnYWNjZXNzX3Rva2VuJ10Kd2F2ZT1vcy5lbnZpcm9uWydXQVZFX0lEJ107YXNzZXJ0IHdhdmUuc3RhcnRzd2l0aCgnd2F2ZS0nKSBhbmQgd2F2ZVs1Ol0uaXNkaWdpdCgpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvdHJlZTUxL2NhbXBhaWduMDEvaW5wdXRzLycrd2F2ZSsnLnh6JyxoZWFkZXJzPXsnQXV0aG9yaXphdGlvbic6J0JlYXJlciAnK3Rva30pCmJsb2I9dXJsbGliLnJlcXVlc3QudXJsb3BlbihyLHRpbWVvdXQ9MTIwKS5yZWFkKCk7YXNzZXJ0IGhhc2hsaWIuc2hhMjU2KGJsb2IpLmhleGRpZ2VzdCgpPT1vcy5lbnZpcm9uWydXQVZFX1NIQSddCnBheWxvYWQ9anNvbi5sb2Fkcyhsem1hLmRlY29tcHJlc3MoYmxvYikpO3Jvb3Q9cGF0aGxpYi5QYXRoKCcvc3R1ZHknKTtyb290Lm1rZGlyKGV4aXN0X29rPVRydWUpCmZvciBuLHYgaW4gcGF5bG9hZC5pdGVtcygpOgogcD1yb290L247YXNzZXJ0IHAuaXNfcmVsYXRpdmVfdG8ocm9vdCkgYW5kICcuLicgbm90IGluIHBhdGhsaWIuUGF0aChuKS5wYXJ0cztwLnBhcmVudC5ta2RpcihwYXJlbnRzPVRydWUsZXhpc3Rfb2s9VHJ1ZSk7cC53cml0ZV90ZXh0KHYpCmNhc2U9anNvbi5sb2FkcyhwYXlsb2FkWydncm91cHMuanNvbiddKVsnd2F2ZSddW2ludChvcy5lbnZpcm9uWydCQVRDSF9UQVNLX0lOREVYJ10pXQoocm9vdC8ndGFzay5qc29uJykud3JpdGVfdGV4dChqc29uLmR1bXBzKHsnY2FzZSc6Y2FzZSwnb3V0cHV0X3ByZWZpeCc6J3RyZWU1MS9jYW1wYWlnbjAxLycrd2F2ZSsnLycrY2FzZVsncGlsb3RfY2FzZSddKycvJ30pKQpzeXMucGF0aC5pbnNlcnQoMCxzdHIocm9vdCkpO3J1bnB5LnJ1bl9wYXRoKHN0cihyb290Lyd3b3JrZXIucHknKSxydW5fbmFtZT0nX19tYWluX18nKQo='),'bootstrap','exec'))
+                    options: --cpus=4 --memory=28000m --pids-limit=256
+            allocationPolicy:
+              instances:
+              - policy:
+                  machineType: c3-highmem-4
+                  provisioningModel: SPOT
+                  bootDisk:
+                    sizeGb: '30'
+                    type: pd-balanced
+              location:
+                allowedLocations:
+                - zones/us-central1-a
+                - zones/us-central1-b
+                - zones/us-central1-c
+              serviceAccount:
+                email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+              labels:
+                trial_id: tree51-campaign02-canary
+              network:
+                networkInterfaces:
+                - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                  subnetwork: projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial
+            labels:
+              trial_id: tree51-campaign02-canary
+            logsPolicy:
+              destination: CLOUD_LOGGING
+  - read_admission:
+      call: http.get
+      args:
+        url: https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/tree51%2Fcampaign02%2Fcontrol%2Fadmission-v2.json
+        query:
+          alt: media
+        auth:
+          type: OAuth2
+      result: admission
+  - admission_guard:
+      switch:
+      - condition: ${admission.body.passed != true}
+        raise: Budget admission missing
+  - read_manifest:
+      call: http.get
+      args:
+        url: https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/tree51%2Fcampaign02%2Finputs%2Fmanifest.json
+        query:
+          alt: media
+        auth:
+          type: OAuth2
+      result: manifest
+  - manifest_shape:
+      switch:
+      - condition: ${len(manifest.body) != 106 or manifest.body[0].count != 18}
+        raise: Unexpected frozen manifest shape
+  - task_list_access:
+      try:
+        call: http.get
+        args:
+          url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs/fds-tree51-campaign02-access-check/taskGroups/group0/tasks
+          auth:
+            type: OAuth2
+          query:
+            pageSize: 1
+      except:
+        as: e
+        steps:
+        - expected_missing:
+            switch:
+            - condition: ${map.get(e,"code") != 404}
+              raise: ${e}
+  - write_probe1:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: ${"tree51/campaign02/readiness-status." + string(sys.now())}
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body:
+          passed: true
+  - write_probe2:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: ${"tree51/campaign02/readiness-status." + string(sys.now())}
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body:
+          passed: true
+  - quota_probe:
+      call: await_quota
+      args:
+        c:
+          id: wave-000
+          job_id: fds-tree51-campaign02-wave-000
+          label: tree51-campaign02-wave-000
+          region: us-central1
+          zones:
+          - us-central1-a
+          - us-central1-b
+          - us-central1-c
+          job:
+            taskGroups:
+            - taskCount: '18'
+              parallelism: '2'
+              taskCountPerNode: '1'
+              taskSpec:
+                computeResource:
+                  cpuMilli: 4000
+                  memoryMib: 28000
+                maxRunDuration: 10800s
+                maxRetryCount: 0
+                environment:
+                  variables: {}
+                runnables:
+                - container:
+                    imageUri: us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver48@sha256:2f27d44c854922f94f96a0c4137e1b092931022cf4294e1f89f888a56fd76443
+                    entrypoint: python3
+                    commands:
+                    - -c
+                    - import base64;exec(compile(base64.b64decode('aW1wb3J0IG9zLGpzb24sbHptYSxwYXRobGliLHVybGxpYi5yZXF1ZXN0LGhhc2hsaWIsc3lzLHJ1bnB5CnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pCnRvaz1qc29uLmxvYWQodXJsbGliLnJlcXVlc3QudXJsb3BlbihyLHRpbWVvdXQ9MjApKVsnYWNjZXNzX3Rva2VuJ10Kd2F2ZT1vcy5lbnZpcm9uWydXQVZFX0lEJ107YXNzZXJ0IHdhdmUuc3RhcnRzd2l0aCgnd2F2ZS0nKSBhbmQgd2F2ZVs1Ol0uaXNkaWdpdCgpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvdHJlZTUxL2NhbXBhaWduMDEvaW5wdXRzLycrd2F2ZSsnLnh6JyxoZWFkZXJzPXsnQXV0aG9yaXphdGlvbic6J0JlYXJlciAnK3Rva30pCmJsb2I9dXJsbGliLnJlcXVlc3QudXJsb3BlbihyLHRpbWVvdXQ9MTIwKS5yZWFkKCk7YXNzZXJ0IGhhc2hsaWIuc2hhMjU2KGJsb2IpLmhleGRpZ2VzdCgpPT1vcy5lbnZpcm9uWydXQVZFX1NIQSddCnBheWxvYWQ9anNvbi5sb2Fkcyhsem1hLmRlY29tcHJlc3MoYmxvYikpO3Jvb3Q9cGF0aGxpYi5QYXRoKCcvc3R1ZHknKTtyb290Lm1rZGlyKGV4aXN0X29rPVRydWUpCmZvciBuLHYgaW4gcGF5bG9hZC5pdGVtcygpOgogcD1yb290L247YXNzZXJ0IHAuaXNfcmVsYXRpdmVfdG8ocm9vdCkgYW5kICcuLicgbm90IGluIHBhdGhsaWIuUGF0aChuKS5wYXJ0cztwLnBhcmVudC5ta2RpcihwYXJlbnRzPVRydWUsZXhpc3Rfb2s9VHJ1ZSk7cC53cml0ZV90ZXh0KHYpCmNhc2U9anNvbi5sb2FkcyhwYXlsb2FkWydncm91cHMuanNvbiddKVsnd2F2ZSddW2ludChvcy5lbnZpcm9uWydCQVRDSF9UQVNLX0lOREVYJ10pXQoocm9vdC8ndGFzay5qc29uJykud3JpdGVfdGV4dChqc29uLmR1bXBzKHsnY2FzZSc6Y2FzZSwnb3V0cHV0X3ByZWZpeCc6J3RyZWU1MS9jYW1wYWlnbjAxLycrd2F2ZSsnLycrY2FzZVsncGlsb3RfY2FzZSddKycvJ30pKQpzeXMucGF0aC5pbnNlcnQoMCxzdHIocm9vdCkpO3J1bnB5LnJ1bl9wYXRoKHN0cihyb290Lyd3b3JrZXIucHknKSxydW5fbmFtZT0nX19tYWluX18nKQo='),'bootstrap','exec'))
+                    options: --cpus=4 --memory=28000m --pids-limit=256
+            allocationPolicy:
+              instances:
+              - policy:
+                  machineType: c3-highmem-4
+                  provisioningModel: SPOT
+                  bootDisk:
+                    sizeGb: '30'
+                    type: pd-balanced
+              location:
+                allowedLocations:
+                - zones/us-central1-a
+                - zones/us-central1-b
+                - zones/us-central1-c
+              serviceAccount:
+                email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+              labels:
+                trial_id: tree51-campaign02-canary
+              network:
+                networkInterfaces:
+                - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                  subnetwork: projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial
+            labels:
+              trial_id: tree51-campaign02-canary
+            logsPolicy:
+              destination: CLOUD_LOGGING
+  - check:
+      for:
+        value: c
+        in: ${candidates}
+        steps:
+        - inspect:
+            call: inventory
+            args:
+              c: ${c}
+            result: inv
+        - empty:
+            switch:
+            - condition: ${len(inv.vms)>0 or len(inv.disks)>0}
+              raise: Existing pilot resources
+  - child_permission_probe:
+      call: http.post
+      args:
+        url: https://workflowexecutions.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/workflows/fds-tree51-campaign02-wave/executions
+        auth:
+          type: OAuth2
+        body:
+          argument: '{"wave_id": "wave-005", "spent": 0, "checkpoint_seconds": 480,
+            "dry_run": true}'
+      result: probe_child
+  - done:
+      return:
+        passed: true
+        child_execution: ${probe_child.body.name}
+inventory:
+  params:
+  - c
+  steps:
+  - init:
+      assign:
+      - vms: []
+      - disks: []
+  - zones:
+      for:
+        value: z
+        in: ${c.zones}
+        steps:
+        - get_vms:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/instances"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: ${"labels.trial_id = " + c.label}
+                  fields: items(name,selfLink,creationTimestamp,status),nextPageToken
+                  maxResults: 500
+              result: v
+            retry: ${http.default_retry}
+        - page_guard_v:
+            switch:
+            - condition: ${map.get(v.body,"nextPageToken") != null}
+              raise: Unexpected inventory pagination; refuse partial inventory
+            - condition: ${len(default(map.get(v.body,"items"),[])) > 18}
+              raise: Unexpected resource count; audit required
+        - append_vms:
+            for:
+              value: vm
+              in: ${default(map.get(v.body,"items"),[])}
+              steps:
+              - add_vm:
+                  assign:
+                  - vms: ${list.concat(vms,vm)}
+        - get_disks:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/disks"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: name eq fds-tree51-campa.*
+                  fields: items(name,selfLink,users),nextPageToken
+                  maxResults: 500
+              result: d
+            retry: ${http.default_retry}
+        - page_guard_d:
+            switch:
+            - condition: ${map.get(d.body,"nextPageToken") != null}
+              raise: Unexpected inventory pagination; refuse partial inventory
+            - condition: ${len(default(map.get(d.body,"items"),[])) > 18}
+              raise: Unexpected resource count; audit required
+        - append_disks:
+            for:
+              value: disk
+              in: ${default(map.get(d.body,"items"),[])}
+              steps:
+              - add_disk:
+                  assign:
+                  - disks: ${list.concat(disks,disk)}
+  - done:
+      return:
+        vms: ${vms}
+        disks: ${disks}
+await_quota:
+  params:
+  - c
+  steps:
+  - get:
+      try:
+        call: http.get
+        args:
+          url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/regions/us-central1
+          auth:
+            type: OAuth2
+        result: q
+      retry: ${http.default_retry}
+  - reset:
+      assign:
+      - available: 0
+  - quotas:
+      for:
+        value: item
+        in: ${q.body.quotas}
+        steps:
+        - spot:
+            switch:
+            - condition: ${item.metric == "PREEMPTIBLE_CPUS"}
+              assign:
+              - available: ${item.limit-item.usage}
+  - ready:
+      switch:
+      - condition: ${available >= 4 * int(c.job.taskGroups[0].taskCount)}
+        return: true
+      next: quota_denied
+  - quota_denied:
+      raise: Insufficient Spot CPU quota; no job submitted
