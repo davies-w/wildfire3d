@@ -18,7 +18,7 @@ The workflow publishes immutable reduction markers in its unique cloud prefix. R
 
 ## Execution state
 
-Offline design and deck preparation only. The controller template deliberately refuses submission until frozen inputs, scoped permissions, remote readiness, preservation and an admitted budget are supplied. It has not been deployed or exercised on actual evictions. `assess_admission.py` records the private affordability check; the conservative remaining simulation estimate plus training headroom fails current available capacity before additional storage/transfer allowances. Recent posted rates are lower, but neither future rates nor total runtime are guaranteed. No allowance is increased, no pending reserve is released, and no paid campaign has started.
+The production workflow was submitted once after actual cloud readiness and exact deployed-bootstrap validation. All six initial canaries have passed actual startup mass and portable-restart checks; full180s completion is still pending. Frozen inputs are preserved with remote hash and anonymous directory-manifest readback checks. The source and DVC locks are pushed and remotely verified. No local FDS or training ran. The earlier full-campaign affordability assessment remains preserved privately; the user subsequently authorized the bounded launch described below.
 
 ## Bounded launch authorization
 
