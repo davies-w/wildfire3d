@@ -77,3 +77,8 @@ stages:
     - data/cloud/manifest.json
     outs:
     - data/cloud02
+  completed02:
+    cmd: ../../.venv/bin/python collect_completed02.py
+    frozen: true
+    outs:
+    - data/completed02
