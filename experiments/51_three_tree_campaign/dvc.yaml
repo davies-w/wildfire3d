@@ -1,0 +1,54 @@
+stages:
+  design:
+    cmd: ../../.venv/bin/python prepare.py
+    deps:
+    - prepare.py
+    - ../48_two_tree_design/data/geometries.json
+    - ../48_two_tree_design/data/cases.jsonl.gz
+    - ../49_compact_tree_domain/data/cases.json
+    - ../50_live_oak/data/geometries.json
+    - ../50_live_oak/data/cases.jsonl.gz
+    - ../50_live_oak/data/pilot/cases.json
+    - ../49_compact_tree_domain/data/completed/tree49_000006_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_000021_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_000164_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_000181_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_000481_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_000500_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_000804_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_000830_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_000979_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_000997_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_001019_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_001032_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_001172_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_001186_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_001487_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_001500_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_001808_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_001824_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_001979_baseline/proof.json
+    - ../49_compact_tree_domain/data/completed/tree49_001991_baseline/proof.json
+    - ../50_live_oak/data/completed/tree50_000491_baseline/proof.json
+    - ../50_live_oak/data/completed/tree50_000511_baseline/proof.json
+    outs:
+    - data/cases.jsonl.gz
+    - data/geometries.json
+    - data/design.json
+  decks:
+    cmd: ../../.venv/bin/python prepare_decks.py
+    deps:
+    - prepare_decks.py
+    - data/cases.jsonl.gz
+    - data/geometries.json
+    - ../36_tree_density/base-input.fds
+    outs:
+    - data/decks
+  controller:
+    cmd: ../../.venv/bin/python build_controller.py
+    deps:
+    - build_controller.py
+    - ../50_live_oak/workflow.yaml
+    outs:
+    - controller-template.yaml:
+        cache: false
