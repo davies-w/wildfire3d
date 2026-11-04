@@ -30,3 +30,8 @@ stages:
     - ../48_two_tree_design/data/geometries.json
     outs:
     - data/clearance.json
+  completed:
+    cmd: ../../.venv/bin/python collect.py
+    frozen: true
+    outs:
+    - data/completed
