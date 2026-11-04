@@ -64,3 +64,8 @@ stages:
     - data/decks/cases.json
     outs:
     - data/cloud
+  completed01:
+    cmd: ../../.venv/bin/python collect_completed01.py
+    frozen: true
+    outs:
+    - data/completed01
