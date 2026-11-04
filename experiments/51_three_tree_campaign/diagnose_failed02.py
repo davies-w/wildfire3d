@@ -11,6 +11,6 @@ with tarfile.open(fileobj=io.BytesIO(r.content),mode='r:gz') as tf:
   if not m.isfile():continue
   names.append(dict(name=m.name,bytes=m.size))
   if m.size>8*1024**2 or '..' in Path(m.name).parts or Path(m.name).is_absolute():continue
-  if m.name.endswith(('.log','.out','.json')):
+  if m.name.endswith(('.log','.out','.json','.csv','.txt')):
    dest=out/m.name;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(tf.extractfile(m).read())
 save('failure-archive-proof.json',dict(passed=True,case=case,generation=v['generation'],sha256=part['sha256'],members=names));print('Verified failed final archive; private small diagnostics extracted')

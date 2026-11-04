@@ -82,3 +82,13 @@ stages:
     frozen: true
     outs:
     - data/completed02
+  cloud03:
+    cmd: ../../.venv/bin/python package_campaign03.py
+    frozen: true
+    deps:
+    - package_campaign03.py
+    - worker03.py
+    - completion_check03.py
+    - data/cloud/manifest.json
+    outs:
+    - data/cloud03
