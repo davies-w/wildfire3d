@@ -1,0 +1,21 @@
+# Compact-domain comparison:22 matched single-tree reruns
+
+User requested the same22 retained experiment48 simulations with the original training X/Y dimensions (24×16m), increasing Z only as required, and checking for major differences. These are **one tree per simulation from two tree types**, not two trees together. Earlier experiment48 descriptions saying a pair were incorrect; executable inputs have one geometry each.
+
+Twenty cases have6m above the crown (24–32m high domains). Two former expanded-domain repeats become vertical-clearance controls, with12m above the crown and unchanged24×16m horizontal footprint. They are compared to their original expanded-domain results and to their corresponding compact baseline. All22 are fresh simulations because changing the mesh invalidates the old restart state. Fine-grid cases remain excluded. Existing experiment48 data are preserved.
+
+The exact source decks, random seeds,0.5m cells, four solver threads,180s horizon, particle positions relative to the tree, weights, moisture, wind, material parameters and imposed source are retained. Only gas-domain bounds, transverse centering, mesh counts, diagnostic bounds and run identifiers change. Horizontal crown clearance is at least2.5m; this is a geometric fit check, not proof of adequate open boundaries. Baseline gas cells fall to73,728–98,304; the two height controls use92,160–104,448. The old baseline had491,520cells. Reduced downstream space may remove burning gases sooner and change both airflow and measured combustion energy.
+
+## Comparison declared before rerun outputs
+
+Each new result is paired to its frozen original. Flag a major discrepancy if any of these diagnostic thresholds is exceeded:10% total integrated HRR energy;10% energy after20s;20% peak HRR;20% time-integrated absolute HRR-history difference divided by original energy; or2percentage points absolute change in tracked wet-mass loss. These are engineering screening tolerances, not physical validation, uncertainty bounds or a statistical equivalence test. Report all individual differences, including failures; never tune tolerances after seeing outputs. Very small post-source signals must be shown in absolute units alongside percentages.
+
+Also compare temperature fields in the aligned common spatial region at matching saved times, including hot-region error and peak-temperature histories; flag either sampled hot-region MAE or peak-history MAE above100°C. These local-field tolerances are also declared before outputs. Full-domain quantities differ in integration volume; distinguish genuine local-field changes from outflow leaving the cropped domain. Passing global metrics alone cannot establish local equivalence, grid convergence or adequacy of a smaller domain. No validated binary ignition threshold is assumed. Tracked wet-mass loss includes drying and pyrolysis, not only combustion.
+
+Generic wood/crown chemistry and species-inspired18–26m geometries are retained, with static burning woody particles rather than resolved solid trunks. No species-specific chemistry, bark, embers or grass. The imposed0.4×0.4m1500°C20s patch is not a modeled natural ignition source. These comparisons assess numerical-domain sensitivity, not real-world accuracy.
+
+## Execution
+
+Four canaries must complete180s and pass startup checks before18remaining cases launch automatically. Spot c3-highmem-4, four OpenMP threads per case, at most72CPUs. Estimated typical runtime10–45minutes from cell-count scaling is provisional; nonlinear timestep/fire behaviour can invalidate it. Each solve has a2h wall limit including checkpoint overhead,3h task limit,11100s VM limit and4h queue/run deadline per wave. Every300s requests a clean stop, allows up to900s bounded grace, uploads full stopped state in64MiB chunks with an immutable completion manifest, then resumes. Forced exits are never usable checkpoints. Zero automatic paid retries; diagnose and audit before any unique recovery. The original180s horizon is not shortened.
+
+No local FDS or training. Preserve outputs through scoped direct DVC/HF verification, keep operational/accounting data private, independently audit jobs/VMs/disks and exact read-grant removal. No claim of equivalence until comparisons complete.

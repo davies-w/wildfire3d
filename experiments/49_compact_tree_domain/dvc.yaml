@@ -1,0 +1,34 @@
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py
+    deps:
+    - prepare.py
+    - ../48_two_tree_design/data/pilot
+    - ../48_two_tree_design/data/geometries.json
+    outs:
+    - data/decks
+    - data/cases.json
+    - data/input-audit.json
+  cloud:
+    cmd: ../../.venv/bin/python package.py
+    frozen: true
+    outs:
+    - data/cloud
+
+  completed:
+    cmd: ../../.venv/bin/python collect.py
+    frozen: true
+    outs:
+    - data/completed
+  comparison:
+    cmd: ../../.venv/bin/python compare.py
+    deps:
+    - compare.py
+    - data/cases.json
+    - data/completed
+    - ../48_two_tree_design/data/canaries04
+    - ../48_two_tree_design/data/completed05
+    - ../48_two_tree_design/data/completed06
+    - ../48_two_tree_design/data/completed07
+    outs:
+    - data/comparison

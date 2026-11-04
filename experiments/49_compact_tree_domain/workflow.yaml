@@ -1,0 +1,450 @@
+main:
+  steps:
+  - init:
+      assign:
+      - candidates:
+        - id: canary
+          job_id: fds-tree49-compact01-canary
+          label: tree49-compact01-canary
+          region: us-central1
+          zones:
+          - us-central1-a
+          - us-central1-b
+          - us-central1-c
+          job:
+            taskGroups:
+            - taskCount: '4'
+              parallelism: '4'
+              taskCountPerNode: '1'
+              taskSpec:
+                computeResource:
+                  cpuMilli: 4000
+                  memoryMib: 28000
+                maxRunDuration: 10800s
+                maxRetryCount: 0
+                environment:
+                  variables:
+                    PILOT_GROUP: canary
+                runnables:
+                - container:
+                    imageUri: us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver48@sha256:2f27d44c854922f94f96a0c4137e1b092931022cf4294e1f89f888a56fd76443
+                    entrypoint: python3
+                    commands:
+                    - -c
+                    - import base64;exec(compile(base64.b64decode('aW1wb3J0IG9zLGpzb24sbHptYSxwYXRobGliLHVybGxpYi5yZXF1ZXN0LGhhc2hsaWIsc3lzLHJ1bnB5CnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pCnRvaz1qc29uLmxvYWQodXJsbGliLnJlcXVlc3QudXJsb3BlbihyLHRpbWVvdXQ9MjApKVsnYWNjZXNzX3Rva2VuJ10Kcj11cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vdG1ydy13aWxkZmlyZS0yMDI2MTAxNS10cmlhbC90cmVlNDkvY29tcGFjdDAxL2lucHV0Lnh6JyxoZWFkZXJzPXsnQXV0aG9yaXphdGlvbic6J0JlYXJlciAnK3Rva30pCmJsb2I9dXJsbGliLnJlcXVlc3QudXJsb3BlbihyLHRpbWVvdXQ9MTIwKS5yZWFkKCk7YXNzZXJ0IGhhc2hsaWIuc2hhMjU2KGJsb2IpLmhleGRpZ2VzdCgpPT0nOTgyNmE5MjMxMjZhMzRhM2RkYTlmMzEwOWRhYWY3OTU0Nzc5MzcyZDMzYTNkNjk3YzUzZjg3ZmUzZjkzN2ZkMCcKcGF5bG9hZD1qc29uLmxvYWRzKGx6bWEuZGVjb21wcmVzcyhibG9iKSk7cm9vdD1wYXRobGliLlBhdGgoJy9zdHVkeScpO3Jvb3QubWtkaXIoZXhpc3Rfb2s9VHJ1ZSkKZm9yIG4sdiBpbiBwYXlsb2FkLml0ZW1zKCk6CiBwPXJvb3Qvbjthc3NlcnQgcC5pc19yZWxhdGl2ZV90byhyb290KSBhbmQgJy4uJyBub3QgaW4gcGF0aGxpYi5QYXRoKG4pLnBhcnRzO3AucGFyZW50Lm1rZGlyKHBhcmVudHM9VHJ1ZSxleGlzdF9vaz1UcnVlKTtwLndyaXRlX3RleHQodikKZ3JvdXA9b3MuZW52aXJvblsnUElMT1RfR1JPVVAnXTtpbmRleD1pbnQob3MuZW52aXJvblsnQkFUQ0hfVEFTS19JTkRFWCddKTtjYXNlPWpzb24ubG9hZHMocGF5bG9hZFsnZ3JvdXBzLmpzb24nXSlbZ3JvdXBdW2luZGV4XQoocm9vdC8ndGFzay5qc29uJykud3JpdGVfdGV4dChqc29uLmR1bXBzKHsnY2FzZSc6Y2FzZSwnb3V0cHV0X3ByZWZpeCc6J3RyZWU0OS9jb21wYWN0MDEvJytncm91cCsnLycrY2FzZVsncGlsb3RfY2FzZSddKycvJ30pKQpzeXMucGF0aC5pbnNlcnQoMCxzdHIocm9vdCkpO3J1bnB5LnJ1bl9wYXRoKHN0cihyb290Lyd3b3JrZXIucHknKSxydW5fbmFtZT0nX19tYWluX18nKQo='),'bootstrap','exec'))
+                    options: --cpus=4 --memory=28000m --pids-limit=256
+            allocationPolicy:
+              instances:
+              - policy:
+                  machineType: c3-highmem-4
+                  provisioningModel: SPOT
+                  bootDisk:
+                    sizeGb: '30'
+                    type: pd-balanced
+              location:
+                allowedLocations:
+                - zones/us-central1-a
+                - zones/us-central1-b
+                - zones/us-central1-c
+              serviceAccount:
+                email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+              labels:
+                trial_id: tree49-compact01-canary
+              network:
+                networkInterfaces:
+                - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                  subnetwork: projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial
+            labels:
+              trial_id: tree49-compact01-canary
+            logsPolicy:
+              destination: CLOUD_LOGGING
+        - id: bulk
+          job_id: fds-tree49-compact01-bulk
+          label: tree49-compact01-bulk
+          region: us-central1
+          zones:
+          - us-central1-a
+          - us-central1-b
+          - us-central1-c
+          job:
+            taskGroups:
+            - taskCount: '18'
+              parallelism: '18'
+              taskCountPerNode: '1'
+              taskSpec:
+                computeResource:
+                  cpuMilli: 4000
+                  memoryMib: 28000
+                maxRunDuration: 10800s
+                maxRetryCount: 0
+                environment:
+                  variables:
+                    PILOT_GROUP: bulk
+                runnables:
+                - container:
+                    imageUri: us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver48@sha256:2f27d44c854922f94f96a0c4137e1b092931022cf4294e1f89f888a56fd76443
+                    entrypoint: python3
+                    commands:
+                    - -c
+                    - import base64;exec(compile(base64.b64decode('aW1wb3J0IG9zLGpzb24sbHptYSxwYXRobGliLHVybGxpYi5yZXF1ZXN0LGhhc2hsaWIsc3lzLHJ1bnB5CnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pCnRvaz1qc29uLmxvYWQodXJsbGliLnJlcXVlc3QudXJsb3BlbihyLHRpbWVvdXQ9MjApKVsnYWNjZXNzX3Rva2VuJ10Kcj11cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCdodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vdG1ydy13aWxkZmlyZS0yMDI2MTAxNS10cmlhbC90cmVlNDkvY29tcGFjdDAxL2lucHV0Lnh6JyxoZWFkZXJzPXsnQXV0aG9yaXphdGlvbic6J0JlYXJlciAnK3Rva30pCmJsb2I9dXJsbGliLnJlcXVlc3QudXJsb3BlbihyLHRpbWVvdXQ9MTIwKS5yZWFkKCk7YXNzZXJ0IGhhc2hsaWIuc2hhMjU2KGJsb2IpLmhleGRpZ2VzdCgpPT0nOTgyNmE5MjMxMjZhMzRhM2RkYTlmMzEwOWRhYWY3OTU0Nzc5MzcyZDMzYTNkNjk3YzUzZjg3ZmUzZjkzN2ZkMCcKcGF5bG9hZD1qc29uLmxvYWRzKGx6bWEuZGVjb21wcmVzcyhibG9iKSk7cm9vdD1wYXRobGliLlBhdGgoJy9zdHVkeScpO3Jvb3QubWtkaXIoZXhpc3Rfb2s9VHJ1ZSkKZm9yIG4sdiBpbiBwYXlsb2FkLml0ZW1zKCk6CiBwPXJvb3Qvbjthc3NlcnQgcC5pc19yZWxhdGl2ZV90byhyb290KSBhbmQgJy4uJyBub3QgaW4gcGF0aGxpYi5QYXRoKG4pLnBhcnRzO3AucGFyZW50Lm1rZGlyKHBhcmVudHM9VHJ1ZSxleGlzdF9vaz1UcnVlKTtwLndyaXRlX3RleHQodikKZ3JvdXA9b3MuZW52aXJvblsnUElMT1RfR1JPVVAnXTtpbmRleD1pbnQob3MuZW52aXJvblsnQkFUQ0hfVEFTS19JTkRFWCddKTtjYXNlPWpzb24ubG9hZHMocGF5bG9hZFsnZ3JvdXBzLmpzb24nXSlbZ3JvdXBdW2luZGV4XQoocm9vdC8ndGFzay5qc29uJykud3JpdGVfdGV4dChqc29uLmR1bXBzKHsnY2FzZSc6Y2FzZSwnb3V0cHV0X3ByZWZpeCc6J3RyZWU0OS9jb21wYWN0MDEvJytncm91cCsnLycrY2FzZVsncGlsb3RfY2FzZSddKycvJ30pKQpzeXMucGF0aC5pbnNlcnQoMCxzdHIocm9vdCkpO3J1bnB5LnJ1bl9wYXRoKHN0cihyb290Lyd3b3JrZXIucHknKSxydW5fbmFtZT0nX19tYWluX18nKQo='),'bootstrap','exec'))
+                    options: --cpus=4 --memory=28000m --pids-limit=256
+            allocationPolicy:
+              instances:
+              - policy:
+                  machineType: c3-highmem-4
+                  provisioningModel: SPOT
+                  bootDisk:
+                    sizeGb: '30'
+                    type: pd-balanced
+              location:
+                allowedLocations:
+                - zones/us-central1-a
+                - zones/us-central1-b
+                - zones/us-central1-c
+              serviceAccount:
+                email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+              labels:
+                trial_id: tree49-compact01-bulk
+              network:
+                networkInterfaces:
+                - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                  subnetwork: projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial
+            labels:
+              trial_id: tree49-compact01-bulk
+            logsPolicy:
+              destination: CLOUD_LOGGING
+  - campaign:
+      try:
+        steps:
+        - waves:
+            for:
+              value: c
+              in: ${candidates}
+              steps:
+              - quota_gate:
+                  call: await_quota
+                  args:
+                    c: ${c}
+              - create:
+                  call: http.post
+                  args:
+                    url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs
+                    auth:
+                      type: OAuth2
+                    query:
+                      jobId: ${c.job_id}
+                    body: ${c.job}
+              - set_deadline:
+                  assign:
+                  - deadline: ${sys.now()+14400}
+              - get:
+                  try:
+                    call: http.get
+                    args:
+                      url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+                        + c.region + "/jobs/" + c.job_id}
+                      auth:
+                        type: OAuth2
+                      query:
+                        fields: name,status(state,taskGroups,runDuration)
+                    result: state
+                  retry: ${http.default_retry}
+              - record_state:
+                  call: http.post
+                  args:
+                    url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+                    auth:
+                      type: OAuth2
+                    query:
+                      uploadType: media
+                      name: ${"tree49/compact01/"+c.id+"/job-status.json" + "." +
+                        string(sys.now())}
+                      ifGenerationMatch: 0
+                    headers:
+                      Content-Type: application/json
+                    body: ${state.body}
+              - terminal:
+                  switch:
+                  - condition: ${state.body.status.state == "SUCCEEDED"}
+                    next: clean_success
+                  - condition: ${state.body.status.state == "FAILED"}
+                    raise: Pilot worker failed; bulk wave is blocked
+              - inv:
+                  call: inventory
+                  args:
+                    c: ${c}
+                  result: inv
+              - check_age:
+                  for:
+                    value: vm
+                    in: ${inv.vms}
+                    steps:
+                    - limit:
+                        switch:
+                        - condition: ${sys.now() > time.parse(vm.creationTimestamp)+11100}
+                          raise: Worker VM lifetime exceeded
+              - controller_limit:
+                  switch:
+                  - condition: ${sys.now()>deadline}
+                    raise: Queue/run deadline exceeded
+              - wait:
+                  call: sys.sleep
+                  args:
+                    seconds: 30
+                  next: get
+              - clean_success:
+                  call: cleanup
+                  args:
+                    c: ${c}
+      except:
+        as: failure
+        steps:
+        - cleanup_all:
+            for:
+              value: c
+              in: ${candidates}
+              steps:
+              - clean_failed:
+                  call: cleanup
+                  args:
+                    c: ${c}
+        - record_failure:
+            call: http.post
+            args:
+              url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+              auth:
+                type: OAuth2
+              query:
+                uploadType: media
+                name: ${"tree49/compact01/controller-error.json." + string(sys.now())}
+                ifGenerationMatch: 0
+              headers:
+                Content-Type: application/json
+              body: ${failure}
+        - raise_failure:
+            raise: ${failure}
+  - done:
+      return:
+        passed: true
+        cases: 22
+        cleanup_verified: true
+inventory:
+  params:
+  - c
+  steps:
+  - init:
+      assign:
+      - vms: []
+      - disks: []
+  - zones:
+      for:
+        value: z
+        in: ${c.zones}
+        steps:
+        - get_vms:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/instances"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: ${"labels.trial_id = " + c.label}
+                  fields: items(name,selfLink,creationTimestamp,status),nextPageToken
+                  maxResults: 500
+              result: v
+            retry: ${http.default_retry}
+        - page_guard_v:
+            switch:
+            - condition: ${map.get(v.body,"nextPageToken") != null}
+              raise: Unexpected inventory pagination; refuse partial inventory
+        - append_vms:
+            for:
+              value: vm
+              in: ${default(map.get(v.body,"items"),[])}
+              steps:
+              - add_vm:
+                  assign:
+                  - vms: ${list.concat(vms,vm)}
+        - get_disks:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/disks"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: name eq fds-tree49-compact01-.*
+                  fields: items(name,selfLink,users),nextPageToken
+                  maxResults: 500
+              result: d
+            retry: ${http.default_retry}
+        - page_guard_d:
+            switch:
+            - condition: ${map.get(d.body,"nextPageToken") != null}
+              raise: Unexpected inventory pagination; refuse partial inventory
+        - append_disks:
+            for:
+              value: disk
+              in: ${default(map.get(d.body,"items"),[])}
+              steps:
+              - add_disk:
+                  assign:
+                  - disks: ${list.concat(disks,disk)}
+  - done:
+      return:
+        vms: ${vms}
+        disks: ${disks}
+cleanup:
+  params:
+  - c
+  steps:
+  - delete_job:
+      try:
+        call: http.delete
+        args:
+          url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+            + c.region + "/jobs/" + c.job_id}
+          auth:
+            type: OAuth2
+      retry: ${http.default_retry}
+      except:
+        as: err
+        steps:
+        - unexpected_1:
+            switch:
+            - condition: ${map.get(err,"code") != 404}
+              raise: ${err}
+  - inventory:
+      call: inventory
+      args:
+        c: ${c}
+      result: inv
+  - delete_vms:
+      for:
+        value: vm
+        in: ${inv.vms}
+        steps:
+        - delete_vm:
+            try:
+              call: http.delete
+              args:
+                url: ${vm.selfLink}
+                auth:
+                  type: OAuth2
+            retry: ${http.default_retry}
+            except:
+              as: err
+              steps:
+              - unexpected_2:
+                  switch:
+                  - condition: ${map.get(err,"code") != 404}
+                    raise: ${err}
+  - wait:
+      call: sys.sleep
+      args:
+        seconds: 15
+  - verify:
+      call: inventory
+      args:
+        c: ${c}
+      result: left
+  - orphan_disks:
+      for:
+        value: disk
+        in: ${left.disks}
+        steps:
+        - unused:
+            switch:
+            - condition: ${len(default(map.get(disk,"users"),[])) == 0}
+              steps:
+              - delete_disk:
+                  try:
+                    call: http.delete
+                    args:
+                      url: ${disk.selfLink}
+                      auth:
+                        type: OAuth2
+                  retry: ${http.default_retry}
+  - empty:
+      switch:
+      - condition: ${len(left.vms) > 0 or len(left.disks) > 0}
+        next: wait
+  - job_present:
+      assign:
+      - present: true
+  - verify_job:
+      try:
+        call: http.get
+        args:
+          url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+            + c.region + "/jobs/" + c.job_id}
+          auth:
+            type: OAuth2
+          query:
+            fields: name,status(state,taskGroups,runDuration)
+        result: remaining
+      retry: ${http.default_retry}
+      except:
+        as: e
+        steps:
+        - gone:
+            switch:
+            - condition: ${map.get(e,"code") == 404}
+              assign:
+              - present: false
+            - condition: ${true}
+              raise: ${e}
+  - job_wait:
+      switch:
+      - condition: ${present}
+        next: wait
+  - done:
+      return:
+        empty: true
+await_quota:
+  params:
+  - c
+  steps:
+  - init:
+      assign:
+      - deadline: ${sys.now()+14400}
+  - canary:
+      switch:
+      - condition: ${c.id == "canary"}
+        return: true
+  - get:
+      try:
+        call: http.get
+        args:
+          url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/regions/us-central1
+          auth:
+            type: OAuth2
+        result: q
+      retry: ${http.default_retry}
+  - reset:
+      assign:
+      - available: 0
+  - quotas:
+      for:
+        value: item
+        in: ${q.body.quotas}
+        steps:
+        - spot:
+            switch:
+            - condition: ${item.metric == "PREEMPTIBLE_CPUS"}
+              assign:
+              - available: ${item.limit-item.usage}
+  - ready:
+      switch:
+      - condition: ${available >= 72}
+        return: true
+      - condition: ${sys.now()>deadline}
+        raise: Spot CPU quota not granted within six hours; no bulk workers launched
+  - wait:
+      call: sys.sleep
+      args:
+        seconds: 60
+      next: get

@@ -1,0 +1,26 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: ../../.venv/bin/python prepare.py
+    outs:
+    - path: data/decks
+      hash: md5
+      md5: 3da78deebeaedc64fb0d2a854853ccf2.dir
+      size: 34744536
+      nfiles: 22
+    - path: data/cases.json
+      hash: md5
+      md5: 05d375553b2b92271857cf043e610d36
+      size: 25881
+    - path: data/input-audit.json
+      hash: md5
+      md5: 653935c41679e4a999f90f0fbe4b4950
+      size: 9946
+  cloud:
+    cmd: ../../.venv/bin/python package.py
+    outs:
+    - path: data/cloud
+      hash: md5
+      md5: 0b2ca6540532b3fe9f16c252e4a14038.dir
+      size: 542457
+      nfiles: 3

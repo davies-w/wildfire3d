@@ -1,5 +1,9 @@
 # Two-tree sampled simulation design
 
+## Geometry wording correction
+
+Each executable deck contains **one tree**, selected from two tree types. Earlier chat and report references to “two trees together” or a “tree pair” were incorrect. This corrects the description, not the saved simulation inputs or numerical results.
+
 ## Completed pilot — 2026-11-03
 
 All **22 retained cases** (20 baseline and two expanded-domain controls) completed 180 simulated seconds. Two fine-grid cases were cancelled at the user's request, so **grid convergence is not established**. Actual final Batch success, startup/restoration proofs, final device time, and archive hashes are verified. Pilot07 completed the last interrupted baseline by restoring saved state; no successful case was repeated. All pilot compute jobs, VMs and disks are empty, and the final exact worker read grant was removed after allocation audit. Remaining original funds are retained only for pending shared/storage/transfer accounting; this is not authorization for more solver jobs.
