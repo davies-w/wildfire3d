@@ -35,7 +35,7 @@ class Cloud:
     def __init__(self, durations, allowance=100000000, failures=(), ordinary=()):
         self.durations=durations; self.limit=allowance; self.failures=set(failures); self.ordinary=set(ordinary)
         self.now=0; self.jobs={}; self.objects={}; self.submissions=[]; self.peak=0
-        self.ambiguous=False
+        self.ambiguous=False; self.canary_approved=True
     def call(self,name,args):
         if name=='sys.sleep': self.now+=args['seconds']; return None
         url=args['url']; query=args.get('query',{})
@@ -59,6 +59,7 @@ class Cloud:
         if path.endswith('admission-v4.json'): body={'passed':True,'compute_limit_usd':self.limit/1000000}
         elif '/inputs/items/' in path:
             i=int(path.rsplit('/',1)[1].split('.')[0]); body={'index':i,'id':'wave-'+str(i),'count':1}
+        elif path.endswith('canary-approved.json'): body={'passed':self.canary_approved,'case':'case0','archive_verified':True,'batch_succeeded':True,'cleanup_verified':True}
         elif '/started/' in path: body={'started':True}
         else: raise AssertionError(url)
         return {'body':body}
@@ -125,7 +126,7 @@ class Engine:
         raise AssertionError('missing return')
 
 def state(n,limit=100000000):
-    return dict(epoch=0,cursor=0,total=n,active={},spent=0,limit=limit,reserve=525000,started=0,evicted=0,policy=480,completed=0,interrupted=0,stopped=False,audit_required=False)
+    return dict(epoch=0,cursor=0,total=n,active={},spent=0,limit=limit,reserve=525000,started=0,evicted=0,policy=480,completed=0,interrupted=0,canary_approved=True,canary_case="case0",stopped=False,audit_required=False)
 
 class GeneratedControllerTests(unittest.TestCase):
     def test_fast_cases_refill_while_first_case_still_running(self):
@@ -169,7 +170,7 @@ class GeneratedControllerTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError,'claim conflict'): Engine(c,s).run()
         self.assertEqual(len(c.submissions),1)
     def test_spot_failure_preserved_and_other_cases_continue_without_retry(self):
-        c=Cloud([30]*40,failures=(0,1,2,3)); s=Engine(c,state(40)).run()
+        c=Cloud([30]*40,failures=(1,2,3,4)); s=Engine(c,state(40)).run()
         self.assertFalse(s.stopped); self.assertFalse(s.active)
         self.assertEqual(len(c.submissions),40)
         self.assertEqual(s.completed,36); self.assertEqual(s.interrupted,4); self.assertEqual(s.policy,180)
@@ -178,6 +179,12 @@ class GeneratedControllerTests(unittest.TestCase):
         self.assertTrue(s.stopped); self.assertFalse(s.active)
         self.assertEqual(len(c.submissions),18); self.assertEqual(s.completed,17)
         self.assertEqual(s.policy,480); self.assertEqual(s.interrupted,0)
+    def test_canary_blocks_bulk_until_independent_gate(self):
+        c=Cloud([30]*40); c.canary_approved=False; initial=state(40); initial['canary_approved']=False
+        s=Engine(c,initial).run(); self.assertEqual(len(c.submissions),1); self.assertEqual(s.completed,1)
+        c.canary_approved=True
+        while s.active or s.cursor<s.total: s=Engine(c,s).run()
+        self.assertEqual(len(c.submissions),40)
     def test_generated_files_equal_builder_and_expression_bounds(self):
         for filename,doc in build().items():
             self.assertEqual(yaml.safe_load((Path(__file__).parent/filename).read_text()),doc)
@@ -188,6 +195,20 @@ class GeneratedControllerTests(unittest.TestCase):
                     for v in x: walk(v)
                 elif isinstance(x,str) and x.startswith('${'): self.assertLessEqual(len(x)-3,400,x)
             walk(doc)
+    def test_step_names_unique_within_each_routine(self):
+        for doc in build().values():
+            for routine in doc.values():
+                seen=set()
+                def walk(x):
+                    if isinstance(x,dict):
+                        for k,v in x.items():
+                            if k=='steps':
+                                for step in v:
+                                    name=next(iter(step)); self.assertNotIn(name,seen); seen.add(name)
+                            walk(v)
+                    elif isinstance(x,list):
+                        for v in x: walk(v)
+                walk(routine)
     def test_claim_before_post_and_cleanup_isolation(self):
         docs=build(); epoch=docs['epoch.yaml']['main']['steps']
         names=[next(iter(s)) for s in epoch]

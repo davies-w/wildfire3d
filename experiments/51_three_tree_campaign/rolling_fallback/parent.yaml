@@ -25,6 +25,12 @@ main:
       - condition: ${admission.body.passed!=true or index.body.reviewed!=true or not (index.body.checkpoint_seconds==480 or
           index.body.checkpoint_seconds==300 or index.body.checkpoint_seconds==180)}
         raise: Unreviewed admission/manifest
+  - dry_run:
+      switch:
+      - condition: ${default(map.get(args,"dry_run"),false)}
+        return:
+          passed: true
+          dry_run: true
   - owner_claim:
       call: http.post
       args:
@@ -54,6 +60,8 @@ main:
           policy: ${index.body.checkpoint_seconds}
           completed: ${index.body.prior_completed}
           interrupted: 0
+          canary_approved: false
+          canary_case: ${index.body.first_case}
           stopped: false
           audit_required: false
       - polls: 0

@@ -2,6 +2,12 @@ main:
   params:
   - args
   steps:
+  - dry_run:
+      switch:
+      - condition: ${default(map.get(args,"dry_run"),false)}
+        return:
+          passed: true
+          dry_run: true
   - init:
       assign:
       - s: ${args.state}
@@ -126,6 +132,11 @@ main:
             - condition: ${outcome.spot}
               assign:
               - s.evicted: ${s.evicted+1}
+        - canary_failure:
+            switch:
+            - condition: ${key=="0" and not outcome.passed}
+              assign:
+              - s.stopped: true
         - success_or_drain:
             switch:
             - condition: ${outcome.passed}
@@ -170,9 +181,47 @@ main:
         - policy_set:
             assign:
             - s.policy: ${new_policy}
+  - canary_gate:
+      switch:
+      - condition: ${s.cursor>=1 and not s.canary_approved and not s.stopped}
+        steps:
+        - read_canary_gate:
+            try:
+              call: http.get
+              args:
+                url: ${"https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/"+text.url_encode("tree51/__RUN__/"+"control/canary-approved.json")}
+                auth:
+                  type: OAuth2
+                query:
+                  alt: media
+              result: canary
+            except:
+              as: gate_error
+              steps:
+              - gate_missing_only:
+                  switch:
+                  - condition: ${map.get(gate_error,"code")!=404}
+                    raise: ${gate_error}
+              - gate_pending:
+                  assign:
+                  - canary:
+                      body:
+                        passed: false
+        - accept_canary_gate:
+            switch:
+            - condition: ${canary.body.passed}
+              steps:
+              - gate_fields:
+                  switch:
+                  - condition: ${canary.body.case!=s.canary_case or not canary.body.archive_verified or not canary.body.batch_succeeded
+                      or not canary.body.cleanup_verified}
+                    raise: Invalid independent canary gate
+              - gate_accepted:
+                  assign:
+                  - s.canary_approved: true
   - admit:
       switch:
-      - condition: ${s.stopped or s.cursor>=s.total or len(s.active)>=18 or s.spent+(len(s.active)+1)*s.reserve>s.limit}
+      - condition: ${s.stopped or (s.cursor>=1 and not s.canary_approved) or s.cursor>=s.total or len(s.active)>=18 or s.spent+(len(s.active)+1)*s.reserve>s.limit}
         next: end_tick
   - read_item:
       call: http.get

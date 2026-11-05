@@ -71,3 +71,14 @@ long-tail refill, bounded epoch handoffs, budget exhaustion, duplicate protectio
 and Spot policy accounting. Campaign04 is now terminal; this fallback is still undeployed. Google's
 compiler/readiness and a real isolated-cleanup canary are still required at a
 future audited cutover; no new solver launch or allowance was created.
+
+
+### Approved rolling continuation05 — preparation
+
+The user approved rolling continuation after campaign04’s terminal audit. Campaign04 is closed, all four temporary grants retired, and all 54 successful scientific exports preserved. The audited original remainder alone funds the continuation; the protected training allocation is unchanged.
+
+The unique t51r05 controller selects 1,774 never-started cases plus one diagnosed fresh replacement of Spot-evicted case000187. That failed attempt had no checkpoint, so its replacement starts from zero; it is not a resume. The 224 accepted cases and old000088 terminal review are excluded. Success of all 1,775 would establish 1,999 operational completions, with000088 still requiring separate qualified review. Physics, decks and solver binary remain unchanged.
+
+All four rolling workflows compile on Google Workflows. Actual case/epoch/parent dry runs passed after correcting JSON content-type metadata, without changing input bytes. One production case is gated before bulk admission. Independent Batch success, full180-second scientific evidence, archive integrity and exact-resource cleanup must pass before a remotely stored gate permits more cases. Thereafter up to18 singleton jobs refill available slots without waiting for the slowest case. A later confirmed Spot preemption records the interrupted case and permits other never-started cases to proceed; no automatic retry is enabled.
+
+Production submission and canary proof are pending. Preparation is not evidence of a completed cloud simulation.

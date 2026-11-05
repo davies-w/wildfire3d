@@ -490,7 +490,7 @@ main:
             switch:
             - condition: ${spot and not started_reported}
               steps:
-              - publish_started:
+              - publish_evicted_started:
                   call: http.post
                   args:
                     url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
@@ -504,7 +504,7 @@ main:
                       Content-Type: application/json
                     body:
                       started: true
-              - remember_started:
+              - remember_evicted_started:
                   assign:
                   - started_reported: true
         - pin_failed_task:

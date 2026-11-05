@@ -90,7 +90,7 @@ def case_workflow():
       step('failed_init',assign(spot=False,events='${default(map.get(failed.body.tasks[0],["status","statusEvents"]),[])}')),
       step('failed_bound',{'switch':[{'condition':'${len(events)>50}','raise':'Failed task history exceeds audit bound'}]}),
       step('failed_events',{'for':{'value':'event','in':'${events}','steps':[step('spot_event',{'switch':[{'condition':'${default(map.get(event,["taskExecution","exitCode"]),0)==50001}','assign':[{'spot':True}]}]})]}}),
-      step('report_evicted_start',{'switch':[{'condition':'${spot and not started_reported}','steps':copy.deepcopy(marksteps)}]}),
+      step('report_evicted_start',{'switch':[{'condition':'${spot and not started_reported}','steps':[step('publish_evicted_started',immutable('"started/"+string(args.index)+".json"',{'started':True})),step('remember_evicted_started',assign(started_reported=True))]}]}),
       step('pin_failed_task',immutable('c.id+"/failed-task.json"','${failed.body}')),
       step('clean_failure',{'call':'cleanup','args':{'c':'${c}'}}),
       step('failed_result',{'return':{'passed':False,'wave':'${wave.id}','count':1,'cleanup_verified':True,'spot':'${spot}','started':'${started_reported}','compute_charge_upper_usd':'${(sys.now()-wave_started)*admission.body.rate_usd_per_vm_hour/3600}'}}),
@@ -100,7 +100,7 @@ def case_workflow():
 
 def epoch_workflow():
     # Only one epoch owns admission. Claim before any execution POST; no POST retry.
-    steps=[step('init',assign(s='${args.state}',ticks=0)),
+    steps=[step('dry_run',{'switch':[{'condition':'${default(map.get(args,"dry_run"),false)}','return':{'passed':True,'dry_run':True}}]}),step('init',assign(s='${args.state}',ticks=0)),
       step('claim_epoch',immutable('"epochs/"+string(s.epoch)+"/claim.json"',{'execution':'${sys.get_env("GOOGLE_CLOUD_WORKFLOW_EXECUTION_ID")}'})),
       step('read_admission',obj_read('"control/admission-v4.json"','admission')),
       step('validate',{'switch':[{'condition':'${admission.body.passed != true or s.reserve != 525000 or s.limit < 0 or s.limit > int(admission.body.compute_limit_usd*1000000) or len(s.active)>18}','raise':'Invalid admission/state'}]}),
@@ -119,12 +119,17 @@ def epoch_workflow():
         step('final_started',{'switch':[{'condition':'${outcome.started and not s.active[key].started}','assign':[{'s.started':'${s.started+1}'}]}]}),
         step('settle',assign(**{'s.spent':'${s.spent-int(math.floor(-outcome.compute_charge_upper_usd*1000000))}','s.active':'${map.delete(s.active,key)}'})),
         step('count_evicted',{'switch':[{'condition':'${outcome.spot}','assign':[{'s.evicted':'${s.evicted+1}'}]}]}),
+        step('canary_failure',{'switch':[{'condition':'${key=="0" and not outcome.passed}','assign':[{'s.stopped':True}]}]}),
         step('success_or_drain',{'switch':[{'condition':'${outcome.passed}','assign':[{'s.completed':'${s.completed+1}'}]},{'condition':'${outcome.spot}','assign':[{'s.interrupted':'${s.interrupted+1}'}]},{'condition':'${true}','assign':[{'s.stopped':True}]}]}),
       ]}}),
       step('policy',assign(new_policy='${s.policy}')),
       step('thresholds',{'switch':[{'condition':'${s.evicted>=4 and s.evicted*10>=s.started}','assign':[{'new_policy':180}]},{'condition':'${s.evicted>=2 and s.evicted*20>=s.started and s.policy>300}','assign':[{'new_policy':300}]}]}),
       step('publish_policy',{'switch':[{'condition':'${new_policy<s.policy}','steps':[step('policy_marker',immutable('"control/"+string(new_policy)+".json"',{'run_id':'__RUN__','checkpoint_seconds':'${new_policy}'})),step('policy_set',assign(**{'s.policy':'${new_policy}'}))]}]}),
-      step('admit',{'switch':[{'condition':'${s.stopped or s.cursor>=s.total or len(s.active)>=18 or s.spent+(len(s.active)+1)*s.reserve>s.limit}','next':'end_tick'}]}),
+      step('canary_gate',{'switch':[{'condition':'${s.cursor>=1 and not s.canary_approved and not s.stopped}','steps':[
+        step('read_canary_gate',{'try':obj_read('"control/canary-approved.json"','canary'),'except':{'as':'gate_error','steps':[step('gate_missing_only',{'switch':[{'condition':'${map.get(gate_error,"code")!=404}','raise':'${gate_error}'}]}),step('gate_pending',assign(canary={'body':{'passed':False}}))]}}),
+        step('accept_canary_gate',{'switch':[{'condition':'${canary.body.passed}','steps':[step('gate_fields',{'switch':[{'condition':'${canary.body.case!=s.canary_case or not canary.body.archive_verified or not canary.body.batch_succeeded or not canary.body.cleanup_verified}','raise':'Invalid independent canary gate'}]}),step('gate_accepted',assign(**{'s.canary_approved':True}))]}]})
+      ]}]}),
+      step('admit',{'switch':[{'condition':'${s.stopped or (s.cursor>=1 and not s.canary_approved) or s.cursor>=s.total or len(s.active)>=18 or s.spent+(len(s.active)+1)*s.reserve>s.limit}','next':'end_tick'}]}),
       step('read_item',obj_read('"inputs/items/"+string(s.cursor)+".json"','item')),
       step('check_item',{'switch':[{'condition':'${item.body.index!=s.cursor or item.body.count!=1}','raise':'Invalid singleton input'}]}),
       step('intent',immutable('"intents/"+string(s.cursor)+".json"',{'index':'${s.cursor}','reserved_micro_usd':'${s.reserve}','epoch':'${s.epoch}'})),
@@ -151,8 +156,9 @@ def parent_workflow():
       step('admission',obj_read('"control/admission-v4.json"','admission')),
       step('manifest',obj_read('"inputs/index.json"','index')),
       step('validate',{'switch':[{'condition':'${admission.body.passed!=true or index.body.reviewed!=true or not (index.body.checkpoint_seconds==480 or index.body.checkpoint_seconds==300 or index.body.checkpoint_seconds==180)}','raise':'Unreviewed admission/manifest'}]}),
+      step('dry_run',{'switch':[{'condition':'${default(map.get(args,"dry_run"),false)}','return':{'passed':True,'dry_run':True}}]}),
       step('owner_claim',immutable('"controller-claim.json"',{'execution':'${sys.get_env("GOOGLE_CLOUD_WORKFLOW_EXECUTION_ID")}'})),
-      step('init',assign(s={'epoch':0,'cursor':0,'total':'${index.body.count}','active':{},'spent':0,'limit':'${int(admission.body.compute_limit_usd*1000000)}','reserve':525000,'started':0,'evicted':0,'policy':'${index.body.checkpoint_seconds}','completed':'${index.body.prior_completed}','interrupted':0,'stopped':False,'audit_required':False},polls=0,start='${sys.now()}')),
+      step('init',assign(s={'epoch':0,'cursor':0,'total':'${index.body.count}','active':{},'spent':0,'limit':'${int(admission.body.compute_limit_usd*1000000)}','reserve':525000,'started':0,'evicted':0,'policy':'${index.body.checkpoint_seconds}','completed':'${index.body.prior_completed}','interrupted':0,'canary_approved':False,'canary_case':'${index.body.first_case}','stopped':False,'audit_required':False},polls=0,start='${sys.now()}')),
       step('initial_policy',immutable('"control/480.json"',{'run_id':'__RUN__','checkpoint_seconds':480})),
       step('inherited_policy',{'switch':[{'condition':'${s.policy<480}','steps':[step('initial_reduction',immutable('"control/"+string(s.policy)+".json"',{'run_id':'__RUN__','checkpoint_seconds':'${s.policy}'}))]}]}),
       step('epoch_args',assign(child_args={'state':'${s}'})),
