@@ -10,9 +10,15 @@ while True:
  if not v.get('nextPageToken'):break
  params['pageToken']=v['nextPageToken']
 cached={x['name']:x for x in json.loads((P/'worker-proofs.json').read_text())} if (P/'worker-proofs.json').exists() else {}
+latest_jobs={}
+for v in items:
+ if '/job-status.json.' in v['name']:
+  key=v['name'].split('/job-status.json.')[0];old=latest_jobs.get(key)
+  if old is None or float(v['name'].split('/job-status.json.')[1])>float(old['name'].split('/job-status.json.')[1]):latest_jobs[key]=v
+job_names={v['name'] for v in latest_jobs.values()}
 proofs=[]
 for v in items:
- if not v['name'].endswith(('/restore.json','/startup.json','/completion.json','/verified.json')):continue
+ if not v['name'].endswith(('/restore.json','/startup.json','/completion.json','/verified.json')) and v['name'] not in job_names:continue
  old=cached.get(v['name'])
  if old and old['generation']==v['generation'] and old['md5']==v['md5Hash']:
   proofs.append(old);continue
