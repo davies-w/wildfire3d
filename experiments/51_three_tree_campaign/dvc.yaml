@@ -237,3 +237,43 @@ stages:
     - data/completed05/wave-000041
     - data/completed05/wave-000042
     - data/completed05/wave-000046
+  completed05_group004:
+    cmd:
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000031
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000033
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000037
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000040
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000043
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000044
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000045
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000047
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000048
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000049
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000050
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000051
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000052
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000053
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000054
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000056
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000057
+    - ../../.venv/bin/python collect_completed05.py --wave wave-000058
+    frozen: true
+    outs:
+    - data/completed05/wave-000031
+    - data/completed05/wave-000033
+    - data/completed05/wave-000037
+    - data/completed05/wave-000040
+    - data/completed05/wave-000043
+    - data/completed05/wave-000044
+    - data/completed05/wave-000045
+    - data/completed05/wave-000047
+    - data/completed05/wave-000048
+    - data/completed05/wave-000049
+    - data/completed05/wave-000050
+    - data/completed05/wave-000051
+    - data/completed05/wave-000052
+    - data/completed05/wave-000053
+    - data/completed05/wave-000054
+    - data/completed05/wave-000056
+    - data/completed05/wave-000057
+    - data/completed05/wave-000058
