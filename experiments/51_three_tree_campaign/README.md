@@ -128,3 +128,33 @@ uploads. If those retries are exhausted, it resumes polling within the existing
 task deadline, without deleting the running job; terminal cleanup still requires
 a saved snapshot. Job and execution creation POSTs remain non-retrying. Eighteen
 offline tests pass; cloud compilation and readiness remain required before use.
+
+### Experiment 51, Attempt 7: continuous restart
+
+The original Attempt 7 parent admitted 19 cases and stopped after two admission
+failures: index9 encountered a missing regional `quotas` field; index15 received
+HTTP502 at Batch creation. Seventeen cases passed independent full180-second,
+original-deck, finite-device, archive and singleton Batch-success verification;
+all17 exports are DVC/HF preserved with remote hash and anonymous manifest
+readback. Together with468 earlier accepted cases,485 are now accepted. No
+allocation was observed for indices9/15 in the bounded allocation audit; they
+remain excluded and are not silently retried or accepted.
+
+The repaired case workflow waits for missing/unavailable quota within a bounded
+window. A transient Batch creation error reconciles the original job ID by GET,
+without retrying its creation POST. If that job remains absent and exact resource
+inventory is empty, it defers that case, retains the full conservative admission
+charge and continues other cases. A quota wait that expires likewise defers the
+case. Deferred cases still need later review; this is not a claim that every
+requested case will complete. Genuine solver failures and unexpected errors
+retain the existing stop/drain behavior.
+
+The one-time continuation in `continuation-record07.json` starts at index19,
+retains charges for the two excluded admissions, and reuses the frozen original
+inputs. It has no first-case gate or laptop-dependent admission step. At most18
+singleton jobs may be active, with original compute limits and exact cleanup.
+Google compiled and read back all three repaired controls; no-solver executions
+passed. The existing18 admission/budget tests passed. These checks do not prove
+that every future service failure can recover; the live continuation remains
+subject to monitoring and scientific verification. The earlier parent result and
+all prior job identities are retained unchanged.
