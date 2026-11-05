@@ -85,3 +85,6 @@ Production submitted once at 2026-11-05T01:31:45.170871233Z; execution `27eeb7ab
 
 
 Rolling05 production canary passed independent full180-second device/result checks, original-deck hashing, archive generation/MD5/SHA verification, actual singleton Batch success and empty exact-case resources. The continuous watcher released admission automatically. At the next actual inventory, the parent remained active with18 distinct singleton jobs RUNNING and18Spot VMs. This establishes cloud execution of the rolling controller; observed slot refill and longer scheduler handoff remain to be verified as cases finish. There are now225 accepted cases including the diagnosed000187 replacement; no old failure record was changed.
+
+
+Rolling refill is now observed in actual cloud state: later singleton cases through index36 were running while earlier indices4 and13 remained running. The first production scheduler epoch finished successfully and handed18 active child executions to its successor (cursor37, no interrupted cases or audit-required flag). This confirms both long-tail refill and the first bounded execution handoff in production. An additional bounded group of18 scientific exports passed full180-second device/result, original-deck, archive and immutable Batch-success checks; controller counters alone are not used as scientific acceptance.

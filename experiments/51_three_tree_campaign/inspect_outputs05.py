@@ -9,9 +9,13 @@ while True:
  response=session.get('https://storage.googleapis.com/storage/v1/b/'+BUCKET+'/o',params=params,timeout=60);response.raise_for_status();v=response.json();items+=v.get('items',[])
  if not v.get('nextPageToken'):break
  params['pageToken']=v['nextPageToken']
+cached={x['name']:x for x in json.loads((P/'worker-proofs.json').read_text())} if (P/'worker-proofs.json').exists() else {}
 proofs=[]
 for v in items:
  if not v['name'].endswith(('/restore.json','/startup.json','/completion.json','/verified.json')):continue
+ old=cached.get(v['name'])
+ if old and old['generation']==v['generation'] and old['md5']==v['md5Hash']:
+  proofs.append(old);continue
  assert int(v['size'])<20*1024**2
  response=session.get('https://storage.googleapis.com/storage/v1/b/'+BUCKET+'/o/'+requests.utils.quote(v['name'],safe=''),params={'alt':'media','generation':v['generation']},timeout=60);response.raise_for_status();data=response.content
  assert base64.b64encode(hashlib.md5(data).digest()).decode()==v['md5Hash']
