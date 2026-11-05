@@ -26,7 +26,7 @@ for v in items:
 job_names={v['name'] for v in latest_jobs.values()}
 proofs=[]
 for v in items:
- if not v['name'].endswith(('/restore.json','/startup.json','/completion.json','/verified.json')) and v['name'] not in job_names:continue
+ if not v['name'].endswith(('/restore.json','/startup.json','/completion.json','/verified.json','/failed-task.json')) and not v['name'].startswith(PREFIX+'outcomes/') and v['name'] not in job_names:continue
  old=cached.get(v['name'])
  if old and old['generation']==v['generation'] and old['md5']==v['md5Hash']:
   proofs.append(old);continue

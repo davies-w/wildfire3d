@@ -158,3 +158,12 @@ passed. The existing18 admission/budget tests passed. These checks do not prove
 that every future service failure can recover; the live continuation remains
 subject to monitoring and scientific verification. The earlier parent result and
 all prior job identities are retained unchanged.
+
+Progress reporting must include pinned failed-task and deferred-admission outcomes,
+not only live Batch jobs (completed/failed jobs are cleaned up). The inspector now
+caches these immutable records too. Run `summarize_progress07.py` after inspection
+and collection: it counts local scientific proofs, confirms Spot exit50001 against
+task evidence, and lists deferrals separately. Earlier reports that repeated only
+the two original admission failures omitted later interruptions; use the current
+summary instead. Interrupted checkpoints remain in private remote storage and
+must be reviewed before any proposed recovery; interruption is never acceptance.
