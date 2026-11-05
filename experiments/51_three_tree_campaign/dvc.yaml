@@ -337,3 +337,43 @@ stages:
     - data/completed06/wave-000009
     - data/completed06/wave-000013
     - data/completed06/wave-000015
+  completed06_group002:
+    cmd:
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000003
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000004
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000006
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000007
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000008
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000010
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000011
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000014
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000016
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000018
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000019
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000020
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000021
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000023
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000024
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000026
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000027
+    - ../../.venv/bin/python collect_completed06.py --wave wave-000029
+    frozen: true
+    outs:
+    - data/completed06/wave-000003
+    - data/completed06/wave-000004
+    - data/completed06/wave-000006
+    - data/completed06/wave-000007
+    - data/completed06/wave-000008
+    - data/completed06/wave-000010
+    - data/completed06/wave-000011
+    - data/completed06/wave-000014
+    - data/completed06/wave-000016
+    - data/completed06/wave-000018
+    - data/completed06/wave-000019
+    - data/completed06/wave-000020
+    - data/completed06/wave-000021
+    - data/completed06/wave-000023
+    - data/completed06/wave-000024
+    - data/completed06/wave-000026
+    - data/completed06/wave-000027
+    - data/completed06/wave-000029
