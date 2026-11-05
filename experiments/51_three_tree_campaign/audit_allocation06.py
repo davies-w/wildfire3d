@@ -1,7 +1,8 @@
 """Audit unique rolling06 allocations and immutable terminal singleton outcomes."""
 from cloud06 import *
 import datetime,re,requests,base64
-assert json.loads((P/'terminal-archive.json').read_text())['passed']
+status=json.loads((P/'status.json').read_text());assert status['controller']['state']!='ACTIVE' and not status['jobs'] and not status['vms']
+assert all(x['state']!='ACTIVE' for x in json.loads((P/'case-executions.json').read_text()))
 start=json.loads((P/'execution.json').read_text())['startTime']
 logs=gc('logging','read','protoPayload.serviceName="compute.googleapis.com" AND "t51r06-c" AND timestamp>="'+start+'"','--limit=10000');assert len(logs)<10000;save('terminal-allocation-logs.json',logs)
 vms={}

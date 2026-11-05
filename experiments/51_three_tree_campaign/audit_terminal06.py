@@ -13,6 +13,7 @@ def auth_headers():
   return {'Authorization':'Bearer '+token_value}
 sessions=threading.local()
 def verify(v):
+ global token_value,token_time
  if not hasattr(sessions,"http"):sessions.http=requests.Session()
  dest=receipts/(hashlib.sha256(v['name'].encode()).hexdigest()+'.json')
  if dest.exists():
@@ -27,7 +28,9 @@ def verify(v):
     for chunk in r.iter_content(1024*1024):md5.update(chunk);sha256.update(chunk);size+=len(chunk)
    assert size==int(v['size']) and base64.b64encode(md5.digest()).decode()==v['md5Hash']
    result=dict(name=v['name'],generation=v['generation'],md5=v['md5Hash'],sha256=sha256.hexdigest(),bytes=size,preserved_at='gs://'+BUCKET+'/'+v['name']);tmp=dest.with_suffix('.tmp');tmp.write_text(json.dumps(result));tmp.replace(dest);return result
-  except requests.RequestException:
+  except requests.RequestException as exc:
+   if getattr(exc,"response",None) is not None and exc.response.status_code==401:
+    with token_lock:token_value=None;token_time=0
    if attempt==3:raise
    time.sleep(2**attempt)
 with concurrent.futures.ThreadPoolExecutor(max_workers=16) as pool:
