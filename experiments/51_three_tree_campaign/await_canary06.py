@@ -6,7 +6,7 @@ from cloud06 import *
 import sys
 with (P/'canary-watch.lock').open('w') as lock:
  fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
- for attempt in range(60):
+ for attempt in range(375):
   if (P/'canary-approved.json').exists():print('Gate already released; exiting',flush=True);break
   subprocess.run([sys.executable,str(R/'monitor_campaign06.py')],check=True,stdout=subprocess.DEVNULL)
   status=json.loads((P/'status.json').read_text());assert status['controller']['state']=='ACTIVE',status['controller']
