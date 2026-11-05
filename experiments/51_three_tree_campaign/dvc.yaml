@@ -316,3 +316,8 @@ stages:
     frozen: true
     outs:
     - data/cloud06
+  completed06_canary:
+    cmd: ../../.venv/bin/python collect_completed06.py --wave wave-000000
+    frozen: true
+    outs:
+    - data/completed06/wave-000000
