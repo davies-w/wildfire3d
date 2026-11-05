@@ -5,7 +5,14 @@ assert json.loads((R/'private06/closed.json').read_text())['passed']
 pkg=json.loads((P/'package.json').read_text());a=json.loads((P/'authorization.json').read_text())
 for n,h in pkg['files'].items():assert sha(R/'data/cloud07'/n)==h
 assert json.loads((P/'readiness-proof.json').read_text())['passed']
-proof=json.loads((P/'preservation.json').read_text());assert proof['passed'] and proof['index_sha256']==pkg['index_sha256']
+if (P/'preservation.json').exists():
+ proof=json.loads((P/'preservation.json').read_text());assert proof['passed'] and proof['index_sha256']==pkg['index_sha256']
+else:
+ deferred=json.loads((P/'backup-deferred-authorization.json').read_text())
+ assert deferred['authorized'] and deferred['index_sha256']==pkg['index_sha256']
+ assert json.loads((P/'bundle-validation.json').read_text())['passed']
+ assert (R/'dvc.lock').exists() and (P/'scientific-plan.json').exists()
+
 for kind in ['case','epoch','parent','check']:
  assert sha(R/('rolling07-'+kind+'.yaml'))==json.loads((P/('deployed-'+kind+'.json')).read_text())['sha256']
 # Only explicitly successful dry runs may precede the production parent.
