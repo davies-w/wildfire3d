@@ -4,6 +4,14 @@ import requests,base64
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 session=requests.Session();session.mount('https://',HTTPAdapter(max_retries=Retry(total=3,backoff_factor=1,allowed_methods=['GET'],status_forcelist=[429,500,502,503,504])));session.headers['Authorization']='Bearer '+subprocess.check_output([G,'auth','print-access-token'],text=True).strip()
+_original_get=session.get
+def refreshed_get(*args,**kwargs):
+ response=_original_get(*args,**kwargs)
+ if response.status_code==401:
+  session.headers['Authorization']='Bearer '+subprocess.check_output([G,'auth','print-access-token'],text=True).strip()
+  response=_original_get(*args,**kwargs)
+ return response
+session.get=refreshed_get
 items=[];params={'prefix':PREFIX}
 while True:
  response=session.get('https://storage.googleapis.com/storage/v1/b/'+BUCKET+'/o',params=params,timeout=60);response.raise_for_status();v=response.json();items+=v.get('items',[])
