@@ -138,3 +138,11 @@ stages:
       md5: 3af6ffac2ea34fbd5c9e49289a82c504.dir
       size: 91433399
       nfiles: 3555
+  completed05_canary:
+    cmd: ../../.venv/bin/python collect_completed05.py --wave wave-000000
+    outs:
+    - path: data/completed05/wave-000000
+      hash: md5
+      md5: a8bb70bfea50675fff0d24634dbaa321.dir
+      size: 96547200
+      nfiles: 15
