@@ -398,18 +398,32 @@ main:
               result: state
             retry: ${http.default_retry}
         - record_state:
-            call: http.post
-            args:
-              url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
-              auth:
-                type: OAuth2
-              query:
-                uploadType: media
-                name: ${"tree51/__RUN__/"+c.id+"/job-status.json" + "." + string(sys.now())}
-                ifGenerationMatch: 0
-              headers:
-                Content-Type: application/json
-              body: ${state.body}
+            try:
+              call: http.post
+              args:
+                url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+                auth:
+                  type: OAuth2
+                query:
+                  uploadType: media
+                  name: ${"tree51/__RUN__/"+c.id+"/job-status.json" + "." + string(sys.now())}
+                  ifGenerationMatch: 0
+                headers:
+                  Content-Type: application/json
+                body: ${state.body}
+            retry: ${http.default_retry}
+            except:
+              as: snapshot_error
+              steps:
+              - snapshot_deadline:
+                  switch:
+                  - condition: ${sys.now()>deadline}
+                    raise: Snapshot persistence unavailable through task deadline
+              - snapshot_wait:
+                  call: sys.sleep
+                  args:
+                    seconds: 30
+                  next: get
         - poll_bound:
             assign:
             - poll_count: ${poll_count+1}

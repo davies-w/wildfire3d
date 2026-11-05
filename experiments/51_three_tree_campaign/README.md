@@ -110,3 +110,21 @@ private receipts, DVC hashes, and remote originals. Incomplete cases are exclude
 These partially populated local output directories must not be recommitted to
 DVC: restore the exact output records using the scoped procedure in
 `docs/storage.md` when the bulk files are needed again.
+
+### Experiment 51, Attempt 6: monitoring-write failure
+
+The controller stopped new admissions after child171 encountered a connection
+failure in `record_state`, while uploading a job-status snapshot. Its generic
+exception handler cleaned up that case. This is a controller-design defect:
+a monitoring-write failure should not terminate running computation. The
+parent's outer `SUCCEEDED` status contains `target_complete:false`,
+`stopped:true`, and `audit_required:true`; it is not experiment completion.
+Remaining children must finish and their actual outputs/resources be audited
+before a corrected unique continuation. No solver failure is established by
+this connection error, and no lost case is automatically retried.
+
+The offline successor template now retries only immutable monitoring-snapshot
+uploads. If those retries are exhausted, it resumes polling within the existing
+task deadline, without deleting the running job; terminal cleanup still requires
+a saved snapshot. Job and execution creation POSTs remain non-retrying. Eighteen
+offline tests pass; cloud compilation and readiness remain required before use.

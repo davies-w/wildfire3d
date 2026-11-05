@@ -220,7 +220,12 @@ class GeneratedControllerTests(unittest.TestCase):
         def walk(x):
             if isinstance(x,dict):
                 if x.get('call')=='http.post': self.assertNotIn('retry',x)
-                if isinstance(x.get('try'),dict) and x['try'].get('call')=='http.post': self.fail('POST wrapped for retry')
+                if isinstance(x.get('try'),dict) and x['try'].get('call')=='http.post':
+                    args=x['try']['args']
+                    self.assertEqual(args['url'],'https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o')
+                    self.assertIn('/job-status.json',args['query']['name'])
+                    self.assertEqual(args['query']['ifGenerationMatch'],0)
+                    self.assertEqual(args['body'],'${state.body}')
                 for v in x.values(): walk(v)
             elif isinstance(x,list):
                 for v in x: walk(v)

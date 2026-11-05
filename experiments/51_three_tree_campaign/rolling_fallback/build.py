@@ -50,6 +50,9 @@ def case_workflow():
                   step('select_item',assign(wave='${item.body}'))]
     named['validate']['switch'].insert(0, {'condition':'${wave.count != 1 or wave.index != args.index}', 'raise':'Singleton manifest mismatch'})
     run=named['wave_run']['try']['steps']; rn={next(iter(s)):next(iter(s.values())) for s in run}
+    # Snapshot uploads are safe to retry; never cancel a healthy solver for a transient monitoring write.
+    snapshot=copy.deepcopy(rn['record_state'])
+    rn['record_state'].clear();rn['record_state'].update({'try':snapshot,'retry':'${http.default_retry}','except':{'as':'snapshot_error','steps':[step('snapshot_deadline',{'switch':[{'condition':'${sys.now()>deadline}','raise':'Snapshot persistence unavailable through task deadline'}]}),step('snapshot_wait',{'call':'sys.sleep','args':{'seconds':30},'next':'get'})]}})
     # Short unique names avoid the old 17-character campaign-prefix truncation.
     for a in rn['candidate']['assign']:
         if 'c.job_id' in a: a['c.job_id']='${"__RUN__-c"+string(args.index)}'
