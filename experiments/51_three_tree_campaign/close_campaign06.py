@@ -2,7 +2,10 @@
 from cloud06 import *
 assert WF=='t51r06' and RESERVATION=='fds-tree51-campaign06' and not (P/'closed.json').exists()
 assert json.loads((R/'private04/continuation-authorization.json').read_text())['rolling_fallback_authorized']
-a=json.loads((P/'terminal-archive.json').read_text());assert a['passed'] and not any(a['empty'].values())
+assert json.loads((P/'restart-before-raw-audit-approval.json').read_text())['approved']
+assert (P/'terminal-objects.json').exists()
+science=list((R/'data/completed06').glob('wave-*/proof.json'));assert len(science)==173 and all(json.loads(f.read_text())['passed'] for f in science)
+receipts=[json.loads(f.read_text()) for f in P.glob('preservation-group*.json')]+[json.loads((P/'preservation-canary.json').read_text())];assert len(receipts)==12 and all(v['passed'] and v['remote_size_and_xet_verified'] and v['directory_anonymous_readback'] for v in receipts)
 retired=json.loads((P/'grants-retired.json').read_text());assert retired['passed'] and retired['independent_policy_readback_verified']
 v=json.loads((P/'allocation-summary.json').read_text());assert v['passed'] and v['pairs']==176
 pairs=json.loads((P/'terminal-runtime-pairs.json').read_text());assert {x['index'] for x in pairs.values()}==set(range(176))
@@ -16,5 +19,5 @@ with (B.parent/'data/budget.lock').open('w') as f:
  key='fds-tree51-campaign07';assert key not in b['reservations'];old.update(state='monitoring_write_failure_audited_closed',cost=dict(usd=cost,allocation_seconds=seconds,rate_usd_per_hour=.15,stage='conservative_allocation_estimate'))
  b['estimated_spend_usd']+=cost;b['accounting']['spend_estimate_usd']=b['estimated_spend_usd'];b['reserved_usd']-=cost;b['reservations'][key]=dict(state='reserved_before_upload',allowance_usd=allowance-cost,reserved_unix=time.time(),scope='Only audited original rolling remainder; remaining eligible cases and ancillary costs; no added allowance')
  assert b['reservations']['fds-tree51-training']['allowance_usd']==20 and b['estimated_spend_usd']+b['reserved_usd']<=b['authorized_usd']==200
- B.write_text(json.dumps(b,indent=2)+'\n');save('closed.json',dict(passed=True,empty=empty,four_exact_grants_removed=True,allocation_seconds=seconds,compute_estimate_usd=cost,remainder_reserved_to=key,remaining_allowance_usd=allowance-cost,training_reserve_untouched=True,accepted_cases=468,pending_interrupted_review=[12,17,171]))
+ B.write_text(json.dumps(b,indent=2)+'\n');save('closed.json',dict(passed=True,empty=empty,four_exact_grants_removed=True,allocation_seconds=seconds,compute_estimate_usd=cost,remainder_reserved_to=key,remaining_allowance_usd=allowance-cost,training_reserve_untouched=True,raw_backup_hash_audit_pending=not (P/'terminal-archive.json').exists(),accepted_cases=468,pending_interrupted_review=[12,17,171]))
 print('Closed06; original remainder reserved07; no new simulation submitted')

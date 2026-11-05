@@ -2,7 +2,10 @@
 from cloud06 import *
 assert WF=='t51r06' and P.name=='private06'
 assert not (P/'grants-retired.json').exists(),'Already retired; do not repeat'
-a=json.loads((P/'terminal-archive.json').read_text());assert a['passed'] and len(a['objects'])==len(json.loads((P/'terminal-objects.json').read_text())) and not any(a['empty'].values())
+assert json.loads((P/'restart-before-raw-audit-approval.json').read_text())['approved']
+assert (P/'terminal-objects.json').exists()
+science=list((R/'data/completed06').glob('wave-*/proof.json'));assert len(science)==173 and all(json.loads(f.read_text())['passed'] for f in science)
+receipts=[json.loads(f.read_text()) for f in P.glob('preservation-group*.json')]+[json.loads((P/'preservation-canary.json').read_text())];assert len(receipts)==12 and all(v['passed'] and v['remote_size_and_xet_verified'] and v['directory_anonymous_readback'] for v in receipts)
 s=json.loads((P/'status.json').read_text());assert s['controller']['state']=='SUCCEEDED' and json.loads(s['controller']['result'])['requires_allocation_and_scientific_audit']
 assert all(x['state'] in ['FAILED','SUCCEEDED','CANCELLED'] for x in json.loads((P/'case-executions.json').read_text()))
 vms=json.loads((P/'terminal-runtime-pairs.json').read_text());assert len(vms)==176 and all(v['start'] and v['end'] for v in vms.values())

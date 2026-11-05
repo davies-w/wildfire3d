@@ -8,7 +8,8 @@ with (P/'continuation.lock').open('w') as lock:
  assert not (P/'submission-intent.json').exists(),'Never duplicate launch'
  for tick in range(180):
   a=R/'private06/terminal-archive.json'
-  if a.exists() and json.loads(a.read_text())['passed']:break
+  approval=R/'private06/restart-before-raw-audit-approval.json'
+  if (a.exists() and json.loads(a.read_text())['passed']) or (approval.exists() and json.loads(approval.read_text())['approved']):break
   print('Waiting for full immutable Attempt6 audit',tick,flush=True);time.sleep(30)
  else:raise RuntimeError('Audit wait expired; no launch')
  assert json.loads((R/'private06/allocation-summary.json').read_text())['passed']
