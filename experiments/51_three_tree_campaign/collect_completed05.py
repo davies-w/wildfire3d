@@ -20,7 +20,7 @@ out=R/'data/completed05'/wave;out.mkdir(parents=True,exist_ok=True);proofs=[]
 for record in completed:
  c=record['proof'];case=record['name'].split('/')[-2];assert c['deck_sha256']==expected[case]['deck_sha256'];dest=out/case;done=dest/'proof.json'
  if done.exists():proofs.append(json.loads(done.read_text()));continue
- dest.mkdir(exist_ok=True);prefix=record['name'].rsplit('/',1)[0]+'/';manifest=c['archive'];assert manifest['complete'];result=None;startup=next(x['proof'] for x in json.loads((P/'worker-proofs.json').read_text()) if x['name']==prefix+'startup.json');files=[]
+ dest.mkdir(exist_ok=True);prefix=record['name'].rsplit('/',1)[0]+'/';manifest=c['archive'];assert manifest['complete'];result=None;original_deck_verified=False;startup=next(x['proof'] for x in json.loads((P/'worker-proofs.json').read_text()) if x['name']==prefix+'startup.json');files=[]
  class Parts(io.RawIOBase):
   def __init__(self):self.parts=iter(manifest['parts']);self.current=io.BytesIO()
   def readable(self):return True
@@ -37,6 +37,8 @@ for record in completed:
   for m in t:
    if not m.isfile():continue
    path=Path(m.name);assert '..' not in path.parts and not path.is_absolute()
+   if m.name=='evidence/original.fds':
+    original_deck_verified=hashlib.sha256(t.extractfile(m).read()).hexdigest()==expected[case]['deck_sha256'];assert original_deck_verified
    if m.name=='evidence/result.json':result=json.load(t.extractfile(m))
    if m.name=='evidence/startup.json':startup=json.load(t.extractfile(m))
    if path.parts[:2]!=('evidence','solve') or path.suffix not in {'.fds','.csv','.restart','.sf','.prt5','.smv','.xyz','.sz','.bnd'}:continue
@@ -48,6 +50,6 @@ for record in completed:
  assert result and result['passed'] and result['physical_time']>=180-1e-5 and startup and startup['passed']
  with (dest/'solve'/(case+'_devc.csv')).open() as f:
   rows=csv.reader(f);next(rows);keys=[x.strip().strip('"') for x in next(rows)];last=list(rows)[-1];assert all(math.isfinite(float(v)) for v in last) and float(last[keys.index('Time')])>=180-1e-5
- assert sha(dest/'solve'/(case+'.fds'))==expected[case]['deck_sha256']
+ assert original_deck_verified
  proof=dict(passed=True,case=case,physical_time_s=result['physical_time'],startup_passed=True,deck_sha256=c['deck_sha256'],archive_parts_verified=True,files=files);done.write_text(json.dumps(proof,indent=2));proofs.append(proof);print('Collected',case,flush=True)
 (out/'proof.json').write_text(json.dumps(dict(passed=True,cases=proofs),indent=2));print('Collected currently completed continuations:',len(proofs),flush=True)
