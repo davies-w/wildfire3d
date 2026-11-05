@@ -11,7 +11,9 @@ def auth_headers():
   if token_value is None or time.monotonic()-token_time>2400:
    token_value=subprocess.check_output([G,'auth','print-access-token'],text=True).strip();token_time=time.monotonic()
   return {'Authorization':'Bearer '+token_value}
+sessions=threading.local()
 def verify(v):
+ if not hasattr(sessions,"http"):sessions.http=requests.Session()
  dest=receipts/(hashlib.sha256(v['name'].encode()).hexdigest()+'.json')
  if dest.exists():
   old=json.loads(dest.read_text())
@@ -20,7 +22,7 @@ def verify(v):
   try:
    auth=auth_headers()
    md5=hashlib.md5();sha256=hashlib.sha256();size=0
-   with requests.get('https://storage.googleapis.com/storage/v1/b/'+BUCKET+'/o/'+requests.utils.quote(v['name'],safe=''),params={'alt':'media','generation':v['generation']},headers=auth,timeout=(30,120),stream=True) as r:
+   with sessions.http.get('https://storage.googleapis.com/storage/v1/b/'+BUCKET+'/o/'+requests.utils.quote(v['name'],safe=''),params={'alt':'media','generation':v['generation']},headers=auth,timeout=(30,120),stream=True) as r:
     r.raise_for_status()
     for chunk in r.iter_content(1024*1024):md5.update(chunk);sha256.update(chunk);size+=len(chunk)
    assert size==int(v['size']) and base64.b64encode(md5.digest()).decode()==v['md5Hash']
@@ -28,7 +30,7 @@ def verify(v):
   except requests.RequestException:
    if attempt==3:raise
    time.sleep(2**attempt)
-with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+with concurrent.futures.ThreadPoolExecutor(max_workers=16) as pool:
  records=[]
  for result in pool.map(verify,items):
   records.append(result)
