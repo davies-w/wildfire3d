@@ -1,0 +1,579 @@
+inventory:
+  params:
+  - c
+  steps:
+  - init:
+      assign:
+      - vms: []
+      - disks: []
+  - zones:
+      for:
+        value: z
+        in: ${c.zones}
+        steps:
+        - get_vms:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/instances"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: ${"labels.trial_id = " + c.label}
+                  fields: items(name,selfLink,labels,creationTimestamp,status),nextPageToken
+                  maxResults: 500
+              result: v
+            retry: ${http.default_retry}
+        - page_guard_v:
+            switch:
+            - condition: ${map.get(v.body,"nextPageToken") != null}
+              raise: Unexpected inventory pagination; refuse partial inventory
+            - condition: ${len(default(map.get(v.body,"items"),[])) > 1}
+              raise: Unexpected resource count; audit required
+        - append_vms:
+            for:
+              value: vm
+              in: ${default(map.get(v.body,"items"),[])}
+              steps:
+              - ownership_vm:
+                  switch:
+                  - condition: ${map.get(vm,["labels","trial_id"]) != c.label}
+                    raise: Foreign resource in case cleanup inventory
+              - add_vm:
+                  assign:
+                  - vms: ${list.concat(vms,vm)}
+        - get_disks:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/disks"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: ${"labels.trial_id = " + c.label}
+                  fields: items(name,selfLink,labels,users),nextPageToken
+                  maxResults: 500
+              result: d
+            retry: ${http.default_retry}
+        - page_guard_d:
+            switch:
+            - condition: ${map.get(d.body,"nextPageToken") != null}
+              raise: Unexpected inventory pagination; refuse partial inventory
+            - condition: ${len(default(map.get(d.body,"items"),[])) > 1}
+              raise: Unexpected resource count; audit required
+        - append_disks:
+            for:
+              value: disk
+              in: ${default(map.get(d.body,"items"),[])}
+              steps:
+              - ownership_disk:
+                  switch:
+                  - condition: ${map.get(disk,["labels","trial_id"]) != c.label}
+                    raise: Foreign resource in case cleanup inventory
+              - add_disk:
+                  assign:
+                  - disks: ${list.concat(disks,disk)}
+  - done:
+      return:
+        vms: ${vms}
+        disks: ${disks}
+cleanup:
+  params:
+  - c
+  steps:
+  - cleanup_deadline:
+      assign:
+      - cleanup_until: ${sys.now()+600}
+      - cleanup_polls: 0
+  - delete_job:
+      try:
+        call: http.delete
+        args:
+          url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+            + c.region + "/jobs/" + c.job_id}
+          auth:
+            type: OAuth2
+      retry: ${http.default_retry}
+      except:
+        as: err
+        steps:
+        - unexpected_1:
+            switch:
+            - condition: ${map.get(err,"code") != 404}
+              raise: ${err}
+  - inventory:
+      call: inventory
+      args:
+        c: ${c}
+      result: inv
+  - delete_vms:
+      for:
+        value: vm
+        in: ${inv.vms}
+        steps:
+        - delete_vm:
+            try:
+              call: http.delete
+              args:
+                url: ${vm.selfLink}
+                auth:
+                  type: OAuth2
+            retry: ${http.default_retry}
+            except:
+              as: err
+              steps:
+              - unexpected_2:
+                  switch:
+                  - condition: ${map.get(err,"code") != 404}
+                    raise: ${err}
+  - cleanup_bound:
+      switch:
+      - condition: ${sys.now()>cleanup_until}
+        raise: Cleanup requires audit; no next wave admitted
+  - cleanup_count:
+      assign:
+      - cleanup_polls: ${cleanup_polls+1}
+  - cleanup_poll_limit:
+      switch:
+      - condition: ${cleanup_polls>40 or sys.now()>cleanup_until}
+        raise: Cleanup bound reached; independent audit required
+  - wait:
+      call: sys.sleep
+      args:
+        seconds: 15
+  - verify:
+      call: inventory
+      args:
+        c: ${c}
+      result: left
+  - orphan_disks:
+      for:
+        value: disk
+        in: ${left.disks}
+        steps:
+        - unused:
+            switch:
+            - condition: ${len(default(map.get(disk,"users"),[])) == 0}
+              steps:
+              - delete_disk:
+                  try:
+                    call: http.delete
+                    args:
+                      url: ${disk.selfLink}
+                      auth:
+                        type: OAuth2
+                  retry: ${http.default_retry}
+  - empty:
+      switch:
+      - condition: ${len(left.vms) > 0 or len(left.disks) > 0}
+        next: cleanup_count
+  - job_present:
+      assign:
+      - present: true
+  - verify_job:
+      try:
+        call: http.get
+        args:
+          url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+            + c.region + "/jobs/" + c.job_id}
+          auth:
+            type: OAuth2
+          query:
+            fields: name,status(state,taskGroups,runDuration)
+        result: remaining
+      retry: ${http.default_retry}
+      except:
+        as: e
+        steps:
+        - gone:
+            switch:
+            - condition: ${map.get(e,"code") == 404}
+              assign:
+              - present: false
+            - condition: ${true}
+              raise: ${e}
+  - job_wait:
+      switch:
+      - condition: ${present}
+        next: cleanup_count
+  - done:
+      return:
+        empty: true
+await_quota:
+  params:
+  - c
+  steps:
+  - get:
+      try:
+        call: http.get
+        args:
+          url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/regions/us-central1
+          auth:
+            type: OAuth2
+        result: q
+      retry: ${http.default_retry}
+  - reset:
+      assign:
+      - available: 0
+  - quotas:
+      for:
+        value: item
+        in: ${q.body.quotas}
+        steps:
+        - spot:
+            switch:
+            - condition: ${item.metric == "PREEMPTIBLE_CPUS"}
+              assign:
+              - available: ${item.limit-item.usage}
+  - ready:
+      switch:
+      - condition: ${available >= 4 * int(c.job.taskGroups[0].taskCount)}
+        return: true
+      next: quota_denied
+  - quota_denied:
+      raise: Insufficient Spot CPU quota; no job submitted
+main:
+  params:
+  - args
+  steps:
+  - init:
+      assign:
+      - template:
+          id: canary
+          job_id: t51r06-canary
+          label: t51r06-canary
+          region: us-central1
+          zones:
+          - us-central1-a
+          - us-central1-b
+          - us-central1-c
+          job:
+            taskGroups:
+            - taskCount: '2'
+              parallelism: '2'
+              taskCountPerNode: '1'
+              taskSpec:
+                computeResource:
+                  cpuMilli: 4000
+                  memoryMib: 28000
+                maxRunDuration: 10800s
+                maxRetryCount: 0
+                environment:
+                  variables: {}
+                runnables:
+                - container:
+                    imageUri: us-central1-docker.pkg.dev/tmrw-wildfire-20261015/fds/solver48@sha256:2f27d44c854922f94f96a0c4137e1b092931022cf4294e1f89f888a56fd76443
+                    entrypoint: python3
+                    commands:
+                    - -c
+                    - import base64;exec(compile(base64.b64decode('aW1wb3J0IG9zLGpzb24sbHptYSxwYXRobGliLHVybGxpYi5yZXF1ZXN0LGhhc2hsaWIsc3lzLHJ1bnB5CnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cDovL21ldGFkYXRhLmdvb2dsZS5pbnRlcm5hbC9jb21wdXRlTWV0YWRhdGEvdjEvaW5zdGFuY2Uvc2VydmljZS1hY2NvdW50cy9kZWZhdWx0L3Rva2VuJyxoZWFkZXJzPXsnTWV0YWRhdGEtRmxhdm9yJzonR29vZ2xlJ30pCnRvaz1qc29uLmxvYWQodXJsbGliLnJlcXVlc3QudXJsb3BlbihyLHRpbWVvdXQ9MjApKVsnYWNjZXNzX3Rva2VuJ10Kd2F2ZT1vcy5lbnZpcm9uWydXQVZFX0lEJ107YXNzZXJ0IHdhdmUuc3RhcnRzd2l0aCgnd2F2ZS0nKSBhbmQgd2F2ZVs1Ol0uaXNkaWdpdCgpCnI9dXJsbGliLnJlcXVlc3QuUmVxdWVzdCgnaHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3Rtcnctd2lsZGZpcmUtMjAyNjEwMTUtdHJpYWwvdHJlZTUxL3Q1MXIwNi9pbnB1dHMvJyt3YXZlKycueHonLGhlYWRlcnM9eydBdXRob3JpemF0aW9uJzonQmVhcmVyICcrdG9rfSkKYmxvYj11cmxsaWIucmVxdWVzdC51cmxvcGVuKHIsdGltZW91dD0xMjApLnJlYWQoKTthc3NlcnQgaGFzaGxpYi5zaGEyNTYoYmxvYikuaGV4ZGlnZXN0KCk9PW9zLmVudmlyb25bJ1dBVkVfU0hBJ10KcGF5bG9hZD1qc29uLmxvYWRzKGx6bWEuZGVjb21wcmVzcyhibG9iKSk7cm9vdD1wYXRobGliLlBhdGgoJy9zdHVkeScpO3Jvb3QubWtkaXIoZXhpc3Rfb2s9VHJ1ZSkKZm9yIG4sdiBpbiBwYXlsb2FkLml0ZW1zKCk6CiBwPXJvb3Qvbjthc3NlcnQgcC5pc19yZWxhdGl2ZV90byhyb290KSBhbmQgJy4uJyBub3QgaW4gcGF0aGxpYi5QYXRoKG4pLnBhcnRzO3AucGFyZW50Lm1rZGlyKHBhcmVudHM9VHJ1ZSxleGlzdF9vaz1UcnVlKTtwLndyaXRlX3RleHQodikKY2FzZT1qc29uLmxvYWRzKHBheWxvYWRbJ2dyb3Vwcy5qc29uJ10pWyd3YXZlJ11baW50KG9zLmVudmlyb25bJ0JBVENIX1RBU0tfSU5ERVgnXSldCihyb290Lyd0YXNrLmpzb24nKS53cml0ZV90ZXh0KGpzb24uZHVtcHMoeydjYXNlJzpjYXNlLCdvdXRwdXRfcHJlZml4JzondHJlZTUxL3Q1MXIwNi8nK3dhdmUrJy8nK2Nhc2VbJ3BpbG90X2Nhc2UnXSsnLyd9KSkKc3lzLnBhdGguaW5zZXJ0KDAsc3RyKHJvb3QpKTtydW5weS5ydW5fcGF0aChzdHIocm9vdC8nd29ya2VyLnB5JykscnVuX25hbWU9J19fbWFpbl9fJykK'),'bootstrap','exec'))
+                    options: --cpus=4 --memory=28000m --pids-limit=256
+            allocationPolicy:
+              instances:
+              - policy:
+                  machineType: c3-highmem-4
+                  provisioningModel: SPOT
+                  bootDisk:
+                    sizeGb: '30'
+                    type: pd-balanced
+              location:
+                allowedLocations:
+                - zones/us-central1-a
+                - zones/us-central1-b
+                - zones/us-central1-c
+              serviceAccount:
+                email: fds-worker@tmrw-wildfire-20261015.iam.gserviceaccount.com
+              labels:
+                trial_id: t51r06-canary
+              network:
+                networkInterfaces:
+                - network: projects/tmrw-wildfire-20261015/global/networks/fds-trial
+                  subnetwork: projects/tmrw-wildfire-20261015/regions/us-central1/subnetworks/fds-trial
+            labels:
+              trial_id: t51r06-canary
+            logsPolicy:
+              destination: CLOUD_LOGGING
+      - candidates: []
+      - checkpoint_seconds: ${args.checkpoint_seconds}
+      - wave_started: ${sys.now()}
+      - wave: null
+      - started_reported: false
+  - read_admission:
+      call: http.get
+      args:
+        url: https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/tree51%2Ft51r06%2Fcontrol%2Fadmission-v4.json
+        query:
+          alt: media
+        auth:
+          type: OAuth2
+      result: admission
+  - read_item:
+      call: http.get
+      args:
+        url: ${"https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/"+text.url_encode("tree51/t51r06/"+"inputs/items/"+string(args.index)+".json")}
+        auth:
+          type: OAuth2
+        query:
+          alt: media
+      result: item
+  - select_item:
+      assign:
+      - wave: ${item.body}
+  - validate:
+      switch:
+      - condition: ${wave.count != 1 or wave.index != args.index}
+        raise: Singleton manifest mismatch
+      - condition: ${wave == null or admission.body.passed != true or not (checkpoint_seconds
+          == 480 or checkpoint_seconds == 300 or checkpoint_seconds == 180)}
+        raise: Invalid frozen wave request
+      - condition: ${args.spent + wave.count*admission.body.reserve_seconds_per_vm*admission.body.rate_usd_per_vm_hour/3600
+          > admission.body.compute_limit_usd}
+        raise: Wave exceeds remaining compute allowance
+  - dry_run:
+      switch:
+      - condition: ${default(map.get(args,"dry_run"),false)}
+        return:
+          passed: true
+          dry_run: true
+          wave: ${wave.id}
+  - claim_once:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: ${"tree51/t51r06/claims/"+wave.id+".json"}
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body:
+          execution: ${sys.get_env("GOOGLE_CLOUD_WORKFLOW_EXECUTION_ID")}
+          wave: ${wave.id}
+  - wave_run:
+      try:
+        steps:
+        - candidate:
+            assign:
+            - c: ${template}
+            - c.id: ${wave.id}
+            - c.job_id: ${"t51r06-c"+string(args.index)}
+            - c.label: ${c.job_id}
+            - c.job.taskGroups[0].taskCount: ${string(wave.count)}
+            - c.job.taskGroups[0].parallelism: ${string(wave.count)}
+            - c.job.taskGroups[0].taskSpec.environment.variables:
+                WAVE_ID: ${wave.id}
+                WAVE_SHA: ${wave.sha256}
+            - c.job.labels.trial_id: ${c.label}
+            - c.job.allocationPolicy.labels.trial_id: ${c.label}
+            - candidates: ${[c]}
+            - wave_started: ${sys.now()}
+            - poll_count: 0
+            - last_failed: 0
+        - quota_gate:
+            call: await_quota
+            args:
+              c: ${c}
+        - create:
+            call: http.post
+            args:
+              url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs
+              auth:
+                type: OAuth2
+              query:
+                jobId: ${c.job_id}
+              body: ${c.job}
+        - set_deadline:
+            assign:
+            - deadline: ${wave_started+11100}
+        - get:
+            try:
+              call: http.get
+              args:
+                url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/"
+                  + c.region + "/jobs/" + c.job_id}
+                auth:
+                  type: OAuth2
+                query:
+                  fields: name,status(state,taskGroups,runDuration)
+              result: state
+            retry: ${http.default_retry}
+        - record_state:
+            call: http.post
+            args:
+              url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+              auth:
+                type: OAuth2
+              query:
+                uploadType: media
+                name: ${"tree51/t51r06/"+c.id+"/job-status.json" + "." + string(sys.now())}
+                ifGenerationMatch: 0
+              headers:
+                Content-Type: application/json
+              body: ${state.body}
+        - poll_bound:
+            assign:
+            - poll_count: ${poll_count+1}
+        - poll_limit:
+            switch:
+            - condition: ${poll_count > 375}
+              raise: Bounded wave poll limit reached
+        - report_started:
+            switch:
+            - condition: ${not started_reported and (int(default(map.get(state.body,["status","taskGroups","group0","counts","RUNNING"]),0))>0
+                or state.body.status.state=="SUCCEEDED")}
+              steps:
+              - publish_started:
+                  call: http.post
+                  args:
+                    url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+                    auth:
+                      type: OAuth2
+                    query:
+                      uploadType: media
+                      name: ${"tree51/t51r06/"+"started/"+string(args.index)+".json"}
+                      ifGenerationMatch: 0
+                    headers:
+                      Content-Type: application/json
+                    body:
+                      started: true
+              - remember_started:
+                  assign:
+                  - started_reported: true
+        - terminal:
+            switch:
+            - condition: ${state.body.status.state == "SUCCEEDED"}
+              next: clean_success
+            - condition: ${state.body.status.state == "FAILED"}
+              next: failed_task
+        - controller_limit:
+            switch:
+            - condition: ${sys.now()>deadline}
+              raise: Queue/run deadline exceeded
+        - wait:
+            call: sys.sleep
+            args:
+              seconds: 30
+            next: get
+        - failed_task:
+            try:
+              call: http.get
+              args:
+                url: ${"https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs/"+c.job_id+"/taskGroups/group0/tasks"}
+                auth:
+                  type: OAuth2
+              result: failed
+            retry: ${http.default_retry}
+        - failed_shape:
+            switch:
+            - condition: ${len(default(map.get(failed.body,"tasks"),[]))!=1 or map.get(failed.body,"nextPageToken")!=null
+                or failed.body.tasks[0].status.state!="FAILED"}
+              raise: Unexpected singleton task status
+        - failed_init:
+            assign:
+            - spot: false
+            - events: ${default(map.get(failed.body.tasks[0],["status","statusEvents"]),[])}
+        - failed_bound:
+            switch:
+            - condition: ${len(events)>50}
+              raise: Failed task history exceeds audit bound
+        - failed_events:
+            for:
+              value: event
+              in: ${events}
+              steps:
+              - spot_event:
+                  switch:
+                  - condition: ${default(map.get(event,["taskExecution","exitCode"]),0)==50001}
+                    assign:
+                    - spot: true
+        - report_evicted_start:
+            switch:
+            - condition: ${spot and not started_reported}
+              steps:
+              - publish_evicted_started:
+                  call: http.post
+                  args:
+                    url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+                    auth:
+                      type: OAuth2
+                    query:
+                      uploadType: media
+                      name: ${"tree51/t51r06/"+"started/"+string(args.index)+".json"}
+                      ifGenerationMatch: 0
+                    headers:
+                      Content-Type: application/json
+                    body:
+                      started: true
+              - remember_evicted_started:
+                  assign:
+                  - started_reported: true
+        - pin_failed_task:
+            call: http.post
+            args:
+              url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+              auth:
+                type: OAuth2
+              query:
+                uploadType: media
+                name: ${"tree51/t51r06/"+c.id+"/failed-task.json"}
+                ifGenerationMatch: 0
+              headers:
+                Content-Type: application/json
+              body: ${failed.body}
+        - clean_failure:
+            call: cleanup
+            args:
+              c: ${c}
+        - failed_result:
+            return:
+              passed: false
+              wave: ${wave.id}
+              count: 1
+              cleanup_verified: true
+              spot: ${spot}
+              started: ${started_reported}
+              compute_charge_upper_usd: ${(sys.now()-wave_started)*admission.body.rate_usd_per_vm_hour/3600}
+        - clean_success:
+            call: cleanup
+            args:
+              c: ${c}
+        - wave_result:
+            return:
+              passed: true
+              wave: ${wave.id}
+              count: ${wave.count}
+              checkpoint_seconds: ${checkpoint_seconds}
+              compute_charge_upper_usd: ${(sys.now()-wave_started)*wave.count*admission.body.rate_usd_per_vm_hour/3600}
+              cleanup_verified: true
+              spot: false
+              started: true
+      except:
+        as: failure
+        steps:
+        - cleanup_all:
+            switch:
+            - condition: ${len(candidates)>0}
+              steps:
+              - clean_failed:
+                  call: cleanup
+                  args:
+                    c: ${candidates[0]}
+        - record_failure:
+            call: http.post
+            args:
+              url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+              auth:
+                type: OAuth2
+              query:
+                uploadType: media
+                name: ${"tree51/t51r06/controller-error.json." + string(sys.now())}
+                ifGenerationMatch: 0
+              headers:
+                Content-Type: application/json
+              body: ${failure}
+        - raise_failure:
+            raise: ${failure}
