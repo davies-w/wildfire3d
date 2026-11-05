@@ -101,3 +101,12 @@ Continuation06 preparation selects1,703 never-submitted cases plus the audited u
 
 
 Continuation06 has demonstrated actual rolling refill: cases19–21 entered while earlier cases remained running. Canary000273 is independently accepted, bringing the verified operational total to296 before subsequent case collection. The controller remains active; later completion records still require the same archive/device/Batch checks before acceptance.
+
+Completed Attempt 6 exports may have their local `solve/` files evicted after
+matching their full SHA256 and sizes to a dedicated DVC/HF plan with successful
+remote-hash and anonymous-manifest verification. `evict_preserved06.py` handles
+one bounded group under the preservation lock and retains all local proof files,
+private receipts, DVC hashes, and remote originals. Incomplete cases are excluded.
+These partially populated local output directories must not be recommitted to
+DVC: restore the exact output records using the scoped procedure in
+`docs/storage.md` when the bulk files are needed again.
