@@ -88,3 +88,8 @@ Rolling05 production canary passed independent full180-second device/result chec
 
 
 Rolling refill is now observed in actual cloud state: later singleton cases through index36 were running while earlier indices4 and13 remained running. The first production scheduler epoch finished successfully and handed18 active child executions to its successor (cursor37, no interrupted cases or audit-required flag). This confirms both long-tail refill and the first bounded execution handoff in production. An additional bounded group of18 scientific exports passed full180-second device/result, original-deck, archive and immutable Batch-success checks; controller counters alone are not used as scientific acceptance.
+
+
+### Rolling05 admission stop: Batch creation HTTP502
+
+At2026-11-05T02:31:20Z the parent returned `target_complete:false` and `audit_required:true`, despite its outer Google execution state being `SUCCEEDED`. The failed child at index71 encountered HTTP502 specifically at the Batch `create` step. Its creation POST was not retried. This is an ambiguous infrastructure submission failure, not evidence of numerical solver failure. Other children continued independently; active resources and reservations must remain intact until those children finish and the terminal allocation audit proves cleanup. No new continuation has been submitted. Case71’s execution/resource eligibility remains unresolved until that audit; absence of a completion record alone does not prove it never started.
