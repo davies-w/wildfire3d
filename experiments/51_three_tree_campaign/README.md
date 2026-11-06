@@ -179,3 +179,11 @@ reported runtime, no observed task start, no task groups, and an empty task
 list can be deferred after its evidence is saved and cleanup is verified. Its
 full reservation is retained. Other unexpected task responses still stop
 admission for review. The budget can stop the workflow before all cases finish.
+
+The second continuation finished with all its jobs drained. At that point,
+1,018 of 2,000 cases had verified scientific results and backups. The scheduler
+could not reserve another job against its running estimate. Checking 579 VM
+allocation pairs and the empty job, VM and disk inventories established room
+for one concurrent job under the existing allowance. The third continuation
+starts at the first untouched index, 582, and retains all five unresolved
+admission reservations. Its remaining queue is subject to the same budget limit.
