@@ -167,3 +167,15 @@ task evidence, and lists deferrals separately. Earlier reports that repeated onl
 the two original admission failures omitted later interruptions; use the current
 summary instead. Interrupted checkpoints remain in private remote storage and
 must be reviewed before any proposed recovery; interruption is never acceptance.
+
+The first continuous restart stopped admitting cases when two Batch jobs (indices
+514 and 515) failed with zero reported task runtime and the task status check
+could not classify them. Both had VM allocations. Neither produced scientific
+output. After the remaining jobs finished, 961 of 2,000 cases had verified
+results and backups. No jobs, VMs or disks remained, and the allocation review
+paired 519 VM starts and deletions. The second continuation starts at index
+522 and skips every previously submitted index. A future failed job with zero
+reported runtime, no observed task start, no task groups, and an empty task
+list can be deferred after its evidence is saved and cleanup is verified. Its
+full reservation is retained. Other unexpected task responses still stop
+admission for review. The budget can stop the workflow before all cases finish.

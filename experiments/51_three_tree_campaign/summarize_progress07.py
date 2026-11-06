@@ -12,5 +12,5 @@ for x in outcomes:
  elif outcome.get('admission_deferred'):deferred.append(wave)
 collected=[json.loads(x.read_text()) for x in (R/'data/completed07').glob('wave-*/proof.json')]
 assert all(x['passed'] for x in collected)
-summary=dict(verified_complete=468+sum(len(x['cases']) for x in collected),target=2000,confirmed_spot_interruptions=spot,deferred_admissions=deferred,earlier_excluded_admissions=[9,15],older_terminal_review=1)
+summary=dict(verified_complete=468+sum(len(x['cases']) for x in collected),target=2000,confirmed_spot_interruptions=spot,deferred_admissions=deferred,earlier_excluded_admissions=[9,15],failed_zero_runtime_admissions=([514,515] if (P/'resume2-state.json').exists() else []),older_terminal_review=1)
 save('progress-summary.json',summary);print(json.dumps(summary))
