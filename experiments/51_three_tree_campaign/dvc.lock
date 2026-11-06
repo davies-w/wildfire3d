@@ -4973,3 +4973,24 @@ stages:
       md5: e41e9318711f7b63333f10658e4e8639.dir
       size: 141524781
       nfiles: 15
+  completed07_group051:
+    cmd:
+    - ../../.venv/bin/python collect_completed07.py --wave wave-000553
+    - ../../.venv/bin/python collect_completed07.py --wave wave-000555
+    - ../../.venv/bin/python collect_completed07.py --wave wave-000556
+    outs:
+    - path: data/completed07/wave-000553
+      hash: md5
+      md5: afa34493b4c9f6ac3c19ca03df357464.dir
+      size: 141349381
+      nfiles: 15
+    - path: data/completed07/wave-000555
+      hash: md5
+      md5: 5ee07043048ad7d6494cf0574f83da51.dir
+      size: 141527040
+      nfiles: 15
+    - path: data/completed07/wave-000556
+      hash: md5
+      md5: 29eb31b65a1097a210d4cf78c775e320.dir
+      size: 141336479
+      nfiles: 15
