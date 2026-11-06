@@ -187,3 +187,26 @@ allocation pairs and the empty job, VM and disk inventories established room
 for one concurrent job under the existing allowance. The third continuation
 starts at the first untouched index, 582, and retains all five unresolved
 admission reservations. Its remaining queue is subject to the same budget limit.
+
+### Experiment 51, Attempt 7 ended at its budget limit
+
+**1,022 of 2,000 cases are verified complete and backed up.** Earlier attempts
+contributed 468 cases and Attempt 7 contributed 554. Each accepted Attempt 7
+case reached 180 simulated seconds, passed the archived original-deck and
+device checks, had a successful Batch task, and has a verified scientific backup.
+
+Of the remaining 978 cases, 945 were never submitted, 27 were interrupted on
+Spot VMs, 3 were deferred, 2 jobs failed with zero recorded task runtime, and
+1 older case remains under scientific review. Twenty-two of the interrupted
+cases retain checkpoint manifests. Their restartability has not been tested.
+
+The third continuation drained. The final allocation review covered 583 VM
+start/delete pairs. With the five unresolved admission reservations retained,
+the existing compute allowance cannot reserve another job. All jobs, VMs and
+disks were gone at closure, and the four temporary grants were removed and
+checked. Private raw generations were retained. The retention audit used
+immutable upload evidence and archive manifests for large parts, and pinned or
+direct reads for other objects. The DVC scientific backups were verified on
+the remote. This count reports simulation completion for generic trees with
+species-inspired geometry, a 0.5 m grid and imposed ignition. It does not
+establish ignition rates for real species.
