@@ -1,0 +1,130 @@
+main:
+  params:
+  - args
+  steps:
+  - admission:
+      call: http.get
+      args:
+        url: ${"https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/"+text.url_encode("tree51/t51r07/"+"control/admission-v4.json")}
+        auth:
+          type: OAuth2
+        query:
+          alt: media
+      result: admission
+  - manifest:
+      call: http.get
+      args:
+        url: ${"https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/"+text.url_encode("tree51/t51r07/"+"inputs/index.json")}
+        auth:
+          type: OAuth2
+        query:
+          alt: media
+      result: index
+  - validate:
+      switch:
+      - condition: ${admission.body.passed!=true or index.body.reviewed!=true or not
+          (index.body.checkpoint_seconds==480 or index.body.checkpoint_seconds==300
+          or index.body.checkpoint_seconds==180)}
+        raise: Unreviewed admission/manifest
+  - dry_run:
+      switch:
+      - condition: ${default(map.get(args,"dry_run"),false)}
+        return:
+          passed: true
+          dry_run: true
+  - read_resume:
+      call: http.get
+      args:
+        url: https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/tree51%2Ft51r07%2Fcontrol%2Fcontinuation-2.json
+        auth:
+          type: OAuth2
+        query:
+          alt: media
+      result: resume
+  - owner_claim:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: ${"tree51/t51r07/continuation-2-claim.json"}
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body:
+          execution: ${sys.get_env("GOOGLE_CLOUD_WORKFLOW_EXECUTION_ID")}
+  - init:
+      assign:
+      - s: ${resume.body.state}
+      - polls: 0
+      - start: ${sys.now()}
+  - epoch_args:
+      assign:
+      - child_args:
+          state: ${s}
+  - launch_epoch:
+      call: http.post
+      args:
+        url: https://workflowexecutions.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/workflows/t51r07-epoch/executions
+        auth:
+          type: OAuth2
+        body:
+          argument: ${json.encode_to_string(child_args)}
+      result: epoch
+  - pin_epoch:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: ${"tree51/t51r07/"+"epochs/"+string(s.epoch)+"/execution.json"}
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body: ${epoch.body}
+  - get_epoch:
+      try:
+        call: http.get
+        args:
+          url: ${"https://workflowexecutions.googleapis.com/v1/"+epoch.body.name}
+          auth:
+            type: OAuth2
+        result: status
+      retry: ${http.default_retry}
+  - count:
+      assign:
+      - polls: ${polls+1}
+  - bound:
+      switch:
+      - condition: ${polls>10000 or sys.now()-start>259200}
+        raise: Parent deadline; audit active epoch and cases
+  - state:
+      switch:
+      - condition: ${status.body.state=="SUCCEEDED"}
+        next: decode
+      - condition: ${status.body.state!="ACTIVE" and status.body.state!="QUEUED"}
+        raise: Epoch failed; inspect immutable claims and active children; do not
+          restart
+  - wait:
+      call: sys.sleep
+      args:
+        seconds: 30
+      next: get_epoch
+  - decode:
+      assign:
+      - s: ${json.decode(status.body.result)}
+  - next:
+      switch:
+      - condition: ${s.audit_required}
+        next: done
+      - condition: ${len(s.active)>0 or (not s.stopped and s.cursor<s.total and s.spent+s.reserve<=s.limit)}
+        next: epoch_args
+  - done:
+      return:
+        state: ${s}
+        target_complete: false
+        requires_allocation_and_scientific_audit: true
