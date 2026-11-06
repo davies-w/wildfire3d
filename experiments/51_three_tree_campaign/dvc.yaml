@@ -1848,3 +1848,11 @@ stages:
     - data/completed07/wave-000512
     - data/completed07/wave-000516
     - data/completed07/wave-000517
+  completed07_group040:
+    cmd:
+    - ../../.venv/bin/python collect_completed07.py --wave wave-000518
+    - ../../.venv/bin/python collect_completed07.py --wave wave-000519
+    frozen: true
+    outs:
+    - data/completed07/wave-000518
+    - data/completed07/wave-000519
