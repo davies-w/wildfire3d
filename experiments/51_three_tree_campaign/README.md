@@ -219,3 +219,10 @@ excluded from new submissions. The independent admission guards allow up to
 18 singleton jobs. Each job retains its original deck, checkpoint policy and
 scientific acceptance checks. New admissions end with sufficient time for
 cleanup before the original temporary permissions expire.
+
+The first November 6 controller stopped before launching an epoch when its
+service-account request received HTTP 403. Its execution record is retained.
+The replacement uses a unique parent claim. Before submission, the workflow
+service account successfully started no-solver case, epoch and parent executions,
+and the failed parent was verified to have submitted no simulation. The
+replacement continues from the same untouched index 586.
