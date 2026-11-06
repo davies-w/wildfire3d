@@ -210,3 +210,12 @@ direct reads for other objects. The DVC scientific backups were verified on
 the remote. This count reports simulation completion for generic trees with
 species-inspired geometry, a 0.5 m grid and imposed ignition. It does not
 establish ignition rates for real species.
+
+On November 6 the user authorized continued simulation under a cumulative
+spending ceiling reconciled against the billing export. The fourth continuation
+starts at index 586, the first of 945 untouched cases. The 1,022 verified
+results and all previously interrupted, deferred or failed identities remain
+excluded from new submissions. The independent admission guards allow up to
+18 singleton jobs. Each job retains its original deck, checkpoint policy and
+scientific acceptance checks. New admissions end with sufficient time for
+cleanup before the original temporary permissions expire.
