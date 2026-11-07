@@ -226,3 +226,13 @@ The replacement uses a unique parent claim. Before submission, the workflow
 service account successfully started no-solver case, epoch and parent executions,
 and the failed parent was verified to have submitted no simulation. The
 replacement continues from the same untouched index 586.
+
+The November controller stopped admitting new jobs after Batch reported that a
+VM was recreated during case 824 (exit 50006). Its failed-task record and two
+checkpoint manifests remain in private storage. The case is excluded from
+scientific acceptance. A separate scheduler revision recognizes this exact
+infrastructure event, records the interruption, and continues other untouched
+indices after cleanup. Spot preemptions retain separate counts. The bounded
+drain watcher checks terminal state, complete claims, empty resources,
+scientific outcomes and the current spending estimate before a single new
+submission. Inspect its receipt before reporting a restart.
