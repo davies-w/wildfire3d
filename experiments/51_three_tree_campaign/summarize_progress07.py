@@ -36,5 +36,18 @@ other_failed.extend(json.loads(f.read_text())["wave"] for f in P.glob("storage-f
 other_failed=sorted(set(other_failed)|set(previous.get('other_failed_outcomes',[])))
 collected=[json.loads(x.read_text()) for x in (R/'data/completed07').glob('wave-*/proof.json')]
 assert all(x['passed'] for x in collected)
-summary=dict(verified_complete=468+sum(len(x['cases']) for x in collected),target=2000,confirmed_spot_interruptions=spot,confirmed_vm_recreations=recreated,other_failed_outcomes=other_failed,deferred_admissions=deferred,earlier_excluded_admissions=[9,15],failed_zero_runtime_admissions=([514,515] if (P/'resume2-state.json').exists() else []),older_terminal_review=1)
+# A collector writes its proof before the remote backup finishes. Count only
+# cases covered by completed preservation receipts in the backed-up total.
+preserved=set()
+if (P/'preservation-canary.json').exists():
+ assert json.loads((P/'preservation-canary.json').read_text())['passed']
+ preserved.add(0)
+for receipt in P.glob('preservation-group*.json'):
+ v=json.loads(receipt.read_text())
+ assert v['passed'] and v['remote_size_and_xet_verified'] and v['directory_anonymous_readback']
+ group=receipt.stem.replace('preservation-','')
+ preserved.update(json.loads((P/('collection-'+group+'.json')).read_text())['indices'])
+backed_up=[json.loads((R/'data/completed07'/f'wave-{i:06d}'/'proof.json').read_text()) for i in preserved]
+assert all(x['passed'] for x in backed_up)
+summary=dict(verified_complete=468+sum(len(x['cases']) for x in backed_up),scientifically_collected=468+sum(len(x['cases']) for x in collected),target=2000,confirmed_spot_interruptions=spot,confirmed_vm_recreations=recreated,other_failed_outcomes=other_failed,deferred_admissions=deferred,earlier_excluded_admissions=[9,15],failed_zero_runtime_admissions=([514,515] if (P/'resume2-state.json').exists() else []),older_terminal_review=1)
 save('pre-lifecycle-outcomes.json',summary);save('progress-summary.json',summary);print(json.dumps(summary))

@@ -255,3 +255,9 @@ drained and the readiness checks passed. At 02:18 UTC on November 7, actual
 Batch state showed 18 running singleton jobs, indices 858–875. Rolling admission
 continues in the cloud without a local first-case gate, under the existing
 spending and permission-expiry checks.
+
+For a collection backlog, `preserve_backlog07.py` processes at most 24 bounded
+groups serially, checking each remote receipt and Git push before continuing.
+Inspect its lock and `/tmp/tree51-backlog07.log` before starting another writer.
+It stops at the local disk guard without deleting outputs. The reported backed-up
+count includes only completed preservation receipts, even while collection runs.
