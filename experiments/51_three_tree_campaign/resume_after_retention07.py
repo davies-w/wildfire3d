@@ -57,6 +57,25 @@ def readiness():
     save("nov3-readiness.json",dict(passed=True,execution=x))
 
 
+def verify_bootstrap_failure(index, outcome):
+    assert not outcome["passed"] and outcome["cleanup_verified"]
+    if index == 856 and (P/"storage-failure856-logs.json").exists():
+        logs=read("storage-failure856-logs.json")
+    else:
+        query=f'resource.type="batch.googleapis.com/Job" AND labels.job_uid:"t51r07-c{index}-" AND timestamp>="2026-11-07T00:00:00Z"'
+        logs=gc("logging","read",query,"--limit=250")
+    assert 0<len(logs)<250
+    messages=[entry.get("textPayload","") for entry in logs]
+    assert any('File "bootstrap", line 6' in line for line in messages)
+    assert any("HTTP Error 404: Not Found" in line for line in messages)
+    proof=next(x for x in read("worker-proofs.json") if x["name"]==PREFIX+f"wave-{index:06d}/failed-task.json")
+    task,=proof["proof"]["tasks"]
+    assert task["status"]["state"]=="FAILED"
+    assert any(e.get("taskExecution",{}).get("exitCode")==1 for e in task["status"]["statusEvents"])
+    assert not any(x["name"].startswith(PREFIX+f"wave-{index:06d}/") and x["name"].endswith("/startup.json") for x in read("worker-proofs.json"))
+    save(f"storage-failed-case-{index}.json",dict(wave=f"wave-{index:06d}",task=proof,bootstrap_log=logs,passed=False))
+
+
 def settle():
     assert not (P/"resume6-submission-intent.json").exists()
     failed=read("nov2-epoch-failure.json")
@@ -87,7 +106,8 @@ def settle():
         state["started"]+=int(o["started"])
         state["completed"]+=int(o["passed"])
         if not o["passed"]:
-            assert o["spot"] or o.get("vm_recreated") or o.get("admission_deferred")
+            if not (o["spot"] or o.get("vm_recreated") or o.get("admission_deferred")):
+                verify_bootstrap_failure(i,o)
             state["interrupted"]+=1
             state["evicted"]+=int(o["spot"])
         outcomes[i]=o
