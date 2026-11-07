@@ -236,3 +236,16 @@ indices after cleanup. Spot preemptions retain separate counts. The bounded
 drain watcher checks terminal state, complete claims, empty resources,
 scientific outcomes and the current spending estimate before a single new
 submission. Inspect its receipt before reporting a restart.
+
+The replacement epoch stopped before admitting index 858 because the trial
+bucket's one-day lifecycle rule removed its input. The rule also affects raw
+worker output and control evidence. Scientific exports already verified on
+their separate remote remain backed up. Exact reviewed inputs for indices
+858 onward, the index and the checkpoint controls were restored from frozen
+bytes with their original hashes. Do not recreate expired execution claims.
+Use the actual case executions to establish the submission boundary. The
+bounded drain watcher writes a single new submission intent only after cleanup,
+reconciliation, no-solver readiness and spending checks. Check its execution
+receipt before reporting a restart. Run retain_interrupted07.py after refreshing
+proofs to keep a bounded private copy of each interrupted case's newest surviving
+checkpoint. A copied checkpoint still requires a restartability check.

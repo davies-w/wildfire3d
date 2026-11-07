@@ -15,6 +15,17 @@ for x in outcomes:
   events=[e for t in task.get('tasks',[]) for e in t.get('status',{}).get('statusEvents',[])]
   if any(e.get('taskExecution',{}).get('exitCode')==50006 and 'VM is recreated during task execution' in e.get('description','') for e in events):recreated.append(wave)
   else:other_failed.append(wave)
+# An epoch can end before it publishes a child's outcome. The immutable terminal
+# task record is sufficient to identify the infrastructure interruption itself.
+for item in proofs:
+ if not item['name'].endswith('/failed-task.json'):continue
+ tasks=item['proof'].get('tasks',[])
+ if len(tasks)!=1 or tasks[0].get('status',{}).get('state')!='FAILED':continue
+ wave=item['name'].split('/')[-2]
+ for event in tasks[0]['status'].get('statusEvents',[]):
+  code=event.get('taskExecution',{}).get('exitCode')
+  if code==50001:spot.append(wave)
+  if code==50006 and 'VM is recreated during task execution' in event.get('description',''):recreated.append(wave)
 # Prior generation-verified outcomes stay historical when trial storage expires.
 history_file=P/'pre-lifecycle-outcomes.json'
 previous=json.loads(history_file.read_text()) if history_file.exists() else {}
