@@ -249,3 +249,9 @@ reconciliation, no-solver readiness and spending checks. Check its execution
 receipt before reporting a restart. Run retain_interrupted07.py after refreshing
 proofs to keep a bounded private copy of each interrupted case's newest surviving
 checkpoint. A copied checkpoint still requires a restartability check.
+
+The storage-repair continuation was submitted once after the remaining jobs
+drained and the readiness checks passed. At 02:18 UTC on November 7, actual
+Batch state showed 18 running singleton jobs, indices 858–875. Rolling admission
+continues in the cloud without a local first-case gate, under the existing
+spending and permission-expiry checks.
