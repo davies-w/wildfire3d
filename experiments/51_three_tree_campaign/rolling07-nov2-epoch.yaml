@@ -1,0 +1,303 @@
+main:
+  params:
+  - args
+  steps:
+  - dry_run:
+      switch:
+      - condition: ${default(map.get(args,"dry_run"),false)}
+        return:
+          passed: true
+          dry_run: true
+  - init:
+      assign:
+      - s: ${args.state}
+      - ticks: 0
+  - claim_epoch:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: ${"tree51/t51r07/"+"epochs/"+string(s.epoch)+"/claim.json"}
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body:
+          execution: ${sys.get_env("GOOGLE_CLOUD_WORKFLOW_EXECUTION_ID")}
+  - read_admission:
+      call: http.get
+      args:
+        url: ${"https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/"+text.url_encode("tree51/t51r07/"+"control/admission-nov06.json")}
+        auth:
+          type: OAuth2
+        query:
+          alt: media
+      result: admission
+  - validate:
+      switch:
+      - condition: ${admission.body.passed != true or s.reserve != 525000 or s.limit
+          < 0 or s.limit > int(admission.body.compute_limit_usd*1000000) or len(s.active)>18}
+        raise: Invalid admission/state
+  - poll:
+      for:
+        value: key
+        in: ${keys(s.active)}
+        steps:
+        - started_marker:
+            switch:
+            - condition: ${not s.active[key].started}
+              steps:
+              - read_started:
+                  try:
+                    call: http.get
+                    args:
+                      url: ${"https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/"+text.url_encode("tree51/t51r07/"+"started/"+key+".json")}
+                      auth:
+                        type: OAuth2
+                      query:
+                        alt: media
+                    result: marker
+                  except:
+                    as: err
+                    steps:
+                    - missing_only:
+                        switch:
+                        - condition: ${map.get(err,"code")!=404}
+                          raise: ${err}
+                    - no_marker:
+                        assign:
+                        - marker:
+                            body:
+                              started: false
+              - record_started:
+                  switch:
+                  - condition: ${marker.body.started}
+                    assign:
+                    - s.active[key].started: true
+                    - s.started: ${s.started+1}
+        - get_case:
+            try:
+              call: http.get
+              args:
+                url: ${"https://workflowexecutions.googleapis.com/v1/"+s.active[key].execution}
+                auth:
+                  type: OAuth2
+              result: child
+            retry: ${http.default_retry}
+        - child_state:
+            switch:
+            - condition: ${child.body.state=="ACTIVE" or child.body.state=="QUEUED"}
+              next: continue
+            - condition: ${child.body.state!="SUCCEEDED"}
+              steps:
+              - halt_unknown:
+                  assign:
+                  - s.stopped: true
+                  - s.audit_required: true
+              next: continue
+        - decode:
+            assign:
+            - outcome: ${json.decode(child.body.result)}
+        - validate_outcome:
+            switch:
+            - condition: ${outcome.cleanup_verified!=true or outcome.count!=1 or outcome.wave!=s.active[key].wave
+                or outcome.compute_charge_upper_usd<0 or outcome.compute_charge_upper_usd*1000000>s.reserve}
+              raise: Invalid case outcome; retain reservations and audit
+        - pin_outcome:
+            call: http.post
+            args:
+              url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+              auth:
+                type: OAuth2
+              query:
+                uploadType: media
+                name: ${"tree51/t51r07/"+"outcomes/"+key+".json"}
+                ifGenerationMatch: 0
+              headers:
+                Content-Type: application/json
+              body: ${outcome}
+        - final_started:
+            switch:
+            - condition: ${outcome.started and not s.active[key].started}
+              assign:
+              - s.started: ${s.started+1}
+        - settle:
+            assign:
+            - s.spent: ${s.spent-int(math.floor(-outcome.compute_charge_upper_usd*1000000))}
+            - s.active: ${map.delete(s.active,key)}
+        - count_evicted:
+            switch:
+            - condition: ${outcome.spot}
+              assign:
+              - s.evicted: ${s.evicted+1}
+        - canary_failure:
+            switch:
+            - condition: ${key=="0" and not outcome.passed}
+              assign:
+              - s.stopped: true
+        - success_or_drain:
+            switch:
+            - condition: ${outcome.passed}
+              assign:
+              - s.completed: ${s.completed+1}
+            - condition: ${default(map.get(outcome,"vm_recreated"),false)}
+              assign:
+              - s.interrupted: ${s.interrupted+1}
+            - condition: ${default(map.get(outcome,"admission_deferred"),false)}
+              assign:
+              - s.interrupted: ${s.interrupted+1}
+            - condition: ${outcome.spot}
+              assign:
+              - s.interrupted: ${s.interrupted+1}
+            - condition: ${true}
+              assign:
+              - s.stopped: true
+  - policy:
+      assign:
+      - new_policy: ${s.policy}
+  - thresholds:
+      switch:
+      - condition: ${s.evicted>=4 and s.evicted*10>=s.started}
+        assign:
+        - new_policy: 180
+      - condition: ${s.evicted>=2 and s.evicted*20>=s.started and s.policy>300}
+        assign:
+        - new_policy: 300
+  - publish_policy:
+      switch:
+      - condition: ${new_policy<s.policy}
+        steps:
+        - policy_marker:
+            call: http.post
+            args:
+              url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+              auth:
+                type: OAuth2
+              query:
+                uploadType: media
+                name: ${"tree51/t51r07/"+"control/"+string(new_policy)+".json"}
+                ifGenerationMatch: 0
+              headers:
+                Content-Type: application/json
+              body:
+                run_id: t51r07
+                checkpoint_seconds: ${new_policy}
+        - policy_set:
+            assign:
+            - s.policy: ${new_policy}
+  - admit:
+      switch:
+      - condition: ${sys.now() >= time.parse("2026-11-08T13:46:41Z")}
+        assign:
+        - s.stopped: true
+        next: end_tick
+      - condition: ${s.stopped or s.cursor>=s.total or len(s.active)>=18 or s.spent+(len(s.active)+1)*s.reserve>s.limit}
+        next: end_tick
+  - read_item:
+      call: http.get
+      args:
+        url: ${"https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/"+text.url_encode("tree51/t51r07/"+"inputs/items/"+string(s.cursor)+".json")}
+        auth:
+          type: OAuth2
+        query:
+          alt: media
+      result: item
+  - check_item:
+      switch:
+      - condition: ${item.body.index!=s.cursor or item.body.count!=1}
+        raise: Invalid singleton input
+  - intent:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: ${"tree51/t51r07/"+"intents/"+string(s.cursor)+".json"}
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body:
+          index: ${s.cursor}
+          reserved_micro_usd: ${s.reserve}
+          epoch: ${s.epoch}
+  - case_args:
+      assign:
+      - child_args:
+          index: ${s.cursor}
+          wave_id: ${item.body.id}
+          spent: ${s.spent/1000000.0}
+          checkpoint_seconds: ${s.policy}
+  - submit:
+      call: http.post
+      args:
+        url: https://workflowexecutions.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/workflows/t51r07-nov2-case/executions
+        auth:
+          type: OAuth2
+        body:
+          argument: ${json.encode_to_string(child_args)}
+      result: created
+  - remember:
+      assign:
+      - key: ${string(s.cursor)}
+  - active_add:
+      assign:
+      - s.active[key]:
+          execution: ${created.body.name}
+          wave: ${item.body.id}
+          started: false
+      - s.cursor: ${s.cursor+1}
+  - pin_submission:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: ${"tree51/t51r07/"+"children/"+key+".json"}
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body: ${created.body}
+  - more_slots:
+      assign:
+      - ticks: ${ticks}
+      next: admit
+  - end_tick:
+      assign:
+      - ticks: ${ticks+1}
+  - bounds:
+      switch:
+      - condition: ${s.audit_required}
+        next: handoff
+      - condition: ${len(s.active)==0 and (s.stopped or s.cursor>=s.total or s.spent+s.reserve>s.limit)}
+        next: handoff
+      - condition: ${ticks>=60}
+        next: handoff
+  - sleep:
+      call: sys.sleep
+      args:
+        seconds: 30
+      next: poll
+  - handoff:
+      assign:
+      - s.epoch: ${s.epoch+1}
+  - pin_handoff:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: ${"tree51/t51r07/"+"handoffs/"+string(s.epoch)+".json"}
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body: ${s}
+  - return:
+      return: ${s}

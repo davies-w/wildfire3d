@@ -1,0 +1,260 @@
+main:
+  steps:
+  - read_admission:
+      call: http.get
+      args:
+        url: https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/tree51%2Ft51r07%2Fcontrol%2Fadmission-nov06.json
+        query:
+          alt: media
+        auth:
+          type: OAuth2
+      result: admission
+  - read_index:
+      call: http.get
+      args:
+        url: https://storage.googleapis.com/storage/v1/b/tmrw-wildfire-20261015-trial/o/tree51%2Ft51r07%2Finputs%2Findex.json
+        query:
+          alt: media
+        auth:
+          type: OAuth2
+      result: index
+  - shape:
+      switch:
+      - condition: ${admission.body.passed!=true or index.body.count!=1531 or index.body.prior_completed!=468
+          or index.body.reviewed!=true}
+        raise: Invalid admission/index
+  - task_list_access:
+      try:
+        call: http.get
+        args:
+          url: https://batch.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/jobs/t51r07-check/taskGroups/group0/tasks
+          auth:
+            type: OAuth2
+          query:
+            pageSize: 1
+      except:
+        as: err
+        steps:
+        - expected_missing:
+            switch:
+            - condition: ${map.get(err,"code")!=404}
+              raise: ${err}
+  - write_one:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: ${"tree51/t51r07/readiness/one/"+sys.get_env("GOOGLE_CLOUD_WORKFLOW_EXECUTION_ID")}
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body:
+          passed: true
+  - write_two:
+      call: http.post
+      args:
+        url: https://storage.googleapis.com/upload/storage/v1/b/tmrw-wildfire-20261015-trial/o
+        auth:
+          type: OAuth2
+        query:
+          uploadType: media
+          name: ${"tree51/t51r07/readiness/two/"+sys.get_env("GOOGLE_CLOUD_WORKFLOW_EXECUTION_ID")}
+          ifGenerationMatch: 0
+        headers:
+          Content-Type: application/json
+        body:
+          passed: true
+  - quota:
+      call: await_quota
+      args:
+        c:
+          job_id: t51r07-check
+          label: t51r07-check
+          region: us-central1
+          zones:
+          - us-central1-a
+          - us-central1-b
+          - us-central1-c
+          job:
+            taskGroups:
+            - taskCount: '18'
+  - inventory:
+      call: inventory
+      args:
+        c:
+          job_id: t51r07-check
+          label: t51r07-check
+          region: us-central1
+          zones:
+          - us-central1-a
+          - us-central1-b
+          - us-central1-c
+          job:
+            taskGroups:
+            - taskCount: '18'
+      result: inv
+  - empty:
+      switch:
+      - condition: ${len(inv.vms)>0 or len(inv.disks)>0}
+        raise: Unexpected readiness resources
+  - init_children:
+      assign:
+      - children: []
+  - probe_case:
+      call: http.post
+      args:
+        url: https://workflowexecutions.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/workflows/t51r07-nov2-case/executions
+        auth:
+          type: OAuth2
+        body:
+          argument: '{"dry_run": true, "index": 0, "wave_id": "wave-000000", "spent":
+            0, "checkpoint_seconds": 480}'
+      result: child_case
+  - record_case:
+      assign:
+      - children: ${list.concat(children,child_case.body.name)}
+  - probe_epoch:
+      call: http.post
+      args:
+        url: https://workflowexecutions.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/workflows/t51r07-nov2-epoch/executions
+        auth:
+          type: OAuth2
+        body:
+          argument: '{"dry_run": true}'
+      result: child_epoch
+  - record_epoch:
+      assign:
+      - children: ${list.concat(children,child_epoch.body.name)}
+  - probe_parent:
+      call: http.post
+      args:
+        url: https://workflowexecutions.googleapis.com/v1/projects/tmrw-wildfire-20261015/locations/us-central1/workflows/t51r07-resume5/executions
+        auth:
+          type: OAuth2
+        body:
+          argument: '{"dry_run": true}'
+      result: child_parent
+  - record_parent:
+      assign:
+      - children: ${list.concat(children,child_parent.body.name)}
+  - done:
+      return:
+        passed: true
+        children: ${children}
+inventory:
+  params:
+  - c
+  steps:
+  - init:
+      assign:
+      - vms: []
+      - disks: []
+  - zones:
+      for:
+        value: z
+        in: ${c.zones}
+        steps:
+        - get_vms:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/instances"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: ${"labels.trial_id = " + c.label}
+                  fields: items(name,selfLink,labels,creationTimestamp,status),nextPageToken
+                  maxResults: 500
+              result: v
+            retry: ${http.default_retry}
+        - page_guard_v:
+            switch:
+            - condition: ${map.get(v.body,"nextPageToken") != null}
+              raise: Unexpected inventory pagination; refuse partial inventory
+            - condition: ${len(default(map.get(v.body,"items"),[])) > 1}
+              raise: Unexpected resource count; audit required
+        - append_vms:
+            for:
+              value: vm
+              in: ${default(map.get(v.body,"items"),[])}
+              steps:
+              - ownership_vm:
+                  switch:
+                  - condition: ${map.get(vm,["labels","trial_id"]) != c.label}
+                    raise: Foreign resource in case cleanup inventory
+              - add_vm:
+                  assign:
+                  - vms: ${list.concat(vms,vm)}
+        - get_disks:
+            try:
+              call: http.get
+              args:
+                url: ${"https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/zones/"
+                  + z + "/disks"}
+                auth:
+                  type: OAuth2
+                query:
+                  filter: ${"labels.trial_id = " + c.label}
+                  fields: items(name,selfLink,labels,users),nextPageToken
+                  maxResults: 500
+              result: d
+            retry: ${http.default_retry}
+        - page_guard_d:
+            switch:
+            - condition: ${map.get(d.body,"nextPageToken") != null}
+              raise: Unexpected inventory pagination; refuse partial inventory
+            - condition: ${len(default(map.get(d.body,"items"),[])) > 1}
+              raise: Unexpected resource count; audit required
+        - append_disks:
+            for:
+              value: disk
+              in: ${default(map.get(d.body,"items"),[])}
+              steps:
+              - ownership_disk:
+                  switch:
+                  - condition: ${map.get(disk,["labels","trial_id"]) != c.label}
+                    raise: Foreign resource in case cleanup inventory
+              - add_disk:
+                  assign:
+                  - disks: ${list.concat(disks,disk)}
+  - done:
+      return:
+        vms: ${vms}
+        disks: ${disks}
+await_quota:
+  params:
+  - c
+  steps:
+  - get:
+      try:
+        call: http.get
+        args:
+          url: https://compute.googleapis.com/compute/v1/projects/tmrw-wildfire-20261015/regions/us-central1
+          auth:
+            type: OAuth2
+        result: q
+      retry: ${http.default_retry}
+  - reset:
+      assign:
+      - available: 0
+  - quotas:
+      for:
+        value: item
+        in: ${q.body.quotas}
+        steps:
+        - spot:
+            switch:
+            - condition: ${item.metric == "PREEMPTIBLE_CPUS"}
+              assign:
+              - available: ${item.limit-item.usage}
+  - ready:
+      switch:
+      - condition: ${available >= 4 * int(c.job.taskGroups[0].taskCount)}
+        return: true
+      next: quota_denied
+  - quota_denied:
+      raise: Insufficient Spot CPU quota; no job submitted
