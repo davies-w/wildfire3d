@@ -15,7 +15,14 @@ for x in outcomes:
   events=[e for t in task.get('tasks',[]) for e in t.get('status',{}).get('statusEvents',[])]
   if any(e.get('taskExecution',{}).get('exitCode')==50006 and 'VM is recreated during task execution' in e.get('description','') for e in events):recreated.append(wave)
   else:other_failed.append(wave)
+# Prior generation-verified outcomes stay historical when trial storage expires.
+history_file=P/'pre-lifecycle-outcomes.json'
+previous=json.loads(history_file.read_text()) if history_file.exists() else {}
+spot=sorted(set(spot)|set(previous.get('confirmed_spot_interruptions',[])))
+deferred=sorted(set(deferred)|set(previous.get('deferred_admissions',[])))
+recreated=sorted(set(recreated)|set(previous.get('confirmed_vm_recreations',[])))
+other_failed=sorted(set(other_failed)|set(previous.get('other_failed_outcomes',[])))
 collected=[json.loads(x.read_text()) for x in (R/'data/completed07').glob('wave-*/proof.json')]
 assert all(x['passed'] for x in collected)
 summary=dict(verified_complete=468+sum(len(x['cases']) for x in collected),target=2000,confirmed_spot_interruptions=spot,confirmed_vm_recreations=recreated,other_failed_outcomes=other_failed,deferred_admissions=deferred,earlier_excluded_admissions=[9,15],failed_zero_runtime_admissions=([514,515] if (P/'resume2-state.json').exists() else []),older_terminal_review=1)
-save('progress-summary.json',summary);print(json.dumps(summary))
+save('pre-lifecycle-outcomes.json',summary);save('progress-summary.json',summary);print(json.dumps(summary))
