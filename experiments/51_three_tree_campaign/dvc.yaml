@@ -2656,3 +2656,21 @@ stages:
     - data/completed07/wave-000850
     - data/completed07/wave-000851
     - data/completed07/wave-000852
+  completed07_group090:
+    cmd:
+    - ../../.venv/bin/python collect_completed07.py --wave wave-000842
+    - ../../.venv/bin/python collect_completed07.py --wave wave-000844
+    - ../../.venv/bin/python collect_completed07.py --wave wave-000845
+    - ../../.venv/bin/python collect_completed07.py --wave wave-000847
+    - ../../.venv/bin/python collect_completed07.py --wave wave-000853
+    - ../../.venv/bin/python collect_completed07.py --wave wave-000854
+    - ../../.venv/bin/python collect_completed07.py --wave wave-000855
+    frozen: true
+    outs:
+    - data/completed07/wave-000842
+    - data/completed07/wave-000844
+    - data/completed07/wave-000845
+    - data/completed07/wave-000847
+    - data/completed07/wave-000853
+    - data/completed07/wave-000854
+    - data/completed07/wave-000855
