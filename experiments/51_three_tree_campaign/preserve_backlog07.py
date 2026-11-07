@@ -18,6 +18,10 @@ with (P/'backlog-preservation.lock').open('w') as lock:
   jobs={v['name'].split('/')[-2] for v in proofs if '/job-status.json.' in v['name'] and v['proof'].get('status',{}).get('state')=='SUCCEEDED'}
   eligible=[v for v in proofs if v['name'].endswith('/completion.json') and v['proof']['passed'] and v['name'].split('/')[-3] in jobs and not (R/'data/completed07'/v['name'].split('/')[-3]/'proof.json').exists()]
   if not eligible:print('BACKLOG COMPLETE for pinned inventory',flush=True);break
+  while shutil.disk_usage(R).free<12*1024**3:
+   candidates=sorted(int(g.removeprefix('group')) for g in receipts if not (P/f'eviction-{g}.json').exists())
+   if not candidates:break
+   subprocess.run([sys.executable,str(R/'evict_preserved07.py'),'--group',str(candidates[0]),'--apply'],cwd=R,check=True)
   if shutil.disk_usage(R).free<12*1024**3:print('STOP local disk guard; preserve existing outputs',flush=True);break
   group=1+max([int(x.removeprefix('group')) for x in receipts],default=0)
   print('START group',group,'eligible',len(eligible),flush=True)

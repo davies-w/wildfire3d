@@ -259,5 +259,8 @@ spending and permission-expiry checks.
 For a collection backlog, `preserve_backlog07.py` processes at most 24 bounded
 groups serially, checking each remote receipt and Git push before continuing.
 Inspect its lock and `/tmp/tree51-backlog07.log` before starting another writer.
-It stops at the local disk guard without deleting outputs. The reported backed-up
+At the local disk guard it can evict one already-backed-up group of local solve
+files after checking its hashes, remote receipt and DVC record. Proofs, metadata,
+remote originals and interrupted checkpoints remain. Failed checks stop collection.
+The reported backed-up
 count includes only completed preservation receipts, even while collection runs.

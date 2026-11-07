@@ -27,6 +27,14 @@ with (P/'preservation.lock').open('w') as lock:
  state=repo/'experiments/43_repository_preservation/results/direct-hf';plan=json.loads((state/'plan.json').read_text());prefixes=[str((R/'data/completed07'/f'wave-{i:06d}').relative_to(repo))+'/' for i in ids]
  for o in plan['objects'].values():assert o.get('directory') or any(o['source'].startswith(v) for v in prefixes)
  dedicated=P/('scientific-plan-'+group+'.json');dedicated.write_bytes((state/'plan.json').read_bytes());print('Reviewed plan',len(plan['objects']),sha(dedicated),flush=True)
- subprocess.run([sys.executable,str(helper),'push','--plan',str(dedicated)],cwd=repo,check=True)
+ # Only content-addressed artifact uploads are retried; collection and cloud jobs are not.
+ for upload_attempt in range(3):
+  try:
+   subprocess.run([sys.executable,str(helper),'push','--plan',str(dedicated)],cwd=repo,check=True)
+   break
+  except subprocess.CalledProcessError:
+   if upload_attempt==2:raise
+   print('Retrying same reviewed artifact plan',upload_attempt+1,flush=True)
+
  v=json.loads((state/'upload-verification.json').read_text());assert v['passed'] and v['objects']==len(plan['objects']) and v['remote_size_and_xet_verified'] and v['directory_anonymous_readback'] and v['plan_sha256']==sha(dedicated)
  save('preservation-'+group+'.json',v);print('PRESERVATION PASS',group,len(ids),flush=True)
