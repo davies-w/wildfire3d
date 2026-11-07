@@ -264,3 +264,13 @@ files after checking its hashes, remote receipt and DVC record. Proofs, metadata
 remote originals and interrupted checkpoints remain. Failed checks stop collection.
 The reported backed-up
 count includes only completed preservation receipts, even while collection runs.
+
+The November 7 continuation reached its conservative admission limit at index
+1483. Its terminal review found no remaining jobs, VMs or disks and reconciled
+896 complete VM allocation pairs. The next unique continuation uses those
+actual allocation intervals while retaining all six unresolved admission
+reservations and the original compute cap. Only the 48 untouched indices
+1483–1530 are eligible; interrupted and failed cases are not retried. The
+1,855 accepted cases have verified remote scientific backups. Private raw
+objects deleted by the trial bucket lifecycle are not claimed to be retained.
+Check the continuation record and execution receipt for actual submission.
