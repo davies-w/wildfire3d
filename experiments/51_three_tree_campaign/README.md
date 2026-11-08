@@ -291,3 +291,26 @@ Batch admission was verified for four scheduled singleton jobs. The current
 execution identifiers and continuation record are kept only in
 `private07/continuation-record.json`; the older public continuation record is
 historical. Monitoring follows the newest private execution receipt.
+
+### Final submitted-case outcome
+
+All 2,000 target identities are accounted for: **1,899 verified completions**,
+**92 interrupted**, **5 deferred**, **3 failed**, and **1 older case under review**.
+The verified completions have full 180-second scientific checks and verified
+remote DVC backups. The other 101 cases are not accepted and have not been
+silently retried. The final case completed independently; the parent workflow
+failed when the trial bucket lifecycle removed its admission-control object.
+The terminal child and allocation audit passed. Independent checks found no
+jobs, VMs or disks, and the four expired temporary grants were removed and
+checked. Private closure evidence and tooling remain local. Permissions were
+not extended.
+
+The 1,899 completions describe generic fuel with species-inspired geometry,
+not calibrated pine, eucalyptus or oak. Each case contains one tree on a 0.5 m
+mesh, with an imposed 0.4 m, 1500 C ignition source for 20 seconds. Oak crown
+widths are 12 or 14 m and heights 10 or 11 m; no bark, embers, grass or resolved
+solid trunk is modeled. These checks establish completion of that prescribed
+simulation, not real-species ignition behavior. Surviving private checkpoints
+from interruptions remain retained, but their restartability is untested.
+Some older private raw generations expired under bucket lifecycle rules;
+verified public scientific backups remain available.
