@@ -1,17 +1,27 @@
 """Summarize independently collected successes and pinned interruption evidence."""
 from cloud07 import *
+history_file=P/'pre-lifecycle-outcomes.json'
+previous=json.loads(history_file.read_text()) if history_file.exists() else {}
 proofs=json.loads((P/'worker-proofs.json').read_text())
 outcomes=[x for x in proofs if x['name'].startswith(PREFIX+'outcomes/') and not x['proof']['passed']]
 spot=[];deferred=[];recreated=[];other_failed=[]
 for x in outcomes:
  outcome=x['proof'];wave=outcome['wave']
  if outcome.get('spot'):
-  tasks=[v for v in proofs if v['name']==PREFIX+wave+'/failed-task.json'];assert len(tasks)==1
+  tasks=[v for v in proofs if v['name']==PREFIX+wave+'/failed-task.json']
+  if not tasks and wave in previous.get('confirmed_spot_interruptions',[]):
+   # Lifecycle expiry cannot erase an already verified historical classification.
+   spot.append(wave)
+   continue
+  assert len(tasks)==1, 'New interruption requires its pinned terminal task proof'
   events=tasks[0]['proof']['tasks'][0]['status']['statusEvents'];assert any(e.get('taskExecution',{}).get('exitCode')==50001 for e in events)
   spot.append(wave)
  elif outcome.get('admission_deferred'):deferred.append(wave)
  else:
   task=next((v['proof'] for v in proofs if v['name']==PREFIX+wave+'/failed-task.json'),{})
+  if not task and wave in previous.get('confirmed_vm_recreations',[]):
+   recreated.append(wave)
+   continue
   events=[e for t in task.get('tasks',[]) for e in t.get('status',{}).get('statusEvents',[])]
   if any(e.get('taskExecution',{}).get('exitCode')==50006 and 'VM is recreated during task execution' in e.get('description','') for e in events):recreated.append(wave)
   else:other_failed.append(wave)
@@ -27,8 +37,6 @@ for item in proofs:
   if code==50001:spot.append(wave)
   if code==50006 and 'VM is recreated during task execution' in event.get('description',''):recreated.append(wave)
 # Prior generation-verified outcomes stay historical when trial storage expires.
-history_file=P/'pre-lifecycle-outcomes.json'
-previous=json.loads(history_file.read_text()) if history_file.exists() else {}
 spot=sorted(set(spot)|set(previous.get('confirmed_spot_interruptions',[])))
 deferred=sorted(set(deferred)|set(previous.get('deferred_admissions',[])))
 recreated=sorted(set(recreated)|set(previous.get('confirmed_vm_recreations',[])))
