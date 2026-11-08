@@ -52,9 +52,11 @@ interpolated endpoint values, not observed interval maxima. The animations and
 sample records must clearly distinguish observed from interpolated cone values.
 These targets cannot recover rapid cone changes between saved frames.
 
-No new paid simulations or model training are authorized. Training-data extraction
-follows verified backup and the requested local-copy cleanup, using bounded
-restores where required rather than restoring the entire raw dataset.
+No new paid simulations or model training are authorized. The user subsequently authorized immediate conversion of two already-backed-up
+cases while the remaining raw upload continues. Retain all local raw data.
+Bulk conversion and per-scenario raw deletion await user review of this preview.
+Training data must remain local as well as DVC-controlled and verified on HF.
+Use bounded restores for verification; never restore the entire raw dataset.
 
 ## Proposed inputs (enumerated before processing)
 

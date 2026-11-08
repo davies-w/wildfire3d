@@ -4236,3 +4236,33 @@ stages:
     frozen: true
     outs:
     - data/completed07/wave-001530
+  training_preview_two_cases:
+    cmd: ../../.venv/bin/python preview_training.py && ../../.venv/bin/python validate_training_preview.py
+    frozen: true
+    deps:
+    - preview_training.py
+    - validate_training_preview.py
+    - interpolate_cone_labels.py
+    - training-preview-sources.json
+    - data/cases.jsonl.gz
+    - data/geometries.json
+    - data/decks/cases.json
+    - ../36_tree_density/material_reader.py
+    - data/completed07/wave-000860/tree51_001323_baseline/solve/input.fds
+    - data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_1.prt5
+    - data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_devc.csv
+    - data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_hrr.csv
+    - data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_1_1.sf
+    - data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline.smv
+    - data/completed07/wave-000860/tree51_001323_baseline/proof.json
+    - data/raw-cloud-archives/1bf2d4481e6c4cceec5fea3d.tar.gz.dvc
+    - data/completed07/wave-000871/tree51_001336_baseline/solve/input.fds
+    - data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_1.prt5
+    - data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_devc.csv
+    - data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_hrr.csv
+    - data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_1_1.sf
+    - data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline.smv
+    - data/completed07/wave-000871/tree51_001336_baseline/proof.json
+    - data/raw-cloud-archives/68a96e81122098a8ea2d73b4.tar.gz.dvc
+    outs:
+    - data/training-preview
