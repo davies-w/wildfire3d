@@ -10754,3 +10754,112 @@ stages:
       md5: 548bfec0501b730be9693ac20e671146.dir
       size: 192880694
       nfiles: 15
+  training_preview_two_cases:
+    cmd: ../../.venv/bin/python preview_training.py && ../../.venv/bin/python validate_training_preview.py
+    outs:
+    - path: data/training-preview
+      hash: md5
+      md5: 7c94d1dc9057897f214bf455447e9b59.dir
+      size: 9990022
+      nfiles: 19
+    deps:
+    - path: preview_training.py
+      hash: md5
+      md5: 440414d99b063d237295b4891702edc3
+      size: 17836
+    - path: validate_training_preview.py
+      hash: md5
+      md5: adaa946f0b22fe77a9dd87af9ac395c2
+      size: 3299
+    - path: interpolate_cone_labels.py
+      hash: md5
+      md5: 2397574431cbdf76976355d694b46776
+      size: 2657
+    - path: training-preview-sources.json
+      hash: md5
+      md5: 2691008fb606aeaf47b9aeb12f43c7ef
+      size: 527
+    - path: data/cases.jsonl.gz
+      hash: md5
+      md5: 9b29f1e4f0910ae957e0811dbb0e9cf8
+      size: 29649
+    - path: data/geometries.json
+      hash: md5
+      md5: 29ce6f19b3385d3f6abb5acccf438a51
+      size: 582498
+    - path: data/decks/cases.json
+      hash: md5
+      md5: 6e484dc254a99aaaecc54052bc798215
+      size: 2123299
+    - path: ../36_tree_density/material_reader.py
+      hash: md5
+      md5: abfdcb198f6ca238a558e65d2f3aebca
+      size: 2709
+    - path: data/completed07/wave-000860/tree51_001323_baseline/solve/input.fds
+      hash: md5
+      md5: 156be17c1c01fbd62d0ae8501d4a7be5
+      size: 2832386
+    - path: data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_1.prt5
+      hash: md5
+      md5: 66aa828ed2aab44c15580bded8381d3f
+      size: 68974892
+    - path: data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_devc.csv
+      hash: md5
+      md5: 132fc09d02edcfe1538ef873d2e3f7f6
+      size: 43766
+    - path: data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_hrr.csv
+      hash: md5
+      md5: a0fa2e910d9ad50cf10d3feb44ba27df
+      size: 43617
+    - path: data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_1_1.sf
+      hash: md5
+      md5: 5ce1bda61e4010d5037330948ce35913
+      size: 2522786
+    - path: data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline.smv
+      hash: md5
+      md5: 78e1fcc0b0135ce756062e384f1c7e13
+      size: 15627
+    - path: data/completed07/wave-000860/tree51_001323_baseline/proof.json
+      hash: md5
+      md5: 659c1d69a4cdd8af575441cce6f903d8
+      size: 2474
+    - path: data/raw-cloud-archives/1bf2d4481e6c4cceec5fea3d.tar.gz.dvc
+      hash: md5
+      md5: a5a7a7bee5b227ca1897ad2c91f9f332
+      size: 116
+    - path: data/completed07/wave-000871/tree51_001336_baseline/solve/input.fds
+      hash: md5
+      md5: 1b3e8f10649e8dcf34870b56b3237fd8
+      size: 2067106
+    - path: data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_1.prt5
+      hash: md5
+      md5: c889b76007c14c6275a6db89d92e5e8b
+      size: 49042252
+    - path: data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_devc.csv
+      hash: md5
+      md5: ceacd74da305e0cb336a890e5c63ef8e
+      size: 43766
+    - path: data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_hrr.csv
+      hash: md5
+      md5: 02df6e4571a52c9bdc262263dd80352f
+      size: 43617
+    - path: data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_1_1.sf
+      hash: md5
+      md5: c2c59e4979430332285a3d8e3ddfb6c3
+      size: 1916114
+    - path: data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline.smv
+      hash: md5
+      md5: 1ae103c1bcb7136a3e1e3890833f2470
+      size: 15347
+    - path: data/completed07/wave-000871/tree51_001336_baseline/proof.json
+      hash: md5
+      md5: 8cdda213a444c99b5096a4d68f6ae857
+      size: 2471
+    - path: data/raw-cloud-archives/68a96e81122098a8ea2d73b4.tar.gz.dvc
+      hash: md5
+      md5: d5cf1e0dbd8f1b1786b846ba82f20a67
+      size: 115
+    - path: ../36_tree_density/fortran_records.py
+      hash: md5
+      md5: 47c5b62759ee16bfc7cfe36934e16ac2
+      size: 711
