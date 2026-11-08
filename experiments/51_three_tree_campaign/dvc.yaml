@@ -4267,3 +4267,18 @@ stages:
     - ../36_tree_density/fortran_records.py
     outs:
     - data/training-preview
+  investigate_cone_pivot:
+    cmd: ../../.venv/bin/python investigate_cone_pivot.py && ../../.venv/bin/python
+      report_cone_pivot.py
+    frozen: true
+    deps:
+    - investigate_cone_pivot.py
+    - report_cone_pivot.py
+    - preview_training.py
+    - interpolate_cone_labels.py
+    - data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_1_1.sf
+    - data/training-preview/tree51_001323_baseline/metadata.json
+    - data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_1_1.sf
+    - data/training-preview/tree51_001336_baseline/metadata.json
+    outs:
+    - data/pivot-investigation

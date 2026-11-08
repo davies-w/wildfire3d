@@ -102,3 +102,13 @@ The sample must not silently include a history window or unavailable cone labels
 
 A 15-minute monitor tracks transfer, verification, cleanup, training-data conversion,
 the two animations and the single-transition example as separate stages.
+
+## Pivot investigation hold
+
+The two-case investigation found that ground pivots are constrained geometric
+fit results, not measured fire origins. Freeing height/azimuth alone does not
+resolve this; freeing apex x/y improves coverage purity but moves the origin
+to or beyond arbitrary search boundaries. See `data/pivot-investigation/findings.md`.
+The two preview datasets are retained unchanged as review artifacts, not approved
+bulk labels. Bulk conversion and raw deletion remain on hold pending a defined
+representation and user review. Raw backup continues.
