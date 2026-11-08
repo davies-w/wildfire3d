@@ -274,3 +274,14 @@ reservations and the original compute cap. Only the 48 untouched indices
 1,855 accepted cases have verified remote scientific backups. Private raw
 objects deleted by the trial bucket lifecycle are not claimed to be retained.
 Check the continuation record and execution receipt for actual submission.
+
+The next drain at index 1517 left 1,887 scientifically verified and remotely
+backed-up results. The terminal review covered 930 complete November VM
+allocation pairs and 680 terminal children in the current case workflow.
+Continuation 8 is prepared for the 14 untouched cases only. Its incremental
+allowance is rebased on current posted charges plus nonoverlapping unposted
+usage under the user's cumulative ceiling, retaining the ancillary provision,
+all six unresolved admission holds and the protected training reserve. The
+new state explicitly starts a new accounting interval; past allocations remain
+in the reconciled baseline. Original permission expiry and physics are unchanged.
+The execution receipt establishes whether it has actually been submitted.
