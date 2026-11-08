@@ -4282,3 +4282,20 @@ stages:
     - data/training-preview/tree51_001336_baseline/metadata.json
     outs:
     - data/pivot-investigation
+  spatial_training_variants_two_cases:
+    cmd: ../../.venv/bin/python spatial_training_variants.py && ../../.venv/bin/python
+      validate_spatial_training_variants.py
+    frozen: true
+    deps:
+    - spatial_training_variants.py
+    - validate_spatial_training_variants.py
+    - preview_training.py
+    - data/pivot-investigation/report.json
+    - data/training-preview/tree51_001323_baseline/training.npz
+    - data/training-preview/tree51_001323_baseline/metadata.json
+    - data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_1_1.sf
+    - data/training-preview/tree51_001336_baseline/training.npz
+    - data/training-preview/tree51_001336_baseline/metadata.json
+    - data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_1_1.sf
+    outs:
+    - data/spatial-training-variants

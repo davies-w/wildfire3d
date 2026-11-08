@@ -10905,3 +10905,53 @@ stages:
       hash: md5
       md5: f44119adff587a572b40264676141c5b
       size: 5634
+  spatial_training_variants_two_cases:
+    cmd: ../../.venv/bin/python spatial_training_variants.py && ../../.venv/bin/python
+      validate_spatial_training_variants.py
+    outs:
+    - path: data/spatial-training-variants
+      hash: md5
+      md5: d6fac9b85884df5ee0303c702efa9e80.dir
+      size: 12282158
+      nfiles: 31
+    deps:
+    - path: spatial_training_variants.py
+      hash: md5
+      md5: 0adf341cdb619e50530160fddfa9a96a
+      size: 12115
+    - path: validate_spatial_training_variants.py
+      hash: md5
+      md5: 07c2aa13aeb995764ef7af024c56ea3b
+      size: 1725
+    - path: preview_training.py
+      hash: md5
+      md5: 440414d99b063d237295b4891702edc3
+      size: 17836
+    - path: data/pivot-investigation/report.json
+      hash: md5
+      md5: 9b06b7cac947ef76094fec47b0701ae8
+      size: 45572
+    - path: data/training-preview/tree51_001323_baseline/training.npz
+      hash: md5
+      md5: 29d9d4e63113e318badf9b5e4d8803a0
+      size: 18331
+    - path: data/training-preview/tree51_001323_baseline/metadata.json
+      hash: md5
+      md5: 0ff882b23ebf88edfa048edf7182974c
+      size: 6551
+    - path: data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_1_1.sf
+      hash: md5
+      md5: 5ce1bda61e4010d5037330948ce35913
+      size: 2522786
+    - path: data/training-preview/tree51_001336_baseline/training.npz
+      hash: md5
+      md5: 1253af678983c42453f2f3222cb10d4e
+      size: 11761
+    - path: data/training-preview/tree51_001336_baseline/metadata.json
+      hash: md5
+      md5: f44119adff587a572b40264676141c5b
+      size: 5634
+    - path: data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_1_1.sf
+      hash: md5
+      md5: c2c59e4979430332285a3d8e3ddfb6c3
+      size: 1916114
