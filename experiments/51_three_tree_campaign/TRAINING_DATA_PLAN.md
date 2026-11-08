@@ -35,8 +35,9 @@ A checked current-run temperature volume has six frames at approximately
 0, 36, 72, 108, 144 and 180 seconds. The previous abstract-tree dataset had
 91 frames about two seconds apart. The current raw data cannot supply equivalent
 two-second cone targets. Do not interpolate missing labels and call them truth.
-The user has been asked to choose masked sparse cone labels on finer four-state
-sequences, six fully observed ten-state frames, or a separate rerun assessment.
+The user rejected treating masked, interpolated or coarser labels as an equivalent
+replacement. Conversion is blocked until that incompatibility is explicitly
+resolved. No new paid simulations or model training are authorized.
 No training dataset has been generated under an assumed choice.
 
 ## Proposed inputs (enumerated before processing)
@@ -62,3 +63,24 @@ The simulations use a 0.5 m mesh, an imposed 0.4 m / 1500 C ignition patch for
 20 seconds, and a 180-second target. They omit bark, embers, grass and a resolved
 solid trunk. Domain sizes vary with tree geometry. Preserve those limitations
 in the training-data manifest and do not claim equivalence to real-species fire.
+
+## Scope and requested deliverables (November 8)
+
+The archive, DVC/Hugging Face verification and subsequent local-copy removal
+scope covers ALL simulation experiments, not just Experiment 51. Temporary
+cloud holds do not satisfy preservation: bytes must be downloaded, DVC tracked,
+uploaded with the repository script and remotely verified.
+
+After compatible training data is ready, produce two representative animations
+rendered directly from that training data, not predictions. Record case selection,
+actual saved timestamps, units, fixed geometry, and cone interpretation. Verify
+rendered states against the exact dataset rows; do not present interpolated frames
+as additional simulation observations.
+
+Also deliver one readable and machine-readable sample consisting of initial fixed
+conditions, the first state, and the next state, with names, units, timestamps and
+provenance. Include all ten target values only when actually available and valid.
+The sample must not silently include a history window or unavailable cone labels.
+
+A 15-minute monitor tracks transfer, verification, cleanup, training-data conversion,
+the two animations and the single-transition example as separate stages.
