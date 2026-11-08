@@ -105,7 +105,7 @@ def launch():
         save('resume8-execution.json',e);entry.setdefault('continuations',[]).append(e['name'])
         entry['latest_allocation_reconciliation']=dict(receipt='private07/november-second-terminal-audit.json',held_indices=held,spent_microdollars=state['spent'])
         tmp=B.with_suffix('.resume8.tmp');tmp.write_text(json.dumps(ledger,indent=2)+'\n');tmp.replace(B)
-    f=R/'continuation-record07.json';record=json.loads(f.read_text());record['previous_second_allocation_continuation']=record['latest_continuation'];record['latest_continuation']=dict(workflow='t51r07-resume8',execution=e['name'].split('/')[-1],created_at=e['startTime'],first_index=1517,remaining_never_submitted=14,local_admission_gate=False);f.write_text(json.dumps(record,indent=2)+'\n')
+    f=R/'continuation-record07.json';record=json.loads(f.read_text());record['previous_second_allocation_continuation']=record['latest_continuation'];record['latest_continuation']=dict(workflow='t51r07-resume8',execution=e['name'].split('/')[-1],created_at=e['startTime'],first_index=1517,remaining_never_submitted=14,local_admission_gate=False);save('continuation-record.json',record)
     print('Submitted once at untouched index 1517',flush=True)
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','launch']);a=p.parse_args();globals()[a.action]()

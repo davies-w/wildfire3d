@@ -285,3 +285,9 @@ all six unresolved admission holds and the protected training reserve. The
 new state explicitly starts a new accounting interval; past allocations remain
 in the reconciled baseline. Original permission expiry and physics are unchanged.
 The execution receipt establishes whether it has actually been submitted.
+
+The continuation for the final 14 untouched cases was submitted once. Actual
+Batch admission was verified for four scheduled singleton jobs. The current
+execution identifiers and continuation record are kept only in
+`private07/continuation-record.json`; the older public continuation record is
+historical. Monitoring follows the newest private execution receipt.
