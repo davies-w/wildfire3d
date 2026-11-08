@@ -10863,3 +10863,45 @@ stages:
       hash: md5
       md5: 47c5b62759ee16bfc7cfe36934e16ac2
       size: 711
+  investigate_cone_pivot:
+    cmd: ../../.venv/bin/python investigate_cone_pivot.py && ../../.venv/bin/python
+      report_cone_pivot.py
+    outs:
+    - path: data/pivot-investigation
+      hash: md5
+      md5: cc4b4a76e4a895d9faea1c65cdb1bcc2.dir
+      size: 342972
+      nfiles: 3
+    deps:
+    - path: investigate_cone_pivot.py
+      hash: md5
+      md5: 5af86e111fe6f33f1167c8209453489f
+      size: 6229
+    - path: report_cone_pivot.py
+      hash: md5
+      md5: 9fe7c8e19e123e70f5523f10c6d84601
+      size: 5764
+    - path: preview_training.py
+      hash: md5
+      md5: 440414d99b063d237295b4891702edc3
+      size: 17836
+    - path: interpolate_cone_labels.py
+      hash: md5
+      md5: 2397574431cbdf76976355d694b46776
+      size: 2657
+    - path: data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_1_1.sf
+      hash: md5
+      md5: 5ce1bda61e4010d5037330948ce35913
+      size: 2522786
+    - path: data/training-preview/tree51_001323_baseline/metadata.json
+      hash: md5
+      md5: 0ff882b23ebf88edfa048edf7182974c
+      size: 6551
+    - path: data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_1_1.sf
+      hash: md5
+      md5: c2c59e4979430332285a3d8e3ddfb6c3
+      size: 1916114
+    - path: data/training-preview/tree51_001336_baseline/metadata.json
+      hash: md5
+      md5: f44119adff587a572b40264676141c5b
+      size: 5634
