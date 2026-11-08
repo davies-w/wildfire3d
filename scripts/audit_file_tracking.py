@@ -78,7 +78,15 @@ def hashes(p):
  after=p.lstat();assert (after.st_size,after.st_mtime_ns)==(st.st_size,st.st_mtime_ns),'file changed during audit'
  memo[key]=(md.hexdigest(),gh.hexdigest());return memo[key]
 for i,p in enumerate(files):
- name=str(p.relative_to(ROOT));size=p.lstat().st_size;recs=records.get(name,[]);active=[x for x in recs if not x['stale']];note='';matches=[]
+ name=str(p.relative_to(ROOT))
+ try:size=p.lstat().st_size
+ except FileNotFoundError:
+  # Transfers may remove verified staging copies after this inventory was taken.
+  # This observation is unresolved, not evidence of a verified backup or loss.
+  rows.append(dict(path=name,bytes=0,status='disappeared_during_audit',category='project_file',dvc_records='',note='Absent after inventory; reconcile transfer receipt independently. Size unknown.'))
+  counts['disappeared_during_audit']+=1
+  continue
+ recs=records.get(name,[]);active=[x for x in recs if not x['stale']];note='';matches=[]
  if name.startswith('.git/'):status='git_internal'
  elif name in git:
   try:_,gh=hashes(p);status='git_exact' if gh==git[name][1] else 'git_modified'
