@@ -35,10 +35,26 @@ A checked current-run temperature volume has six frames at approximately
 0, 36, 72, 108, 144 and 180 seconds. The previous abstract-tree dataset had
 91 frames about two seconds apart. The current raw data cannot supply equivalent
 two-second cone targets. Do not interpolate missing labels and call them truth.
-The user rejected treating masked, interpolated or coarser labels as an equivalent
-replacement. Conversion is blocked until that incompatibility is explicitly
-resolved. No new paid simulations or model training are authorized.
-No training dataset has been generated under an assumed choice.
+The user explicitly authorized using the six available cone samples and
+interpolating between them on November 8. This resolves the conversion blocker.
+Use piecewise-linear interpolation at actual source timestamps onto the finer
+training timeline. Preserve all original cone samples and an observed/interpolated
+mask, bracketing source times and interpolation weights. Do not extrapolate.
+Keep the finer four-state histories; do not replace them with six-frame histories.
+Retain denser original cone observations wherever available.
+
+Interpolate the six cone channels, including a soft presence indicator. Use the
+previous zero-geometry convention at inactive source samples and document its
+transition artifacts; interpolated presence is not a measured or calibrated
+probability. Keep the original activity mask and validate finite values, original
+endpoints, and no interpolation overshoot. Intermediate peak temperatures are
+interpolated endpoint values, not observed interval maxima. The animations and
+sample records must clearly distinguish observed from interpolated cone values.
+These targets cannot recover rapid cone changes between saved frames.
+
+No new paid simulations or model training are authorized. Training-data extraction
+follows verified backup and the requested local-copy cleanup, using bounded
+restores where required rather than restoring the entire raw dataset.
 
 ## Proposed inputs (enumerated before processing)
 
@@ -79,7 +95,7 @@ as additional simulation observations.
 
 Also deliver one readable and machine-readable sample consisting of initial fixed
 conditions, the first state, and the next state, with names, units, timestamps and
-provenance. Include all ten target values only when actually available and valid.
+provenance. Include all ten target values and mark interpolated cone values explicitly.
 The sample must not silently include a history window or unavailable cone labels.
 
 A 15-minute monitor tracks transfer, verification, cleanup, training-data conversion,
