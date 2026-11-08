@@ -301,6 +301,9 @@ def restore_records(records,destination):
    if not target.is_relative_to(ROOT):raise ValueError('Output outside repository')
    outputs.append({**output,'path':str(target.relative_to(ROOT))})
  destination.mkdir(parents=True,exist_ok=True)
+ # Establish a local Git boundary: otherwise parent ignore rules can make
+ # restoration.dvc invisible even in the no-SCM DVC scratch repository.
+ subprocess.run(['git','init','--quiet',str(destination)],check=True)
  dvc=str(ROOT/'.venv/bin/dvc')
  subprocess.run([dvc,'init','--no-scm'],cwd=destination,check=True)
  shutil.copyfile(ROOT/'.dvc/config',destination/'.dvc/config')
