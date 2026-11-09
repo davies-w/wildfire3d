@@ -11664,3 +11664,353 @@ stages:
       hash: md5
       md5: 630672837c6e5d27e1a2b50a0cbd3213
       size: 5686
+  conifer_cone_preview:
+    cmd: ../../.venv/bin/python conifer_cone_preview.py && ../../.venv/bin/python
+      validate_conifer_cones.py
+    outs:
+    - path: data/conifer-cone-preview
+      hash: md5
+      md5: 7cd46a3d268c06c4303ba3d5c8fa96d6.dir
+      size: 52537669
+      nfiles: 262
+    deps:
+    - path: conifer_cone_preview.py
+      hash: md5
+      md5: d377c5546d8a2682c24396bbfd16d0fe
+      size: 4079
+    - path: restore_conifer_inputs.py
+      hash: md5
+      md5: dcdb82e377186de3cac695afcda720be
+      size: 2318
+    - path: validate_conifer_cones.py
+      hash: md5
+      md5: cb6cf846cc6d9a769eb9530d519ca995
+      size: 1598
+    - path: preserve_conifer_cones.py
+      hash: md5
+      md5: 2c0dca49974e7c31f15870498f33e804
+      size: 2382
+    - path: conifer-cone-selection.json
+      hash: md5
+      md5: fe5ac5364f20d27191878cb9cbc43d66
+      size: 2311
+    - path: cone_comparison_preview.py
+      hash: md5
+      md5: d667a9d63a6f630c86dd7f68c58ec8c4
+      size: 9713
+    - path: spatial_training_variants.py
+      hash: md5
+      md5: 0f4a991406b638c53b796027447c9c68
+      size: 12494
+    - path: preview_training.py
+      hash: md5
+      md5: 28d6db5543edd18e82c5b2454408003c
+      size: 18780
+    - path: investigate_cone_pivot.py
+      hash: md5
+      md5: 5af86e111fe6f33f1167c8209453489f
+      size: 6229
+    - path: interpolate_cone_labels.py
+      hash: md5
+      md5: 2397574431cbdf76976355d694b46776
+      size: 2657
+    - path: data/cases.jsonl.gz
+      hash: md5
+      md5: 9b29f1e4f0910ae957e0811dbb0e9cf8
+      size: 29649
+    - path: data/geometries.json
+      hash: md5
+      md5: 29ce6f19b3385d3f6abb5acccf438a51
+      size: 582498
+    - path: data/decks/cases.json
+      hash: md5
+      md5: 6e484dc254a99aaaecc54052bc798215
+      size: 2123299
+    - path: ../36_tree_density/material_reader.py
+      hash: md5
+      md5: abfdcb198f6ca238a558e65d2f3aebca
+      size: 2709
+    - path: ../36_tree_density/fortran_records.py
+      hash: md5
+      md5: 47c5b62759ee16bfc7cfe36934e16ac2
+      size: 711
+    - path: data/completed06/wave-000003/tree51_000276_baseline/solve/input.fds
+      hash: md5
+      md5: 868db2af08916bed9dca38305b7de10e
+      size: 1090308
+    - path: data/completed06/wave-000003/tree51_000276_baseline/solve/tree51_000276_baseline_1.prt5
+      hash: md5
+      md5: 58cd0f383a6e3af1b0754eb2487d1e43
+      size: 23456476
+    - path: data/completed06/wave-000003/tree51_000276_baseline/solve/tree51_000276_baseline_hrr.csv
+      hash: md5
+      md5: 9acd5671d0fd781200cb455acc54a0a4
+      size: 43377
+    - path: data/completed06/wave-000003/tree51_000276_baseline/solve/tree51_000276_baseline_devc.csv
+      hash: md5
+      md5: 06b8c052bec16b916a73fe8e4ebda134
+      size: 31920
+    - path: data/completed06/wave-000003/tree51_000276_baseline/solve/tree51_000276_baseline_1_1.sf
+      hash: md5
+      md5: 6625ef7dab4bc9a174b6c02a60c989b7
+      size: 1901858
+    - path: data/completed06/wave-000003/tree51_000276_baseline/solve/tree51_000276_baseline.smv
+      hash: md5
+      md5: 68d488591910e592fc73e1798ede1752
+      size: 13379
+    - path: data/completed06/wave-000003/tree51_000276_baseline/proof.json
+      hash: md5
+      md5: 74edd414289aa5cd08322865155ee1da
+      size: 2471
+    - path: data/completed03/wave-006/tree51_000105_baseline/solve/input.fds
+      hash: md5
+      md5: 6f53fe5db530d57a26ec0a2df6e985d9
+      size: 467226
+    - path: data/completed03/wave-006/tree51_000105_baseline/solve/tree51_000105_baseline_1.prt5
+      hash: md5
+      md5: e46e63757127377905dbb56cbabf5a85
+      size: 7072836
+    - path: data/completed03/wave-006/tree51_000105_baseline/solve/tree51_000105_baseline_hrr.csv
+      hash: md5
+      md5: 96eb74fc781787be90a9a65a6504a81b
+      size: 43617
+    - path: data/completed03/wave-006/tree51_000105_baseline/solve/tree51_000105_baseline_devc.csv
+      hash: md5
+      md5: 6a25ae5a2158c58744396371686d505c
+      size: 32096
+    - path: data/completed03/wave-006/tree51_000105_baseline/solve/tree51_000105_baseline_1_1.sf
+      hash: md5
+      md5: 3bcd47c6052192622837b241b290d97e
+      size: 2134706
+    - path: data/completed03/wave-006/tree51_000105_baseline/solve/tree51_000105_baseline.smv
+      hash: md5
+      md5: d873e4b01214119654dc30fb8294f67f
+      size: 13499
+    - path: data/completed03/wave-006/tree51_000105_baseline/proof.json
+      hash: md5
+      md5: 40c54e3747f962002ed9fabc49851ab3
+      size: 2469
+    - path: data/completed06/wave-000081/tree51_000356_baseline/solve/input.fds
+      hash: md5
+      md5: 369bb0e96980d8597221ad37bd4183ce
+      size: 1288834
+    - path: data/completed06/wave-000081/tree51_000356_baseline/solve/tree51_000356_baseline_1.prt5
+      hash: md5
+      md5: 9120a1a0a785a969c8cf286686504f2c
+      size: 28621636
+    - path: data/completed06/wave-000081/tree51_000356_baseline/solve/tree51_000356_baseline_hrr.csv
+      hash: md5
+      md5: 43fc75b4fac08dab59d6f5b10760625f
+      size: 43617
+    - path: data/completed06/wave-000081/tree51_000356_baseline/solve/tree51_000356_baseline_devc.csv
+      hash: md5
+      md5: 4f4d882af1b0af60d2eaf4072eb3158a
+      size: 32096
+    - path: data/completed06/wave-000081/tree51_000356_baseline/solve/tree51_000356_baseline_1_1.sf
+      hash: md5
+      md5: e1bc9c34bc6d6cb7b544d5a5cd8064ed
+      size: 2134706
+    - path: data/completed06/wave-000081/tree51_000356_baseline/solve/tree51_000356_baseline.smv
+      hash: md5
+      md5: 2faff6fe36d3122578d3d200f7a2abfe
+      size: 13499
+    - path: data/completed06/wave-000081/tree51_000356_baseline/proof.json
+      hash: md5
+      md5: 52cbafbe53d8d10d4acd132b1483dda5
+      size: 2471
+    - path: data/completed07/wave-000207/tree51_000659_baseline/solve/input.fds
+      hash: md5
+      md5: 36f3995d13a3ae916734bf17a2fe9b4a
+      size: 2764998
+    - path: data/completed07/wave-000207/tree51_000659_baseline/solve/tree51_000659_baseline_1.prt5
+      hash: md5
+      md5: dd6c92752f2fdbe449849e46f893c837
+      size: 67307556
+    - path: data/completed07/wave-000207/tree51_000659_baseline/solve/tree51_000659_baseline_hrr.csv
+      hash: md5
+      md5: 5b8b1145a55859a329a689a0c84d933b
+      size: 43617
+    - path: data/completed07/wave-000207/tree51_000659_baseline/solve/tree51_000659_baseline_devc.csv
+      hash: md5
+      md5: 59579b2ab85c73f72f2fb8a30b02e966
+      size: 32096
+    - path: data/completed07/wave-000207/tree51_000659_baseline/solve/tree51_000659_baseline_1_1.sf
+      hash: md5
+      md5: 41085e88bac7a31489621fa09e95127d
+      size: 2212322
+    - path: data/completed07/wave-000207/tree51_000659_baseline/solve/tree51_000659_baseline.smv
+      hash: md5
+      md5: 871b6211a22cca5ca365fd701c284a5d
+      size: 13539
+    - path: data/completed07/wave-000207/tree51_000659_baseline/proof.json
+      hash: md5
+      md5: 72699bd40504dcb0c528d1f5a87daeee
+      size: 2473
+    - path: data/completed06/wave-000029/tree51_000302_baseline/solve/input.fds
+      hash: md5
+      md5: 78461c298a1d9320ca69845a2d9b4d24
+      size: 1133171
+    - path: data/completed06/wave-000029/tree51_000302_baseline/solve/tree51_000302_baseline_1.prt5
+      hash: md5
+      md5: da46761f8655f643cca8b406ce148484
+      size: 24577596
+    - path: data/completed06/wave-000029/tree51_000302_baseline/solve/tree51_000302_baseline_hrr.csv
+      hash: md5
+      md5: 310024ca84b00eb3a230aae6eb3e5fda
+      size: 43617
+    - path: data/completed06/wave-000029/tree51_000302_baseline/solve/tree51_000302_baseline_devc.csv
+      hash: md5
+      md5: 0ea7038001426265d29f9b92ca4400e6
+      size: 32096
+    - path: data/completed06/wave-000029/tree51_000302_baseline/solve/tree51_000302_baseline_1_1.sf
+      hash: md5
+      md5: 44cadee144c100fee0fb1fc796482b38
+      size: 1979474
+    - path: data/completed06/wave-000029/tree51_000302_baseline/solve/tree51_000302_baseline.smv
+      hash: md5
+      md5: d028188e89ef02918bf6f5e02d13ea20
+      size: 13419
+    - path: data/completed06/wave-000029/tree51_000302_baseline/proof.json
+      hash: md5
+      md5: c1ee390d2987023e700bcb2a398a5614
+      size: 2471
+    - path: data/completed07/wave-000147/tree51_000597_baseline/solve/input.fds
+      hash: md5
+      md5: aa6374ae0d59dad9c771d92e9be6326e
+      size: 2450903
+    - path: data/completed07/wave-000147/tree51_000597_baseline/solve/tree51_000597_baseline_1.prt5
+      hash: md5
+      md5: 7b1d5103984d6de0f8678e136dd9c53e
+      size: 59124836
+    - path: data/completed07/wave-000147/tree51_000597_baseline/solve/tree51_000597_baseline_hrr.csv
+      hash: md5
+      md5: 060b72e93157c2093b88040b22c26155
+      size: 43617
+    - path: data/completed07/wave-000147/tree51_000597_baseline/solve/tree51_000597_baseline_devc.csv
+      hash: md5
+      md5: 9db89cf4322f69158dcac88c3ddd9186
+      size: 32096
+    - path: data/completed07/wave-000147/tree51_000597_baseline/solve/tree51_000597_baseline_1_1.sf
+      hash: md5
+      md5: 7be9df770dff9074ae2050f24be9f652
+      size: 2057090
+    - path: data/completed07/wave-000147/tree51_000597_baseline/solve/tree51_000597_baseline.smv
+      hash: md5
+      md5: e005d1ffc6e35bf84fd87671db00fe1b
+      size: 13459
+    - path: data/completed07/wave-000147/tree51_000597_baseline/proof.json
+      hash: md5
+      md5: ff8a4385864e1fd94c3a987dc89d9b2f
+      size: 2472
+    - path: data/completed05/wave-000027/tree51_000229_baseline/solve/input.fds
+      hash: md5
+      md5: f433c3d57b3015c0bd064259c19acaef
+      size: 807018
+    - path: data/completed05/wave-000027/tree51_000229_baseline/solve/tree51_000229_baseline_1.prt5
+      hash: md5
+      md5: 7d9419d9d23b71565cd6377466fc169d
+      size: 15983556
+    - path: data/completed05/wave-000027/tree51_000229_baseline/solve/tree51_000229_baseline_hrr.csv
+      hash: md5
+      md5: c001a842e6365294ae82fcd2b4a3aba8
+      size: 43617
+    - path: data/completed05/wave-000027/tree51_000229_baseline/solve/tree51_000229_baseline_devc.csv
+      hash: md5
+      md5: 11c965908729678ba2ec2ea64baf7c15
+      size: 32096
+    - path: data/completed05/wave-000027/tree51_000229_baseline/solve/tree51_000229_baseline_1_1.sf
+      hash: md5
+      md5: b3ea98eb5716a782c8b696d7629f9bcc
+      size: 2134706
+    - path: data/completed05/wave-000027/tree51_000229_baseline/solve/tree51_000229_baseline.smv
+      hash: md5
+      md5: 30524e26316735b0f7a6c7af3fc2b25f
+      size: 13499
+    - path: data/completed05/wave-000027/tree51_000229_baseline/proof.json
+      hash: md5
+      md5: f735eebdab63cbf05a1da6c0e16d633b
+      size: 2470
+    - path: data/completed03/wave-007/tree51_000116_baseline/solve/input.fds
+      hash: md5
+      md5: 15a3c5e8d98edbdcc87ef043e7e7e99f
+      size: 483247
+    - path: data/completed03/wave-007/tree51_000116_baseline/solve/tree51_000116_baseline_1.prt5
+      hash: md5
+      md5: bff199941eb54ca7a460b44a6292968a
+      size: 7495076
+    - path: data/completed03/wave-007/tree51_000116_baseline/solve/tree51_000116_baseline_hrr.csv
+      hash: md5
+      md5: 6da7055f75ecbe810112b044c27516cd
+      size: 43617
+    - path: data/completed03/wave-007/tree51_000116_baseline/solve/tree51_000116_baseline_devc.csv
+      hash: md5
+      md5: c166114ef046bd8ebd540b9e5b54a71e
+      size: 32096
+    - path: data/completed03/wave-007/tree51_000116_baseline/solve/tree51_000116_baseline_1_1.sf
+      hash: md5
+      md5: 1d347810f4a28fc3711f531c2d49e159
+      size: 2212322
+    - path: data/completed03/wave-007/tree51_000116_baseline/solve/tree51_000116_baseline.smv
+      hash: md5
+      md5: d19f5c73d194ee55e57c9ece9c983a35
+      size: 13539
+    - path: data/completed03/wave-007/tree51_000116_baseline/proof.json
+      hash: md5
+      md5: 7500d89550d714c6be450dde84645802
+      size: 2470
+    - path: data/completed06/wave-000045/tree51_000318_baseline/solve/input.fds
+      hash: md5
+      md5: cca6755bb98d12a2eb501f4831def5fb
+      size: 1135816
+    - path: data/completed06/wave-000045/tree51_000318_baseline/solve/tree51_000318_baseline_1.prt5
+      hash: md5
+      md5: 5855141bcc565781c4577a584f29aef7
+      size: 24577596
+    - path: data/completed06/wave-000045/tree51_000318_baseline/solve/tree51_000318_baseline_hrr.csv
+      hash: md5
+      md5: 63188a79e0fe49b988c735d40f5326b3
+      size: 43377
+    - path: data/completed06/wave-000045/tree51_000318_baseline/solve/tree51_000318_baseline_devc.csv
+      hash: md5
+      md5: 2f9764b7e5efb9827bb3120a244d5622
+      size: 32096
+    - path: data/completed06/wave-000045/tree51_000318_baseline/solve/tree51_000318_baseline_1_1.sf
+      hash: md5
+      md5: e1ae2c3d76c98b5613fc8df19e2e056f
+      size: 1979474
+    - path: data/completed06/wave-000045/tree51_000318_baseline/solve/tree51_000318_baseline.smv
+      hash: md5
+      md5: 5752c6ab8cfaac9a0cdf879bbe14a7ee
+      size: 13419
+    - path: data/completed06/wave-000045/tree51_000318_baseline/proof.json
+      hash: md5
+      md5: 48ab79a75dab12e25d897d2abcfce3cb
+      size: 2471
+    - path: data/completed07/wave-000158/tree51_000608_baseline/solve/input.fds
+      hash: md5
+      md5: 67135b899545100519d0580066984e5b
+      size: 2452380
+    - path: data/completed07/wave-000158/tree51_000608_baseline/solve/tree51_000608_baseline_1.prt5
+      hash: md5
+      md5: d4e5ceeb3ed6d3ff0c28a1676c5a54d7
+      size: 59124836
+    - path: data/completed07/wave-000158/tree51_000608_baseline/solve/tree51_000608_baseline_hrr.csv
+      hash: md5
+      md5: 9e7a758135f78455a642336d51e941b4
+      size: 43617
+    - path: data/completed07/wave-000158/tree51_000608_baseline/solve/tree51_000608_baseline_devc.csv
+      hash: md5
+      md5: 03f25fe81ba95ae3560a2c381e7bb507
+      size: 32096
+    - path: data/completed07/wave-000158/tree51_000608_baseline/solve/tree51_000608_baseline_1_1.sf
+      hash: md5
+      md5: a518f03cc19d87192d017246d5e34e0a
+      size: 2057090
+    - path: data/completed07/wave-000158/tree51_000608_baseline/solve/tree51_000608_baseline.smv
+      hash: md5
+      md5: 58688cadbe5d60404a3982613ddfba01
+      size: 13459
+    - path: data/completed07/wave-000158/tree51_000608_baseline/proof.json
+      hash: md5
+      md5: c7f23ad5a6a0e18743250bb539a24ce9
+      size: 2472

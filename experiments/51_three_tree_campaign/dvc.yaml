@@ -4489,3 +4489,95 @@ stages:
     - data/ten-case-cone-preview/base-inputs/tree51_001583_baseline/metadata.json
     outs:
     - data/oak-history-review
+  conifer_cone_preview:
+    cmd: ../../.venv/bin/python conifer_cone_preview.py && ../../.venv/bin/python
+      validate_conifer_cones.py
+    frozen: true
+    deps:
+    - conifer_cone_preview.py
+    - restore_conifer_inputs.py
+    - validate_conifer_cones.py
+    - preserve_conifer_cones.py
+    - conifer-cone-selection.json
+    - cone_comparison_preview.py
+    - spatial_training_variants.py
+    - preview_training.py
+    - investigate_cone_pivot.py
+    - interpolate_cone_labels.py
+    - data/cases.jsonl.gz
+    - data/geometries.json
+    - data/decks/cases.json
+    - ../36_tree_density/material_reader.py
+    - ../36_tree_density/fortran_records.py
+    - data/completed06/wave-000003/tree51_000276_baseline/solve/input.fds
+    - data/completed06/wave-000003/tree51_000276_baseline/solve/tree51_000276_baseline_1.prt5
+    - data/completed06/wave-000003/tree51_000276_baseline/solve/tree51_000276_baseline_hrr.csv
+    - data/completed06/wave-000003/tree51_000276_baseline/solve/tree51_000276_baseline_devc.csv
+    - data/completed06/wave-000003/tree51_000276_baseline/solve/tree51_000276_baseline_1_1.sf
+    - data/completed06/wave-000003/tree51_000276_baseline/solve/tree51_000276_baseline.smv
+    - data/completed06/wave-000003/tree51_000276_baseline/proof.json
+    - data/completed03/wave-006/tree51_000105_baseline/solve/input.fds
+    - data/completed03/wave-006/tree51_000105_baseline/solve/tree51_000105_baseline_1.prt5
+    - data/completed03/wave-006/tree51_000105_baseline/solve/tree51_000105_baseline_hrr.csv
+    - data/completed03/wave-006/tree51_000105_baseline/solve/tree51_000105_baseline_devc.csv
+    - data/completed03/wave-006/tree51_000105_baseline/solve/tree51_000105_baseline_1_1.sf
+    - data/completed03/wave-006/tree51_000105_baseline/solve/tree51_000105_baseline.smv
+    - data/completed03/wave-006/tree51_000105_baseline/proof.json
+    - data/completed06/wave-000081/tree51_000356_baseline/solve/input.fds
+    - data/completed06/wave-000081/tree51_000356_baseline/solve/tree51_000356_baseline_1.prt5
+    - data/completed06/wave-000081/tree51_000356_baseline/solve/tree51_000356_baseline_hrr.csv
+    - data/completed06/wave-000081/tree51_000356_baseline/solve/tree51_000356_baseline_devc.csv
+    - data/completed06/wave-000081/tree51_000356_baseline/solve/tree51_000356_baseline_1_1.sf
+    - data/completed06/wave-000081/tree51_000356_baseline/solve/tree51_000356_baseline.smv
+    - data/completed06/wave-000081/tree51_000356_baseline/proof.json
+    - data/completed07/wave-000207/tree51_000659_baseline/solve/input.fds
+    - data/completed07/wave-000207/tree51_000659_baseline/solve/tree51_000659_baseline_1.prt5
+    - data/completed07/wave-000207/tree51_000659_baseline/solve/tree51_000659_baseline_hrr.csv
+    - data/completed07/wave-000207/tree51_000659_baseline/solve/tree51_000659_baseline_devc.csv
+    - data/completed07/wave-000207/tree51_000659_baseline/solve/tree51_000659_baseline_1_1.sf
+    - data/completed07/wave-000207/tree51_000659_baseline/solve/tree51_000659_baseline.smv
+    - data/completed07/wave-000207/tree51_000659_baseline/proof.json
+    - data/completed06/wave-000029/tree51_000302_baseline/solve/input.fds
+    - data/completed06/wave-000029/tree51_000302_baseline/solve/tree51_000302_baseline_1.prt5
+    - data/completed06/wave-000029/tree51_000302_baseline/solve/tree51_000302_baseline_hrr.csv
+    - data/completed06/wave-000029/tree51_000302_baseline/solve/tree51_000302_baseline_devc.csv
+    - data/completed06/wave-000029/tree51_000302_baseline/solve/tree51_000302_baseline_1_1.sf
+    - data/completed06/wave-000029/tree51_000302_baseline/solve/tree51_000302_baseline.smv
+    - data/completed06/wave-000029/tree51_000302_baseline/proof.json
+    - data/completed07/wave-000147/tree51_000597_baseline/solve/input.fds
+    - data/completed07/wave-000147/tree51_000597_baseline/solve/tree51_000597_baseline_1.prt5
+    - data/completed07/wave-000147/tree51_000597_baseline/solve/tree51_000597_baseline_hrr.csv
+    - data/completed07/wave-000147/tree51_000597_baseline/solve/tree51_000597_baseline_devc.csv
+    - data/completed07/wave-000147/tree51_000597_baseline/solve/tree51_000597_baseline_1_1.sf
+    - data/completed07/wave-000147/tree51_000597_baseline/solve/tree51_000597_baseline.smv
+    - data/completed07/wave-000147/tree51_000597_baseline/proof.json
+    - data/completed05/wave-000027/tree51_000229_baseline/solve/input.fds
+    - data/completed05/wave-000027/tree51_000229_baseline/solve/tree51_000229_baseline_1.prt5
+    - data/completed05/wave-000027/tree51_000229_baseline/solve/tree51_000229_baseline_hrr.csv
+    - data/completed05/wave-000027/tree51_000229_baseline/solve/tree51_000229_baseline_devc.csv
+    - data/completed05/wave-000027/tree51_000229_baseline/solve/tree51_000229_baseline_1_1.sf
+    - data/completed05/wave-000027/tree51_000229_baseline/solve/tree51_000229_baseline.smv
+    - data/completed05/wave-000027/tree51_000229_baseline/proof.json
+    - data/completed03/wave-007/tree51_000116_baseline/solve/input.fds
+    - data/completed03/wave-007/tree51_000116_baseline/solve/tree51_000116_baseline_1.prt5
+    - data/completed03/wave-007/tree51_000116_baseline/solve/tree51_000116_baseline_hrr.csv
+    - data/completed03/wave-007/tree51_000116_baseline/solve/tree51_000116_baseline_devc.csv
+    - data/completed03/wave-007/tree51_000116_baseline/solve/tree51_000116_baseline_1_1.sf
+    - data/completed03/wave-007/tree51_000116_baseline/solve/tree51_000116_baseline.smv
+    - data/completed03/wave-007/tree51_000116_baseline/proof.json
+    - data/completed06/wave-000045/tree51_000318_baseline/solve/input.fds
+    - data/completed06/wave-000045/tree51_000318_baseline/solve/tree51_000318_baseline_1.prt5
+    - data/completed06/wave-000045/tree51_000318_baseline/solve/tree51_000318_baseline_hrr.csv
+    - data/completed06/wave-000045/tree51_000318_baseline/solve/tree51_000318_baseline_devc.csv
+    - data/completed06/wave-000045/tree51_000318_baseline/solve/tree51_000318_baseline_1_1.sf
+    - data/completed06/wave-000045/tree51_000318_baseline/solve/tree51_000318_baseline.smv
+    - data/completed06/wave-000045/tree51_000318_baseline/proof.json
+    - data/completed07/wave-000158/tree51_000608_baseline/solve/input.fds
+    - data/completed07/wave-000158/tree51_000608_baseline/solve/tree51_000608_baseline_1.prt5
+    - data/completed07/wave-000158/tree51_000608_baseline/solve/tree51_000608_baseline_hrr.csv
+    - data/completed07/wave-000158/tree51_000608_baseline/solve/tree51_000608_baseline_devc.csv
+    - data/completed07/wave-000158/tree51_000608_baseline/solve/tree51_000608_baseline_1_1.sf
+    - data/completed07/wave-000158/tree51_000608_baseline/solve/tree51_000608_baseline.smv
+    - data/completed07/wave-000158/tree51_000608_baseline/proof.json
+    outs:
+    - data/conifer-cone-preview

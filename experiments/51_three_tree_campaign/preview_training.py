@@ -14,6 +14,11 @@ NAMES=['remaining_water','remaining_unreacted_fuel','fuel_gas_release_rate','sur
 UNITS=['kg','kg','kg/s','K','fraction','m','degrees','m','m','degC']
 FAMILY={1:'pine-inspired',2:'oak-inspired',3:'eucalyptus-inspired'}
 
+SOLVE_OVERRIDES={}
+def solve_folder(case):
+ if case in SOLVE_OVERRIDES:return Path(SOLVE_OVERRIDES[case])
+ return next((R/'data/completed07').glob('*/'+case+'/solve'))
+
 def sha(p):
  with p.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
 def record(f):
@@ -64,19 +69,25 @@ def table(p):
 def extract(source,out):
  case=source['case'];c=next(json.loads(s) for s in gzip.open(R/'data/cases.jsonl.gz','rt') if json.loads(s)['case']==case.removesuffix('_baseline'))
  g=next(g for g in json.loads((R/'data/geometries.json').read_text()) if g['id']==c['geometry_id'])
- folder=next((R/'data/completed07').glob('*/'+case+'/solve'));proof=json.loads((folder.parent/'proof.json').read_text());assert proof['passed'] and proof['physical_time_s']==180
- archive=Path(source['archive']);archive=archive if archive.is_absolute() else ROOT/archive
- if not archive.exists():archive=ROOT/'.artifact-staging/two-case-preview-restored'/Path(source['archive'])
- assert sha(archive)==source['sha256'] and source['HF_restored']
+ folder=solve_folder(case);proof=json.loads((folder.parent/'proof.json').read_text());assert proof['passed'] and proof['physical_time_s']==180
  needed=[folder/'input.fds',folder/(case+'_1.prt5'),folder/(case+'_hrr.csv'),folder/(case+'_devc.csv'),folder/(case+'_1_1.sf'),folder/(case+'.smv')]
  hashes={}
- with tarfile.open(archive) as tf:
+ if source.get('restoration_receipt'):
+  receipt=json.loads(Path(source['restoration_receipt']).read_text());assert receipt['passed'] and source['HF_restored']
   for p in needed:
    h=sha(p);assert next(x['sha256'] for x in proof['files'] if x['path']=='solve/'+p.name)==h
-   member=tf.extractfile('evidence/solve/'+p.name);assert hashlib.file_digest(member,'sha256').hexdigest()==h;hashes[p.name]=h
+   assert receipt['raw_inputs_sha256'][source['original_solve']+'/'+p.name]==h;hashes[p.name]=h
+ else:
+  archive=Path(source['archive']);archive=archive if archive.is_absolute() else ROOT/archive
+  if not archive.exists():archive=ROOT/'.artifact-staging/two-case-preview-restored'/Path(source['archive'])
+  assert sha(archive)==source['sha256'] and source['HF_restored']
+  with tarfile.open(archive) as tf:
+   for p in needed:
+    h=sha(p);assert next(x['sha256'] for x in proof['files'] if x['path']=='solve/'+p.name)==h
+    member=tf.extractfile('evidence/solve/'+p.name);assert hashlib.file_digest(member,'sha256').hexdigest()==h;hashes[p.name]=h
  text=(folder/'input.fds').read_text();smv=(folder/(case+'.smv')).read_text();assert 'SLCC' in smv
  parts=re.findall(r'&PART\b.*?/',text,re.S);ids=[re.search(r"\bID\s*=\s*'([^']+)'",p)[1] for p in parts]
- selected=[i for i,n in enumerate(ids) if n!='contact ignitor'];assert len(selected)==7 and ids[4]=='contact ignitor'
+ selected=[i for i,n in enumerate(ids) if n!='contact ignitor'];expected_classes=next(x['expected_wet_mass_kg'] for x in json.loads((R/'data/decks/cases.json').read_text()) if x['pilot_case']==case);assert set(ids[i] for i in selected)==set(expected_classes) and ids.count('contact ignitor')==1
  surfaces=re.findall(r'&SURF\b.*?/',text,re.S)
  for i in selected:
   surf=next(b for b in surfaces if re.search(r"\bID\s*=\s*'"+re.escape(ids[i])+"'",b))
@@ -113,12 +124,12 @@ def extract(source,out):
  ignition=np.interp(target,[0,.1,20,20.1,180],[0,1,1,0,0])
  dest=out/case;dest.mkdir(parents=True,exist_ok=True)
  np.savez_compressed(dest/'training.npz',time_s=target,state=state,state_names=np.array(NAMES),state_units=np.array(UNITS),source_cone_time_s=interp['source_time_s'],source_cones=interp['source_cones'],cone_observed=interp['observed'],cone_interpolated=interp['interpolated'],cone_left_source_index=interp['left_source_index'],cone_right_source_index=interp['right_source_index'],cone_right_weight=interp['right_weight'],ignition_on_fraction=ignition,dt_next_s=np.r_[np.diff(target),0.0],has_next_state=np.r_[np.ones(len(target)-1,dtype=bool),False],initial_particle_xyz_m=initial_xyz)
- meta={'case':case,'split':c['split'],'static_inputs':static,'geometry':{k:g[k] for k in ['cones','ellipsoids','stems']},'domain_m':domain,'tree_center_xy_m':center.tolist(),'mesh_spacing_m':dx,'state_names':NAMES,'state_units':UNITS,'raw_archive_sha256':source['sha256'],'raw_input_sha256':hashes,'selected_particle_classes':[ids[i] for i in selected],'initial_class_wet_masses_kg':class_masses,'cone_fit':fit,'training_npz_sha256':sha(dest/'training.npz'),'initial_mass_matches_deck_design':True,'frames':len(target),'source_temperature_frames':len(times),'cone_interpolation':'Piecewise linear in actual source time; zero geometry when absent; presence between0 and1 is synthetic, not probability; no extrapolation.','four_state_definitions':'Water: initial dry-basis moisture mass minus right-endpoint integral of MLR_WATER VAPOR. Unreacted fuel: initial dry mass minus trapezoidal integral of all vegetation/stem fuel-vapor devices divided by0.75. Gas: summed device fuel-vapor release. Heating: particle mass-weighted surface-temperature excess above20C divided by initial wet mass; K, not energy. No clamping. CSV-integrated channels evaluated at actual particle timestamps.','limitations':'Generic vegetation fuel and species-inspired geometry, not calibrated species. .5m grid; imposed .4m contact patch1500C for20s plus.1s ramps, combustion source HRRPUA60kW/m2 on contact particles. No embers/bark/grass/resolved solid trunk. Woody stems are thermal particles. Hot-gas cone fits >50C cells with>=95% recall, tilt restricted to downwind x-z plane, apex searched on tree axis; not a physical flame boundary. Interpolation cannot recover rapid dynamics or peaks. Original six samples retained. Char oxidation exists in raw physics; unreacted-fuel estimate does not measure total remaining solid mass. Fixed geometry outlines are display context, not burn masks.','conversion':'No model fitting/training; deterministic raw-data extraction and geometric cone fitting.'}
+ meta={'case':case,'split':c['split'],'static_inputs':static,'geometry':{k:g[k] for k in ['cones','ellipsoids','stems']},'domain_m':domain,'tree_center_xy_m':center.tolist(),'mesh_spacing_m':dx,'state_names':NAMES,'state_units':UNITS,'raw_archive_sha256':source.get('sha256'),'raw_restoration_receipt_sha256':sha(Path(source['restoration_receipt'])) if source.get('restoration_receipt') else None,'raw_input_sha256':hashes,'selected_particle_classes':[ids[i] for i in selected],'initial_class_wet_masses_kg':class_masses,'cone_fit':fit,'training_npz_sha256':sha(dest/'training.npz'),'initial_mass_matches_deck_design':True,'frames':len(target),'source_temperature_frames':len(times),'cone_interpolation':'Piecewise linear in actual source time; zero geometry when absent; presence between0 and1 is synthetic, not probability; no extrapolation.','four_state_definitions':'Water: initial dry-basis moisture mass minus right-endpoint integral of MLR_WATER VAPOR. Unreacted fuel: initial dry mass minus trapezoidal integral of all vegetation/stem fuel-vapor devices divided by0.75. Gas: summed device fuel-vapor release. Heating: particle mass-weighted surface-temperature excess above20C divided by initial wet mass; K, not energy. No clamping. CSV-integrated channels evaluated at actual particle timestamps.','limitations':'Generic vegetation fuel and species-inspired geometry, not calibrated species. .5m grid; imposed .4m contact patch1500C for20s plus.1s ramps, combustion source HRRPUA60kW/m2 on contact particles. No embers/bark/grass/resolved solid trunk. Woody stems are thermal particles. Hot-gas cone fits >50C cells with>=95% recall, tilt restricted to downwind x-z plane, apex searched on tree axis; not a physical flame boundary. Interpolation cannot recover rapid dynamics or peaks. Original six samples retained. Char oxidation exists in raw physics; unreacted-fuel estimate does not measure total remaining solid mass. Fixed geometry outlines are display context, not burn masks.','conversion':'No model fitting/training; deterministic raw-data extraction and geometric cone fitting.'}
  (dest/'metadata.json').write_text(json.dumps(meta,indent=2,allow_nan=False)+'\n')
  with (dest/'training.csv').open('w') as f:
   w=csv.writer(f);w.writerow(['time_s',*[n+' ['+u+']' for n,u in zip(NAMES,UNITS)],'cone_observed','cone_left_time_s','cone_right_time_s','cone_right_weight'])
   for j,t in enumerate(target):w.writerow([t,*state[j],bool(interp['observed'][j]),times[interp['left_source_index'][j]],times[interp['right_source_index'][j]],interp['right_weight'][j]])
- sample={'case':case,'fixed_initial_conditions':static,'state_names':NAMES,'state_units':UNITS,'initial_state':{'time_s':float(target[0]),'values':state[0].tolist(),'cone_observed':bool(interp['observed'][0])},'next_state':{'time_s':float(target[1]),'values':state[1].tolist(),'cone_observed':bool(interp['observed'][1]),'cone_source_times_s':[times[interp['left_source_index'][1]],times[interp['right_source_index'][1]]],'cone_right_weight':float(interp['right_weight'][1])},'step_inputs':{'dt_s':float(target[1]-target[0]),'ignition_on_fraction_at_initial':float(ignition[0]),'ignition_on_fraction_at_next':float(ignition[1]),'ignition_schedule_s_fraction':[[0,0],[.1,1],[20,1],[20.1,0]]},'provenance':{'raw_archive_sha256':source['sha256'],'training_npz_sha256':meta['training_npz_sha256'],'no_historical_state_window':True,'cone_values_between_saved_times_are_interpolated':True}}
+ sample={'case':case,'fixed_initial_conditions':static,'state_names':NAMES,'state_units':UNITS,'initial_state':{'time_s':float(target[0]),'values':state[0].tolist(),'cone_observed':bool(interp['observed'][0])},'next_state':{'time_s':float(target[1]),'values':state[1].tolist(),'cone_observed':bool(interp['observed'][1]),'cone_source_times_s':[times[interp['left_source_index'][1]],times[interp['right_source_index'][1]]],'cone_right_weight':float(interp['right_weight'][1])},'step_inputs':{'dt_s':float(target[1]-target[0]),'ignition_on_fraction_at_initial':float(ignition[0]),'ignition_on_fraction_at_next':float(ignition[1]),'ignition_schedule_s_fraction':[[0,0],[.1,1],[20,1],[20.1,0]]},'provenance':{'raw_archive_sha256':source.get('sha256'),'raw_restoration_receipt_sha256':sha(Path(source['restoration_receipt'])) if source.get('restoration_receipt') else None,'training_npz_sha256':meta['training_npz_sha256'],'no_historical_state_window':True,'cone_values_between_saved_times_are_interpolated':True}}
  (dest/'first-transition.json').write_text(json.dumps(sample,indent=2,allow_nan=False)+'\n')
  lines=[f'# {case}: first transition','',f'Actual times: {target[0]:.9f} -> {target[1]:.9f} s. Next cone values are interpolated, not measured.','', 'Fixed inputs:','', '```json',json.dumps(static,indent=2),'```','', '| State | Units | Initial | Next |','|---|---|---:|---:|']
  lines += [f'| {n} | {u} | {state[0,i]:.9g} | {state[1,i]:.9g} |' for i,(n,u) in enumerate(zip(NAMES,UNITS))]
