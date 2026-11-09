@@ -7430,3 +7430,14 @@ stages:
     - investigate_cone_pivot.py
     outs:
     - data/training-both-formats/tree51_000244_baseline
+  training_both_tree51_000245_baseline:
+    cmd: ../../.venv/bin/python continuous_training.py --case tree51_000245_baseline
+    frozen: true
+    deps:
+    - continuous_training.py
+    - preview_training.py
+    - spatial_training_variants.py
+    - cone_comparison_preview.py
+    - investigate_cone_pivot.py
+    outs:
+    - data/training-both-formats/tree51_000245_baseline
