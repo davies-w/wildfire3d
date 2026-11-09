@@ -16,11 +16,13 @@ def save(p,d):
  p.parent.mkdir(parents=True,exist_ok=True);t=p.with_suffix('.tmp');t.write_text(json.dumps(d,indent=2)+'\n');t.replace(p)
 def git(*args):return subprocess.check_output(['git',*args],cwd=ROOT,text=True).strip()
 def publish(paths):
- paths=[str(p.relative_to(ROOT)) for p in paths]
- subprocess.run(['git','commit','--only','-m','Preserve both training formats for one verified scenario','--',*paths],cwd=ROOT,check=True)
- subprocess.run(['git','push'],cwd=ROOT,check=True)
- commit=git('rev-parse','HEAD');remote=git('ls-remote','origin','refs/heads/'+git('branch','--show-current')).split()[0]
- subprocess.run(['git','merge-base','--is-ancestor',commit,remote],cwd=ROOT,check=True);return commit
+ with (ROOT/'.git/preservation-publish.lock').open('w') as publication:
+  fcntl.flock(publication,fcntl.LOCK_EX)
+  paths=[str(p.relative_to(ROOT)) for p in paths]
+  subprocess.run(['git','commit','--only','-m','Preserve both training formats for one verified scenario','--',*paths],cwd=ROOT,check=True)
+  subprocess.run(['git','push'],cwd=ROOT,check=True)
+  commit=git('rev-parse','HEAD');remote=git('ls-remote','origin','refs/heads/'+git('branch','--show-current')).split()[0]
+  subprocess.run(['git','merge-base','--is-ancestor',commit,remote],cwd=ROOT,check=True);return commit
 
 def cases():
  result={}
@@ -113,6 +115,7 @@ def cleanup(case,raw,dest,work,training):
   if p.is_file():
    if p not in entries:raise RuntimeError('Untracked local raw file: '+str(p))
    assert not p.is_symlink() and hf.digest(p)[0]==entries[p];planned.append(p)
+ save(work/'cleanup-plan.json',{'case':case,'paths':[str(p.relative_to(ROOT)) for p in planned],'raw_verified':True,'training_verified':True})
  removed=[]
  for p in planned:
   assert hf.digest(p)[0]==entries[p];n=p.stat().st_size;p.unlink();removed.append({'path':str(p.relative_to(ROOT)),'bytes':n,'md5':entries[p]})

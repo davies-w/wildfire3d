@@ -63,12 +63,14 @@ def main():
                 subprocess.run([sys.executable,str(ROOT/'scripts/dvc_hf.py'),'push','--plan',str(planpath)],cwd=ROOT,check=True)
                 verified=json.loads((state/'upload-verification.json').read_text());assert verified['passed'] and verified['remote_size_and_xet_verified'] and verified['plan_sha256']==sha(planpath)
                 # Publish only the DVC pointer; no private cloud inventory or identifiers.
-                subprocess.run(['git','add','-f','--',str(pointer.relative_to(ROOT)),str((output/'.gitignore').relative_to(ROOT))],cwd=ROOT,check=True)
-                if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode:
-                    subprocess.run(['git','commit','-m','Preserve pinned raw simulation archive in DVC'],cwd=ROOT,check=True)
-                subprocess.run(['git','push'],cwd=ROOT,check=True)
-                head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip();branch=subprocess.check_output(['git','branch','--show-current'],cwd=ROOT,text=True).strip()
-                remote=subprocess.check_output(['git','ls-remote','origin','refs/heads/'+branch],cwd=ROOT,text=True).split()[0];assert remote==head
+                with (ROOT/'.git/preservation-publish.lock').open('w') as publication:
+                    fcntl.flock(publication,fcntl.LOCK_EX)
+                    subprocess.run(['git','add','-f','--',str(pointer.relative_to(ROOT)),str((output/'.gitignore').relative_to(ROOT))],cwd=ROOT,check=True)
+                    if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode:
+                        subprocess.run(['git','commit','-m','Preserve pinned raw simulation archive in DVC'],cwd=ROOT,check=True)
+                    subprocess.run(['git','push'],cwd=ROOT,check=True)
+                    head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip();branch=subprocess.check_output(['git','branch','--show-current'],cwd=ROOT,text=True).strip()
+                    remote=subprocess.check_output(['git','ls-remote','origin','refs/heads/'+branch],cwd=ROOT,text=True).split()[0];assert remote==head
                 save(receipt,dict(passed=True,source_manifest=m['name'],source_generation=m['generation'],archive_sha256=source_sha,bytes=archive.stat().st_size,verification=verified,git_commit=head))
                 assert sha(archive)==source_sha;archive.unlink()
                 done+=1;print('ARCHIVE VERIFIED',key,'newly_preserved',done,flush=True)
