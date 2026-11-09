@@ -57138,3 +57138,32 @@ stages:
       hash: md5
       md5: 5af86e111fe6f33f1167c8209453489f
       size: 6229
+  training_both_tree51_001681_baseline:
+    cmd: ../../.venv/bin/python continuous_training.py --case tree51_001681_baseline
+    outs:
+    - path: data/training-both-formats/tree51_001681_baseline
+      hash: md5
+      md5: 0d789e0e3d83fa9402d41ffd85302925.dir
+      size: 59988
+      nfiles: 14
+    deps:
+    - path: continuous_training.py
+      hash: md5
+      md5: c25711438d483a468cc4043b10084a3c
+      size: 12576
+    - path: preview_training.py
+      hash: md5
+      md5: 28d6db5543edd18e82c5b2454408003c
+      size: 18780
+    - path: spatial_training_variants.py
+      hash: md5
+      md5: 0f4a991406b638c53b796027447c9c68
+      size: 12494
+    - path: cone_comparison_preview.py
+      hash: md5
+      md5: d667a9d63a6f630c86dd7f68c58ec8c4
+      size: 9713
+    - path: investigate_cone_pivot.py
+      hash: md5
+      md5: 5af86e111fe6f33f1167c8209453489f
+      size: 6229
