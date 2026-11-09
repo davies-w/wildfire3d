@@ -4581,3 +4581,14 @@ stages:
     - data/completed07/wave-000158/tree51_000608_baseline/proof.json
     outs:
     - data/conifer-cone-preview
+  training_both_tree51_000276_baseline:
+    cmd: ../../.venv/bin/python continuous_training.py --case tree51_000276_baseline
+    frozen: true
+    deps:
+    - continuous_training.py
+    - preview_training.py
+    - spatial_training_variants.py
+    - cone_comparison_preview.py
+    - investigate_cone_pivot.py
+    outs:
+    - data/training-both-formats/tree51_000276_baseline
