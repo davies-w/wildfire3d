@@ -155,3 +155,7 @@ DVC artifacts reached their authorized destination. Report any failed or blocked
 commit, push or verification explicitly; do not describe a local-only mirror
 copy as a completed remote push. Do not request redundant approval for uploads
 already authorized by the user.
+
+## Preserve agreed experiment decisions (2026-11-08)
+
+Use the user's already agreed representations, experimental parameters and scope as constraints. If a choice is uncertain or changing it appears necessary, ask before implementation or expenditure. Never silently substitute a different representation. The current two-case comparison is ignition-anchored cone versus freely fitted cone; an ellipsoid is not an authorized substitute. Bulk conversion and local raw-data deletion remain pending explicit user review.

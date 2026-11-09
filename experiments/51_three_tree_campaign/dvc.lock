@@ -10955,3 +10955,89 @@ stages:
       hash: md5
       md5: c2c59e4979430332285a3d8e3ddfb6c3
       size: 1916114
+  cone_comparison_two_cases:
+    cmd: ../../.venv/bin/python cone_comparison_preview.py && ../../.venv/bin/python
+      validate_cone_comparison.py
+    outs:
+    - path: data/cone-comparison-preview
+      hash: md5
+      md5: 71a3ecba9fff73013d567262e8c1614a.dir
+      size: 12489836
+      nfiles: 31
+    deps:
+    - path: cone_comparison_preview.py
+      hash: md5
+      md5: ef0d149f416c2995d3a19c853b9f8f7a
+      size: 9195
+    - path: validate_cone_comparison.py
+      hash: md5
+      md5: e0346ceb284b68d84dbac68249519ea5
+      size: 1553
+    - path: spatial_training_variants.py
+      hash: md5
+      md5: 0adf341cdb619e50530160fddfa9a96a
+      size: 12115
+    - path: preview_training.py
+      hash: md5
+      md5: 440414d99b063d237295b4891702edc3
+      size: 17836
+    - path: data/pivot-investigation/report.json
+      hash: md5
+      md5: 9b06b7cac947ef76094fec47b0701ae8
+      size: 45572
+    - path: data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_1_1.sf
+      hash: md5
+      md5: 5ce1bda61e4010d5037330948ce35913
+      size: 2522786
+    - path: data/spatial-training-variants/tree51_001323_baseline/observed-hot-cells.json
+      hash: md5
+      md5: 07e238b6c57afdc8309bb3d7a1e2a20c
+      size: 298345
+    - path: data/spatial-training-variants/tree51_001323_baseline/cone/first-transition.json
+      hash: md5
+      md5: 535fbcbbd06215f093ed2e4033efc176
+      size: 2193
+    - path: data/spatial-training-variants/tree51_001323_baseline/cone/first-transition.md
+      hash: md5
+      md5: a353d63a398c444eb4e767d222a5383a
+      size: 1307
+    - path: data/spatial-training-variants/tree51_001323_baseline/cone/metadata.json
+      hash: md5
+      md5: 4eb746748cc3a4002a8fb23737dac03c
+      size: 4177
+    - path: data/spatial-training-variants/tree51_001323_baseline/cone/training.csv
+      hash: md5
+      md5: 4373efd31c4102941df56eb8d62afe33
+      size: 20023
+    - path: data/spatial-training-variants/tree51_001323_baseline/cone/training.npz
+      hash: md5
+      md5: 7fc790263359f86842f65285ff6dcb9f
+      size: 10355
+    - path: data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_1_1.sf
+      hash: md5
+      md5: c2c59e4979430332285a3d8e3ddfb6c3
+      size: 1916114
+    - path: data/spatial-training-variants/tree51_001336_baseline/observed-hot-cells.json
+      hash: md5
+      md5: 8b13fd83ec8bce81606cf999019d1ef1
+      size: 649
+    - path: data/spatial-training-variants/tree51_001336_baseline/cone/first-transition.json
+      hash: md5
+      md5: 71ccc77e2f94ad58dec26ef9cb7ffe44
+      size: 2096
+    - path: data/spatial-training-variants/tree51_001336_baseline/cone/first-transition.md
+      hash: md5
+      md5: 8308b840f9854428abeeafd8867d5712
+      size: 1241
+    - path: data/spatial-training-variants/tree51_001336_baseline/cone/metadata.json
+      hash: md5
+      md5: 494953f0a7687b3c2efc2d6ea4e57fd2
+      size: 3910
+    - path: data/spatial-training-variants/tree51_001336_baseline/cone/training.csv
+      hash: md5
+      md5: 27d35069d46d41f3e463ce1c68966895
+      size: 12204
+    - path: data/spatial-training-variants/tree51_001336_baseline/cone/training.npz
+      hash: md5
+      md5: ced9367d597d5d6cdf8204a7ec7ddeb5
+      size: 7153

@@ -4299,3 +4299,29 @@ stages:
     - data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_1_1.sf
     outs:
     - data/spatial-training-variants
+  cone_comparison_two_cases:
+    cmd: ../../.venv/bin/python cone_comparison_preview.py && ../../.venv/bin/python
+      validate_cone_comparison.py
+    frozen: true
+    deps:
+    - cone_comparison_preview.py
+    - validate_cone_comparison.py
+    - spatial_training_variants.py
+    - preview_training.py
+    - data/pivot-investigation/report.json
+    - data/completed07/wave-000860/tree51_001323_baseline/solve/tree51_001323_baseline_1_1.sf
+    - data/spatial-training-variants/tree51_001323_baseline/observed-hot-cells.json
+    - data/spatial-training-variants/tree51_001323_baseline/cone/first-transition.json
+    - data/spatial-training-variants/tree51_001323_baseline/cone/first-transition.md
+    - data/spatial-training-variants/tree51_001323_baseline/cone/metadata.json
+    - data/spatial-training-variants/tree51_001323_baseline/cone/training.csv
+    - data/spatial-training-variants/tree51_001323_baseline/cone/training.npz
+    - data/completed07/wave-000871/tree51_001336_baseline/solve/tree51_001336_baseline_1_1.sf
+    - data/spatial-training-variants/tree51_001336_baseline/observed-hot-cells.json
+    - data/spatial-training-variants/tree51_001336_baseline/cone/first-transition.json
+    - data/spatial-training-variants/tree51_001336_baseline/cone/first-transition.md
+    - data/spatial-training-variants/tree51_001336_baseline/cone/metadata.json
+    - data/spatial-training-variants/tree51_001336_baseline/cone/training.csv
+    - data/spatial-training-variants/tree51_001336_baseline/cone/training.npz
+    outs:
+    - data/cone-comparison-preview
