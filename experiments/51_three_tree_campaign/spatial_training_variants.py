@@ -6,6 +6,8 @@ import csv,json,hashlib
 import numpy as np
 from preview_training import R,temperatures,sha,NAMES,UNITS
 OUT=R/'data/spatial-training-variants'
+BASE=R/'data/training-preview'
+REPORT=R/'data/pivot-investigation/report.json'
 CASES=['tree51_001323_baseline','tree51_001336_baseline']
 C_NAMES=NAMES[:4]+['presence','axis_x','axis_y','axis_z','axial_length','end_radius','peak_temperature']
 C_UNITS=UNITS[:4]+['fraction','unitless','unitless','unitless','m','m','degC']
@@ -34,11 +36,11 @@ def interpolate(t,y,q,kind):
  for j in np.flatnonzero(observed):out[j]=y[np.flatnonzero(t==q[j])[0]]
  return out,observed,lo,hi,w
 
-def generate(case):
- base=R/'data/training-preview'/case;m=json.loads((base/'metadata.json').read_text());old=np.load(base/'training.npz');assert sha(base/'training.npz')==m['training_npz_sha256']
+def generate(case,kinds=('cone','ellipsoid')):
+ base=BASE/case;m=json.loads((base/'metadata.json').read_text());old=np.load(base/'training.npz');assert sha(base/'training.npz')==m['training_npz_sha256']
  q=old['time_s'];domain=m['domain_m'];shape=tuple(np.rint(np.array(domain)/.5).astype(int));xyz=np.stack(np.meshgrid(*[(np.arange(n)+.5)*.5 for n in shape],indexing='ij'),-1).reshape(-1,3)
  anchor=np.r_[m['tree_center_xy_m'],0]+m['static_inputs']['ignition_contact_relative_xyz_m'];raw=next((R/'data/completed07').glob('*/'+case+'/solve/'+case+'_1_1.sf'));assert sha(raw)==m['raw_input_sha256'][raw.name]
- ablations=json.loads((R/'data/pivot-investigation/report.json').read_text());oldrows=next(c['frames'] for c in ablations['cases'] if c['case']==case)
+ ablations=json.loads(REPORT.read_text());oldrows=next(c['frames'] for c in ablations['cases'] if c['case']==case)
  cone=[];ellipsoid=[];times=[];diagnostics=[];clouds=[]
  for j,(t,a) in enumerate(temperatures(raw,domain,.5)):
   assert t==oldrows[j]['time_s'];temp=a.reshape(-1);hot=temp>50;points=xyz[hot];times.append(t)
@@ -49,6 +51,8 @@ def generate(case):
   tilt,az=np.deg2rad([c['tilt_deg'],c['azimuth_deg']]);u=np.array([np.sin(tilt)*np.cos(az),np.sin(tilt)*np.sin(az),np.cos(tilt)])
   d=xyz-anchor;s=d@u;cmask=(s>=0)&(s<=c['length_m']+1e-9)&(np.maximum((d*d).sum(1)-s*s,0)<=(c['radius_m']*s/c['length_m'])**2+1e-9)
   cone.append(np.r_[1,u,c['length_m'],c['radius_m'],temp[cmask].max()])
+  if 'ellipsoid' not in kinds:
+   ellipsoid.append(np.zeros(11));diagnostics.append({'time_s':t,'active':True,'cone':metrics(cmask,hot)});continue
   weights=temp[hot]-20;centre=np.average(points,axis=0,weights=weights);delta=points-centre;cov=(delta.T*weights)@delta/weights.sum();ev=np.linalg.eigvalsh(cov);assert ev.min()>0
   dist=np.einsum('ni,ij,nj->n',delta,np.linalg.inv(cov),delta);k=int(np.ceil(.95*len(points)));scale=float(np.partition(dist,k-1)[k-1]);S=cov*scale
   d=xyz-centre;emask=np.einsum('ni,ij,nj->n',d,np.linalg.inv(S),d)<=1+1e-9
@@ -58,10 +62,11 @@ def generate(case):
  (root/'observed-hot-cells.json').write_text(json.dumps(clouds,separators=(',',':'))+'\n')
  (root/'fit-diagnostics.json').write_text(json.dumps(diagnostics,indent=2)+'\n')
  for kind,source,names,units in [('cone',np.array(cone),C_NAMES,C_UNITS),('ellipsoid',np.array(ellipsoid),E_NAMES,E_UNITS)]:
+  if kind not in kinds:continue
   values,observed,lo,hi,w=interpolate(times,source,q,kind);states=np.column_stack([old['state'][:,:4],values]);dest=root/kind;dest.mkdir(exist_ok=True)
   assert np.isfinite(states).all() and np.array_equal(states[:,:4],old['state'][:,:4])
   np.savez_compressed(dest/'training.npz',time_s=q,state=states,state_names=names,state_units=units,source_time_s=times,source_spatial_state=source,observed=observed,interpolated=~observed,left_source_index=lo,right_source_index=hi,right_weight=w,ignition_on_fraction=old['ignition_on_fraction'],dt_next_s=old['dt_next_s'],has_next_state=old['has_next_state'])
-  metadata={'case':case,'variant':kind,'state_names':names,'state_units':units,'static_inputs':m['static_inputs'],'geometry':m['geometry'],'domain_m':domain,'tree_center_xy_m':m['tree_center_xy_m'],'cone_anchor_xyz_m':anchor.tolist(),'raw_temperature_sha256':sha(raw),'raw_archive_sha256':m['raw_archive_sha256'],'original_four_state_npz_sha256':m['training_npz_sha256'],'training_npz_sha256':sha(dest/'training.npz'),'split':m['split'],'method':('Ignition-anchored circular cone: 10-degree tilt and15-degree azimuth candidate grid, top32 sample-ranked then all-hot-cell calibrated; >=95% hot-cell recall. Direction represented by unit xyz vector, not angle wrap.' if kind=='cone' else 'Temperature-excess-weighted centroid and covariance, scaled to enclose>=95% hot cells. Shape matrix S defines (x-centre)^T inverse(S) (x-centre)<=1. Six independent S entries encode three semiaxes and full orientation without eigenvector sign flips. This is not minimum-volume optimization.'),'interpolation':'Within saved time range only. Linear presence, peak sentinel and cone extents; active-to-active normalized-linear cone direction, linear ellipsoid centre and shape matrix. During appearance/disappearance hold the available active endpoint centre/direction, shrink extents linearly (ellipsoid shape matrix quadratically). This is an explicit synthetic transition rule, not recovered motion. No centre is interpolated from an absent origin. Zero absent peak is a sentinel, not ambient C. Source rows/masks retained.','limits':m['limitations']}
+  metadata={'case':case,'variant':kind,'state_names':names,'state_units':units,'static_inputs':m['static_inputs'],'geometry':m['geometry'],'domain_m':domain,'tree_center_xy_m':m['tree_center_xy_m'],'cone_anchor_xyz_m':anchor.tolist(),'raw_temperature_sha256':sha(raw),'raw_archive_sha256':m['raw_archive_sha256'],'original_four_state_npz_sha256':m['training_npz_sha256'],'training_npz_sha256':sha(dest/'training.npz'),'split':m['split'],'method':('Ignition-anchored circular cone: 10-degree tilt and15-degree azimuth candidate grid, top32 sample-ranked then all-hot-cell calibrated; >=95% hot-cell recall. Direction represented by unit xyz vector, not angle wrap.' if kind=='cone' else 'Temperature-excess-weighted centroid and covariance, scaled to enclose>=95% hot cells. Shape matrix S defines (x-centre)^T inverse(S) (x-centre)<=1. Six independent S entries encode three semiaxes and full orientation without eigenvector sign flips. This is not minimum-volume optimization.'),'interpolation':'Within saved time range only. Linear presence, peak sentinel and cone extents; active-to-active normalized-linear cone direction, linear ellipsoid centre and shape matrix. During appearance/disappearance hold the available active endpoint centre/direction, shrink extents linearly (ellipsoid shape matrix quadratically). This is an explicit synthetic transition rule, not recovered motion. No centre is interpolated from an absent origin. Zero absent peak is a sentinel, not ambient C. Source rows/masks retained.','limits':m['limitations'].replace('tilt restricted to downwind x-z plane, apex searched on tree axis;', 'full 3D direction; anchored tip fixed at ignition location;')}
   (dest/'metadata.json').write_text(json.dumps(metadata,indent=2)+'\n')
   with (dest/'training.csv').open('w') as f:
    writer=csv.writer(f);writer.writerow(['time_s',*[f'{n} [{u}]' for n,u in zip(names,units)],'spatial_observed']);writer.writerows([[t,*state,bool(obs)] for t,state,obs in zip(q,states,observed)])

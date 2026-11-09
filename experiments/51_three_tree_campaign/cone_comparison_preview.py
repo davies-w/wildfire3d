@@ -4,13 +4,15 @@ import numpy as np
 from preview_training import R,sha
 from spatial_training_variants import CASES
 OUT=R/'data/cone-comparison-preview'
+BASE=R/'data/spatial-training-variants'
+REPORT=R/'data/pivot-investigation/report.json'
 def generate(case):
  root=OUT/case;root.mkdir(parents=True,exist_ok=True)
- prior=R/'data/spatial-training-variants'/case
+ prior=BASE/case
  shutil.copytree(prior/'cone',root/'cone',dirs_exist_ok=True)
  shutil.copy2(prior/'observed-hot-cells.json',root/'observed-hot-cells.json')
  old=np.load(root/'cone/training.npz');meta=json.loads((root/'cone/metadata.json').read_text())
- report=json.loads((R/'data/pivot-investigation/report.json').read_text());frames=next(x['frames'] for x in report['cases'] if x['case']==case)
+ report=json.loads(REPORT.read_text());frames=next(x['frames'] for x in report['cases'] if x['case']==case)
  src=[]
  for f in frames:
   if not f.get('fits'):src.append(np.zeros(10));continue
@@ -38,6 +40,7 @@ def generate(case):
  for i,t in enumerate(old['source_time_s']):values[np.flatnonzero(old['time_s']==t)[0]]=src[i]
  states=np.column_stack([old['state'][:,:4],values]);names=list(old['state_names'][:4])+['presence','apex_x','apex_y','apex_z','axis_x','axis_y','axis_z','axial_length','end_radius','peak_temperature'];units=list(old['state_units'][:4])+['fraction','m','m','m','unitless','unitless','unitless','m','m','degC']
  dest=root/'free_cone';dest.mkdir(exist_ok=True);payload={k:old[k] for k in old.files};payload.update(state=states,state_names=names,state_units=units,source_spatial_state=src);np.savez_compressed(dest/'training.npz',**payload)
+ meta['limits']=meta['limits'].replace('anchored tip fixed at ignition location;', 'free tip bounded to the simulation-domain x/y and zero-to-tree-height z;')
  meta.update(variant='free_cone',state_names=names,state_units=units,training_npz_sha256=sha(dest/'training.npz'),method='Free cone from previously reviewed plus_horizontal_apex fit: apex xyz, tilt and azimuth optimized with three deterministic seeds; all-hot-cell extent calibration for >=95% recall. Same bounds as pivot investigation, not a global optimum. Apex is a geometric parameter, not a physical fire origin.',interpolation='Linear apex, extents, presence and peak; normalized-linear unit direction between active observations. During appearance/disappearance hold the active endpoint apex/direction and linearly grow/shrink extents. Absent zeros are sentinels. No extrapolation. Six exact source rows retained.')
  (dest/'metadata.json').write_text(json.dumps(meta,indent=2)+'\n')
  with (dest/'training.csv').open('w') as f:
@@ -61,6 +64,10 @@ def render(case):
    for a,b,r in geometry['stems']:ax.plot([a[0]+center[0],b[0]+center[0]],[a[1]+center[1],b[1]+center[1]],[a[2],b[2]],c='#6e6855',lw=1)
    for x,y,z,rx,ry,rz in geometry['ellipsoids']:
     pts=sphere*np.array([rx,ry,rz])+np.array([x+center[0],y+center[1],z]);ax.plot_wireframe(pts[:,:,0],pts[:,:,1],pts[:,:,2],rstride=10,cstride=6,color='#64a06e',alpha=.25,lw=.5)
+   for x,y,b,h,rad in geometry['cones']:
+    rim=np.column_stack([center[0]+x+rad*np.cos(theta),center[1]+y+rad*np.sin(theta),np.full(len(theta),b)])
+    ax.plot(*rim.T,color='#64a06e',alpha=.3,lw=.5)
+    for k in range(0,len(theta),10):ax.plot(*np.array([[center[0]+x,center[1]+y,h],rim[k]]).T,color='#64a06e',alpha=.3,lw=.5)
    if data['observed'][j]:
     s=int(np.flatnonzero(data['source_time_s']==times[j])[0]);pts=np.array(cloud[s]['xyz_m'])
     if len(pts):ax.scatter(*pts.T,c='#555555',s=2,alpha=.25)
