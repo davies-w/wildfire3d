@@ -8,7 +8,7 @@ item=items[0];assert int(item['size'])==sample.stat().st_size
 manifest=str(Path(item['name']).parent/'archive-manifest.json');proofs=[]
 for f in (p/'raw-migration-receipts').glob('*.json'):
  r=json.loads(f.read_text())
- if r['source_manifest']==manifest:
+ if r.get('source_manifest')==manifest:
   assert r['passed'] and r['verification']['remote_size_and_xet_verified'];proofs.append(str(f.relative_to(ROOT)))
 assert proofs
 (p/'raw-migration-sample-reconciliation.json').write_text(json.dumps({'passed':True,'sample_md5_base64':md,'source_object':item['name'],'source_generation':item['generation'],'archive_receipts':proofs,'sample_retained':True},indent=2)+'\n');print('Sample matched pinned part and verified archive receipt')
