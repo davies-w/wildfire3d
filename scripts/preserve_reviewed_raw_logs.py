@@ -21,7 +21,7 @@ def main():
   (state/'source-map.json').write_text(json.dumps(mapping,indent=2)+'\n');hf.STATE=state/'hf';hf.STATE.mkdir(exist_ok=True);pointer=out.with_name(out.name+'.dvc')
   if pointer.exists():hf.plan_records([str(pointer)])
   else:hf.track([str(out)])
-  hf.upload(hf.STATE/'plan.json');dest=ROOT/'.artifact-staging/reviewed-raw-logs-roundtrip'
+  hf.upload(hf.STATE/'plan.json');dest=ROOT/'.artifact-staging'/(out.name+'-roundtrip')
   if not (hf.STATE/'restore-verification.json').exists():hf.restore_records([str(pointer)],dest)
   assert json.loads((hf.STATE/'restore-verification.json').read_text())['passed']
   for row in mapping:assert sha(dest/out.relative_to(ROOT)/row['archived_filename'])==row['sha256'] and sha(ROOT/row['original_path'])==row['sha256']
