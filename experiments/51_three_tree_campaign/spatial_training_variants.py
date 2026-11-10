@@ -1,4 +1,4 @@
-from preview_training import solve_folder
+from preview_training import solve_folder,source_case
 """Two-case, raw-derived anchored-cone and free-ellipsoid training previews.
 No simulations, model training, bulk conversion or raw deletion.
 """
@@ -40,7 +40,7 @@ def interpolate(t,y,q,kind):
 def generate(case,kinds=('cone','ellipsoid')):
  base=BASE/case;m=json.loads((base/'metadata.json').read_text());old=np.load(base/'training.npz');assert sha(base/'training.npz')==m['training_npz_sha256']
  q=old['time_s'];domain=m['domain_m'];shape=tuple(np.rint(np.array(domain)/.5).astype(int));xyz=np.stack(np.meshgrid(*[(np.arange(n)+.5)*.5 for n in shape],indexing='ij'),-1).reshape(-1,3)
- anchor=np.r_[m['tree_center_xy_m'],0]+m['static_inputs']['ignition_contact_relative_xyz_m'];raw=(solve_folder(case)/(case+'_1_1.sf'));assert sha(raw)==m['raw_input_sha256'][raw.name]
+ anchor=np.r_[m['tree_center_xy_m'],0]+m['static_inputs']['ignition_contact_relative_xyz_m'];raw=(solve_folder(case)/(source_case(case)+'_1_1.sf'));assert sha(raw)==m['raw_input_sha256'][raw.name]
  ablations=json.loads(REPORT.read_text());oldrows=next(c['frames'] for c in ablations['cases'] if c['case']==case)
  cone=[];ellipsoid=[];times=[];diagnostics=[];clouds=[]
  for j,(t,a) in enumerate(temperatures(raw,domain,.5)):

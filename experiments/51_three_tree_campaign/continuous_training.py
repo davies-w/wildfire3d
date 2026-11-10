@@ -2,10 +2,10 @@
 Never launches simulations; every stage is resumable and independently receipted.
 """
 from pathlib import Path
-import argparse,fcntl,hashlib,json,shutil,subprocess,sys,time,traceback
+import argparse,os,fcntl,hashlib,json,shutil,subprocess,sys,time,traceback
 import numpy as np
 import requests,yaml
-from preview_training import R,ROOT,extract,temperatures,sha,SOLVE_OVERRIDES
+from preview_training import R,ROOT,extract,temperatures,sha,SOLVE_OVERRIDES,SOURCE_CASE_OVERRIDES
 from investigate_cone_pivot import search_grid,search_continuous,evaluate
 import spatial_training_variants as anchored
 import cone_comparison_preview as comparison
@@ -34,11 +34,18 @@ def cases():
  previews={p.parent.parent.name for base in ['cone-comparison-preview','ten-case-cone-preview','conifer-cone-preview'] for p in (R/'data'/base).glob('tree*/cone/training.npz')}
  return sorted(result.items(),key=lambda x:(x[0] not in previews,x[0]))
 
+def reused_cases():
+ mapping=json.loads((R/'private07/reused-training-source-map.json').read_text());assert mapping['passed'] and mapping['count']==22
+ result=[]
+ for row in mapping['cases']:
+  proof=ROOT/row['proof_path'];assert sha(proof)==row['proof_sha256'];result.append((row['target_case'],proof))
+ return result
+
 def raw_restore(case,proofpath,work):
  record=work/'raw-verified.json';dest=ROOT/'.artifact-staging/continuous-raw'/case
  if record.exists():
   d=json.loads(record.read_text());assert d['passed'];return d,dest
- lock=yaml.safe_load((R/'dvc.lock').read_text());name=str(proofpath.parent.relative_to(R));owners=[o for stage in lock['stages'].values() for o in stage.get('outs',[]) if name==o['path'] or name.startswith(o['path']+'/')];owner=max(owners,key=lambda o:len(o['path']));h=owner['md5'];assert h.endswith('.dir')
+ scope=next(p for p in proofpath.parents if (p/'dvc.lock').exists());lock=yaml.safe_load((scope/'dvc.lock').read_text());name=str(proofpath.parent.relative_to(scope));owners=[o for stage in lock['stages'].values() for o in stage.get('outs',[]) if name==o['path'] or name.startswith(o['path']+'/')];owner=max(owners,key=lambda o:len(o['path']));h=owner['md5'];assert h.endswith('.dir')
  response=requests.get('https://huggingface.co/buckets/wdavies/dvc_storage/resolve/wildfire3d/files/md5/'+h[:2]+'/'+h[2:],timeout=90);response.raise_for_status();assert hashlib.md5(response.content).hexdigest()==h[:-4]
  prefix=name[len(owner['path']):].strip('/');entries=[]
  for e in response.json():
@@ -53,8 +60,8 @@ def raw_restore(case,proofpath,work):
  proof=json.loads(proofpath.read_text());restored=dest/proofpath.parent.relative_to(ROOT);assert sha(restored/'proof.json')==sha(proofpath)
  expected={}
  for f in proof['files']:
-  p=restored/f['path'];assert sha(p)==f['sha256'];expected[str((proofpath.parent/f['path']).relative_to(R))]=f['sha256']
- result={'passed':True,'case':case,'owner_path':owner['path'],'owner_md5':h,'case_path':name,'entries':entries,'raw_inputs_sha256':expected,'restored_files':len(entries)};save(record,result);return result,dest
+  p=restored/f['path'];assert sha(p)==f['sha256'];expected[os.path.relpath(proofpath.parent/f['path'],R)]=f['sha256']
+ result={'passed':True,'case':case,'owner_path':owner['path'],'owner_md5':h,'case_path':os.path.relpath(proofpath.parent,R),'source_case':proofpath.parent.name,'owner_experiment':str(scope.relative_to(ROOT)),'entries':entries,'raw_inputs_sha256':expected,'restored_files':len(entries)};save(record,result);return result,dest
 
 def generate(case,raw,dest,work):
  target=OUT/case
@@ -67,11 +74,15 @@ def generate(case,raw,dest,work):
    m=json.loads((prior/'cone/metadata.json').read_text());assert m['raw_temperature_sha256']==raw['raw_inputs_sha256'][raw['case_path']+'/solve/'+case+'_1_1.sf']
    for kind in ['cone','free_cone']:shutil.copytree(prior/kind,target/kind,dirs_exist_ok=True)
    save(target/'provenance.json',{'case':case,'reused_preview':str(prior.relative_to(R)),'original_raw_proof_sha256':sha(R/raw['case_path']/'proof.json')});validate(target);return
- scratch=work/'generated';base=scratch/'base';inter=scratch/'anchored';report=scratch/'fit-report.json';source=R/raw['case_path']/'solve';SOLVE_OVERRIDES[case]=dest/source.relative_to(ROOT)
- if not (base/case/'metadata.json').exists():extract({'case':case,'restoration_receipt':str(work/'raw-verified.json'),'original_solve':str(source.relative_to(R)),'HF_restored':True},base)
+ scratch=work/'generated';base=scratch/'base';inter=scratch/'anchored';report=scratch/'fit-report.json';source=(R/raw['case_path']/'solve').resolve();SOLVE_OVERRIDES[case]=dest/source.relative_to(ROOT);SOURCE_CASE_OVERRIDES[case]=raw.get('source_case',case)
+ if not (base/case/'metadata.json').exists():
+  spec={'case':case,'restoration_receipt':str(work/'raw-verified.json'),'original_solve':os.path.relpath(source,R),'HF_restored':True}
+  if SOURCE_CASE_OVERRIDES[case]!=case:
+   mapping=next(v for v in json.loads((R/'private07/reused-training-source-map.json').read_text())['cases'] if v['target_case']==case);assert mapping['source_case']==SOURCE_CASE_OVERRIDES[case];spec['expected_wet_mass_kg']=mapping['source_design']['expected_wet_mass_kg']
+  extract(spec,base)
  if not report.exists():
   meta=json.loads((base/case/'metadata.json').read_text());domain=meta['domain_m'];shape=np.rint(np.array(domain)/.5).astype(int);center=meta['tree_center_xy_m'];xyz=np.stack(np.meshgrid(*[(np.arange(n)+.5)*.5 for n in shape],indexing='ij'),-1).reshape(-1,3);rows=[]
-  for t,a in temperatures(SOLVE_OVERRIDES[case]/(case+'_1_1.sf'),domain,.5):
+  for t,a in temperatures(SOLVE_OVERRIDES[case]/(SOURCE_CASE_OVERRIDES[case]+'_1_1.sf'),domain,.5):
    temp=a.reshape(-1);points=xyz[temp>50];row={'time_s':t,'active':bool(len(points)),'hot_cells':len(points)}
    if len(points):
     anchor=np.r_[center,0]+meta['static_inputs']['ignition_contact_relative_xyz_m'];c=search_grid(points,anchor[:2],[anchor[2]],range(-180,180,15));free,seeds=search_continuous(points,center,meta['static_inputs']['total_height_m'],domain,True,True);row['fits']={'ignition_apex':evaluate(c,xyz,temp),'plus_horizontal_apex':{**evaluate(free,xyz,temp),'seed_fits':seeds}}
@@ -97,7 +108,7 @@ def preserve(case,work):
  receipt=work/'training-preserved.json'
  if receipt.exists():return json.loads(receipt.read_text())
  hf.STATE=work/'training-hf';hf.STATE.mkdir(exist_ok=True);hf.objects.clear();hf._hashes.clear();hf.review.clear()
- path=R/'dvc.yaml';doc=yaml.safe_load(path.read_text());stage='training_both_'+case;rel=str((OUT/case).relative_to(R));doc['stages'][stage]={'cmd':f'../../.venv/bin/python continuous_training.py --case {case}','frozen':True,'deps':['continuous_training.py','preview_training.py','spatial_training_variants.py','cone_comparison_preview.py','investigate_cone_pivot.py'],'outs':[rel]};path.write_text(yaml.safe_dump(doc,sort_keys=False));hf.stage_commit(str(path)+':'+stage)
+ path=R/'dvc.yaml';doc=yaml.safe_load(path.read_text());stage='training_both_'+case;rel=str((OUT/case).relative_to(R));doc['stages'][stage]={'cmd':f'../../.venv/bin/python continuous_training.py --case {case}'+(' --reused-only' if json.loads((work/'raw-verified.json').read_text()).get('source_case',case)!=case else ''),'frozen':True,'deps':['continuous_training.py','preview_training.py','spatial_training_variants.py','cone_comparison_preview.py','investigate_cone_pivot.py'],'outs':[rel]};path.write_text(yaml.safe_dump(doc,sort_keys=False));hf.stage_commit(str(path)+':'+stage)
  lp=R/'dvc.lock';lock=yaml.safe_load(lp.read_text());lock['stages'][stage]['deps']=[{'path':x,'hash':'md5','md5':hashlib.md5((R/x).read_bytes()).hexdigest(),'size':(R/x).stat().st_size} for x in doc['stages'][stage]['deps']];lp.write_text(yaml.safe_dump(lock,sort_keys=False));hf.upload(hf.STATE/'plan.json')
  rec=lock['stages'][stage]['outs'][0].copy();rec['path']=str(R/rec['path']);pointer=work/'training.dvc';pointer.write_text(yaml.safe_dump({'outs':[rec]}));check=ROOT/'.artifact-staging/continuous-training-roundtrip'/case
  if not (hf.STATE/'restore-verification.json').exists():hf.restore_records([str(pointer)],check)
@@ -110,7 +121,7 @@ def preserve(case,work):
 def cleanup(case,raw,dest,work,training):
  assert training['passed'] and training['restoration_passed'];assert json.loads((work/'raw-verified.json').read_text())['passed']
  # Preflight every original file: never remove unknown extras or mismatching bytes.
- original=R/raw['case_path'];entries={Path(e['path']):e['md5'] for e in raw['entries']};planned=[]
+ original=(R/raw['case_path']).resolve();entries={Path(e['path']):e['md5'] for e in raw['entries']};planned=[]
  for p in (original/'solve').rglob('*'):
   if p.is_file():
    if p not in entries:raise RuntimeError('Untracked local raw file: '+str(p))
@@ -125,11 +136,11 @@ def cleanup(case,raw,dest,work,training):
  save(work/'complete.json',{'passed':True,'case':case,'training_directory':str((OUT/case).relative_to(ROOT)),'raw_DVC_owner_md5':raw['owner_md5'],'training_preservation':training,'local_raw_files_removed':removed,'original_proof_retained':True,'training_retained':True});print('CASE COMPLETE',case,'local_raw_bytes_freed',sum(x['bytes'] for x in removed),flush=True)
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--case');ap.add_argument('--forever',action='store_true');args=ap.parse_args();STATE.mkdir(exist_ok=True);OUT.mkdir(exist_ok=True)
+ ap=argparse.ArgumentParser();ap.add_argument('--case');ap.add_argument('--forever',action='store_true');ap.add_argument('--reused-only',action='store_true');args=ap.parse_args();STATE.mkdir(exist_ok=True);OUT.mkdir(exist_ok=True)
  with (STATE/'worker.lock').open('w') as lock:
   fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
   while True:
-   queue=cases();done=0;deferred=[]
+   queue=reused_cases() if args.reused_only else cases();done=0;deferred=[]
    for case,proof in queue:
     if args.case and case!=args.case:continue
     work=STATE/case;work.mkdir(exist_ok=True)

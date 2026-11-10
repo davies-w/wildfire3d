@@ -66,11 +66,14 @@ def cone_row(xyz,temp,geometry,center,shape):
 def table(p):
  with p.open() as f:r=list(csv.reader(f))
  return r[1],np.array(r[2:],float)
+SOURCE_CASE_OVERRIDES={}
+def source_case(case):return SOURCE_CASE_OVERRIDES.get(case,case)
+
 def extract(source,out):
  case=source['case'];c=next(json.loads(s) for s in gzip.open(R/'data/cases.jsonl.gz','rt') if json.loads(s)['case']==case.removesuffix('_baseline'))
  g=next(g for g in json.loads((R/'data/geometries.json').read_text()) if g['id']==c['geometry_id'])
- folder=solve_folder(case);proof=json.loads((folder.parent/'proof.json').read_text());assert proof['passed'] and proof['physical_time_s']==180
- needed=[folder/'input.fds',folder/(case+'_1.prt5'),folder/(case+'_hrr.csv'),folder/(case+'_devc.csv'),folder/(case+'_1_1.sf'),folder/(case+'.smv')]
+ raw_case=source_case(case);folder=solve_folder(case);proof=json.loads((folder.parent/'proof.json').read_text());assert proof['passed'] and proof['physical_time_s']==180
+ needed=[folder/'input.fds',folder/(raw_case+'_1.prt5'),folder/(raw_case+'_hrr.csv'),folder/(raw_case+'_devc.csv'),folder/(raw_case+'_1_1.sf'),folder/(raw_case+'.smv')]
  hashes={}
  if source.get('restoration_receipt'):
   receipt=json.loads(Path(source['restoration_receipt']).read_text());assert receipt['passed'] and source['HF_restored']
@@ -85,26 +88,26 @@ def extract(source,out):
    for p in needed:
     h=sha(p);assert next(x['sha256'] for x in proof['files'] if x['path']=='solve/'+p.name)==h
     member=tf.extractfile('evidence/solve/'+p.name);assert hashlib.file_digest(member,'sha256').hexdigest()==h;hashes[p.name]=h
- text=(folder/'input.fds').read_text();smv=(folder/(case+'.smv')).read_text();assert 'SLCC' in smv
+ text=(folder/'input.fds').read_text();smv=(folder/(raw_case+'.smv')).read_text();assert 'SLCC' in smv
  parts=re.findall(r'&PART\b.*?/',text,re.S);ids=[re.search(r"\bID\s*=\s*'([^']+)'",p)[1] for p in parts]
- selected=[i for i,n in enumerate(ids) if n!='contact ignitor'];expected_classes=next(x['expected_wet_mass_kg'] for x in json.loads((R/'data/decks/cases.json').read_text()) if x['pilot_case']==case);assert set(ids[i] for i in selected)==set(expected_classes) and ids.count('contact ignitor')==1
+ selected=[i for i,n in enumerate(ids) if n!='contact ignitor'];expected_classes=(source['expected_wet_mass_kg'] if 'expected_wet_mass_kg' in source else next(x['expected_wet_mass_kg'] for x in json.loads((R/'data/decks/cases.json').read_text()) if x['pilot_case']==case));assert set(ids[i] for i in selected)==set(expected_classes) and ids.count('contact ignitor')==1
  surfaces=re.findall(r'&SURF\b.*?/',text,re.S)
  for i in selected:
   surf=next(b for b in surfaces if re.search(r"\bID\s*=\s*'"+re.escape(ids[i])+"'",b))
   assert 'GENERIC VEGETATION' in surf and abs(float(re.search(r'MOISTURE_CONTENT\s*=\s*([\d.]+)',surf)[1])-c['moisture_fraction'])<1e-9
  pt=[];masses=[];weighted=[];initial_xyz=None;class_masses=None
- for t,ps,labels in frames(folder/(case+'_1.prt5')):
+ for t,ps,labels in frames(folder/(raw_case+'_1.prt5')):
   assert len(ps)==len(ids);mm=[];heat=0
   for i in selected:
    pos,q=ps[i];assert labels[i][:3]==['PARTICLE TEMPERATURE','PARTICLE MASS','PARTICLE WEIGHTING FACTOR'];q=q.astype(float);mass=q[:,1]*q[:,2];mm.append(float(mass.sum()));heat+=float(np.sum(mass*(q[:,0]-20)))
   if initial_xyz is None:initial_xyz=np.concatenate([ps[i][0] for i in selected]);class_masses=dict(zip([ids[i] for i in selected],mm))
   pt.append(t);masses.append(sum(mm));weighted.append(heat)
  target=np.array(pt);assert len(target)==91 and target[0]==0 and target[-1]==180 and np.all(np.diff(target)>0)
- expected=next(x['expected_wet_mass_kg'] for x in json.loads((R/'data/decks/cases.json').read_text()) if x['pilot_case']==case)
+ expected=(source['expected_wet_mass_kg'] if 'expected_wet_mass_kg' in source else next(x['expected_wet_mass_kg'] for x in json.loads((R/'data/decks/cases.json').read_text()) if x['pilot_case']==case))
  assert all(abs(class_masses[k]/v-1)<1e-5 for k,v in expected.items())
  wet0=masses[0];dry0=wet0/(1+c['moisture_fraction']);water0=wet0-dry0
  assert wet0>0
- hk,h=table(folder/(case+'_hrr.csv'));dk,a=table(folder/(case+'_devc.csv'));ht=h[:,0];at=a[:,0]
+ hk,h=table(folder/(raw_case+'_hrr.csv'));dk,a=table(folder/(raw_case+'_devc.csv'));ht=h[:,0];at=a[:,0]
  assert np.all(np.diff(ht)>0) and np.all(np.diff(at)>0) and ht[0]==at[0]==0 and ht[-1]>=180 and at[-1]>=180
  cols=[dk.index(ids[i]+' vapor') for i in selected];fuel=a[:,cols].sum(1)
  water=water0-np.cumsum(h[:,hk.index('MLR_WATER VAPOR')]*np.diff(ht,prepend=0))
@@ -114,7 +117,7 @@ def extract(source,out):
  domain=c['domain'];dx=c['dx'];shape=tuple(np.rint(np.array(domain)/dx).astype(int));center=np.array(domain[:2])/2
  xyz=np.stack(np.meshgrid(*[(np.arange(n)+.5)*dx for n in shape],indexing='ij'),-1).reshape(-1,3)
  times=[];cones=[];fit=[]
- for t,temp in temperatures(folder/(case+'_1_1.sf'),domain,dx):
+ for t,temp in temperatures(folder/(raw_case+'_1_1.sf'),domain,dx):
   row,audit=cone_row(xyz,temp.reshape(-1),g,center,shape);times.append(t);cones.append(row);fit.append({'time_s':t,**audit})
  assert len(times)>=6 and times[0]==0 and times[-1]==180
  interp=interpolate_cones(times,cones,target);assert np.array_equal(interpolate_cones(times,cones,np.array(times))['cones'],np.array(cones))
@@ -124,7 +127,7 @@ def extract(source,out):
  ignition=np.interp(target,[0,.1,20,20.1,180],[0,1,1,0,0])
  dest=out/case;dest.mkdir(parents=True,exist_ok=True)
  np.savez_compressed(dest/'training.npz',time_s=target,state=state,state_names=np.array(NAMES),state_units=np.array(UNITS),source_cone_time_s=interp['source_time_s'],source_cones=interp['source_cones'],cone_observed=interp['observed'],cone_interpolated=interp['interpolated'],cone_left_source_index=interp['left_source_index'],cone_right_source_index=interp['right_source_index'],cone_right_weight=interp['right_weight'],ignition_on_fraction=ignition,dt_next_s=np.r_[np.diff(target),0.0],has_next_state=np.r_[np.ones(len(target)-1,dtype=bool),False],initial_particle_xyz_m=initial_xyz)
- meta={'case':case,'split':c['split'],'static_inputs':static,'geometry':{k:g[k] for k in ['cones','ellipsoids','stems']},'domain_m':domain,'tree_center_xy_m':center.tolist(),'mesh_spacing_m':dx,'state_names':NAMES,'state_units':UNITS,'raw_archive_sha256':source.get('sha256'),'raw_restoration_receipt_sha256':sha(Path(source['restoration_receipt'])) if source.get('restoration_receipt') else None,'raw_input_sha256':hashes,'selected_particle_classes':[ids[i] for i in selected],'initial_class_wet_masses_kg':class_masses,'cone_fit':fit,'training_npz_sha256':sha(dest/'training.npz'),'initial_mass_matches_deck_design':True,'frames':len(target),'source_temperature_frames':len(times),'cone_interpolation':'Piecewise linear in actual source time; zero geometry when absent; presence between0 and1 is synthetic, not probability; no extrapolation.','four_state_definitions':'Water: initial dry-basis moisture mass minus right-endpoint integral of MLR_WATER VAPOR. Unreacted fuel: initial dry mass minus trapezoidal integral of all vegetation/stem fuel-vapor devices divided by0.75. Gas: summed device fuel-vapor release. Heating: particle mass-weighted surface-temperature excess above20C divided by initial wet mass; K, not energy. No clamping. CSV-integrated channels evaluated at actual particle timestamps.','limitations':'Generic vegetation fuel and species-inspired geometry, not calibrated species. .5m grid; imposed .4m contact patch1500C for20s plus.1s ramps, combustion source HRRPUA60kW/m2 on contact particles. No embers/bark/grass/resolved solid trunk. Woody stems are thermal particles. Hot-gas cone fits >50C cells with>=95% recall, tilt restricted to downwind x-z plane, apex searched on tree axis; not a physical flame boundary. Interpolation cannot recover rapid dynamics or peaks. Original six samples retained. Char oxidation exists in raw physics; unreacted-fuel estimate does not measure total remaining solid mass. Fixed geometry outlines are display context, not burn masks.','conversion':'No model fitting/training; deterministic raw-data extraction and geometric cone fitting.'}
+ meta={'case':case,'source_case':raw_case,'split':c['split'],'static_inputs':static,'geometry':{k:g[k] for k in ['cones','ellipsoids','stems']},'domain_m':domain,'tree_center_xy_m':center.tolist(),'mesh_spacing_m':dx,'state_names':NAMES,'state_units':UNITS,'raw_archive_sha256':source.get('sha256'),'raw_restoration_receipt_sha256':sha(Path(source['restoration_receipt'])) if source.get('restoration_receipt') else None,'raw_input_sha256':hashes,'selected_particle_classes':[ids[i] for i in selected],'initial_class_wet_masses_kg':class_masses,'cone_fit':fit,'training_npz_sha256':sha(dest/'training.npz'),'initial_mass_matches_deck_design':True,'frames':len(target),'source_temperature_frames':len(times),'cone_interpolation':'Piecewise linear in actual source time; zero geometry when absent; presence between0 and1 is synthetic, not probability; no extrapolation.','four_state_definitions':'Water: initial dry-basis moisture mass minus right-endpoint integral of MLR_WATER VAPOR. Unreacted fuel: initial dry mass minus trapezoidal integral of all vegetation/stem fuel-vapor devices divided by0.75. Gas: summed device fuel-vapor release. Heating: particle mass-weighted surface-temperature excess above20C divided by initial wet mass; K, not energy. No clamping. CSV-integrated channels evaluated at actual particle timestamps.','limitations':'Generic vegetation fuel and species-inspired geometry, not calibrated species. .5m grid; imposed .4m contact patch1500C for20s plus.1s ramps, combustion source HRRPUA60kW/m2 on contact particles. No embers/bark/grass/resolved solid trunk. Woody stems are thermal particles. Hot-gas cone fits >50C cells with>=95% recall, tilt restricted to downwind x-z plane, apex searched on tree axis; not a physical flame boundary. Interpolation cannot recover rapid dynamics or peaks. Original six samples retained. Char oxidation exists in raw physics; unreacted-fuel estimate does not measure total remaining solid mass. Fixed geometry outlines are display context, not burn masks.','conversion':'No model fitting/training; deterministic raw-data extraction and geometric cone fitting.'}
  (dest/'metadata.json').write_text(json.dumps(meta,indent=2,allow_nan=False)+'\n')
  with (dest/'training.csv').open('w') as f:
   w=csv.writer(f);w.writerow(['time_s',*[n+' ['+u+']' for n,u in zip(NAMES,UNITS)],'cone_observed','cone_left_time_s','cone_right_time_s','cone_right_weight'])

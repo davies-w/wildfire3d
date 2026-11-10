@@ -1,4 +1,4 @@
-from preview_training import solve_folder
+from preview_training import solve_folder,source_case
 """User-requested anchored-cone versus free-cone comparison, two cases only."""
 import json, shutil, csv
 import numpy as np
@@ -21,7 +21,7 @@ def generate(case):
   # Peak is independently recomputed below from the original raw volume.
   src.append(np.r_[1,c['apex_m'],u,c['length_m'],c['radius_m'],0])
  from preview_training import temperatures
- raw=(solve_folder(case)/(case+'_1_1.sf'))
+ raw=(solve_folder(case)/(source_case(case)+'_1_1.sf'))
  assert sha(raw)==meta['raw_temperature_sha256']
  domain=meta['domain_m'];shape=np.rint(np.array(domain)/.5).astype(int);xyz=np.stack(np.meshgrid(*[(np.arange(n)+.5)*.5 for n in shape],indexing='ij'),-1).reshape(-1,3)
  diagnostics=[]
