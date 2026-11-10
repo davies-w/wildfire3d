@@ -1,0 +1,102 @@
+{
+  "status": "audited preservation scope closed; training exceptions intentionally deferred",
+  "verified_simulations": 1899,
+  "planned_simulations": 2000,
+  "dual_format_training_preserved": 1880,
+  "training_cases_deferred": 19,
+  "training_retained_locally": true,
+  "raw_original_bytes_removed": 224363521266,
+  "boundary_text_originals_removed": 1788,
+  "boundary_text_bytes_removed": 54664851,
+  "cloud_archives_preserved": 2825,
+  "older_local_archives_preserved": 122,
+  "additional_batches": {
+    "reviewed-raw-log": {
+      "original_files": 137,
+      "unique_files": 127,
+      "git_commit": "eebf360cec67a914adf578e7ad49321a07fda8a0",
+      "full_restoration_verified": true
+    },
+    "historical-array": {
+      "original_files": 415,
+      "unique_files": 307,
+      "git_commit": "d8e219974669e816084afc744e70564487c73fec",
+      "full_restoration_verified": true
+    },
+    "historical-support": {
+      "original_files": 1058,
+      "unique_files": 715,
+      "git_commit": "29edb825e55ef1ea3a6cd4450dd86b5892f2538e",
+      "full_restoration_verified": true
+    },
+    "historical-geometry": {
+      "original_files": 172,
+      "unique_files": 122,
+      "git_commit": "0b293ae3dd9e47c3afc03757eba09e9cf327bbfb",
+      "full_restoration_verified": true
+    },
+    "historical-boundary-text": {
+      "original_files": 1788,
+      "unique_files": 1630,
+      "git_commit": "fe5b55f7ec73d6c2f3cd67c5164b0b9d061efcb3",
+      "full_restoration_verified": true
+    },
+    "historical-archive": {
+      "original_files": 208,
+      "unique_files": 196,
+      "git_commit": "16499fbd736c6c35345d17db4d4dc7fe87592a4e",
+      "full_restoration_verified": true
+    },
+    "historical-45-46": {
+      "original_files": 228,
+      "unique_files": 228,
+      "git_commit": "b38c2768de543b52219e721f155f00a022fe80e5",
+      "full_restoration_verified": true
+    },
+    "unmanifested-archive": {
+      "original_files": 2,
+      "unique_files": 2,
+      "git_commit": "fba78eb221d437b9c2590c8234a09a589d4dfb36",
+      "full_restoration_verified": true
+    },
+    "historical-training-metrics": {
+      "original_files": 619,
+      "unique_files": 274,
+      "git_commit": "324eb5797abbad5773d01a00b6e38a9aff158616",
+      "full_restoration_verified": true
+    },
+    "diagnostic-science": {
+      "original_files": 56,
+      "unique_files": 43,
+      "git_commit": "badc6648b81b2101203ee33b0070ef6b327c42a6",
+      "full_restoration_verified": true
+    }
+  },
+  "audit_inventory_counts": {
+    "preserved_scoped_batch": 4677,
+    "existing_remote_hash": 3104,
+    "policy_excluded_retained": 127,
+    "tool_state_retained": 97,
+    "private_preservation_bookkeeping": 1811,
+    "private_operational_retained": 63947,
+    "private_financial_retained": 5,
+    "archive_part_reconciled": 239,
+    "git_tracked_metadata": 2
+  },
+  "unresolved_candidate_classifications": 0,
+  "missing_local_records": {
+    "total": 166,
+    "verified_archive_evictions": 139,
+    "corrected_paths_exact_hash": 8,
+    "fresh_remote_file_restorations": 17,
+    "remote_directory_manifest_and_member_availability": 2
+  },
+  "limitations": [
+    "Scope is the recorded repository inventories and preservation queues, not every historical Git revision or external filesystem.",
+    "Two older export directories were checked by exact manifest hashes and remote member availability; their complete contents were not freshly restored.",
+    "Private financial, credential, operational and tool-state records remain local and are excluded from public preservation.",
+    "19 anchored-cone fitting failures remain deferred in BOTH formats by user decision, with raw retained.",
+    "No new simulations or model training were performed; sparse spatial observations and interpolated rows remain distinguished."
+  ],
+  "irrecoverable_loss_established_by_this_audit": false
+}
