@@ -4,9 +4,9 @@ import csv,json,argparse,hashlib
 import dvc_hf as hf
 ROOT=Path(__file__).resolve().parents[1]
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--audit',type=Path,required=True);ap.add_argument('--report',type=Path,required=True);a=ap.parse_args();rows=[];excluded=[]
+ ap=argparse.ArgumentParser();ap.add_argument('--audit',type=Path,required=True);ap.add_argument('--report',type=Path,required=True);ap.add_argument('--suffixes',nargs='+',default=['.sf','.bf','.prt5','.pt','.npz']);a=ap.parse_args();rows=[];excluded=[]
  for row in csv.DictReader(a.audit.open()):
-  if Path(row['path']).suffix not in {'.sf','.bf','.prt5','.pt','.npz'}:continue
+  if Path(row['path']).suffix not in set(a.suffixes):continue
   p=ROOT/row['path'];reason=None
   if not p.is_file() or p.is_symlink() or not p.resolve().is_relative_to(ROOT):reason='Missing, symlink or outside repository'
   elif p.stat().st_size!=int(row['bytes']):reason='Size changed since tracking audit'
