@@ -36,3 +36,36 @@ stages:
       hash: md5
       md5: 5938738522994deb8285c30653032eba
       size: 1147216
+  collect_results:
+    cmd: python collect_results.py
+    outs:
+    - path: data/results
+      hash: md5
+      md5: 4c669fe62dd5f1650febf528fc32fbc4.dir
+      size: 23299557
+      nfiles: 96
+    deps:
+    - path: collect_results.py
+      hash: md5
+      md5: 382006285e54852ca4998d3c1a3c8062
+      size: 2575
+    - path: worker.py
+      hash: md5
+      md5: 0f21a8c236a0feea1805ceb6a667f576
+      size: 21533
+    - path: model.py
+      hash: md5
+      md5: 2ff2e9cf58ac22122d8577dd8b1dd956
+      size: 2374
+    - path: objective.py
+      hash: md5
+      md5: e5db8f2b56171e8fed946f5634139041
+      size: 698
+    - path: data/schema.json
+      hash: md5
+      md5: 8262f5116718bcefdec92b82770ce20e
+      size: 1205687
+    - path: coverage-plan.json
+      hash: md5
+      md5: cf745d48a0ed938bc219a29d59a3a865
+      size: 2184
