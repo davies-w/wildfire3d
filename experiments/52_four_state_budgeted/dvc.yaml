@@ -14,3 +14,14 @@ stages:
     - data/source-schema.json
     outs:
     - data/schema.json
+  collect_results:
+    cmd: python collect_results.py
+    deps:
+    - collect_results.py
+    - worker.py
+    - model.py
+    - objective.py
+    - data/schema.json
+    - coverage-plan.json
+    outs:
+    - data/results
