@@ -1,0 +1,16 @@
+stages:
+  prepare_observations:
+    cmd: python prepare_data.py
+    deps:
+    - prepare_data.py
+    - ../51_three_tree_campaign/data/cases.jsonl.gz
+    outs:
+    - data/observations.npz
+    - data/source-schema.json
+  freeze_split:
+    cmd: python prepare_split.py
+    deps:
+    - prepare_split.py
+    - data/source-schema.json
+    outs:
+    - data/schema.json

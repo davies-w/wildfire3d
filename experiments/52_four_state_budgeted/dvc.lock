@@ -1,0 +1,38 @@
+schema: '2.0'
+stages:
+  prepare_observations:
+    cmd: python prepare_data.py
+    outs:
+    - path: data/observations.npz
+      hash: md5
+      md5: 3773041e0dcdbb11d93d0a580c5f525b
+      size: 9513583
+    - path: data/source-schema.json
+      hash: md5
+      md5: 5938738522994deb8285c30653032eba
+      size: 1147216
+    deps:
+    - path: prepare_data.py
+      hash: md5
+      md5: 47852e41dce8b64e7992f1a62c41a6f3
+      size: 5995
+    - path: ../51_three_tree_campaign/data/cases.jsonl.gz
+      hash: md5
+      md5: 9b29f1e4f0910ae957e0811dbb0e9cf8
+      size: 29649
+  freeze_split:
+    cmd: python prepare_split.py
+    outs:
+    - path: data/schema.json
+      hash: md5
+      md5: 8262f5116718bcefdec92b82770ce20e
+      size: 1205687
+    deps:
+    - path: prepare_split.py
+      hash: md5
+      md5: 2f20c641cb3ec7386fd4f8dffbaa59e6
+      size: 1880
+    - path: data/source-schema.json
+      hash: md5
+      md5: 5938738522994deb8285c30653032eba
+      size: 1147216
