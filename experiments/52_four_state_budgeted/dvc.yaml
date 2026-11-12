@@ -36,3 +36,13 @@ stages:
     outs:
     - final-verification.json:
         cache: false
+  build_gallery:
+    cmd: python build_gallery.py
+    deps:
+    - build_gallery.py
+    - gallery-template.html
+    - data/observations.npz
+    - data/schema.json
+    - data/results/fold00-test-predictions.npz
+    outs:
+    - data/test-gallery
