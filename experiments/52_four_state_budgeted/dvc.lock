@@ -41,9 +41,9 @@ stages:
     outs:
     - path: data/results
       hash: md5
-      md5: cb77ecddcf4716aa5a5a55da63e17161.dir
-      size: 78306294
-      nfiles: 258
+      md5: c1c0f3791ab0b8889272be2ace8501b4.dir
+      size: 149526187
+      nfiles: 415
     deps:
     - path: collect_results.py
       hash: md5
@@ -69,3 +69,32 @@ stages:
       hash: md5
       md5: cf745d48a0ed938bc219a29d59a3a865
       size: 2184
+  verify_final:
+    cmd: python verify_final.py
+    deps:
+    - path: verify_final.py
+      hash: md5
+      md5: eb5ef8b41def8d1f33814b763d70a7d6
+      size: 4178
+    - path: objective.py
+      hash: md5
+      md5: e5db8f2b56171e8fed946f5634139041
+      size: 698
+    - path: data/schema.json
+      hash: md5
+      md5: 8262f5116718bcefdec92b82770ce20e
+      size: 1205687
+    - path: data/observations.npz
+      hash: md5
+      md5: 3773041e0dcdbb11d93d0a580c5f525b
+      size: 9513583
+    - path: data/results
+      hash: md5
+      md5: c1c0f3791ab0b8889272be2ace8501b4.dir
+      size: 149526187
+      nfiles: 415
+    outs:
+    - path: final-verification.json
+      hash: md5
+      md5: b94d83e63484d5908c4eb3b7f69bcbbb
+      size: 2233

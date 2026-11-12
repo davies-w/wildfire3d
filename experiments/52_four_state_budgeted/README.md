@@ -15,3 +15,20 @@ The original simulations use species-inspired geometry and generic fuel, not cal
 `prepare_data.py` verifies source hashes, physical initial-mass receipts, exact agreement between available cone variants and original four-state histories, monotonic timestamps, finite values and nonzero target ranges. `prepare_split.py` checks separation. `check_local.py` runs forward-only checks and tests normalization isolation. `cloud_check.py` measures actual losses and exercises nonempty optimizer next-update restoration on disposable probe weights. Those probe weights are discarded before fresh training. Cloud epoch checkpoints include optimizer and random states. Interrupted work must resume from a verified completed-epoch checkpoint; no automatic paid retry is configured.
 
 Financial and operational records live under ignored `private/`; they are never artifact-upload inputs. Scientific datasets and final model outputs are preserved with the repository DVC/Hugging Face workflow. Source observations remain traceable in the schema; recreating them requires their original restoration locations.
+
+## Completed result
+
+The run completed 196 epochs, stopped by validation patience after the full 90-step curriculum, and selected epoch 166 using validation alone. Validation integral error was 18.43%; the 225-scenario test integral was 42.18% in the cloud report and 42.17% when independently decoded on CPU. The exact physical constant-initial-state baseline is 45.11%, giving about 6.5% relative improvement overall.
+
+| State | Model integral error | Exact constant-state baseline | Model physical MAE |
+|---|---:|---:|---:|
+| Water | 10.09% | 57.74% | 3.34 kg |
+| Unreacted fuel | 138.50% | 79.58% | 20.40 kg |
+| Fuel-gas release | 7.46% | 17.37% | 0.196 kg/s |
+| Heating index | 12.62% | 25.77% | 5.68 K |
+
+These percentages divide errors by each reference history's own variation, not its initial mass; near-constant fuel histories can therefore receive very large normalized errors. Fuel generalization is weak despite improvements in the other three states. This is a mixed result from one grouped rotation, not robust species validation. The unconstrained model also predicts negative heating index in 50.3% of evaluated forecast samples and negative gas release in 0.29%; these are prediction defects, not physical measurements.
+
+Numerical audit: the cloud control round-trips initial states through normalized float32 encoding, yielding a 45.50% baseline. Holding the physical initial states exactly constant corrects that to 45.11%; use the corrected figure for comparison. Independent CPU decoding differs from CUDA by 0.0724 percentage points in the fuel metric (0.0181 points overall). This is disclosed in `final-verification.json`; the arithmetic check is not bitwise equivalence. Original cloud reports and predictions remain unchanged. No parameters were tuned after viewing the test.
+
+All 415 scientific result files, including the selected model and resumable epoch checkpoints, were independently restored from Hugging Face. Source and artifact metadata are Git-published. The completed cloud job, its VM and its disk were removed; its temporary read grant was revoked. Financial closeout remains private and posted billing may lag usage.

@@ -25,3 +25,14 @@ stages:
     - coverage-plan.json
     outs:
     - data/results
+  verify_final:
+    cmd: python verify_final.py
+    deps:
+    - verify_final.py
+    - objective.py
+    - data/schema.json
+    - data/observations.npz
+    - data/results
+    outs:
+    - final-verification.json:
+        cache: false

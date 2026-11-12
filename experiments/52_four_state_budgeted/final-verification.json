@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "epochs": 196,
+  "selected_epoch": 166,
+  "stop_reason": "validation_patience",
+  "test_cases": 225,
+  "validation_integral_percent": 18.433652818202972,
+  "test_integral_percent": 42.16585159301758,
+  "persistence_integral_percent": 45.11396884918213,
+  "test_integral_percent_by_feature": [
+    10.085199356079102,
+    138.4978790283203,
+    7.4601030349731445,
+    12.620223999023438
+  ],
+  "persistence_integral_percent_by_feature": [
+    57.74147415161133,
+    79.57691192626953,
+    17.368249893188477,
+    25.769248962402344
+  ],
+  "physical_MAE_by_feature": [
+    3.3362083435058594,
+    20.396894454956055,
+    0.19613739848136902,
+    5.678533554077148
+  ],
+  "relative_integral_improvement": 0.06534820795059204,
+  "test_negative_fraction_by_feature": [
+    0.0,
+    0.0,
+    0.0029135802760720253,
+    0.5032593011856079
+  ],
+  "selection_checked_against_all_epoch_validation_scores": true,
+  "prediction_integrals_independently_recomputed": true,
+  "cpu_minus_gpu_integral_percentage_points": [
+    -1.1175870895385742e-05,
+    -0.07236003875732422,
+    0.0,
+    -1.4901161193847656e-06
+  ],
+  "verification_precision_note": "CPU float32 physical decoding differs from recorded CUDA arithmetic by 0.0724 percentage points for fuel, amplified by small per-history fuel ranges. Explicit acceptance bound is 0.1 percentage points for fuel; other features use 2e-5 absolute/relative tolerance in fractional score. Not bitwise equivalence.",
+  "report_sha256": "a8f7ad16ae9f99739ffd554dc1554befd7c4dc3bbbb67559b7a46388c622f083",
+  "recorded_cuda_persistence_integral_percent": 45.50374150276184,
+  "exact_physical_persistence_correction_percentage_points": -0.3897726535797119,
+  "persistence_note": "The cloud control passed initial states through asinh normalization and float32 decoding. This audit instead holds original physical initial states exactly constant; its persistence result supersedes the numerically round-tripped cloud baseline. Small fuel ranges amplify rounding.",
+  "scope": "Single grouped rotation; all four features normalized by each individual reference history range, not initial mass. No test-led tuning. Generic species-inspired fuel simulations, not species validation."
+}
